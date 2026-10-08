@@ -1,0 +1,129 @@
+{
+  "key": 59805,
+  "messages": [
+    {
+      "id": "msg_0651_00000",
+      "en_US": "Blaine"
+    },
+    {
+      "id": "msg_0651_00001",
+      "en_US": [
+        "Huh? I can’t hear you very well.\n",
+        "We must have a bad connection.\r",
+        "Try calling again from somewhere else!"
+      ]
+    },
+    {
+      "id": "msg_0651_00002",
+      "en_US": [
+        "Hello...\n",
+        "Oh, hey, what’s wrong?\f",
+        "You don’t have to worry about me.\f",
+        "How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0651_00003",
+      "en_US": [
+        "Have you visited every Gym yet?\n",
+        "There are Gym Leaders you haven’t\f",
+        "battled yet, aren’t there?"
+      ]
+    },
+    {
+      "id": "msg_0651_00004",
+      "en_US": [
+        "I don’t do anything at all around noon\n",
+        "on Tuesdays. You should give me a call\f",
+        "then sometime if you’re free."
+      ]
+    },
+    {
+      "id": "msg_0651_00005",
+      "en_US": [
+        "Woah, hey!\r",
+        "You called at just the right time!\n",
+        "Wanna battle me again?\f",
+        "Come on, whadda ya say? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0651_00006",
+      "en_US": [
+        "Woah, hey!\r",
+        "Thanks!\n",
+        "I’ll be waiting for you at the Fighting\f",
+        "Dojo in Saffron City."
+      ]
+    },
+    {
+      "id": "msg_0651_00007",
+      "en_US": [
+        "Woah, hey!\n",
+        "That’s cold!"
+      ]
+    },
+    {
+      "id": "msg_0651_00008",
+      "en_US": [
+        "Look, I appreciate that you want to\n",
+        "battle me again, but didn’t you already\f",
+        "make plans with somebody else?"
+      ]
+    },
+    {
+      "id": "msg_0651_00009",
+      "en_US": [
+        "Woah, hey!\n",
+        "I’m waiting for you at the Fighting Dojo\f",
+        "in Saffron City.\n"
+      ]
+    },
+    {
+      "id": "msg_0651_00010",
+      "en_US": [
+        "Hey, this is Blaine.\n",
+        "What’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0651_00011",
+      "en_US": [
+        "We made plans to meet and battle at the\n",
+        "Fighting Dojo in Saffron City, right?\f",
+        "I’m waiting for you!"
+      ]
+    },
+    {
+      "id": "msg_0651_00012",
+      "en_US": [
+        "You know, even if you lose your Gym, if\n",
+        "you take rocks and stones and pile\f",
+        "them up one by one every day, sooner\f",
+        "or later you’ll have built a really nice\f",
+        "replacement Gym!\r",
+        "I’ve made it my life’s mission to build\n",
+        "another Gym."
+      ]
+    },
+    {
+      "id": "msg_0651_00013",
+      "en_US": [
+        "I am grateful that Trainers flock\n",
+        "to a homemade Gym like mine...\r",
+        "I thank you too for coming all the\n",
+        "way just to battle me!"
+      ]
+    },
+    {
+      "id": "msg_0651_00014",
+      "en_US": [
+        "I kind of like the Seafoam Islands\n",
+        "a lot lately.\f",
+        "The problem with that is if you\f",
+        "decide to go shopping,\f",
+        "there aren’t any stores there..."
+      ]
+    }
+  ]
+}

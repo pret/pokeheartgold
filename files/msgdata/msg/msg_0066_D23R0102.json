@@ -1,0 +1,422 @@
+{
+  "key": 33871,
+  "messages": [
+    {
+      "id": "msg_0066_D23R0102_00000",
+      "en_US": [
+        "Radio is good, you know?\r",
+        "Cool music and Pokémon information...\n",
+        "Surprising news and moving dramas...\f",
+        "It has everything!\r",
+        "The only thing missing would be images.\r",
+        "..................\n",
+        "Oops, they call that a TV!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00001",
+      "en_US": [
+        "Lullabies on the radio make wild\n",
+        "Pokémon sleepy.\r",
+        "That’s why you don’t see many Pokémon\n",
+        "when the radio plays lullabies in the\f",
+        "tall grass."
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00002",
+      "en_US": [
+        "Why would they want to take over the\n",
+        "Radio Tower?"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00003",
+      "en_US": "JIGGLYPUFF: Jiggly..."
+    },
+    {
+      "id": "msg_0066_D23R0102_00004",
+      "en_US": [
+        "Sorry. Authorized personnel only\n",
+        "beyond this point.\r",
+        "It wasn’t that way before. There’s\n",
+        "something wrong with the Director..."
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00005",
+      "en_US": [
+        "Feel free to look around anywhere.\n",
+        "The Director is nice again, just as he\f",
+        "was before."
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00006",
+      "en_US": "2F Sales"
+    },
+    {
+      "id": "msg_0066_D23R0102_00007",
+      "en_US": [
+        "Pokémon Talk with Professor Oak\n",
+        "The Hottest Show on the Air!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00008",
+      "en_US": "2F Studio 2"
+    },
+    {
+      "id": "msg_0066_D23R0102_00009",
+      "en_US": [
+        "Buena: Huh?\n",
+        "Today’s password?\r",
+        "HELP, of course!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00010",
+      "en_US": [
+        "Buena: Hi! I’m Buena!\r",
+        "Do you know about the radio show\n",
+        "called Buena’s Password?\r",
+        "If you can tell me the password from\n",
+        "the program, you will earn points.\r",
+        "Save up those points and trade them\n",
+        "with that sweet young lady over there\f",
+        "for some choice prizes!\r",
+        "Here you go!\n",
+        "It’s your very own point card!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00011",
+      "en_US": [
+        "Buena: Thank you for listening in\n",
+        "every day!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00012",
+      "en_US": [
+        "Buena: {STRVAR_1 3, 0, 0}!\n",
+        "Thank you for listening to my show!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00013",
+      "en_US": [
+        "Buena: {STRVAR_1 3, 0, 0}!\n",
+        "Thank you for listening in to my show!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00014",
+      "en_US": [
+        "Buena: Do you remember today’s\n",
+        "password? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00015",
+      "en_US": [
+        "Buena: Oh, wow! Thank you!\n",
+        "What was your name again?\r",
+        "...{STRVAR_1 3, 0, 0}!\r",
+        "Come on, {STRVAR_1 3, 0, 0}.\n",
+        "Join the show.\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00016",
+      "en_US": [
+        "Buena: Oh, wow! Thank you!\n",
+        "What was your name again?\r",
+        "...{STRVAR_1 3, 0, 0}!\r",
+        "Come on, {STRVAR_1 3, 0, 0}.\n",
+        "Join the show.\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00017",
+      "en_US": [
+        "Buena: Thanks, {STRVAR_1 3, 0, 0}!\r",
+        "Please join the show like you always do!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00018",
+      "en_US": [
+        "Buena: Thanks, {STRVAR_1 3, 0, 0}!\r",
+        "Please join the show like you always do!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00019",
+      "en_US": [
+        "Buena: Come back after you listen to\n",
+        "my show, OK? Catch ya later!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00020",
+      "en_US": [
+        "Buena: Everyone ready?\r",
+        "I want to hear you shout out today’s\n",
+        "password for {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00021",
+      "en_US": [
+        "Buena: Everyone ready?\r",
+        "I want to hear you shout out today’s\n",
+        "password for {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00022",
+      "en_US": [
+        "Buena: Yippee! That’s right!\r",
+        "You did tune in! I’m so happy!\n",
+        "You earned one point! Congratulations!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00023",
+      "en_US": [
+        "Buena: Aww... That’s not it...\n",
+        "Did you forget the password?"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00024",
+      "en_US": [
+        "Buena: Oh! Your Blue Card reached 30\n",
+        "points today! That’s so wild!\r",
+        "Hmm... You came by so often,\n",
+        "{STRVAR_1 3, 0, 0}, I’ll make you a\f",
+        "special deal!\r",
+        "How would you like my phone number?\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00025",
+      "en_US": [
+        "Buena: Oh! Your Blue Card reached 30\n",
+        "points today! That’s so wild!\r",
+        "Hmm... You came by so often,\n",
+        "{STRVAR_1 3, 0, 0}, I’ll make you a\f",
+        "special deal!\r",
+        "How would you like my phone number?\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00026",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Buena\n",
+        "in the Pokégear!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00027",
+      "en_US": [
+        "Buena: I look forward to hearing\n",
+        "from you!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00028",
+      "en_US": "Buena: Tune in to my password show!"
+    },
+    {
+      "id": "msg_0066_D23R0102_00029",
+      "en_US": [
+        "Buena: Sorry...\n",
+        "You get just one chance each day.\r",
+        "Come back tomorrow for another try!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00030",
+      "en_US": "Buena: Your Bag is full!"
+    },
+    {
+      "id": "msg_0066_D23R0102_00031",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0066_D23R0102_00032",
+      "en_US": [
+        "Buena: Tune in to my show again\n",
+        "tomorrow!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00033",
+      "en_US": [
+        "Save up the Blue Card points for some\n",
+        "choice prizes!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00034",
+      "en_US": [
+        "Your points total on your\n",
+        "Blue Card is now {STRVAR_1 51, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00035",
+      "en_US": [
+        "Congratulations!\r",
+        "Your points total is now {STRVAR_1 51, 0, 0}. The prize\n",
+        "is this {STRVAR_1 8, 1, 0}. Here you are!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00036",
+      "en_US": [
+        "Your Blue Card points have reached\n",
+        "their max.\f",
+        "I will give you a new card!\r"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00037",
+      "en_US": "You received a new Blue Card!"
+    },
+    {
+      "id": "msg_0066_D23R0102_00038",
+      "en_US": "Please join the show again!\r"
+    },
+    {
+      "id": "msg_0066_D23R0102_00039",
+      "en_US": [
+        "Somebody needs to put a beating on this\n",
+        "mean Team Rocket!\f",
+        "Like three years ago even!"
+      ]
+    },
+    {
+      "id": "msg_0066_D23R0102_00040",
+      "en_US": "CYNDAQUIL"
+    },
+    {
+      "id": "msg_0066_D23R0102_00041",
+      "en_US": "TOTODILE"
+    },
+    {
+      "id": "msg_0066_D23R0102_00042",
+      "en_US": "CHIKORITA"
+    },
+    {
+      "id": "msg_0066_D23R0102_00043",
+      "en_US": "Potion"
+    },
+    {
+      "id": "msg_0066_D23R0102_00044",
+      "en_US": "Antidote"
+    },
+    {
+      "id": "msg_0066_D23R0102_00045",
+      "en_US": "Parlyz Heal"
+    },
+    {
+      "id": "msg_0066_D23R0102_00046",
+      "en_US": "Poké Ball"
+    },
+    {
+      "id": "msg_0066_D23R0102_00047",
+      "en_US": "Great Ball"
+    },
+    {
+      "id": "msg_0066_D23R0102_00048",
+      "en_US": "Ultra Ball"
+    },
+    {
+      "id": "msg_0066_D23R0102_00049",
+      "en_US": "PIKACHU"
+    },
+    {
+      "id": "msg_0066_D23R0102_00050",
+      "en_US": "RATTATA"
+    },
+    {
+      "id": "msg_0066_D23R0102_00051",
+      "en_US": "GEODUDE"
+    },
+    {
+      "id": "msg_0066_D23R0102_00052",
+      "en_US": "HOOTHOOT"
+    },
+    {
+      "id": "msg_0066_D23R0102_00053",
+      "en_US": "SPINARAK"
+    },
+    {
+      "id": "msg_0066_D23R0102_00054",
+      "en_US": "DROWZEE"
+    },
+    {
+      "id": "msg_0066_D23R0102_00055",
+      "en_US": "New Bark Town"
+    },
+    {
+      "id": "msg_0066_D23R0102_00056",
+      "en_US": "Cherrygrove City"
+    },
+    {
+      "id": "msg_0066_D23R0102_00057",
+      "en_US": "Azalea Town"
+    },
+    {
+      "id": "msg_0066_D23R0102_00058",
+      "en_US": "Bug Pokémon"
+    },
+    {
+      "id": "msg_0066_D23R0102_00059",
+      "en_US": "Bird Pokémon"
+    },
+    {
+      "id": "msg_0066_D23R0102_00060",
+      "en_US": "Grass Pokémon"
+    },
+    {
+      "id": "msg_0066_D23R0102_00061",
+      "en_US": "Tackle"
+    },
+    {
+      "id": "msg_0066_D23R0102_00062",
+      "en_US": "Growl"
+    },
+    {
+      "id": "msg_0066_D23R0102_00063",
+      "en_US": "Mud-Slap"
+    },
+    {
+      "id": "msg_0066_D23R0102_00064",
+      "en_US": "X Attack"
+    },
+    {
+      "id": "msg_0066_D23R0102_00065",
+      "en_US": "X Defend"
+    },
+    {
+      "id": "msg_0066_D23R0102_00066",
+      "en_US": "X Speed"
+    },
+    {
+      "id": "msg_0066_D23R0102_00067",
+      "en_US": "Pokémon Talk"
+    },
+    {
+      "id": "msg_0066_D23R0102_00068",
+      "en_US": "Pokémon Music"
+    },
+    {
+      "id": "msg_0066_D23R0102_00069",
+      "en_US": "Buena’s Password"
+    }
+  ]
+}

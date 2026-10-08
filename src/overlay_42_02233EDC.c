@@ -499,12 +499,8 @@ void ov42_022296F0(BgConfig *bgConfig, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 ar
 }
 
 u8 ov42_02229880(u8 arg0, u8 arg1) {
-    if (arg0 > 64) {
-        GF_ASSERT(FALSE);
-    }
-    if (arg1 > 64) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(arg0 <= 64);
+    GF_ASSERT(arg1 <= 64);
     if (arg0 <= 32) {
         if (arg1 <= 32) {
             return 0;

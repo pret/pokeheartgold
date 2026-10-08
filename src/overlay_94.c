@@ -36,9 +36,7 @@ static u32 texAlloc(u32 szByte, BOOL is4x4comp);
 static u32 plttAlloc(u32 szByte, BOOL is4pltt);
 
 void PartyMenu_InitIconFormChangeData(PartyMenu *partyMenu) {
-    if (partyMenu->iconFormChange != NULL) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(partyMenu->iconFormChange == NULL);
     partyMenu->iconFormChange = Heap_Alloc(HEAP_ID_PARTY_MENU, sizeof(IconFormChangeData));
     MI_CpuClear8(partyMenu->iconFormChange, sizeof(IconFormChangeData));
     partyMenu->iconFormChange->partyMonIndex = partyMenu->partyMonIndex;

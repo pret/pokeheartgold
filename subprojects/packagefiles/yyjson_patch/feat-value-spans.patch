@@ -1,0 +1,1029 @@
+diff --git a/src/yyjson.c b/src/yyjson.c
+index c16d925..e67cbaf 100644
+--- a/src/yyjson.c
++++ b/src/yyjson.c
+@@ -18,6 +18,9 @@
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
++
++ Additional changes to add per-value byte-spans made by <lhearachel@proton.me>
++ Copyright (c) 2025
+  *============================================================================*/
+ 
+ #include "yyjson.h"
+@@ -3101,10 +3104,12 @@ static_inline bool has_rflag(yyjson_read_flag flg, yyjson_read_flag chk,
+  *============================================================================*/
+ 
+ /** Read `true` literal, `*ptr[0]` should be `t`. */
+-static_inline bool read_true(u8 **ptr, yyjson_val *val) {
++static_inline bool read_true(u8 **ptr, yyjson_val *val, u8 *beg) {
+     u8 *cur = *ptr;
+     if (likely(byte_match_4(cur, "true"))) {
+         val->tag = YYJSON_TYPE_BOOL | YYJSON_SUBTYPE_TRUE;
++        val->beg = cur - beg;
++        val->end = val->beg + 3;
+         *ptr = cur + 4;
+         return true;
+     }
+@@ -3112,10 +3117,12 @@ static_inline bool read_true(u8 **ptr, yyjson_val *val) {
+ }
+ 
+ /** Read `false` literal, `*ptr[0]` should be `f`. */
+-static_inline bool read_false(u8 **ptr, yyjson_val *val) {
++static_inline bool read_false(u8 **ptr, yyjson_val *val, u8 *beg) {
+     u8 *cur = *ptr;
+     if (likely(byte_match_4(cur + 1, "alse"))) {
+         val->tag = YYJSON_TYPE_BOOL | YYJSON_SUBTYPE_FALSE;
++        val->beg = cur - beg;
++        val->end = val->beg + 4;
+         *ptr = cur + 5;
+         return true;
+     }
+@@ -3123,10 +3130,12 @@ static_inline bool read_false(u8 **ptr, yyjson_val *val) {
+ }
+ 
+ /** Read `null` literal, `*ptr[0]` should be `n`. */
+-static_inline bool read_null(u8 **ptr, yyjson_val *val) {
++static_inline bool read_null(u8 **ptr, yyjson_val *val, u8 *beg) {
+     u8 *cur = *ptr;
+     if (likely(byte_match_4(cur, "null"))) {
+         val->tag = YYJSON_TYPE_NULL;
++        val->beg = cur - beg;
++        val->end = val->beg + 4;
+         *ptr = cur + 4;
+         return true;
+     }
+@@ -3134,7 +3143,7 @@ static_inline bool read_null(u8 **ptr, yyjson_val *val) {
+ }
+ 
+ /** Read `Inf` or `Infinity` literal (ignoring case). */
+-static_inline bool read_inf(u8 **ptr, u8 **pre,
++static_inline bool read_inf(u8 **ptr, u8 **pre, u8 *beg,
+                             yyjson_read_flag flg, yyjson_val *val) {
+     u8 *hdr = *ptr;
+     u8 *cur = *ptr;
+@@ -3163,9 +3172,13 @@ static_inline bool read_inf(u8 **ptr, u8 **pre,
+             *pre = cur; /* save end position for current raw string */
+             val->tag = ((u64)(cur - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_RAW;
+             val->uni.str = (const char *)hdr;
++            val->beg = hdr - beg;
++            val->end = cur - beg - 1;
+         } else {
+             val->tag = YYJSON_TYPE_NUM | YYJSON_SUBTYPE_REAL;
+             val->uni.u64 = f64_bits_inf(sign);
++            val->beg = hdr - beg;
++            val->end = cur - beg - 1;
+         }
+         return true;
+     }
+@@ -3173,7 +3186,7 @@ static_inline bool read_inf(u8 **ptr, u8 **pre,
+ }
+ 
+ /** Read `NaN` literal (ignoring case). */
+-static_inline bool read_nan(u8 **ptr, u8 **pre,
++static_inline bool read_nan(u8 **ptr, u8 **pre, u8 *beg,
+                             yyjson_read_flag flg, yyjson_val *val) {
+     u8 *hdr = *ptr;
+     u8 *cur = *ptr;
+@@ -3191,9 +3204,13 @@ static_inline bool read_nan(u8 **ptr, u8 **pre,
+             *pre = cur; /* save end position for current raw string */
+             val->tag = ((u64)(cur - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_RAW;
+             val->uni.str = (const char *)hdr;
++            val->beg = hdr - beg;
++            val->end = cur - beg - 1;
+         } else {
+             val->tag = YYJSON_TYPE_NUM | YYJSON_SUBTYPE_REAL;
+             val->uni.u64 = f64_bits_nan(sign);
++            val->beg = hdr - beg;
++            val->end = cur - beg - 1;
+         }
+         return true;
+     }
+@@ -3201,15 +3218,15 @@ static_inline bool read_nan(u8 **ptr, u8 **pre,
+ }
+ 
+ /** Read `Inf`, `Infinity` or `NaN` literal (ignoring case). */
+-static_inline bool read_inf_or_nan(u8 **ptr, u8 **pre,
++static_inline bool read_inf_or_nan(u8 **ptr, u8 **pre, u8 *beg,
+                                    yyjson_read_flag flg, yyjson_val *val) {
+-    if (read_inf(ptr, pre, flg, val)) return true;
+-    if (read_nan(ptr, pre, flg, val)) return true;
++    if (read_inf(ptr, pre, beg, flg, val)) return true;
++    if (read_nan(ptr, pre, beg, flg, val)) return true;
+     return false;
+ }
+ 
+ /** Read a JSON number as raw string. */
+-static_noinline bool read_num_raw(u8 **ptr, u8 **pre, yyjson_read_flag flg,
++static_noinline bool read_num_raw(u8 **ptr, u8 **pre, u8 *beg, yyjson_read_flag flg,
+                                   yyjson_val *val, const char **msg) {
+ #define return_err(_pos, _msg) do { \
+     *msg = _msg; *end = _pos; return false; \
+@@ -3218,6 +3235,8 @@ static_noinline bool read_num_raw(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ #define return_raw() do { \
+     val->tag = ((u64)(cur - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_RAW; \
+     val->uni.str = (const char *)hdr; \
++    val->beg = hdr - beg; \
++    val->end = cur - beg - 1; \
+     **pre = '\0'; *pre = cur; *end = cur; return true; \
+ } while (false)
+ 
+@@ -3240,7 +3259,7 @@ static_noinline bool read_num_raw(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+             }
+         }
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_inf_or_nan(ptr, pre, flg, val)) return true;
++            if (read_inf_or_nan(ptr, pre, beg, flg, val)) return true;
+         }
+         return_err(cur, "no digit after sign");
+     }
+@@ -3293,7 +3312,7 @@ read_double:
+ }
+ 
+ /** Read a hex number. */
+-static_noinline bool read_num_hex(u8 **ptr, u8 **pre, yyjson_read_flag flg,
++static_noinline bool read_num_hex(u8 **ptr, u8 **pre, u8 *beg, yyjson_read_flag flg,
+                                   yyjson_val *val, const char **msg) {
+     u8 *hdr = *ptr;
+     u8 *cur = *ptr;
+@@ -3331,6 +3350,8 @@ static_noinline bool read_num_hex(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+             **pre = '\0';
+             val->tag = ((u64)(cur - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_RAW;
+             val->uni.str = (const char *)hdr;
++            val->beg = hdr - beg;
++            val->end = cur - beg - 1;
+             *pre = cur; *end = cur;
+             return true;
+         }
+@@ -3338,6 +3359,8 @@ static_noinline bool read_num_hex(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ 
+     val->tag = YYJSON_TYPE_NUM | (u64)((u8)sign << 3);
+     val->uni.u64 = (u64)(sign ? (u64)(~(sig) + 1) : (u64)(sig));
++    val->beg = hdr - beg;
++    val->end = cur + i - beg - 1;
+     *end = cur + i;
+     return true;
+ }
+@@ -3813,7 +3836,7 @@ static_inline u64 diy_fp_to_ieee_raw(diy_fp fp) {
+     number is infinite, the return value is based on flag.
+  3. This function (with inline attribute) may generate a lot of instructions.
+  */
+-static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
++static_inline bool read_num(u8 **ptr, u8 **pre, u8 *beg, yyjson_read_flag flg,
+                             yyjson_val *val, const char **msg) {
+ #define return_err(_pos, _msg) do { \
+     *msg = _msg; \
+@@ -3824,24 +3847,32 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ #define return_0() do { \
+     val->tag = YYJSON_TYPE_NUM | (u8)((u8)sign << 3); \
+     val->uni.u64 = 0; \
++    val->beg = hdr - beg; \
++    val->end = cur - beg; \
+     *end = cur; return true; \
+ } while (false)
+ 
+ #define return_i64(_v) do { \
+     val->tag = YYJSON_TYPE_NUM | (u8)((u8)sign << 3); \
+     val->uni.u64 = (u64)(sign ? (u64)(~(_v) + 1) : (u64)(_v)); \
++    val->beg = hdr - beg; \
++    val->end = cur - beg; \
+     *end = cur; return true; \
+ } while (false)
+ 
+ #define return_f64(_v) do { \
+     val->tag = YYJSON_TYPE_NUM | YYJSON_SUBTYPE_REAL; \
+     val->uni.f64 = sign ? -(f64)(_v) : (f64)(_v); \
++    val->beg = hdr - beg; \
++    val->end = cur - beg; \
+     *end = cur; return true; \
+ } while (false)
+ 
+ #define return_f64_bin(_v) do { \
+     val->tag = YYJSON_TYPE_NUM | YYJSON_SUBTYPE_REAL; \
+     val->uni.u64 = ((u64)sign << 63) | (u64)(_v); \
++    val->beg = hdr - beg; \
++    val->end = cur - beg; \
+     *end = cur; return true; \
+ } while (false)
+ 
+@@ -3855,6 +3886,8 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+     **pre = '\0'; /* add null-terminator for previous raw string */ \
+     val->tag = ((u64)(cur - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_RAW; \
+     val->uni.str = (const char *)hdr; \
++    val->beg = hdr - beg; \
++    val->end = cur - beg; \
+     *pre = cur; *end = cur; return true; \
+ } while (false)
+ 
+@@ -3878,7 +3911,7 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ 
+     /* read number as raw string if has `YYJSON_READ_NUMBER_AS_RAW` flag */
+     if (has_flg(NUMBER_AS_RAW)) {
+-        return read_num_raw(ptr, pre, flg, val, msg);
++        return read_num_raw(ptr, pre, beg, flg, val, msg);
+     }
+ 
+     sign = (*hdr == '-');
+@@ -3897,14 +3930,14 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+                 }
+             }
+             if (has_allow(INF_AND_NAN)) {
+-                if (read_inf_or_nan(ptr, pre, flg, val)) return true;
++                if (read_inf_or_nan(ptr, pre, beg, flg, val)) return true;
+             }
+             return_err(cur, "no digit after sign");
+         }
+         /* begin with 0 */
+         if (likely(!char_is_digit_or_fp(*++cur))) {
+             if (has_allow(EXT_NUMBER) && char_to_lower(*cur) == 'x') { /* hex */
+-                return read_num_hex(ptr, pre, flg, val, msg);
++                return read_num_hex(ptr, pre, beg, flg, val, msg);
+             }
+             return_0();
+         }
+@@ -4447,7 +4480,7 @@ digi_finish:
+  This is a fallback function if the custom number reader is disabled.
+  This function use libc's strtod() to read floating-point number.
+  */
+-static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
++static_inline bool read_num(u8 **ptr, u8 **pre, u8 *beg, yyjson_read_flag flg,
+                             yyjson_val *val, const char **msg) {
+ #define return_err(_pos, _msg) do { \
+     *msg = _msg; \
+@@ -4458,24 +4491,32 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ #define return_0() do { \
+     val->tag = YYJSON_TYPE_NUM | (u64)((u8)sign << 3); \
+     val->uni.u64 = 0; \
++    val->beg = hdr - beg; \
++    val->end = cur - beg - 1; \
+     *end = cur; return true; \
+ } while (false)
+ 
+ #define return_i64(_v) do { \
+     val->tag = YYJSON_TYPE_NUM | (u64)((u8)sign << 3); \
+     val->uni.u64 = (u64)(sign ? (u64)(~(_v) + 1) : (u64)(_v)); \
++    val->beg = hdr - beg; \
++    val->end = cur - beg - 1; \
+     *end = cur; return true; \
+ } while (false)
+ 
+ #define return_f64(_v) do { \
+     val->tag = YYJSON_TYPE_NUM | YYJSON_SUBTYPE_REAL; \
+     val->uni.f64 = sign ? -(f64)(_v) : (f64)(_v); \
++    val->beg = hdr - beg; \
++    val->end = cur - beg - 1; \
+     *end = cur; return true; \
+ } while (false)
+ 
+ #define return_f64_bin(_v) do { \
+     val->tag = YYJSON_TYPE_NUM | YYJSON_SUBTYPE_REAL; \
+     val->uni.u64 = ((u64)sign << 63) | (u64)(_v); \
++    val->beg = hdr - beg; \
++    val->end = cur - beg - 1; \
+     *end = cur; return true; \
+ } while (false)
+ 
+@@ -4488,6 +4529,8 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ #define return_raw() do { \
+     val->tag = ((u64)(cur - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_RAW; \
+     val->uni.str = (const char *)hdr; \
++    val->beg = hdr - beg; \
++    val->end = cur - beg - 1; \
+     **pre = '\0'; *pre = cur; *end = cur; return true; \
+ } while (false)
+ 
+@@ -4501,7 +4544,7 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+ 
+     /* read number as raw string if has `YYJSON_READ_NUMBER_AS_RAW` flag */
+     if (has_flg(NUMBER_AS_RAW)) {
+-        return read_num_raw(ptr, pre, flg, val, msg);
++        return read_num_raw(ptr, pre, beg, flg, val, msg);
+     }
+ 
+     sign = (*hdr == '-');
+@@ -4521,7 +4564,7 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+             }
+         }
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_inf_or_nan(ptr, pre, flg, val)) return true;
++            if (read_inf_or_nan(ptr, pre, beg, flg, val)) return true;
+         }
+         return_err(cur, "no digit after sign");
+     }
+@@ -4533,7 +4576,7 @@ static_inline bool read_num(u8 **ptr, u8 **pre, yyjson_read_flag flg,
+         if (!char_is_fp(*cur)) {
+             if (has_allow(EXT_NUMBER) &&
+                 (*cur == 'x' || *cur == 'X')) { /* hex integer */
+-                return read_num_hex(ptr, pre, flg, val, msg);
++                return read_num_hex(ptr, pre, beg, flg, val, msg);
+             }
+             return_0();
+         }
+@@ -4721,8 +4764,9 @@ static_inline bool read_uni_esc(u8 **src_ptr, u8 **dst_ptr, const char **msg) {
+  @param con Continuation for incremental parsing.
+  @return Whether success.
+  */
+-static_inline bool read_str_opt(u8 quo, u8 **ptr, u8 *eof, yyjson_read_flag flg,
+-                                yyjson_val *val, const char **msg, u8 *con[2]) {
++static_inline bool read_str_opt(u8 quo, u8 **ptr, u8 *beg, u8 *eof,
++                                yyjson_read_flag flg, yyjson_val *val,
++                                const char **msg, u8 *con[2]) {
+     /*
+      GCC may sometimes load variables into registers too early, causing
+      unnecessary instructions and performance degradation. This inline assembly
+@@ -4808,6 +4852,8 @@ skip_ascii_end:
+         val->tag = ((u64)(src - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_STR |
+                         (quo == '"' ? YYJSON_SUBTYPE_NOESC : 0);
+         val->uni.str = (const char *)hdr;
++        val->beg = hdr - beg - 1;
++        val->end = src - beg + 1;
+         *src = '\0';
+         *end = src + 1;
+         if (con) con[0] = con[1] = NULL;
+@@ -4930,6 +4976,8 @@ copy_escape:
+     } else if (likely(*src == quo)) {
+         val->tag = ((u64)(dst - hdr) << YYJSON_TAG_BIT) | YYJSON_TYPE_STR;
+         val->uni.str = (const char *)hdr;
++        val->beg = hdr - beg - 1;
++        val->end = src - beg + 1;
+         *dst = '\0';
+         *end = src + 1;
+         if (con) con[0] = con[1] = NULL;
+@@ -5039,23 +5087,25 @@ copy_utf8:
+ #undef return_err
+ }
+ 
+-static_inline bool read_str(u8 **ptr, u8 *eof, yyjson_read_flag flg,
++static_inline bool read_str(u8 **ptr, u8 *beg, u8 *eof, yyjson_read_flag flg,
+                             yyjson_val *val, const char **msg) {
+-    return read_str_opt('\"', ptr, eof, flg, val, msg, NULL);
++    return read_str_opt('\"', ptr, beg, eof, flg, val, msg, NULL);
+ }
+ 
+-static_inline bool read_str_con(u8 **ptr, u8 *eof, yyjson_read_flag flg,
+-                                yyjson_val *val, const char **msg, u8 **con) {
+-    return read_str_opt('\"', ptr, eof, flg, val, msg, con);
++static_inline bool read_str_con(u8 **ptr, u8 *beg, u8 *eof,
++                                yyjson_read_flag flg, yyjson_val *val,
++                                const char **msg, u8 **con) {
++    return read_str_opt('\"', ptr, beg, eof, flg, val, msg, con);
+ }
+ 
+-static_noinline bool read_str_sq(u8 **ptr, u8 *eof, yyjson_read_flag flg,
+-                                 yyjson_val *val, const char **msg) {
+-    return read_str_opt('\'', ptr, eof, flg, val, msg, NULL);
++static_noinline bool read_str_sq(u8 **ptr, u8 *beg, u8 *eof,
++                                 yyjson_read_flag flg, yyjson_val *val,
++                                 const char **msg) {
++    return read_str_opt('\'', ptr, beg, eof, flg, val, msg, NULL);
+ }
+ 
+ /** Read unquoted key (identifier name). */
+-static_noinline bool read_str_id(u8 **ptr, u8 *eof, yyjson_read_flag flg,
++static_noinline bool read_str_id(u8 **ptr, u8 *beg, u8 *eof, yyjson_read_flag flg,
+                                  u8 **pre, yyjson_val *val, const char **msg) {
+ #define return_err(_end, _msg) do { \
+     *msg = _msg; \
+@@ -5067,6 +5117,8 @@ static_noinline bool read_str_id(u8 **ptr, u8 *eof, yyjson_read_flag flg,
+     val->tag = ((u64)(_str_end - hdr) << YYJSON_TAG_BIT) | \
+                 (u64)(YYJSON_TYPE_STR); \
+     val->uni.str = (const char *)hdr; \
++    val->beg = hdr - beg; \
++    val->end = _str_end - beg - 1; \
+     *pre = _str_end; *end = _cur_end; \
+     return true; \
+ } while (false)
+@@ -5245,33 +5297,33 @@ static_noinline yyjson_doc *read_root_single(u8 *hdr, u8 *cur, u8 *eof,
+     val = val_hdr + hdr_len;
+ 
+     if (char_is_num(*cur)) {
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto doc_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto doc_end;
+         goto fail_number;
+     }
+     if (*cur == '"') {
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto doc_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto doc_end;
+         goto fail_string;
+     }
+     if (*cur == 't') {
+-        if (likely(read_true(&cur, val))) goto doc_end;
++        if (likely(read_true(&cur, val, hdr))) goto doc_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+-        if (likely(read_false(&cur, val))) goto doc_end;
++        if (likely(read_false(&cur, val, hdr))) goto doc_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+-        if (likely(read_null(&cur, val))) goto doc_end;
++        if (likely(read_null(&cur, val, hdr))) goto doc_end;
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_nan(&cur, pre, flg, val)) goto doc_end;
++            if (read_nan(&cur, pre, hdr, flg, val)) goto doc_end;
+         }
+         goto fail_literal_null;
+     }
+     if (has_allow(INF_AND_NAN)) {
+-        if (read_inf_or_nan(&cur, pre, flg, val)) goto doc_end;
++        if (read_inf_or_nan(&cur, pre, hdr, flg, val)) goto doc_end;
+     }
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto doc_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto doc_end;
+         goto fail_string;
+     }
+     goto fail_character;
+@@ -5383,10 +5435,12 @@ static_inline yyjson_doc *read_root_minify(u8 *hdr, u8 *cur, u8 *eof,
+     if (*cur++ == '{') {
+         ctn->tag = YYJSON_TYPE_OBJ;
+         ctn->uni.ofs = 0;
++        ctn->beg = cur - hdr;
+         goto obj_key_begin;
+     } else {
+         ctn->tag = YYJSON_TYPE_ARR;
+         ctn->uni.ofs = 0;
++        ctn->beg = cur - hdr;
+         goto arr_val_begin;
+     }
+ 
+@@ -5399,6 +5453,7 @@ arr_begin:
+     val_incr();
+     val->tag = YYJSON_TYPE_ARR;
+     val->uni.ofs = (usize)((u8 *)val - (u8 *)ctn);
++    val->beg = cur - hdr - 1;
+ 
+     /* push the new array value as current container */
+     ctn = val;
+@@ -5416,33 +5471,33 @@ arr_val_begin:
+     if (char_is_num(*cur)) {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto arr_val_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto arr_val_end;
+         goto fail_number;
+     }
+     if (*cur == '"') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto arr_val_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto arr_val_end;
+         goto fail_string;
+     }
+     if (*cur == 't') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_true(&cur, val))) goto arr_val_end;
++        if (likely(read_true(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_false(&cur, val))) goto arr_val_end;
++        if (likely(read_false(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_null(&cur, val))) goto arr_val_end;
++        if (likely(read_null(&cur, val, hdr))) goto arr_val_end;
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_nan(&cur, pre, flg, val)) goto arr_val_end;
++            if (read_nan(&cur, pre, hdr, flg, val)) goto arr_val_end;
+         }
+         goto fail_literal_null;
+     }
+@@ -5461,13 +5516,13 @@ arr_val_begin:
+         (*cur == 'i' || *cur == 'I' || *cur == 'N')) {
+         val_incr();
+         ctn_len++;
+-        if (read_inf_or_nan(&cur, pre, flg, val)) goto arr_val_end;
++        if (read_inf_or_nan(&cur, pre, hdr, flg, val)) goto arr_val_end;
+         goto fail_character_val;
+     }
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto arr_val_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto arr_val_end;
+         goto fail_string;
+     }
+     if (has_allow(TRIVIA) && char_is_trivia(*cur)) {
+@@ -5502,6 +5557,7 @@ arr_end:
+     /* save the next sibling value offset */
+     ctn->uni.ofs = (usize)((u8 *)val - (u8 *)ctn) + sizeof(yyjson_val);
+     ctn->tag = ((ctn_len) << YYJSON_TAG_BIT) | YYJSON_TYPE_ARR;
++    ctn->end = cur - hdr;
+     if (unlikely(ctn == ctn_parent)) goto doc_end;
+ 
+     /* pop parent as current container */
+@@ -5521,6 +5577,7 @@ obj_begin:
+     val->tag = YYJSON_TYPE_OBJ;
+     /* offset to the parent */
+     val->uni.ofs = (usize)((u8 *)val - (u8 *)ctn);
++    val->beg = cur - hdr - 1;
+     ctn = val;
+     ctn_len = 0;
+ 
+@@ -5528,7 +5585,7 @@ obj_key_begin:
+     if (likely(*cur == '"')) {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto obj_key_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto obj_key_end;
+         goto fail_string;
+     }
+     if (likely(*cur == '}')) {
+@@ -5545,13 +5602,13 @@ obj_key_begin:
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto obj_key_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto obj_key_end;
+         goto fail_string;
+     }
+     if (has_allow(UNQUOTED_KEY) && char_is_id_start(*cur)) {
+         val_incr();
+         ctn_len++;
+-        if (read_str_id(&cur, eof, flg, pre, val, &msg)) goto obj_key_end;
++        if (read_str_id(&cur, hdr, eof, flg, pre, val, &msg)) goto obj_key_end;
+         goto fail_string;
+     }
+     if (has_allow(TRIVIA) && char_is_trivia(*cur)) {
+@@ -5579,13 +5636,13 @@ obj_val_begin:
+     if (*cur == '"') {
+         val++;
+         ctn_len++;
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto obj_val_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto obj_val_end;
+         goto fail_string;
+     }
+     if (char_is_num(*cur)) {
+         val++;
+         ctn_len++;
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto obj_val_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto obj_val_end;
+         goto fail_number;
+     }
+     if (*cur == '{') {
+@@ -5599,21 +5656,21 @@ obj_val_begin:
+     if (*cur == 't') {
+         val++;
+         ctn_len++;
+-        if (likely(read_true(&cur, val))) goto obj_val_end;
++        if (likely(read_true(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+         val++;
+         ctn_len++;
+-        if (likely(read_false(&cur, val))) goto obj_val_end;
++        if (likely(read_false(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+         val++;
+         ctn_len++;
+-        if (likely(read_null(&cur, val))) goto obj_val_end;
++        if (likely(read_null(&cur, val, hdr))) goto obj_val_end;
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_nan(&cur, pre, flg, val)) goto obj_val_end;
++            if (read_nan(&cur, pre, hdr, flg, val)) goto obj_val_end;
+         }
+         goto fail_literal_null;
+     }
+@@ -5625,13 +5682,13 @@ obj_val_begin:
+         (*cur == 'i' || *cur == 'I' || *cur == 'N')) {
+         val++;
+         ctn_len++;
+-        if (read_inf_or_nan(&cur, pre, flg, val)) goto obj_val_end;
++        if (read_inf_or_nan(&cur, pre, hdr, flg, val)) goto obj_val_end;
+         goto fail_character_val;
+     }
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+         val++;
+         ctn_len++;
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto obj_val_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto obj_val_end;
+         goto fail_string;
+     }
+     if (has_allow(TRIVIA) && char_is_trivia(*cur)) {
+@@ -5665,6 +5722,7 @@ obj_end:
+     /* point to the next value */
+     ctn->uni.ofs = (usize)((u8 *)val - (u8 *)ctn) + sizeof(yyjson_val);
+     ctn->tag = (ctn_len << (YYJSON_TAG_BIT - 1)) | YYJSON_TYPE_OBJ;
++    ctn->end = cur - hdr;
+     if (unlikely(ctn == ctn_parent)) goto doc_end;
+     ctn = ctn_parent;
+     ctn_len = (usize)(ctn->tag >> YYJSON_TAG_BIT);
+@@ -5787,11 +5845,13 @@ static_inline yyjson_doc *read_root_pretty(u8 *hdr, u8 *cur, u8 *eof,
+     if (*cur++ == '{') {
+         ctn->tag = YYJSON_TYPE_OBJ;
+         ctn->uni.ofs = 0;
++        ctn->beg = cur - hdr - 1;
+         if (*cur == '\n') cur++;
+         goto obj_key_begin;
+     } else {
+         ctn->tag = YYJSON_TYPE_ARR;
+         ctn->uni.ofs = 0;
++        ctn->beg = cur - hdr - 1;
+         if (*cur == '\n') cur++;
+         goto arr_val_begin;
+     }
+@@ -5805,6 +5865,7 @@ arr_begin:
+     val_incr();
+     val->tag = YYJSON_TYPE_ARR;
+     val->uni.ofs = (usize)((u8 *)val - (u8 *)ctn);
++    val->beg = cur - hdr - 1;
+ 
+     /* push the new array value as current container */
+     ctn = val;
+@@ -5835,33 +5896,33 @@ arr_val_begin:
+     if (char_is_num(*cur)) {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto arr_val_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto arr_val_end;
+         goto fail_number;
+     }
+     if (*cur == '"') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto arr_val_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto arr_val_end;
+         goto fail_string;
+     }
+     if (*cur == 't') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_true(&cur, val))) goto arr_val_end;
++        if (likely(read_true(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_false(&cur, val))) goto arr_val_end;
++        if (likely(read_false(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_null(&cur, val))) goto arr_val_end;
++        if (likely(read_null(&cur, val, hdr))) goto arr_val_end;
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_nan(&cur, pre, flg, val)) goto arr_val_end;
++            if (read_nan(&cur, pre, hdr, flg, val)) goto arr_val_end;
+         }
+         goto fail_literal_null;
+     }
+@@ -5880,13 +5941,13 @@ arr_val_begin:
+         (*cur == 'i' || *cur == 'I' || *cur == 'N')) {
+         val_incr();
+         ctn_len++;
+-        if (read_inf_or_nan(&cur, pre, flg, val)) goto arr_val_end;
++        if (read_inf_or_nan(&cur, pre, hdr, flg, val)) goto arr_val_end;
+         goto fail_character_val;
+     }
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto arr_val_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto arr_val_end;
+         goto fail_string;
+     }
+     if (has_allow(TRIVIA) && char_is_trivia(*cur)) {
+@@ -5925,6 +5986,7 @@ arr_end:
+     /* save the next sibling value offset */
+     ctn->uni.ofs = (usize)((u8 *)val - (u8 *)ctn) + sizeof(yyjson_val);
+     ctn->tag = ((ctn_len) << YYJSON_TAG_BIT) | YYJSON_TYPE_ARR;
++    ctn->end = cur - hdr;
+     if (unlikely(ctn == ctn_parent)) goto doc_end;
+ 
+     /* pop parent as current container */
+@@ -5945,6 +6007,7 @@ obj_begin:
+     val->tag = YYJSON_TYPE_OBJ;
+     /* offset to the parent */
+     val->uni.ofs = (usize)((u8 *)val - (u8 *)ctn);
++    val->beg = cur - hdr - 1;
+     ctn = val;
+     ctn_len = 0;
+     if (*cur == '\n') cur++;
+@@ -5964,7 +6027,7 @@ obj_key_begin:
+     if (likely(*cur == '"')) {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto obj_key_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto obj_key_end;
+         goto fail_string;
+     }
+     if (likely(*cur == '}')) {
+@@ -5981,13 +6044,13 @@ obj_key_begin:
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto obj_key_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto obj_key_end;
+         goto fail_string;
+     }
+     if (has_allow(UNQUOTED_KEY) && char_is_id_start(*cur)) {
+         val_incr();
+         ctn_len++;
+-        if (read_str_id(&cur, eof, flg, pre, val, &msg)) goto obj_key_end;
++        if (read_str_id(&cur, hdr, eof, flg, pre, val, &msg)) goto obj_key_end;
+         goto fail_string;
+     }
+     if (has_allow(TRIVIA) && char_is_trivia(*cur)) {
+@@ -6019,13 +6082,13 @@ obj_val_begin:
+     if (*cur == '"') {
+         val++;
+         ctn_len++;
+-        if (likely(read_str(&cur, eof, flg, val, &msg))) goto obj_val_end;
++        if (likely(read_str(&cur, hdr, eof, flg, val, &msg))) goto obj_val_end;
+         goto fail_string;
+     }
+     if (char_is_num(*cur)) {
+         val++;
+         ctn_len++;
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto obj_val_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto obj_val_end;
+         goto fail_number;
+     }
+     if (*cur == '{') {
+@@ -6039,21 +6102,21 @@ obj_val_begin:
+     if (*cur == 't') {
+         val++;
+         ctn_len++;
+-        if (likely(read_true(&cur, val))) goto obj_val_end;
++        if (likely(read_true(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+         val++;
+         ctn_len++;
+-        if (likely(read_false(&cur, val))) goto obj_val_end;
++        if (likely(read_false(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+         val++;
+         ctn_len++;
+-        if (likely(read_null(&cur, val))) goto obj_val_end;
++        if (likely(read_null(&cur, val, hdr))) goto obj_val_end;
+         if (has_allow(INF_AND_NAN)) {
+-            if (read_nan(&cur, pre, flg, val)) goto obj_val_end;
++            if (read_nan(&cur, pre, hdr, flg, val)) goto obj_val_end;
+         }
+         goto fail_literal_null;
+     }
+@@ -6065,13 +6128,13 @@ obj_val_begin:
+         (*cur == 'i' || *cur == 'I' || *cur == 'N')) {
+         val++;
+         ctn_len++;
+-        if (read_inf_or_nan(&cur, pre, flg, val)) goto obj_val_end;
++        if (read_inf_or_nan(&cur, pre, hdr, flg, val)) goto obj_val_end;
+         goto fail_character_val;
+     }
+     if (has_allow(SINGLE_QUOTED_STR) && *cur == '\'') {
+         val++;
+         ctn_len++;
+-        if (likely(read_str_sq(&cur, eof, flg, val, &msg))) goto obj_val_end;
++        if (likely(read_str_sq(&cur, hdr, eof, flg, val, &msg))) goto obj_val_end;
+         goto fail_string;
+     }
+     if (has_allow(TRIVIA) && char_is_trivia(*cur)) {
+@@ -6109,6 +6172,7 @@ obj_end:
+     /* point to the next value */
+     ctn->uni.ofs = (usize)((u8 *)val - (u8 *)ctn) + sizeof(yyjson_val);
+     ctn->tag = (ctn_len << (YYJSON_TAG_BIT - 1)) | YYJSON_TYPE_OBJ;
++    ctn->end = cur - hdr;
+     if (unlikely(ctn == ctn_parent)) goto doc_end;
+     ctn = ctn_parent;
+     ctn_len = (usize)(ctn->tag >> YYJSON_TAG_BIT);
+@@ -6228,9 +6292,9 @@ yyjson_doc *yyjson_read_opts(char *dat, usize len,
+     /* read json document */
+     if (likely(char_is_ctn(*cur))) {
+         if (char_is_space(cur[1]) && char_is_space(cur[2])) {
+-            doc = read_root_pretty(hdr, cur, eof, alc, flg, err);
++            doc = read_root_pretty(hdr, cur, eof, alc, flg, err); // read function
+         } else {
+-            doc = read_root_minify(hdr, cur, eof, alc, flg, err);
++            doc = read_root_minify(hdr, cur, eof, alc, flg, err); // read function
+         }
+     } else {
+         doc = read_root_single(hdr, cur, eof, alc, flg, err);
+@@ -6425,7 +6489,7 @@ const char *yyjson_read_number(const char *dat,
+ #endif
+ 
+ #if YYJSON_DISABLE_FAST_FP_CONV
+-    if (!read_num(&cur, pre, flg, val, &msg)) {
++    if (!read_num(&cur, pre, hdr, flg, val, &msg)) {
+         if (dat_len >= sizeof(buf)) alc->free(alc->ctx, hdr);
+         return_err(cur, INVALID_NUMBER, msg);
+     }
+@@ -6433,7 +6497,7 @@ const char *yyjson_read_number(const char *dat,
+     if (yyjson_is_raw(val)) val->uni.str = dat;
+     return dat + (cur - hdr);
+ #else
+-    if (!read_num(&cur, pre, flg, val, &msg)) {
++    if (!read_num(&cur, pre, hdr, flg, val, &msg)) {
+         return_err(cur, INVALID_NUMBER, msg);
+     }
+     return (const char *)cur;
+@@ -6703,23 +6767,23 @@ doc_begin:
+         goto arr_val_begin;
+     }
+     if (char_is_num(*cur)) {
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto doc_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto doc_end;
+         goto fail_number;
+     }
+     if (*cur == '"') {
+-        if (likely(read_str_con(&cur, end, flg, val, &msg, con))) goto doc_end;
++        if (likely(read_str_con(&cur, hdr, end, flg, val, &msg, con))) goto doc_end;
+         goto fail_string;
+     }
+     if (*cur == 't') {
+-        if (likely(read_true(&cur, val))) goto doc_end;
++        if (likely(read_true(&cur, val, hdr))) goto doc_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+-        if (likely(read_false(&cur, val))) goto doc_end;
++        if (likely(read_false(&cur, val, hdr))) goto doc_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+-        if (likely(read_null(&cur, val))) goto doc_end;
++        if (likely(read_null(&cur, val, hdr))) goto doc_end;
+         goto fail_literal_null;
+     }
+ 
+@@ -6760,32 +6824,32 @@ arr_val_continue:
+     if (char_is_num(*cur)) {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto arr_val_maybe_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto arr_val_maybe_end;
+         goto fail_number;
+     }
+     if (*cur == '"') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str_con(&cur, end, flg, val, &msg, con)))
++        if (likely(read_str_con(&cur, hdr, end, flg, val, &msg, con)))
+             goto arr_val_end;
+         goto fail_string;
+     }
+     if (*cur == 't') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_true(&cur, val))) goto arr_val_end;
++        if (likely(read_true(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_false(&cur, val))) goto arr_val_end;
++        if (likely(read_false(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_null(&cur, val))) goto arr_val_end;
++        if (likely(read_null(&cur, val, hdr))) goto arr_val_end;
+         goto fail_literal_null;
+     }
+     if (*cur == ']') {
+@@ -6856,7 +6920,7 @@ obj_key_continue:
+     if (likely(*cur == '"')) {
+         val_incr();
+         ctn_len++;
+-        if (likely(read_str_con(&cur, end, flg, val, &msg, con)))
++        if (likely(read_str_con(&cur, hdr, end, flg, val, &msg, con)))
+             goto obj_key_end;
+         goto fail_string;
+     }
+@@ -6890,14 +6954,14 @@ obj_val_continue:
+     if (*cur == '"') {
+         val++;
+         ctn_len++;
+-        if (likely(read_str_con(&cur, end, flg, val, &msg, con)))
++        if (likely(read_str_con(&cur, hdr, end, flg, val, &msg, con)))
+             goto obj_val_end;
+         goto fail_string;
+     }
+     if (char_is_num(*cur)) {
+         val++;
+         ctn_len++;
+-        if (likely(read_num(&cur, pre, flg, val, &msg))) goto obj_val_maybe_end;
++        if (likely(read_num(&cur, pre, hdr, flg, val, &msg))) goto obj_val_maybe_end;
+         goto fail_number;
+     }
+     if (*cur == '{') {
+@@ -6911,19 +6975,19 @@ obj_val_continue:
+     if (*cur == 't') {
+         val++;
+         ctn_len++;
+-        if (likely(read_true(&cur, val))) goto obj_val_end;
++        if (likely(read_true(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_true;
+     }
+     if (*cur == 'f') {
+         val++;
+         ctn_len++;
+-        if (likely(read_false(&cur, val))) goto obj_val_end;
++        if (likely(read_false(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_false;
+     }
+     if (*cur == 'n') {
+         val++;
+         ctn_len++;
+-        if (likely(read_null(&cur, val))) goto obj_val_end;
++        if (likely(read_null(&cur, val, hdr))) goto obj_val_end;
+         goto fail_literal_null;
+     }
+     if (char_is_space(*cur)) {
+diff --git a/src/yyjson.h b/src/yyjson.h
+index 5eb6d46..e172efc 100644
+--- a/src/yyjson.h
++++ b/src/yyjson.h
+@@ -18,12 +18,18 @@
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  SOFTWARE.
++
++ Additional changes to add per-value byte-spans made by <lhearachel@proton.me>
++ Copyright (c) 2025
+  *============================================================================*/
+ 
+ /**
+  @file yyjson.h
+  @date 2019-03-09
+  @author YaoYuan
++
++ Additional modifications made by github.com/lhearachel to support the location
++ of value-spans.
+  */
+ 
+ #ifndef YYJSON_H
+@@ -1094,17 +1100,19 @@ yyjson_api_inline size_t yyjson_read_max_memory_usage(size_t len,
+         for example: "[1,2,3,4]" size is 9, value count is 5.
+      2. Some broken JSON may cost more memory during reading, but fail at end,
+         for example: "[[[[[[[[".
+-     3. yyjson use 16 bytes per value, see struct yyjson_val.
++     3. yyjson use 32 bytes per value, see struct yyjson_val.
+      4. yyjson use dynamic memory with a growth factor of 1.5.
+ 
+-     The max memory size is (json_size / 2 * 16 * 1.5 + padding).
++     The max memory size is (json_size / 2 * 32 * 1.5 + padding).
+      */
+-    size_t mul = (size_t)12 + !(flg & YYJSON_READ_INSITU);
++#define memsize (size_t)(32 * 3 / 4)
++    size_t mul = memsize + !(flg & YYJSON_READ_INSITU);
+     size_t pad = 256;
+     size_t max = (size_t)(~(size_t)0);
+     if (flg & YYJSON_READ_STOP_WHEN_DONE) len = len < 256 ? 256 : len;
+     if (len >= (max - pad - mul) / mul) return 0;
+     return len * mul + pad;
++#undef memsize
+ }
+ 
+ /**
+@@ -4760,11 +4768,13 @@ typedef union yyjson_val_uni {
+ } yyjson_val_uni;
+ 
+ /**
+- Immutable JSON value, 16 bytes.
++ Immutable JSON value, 32 bytes.
+  */
+ struct yyjson_val {
+     uint64_t tag; /**< type, subtype and length */
+     yyjson_val_uni uni; /**< payload */
++    size_t beg; /**< beginning of value-span */
++    size_t end; /**< ending of value-span */
+ };
+ 
+ struct yyjson_doc {
+@@ -5233,6 +5243,14 @@ yyjson_api_inline const char *yyjson_get_type_desc(yyjson_val *val) {
+     }
+ }
+ 
++yyjson_api_inline size_t yyjson_dist_beg(yyjson_val *val) {
++    return val == NULL ? 0 : val->beg;
++}
++
++yyjson_api_inline size_t yyjson_dist_end(yyjson_val *val) {
++    return val == NULL ? 0 : val->end;
++}
++
+ yyjson_api_inline const char *yyjson_get_raw(yyjson_val *val) {
+     return yyjson_is_raw(val) ? unsafe_yyjson_get_raw(val) : NULL;
+ }

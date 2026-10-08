@@ -1,7 +1,7 @@
 #include "safari_zone.h"
 
 #include <nitro/mi/memory.h>
-#include <nitro/os/ownerInfo.h>
+#include <nitro/os.h>
 
 #include "global.h"
 

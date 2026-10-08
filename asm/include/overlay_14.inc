@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FontID_Alloc
 .public FontID_Release
@@ -182,9 +182,9 @@
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterizedWithColor
 .public DpadMenuBox_GetPosition
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public sub_02021AC8
 .public sub_02021B5C
 .public GfGfx_SetBanks
@@ -258,10 +258,10 @@
 .public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public Pokedex_ConvertToCurrentDexNo
-.public sub_02077678
-.public sub_0207769C
-.public sub_020776B4
-.public sub_0207789C
+.public GetTypeIconGfxCharFileId
+.public GetTypeIconGfxPlttOverride
+.public GetTypeIconGfxNarcId
+.public BagView_Init
 .public BagView_GetItemId
 .public GetItemIndexMapping
 .public GetItemNameIntoString
@@ -298,4 +298,4 @@
 .public PCBox_Init
 .public PCBox_Main
 .public PCBox_Exit
-.public ov15_022008B8
+.public gOverlayManagerTemplate_Bag

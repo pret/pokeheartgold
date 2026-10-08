@@ -1,0 +1,272 @@
+{
+  "key": 5206,
+  "messages": [
+    {
+      "id": "msg_0560_T22R0301_00000",
+      "en_US": [
+        "Earl, I am!\n",
+        "Wonderful are Pokémon, yes!\r",
+        "Teach you I will to be a better Trainer!\r",
+        "What you want to know?\n",
+        "Want to be a winner is you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00001",
+      "en_US": [
+        "Good! Teach you, I will!\n",
+        "In battle, Pokémon top on list,\f",
+        "the walking one, jump out first!\r",
+        "Change order in list, make battle\n",
+        "easy, maybe!\r",
+        "More from me you want to hear? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00002",
+      "en_US": [
+        "So, want to know how to raise\n",
+        "Pokémon well? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00003",
+      "en_US": [
+        "Fine! Teach you, I will!\n",
+        "If Pokémon come out in battle even\f",
+        "briefly, some Exp. Points it gets.\r",
+        "Keep out weak Pokémon,\n",
+        "switch in battle quick!\r",
+        "This way, weak Pokémon very\n",
+        "strong become!\f",
+        "More from me you want to hear? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00004",
+      "en_US": [
+        "So, want to know how to\n",
+        "battle well? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00005",
+      "en_US": [
+        "Fine! Teach you, I will!\n",
+        "Pokémon have goods and bads\f",
+        "because many types.\r",
+        "High-level Pokémon not win always\n",
+        "if bad types.\r",
+        "Pokémon with good types\n",
+        "for the foe, you choose.\f",
+        "Smart battle, it is!"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00006",
+      "en_US": [
+        "Oh! Smart student you are!\n",
+        "Nothing more do I teach!\r",
+        "Good to Pokémon you must be!"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00007",
+      "en_US": [
+        "I’m taking notes of the teacher’s\n",
+        "lecture.\r",
+        "I’d better copy the stuff on the\n",
+        "blackboard, too."
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00008",
+      "en_US": [
+        "I traded my best Pokémon to the\n",
+        "guy beside me."
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00009",
+      "en_US": [
+        "Huh? The Pokémon I just got is\n",
+        "holding something!"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00010",
+      "en_US": [
+        "...Some Berries can restore a\n",
+        "Pokémon’s health.\r",
+        "Many other items can be held\n",
+        "by Pokémon...\r",
+        "It sure is tough taking notes..."
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00011",
+      "en_US": [
+        "Pokémon have what are called\n",
+        "abilities!\r",
+        "It seems that each kind of Pokémon has\n",
+        "distinct abilities.\r",
+        "They say these abilities come in handy\n",
+        "in battle!"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00012",
+      "en_US": [
+        "The blackboard explains Pokémon\n",
+        "status changes in battle.\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00013",
+      "en_US": "Read which topic? {YESNO 0}"
+    },
+    {
+      "id": "msg_0560_T22R0301_00014",
+      "en_US": [
+        "If poisoned, a Pokémon steadily\n",
+        "loses HP.\r",
+        "The poison lingers after the battle,\n",
+        "and HP is lost as you walk.\f",
+        "To cure it, use an Antidote.\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00015",
+      "en_US": [
+        "Paralysis reduces speed and may\n",
+        "prevent movement.\r",
+        "It remains after battle, so use\n",
+        "a Parlyz Heal.\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00016",
+      "en_US": [
+        "If asleep, your Pokémon can use only\n",
+        "certain moves, such as Sleep Talk and\f",
+        "Snore.\r",
+        "A sleeping Pokémon doesn’t wake up\n",
+        "after battle.\f",
+        "Wake it up with an Awakening.\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00017",
+      "en_US": [
+        "A burn consumes HP, little by little,\n",
+        "and also reduces the Attack stat.\r",
+        "A burn lingers after battle.\n",
+        "Use a Burn Heal as the cure.\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00018",
+      "en_US": [
+        "If your Pokémon is frozen,\n",
+        "it can’t do a thing.\r",
+        "It remains frozen after battle.\n",
+        "Thaw it out with an Ice Heal.\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00019",
+      "en_US": [
+        "It’s this kid’s notebook...\r",
+        "“Catch Pokémon using Poké Balls.\n",
+        "Up to six can be in your party.”\r",
+        "Keep reading? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00020",
+      "en_US": [
+        "“Before throwing a Poké Ball, weaken\n",
+        "the target first.”\r",
+        "“A poisoned or burned Pokémon is\n",
+        "easier to catch.”\r",
+        "Keep reading? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00021",
+      "en_US": [
+        "“Some moves may cause confusion.\n",
+        "Confusion may make a Pokémon attack\f",
+        "itself.”\r",
+        "“Leaving battle clears up any\n",
+        "confusion.”\r",
+        "Keep reading? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00022",
+      "en_US": [
+        "“People who catch and use Pokémon\n",
+        "in battle are called Pokémon Trainers.”\r",
+        "“They are expected to visit Pokémon\n",
+        "Gyms and defeat other Trainers.”\r",
+        "The next page is... Blank!\r"
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00023",
+      "en_US": [
+        "Boy: E-he-he...\n",
+        "I haven’t written any more..."
+      ]
+    },
+    {
+      "id": "msg_0560_T22R0301_00024",
+      "en_US": "POISON"
+    },
+    {
+      "id": "msg_0560_T22R0301_00025",
+      "en_US": "PARALYSIS"
+    },
+    {
+      "id": "msg_0560_T22R0301_00026",
+      "en_US": "SLEEP"
+    },
+    {
+      "id": "msg_0560_T22R0301_00027",
+      "en_US": "BURN"
+    },
+    {
+      "id": "msg_0560_T22R0301_00028",
+      "en_US": "FROZEN"
+    },
+    {
+      "id": "msg_0560_T22R0301_00029",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0560_T22R0301_00030",
+      "garbage": 38
+    },
+    {
+      "id": "msg_0560_T22R0301_00031",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0560_T22R0301_00032",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0560_T22R0301_00033",
+      "garbage": 65
+    },
+    {
+      "id": "msg_0560_T22R0301_00034",
+      "garbage": 48
+    },
+    {
+      "id": "msg_0560_T22R0301_00035",
+      "garbage": 102
+    }
+  ]
+}

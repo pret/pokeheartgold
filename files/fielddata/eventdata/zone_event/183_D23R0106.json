@@ -1,48 +1,48 @@
 {
-  "header": "fielddata/script/scr_seq/event_D23R0106.h",
-  "objects": [
-    {
-      "id": "obj_D23R0106_rkanbum",
-      "spriteId": "SPRITE_RKANBUM",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
-      "scriptId": "_EV_scr_seq_D23R0106_001 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_D23R0106_gsgentleman",
-      "spriteId": "SPRITE_GSGENTLEMAN",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 25,
-      "z": 1,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 8,
-      "z": 12,
-      "header": "MAP_GOLDENROD_RADIO_TOWER_ELEVATOR",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D23R0106.h",
+    "objects": [
+        {
+            "id": "obj_D23R0106_rkanbum",
+            "spriteId": "SPRITE_RKANBUM",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_1",
+            "scriptId": "_EV_scr_seq_D23R0106_001 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_D23R0106_gsgentleman",
+            "spriteId": "SPRITE_GSGENTLEMAN",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ROCKET_TAKEOVER_2",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 25,
+            "z": 1,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 8,
+            "z": 12,
+            "header": "MAP_GOLDENROD_RADIO_TOWER_ELEVATOR",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

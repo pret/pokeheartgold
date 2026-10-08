@@ -6,12 +6,6 @@
 #include "save_wifi_history.h"
 #include "unk_0202C034.h"
 
-typedef struct {
-    u64 x;
-    u64 mul;
-    u64 add;
-} MATHRandContext32;
-
 s32 sub_02037C94(void);
 void sub_02037C98(SaveData *saveData, s8 arg1);
 void sub_02037D2C(void);

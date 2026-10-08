@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GfGfxLoader_GetCharData
 .public SpriteSystem_Alloc
@@ -39,12 +39,12 @@
 .public Pokemon_GetIconPalette
 .public Party_GetMonByIndex
 .public Party_GetMonAprijuiceModifiers
-.public sub_02077678
-.public sub_0207769C
-.public sub_020776B4
-.public sub_02077800
-.public sub_02077818
-.public sub_02077830
+.public GetTypeIconGfxCharFileId
+.public GetTypeIconGfxPlttOverride
+.public GetTypeIconGfxNarcId
+.public GetMoveCategoryIconGfxCharFileId
+.public GetMoveCategoryIconGfxPlttOverride
+.public GetMoveCategoryIconGfxNarcId
 .public sub_0208A520
 .public sub_0208ACDC
 .public sub_0208B1AC

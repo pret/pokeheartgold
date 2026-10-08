@@ -1,0 +1,40 @@
+nitrorom-list (1)
+=================
+
+:doctype: manpage
+:manmanual: NitroROM Manual
+:mansource: NitroROM {manversion}
+:man-linkstyle: pass:[blue R < >]
+
+NAME
+----
+
+nitrorom-list - List the components of a Nintendo DS ROM
+
+SYNOPSIS
+--------
+
+[verse]
+'nitrorom list' <INPUT.NDS>
+
+DESCRIPTION
+-----------
+
+Generate a listing of the constituent members of an input ROM file. The listing
+will be emitted to the standard-output stream in a comma-separated format. Each
+record in the output adheres to the following `printf`-style format:
+
+------
+
+    ROM Start,ROM End,Size,Padding,Component
+
+    ROM Start - 0x%08X
+    ROM End   - 0x%08X
+    Size      - 0x%08X
+    Padding   - 0x%04X
+    Component - %s
+
+------
+
+No program-options are available for this command. No validation is performed on
+the input ROM-file, and it is treated as-is.

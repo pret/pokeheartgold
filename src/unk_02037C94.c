@@ -1,7 +1,6 @@
 #include "unk_02037C94.h"
 
 #include "communication_error.h"
-#include "dwcaccount.h"
 #include "overlay_00_thumb.h"
 #include "overlay_13_arm_2.h"
 #include "overlay_45_thumb.h"
@@ -167,7 +166,7 @@ void sub_02037EC0(u32 arg0) {
 }
 
 s32 sub_02037EC8(void) {
-    void (*const sp0[3])(void);
+    void (*sp0[3])(void);
     ARRAY_ASSIGN(sp0, _020F6A90);
     void (*func)(void) = _021D4150->unk24;
     if (!_021D4150) {
@@ -301,7 +300,7 @@ void sub_0203817C(void) {
         _021D4150->unk24();
     }
     if (sub_02039998()) {
-        sub_0203A930(3 - ov00_021EC9D4());
+        sub_0203A930(3 - DWC_GetLinkLevel());
     } else if (sub_02035650()) {
         sub_0203A930(3 - WM_GetLinkLevel());
     }
@@ -1255,14 +1254,14 @@ BOOL sub_020395B0(void) {
     if (_021D4150 == NULL) {
         return FALSE;
     }
-    s32 sp4;
-    s32 sp0;
+    int sp4;
+    DWCErrorType sp0;
     if (_021D4150->unk4E == 24 || _021D4150->unk4E == 36) {
-        if (ov00_021EC11C(&sp4, &sp0)) {
-            ov00_021EC210();
+        if (DWC_GetLastErrorEx(&sp4, &sp0)) {
+            DWC_ClearError();
             return TRUE;
         }
-    } else if ((_021D4150->unk4E == 25) && ov00_021EC11C(&sp4, &sp0) && (sp0 == 7)) {
+    } else if ((_021D4150->unk4E == 25) && DWC_GetLastErrorEx(&sp4, &sp0) && (sp0 == DWC_ETYPE_FATAL)) {
         return TRUE;
     }
     return FALSE;
@@ -1776,7 +1775,7 @@ void sub_02039FB8(SaveWiFiHistory *arg0, s32 arg1, s32 arg2, u8 arg3) {
 
 s32 sub_02039FD8(enum HeapID heapID) {
     void *temp_r0 = Heap_Alloc(heapID, 1824);
-    s32 temp_r5 = DWC_Init(((u32)temp_r0 + 31) & ~31); // TODO
+    s32 temp_r5 = DWC_Init((void *)(((u32)temp_r0 + 31) & ~31)); // TODO
     Heap_Free(temp_r0);
     return temp_r5;
 }

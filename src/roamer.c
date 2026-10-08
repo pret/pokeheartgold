@@ -150,7 +150,7 @@ BOOL RoamerSave_RepelNotInUse(RoamerSaveData *roamerSave) {
 }
 
 void RoamerSave_SetFlute(RoamerSaveData *roamerSave, u8 flute) {
-    GF_ASSERT(flute <= 2);
+    GF_ASSERT(flute <= FLUTE_MAX);
     roamerSave->flutePlayed = flute;
 }
 

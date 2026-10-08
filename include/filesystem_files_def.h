@@ -1,7 +1,7 @@
 #ifndef POKEHEARTGOLD_FILESYSTEM_FILES_DEF_H
 #define POKEHEARTGOLD_FILESYSTEM_FILES_DEF_H
 
-#include <nitro/fs/file.h>
+// #include <nitro/fs/file.h>
 
 typedef enum NarcId {
     NARC_a_0_0_0 = 0,
@@ -19,7 +19,7 @@ typedef enum NarcId {
     NARC_fielddata_script_scr_seq = 12,
     NARC_a_0_1_3 = 13,
     NARC_a_0_1_4 = 14,
-    NARC_a_0_1_5 = 15,
+    NARC_graphic_bag_bag_graphics = 15,
     NARC_graphic_font = 16,
     NARC_itemtool_itemdata_item_data = 17,
     NARC_itemtool_itemdata_item_icon = 18,
@@ -64,7 +64,7 @@ typedef enum NarcId {
     NARC_poketool_trmsg_trtbl = 57,
     NARC_a_0_5_8 = 58,
     NARC_a_0_5_9 = 59,
-    NARC_a_0_6_0 = 60,
+    NARC_graphic_shop_gra = 60,
     NARC_a_0_6_1 = 61,
     NARC_a_0_6_2 = 62,
     NARC_a_0_6_3 = 63,

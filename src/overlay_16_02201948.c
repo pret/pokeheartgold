@@ -1,10 +1,11 @@
 
 #include "constants/items.h"
 
+#include "application/bag_app.h"
+
 #include "bag_cursor.h"
 #include "bag_view.h"
 #include "berry_pots_app.h"
-#include "overlay_15.h"
 #include "overlay_16.h"
 #include "poke_overlay.h"
 
@@ -15,11 +16,11 @@ extern BOOL BerryPotsApp_Initialize(OverlayManager *, int *);
 extern BOOL BerryPotsApp_Run(OverlayManager *, int *);
 extern BOOL BerryPotsApp_Exit(OverlayManager *, int *);
 
-static const u8 ov16_02201B64[] = {
+static const u8 sPocketList_Berries[] = {
     POCKET_BERRIES, 0xFF
 };
 
-static const u8 ov16_02201B60[] = {
+static const u8 sPocketList_Mulch[] = {
     POCKET_ITEMS, 0xFF
 };
 
@@ -37,7 +38,7 @@ static const OverlayManagerTemplate ov16_02201B78 = {
     .ovy_id = FS_OVERLAY_ID(OVY_15),
 };
 
-static const u8 *unused_02201BA0;
+static const u8 *sDebug_PocketsList;
 
 typedef struct UnkStruct_ov16_0220196C {
     enum HeapID heapID;
@@ -47,8 +48,8 @@ typedef struct UnkStruct_ov16_0220196C {
     BagView *bagView;
     u8 unk14;
     u16 unk16;
-    BagCursor *cursor1;
-    BagCursor *cursor2;
+    BagCursor *berriesPocketCursor;
+    BagCursor *itemsPocketCursor;
 } UnkStruct_ov16_0220196C; // size: 0x20
 
 static BOOL ov16_02201948(OverlayManager **manager);
@@ -121,13 +122,13 @@ BOOL BerryPots_Exit(OverlayManager *manager, int *state) {
 }
 
 static void ov16_02201A34(UnkStruct_ov16_0220196C *unk) {
-    unk->cursor1 = BagCursor_New(unk->heapID);
-    unk->cursor2 = BagCursor_New(unk->heapID);
+    unk->berriesPocketCursor = BagCursor_New(unk->heapID);
+    unk->itemsPocketCursor = BagCursor_New(unk->heapID);
 }
 
 static void ov16_02201A4C(UnkStruct_ov16_0220196C *unk) {
-    Heap_Free(unk->cursor2);
-    Heap_Free(unk->cursor1);
+    Heap_Free(unk->itemsPocketCursor);
+    Heap_Free(unk->berriesPocketCursor);
 }
 
 static u32 ov16_02201A60(UnkStruct_ov16_0220196C *unk) {
@@ -140,7 +141,7 @@ static u32 ov16_02201A78(UnkStruct_ov16_0220196C *unk) {
         return 1;
     }
 
-    if ((u8)(unk->unk14 + 0xFF) <= 1) {
+    if (unk->unk14 == 1 || unk->unk14 == 2) {
         return 2;
     }
 
@@ -152,16 +153,16 @@ static u32 ov16_02201AA0(UnkStruct_ov16_0220196C *unk) {
 
     switch (unk->unk14) {
     case 1:
-        unused_02201BA0 = (u8 *)ov16_02201B60;
+        sDebug_PocketsList = sPocketList_Mulch;
 
-        unk->bagView = Bag_CreateView(bag, ov16_02201B60, unk->heapID);
-        sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor2, unk->args->menuInputStatePtr);
+        unk->bagView = Bag_CreateView(bag, sPocketList_Mulch, unk->heapID);
+        BagView_Init(unk->bagView, unk->args->saveData, BAG_VIEW_CONTEXT_BERRY_POTS, unk->itemsPocketCursor, unk->args->menuInputStatePtr);
         break;
     case 2:
-        unused_02201BA0 = (u8 *)ov16_02201B64;
+        sDebug_PocketsList = sPocketList_Berries;
 
-        unk->bagView = Bag_CreateView(bag, ov16_02201B64, unk->heapID);
-        sub_0207789C(unk->bagView, unk->args->saveData, 6, unk->cursor1, unk->args->menuInputStatePtr);
+        unk->bagView = Bag_CreateView(bag, sPocketList_Berries, unk->heapID);
+        BagView_Init(unk->bagView, unk->args->saveData, BAG_VIEW_CONTEXT_BERRY_POTS, unk->berriesPocketCursor, unk->args->menuInputStatePtr);
         break;
     default:
         GF_ASSERT(FALSE);
@@ -177,7 +178,7 @@ static u32 ov16_02201B24(UnkStruct_ov16_0220196C *unk) {
         return 3;
     }
 
-    unk->unk16 = ((u8)sub_0207790C(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
+    unk->unk16 = ((u8)BagView_GetReturnCode(unk->bagView) == 4) ? BagView_GetItemId(unk->bagView) : 0xFFFF;
     Heap_Free(unk->bagView);
     unk->bagView = NULL;
 

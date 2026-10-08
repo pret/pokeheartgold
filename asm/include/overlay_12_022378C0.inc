@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextPrinter_SetDownArrowBaseTile
 .public TextFlags_SetCanABSpeedUpPrint
@@ -100,9 +100,9 @@
 .public GF_RunVramTransferTasks
 .public sub_02020654
 .public sub_0202067C
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
@@ -184,7 +184,7 @@
 .public WM_GetLinkLevel
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
-.public ov00_021EC9D4
+.public DWC_GetLinkLevel
 .public ov05_0221BA00
 .public ov06_0221BAF0
 .public ov07_0221BEDC

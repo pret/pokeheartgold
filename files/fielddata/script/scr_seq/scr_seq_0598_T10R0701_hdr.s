@@ -1,10 +1,9 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T10R0701.h"
 #include "constants/init_script_types.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
-	.option alignment off
+
 
 	InitScriptEntry_OnFrameTable scr_seq_T10R0701_map_scripts_2
 	InitScriptEntry_OnLoad _EV_scr_seq_T10R0701_001 + 1

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FontID_Alloc
 .public FontID_Release
@@ -17,7 +17,7 @@
 .public PaletteData_SetAutoTransparent
 .public ZeroPalettesByBitmask
 .public PaletteData_FillPaletteInBuffer
-.public sub_02004B10
+.public Sound_LoadHeapStateBGMAndResetSubScene
 .public Sound_SetSceneAndPlayBGM
 .public GF_SndHandleSetPlayerVolume
 .public PlaySE
@@ -191,9 +191,9 @@
 .public ScheduleSetBgPosText
 .public AddTextPrinterParameterizedWithColor
 .public DpadMenuBox_GetPosition
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy
 .public GfGfx_SetBanks
@@ -245,7 +245,7 @@
 .public sub_0207449C
 .public sub_020744A8
 .public Pokedex_ConvertToCurrentDexNo
-.public sub_020880CC
+.public App_StartScreenFade
 .public LanguageToDexFlag
 .public sub_02091294
 .public sub_020912AC

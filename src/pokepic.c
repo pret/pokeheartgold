@@ -322,7 +322,7 @@ PokepicManager *PokepicManager_Create(enum HeapID heapID) {
     void *pNcgrFile = AllocAndReadWholeNarcMemberByIdPair(NARC_poketool_pokegra_otherpoke, NARC_otherpoke_259_NCGR, ret->heapID); // shadow.png
     NNS_G2dGetUnpackedCharacterData(pNcgrFile, &charData);
     ret->charData.pixelFmt = charData->pixelFmt;
-    ret->charData.mapingType = charData->mapingType;
+    ret->charData.mappingType = charData->mappingType;
     ret->charData.characterFmt = charData->characterFmt;
     pRawCharData = charData->pRawData;
     UnscanPokepic_PtHGSS(pRawCharData);
@@ -1128,7 +1128,7 @@ static void PokepicManager_BufferCharData(PokepicManager *pokepicManager) {
             ncgrFile = AllocAndReadWholeNarcMemberByIdPair((NarcId)pokepicManager->pics[i].template.narcID, pokepicManager->pics[i].template.charDataID, pokepicManager->heapID);
             NNS_G2dGetUnpackedCharacterData(ncgrFile, &pCharData);
             pokepicManager->charData.pixelFmt = pCharData->pixelFmt;
-            pokepicManager->charData.mapingType = pCharData->mapingType;
+            pokepicManager->charData.mappingType = pCharData->mappingType;
             pokepicManager->charData.characterFmt = pCharData->characterFmt;
             pRawCharData = pCharData->pRawData;
             UnscanPokepic(pRawCharData, (NarcId)pokepicManager->pics[i].template.narcID);

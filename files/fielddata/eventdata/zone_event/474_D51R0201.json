@@ -1,63 +1,63 @@
 {
-  "header": "fielddata/script/scr_seq/event_D51R0201.h",
-  "objects": [
-    {
-      "id": "obj_D51R0201_champion",
-      "spriteId": "SPRITE_CHAMPION",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA",
-      "scriptId": "_EV_scr_seq_D51R0201_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 16,
-      "z": 19,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 16,
-      "z": 30,
-      "header": "MAP_SINJOH_RUINS_EXTERIOR",
-      "anchor": 1,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_D51R0201_003 + 1",
-      "x": 20,
-      "z": 15,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_UNK_4104"
-    },
-    {
-      "scriptId": "_EV_scr_seq_D51R0201_004 + 1",
-      "x": 12,
-      "z": 15,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_UNK_4104"
-    },
-    {
-      "scriptId": "_EV_scr_seq_D51R0201_005 + 1",
-      "x": 16,
-      "z": 8,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_UNK_4104"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D51R0201.h",
+    "objects": [
+        {
+            "id": "obj_D51R0201_champion",
+            "spriteId": "SPRITE_CHAMPION",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_SINJOH_MYSTRI_SHRINE_CYNTHIA",
+            "scriptId": "_EV_scr_seq_D51R0201_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 16,
+            "z": 19,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 16,
+            "z": 30,
+            "header": "MAP_SINJOH_RUINS_EXTERIOR",
+            "anchor": 1,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_D51R0201_003 + 1",
+            "x": 20,
+            "z": 15,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_UNK_4104"
+        },
+        {
+            "scriptId": "_EV_scr_seq_D51R0201_004 + 1",
+            "x": 12,
+            "z": 15,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_UNK_4104"
+        },
+        {
+            "scriptId": "_EV_scr_seq_D51R0201_005 + 1",
+            "x": 16,
+            "z": 8,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_UNK_4104"
+        }
+    ]
 }

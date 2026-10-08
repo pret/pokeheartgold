@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_05.inc"
 	.include "global.inc"
 
@@ -546,7 +546,7 @@ _0221BE32:
 	ldr r1, [r4]
 	mov r0, #0
 	ldr r1, [r1, #0x24]
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, _0221BE7C ; =ov05_0221CE88
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -599,7 +599,7 @@ _0221BEC4:
 	ldr r1, [r4]
 	mov r0, #0
 	ldr r1, [r1, #0x24]
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, _0221BF04 ; =ov05_0221CE88
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -698,7 +698,7 @@ _0221BF92:
 	ldr r1, [r5]
 	mov r0, #0
 	ldr r1, [r1, #0x24]
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, _0221C008 ; =ov05_0221CE88
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB
@@ -2276,7 +2276,7 @@ ov05_0221CC58: ; 0x0221CC58
 	ldr r1, [r4]
 	mov r0, #1
 	ldr r1, [r1, #0x24]
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, _0221CC70 ; =0x00000B7F
 	mov r1, #2
 	strb r1, [r4, r0]
@@ -5635,7 +5635,7 @@ ov05_0221E714: ; 0x0221E714
 	ldrb r2, [r3, r2]
 	mov r1, #1
 	mov r3, #3
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov05_0221E714

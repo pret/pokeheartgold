@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanABSpeedUpPrint
 .public FontID_Alloc
@@ -37,7 +37,7 @@
 .public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
-.public sub_0200CE7C
+.public FontSpecialChars_DrawPartyScreenText
 .public SpriteManager_New
 .public SpriteSystem_InitSprites
 .public SpriteSystem_DrawSprites
@@ -117,16 +117,16 @@
 .public sub_020744A4
 .public Party_GetCount
 .public Party_GetMonByIndex
-.public sub_02077678
-.public sub_0207769C
-.public sub_020776B4
-.public sub_020776B8
-.public sub_02077720
-.public sub_0207775C
-.public sub_02077800
-.public sub_02077818
-.public sub_02077830
-.public sub_02077834
+.public GetTypeIconGfxCharFileId
+.public GetTypeIconGfxPlttOverride
+.public GetTypeIconGfxNarcId
+.public SpriteSystem_LoadMoveTypeIconCharResObj
+.public SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer
+.public SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim
+.public GetMoveCategoryIconGfxCharFileId
+.public GetMoveCategoryIconGfxPlttOverride
+.public GetMoveCategoryIconGfxNarcId
+.public SpriteSystem_LoadMoveCategoryIconCharResObj
 .public GetItemIndexMapping
 .public GetItemIconCell
 .public GetItemIconAnim

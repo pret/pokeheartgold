@@ -164,7 +164,7 @@ BOOL ScrCmd_648(ScriptContext *ctx) {
         Heap_Free(unkG);
     }
 
-    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, HEAP_ID_FIELD3);
+    msgdata2 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0191, HEAP_ID_FIELD3);
 
     ov01_02200CB4(unkPtr, msgdata2);
     ov01_02200DF8(unkPtr, 0xd, 0xff, 0xfffe);
@@ -348,7 +348,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
     int i;
     PlaySE(SEQ_SE_DP_SELECT);
     DestroyListMenu(unkPtr->listMenu_23C, NULL, NULL);
-    sub_0200E5D4(unkPtr->listMenuTemplate.window, FALSE);
+    ClearWindowPixelBuffer(unkPtr->listMenuTemplate.window, FALSE);
     RemoveWindow(&unkPtr->window_8);
 
     for (i = 0; i < 0x78; i++) {
@@ -978,9 +978,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
 
     mapObj = MapObject_CreateWithParams(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
-    if (!mapObj) {
-        GF_AssertFail();
-    }
+    GF_ASSERT(mapObj != NULL);
 
     MapObject_SetID(mapObj, unkA + 0xf6);
     MapObject_SetType(mapObj, 0);

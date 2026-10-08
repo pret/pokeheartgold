@@ -108,26 +108,26 @@ u32 PokeathlonSave_GetAthletePoints(PokeathlonSave *pokeathlonSave) {
     return pokeathlonSave->athletePoints;
 }
 
-BOOL PokeathlonSave_GetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx) {
+BOOL PokeathlonSave_CheckReceivedDataCard(PokeathlonSave *pokeathlon, int idx) {
     GF_ASSERT(idx < 27);
-    return (pokeathlon->unk_B78 >> idx) & 1;
+    return (pokeathlon->receivedDataCards >> idx) & 1;
 }
 
-void PokeathlonSave_SetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx) {
+void PokeathlonSave_SetReceivedDataCard(PokeathlonSave *pokeathlon, int idx) {
     GF_ASSERT(idx < 27);
-    pokeathlon->unk_B78 |= 1 << idx;
+    pokeathlon->receivedDataCards |= 1 << idx;
 }
 
-BOOL PokeathlonSave_GetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx) {
-    return (pokeathlon->unk_B7C >> idx) & 1;
+BOOL PokeathlonSave_CheckReceivedDailyItemSlot(PokeathlonSave *pokeathlon, int idx) {
+    return (pokeathlon->receivedDailyShopItems >> idx) & 1;
 }
 
-void PokeathlonSave_SetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx) {
-    pokeathlon->unk_B7C |= 1 << idx;
+void PokeathlonSave_SetReceivedDailyItemSlot(PokeathlonSave *pokeathlon, int idx) {
+    pokeathlon->receivedDailyShopItems |= 1 << idx;
 }
 
-void PokeathlonSave_ResetUnkB7C(PokeathlonSave *pokeathlon) {
-    pokeathlon->unk_B7C = 0;
+void PokeathlonSave_ResetDailyItemReceivedFlags(PokeathlonSave *pokeathlon) {
+    pokeathlon->receivedDailyShopItems = 0;
 }
 
 u32 PokeathlonSave_FriendshipRecords_sizeof() {

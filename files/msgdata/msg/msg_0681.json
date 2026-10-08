@@ -1,0 +1,114 @@
+{
+  "key": 46494,
+  "messages": [
+    {
+      "id": "msg_0681_00000",
+      "en_US": "Rob"
+    },
+    {
+      "id": "msg_0681_00001",
+      "en_US": "Shall we trade phone numbers? {YESNO 0}"
+    },
+    {
+      "id": "msg_0681_00002",
+      "en_US": "Call me anytime if you want to battle!"
+    },
+    {
+      "id": "msg_0681_00003",
+      "en_US": [
+        "I figured that if I found anything in the\n",
+        "area, I’d give it to you..."
+      ]
+    },
+    {
+      "id": "msg_0681_00004",
+      "en_US": [
+        "You wanna trade phone numbers\n",
+        "after all? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0681_00005",
+      "en_US": [
+        "Oh, here you are!\r",
+        "I’ll give you this Berry that my Pokémon\n",
+        "found. Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0681_00006",
+      "en_US": [
+        "I have to say it’s kind of strange to be\n",
+        "talking on the phone when you’re\f",
+        "standing nearby."
+      ]
+    },
+    {
+      "id": "msg_0681_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} is always training!\r",
+        "It won’t lose to any {STRVAR_1 0, 11, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0681_00008",
+      "en_US": [
+        "Hey! Psst! Listen!\n",
+        "This {STRVAR_1 0, 11, 0} I ran into earlier\f",
+        "just up and ran away!\r",
+        "I was so disappointed!\n",
+        "I really wanted to catch it, too!"
+      ]
+    },
+    {
+      "id": "msg_0681_00009",
+      "en_US": [
+        "Did you catch any {STRVAR_1 0, 11, 0} yet?\n",
+        "You can always find them around here."
+      ]
+    },
+    {
+      "id": "msg_0681_00010",
+      "en_US": [
+        "Will you battle my trained Pokémon?\r",
+        "We’re on {STRVAR_1 4, 3, 0}, so give me\n",
+        "a shout when you’re in the area!"
+      ]
+    },
+    {
+      "id": "msg_0681_00011",
+      "en_US": [
+        "Where are you now?\n",
+        "Close to {STRVAR_1 4, 3, 0}?\f",
+        "Don’t tell me you forgot we were going\f",
+        "to have a battle?"
+      ]
+    },
+    {
+      "id": "msg_0681_00012",
+      "en_US": [
+        "While I was walking around the forest\n",
+        "trying to find Pokémon, I cut my finger\f",
+        "on a leaf!\r",
+        "It bled a little, but I’m fine."
+      ]
+    },
+    {
+      "id": "msg_0681_00013",
+      "en_US": [
+        "My Pokémon found its\n",
+        "most cherished Berry!\r",
+        "We’re on {STRVAR_1 4, 3, 0} if you\n",
+        "want it!"
+      ]
+    },
+    {
+      "id": "msg_0681_00014",
+      "en_US": [
+        "Yeah... We’d really like to give you this\n",
+        "Berry... We’re on {STRVAR_1 4, 3, 0}, so\f",
+        "come get it please!"
+      ]
+    }
+  ]
+}

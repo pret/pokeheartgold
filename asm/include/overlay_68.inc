@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanABSpeedUpPrint
 .public TextFlags_SetCanTouchSpeedUpPrint
@@ -139,17 +139,17 @@
 .public Mon_GetBoxMon
 .public GetMoveAttr
 .public GetMoveMaxPP
-.public sub_02077678
-.public sub_0207769C
-.public sub_020776B4
-.public sub_020776B8
-.public sub_020776EC
-.public sub_0207775C
-.public sub_02077800
-.public sub_02077818
-.public sub_02077830
-.public sub_02077834
-.public sub_020880CC
+.public GetTypeIconGfxCharFileId
+.public GetTypeIconGfxPlttOverride
+.public GetTypeIconGfxNarcId
+.public SpriteSystem_LoadMoveTypeIconCharResObj
+.public SpriteSystem_LoadMoveTypeAndCategoryIconsPltt
+.public SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim
+.public GetMoveCategoryIconGfxCharFileId
+.public GetMoveCategoryIconGfxPlttOverride
+.public GetMoveCategoryIconGfxNarcId
+.public SpriteSystem_LoadMoveCategoryIconCharResObj
+.public App_StartScreenFade
 .public BgConfig_LoadAssetFromOpenNarc
 .public sub_02089D40
 .public NNS_G2dSetupSoftwareSpriteCamera

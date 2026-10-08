@@ -1,0 +1,9 @@
+[wrap-git]
+url = https://github.com/ntrtwl/libvct.git
+revision = dfcd1b2609c1711aa2b33590a2088687f9db2286
+depth = 1
+directory = libvct-1.3.1
+
+[provide]
+dependency_names = libvct
+

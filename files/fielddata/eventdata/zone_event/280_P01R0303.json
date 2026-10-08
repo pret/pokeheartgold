@@ -1,84 +1,84 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0303.h",
-  "objects": [
-    {
-      "id": "obj_P01R0303_seaman_2",
-      "spriteId": "SPRITE_SEAMAN_2",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_21A",
-      "scriptId": "_EV_scr_seq_P01R0303_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 7,
-      "z": 10,
-      "y": 0
-    },
-    {
-      "id": "obj_P01R0303_gsgentleman",
-      "spriteId": "SPRITE_GSGENTLEMAN",
-      "movement": 0,
-      "type": 1,
-      "eventFlag": "FLAG_UNK_22B",
-      "scriptId": "std_trainer(TRAINER_GENTLEMAN_EDWARD)",
-      "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1,
-      "z": 9,
-      "y": 0
-    },
-    {
-      "id": "obj_P01R0303_thief",
-      "spriteId": "SPRITE_THIEF",
-      "movement": 0,
-      "type": 1,
-      "eventFlag": "FLAG_UNK_22C",
-      "scriptId": "std_trainer(TRAINER_BURGLAR_COREY)",
-      "facingDirection": 0,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 7,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 9,
-      "z": 2,
-      "header": "MAP_SS_AQUA_1F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 23,
-      "z": 2,
-      "header": "MAP_SS_AQUA_1F",
-      "anchor": 4,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_P01R0303_001 + 1",
-      "x": 16,
-      "z": 4,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_4112"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_P01R0303.h",
+    "objects": [
+        {
+            "id": "obj_P01R0303_seaman_2",
+            "spriteId": "SPRITE_SEAMAN_2",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_21A",
+            "scriptId": "_EV_scr_seq_P01R0303_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 7,
+            "z": 10,
+            "y": 0
+        },
+        {
+            "id": "obj_P01R0303_gsgentleman",
+            "spriteId": "SPRITE_GSGENTLEMAN",
+            "movement": 0,
+            "type": 1,
+            "eventFlag": "FLAG_UNK_22B",
+            "scriptId": "std_trainer(TRAINER_GENTLEMAN_EDWARD)",
+            "facingDirection": 3,
+            "param0": 4,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1,
+            "z": 9,
+            "y": 0
+        },
+        {
+            "id": "obj_P01R0303_thief",
+            "spriteId": "SPRITE_THIEF",
+            "movement": 0,
+            "type": 1,
+            "eventFlag": "FLAG_UNK_22C",
+            "scriptId": "std_trainer(TRAINER_BURGLAR_COREY)",
+            "facingDirection": 0,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 7,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 9,
+            "z": 2,
+            "header": "MAP_SS_AQUA_1F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 23,
+            "z": 2,
+            "header": "MAP_SS_AQUA_1F",
+            "anchor": 4,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_P01R0303_001 + 1",
+            "x": 16,
+            "z": 4,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_4112"
+        }
+    ]
 }

@@ -1,0 +1,68 @@
+{
+  "key": 51868,
+  "messages": [
+    {
+      "id": "msg_0173_00000",
+      "en_US": "Move Pokémon"
+    },
+    {
+      "id": "msg_0173_00001",
+      "en_US": "Move Items"
+    },
+    {
+      "id": "msg_0173_00002",
+      "en_US": "Compare Pokémon"
+    },
+    {
+      "id": "msg_0173_00003",
+      "en_US": "Get Pokétch"
+    },
+    {
+      "id": "msg_0173_00004",
+      "en_US": "Vocabulary system 1"
+    },
+    {
+      "id": "msg_0173_00005",
+      "en_US": "Vocabulary system 2"
+    },
+    {
+      "id": "msg_0173_00006",
+      "en_US": "Vocabulary system (sentence)"
+    },
+    {
+      "id": "msg_0173_00007",
+      "en_US": "Current full"
+    },
+    {
+      "id": "msg_0173_00008",
+      "en_US": "♡Box full"
+    },
+    {
+      "id": "msg_0173_00009",
+      "en_US": "All words & phrases"
+    },
+    {
+      "id": "msg_0173_00010",
+      "en_US": "Trade demo"
+    },
+    {
+      "id": "msg_0173_00011",
+      "en_US": "Hall of Fame demo"
+    },
+    {
+      "id": "msg_0173_00012",
+      "en_US": "Hall of Fame (PC)"
+    },
+    {
+      "id": "msg_0173_00013",
+      "en_US": "ENDING"
+    },
+    {
+      "id": "msg_0173_00014",
+      "en_US": [
+        "ABCDEFGHIJKLMNOPQRS\n",
+        "TUVWXYZ!?"
+      ]
+    }
+  ]
+}

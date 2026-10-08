@@ -1,48 +1,48 @@
 {
-  "header": "fielddata/script/scr_seq/event_T22R0601.h",
-  "objects": [
-    {
-      "id": "obj_T22R0601_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T22R0601_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T22R0601_gsboy1",
-      "spriteId": "SPRITE_GSBOY1",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T22R0601_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 2,
-      "z": 5,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 8,
-      "header": "MAP_VIOLET",
-      "anchor": 9,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T22R0601.h",
+    "objects": [
+        {
+            "id": "obj_T22R0601_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T22R0601_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T22R0601_gsboy1",
+            "spriteId": "SPRITE_GSBOY1",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T22R0601_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 2,
+            "z": 5,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 8,
+            "header": "MAP_VIOLET",
+            "anchor": 9,
+            "y": 0
+        }
+    ]
 }

@@ -1,127 +1,127 @@
 {
-  "header": "fielddata/script/scr_seq/event_R02R0101.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_R02R0101_000 + 1",
-      "type": 1,
-      "x": 1047,
-      "z": 139,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_R02R0101_gsboy3",
-      "spriteId": "SPRITE_GSBOY3",
-      "movement": 8,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_BUG_CATCHER_ED)",
-      "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1029,
-      "z": 131,
-      "y": 0
-    },
-    {
-      "id": "obj_R02R0101_tree",
-      "spriteId": "SPRITE_TREE",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_cut",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1034,
-      "z": 137,
-      "y": 0
-    },
-    {
-      "id": "obj_R02R0101_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
-      "scriptId": "std_itemball_r02r0101_carbos",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1053,
-      "z": 129,
-      "y": 0
-    },
-    {
-      "id": "obj_R02R0101_bonguri",
-      "spriteId": "SPRITE_BONGURI",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_apricorn_tree",
-      "facingDirection": 0,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1052,
-      "z": 157,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1028,
-      "z": 138,
-      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 1029,
-      "z": 138,
-      "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 1050,
-      "z": 183,
-      "header": "MAP_ROUTE_2_SOUTHEAST_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1051,
-      "z": 183,
-      "header": "MAP_ROUTE_2_SOUTHEAST_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1048,
-      "z": 137,
-      "header": "MAP_DIGLETT_CAVE",
-      "anchor": 7,
-      "y": 0
-    },
-    {
-      "x": 1047,
-      "z": 155,
-      "header": "MAP_ROUTE_2_HOUSE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R02R0101.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_R02R0101_000 + 1",
+            "type": 1,
+            "x": 1047,
+            "z": 139,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_R02R0101_gsboy3",
+            "spriteId": "SPRITE_GSBOY3",
+            "movement": 8,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_BUG_CATCHER_ED)",
+            "facingDirection": 1,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1029,
+            "z": 131,
+            "y": 0
+        },
+        {
+            "id": "obj_R02R0101_tree",
+            "spriteId": "SPRITE_TREE",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_cut",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1034,
+            "z": 137,
+            "y": 0
+        },
+        {
+            "id": "obj_R02R0101_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_R02R0101_CARBOS",
+            "scriptId": "std_itemball_r02r0101_carbos",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1053,
+            "z": 129,
+            "y": 0
+        },
+        {
+            "id": "obj_R02R0101_bonguri",
+            "spriteId": "SPRITE_BONGURI",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_apricorn_tree",
+            "facingDirection": 0,
+            "param0": 1,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1052,
+            "z": 157,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1028,
+            "z": 138,
+            "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 1029,
+            "z": 138,
+            "header": "MAP_ROUTE_2_VIRIDIAN_FOREST_NORTH_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 1050,
+            "z": 183,
+            "header": "MAP_ROUTE_2_SOUTHEAST_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1051,
+            "z": 183,
+            "header": "MAP_ROUTE_2_SOUTHEAST_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1048,
+            "z": 137,
+            "header": "MAP_DIGLETT_CAVE",
+            "anchor": 7,
+            "y": 0
+        },
+        {
+            "x": 1047,
+            "z": 155,
+            "header": "MAP_ROUTE_2_HOUSE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

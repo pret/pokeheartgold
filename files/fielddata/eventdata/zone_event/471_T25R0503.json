@@ -1,12 +1,12 @@
 {
-  "header": "fielddata/script/scr_seq/event_T25R0503.h",
-  "warps": [
-    {
-      "x": 10,
-      "z": 14,
-      "header": "MAP_GOLDENROD_MAGNET_TRAIN_STATION_1F",
-      "anchor": 1,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T25R0503.h",
+    "warps": [
+        {
+            "x": 10,
+            "z": 14,
+            "header": "MAP_GOLDENROD_MAGNET_TRAIN_STATION_1F",
+            "anchor": 1,
+            "y": 0
+        }
+    ]
 }

@@ -8,7 +8,7 @@
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_01_021F3F50.inc"
 	.include "global.inc"
 
@@ -310,7 +310,7 @@ Field_SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, [r4, #0x10]
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]

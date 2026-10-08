@@ -1,5 +1,5 @@
 #include "constants/sndseq.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02004A44.inc"
 	.include "global.inc"
 
@@ -283,8 +283,8 @@ _02004AF6:
 	.balign 4, 0
 	thumb_func_end Sound_SetScene
 
-	thumb_func_start sub_02004AFC
-sub_02004AFC: ; 0x02004AFC
+	thumb_func_start Sound_SetSubScene
+Sound_SetSubScene: ; 0x02004AFC
 	push {r4, lr}
 	add r4, r0, #0
 	mov r0, #0x15
@@ -293,19 +293,19 @@ sub_02004AFC: ; 0x02004AFC
 	bl GF_SdatGetAttrPtr
 	strb r4, [r0]
 	pop {r4, pc}
-	thumb_func_end sub_02004AFC
+	thumb_func_end Sound_SetSubScene
 
-	thumb_func_start sub_02004B10
-sub_02004B10: ; 0x02004B10
+	thumb_func_start Sound_LoadHeapStateBGMAndResetSubScene
+Sound_LoadHeapStateBGMAndResetSubScene: ; 0x02004B10
 	push {r4, lr}
 	mov r0, #0x16
 	bl GF_SdatGetAttrPtr
 	add r4, r0, #0
-	bl sub_02005318
+	bl Sound_LoadHeapStateBGM
 	mov r0, #0
 	strb r0, [r4]
 	pop {r4, pc}
-	thumb_func_end sub_02004B10
+	thumb_func_end Sound_LoadHeapStateBGMAndResetSubScene
 
 	thumb_func_start sub_02004B24
 sub_02004B24: ; 0x02004B24
@@ -1099,7 +1099,7 @@ _020051C4:
 	bl sub_02005328
 	bl GF_Snd_LoadState
 	mov r0, #0
-	bl sub_02004AFC
+	bl Sound_SetSubScene
 	ldrh r0, [r4]
 	mov r1, #2
 	bl GF_Snd_LoadSeqEx
@@ -1211,7 +1211,7 @@ sub_020052A4: ; 0x020052A4
 sub_020052C8: ; 0x020052C8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02005318
+	bl Sound_LoadHeapStateBGM
 	add r0, r4, #0
 	bl sub_02004B24
 	mov r0, #0x1c
@@ -1248,15 +1248,15 @@ BGM_SaveStateAndPlayNew: ; 0x02005304
 	pop {r4, pc}
 	thumb_func_end BGM_SaveStateAndPlayNew
 
-	thumb_func_start sub_02005318
-sub_02005318: ; 0x02005318
+	thumb_func_start Sound_LoadHeapStateBGM
+Sound_LoadHeapStateBGM: ; 0x02005318
 	push {r3, lr}
 	mov r0, #4
 	bl sub_02005328
 	bl GF_Snd_LoadState
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02005318
+	thumb_func_end Sound_LoadHeapStateBGM
 
 	thumb_func_start sub_02005328
 sub_02005328: ; 0x02005328

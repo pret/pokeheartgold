@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_68.inc"
 	.include "global.inc"
 
@@ -236,7 +236,7 @@ ov68_021E5A58: ; 0x021E5A58
 	bl ov68_021E75C0
 	mov r0, #0
 	mov r1, #0x42
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, _021E5B10 ; =ov68_021E5B6C
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
@@ -1113,7 +1113,7 @@ ov68_021E61EC: ; 0x021E61EC
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0x42
-	bl sub_020880CC
+	bl App_StartScreenFade
 	mov r0, #0x1b
 	mov r1, #9
 	lsl r0, r0, #4
@@ -2766,7 +2766,7 @@ _021E6F00:
 	ldr r1, [r5, r1]
 	mov r2, #2
 	mov r3, #0
-	bl sub_020776B8
+	bl SpriteSystem_LoadMoveTypeIconCharResObj
 	b _021E6F30
 _021E6F1C:
 	mov r0, #0x47
@@ -2777,7 +2777,7 @@ _021E6F1C:
 	ldr r1, [r5, r1]
 	mov r2, #1
 	mov r3, #0
-	bl sub_020776B8
+	bl SpriteSystem_LoadMoveTypeIconCharResObj
 _021E6F30:
 	ldr r0, _021E7020 ; =0x0000B8B2
 	add r4, r4, #1
@@ -2792,7 +2792,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	mov r2, #2
 	mov r3, #0
-	bl sub_02077834
+	bl SpriteSystem_LoadMoveCategoryIconCharResObj
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #4
@@ -2816,7 +2816,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	ldr r3, _021E7018 ; =0x0000B8A9
 	mov r2, #2
-	bl sub_020776EC
+	bl SpriteSystem_LoadMoveTypeAndCategoryIconsPltt
 	mov r1, #0x47
 	lsl r1, r1, #2
 	ldr r0, [r5, r1]
@@ -2824,7 +2824,7 @@ _021E6F30:
 	ldr r1, [r5, r1]
 	ldr r3, _021E7024 ; =0x0000B8AA
 	mov r2, #1
-	bl sub_020776EC
+	bl SpriteSystem_LoadMoveTypeAndCategoryIconsPltt
 	mov r0, #0
 	str r0, [sp]
 	ldr r0, _021E7014 ; =0x0000B8A8
@@ -2880,7 +2880,7 @@ _021E6F30:
 	ldr r2, _021E7024 ; =0x0000B8AA
 	ldr r1, [r5, r1]
 	add r3, r2, #0
-	bl sub_0207775C
+	bl SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
@@ -2913,10 +2913,10 @@ _021E7044:
 	add r6, r0, #0
 	add r6, #0x12
 _021E7050:
-	bl sub_020776B4
+	bl GetTypeIconGfxNarcId
 	add r7, r0, #0
 	add r0, r6, #0
-	bl sub_02077678
+	bl GetTypeIconGfxCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2933,7 +2933,7 @@ _021E7050:
 	cmp r4, #4
 	bhs _021E709A
 	add r0, r6, #0
-	bl sub_0207769C
+	bl GetTypeIconGfxPlttOverride
 	add r1, r0, #0
 	add r0, r4, #4
 	lsl r0, r0, #2
@@ -2947,7 +2947,7 @@ _021E7050:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E709A:
 	add r0, r6, #0
-	bl sub_0207769C
+	bl GetTypeIconGfxPlttOverride
 	add r1, r0, #0
 	add r0, r4, #4
 	lsl r0, r0, #2
@@ -3026,10 +3026,10 @@ ov68_021E7124: ; 0x021E7124
 	mov r1, #1
 	bl GetMoveAttr
 	add r4, r0, #0
-	bl sub_02077830
+	bl GetMoveCategoryIconGfxNarcId
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02077800
+	bl GetMoveCategoryIconGfxCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -3043,7 +3043,7 @@ ov68_021E7124: ; 0x021E7124
 	add r2, r6, #0
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r4, #0
-	bl sub_02077818
+	bl GetMoveCategoryIconGfxPlttOverride
 	add r1, r0, #0
 	mov r0, #0x13
 	lsl r0, r0, #4
@@ -3469,7 +3469,7 @@ ov68_021E74C0: ; 0x021E74C0
 	add r4, r0, #0
 	mov r0, #1
 	mov r1, #0x42
-	bl sub_020880CC
+	bl App_StartScreenFade
 	mov r0, #0x1b
 	mov r1, #0xb
 	lsl r0, r0, #4

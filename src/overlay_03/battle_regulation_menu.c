@@ -142,7 +142,7 @@ static void BattleRegulationMenu_ShowListMenuRegulations(BattleRegulationMenu *m
 static void BattleRegulationMenu_RemoveListMenuRegulations(BattleRegulationMenu *menu) {
     if (menu->listMenu[REGULATION_MENU_REGULATIONS]) {
         DestroyListMenu(menu->listMenu[REGULATION_MENU_REGULATIONS], NULL, NULL);
-        sub_0200E5D4(&menu->windows[REGULATION_MENU_STRING_DESTINATION], TRUE);
+        ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_STRING_DESTINATION], TRUE);
         ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_STRING_DESTINATION].bgConfig, menu->windows[REGULATION_MENU_STRING_DESTINATION].bgId);
         RemoveWindow(&menu->windows[REGULATION_MENU_STRING_DESTINATION]);
         ListMenuItems_Delete(menu->items[REGULATION_MENU_REGULATIONS]);
@@ -235,7 +235,7 @@ static int BattleRegulationMenu_ProcessListMenuInputConfirm(BattleRegulationMenu
 
     if (menu->listMenu[REGULATION_MENU_CONFIRM]) {
         DestroyListMenu(menu->listMenu[REGULATION_MENU_CONFIRM], NULL, NULL);
-        sub_0200E5D4(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE);
+        ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE);
         ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_WINDOW_CONFIRM].bgConfig, menu->windows[REGULATION_MENU_WINDOW_CONFIRM].bgId);
         RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM]);
         ListMenuItems_Delete(menu->items[REGULATION_MENU_CONFIRM]);
@@ -279,7 +279,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
     const int xOffsetCupName = 55;
     const int xRightSide = (24 * 8) - 1;
 
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, HEAP_ID_FIELD1);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0182, HEAP_ID_FIELD1);
     String *fmtString = String_New(180, HEAP_ID_FIELD1);
     String *destString = String_New(180, HEAP_ID_FIELD1);
     Window *window = &menu->windows[REGULATION_MENU_WINDOW_RULES];
@@ -369,7 +369,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
 }
 
 static void BattleRegulationMenu_RemoveRulesWindow(BattleRegulationMenu *menu) {
-    sub_0200E5D4(&menu->windows[REGULATION_MENU_WINDOW_RULES], TRUE);
+    ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_WINDOW_RULES], TRUE);
     ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_WINDOW_RULES].bgConfig, menu->windows[REGULATION_MENU_WINDOW_RULES].bgId);
     RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_RULES]);
 }
@@ -510,7 +510,7 @@ static BattleRegulationMenu *BattleRegulationMenu_New(FieldSystem *fieldSystem) 
     menu->fieldSystem = fieldSystem;
     fieldSystem->linkBattleRuleset = NULL;
     menu->messageFormat = MessageFormat_New(HEAP_ID_FIELD1);
-    menu->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0046_bin, HEAP_ID_FIELD1); // TEXT_BANK_POKEMON_CENTER_2F_COMMON
+    menu->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0046, HEAP_ID_FIELD1); // TEXT_BANK_POKEMON_CENTER_2F_COMMON
     menu->strings[REGULATION_MENU_STRING_FMT] = String_New(180, HEAP_ID_FIELD1);
     menu->strings[REGULATION_MENU_STRING_DESTINATION] = String_New(180, HEAP_ID_FIELD1);
     menu->strings[REGULATION_MENU_STRING_REGULATION_NAME] = String_New(180, HEAP_ID_FIELD1);
@@ -552,7 +552,7 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
     LoadUserFrameGfx1(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 985, 11, 0, HEAP_ID_FIELD1);
     DrawFrameAndWindow1(window, TRUE, 985, 11);
     FillWindowPixelBuffer(window, 15);
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, HEAP_ID_FIELD1);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0182, HEAP_ID_FIELD1);
     MessageFormat *messageFormat = MessageFormat_New(HEAP_ID_FIELD1);
     String *fmtString = String_New(180, HEAP_ID_FIELD1);
     String *destString = String_New(180, HEAP_ID_FIELD1);

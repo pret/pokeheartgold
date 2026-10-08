@@ -1,199 +1,199 @@
 {
-  "header": "fielddata/script/scr_seq/event_D50R0101.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d50r0101_ultra_ball",
-      "type": 2,
-      "x": 9,
-      "z": 30,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D50R0101_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_D50R0101_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_D50R0101_breakrock",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 29,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_D50R0101_breakrock_2",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_011",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 28,
-      "z": 13,
-      "y": 0
-    },
-    {
-      "id": "obj_D50R0101_breakrock_3",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_012",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 25,
-      "z": 2,
-      "y": 0
-    },
-    {
-      "id": "obj_D50R0101_breakrock_4",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_013",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 25,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_D50R0101_breakrock_5",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_014",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 24,
-      "z": 11,
-      "y": 0
-    },
-    {
-      "id": "obj_D50R0101_breakrock_6",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_017",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 28,
-      "z": 11,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 6,
-      "z": 7,
-      "header": "MAP_ROUTE_47",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 26,
-      "z": 13,
-      "header": "MAP_ROUTE_47",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 29,
-      "header": "MAP_ROUTE_47",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 4,
-      "z": 5,
-      "header": "MAP_CLIFF_CAVE",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 4,
-      "z": 4,
-      "header": "MAP_CLIFF_CAVE",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 4,
-      "z": 22,
-      "header": "MAP_CLIFF_CAVE",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 8,
-      "z": 5,
-      "header": "MAP_CLIFF_CAVE",
-      "anchor": 7,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 4,
-      "header": "MAP_CLIFF_CAVE",
-      "anchor": 6,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 3,
-      "header": "MAP_CLIFF_CAVE",
-      "anchor": 6,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D50R0101.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d50r0101_ultra_ball",
+            "type": 2,
+            "x": 9,
+            "z": 30,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D50R0101_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_D50R0101_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_D50R0101_breakrock",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 29,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_D50R0101_breakrock_2",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_011",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 28,
+            "z": 13,
+            "y": 0
+        },
+        {
+            "id": "obj_D50R0101_breakrock_3",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_012",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 25,
+            "z": 2,
+            "y": 0
+        },
+        {
+            "id": "obj_D50R0101_breakrock_4",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_013",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 25,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_D50R0101_breakrock_5",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_014",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 24,
+            "z": 11,
+            "y": 0
+        },
+        {
+            "id": "obj_D50R0101_breakrock_6",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_017",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 28,
+            "z": 11,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 6,
+            "z": 7,
+            "header": "MAP_ROUTE_47",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 26,
+            "z": 13,
+            "header": "MAP_ROUTE_47",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 29,
+            "header": "MAP_ROUTE_47",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 4,
+            "z": 5,
+            "header": "MAP_CLIFF_CAVE",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 4,
+            "z": 4,
+            "header": "MAP_CLIFF_CAVE",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 4,
+            "z": 22,
+            "header": "MAP_CLIFF_CAVE",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 8,
+            "z": 5,
+            "header": "MAP_CLIFF_CAVE",
+            "anchor": 7,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 4,
+            "header": "MAP_CLIFF_CAVE",
+            "anchor": 6,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 3,
+            "header": "MAP_CLIFF_CAVE",
+            "anchor": 6,
+            "y": 0
+        }
+    ]
 }

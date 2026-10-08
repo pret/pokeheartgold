@@ -1,5 +1,5 @@
 #include "config.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_112.inc"
 	.include "global.inc"
 	.public gApplication_TitleScreen
@@ -3956,9 +3956,9 @@ ov112_021E76CC: ; 0x021E76CC
 	mov r0, #3
 	mov r1, #8
 	bl SetKeyRepeatTimers
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r5, #0
 	bl ov112_021E7768
 	mov r0, #1
@@ -4033,7 +4033,7 @@ ov112_021E77E4: ; 0x021E77E4
 	bl ov112_021E9C10
 	ldr r0, [r4, #0x18]
 	bl ov112_021E7AC8
-	bl sub_02021238
+	bl DisableTouchPad
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl ov112_021E9E30
@@ -4185,13 +4185,13 @@ ov112_021E7910: ; 0x021E7910
 	bl Heap_Destroy
 	mov r0, #0x10
 	bl sub_0201A738
-	ldr r0, _021E7954 ; =FS_OVERLAY_ID(intro_title)
+	ldr r0, _021E7954 ; =SDK_OVERLAY_intro_title_ID
 	ldr r1, _021E7958 ; =gApplication_TitleScreen
 	bl RegisterMainOverlay
 	mov r0, #1
 	pop {r3, r4, r5, pc}
 	nop
-_021E7954: .word FS_OVERLAY_ID(intro_title)
+_021E7954: .word SDK_OVERLAY_intro_title_ID
 _021E7958: .word gApplication_TitleScreen
 	thumb_func_end ov112_021E7910
 

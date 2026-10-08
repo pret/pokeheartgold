@@ -126,7 +126,7 @@ void RadioShow_Commercials_Init(RadioShow *radioShow) {
     CommercialsData *data = radioShow->showData;
     SaveVarsFlags *varsFlags;
 
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0412_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0412, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0412_00000, radioShow->showTitle);
     String_SetEmpty(radioShow->showHost);
     MI_CpuClear8(data->commercialUnlockFlags, sizeof(data->commercialUnlockFlags));

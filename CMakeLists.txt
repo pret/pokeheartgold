@@ -32,9 +32,28 @@ foreach(SRC IN LISTS C_SOURCES_GAME C_SOURCES_LIBS)
 endforeach()
 
 add_executable(PokeHeartGold ${SOURCES})
-target_include_directories(PokeHeartGold PUBLIC src include files ${CMAKE_SOURCE_DIR}/lib/include ${CMAKE_SOURCE_DIR}/lib/include/cw ${CMAKE_SOURCE_DIR}/lib/include/nitro ${CMAKE_SOURCE_DIR}/lib/include/nnsys ${CMAKE_SOURCE_DIR}/lib/include/nitro/os include/library)
+target_include_directories(PokeHeartGold PUBLIC
+    src
+    include
+    build/files
+    lib/include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_ARM/Include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_Common_Embedded/Math/Include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_Common/Include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C++/MSL_Common/Include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_Extras/MSL_ARM/Include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_Extras/MSL_Common/Include
+    ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_Extras/MSL_Common/Include/sys
+    ${CMAKE_SOURCE_DIR}/subprojects/NitroSDK-4.2.30001/include
+    ${CMAKE_SOURCE_DIR}/build/subprojects/NitroSDK-4.2.30001/gen
+    ${CMAKE_SOURCE_DIR}/subprojects/NitroSystem-071126.1/include
+    ${CMAKE_SOURCE_DIR}/subprojects/NitroWiFi-2.1.30003/include
+    ${CMAKE_SOURCE_DIR}/subprojects/libvct-1.3.1/include
+    ${CMAKE_SOURCE_DIR}/subprojects/NitroDWC-2.2.30008/include
+    ${CMAKE_SOURCE_DIR}/subprojects/NitroDWC-2.2.30008/include/gs
+    include/library)
 target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9 SDK_CW SDK_CODE_ARM SDK_TS _NITRO __arm PLATFORM_INTRINSIC_FUNCTION_BIT_CLZ32=__builtin_clz wchar_t=__WCHAR_TYPE__ PM_KEEP_ASSERTS)
 target_compile_options(PokeHeartGold PRIVATE -Wimplicit -Wno-endif-labels -fms-extensions -nostdinc -Wno-builtin-declaration-mismatch -Wno-implicit-int -Wno-multichar -Wno-address-of-packed-member -mcpu=arm946e-s)
 target_compile_features(PokeHeartGold PRIVATE c_std_99 cxx_std_98)
 
-add_subdirectory(tools)
+# add_subdirectory(tools)

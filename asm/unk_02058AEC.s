@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02058AEC.inc"
 	.include "global.inc"
 
@@ -2041,12 +2041,12 @@ _02059AD4: .word 0x000005DC
 
 	thumb_func_start sub_02059AD8
 sub_02059AD8: ; 0x02059AD8
-	ldr r3, _02059AE0 ; =sub_0200E5D4
+	ldr r3, _02059AE0 ; =ClearWindowPixelBuffer
 	ldr r0, [r0, #0x7c]
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_02059AE0: .word sub_0200E5D4
+_02059AE0: .word ClearWindowPixelBuffer
 	thumb_func_end sub_02059AD8
 
 	thumb_func_start sub_02059AE4

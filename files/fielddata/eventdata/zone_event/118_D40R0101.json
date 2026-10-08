@@ -1,121 +1,121 @@
 {
-  "header": "fielddata/script/scr_seq/event_D40R0101.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d40r0101_rare_candy",
-      "type": 2,
-      "x": 47,
-      "z": 44,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_EVERYWHERE_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL_2",
-      "scriptId": "std_itemball_d40r0101_ultra_ball_2",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 22,
-      "z": 47,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL",
-      "scriptId": "std_itemball_d40r0101_ultra_ball",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 48,
-      "z": 21,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 37,
-      "z": 25,
-      "header": "MAP_ROUTE_41",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 51,
-      "z": 22,
-      "header": "MAP_WHIRL_ISLANDS_B1F",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 56,
-      "z": 9,
-      "header": "MAP_WHIRL_ISLANDS_B1F",
-      "anchor": 7,
-      "y": 0
-    },
-    {
-      "x": 11,
-      "z": 20,
-      "header": "MAP_ROUTE_41",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 8,
-      "z": 16,
-      "header": "MAP_WHIRL_ISLANDS_B1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 8,
-      "z": 54,
-      "header": "MAP_ROUTE_41",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 49,
-      "header": "MAP_WHIRL_ISLANDS_B1F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 49,
-      "header": "MAP_WHIRL_ISLANDS_B1F",
-      "anchor": 9,
-      "y": 0
-    },
-    {
-      "x": 52,
-      "z": 49,
-      "header": "MAP_WHIRL_ISLANDS_B1F",
-      "anchor": 12,
-      "y": 0
-    },
-    {
-      "x": 52,
-      "z": 59,
-      "header": "MAP_ROUTE_41",
-      "anchor": 3,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D40R0101.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d40r0101_rare_candy",
+            "type": 2,
+            "x": 47,
+            "z": 44,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_EVERYWHERE_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL_2",
+            "scriptId": "std_itemball_d40r0101_ultra_ball_2",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 22,
+            "z": 47,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D40R0101_ULTRA_BALL",
+            "scriptId": "std_itemball_d40r0101_ultra_ball",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 48,
+            "z": 21,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 37,
+            "z": 25,
+            "header": "MAP_ROUTE_41",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 51,
+            "z": 22,
+            "header": "MAP_WHIRL_ISLANDS_B1F",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 56,
+            "z": 9,
+            "header": "MAP_WHIRL_ISLANDS_B1F",
+            "anchor": 7,
+            "y": 0
+        },
+        {
+            "x": 11,
+            "z": 20,
+            "header": "MAP_ROUTE_41",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 8,
+            "z": 16,
+            "header": "MAP_WHIRL_ISLANDS_B1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 8,
+            "z": 54,
+            "header": "MAP_ROUTE_41",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 49,
+            "header": "MAP_WHIRL_ISLANDS_B1F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 49,
+            "header": "MAP_WHIRL_ISLANDS_B1F",
+            "anchor": 9,
+            "y": 0
+        },
+        {
+            "x": 52,
+            "z": 49,
+            "header": "MAP_WHIRL_ISLANDS_B1F",
+            "anchor": 12,
+            "y": 0
+        },
+        {
+            "x": 52,
+            "z": 59,
+            "header": "MAP_ROUTE_41",
+            "anchor": 3,
+            "y": 0
+        }
+    ]
 }

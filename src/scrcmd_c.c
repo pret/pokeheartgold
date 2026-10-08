@@ -2069,6 +2069,7 @@ BOOL ScrCmd_ChooseStarter(ScriptContext *ctx) {
     return TRUE;
 }
 
+// unused debug commands?
 BOOL ScrCmd_333(ScriptContext *ctx) { // todo: bag select screen
     void **p_work;
     u8 pocketType = ScriptReadByte(ctx) != 0 ? POCKET_TYPE_BERRIES : POCKET_TYPE_ITEMS;
@@ -4051,7 +4052,7 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
     String *r7_str;
     String *sp0_str;
     MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_FIELD3);
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_FIELD3);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0202, HEAP_ID_FIELD3);
     BufferECWord(msgFmt, 0, sp4);
     BufferECWord(msgFmt, 1, sp8);
     BufferECWord(msgFmt, 2, spC);

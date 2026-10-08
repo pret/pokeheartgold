@@ -1,0 +1,21 @@
+{
+  "key": 15004,
+  "messages": [
+    {
+      "id": "msg_0726_00000",
+      "en_US": "Battle? {YESNO 0}"
+    },
+    {
+      "id": "msg_0726_00001",
+      "en_US": "Fine--next time!"
+    },
+    {
+      "id": "msg_0726_00002",
+      "en_US": "You got 1 Battle Point!"
+    },
+    {
+      "id": "msg_0726_00003",
+      "en_US": "Cal"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "key": 28403,
+  "messages": [
+    {
+      "id": "msg_0583_T25PC0101_00000",
+      "en_US": [
+        "The Colosseum upstairs is for\n",
+        "link battles.\r",
+        "Battle records, such as how many times\n",
+        "you had link battles and the results,\f",
+        "are recorded on the back of your\f",
+        "Trainer Card."
+      ]
+    },
+    {
+      "id": "msg_0583_T25PC0101_00001",
+      "en_US": "Oh, you are a Team Rocket member..."
+    },
+    {
+      "id": "msg_0583_T25PC0101_00002",
+      "en_US": [
+        "I wonder how many kinds of Pokémon\n",
+        "there are in the world.\r",
+        "A long time ago, Professor Oak said\n",
+        "there were 150 different kinds...\r",
+        "Since then, many new Pokémon have\n",
+        "been discovered in different regions.\r",
+        "There are almost 500 different kinds\n",
+        "known now..."
+      ]
+    },
+    {
+      "id": "msg_0583_T25PC0101_00003",
+      "en_US": "Team Rocket...!"
+    },
+    {
+      "id": "msg_0583_T25PC0101_00004",
+      "en_US": [
+        "A higher level Pokémon doesn’t\n",
+        "always win.\r",
+        "After all, it may have a type\n",
+        "disadvantage.\r",
+        "I don’t think there is a single\n",
+        "Pokémon that is the toughest."
+      ]
+    },
+    {
+      "id": "msg_0583_T25PC0101_00005",
+      "en_US": [
+        "I think I’ve met you before...\r",
+        "You must have a reason for\n",
+        "looking like that...?"
+      ]
+    },
+    {
+      "id": "msg_0583_T25PC0101_00006",
+      "en_US": [
+        "Hey, I don’t mind restoring a Pokémon’s\n",
+        "health, even when they belong to\f",
+        "Team Rocket...\r",
+        "But stay away from other places, OK?"
+      ]
+    }
+  ]
+}

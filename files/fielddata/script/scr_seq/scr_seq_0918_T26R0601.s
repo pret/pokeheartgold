@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T26R0601.h"
 #include "msgdata/msg/msg_0610_T26R0601.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_T26R0601_000
 	ScrDefEnd

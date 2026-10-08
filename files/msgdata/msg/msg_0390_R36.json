@@ -1,0 +1,184 @@
+{
+  "key": 19207,
+  "messages": [
+    {
+      "id": "msg_0390_R36_00000",
+      "en_US": [
+        "There’s an odd tree!\n",
+        "Use the SquirtBottle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} used\n",
+        "the SquirtBottle!\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00002",
+      "en_US": [
+        "The odd tree doesn’t like the\n",
+        "SquirtBottle!\r",
+        "The odd tree attacked!\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00003",
+      "en_US": [
+        "Yo!\r",
+        "Haven’t you had trouble with a boulder\n",
+        "blocking your way? Of course you have!\r",
+        "For people like you, there’s an HM\n",
+        "that will come to your rescue!\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00004",
+      "en_US": [
+        "Are you the one who took care of the\n",
+        "odd tree in the way?\r",
+        "You’re quite the Trainer!\n",
+        "Take this!\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00005",
+      "en_US": [
+        "It contains make-’em-faint Rock Smash.\r",
+        "You can even use it to smash boulders\n",
+        "once you’ve earned the Violet City\f",
+        "Gym Badge!\r",
+        "But beware!\n",
+        "Hidden moves like this are hard for\f",
+        "your Pokémon to forget once they’ve\f",
+        "learned them.\r",
+        "You should think carefully which\n",
+        "Pokémon should learn it."
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00006",
+      "en_US": "Your Bag is full!"
+    },
+    {
+      "id": "msg_0390_R36_00007",
+      "en_US": [
+        "An odd tree is blocking the way\n",
+        "to Ecruteak City.\r",
+        "It’s preventing me from shopping.\f",
+        "Something should be done about it."
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00008",
+      "en_US": [
+        "The odd tree is gone, as if it just\n",
+        "walked away...!\f",
+        "What? It was a Pokémon?\r",
+        "Well, finally I can go to Ecruteak\n",
+        "to do some shopping.\r",
+        "If you follow the path from where the\n",
+        "odd tree was, you’ll reach\f",
+        "Ecruteak City!"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00009",
+      "en_US": [
+        "Rt. 36\n",
+        "North to Ecruteak City"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00010",
+      "en_US": [
+        "Ruins of Alph\n",
+        "North Entrance"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00011",
+      "en_US": [
+        "Trainer Tips\r",
+        "The same kind of Pokémon may look the\n",
+        "same, but they can grow differently.\r",
+        "Their strengths may look the same\n",
+        "in the beginning, but those strengths\f",
+        "can change as they grow."
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00012",
+      "en_US": [
+        "Trainer Tips\r",
+        "The move Dig can take you back to\n",
+        "the entrance when you use it.\r",
+        "If you want to explore a cave or\n",
+        "something similar, a Pokémon with\f",
+        "Dig will be quite useful."
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00013",
+      "en_US": [
+        "I’m the Flower Shop’s Floria!\r",
+        "Listen, listen! When I sprinkled water\n",
+        "on that wiggly tree, it jumped right up!\r",
+        "It just has to be a Pokémon.\r",
+        "I bet it would be shocked out of\n",
+        "disguising itself if you soaked it!"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00014",
+      "en_US": [
+        "I’m the Flower Shop’s Floria!\r",
+        "Listen, listen! When I sprinkled water\n",
+        "on that wiggly tree, it jumped right up!\f",
+        "It just has to be a Pokémon.\f",
+        "If you soaked it...\r",
+        "Oh, that’s the SquirtBottle!\r",
+        "Soak the tree for me!\n",
+        "I want to see what happens!"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00015",
+      "en_US": [
+        "That was fun!\r",
+        "I want to give you this\n",
+        "for entertaining me!\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00016",
+      "en_US": [
+        "With the Berry Pots, you can grow\n",
+        "any Berry from any region\f",
+        "with no worries!\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00017",
+      "en_US": [
+        "That’s right!\n",
+        "I’ll give you some Berries, too.\r",
+        "Berry Pots won’t do any good\n",
+        "without Berries.\r"
+      ]
+    },
+    {
+      "id": "msg_0390_R36_00018",
+      "en_US": [
+        "You have to plant Berries in the soil.\n",
+        "You should water them from time\f",
+        "to time. Then they’ll grow strong!\r",
+        "I have to go back to Goldenrod.\f",
+        "Are you heading for Ecruteak?\r",
+        "Then you should go north here.\n",
+        "See you around!\r"
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 #include "constants/ribbon.h"
 #include "constants/field_move_response.h"
 #include "msgdata/msg/msg_0300.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_0208B1AC.inc"
 	.include "global.inc"
 
@@ -1118,10 +1118,10 @@ sub_0208BA88: ; 0x0208BA88
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_020776B4
+	bl GetTypeIconGfxNarcId
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl sub_02077678
+	bl GetTypeIconGfxCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1134,7 +1134,7 @@ sub_0208BA88: ; 0x0208BA88
 	ldr r2, [sp, #8]
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r7, #0
-	bl sub_0207769C
+	bl GetTypeIconGfxPlttOverride
 	add r2, r0, #0
 	lsl r0, r4, #2
 	add r1, r5, r0
@@ -1251,10 +1251,10 @@ sub_0208BB8C: ; 0x0208BB8C
 	mov r1, #1
 	bl GetMoveAttr
 	add r4, r0, #0
-	bl sub_02077830
+	bl GetMoveCategoryIconGfxNarcId
 	add r6, r0, #0
 	add r0, r4, #0
-	bl sub_02077800
+	bl GetMoveCategoryIconGfxCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	mov r1, #0xff
@@ -1268,7 +1268,7 @@ sub_0208BB8C: ; 0x0208BB8C
 	add r2, r6, #0
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r4, #0
-	bl sub_02077818
+	bl GetMoveCategoryIconGfxPlttOverride
 	add r1, r0, #0
 	ldr r0, _0208BBD8 ; =0x0000044C
 	add r1, r1, #3

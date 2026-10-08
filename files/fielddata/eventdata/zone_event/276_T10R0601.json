@@ -1,118 +1,118 @@
 {
-  "header": "fielddata/script/scr_seq/event_T10R0601.h",
-  "objects": [
-    {
-      "id": "obj_T10R0601_wataru",
-      "spriteId": "SPRITE_WATARU",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T10R0601_ookido",
-      "spriteId": "SPRITE_OOKIDO",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 22,
-      "z": 27,
-      "y": 0
-    },
-    {
-      "id": "obj_T10R0601_kurumi",
-      "spriteId": "SPRITE_KURUMI",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 21,
-      "z": 27,
-      "y": 0
-    },
-    {
-      "id": "obj_T10R0601_babyboy1_11",
-      "spriteId": "SPRITE_BABYBOY1_11",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_210",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 26,
-      "y": 0
-    },
-    {
-      "id": "obj_T10R0601_leag_door2",
-      "spriteId": "SPRITE_LEAG_DOOR2",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 2,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 6,
-      "z": 28,
-      "header": "MAP_POKEMON_LEAGUE_KAREN_ROOM",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 2,
-      "header": "MAP_POKEMON_LEAGUE_HALL_OF_FAME",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_T10R0601_000 + 1",
-      "x": 5,
-      "z": 10,
-      "w": 3,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40C7"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T10R0601.h",
+    "objects": [
+        {
+            "id": "obj_T10R0601_wataru",
+            "spriteId": "SPRITE_WATARU",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T10R0601_ookido",
+            "spriteId": "SPRITE_OOKIDO",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 22,
+            "z": 27,
+            "y": 0
+        },
+        {
+            "id": "obj_T10R0601_kurumi",
+            "spriteId": "SPRITE_KURUMI",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 21,
+            "z": 27,
+            "y": 0
+        },
+        {
+            "id": "obj_T10R0601_babyboy1_11",
+            "spriteId": "SPRITE_BABYBOY1_11",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_210",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 26,
+            "y": 0
+        },
+        {
+            "id": "obj_T10R0601_leag_door2",
+            "spriteId": "SPRITE_LEAG_DOOR2",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 2,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 6,
+            "z": 28,
+            "header": "MAP_POKEMON_LEAGUE_KAREN_ROOM",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 2,
+            "header": "MAP_POKEMON_LEAGUE_HALL_OF_FAME",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_T10R0601_000 + 1",
+            "x": 5,
+            "z": 10,
+            "w": 3,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40C7"
+        }
+    ]
 }

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FontID_Alloc
 .public FontID_Release
@@ -79,7 +79,7 @@
 .public sub_0200E3D8
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public sub_0200E640
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
@@ -146,9 +146,9 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public sub_02021AC8
 .public sub_02021B5C
 .public GfGfx_SetBanks

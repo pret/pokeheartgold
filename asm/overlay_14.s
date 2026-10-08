@@ -1,5 +1,6 @@
+#include "constants/items.h"
 #include "constants/pokemon.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_14.inc"
 	.include "global.inc"
 
@@ -6653,17 +6654,17 @@ ov14_021E8ACC: ; 0x021E8ACC
 	bl Bag_CreateView
 	str r0, [r4, #0x18]
 	ldr r1, [r4]
-	mov r2, #1
+	mov r2, #1  // BAG_VIEW_CONTEXT_GIVE_ITEM
 	ldr r0, [r1, #4]
 	mov r3, #0
 	str r0, [sp]
 	ldr r0, [r4, #0x18]
 	ldr r1, [r1]
-	bl sub_0207789C
-	ldr r0, _021E8B14 ; =FS_OVERLAY_ID(OVY_15)
+	bl BagView_Init
+	ldr r0, _021E8B14 ; =SDK_OVERLAY_OVY_15_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _021E8B18 ; =ov15_022008B8
+	ldr r0, _021E8B18 ; =gOverlayManagerTemplate_Bag
 	ldr r1, [r4, #0x18]
 	mov r2, #9
 	bl OverlayManager_New
@@ -6673,15 +6674,15 @@ ov14_021E8ACC: ; 0x021E8ACC
 	pop {r3, r4, pc}
 	.balign 4, 0
 _021E8B10: .word ov14_021F7D14
-_021E8B14: .word FS_OVERLAY_ID(OVY_15)
-_021E8B18: .word ov15_022008B8
+_021E8B14: .word SDK_OVERLAY_OVY_15_ID
+_021E8B18: .word gOverlayManagerTemplate_Bag
 	thumb_func_end ov14_021E8ACC
 
 	thumb_func_start ov14_021E8B1C
 ov14_021E8B1C: ; 0x021E8B1C
 	push {r4, lr}
 	add r4, r0, #0
-	ldr r0, _021E8B38 ; =FS_OVERLAY_ID(OVY_15)
+	ldr r0, _021E8B38 ; =SDK_OVERLAY_OVY_15_ID
 	bl UnloadOverlayByID
 	ldr r0, [r4, #0x18]
 	bl BagView_GetItemId
@@ -6691,7 +6692,7 @@ ov14_021E8B1C: ; 0x021E8B1C
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021E8B38: .word FS_OVERLAY_ID(OVY_15)
+_021E8B38: .word SDK_OVERLAY_OVY_15_ID
 	thumb_func_end ov14_021E8B1C
 
 	thumb_func_start ov14_021E8B3C
@@ -11403,9 +11404,9 @@ ov14_021EAFAC: ; 0x021EAFAC
 	strh r1, [r0]
 	ldr r0, _021EB0CC ; =0x04001050
 	strh r1, [r0]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r2, _021EB0D0 ; =0x04000304
 	ldr r0, _021EB0D4 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -11540,7 +11541,7 @@ ov14_021EB0E4: ; 0x021EB0E4
 	lsl r0, r0, #4
 	ldr r0, [r1, r0]
 	bl NARC_Delete
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r1, _021EB168 ; =0x04000050
 	mov r0, #0
 	strh r0, [r1]
@@ -28790,10 +28791,10 @@ ov14_021F3D0C: ; 0x021F3D0C
 	add r7, r1, #0
 	add r5, r0, #0
 	add r4, r2, #0
-	bl sub_020776B4
+	bl GetTypeIconGfxNarcId
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_02077678
+	bl GetTypeIconGfxCharFileId
 	add r1, r0, #0
 	mov r0, #0xa
 	str r0, [sp]
@@ -28819,7 +28820,7 @@ ov14_021F3D0C: ; 0x021F3D0C
 	bl ManagedSprite_GetPaletteOverrideOffset
 	add r6, r0, #0
 	add r0, r7, #0
-	bl sub_0207769C
+	bl GetTypeIconGfxPlttOverride
 	add r1, r0, #0
 	ldr r0, [r5, r4]
 	add r1, r6, r1
@@ -36929,7 +36930,14 @@ ov14_021F7D0C: ; 0x021F7D0C
 	.byte 0x04, 0x00, 0x00, 0x00
 
 ov14_021F7D14: ; 0x021F7D14
-	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x06, 0x07, 0xFF
+	.byte POCKET_ITEMS
+	.byte POCKET_MEDICINE
+	.byte POCKET_BALLS
+	.byte POCKET_TMHMS
+	.byte POCKET_BERRIES
+	.byte POCKET_BATTLE_ITEMS
+	.byte POCKET_KEY_ITEMS
+	.byte 0xFF
 
 ov14_021F7D1C: ; 0x021F7D1C
 	.byte 0x46, 0x00, 0x00, 0x00

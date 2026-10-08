@@ -1,76 +1,76 @@
 {
-  "header": "fielddata/script/scr_seq/event_D02R0101.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d02r0101_revive",
-      "type": 2,
-      "x": 24,
-      "z": 7,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D02R0101_gsrivel",
-      "spriteId": "SPRITE_GSRIVEL",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_25C",
-      "scriptId": 0,
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 10,
-      "z": 4,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 4,
-      "header": "MAP_ROUTE_3",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 22,
-      "z": 23,
-      "header": "MAP_ROUTE_4",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 17,
-      "z": 4,
-      "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 22,
-      "z": 16,
-      "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 22,
-      "z": 15,
-      "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 17,
-      "z": 3,
-      "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D02R0101.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d02r0101_revive",
+            "type": 2,
+            "x": 24,
+            "z": 7,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D02R0101_gsrivel",
+            "spriteId": "SPRITE_GSRIVEL",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_25C",
+            "scriptId": 0,
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 10,
+            "z": 4,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 4,
+            "header": "MAP_ROUTE_3",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 22,
+            "z": 23,
+            "header": "MAP_ROUTE_4",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 17,
+            "z": 4,
+            "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 22,
+            "z": 16,
+            "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 22,
+            "z": 15,
+            "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 17,
+            "z": 3,
+            "header": "MAP_MOUNT_MOON_SQUARE_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

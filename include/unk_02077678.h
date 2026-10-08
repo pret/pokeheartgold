@@ -3,17 +3,23 @@
 
 #include "sprite_system.h"
 
-int sub_02077678(int moveType);
-NarcId sub_020776B4(void);
-void sub_02077720(PaletteData *paletteData, int a1, SpriteSystem *spriteSystem, SpriteManager *spriteManager, int a4, int a5);
-void sub_0207775C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int a2, int a3);
-void sub_020776B8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int a4); // load type icon graphics?
-void sub_020777A4(SpriteManager *spriteManager, int a1);
-void sub_020777AC(SpriteManager *spriteManager, int a1);
-void sub_020777B4(SpriteManager *spriteManager, int a1, int a2);
-ManagedSprite *sub_020777C8(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int type, ManagedSpriteTemplate *spriteTemplate);
-void thunk_ManagedSprite_DeleteAndFreeResources(ManagedSprite *managedSprite);
-void sub_02077870(ManagedSprite *managedSprite);
-void sub_02077868(SpriteManager *spriteManager, int a1);
+int GetTypeIconGfxCharFileId(int moveType);
+int GetTypeIconGfxPlttOverride(u16 moveType);
+NarcId GetTypeIconGfxNarcId(void);
+void SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer(PaletteData *paletteData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, int vram, int plttTag);
+void SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int cellTag, int animTag);
+void SpriteSystem_LoadMoveTypeIconCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int resId); // load type icon graphics?
+void SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int vram, int resId);
+void SpriteSystem_LoadMoveCategoryIconCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int resId); // load type icon graphics?
+void SpriteManager_UnloadMoveTypeIconCharResObjByTag(SpriteManager *spriteManager, int a1);
+void SpriteManager_UnloadMoveTypeAndCategoryIconPlttResObjByTag(SpriteManager *spriteManager, int a1);
+void SpriteManager_UnloadMoveTypeAndCategoryIconCellAndAnimResObjsByTags(SpriteManager *spriteManager, int a1, int a2);
+ManagedSprite *SpriteSystem_CreateMoveTypeIconSprite(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int type, ManagedSpriteTemplate *spriteTemplate);
+void MoveTypeIconSprite_DeleteAndFreeResources(ManagedSprite *managedSprite);
+NarcId GetMoveCategoryIconGfxNarcId(void);
+int GetMoveCategoryIconGfxCharFileId(u16 moveCategory);
+int GetMoveCategoryIconGfxPlttOverride(u16 moveCategory);
+void MoveCategoryIconSprite_DeleteAndFreeResources(ManagedSprite *managedSprite);
+void SpriteManager_UnloadMoveCategoryIconCharResObjByTag(SpriteManager *spriteManager, int a1);
 
 #endif // POKEHEARTGOLD_UNK_02077678_H

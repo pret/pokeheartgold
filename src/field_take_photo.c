@@ -736,7 +736,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_OUT:
             PlaySE(SEQ_SE_GS_SHUTTER);
-            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_CAMERA_SHUTTER_CLOSE, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
@@ -755,7 +755,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_IN:
-            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_9, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_CAMERA_SHUTTER_OPEN, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN:
@@ -844,9 +844,9 @@ static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo) {
 }
 
 static void drawCameraGfx(BgConfig *bgConfig, enum HeapID heapID) {
-    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapID);
-    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapID);
-    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapID);
+    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapID);
+    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapID);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_MAIN_2);
     SetBgPriority(GF_BG_LYR_MAIN_2, 0);
 }

@@ -1,84 +1,84 @@
 {
-  "header": "fielddata/script/scr_seq/event_R31R0101.h",
-  "objects": [
-    {
-      "id": "obj_R31R0101_counterm",
-      "spriteId": "SPRITE_COUNTERM",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_R31R0101_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 4,
-      "y": 0
-    },
-    {
-      "id": "obj_R31R0101_var_1",
-      "spriteId": "SPRITE_VAR_1",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 14,
-      "z": 28,
-      "y": 0
-    },
-    {
-      "id": "obj_R31R0101_tsure_poke_static_marill",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 13,
-      "z": 28,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1,
-      "z": 7,
-      "header": "MAP_VIOLET",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 10,
-      "z": 7,
-      "header": "MAP_ROUTE_31",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_R31R0101_000 + 1",
-      "x": 5,
-      "z": 6,
-      "w": 1,
-      "h": 3,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_4132"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R31R0101.h",
+    "objects": [
+        {
+            "id": "obj_R31R0101_counterm",
+            "spriteId": "SPRITE_COUNTERM",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_R31R0101_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 4,
+            "y": 0
+        },
+        {
+            "id": "obj_R31R0101_var_1",
+            "spriteId": "SPRITE_VAR_1",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 14,
+            "z": 28,
+            "y": 0
+        },
+        {
+            "id": "obj_R31R0101_tsure_poke_static_marill",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 13,
+            "z": 28,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1,
+            "z": 7,
+            "header": "MAP_VIOLET",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 10,
+            "z": 7,
+            "header": "MAP_ROUTE_31",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_R31R0101_000 + 1",
+            "x": 5,
+            "z": 6,
+            "w": 1,
+            "h": 3,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_4132"
+        }
+    ]
 }

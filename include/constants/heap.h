@@ -8,7 +8,7 @@ enum HeapID {
     HEAP_ID_3,
     HEAP_ID_FIELD1,
     HEAP_ID_BATTLE,
-    HEAP_ID_6,
+    HEAP_ID_BAG,
     HEAP_ID_7,
     HEAP_ID_8,
     HEAP_ID_9,

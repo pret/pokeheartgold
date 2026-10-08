@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextPrinter_SetDownArrowBaseTile
 .public CreateSysTaskAndEnvironment
@@ -20,7 +20,7 @@
 .public sub_0200E3D8
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public sub_0200E63C
 .public sub_0200E640
 .public LoadUserFrameGfx2

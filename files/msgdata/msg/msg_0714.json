@@ -1,0 +1,104 @@
+{
+  "key": 64978,
+  "messages": [
+    {
+      "id": "msg_0714_00000",
+      "en_US": "Arnie"
+    },
+    {
+      "id": "msg_0714_00001",
+      "en_US": [
+        "You’ll trade phone numbers\n",
+        "with me... Won’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0714_00002",
+      "en_US": [
+        "If I feel like battling again, I’ll be\n",
+        "sure to give you a call!"
+      ]
+    },
+    {
+      "id": "msg_0714_00003",
+      "en_US": [
+        "I see... That’s too bad.\n",
+        "Well, if you decide you’d like to battle\f",
+        "me again, just give me a shout!"
+      ]
+    },
+    {
+      "id": "msg_0714_00004",
+      "en_US": [
+        "Did you decide that you want to\n",
+        "trade phone numbers after all? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0714_00005",
+      "en_US": [
+        "Yep, I can really hear you!\n",
+        "This area is open to the sky, so you can\f",
+        "get a great signal here!"
+      ]
+    },
+    {
+      "id": "msg_0714_00006",
+      "en_US": [
+        "I’m always with my {STRVAR_1 0, 10, 0}!\n",
+        "It’s so cute! I just love it!\r",
+        "Changing the topic here, I saw this\n",
+        "{STRVAR_1 0, 11, 0} for the first time.\f",
+        "It was easy to beat, actually.\r",
+        "Let’s talk again, huh?"
+      ]
+    },
+    {
+      "id": "msg_0714_00007",
+      "en_US": [
+        "I’m always with my {STRVAR_1 0, 10, 0}!\n",
+        "It’s so cute! I just love it!\r",
+        "I was wondering, do you happen to\n",
+        "have {STRVAR_1 0, 11, 0}?\r",
+        "I can’t seem to catch one. What is\n",
+        "its weakness, I wonder.\r",
+        "Let’s talk again, huh?"
+      ]
+    },
+    {
+      "id": "msg_0714_00008",
+      "en_US": [
+        "Hey, let’s battle our Pokémon!\r",
+        "I’m on {STRVAR_1 4, 3, 0}, so let me\n",
+        "know when you get here!\r",
+        "If you check the Town Map on your\n",
+        "Pokégear, you can touch\f",
+        "{STRVAR_1 4, 3, 0} and a “!” will appear\f",
+        "so you won’t forget the location!"
+      ]
+    },
+    {
+      "id": "msg_0714_00009",
+      "en_US": [
+        "Let’s battle. I’ll be waiting for you on\n",
+        "{STRVAR_1 4, 3, 0}!\r",
+        "If you don’t know where I am, just\n",
+        "check it on the Town Map on\f",
+        "your Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0714_00010",
+      "en_US": [
+        "If it’s for Bug-type Pokémon, I’ll go\n",
+        "anywhere!\r",
+        "Well, I say that, but I’m always on\n",
+        "Route 35.\r",
+        "But there’s a pond near here, and\n",
+        "there’s a lot of grass, and best of all,\f",
+        "it’s only 28 steps to the National Park.\f",
+        "This is such a great spot!"
+      ]
+    }
+  ]
+}

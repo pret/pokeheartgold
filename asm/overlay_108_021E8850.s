@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_108.inc"
 	.include "global.inc"
 
@@ -1339,9 +1339,9 @@ _021E92D6:
 	ldr r0, _021E9300 ; =ov108_021E979C
 	add r1, r4, #0
 	bl Main_SetVBlankIntrCB
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0
 	str r0, [r4, #8]
 	mov r0, #1
@@ -1387,7 +1387,7 @@ _021E9314:
 	bl ov108_021E9A08
 	b _021E9374
 _021E934C:
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r2, #1
 	lsl r2, r2, #0x1a
 	ldr r1, [r2]

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PlaySE
 .public OverlayManager_CreateAndGetData
@@ -33,7 +33,7 @@
 .public Camera_OffsetLookAtPosAndTarget
 .public Thunk_G3X_Reset
 .public RequestSwap3DBuffers
-.public sub_020880CC
+.public App_StartScreenFade
 .public NNS_G3dAnmObjInit
 .public NNS_G3dRenderObjAddAnmObj
 .public NNS_G3dGlbLightVector

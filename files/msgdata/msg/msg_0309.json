@@ -1,0 +1,1986 @@
+{
+  "key": 10949,
+  "messages": [
+    {
+      "id": "msg_0309_00000",
+      "en_US": [
+        "Welcome to the Pokéathlon!\r",
+        "Today’s event--\n",
+        "the {STRVAR_4 1, 0, 0}!\r",
+        "Who will shine brightest today?\n",
+        "Let’s meet the competitors!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00001",
+      "en_US": [
+        "Team {STRVAR_1 3, 0, 0}: {STRVAR_1 1, 1, 0},\n",
+        "{STRVAR_1 1, 2, 0}, and {STRVAR_1 1, 3, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00002",
+      "en_US": [
+        "All right, we’re ready!\n",
+        "Aim for the top! Let’s\r",
+        "{ALN_CENTER}{SIZE 200}POKéATHLON!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00003",
+      "en_US": [
+        "Great job, athletes!\r",
+        "Which team fought the hardest?\n",
+        "We’ve got the results!\r",
+        "But first...\n",
+        "who’s overflowing with fighting spirit?\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00004",
+      "en_US": [
+        "A Challenge Bonus for\n",
+        "Pokémon and Team!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00005",
+      "en_US": "{STRVAR_1 52, 1, 0} points for Team {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0309_00006",
+      "en_US": "Continuing on, the individual prizes...\r"
+    },
+    {
+      "id": "msg_0309_00007",
+      "en_US": "The No-Miss Bonus!\r"
+    },
+    {
+      "id": "msg_0309_00008",
+      "en_US": "Team {STRVAR_1 3, 0, 0}’s {STRVAR_1 0, 1, 0}!"
+    },
+    {
+      "id": "msg_0309_00009",
+      "en_US": "There wasn’t one this time.\r"
+    },
+    {
+      "id": "msg_0309_00010",
+      "en_US": "That’s all!\r"
+    },
+    {
+      "id": "msg_0309_00011",
+      "en_US": [
+        "Moving on...\n",
+        "the points leader!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00012",
+      "en_US": "Team {STRVAR_1 3, 0, 0}’s {STRVAR_1 0, 1, 0}!"
+    },
+    {
+      "id": "msg_0309_00013",
+      "en_US": "That’s all!\r"
+    },
+    {
+      "id": "msg_0309_00014",
+      "en_US": [
+        "Next up...\n",
+        "the prize for effort!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00015",
+      "en_US": "The Pokémon that jumped the most...\r"
+    },
+    {
+      "id": "msg_0309_00016",
+      "en_US": "The Pokémon that hit the most...\r"
+    },
+    {
+      "id": "msg_0309_00017",
+      "en_US": "The Pokémon that failed the most...\r"
+    },
+    {
+      "id": "msg_0309_00018",
+      "en_US": "The Pokémon that dashed the most...\r"
+    },
+    {
+      "id": "msg_0309_00019",
+      "en_US": [
+        "The Pokémon that missed collecting\n",
+        "the most points...\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00020",
+      "en_US": "Team {STRVAR_1 3, 0, 0}’s {STRVAR_1 0, 1, 0}!"
+    },
+    {
+      "id": "msg_0309_00021",
+      "en_US": "That’s all!\r"
+    },
+    {
+      "id": "msg_0309_00022",
+      "en_US": [
+        "Finally...\n",
+        "we’ll add up the event points!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00023",
+      "en_US": "Event {STRVAR_1 50, 0, 0}!"
+    },
+    {
+      "id": "msg_0309_00024",
+      "en_US": [
+        "What? We have a tie!?\n",
+        "Well, we settle ties by a drawing!\r",
+        "No, no, hmm...\n",
+        "...\r",
+        "...\n",
+        "Got it!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00025",
+      "en_US": "The overall winner, with {STRVAR_1 52, 0, 0} points...\r"
+    },
+    {
+      "id": "msg_0309_00026",
+      "en_US": "{ALN_CENTER}{SIZE 200}Team {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0309_00027",
+      "en_US": [
+        "Team {STRVAR_1 3, 0, 0} was awarded\n",
+        "the {STRVAR_4 3, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00028",
+      "en_US": [
+        "Team {STRVAR_1 3, 0, 0} was awarded\n",
+        "{STRVAR_4 3, 1, 0} and {STRVAR_4 3, 2, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00029",
+      "en_US": [
+        "Team {STRVAR_1 3, 0, 0} beat its personal\n",
+        "best at the {STRVAR_4 1, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00030",
+      "en_US": [
+        "You did well on the\n",
+        "{STRVAR_4 1, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00031",
+      "en_US": [
+        "Congratulations!\n",
+        "That was a wonderful Performance!\r",
+        "Keep aiming to be the top Pokéathlete!\r",
+        "That is...\n",
+        "Pokéathlon\r",
+        "{ALN_CENTER}{SIZE 200}FOREVER!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00032",
+      "en_US": [
+        "Joined {STRVAR_1 55, 1, 0} times!\n",
+        "A new name in Pokéathletes!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00033",
+      "en_US": [
+        "Joined {STRVAR_1 55, 1, 0} times!\n",
+        "A Pokéathlete shooting star!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00034",
+      "en_US": [
+        "Joined {STRVAR_1 55, 1, 0} times!\n",
+        "A Pokéathlete supernova!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00035",
+      "en_US": [
+        "Joined {STRVAR_1 55, 1, 0} times!\n",
+        "A Pokéathlete galaxy-sized explosion!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00036",
+      "en_US": [
+        "Aim for the championship!\n",
+        "On a Pokéathlon shooting star!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00037",
+      "en_US": [
+        "Overall victory, {STRVAR_1 55, 1, 0} times!\n",
+        "The Pokéathlon is yours!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00038",
+      "en_US": [
+        "Overall victory, {STRVAR_1 55, 1, 0} times!\n",
+        "Tomorrow, seize the Pokéathlon!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00039",
+      "en_US": [
+        "Overall victory, {STRVAR_1 55, 1, 0} times!\n",
+        "The Pokéathlon is mine!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00040",
+      "en_US": [
+        "If you try your best and don’t fail...\n",
+        "you’re sure to do better!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00041",
+      "en_US": [
+        "Last Place, {STRVAR_1 55, 1, 0} times!\n",
+        "That’s all right. I’ll keep trying!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00042",
+      "en_US": [
+        "Last Place, {STRVAR_1 55, 1, 0} times!\n",
+        "That doesn’t matter at all!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00043",
+      "en_US": [
+        "Last Place, {STRVAR_1 55, 1, 0} times!\n",
+        "Nobody’s seen my back yet!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00044",
+      "en_US": [
+        "Aim for number one!\n",
+        "It starts today!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00045",
+      "en_US": [
+        "First Place, {STRVAR_1 55, 1, 0} times!\n",
+        "All right! Will you come with me?\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00046",
+      "en_US": [
+        "First Place, {STRVAR_1 55, 1, 0} times!\n",
+        "Were you still really counting this time?\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00047",
+      "en_US": [
+        "First Place, {STRVAR_1 55, 1, 0} times!\n",
+        "Don’t tell me, another First Place?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00048",
+      "en_US": [
+        "Don’t worry about failure!\n",
+        "Falling down is not the end!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00049",
+      "en_US": [
+        "Last Place, {STRVAR_1 55, 1, 0} times!\n",
+        "Fall down seven times. Get up eight!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00050",
+      "en_US": [
+        "Last Place, {STRVAR_1 55, 1, 0} times!\n",
+        "That’s my distinguishing feature!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00051",
+      "en_US": [
+        "Last Place, {STRVAR_1 55, 1, 0} times!\n",
+        "This record is what I’m famous for!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00052",
+      "en_US": [
+        "Winning with true strength?\n",
+        "Or just winning with luck?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00053",
+      "en_US": [
+        "Closing-ceremony bonus awards.\n",
+        "Lucky {STRVAR_1 55, 1, 0} times?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00054",
+      "en_US": [
+        "Closing-ceremony bonus awards.\n",
+        "{STRVAR_1 55, 1, 0} times. That’s true strength!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00055",
+      "en_US": [
+        "Closing-ceremony bonus awards.\n",
+        "{STRVAR_1 55, 1, 0} times. Luck and true strength!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00056",
+      "en_US": [
+        "Always giving instructions to Pokémon!\n",
+        "Howl for heaps of championships!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00057",
+      "en_US": [
+        "Will that teamwork be enough to\n",
+        "change history?\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00058",
+      "en_US": [
+        "Look at this! This teamwork! It’s\n",
+        "amazing! You can feel the friendship!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00059",
+      "en_US": [
+        "That’s right. We can read\n",
+        "each other’s minds!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00060",
+      "en_US": [
+        "It doesn’t end when you fall! As long\n",
+        "as there’s a championship!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00061",
+      "en_US": [
+        "Failed {STRVAR_1 55, 1, 0} times! Only the number\n",
+        "of times you’ve fainted has increased!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00062",
+      "en_US": [
+        "Failed {STRVAR_1 55, 1, 0} times!\n",
+        "Failure is just a shortcut to success!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00063",
+      "en_US": [
+        "Failed {STRVAR_1 55, 1, 0} times!\n",
+        "Failure is the source of success!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00064",
+      "en_US": [
+        "Always aim sky high!\n",
+        "Aim for anything in the sky!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00065",
+      "en_US": [
+        "Fly high!\n",
+        "You can fly anywhere!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00066",
+      "en_US": [
+        "There’s a tomorrow only you can see.\n",
+        "Leap for it!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00067",
+      "en_US": [
+        "The other side of the sky is a glittery\n",
+        "tomorrow! You were born to catch it!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00068",
+      "en_US": [
+        "Those points and these points--let’s go\n",
+        "get ’em!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00069",
+      "en_US": [
+        "One point isn’t useless! It’s the\n",
+        "shortcut to success!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00070",
+      "en_US": [
+        "Don’t overlook one point! Always be\n",
+        "looking one step ahead!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00071",
+      "en_US": [
+        "All right! The Pokéathlon Point King!\n",
+        "All points are mine!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00072",
+      "en_US": [
+        "Take that! And that! I’ll tackle\n",
+        "anything that comes my way!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00073",
+      "en_US": [
+        "All right all right! The tackle fiend!\n",
+        "The number of times: {STRVAR_1 55, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00074",
+      "en_US": [
+        "Strike for victory!\n",
+        "{STRVAR_1 55, 1, 0} times, that is!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00075",
+      "en_US": [
+        "Nothing can stand in my way!\n",
+        "Tackled {STRVAR_1 55, 1, 0} times!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00076",
+      "en_US": [
+        "Why did you fall down so far?! Is there\n",
+        "a hole over there or something?\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00077",
+      "en_US": [
+        "To fall from such heights!\n",
+        "That thrilling feeling has got me!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00078",
+      "en_US": [
+        "A Pokéathlete that fights even on the\n",
+        "edge of the ring! Truly serious!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00079",
+      "en_US": [
+        "It’s always a last stand!\n",
+        "That’s why I’m always serious!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00080",
+      "en_US": [
+        "Such running ability! Dash around the\n",
+        "Pokéathlon!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00081",
+      "en_US": [
+        "Run! Seize victory!\n",
+        "Go for it! Seize tomorrow!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00082",
+      "en_US": [
+        "Think you can keep up?\n",
+        "Fast...faster...the fastest!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00083",
+      "en_US": [
+        "Running as fast as lightning!\n",
+        "Can your eyes keep up?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00084",
+      "en_US": [
+        "Strength isn’t everything! Strategy is\n",
+        "another important factor to success!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00085",
+      "en_US": [
+        "Everything comes down to brains!\n",
+        "You can manipulate the world!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00086",
+      "en_US": [
+        "Always be prepared! That strategy\n",
+        "can be overturned!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00087",
+      "en_US": [
+        "If you know everything about Pokémon,\n",
+        "you can get the best Performance!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00088",
+      "en_US": [
+        "You’re not alone!\n",
+        "Everyone is here competing against you!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00089",
+      "en_US": [
+        "You’re always competing against\n",
+        "everyone! That’s true strength!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00090",
+      "en_US": [
+        "You’ll get stronger by fighting others,\n",
+        "so use their strength to fight!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00091",
+      "en_US": [
+        "Within you are many friends, and\n",
+        "many Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00092",
+      "en_US": [
+        "When you fight a true warrior, victory\n",
+        "is within your grasp!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00093",
+      "en_US": [
+        "Outside are many strong Pokémon!\n",
+        "They’ve come to compete!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00094",
+      "en_US": [
+        "You can’t lose to them! You’ve won too\n",
+        "many times!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00095",
+      "en_US": [
+        "Aim to be a stronger Pokéathlete!\n",
+        "Then you’ll win more!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00096",
+      "en_US": [
+        "Your total losses prove your strength!\n",
+        "They show when you’ve faced a warrior!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00097",
+      "en_US": [
+        "There are many strong people out\n",
+        "there. You know that more than anyone!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00098",
+      "en_US": [
+        "Always compete with someone!\n",
+        "And share in that competition!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00099",
+      "en_US": [
+        "I don’t worry about winning or losing,\n",
+        "just that I compete against the best!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00100",
+      "en_US": [
+        "Leave Hurdles to me! I’m a Pokéathlete\n",
+        "that loves Hurdles more than anything!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00101",
+      "en_US": [
+        "There’s no Hurdle I can’t jump! Watch\n",
+        "my beautiful footwork!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00102",
+      "en_US": [
+        "I can climb over any obstacle, I can\n",
+        "jump any Hurdle!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00103",
+      "en_US": [
+        "Hurdles are not obstacles! You can\n",
+        "just run around them!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00104",
+      "en_US": [
+        "I was born to snatch Pennants! I am\n",
+        "the ruler of this beach!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00105",
+      "en_US": [
+        "When you see Pennants, you think of me!\n",
+        "I am a Pennant-capturing hero!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00106",
+      "en_US": [
+        "The sandy beach is my field!\n",
+        "I run about it freely!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00107",
+      "en_US": [
+        "There’s no Pennant I can’t capture!\n",
+        "I’ll even capture the championship!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00108",
+      "en_US": [
+        "Push! Push! Push!\n",
+        "Push it aside!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00109",
+      "en_US": [
+        "There’s nothing I can’t push! I’ll push\n",
+        "you out of the Circle to be alone!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00110",
+      "en_US": [
+        "I’m in a whole new dimension when it\n",
+        "comes to pushing! I was born to push!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00111",
+      "en_US": [
+        "What’s with the intimidation you might\n",
+        "feel? I can push without touching!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00112",
+      "en_US": [
+        "Smash! Crash! Shatter!\n",
+        "I was born to smash Blocks!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00113",
+      "en_US": [
+        "There’s nothing I can’t smash! I am the\n",
+        "Pokéathlon Destruction King!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00114",
+      "en_US": [
+        "There’s a huge wall over there I’m\n",
+        "sure! It’s just there for me to smash!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00115",
+      "en_US": [
+        "Keep breaking Blocks...and you’ll\n",
+        "notice the mountain over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00116",
+      "en_US": [
+        "My body just automatically catches any\n",
+        "Discs that come my way!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00117",
+      "en_US": [
+        "I’ve come to catch Discs and catch the\n",
+        "Pokéathlon!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00118",
+      "en_US": [
+        "The Disc you caught is tomorrow’s\n",
+        "shooting star!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00119",
+      "en_US": [
+        "Bring it on. I’ll catch it! I’ll catch\n",
+        "any Disc that comes my way!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00120",
+      "en_US": [
+        "The jump was like the wind!\n",
+        "The form was like a cloud!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00121",
+      "en_US": [
+        "Jump high to the sky!\n",
+        "The form is weightless!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00122",
+      "en_US": [
+        "A Pokéathlete that can read the\n",
+        "flow of the wind and control the air.\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00123",
+      "en_US": [
+        "There’s no border between the ground\n",
+        "and the sky within me!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00124",
+      "en_US": [
+        "There’s no one who can stop me!\n",
+        "I was born to run!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00125",
+      "en_US": [
+        "I’ve never seen strength like this!\n",
+        "Just running all day long!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00126",
+      "en_US": [
+        "Once I get moving, I can’t stop!\n",
+        "I’m in a perpetual Pokéathlon!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00127",
+      "en_US": [
+        "My engine is friendship, and my motor\n",
+        "is victory!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00128",
+      "en_US": [
+        "There’s no chance! I’ll knock down all\n",
+        "Pokémon competition!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00129",
+      "en_US": [
+        "Getting in the Ring is the end! Fight to\n",
+        "be the last Pokémon standing!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00130",
+      "en_US": [
+        "Ruler of the Ring!\n",
+        "Enter another’s Ring at your own risk!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00131",
+      "en_US": [
+        "What exactly are you anyway?\n",
+        "That’s what the Ring will tell you!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00132",
+      "en_US": [
+        "Throwing Snow is the best in the world!\n",
+        "With that kind of accuracy, you can win!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00133",
+      "en_US": [
+        "The Snowballs we’re throwing are\n",
+        "rolled-up balls of friendship!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00134",
+      "en_US": [
+        "Such rapid-fire throwing! Who’s that\n",
+        "Snowball for?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00135",
+      "en_US": [
+        "I don’t know where it will leap from\n",
+        "next! The Snowballs seem to split!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00136",
+      "en_US": [
+        "No one can stop this ball! It will hit\n",
+        "any Goal I aim for!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00137",
+      "en_US": [
+        "Use that wonderful teamwork and make\n",
+        "the Goal!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00138",
+      "en_US": [
+        "Such splendid footwork!\n",
+        "Aim for success!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00139",
+      "en_US": [
+        "Live with the ball.\n",
+        "Live inside the ball!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00140",
+      "en_US": [
+        "Give the points as a gift to them. It’s\n",
+        "the embodiment of fair play.\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00141",
+      "en_US": [
+        "Smile even when you miss! The\n",
+        "Pokéathlon isn’t just about winning!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00142",
+      "en_US": [
+        "You don’t hesitate to aim for your\n",
+        "own Goal!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00143",
+      "en_US": [
+        "Don’t fight over who rolled the ball\n",
+        "into your Goal! It’s your friendship!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00144",
+      "en_US": [
+        "Why do you stand out like that? Winning\n",
+        "is not the only thing in the Pokéathlon.\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00145",
+      "en_US": [
+        "Here it is! What you’ve all been waiting\n",
+        "for! Autographs after the competition!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00146",
+      "en_US": [
+        "If you want to see me win, I’ll show you\n",
+        "just how I win!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00147",
+      "en_US": [
+        "When I do my best and win, I make\n",
+        "everyone happy!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00148",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0309_00149",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0309_00150",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0309_00151",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0309_00152",
+      "en_US": "{STRVAR_1 50, 0, 0}/6 Rounds"
+    },
+    {
+      "id": "msg_0309_00153",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0309_00154",
+      "en_US": " Next {STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00155",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0309_00156",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Seconds"
+    },
+    {
+      "id": "msg_0309_00157",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00158",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00159",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Pieces"
+    },
+    {
+      "id": "msg_0309_00160",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00161",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00162",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 51, 0, 0}.{STRVAR_1 50, 1, 0} Laps"
+    },
+    {
+      "id": "msg_0309_00163",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00164",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00165",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00166",
+      "en_US": "{ALN_CENTER}{SIZE 200}Hurdle Dash"
+    },
+    {
+      "id": "msg_0309_00167",
+      "en_US": "{ALN_CENTER}{SIZE 200}Pennant Capture"
+    },
+    {
+      "id": "msg_0309_00168",
+      "en_US": "{ALN_CENTER}{SIZE 200}Circle Push"
+    },
+    {
+      "id": "msg_0309_00169",
+      "en_US": "{ALN_CENTER}{SIZE 200}Block Smash"
+    },
+    {
+      "id": "msg_0309_00170",
+      "en_US": "{ALN_CENTER}{SIZE 200}Disc Catch"
+    },
+    {
+      "id": "msg_0309_00171",
+      "en_US": "{ALN_CENTER}{SIZE 200}Lamp Jump"
+    },
+    {
+      "id": "msg_0309_00172",
+      "en_US": "{ALN_CENTER}{SIZE 200}Relay Run"
+    },
+    {
+      "id": "msg_0309_00173",
+      "en_US": "{ALN_CENTER}{SIZE 200}Ring Drop"
+    },
+    {
+      "id": "msg_0309_00174",
+      "en_US": "{ALN_CENTER}{SIZE 200}Snow Throw"
+    },
+    {
+      "id": "msg_0309_00175",
+      "en_US": "{ALN_CENTER}{SIZE 200}Goal Roll"
+    },
+    {
+      "id": "msg_0309_00176",
+      "en_US": "{ALN_CENTER}Best Record"
+    },
+    {
+      "id": "msg_0309_00177",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Seconds"
+    },
+    {
+      "id": "msg_0309_00178",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00179",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00180",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Pieces"
+    },
+    {
+      "id": "msg_0309_00181",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00182",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00183",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 51, 0, 0}.{STRVAR_1 50, 1, 0} Laps"
+    },
+    {
+      "id": "msg_0309_00184",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00185",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00186",
+      "en_US": "{ALN_CENTER}Pokémon Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00187",
+      "en_US": "{ALN_CENTER}Place: Track Dome"
+    },
+    {
+      "id": "msg_0309_00188",
+      "en_US": "{ALN_CENTER}Place: Beach Dome"
+    },
+    {
+      "id": "msg_0309_00189",
+      "en_US": "{ALN_CENTER}Place: Fight Dome"
+    },
+    {
+      "id": "msg_0309_00190",
+      "en_US": "{ALN_CENTER}Place: Fight Dome"
+    },
+    {
+      "id": "msg_0309_00191",
+      "en_US": "{ALN_CENTER}Place: Beach Dome"
+    },
+    {
+      "id": "msg_0309_00192",
+      "en_US": "{ALN_CENTER}Place: Jump Dome"
+    },
+    {
+      "id": "msg_0309_00193",
+      "en_US": "{ALN_CENTER}Place: Clay Dome"
+    },
+    {
+      "id": "msg_0309_00194",
+      "en_US": "{ALN_CENTER}Place: Fight Dome"
+    },
+    {
+      "id": "msg_0309_00195",
+      "en_US": "{ALN_CENTER}Place: Snow Dome"
+    },
+    {
+      "id": "msg_0309_00196",
+      "en_US": "{ALN_CENTER}Place: Field Dome"
+    },
+    {
+      "id": "msg_0309_00197",
+      "en_US": "{ALN_CENTER}Event Rules"
+    },
+    {
+      "id": "msg_0309_00198",
+      "en_US": "Aim for the Goal and jump! Run!"
+    },
+    {
+      "id": "msg_0309_00199",
+      "en_US": "Run, collect Pennants, and return!"
+    },
+    {
+      "id": "msg_0309_00200",
+      "en_US": "Get in the Circle!"
+    },
+    {
+      "id": "msg_0309_00201",
+      "en_US": "Break lots of Blocks!"
+    },
+    {
+      "id": "msg_0309_00202",
+      "en_US": "Catch the flying Discs!"
+    },
+    {
+      "id": "msg_0309_00203",
+      "en_US": "Jump and aim for the lit Lamps!"
+    },
+    {
+      "id": "msg_0309_00204",
+      "en_US": "Run a Relay with Pokémon! Run!"
+    },
+    {
+      "id": "msg_0309_00205",
+      "en_US": "Push your rivals out of the Ring!"
+    },
+    {
+      "id": "msg_0309_00206",
+      "en_US": "Hit as many Pokémon as you can!"
+    },
+    {
+      "id": "msg_0309_00207",
+      "en_US": "Get the ball in an opponent’s Goal!"
+    },
+    {
+      "id": "msg_0309_00208",
+      "en_US": "{ALN_CENTER}Controls"
+    },
+    {
+      "id": "msg_0309_00209",
+      "en_US": [
+        "Touch the Pokémon to jump!\n",
+        "Control three Pokémon at the\n",
+        "same time. Jump the Hurdles!"
+      ]
+    },
+    {
+      "id": "msg_0309_00210",
+      "en_US": [
+        "In Hurdle Dash, you race against time to\n",
+        "the finish line. Jump over the Hurdles\n",
+        "and be first to finish. Points are given\n",
+        "based on how many seconds it took all\n",
+        "three Pokémon to reach the finish line.\n",
+        "\n",
+        "Speed: Running Speed\n",
+        "Jump: Jump Length"
+      ]
+    },
+    {
+      "id": "msg_0309_00211",
+      "en_US": [
+        "Touch the Pokémon to jump!\n",
+        "Jump to clear the Hurdles!\n",
+        "\n",
+        "Control three Pokémon at the same\n",
+        "time and finish before\n",
+        "everyone else!"
+      ]
+    },
+    {
+      "id": "msg_0309_00212",
+      "en_US": [
+        "Slide the stylus over a\n",
+        "Pokémon to move it! Hit others\n",
+        "from behind to take Pennants!"
+      ]
+    },
+    {
+      "id": "msg_0309_00213",
+      "en_US": [
+        "In Pennant Capture, your three Pokémon\n",
+        "run in turns to bring back Pennants.\n",
+        "Up to nine Pennants can be held at\n",
+        "one time. Strike your opponents from\n",
+        "behind to steal their Pennants.\n",
+        "\n",
+        "Skill: Ease of Movement\n",
+        "Speed: Running Speed"
+      ]
+    },
+    {
+      "id": "msg_0309_00214",
+      "en_US": [
+        "Slide your stylus over your Pokémon\n",
+        "quickly to move it!\n",
+        "The farther you slide, the more it moves!\n",
+        "\n",
+        "Be quicker than anyone else to\n",
+        "gather as many Pennants as you\n",
+        "can and bring them back!"
+      ]
+    },
+    {
+      "id": "msg_0309_00215",
+      "en_US": [
+        "Use the stylus to move your\n",
+        "Pokémon around! Control\n",
+        "three Pokémon at once!"
+      ]
+    },
+    {
+      "id": "msg_0309_00216",
+      "en_US": [
+        "Circle Push is an event where you push\n",
+        "your opponent. If you are inside a Circle\n",
+        "after the timer has counted down,\n",
+        "you are awarded points. The number\n",
+        "written in the Circle is the number of\n",
+        "points you will receive.\n",
+        "\n",
+        "Power: Push Power\n",
+        "Stamina: Ability to Keep Pushing"
+      ]
+    },
+    {
+      "id": "msg_0309_00217",
+      "en_US": [
+        "Use the stylus to move your\n",
+        "Pokémon around!\n",
+        "\n",
+        "Control three Pokémon at once and\n",
+        "aim for the Circle with the\n",
+        "most points!"
+      ]
+    },
+    {
+      "id": "msg_0309_00218",
+      "en_US": [
+        "Touch the Blocks to strike!\n",
+        "Touch the Switch button to\n",
+        "switch to the next Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0309_00219",
+      "en_US": [
+        "Block Smash is simply an event where you\n",
+        "smash Blocks. Switch out your Pokémon\n",
+        "as each becomes tired. You receive\n",
+        "points according to how many Blocks\n",
+        "you smash.\n",
+        "\n",
+        "Power: Destructive Power\n",
+        "Stamina: Ability to Keep Going"
+      ]
+    },
+    {
+      "id": "msg_0309_00220",
+      "en_US": [
+        "Touch the Blocks to smash them!\n",
+        "There’s a barrage of Blocks. Smash as\n",
+        "many as you can!\n",
+        "\n",
+        "Touch the Switch button to switch\n",
+        "to the next Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0309_00221",
+      "en_US": [
+        "1) Use the stylus to move\n",
+        "three Pokémon around.\n",
+        "2) Touch to jump and catch!"
+      ]
+    },
+    {
+      "id": "msg_0309_00222",
+      "en_US": [
+        "Disc Catch is an event where you control\n",
+        "your three Pokémon at the same time and\n",
+        "jump to catch Discs that come flying\n",
+        "from the sea. The farther back in the\n",
+        "stage that you catch the Discs, the\n",
+        "more points you get.\n",
+        "\n",
+        "Jump: Jump Height\n",
+        "Power: Push Power"
+      ]
+    },
+    {
+      "id": "msg_0309_00223",
+      "en_US": [
+        "1) Use the stylus to move your Pokémon\n",
+        "around. Control three Pokémon at once.\n",
+        "Push your opponents out of the way to\n",
+        "catch the Discs!\n",
+        "\n",
+        "2) Touch your Pokémon lightly to\n",
+        "jump! Catch as many Discs\n",
+        "as you can!"
+      ]
+    },
+    {
+      "id": "msg_0309_00224",
+      "en_US": [
+        "Quickly pull the Pokémon\n",
+        "down to jump!"
+      ]
+    },
+    {
+      "id": "msg_0309_00225",
+      "en_US": [
+        "In Lamp Jump, you control your three\n",
+        "Pokémon as they try to jump and touch\n",
+        "the Lamps as they light. Try to touch as\n",
+        "many Lamps as you can in one jump.\n",
+        "\n",
+        "Jump: Jump Height\n",
+        "Skill: Ability to Jump Sideways"
+      ]
+    },
+    {
+      "id": "msg_0309_00226",
+      "en_US": [
+        "Quickly pull the three Pokémon down and\n",
+        "watch them jump!\n",
+        "\n",
+        "Pull them diagonally to have them\n",
+        "jump to the side!"
+      ]
+    },
+    {
+      "id": "msg_0309_00227",
+      "en_US": [
+        "Quickly flick to dash! Flick as\n",
+        "fast as you can to go faster!\n",
+        "Switch when you’re tired!"
+      ]
+    },
+    {
+      "id": "msg_0309_00228",
+      "en_US": [
+        "Relay Run is an event where you move from\n",
+        "Pokémon to Pokémon, trying to run\n",
+        "as far as you can. Switch your Pokémon\n",
+        "when they’re tired. Points will be\n",
+        "awarded based only on the distance run.\n",
+        "\n",
+        "Stamina: Endurance\n",
+        "Speed: Running Speed"
+      ]
+    },
+    {
+      "id": "msg_0309_00229",
+      "en_US": [
+        "Quickly flick the stylus to the right to\n",
+        "get your Pokémon to dash!\n",
+        "\n",
+        "The more you flick to the right, the\n",
+        "faster your Pokémon will go!\n",
+        "\n",
+        "Touch the Switch button to\n",
+        "switch to the next Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0309_00230",
+      "en_US": [
+        "1) Use the stylus to move.\n",
+        "2) Quickly flick to tackle!\n",
+        "3) Lightly touch to jump!"
+      ]
+    },
+    {
+      "id": "msg_0309_00231",
+      "en_US": [
+        "Ring Drop is an event where you push\n",
+        "your opponent. You get points each time\n",
+        "you push your opponent out of the Ring.\n",
+        "If you push the Switch button in your\n",
+        "corner, you can switch Pokémon.\n",
+        "\n",
+        "Stamina: Ability to Resist Pushing\n",
+        "Power: Tackle Strength"
+      ]
+    },
+    {
+      "id": "msg_0309_00232",
+      "en_US": [
+        "1) Use the stylus to move your Pokémon!\n",
+        "\n",
+        "2) Quickly flick the stylus to tackle!\n",
+        "Blow your opponent away!\n",
+        "\n",
+        "3) Lightly touch your\n",
+        "Pokémon to get them to jump!\n",
+        "Your Pokémon can stomp on others!"
+      ]
+    },
+    {
+      "id": "msg_0309_00233",
+      "en_US": [
+        "1) Quickly flick upward on\n",
+        "your Pokémon to throw Snow!\n",
+        "2) Touch to hoard more Snow!"
+      ]
+    },
+    {
+      "id": "msg_0309_00234",
+      "en_US": [
+        "In Snow Throw, you control three of your\n",
+        "Pokémon at the same time and hit your\n",
+        "opponents with Snowballs. You’ll receive\n",
+        "points no matter who you hit on your\n",
+        "opponent’s team.\n",
+        "\n",
+        "Skill: Throwing Accuracy\n",
+        "Power: Snowball Strength"
+      ]
+    },
+    {
+      "id": "msg_0309_00235",
+      "en_US": [
+        "1) Flick upward on your Pokémon to\n",
+        "throw a Snowball!\n",
+        "\n",
+        "2) When holding a Snowball, touch the\n",
+        "Pokémon to make the Snowball bigger!\n",
+        "\n",
+        "Bigger Snowballs can make your\n",
+        "opponent faint on impact!"
+      ]
+    },
+    {
+      "id": "msg_0309_00236",
+      "en_US": [
+        "1) Control three Pokémon! Use\n",
+        "the stylus to move around!\n",
+        "2) Flick quickly to dash!"
+      ]
+    },
+    {
+      "id": "msg_0309_00237",
+      "en_US": [
+        "In Goal Roll, you try to get the ball into\n",
+        "your opponent’s Goal. It doesn’t matter\n",
+        "which of their Goals--you’ll earn points.\n",
+        "But if the ball ends up in your own Goal,\n",
+        "you’ll lose points.\n",
+        "\n",
+        "Skill: Rolling Length\n",
+        "Power: Rolling Strength"
+      ]
+    },
+    {
+      "id": "msg_0309_00238",
+      "en_US": [
+        "1) Control three Pokémon at once. Use\n",
+        "the stylus to move your Pokémon!\n",
+        "\n",
+        "2) Flick quickly with the stylus to\n",
+        "dash! If you’re dashing, then\n",
+        "you can shoot for the Goal!"
+      ]
+    },
+    {
+      "id": "msg_0309_00239",
+      "en_US": "{ALN_CENTER}Event {STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00240",
+      "en_US": "{ALN_CENTER}Details"
+    },
+    {
+      "id": "msg_0309_00241",
+      "en_US": "{ALN_CENTER}Rules"
+    },
+    {
+      "id": "msg_0309_00242",
+      "en_US": "{ALN_CENTER}More"
+    },
+    {
+      "id": "msg_0309_00243",
+      "en_US": "{ALN_CENTER}Back"
+    },
+    {
+      "id": "msg_0309_00244",
+      "en_US": "{ALN_CENTER}About Rules"
+    },
+    {
+      "id": "msg_0309_00245",
+      "en_US": "{ALN_CENTER}About Controls"
+    },
+    {
+      "id": "msg_0309_00246",
+      "en_US": "All right! Results of the first event!?\r"
+    },
+    {
+      "id": "msg_0309_00247",
+      "en_US": "So exciting! How was the second event?!\r"
+    },
+    {
+      "id": "msg_0309_00248",
+      "en_US": "The end! How was the third event?!\r"
+    },
+    {
+      "id": "msg_0309_00249",
+      "en_US": "All right! Results of the first event!?\r"
+    },
+    {
+      "id": "msg_0309_00250",
+      "en_US": "So exciting! How was the second event?!\r"
+    },
+    {
+      "id": "msg_0309_00251",
+      "en_US": "It’s not over yet! The third event!?\r"
+    },
+    {
+      "id": "msg_0309_00252",
+      "en_US": "The end! How was the fourth event?!\r"
+    },
+    {
+      "id": "msg_0309_00253",
+      "en_US": [
+        "{SIZE 200}Team {STRVAR_1 3, 0, 0}!{SIZE 100}\r",
+        "Congratulations on First Place!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00254",
+      "en_US": [
+        "This...\n",
+        "was a very close competition!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00255",
+      "en_US": [
+        "This event’s results will be determined\n",
+        "by points!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00256",
+      "en_US": [
+        "Aim to score the most points in the next\n",
+        "competition as well!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00257",
+      "en_US": [
+        "It’s only just begun!\n",
+        "Get ready for the next competition!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00258",
+      "en_US": [
+        "What kind of competition will we see in\n",
+        "the next event?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00259",
+      "en_US": [
+        "Are they still trying to judge others’\n",
+        "potential? Can’t wait for the next one!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00260",
+      "en_US": [
+        "The first event is finished!\n",
+        "From here on out, it’s for real!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00261",
+      "en_US": [
+        "Suddenly, it’s the final event! Will the\n",
+        "tables be turned this time?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00262",
+      "en_US": [
+        "Next is the final event!\n",
+        "Do your best!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00263",
+      "en_US": [
+        "Suddenly, we’re at the final event!\n",
+        "Victory could be in anyone’s grasp!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00264",
+      "en_US": [
+        "Everything comes down to the final\n",
+        "event! Give it all you’ve got!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00265",
+      "en_US": [
+        "Everyone in the stadium’s excited! This\n",
+        "is the final event!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00266",
+      "en_US": [
+        "All right!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00267",
+      "en_US": [
+        "Will it be what we expect?!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00268",
+      "en_US": [
+        "Everyone gave it their best!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00269",
+      "en_US": [
+        "Which team is number one?!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00270",
+      "en_US": [
+        "Which team will take the championship?!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00271",
+      "en_US": [
+        "Aim for the highest point total in the\n",
+        "next event!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00272",
+      "en_US": [
+        "It’s only just begun!\n",
+        "Get ready for the next competition!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00273",
+      "en_US": [
+        "What kind of competition will we see in\n",
+        "the next event?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00274",
+      "en_US": [
+        "Are they still trying to judge others’\n",
+        "potential? Can’t wait for the next one!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00275",
+      "en_US": [
+        "The first event is finished!\n",
+        "From here on out, it’s for real!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00276",
+      "en_US": [
+        "It’s just the second event!\n",
+        "What kind of drama awaits?\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00277",
+      "en_US": [
+        "Do you have any strength left?\n",
+        "The third event is about to start!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00278",
+      "en_US": [
+        "We haven’t seen competition yet!\n",
+        "Next is the third event!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00279",
+      "en_US": [
+        "The last-place team still has a chance!\n",
+        "This is the third event!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00280",
+      "en_US": [
+        "The stadium is full of suspense! Here\n",
+        "comes the third event!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00281",
+      "en_US": [
+        "Suddenly, it’s the final event! Will the\n",
+        "tables be turned this time?!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00282",
+      "en_US": [
+        "Next is the final event!\n",
+        "Do your best!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00283",
+      "en_US": [
+        "Suddenly, we’re at the final event!\n",
+        "Victory could be in anyone’s hands!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00284",
+      "en_US": [
+        "Everything comes down to the final\n",
+        "event! Give it all you’ve got!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00285",
+      "en_US": [
+        "Everyone in the stadium’s excited! This\n",
+        "is the final event!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00286",
+      "en_US": [
+        "All right!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00287",
+      "en_US": [
+        "Will it be what we expect?!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00288",
+      "en_US": [
+        "Everyone gave it their best!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00289",
+      "en_US": [
+        "Which team is number one?!\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00290",
+      "en_US": [
+        "Which team will take the championship?\n",
+        "I’ll announce the final results!\r"
+      ]
+    },
+    {
+      "id": "msg_0309_00291",
+      "en_US": "Total Time: {STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Seconds"
+    },
+    {
+      "id": "msg_0309_00292",
+      "en_US": "Total: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00293",
+      "en_US": "Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00294",
+      "en_US": "Total Pieces: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00295",
+      "en_US": "Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00296",
+      "en_US": "Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00297",
+      "en_US": "Total Distance: {STRVAR_1 51, 0, 0}.{STRVAR_1 50, 1, 0} Laps"
+    },
+    {
+      "id": "msg_0309_00298",
+      "en_US": "Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00299",
+      "en_US": "Total: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00300",
+      "en_US": "Total: {STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0309_00301",
+      "en_US": "Pcs."
+    },
+    {
+      "id": "msg_0309_00302",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0309_00303",
+      "en_US": "{ALN_CENTER}Results Announcement"
+    },
+    {
+      "id": "msg_0309_00304",
+      "en_US": "Points"
+    },
+    {
+      "id": "msg_0309_00305",
+      "en_US": "Laps"
+    },
+    {
+      "id": "msg_0309_00306",
+      "en_US": "{ALN_CENTER}{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0309_00307",
+      "en_US": "{ALN_CENTER}+1"
+    },
+    {
+      "id": "msg_0309_00308",
+      "en_US": "{ALN_CENTER}+2"
+    },
+    {
+      "id": "msg_0309_00309",
+      "en_US": "{ALN_CENTER}-1"
+    },
+    {
+      "id": "msg_0309_00310",
+      "en_US": "Waiting for everyone’s selection..."
+    },
+    {
+      "id": "msg_0309_00311",
+      "en_US": [
+        "{ALN_CENTER}Second\n",
+        "{ALN_CENTER}Wind!"
+      ]
+    }
+  ]
+}

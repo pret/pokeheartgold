@@ -1,5 +1,5 @@
 #include "constants/moves.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_08.inc"
 	.include "global.inc"
 
@@ -4283,7 +4283,7 @@ ov08_0221DF80: ; 0x0221DF80
 	mov r1, #1
 	lsr r2, r2, #0x19
 	mov r3, #3
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	ldr r0, _0221DFC4 ; =0x00002070
 	ldr r0, [r5, r0]
 	add r0, r0, r4
@@ -8990,13 +8990,13 @@ ov08_02220800: ; 0x02220800
 	ldr r3, [r5, r3]
 	mov r1, #3
 	add r2, r6, #0
-	bl sub_02077720
+	bl SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer
 	ldr r1, _0222086C ; =0x00001FB4
 	ldr r2, _02220868 ; =0x0000B009
 	ldr r1, [r5, r1]
 	add r0, r6, #0
 	add r3, r2, #0
-	bl sub_0207775C
+	bl SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim
 	ldr r4, _02220870 ; =0x0000B00E
 	add r7, r4, #6
 _0222083C:
@@ -9006,7 +9006,7 @@ _0222083C:
 	add r0, r6, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_020776B8
+	bl SpriteSystem_LoadMoveTypeIconCharResObj
 	add r4, r4, #1
 	cmp r4, r7
 	bls _0222083C
@@ -9017,7 +9017,7 @@ _0222083C:
 	add r0, r6, #0
 	mov r2, #2
 	mov r3, #0
-	bl sub_02077834
+	bl SpriteSystem_LoadMoveCategoryIconCharResObj
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -9345,10 +9345,10 @@ ov08_02220AEC: ; 0x02220AEC
 	add r4, r2, #0
 	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #8]
-	bl sub_020776B4
+	bl GetTypeIconGfxNarcId
 	str r0, [sp, #0xc]
 	add r0, r6, #0
-	bl sub_02077678
+	bl GetTypeIconGfxCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -9359,7 +9359,7 @@ ov08_02220AEC: ; 0x02220AEC
 	ldr r2, [sp, #0xc]
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r6, #0
-	bl sub_0207769C
+	bl GetTypeIconGfxPlttOverride
 	add r1, r0, #0
 	add r0, r7, #0
 	add r1, r1, #4
@@ -9381,10 +9381,10 @@ ov08_02220B3C: ; 0x02220B3C
 	add r6, r1, #0
 	bl BattleSystem_GetSpriteSystem
 	add r7, r0, #0
-	bl sub_02077830
+	bl GetMoveCategoryIconGfxNarcId
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl sub_02077800
+	bl GetMoveCategoryIconGfxCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -9396,7 +9396,7 @@ ov08_02220B3C: ; 0x02220B3C
 	add r0, r7, #0
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r4, #0
-	bl sub_02077818
+	bl GetMoveCategoryIconGfxPlttOverride
 	add r1, r0, #0
 	add r0, r6, #0
 	add r1, r1, #4

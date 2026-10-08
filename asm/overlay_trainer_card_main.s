@@ -1,5 +1,5 @@
 #include "constants/sndseq.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_trainer_card_main.inc"
 	.include "global.inc"
 
@@ -191,9 +191,9 @@ _021E5C2C:
 	bl ov51_021E6238
 	add r0, r4, #0
 	bl ov51_021E6354
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #1
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #1
@@ -503,7 +503,7 @@ TrainerCardMainApp_Exit: ; 0x021E5EC8
 	bl ov51_021E6EF0
 	ldr r0, [r4]
 	bl ov51_021E6644
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0

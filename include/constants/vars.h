@@ -215,7 +215,7 @@
 #define VAR_UNK_40C8                       0x40C8
 #define VAR_UNK_40C9                       0x40C9
 #define VAR_UNK_40CA                       0x40CA
-#define VAR_UNK_40CB                       0x40CB
+#define VAR_SCENE_SS_AQUA                  0x40CB
 #define VAR_UNK_40CC                       0x40CC
 #define VAR_UNK_40CD                       0x40CD
 #define VAR_UNK_40CE                       0x40CE
@@ -269,7 +269,7 @@
 #define VAR_UNK_40FE                       0x40FE
 #define VAR_UNK_40FF                       0x40FF
 #define VAR_UNK_4100                       0x4100
-#define VAR_UNK_4101                       0x4101
+#define VAR_RECEIVED_PLATES_COUNT          0x4101
 #define VAR_UNK_4102                       0x4102
 #define VAR_UNK_4103                       0x4103
 #define VAR_UNK_4104                       0x4104

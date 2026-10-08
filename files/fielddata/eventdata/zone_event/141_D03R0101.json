@@ -1,325 +1,325 @@
 {
-  "header": "fielddata/script/scr_seq/event_D03R0101.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d03r0101_hyper_potion",
-      "type": 2,
-      "x": 4,
-      "z": 40,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d03r0101_rare_candy",
-      "type": 2,
-      "x": 60,
-      "z": 44,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d03r0101_revive",
-      "type": 2,
-      "x": 24,
-      "z": 36,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_EVERYWHERE_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_MAX_ELIXIR",
-      "scriptId": "std_itemball_d03r0101_max_elixir",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 43,
-      "z": 18,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_NUGGET",
-      "scriptId": "std_itemball_d03r0101_nugget",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 18,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_monstarball_3",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_FULL_RESTORE",
-      "scriptId": "std_itemball_d03r0101_full_restore",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 21,
-      "z": 43,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_monstarball_4",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_SEA_INCENSE",
-      "scriptId": "std_itemball_d03r0101_sea_incense",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 24,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 40,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock_2",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_011",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 41,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock_3",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_012",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 39,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock_4",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_013",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 7,
-      "z": 42,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock_5",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_014",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 11,
-      "z": 39,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock_6",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_015",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 10,
-      "z": 42,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_breakrock_7",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 11,
-      "z": 37,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 49,
-      "z": 42,
-      "header": "MAP_CERULEAN",
-      "anchor": 7,
-      "y": 0
-    },
-    {
-      "x": 55,
-      "z": 11,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 55,
-      "z": 22,
-      "header": "MAP_CERULEAN_CAVE_B1F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 45,
-      "z": 25,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 34,
-      "z": 31,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 11,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 14,
-      "z": 17,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 19,
-      "header": "MAP_CERULEAN_CAVE_B1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 7,
-      "z": 27,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 55,
-      "z": 10,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 45,
-      "z": 24,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 34,
-      "z": 30,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 10,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 14,
-      "z": 16,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 7,
-      "z": 26,
-      "header": "MAP_CERULEAN_CAVE_2F",
-      "anchor": 2,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D03R0101.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d03r0101_hyper_potion",
+            "type": 2,
+            "x": 4,
+            "z": 40,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d03r0101_rare_candy",
+            "type": 2,
+            "x": 60,
+            "z": 44,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d03r0101_revive",
+            "type": 2,
+            "x": 24,
+            "z": 36,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_EVERYWHERE_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_MAX_ELIXIR",
+            "scriptId": "std_itemball_d03r0101_max_elixir",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 43,
+            "z": 18,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_NUGGET",
+            "scriptId": "std_itemball_d03r0101_nugget",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 18,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_monstarball_3",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_FULL_RESTORE",
+            "scriptId": "std_itemball_d03r0101_full_restore",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 21,
+            "z": 43,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_monstarball_4",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D03R0101_SEA_INCENSE",
+            "scriptId": "std_itemball_d03r0101_sea_incense",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 24,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 40,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock_2",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_011",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 41,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock_3",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_012",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 39,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock_4",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_013",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 7,
+            "z": 42,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock_5",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_014",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 11,
+            "z": 39,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock_6",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_015",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 10,
+            "z": 42,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_breakrock_7",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 11,
+            "z": 37,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 49,
+            "z": 42,
+            "header": "MAP_CERULEAN",
+            "anchor": 7,
+            "y": 0
+        },
+        {
+            "x": 55,
+            "z": 11,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 55,
+            "z": 22,
+            "header": "MAP_CERULEAN_CAVE_B1F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 45,
+            "z": 25,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 34,
+            "z": 31,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 11,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 14,
+            "z": 17,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 19,
+            "header": "MAP_CERULEAN_CAVE_B1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 7,
+            "z": 27,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 55,
+            "z": 10,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 45,
+            "z": 24,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 34,
+            "z": 30,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 10,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 14,
+            "z": 16,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 7,
+            "z": 26,
+            "header": "MAP_CERULEAN_CAVE_2F",
+            "anchor": 2,
+            "y": 0
+        }
+    ]
 }

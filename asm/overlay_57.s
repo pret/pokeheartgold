@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_57.inc"
 	.include "global.inc"
 
@@ -7,16 +7,16 @@
 	thumb_func_start ov57_022378C0
 ov57_022378C0: ; 0x022378C0
 	push {r3, lr}
-	ldr r0, _022378D4 ; =FS_OVERLAY_ID(OVY_6)
+	ldr r0, _022378D4 ; =SDK_OVERLAY_OVY_6_ID
 	mov r1, #2
 	bl HandleLoadOverlay
-	ldr r0, _022378D8 ; =FS_OVERLAY_ID(OVY_7)
+	ldr r0, _022378D8 ; =SDK_OVERLAY_OVY_7_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, pc}
 	.balign 4, 0
-_022378D4: .word FS_OVERLAY_ID(OVY_6)
-_022378D8: .word FS_OVERLAY_ID(OVY_7)
+_022378D4: .word SDK_OVERLAY_OVY_6_ID
+_022378D8: .word SDK_OVERLAY_OVY_7_ID
 	thumb_func_end ov57_022378C0
 
 	thumb_func_start ov57_022378DC
@@ -236,9 +236,9 @@ _022379D6:
 	add r0, r4, #0
 	add r0, #0xd4
 	bl ov57_02239058
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r4, #0
 	bl ov57_0223BB84
 	ldr r0, _02237AF4 ; =ov57_02237E38
@@ -416,12 +416,12 @@ ov57_02237B20: ; 0x02237B20
 	bl MenuInputStateMgr_SetState
 	add r0, r5, #0
 	bl OverlayManager_FreeData
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0x34
 	bl Heap_Destroy
-	ldr r0, _02237CA0 ; =FS_OVERLAY_ID(OVY_6)
+	ldr r0, _02237CA0 ; =SDK_OVERLAY_OVY_6_ID
 	bl UnloadOverlayByID
-	ldr r0, _02237CA4 ; =FS_OVERLAY_ID(OVY_7)
+	ldr r0, _02237CA4 ; =SDK_OVERLAY_OVY_7_ID
 	bl UnloadOverlayByID
 	mov r0, #1
 	pop {r3, r4, r5, pc}
@@ -429,8 +429,8 @@ ov57_02237B20: ; 0x02237B20
 _02237C94: .word 0x00000458
 _02237C98: .word 0x0000045C
 _02237C9C: .word 0x0000040C
-_02237CA0: .word FS_OVERLAY_ID(OVY_6)
-_02237CA4: .word FS_OVERLAY_ID(OVY_7)
+_02237CA0: .word SDK_OVERLAY_OVY_6_ID
+_02237CA4: .word SDK_OVERLAY_OVY_7_ID
 	thumb_func_end ov57_02237B20
 
 	thumb_func_start ov57_02237CA8
@@ -5661,7 +5661,7 @@ _0223A560:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0xec
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -5785,7 +5785,7 @@ _0223A644:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0xec
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -6007,7 +6007,7 @@ _0223A820:
 	add r0, r4, #0
 	add r0, #0xec
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0x47
 	lsl r0, r0, #2
 	add r0, r4, r0

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_49.inc"
 	.include "global.inc"
 
@@ -5496,7 +5496,7 @@ ov49_0225B014: ; 0x0225B014
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	add r0, #0x20
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -5645,7 +5645,7 @@ ov49_0225B124: ; 0x0225B124
 	bne _0225B144
 	add r0, r4, #0
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
@@ -6953,9 +6953,9 @@ ov49_0225BA5C: ; 0x0225BA5C
 	ldrh r2, [r4, r2]
 	mov r0, #4
 	bl LoadFontPal0
-	bl sub_020776B4
+	bl GetTypeIconGfxNarcId
 	add r6, r0, #0
-	bl sub_02077690
+	bl GetMoveTypeAndCategoryIconPlttFileId
 	add r1, r0, #0
 	mov r0, #0x60
 	str r0, [sp]
@@ -7486,10 +7486,10 @@ _0225BEB8:
 	bl ov45_0222D7C0
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
-	bl sub_020776B4
+	bl GetTypeIconGfxNarcId
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl sub_02077678
+	bl GetTypeIconGfxCharFileId
 	add r1, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -7531,7 +7531,7 @@ _0225BEB8:
 	lsr r3, r3, #0x18
 	bl CopyToBgTilemapRect
 	add r0, r7, #0
-	bl sub_0207769C
+	bl GetTypeIconGfxPlttOverride
 	mov r1, #4
 	add r0, #0xb
 	str r1, [sp]

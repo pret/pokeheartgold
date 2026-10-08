@@ -1,5 +1,5 @@
 #include "constants/pokemon.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_65.inc"
 	.include "global.inc"
 
@@ -4700,7 +4700,7 @@ _0221E506:
 	ldr r0, _0221E550 ; =0x00003690
 	mov r1, #0
 	add r0, r5, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _0221E550 ; =0x00003690
 	add r0, r5, r0
 	bl RemoveWindow

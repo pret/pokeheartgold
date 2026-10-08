@@ -54,7 +54,7 @@ BOOL RadioShow_TeamRocket_Print(RadioShow *radioShow) {
 }
 
 void RadioShow_TeamRocket_Init(RadioShow *radioShow) {
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0418_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0418, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0418_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0418_00001, radioShow->showHost);
 }

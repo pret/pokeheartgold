@@ -1,0 +1,319 @@
+{
+  "key": 5218,
+  "messages": [
+    {
+      "id": "msg_0103_D32R0101_00000",
+      "en_US": [
+        "Welcome to the Battle Frontier!\r",
+        "This is your first visit?\n",
+        "Right this way, please!\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00001",
+      "en_US": [
+        "Oh! You have a Vs. Recorder!\n",
+        "How nice!\r",
+        "We upgrade Vs. Recorders for first-time\n",
+        "visitors for Battle Frontier use.\r",
+        "I’ll borrow yours for a moment.\r",
+        "Let’s see... Slide open this part here,\n",
+        "and ticka-tacka-kachunk there!\r",
+        "All done!\n",
+        "Here you go.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Vs. Recorder was\n",
+        "upgraded."
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00003",
+      "en_US": [
+        "Our other staff will be pleased to\n",
+        "explain how the individual facilities\f",
+        "of the Battle Frontier operate.\r",
+        "I can go over general topics.\n",
+        "Do you have any questions? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00004",
+      "en_US": "Which topic should I explain? {YESNO 0}"
+    },
+    {
+      "id": "msg_0103_D32R0101_00005",
+      "en_US": [
+        "The Battle Frontier has five facilities\n",
+        "dedicated to battling.\r",
+        "At the Battle Tower, the objective is\n",
+        "to beat seven Trainers in a row.\r",
+        "At the Battle Hall, you may keep battle\n",
+        "records of individual Pokémon.\r",
+        "At the Battle Factory, you must win\n",
+        "consecutive battles with rentals.\r",
+        "The Battle Castle forces Trainers to\n",
+        "manage Castle Points to advance.\r",
+        "And finally, the Battle Arcade is where\n",
+        "random luck triggers events.\r",
+        "You can try any of these facilities!\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00006",
+      "en_US": [
+        "The battles at the five Battle Frontier\n",
+        "facilities are held under special rules.\r",
+        "First and foremost, no Exp. Points\n",
+        "can be earned.\r",
+        "Consequently, the Pokémon battling\n",
+        "here will not level up.\r",
+        "If the Level 50 rule is chosen,\n",
+        "Pokémon of higher levels will be\f",
+        "temporarily reduced to Lv. 50.\r",
+        "Pokémon under Lv. 50 will be entered\n",
+        "without an upward level adjustment.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00007",
+      "en_US": [
+        "Battle Points are usually referred to\n",
+        "as BP.\r",
+        "BP are points that are used only in\n",
+        "the Battle Frontier.\r",
+        "BP are awarded for meeting certain\n",
+        "performance goals at the various\f",
+        "Battle Frontier facilities.\r",
+        "BP can be exchanged for prizes at\n",
+        "the Exchange Service Corner.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00008",
+      "en_US": [
+        "The Exchange Service Corner is\n",
+        "comprised of two tents straight\f",
+        "ahead past here.\r",
+        "There, you may exchange your BP for\n",
+        "a wide variety of prizes.\r",
+        "Please do visit it!\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00009",
+      "en_US": [
+        "The Performance Monitor shows Trainer\n",
+        "data, such as the previous record and\f",
+        "the best record to date.\r",
+        "You will find one near the reception\n",
+        "counter in each facility.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00010",
+      "en_US": "We hope you enjoy your visit!"
+    },
+    {
+      "id": "msg_0103_D32R0101_00011",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0103_D32R0101_00012",
+      "garbage": 9
+    },
+    {
+      "id": "msg_0103_D32R0101_00013",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0103_D32R0101_00014",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0103_D32R0101_00015",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0103_D32R0101_00016",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0103_D32R0101_00017",
+      "en_US": [
+        "Welcome to the Battle Frontier!\r",
+        "Should I explain how the\n",
+        "Battle Tower works? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00018",
+      "en_US": [
+        "The Battle Tower is the building at the\n",
+        "back of the Battle Frontier.\r",
+        "The object here is to enter a team of\n",
+        "different Pokémon and battle on until\f",
+        "you lose.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00019",
+      "en_US": "We hope you enjoy your visit!"
+    },
+    {
+      "id": "msg_0103_D32R0101_00020",
+      "en_US": [
+        "Welcome to the Battle Frontier!\r",
+        "Should I explain how the\n",
+        "Battle Factory works? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00021",
+      "en_US": [
+        "The Battle Factory is at the upper-\n",
+        "right corner of the Battle Frontier.\r",
+        "There, you engage in a knockout\n",
+        "tournament with rented Pokémon.\r",
+        "The goal is to keep winning for\n",
+        "as long as possible.\r",
+        "Every time you win a match, you may\n",
+        "trade one of your Pokémon for one of\f",
+        "the opponent’s Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00022",
+      "en_US": "We hope you enjoy your visit!"
+    },
+    {
+      "id": "msg_0103_D32R0101_00023",
+      "en_US": [
+        "Welcome to the Battle Frontier!\r",
+        "Should I explain how the\n",
+        "Battle Hall works? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00024",
+      "en_US": [
+        "The Battle Hall is at the upper-left\n",
+        "corner of the Battle Frontier.\r",
+        "Here, you enter one Pokémon of your\n",
+        "choosing for one-on-one battles.\r",
+        "The objective is to keep your winning\n",
+        "streak going as long as possible.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00025",
+      "en_US": "We hope you enjoy your visit!"
+    },
+    {
+      "id": "msg_0103_D32R0101_00026",
+      "en_US": [
+        "Welcome to the Battle Frontier!\r",
+        "Should I explain how the\n",
+        "Battle Castle works? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00027",
+      "en_US": [
+        "The Battle Castle is at the lower-left\n",
+        "corner of the Battle Frontier.\r",
+        "Here, you are provided with Castle\n",
+        "Points, CP, that you must manage.\r",
+        "The CP are used for healing Pokémon,\n",
+        "renting items or Berries, and so on.\r",
+        "The objective is to keep a winning\n",
+        "streak alive while managing your CP.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00028",
+      "en_US": "We hope you enjoy your visit!"
+    },
+    {
+      "id": "msg_0103_D32R0101_00029",
+      "en_US": [
+        "Welcome to the Battle Frontier!\r",
+        "Should I explain how the\n",
+        "Battle Arcade works? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00030",
+      "en_US": [
+        "The Battle Arcade is at the lower-right\n",
+        "corner of the Battle Frontier.\r",
+        "Here, a game board is activated\n",
+        "before every match.\r",
+        "Depending on what comes up on the\n",
+        "game board, an event takes place.\r",
+        "Some events will be good to the\n",
+        "challenger, while others won’t be.\r",
+        "The challenger may even avoid having\n",
+        "to battle at all.\r",
+        "The objective is to keep a winning\n",
+        "streak alive as long as possible.\r"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00031",
+      "en_US": "We hope you enjoy your visit!"
+    },
+    {
+      "id": "msg_0103_D32R0101_00032",
+      "en_US": [
+        "The Battle Frontier is up ahead!\n",
+        "I have explored places all over the\f",
+        "world, but nothing compares to the\f",
+        "excitement I feel right now!\r",
+        "What kinds of Trainers will I see?\n",
+        "What battles will I experience?\r",
+        "It’s a whole new adventure for me!"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00033",
+      "en_US": [
+        "The five facilities of the Battle\n",
+        "Frontier are...\r",
+        "Tower.\r",
+        "Hall.\r",
+        "Castle.\r",
+        "Factory.\r",
+        "And Arcade.\r",
+        "How do you make an acronym out of\n",
+        "that? THCFA?\r",
+        "Rearrange those letters, maybe?\n",
+        "FATCH! CHAFT!\r",
+        "...Nope! Nothing works!\n",
+        "Didn’t anyone think of this?!"
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00034",
+      "en_US": [
+        "The Vs. Recorder is sure nifty!\r",
+        "Checking the Frontier Record\n",
+        "will tell you how much BP you have."
+      ]
+    },
+    {
+      "id": "msg_0103_D32R0101_00035",
+      "en_US": [
+        "My dream is to battle Palmer of the\n",
+        "Battle Tower.\r",
+        "I want to record it for posterity on\n",
+        "my Vs. Recorder.\r",
+        "But I left my Vs. Recorder\n",
+        "at home... I’m heartbroken!"
+      ]
+    }
+  ]
+}

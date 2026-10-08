@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GF_SndSetState
 .public GetSoundDataPointer
@@ -23,7 +23,7 @@
 .public sub_02004AB8
 .public Sound_SetFieldBGM
 .public Sound_SetScene
-.public sub_02004B10
+.public Sound_LoadHeapStateBGMAndResetSubScene
 .public sub_02004B24
 .public sub_02004EB4
 .public Sound_SetSceneAndPlayBGM

@@ -15,7 +15,7 @@ MYDIR=$(dirname "$0")
 mkdir -p "${MYDIR}"/.bins "${MYDIR}"/.files
 
 DEFAULT_BASEROM=baserom.nds
-DEFAULT_ARM9BUILDDIR=build/heartgold.us
+DEFAULT_ARM9BUILDDIR=build
 DEFAULT_ARM7BUILDDIR=sub/build
 DEFAULT_FSDIR=files
 difftype='-u'

@@ -1,37 +1,37 @@
 {
-  "header": "fielddata/script/scr_seq/event_T10.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T10_000 + 1",
-      "type": 1,
-      "x": 914,
-      "z": 202,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_t10_rare_candy",
-      "type": 2,
-      "x": 910,
-      "z": 209,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "warps": [
-    {
-      "x": 912,
-      "z": 218,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 912,
-      "z": 200,
-      "header": "MAP_POKEMON_LEAGUE_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T10.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T10_000 + 1",
+            "type": 1,
+            "x": 914,
+            "z": 202,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_t10_rare_candy",
+            "type": 2,
+            "x": 910,
+            "z": 209,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "warps": [
+        {
+            "x": 912,
+            "z": 218,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 912,
+            "z": 200,
+            "header": "MAP_POKEMON_LEAGUE_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

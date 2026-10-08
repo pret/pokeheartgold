@@ -1,0 +1,114 @@
+{
+  "key": 51441,
+  "messages": [
+    {
+      "id": "msg_0433_00000",
+      "en_US": [
+        "Welcome!\r",
+        "Would you like some Scratch-Off Cards?\n",
+        "They’re three for {STRVAR_1 50, 0, 0} BP.\r"
+      ]
+    },
+    {
+      "id": "msg_0433_00001",
+      "en_US": [
+        "Will you buy some\n",
+        "Scratch-Off Cards? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0433_00002",
+      "en_US": "SCRATCH"
+    },
+    {
+      "id": "msg_0433_00003",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0433_00004",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0433_00005",
+      "en_US": "Please visit again."
+    },
+    {
+      "id": "msg_0433_00006",
+      "en_US": [
+        "You may buy three Scratch-Off Cards\n",
+        "for {STRVAR_1 50, 0, 0} BP.\r",
+        "Hidden on each Scratch-Off Card are\n",
+        "icons of Pokémon.\r",
+        "You may scratch the film off a card\n",
+        "three times.\r",
+        "If the same icon appears three times,\n",
+        "you will win a prize, like a Berry!\r"
+      ]
+    },
+    {
+      "id": "msg_0433_00007",
+      "en_US": [
+        "It is {STRVAR_1 50, 2, 0} BP for three Scratch-Off\n",
+        "Cards. Is that OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0433_00008",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0433_00009",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0433_00010",
+      "en_US": [
+        "OK, please select three\n",
+        "Scratch-Off Cards.\r"
+      ]
+    },
+    {
+      "id": "msg_0433_00011",
+      "en_US": [
+        "Congratulations!\r",
+        "You won on {STRVAR_1 50, 0, 0} Scratch-Off Card(s)!\r"
+      ]
+    },
+    {
+      "id": "msg_0433_00012",
+      "en_US": [
+        "Too bad! There is no more room for\n",
+        "the {STRVAR_1 8, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0433_00013",
+      "en_US": "Received {STRVAR_1 50, 1, 0} {STRVAR_1 8, 0, 0}!"
+    },
+    {
+      "id": "msg_0433_00014",
+      "en_US": [
+        "I’m sorry, but you don’t have enough\n",
+        "BP. Please come again."
+      ]
+    },
+    {
+      "id": "msg_0433_00015",
+      "en_US": [
+        "Welcome!\n",
+        "Would you like some Scratch-Off Cards?\r",
+        "You may buy three Scratch-Off Cards\n",
+        "for {STRVAR_1 50, 0, 0} BP.\r",
+        "Hidden on each Scratch-Off Card are\n",
+        "icons of Pokémon.\r",
+        "You may scratch the obscuring film off \n",
+        "a card three times.\r",
+        "If the same icon appears three times,\n",
+        "you will win a prize, like a Berry.\r",
+        "Also, DITTO’s icon can transform into\n",
+        "any other Pokémon.\r",
+        "Good luck matching Pokémon icons!\r"
+      ]
+    }
+  ]
+}

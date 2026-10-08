@@ -1,4 +1,4 @@
-    .include "macros/btlcmd.inc"
+#include "macros/btlcmd.inc"
 
     .data
 

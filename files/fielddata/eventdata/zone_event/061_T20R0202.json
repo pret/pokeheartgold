@@ -1,83 +1,83 @@
 {
-  "header": "fielddata/script/scr_seq/event_T20R0202.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T20R0202_000 + 1",
-      "type": 0,
-      "x": 6,
-      "z": 4,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T20R0202_001 + 1",
-      "type": 0,
-      "x": 8,
-      "z": 4,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T20R0202_storophy",
-      "spriteId": "SPRITE_STOROPHY",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 10,
-      "y": 0
-    },
-    {
-      "id": "obj_T20R0202_gtorophy",
-      "spriteId": "SPRITE_GTOROPHY",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 10,
-      "y": 0
-    },
-    {
-      "id": "obj_T20R0202_btorophy",
-      "spriteId": "SPRITE_BTOROPHY",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
-      "scriptId": 0,
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 7,
-      "z": 10,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 3,
-      "z": 4,
-      "header": "MAP_NEW_BARK_PLAYER_HOUSE_1F",
-      "anchor": 1,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T20R0202.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T20R0202_000 + 1",
+            "type": 0,
+            "x": 6,
+            "z": 4,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T20R0202_001 + 1",
+            "type": 0,
+            "x": 8,
+            "z": 4,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T20R0202_storophy",
+            "spriteId": "SPRITE_STOROPHY",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_SILVER_TROPHY",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 10,
+            "y": 0
+        },
+        {
+            "id": "obj_T20R0202_gtorophy",
+            "spriteId": "SPRITE_GTOROPHY",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_GOLD_TROPHY",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 10,
+            "y": 0
+        },
+        {
+            "id": "obj_T20R0202_btorophy",
+            "spriteId": "SPRITE_BTOROPHY",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_PLAYERS_ROOM_BRONZE_TROPHY",
+            "scriptId": 0,
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 7,
+            "z": 10,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 3,
+            "z": 4,
+            "header": "MAP_NEW_BARK_PLAYER_HOUSE_1F",
+            "anchor": 1,
+            "y": 0
+        }
+    ]
 }

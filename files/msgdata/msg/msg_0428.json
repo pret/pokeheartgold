@@ -1,0 +1,53 @@
+{
+  "key": 26399,
+  "messages": [
+    {
+      "id": "msg_0428_00000",
+      "en_US": "Plains Area"
+    },
+    {
+      "id": "msg_0428_00001",
+      "en_US": "Meadow Area"
+    },
+    {
+      "id": "msg_0428_00002",
+      "en_US": "Savannah Area"
+    },
+    {
+      "id": "msg_0428_00003",
+      "en_US": "Peak Area"
+    },
+    {
+      "id": "msg_0428_00004",
+      "en_US": "Rocky Beach Area"
+    },
+    {
+      "id": "msg_0428_00005",
+      "en_US": "Wetland Area"
+    },
+    {
+      "id": "msg_0428_00006",
+      "en_US": "Forest Area"
+    },
+    {
+      "id": "msg_0428_00007",
+      "en_US": "Swamp Area"
+    },
+    {
+      "id": "msg_0428_00008",
+      "en_US": "Marshland Area"
+    },
+    {
+      "id": "msg_0428_00009",
+      "en_US": "Wasteland Area"
+    },
+    {
+      "id": "msg_0428_00010",
+      "en_US": "Mountain Area"
+    },
+    {
+      "id": "msg_0428_00011",
+      "en_US": "Desert Area"
+    }
+  ]
+}

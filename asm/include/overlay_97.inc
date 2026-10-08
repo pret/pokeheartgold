@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public CopyU16StringArrayN
 .public FontID_Alloc

@@ -1,0 +1,230 @@
+{
+  "key": 20267,
+  "messages": [
+    {
+      "id": "msg_0550_T21_00000",
+      "en_US": [
+        "You’re a rookie Trainer, aren’t you?\n",
+        "I can tell!\r",
+        "That’s OK! Everyone is a rookie\n",
+        "at some point!\r",
+        "If you’d like, I can teach you a\n",
+        "few things.\f",
+        "OK, then! Follow me!\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00001",
+      "en_US": [
+        "Ohh... I’m sorry.\n",
+        "I forgot that you weren’t wearing the\f",
+        "Running Shoes!\r",
+        "I’ll try to go as slow as possible, so\n",
+        "try keeping up!\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00002",
+      "en_US": [
+        "This is a Pokémon Center. They heal\n",
+        "your Pokémon in no time at all.\r",
+        "You’ll be relying on them a lot, so\n",
+        "you better learn about them.\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00003",
+      "en_US": [
+        "This is a Pokémon Mart.\n",
+        "They sell Poké Balls for catching wild\f",
+        "Pokémon and other useful items.\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00004",
+      "en_US": [
+        "Route 30 is out this way.\r",
+        "Trainers will be battling their\n",
+        "Pokémon there.\r",
+        "If you go a little farther,\n",
+        "you’ll see Mr. Pokémon’s House.\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00005",
+      "en_US": [
+        "This is the sea, as you can see.\r",
+        "Some Pokémon are found only in water.\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00006",
+      "en_US": [
+        "Here...\n",
+        "It’s my house!\r",
+        "For your effort keeping up with me,\n",
+        "I’ll give you my Running Shoes!\f",
+        "They’re still warm!\r",
+        "...\n",
+        "...\r",
+        "Got you, didn’t I?\n",
+        "Don’t worry, these are brand new!\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Running Shoes from the Guide Gent!"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00008",
+      "en_US": [
+        "The instructions read,\n",
+        "“Touch the Sprint Button on the\f",
+        "Touch Screen to sprint.”\r",
+        "It also says,\n",
+        "“Hold the B Button down to sprint.”\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00009",
+      "en_US": [
+        "...Hffp... Hffp...\n",
+        "I made it...\r",
+        "I forgot about one thing.\n",
+        "This is another token from me!\r",
+        "Take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00010",
+      "en_US": [
+        "The Guide Gent loaded the Map Card\n",
+        "on {STRVAR_1 3, 0, 0}’s Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Pokégear\n",
+        "can now show the Town Map!\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00012",
+      "en_US": [
+        "Select the Pokégear on the\n",
+        "Touch Screen and then select\f",
+        "the Town Map icon.\r",
+        "You’ll see the map of the region\n",
+        "you’re currently in!\r",
+        "The Pokégear becomes more useful as\n",
+        "you add Cards.\r",
+        "I wish you luck on your journey!\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00013",
+      "en_US": [
+        "...\r",
+        "You got a Pokémon at the Lab.\n",
+        "What a waste.\r",
+        "That’s a Pokémon that’s too good for\n",
+        "a wimp like you.\r",
+        "...\n",
+        "Don’t you get what I’m saying?\r",
+        "Well, I too have a good Pokémon.\n",
+        "I’ll show you what I mean!\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00014",
+      "en_US": [
+        "...\r",
+        "Do you want to know who I am?\n",
+        "...\r",
+        "I’m going to be the world’s greatest\n",
+        "Pokémon Trainer.\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00015",
+      "en_US": [
+        "Give it back!\n",
+        "That’s my Trainer Card!\r",
+        "Oh no!\n",
+        "You saw my name...\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00016",
+      "en_US": [
+        "Did you talk to the old man by the\n",
+        "Pokémon Center?\r",
+        "He’ll put a Map of Johto on your\n",
+        "Pokégear."
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00017",
+      "en_US": [
+        "When you’re with Pokémon,\n",
+        "going anywhere is fun."
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00018",
+      "en_US": [
+        "Mr. Pokémon’s house is still farther\n",
+        "up ahead.\r",
+        "You could use the Running Shoes if\n",
+        "you had a pair.\r",
+        "But beware of wild Pokémon and\n",
+        "Trainers!\r",
+        "When you run, the noise will\n",
+        "attract them."
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00019",
+      "en_US": [
+        "I battled the Trainers on the road.\n",
+        "My Pokémon lost.\r",
+        "They’re a mess! I must take them to\n",
+        "a Pokémon Center."
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00020",
+      "en_US": [
+        "A Pokémon I caught had an item.\n",
+        "I think it’s Mystic Water.\r",
+        "I don’t need it, so do you want it?\r"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00021",
+      "en_US": "Back to fishing for me, then."
+    },
+    {
+      "id": "msg_0550_T21_00022",
+      "en_US": "You don’t have room for this."
+    },
+    {
+      "id": "msg_0550_T21_00023",
+      "en_US": [
+        "Cherrygrove City\n",
+        "The City of Fragrant Flowers"
+      ]
+    },
+    {
+      "id": "msg_0550_T21_00024",
+      "en_US": [
+        "Guide Gent’s House\n",
+        "Full-of-Energy, High-Speed Old Man"
+      ]
+    }
+  ]
+}

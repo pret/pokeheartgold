@@ -1,0 +1,19 @@
+{
+  "key": 9235,
+  "messages": [
+    {
+      "id": "msg_0258_P01R0104_00000",
+      "en_US": [
+        "OK!\n",
+        "You must be the last passenger.\r"
+      ]
+    },
+    {
+      "id": "msg_0258_P01R0104_00001",
+      "en_US": [
+        "Huh?\n",
+        "The ship won’t go anywhere today."
+      ]
+    }
+  ]
+}

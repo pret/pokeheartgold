@@ -1,34 +1,34 @@
 {
-  "header": "fielddata/script/scr_seq/event_DIRECT2.h",
-  "objects": [
-    {
-      "id": "obj_DIRECT2_pcwoman3",
-      "spriteId": "SPRITE_PCWOMAN3",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_colosseum_pcwoman3",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 12,
-      "z": 4,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "std_colosseum_exit",
-      "x": 7,
-      "z": 11,
-      "w": 2,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_TEMP_x400F"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_DIRECT2.h",
+    "objects": [
+        {
+            "id": "obj_DIRECT2_pcwoman3",
+            "spriteId": "SPRITE_PCWOMAN3",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_colosseum_pcwoman3",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 12,
+            "z": 4,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "std_colosseum_exit",
+            "x": 7,
+            "z": 11,
+            "w": 2,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_TEMP_x400F"
+        }
+    ]
 }

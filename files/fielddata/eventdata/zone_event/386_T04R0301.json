@@ -1,82 +1,82 @@
 {
-  "header": "fielddata/script/scr_seq/event_T04R0301.h",
-  "objects": [
-    {
-      "id": "obj_T04R0301_gsoldwoman1",
-      "spriteId": "SPRITE_GSOLDWOMAN1",
-      "movement": 17,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T04R0301_000 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T04R0301_gsoldman1",
-      "spriteId": "SPRITE_GSOLDMAN1",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T04R0301_001 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T04R0301_tsure_poke_static_zubat",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_ZUBAT",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T04R0301_003 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 2,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T04R0301_tsure_poke_static_kangaskhan",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_KANGASKHAN",
-      "movement": 5,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T04R0301_002 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 0,
-      "x": 5,
-      "z": 3,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 8,
-      "header": "MAP_CERULEAN",
-      "anchor": 2,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T04R0301.h",
+    "objects": [
+        {
+            "id": "obj_T04R0301_gsoldwoman1",
+            "spriteId": "SPRITE_GSOLDWOMAN1",
+            "movement": 17,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T04R0301_000 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T04R0301_gsoldman1",
+            "spriteId": "SPRITE_GSOLDMAN1",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T04R0301_001 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T04R0301_tsure_poke_static_zubat",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_ZUBAT",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T04R0301_003 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 2,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T04R0301_tsure_poke_static_kangaskhan",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_KANGASKHAN",
+            "movement": 5,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T04R0301_002 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 0,
+            "x": 5,
+            "z": 3,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 8,
+            "header": "MAP_CERULEAN",
+            "anchor": 2,
+            "y": 0
+        }
+    ]
 }

@@ -1,0 +1,249 @@
+{
+  "key": 20271,
+  "messages": [
+    {
+      "id": "msg_0542_T20_00000",
+      "en_US": "Wow, your Pokégear is impressive!"
+    },
+    {
+      "id": "msg_0542_T20_00001",
+      "en_US": "Wait, {STRVAR_1 3, 0, 0}!"
+    },
+    {
+      "id": "msg_0542_T20_00002",
+      "en_US": "Wait, {STRVAR_1 3, 0, 0}!"
+    },
+    {
+      "id": "msg_0542_T20_00003",
+      "en_US": "What do you think you’re doing?\r"
+    },
+    {
+      "id": "msg_0542_T20_00004",
+      "en_US": [
+        "It’s dangerous to go out without\n",
+        "a Pokémon!\r",
+        "Wild Pokémon jump out of the grass\n",
+        "on the way to the next town."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00005",
+      "en_US": [
+        "Oh! Your Pokémon is adorable!\n",
+        "I wish I had one!"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00006",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Leaving again?\r",
+        "You should tell your mom if you\n",
+        "are leaving."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00007",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Leaving again?\r",
+        "You should tell your mom if you\n",
+        "are leaving."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00008",
+      "en_US": [
+        "Call your mom on your Pokégear to\n",
+        "let her know how you’re doing."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00009",
+      "en_US": "I like your Bag!"
+    },
+    {
+      "id": "msg_0542_T20_00010",
+      "en_US": "Wait a sec!\r"
+    },
+    {
+      "id": "msg_0542_T20_00011",
+      "en_US": [
+        "Did you leave your Pokégear at home?\r",
+        "You should ask your mom."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00012",
+      "en_US": [
+        "Yo, {STRVAR_1 3, 0, 0}!\r",
+        "I hear Professor Elm discovered some\n",
+        "new Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00013",
+      "en_US": [
+        "...\r",
+        "So this is the famous Elm Pokémon Lab...\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00014",
+      "en_US": "...What are you staring at?\r"
+    },
+    {
+      "id": "msg_0542_T20_00015",
+      "en_US": [
+        "Lyra: {STRVAR_1 3, 0, 0}!\r",
+        "So you picked...\n",
+        "{STRVAR_1 0, 1, 0}!\r",
+        "That’s a cute Pokémon you have!\r",
+        "When you walk with it, it’ll become\n",
+        "more friendly.\r",
+        "You should turn around and talk to it\n",
+        "sometimes, too.\r",
+        "Oh, that’s right!\n",
+        "Why don’t you show it to your mom?\f",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00016",
+      "en_US": [
+        "Ethan: {STRVAR_1 3, 0, 0}!\r",
+        "So you picked...\n",
+        "{STRVAR_1 0, 1, 0}!\r",
+        "That’s a cute Pokémon you have!\r",
+        "When you walk with it, it’ll become\n",
+        "more friendly.\r",
+        "You should turn around and talk to it\n",
+        "sometimes, too.\r",
+        "Oh, that’s right!\n",
+        "Why don’t you show it to your mom?\f",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00017",
+      "en_US": "Professor Elm: Wait one second!\r"
+    },
+    {
+      "id": "msg_0542_T20_00018",
+      "en_US": [
+        "I almost completely forgot\n",
+        "about this...\f",
+        "Here, I’ll give you my number.\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Professor Elm\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00020",
+      "en_US": [
+        "Professor Elm: I’ll call you if\n",
+        "anything comes up.\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00021",
+      "en_US": "{STRVAR_1 1, 0, 0}! Where are you going?\r"
+    },
+    {
+      "id": "msg_0542_T20_00022",
+      "en_US": [
+        "Professor Elm has been waiting for you.\f",
+        "He said he has something to give you.\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00023",
+      "en_US": [
+        "Did you not hear me saying that\n",
+        "Professor Elm is waiting for you?\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00024",
+      "en_US": "I’m getting upset!\r"
+    },
+    {
+      "id": "msg_0542_T20_00025",
+      "en_US": [
+        "Lyra: I wonder what a Kimono Girl\n",
+        "wants from you..."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00026",
+      "en_US": [
+        "Ethan: I wonder what a Kimono Girl\n",
+        "wants from you..."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00027",
+      "en_US": "Lyra: Hi, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0542_T20_00028",
+      "en_US": "Ethan: Hey, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0542_T20_00029",
+      "en_US": [
+        "Where do you think you’re going,\n",
+        "{STRVAR_1 3, 0, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00030",
+      "en_US": [
+        "Where do you think you’re going,\n",
+        "{STRVAR_1 3, 0, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00031",
+      "en_US": [
+        "Lyra: Hmm... My Pokémon may be\n",
+        "putting on some weight lately..."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00032",
+      "en_US": [
+        "Ethan: Hmm... My Pokémon may be\n",
+        "putting on some weight lately..."
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00033",
+      "en_US": "MARILL: Murfu.\r"
+    },
+    {
+      "id": "msg_0542_T20_00034",
+      "en_US": [
+        "New Bark Town\n",
+        "Winds of a New Beginning"
+      ]
+    },
+    {
+      "id": "msg_0542_T20_00035",
+      "en_US": "{STRVAR_1 3, 0, 0}’s House"
+    },
+    {
+      "id": "msg_0542_T20_00036",
+      "en_US": "Elm Pokémon Lab"
+    },
+    {
+      "id": "msg_0542_T20_00037",
+      "en_US": "{STRVAR_1 3, 0, 0}’s House"
+    }
+  ]
+}

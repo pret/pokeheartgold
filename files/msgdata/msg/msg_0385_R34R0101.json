@@ -1,0 +1,171 @@
+{
+  "key": 46182,
+  "messages": [
+    {
+      "id": "msg_0385_R34R0101_00000",
+      "en_US": [
+        "Lyra: Grandma!\r",
+        "Let me introduce my friend.\n",
+        "This is {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00001",
+      "en_US": [
+        "Ah ha.\n",
+        "This is your boy...friend.\f",
+        "I see. Hmm.\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00002",
+      "en_US": [
+        "Lyra: What? Grandma...!\n",
+        "What are you talking about?\r",
+        "He just happens to live nearby...\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00003",
+      "en_US": [
+        "Grandma: Hahaha.\n",
+        "I know. I know.\r",
+        "Since you brought him here, Lyra, you\n",
+        "must be sure about his talent.\r",
+        "Right, {STRVAR_1 3, 0, 0}?\n",
+        "Come and see us anytime!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00004",
+      "en_US": [
+        "Lyra: Well, I better go now...\n",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00005",
+      "en_US": "Lyra: Oh! I almost forgot!\r"
+    },
+    {
+      "id": "msg_0385_R34R0101_00006",
+      "en_US": [
+        "Lyra: Here!\n",
+        "This is my Pokégear number!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Lyra\n",
+        "in the Pokégear!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00008",
+      "en_US": [
+        "Lyra: You know you can talk to your\n",
+        "Pokémon as they follow you?\r",
+        "They do all sorts of cute stuff on the\n",
+        "road and in towns.\r",
+        "I’m taking notes every time they do\n",
+        "funny things.\r",
+        "Give me a call and I’ll share some of\n",
+        "them with you.\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00009",
+      "en_US": [
+        "Lyra: Grandma!\r",
+        "Don’t you say anything.\r",
+        "We are both Trainers, and we are\n",
+        "supposed to exchange numbers.\f",
+        "That’s all.\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00010",
+      "en_US": [
+        "Ethan: Grandma!\r",
+        "Let me introduce my friend.\n",
+        "This is {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00011",
+      "en_US": [
+        "Ah ha.\n",
+        "This is your girl...friend.\f",
+        "I see. Hmm.\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00012",
+      "en_US": [
+        "Ethan: What? Grandma...!\n",
+        "What are you talking about?\r",
+        "She just happens to live nearby...\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00013",
+      "en_US": [
+        "Hahaha.\n",
+        "I know. I know.\r",
+        "Since you took her here, Ethan, you\n",
+        "must be sure about her talent.\r",
+        "Right, {STRVAR_1 3, 0, 0}?\n",
+        "Come and see us anytime!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00014",
+      "en_US": [
+        "Ethan: Well, I better go now...\n",
+        "See ya!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00015",
+      "en_US": "Ethan: Oh! I almost forgot!\r"
+    },
+    {
+      "id": "msg_0385_R34R0101_00016",
+      "en_US": [
+        "Ethan: Here!\n",
+        "This is my Pokégear number!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00017",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Ethan\n",
+        "in the Pokégear!\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00018",
+      "en_US": [
+        "Ethan: You know you can talk to your\n",
+        "Pokémon as they follow you?\r",
+        "They do all sorts of cute stuff on the\n",
+        "road and in towns.\r",
+        "I’m taking notes every time they do\n",
+        "funny things.\r",
+        "Give me a call and I’ll share some of\n",
+        "them with you.\r"
+      ]
+    },
+    {
+      "id": "msg_0385_R34R0101_00019",
+      "en_US": [
+        "Ethan: Grandma!\r",
+        "Don’t you say anything.\r",
+        "We are both Trainers, and we are\n",
+        "supposed to exchange numbers.\f",
+        "That’s all.\r"
+      ]
+    }
+  ]
+}

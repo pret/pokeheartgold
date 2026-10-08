@@ -241,8 +241,8 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
     sub_02079700();
     sub_02079758(partyMenu->bgConfig);
     sub_02079A14(partyMenu, narc);
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     Sound_SetSceneAndPlayBGM(57, SEQ_NONE, 0);
     PartyMenu_SetContextMenuStaticStrings(partyMenu);
     PartyMenu_AddAllWindows(partyMenu);
@@ -257,11 +257,11 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
         }
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_TM_HM) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00034, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9 || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_ITEM || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00032, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP || partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_TMHM || partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_DONE) {
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_ATTACH_CAPSULE) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
@@ -269,9 +269,9 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00184, TRUE);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
-    } else if (partyMenu->args->context != PARTY_MENU_CONTEXT_10) {
+    } else if (partyMenu->args->context != PARTY_MENU_CONTEXT_GIVE_ITEM_DONE) {
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     } else {
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 1);
@@ -401,7 +401,7 @@ static BOOL PartyMenuApp_Main(OverlayManager *manager, int *pState) {
         }
         break;
     case PARTY_MENU_STATE_BEGIN_EXIT:
-        sub_020880CC(1, HEAP_ID_PARTY_MENU);
+        App_StartScreenFade(1, HEAP_ID_PARTY_MENU);
         *pState = PARTY_MENU_STATE_WAIT_EXIT_FADE_OUT;
         break;
     case PARTY_MENU_STATE_WAIT_EXIT_FADE_OUT:
@@ -456,11 +456,11 @@ static int PartyMenu_Subtask_Init(PartyMenu *partyMenu) {
             return PartyMenu_ItemUseFunc_TMHMDoLearnMove(partyMenu);
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_REPLACE_MOVE_LEVELUP) {
             return PartyMenu_ItemUseFunc_LevelUpDoLearnMove(partyMenu);
-        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_11 || partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
+        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_DONE) {
             return PARTY_MENU_STATE_14;
-        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_9) {
+        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_ITEM) {
             return PARTY_MENU_STATE_GIVE_ITEM_SELECT_MON;
-        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
+        } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_ITEM_DONE) {
             return PARTY_MENU_STATE_GIVE_ITEM_TO_MON;
         } else {
             return PARTY_MENU_STATE_1;
@@ -474,8 +474,8 @@ static int PartyMenu_Subtask_MainNormal(PartyMenu *partyMenu) {
     switch (PartyMenu_HandleInput(partyMenu)) {
     case 0:
         switch (partyMenu->args->context) {
-        case PARTY_MENU_CONTEXT_3:
-        case PARTY_MENU_CONTEXT_20:
+        case PARTY_MENU_CONTEXT_SELECT_MON_NO_PROMPT:
+        case PARTY_MENU_CONTEXT_FEED_POFFIN:
             partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_0;
             return PARTY_MENU_STATE_BEGIN_EXIT;
         case PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX:
@@ -535,7 +535,7 @@ static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenu *partyMenu) {
     switch (func) {
     case LIST_CANCEL:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35]);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
@@ -614,7 +614,7 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     PartyMenu_RemoveSpriteRenderer(partyMenu);
     PartyMenu_RemoveAllWindows(partyMenu);
     sub_020798C4(partyMenu->bgConfig);
-    sub_02021238();
+    DisableTouchPad();
     GF_DestroyVramTransferManager();
     for (i = 0; i < PARTY_SIZE; ++i) {
         String_Delete(partyMenu->monsDrawState[i].nickname);
@@ -630,8 +630,8 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     if (partyMenu->pokedex != NULL) {
         PokedexData_UnloadAndDelete(partyMenu->pokedex);
     }
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_0) {
-        sub_02004B10();
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_FIELD) {
+        Sound_LoadHeapStateBGMAndResetSubScene();
     }
     FontID_Release(4);
     OverlayManager_FreeData(manager);
@@ -957,7 +957,7 @@ static PartyMenu *sub_02079BD8(OverlayManager *manager) {
     } else {
         ret->pokedex = NULL;
     }
-    ret->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0300_bin, HEAP_ID_PARTY_MENU);
+    ret->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0300, HEAP_ID_PARTY_MENU);
     ret->msgPrinter = MessagePrinter_New(15, 14, 0, HEAP_ID_PARTY_MENU);
     ret->msgFormat = MessageFormat_New(HEAP_ID_PARTY_MENU);
     for (i = 0; i < PARTY_SIZE; ++i) {
@@ -989,14 +989,14 @@ static void sub_02079D38(PartyMenu *partyMenu) {
     u8 r4 = 3;
     if (partyMenu->args->unk_25 == 2) {
         partyMenu->dpadMenuBox = _0210144C;
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
         partyMenu->dpadMenuBox = _0210148C;
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
         partyMenu->dpadMenuBox = _021014CC;
     } else {
         partyMenu->dpadMenuBox = _0210140C;
     }
-    if (partyMenu->args->context != PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL) {
+    if (partyMenu->args->context != PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_TOWER && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_CASTLE && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL) {
         Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_8], FALSE);
         Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_9], 0);
         s16 x, y;
@@ -1141,7 +1141,7 @@ static void PartyMenu_DrawPanelsAndPush(PartyMenu *partyMenu) {
         PartyMenu_DrawPanels_UseTMHM(partyMenu, r1);
     } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SUPER_CONTEST) {
         PartyMenu_Setup_SuperContestEntry(partyMenu, r1);
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
         PartyMenu_DrawPanels_FrontierFacilityEntry(partyMenu, r1);
     } else {
         PartyMenu_DrawPanels_Default(partyMenu, r1);
@@ -1361,7 +1361,7 @@ static BOOL PartyMenu_HandleDpadInput(PartyMenu *partyMenu) {
             newSelection = PartyMenu_GetSelectionInDirection(partyMenu, &x, &y, direction);
         }
     } else if (newSelection == PARTY_MON_SELECTION_CONFIRM) {
-        if (partyMenu->args->context != PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && partyMenu->args->context != PARTY_MENU_CONTEXT_17 && partyMenu->args->context != PARTY_MENU_CONTEXT_23 && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL && direction == DIR_NORTH) {
+        if (partyMenu->args->context != PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_TOWER && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_CASTLE && partyMenu->args->context != PARTY_MENU_CONTEXT_BATTLE_HALL && direction == DIR_NORTH) {
             newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[(partyMenu->unk_C66 & 1) + 2]);
         } else if (direction == DIR_SOUTH) {
             newSelection = PartyMenu_GetNewSelectionFromTable(partyMenu, &x, &y, _021012CC[partyMenu->unk_C66 & 1]);
@@ -1451,10 +1451,10 @@ static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState menuInputState) {
             sub_0207CB3C(partyMenu, menuInputState);
             return 3;
         }
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_3 || partyMenu->args->context == PARTY_MENU_CONTEXT_INGAME_TRADE) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SELECT_MON_NO_PROMPT || partyMenu->args->context == PARTY_MENU_CONTEXT_INGAME_TRADE) {
         PlaySE(SEQ_SE_DP_SELECT);
         return 0;
-    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_20 || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
+    } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_FEED_POFFIN || partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_FROM_MAILBOX) {
         if (!partyMenu->monsDrawState[partyMenu->partyMonIndex].isEgg) {
             PlaySE(SEQ_SE_DP_SELECT);
             return 0;
@@ -1485,7 +1485,7 @@ static int sub_0207AC70(PartyMenu *partyMenu, MenuInputState menuInputState) {
 
 static int PartyMenu_GetTouchButtonInput(PartyMenu *partyMenu) {
     int idx = 0;
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
         return TouchscreenHitbox_FindRectAtTouchNew(_02110104);
     } else {
         if (partyMenu->args->unk_25 == 2) {
@@ -1577,17 +1577,17 @@ static void sub_0207AFC4(PartyMenu *partyMenu) {
     u8 *buf = Heap_Alloc(HEAP_ID_PARTY_MENU, 8);
     u8 numItems;
     switch (partyMenu->args->context) {
-    case PARTY_MENU_CONTEXT_0:
+    case PARTY_MENU_CONTEXT_FIELD:
         numItems = sub_0207B0B0(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT:
-    case PARTY_MENU_CONTEXT_17:
+    case PARTY_MENU_CONTEXT_BATTLE_TOWER:
         numItems = sub_0207B23C(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_ATTACH_CAPSULE:
         numItems = PartyMenu_SetContextMenuItems_GiveCapsule(partyMenu, buf);
         break;
-    case PARTY_MENU_CONTEXT_18:
+    case PARTY_MENU_CONTEXT_DAYCARE:
         numItems = sub_0207B1C8(partyMenu, buf);
         break;
     case PARTY_MENU_CONTEXT_SPIN_TRADE:
@@ -1596,7 +1596,7 @@ static void sub_0207AFC4(PartyMenu *partyMenu) {
     case PARTY_MENU_CONTEXT_BATTLE_HALL:
         numItems = PartyMenu_SetContextMenuItems_BattleHallEntry(partyMenu, buf);
         break;
-    case PARTY_MENU_CONTEXT_23:
+    case PARTY_MENU_CONTEXT_BATTLE_CASTLE:
         numItems = sub_0207B2DC(partyMenu, buf);
         break;
     default:
@@ -1775,7 +1775,7 @@ u8 sub_0207B364(PartyMenu *partyMenu, u8 selection) {
             return 0;
         }
     }
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER) {
         if (IsPokemonBannedFromBattleFrontier(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
             return 0;
         }
@@ -1813,7 +1813,7 @@ u8 sub_0207B418(PartyMenu *partyMenu, u8 selection) {
 u8 sub_0207B4A0(PartyMenu *partyMenu, u8 selection) {
     u8 i;
 
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
         if (IsPokemonBannedFromBattleFrontier(partyMenu->monsDrawState[selection].species, partyMenu->monsDrawState[selection].form) == TRUE) {
             return 0;
         }
@@ -2029,7 +2029,7 @@ static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
         }
     }
 
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_17) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER) {
         switch (sub_0207BA78(partyMenu)) {
         case 0:
             break;
@@ -2058,7 +2058,7 @@ static int PartyMenu_SelectedBattleTeamComplianceCheck(PartyMenu *partyMenu) {
         }
     }
 
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
         switch (sub_0207BB88(partyMenu)) {
         case 0:
             break;
@@ -2153,7 +2153,7 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenu *partyMenu, int *
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
-        if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_17 || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_23) {
+        if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
         } else if (partyMenu->args->context == PARTY_MENU_CONTEXT_SPIN_TRADE) {
             PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00184, TRUE);
@@ -2618,11 +2618,11 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenu *partyMenu) {
 }
 
 static int PartyMenu_SwitchItemsDeclined(PartyMenu *partyMenu) {
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_10) {
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_ITEM_DONE) {
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
-        partyMenu->args->context = PARTY_MENU_CONTEXT_0;
+        partyMenu->args->context = PARTY_MENU_CONTEXT_FIELD;
         return PARTY_MENU_STATE_1;
     } else {
         partyMenu->args->selectedAction = PARTY_MENU_ACTION_RETURN_10;
@@ -2654,8 +2654,8 @@ static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu) {
     DrawFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 42, 15);
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
     PartyMenu_PrintBufferedMessageOnWindow34(partyMenu);
-    if (partyMenu->args->context == PARTY_MENU_CONTEXT_12) {
-        partyMenu->args->context = PARTY_MENU_CONTEXT_10;
+    if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_DONE) {
+        partyMenu->args->context = PARTY_MENU_CONTEXT_GIVE_ITEM_DONE;
     }
     return manipulateItemResult;
 }

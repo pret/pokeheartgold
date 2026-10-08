@@ -7,9 +7,9 @@
 #include "unk_02091278.h"
 
 #if defined(HEARTGOLD)
-#define ZUKAN_FLAVOR_GMM (NARC_msg_msg_0803_bin)
+#define ZUKAN_FLAVOR_GMM (msg_0803)
 #elif defined(SOULSILVER)
-#define ZUKAN_FLAVOR_GMM (NARC_msg_msg_0804_bin)
+#define ZUKAN_FLAVOR_GMM (msg_0804)
 #else
 #error "Unable to determine game"
 #endif // HGSS
@@ -19,30 +19,30 @@ static String *ov18_021E5A10(int msgBank, int msgNum, enum HeapID heapId);
 static void ov18_021E5A50(u16 species, int language, int *pMsgNo, int *pLanguageFlag, int *pLanguageFlagNativeMask);
 
 static const int ov18_021F970C[] = {
-    NARC_msg_msg_0828_bin,
-    NARC_msg_msg_0823_bin,
-    NARC_msg_msg_0824_bin,
-    NARC_msg_msg_0825_bin,
-    NARC_msg_msg_0826_bin,
-    NARC_msg_msg_0827_bin,
+    msg_0828,
+    msg_0823,
+    msg_0824,
+    msg_0825,
+    msg_0826,
+    msg_0827,
 };
 
 static const int ov18_021F96F4[] = {
-    NARC_msg_msg_0822_bin,
-    NARC_msg_msg_0817_bin,
-    NARC_msg_msg_0818_bin,
-    NARC_msg_msg_0819_bin,
-    NARC_msg_msg_0820_bin,
-    NARC_msg_msg_0821_bin,
+    msg_0822,
+    msg_0817,
+    msg_0818,
+    msg_0819,
+    msg_0820,
+    msg_0821,
 };
 
 static const int ov18_021F9724[] = {
-    NARC_msg_msg_0810_bin,
-    NARC_msg_msg_0805_bin,
-    NARC_msg_msg_0806_bin,
-    NARC_msg_msg_0807_bin,
-    NARC_msg_msg_0808_bin,
-    NARC_msg_msg_0809_bin,
+    msg_0810,
+    msg_0805,
+    msg_0806,
+    msg_0807,
+    msg_0808,
+    msg_0809,
 };
 
 String *ov18_021E590C(u16 species, int language, enum HeapID heapId) {
@@ -73,7 +73,7 @@ String *ov18_021E595C(u16 species, int language, enum HeapID heapId) {
     ov18_021E5A50(species, language, &languageMsgNum, &unused, &msgNum);
     if (msgNum == DEX_LANGUAGE_FLAG_MAX) {
         msgNum = species;
-        msgBank = NARC_msg_msg_0816_bin;
+        msgBank = msg_0816;
     } else {
         int msgBanks[6];
         ARRAY_ASSIGN(msgBanks, ov18_021F970C);

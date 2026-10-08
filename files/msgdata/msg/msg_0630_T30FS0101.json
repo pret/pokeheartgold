@@ -1,0 +1,22 @@
+{
+  "key": 12113,
+  "messages": [
+    {
+      "id": "msg_0630_T30FS0101_00000",
+      "en_US": [
+        "You can’t buy a Max Revive, but it fully\n",
+        "restores a fainted Pokémon.\r",
+        "Beware--it won’t restore PP, the\n",
+        "Power Points needed for moves."
+      ]
+    },
+    {
+      "id": "msg_0630_T30FS0101_00001",
+      "en_US": [
+        "Max Repel keeps weak Pokémon away\n",
+        "from you. It’s the longest lasting of\f",
+        "the Repel sprays."
+      ]
+    }
+  ]
+}

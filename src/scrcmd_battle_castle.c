@@ -209,7 +209,7 @@ static u32 sub_0204FC78(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem, enum H
     partyMenu->mailbox = Save_Mailbox_Get(fieldSystem->saveData);
     partyMenu->options = Save_PlayerData_GetOptionsAddr(fieldSystem->saveData);
     partyMenu->unk_25 = 0;
-    partyMenu->context = PARTY_MENU_CONTEXT_23;
+    partyMenu->context = PARTY_MENU_CONTEXT_BATTLE_CASTLE;
     partyMenu->fieldSystem = fieldSystem;
     partyMenu->partySlot = a0->partySlot;
     for (u8 i = 0; i < 3; i++) {

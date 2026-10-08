@@ -1,60 +1,60 @@
 {
-  "header": "fielddata/script/scr_seq/event_R18R0101.h",
-  "objects": [
-    {
-      "id": "obj_R18R0101_counterm",
-      "spriteId": "SPRITE_COUNTERM",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_R18R0101_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 4,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1,
-      "z": 7,
-      "header": "MAP_ROUTE_18",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 10,
-      "z": 7,
-      "header": "MAP_ROUTE_18",
-      "anchor": 2,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_R18R0101_002 + 1",
-      "x": 5,
-      "z": 6,
-      "w": 1,
-      "h": 3,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_4129"
-    },
-    {
-      "scriptId": "_EV_scr_seq_R18R0101_003 + 1",
-      "x": 6,
-      "z": 6,
-      "w": 1,
-      "h": 3,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_UNK_412A"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R18R0101.h",
+    "objects": [
+        {
+            "id": "obj_R18R0101_counterm",
+            "spriteId": "SPRITE_COUNTERM",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_R18R0101_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 4,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1,
+            "z": 7,
+            "header": "MAP_ROUTE_18",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 10,
+            "z": 7,
+            "header": "MAP_ROUTE_18",
+            "anchor": 2,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_R18R0101_002 + 1",
+            "x": 5,
+            "z": 6,
+            "w": 1,
+            "h": 3,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_4129"
+        },
+        {
+            "scriptId": "_EV_scr_seq_R18R0101_003 + 1",
+            "x": 6,
+            "z": 6,
+            "w": 1,
+            "h": 3,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_UNK_412A"
+        }
+    ]
 }

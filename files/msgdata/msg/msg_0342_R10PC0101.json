@@ -1,0 +1,37 @@
+{
+  "key": 4051,
+  "messages": [
+    {
+      "id": "msg_0342_R10PC0101_00000",
+      "en_US": [
+        "A Pokémon Center near a cave?\n",
+        "That’s mighty convenient."
+      ]
+    },
+    {
+      "id": "msg_0342_R10PC0101_00001",
+      "en_US": [
+        "The last time I came by the Power\n",
+        "Plant, I heard somebody screaming,\f",
+        "“Oh no, it must be a thief!”\r",
+        "I think it was the Manager’s voice."
+      ]
+    },
+    {
+      "id": "msg_0342_R10PC0101_00002",
+      "en_US": [
+        "I hear Team Rocket got back together\n",
+        "in Johto but fell apart right away.\r",
+        "I didn’t know anything about that."
+      ]
+    },
+    {
+      "id": "msg_0342_R10PC0101_00003",
+      "en_US": [
+        "You can’t see it from here, but there’s\n",
+        "a Power Plant south of this\f",
+        "Pokémon Center!"
+      ]
+    }
+  ]
+}

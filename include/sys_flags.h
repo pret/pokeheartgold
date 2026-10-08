@@ -59,7 +59,7 @@ BOOL sub_020669B4(SaveVarsFlags *state, u32 a1);
 BOOL CheckDisabledCianwoodWaterfall(SaveVarsFlags *state);
 BOOL CheckSolvedLtSurgeGym(SaveVarsFlags *state);
 BOOL CheckFlag982(SaveVarsFlags *state);
-BOOL CheckFlag09A(SaveVarsFlags *state);
+BOOL CheckUnlockedPokeBallsInMarts(SaveVarsFlags *state);
 BOOL CheckFlag997(SaveVarsFlags *state);
 void SetFlag99A(SaveVarsFlags *state);
 void ClearFlag99A(SaveVarsFlags *state);

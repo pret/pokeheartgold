@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PaletteData_Init
 .public PaletteData_Free
@@ -27,9 +27,9 @@
 .public BgClearTilemapBufferAndCommit
 .public DoScheduledBgGpuUpdates
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes
@@ -60,4 +60,4 @@
 .public _02102620
 .public gSystem
 .public OS_IRQTable
-.public ov00_021EC9D4
+.public DWC_GetLinkLevel

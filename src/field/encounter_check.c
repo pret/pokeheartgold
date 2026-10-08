@@ -724,9 +724,9 @@ static void ApplyLeadMonHeldItemEffectToEncounterRate(Pokemon *leadMon, u8 *pEnc
 
 static void ApplyFluteEffectToEncounterRate(FieldSystem *fieldSystem, u8 *pEncounterRate) {
     u8 flute = RoamerSave_GetFlute(Save_Roamers_Get(fieldSystem->saveData));
-    if (flute == 1) { // black flute
+    if (flute == FLUTE_BLACK) {
         *pEncounterRate /= 2;
-    } else if (flute == 2) { // white flute
+    } else if (flute == FLUTE_WHITE) {
         *pEncounterRate += *pEncounterRate / 2;
     }
 }

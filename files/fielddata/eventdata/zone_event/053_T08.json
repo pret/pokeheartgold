@@ -1,245 +1,245 @@
 {
-  "header": "fielddata/script/scr_seq/event_T08.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T08_004 + 1",
-      "type": 1,
-      "x": 1213,
-      "z": 405,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T08_005 + 1",
-      "type": 1,
-      "x": 1220,
-      "z": 435,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T08_003 + 1",
-      "type": 1,
-      "x": 1193,
-      "z": 441,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T08_009 + 1",
-      "type": 1,
-      "x": 1208,
-      "z": 424,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_t08_nugget",
-      "type": 2,
-      "x": 1232,
-      "z": 413,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T08_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T08_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 2,
-      "yRange": 1,
-      "x": 1198,
-      "z": 441,
-      "y": 0
-    },
-    {
-      "id": "obj_T08_gswoman1",
-      "spriteId": "SPRITE_GSWOMAN1",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T08_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 1213,
-      "z": 426,
-      "y": 0
-    },
-    {
-      "id": "obj_T08_gsboy2",
-      "spriteId": "SPRITE_GSBOY2",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T08_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 1212,
-      "z": 413,
-      "y": 0
-    },
-    {
-      "id": "obj_T08_tree",
-      "spriteId": "SPRITE_TREE",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_cut",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1211,
-      "z": 424,
-      "y": 0
-    },
-    {
-      "id": "obj_T08_bonguri",
-      "spriteId": "SPRITE_BONGURI",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_apricorn_tree",
-      "facingDirection": 0,
-      "param0": 28,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1206,
-      "z": 421,
-      "y": 0
-    },
-    {
-      "id": "obj_T08_gsmiddleman1_2",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_CAMERON",
-      "scriptId": "_EV_scr_seq_T08_006 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1201,
-      "z": 445,
-      "y": 0
-    },
-    {
-      "id": "obj_T08_juggrer",
-      "spriteId": "SPRITE_JUGGRER",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T08_008 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1220,
-      "z": 411,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1241,
-      "z": 422,
-      "header": "MAP_ROUTE_15_FUCHSIA_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1241,
-      "z": 423,
-      "header": "MAP_ROUTE_15_FUCHSIA_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1203,
-      "z": 445,
-      "header": "MAP_ROUTE_19_FUCHSIA_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1204,
-      "z": 445,
-      "header": "MAP_ROUTE_19_FUCHSIA_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1197,
-      "z": 416,
-      "header": "MAP_FUCHSIA_POKEMART",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1214,
-      "z": 403,
-      "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1215,
-      "z": 403,
-      "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1195,
-      "z": 439,
-      "header": "MAP_FUCHSIA_GYM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1200,
-      "z": 439,
-      "header": "MAP_FUCHSIA_SOUTHWEST_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1209,
-      "z": 439,
-      "header": "MAP_FUCHSIA_POKECENTER_1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1222,
-      "z": 435,
-      "header": "MAP_FUCHSIA_SAFARI_ZONE_WARDEN_HOUSE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T08.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T08_004 + 1",
+            "type": 1,
+            "x": 1213,
+            "z": 405,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T08_005 + 1",
+            "type": 1,
+            "x": 1220,
+            "z": 435,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T08_003 + 1",
+            "type": 1,
+            "x": 1193,
+            "z": 441,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T08_009 + 1",
+            "type": 1,
+            "x": 1208,
+            "z": 424,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_t08_nugget",
+            "type": 2,
+            "x": 1232,
+            "z": 413,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T08_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T08_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 2,
+            "yRange": 1,
+            "x": 1198,
+            "z": 441,
+            "y": 0
+        },
+        {
+            "id": "obj_T08_gswoman1",
+            "spriteId": "SPRITE_GSWOMAN1",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T08_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 1213,
+            "z": 426,
+            "y": 0
+        },
+        {
+            "id": "obj_T08_gsboy2",
+            "spriteId": "SPRITE_GSBOY2",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T08_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 1212,
+            "z": 413,
+            "y": 0
+        },
+        {
+            "id": "obj_T08_tree",
+            "spriteId": "SPRITE_TREE",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_cut",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1211,
+            "z": 424,
+            "y": 0
+        },
+        {
+            "id": "obj_T08_bonguri",
+            "spriteId": "SPRITE_BONGURI",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_apricorn_tree",
+            "facingDirection": 0,
+            "param0": 28,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1206,
+            "z": 421,
+            "y": 0
+        },
+        {
+            "id": "obj_T08_gsmiddleman1_2",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_CAMERON",
+            "scriptId": "_EV_scr_seq_T08_006 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1201,
+            "z": 445,
+            "y": 0
+        },
+        {
+            "id": "obj_T08_juggrer",
+            "spriteId": "SPRITE_JUGGRER",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T08_008 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1220,
+            "z": 411,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1241,
+            "z": 422,
+            "header": "MAP_ROUTE_15_FUCHSIA_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1241,
+            "z": 423,
+            "header": "MAP_ROUTE_15_FUCHSIA_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1203,
+            "z": 445,
+            "header": "MAP_ROUTE_19_FUCHSIA_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1204,
+            "z": 445,
+            "header": "MAP_ROUTE_19_FUCHSIA_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1197,
+            "z": 416,
+            "header": "MAP_FUCHSIA_POKEMART",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1214,
+            "z": 403,
+            "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1215,
+            "z": 403,
+            "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1195,
+            "z": 439,
+            "header": "MAP_FUCHSIA_GYM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1200,
+            "z": 439,
+            "header": "MAP_FUCHSIA_SOUTHWEST_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1209,
+            "z": 439,
+            "header": "MAP_FUCHSIA_POKECENTER_1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1222,
+            "z": 435,
+            "header": "MAP_FUCHSIA_SAFARI_ZONE_WARDEN_HOUSE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

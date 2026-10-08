@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_80_02238648.inc"
 	.include "global.inc"
 
@@ -122,9 +122,9 @@ _022386D4:
 	bl FrontierMap_LoadPaletteData
 	add r0, r4, #0
 	bl ov80_02238FA0
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r4, #0
 	bl ov80_02239384
 	mov r0, #0x65
@@ -293,7 +293,7 @@ FrontierMap_Free: ; 0x0223885C
 	bl SysTask_Destroy
 	ldr r0, [r4, #0xc]
 	bl ov80_0223937C
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r4, #0
 	bl Heap_Free
 	mov r2, #1

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_69.inc"
 	.include "global.inc"
 
@@ -692,7 +692,7 @@ _021E5EB4:
 _021E5EDA:
 	add r0, r4, r0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 _021E5EE2:
 	ldr r0, _021E6060 ; =gSystem
 	ldr r1, [r0, #0x48]
@@ -709,11 +709,11 @@ _021E5EF8:
 	ldr r0, _021E604C ; =0x0000C034
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _021E605C ; =0x0000C044
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _021E6068 ; =0x000005DD
 	bl PlaySE
 	mov r0, #0xd8
@@ -2088,7 +2088,7 @@ ov69_021E6A54: ; 0x021E6A54
 	ldr r0, _021E6A80 ; =0x0000C024
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _021E6A80 ; =0x0000C024
 	add r0, r4, r0
 	bl RemoveWindow
@@ -2286,7 +2286,7 @@ ov69_021E6C14: ; 0x021E6C14
 	ldr r0, _021E6C2C ; =0x0000C054
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _021E6C2C ; =0x0000C054
 	add r0, r4, r0
 	bl RemoveWindow

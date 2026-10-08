@@ -1,48 +1,48 @@
 {
-  "header": "fielddata/script/scr_seq/event_T08R0401.h",
-  "objects": [
-    {
-      "id": "obj_T08R0401_middlewoman1_2",
-      "spriteId": "SPRITE_MIDDLEWOMAN1_2",
-      "movement": 17,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T08R0401_000 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 5,
-      "y": 0
-    },
-    {
-      "id": "obj_T08R0401_gsboy1",
-      "spriteId": "SPRITE_GSBOY1",
-      "movement": 4,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T08R0401_001 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 1,
-      "x": 9,
-      "z": 5,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 8,
-      "header": "MAP_FUCHSIA",
-      "anchor": 8,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T08R0401.h",
+    "objects": [
+        {
+            "id": "obj_T08R0401_middlewoman1_2",
+            "spriteId": "SPRITE_MIDDLEWOMAN1_2",
+            "movement": 17,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T08R0401_000 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 5,
+            "y": 0
+        },
+        {
+            "id": "obj_T08R0401_gsboy1",
+            "spriteId": "SPRITE_GSBOY1",
+            "movement": 4,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T08R0401_001 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 1,
+            "x": 9,
+            "z": 5,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 8,
+            "header": "MAP_FUCHSIA",
+            "anchor": 8,
+            "y": 0
+        }
+    ]
 }
