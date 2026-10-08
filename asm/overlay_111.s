@@ -2178,7 +2178,7 @@ ov111_021E69A0: ; 0x021E69A0
 	ldr r1, [sp, #0x2c]
 	add r2, r6, #0
 	add r3, r7, #0
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	b _021E69E8
 _021E69D4:
 	str r4, [sp]

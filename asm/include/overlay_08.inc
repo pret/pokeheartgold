@@ -37,7 +37,7 @@
 .public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
-.public sub_0200CE7C
+.public FontSpecialChars_DrawPartyScreenText
 .public SpriteManager_New
 .public SpriteSystem_InitSprites
 .public SpriteSystem_DrawSprites

@@ -299,7 +299,7 @@ static void BagApp_PrintTMorHMNumberOnWindow(BagAppData *appData, Window *window
     u16 itemId = slot->id;
     if (itemId < ITEM_HM01) {
         itemId = itemId - ITEM_TM01 + 1;
-        sub_0200CE7C(appData->msgPrinter, 2, itemId, 2, PRINTING_MODE_LEADING_ZEROS, window, 0, y + 5);
+        FontSpecialChars_DrawPartyScreenText(appData->msgPrinter, 2, itemId, 2, PRINTING_MODE_LEADING_ZEROS, window, 0, y + 5);
         BagApp_FormatTMQuantityString_DPPt(appData, slot->quantity, y, MAKE_TEXT_COLOR(1, 2, 0));
     } else {
         itemId = itemId - ITEM_HM01 + 1;

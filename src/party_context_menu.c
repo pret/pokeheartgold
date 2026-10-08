@@ -551,7 +551,7 @@ void PartyMenu_PrintMonLevelOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     if (partyMenu->monsDrawState[partySlot].status != PARTY_MON_STATUS_ICON_OK) {
         ScheduleWindowCopyToVram(window);
     } else {
-        sub_0200CE7C(partyMenu->msgPrinter, 1, partyMenu->monsDrawState[partySlot].level, 3, PRINTING_MODE_LEFT_ALIGN, window, 5, 2);
+        FontSpecialChars_DrawPartyScreenText(partyMenu->msgPrinter, 1, partyMenu->monsDrawState[partySlot].level, 3, PRINTING_MODE_LEFT_ALIGN, window, 5, 2);
         ScheduleWindowCopyToVram(window);
     }
 }

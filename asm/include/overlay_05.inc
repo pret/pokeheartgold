@@ -33,7 +33,7 @@
 .public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
-.public sub_0200CE7C
+.public FontSpecialChars_DrawPartyScreenText
 .public SpriteSystem_Alloc
 .public SpriteManager_New
 .public SpriteSystem_Init

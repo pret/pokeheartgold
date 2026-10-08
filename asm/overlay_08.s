@@ -4283,7 +4283,7 @@ ov08_0221DF80: ; 0x0221DF80
 	mov r1, #1
 	lsr r2, r2, #0x19
 	mov r3, #3
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	ldr r0, _0221DFC4 ; =0x00002070
 	ldr r0, [r5, r0]
 	add r0, r0, r4

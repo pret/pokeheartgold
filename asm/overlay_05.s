@@ -5635,7 +5635,7 @@ ov05_0221E714: ; 0x0221E714
 	ldrb r2, [r3, r2]
 	mov r1, #1
 	mov r3, #3
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov05_0221E714
