@@ -36,7 +36,7 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
     int fileLength;
     unsigned char *jsonString = ReadWholeFile(path, &fileLength);
 
-    cJSON *json = cJSON_Parse((const char *)jsonString);
+    cJSON *json = cJSON_ParseWithLength((const char *)jsonString, fileLength);
 
     struct JsonToCellOptions *options = malloc(sizeof(struct JsonToCellOptions));
 
@@ -83,11 +83,11 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
         }
     }
 
-    if (options->vramTransferEnabled) 
+    if (options->vramTransferEnabled)
     {
         cJSON *vramTransferMaxSize = cJSON_GetObjectItemCaseSensitive(json, "vramTransferMaxSize");
         options->vramTransferMaxSize = GetInt(vramTransferMaxSize);
-        
+
         options->transferData = malloc(sizeof(struct CellVramTransferData *) * options->cellCount);
 
         cJSON *transfers = cJSON_GetObjectItemCaseSensitive(json, "transferData");
@@ -107,13 +107,15 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
         }
     }
 
-    if (options->ucatEnabled) {
+    if (options->ucatEnabled)
+    {
         cJSON *ucatCells = cJSON_GetObjectItemCaseSensitive(json, "cellAttributes");
 
-        options->ucatCellAttribtes = malloc(sizeof(uint32_t) * options->cellCount);
+        options->ucatCellAttributes = malloc(sizeof(uint32_t) * options->cellCount);
 
-        for (int i = 0; i < options->cellCount; i++) {
-            options->ucatCellAttribtes[i] = GetInt(cJSON_GetArrayItem(ucatCells, i));
+        for (int i = 0; i < options->cellCount; i++)
+        {
+            options->ucatCellAttributes[i] = GetInt(cJSON_GetArrayItem(ucatCells, i));
         }
     }
 
@@ -189,7 +191,8 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             cJSON *Shape = cJSON_GetObjectItemCaseSensitive(Attr0, "Shape");
 
             int y = GetInt(YCoordinate);
-            if (y & (1 << 7)) {
+            if (y & (1 << 7))
+            {
                 y &= 0xFF;
             }
             options->cells[i]->oam[j].attr0.YCoordinate = y;
@@ -208,7 +211,8 @@ struct JsonToCellOptions *ParseNCERJson(char *path)
             cJSON *Size = cJSON_GetObjectItemCaseSensitive(Attr1, "Size");
 
             int x = GetInt(XCoordinate);
-            if (x & (1 << 8)) {
+            if (x & (1 << 8))
+            {
                 x &= 0x1FF;
             }
             options->cells[i]->oam[j].attr1.XCoordinate = x;
@@ -248,7 +252,7 @@ char *GetNCERJson(struct JsonToCellOptions *options)
     cJSON_AddBoolToObject(ncer, "ucatEnabled", options->ucatEnabled);
     cJSON_AddNumberToObject(ncer, "cellCount", options->cellCount);
     cJSON_AddNumberToObject(ncer, "mappingType", options->mappingType);
-    
+
     cJSON *cells = cJSON_AddArrayToObject(ncer, "cells");
 
     for (int i = 0; i < options->cellCount; i++)
@@ -282,7 +286,8 @@ char *GetNCERJson(struct JsonToCellOptions *options)
             cJSON *Attr0 = cJSON_AddObjectToObject(OAM, "Attr0");
 
             int y = options->cells[i]->oam[j].attr0.YCoordinate;
-            if (y & (1 << 7)) {
+            if (y & (1 << 7))
+            {
                 y |= ~0xFF;
             }
             cJSON_AddNumberToObject(Attr0, "YCoordinate", y);
@@ -296,7 +301,8 @@ char *GetNCERJson(struct JsonToCellOptions *options)
             cJSON *Attr1 = cJSON_AddObjectToObject(OAM, "Attr1");
 
             int x = options->cells[i]->oam[j].attr1.XCoordinate;
-            if (x & (1 << 8)) {
+            if (x & (1 << 8))
+            {
                 x |= ~0x1FF;
             }
             cJSON_AddNumberToObject(Attr1, "XCoordinate", x);
@@ -322,7 +328,7 @@ char *GetNCERJson(struct JsonToCellOptions *options)
         cJSON_AddNumberToObject(ncer, "labelCount", options->labelCount);
     }
 
-    if (options->vramTransferEnabled) 
+    if (options->vramTransferEnabled)
     {
         cJSON_AddNumberToObject(ncer, "vramTransferMaxSize", options->vramTransferMaxSize);
         cJSON *transfers = cJSON_AddArrayToObject(ncer, "transferData");
@@ -336,11 +342,13 @@ char *GetNCERJson(struct JsonToCellOptions *options)
         }
     }
 
-    if (options->ucatEnabled) {
+    if (options->ucatEnabled)
+    {
         cJSON *ucatCells = cJSON_AddArrayToObject(ncer, "cellAttributes");
 
-        for (int i = 0; i < options->cellCount; i++) {
-            cJSON_AddNumberToObject(ucatCells, "cellAttr", options->ucatCellAttribtes[i]);
+        for (int i = 0; i < options->cellCount; i++)
+        {
+            cJSON_AddNumberToObject(ucatCells, "cellAttr", options->ucatCellAttributes[i]);
         }
     }
 
@@ -354,7 +362,7 @@ struct JsonToScreenOptions *ParseNSCRJson(char *path)
     int fileLength;
     unsigned char *jsonString = ReadWholeFile(path, &fileLength);
 
-    cJSON *json = cJSON_Parse((const char *)jsonString);
+    cJSON *json = cJSON_ParseWithLength((const char *)jsonString, fileLength);
 
     struct JsonToScreenOptions *options = malloc(sizeof(struct JsonToScreenOptions));
 
@@ -419,10 +427,10 @@ struct JsonToScreenOptions *ParseNSCRJson(char *path)
 
 struct JsonToAnimationOptions *ParseNANRJson(char *path)
 {
-    int filelength;
-    unsigned char *jsonString = ReadWholeFile(path, &filelength);
+    int fileLength;
+    unsigned char *jsonString = ReadWholeFile(path, &fileLength);
 
-    cJSON *json = cJSON_Parse((const char *)jsonString);
+    cJSON *json = cJSON_ParseWithLength((const char *)jsonString, fileLength);
 
     struct JsonToAnimationOptions *options = malloc(sizeof(struct JsonToAnimationOptions));
 
@@ -515,9 +523,9 @@ struct JsonToAnimationOptions *ParseNANRJson(char *path)
     cJSON_ArrayForEach(animationResult, animationResults)
     {
         if (i > options->resultCount - 1)
-            FATAL_ERROR("Frame count is incorrect.\n");
+            FATAL_ERROR("Animation result count is incorrect.\n");
 
-        // init padding to false, this is used in gfx.c to control padding, and is therefore checked there
+        //init padding to false, this is used in gfx.c to control padding, and is therefore checked there
         options->animationResults[i]->padded = false;
 
         cJSON *resultType = cJSON_GetObjectItemCaseSensitive(animationResult, "resultType");
@@ -588,19 +596,22 @@ struct JsonToAnimationOptions *ParseNANRJson(char *path)
     cJSON *uaatBool = cJSON_GetObjectItemCaseSensitive(json, "uaatEnabled");
     options->uaatEnabled = GetBool(uaatBool);
 
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         cJSON *uaatData = cJSON_GetObjectItemCaseSensitive(json, "uaatData");
 
         cJSON *uaatSequences = cJSON_GetObjectItemCaseSensitive(uaatData, "sequenceAttributes");
         options->uaatData.sequenceAttributes = malloc(sizeof(uint32_t) * options->sequenceCount);
-        for (int i = 0; i < options->sequenceCount; i++) {
+        for (int i = 0; i < options->sequenceCount; i++)
+        {
             cJSON *uaatSeq = cJSON_GetArrayItem(uaatSequences, i);
             options->uaatData.sequenceAttributes[i] = GetInt(uaatSeq);
         }
 
         cJSON *uaatFrames = cJSON_GetObjectItemCaseSensitive(uaatData, "frameAttributes");
         options->uaatData.frameAttributes = malloc(sizeof(uint32_t) * options->frameCount);
-        for (int i = 0; i < options->frameCount; i++) {
+        for (int i = 0; i < options->frameCount; i++)
+        {
             cJSON *uaatFra = cJSON_GetArrayItem(uaatFrames, i);
             options->uaatData.frameAttributes[i] = GetInt(uaatFra);
         }
@@ -656,7 +667,7 @@ char *GetNANRJson(struct JsonToAnimationOptions *options)
             case 0: //index
                 cJSON_AddNumberToObject(animationResult, "index", options->animationResults[i]->index);
                 break;
-            
+
             case 1: //SRT
                 cJSON_AddNumberToObject(animationResult, "index", options->animationResults[i]->dataSrt.index);
                 cJSON_AddNumberToObject(animationResult, "rotation", options->animationResults[i]->dataSrt.rotation);
@@ -686,16 +697,19 @@ char *GetNANRJson(struct JsonToAnimationOptions *options)
         cJSON_AddNumberToObject(nanr, "labelCount", options->labelCount);
     }
 
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         cJSON *uaat = cJSON_AddObjectToObject(nanr, "uaatData");
 
         cJSON *uaatSequences = cJSON_AddArrayToObject(uaat, "sequenceAttributes");
-        for (int i = 0; i < options->sequenceCount; i++) {
+        for (int i = 0; i < options->sequenceCount; i++)
+        {
             cJSON_AddNumberToObject(uaatSequences, "seqAttr", options->uaatData.sequenceAttributes[i]);
         }
 
         cJSON *uaatFrames = cJSON_AddArrayToObject(uaat, "frameAttributes");
-        for (int i = 0; i < options->frameCount; i++) {
+        for (int i = 0; i < options->frameCount; i++)
+        {
             cJSON_AddNumberToObject(uaatFrames, "fraAttr", options->uaatData.frameAttributes[i]);
         }
     }
@@ -728,8 +742,9 @@ void FreeNCERCell(struct JsonToCellOptions *options)
         }
         free(options->transferData);
     }
-    if (options->ucatEnabled) {
-        free(options->ucatCellAttribtes);
+    if (options->ucatEnabled)
+    {
+        free(options->ucatCellAttributes);
     }
     free(options->cells);
     free(options);
@@ -757,7 +772,8 @@ void FreeNANRAnimation(struct JsonToAnimationOptions *options)
     {
         free(options->animationResults[i]);
     }
-    if (options->uaatEnabled) {
+    if (options->uaatEnabled)
+    {
         free(options->uaatData.sequenceAttributes);
         free(options->uaatData.frameAttributes);
     }
@@ -804,7 +820,7 @@ struct NtrFontMetadata *ParseNtrFontMetadataJson(char *path)
     int fileLength;
     unsigned char *jsonString = ReadWholeFile(path, &fileLength);
 
-    cJSON *json = cJSON_Parse((const char *)jsonString);
+    cJSON *json = cJSON_ParseWithLength((const char *)jsonString, fileLength);
     if (json == NULL)
     {
         const char *errorPtr = cJSON_GetErrorPtr();

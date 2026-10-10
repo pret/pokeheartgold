@@ -21,12 +21,14 @@ struct PngToGbaOptions {
     int bitDepth;
     int colsPerChunk;
     int rowsPerChunk;
+    char *embedName;
 };
 
 struct PngToNtrOptions {
     char *cellFilePath;
     bool cellSnap;
     int numTiles;
+    int tilesWide;
     int bitDepth;
     int colsPerChunk;
     int rowsPerChunk;
@@ -41,12 +43,15 @@ struct PngToNtrOptions {
     int mappingType;
     uint32_t encodeMode;
     bool convertTo4Bpp;
+    int rotate;
+    bool noSkip;
 };
 
 struct NtrToPngOptions {
     char *paletteFilePath;
     char *cellFilePath;
     bool cellSnap;
+    bool noSkip;
     int bitDepth;
     bool hasTransparency;
     int width;
@@ -123,7 +128,7 @@ struct JsonToCellOptions {
     struct CellVramTransferData **transferData;
     char **labels;
     int labelCount;
-    int *ucatCellAttribtes;
+    int *ucatCellAttributes;
 };
 
 struct JsonToScreenOptions {

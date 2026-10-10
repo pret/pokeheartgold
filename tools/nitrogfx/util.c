@@ -56,12 +56,14 @@ char *GetFileExtension(char *path)
     if (*extension == 0)
         return NULL;
 
-    if (strcmp(extension, "lz") == 0) {
+    if (strcmp(extension,"lz") == 0)
+    {
         char *plainName = malloc(strlen(path) + 1);
         strcpy(plainName, path);
         plainName[strlen(path) - 3] = 0;
         char *newExtension = GetFileExtension(plainName);
-        if (newExtension != NULL) {
+        if (newExtension != NULL)
+        {
             extension -= strlen(newExtension) + 1;
         }
         free(plainName);

@@ -2,6 +2,7 @@
 
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 #include "global.h"
@@ -64,7 +65,8 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
             if (size == 0)
             {
                 FILE *out = fopen(outputPath, "wb+");
-                if (out != NULL) {
+                if (out != NULL)
+                {
                     fclose(out);
                 }
                 fclose(fp);
@@ -78,7 +80,7 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
 
     if (options->paletteFilePath != NULL)
     {
-        ReadNtrPalette(options->paletteFilePath, &image.palette, options->bitDepth, options->palIndex, false, options->convertTo8Bpp);
+        ReadNtrPalette(options->paletteFilePath, &image.palette, options->bitDepth, options->palIndex, options->convertTo8Bpp, options->verbose);
         image.hasPalette = true;
     }
     else
@@ -102,8 +104,9 @@ void ConvertNtrToPng(char *inputPath, char *outputPath, struct NtrToPngOptions *
 
     image.hasTransparency = options->hasTransparency;
 
-    if (options->cellFilePath != NULL) {
-        ApplyCellsToImage(options->cellFilePath, &image, true, options->cellSnap);
+    if (options->cellFilePath != NULL)
+    {
+        ApplyCellsToImage(options->cellFilePath, &image, true, options->cellSnap, options->noSkip, options->convertTo8Bpp);
     }
 
     WritePng(outputPath, &image);
@@ -119,7 +122,7 @@ void ConvertPngToGba(char *inputPath, char *outputPath, struct PngToGbaOptions *
 
     ReadPng(inputPath, &image);
 
-    WriteImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette);
+    WriteImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, options->embedName, &image, !image.hasPalette);
 
     FreeImage(&image);
 }
@@ -130,38 +133,45 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
     if (options->handleEmpty)
     {
         FILE *fp = fopen(inputPath, "rb");
+        uint32_t size = 0;
         if (fp != NULL)
         {
             fseek(fp, 0, SEEK_END);
-            uint32_t size = ftell(fp);
+            size = ftell(fp);
             rewind(fp);
-            if (size == 0)
+        }
+
+        if (size == 0)
+        {
+            FILE *out = fopen(outputPath, "wb+");
+            if (out != NULL)
             {
-                FILE *out = fopen(outputPath, "wb+");
-                if (out != NULL) {
-                    fclose(out);
-                }
-                fclose(fp);
-                return;
+                fclose(out);
             }
             fclose(fp);
+            return;
         }
+        fclose(fp);
     }
 
     struct Image image;
 
     image.bitDepth = options->bitDepth == 0 ? 4 : options->bitDepth;
+    if (options->convertTo4Bpp)
+    {
+        image.bitDepth = 8;
+    }
 
     ReadPng(inputPath, &image);
 
     uint32_t key = 0;
-    if (options->encodeMode) {
+    if (options->encodeMode)
+    {
         char* string = malloc(strlen(inputPath) + 5);
         sprintf(string, "%s.key", inputPath);
         FILE *fp = fopen(string, "rb");
-        if (fp == NULL) {
+        if (fp == NULL)
             FATAL_ERROR("Failed to open key file for reading.\n");
-        }
         size_t count = fread(&key, 4, 1, fp);
         if (count != 1)
             FATAL_ERROR("Not a valid key file.\n");
@@ -171,11 +181,15 @@ void ConvertPngToNtr(char *inputPath, char *outputPath, struct PngToNtrOptions *
 
     options->bitDepth = options->bitDepth == 0 ? image.bitDepth : options->bitDepth;
 
-    if (options->cellFilePath != NULL) {
-        ApplyCellsToImage(options->cellFilePath, &image, false, options->cellSnap);
+    if (options->cellFilePath != NULL)
+    {
+        ApplyCellsToImage(options->cellFilePath, &image, false, options->cellSnap, options->noSkip, false);
     }
 
-    WriteNtrImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk, &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101, options->sopc, options->vramTransfer, options->scan, options->encodeMode, options->mappingType, key, options->wrongSize, options->convertTo4Bpp);
+    WriteNtrImage(outputPath, options->numTiles, options->bitDepth, options->colsPerChunk, options->rowsPerChunk,
+                  &image, !image.hasPalette, options->clobberSize, options->byteOrder, options->version101,
+                  options->sopc, options->vramTransfer, options->scan, options->encodeMode, options->mappingType,
+                  key, options->wrongSize, options->convertTo4Bpp, options->rotate, options->tilesWide);
 
     FreeImage(&image);
 }
@@ -277,6 +291,8 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     options.encodeMode = 0;
     options.convertTo8Bpp = false;
     options.verbose = false;
+    options.noSkip = false;
+    options.bitDepth = 0;
 
     for (int i = 3; i < argc; i++)
     {
@@ -290,24 +306,43 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
             i++;
 
             options.paletteFilePath = argv[i];
-        } else if (strcmp(option, "-cell") == 0) {
-            if (i + 1 >= argc) {
+        }
+        else if (strcmp(option, "-cell") == 0)
+        {
+            if (i + 1 >= argc)
                 FATAL_ERROR("No cell file path following \"-cell\".\n");
-            }
 
             i++;
 
             options.cellFilePath = argv[i];
 
-            if (i + 1 < argc) {
-                if (strcmp(argv[i + 1], "-nosnap") == 0) {
-                    options.cellSnap = false;
-                    i++;
+            for (int j = 0; j < 2; j++)
+            {
+                if (i + 1 < argc)
+                {
+                    if (strcmp(argv[i + 1], "-nosnap") == 0)
+                    {
+                        options.cellSnap = false;
+                        i++;
+                    }
+                    else if (strcmp(argv[i + 1], "-noskip") == 0)
+                    {
+                        options.noSkip = true;
+                        i++;
+                    }
+                }
+                else
+                {
+                    break;
                 }
             }
-        } else if (strcmp(option, "-object") == 0) {
+        }
+        else if (strcmp(option, "-object") == 0)
+        {
             options.hasTransparency = true;
-        } else if (strcmp(option, "-palindex") == 0) {
+        }
+        else if (strcmp(option, "-palindex") == 0)
+        {
             if (i + 1 >= argc)
                 FATAL_ERROR("No palette index following \"-palindex\".\n");
 
@@ -318,7 +353,9 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.palIndex < 1)
                 FATAL_ERROR("Palette index must be positive.\n");
-        } else if (strcmp(option, "-width") == 0) {
+        }
+        else if (strcmp(option, "-width") == 0)
+        {
             if (i + 1 >= argc)
                 FATAL_ERROR("No width following \"-width\".\n");
 
@@ -329,7 +366,9 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.width < 1)
                 FATAL_ERROR("Width must be positive.\n");
-        } else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0) {
+        }
+        else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0)
+        {
             if (i + 1 >= argc)
                 FATAL_ERROR("No columns per chunk value following \"%s\".\n", option);
 
@@ -340,7 +379,9 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.colsPerChunk < 1)
                 FATAL_ERROR("columns per chunk must be positive.\n");
-        } else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0) {
+        }
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0)
+        {
             if (i + 1 >= argc)
                 FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 
@@ -351,29 +392,40 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.rowsPerChunk < 1)
                 FATAL_ERROR("rows per chunk must be positive.\n");
-        } else if (strcmp(option, "-scanfronttoback") == 0) {
+        }
+        else if (strcmp(option, "-scanfronttoback") == 0)
+        {
             // maintained for compatibility
-            if (options.encodeMode != 0) {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 2;
-        } else if (strcmp(option, "-encodebacktofront") == 0) {
-            if (options.encodeMode != 0) {
+        }
+        else if (strcmp(option, "-encodebacktofront") == 0)
+        {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 1;
-        } else if (strcmp(option, "-encodefronttoback") == 0) {
-            if (options.encodeMode != 0) {
+        }
+        else if (strcmp(option, "-encodefronttoback") == 0)
+        {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 2;
-        } else if (strcmp(option, "-handleempty") == 0) {
+        }
+        else if (strcmp(option, "-handleempty") == 0)
+        {
             options.handleEmpty = true;
-        } else if (strcmp(option, "-convertTo8Bpp") == 0) {
+        }
+        else if (strcmp(option, "-convertTo8Bpp") == 0)
+        {
             options.convertTo8Bpp = true;
-        } else if (strcmp(option, "-verbose") == 0) {
+        }
+        else if (strcmp(option, "-verbose") == 0)
+        {
             options.verbose = true;
-        } else {
+        }
+        else
+        {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
@@ -384,7 +436,8 @@ void HandleNtrToPngCommand(char *inputPath, char *outputPath, int argc, char **a
     ConvertNtrToPng(inputPath, outputPath, &options);
 }
 
-void HandleNtrLzToPngCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+void HandleNtrLzToPngCommand(char *inputPath, char *outputPath, int argc, char **argv)
+{
     HandleLZDecompressCommand(inputPath, outputPath, argc, argv);
 
     HandleNtrToPngCommand(outputPath, outputPath, argc, argv);
@@ -403,6 +456,7 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
     options.bitDepth = bitDepth;
     options.colsPerChunk = 1;
     options.rowsPerChunk = 1;
+    options.embedName = NULL;
 
     for (int i = 3; i < argc; i++)
     {
@@ -447,6 +501,17 @@ void HandlePngToGbaCommand(char *inputPath, char *outputPath, int argc, char **a
             if (options.rowsPerChunk < 1)
                 FATAL_ERROR("rows per chunk must be positive.\n");
         }
+        else if (strcmp(option, "-embed") == 0)
+        {
+            if (i + 1 >= argc)
+                FATAL_ERROR("No symbol name after following \"%s\".\n", option);
+
+            i++;
+
+            options.embedName = argv[i];
+
+            i++;
+        }
         else
         {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
@@ -462,6 +527,7 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
     options.cellFilePath = NULL;
     options.cellSnap = true;
     options.numTiles = 0;
+    options.tilesWide = 0;
     options.bitDepth = 0;
     options.colsPerChunk = 1;
     options.rowsPerChunk = 1;
@@ -476,6 +542,10 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
     options.mappingType = 0;
     options.encodeMode = 0;
     options.convertTo4Bpp = false;
+    options.rotate = 0;
+    options.noSkip = false;
+
+    bool freeCellPath = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -493,22 +563,61 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.numTiles < 1)
                 FATAL_ERROR("Number of tiles must be positive.\n");
-        } else if (strcmp(option, "-cell") == 0) {
-            if (i + 1 >= argc) {
+        }
+        else if (strcmp(option, "-cell") == 0)
+        {
+            if (i + 1 >= argc)
                 FATAL_ERROR("No cell file path following \"-cell\".\n");
-            }
 
             i++;
 
             options.cellFilePath = argv[i];
 
-            if (i + 1 < argc) {
-                if (strcmp(argv[i + 1], "-nosnap") == 0) {
-                    options.cellSnap = false;
-                    i++;
+            if (strcmp(options.cellFilePath, "-preservepath") == 0)
+            {
+                freeCellPath = true;
+                const char *suffix = "_cell.json";
+                size_t inputStemSize = strlen(inputPath) - strlen(".png");
+                options.cellFilePath = calloc(inputStemSize + strlen(suffix) + 1, sizeof(char));
+                sprintf(options.cellFilePath, "%.*s%s" , (int)inputStemSize, inputPath, suffix);
+            }
+
+            for (int j = 0; j < 2; j++)
+            {
+                if (i + 1 < argc)
+                {
+                    if (strcmp(argv[i + 1], "-nosnap") == 0)
+                    {
+                        options.cellSnap = false;
+                        i++;
+                    }
+                    else if (strcmp(argv[i + 1], "-noskip") == 0)
+                    {
+                        options.noSkip = true;
+                        i++;
+                    }
+                }
+                else
+                {
+                    break;
                 }
             }
-        } else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0) {
+        }
+        else if (strcmp(option, "-width") == 0)
+        {
+            if (i + 1 >= argc)
+                FATAL_ERROR("No number of tiles following \"-width\".\n");
+
+            i++;
+
+            if (!ParseNumber(argv[i], NULL, 10, &options.tilesWide))
+                FATAL_ERROR("Failed to parse tile width.\n");
+
+            if (options.tilesWide < 1)
+                FATAL_ERROR("Tile width must be positive.\n");
+        }
+        else if (strcmp(option, "-mwidth") == 0 || strcmp(option, "-cpc") == 0)
+        {
             if (i + 1 >= argc)
                 FATAL_ERROR("No columns per chunk value following \"%s\".\n", option);
 
@@ -519,7 +628,8 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.colsPerChunk < 1)
                 FATAL_ERROR("columns per chunk must be positive.\n");
-        } else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0) {
+        }
+        else if (strcmp(option, "-mheight") == 0 || strcmp(option, "-rpc") == 0) {
             if (i + 1 >= argc)
                 FATAL_ERROR("No rows per chunk value following \"%s\".\n", option);
 
@@ -530,7 +640,9 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.rowsPerChunk < 1)
                 FATAL_ERROR("rows per chunk must be positive.\n");
-        } else if (strcmp(option, "-bitdepth") == 0) {
+        }
+        else if (strcmp(option, "-bitdepth") == 0)
+        {
             if (i + 1 >= argc)
                 FATAL_ERROR("No bitdepth value following \"-bitdepth\".\n");
 
@@ -541,47 +653,67 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.bitDepth != 4 && options.bitDepth != 8)
                 FATAL_ERROR("bitdepth must be either 4 or 8.\n");
-        } else if (strcmp(option, "-clobbersize") == 0) {
+        }
+        else if (strcmp(option, "-clobbersize") == 0)
+        {
             options.clobberSize = true;
-        } else if (strcmp(option, "-nobyteorder") == 0) {
+        }
+        else if (strcmp(option, "-nobyteorder") == 0)
+        {
             options.byteOrder = false;
-        } else if (strcmp(option, "-version101") == 0) {
+        }
+        else if (strcmp(option, "-version101") == 0)
+        {
             options.version101 = true;
-        } else if (strcmp(option, "-sopc") == 0) {
+        }
+        else if (strcmp(option, "-sopc") == 0)
+        {
             options.sopc = true;
-        } else if (strcmp(option, "-scan") == 0) {
+        }
+        else if (strcmp(option, "-scan") == 0)
+        {
             options.scan = true;
-        } else if (strcmp(option, "-scanned") == 0) {
+        }
+        else if (strcmp(option, "-scanned") == 0)
+        {
             // maintained for compatibility
-            if (options.encodeMode != 0) {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 1;
             options.scan = true;
-        } else if (strcmp(option, "-scanfronttoback") == 0) {
+        }
+        else if (strcmp(option, "-scanfronttoback") == 0)
+        {
             // maintained for compatibility
-            if (options.encodeMode != 0) {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 2;
             options.scan = true;
-        } else if (strcmp(option, "-encodebacktofront") == 0) {
-            if (options.encodeMode != 0) {
+        }
+        else if (strcmp(option, "-encodebacktofront") == 0)
+        {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 1;
-        } else if (strcmp(option, "-encodefronttoback") == 0) {
-            if (options.encodeMode != 0) {
+        }
+        else if (strcmp(option, "-encodefronttoback") == 0)
+        {
+            if (options.encodeMode != 0)
                 FATAL_ERROR("Encode mode specified more than once.\n-encodebacktofront goes back to front as in DP, -encodefronttoback goes front to back as in PtHGSS\n");
-            }
             options.encodeMode = 2;
-        } else if (strcmp(option, "-wrongsize") == 0) {
+        }
+        else if (strcmp(option, "-wrongsize") == 0) {
             options.wrongSize = true;
-        } else if (strcmp(option, "-handleempty") == 0) {
+        }
+        else if (strcmp(option, "-handleempty") == 0)
+        {
             options.handleEmpty = true;
-        } else if (strcmp(option, "-vram") == 0) {
+        }
+        else if (strcmp(option, "-vram") == 0)
+        {
             options.vramTransfer = true;
-        } else if (strcmp(option, "-mappingtype") == 0) {
+        }
+        else if (strcmp(option, "-mappingtype") == 0) {
             if (i + 1 >= argc)
                 FATAL_ERROR("No mapping type value following \"-mappingtype\".\n");
 
@@ -592,19 +724,41 @@ void HandlePngToNtrCommand(char *inputPath, char *outputPath, int argc, char **a
 
             if (options.mappingType != 0 && options.mappingType != 32 && options.mappingType != 64 && options.mappingType != 128 && options.mappingType != 256)
                 FATAL_ERROR("bitdepth must be one of the following: 0, 32, 64, 128, or 256\n");
-        } else if (strcmp(option, "-convertTo4Bpp") == 0) {
+        }
+        else if (strcmp(option, "-convertTo4Bpp") == 0)
+        {
             options.convertTo4Bpp = true;
-        } else {
+        }
+        else if (strcmp(option, "-rotate") == 0)
+        {
+            if (i + 1 >= argc)
+                FATAL_ERROR("No mapping type value following \"-rotate\".\n");
+
+            i++;
+
+            if (!ParseNumber(argv[i], NULL, 10, &options.rotate))
+                FATAL_ERROR("Failed to parse rotate.\n");
+
+            if (options.rotate != 90 && options.rotate != 180 && options.rotate != 270)
+                FATAL_ERROR("rotate must be one of the following: 90, 180, 270\n");
+        }
+        else
+        {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
 
     ConvertPngToNtr(inputPath, outputPath, &options);
+
+    if (freeCellPath) {
+        free(options.cellFilePath);
+    }
 }
 
-void HandlePngToNtrLzCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+void HandlePngToNtrLzCommand(char *inputPath, char *outputPath, int argc, char **argv)
+{
     int numLzArgs = CountLzCompressArgs(argc, argv);
-
+    
     HandlePngToNtrCommand(inputPath, outputPath, argc - numLzArgs, argv);
 
     HandleLZCompressCommand(outputPath, outputPath, 3 + numLzArgs, &(argv[argc - 3 - numLzArgs]));
@@ -677,27 +831,32 @@ void HandlePngToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, c
         {
             pcmp = true;
 
-            if (i + 2 < argc) {
-                if (strcmp(argv[i + 1], "-start") == 0) {
+            if (i + 2 < argc)
+            {
+                if (strcmp(argv[i + 1], "-start") == 0)
+                {
                     i += 2;
-                    if (!ParseNumber(argv[i], NULL, 10, &pcmpStartIndex)) {
+                    if (!ParseNumber(argv[i], NULL, 10, &pcmpStartIndex))
                         FATAL_ERROR("Failed to parse PCMP start index value.\n");
-                    }
                 }
             }
         }
         else if (strcmp(option, "-invertsize") == 0)
         {
             inverted = true;
-        } else if (strcmp(option, "-convertTo4Bpp") == 0) {
+        }
+        else if (strcmp(option, "-convertTo4Bpp") == 0)
+        {
             convertTo4Bpp = true;
-        } else {
+        }
+        else
+        {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
 
     ReadPngPalette(inputPath, &palette);
-    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp, pcmpStartIndex, inverted, convertTo4Bpp);
+    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp, pcmpStartIndex, inverted, convertTo4Bpp, false);
 }
 
 void HandleGbaToJascPaletteCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
@@ -705,14 +864,14 @@ void HandleGbaToJascPaletteCommand(char *inputPath, char *outputPath, int argc U
     struct Palette palette;
 
     ReadGbaPalette(inputPath, &palette);
-    WriteJascPalette(outputPath, &palette);
+    WriteJascPalette(outputPath, &palette, 0);
 }
 
 void HandleNtrToJascPaletteCommand(char *inputPath, char *outputPath, int argc, char **argv)
 {
     struct Palette palette;
     int bitdepth = 0;
-    bool inverted = false;
+    bool verbose = false;
 
     for (int i = 3; i < argc; i++)
     {
@@ -731,9 +890,9 @@ void HandleNtrToJascPaletteCommand(char *inputPath, char *outputPath, int argc, 
             if (bitdepth != 4 && bitdepth != 8)
                 FATAL_ERROR("Bitdepth must be 4 or 8.\n");
         }
-        else if (strcmp(option, "-invertsize") == 0)
+        else if (strcmp(option, "-verbose") == 0)
         {
-            inverted = true;
+            verbose = true;
         }
         else
         {
@@ -741,8 +900,21 @@ void HandleNtrToJascPaletteCommand(char *inputPath, char *outputPath, int argc, 
         }
     }
 
-    ReadNtrPalette(inputPath, &palette, bitdepth, 0, inverted, false);
-    WriteJascPalette(outputPath, &palette);
+    ReadNtrPalette(inputPath, &palette, bitdepth, 0, false, verbose);
+    if (!palette.extendedLength)
+    {
+        WriteJascPalette(outputPath, &palette, 0);
+    }
+    else
+    {
+        int pathLen = strlen(outputPath);
+        char *extendedOutputPath = calloc(pathLen + 4, sizeof(char));
+        for (int i = 0; i < palette.extendedLength; i++)
+        {
+            snprintf(extendedOutputPath, pathLen + 4, "%.*s_%d.pal", pathLen - 4, outputPath, i);
+            WriteJascPalette(extendedOutputPath, &palette, i);
+        }
+    }
 }
 
 void HandleJascToGbaPaletteCommand(char *inputPath, char *outputPath, int argc, char **argv)
@@ -774,7 +946,7 @@ void HandleJascToGbaPaletteCommand(char *inputPath, char *outputPath, int argc, 
 
     struct Palette palette;
 
-    ReadJascPalette(inputPath, &palette);
+    ReadJascPalette(inputPath, &palette, 0);
 
     if (numColors != 0)
         palette.numColors = numColors;
@@ -793,6 +965,8 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
     int pcmpStartIndex = 0;
     bool pcmp = false;
     bool inverted = false;
+    int extendedLength = 0;
+    int paddingType = 0;
 
     for (int i = 3; i < argc; i++)
     {
@@ -853,18 +1027,40 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
         {
             pcmp = true;
 
-            if (i + 2 < argc) {
-                if (strcmp(argv[i + 1], "-start") == 0) {
+            if (i + 2 < argc)
+            {
+                if (strcmp(argv[i + 1], "-start") == 0)
+                {
                     i += 2;
-                    if (!ParseNumber(argv[i], NULL, 10, &pcmpStartIndex)) {
+                    if (!ParseNumber(argv[i], NULL, 10, &pcmpStartIndex))
                         FATAL_ERROR("Failed to parse PCMP start index value.\n");
-                    }
                 }
             }
         }
         else if (strcmp(option, "-invertsize") == 0)
         {
             inverted = true;
+        }
+        else if (strcmp(option, "-extended") == 0)
+        {
+
+            if (i + 1 >= argc)
+                FATAL_ERROR("No length value following \"-extended\".\n");
+
+            i++;
+
+            if (!ParseNumber(argv[i], NULL, 10, &extendedLength))
+                FATAL_ERROR("Failed to parse extended length.\n");
+
+            if (i + 2 < argc)
+            {
+                if (strcmp(argv[i + 1], "-paddingtype") == 0)
+                {
+                    i += 2;
+                    if (!ParseNumber(argv[i], NULL, 10, &paddingType))
+                        FATAL_ERROR("Failed to parse extended NCLR padding type.\n");
+                }
+            }
         }
         else
         {
@@ -873,13 +1069,65 @@ void HandleJascToNtrPaletteCommand(char *inputPath, char *outputPath, int argc, 
     }
 
     struct Palette palette;
+    if (!extendedLength)
+    {
+        ReadJascPalette(inputPath, &palette, 0);
+    }
+    else
+    {
+        int pathLen = strlen(inputPath);
+        char *extendedInputPath = calloc(pathLen + 4, sizeof(char));
+        for (int i = 0; i < extendedLength; i++)
+        {
+            snprintf(extendedInputPath, pathLen + 4, "%.*s_%d.pal", pathLen - 6, inputPath, i);
+            ReadJascPalette(extendedInputPath, &palette, i);
+        }
+        free(extendedInputPath);
 
-    ReadJascPalette(inputPath, &palette);
+        if (nopad)
+        {
+            palette.numColors *= extendedLength;
+        }
+        else
+        {
+            palette.numColors *= 16;
+            if (paddingType == 0)
+            {
+                if (extendedLength < 16)
+                    memset(&palette.extendedColors[extendedLength - 1], 0, sizeof(struct Color) * (16 - extendedLength) * 256);
+            }
+            else
+            {
+                for (int i = extendedLength; i < 16; i++)
+                {
+                    int count = 0;
+                    int red = 0;
+                    int green = 0;
+                    for (int j = 0; j < 256; j++)
+                    {
+                        palette.extendedColors[i - 1][j].red = (red * 255) / 31;
+                        palette.extendedColors[i - 1][j].green = (green * 255) / 31;
+                        palette.extendedColors[i - 1][j].blue = 0;
+                        red += i * 2;
+                        if (red >= 32)
+                        {
+                            red &= 0x1F;
+                            if (++count == 8)
+                            {
+                                green++;
+                                count = 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     if (numColors != 0)
         palette.numColors = numColors;
 
-    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp, pcmpStartIndex, inverted, false);
+    WriteNtrPalette(outputPath, &palette, ncpr, ir, bitdepth, !nopad, compNum, pcmp, pcmpStartIndex, inverted, false, extendedLength);
 }
 
 void HandleJsonToNtrCellCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
@@ -893,7 +1141,8 @@ void HandleJsonToNtrCellCommand(char *inputPath, char *outputPath, int argc UNUS
     FreeNCERCell(options);
 }
 
-void HandleJsonToNtrCellLzCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+void HandleJsonToNtrCellLzCommand(char *inputPath, char *outputPath, int argc, char **argv)
+{
     HandleJsonToNtrCellCommand(inputPath, outputPath, argc, argv);
 
     HandleLZCompressCommand(outputPath, outputPath, argc, argv);
@@ -912,7 +1161,8 @@ void HandleNtrCellToJsonCommand(char *inputPath, char *outputPath, int argc UNUS
     FreeNCERCell(options);
 }
 
-void HandleNtrCellLzToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
+void HandleNtrCellLzToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
     HandleLZDecompressCommand(inputPath, outputPath, argc, argv);
 
     HandleNtrCellToJsonCommand(outputPath, outputPath, argc, argv);
@@ -969,7 +1219,8 @@ void HandleJsonToNtrAnimationCommand(char *inputPath, char *outputPath, int argc
     FreeNANRAnimation(options);
 }
 
-void HandleJsonToNtrAnimationLzCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+void HandleJsonToNtrAnimationLzCommand(char *inputPath, char *outputPath, int argc, char **argv)
+{
     HandleJsonToNtrAnimationCommand(inputPath, outputPath, argc, argv);
 
     HandleLZCompressCommand(outputPath, outputPath, argc, argv);
@@ -988,7 +1239,8 @@ void HandleNtrAnimationToJsonCommand(char *inputPath, char *outputPath, int argc
     FreeNANRAnimation(options);
 }
 
-void HandleNtrAnimationLzToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
+void HandleNtrAnimationLzToJsonCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
     HandleLZDecompressCommand(inputPath, outputPath, argc, argv);
 
     HandleNtrAnimationToJsonCommand(outputPath, outputPath, argc, argv);
@@ -1073,31 +1325,38 @@ void HandlePngToFullwidthJapaneseFontCommand(char *inputPath, char *outputPath, 
     FreeImage(&image);
 }
 
-static int CountLzCompressArgs(int argc, char **argv) {
+static int CountLzCompressArgs(int argc, char **argv)
+{
     int count = 0;
-
-    for (int i = 3; i < argc; i++) {
+    
+    for (int i = 3; i < argc; i++)
+    {
         char *option = argv[i];
 
-        if (strcmp(option, "-overflow") == 0) {
-            if (i + 1 >= argc) {
+        if (strcmp(option, "-overflow") == 0)
+        {
+            if (i + 1 >= argc)
                 FATAL_ERROR("No size following \"-overflow\".\n");
-            }
 
             i++;
 
             count += 2;
-        } else if (strcmp(option, "-search") == 0) {
-            if (i + 1 >= argc) {
+        }
+        else if (strcmp(option, "-search") == 0)
+        {
+            if (i + 1 >= argc)
                 FATAL_ERROR("No size following \"-overflow\".\n");
-            }
 
             i++;
 
             count += 2;
-        } else if (strcmp(option, "-reverse") == 0) {
+        }
+        else if (strcmp(option, "-reverse") == 0)
+        {
             count++;
-        } else if (strcmp(option, "-nopad") == 0) {
+        }
+        else if (strcmp(option, "-nopad") == 0)
+        {
             count++;
         }
     }
@@ -1105,7 +1364,8 @@ static int CountLzCompressArgs(int argc, char **argv) {
     return count;
 }
 
-static void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char **argv) {
+static void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc, char **argv)
+{
     int overflowSize = 0;
     int minDistance = 2; // default, for compatibility with LZ77UnCompVram()
     bool forwardIteration = true;
@@ -1145,11 +1405,17 @@ static void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc,
         else if (strcmp(option, "-reverse") == 0)
         {
             forwardIteration = false;
-        } else if (strcmp(option, "-extfmt") == 0) {
+        } 
+        else if (strcmp(option, "-extfmt") == 0)
+        {
             extFormat = true;
-        } else if (strcmp(option, "-nopad") == 0) {
+        }
+        else if (strcmp(option, "-nopad") == 0)
+        {
             nopad = true;
-        } else {
+        }
+        else
+        {
             FATAL_ERROR("Unrecognized option \"%s\".\n", option);
         }
     }
@@ -1177,7 +1443,8 @@ static void HandleLZCompressCommand(char *inputPath, char *outputPath, int argc,
     free(compressedData);
 }
 
-static void HandleLZDecompressCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED) {
+static void HandleLZDecompressCommand(char *inputPath, char *outputPath, int argc UNUSED, char **argv UNUSED)
+{
     int fileSize;
     unsigned char *buffer = ReadWholeFile(inputPath, &fileSize);
 
@@ -1350,53 +1617,54 @@ int main(int argc, char **argv)
     if (argc < 3)
         FATAL_ERROR("Usage: nitrogfx INPUT_PATH OUTPUT_PATH [options...]\n");
 
-    struct CommandHandler handlers[] = {
-        { "1bpp",      "png",       HandleGbaToPngCommand                    },
-        { "4bpp",      "png",       HandleGbaToPngCommand                    },
-        { "8bpp",      "png",       HandleGbaToPngCommand                    },
-        { "nbfc",      "png",       HandleGbaToPngCommand                    },
-        { "NCGR",      "png",       HandleNtrToPngCommand                    },
-        { "NCGR.lz",   "png",       HandleNtrLzToPngCommand                  },
-        { "png",       "1bpp",      HandlePngToGbaCommand                    },
-        { "png",       "4bpp",      HandlePngToGbaCommand                    },
-        { "png",       "nbfc",      HandlePngToGbaCommand                    },
-        { "png",       "8bpp",      HandlePngToGbaCommand                    },
-        { "png",       "NCGR",      HandlePngToNtrCommand                    },
-        { "png",       "NCGR.lz",   HandlePngToNtrLzCommand                  },
-        { "png",       "gbapal",    HandlePngToGbaPaletteCommand             },
-        { "png",       "nbfp",      HandlePngToGbaPaletteCommand             },
-        { "png",       "NCLR",      HandlePngToNtrPaletteCommand             },
-        { "gbapal",    "pal",       HandleGbaToJascPaletteCommand            },
-        { "NCLR",      "pal",       HandleNtrToJascPaletteCommand            },
-        { "NCPR",      "pal",       HandleNtrToJascPaletteCommand            },
-        { "pal",       "gbapal",    HandleJascToGbaPaletteCommand            },
-        { "pal",       "NCLR",      HandleJascToNtrPaletteCommand            },
-        { "latfont",   "png",       HandleLatinFontToPngCommand              },
-        { "png",       "latfont",   HandlePngToLatinFontCommand              },
-        { "hwjpnfont", "png",       HandleHalfwidthJapaneseFontToPngCommand  },
-        { "png",       "hwjpnfont", HandlePngToHalfwidthJapaneseFontCommand  },
-        { "fwjpnfont", "png",       HandleFullwidthJapaneseFontToPngCommand  },
-        { "png",       "fwjpnfont", HandlePngToFullwidthJapaneseFontCommand  },
-        { "json",      "NCER",      HandleJsonToNtrCellCommand               },
-        { "json",      "NCER.lz",   HandleJsonToNtrCellLzCommand             },
-        { "NCER",      "json",      HandleNtrCellToJsonCommand               },
-        { "NCER.lz",   "json",      HandleNtrCellLzToJsonCommand             },
-        { "json",      "NSCR",      HandleJsonToNtrScreenCommand             },
-        { "json",      "NANR",      HandleJsonToNtrAnimationCommand          },
-        { "json",      "NANR.lz",   HandleJsonToNtrAnimationLzCommand        },
-        { "NANR",      "json",      HandleNtrAnimationToJsonCommand          },
-        { "NANR.lz",   "json",      HandleNtrAnimationLzToJsonCommand        },
-        { "json",      "NMAR",      HandleJsonToNtrMulticellAnimationCommand },
-        { "NMAR",      "json",      HandleNtrAnimationToJsonCommand          },
-        { NULL,        "huff",      HandleHuffCompressCommand                },
-        { NULL,        "lz",        HandleLZCompressCommand                  },
-        { "huff",      NULL,        HandleHuffDecompressCommand              },
-        { "lz",        NULL,        HandleLZDecompressCommand                },
-        { NULL,        "rl",        HandleRLCompressCommand                  },
-        { "rl",        NULL,        HandleRLDecompressCommand                },
-        { "NFGR",      "png",       HandleNtrFontToPngCommand                },
-        { "png",       "NFGR",      HandlePngToNtrFontCommand                },
-        { NULL,        NULL,        NULL                                     }
+    struct CommandHandler handlers[] =
+    {
+        { "1bpp", "png", HandleGbaToPngCommand },
+        { "4bpp", "png", HandleGbaToPngCommand },
+        { "8bpp", "png", HandleGbaToPngCommand },
+        { "nbfc", "png", HandleGbaToPngCommand },
+        { "NCGR", "png", HandleNtrToPngCommand },
+        { "NCGR.lz", "png", HandleNtrLzToPngCommand },
+        { "png", "1bpp", HandlePngToGbaCommand },
+        { "png", "4bpp", HandlePngToGbaCommand },
+        { "png", "nbfc", HandlePngToGbaCommand },
+        { "png", "8bpp", HandlePngToGbaCommand },
+        { "png", "NCGR", HandlePngToNtrCommand },
+        { "png", "NCGR.lz", HandlePngToNtrLzCommand },
+        { "png", "gbapal", HandlePngToGbaPaletteCommand },
+        { "png", "nbfp", HandlePngToGbaPaletteCommand },
+        { "png", "NCLR", HandlePngToNtrPaletteCommand },
+        { "gbapal", "pal", HandleGbaToJascPaletteCommand },
+        { "NCLR", "pal", HandleNtrToJascPaletteCommand },
+        { "NCPR", "pal", HandleNtrToJascPaletteCommand },
+        { "pal", "gbapal", HandleJascToGbaPaletteCommand },
+        { "pal", "NCLR", HandleJascToNtrPaletteCommand },
+        { "latfont", "png", HandleLatinFontToPngCommand },
+        { "png", "latfont", HandlePngToLatinFontCommand },
+        { "hwjpnfont", "png", HandleHalfwidthJapaneseFontToPngCommand },
+        { "png", "hwjpnfont", HandlePngToHalfwidthJapaneseFontCommand },
+        { "fwjpnfont", "png", HandleFullwidthJapaneseFontToPngCommand },
+        { "png", "fwjpnfont", HandlePngToFullwidthJapaneseFontCommand },
+        { "json", "NCER", HandleJsonToNtrCellCommand },
+        { "json", "NCER.lz", HandleJsonToNtrCellLzCommand },
+        { "NCER", "json", HandleNtrCellToJsonCommand },
+        { "NCER.lz", "json", HandleNtrCellLzToJsonCommand },
+        { "json", "NSCR", HandleJsonToNtrScreenCommand },
+        { "json", "NANR", HandleJsonToNtrAnimationCommand },
+        { "json", "NANR.lz", HandleJsonToNtrAnimationLzCommand },
+        { "NANR", "json", HandleNtrAnimationToJsonCommand },
+        { "NANR.lz", "json", HandleNtrAnimationLzToJsonCommand },
+        { "json", "NMAR", HandleJsonToNtrMulticellAnimationCommand },
+        { "NMAR", "json", HandleNtrAnimationToJsonCommand },
+        { NULL, "huff", HandleHuffCompressCommand },
+        { NULL, "lz", HandleLZCompressCommand },
+        { "huff", NULL, HandleHuffDecompressCommand },
+        { "lz", NULL, HandleLZDecompressCommand },
+        { NULL, "rl", HandleRLCompressCommand },
+        { "rl", NULL, HandleRLDecompressCommand },
+        { "NFGR", "png", HandleNtrFontToPngCommand },
+        { "png", "NFGR", HandlePngToNtrFontCommand },
+        { NULL, NULL, NULL }
     };
 
     char *inputPath = argv[1];
@@ -1413,9 +1681,10 @@ int main(int argc, char **argv)
     for (int i = 0; handlers[i].function != NULL; i++)
     {
         if (((handlers[i].inputFileExtension == NULL || strcmp(handlers[i].inputFileExtension, inputFileExtension) == 0)
-                && (handlers[i].outputFileExtension == NULL || strcmp(handlers[i].outputFileExtension, outputFileExtension) == 0))
+            && (handlers[i].outputFileExtension == NULL || strcmp(handlers[i].outputFileExtension, outputFileExtension) == 0))
             || (handlers[i].inputFileExtension == NULL && strrchr(outputFileExtension, '.') && strstr(outputFileExtension, handlers[i].outputFileExtension))
-            || (handlers[i].outputFileExtension == NULL && strrchr(inputFileExtension, '.') && strstr(inputFileExtension, handlers[i].inputFileExtension))) {
+            || (handlers[i].outputFileExtension == NULL && strrchr(inputFileExtension, '.') && strstr(inputFileExtension, handlers[i].inputFileExtension)))
+        {
             handlers[i].function(inputPath, outputPath, argc, argv);
             return 0;
         }
