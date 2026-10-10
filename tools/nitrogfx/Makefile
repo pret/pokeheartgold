@@ -6,7 +6,7 @@ ifeq ($(HAVE_LIBPNG),1)
 $(error No package 'libpng' found)
 endif
 
-CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -std=gnu17 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng zlib)
+CFLAGS = -Wall -Wextra -Werror -Wno-sign-compare -Wno-unused-result -std=gnu17 -DPNG_SKIP_SETJMP_CHECK $(shell pkg-config --cflags libpng zlib) -D_GNU_SOURCE=1
 
 LIBS = $(shell pkg-config --libs libpng zlib)
 
