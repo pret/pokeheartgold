@@ -103,7 +103,7 @@ typedef struct FieldSystemUnkSub4 {
     UnkStruct_020556FC *unk18;
     HBlankSystem *hBlankSystem;
     void *unk20;
-    void *legendCutsceneCamera;
+    void *unk24;
 } FieldSystemUnkSub4;
 
 #define MAP_OBJECT_PRELOAD_SENTINEL 0xFFFF
@@ -197,7 +197,7 @@ struct FieldSystem {
     MapPropAnimationManager *mapPropAnimationManager;
     MapPropOneShotAnimationManager *mapPropOneShotAnimationManager;
     TerrainAttributes *terrainAttributes;
-    void *unk60;
+    void *unk60; // something to do with collision
     BOOL skipMapAttributes;
     Signpost *signpost;
     BOOL runningFieldMap;
@@ -220,9 +220,9 @@ struct FieldSystem {
     u32 unkAC;
     void *unkB0;
     s64 unkB4;
-    int unkBC;                   // flags?
-    UnkStruct_FieldSysC0 *unkC0; // UnkStruct_FieldSysC0
-    int environmentSoundState;   // Used to keep track of the active weather/soundplate sound and their associated loading status.
+    int unkBC;                                 // flags?
+    Field3dRenderObjManager *renderObjManager; // Field3dRenderObjManager
+    int environmentSoundState;                 // Used to keep track of the active weather/soundplate sound and their associated loading status.
     FieldSystemUnkSubC8 *unkC8;
     void *unkCC;
     u16 lastTouchMenuInput;

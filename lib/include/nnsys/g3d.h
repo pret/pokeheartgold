@@ -14,6 +14,7 @@
 #include <nnsys/g3d/kernel.h>
 #include <nnsys/g3d/kernel_inline.h>
 #include <nnsys/g3d/mem.h>
+#include <nnsys/g3d/model.h>
 #include <nnsys/g3d/model_inline.h>
 #include <nnsys/g3d/util.h>
 

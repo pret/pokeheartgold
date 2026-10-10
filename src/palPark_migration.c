@@ -12,7 +12,7 @@ u32 MigratedPokemon_GetSize(void) {
 }
 
 void MigratedPokemon_Init(MigratedPokemon *mon) {
-    MIi_CpuClearFast(0, (u32 *)mon, sizeof(MigratedPokemon));
+    MI_CpuClearFast((u32 *)mon, sizeof(MigratedPokemon));
     for (int i = 0; i < PARTY_SIZE; i++) {
         ZeroMonData(&mon->pokemon[i]);
         GF_ASSERT(GetMonData(&mon->pokemon[i], MON_DATA_SPECIES_EXISTS, NULL) == 0);
@@ -20,7 +20,7 @@ void MigratedPokemon_Init(MigratedPokemon *mon) {
 }
 
 void MigratedPokemon_InitPokemonOnly(MigratedPokemon *mon) {
-    MIi_CpuClearFast(0, (u32 *)mon, sizeof(mon->pokemon));
+    MI_CpuClearFast((u32 *)mon, sizeof(mon->pokemon));
     for (int i = 0; i < PARTY_SIZE; i++) {
         ZeroMonData(&mon->pokemon[i]);
         GF_ASSERT(GetMonData(&mon->pokemon[i], MON_DATA_SPECIES_EXISTS, NULL) == 0);

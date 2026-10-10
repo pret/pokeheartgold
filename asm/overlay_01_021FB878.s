@@ -432,7 +432,7 @@ _021FBB7C:
 	bne _021FBBDA
 	ldr r0, [sp, #0xc]
 	add r1, r4, #0
-	bl ov01_022040A4
+	bl Field3dRenderObjManager_AllocRenderObj
 	add r7, r0, #0
 	ldr r0, [sp, #0x1c]
 	cmp r4, r0
@@ -495,7 +495,7 @@ _021FBBEC:
 	str r0, [r5, #4]
 	ldr r0, [sp, #0xc]
 	mov r1, #0
-	bl ov01_022040A4
+	bl Field3dRenderObjManager_AllocRenderObj
 	ldr r0, [r5, #4]
 	bl NNS_G3dGetTex
 	add r4, r0, #0
@@ -918,11 +918,11 @@ Field3dModelAnimation_FrameSet: ; 0x021FBF20
 	bx lr
 	thumb_func_end Field3dModelAnimation_FrameSet
 
-	thumb_func_start ov01_021FBF28
-ov01_021FBF28: ; 0x021FBF28
+	thumb_func_start Field3dModelAnimation_FrameGet
+Field3dModelAnimation_FrameGet: ; 0x021FBF28
 	ldr r0, [r0, #0xc]
 	bx lr
-	thumb_func_end ov01_021FBF28
+	thumb_func_end Field3dModelAnimation_FrameGet
 
 	thumb_func_start Field3dObject_InitFromModel
 Field3dObject_InitFromModel: ; 0x021FBF2C

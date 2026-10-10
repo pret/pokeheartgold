@@ -3081,31 +3081,31 @@ BOOL ScrCmd_EcruteakGymInit(ScriptContext *ctx) {
     return FALSE;
 }
 
-BOOL ScrCmd_315(ScriptContext *ctx) {
+BOOL ScrCmd_BindEcruteakGymCandleToTrainerSprite(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254D98(fieldSystem);
+    EcruteakGymmick_BindCandleToTrainerObject(fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_316(ScriptContext *ctx) {
+BOOL ScrCmd_UnbindEcruteakGymCandleFromTrainerSprite(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return FALSE;
     }
-    ov04_02254DD0(fieldSystem);
+    EcruteakGymmick_UnbindCandleFromTrainerObject(fieldSystem);
     return FALSE;
 }
 
-BOOL ScrCmd_317(ScriptContext *ctx) {
+BOOL ScrCmd_ExtinguishEcruteakGymCandle(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u8 r5 = ScriptReadByte(ctx);
+    u8 playerTalkedToTrainer = ScriptReadByte(ctx);
     if (Save_Gymmick_GetType(Save_GetGymmickPtr(FieldSystem_GetSaveData(fieldSystem))) != GYMMICK_ECRUTEAK) {
         return TRUE;
     }
-    ov04_02254DE0(fieldSystem, (r5 != 0) ? 10 : 30);
+    EcruteakGymmick_ExtinguishCandle(fieldSystem, playerTalkedToTrainer ? SCRIPTENV_LAST_INTERACTED : SCRIPTENV_ENGAGED_TRAINER_0_EVENT);
     return TRUE;
 }
 
@@ -3117,7 +3117,7 @@ BOOL ScrCmd_CianwoodGymInit(ScriptContext *ctx) {
 BOOL ScrCmd_CianwoodGymTurnWinch(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov04_02256058(fieldSystem);
+    *p_ret = CianwoodGymmick_ActivateWinch(fieldSystem);
     return TRUE;
 }
 
@@ -3130,7 +3130,7 @@ BOOL ScrCmd_VermilionGymLockAction(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 lockno = ScriptReadByte(ctx);
     u8 relock = ScriptReadByte(ctx);
-    ov04_0225640C(fieldSystem, lockno, relock);
+    VermilionGymmick_GateAction(fieldSystem, lockno, relock);
     return TRUE;
 }
 
@@ -3138,7 +3138,7 @@ BOOL ScrCmd_VermilionGymCanCheck(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
     u8 canId = ScriptReadByte(ctx);
     u16 *p_ret = ScriptGetVarPointer(ctx);
-    *p_ret = ov04_022563C4(fieldSystem, canId);
+    *p_ret = VermilionGymmick_SwitchCheck(fieldSystem, canId);
     return FALSE;
 }
 
@@ -3153,7 +3153,7 @@ BOOL ScrCmd_VioletGymInit(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_VioletGymElevator(ScriptContext *ctx) {
-    ov04_02253ED4(ctx->fieldSystem);
+    VioletGymmick_ElevatorAction(ctx->fieldSystem);
     return TRUE;
 }
 
@@ -5354,12 +5354,12 @@ BOOL ScrCmd_MystriStageGymmickInit(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_819(ScriptContext *ctx) {
-    ov04_02256ED8(ctx->fieldSystem);
+    SinjohGymmick_FreezeAllModels(ctx->fieldSystem);
     return FALSE;
 }
 
 BOOL ScrCmd_820(ScriptContext *ctx) {
-    ov04_02256F00(ctx->fieldSystem, ScriptReadByte(ctx));
+    SinjohGymmick_SetChosenLegend(ctx->fieldSystem, ScriptReadByte(ctx));
     return TRUE;
 }
 

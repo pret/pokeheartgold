@@ -159,7 +159,7 @@ typedef struct UnkStruct_ov44_0222AB24 {
 } UnkStruct_ov44_0222AB24;
 
 struct UnkStruct_ov44_022319EC {
-    UnkStruct_021D2230 *unk0;
+    WiFiList *unk0;
     UnkStruct_ov44_0223197C *unk4;
     u8 unk8[4];
     u8 unkC[0x20];

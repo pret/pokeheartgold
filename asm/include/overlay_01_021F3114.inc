@@ -23,4 +23,4 @@
 .public sub_0206234C
 .public memset
 .public ov01_021F3114
-.public ov04_02256BE4
+.public ViridianGymmick_HandleTileAction

@@ -147,7 +147,7 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
 
 BattleContext *BattleContext_New(BattleSystem *battleSystem) {
     BattleContext *ctx = (BattleContext *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleContext));
-    MIi_CpuClearFast(0, (u32 *)ctx, sizeof(BattleContext));
+    MI_CpuClearFast((u32 *)ctx, sizeof(BattleContext));
 
     BattleContext_Init(ctx);
     ov12_02251038(battleSystem, ctx);
@@ -3941,7 +3941,7 @@ static void BattleControllerPlayer_InitAI(BattleSystem *battleSystem, BattleCont
     int battler;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
-    MIi_CpuClear32(0, (u32 *)&ctx->trainerAIData, sizeof(TrainerAIData));
+    MI_CpuClear32((u32 *)&ctx->trainerAIData, sizeof(TrainerAIData));
 
     if ((battleType & BATTLE_TYPE_TRAINER) && !(battleType & (BATTLE_TYPE_NO_EXP | BATTLE_TYPE_AI))) {
         for (battler = 0; battler < BATTLER_MAX; battler++) {

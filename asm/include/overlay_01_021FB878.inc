@@ -66,7 +66,7 @@
 .public Field3dModelAnimation_FrameAdvanceAndLoop
 .public Field3dModelAnimation_FrameAdvanceAndCheck
 .public Field3dModelAnimation_FrameSet
-.public ov01_021FBF28
+.public Field3dModelAnimation_FrameGet
 .public Field3dObject_InitFromModel
 .public Field3dObject_AddAnimation
 .public Field3dObject_RemoveAnimation
@@ -76,5 +76,5 @@
 .public Field3dObject_SetPosEx
 .public Field3dObject_SetPos
 .public Field3dObject_SetXRotation
-.public ov01_022040A4
+.public Field3dRenderObjManager_AllocRenderObj
 .public ov01_0220463C

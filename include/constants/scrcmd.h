@@ -3,6 +3,7 @@
 
 #include <nitro/types.h>
 
+#include "constants/abilities.h"
 #include "constants/badge.h"
 #include "constants/flags.h"
 #include "constants/game_stats.h"

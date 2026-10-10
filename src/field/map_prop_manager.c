@@ -4,7 +4,6 @@
 #include "field/map_prop.h"
 #include "field/overlay_01_021EA6C4.h"
 
-#include "field_system.h"
 #include "gf_3d_render.h"
 #include "unk_0201F990.h"
 #include "unk_02020B8C.h"
@@ -23,7 +22,7 @@ struct MapProp {
     BOOL active;
     BOOL culled;
     BOOL overrideRotation;
-    UnkStruct_FieldSysC0_SubC *render;
+    Field3dRenderObj *render;
     VecFx32 translation;
     VecFx32 rotation;
     VecFx32 scale;
@@ -31,7 +30,7 @@ struct MapProp {
 
 struct MapPropManager {
     MapProp mapProps[MAP_PROP_MAX];
-    UnkStruct_FieldSysC0 *fsys_unkC0;
+    Field3dRenderObjManager *field3dRenderObjMgr;
 }; // size: 0x704
 
 static void MapPropManager_Init(MapPropManager *mapPropManager, void *unkC0);
@@ -39,7 +38,7 @@ static void MapProp_Init(MapProp *mapProp);
 static void DrawModelShapewise(const NNSG3dResMdl *mapPropManager, const VecFx32 *baseTrans, const MtxFx33 *prmBaseRot, const VecFx32 *baseScale, AreaDataManager_Sub8AC *a4, int a5);
 
 static void MapPropManager_Init(MapPropManager *mapPropManager, void *unkC0) {
-    mapPropManager->fsys_unkC0 = unkC0;
+    mapPropManager->field3dRenderObjMgr = unkC0;
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
         MapProp_Init(mapProp);
@@ -47,7 +46,7 @@ static void MapPropManager_Init(MapPropManager *mapPropManager, void *unkC0) {
     }
 }
 
-MapPropManager *MapPropManager_New(enum HeapID heapID, UnkStruct_FieldSysC0 *unkC0) {
+MapPropManager *MapPropManager_New(enum HeapID heapID, Field3dRenderObjManager *unkC0) {
     MapPropManager *ret = Heap_Alloc(heapID, sizeof(MapPropManager));
     MI_CpuClearFast(ret, sizeof(MapPropManager));
     MapPropManager_Init(ret, unkC0);
@@ -74,7 +73,7 @@ void MapPropManager_Reset(MapPropManager *mapPropManager) {
     for (u8 i = 0; i < MAP_PROP_MAX; ++i) {
         MapProp *mapProp = &mapPropManager->mapProps[i];
         MapProp_Init(mapProp);
-        ov01_0220411C(mapPropManager->fsys_unkC0, mapProp->render);
+        Field3dRenderObjManager_FreeRenderObj(mapPropManager->field3dRenderObjMgr, mapProp->render);
         mapProp->render = NULL;
     }
 }
@@ -92,7 +91,7 @@ void MapPropManager_RemoveMapPropByIndex(int modelID, MapPropManager *mapPropMan
     mapProp->rotation = zero;
     mapProp->scale = zero;
 
-    ov01_0220411C(mapPropManager->fsys_unkC0, mapPropManager->mapProps[modelID].render);
+    Field3dRenderObjManager_FreeRenderObj(mapPropManager->field3dRenderObjMgr, mapPropManager->mapProps[modelID].render);
     mapPropManager->mapProps[modelID].render = NULL;
 }
 
@@ -118,10 +117,10 @@ void MapPropManager_LoadFromNARC(NARC *narc, u32 size, MapPropManager *mapPropMa
             mapProp->translation = narcData[i].translation;
             mapProp->rotation = narcData[i].rotation;
             mapProp->scale = narcData[i].scale;
-            if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->buildModel)) {
+            if (!Field3dRenderObjManager_IsResFileHeaderLoadedByIndex(mapPropManager->field3dRenderObjMgr, mapProp->buildModel)) {
                 mapProp->buildModel = 0;
             }
-            mapProp->render = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
+            mapProp->render = Field3dRenderObjManager_GetOrAllocRenderObjByID(mapPropManager->field3dRenderObjMgr, mapProp->buildModel);
         } else {
             VecFx32 zero = { 0, 0, 0 };
             mapProp->buildModel = 0;
@@ -175,10 +174,10 @@ void MapPropManager_LoadFromSafariZone(NARC *a0, MapPropManager *mapPropManager,
                     a4[j * 32 + k] = 0x8023;
                 }
             }
-            if (!ov01_02204154(mapPropManager->fsys_unkC0, mapProp->buildModel)) {
+            if (!Field3dRenderObjManager_IsResFileHeaderLoadedByIndex(mapPropManager->field3dRenderObjMgr, mapProp->buildModel)) {
                 mapProp->buildModel = 0;
             }
-            mapProp->render = ov01_022040F8(mapPropManager->fsys_unkC0, mapProp->buildModel);
+            mapProp->render = Field3dRenderObjManager_GetOrAllocRenderObjByID(mapPropManager->field3dRenderObjMgr, mapProp->buildModel);
         }
     }
 }
@@ -240,8 +239,8 @@ int MapProp_GetBuildModel(MapProp *mapProp) {
     return mapProp->buildModel;
 }
 
-UnkStruct_FieldSysC0_SubC *MapProp_GetRenderSurface(MapProp *mapProp) {
-    return mapProp->render;
+NNSG3dRenderObj *MapProp_GetRenderSurface(MapProp *mapProp) {
+    return &mapProp->render->renderObj;
 }
 
 NNSG3dResMdl *MapProp_GetResModel(MapProp *mapProp) {
@@ -312,7 +311,7 @@ u8 MapPropManager_LoadOne(MapPropManager *mapPropManager, int modelID, const Vec
         }
         mapProp->scale = scale;
         mapProp->buildModel = modelID;
-        mapProp->render = ov01_022040F8(mapPropManager->fsys_unkC0, modelID);
+        mapProp->render = Field3dRenderObjManager_GetOrAllocRenderObjByID(mapPropManager->field3dRenderObjMgr, modelID);
         return i;
     }
 
