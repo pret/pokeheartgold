@@ -133,7 +133,7 @@
 .public BattleSystem_GetMessageBuffer
 .public BattleSystem_IsFishing
 .public BattleSystem_GetBattlerFromBattlerType
-.public BattleSystem_GetFieldSide
+.public BattleSystem_GetBattlerSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetTerrainId

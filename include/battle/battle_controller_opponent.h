@@ -3,6 +3,8 @@
 
 #include "battle/battle.h"
 
+int Move_CalcVariableDamageType(BattleSystem *battleSystem, BattleContext *ctx, Pokemon *mon, int move);
+int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler);
 u8 ov12_02261258(OpponentData *opponentData);
 void *ov12_02261270(OpponentData *opponentData);
 u32 ov12_02261264(OpponentData *opponentData);
