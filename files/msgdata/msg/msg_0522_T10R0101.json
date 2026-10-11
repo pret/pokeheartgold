@@ -1,0 +1,195 @@
+{
+  "key": 46119,
+  "messages": [
+    {
+      "id": "msg_0522_T10R0101_00000",
+      "en_US": [
+        "At the Pokémon League, you’ll get\n",
+        "tested by the Elite Four.\f",
+        "You have to beat them all.\r",
+        "If you lose, you have to start\n",
+        "all over!"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00001",
+      "en_US": [
+        "Some Trainers suddenly feel\n",
+        "discouraged and leave.\r",
+        "My ABRA can take you home.\n",
+        "But...\r",
+        "Trainers just Fly home lately...\n",
+        "I feel left out.\f",
+        "I am sure my ABRA feels the same way."
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00002",
+      "en_US": "ABRA: Aabra..."
+    },
+    {
+      "id": "msg_0522_T10R0101_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: Hold it.\r",
+        "You’re going to take the Pokémon\n",
+        "League challenge now?\r",
+        "You’ll have to give up on that.\r",
+        "My well-trained-beyond-recognition\n",
+        "Pokémon are going to pound you.\r",
+        "Right now, right here!\n",
+        "I challenge you!\r"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}: ...Oh, no... I still can’t\n",
+        "win after all that training...\r",
+        "I...I have to believe more in my\n",
+        "Pokémon...\r",
+        "...No big deal.\n",
+        "Sorry to have got in the way.\r",
+        "Don’t forget to rest your Pokémon\n",
+        "before you challenge the Champion!\r"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00005",
+      "en_US": [
+        "Once you enter this door, you will be\n",
+        "facing one of the Elite Four.\r",
+        "They are really tough!\n",
+        "You cannot exit once you enter.\f",
+        "Are you ready?\f",
+        "Be courageous and go for it!\r"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00006",
+      "en_US": [
+        "Once you enter this door, you will be\n",
+        "facing one of the Elite Four.\r",
+        "They are really tough!\n",
+        "You cannot exit once you enter.\f",
+        "Are you ready?\f",
+        "Be courageous and go for it!"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00007",
+      "en_US": "Which Ranking do you want to see? {YESNO 0}"
+    },
+    {
+      "id": "msg_0522_T10R0101_00008",
+      "en_US": "GROUP RANKING"
+    },
+    {
+      "id": "msg_0522_T10R0101_00009",
+      "en_US": "GLOBAL RANKING"
+    },
+    {
+      "id": "msg_0522_T10R0101_00010",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0522_T10R0101_00011",
+      "en_US": [
+        "What kind of Ranking\n",
+        "do you want to see? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00012",
+      "en_US": "POKéMON RECORDS"
+    },
+    {
+      "id": "msg_0522_T10R0101_00013",
+      "en_US": "BATTLE TOWER RECORDS"
+    },
+    {
+      "id": "msg_0522_T10R0101_00014",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0522_T10R0101_00015",
+      "en_US": [
+        "Which record would you like\n",
+        "to see? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00016",
+      "en_US": [
+        "POKéMON\n",
+        "DEFEATED"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00017",
+      "en_US": [
+        "POKéMON\n",
+        "CAUGHT"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00018",
+      "en_US": [
+        "POKéMON\n",
+        "EGGS"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00019",
+      "en_US": [
+        "ENCOUNTERED\n",
+        "WHILE FISHING"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00020",
+      "en_US": [
+        "SINGLE\n",
+        "BATTLES"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00021",
+      "en_US": [
+        "DOUBLE\n",
+        "BATTLES"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00022",
+      "en_US": [
+        "MULTI\n",
+        "BATTLES"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00023",
+      "en_US": [
+        "LINK MULTI\n",
+        "BATTLES"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00024",
+      "en_US": [
+        "WI-FI BATTLE\n",
+        "ROOM"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00025",
+      "en_US": [
+        "AVG WIN\n",
+        "STREAK"
+      ]
+    },
+    {
+      "id": "msg_0522_T10R0101_00026",
+      "en_US": "RETURN"
+    }
+  ]
+}

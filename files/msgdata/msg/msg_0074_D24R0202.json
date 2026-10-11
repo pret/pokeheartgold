@@ -1,0 +1,35 @@
+{
+  "key": 62551,
+  "messages": [
+    {
+      "id": "msg_0074_D24R0202_00000",
+      "en_US": [
+        "Welcome to this chamber!\r",
+        "We are reconstructing ancient Pokémon\n",
+        "stone panels.\r",
+        "You can rotate stone-panel pieces by\n",
+        "touching them for a short time.\r",
+        "If you touch a piece and slide it,\n",
+        "you can move it around.\r",
+        "We think we should be able to put them\n",
+        "back to where they were..."
+      ]
+    },
+    {
+      "id": "msg_0074_D24R0202_00001",
+      "en_US": [
+        "You reconstructed the stone panel?\r",
+        "That’s great!\n",
+        "We have an archaeology genius here!"
+      ]
+    },
+    {
+      "id": "msg_0074_D24R0202_00002",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0074_D24R0202_00003",
+      "en_US": "Nothing happened..."
+    }
+  ]
+}

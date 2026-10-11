@@ -1,0 +1,133 @@
+{
+  "key": 45836,
+  "messages": [
+    {
+      "id": "msg_0648_00000",
+      "en_US": "Falkner"
+    },
+    {
+      "id": "msg_0648_00001",
+      "en_US": [
+        "Who? You sound like you’re underwater.\n",
+        "This is not a good connection. At all.\r",
+        "Get another line somewhere else, OK?"
+      ]
+    },
+    {
+      "id": "msg_0648_00002",
+      "en_US": [
+        "Hello...\n",
+        "OK, now I can hear you.\f",
+        "Yeah, I’m in top form.\r"
+      ]
+    },
+    {
+      "id": "msg_0648_00003",
+      "en_US": [
+        "Are there any Gym Leaders you haven’t\n",
+        "battled yet?\f",
+        "Step up! Get on it!"
+      ]
+    },
+    {
+      "id": "msg_0648_00004",
+      "en_US": [
+        "Let’s see... I’m free Saturday mornings\n",
+        "usually.\f",
+        "Please, give me a call then."
+      ]
+    },
+    {
+      "id": "msg_0648_00005",
+      "en_US": [
+        "I was hoping for an invitation!\n",
+        "We’re battling again, correct?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0648_00006",
+      "en_US": [
+        "Excellent! Glad to hear it.\n",
+        "I’m looking forward to this.\r",
+        "I’ll be waiting at the Fighting Dojo in\n",
+        "Saffron City!"
+      ]
+    },
+    {
+      "id": "msg_0648_00007",
+      "en_US": [
+        "Sure, sure...\n",
+        "I know you’ve got a busy schedule..."
+      ]
+    },
+    {
+      "id": "msg_0648_00008",
+      "en_US": [
+        "I’ve got to say this...\n",
+        "Before we battle again, how about you\f",
+        "keep any promises you made to\f",
+        "others first?"
+      ]
+    },
+    {
+      "id": "msg_0648_00009",
+      "en_US": [
+        "I’m waiting at the Fighting Dojo in\n",
+        "Saffron City!\f",
+        "That was a promise!"
+      ]
+    },
+    {
+      "id": "msg_0648_00010",
+      "en_US": [
+        "Hey, this is Falkner.\n",
+        "How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0648_00011",
+      "en_US": [
+        "You know our plans to meet at the\n",
+        "Fighting Dojo in Saffron City?\f",
+        "That’s still on your mind, isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0648_00012",
+      "en_US": [
+        "My dad told me something when I was\n",
+        "a kid.\r",
+        "He said “Falkner, bird Pokémon don’t\n",
+        "just fly with their wings, they soar\f",
+        "through the sky because that’s what\f",
+        "they want to do with all their heart.”\r",
+        "That’s just like my dad."
+      ]
+    },
+    {
+      "id": "msg_0648_00013",
+      "en_US": [
+        "The scaffolding in my Gym was in bad\n",
+        "shape when you came to battle, eh?\r",
+        "Every year, we give the place a\n",
+        "thorough scrubbing. It’s a challenge.\r",
+        "But the bird Pokémon help us out,\n",
+        "so we’re able to manage."
+      ]
+    },
+    {
+      "id": "msg_0648_00014",
+      "en_US": [
+        "You’ve chatted with Janine in\n",
+        "Fuchsia City, haven’t you?\r",
+        "All she ever talks about is her dad,\n",
+        "you know? Endlessly.\r",
+        "I mean, it’s good to have a healthy\n",
+        "respect for your dad, but it’s\f",
+        "better to have some self-confidence!\r",
+        "Don’t you have faith in your\n",
+        "own abilities?"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "key": 46175,
+  "messages": [
+    {
+      "id": "msg_0635_T30R0601_00000",
+      "en_US": [
+        "Um...\n",
+        "Who did you say I was again?\r",
+        "...\n",
+        "...\r",
+        "Oh, yes, I remember now!\n",
+        "I’m the Move Deleter!\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00001",
+      "en_US": [
+        "You’ve come to make me force your\n",
+        "Pokémon to forget some moves? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00002",
+      "en_US": "Which Pokémon should forget a move?\r"
+    },
+    {
+      "id": "msg_0635_T30R0601_00003",
+      "en_US": [
+        "Remember me if there are moves that\n",
+        "need to be forgotten."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00004",
+      "en_US": [
+        "That Pokémon knows only one move,\n",
+        "so it can’t be forgotten...\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00005",
+      "en_US": [
+        "What? That’s an Egg.\n",
+        "No Egg should know any moves.\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00006",
+      "en_US": [
+        "OK, then.\n",
+        "Which move should be forgotten?\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00007",
+      "en_US": [
+        "Hm! The move {STRVAR_1 6, 0, 0}?\n",
+        "Should that move be forgotten? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00008",
+      "en_US": [
+        "It worked perfectly!\r",
+        "Your Pokémon has forgotten the move\n",
+        "{STRVAR_1 6, 0, 0} completely."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00009",
+      "en_US": [
+        "Me?\n",
+        "I’m the Pokémon Move Maniac.\r",
+        "I know every move that Pokémon learn\n",
+        "while they’re leveling up, and I can\f",
+        "make Pokémon remember those moves.\r",
+        "I can make a Pokémon of yours remember\n",
+        "a move if you’d like.\r",
+        "But...ahem! It’ll cost you.\r",
+        "I’ll make a Pokémon remember a move\n",
+        "if you’ll trade me a Heart Scale."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00010",
+      "en_US": [
+        "Ha! That’s it! That’s an honest-to-\n",
+        "goodness Heart Scale!\r",
+        "Let me guess, you want me to teach\n",
+        "one of your Pokémon a move?\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00011",
+      "en_US": [
+        "If any of your Pokémon needs to learn a\n",
+        "move, come back with a Heart Scale."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00012",
+      "en_US": "Which Pokémon needs tutoring?\r"
+    },
+    {
+      "id": "msg_0635_T30R0601_00013",
+      "en_US": "Which move should I make it remember?\r"
+    },
+    {
+      "id": "msg_0635_T30R0601_00014",
+      "en_US": [
+        "Sorry...\r",
+        "There isn’t any move I can make\n",
+        "that Pokémon remember."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00015",
+      "en_US": [
+        "Hunh?\r",
+        "Don’t you think it’d be tough for\n",
+        "an Egg to remember a move?\r",
+        "It’s not even hatched."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00016",
+      "garbage": 24
+    },
+    {
+      "id": "msg_0635_T30R0601_00017",
+      "garbage": 17
+    },
+    {
+      "id": "msg_0635_T30R0601_00018",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0635_T30R0601_00019",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0635_T30R0601_00020",
+      "garbage": 91
+    },
+    {
+      "id": "msg_0635_T30R0601_00021",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0635_T30R0601_00022",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0635_T30R0601_00023",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0635_T30R0601_00024",
+      "garbage": 79
+    },
+    {
+      "id": "msg_0635_T30R0601_00025",
+      "en_US": [
+        "{STRVAR_1 3, 3, 0} handed over one\n",
+        "Heart Scale in exchange."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00026",
+      "en_US": [
+        "Hohoho...\n",
+        "They call me Grandma Wilma.\r",
+        "I sense a slight talent as a\n",
+        "Dragon Tamer in you.\r",
+        "Would you like me to teach a move\n",
+        "to one of your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00027",
+      "en_US": [
+        "Ah, it is you again...\r",
+        "Would you like me to teach the best\n",
+        "Dragon-type move I know to one of\f",
+        "your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00028",
+      "en_US": [
+        "Well, perhaps if you change your\n",
+        "mind, do come back."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00029",
+      "en_US": [
+        "I see...\n",
+        "I like your sense of adventure.\r",
+        "However, none of the Pokémon with\n",
+        "you now can learn the move."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00030",
+      "en_US": [
+        "Fine, fine, now pick the Pokémon\n",
+        "I should teach the move to.\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00031",
+      "en_US": [
+        "Sorry to disappoint you...\r",
+        "That Pokémon you have can learn this\n",
+        "move, but it hasn’t come to trust\f",
+        "you fully yet...\r",
+        "Until then, I can’t make it learn\n",
+        "this move."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00032",
+      "en_US": [
+        "Sorry to disappoint you...\n",
+        "That Pokémon can’t learn this move."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00033",
+      "en_US": [
+        "Hmm...\r",
+        "Teaching a move to an Egg is\n",
+        "a challenge that’s beyond me."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00034",
+      "en_US": [
+        "Oh? That Pokémon already\n",
+        "knows {STRVAR_1 6, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00035",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0635_T30R0601_00036",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0635_T30R0601_00037",
+      "garbage": 88
+    },
+    {
+      "id": "msg_0635_T30R0601_00038",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0635_T30R0601_00039",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0635_T30R0601_00040",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0635_T30R0601_00041",
+      "garbage": 76
+    },
+    {
+      "id": "msg_0635_T30R0601_00042",
+      "en_US": [
+        "Draco Meteor’s destructive power\n",
+        "is awe inspiring.\r",
+        "However, using it will also lower\n",
+        "the user’s Special Attack."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00043",
+      "en_US": [
+        "Your quest for power has brought\n",
+        "you here...\r",
+        "Very well.\r",
+        "Let me reward your passion with some\n",
+        "absolutely astounding moves.\r",
+        "They’re the ultimate moves!\r",
+        "Shall I teach them to\n",
+        "your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00044",
+      "en_US": [
+        "The ultimate moves!\r",
+        "Shall I teach them to\n",
+        "your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00045",
+      "en_US": [
+        "To which Pokémon should I teach\n",
+        "a move?\r"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00046",
+      "en_US": [
+        "Hmm... Well, that is fine, as well.\n",
+        "Visit if you have a change of heart."
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00047",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0635_T30R0601_00048",
+      "en_US": [
+        "That Pokémon can’t learn a move!\n",
+        "Read the memo there! Keh!"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00049",
+      "en_US": [
+        "Teach a move to an Egg?\n",
+        "Impossible even for me! Keh!"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00050",
+      "en_US": [
+        "You’ve not bonded strongly enough\n",
+        "with your Pokémon! Keh!"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00051",
+      "en_US": [
+        "That Pokémon already knows the move\n",
+        "I’ve offered to teach! Keh!"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00052",
+      "en_US": [
+        "I should teach Blast Burn to\n",
+        "your {STRVAR_1 0, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00053",
+      "en_US": [
+        "I should teach Hydro Cannon to\n",
+        "your {STRVAR_1 0, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00054",
+      "en_US": [
+        "I should teach Frenzy Plant to\n",
+        "your {STRVAR_1 0, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00055",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0635_T30R0601_00056",
+      "garbage": 88
+    },
+    {
+      "id": "msg_0635_T30R0601_00057",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0635_T30R0601_00058",
+      "garbage": 76
+    },
+    {
+      "id": "msg_0635_T30R0601_00059",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0635_T30R0601_00060",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0635_T30R0601_00061",
+      "en_US": [
+        "To the Pokémon listed here,\n",
+        "the ultimate moves may be taught!\r",
+        "The blazing Fire-type Pokémon\n",
+        "{CURSOR_X 7}CHARIZARD TYPHLOSION\f",
+        "{CURSOR_X 7}BLAZIKEN INFERNAPE\r",
+        "The restless Water-type Pokémon\n",
+        "{CURSOR_X 7}BLASTOISE FERALIGATR\f",
+        "{CURSOR_X 7}SWAMPERT EMPOLEON\r",
+        "The quiet Grass-type Pokémon\n",
+        "{CURSOR_X 7}VENUSAUR MEGANIUM\f",
+        "{CURSOR_X 7}SCEPTILE TORTERRA"
+      ]
+    },
+    {
+      "id": "msg_0635_T30R0601_00062",
+      "en_US": [
+        "Well then, I will teach {STRVAR_1 0, 0, 0}\n",
+        "a move...\r"
+      ]
+    }
+  ]
+}

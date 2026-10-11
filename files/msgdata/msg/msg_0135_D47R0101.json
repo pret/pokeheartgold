@@ -1,0 +1,822 @@
+{
+  "key": 50307,
+  "messages": [
+    {
+      "id": "msg_0135_D47R0101_00000",
+      "en_US": [
+        "Welcome to the Safari Zone!\r",
+        "For just ${STRVAR_1 52, 1, 0}, you can play the\n",
+        "Safari Game.\r",
+        "You can roam the wide-open Safari Zone\n",
+        "and catch whatever you like.\f",
+        "Would you like to play? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00001",
+      "en_US": [
+        "Owner!\n",
+        "Welcome to the Safari Zone!\r",
+        "For just ${STRVAR_1 52, 1, 0}, you can play the\n",
+        "Safari Game.\r",
+        "You can roam the wide-open Safari Zone\n",
+        "and catch what you like.\f",
+        "Would you like to play? {YESNO 0}\n"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00002",
+      "en_US": "That’ll be ${STRVAR_1 52, 1, 0}, please!\r"
+    },
+    {
+      "id": "msg_0135_D47R0101_00003",
+      "en_US": [
+        "OK.\n",
+        "Please come again!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00004",
+      "en_US": "Here are your Safari Balls!\r"
+    },
+    {
+      "id": "msg_0135_D47R0101_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received {STRVAR_1 51, 1, 0} Safari Balls\n",
+        "from the attendant."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00006",
+      "en_US": [
+        "We’ll call for you when you run out of\n",
+        "Safari Balls.\f",
+        "Well, I hope you enjoy it!\r",
+        "Go, and have fun!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00007",
+      "en_US": [
+        "You still have Safari Balls left.\n",
+        "Leave the Safari Zone? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00008",
+      "en_US": [
+        "Certainly.\r",
+        "Please return any Safari Balls you may\n",
+        "have remaining.\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00009",
+      "en_US": [
+        "Did you have fun?\n",
+        "Please come again!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00010",
+      "en_US": [
+        "I am sorry.\n",
+        "You don’t have enough money.\r",
+        "I hope you will drop by again."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00011",
+      "en_US": [
+        "Owner!\n",
+        "You don’t have enough money.\r",
+        "I hope you drop by again."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00012",
+      "en_US": [
+        "I am sorry.\n",
+        "There is no room left in the PC!\r",
+        "Please come back after you have made\n",
+        "some room."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00013",
+      "en_US": [
+        "Owner!\n",
+        "There is no room left in the PC!\r",
+        "Please come back after you have made\n",
+        "some room."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00014",
+      "en_US": [
+        "Hi! Is it your first time here at\n",
+        "the Safari Zone? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00015",
+      "en_US": [
+        "Welcome, Owner!\n",
+        "Should I explain the Safari Zone? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00016",
+      "en_US": [
+        "At the Safari Zone, you can enjoy a\n",
+        "Safari Game where you are given {STRVAR_1 51, 1, 0}\f",
+        "Safari Balls to try to catch Pokémon.\r",
+        "When you have run out of Safari Balls,\n",
+        "the game is over.\r",
+        "When you see a Pokémon, you can choose\n",
+        "to throw Bait or Mud.\r",
+        "If you throw Bait, Pokémon tend to stay\n",
+        "but will become more difficult to catch.\r",
+        "If you throw Mud, it will become easier\n",
+        "to catch, but the Pokémon may flee.\r",
+        "Have fun at the Safari Zone!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00017",
+      "en_US": "Have fun at the Safari Zone!"
+    },
+    {
+      "id": "msg_0135_D47R0101_00018",
+      "en_US": [
+        "Warden Baoba has something important\n",
+        "to share with you!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00019",
+      "en_US": [
+        "This is the Area Customizer.\n",
+        "What would you like to know about? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00020",
+      "en_US": [
+        "The Safari Zone has six Areas.\r",
+        "Plains Area...\n",
+        "Peak Area...\f",
+        "and so on.\r",
+        "The Area Customizer allows you to\n",
+        "change the combination of these Areas.\r",
+        "What would you like to know? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00021",
+      "en_US": [
+        "Check out the machine, and you’ll see\n",
+        "the Area Customizer screen.\r",
+        "The lower window shows the current\n",
+        "Safari Zone setting.\r",
+        "Select an Area with the A Button to\n",
+        "swap it with another.\r",
+        "What would you like to know? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00022",
+      "en_US": [
+        "When you select an Area, then select\n",
+        "Swap, you will see 12 new Areas.\r",
+        "Select one of them by highlighting it and\n",
+        "pressing the A Button.\r",
+        "What would you like to know? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00023",
+      "en_US": [
+        "When you select an Area, then select\n",
+        "Order, the Area type will not change,\f",
+        "but the location can now be changed.\r",
+        "What would you like to know? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00024",
+      "en_US": [
+        "Different Areas have different Pokémon\n",
+        "living in them, so when you change\f",
+        "Areas, you will see different Pokémon.\r",
+        "Please do try the different Areas!\n",
+        "What would you like to know? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00025",
+      "en_US": [
+        "I am sorry, but this can’t be used yet.\n",
+        "Warden Baoba has a great plan for this\f",
+        "machine...or so he says. But even we\f",
+        "don’t know what it is. It’s a secret."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00026",
+      "en_US": "Please enjoy the Area Customizer!"
+    },
+    {
+      "id": "msg_0135_D47R0101_00027",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} turned on\n",
+        "the Area Customizer!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00028",
+      "en_US": "It is still under development."
+    },
+    {
+      "id": "msg_0135_D47R0101_00029",
+      "en_US": [
+        "Hi, I have been waiting for you!\n",
+        "What do you think?\r",
+        "This is a brand-new Safari Zone.\n",
+        "By the way...\r",
+        "I just had an idea.\n",
+        "Would you like to take the Owner\f",
+        "Aptitude Test? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00030",
+      "en_US": [
+        "Right on!\n",
+        "Let me explain how the test works.\f",
+        "It’s very easy.\r",
+        "All you have to do is to catch one\n",
+        "GEODUDE at the Safari and show it to me.\r",
+        "They are in the grass closest to the\n",
+        "entrance. It shouldn’t take long\f",
+        "before you catch one.\r",
+        "Good luck!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00031",
+      "en_US": [
+        "Wow, I never thought anyone\n",
+        "would decline!\r",
+        "You can become the Safari Zone Owner,\n",
+        "don’t you see?\r",
+        "Owner...\n",
+        "It’s got a nice ring to it, doesn’t it?\r",
+        "You should try the test! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00032",
+      "en_US": [
+        "Oh, wonderful!\n",
+        "You’ve caught a GEODUDE!\f",
+        "You’ve passed the first test.\r",
+        "..................\r",
+        "Huh? Didn’t I tell you that there are\n",
+        "two tests?\r",
+        "That’s right!\n",
+        "Becoming an owner is not that easy.\r",
+        "The second test is...\n",
+        "Well, I am still preparing for it.\r",
+        "I will let you know once it’s ready.\n",
+        "You need to wait just a little.\f",
+        "I will call you with the Pokégear."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00033",
+      "en_US": [
+        "Show me the GEODUDE once you’ve\n",
+        "caught one.\r",
+        "They are in the grass closest to the\n",
+        "entrance. It shouldn’t take long.\r",
+        "Good luck!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00034",
+      "en_US": [
+        "I’ve been waiting for you!\n",
+        "The test is ready.\r",
+        "This time can you catch a SANDSHREW\n",
+        "and show it to me?\r",
+        "Sounds easy, right? Not really!\n",
+        "SANDSHREW will not appear with the\f",
+        "current Safari Zone setting.\r",
+        "And that’s where this comes in handy!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00035",
+      "en_US": [
+        "This sophisticated, high-tech machine\n",
+        "lets you customize Safari Zone Areas.\f",
+        "I call it the Area Customizer!\r",
+        "You want to know how it works,\n",
+        "don’t you?\f",
+        "It’s a...secret!\r",
+        "Well, you shouldn’t have trouble\n",
+        "operating it. Just talk to the staff\f",
+        "next to me!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00036",
+      "en_US": [
+        "I almost forgot!\r",
+        "I was in the middle of explaining\n",
+        "the second test, wasn’t I?\r",
+        "You will not see SANDSHREW\n",
+        "with the current Safari Zone Areas,\r",
+        "so you have to use the Area Customizer\n",
+        "to change them.\r",
+        "SANDSHREW live in the desert!\n",
+        "Good luck!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00037",
+      "en_US": [
+        "You did it!\r",
+        "You caught a SANDSHREW!\n",
+        "I knew you could do it.\r",
+        "You’ve passed the test!\n",
+        "You are now the Safari Zone Owner!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00038",
+      "en_US": [
+        "I’ve always wanted to see young people\n",
+        "playing at the safari!\r",
+        "I thought I might get some new ideas.\n",
+        "That should help you complete your\f",
+        "Pokédex.\r",
+        "That’s what I have been thinking.\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00039",
+      "en_US": [
+        "By the way, though you are now the\n",
+        "Safari Zone Owner, would you kindly\f",
+        "continue to pay admission?\f",
+        "We have our reasons.\r",
+        "Don’t be upset. I’ll keep thinking about\n",
+        "how I can create new fun ways to\f",
+        "help you complete your Pokédex.\r",
+        "Go have fun at the Safari Zone!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00040",
+      "en_US": [
+        "I will let you know as soon as I come up\n",
+        "with something new, using the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00041",
+      "en_US": [
+        "Show me the SANDSHREW once you’ve\n",
+        "caught one. SANDSHREW live in the\f",
+        "desert! Good luck!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00042",
+      "en_US": [
+        "Slow down.\r",
+        "Once the next test is ready, I will call\n",
+        "you using the Pokégear.\r",
+        "Give me some time, OK?"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00043",
+      "en_US": [
+        "Hi, I have been waiting for you!\r",
+        "I had an epiphany!\n",
+        "A new attraction!\r",
+        "I’ve decided to call it...\n",
+        "Object Arrangement!\r",
+        "This is going to be fun!\n",
+        "You can place objects on the field as\f",
+        "you play at the Safari Zone!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00044",
+      "en_US": [
+        "Not only that, but the types of\n",
+        "Pokémon you see will change depending\f",
+        "on the types of objects you place.\r",
+        "Isn’t it amazing?\n",
+        "I will call you using the Pokégear if\f",
+        "something else comes up!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00045",
+      "en_US": [
+        "I will explain Object Arrangement.\n",
+        "Would you like to know anything? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00046",
+      "en_US": [
+        "I will explain Object Arrangement.\n",
+        "Feel free to ask me any questions.\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00047",
+      "en_US": [
+        "There are many objects you can place\n",
+        "anywhere as you walk around the Safari\f",
+        "Zone, except on stairs and grass where\f",
+        "Pokémon appear!\r",
+        "You also want to remember that you can\n",
+        "place up to 30 objects in an Area.\r",
+        "Would you like to know anything\n",
+        "else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00048",
+      "en_US": [
+        "It is easy to place objects. All you\n",
+        "have to do is make sure that the spot\f",
+        "in front of you is clear.\r",
+        "If it’s empty, you can select\n",
+        "an object.\r",
+        "Some objects are large and may need a\n",
+        "large space.\r",
+        "Would you like to know anything\n",
+        "else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00049",
+      "en_US": [
+        "If you want to remove an object, just\n",
+        "walk up to it and check it. The objects\f",
+        "you have placed will glow in the dark.\f",
+        "It should help you at night.\r",
+        "Would you like to know anything\n",
+        "else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00050",
+      "en_US": [
+        "There are many different objects.\n",
+        "Ones that look like grass, like trees,\f",
+        "like boulders, like water, and other\f",
+        "types of objects...\r",
+        "Try placing different objects. The\n",
+        "number of objects placed in an Area\f",
+        "is shown in the Area Customizer\f",
+        "on the top screen.\r",
+        "There will be more objects to come,\n",
+        "as I’ll keep adding more.\r",
+        "Would you like to know anything\n",
+        "else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00051",
+      "en_US": [
+        "The types of Pokémon you see will\n",
+        "change depending on the types\f",
+        "of objects you place.\r",
+        "The Safari Zone is also changed\n",
+        "at that point. Try placing different\f",
+        "types of objects.\r",
+        "Would you like to know anything\n",
+        "else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00052",
+      "en_US": [
+        "Beware!\r",
+        "Once you’ve swapped Areas, the\n",
+        "objects you placed will all be removed.\r",
+        "Would you like to know\n",
+        "anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00053",
+      "en_US": [
+        "I hope you enjoy it!\n",
+        "Go, and have fun!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00054",
+      "en_US": [
+        "Welcome to {STRVAR_1 3, 0, 0}’s Safari Zone!\r",
+        "For just $500, you can play the\n",
+        "Safari Game.\r",
+        "You can roam the wide-open Safari Zone\n",
+        "and catch what you like.\f",
+        "Would you like to play? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00055",
+      "en_US": "That’ll be ${STRVAR_1 52, 1, 0}, please!\r"
+    },
+    {
+      "id": "msg_0135_D47R0101_00056",
+      "en_US": [
+        "OK.\n",
+        "Please come again!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00057",
+      "en_US": "Here are your Safari Balls.\r"
+    },
+    {
+      "id": "msg_0135_D47R0101_00058",
+      "en_US": "{STRVAR_1 3, 0, 0} received {STRVAR_1 51, 1, 0} Safari Balls."
+    },
+    {
+      "id": "msg_0135_D47R0101_00059",
+      "en_US": [
+        "We’ll call you when you run out of\n",
+        "Safari Balls.\r",
+        "Well, I’ll wish you the best of luck!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00060",
+      "en_US": [
+        "You don’t have your friend’s\n",
+        "Safari Zone.\f",
+        "Sorry, but you cannot enter here.\r",
+        "Please talk to the attendant next\n",
+        "to me."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00061",
+      "en_US": [
+        "You still have time left. Are you sure\n",
+        "you want to leave the Safari Zone?"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00062",
+      "en_US": [
+        "Certainly.\r",
+        "Please return any Safari Balls\n",
+        "you may have remaining.\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00063",
+      "en_US": [
+        "Did you have fun?\n",
+        "Please come again!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00064",
+      "en_US": [
+        "I am sorry.\n",
+        "You don’t have enough money.\r",
+        "I hope you drop by again."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00065",
+      "en_US": [
+        "Owner!\r",
+        "This is the Safari Zone Link\n",
+        "reception counter.\r",
+        "You can exchange Safari Zones here.\r",
+        "Would you like to link with your\n",
+        "friends to exchange Safari Zones? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00066",
+      "en_US": [
+        "This is the Safari Zone Link\n",
+        "reception counter.\r",
+        "You can exchange Safari Zones here.\r",
+        "Would you like to link with your\n",
+        "friends to exchange Safari Zones? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00067",
+      "en_US": "Would you like to save the game?"
+    },
+    {
+      "id": "msg_0135_D47R0101_00068",
+      "en_US": [
+        "There is already a saved file.\n",
+        "Is it OK to overwrite it?"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00069",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00070",
+      "en_US": "{STRVAR_1 3, 0, 0} saved the game."
+    },
+    {
+      "id": "msg_0135_D47R0101_00071",
+      "en_US": [
+        "Please decide which of you two\n",
+        "will become the group leader.\r",
+        "The other player must then choose\n",
+        "“JOIN GROUP.” {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00072",
+      "en_US": [
+        "Choose the player to exchange\n",
+        "Safari Zones with. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00073",
+      "en_US": "Awaiting {STRVAR_1 3, 0, 0}’s response..."
+    },
+    {
+      "id": "msg_0135_D47R0101_00074",
+      "en_US": "{STRVAR_1 3, 0, 0} sent back an “OK”!"
+    },
+    {
+      "id": "msg_0135_D47R0101_00075",
+      "en_US": "{STRVAR_1 3, 0, 0} replied, “No”..."
+    },
+    {
+      "id": "msg_0135_D47R0101_00076",
+      "en_US": "Do you want to leave the group?"
+    },
+    {
+      "id": "msg_0135_D47R0101_00077",
+      "en_US": "You have left the group."
+    },
+    {
+      "id": "msg_0135_D47R0101_00078",
+      "en_US": "Awaiting contact from your friend."
+    },
+    {
+      "id": "msg_0135_D47R0101_00079",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} has responded!\r",
+        "Would you like to exchange Safari\n",
+        "Zones with {STRVAR_1 3, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00080",
+      "en_US": [
+        "An “OK” was sent\n",
+        "to {STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00081",
+      "en_US": [
+        "You are about to receive a Safari Zone.\n",
+        "Please wait."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00082",
+      "en_US": [
+        "You have received\n",
+        "{STRVAR_1 3, 0, 0}’s Safari Zone!\r"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00083",
+      "en_US": [
+        "The Safari Zone Link is finished!\r",
+        "Please come to the reception counter\n",
+        "next to you."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00084",
+      "en_US": "I’m sorry but this cannot be used yet."
+    },
+    {
+      "id": "msg_0135_D47R0101_00085",
+      "en_US": "Please come again."
+    },
+    {
+      "id": "msg_0135_D47R0101_00086",
+      "en_US": [
+        "DS Wireless Communications will be\n",
+        "launched. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00087",
+      "en_US": [
+        "Communication error.\r",
+        "Please repeat the registration\n",
+        "process from the beginning."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00088",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00089",
+      "en_US": "{STRVAR_1 3, 0, 0} saved the game."
+    },
+    {
+      "id": "msg_0135_D47R0101_00090",
+      "garbage": 55
+    },
+    {
+      "id": "msg_0135_D47R0101_00091",
+      "en_US": [
+        "The Safari Zone Areas have\n",
+        "been swapped."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00092",
+      "en_US": [
+        "This is the reception for the\n",
+        "Safari Zone Link.\r",
+        "...Or should I say...is going to be.\r",
+        "We’re still not ready.\n",
+        "Please come back later."
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00093",
+      "en_US": [
+        "Owner!\n",
+        "This is the Safari Zone Link reception.\r",
+        "Would you like to know about the\n",
+        "Safari Zone Link? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00094",
+      "en_US": [
+        "This is the Safari Zone Link reception.\r",
+        "Would you like to know about\n",
+        "the Safari Zone Link? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00095",
+      "en_US": [
+        "You can exchange Safari Zones with your\n",
+        "friends using the Safari Zone Link.\r",
+        "You will be able to play in their\n",
+        "Safari Zone!\r",
+        "Areas and Pokémon will be different.\n",
+        "Beware!\r",
+        "The Safari Zone you receive will \n",
+        "disappear after 24 hours or if you\f",
+        "receive another Safari Zone.\r",
+        "To your right is the reception for the\n",
+        "Safari Zone Link.\r",
+        "To your left is the reception to play in\n",
+        "your friend’s Safari Zone.\r",
+        "Enjoy the Safari Zone Link!"
+      ]
+    },
+    {
+      "id": "msg_0135_D47R0101_00096",
+      "en_US": "OK! Enjoy the Safari Zone Link!"
+    }
+  ]
+}

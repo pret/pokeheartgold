@@ -1,6 +1,0 @@
-#ifndef NITRO_OS_TERMINATE_PROC_H
-#define NITRO_OS_TERMINATE_PROC_H
-
-void OS_Terminate(void);
-
-#endif //NITRO_OS_TERMINATE_PROC_H

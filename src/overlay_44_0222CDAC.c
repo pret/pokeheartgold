@@ -768,8 +768,8 @@ void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0) {
     NARC *temp_r0 = NARC_New(NARC_a_0_8_8, HEAP_ID_53);
     arg0->unk15C = BgConfig_Alloc(HEAP_ID_53);
     arg0->unk164 = MessageFormat_New(HEAP_ID_53);
-    arg0->unk168 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0778_bin, HEAP_ID_53);
-    arg0->unk16C = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0800_bin, HEAP_ID_53);
+    arg0->unk168 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0778, HEAP_ID_53);
+    arg0->unk16C = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0800, HEAP_ID_53);
     ov44_0222A830();
     ov44_0222A850(arg0->unk15C);
     ov44_0222AEC0(arg0, temp_r0);

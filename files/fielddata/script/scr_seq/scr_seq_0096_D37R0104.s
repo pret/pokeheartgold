@@ -1,33 +1,32 @@
-; Goldenrod Tunnel B2F
+// Goldenrod Tunnel B2F
 
-; Puzzle:
-;   When you hit a red, green, or blue switch, any gate bordering a room of that
-;   color will open if closed, or close if open.
+// Puzzle:
+//   When you hit a red, green, or blue switch, any gate bordering a room of that
+//   color will open if closed, or close if open.
 
-; Gate diagram:
-;  - Each gate has an index
-;  - The room color is noted by a lowercase letter {r,g,b,p}
-;
-; [ ]--0--[ ]-----[ ]--1--[ ]
-;  |       |       |       |
-;  |   g   2   b   3   r   |
-;  |       |       |       |
-; [ ]--4--[ ]--5--[ ]--6--[ ]-----[ ]
-;  |       |       |       |
-;  |   b   7   r   8   g   9   p
-;  |       |       |       |
-; [ ]-----[ ]-----[ ]-----[ ]
+// Gate diagram:
+//  - Each gate has an index
+//  - The room color is noted by a lowercase letter {r,g,b,p}
+//
+// [ ]--0--[ ]-----[ ]--1--[ ]
+//  |       |       |       |
+//  |   g   2   b   3   r   |
+//  |       |       |       |
+// [ ]--4--[ ]--5--[ ]--6--[ ]-----[ ]
+//  |       |       |       |
+//  |   b   7   r   8   g   9   p
+//  |       |       |       |
+// [ ]-----[ ]-----[ ]-----[ ]
 
-; There are temp variables indicating whether each gate is open or closed. The
-; temp variable corresponds to the gate's index, (e.g. gate 2 uses
-; VAR_TEMP_x4002).
+// There are temp variables indicating whether each gate is open or closed. The
+// temp variable corresponds to the gate's index, (e.g. gate 2 uses
+// VAR_TEMP_x4002).
 
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D37R0104.h"
 #include "msgdata/msg/msg_0119_D37R0104.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D37R0104_000
 	ScrDef scr_seq_D37R0104_001
@@ -72,7 +71,7 @@ _open_purple_gate:
 	MovePersonFacing obj_D37R0104_stop_6, 24, 0, 14, DIR_NORTH
 	End
 
-; Press the red switch.
+// Press the red switch.
 scr_seq_D37R0104_002:
 	ScrCmd_609
 	LockAll
@@ -89,7 +88,7 @@ _00F5:
 	ApplyMovement obj_D37R0104_gate1_right, _05E4
 	ApplyMovement obj_D37R0104_stop_2, _0614
 	SetVar VAR_TEMP_x4001, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0113:
 	Compare VAR_TEMP_x4003, GATE_OPEN
@@ -102,7 +101,7 @@ _013C:
 	ApplyMovement obj_D37R0104_gate3_top, _05FC
 	ApplyMovement obj_D37R0104_gate3_bottom, _0604
 	SetVar VAR_TEMP_x4003, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0152:
 	Compare VAR_TEMP_x4005, GATE_OPEN
@@ -117,7 +116,7 @@ _0183:
 	ApplyMovement obj_D37R0104_gate5_right, _05E4
 	ApplyMovement obj_D37R0104_stop_4, _0614
 	SetVar VAR_TEMP_x4005, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _01A1:
 	Compare VAR_TEMP_x4006, GATE_OPEN
@@ -132,7 +131,7 @@ _01D2:
 	ApplyMovement obj_D37R0104_gate6_right, _05E4
 	ApplyMovement obj_D37R0104_stop_5, _0614
 	SetVar VAR_TEMP_x4006, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _01F0:
 	Compare VAR_TEMP_x4007, GATE_OPEN
@@ -145,7 +144,7 @@ _0219:
 	ApplyMovement obj_D37R0104_gate7_top, _05FC
 	ApplyMovement obj_D37R0104_gate7_bottom, _0604
 	SetVar VAR_TEMP_x4007, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _022F:
 	Compare VAR_TEMP_x4008, GATE_OPEN
@@ -158,14 +157,14 @@ _0258:
 	ApplyMovement obj_D37R0104_gate8_top, _05FC
 	ApplyMovement obj_D37R0104_gate8_bottom, _0604
 	SetVar VAR_TEMP_x4008, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _026E:
 	WaitMovement
 	ReleaseAll
 	End
 
-; Press the green switch.
+// Press the green switch.
 scr_seq_D37R0104_001:
 	ScrCmd_609
 	LockAll
@@ -182,7 +181,7 @@ _02AD:
 	ApplyMovement obj_D37R0104_gate0_right, _05E4
 	ApplyMovement obj_D37R0104_stop_3, _0614
 	SetVar VAR_TEMP_x4000, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _02CB:
 	Compare VAR_TEMP_x4002, GATE_OPEN
@@ -195,7 +194,7 @@ _02F4:
 	ApplyMovement obj_D37R0104_gate2_top, _05FC
 	ApplyMovement obj_D37R0104_gate2_bottom, _0604
 	SetVar VAR_TEMP_x4002, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _030A:
 	Compare VAR_TEMP_x4004, GATE_OPEN
@@ -210,7 +209,7 @@ _033B:
 	ApplyMovement obj_D37R0104_gate4_right, _05E4
 	ApplyMovement obj_D37R0104_stop, _0614
 	SetVar VAR_TEMP_x4004, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0359:
 	Compare VAR_TEMP_x4006, GATE_OPEN
@@ -225,7 +224,7 @@ _038A:
 	ApplyMovement obj_D37R0104_gate6_right, _05E4
 	ApplyMovement obj_D37R0104_stop_5, _0614
 	SetVar VAR_TEMP_x4006, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _03A8:
 	Compare VAR_TEMP_x4008, GATE_OPEN
@@ -238,7 +237,7 @@ _03D1:
 	ApplyMovement obj_D37R0104_gate8_top, _05FC
 	ApplyMovement obj_D37R0104_gate8_bottom, _0604
 	SetVar VAR_TEMP_x4008, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _03E7:
 	Compare VAR_TEMP_x4009, GATE_OPEN
@@ -251,14 +250,14 @@ _0410:
 	ApplyMovement obj_D37R0104_gate9_top, _05FC
 	ApplyMovement obj_D37R0104_gate9_bottom, _0604
 	SetVar VAR_TEMP_x4009, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0426:
 	WaitMovement
 	ReleaseAll
 	End
 
-; Press the blue switch.
+// Press the blue switch.
 scr_seq_D37R0104_000:
 	ScrCmd_609
 	LockAll
@@ -273,7 +272,7 @@ _045D:
 	ApplyMovement obj_D37R0104_gate2_top, _05FC
 	ApplyMovement obj_D37R0104_gate2_bottom, _0604
 	SetVar VAR_TEMP_x4002, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0473:
 	Compare VAR_TEMP_x4003, GATE_OPEN
@@ -286,7 +285,7 @@ _049C:
 	ApplyMovement obj_D37R0104_gate3_top, _05FC
 	ApplyMovement obj_D37R0104_gate3_bottom, _0604
 	SetVar VAR_TEMP_x4003, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _04B2:
 	Compare VAR_TEMP_x4004, GATE_OPEN
@@ -301,7 +300,7 @@ _04E3:
 	ApplyMovement obj_D37R0104_gate4_right, _05E4
 	ApplyMovement obj_D37R0104_stop, _0614
 	SetVar VAR_TEMP_x4004, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0501:
 	Compare VAR_TEMP_x4005, GATE_OPEN
@@ -316,7 +315,7 @@ _0532:
 	ApplyMovement obj_D37R0104_gate5_right, _05E4
 	ApplyMovement obj_D37R0104_stop_4, _0614
 	SetVar VAR_TEMP_x4005, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _0550:
 	Compare VAR_TEMP_x4007, GATE_OPEN
@@ -329,14 +328,14 @@ _0579:
 	ApplyMovement obj_D37R0104_gate7_top, _05FC
 	ApplyMovement obj_D37R0104_gate7_bottom, _0604
 	SetVar VAR_TEMP_x4007, GATE_OPEN
-	; fallthrough
+	// fallthrough
 
 _058F:
 	WaitMovement
 	ReleaseAll
 	End
 
-; Press the purple switch.
+// Press the purple switch.
 scr_seq_D37R0104_003:
 	GoToIfSet FLAG_OPENED_GOLDENROD_PURPLE_GATE, _05CA
 	ScrCmd_609

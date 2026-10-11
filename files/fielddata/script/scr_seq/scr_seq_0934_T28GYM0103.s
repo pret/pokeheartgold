@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_T28GYM0103.h"
 #include "msgdata/msg/msg_0623_T28GYM0103.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_T28GYM0103_000
 	ScrDef scr_seq_T28GYM0103_001

@@ -4,9 +4,9 @@
 
 #include "global.h"
 
-#include "data/resdat.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0248.h"
+#include "files/data/resdat.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0248.h"
 
 #include "bag.h"
 #include "berry_pots_app_internal.h"
@@ -118,14 +118,15 @@ static const TouchscreenListMenuTemplate sMenuTemplate = {
     31,
     84,
 };
+
 static const ResdatIdList ov17_02203D78 = {
-    .charRes = NARC_resdat_resdat_00000030_bin,
-    .plttRes = NARC_resdat_resdat_00000031_bin,
-    .cellRes = NARC_resdat_resdat_00000029_bin,
-    .animRes = NARC_resdat_resdat_00000028_bin,
+    .charRes = resdat_00000030_bin,
+    .plttRes = resdat_00000031_bin,
+    .cellRes = resdat_00000029_bin,
+    .animRes = resdat_00000028_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000079_bin,
+    .headerId = resdat_00000079_bin,
 };
 static const GraphicsModes ov17_02203D88 = {
     GX_DISPMODE_GRAPHICS,
@@ -1051,7 +1052,7 @@ static void ov17_02202BF8(BerryPotsAppData *data) {
     }
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void ov17_02202C2C(void) {
@@ -1129,7 +1130,7 @@ void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
 static void BerryPotsApp_SetupText(BerryPotsAppData *data) {
     FontID_Alloc(4, data->heapID);
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0248_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0248, data->heapID);
     data->msgFmt = MessageFormat_New_Custom(16, 16, data->heapID);
     data->currentStatusString = String_New(128, data->heapID);
     data->cancelString = NewString_ReadMsgData(data->msgData, msg_0248_00000);

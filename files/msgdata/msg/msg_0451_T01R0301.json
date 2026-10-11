@@ -1,0 +1,629 @@
+{
+  "key": 42007,
+  "messages": [
+    {
+      "id": "msg_0451_T01R0301_00000",
+      "en_US": [
+        "Professor Oak: Ah, {STRVAR_1 3, 0, 0}!\n",
+        "It’s good of you to come all this way\f",
+        "to Kanto.\r",
+        "What do you think of the Trainers\n",
+        "out here?\f",
+        "Pretty tough, huh?\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00001",
+      "en_US": [
+        "Professor Oak: Ah, {STRVAR_1 3, 0, 0}!\n",
+        "It’s good of you to come all this way\f",
+        "to Kanto.\r",
+        "What do you think of the Trainers\n",
+        "out here?\f",
+        "Pretty tough, huh?\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00002",
+      "garbage": 32
+    },
+    {
+      "id": "msg_0451_T01R0301_00003",
+      "en_US": [
+        "If you’re in the area, I hope you\n",
+        "come visit again."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00004",
+      "en_US": [
+        "You never cease to amaze me!\r",
+        "Your having completed the National\n",
+        "Pokédex far exceeded my expectations!\r",
+        "Meeting you is something l will cherish\n",
+        "all my life long!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00005",
+      "en_US": [
+        "You never cease to amaze me!\r",
+        "Your having completed the National\n",
+        "Pokédex far exceeded my expectations!\r",
+        "Meeting you is something l will cherish\n",
+        "all my life long!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00006",
+      "en_US": [
+        "Professor Oak: Those Badges are...\r",
+        "Wow! You have not only become the\n",
+        "Johto Champion, but you’ve collected\f",
+        "all the Kanto Badges! Well done!\r",
+        "Hmm... No wonder I sensed something\n",
+        "in you when we met.\r",
+        "Tell you what, {STRVAR_1 3, 0, 0}.\r",
+        "I’ll make arrangements so that you can\n",
+        "go to Mt. Silver.\r",
+        "Mt. Silver is a big mountain that is\n",
+        "home to many wild Pokémon.\r",
+        "It’s too dangerous for your average\n",
+        "Trainer, so it’s off limits.\r",
+        "But we can make an exception in your\n",
+        "case, {STRVAR_1 3, 0, 0}.\r",
+        "Go to the Pokémon League\n",
+        "Reception Gate.\r",
+        "You can reach Mt. Silver from there."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00007",
+      "en_US": [
+        "Professor Oak: Those Badges are...\r",
+        "Wow! You have not only become the\n",
+        "Johto Champion, but you’ve collected\f",
+        "all the Kanto Badges! Well done!\r",
+        "Hmm... No wonder I sensed something\n",
+        "in you when we met.\r",
+        "Tell you what, {STRVAR_1 3, 0, 0}.\r",
+        "I’ll make arrangements so that you can\n",
+        "go to Mt. Silver.\r",
+        "Mt. Silver is a big mountain that is\n",
+        "home to many wild Pokémon.\r",
+        "It’s too dangerous for your average\n",
+        "Trainer, so it’s off limits.\r",
+        "But we can make an exception in your\n",
+        "case, {STRVAR_1 3, 0, 0}.\r",
+        "Go to the Pokémon League\n",
+        "Reception Gate.\r",
+        "You can reach Mt. Silver from there."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00008",
+      "en_US": [
+        "Professor Oak: Hmm? You’re not\n",
+        "collecting Kanto Gym Badges?\r",
+        "The Gym Leaders in Kanto are as tough\n",
+        "as any you battled in Johto.\f",
+        "I recommend that you challenge them.\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00009",
+      "en_US": [
+        "Professor Oak: Ah, you’re collecting\n",
+        "Kanto Gym Badges.\r",
+        "I imagine that it’s hard, but the\n",
+        "experience will surely help you.\r",
+        "Come see me when you get them all.\n",
+        "I’ll have a gift for you.\f",
+        "Keep it up, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00010",
+      "en_US": [
+        "Professor Oak: Ah, you’re collecting\n",
+        "Kanto Gym Badges.\r",
+        "I imagine that it’s hard, but the\n",
+        "experience will surely help you.\r",
+        "Come see me when you get them all.\n",
+        "I’ll have a gift for you.\f",
+        "Keep it up, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00011",
+      "en_US": [
+        "Professor Oak: Oh, {STRVAR_1 3, 0, 0}!\n",
+        "What brought you here?\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00012",
+      "en_US": [
+        "Professor Oak: Oh, {STRVAR_1 3, 0, 0}!\n",
+        "What brought you here?\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00013",
+      "en_US": [
+        "Professor Oak: The legendary Pokémon\n",
+        "that appear in the Hoenn myth?\r",
+        "You must be talking about KYOGRE\n",
+        "and GROUDON!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00014",
+      "en_US": [
+        "Professor Oak: The Embedded Tower is\n",
+        "probably the ruins that has something\f",
+        "to do with the Hoenn myth.\f",
+        "If so, the other one must be around.\r",
+        "KYOGRE and GROUDON are said to have\n",
+        "shaped the seas and lands!\r",
+        "Where those two are, the other Pokémon\n",
+        "is said to appear as well...\f",
+        "All this is quite possible!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00015",
+      "en_US": [
+        "Professor Oak: It’s not hard to imagine\n",
+        "that the Red Orb will make GROUDON\f",
+        "appear at the Embedded Tower...\r",
+        "However, according to Mr. Pokémon,\n",
+        "GROUDON does not show itself to\f",
+        "Trainers with golden hearts, but only\f",
+        "to those with shining-silver spirits.\r",
+        "It may be difficult for you alone to\n",
+        "accomplish this, {STRVAR_1 3, 0, 0}.\r",
+        "But if you manage to obtain a GROUDON\n",
+        "that came from the Embedded Tower,\r",
+        "please do come and show me both\n",
+        "legendary Pokémon!\r",
+        "I will then share with you the rest of\n",
+        "the Hoenn myth!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00016",
+      "en_US": [
+        "Professor Oak: It’s not hard to imagine\n",
+        "that the Red Orb will make GROUDON\f",
+        "appear at the Embedded Tower...\r",
+        "However, according to Mr. Pokémon,\n",
+        "GROUDON does not show itself to\f",
+        "Trainers with golden hearts, but only\f",
+        "to those with shining-silver spirits.\r",
+        "It may be difficult for you alone to\n",
+        "accomplish this, {STRVAR_1 3, 0, 0}.\r",
+        "But if you manage to obtain a GROUDON\n",
+        "that came from the Embedded Tower,\r",
+        "please do come and show me both\n",
+        "legendary Pokémon!\r",
+        "I will then share with you the rest of\n",
+        "the Hoenn myth!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00017",
+      "en_US": [
+        "Professor Oak: It’s not hard to imagine\n",
+        "that the Blue Orb will make KYOGRE\f",
+        "appear at the Embedded Tower...\r",
+        "However, according to Mr. Pokémon,\n",
+        "KYOGRE does not show itself to\f",
+        "Trainers with shining-silver spirits,\f",
+        "but only to those with golden hearts.\r",
+        "It may be difficult for you alone to\n",
+        "accomplish this, {STRVAR_1 3, 0, 0}.\r",
+        "But if you manage to obtain a KYOGRE\n",
+        "that came from the Embedded Tower,\r",
+        "please do come and show me both\n",
+        "legendary Pokémon!\r",
+        "I will then share with you the rest\n",
+        "of the Hoenn myth!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00018",
+      "en_US": [
+        "Professor Oak: It’s not hard to imagine\n",
+        "that the Blue Orb will make KYOGRE\f",
+        "appear at the Embedded Tower...\r",
+        "However, according to Mr. Pokémon,\n",
+        "KYOGRE does not show itself to\f",
+        "Trainers with shining-silver spirits,\f",
+        "but only to those with golden hearts.\r",
+        "It may be difficult for you alone to\n",
+        "accomplish this, {STRVAR_1 3, 0, 0}.\r",
+        "But if you manage to obtain a KYOGRE\n",
+        "that came from the Embedded Tower,\r",
+        "please do come and show me both\n",
+        "legendary Pokémon!\r",
+        "I will then share with you the rest\n",
+        "of the Hoenn myth!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00019",
+      "en_US": [
+        "Professor Oak: You did it,\n",
+        "{STRVAR_1 3, 0, 0}!\f",
+        "You caught both KYOGRE and GROUDON!\f",
+        "OK!\f",
+        "I would like to entrust this to you!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00020",
+      "en_US": [
+        "Professor Oak: You did it,\n",
+        "{STRVAR_1 3, 0, 0}!\f",
+        "You caught both KYOGRE and GROUDON!\f",
+        "OK!\f",
+        "I would like to entrust this to you!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00021",
+      "en_US": [
+        "Professor Oak: It resembles the Orb\n",
+        "you received from Mr. Pokémon,\f",
+        "doesn’t it?\r",
+        "It is called the Jade Orb.\n",
+        "It has something to do with RAYQUAZA.\r",
+        "Legend has it that the battle\n",
+        "between GROUDON and KYOGRE\f",
+        "shaped the lands and seas of Hoenn.\r",
+        "Volcanic eruptions and giant waves are\n",
+        "said to have completely changed the\f",
+        "shape of the land there.\r",
+        "But then RAYQUAZA came down to\n",
+        "halt the battle.\r",
+        "It is a Pokémon that rules the skies!\r",
+        "If the Embedded Tower is related to\n",
+        "KYOGRE and GROUDON,\r",
+        "then going there with that Jade Orb\n",
+        "will surely make something happen.\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00022",
+      "en_US": [
+        "Professor Oak: Go to the Embedded\n",
+        "Tower with the Jade Orb!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00023",
+      "en_US": [
+        "Professor Oak: You have successfully\n",
+        "caught RAYQUAZA!\r",
+        "The strong power of the Jade Orb\n",
+        "must have attracted RAYQUAZA there!\r",
+        "Pokémon are sometimes greatly\n",
+        "attracted by certain Orbs and Stones.\f",
+        "No one knows why.\r",
+        "Perhaps memories from ancient times...\f",
+        "when this planet was born...\f",
+        "and Pokémon, also...\f",
+        "are making Pokémon behave that way.\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00024",
+      "en_US": [
+        "Professor Oak: Hello, {STRVAR_1 3, 0, 0}!\n",
+        "The study of Pokémon never ends.\r",
+        "It is such pure joy to work toward\n",
+        "perfection!\r",
+        "By the way...\r",
+        "Hmm? Those Pokémon!\f",
+        "They were at the Embedded Tower?\r",
+        "They are KYOGRE and GROUDON--\n",
+        "the Pokémon from the Hoenn myth!\r",
+        "I never dreamed you would catch\n",
+        "such Pokémon...\r",
+        "You have proven yourself worthy!\n",
+        "Congratulations!\r",
+        "I would like to entrust this to you,\n",
+        "{STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00025",
+      "en_US": [
+        "Professor Oak: Hello, {STRVAR_1 3, 0, 0}!\n",
+        "The study of Pokémon never ends.\r",
+        "It is such pure joy to work toward\n",
+        "perfection!\r",
+        "By the way...\r",
+        "Hmm? Those Pokémon!\f",
+        "They were at the Embedded Tower?\r",
+        "They are KYOGRE and GROUDON--\n",
+        "the Pokémon from the Hoenn myth!\r",
+        "I never dreamed you would catch\n",
+        "such Pokémon...\r",
+        "You have proven yourself worthy!\n",
+        "Congratulations!\r",
+        "I would like to entrust this to you,\n",
+        "{STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00026",
+      "en_US": "Professor Oak: Here, take this!\r"
+    },
+    {
+      "id": "msg_0451_T01R0301_00027",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0451_T01R0301_00028",
+      "en_US": [
+        "Professor Oak: Say!\n",
+        "Don’t you want to take a picture\f",
+        "with me for a change? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00029",
+      "en_US": [
+        "Professor Oak: You will? Good!\n",
+        "Are you ready?\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00030",
+      "en_US": [
+        "Professor Oak: Yes!\n",
+        "It’s a good memento!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00031",
+      "en_US": [
+        "Professor Oak: Really?\n",
+        "There is no need to be reserved..."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00032",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures.\n"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00033",
+      "en_US": [
+        "The Professor’s Pokémon Talk\n",
+        "radio show is aired here and\f",
+        "in Johto as well.\r",
+        "Professor Oak is so...cool!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00034",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, thanks to your work on\n",
+        "the Pokédex, the Professor’s\f",
+        "research is coming along well."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00035",
+      "en_US": [
+        "So you are {STRVAR_1 3, 0, 0}?\r",
+        "...Just between you and me,\n",
+        "The Professor’s show, Pokémon Talk,\f",
+        "is not live radio!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00036",
+      "en_US": [
+        "There are many books.\n",
+        "Most of the covers are worn out."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00037",
+      "en_US": [
+        "There’s an email message on the PC.\r",
+        "...\r",
+        "Hi, Professor Oak!\n",
+        "How is your research coming along?\r",
+        "I’m...doing fine.\r",
+        "I heard that {STRVAR_1 3, 0, 0} is getting\n",
+        "quite a reputation.\r",
+        "That’s what we hear on the grapevine.\n",
+        "I’m delighted to hear that.\f",
+        "           Elm in New Bark Town 8-)"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00038",
+      "en_US": [
+        "There’s an email message on the PC.\r",
+        "...\r",
+        "Hi, Professor Oak!\n",
+        "How is your research coming along?\r",
+        "I’m...doing fine.\r",
+        "I heard that {STRVAR_1 3, 0, 0} is getting\n",
+        "quite a reputation.\r",
+        "That’s what we hear on the grapevine.\n",
+        "I’m delighted to hear that.\f",
+        "           Elm in New Bark Town 8-)"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00039",
+      "en_US": [
+        "Professor Oak: Hello, {STRVAR_1 3, 0, 0}.\n",
+        "Good to see you.\f",
+        "I heard a lot about you.\r",
+        "Your Pokédex must be close\n",
+        "to complete?\r",
+        "For all your hard work,\n",
+        "I would like to give you something.\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00040",
+      "en_US": [
+        "Professor Oak: Hello, {STRVAR_1 3, 0, 0}.\n",
+        "Good to see you.\f",
+        "I heard a lot about you.\r",
+        "Your Pokédex must be close\n",
+        "to complete?\r",
+        "For all your hard work,\n",
+        "I would like to give you something.\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00041",
+      "en_US": [
+        "Professor Oak: Haha!\r",
+        "What’s behind me...\n",
+        "You must have figured it out right away.\r",
+        "Yes, it is a Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00042",
+      "en_US": [
+        "Professor Oak: You don’t see them\n",
+        "very often in Kanto.\f",
+        "Choose one and it’ll be yours!\r",
+        "...Go ahead!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00043",
+      "en_US": [
+        "So, you’re claiming the\n",
+        "Fire Pokémon CHARMANDER? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00044",
+      "en_US": [
+        "So, you’ve decided on the\n",
+        "Water Pokémon SQUIRTLE? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00045",
+      "en_US": [
+        "So, you want to go with\n",
+        "the Grass Pokémon BULBASAUR? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00046",
+      "en_US": "This Pokémon is really quite energetic!\r"
+    },
+    {
+      "id": "msg_0451_T01R0301_00047",
+      "en_US": [
+        "No need to hurry.\n",
+        "Take your time."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00048",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the\n",
+        "{STRVAR_1 0, 1, 0} from Professor Oak!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00049",
+      "en_US": [
+        "Would you like to give a nickname to\n",
+        "the {STRVAR_1 0, 1, 0} you received? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00050",
+      "en_US": [
+        "Is {STRVAR_1 1, 1, 0} the nickname\n",
+        "you want to give? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00051",
+      "en_US": [
+        "Huh?\n",
+        "You have no room for it right now.\r",
+        "Come back when you’ve made room."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00052",
+      "en_US": [
+        "Professor Oak: If a wild Pokémon\n",
+        "appears, your Pokémon can battle it.\r",
+        "With it at your side, you should be able\n",
+        "to reach the next town...\r",
+        "What am I saying?\n",
+        "You already know all this!\f",
+        "Hahaha!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00053",
+      "en_US": [
+        "Professor Oak: There is nothing more\n",
+        "that I can do for you.\r",
+        "Enjoy the rest of your journey\n",
+        "with that new Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00054",
+      "en_US": [
+        "This is Professor Oak’s Pokémon.\n",
+        "{STRVAR_1 3, 1, 0} will probably not\f",
+        "steal it like before..."
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00055",
+      "en_US": [
+        "Professor Oak: Good to see you!\n",
+        "This is what I’ve wanted to\f",
+        "give to you!\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00056",
+      "en_US": [
+        "Professor Oak: That Hidden Machine\n",
+        "contains the move Rock Climb!\r",
+        "When you teach it to a Pokémon,\n",
+        "you can go up rock walls that have\f",
+        "steps carved in them.\r"
+      ]
+    },
+    {
+      "id": "msg_0451_T01R0301_00057",
+      "en_US": [
+        "When you use Rock Climb,\n",
+        "you can go up rock walls that have\f",
+        "steps carved in them.\r",
+        "You will discover all sorts\n",
+        "of new things!"
+      ]
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 #include "constants/items.h"
 #include "constants/trainer_class.h"
 
-#include "msgdata/msg/msg_0246.h"
+#include "files/msgdata/msg/msg_0246.h"
 
 #include "bug_contest.h"
 #include "field_system.h"

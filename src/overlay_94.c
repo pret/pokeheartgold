@@ -6,7 +6,7 @@
 #include "constants/sndseq.h"
 #include "constants/species.h"
 
-#include "msgdata/msg/msg_0300.h"
+#include "files/msgdata/msg/msg_0300.h"
 
 #include "assert.h"
 #include "field_system.h"

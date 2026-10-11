@@ -1,0 +1,37 @@
+{
+  "key": 33931,
+  "messages": [
+    {
+      "id": "msg_0128_D43R0103_00000",
+      "en_US": [
+        "Hold it.\r",
+        "...Are you going to challenge the\n",
+        "Pokémon League?\r",
+        "Victory Road is at its end, for sure.\r",
+        "But did you notice...?\n",
+        "You didn’t see any real Trainers on the\f",
+        "way, did you?\r",
+        "Man, they were all spineless!\r",
+        "Well, the fact that you have come this\n",
+        "far means you’re not one of them.\r",
+        "But!\r",
+        "Your journey ends here!\r",
+        "Because...right here, right now...\n",
+        "I will crush you!\r"
+      ]
+    },
+    {
+      "id": "msg_0128_D43R0103_00001",
+      "en_US": [
+        "..................\r",
+        "I haven’t given up on becoming the\n",
+        "greatest Trainer...\r",
+        "I’m going to find out why I can’t win and\n",
+        "become stronger...\r",
+        "When I do, I will challenge you.\r",
+        "I’ll beat you down with all my power.\n",
+        "...Humph! You keep at it until then.\r"
+      ]
+    }
+  ]
+}

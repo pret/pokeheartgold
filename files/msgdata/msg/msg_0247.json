@@ -1,0 +1,442 @@
+{
+  "key": 10786,
+  "messages": [
+    {
+      "id": "msg_0247_00000",
+      "en_US": "Welcome to Mystery Gift!"
+    },
+    {
+      "id": "msg_0247_00001",
+      "en_US": [
+        "Please choose how you want to\n",
+        "receive your gift."
+      ]
+    },
+    {
+      "id": "msg_0247_00002",
+      "en_US": [
+        "DS Wireless Communications will\n",
+        "be launched."
+      ]
+    },
+    {
+      "id": "msg_0247_00003",
+      "en_US": [
+        "Searching for a gift.\n",
+        "Please wait..."
+      ]
+    },
+    {
+      "id": "msg_0247_00004",
+      "en_US": "Receive this gift?"
+    },
+    {
+      "id": "msg_0247_00005",
+      "en_US": "Search for a different gift?"
+    },
+    {
+      "id": "msg_0247_00006",
+      "en_US": [
+        "Your request has been sent.\n",
+        "Please wait a moment..."
+      ]
+    },
+    {
+      "id": "msg_0247_00007",
+      "en_US": [
+        "Receiving your gift.\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0247_00008",
+      "en_US": [
+        "The gift has been received!\r",
+        "Please pick up your gift from the\n",
+        "deliveryman in any Poké Mart."
+      ]
+    },
+    {
+      "id": "msg_0247_00009",
+      "en_US": [
+        "This gift is being shared by\n",
+        "another person.\r",
+        "You may accept this gift, but you\n",
+        "will not be able to distribute it\f",
+        "to your friends.\r",
+        "Will you accept this gift?"
+      ]
+    },
+    {
+      "id": "msg_0247_00010",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0247_00011",
+      "en_US": [
+        "Pokémon Ranger\n",
+        "MANAPHY Egg Transfer"
+      ]
+    },
+    {
+      "id": "msg_0247_00012",
+      "en_US": "RECEIVE GIFT"
+    },
+    {
+      "id": "msg_0247_00013",
+      "en_US": "CHECK CARD"
+    },
+    {
+      "id": "msg_0247_00014",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0247_00015",
+      "en_US": "GET FROM A FRIEND"
+    },
+    {
+      "id": "msg_0247_00016",
+      "en_US": "GET VIA NINTENDO WFC"
+    },
+    {
+      "id": "msg_0247_00017",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0247_00018",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0247_00019",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0247_00020",
+      "en_US": "GET VIA WIRELESS"
+    },
+    {
+      "id": "msg_0247_00021",
+      "en_US": "VIEW LOCK CAPSULE CARD"
+    },
+    {
+      "id": "msg_0247_00022",
+      "en_US": [
+        "Our deliveryman is overloaded with\n",
+        "gifts for you!\r",
+        "Please see him at any Poké Mart and\n",
+        "pick up some of your gifts."
+      ]
+    },
+    {
+      "id": "msg_0247_00023",
+      "en_US": [
+        "You’ve already received this gift.\n",
+        "You may not get another one."
+      ]
+    },
+    {
+      "id": "msg_0247_00024",
+      "en_US": "There were no gifts to be found."
+    },
+    {
+      "id": "msg_0247_00025",
+      "en_US": "Your request was turned down."
+    },
+    {
+      "id": "msg_0247_00026",
+      "en_US": [
+        "You are out of room for\n",
+        "Wonder Cards.\r",
+        "You may not accept another gift."
+      ]
+    },
+    {
+      "id": "msg_0247_00027",
+      "en_US": [
+        "There was a problem with\n",
+        "receiving the gift.\r",
+        "Press the A Button to return to\n",
+        "the title screen."
+      ]
+    },
+    {
+      "id": "msg_0247_00028",
+      "en_US": [
+        "A gift has been found, but it cannot\n",
+        "be received using this version.\r",
+        "Press the A Button to return to\n",
+        "the menu."
+      ]
+    },
+    {
+      "id": "msg_0247_00029",
+      "en_US": [
+        "The person sharing has\n",
+        "been disconnected..."
+      ]
+    },
+    {
+      "id": "msg_0247_00030",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0247_00031",
+      "en_US": "Press the A Button."
+    },
+    {
+      "id": "msg_0247_00032",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0247_00033",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0247_00034",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0247_00035",
+      "en_US": [
+        "Please touch Pokémon Ranger’s\n",
+        "game screen."
+      ]
+    },
+    {
+      "id": "msg_0247_00036",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0247_00037",
+      "en_US": "Wonder Card"
+    },
+    {
+      "id": "msg_0247_00038",
+      "en_US": [
+        "Please pick up your gift from the\n",
+        "deliveryman in any Poké Mart."
+      ]
+    },
+    {
+      "id": "msg_0247_00039",
+      "en_US": [
+        "You have already received\n",
+        "this gift before."
+      ]
+    },
+    {
+      "id": "msg_0247_00040",
+      "en_US": [
+        "This card does not have\n",
+        "a gift attached."
+      ]
+    },
+    {
+      "id": "msg_0247_00041",
+      "en_US": "Date received"
+    },
+    {
+      "id": "msg_0247_00042",
+      "en_US": "This gift can be distributed {STRVAR_1 52, 0, 0} time(s)."
+    },
+    {
+      "id": "msg_0247_00043",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0247_00044",
+      "en_US": "SHARE"
+    },
+    {
+      "id": "msg_0247_00045",
+      "en_US": "TRASH"
+    },
+    {
+      "id": "msg_0247_00046",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0247_00047",
+      "en_US": "Would you like to share this gift?"
+    },
+    {
+      "id": "msg_0247_00048",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0247_00049",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0247_00050",
+      "en_US": "{STRVAR_34 16, 1, 0} {STRVAR_1 51, 2, 0}, {STRVAR_1 53, 0, 0}"
+    },
+    {
+      "id": "msg_0247_00051",
+      "garbage": 15
+    },
+    {
+      "id": "msg_0247_00052",
+      "en_US": [
+        "This gift can be shared with as\n",
+        "many friends as you like."
+      ]
+    },
+    {
+      "id": "msg_0247_00053",
+      "en_US": "Pal Distribution Registration"
+    },
+    {
+      "id": "msg_0247_00054",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0247_00055",
+      "en_US": "ID No.{STRVAR_1 54, 0, 0}"
+    },
+    {
+      "id": "msg_0247_00056",
+      "en_US": [
+        "Current\n",
+        "entries"
+      ]
+    },
+    {
+      "id": "msg_0247_00057",
+      "en_US": "{COLOR 1}{STRVAR_1 50, 0, 0}{COLOR 0}/4"
+    },
+    {
+      "id": "msg_0247_00058",
+      "en_US": "SEND"
+    },
+    {
+      "id": "msg_0247_00059",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0247_00060",
+      "en_US": [
+        "Gift distribution under way...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0247_00061",
+      "en_US": [
+        "Your gift distribution\n",
+        "was successful."
+      ]
+    },
+    {
+      "id": "msg_0247_00062",
+      "en_US": "Throw this card away?"
+    },
+    {
+      "id": "msg_0247_00063",
+      "en_US": [
+        "You haven’t received your gift yet.\n",
+        "Do you want to discard this card?"
+      ]
+    },
+    {
+      "id": "msg_0247_00064",
+      "en_US": [
+        "Discarding...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0247_00065",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0247_00066",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0247_00067",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0247_00068",
+      "en_US": "{COLOR 3}{STRVAR_1 3, 0, 0}{COLOR 2} {COLOR 0}ID No.{STRVAR_1 54, 1, 0}"
+    },
+    {
+      "id": "msg_0247_00069",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0247_00070",
+      "en_US": "Application No.:"
+    },
+    {
+      "id": "msg_0247_00071",
+      "en_US": "{STRVAR_1 53, 0, 0}-{STRVAR_1 53, 1, 0}"
+    },
+    {
+      "id": "msg_0247_00072",
+      "en_US": [
+        "Receiving a Recruitment Message\n",
+        "from a Pokémon Ranger."
+      ]
+    },
+    {
+      "id": "msg_0247_00073",
+      "en_US": [
+        "Awaiting transfer from Pokémon\n",
+        "Ranger."
+      ]
+    },
+    {
+      "id": "msg_0247_00074",
+      "en_US": [
+        "Receiving the MANAPHY Egg...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0247_00075",
+      "en_US": [
+        "The transfer has been completed.\n",
+        "A Button: title screen."
+      ]
+    },
+    {
+      "id": "msg_0247_00076",
+      "en_US": [
+        "The connection with Pokémon Ranger\n",
+        "has been lost... Press the A Button."
+      ]
+    },
+    {
+      "id": "msg_0247_00077",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0247_00078",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0247_00079",
+      "en_US": [
+        "DS Wireless Communications\n",
+        "will be launched."
+      ]
+    },
+    {
+      "id": "msg_0247_00080",
+      "en_US": "Connect to Nintendo Wi-Fi Connection?"
+    },
+    {
+      "id": "msg_0247_00081",
+      "en_US": [
+        "The Lock Capsule is held in the\n",
+        "strictest safekeeping."
+      ]
+    },
+    {
+      "id": "msg_0247_00082",
+      "en_US": "The Lock Capsule was delivered safely!"
+    }
+  ]
+}

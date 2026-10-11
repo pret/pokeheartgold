@@ -1,0 +1,51 @@
+{
+  "key": 5294,
+  "messages": [
+    {
+      "id": "msg_0149_D52R0102_00000",
+      "en_US": "KYOGRE: Gyararoooah!\r"
+    },
+    {
+      "id": "msg_0149_D52R0102_00001",
+      "en_US": "KYOGRE disappeared..."
+    },
+    {
+      "id": "msg_0149_D52R0102_00002",
+      "en_US": [
+        "Well, hello!\n",
+        "That was something you don’t see\f",
+        "every day!\r",
+        "That Pokémon is KYOGRE,\n",
+        "a legendary Pokémon in the Hoenn myth\f",
+        "about the shaping of that region.\r",
+        "I see...\f",
+        "I see.\r",
+        "The Embedded Tower was built\n",
+        "by the people from Hoenn.\r"
+      ]
+    },
+    {
+      "id": "msg_0149_D52R0102_00003",
+      "en_US": [
+        "The Tower that binds together\n",
+        "the sea, the land, and the sky...\r",
+        "KYOGRE was not the only Pokémon\n",
+        "described in the Hoenn myth...\r",
+        "This place may still be hiding\n",
+        "its secrets.\r"
+      ]
+    },
+    {
+      "id": "msg_0149_D52R0102_00004",
+      "en_US": [
+        "The knowledgeable Pokémon Professor\n",
+        "may be able to tell you more when you\f",
+        "show him KYOGRE.\r",
+        "Phew!\r",
+        "There are so many connections between\n",
+        "Pokémon and myths.\r",
+        "See you around.\r"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "key": 18219,
+  "messages": [
+    {
+      "id": "msg_0446_T01_00000",
+      "en_US": [
+        "I’m raising Pokémon, too.\n",
+        "They serve as my private guards."
+      ]
+    },
+    {
+      "id": "msg_0446_T01_00001",
+      "en_US": [
+        "Technology is incredible!\r",
+        "You can now trade Pokémon\n",
+        "overseas like email."
+      ]
+    },
+    {
+      "id": "msg_0446_T01_00002",
+      "en_US": [
+        "Pallet Town\n",
+        "A Pure White Beginning"
+      ]
+    },
+    {
+      "id": "msg_0446_T01_00003",
+      "en_US": "Red’s House"
+    },
+    {
+      "id": "msg_0446_T01_00004",
+      "en_US": [
+        "Oak Pokémon\n",
+        "Research Lab"
+      ]
+    },
+    {
+      "id": "msg_0446_T01_00005",
+      "en_US": "Blue’s House"
+    }
+  ]
+}

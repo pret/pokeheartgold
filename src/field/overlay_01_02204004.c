@@ -4,6 +4,7 @@
 
 #include "filesystem.h"
 #include "filesystem_files_def.h"
+#include <nnsys/g3d/anm.h>
 
 static BOOL Field3dRenderObjManager_IsModelAllocatedByIndex(Field3dRenderObjManager *field3dRenderObjManager, int index);
 static Field3dRenderObj *Field3dRenderObjManager_AllocInternal(Field3dRenderObjManager *renderObjMgr, NNSG3dResFileHeader **resFileHeader, int index);
@@ -416,7 +417,7 @@ static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim) {
 }
 
 static void ov01_022046E8(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
-    alloc->funcAnm = _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault
+    alloc->funcAnm = NNS_G3dFuncAnmMatNsBtaDefault;
     u8 numMapData = anim->numMapData;
     alloc->numMapData = numMapData;
     MI_CpuClear16(alloc->mapData, numMapData * 2);

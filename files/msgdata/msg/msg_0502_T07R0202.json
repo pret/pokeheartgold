@@ -1,0 +1,19 @@
+{
+  "key": 17426,
+  "messages": [
+    {
+      "id": "msg_0502_T07R0202_00000",
+      "en_US": [
+        "Please take this elevator\n",
+        "to go to the roof."
+      ]
+    },
+    {
+      "id": "msg_0502_T07R0202_00001",
+      "en_US": [
+        "This elevator goes straight between\n",
+        "the first and the third floors."
+      ]
+    }
+  ]
+}

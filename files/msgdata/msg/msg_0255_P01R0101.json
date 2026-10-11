@@ -1,0 +1,147 @@
+{
+  "key": 9223,
+  "messages": [
+    {
+      "id": "msg_0255_P01R0101_00000",
+      "en_US": [
+        "Welcome to Fast Ship S.S. Aqua.\r",
+        "...Except that the engine-maintenance\n",
+        "team is taking some time off, and we\f",
+        "don’t know when we can depart..."
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00001",
+      "en_US": [
+        "Welcome to Fast Ship S.S. Aqua.\n",
+        "May I see your S.S. Ticket?\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} tried to show the\n",
+        "S.S. Ticket...\r",
+        "...But no Ticket here!\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00003",
+      "en_US": [
+        "I’m sorry...\r",
+        "Another person without a Ticket\n",
+        "wouldn’t make much of a difference,\f",
+        "I think.\r",
+        "But a rule is a rule.\n",
+        "Sorry, kiddo."
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00004",
+      "en_US": "{STRVAR_1 3, 0, 0} flashed the S.S. Ticket.\r"
+    },
+    {
+      "id": "msg_0255_P01R0101_00005",
+      "en_US": [
+        "OK, you have a Ticket!\r",
+        "We’re departing soon.\n",
+        "Get on board quick!\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00006",
+      "en_US": [
+        "What?\n",
+        "You already showed me the Ticket."
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00007",
+      "en_US": [
+        "Welcome to the S.S. Aqua!\r",
+        "Your Ticket is...right there.\n",
+        "Please come through.\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00008",
+      "en_US": [
+        "Operating a ship every day can wear\n",
+        "you out!\f",
+        "It’s not running today.\r",
+        "It leaves for Vermilion City on Mondays\n",
+        "and Fridays!"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00009",
+      "en_US": [
+        "Professor Oak: Hello!\n",
+        "You are starting to have the\f",
+        "attitude of a Champion, {STRVAR_1 3, 0, 0}!\r",
+        "It’s time for your Pokédex to match\n",
+        "who you are.\f",
+        "Let me see your Pokédex for a second.\r",
+        "I’ll upgrade your Pokédex with\n",
+        "the National Mode.\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00010",
+      "en_US": [
+        "Professor Oak: Hello!\n",
+        "You are starting to have the...\f",
+        "attitude of a Champion, {STRVAR_1 3, 0, 0}!\r",
+        "It’s time for your Pokédex to match\n",
+        "who you are.\f",
+        "Let me see your Pokédex for a second.\r",
+        "I’ll upgrade your Pokédex with\n",
+        "the National Mode.\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Pokédex was upgraded\n",
+        "with the National Mode!"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00012",
+      "en_US": [
+        "Professor Oak: It won’t be easy to\n",
+        "complete the National Pokédex...\r",
+        "However, I’m sure you will make an\n",
+        "honest attempt on our behalf!\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00013",
+      "en_US": [
+        "Oh, time flies!\r",
+        "I have a radio show to record\n",
+        "at Goldenrod Radio Tower.\r",
+        "You must be heading for Kanto.\r",
+        "If you come near Pallet Town, do drop\n",
+        "by my Pokémon Research Lab!\r"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00014",
+      "en_US": [
+        "The S.S. Aqua uses jets to travel.\n",
+        "It skims over water!"
+      ]
+    },
+    {
+      "id": "msg_0255_P01R0101_00015",
+      "en_US": [
+        "You’ve been to Kanto already?\r",
+        "I hear many rare Pokémon live\n",
+        "over there.\r",
+        "Sounds exciting.\n",
+        "I’d love to visit!"
+      ]
+    }
+  ]
+}

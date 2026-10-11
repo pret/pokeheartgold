@@ -18,21 +18,21 @@ void sub_0201A1B4(void);
 void ApplyButtonModeToInput(void);
 
 void VBlankCB_DmaTasksFramecounter(void) {
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
     SysTaskQueue_RunTasks(gSystem.vblankTaskQueue);
     gSystem.frameCounter++;
 }
 
 void VBlankCB_DmaOnly(void) {
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
     MI_WaitDma(GX_DEFAULT_DMAID);
 }
 
 void sub_0201A0E0(void) {
-    OS_DisableIrqMask(OS_IE_VBLANK);
-    OS_SetIrqFunction(OS_IE_VBLANK, VBlankCB_DmaOnly);
-    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_DisableIrqMask(OS_IE_V_BLANK);
+    OS_SetIrqFunction(OS_IE_V_BLANK, VBlankCB_DmaOnly);
+    OS_EnableIrqMask(OS_IE_V_BLANK);
 }
 
 void Main_SetVBlankIntrCB(GFIntrCB cb, void *arg) {
@@ -72,12 +72,12 @@ void HBlankIntrRegsToggle(BOOL enable) {
     OS_DisableIrq();
     if (!enable) {
         OS_GetIrqMask();
-        OS_DisableIrqMask(OS_IE_HBLANK);
+        OS_DisableIrqMask(OS_IE_H_BLANK);
         GX_HBlankIntr(FALSE);
     } else {
         OS_GetIrqMask();
-        OS_SetIrqFunction(OS_IE_HBLANK, CallHBlankIntrCallback);
-        OS_EnableIrqMask(OS_IE_HBLANK);
+        OS_SetIrqFunction(OS_IE_H_BLANK, CallHBlankIntrCallback);
+        OS_EnableIrqMask(OS_IE_H_BLANK);
         GX_HBlankIntr(TRUE);
     }
     OS_EnableIrq();
@@ -127,8 +127,8 @@ void InitSystemForTheGame(void) {
     GX_DispOff();
     GXS_DispOff();
     GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
-    OS_SetIrqFunction(OS_IE_VBLANK, VBlankCB_DmaTasksFramecounter);
-    OS_EnableIrqMask(OS_IE_VBLANK);
+    OS_SetIrqFunction(OS_IE_V_BLANK, VBlankCB_DmaTasksFramecounter);
+    OS_EnableIrqMask(OS_IE_V_BLANK);
     OS_EnableIrqMask(OS_IE_SPFIFO_RECV);
     OS_EnableIrq();
     GX_VBlankIntr(TRUE);

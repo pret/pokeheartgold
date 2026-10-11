@@ -1,0 +1,148 @@
+{
+  "key": 21575,
+  "messages": [
+    {
+      "id": "msg_0361_R22R0101_00000",
+      "en_US": [
+        "Only Trainers who have proven\n",
+        "themselves may pass.\r",
+        "Oh! The eight Badges of Johto!\n",
+        "Please, go right on through!"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00001",
+      "en_US": [
+        "This way leads to\n",
+        "Mt. Silver.\r",
+        "You’ll see scary-strong Pokémon\n",
+        "out there.\f",
+        "You’re not ready for it."
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00002",
+      "en_US": [
+        "This way leads to\n",
+        "Mt. Silver.\r",
+        "You’ll see scary-strong Pokémon\n",
+        "out there.\f",
+        "You’re not ready for it.\r"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00003",
+      "en_US": [
+        "This way leads to\n",
+        "Mt. Silver.\r",
+        "You’ll see scary-strong Pokémon\n",
+        "out there.\r",
+        "But you should be all right.\n",
+        "Just watch out for yourself."
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00004",
+      "en_US": [
+        "Huh?\n",
+        "This way leads to Kanto...\f",
+        "But this path’s blocked for\f",
+        "the time being, I’m afraid."
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00005",
+      "en_US": [
+        "Hold there!\r",
+        "This way leads to Kanto...\n",
+        "But this path’s blocked for\f",
+        "the time being, I’m afraid.\r"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00006",
+      "en_US": [
+        "West to Mt. Silver.\n",
+        "East to the Kanto region.\r",
+        "Go north for the Elite Four!\n",
+        "But you should know that already,\f",
+        "since you defeated the Champion!"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00007",
+      "en_US": [
+        "Janine: I’m on the way to my dad’s\n",
+        "house to give him his lunch.\r",
+        "The Elite Four has no time to rest,\n",
+        "day or night. It’s such hard work,\f",
+        "you know?\r",
+        "Say!\n",
+        "Do you want to exchange numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Janine\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00009",
+      "en_US": [
+        "Janine: Call me on Monday around noon\n",
+        "if you want to battle!"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00010",
+      "en_US": [
+        "Janine: You don’t look like you’re\n",
+        "scared, but you are, aren’t you?"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00011",
+      "en_US": [
+        "Janine: Now you want to know\n",
+        "my number, don’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00012",
+      "en_US": [
+        "Janine: I’m done taking lunch to\n",
+        "my dad, and now I’m on my way home.\r",
+        "Do you want to take a picture\n",
+        "with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00013",
+      "en_US": [
+        "Janine: Can you look as cool as me\n",
+        "for the picture?\r"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00014",
+      "en_US": [
+        "Janine: Don’t you think we look\n",
+        "good in the picture?"
+      ]
+    },
+    {
+      "id": "msg_0361_R22R0101_00015",
+      "en_US": "Janine: That’s a pity!"
+    },
+    {
+      "id": "msg_0361_R22R0101_00016",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    }
+  ]
+}

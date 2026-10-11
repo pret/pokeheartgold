@@ -1,0 +1,299 @@
+{
+  "key": 42011,
+  "messages": [
+    {
+      "id": "msg_0538_T11R0702_00000",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} entered the motor.\r",
+        "{STRVAR_1 0, 0, 0} is trying to\n",
+        "learn {STRVAR_1 6, 1, 0}.\r",
+        "But {STRVAR_1 0, 0, 0} can’t learn\n",
+        "more than four moves.\r",
+        "Delete a move to make\n",
+        "room for {STRVAR_1 6, 1, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00001",
+      "en_US": [
+        "Give up on learning the move\n",
+        "{STRVAR_1 6, 1, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00002",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} did not learn\n",
+        "{STRVAR_1 6, 1, 0}.\r",
+        "{STRVAR_1 0, 0, 0} emerged from the motor."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00003",
+      "en_US": [
+        "The move {STRVAR_1 6, 1, 0} will be\n",
+        "forgotten. Is that OK? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00004",
+      "en_US": "1,{PAUSE 20} 2,{PAUSE 20} and...{PAUSE 20} ...{PAUSE 20} Poof!"
+    },
+    {
+      "id": "msg_0538_T11R0702_00005",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r",
+        "And..."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00006",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} learned\n",
+        "{STRVAR_1 6, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00007",
+      "en_US": "Which ROTOM are you choosing?\r"
+    },
+    {
+      "id": "msg_0538_T11R0702_00008",
+      "en_US": "An Egg can’t enter a motor."
+    },
+    {
+      "id": "msg_0538_T11R0702_00009",
+      "en_US": "That Pokémon can’t enter a motor."
+    },
+    {
+      "id": "msg_0538_T11R0702_00010",
+      "en_US": "{STRVAR_1 0, 0, 0} entered the motor.\r"
+    },
+    {
+      "id": "msg_0538_T11R0702_00011",
+      "en_US": "{STRVAR_1 0, 0, 0} emerged from the motor.\r"
+    },
+    {
+      "id": "msg_0538_T11R0702_00012",
+      "en_US": [
+        "Return which ROTOM to its\n",
+        "original form? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00013",
+      "en_US": [
+        "Oh? ROTOM appears as if it wants to\n",
+        "revert to its original form.\r",
+        "Would you like to recall it from\n",
+        "the motor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00014",
+      "en_US": "RECALL"
+    },
+    {
+      "id": "msg_0538_T11R0702_00015",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0538_T11R0702_00016",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0538_T11R0702_00017",
+      "en_US": "That ROTOM hasn’t entered a motor."
+    },
+    {
+      "id": "msg_0538_T11R0702_00018",
+      "en_US": [
+        "There was an appliance here.\n",
+        "The one with the oddly shaped motor."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00019",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0538_T11R0702_00020",
+      "en_US": [
+        "It’s a microwave oven.\n",
+        "It has an odd-shaped motor on it.\r"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00021",
+      "en_US": [
+        "It’s a microwave oven.\n",
+        "It has an odd-shaped motor on it.\r",
+        "Oh? ROTOM appears as if it wants\n",
+        "to go into the motor.\r",
+        "Allow it to enter the motor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00022",
+      "en_US": [
+        "ROTOM reluctantly gave up on entering\n",
+        "the microwave oven’s motor..."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00023",
+      "en_US": [
+        "It’s a refrigerator.\n",
+        "It has an odd-shaped motor on it.\r"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00024",
+      "en_US": [
+        "It’s a refrigerator.\n",
+        "It has an odd-shaped motor on it.\r",
+        "Oh? ROTOM appears as if it wants\n",
+        "to go into the motor.\r",
+        "Allow it to enter the motor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00025",
+      "en_US": [
+        "ROTOM reluctantly gave up on entering\n",
+        "the refrigerator’s motor..."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00026",
+      "en_US": [
+        "It’s a washing machine.\n",
+        "It has an odd-shaped motor on it.\r"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00027",
+      "en_US": [
+        "It’s a washing machine.\n",
+        "It has an odd-shaped motor on it.\r",
+        "Oh? ROTOM appears as if it wants\n",
+        "to go into the motor.\r",
+        "Allow it to enter the motor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00028",
+      "en_US": [
+        "ROTOM reluctantly gave up on entering\n",
+        "the washing machine’s motor..."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00029",
+      "en_US": [
+        "It’s a rotary fan.\n",
+        "It has an odd-shaped motor on it.\r"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00030",
+      "en_US": [
+        "It’s a rotary fan.\n",
+        "It has an odd-shaped motor on it.\r",
+        "Oh? ROTOM appears as if it wants\n",
+        "to go into the motor.\r",
+        "Allow it to enter the motor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00031",
+      "en_US": [
+        "ROTOM reluctantly gave up on entering\n",
+        "the rotary fan’s motor..."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00032",
+      "en_US": [
+        "It’s a lawn mower.\n",
+        "It has an odd-shaped motor on it.\r"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00033",
+      "en_US": [
+        "It’s a lawn mower.\n",
+        "It has an odd-shaped motor on it.\r",
+        "Oh? ROTOM appears as if it wants\n",
+        "to go into the motor.\r",
+        "Allow it to enter the motor? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00034",
+      "en_US": [
+        "ROTOM reluctantly gave up on entering\n",
+        "the lawn mower’s motor..."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00035",
+      "en_US": [
+        "There is a mysterious notebook here.\n",
+        "Its age is impossible to tell.\r",
+        "“It was by pure chance that I obtained\n",
+        "information about the Pokémon ROTOM.\r",
+        "“Remarkably, ROTOM has the ability to\n",
+        "enter and merge with special motors.\r",
+        "“It’s now known that ROTOM can stay\n",
+        "inside a motor almost indefinitely.\r",
+        "“However, it will emerge if it enters a\n",
+        "Union Room or a Wi-Fi Club.\r",
+        "“ROTOM will also emerge from the motor\n",
+        "if it is left at the Day Care.\r",
+        "“ROTOM may also forget certain moves\n",
+        "when it leaves a motor.\r",
+        "“This Pokémon requires\n",
+        "exhaustive observation and analysis.\r",
+        "“To ensure I get all the credit,\n",
+        "my ROTOM research must be kept secret.\r",
+        "“They will come to revere me as the\n",
+        "scientific genius Char...”\r",
+        "The rest of the notebook is blank."
+      ]
+    },
+    {
+      "id": "msg_0538_T11R0702_00036",
+      "garbage": 83
+    },
+    {
+      "id": "msg_0538_T11R0702_00037",
+      "garbage": 82
+    },
+    {
+      "id": "msg_0538_T11R0702_00038",
+      "garbage": 82
+    },
+    {
+      "id": "msg_0538_T11R0702_00039",
+      "garbage": 82
+    },
+    {
+      "id": "msg_0538_T11R0702_00040",
+      "garbage": 82
+    },
+    {
+      "id": "msg_0538_T11R0702_00041",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0538_T11R0702_00042",
+      "garbage": 46
+    },
+    {
+      "id": "msg_0538_T11R0702_00043",
+      "garbage": 17
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "key": 54302,
+  "messages": [
+    {
+      "id": "msg_0322_R02R0201_00000",
+      "en_US": [
+        "Oh my good nuggets!\n",
+        "You’re the first visitor I’ve had in a\f",
+        "long time.\r",
+        "I’m going crazy with joy!\n",
+        "Since you look as bright as a Nugget,\f",
+        "let me give you a little present.\r"
+      ]
+    },
+    {
+      "id": "msg_0322_R02R0201_00001",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0322_R02R0201_00002",
+      "en_US": [
+        "That’s a Nugget.\r",
+        "I can’t give you any nuggets of wisdom,\n",
+        "so that’ll have to do!"
+      ]
+    }
+  ]
+}

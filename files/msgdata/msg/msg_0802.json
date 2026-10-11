@@ -1,0 +1,709 @@
+{
+  "key": 10789,
+  "messages": [
+    {
+      "id": "msg_0802_00000",
+      "en_US": "SEEN"
+    },
+    {
+      "id": "msg_0802_00001",
+      "en_US": "OBTAINED"
+    },
+    {
+      "id": "msg_0802_00002",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0802_00003",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0802_00004",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0802_00005",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0802_00006",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0802_00007",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0802_00008",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0802_00009",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0802_00010",
+      "en_US": "HT"
+    },
+    {
+      "id": "msg_0802_00011",
+      "en_US": "WT"
+    },
+    {
+      "id": "msg_0802_00012",
+      "en_US": "Search Mode"
+    },
+    {
+      "id": "msg_0802_00013",
+      "en_US": "Please enter the search criteria."
+    },
+    {
+      "id": "msg_0802_00014",
+      "en_US": "Search Results"
+    },
+    {
+      "id": "msg_0802_00015",
+      "en_US": "RESULTS {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0802_00016",
+      "en_US": "Select the Pokédex listing mode."
+    },
+    {
+      "id": "msg_0802_00017",
+      "en_US": "List by the first letter in the name."
+    },
+    {
+      "id": "msg_0802_00018",
+      "en_US": "List by type."
+    },
+    {
+      "id": "msg_0802_00019",
+      "en_US": "List by weight range."
+    },
+    {
+      "id": "msg_0802_00020",
+      "en_US": "List by height range."
+    },
+    {
+      "id": "msg_0802_00021",
+      "en_US": "List by body style."
+    },
+    {
+      "id": "msg_0802_00022",
+      "en_US": "List by area."
+    },
+    {
+      "id": "msg_0802_00023",
+      "en_US": "No matching Pokémon were found."
+    },
+    {
+      "id": "msg_0802_00024",
+      "en_US": "Not found..."
+    },
+    {
+      "id": "msg_0802_00025",
+      "en_US": "Searching..."
+    },
+    {
+      "id": "msg_0802_00026",
+      "en_US": "ORDER"
+    },
+    {
+      "id": "msg_0802_00027",
+      "en_US": "NAME"
+    },
+    {
+      "id": "msg_0802_00028",
+      "en_US": "TYPE"
+    },
+    {
+      "id": "msg_0802_00029",
+      "en_US": "HT"
+    },
+    {
+      "id": "msg_0802_00030",
+      "en_US": "WT"
+    },
+    {
+      "id": "msg_0802_00031",
+      "en_US": "AREA"
+    },
+    {
+      "id": "msg_0802_00032",
+      "en_US": "FORM"
+    },
+    {
+      "id": "msg_0802_00033",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0802_00034",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0802_00035",
+      "en_US": "RESET"
+    },
+    {
+      "id": "msg_0802_00036",
+      "en_US": "START"
+    },
+    {
+      "id": "msg_0802_00037",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0802_00038",
+      "en_US": "{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0}"
+    },
+    {
+      "id": "msg_0802_00039",
+      "en_US": "OK"
+    },
+    {
+      "id": "msg_0802_00040",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0802_00041",
+      "en_US": "Numerical"
+    },
+    {
+      "id": "msg_0802_00042",
+      "en_US": "A to Z"
+    },
+    {
+      "id": "msg_0802_00043",
+      "en_US": "Heaviest"
+    },
+    {
+      "id": "msg_0802_00044",
+      "en_US": "Lightest"
+    },
+    {
+      "id": "msg_0802_00045",
+      "en_US": "Tallest"
+    },
+    {
+      "id": "msg_0802_00046",
+      "en_US": "Smallest"
+    },
+    {
+      "id": "msg_0802_00047",
+      "en_US": "Dark"
+    },
+    {
+      "id": "msg_0802_00048",
+      "en_US": "Rock"
+    },
+    {
+      "id": "msg_0802_00049",
+      "en_US": "Psychic"
+    },
+    {
+      "id": "msg_0802_00050",
+      "en_US": "Fight"
+    },
+    {
+      "id": "msg_0802_00051",
+      "en_US": "Grass"
+    },
+    {
+      "id": "msg_0802_00052",
+      "en_US": "Ice"
+    },
+    {
+      "id": "msg_0802_00053",
+      "en_US": "Ghost"
+    },
+    {
+      "id": "msg_0802_00054",
+      "en_US": "Ground"
+    },
+    {
+      "id": "msg_0802_00055",
+      "en_US": "Electric"
+    },
+    {
+      "id": "msg_0802_00056",
+      "en_US": "Poison"
+    },
+    {
+      "id": "msg_0802_00057",
+      "en_US": "Dragon"
+    },
+    {
+      "id": "msg_0802_00058",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0802_00059",
+      "en_US": "Steel"
+    },
+    {
+      "id": "msg_0802_00060",
+      "en_US": "Flying"
+    },
+    {
+      "id": "msg_0802_00061",
+      "en_US": "Fire"
+    },
+    {
+      "id": "msg_0802_00062",
+      "en_US": "Water"
+    },
+    {
+      "id": "msg_0802_00063",
+      "en_US": "Bug"
+    },
+    {
+      "id": "msg_0802_00064",
+      "en_US": "----"
+    },
+    {
+      "id": "msg_0802_00065",
+      "en_US": "JOHTO"
+    },
+    {
+      "id": "msg_0802_00066",
+      "en_US": "KANTO"
+    },
+    {
+      "id": "msg_0802_00067",
+      "en_US": "UNKNOWN"
+    },
+    {
+      "id": "msg_0802_00068",
+      "en_US": "----"
+    },
+    {
+      "id": "msg_0802_00069",
+      "en_US": "A"
+    },
+    {
+      "id": "msg_0802_00070",
+      "en_US": "B"
+    },
+    {
+      "id": "msg_0802_00071",
+      "en_US": "C"
+    },
+    {
+      "id": "msg_0802_00072",
+      "en_US": "D"
+    },
+    {
+      "id": "msg_0802_00073",
+      "en_US": "E"
+    },
+    {
+      "id": "msg_0802_00074",
+      "en_US": "F"
+    },
+    {
+      "id": "msg_0802_00075",
+      "en_US": "G"
+    },
+    {
+      "id": "msg_0802_00076",
+      "en_US": "H"
+    },
+    {
+      "id": "msg_0802_00077",
+      "en_US": "I"
+    },
+    {
+      "id": "msg_0802_00078",
+      "en_US": "J"
+    },
+    {
+      "id": "msg_0802_00079",
+      "en_US": "K"
+    },
+    {
+      "id": "msg_0802_00080",
+      "en_US": "L"
+    },
+    {
+      "id": "msg_0802_00081",
+      "en_US": "M"
+    },
+    {
+      "id": "msg_0802_00082",
+      "en_US": "N"
+    },
+    {
+      "id": "msg_0802_00083",
+      "en_US": "O"
+    },
+    {
+      "id": "msg_0802_00084",
+      "en_US": "P"
+    },
+    {
+      "id": "msg_0802_00085",
+      "en_US": "Q"
+    },
+    {
+      "id": "msg_0802_00086",
+      "en_US": "R"
+    },
+    {
+      "id": "msg_0802_00087",
+      "en_US": "S"
+    },
+    {
+      "id": "msg_0802_00088",
+      "en_US": "T"
+    },
+    {
+      "id": "msg_0802_00089",
+      "en_US": "U"
+    },
+    {
+      "id": "msg_0802_00090",
+      "en_US": "V"
+    },
+    {
+      "id": "msg_0802_00091",
+      "en_US": "W"
+    },
+    {
+      "id": "msg_0802_00092",
+      "en_US": "X"
+    },
+    {
+      "id": "msg_0802_00093",
+      "en_US": "Y"
+    },
+    {
+      "id": "msg_0802_00094",
+      "en_US": "Z"
+    },
+    {
+      "id": "msg_0802_00095",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00096",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00097",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00098",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00099",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00100",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00101",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00102",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00103",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00104",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00105",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00106",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00107",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00108",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00109",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00110",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00111",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00112",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0802_00113",
+      "en_US": "-"
+    },
+    {
+      "id": "msg_0802_00114",
+      "en_US": "Male"
+    },
+    {
+      "id": "msg_0802_00115",
+      "en_US": "Female"
+    },
+    {
+      "id": "msg_0802_00116",
+      "en_US": "West Sea"
+    },
+    {
+      "id": "msg_0802_00117",
+      "en_US": "East Sea"
+    },
+    {
+      "id": "msg_0802_00118",
+      "en_US": "Plant Cloak"
+    },
+    {
+      "id": "msg_0802_00119",
+      "en_US": "Sandy Cloak"
+    },
+    {
+      "id": "msg_0802_00120",
+      "en_US": "Trash Cloak"
+    },
+    {
+      "id": "msg_0802_00121",
+      "en_US": "One form"
+    },
+    {
+      "id": "msg_0802_00122",
+      "en_US": "JP Pokédex"
+    },
+    {
+      "id": "msg_0802_00123",
+      "en_US": "EN Pokédex"
+    },
+    {
+      "id": "msg_0802_00124",
+      "en_US": "FR Pokédex"
+    },
+    {
+      "id": "msg_0802_00125",
+      "en_US": "GE Pokédex"
+    },
+    {
+      "id": "msg_0802_00126",
+      "en_US": "IT Pokédex"
+    },
+    {
+      "id": "msg_0802_00127",
+      "en_US": "SP Pokédex"
+    },
+    {
+      "id": "msg_0802_00128",
+      "en_US": "Area Unknown"
+    },
+    {
+      "id": "msg_0802_00129",
+      "en_US": "Morning"
+    },
+    {
+      "id": "msg_0802_00130",
+      "en_US": "Day"
+    },
+    {
+      "id": "msg_0802_00131",
+      "en_US": "Night"
+    },
+    {
+      "id": "msg_0802_00132",
+      "en_US": "SWITCH"
+    },
+    {
+      "id": "msg_0802_00133",
+      "en_US": "{STRVAR_1 4, 0, 0}"
+    },
+    {
+      "id": "msg_0802_00134",
+      "en_US": "SHOW ALL"
+    },
+    {
+      "id": "msg_0802_00135",
+      "en_US": "SHOW ALL"
+    },
+    {
+      "id": "msg_0802_00136",
+      "en_US": "Height Check"
+    },
+    {
+      "id": "msg_0802_00137",
+      "en_US": "Weight Check"
+    },
+    {
+      "id": "msg_0802_00138",
+      "en_US": "4’11”"
+    },
+    {
+      "id": "msg_0802_00139",
+      "en_US": "4’11”"
+    },
+    {
+      "id": "msg_0802_00140",
+      "en_US": "88.2 lbs."
+    },
+    {
+      "id": "msg_0802_00141",
+      "en_US": "90.4 lbs."
+    },
+    {
+      "id": "msg_0802_00142",
+      "en_US": "AREA"
+    },
+    {
+      "id": "msg_0802_00143",
+      "en_US": "SIZE"
+    },
+    {
+      "id": "msg_0802_00144",
+      "en_US": "Pokédex registration completed."
+    },
+    {
+      "id": "msg_0802_00145",
+      "en_US": "Normal Forme"
+    },
+    {
+      "id": "msg_0802_00146",
+      "en_US": "Attack Forme"
+    },
+    {
+      "id": "msg_0802_00147",
+      "en_US": "Defense Forme"
+    },
+    {
+      "id": "msg_0802_00148",
+      "en_US": "Speed Forme"
+    },
+    {
+      "id": "msg_0802_00149",
+      "en_US": "Land Forme"
+    },
+    {
+      "id": "msg_0802_00150",
+      "en_US": "Sky Forme"
+    },
+    {
+      "id": "msg_0802_00151",
+      "en_US": "Altered Forme"
+    },
+    {
+      "id": "msg_0802_00152",
+      "en_US": "Origin Forme"
+    },
+    {
+      "id": "msg_0802_00153",
+      "en_US": "ROTOM"
+    },
+    {
+      "id": "msg_0802_00154",
+      "en_US": "HEAT ROTOM"
+    },
+    {
+      "id": "msg_0802_00155",
+      "en_US": "WASH ROTOM"
+    },
+    {
+      "id": "msg_0802_00156",
+      "en_US": "FROST ROTOM"
+    },
+    {
+      "id": "msg_0802_00157",
+      "en_US": "FAN ROTOM"
+    },
+    {
+      "id": "msg_0802_00158",
+      "en_US": "MOW ROTOM"
+    },
+    {
+      "id": "msg_0802_00159",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0802_00160",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0802_00161",
+      "en_US": "Sunny Form"
+    },
+    {
+      "id": "msg_0802_00162",
+      "en_US": "Rainy Form"
+    },
+    {
+      "id": "msg_0802_00163",
+      "en_US": "Snowy Form"
+    },
+    {
+      "id": "msg_0802_00164",
+      "en_US": "Overcast Form"
+    },
+    {
+      "id": "msg_0802_00165",
+      "en_US": "Sunshine Form"
+    },
+    {
+      "id": "msg_0802_00166",
+      "en_US": "Spiky-eared"
+    },
+    {
+      "id": "msg_0802_00167",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0802_00168",
+      "en_US": "COMPARE"
+    },
+    {
+      "id": "msg_0802_00169",
+      "en_US": "Compare {STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0802_00170",
+      "en_US": "FORMS"
+    },
+    {
+      "id": "msg_0802_00171",
+      "en_US": "SWITCH"
+    },
+    {
+      "id": "msg_0802_00172",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0802_00173",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0802_00174",
+      "en_US": "RETURN TO LIST"
+    },
+    {
+      "id": "msg_0802_00175",
+      "en_US": "{STRVAR_1 51, 0, 0}’{STRVAR_1 51, 1, 0}”"
+    }
+  ]
+}

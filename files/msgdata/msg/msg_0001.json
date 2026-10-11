@@ -1,0 +1,285 @@
+{
+  "key": 37184,
+  "messages": [
+    {
+      "id": "msg_0001_00000",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0001_00001",
+      "en_US": "{ALN_CENTER}UNOWN Report"
+    },
+    {
+      "id": "msg_0001_00002",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0001_00003",
+      "en_US": "{ALN_CENTER} Number of UNOWN"
+    },
+    {
+      "id": "msg_0001_00004",
+      "en_US": "{ALN_CENTER}Current Kinds: {STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0001_00005",
+      "en_US": "{ALN_CENTER}{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}"
+    },
+    {
+      "id": "msg_0001_00006",
+      "en_US": [
+        "Found a strange puzzle in the\n",
+        "ruins. Solved it, and suddenly a\n",
+        "hole opened up in the ground\n",
+        "and I dropped into the room\n",
+        "below! Should have known that\n",
+        "ancient ruins would have\n",
+        "surprising tricks like that."
+      ]
+    },
+    {
+      "id": "msg_0001_00007",
+      "en_US": [
+        "There was a stone statue where I\n",
+        "fell. The place might have been a\n",
+        "reception hall. Then, suddenly,\n",
+        "the UNOWN appeared. That puzzle\n",
+        "was like a key somehow. It woke\n",
+        "the UNOWN up from their sleep.\n",
+        "These ruins have become difficult."
+      ]
+    },
+    {
+      "id": "msg_0001_00008",
+      "en_US": [
+        "If you turn on the radio in the\n",
+        "ruins, you can receive mysterious\n",
+        "radio waves! It’s proof that the\n",
+        "UNOWN communicate with each\n",
+        "other using radio waves!"
+      ]
+    },
+    {
+      "id": "msg_0001_00009",
+      "en_US": [
+        "There are as many UNOWN as there\n",
+        "are letters in the alphabet.\n",
+        "Right now, we’re confirming the\n",
+        "existence of 26 kinds of UNOWN.\n",
+        "Do you think you can find\n",
+        "all 26 of them?"
+      ]
+    },
+    {
+      "id": "msg_0001_00010",
+      "en_US": [
+        "It seems that individually they\n",
+        "don’t make much sense, but when\n",
+        "the various UNOWN are arranged\n",
+        "in order, they begin to make\n",
+        "sense. In nature, they seem to be\n",
+        "scattered around randomly, but\n",
+        "the truth is they’re arranged in\n",
+        "a very specific order."
+      ]
+    },
+    {
+      "id": "msg_0001_00011",
+      "en_US": [
+        "In this report, the scattered\n",
+        "UNOWN were sorted and put into\n",
+        "order by the research-center\n",
+        "staff. That makes the UNOWN much\n",
+        "easier to understand."
+      ]
+    },
+    {
+      "id": "msg_0001_00012",
+      "en_US": [
+        "Scratched on the floor of the\n",
+        "ruins are UNOWN letters. Finding\n",
+        "the room feels like a huge\n",
+        "discovery! The Researchers were\n",
+        "very excited and said they were\n",
+        "going to go check it out."
+      ]
+    },
+    {
+      "id": "msg_0001_00013",
+      "en_US": [
+        "There aren’t just 26 different\n",
+        "kinds of UNOWN. Two more have\n",
+        "been discovered! But that begs\n",
+        "the question of where those\n",
+        "other two kinds are hiding..."
+      ]
+    },
+    {
+      "id": "msg_0001_00014",
+      "en_US": [
+        "{CURSOR_Y 24}The characters found scratched\n",
+        "on the floor in the small room are\n",
+        "transcribed here in this report."
+      ]
+    },
+    {
+      "id": "msg_0001_00015",
+      "en_US": [
+        "{CURSOR_Y 72}OUR FRIENDS LOOK\n",
+        "UP AND HEARTILY\n",
+        "CONGRATULATE US"
+      ]
+    },
+    {
+      "id": "msg_0001_00016",
+      "en_US": [
+        "{CURSOR_Y 120}We don’t know what this could\n",
+        "possibly mean yet."
+      ]
+    },
+    {
+      "id": "msg_0001_00017",
+      "en_US": [
+        "The Researchers were saying\n",
+        "that they’ll need to examine the\n",
+        "ruins again, but...?"
+      ]
+    },
+    {
+      "id": "msg_0001_00018",
+      "en_US": [
+        "In the past, it seems that UNOWN\n",
+        "lived with relatives of humans in\n",
+        "these ruins. In the lower levels\n",
+        "of these ruins is a Pokémon\n",
+        "statue. We’ve come to understand\n",
+        "that it was those relatives who\n",
+        "made that statue."
+      ]
+    },
+    {
+      "id": "msg_0001_00019",
+      "en_US": [
+        "The UNOWN are very timid\n",
+        "creatures, so they don’t go\n",
+        "outside the ruins. Even if a bunch\n",
+        "of people gathered near the\n",
+        "ruins, it is said that the ones who\n",
+        "wished for UNOWN and humans to\n",
+        "again coexist have all left."
+      ]
+    },
+    {
+      "id": "msg_0001_00020",
+      "en_US": "ANGER"
+    },
+    {
+      "id": "msg_0001_00021",
+      "en_US": "BEAR"
+    },
+    {
+      "id": "msg_0001_00022",
+      "en_US": "CHASE"
+    },
+    {
+      "id": "msg_0001_00023",
+      "en_US": "DIRECT"
+    },
+    {
+      "id": "msg_0001_00024",
+      "en_US": "ENGAGE"
+    },
+    {
+      "id": "msg_0001_00025",
+      "en_US": "FIND"
+    },
+    {
+      "id": "msg_0001_00026",
+      "en_US": "GIVE"
+    },
+    {
+      "id": "msg_0001_00027",
+      "en_US": "HELP"
+    },
+    {
+      "id": "msg_0001_00028",
+      "en_US": "INCREASE"
+    },
+    {
+      "id": "msg_0001_00029",
+      "en_US": "JOIN"
+    },
+    {
+      "id": "msg_0001_00030",
+      "en_US": "KEEP"
+    },
+    {
+      "id": "msg_0001_00031",
+      "en_US": "LAUGH"
+    },
+    {
+      "id": "msg_0001_00032",
+      "en_US": "MAKE"
+    },
+    {
+      "id": "msg_0001_00033",
+      "en_US": "NUZZLE"
+    },
+    {
+      "id": "msg_0001_00034",
+      "en_US": "OBSERVE"
+    },
+    {
+      "id": "msg_0001_00035",
+      "en_US": "PERFORM"
+    },
+    {
+      "id": "msg_0001_00036",
+      "en_US": "QUICKEN"
+    },
+    {
+      "id": "msg_0001_00037",
+      "en_US": "REASSURE"
+    },
+    {
+      "id": "msg_0001_00038",
+      "en_US": "SEARCH"
+    },
+    {
+      "id": "msg_0001_00039",
+      "en_US": "TELL"
+    },
+    {
+      "id": "msg_0001_00040",
+      "en_US": "UNDO"
+    },
+    {
+      "id": "msg_0001_00041",
+      "en_US": "VANISH"
+    },
+    {
+      "id": "msg_0001_00042",
+      "en_US": "WANT"
+    },
+    {
+      "id": "msg_0001_00043",
+      "en_US": "XXXXX"
+    },
+    {
+      "id": "msg_0001_00044",
+      "en_US": "YIELD"
+    },
+    {
+      "id": "msg_0001_00045",
+      "en_US": "ZOOM"
+    },
+    {
+      "id": "msg_0001_00046",
+      "en_US": "!!!!!"
+    },
+    {
+      "id": "msg_0001_00047",
+      "en_US": "?????"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "key": 27514,
+  "messages": [
+    {
+      "id": "msg_0181_00000",
+      "en_US": "HALL OF FAME No. {STRVAR_1 53, 0, 0} {STRVAR_34 16, 2, 0} {STRVAR_1 51, 3, 0}, {STRVAR_1 53, 1, 0}"
+    },
+    {
+      "id": "msg_0181_00001",
+      "en_US": "Lv.{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0181_00002",
+      "en_US": "OT/"
+    },
+    {
+      "id": "msg_0181_00003",
+      "en_US": "{COLOR 3}♂{COLOR 0}"
+    },
+    {
+      "id": "msg_0181_00004",
+      "en_US": "{COLOR 1}♀{COLOR 0}"
+    },
+    {
+      "id": "msg_0181_00005",
+      "garbage": 1
+    },
+    {
+      "id": "msg_0181_00006",
+      "en_US": "Return"
+    }
+  ]
+}

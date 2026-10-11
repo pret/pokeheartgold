@@ -1,0 +1,129 @@
+{
+  "key": 14820,
+  "messages": [
+    {
+      "id": "msg_0558_T22GYM0101_00000",
+      "en_US": [
+        "Falkner: I’m Falkner, the Violet City\n",
+        "Pokémon Gym Leader!\r",
+        "People say you can clip Flying-type\n",
+        "Pokémon’s wings with a jolt\f",
+        "of electricity...\r",
+        "I won’t allow such insults to bird\n",
+        "Pokémon!\r",
+        "I’ll show you the real power of the\n",
+        "magnificent bird Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00001",
+      "en_US": [
+        "Falkner: ...For pity’s sake!\n",
+        "My dad’s cherished bird Pokémon...\r",
+        "But a defeat is a defeat.\n",
+        "All right.\r",
+        "Take this official Pokémon\n",
+        "League Badge.\f",
+        "This one is the Zephyr Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Zephyr Badge from Falkner!"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00003",
+      "en_US": [
+        "Falkner: With that Badge, Pokémon,\n",
+        "including traded Pokémon up to Lv. 20,\f",
+        "will obey you without question.\r",
+        "It also enables you to use the hidden\n",
+        "move Rock Smash anytime outside\f",
+        "of battle.\r"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00004",
+      "en_US": [
+        "Falkner: By using a TM, a Pokémon will\n",
+        "instantly learn a new move.\r",
+        "Think before you act--a TM can be\n",
+        "used only once.\r",
+        "TM51 contains Roost.\n",
+        "It restores half the max HP.\r",
+        "There are Pokémon Gyms in cities and\n",
+        "towns ahead. Make good use of them!\r",
+        "As for your next move...\f",
+        "I would suggest Azalea Town."
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00005",
+      "en_US": [
+        "Falkner: There are Pokémon Gyms in\n",
+        "cities and towns ahead.\r",
+        "You should test your skills at\n",
+        "these Gyms.\r",
+        "As for your next move...\f",
+        "I would suggest Azalea Town.\r",
+        "I’m going to train harder to become\n",
+        "the greatest Bird Keeper of all!"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00006",
+      "en_US": [
+        "Yo! Champ in the making!\n",
+        "You must be here to challenge\f",
+        "Falkner, the Gym Leader, right?\r",
+        "You are quite welcome.\n",
+        "...Almost!\r",
+        "This city has a tower called the\n",
+        "Sprout Tower where Trainers\f",
+        "come to train themselves.\r",
+        "Challenging Falkner may be too\n",
+        "difficult if you haven’t gone through\f",
+        "their training.\f",
+        "Ha ha ha!"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00007",
+      "en_US": [
+        "Yo, Champ in the making!\n",
+        "I’m no Trainer, but I can give\f",
+        "some advice!\f",
+        "Believe me!\f",
+        "If you believe, then a Championship\f",
+        "dream can come true.\r",
+        "You believe?\n",
+        "Then listen.\r",
+        "The Grass type is weak against the\n",
+        "Flying type. Keep this in mind."
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00008",
+      "en_US": [
+        "Nice battle! Keep it up, and you’ll\n",
+        "be the Champ in no time at all!"
+      ]
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00009",
+      "en_US": "Violet City Pokémon Gym"
+    },
+    {
+      "id": "msg_0558_T22GYM0101_00010",
+      "en_US": [
+        "Violet City Pokémon Gym\r",
+        "Gym Leader: Falkner\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "key": 46095,
+  "messages": [
+    {
+      "id": "msg_0525_T10R0401_00000",
+      "en_US": [
+        "I am Bruno of the Elite Four.\r",
+        "I always train to the extreme because\n",
+        "I believe in our potential.\r",
+        "That is how we became strong.\n",
+        "Can you withstand our power?\r",
+        "Hm? I see no fear in you. You look\n",
+        "determined. Perfect for battle!\r",
+        "Ready, {STRVAR_1 3, 0, 0}?\r",
+        "You will bow down to our\n",
+        "overwhelming power!\r",
+        "Hoo hah!\r"
+      ]
+    },
+    {
+      "id": "msg_0525_T10R0401_00001",
+      "en_US": [
+        "Having lost, I have no right to\n",
+        "say anything...\f",
+        "Go face your next challenge!\r"
+      ]
+    },
+    {
+      "id": "msg_0525_T10R0401_00002",
+      "en_US": [
+        "Having lost, I have no right to\n",
+        "say anything...\f",
+        "Go face your next challenge!"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PaletteData_Init
 .public PaletteData_Free
@@ -60,4 +60,4 @@
 .public _02102620
 .public gSystem
 .public OS_IRQTable
-.public ov00_021EC9D4
+.public DWC_GetLinkLevel

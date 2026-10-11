@@ -5,7 +5,7 @@
 #include "constants/battle.h"
 #include "constants/game_stats.h"
 
-#include "arc/ppark.naix"
+#include "files/arc/ppark.naix"
 #include "battle/battle_setup.h"
 
 #include "field_system.h"

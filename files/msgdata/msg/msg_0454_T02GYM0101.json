@@ -1,0 +1,116 @@
+{
+  "key": 14692,
+  "messages": [
+    {
+      "id": "msg_0454_T02GYM0101_00000",
+      "en_US": [
+        "Blue: Yo! Finally got here, huh?\r",
+        "I wasn’t in the mood at Cinnabar,\n",
+        "but now I’m ready to battle you.\r",
+        "...\r",
+        "You’re telling me you conquered all\n",
+        "the Gyms in Johto?\r",
+        "Hahaha!\f",
+        "Heh! Johto’s Gyms are that pathetic?\r",
+        "Hey, don’t worry about it.\n",
+        "I’ll know if you are good or not by\f",
+        "battling you right now.\r"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00001",
+      "en_US": [
+        "Blue: No way!\r",
+        "How the heck did I lose to you?\r",
+        "...\r",
+        "Tch, all right...\f",
+        "Here, take this.\f",
+        "It’s the Earth Badge.\r"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Earth Badge from Blue!"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00003",
+      "en_US": [
+        "Blue: With this Badge, you’ll be able\n",
+        "to use the HM move Rock Climb!\f",
+        "Here!\r",
+        "Take this as well!\r"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00004",
+      "en_US": [
+        "Blue: It contains Trick Room!\r",
+        "It allows slower Pokémon to move\n",
+        "before faster Pokémon for a while.\r",
+        "It’s a very tricky move, isn’t it?\n",
+        "Hence the name!"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00005",
+      "en_US": [
+        "Blue: ...\r",
+        "All right, I was wrong. You’re the\n",
+        "real deal.\f",
+        "You are a good Trainer.\r",
+        "But I’m going to beat you someday.\n",
+        "Don’t you forget it!"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00006",
+      "en_US": [
+        "Yo, legend in the making!\r",
+        "The floor here is unstable,\n",
+        "so you should put away your Pokémon\f",
+        "...now!\r",
+        "The Gym Leader is a guy who battled\n",
+        "the Champion three years ago.\r",
+        "He’s no pushover.\n",
+        "Give it everything you’ve got!"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00007",
+      "en_US": [
+        "Man, you are truly tough...\r",
+        "That was such an inspirational battle.\n",
+        "It brought tears to my eyes."
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00008",
+      "en_US": [
+        "Yo, legend in the making!\r",
+        "The floor here is unstable,\n",
+        "so you should put away your Pokémon\f",
+        "...now!\r",
+        "The Gym Leader is a guy who battled\n",
+        "the Champion three years ago.\r",
+        "He’s no pushover.\n",
+        "Give it everything you’ve got!\r"
+      ]
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00009",
+      "en_US": "Viridian City Pokémon Gym"
+    },
+    {
+      "id": "msg_0454_T02GYM0101_00010",
+      "en_US": [
+        "Viridian City Pokémon Gym\r",
+        "Gym Leader: Blue\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

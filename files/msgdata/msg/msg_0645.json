@@ -1,0 +1,131 @@
+{
+  "key": 22035,
+  "messages": [
+    {
+      "id": "msg_0645_00000",
+      "en_US": "Janine"
+    },
+    {
+      "id": "msg_0645_00001",
+      "en_US": [
+        "Sorry? I’m afraid I can’t hear you very\n",
+        "well. Must be a bad connection.\r",
+        "Can you call again from somewhere else?"
+      ]
+    },
+    {
+      "id": "msg_0645_00002",
+      "en_US": [
+        "Hello, hello, hello...\n",
+        "Oh, hello, what are you up to?\f",
+        "I’m just fine, thanks!\r"
+      ]
+    },
+    {
+      "id": "msg_0645_00003",
+      "en_US": [
+        "Many of the Gym Leaders are much\n",
+        "stronger than I am. We’ve just got to\f",
+        "work harder!"
+      ]
+    },
+    {
+      "id": "msg_0645_00004",
+      "en_US": [
+        "My schedule’s fairly open on Monday\n",
+        "afternoons. Would you mind calling\f",
+        "me back then?"
+      ]
+    },
+    {
+      "id": "msg_0645_00005",
+      "en_US": [
+        "I can hear you clearly now.\n",
+        "Say, my schedule just opened up.\f",
+        "Would you like to meet for\f",
+        "a battle or something? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0645_00006",
+      "en_US": [
+        "Super!\n",
+        "I’m burning up, ready to fight!\r",
+        "I’ll be waiting for you at the\n",
+        "Fighting Dojo in Saffron City!"
+      ]
+    },
+    {
+      "id": "msg_0645_00007",
+      "en_US": [
+        "Oh, I getcha...\n",
+        "You’re afraid to face me...\f",
+        "Nah, that’s not true, right?"
+      ]
+    },
+    {
+      "id": "msg_0645_00008",
+      "en_US": [
+        "You’re sure you want to meet me for\n",
+        "a battle?\r",
+        "Don’t you have kind of a full schedule,\n",
+        "with other appointments?"
+      ]
+    },
+    {
+      "id": "msg_0645_00009",
+      "en_US": [
+        "I’m waiting for you at the Fighting Dojo\n",
+        "in Saffron City!\f",
+        "Come on! Move like the wind!"
+      ]
+    },
+    {
+      "id": "msg_0645_00010",
+      "en_US": [
+        "This is Janine.\n",
+        "How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0645_00011",
+      "en_US": [
+        "Remember, you promised to meet me at\n",
+        "the Fighting Dojo in Saffron City.\f",
+        "I’m ready whenever you are...like, now!"
+      ]
+    },
+    {
+      "id": "msg_0645_00012",
+      "en_US": [
+        "Hey, can I talk to you about my dad?\n",
+        "Only if you want to hear, though.\r",
+        "Seriously? I might talk your ear off\n",
+        "if I’m not careful!"
+      ]
+    },
+    {
+      "id": "msg_0645_00013",
+      "en_US": [
+        "See, I’ve been training with my dad\n",
+        "since I was little--to be a Gym Leader.\r",
+        "I haven’t even considered taking any\n",
+        "other path, really.\r",
+        "It’s my dream to someday become a\n",
+        "better Gym Leader than Dad!"
+      ]
+    },
+    {
+      "id": "msg_0645_00014",
+      "en_US": [
+        "Falkner in Violet City...\n",
+        "He’s talking about his dad all the time!\r",
+        "Seriously, he’s such a daddy’s boy,\n",
+        "he needs to become his own person\f",
+        "sometime, you know?\r",
+        "What do you mean, I should talk?\f",
+        "Ha ha--mind your own business!"
+      ]
+    }
+  ]
+}

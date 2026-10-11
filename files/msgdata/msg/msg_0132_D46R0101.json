@@ -1,0 +1,44 @@
+{
+  "key": 54403,
+  "messages": [
+    {
+      "id": "msg_0132_D46R0101_00000",
+      "en_US": [
+        "Bugsy: I came to Kanto to look for\n",
+        "Bug-type Pokémon, so I can become\f",
+        "a stronger Bug-type Pokémon Trainer!\r",
+        "Hey, why don’t we swap phone\n",
+        "numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0132_D46R0101_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Bugsy\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0132_D46R0101_00002",
+      "en_US": [
+        "Bugsy: We can battle around lunch\n",
+        "on Thursdays!\f",
+        "Give me a call!"
+      ]
+    },
+    {
+      "id": "msg_0132_D46R0101_00003",
+      "en_US": [
+        "Bugsy: Oh, well...\n",
+        "That’s OK..."
+      ]
+    },
+    {
+      "id": "msg_0132_D46R0101_00004",
+      "en_US": [
+        "Bugsy: Will you give me your phone\n",
+        "number? {YESNO 0}"
+      ]
+    }
+  ]
+}

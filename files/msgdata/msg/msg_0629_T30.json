@@ -1,0 +1,122 @@
+{
+  "key": 19247,
+  "messages": [
+    {
+      "id": "msg_0629_T30_00000",
+      "en_US": [
+        "I am sorry.\r",
+        "Clair, our Gym Leader, entered\n",
+        "the Dragon’s Den behind the Gym.\r",
+        "I have no idea when our Leader\n",
+        "will return."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00001",
+      "en_US": [
+        "Clair, our Gym Leader, is waiting\n",
+        "for you.\r",
+        "However, it would be impossible for\n",
+        "a run-of-the-mill Trainer to win."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00002",
+      "en_US": [
+        "You defeated Clair?\n",
+        "That’s amazing!\r",
+        "I’ve never heard of her losing to\n",
+        "anyone other than Lance."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00003",
+      "en_US": [
+        "No. Only chosen Trainers may train\n",
+        "here. Please leave."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00004",
+      "en_US": [
+        "If Clair allows it, her grandfather--\n",
+        "our Master--will also.\r",
+        "You may enter."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00005",
+      "en_US": [
+        "My radio’s busted?\n",
+        "Lately, I only get this weird signal."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00006",
+      "en_US": [
+        "Arooo! Voices in my head!\r",
+        "Huh? I’m listening to my radio!"
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00007",
+      "en_US": [
+        "Are you going to make your Pokémon\n",
+        "forget some moves?"
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00008",
+      "en_US": [
+        "Those Trainers called Dragon Tamers\n",
+        "are all from Blackthorn City."
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00009",
+      "en_US": [
+        "Wow, you came through the Ice Path?\r",
+        "You must be a real hotshot Trainer!"
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00010",
+      "en_US": [
+        "Blackthorn City\n",
+        "A Quiet Mountain Retreat"
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00011",
+      "en_US": [
+        "Blackthorn City Pokémon Gym\n",
+        "Leader: Clair\f",
+        "The Blessed User of Dragon Pokémon"
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00012",
+      "en_US": [
+        "Move Deleter and Move Tutor House\r",
+        "A Mysterious House Where You Can Make\n",
+        "Pokémon Forget and Remember Moves"
+      ]
+    },
+    {
+      "id": "msg_0629_T30_00013",
+      "en_US": "Dragon’s Den Ahead"
+    },
+    {
+      "id": "msg_0629_T30_00014",
+      "en_US": [
+        "Trainer Tips\r",
+        "Wild Pokémon will appear regularly\n",
+        "if you don’t run, but walk quietly in the\f",
+        "tall grass.\r",
+        "If your party Pokémon are\n",
+        "tired, it is better to avoid running,\f",
+        "and go straight to a Pokémon Center."
+      ]
+    }
+  ]
+}

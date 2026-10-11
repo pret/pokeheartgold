@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FontID_String_GetWidthMultiline
 .public PaletteData_GetUnfadedBuf

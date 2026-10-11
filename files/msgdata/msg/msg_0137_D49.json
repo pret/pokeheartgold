@@ -1,0 +1,433 @@
+{
+  "key": 55178,
+  "messages": [
+    {
+      "id": "msg_0137_D49_00000",
+      "en_US": "Muhaha!\r"
+    },
+    {
+      "id": "msg_0137_D49_00001",
+      "en_US": [
+        "I feel it!\r",
+        "The twinkle in your eyes!\n",
+        "The twinkle of friendship!\r",
+        "You’re quite something.\n",
+        "Your {STRVAR_1 0, 1, 0} is quite a Pokémon!\r",
+        "It’s ready to participate in the\n",
+        "Pokéathlon, bud!\r",
+        "Most of all, your solidarity with and\n",
+        "trust of Pokémon makes me\f",
+        "believe in infinite potential!\r",
+        "All right. Follow me!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00002",
+      "en_US": [
+        "What do you think?\n",
+        "This is the Pokéathlon Dome!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00003",
+      "en_US": [
+        "Pokéathlon is a sports festival for\n",
+        "Trainers and Pokémon!\r",
+        "Inside the Dome are various challenges\n",
+        "awaiting Trainers and Pokémon to test\f",
+        "their friendship.\f",
+        "Why don’t you try it?\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00004",
+      "en_US": [
+        "You’re amazing, bud!\n",
+        "This is a pleasant surprise!\r",
+        "To see a Pokéathlete with strong\n",
+        "potential is such a pleasure! I’m glad\f",
+        "I held the Pokéathlon here in Johto.\r",
+        "...My name is Magnus.\n",
+        "We shall meet again, bud.\r",
+        "Magnus: See you, young Pokéathlete!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00005",
+      "en_US": [
+        "I feel it!\r",
+        "The twinkle in your eyes!\n",
+        "The twinkle of friendship!\r",
+        "You’re ready to participate in the\n",
+        "Pokéathlon, bud!\r",
+        "Most of all, your mutual trust and\n",
+        "teamwork with Pokémon makes me\f",
+        "believe anything is possible!\r",
+        "All right. Follow me, bud!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00006",
+      "en_US": "Hmmm...\r"
+    },
+    {
+      "id": "msg_0137_D49_00007",
+      "en_US": [
+        "Running and jumping and...\n",
+        "There are so many events for Pokémon\f",
+        "to choose from. Which one should I try?"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00008",
+      "en_US": "ODDISH: Odd! Odd!"
+    },
+    {
+      "id": "msg_0137_D49_00009",
+      "en_US": "There is more to Pokémon than battling!"
+    },
+    {
+      "id": "msg_0137_D49_00010",
+      "en_US": "MEOWTH: Nyaah!"
+    },
+    {
+      "id": "msg_0137_D49_00011",
+      "en_US": [
+        "It’s not good at battles...but no\n",
+        "Pokémon can beat it at running, thanks\f",
+        "to the walk we take every morning!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00012",
+      "en_US": [
+        "Huff huff!\n",
+        "Everyday training is the sure way\f",
+        "to glory!\r",
+        "Dashing 1,000 times!\n",
+        "That’s my goal for now.\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00013",
+      "en_US": [
+        "What’s your goal?\n",
+        "Having a goal lets you enjoy life more."
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00014",
+      "en_US": [
+        "............\n",
+        "Oh, you have done the dash 1,000 times?\r",
+        "I thought it was basically impossible,\n",
+        "but you make me feel courageous.\r",
+        "Thank you!\n",
+        "Please take this!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00015",
+      "en_US": [
+        "I’ve become your fan! I would run\n",
+        "anywhere for you!\f",
+        "I’ll be supporting you!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00016",
+      "en_US": "PIDGEY: Po po!"
+    },
+    {
+      "id": "msg_0137_D49_00017",
+      "en_US": [
+        "Have you heard of Aprijuice?\r",
+        "Pokémon can increase their Performance\n",
+        "with food and drink.\r",
+        "Aprijuice is a drink developed from\n",
+        "nutrition research to improve\f",
+        "Performance.\r",
+        "If you let your Pokémon drink it before\n",
+        "a Pokéathlon event, it will show its\f",
+        "true potential!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00018",
+      "en_US": "SLOWBRO: Whick!"
+    },
+    {
+      "id": "msg_0137_D49_00019",
+      "en_US": [
+        "Each Pokémon has its unique traits.\r",
+        "A true Pokéathlete knows them and lets\n",
+        "the true Performance of his or her\f",
+        "Pokémon emerge!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00020",
+      "en_US": "MACHOP: Machao!"
+    },
+    {
+      "id": "msg_0137_D49_00021",
+      "en_US": [
+        "Oh!\n",
+        "They look good today!\r",
+        "They weren’t so well yesterday, but\n",
+        "we’ll win today for sure!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00022",
+      "en_US": "SLOWPOKE: Moah!"
+    },
+    {
+      "id": "msg_0137_D49_00023",
+      "en_US": "FARFETCH’D: Teree!"
+    },
+    {
+      "id": "msg_0137_D49_00024",
+      "en_US": "PSYDUCK: Guack!"
+    },
+    {
+      "id": "msg_0137_D49_00025",
+      "en_US": [
+        "Energy drink!\n",
+        "Welcome to the Aprijuice stand!\r",
+        "Are you giving your Pokémon Aprijuice?\n",
+        "I can explain anything you\f",
+        "need to know about it! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00026",
+      "en_US": [
+        "Energy drink!\n",
+        "Welcome to the Aprijuice stand!\r",
+        "Huh? What’s that confused look about?\n",
+        "You don’t know about Aprijuice?\f",
+        "There, take this!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00027",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Apriblender!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00028",
+      "en_US": [
+        "You put away the Apriblender\n",
+        "in the Apricorn Box.\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00029",
+      "en_US": [
+        "When you have the Apriblender, you can\n",
+        "make Aprijuice to let your Pokémon show\f",
+        "their true potential!\r",
+        "It’s so easy to make! All you have to\n",
+        "do is to put Apricorns in the\f",
+        "Apriblender. Put in as many as you can!\r",
+        "The more, the merrier!\n",
+        "Then you walk!\r",
+        "You can run if you want...\n",
+        "98...99...100 steps!\r",
+        "Here! Then you open it, give it to your\n",
+        "Pokémon, or drink it yourself.\r",
+        "You can buy Aprijuice here.\n",
+        "Why don’t you try and see how it works?\r",
+        "Do you have any more questions? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00030",
+      "en_US": [
+        "Aprijuice improves a Pokémon’s\n",
+        "Performance! Pokémon have strengths\f",
+        "and weaknesses.\r",
+        "But there is no need to worry. Give it\n",
+        "Aprijuice, and you can max out its\f",
+        "Performance!\r",
+        "You will need it!\r",
+        "Do you have any more questions? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00031",
+      "en_US": [
+        "Choose from the three Apriblenders.\r",
+        "The labels tell you what kind of drink\n",
+        "it is. Different drinks have\f",
+        "different effects.\r",
+        "You should use them to suit the event\n",
+        "you want to participate in. That’s how\f",
+        "to make a top Pokéathlete.\r",
+        "But remember this!\n",
+        "If your Pokémon’s Performance is maxed\f",
+        "out, you cannot make it higher.\r",
+        "You should check your Pokémon’s\n",
+        "Performance before you\f",
+        "give it Aprijuice.\r",
+        "Do you have any more questions? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00032",
+      "en_US": [
+        "Charge yourself with friendship!\n",
+        "Get in the know about Aprijuice!\f",
+        "Pick one from the shelf!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00033",
+      "en_US": [
+        "So discerning of you!\n",
+        "{STRVAR_1 3, 0, 0}’s {STRVAR_1 8, 1, 0}!\f",
+        "Only ${STRVAR_1 53, 2, 0}! Quite a bargain! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00034",
+      "en_US": [
+        "Thank you!\n",
+        "Which Pokémon do you want to give it to?\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00035",
+      "en_US": [
+        "Charge yourself with friendship!\n",
+        "Come back again when you want more!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00036",
+      "en_US": [
+        "That’s a pity!\n",
+        "Come back when you want to win!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00037",
+      "en_US": "Oh, you don’t have enough money!\r"
+    },
+    {
+      "id": "msg_0137_D49_00038",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s {STRVAR_1 8, 1, 0}!\n",
+        "Only ${STRVAR_1 53, 2, 0}! Quite a bargain! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00039",
+      "en_US": "Hi! What can I do for you?\r"
+    },
+    {
+      "id": "msg_0137_D49_00040",
+      "en_US": [
+        "Its richness is {STRVAR_1 52, 3, 0}!\n",
+        "Its smoothness is {STRVAR_1 52, 4, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00041",
+      "en_US": [
+        "Owner’s Comment\n",
+        "Somebody, somewhere put it together!\f",
+        "The mysterious {STRVAR_1 8, 1, 0}!\r",
+        "It may go up.\n",
+        "It may go down.\f",
+        "May your luck be with this juice!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00042",
+      "en_US": [
+        "Owner’s Comment\n",
+        "Not many people know about it!\r",
+        "It’s the newcomer Pokéathlete\n",
+        "{STRVAR_1 3, 0, 0}’s {STRVAR_1 8, 1, 0}!\r",
+        "It’s a long way to perfection!\n",
+        "But it’s irresistible to some!\f",
+        "It’s a gleam of {STRVAR_1 8, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00043",
+      "en_US": [
+        "Owner’s Comment\n",
+        "You know who’s around here!\r",
+        "This {STRVAR_1 8, 1, 0} is what has helped\n",
+        "make you-know-who who they\f",
+        "are today!\f",
+        "Try it if you feel sluggish!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00044",
+      "en_US": [
+        "Owner’s Comment\n",
+        "You don’t know it?\f",
+        "That’s the last thing you want to hear!\r",
+        "It is time you try {STRVAR_1 3, 0, 0}’s\n",
+        "{STRVAR_1 8, 1, 0}, the sign of a new era!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00045",
+      "en_US": [
+        "Owner’s Comment\n",
+        "{STRVAR_1 8, 1, 0} was developed by\f",
+        "that popular Pokéathlete!\r",
+        "You may never be able to shake hands,\n",
+        "but you can still drink the same juice!\r",
+        "This is a must-buy juice for every\n",
+        "Pokéathlete!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00046",
+      "en_US": [
+        "Owner’s Comment\n",
+        "{STRVAR_1 8, 1, 0}!\f",
+        "Developed by that elite Pokéathlete!\r",
+        "You may never see it again.\n",
+        "If you won’t win today, when will you?\r",
+        "For those who want to win today, here\n",
+        "is the juice of victory!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00047",
+      "en_US": [
+        "Owner’s Comment\n",
+        "{STRVAR_1 8, 1, 0} of the legendary\f",
+        "Pokéathlete!\r",
+        "It grew side by side with {STRVAR_1 3, 0, 0}!\r",
+        "The road to victory is shown when you\n",
+        "drink it! This will make you a legend!\r"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00048",
+      "en_US": [
+        "It improves your Pokémon’s\n",
+        "Performance!\r",
+        "Let it shine its best with Aprijuice!"
+      ]
+    },
+    {
+      "id": "msg_0137_D49_00049",
+      "en_US": [
+        "The Pokéathlon Dome\n",
+        "The Place for True Pokéathletes!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "key": 46175,
+  "messages": [
+    {
+      "id": "msg_0545_T20R0201_00000",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "You’re finally awake.\f",
+        "Your friend Lyra was just here.\r",
+        "She was playing hide-and-seek with\n",
+        "her MARILL.\r",
+        "Oh, I almost forgot! Our acquaintance,\n",
+        "Professor Elm, was looking for you.\r",
+        "He said he had a favor to ask of you.\r",
+        "You know where the lab is, right?\n",
+        "It’s right next door to us.\r",
+        "By the way, do you have everything\n",
+        "you need to go out?\f",
+        "Here, use this Bag to carry things...\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00001",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "You’re finally awake.\f",
+        "Your friend Ethan was just here.\r",
+        "He was playing hide-and-seek with\n",
+        "his MARILL.\r",
+        "Oh, I almost forgot! Our acquaintance,\n",
+        "Professor Elm, was looking for you.\r",
+        "He said he had a favor to ask of you.\r",
+        "You know where the lab is, right?\n",
+        "It’s right next door to us.\r",
+        "By the way, do you have everything\n",
+        "you need to go out?\f",
+        "Here, use this Bag to carry things...\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00002",
+      "en_US": "This is your Trainer Card...\r"
+    },
+    {
+      "id": "msg_0545_T20R0201_00003",
+      "en_US": [
+        "Here you can save a record of\n",
+        "your progress...\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00004",
+      "en_US": "These are also rather helpful...\r"
+    },
+    {
+      "id": "msg_0545_T20R0201_00005",
+      "en_US": [
+        "Just try touching the buttons, and\n",
+        "you’ll know what to do in no time.\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00006",
+      "en_US": [
+        "Professor Elm has been waiting for\n",
+        "you, dear. Please, go and help him."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00007",
+      "en_US": [
+        "Oh! {STRVAR_1 3, 0, 0}!\n",
+        "That’s a cute Pokémon you have.\r",
+        "Professor Elm must have given it\n",
+        "to you?\r",
+        "Oh, Professor Elm has a task for you,\n",
+        "you say?\f",
+        "What kind of task?\r",
+        "...\r",
+        "I see. That sounds a little difficult.\r",
+        "But when someone makes that kind of\n",
+        "request of you, it must be important!\r",
+        "Oh, that’s right!\n",
+        "I completely forgot!\r",
+        "Your Pokégear came back from the\n",
+        "repair shop!\r",
+        "Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Pokégear!\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00009",
+      "en_US": [
+        "The Pokémon Gear...\n",
+        "or Pokégear, as it’s often called,\f",
+        "is what every Trainer should have.\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00010",
+      "en_US": [
+        "Guess what?\n",
+        "You can use the Pokégear to make a\f",
+        "phone call, too.\f",
+        "Do you remember how? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00011",
+      "en_US": [
+        "Just power on the Pokégear and\n",
+        "touch the telephone button, OK?\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00012",
+      "en_US": [
+        "Select the POKéGEAR button on the\n",
+        "Touch Screen. Then select the\f",
+        "telephone button.\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00013",
+      "en_US": [
+        "The names of the people you can call\n",
+        "are automatically registered.\r",
+        "Just select one to give him or her\n",
+        "a call.\r",
+        "Wow, I can’t believe it’s so easy\n",
+        "to make a phone call!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00014",
+      "en_US": [
+        "What’s wrong?\r",
+        "Did you forget how to get to\n",
+        "Mr. Pokémon’s house?\r",
+        "Go north on Route 30.\n",
+        "Take care, dear."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00015",
+      "en_US": [
+        "...\n",
+        "So, you’re leaving on an adventure...\r",
+        "OK! I’ll help, too.\n",
+        "But what can I do for you?\r",
+        "I know!\n",
+        "Every time you receive prize money,\f",
+        "I’ll save some of it for you.\r",
+        "On a long journey, money’s important.\r",
+        "Do you want me to save\n",
+        "your money for you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00016",
+      "en_US": [
+        "I want to support you on your\n",
+        "adventure, {STRVAR_1 3, 0, 0}.\f",
+        "OK! I’ll help, too.\f",
+        "But what can I do for you?\r",
+        "I know!\r",
+        "Every time you receive prize money,\n",
+        "I’ll save some of it for you.\r",
+        "On a long journey, money’s important.\n",
+        "Do you want me to save\f",
+        "your money for you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00017",
+      "en_US": [
+        "OK, I’ll take care of your money.\r",
+        "Be careful.\r",
+        "Pokémon are your friends.\n",
+        "When you work as a team,\f",
+        "you can accomplish anything!\f",
+        "Now, go on!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00018",
+      "en_US": [
+        "OK, but be careful out there.\r",
+        "Pokémon are your friends.\n",
+        "When you work as a team,\f",
+        "you can accomplish anything!\f",
+        "Now, go on!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, stand firm!\n",
+        "I’m always there for you!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00020",
+      "en_US": [
+        "Hi! Welcome home!\n",
+        "You’re doing fine, I see.\r",
+        "I’ve kept your room tidy and clean.\n",
+        "Or...\f",
+        "Is this about your money? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00021",
+      "en_US": "Just do what you can."
+    },
+    {
+      "id": "msg_0545_T20R0201_00022",
+      "en_US": [
+        "Oh!\n",
+        "You have no money saved."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00023",
+      "en_US": [
+        "Your money’s safe here!\n",
+        "Take care of yourself!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00024",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}\n",
+        "You should think hard how you spend it!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00025",
+      "en_US": "Do you want to save some money? {YESNO 0}"
+    },
+    {
+      "id": "msg_0545_T20R0201_00026",
+      "en_US": [
+        "Oh!\n",
+        "You have no money left to save.\r",
+        "Don’t waste your money on\n",
+        "frivolous things, OK?\r",
+        "I know you are sensible like me\n",
+        "and that I can count on you!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00027",
+      "en_US": [
+        "I have saved so much.\n",
+        "I can’t save any more."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00028",
+      "en_US": [
+        "You have so much money already.\n",
+        "I can’t let you have any more."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00029",
+      "en_US": "WITHDRAW"
+    },
+    {
+      "id": "msg_0545_T20R0201_00030",
+      "en_US": "DEPOSIT MONEY"
+    },
+    {
+      "id": "msg_0545_T20R0201_00031",
+      "en_US": "CHANGE"
+    },
+    {
+      "id": "msg_0545_T20R0201_00032",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0545_T20R0201_00033",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Professor Elm told me that\f",
+        "he has something to give you!\r"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00034",
+      "en_US": [
+        "Professor Elm told me that\n",
+        "he has something to give you.\f",
+        "Why don’t you visit his lab?"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00035",
+      "en_US": [
+        "The TV is playing a movie!\r",
+        "Two boys are in a cave searching\n",
+        "for treasure!\r",
+        "I better get going..."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00036",
+      "en_US": [
+        "Cinnabar Volcano Burger!\n",
+        "Mom’s specialty!"
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00037",
+      "en_US": [
+        "A squeaky-clean sink!\n",
+        "Mom loves having it clean."
+      ]
+    },
+    {
+      "id": "msg_0545_T20R0201_00038",
+      "en_US": [
+        "What’s in the fridge...?\r",
+        "Lots of drinking water and\n",
+        "sweeeet lemonade!"
+      ]
+    }
+  ]
+}

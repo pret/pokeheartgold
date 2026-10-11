@@ -2,7 +2,7 @@
 
 #include "constants/radio_station.h"
 
-#include "application/pokegear/radio/pgradio_gra.naix"
+#include "files/application/pokegear/radio/pgradio_gra.naix"
 #include "application/pokegear/radio/radio_internal.h"
 
 #include "font.h"

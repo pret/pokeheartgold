@@ -1,4 +1,4 @@
 #pragma once
 
-	.include "asm/macros/function.inc"
-	.include "asm/macros/cw.inc"
+	.include "macros/function.inc"
+	.include "macros/cw.inc"

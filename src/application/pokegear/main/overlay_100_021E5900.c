@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "application/pokegear/pgear_gra.naix"
+#include "files/application/pokegear/pgear_gra.naix"
 #include "application/pokegear/pokegear_internal.h"
 
 #include "map_header.h"

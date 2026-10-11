@@ -1,0 +1,125 @@
+{
+  "key": 25698,
+  "messages": [
+    {
+      "id": "msg_0111_D35R0101_00000",
+      "en_US": [
+        "Huh?\r",
+        "You hear wind blowing into this room?\n",
+        "That is...just me whistling.\r",
+        "Enough about that.\n",
+        "Why don’t you buy something? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00001",
+      "en_US": [
+        "Arrgh...\n",
+        "You found the secret stairway...\r",
+        "How did you do that?\n",
+        "I thought it was well camouflaged..."
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00002",
+      "en_US": [
+        "Heheh! The experiment worked like\n",
+        "a charm.\r",
+        "MAGIKARP are just worthless, but\n",
+        "GYARADOS are big moneymakers."
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00003",
+      "en_US": [
+        "Urrgh...\r",
+        "That guy’s Dragon-type Pokémon\n",
+        "are tough..."
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00004",
+      "en_US": "Lance: DRAGONITE, Hyper Beam.\r"
+    },
+    {
+      "id": "msg_0111_D35R0101_00005",
+      "en_US": [
+        "What took you so long, {STRVAR_1 3, 0, 0}?\r",
+        "Just as I thought, that strange radio\n",
+        "signal is coming from here.\r"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00006",
+      "en_US": [
+        "What took you so long, {STRVAR_1 3, 0, 0}?\r",
+        "Just as I thought, that strange radio\n",
+        "signal is coming from here.\r"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00007",
+      "en_US": "The stairs are right here.\r"
+    },
+    {
+      "id": "msg_0111_D35R0101_00008",
+      "en_US": [
+        "Lance: {STRVAR_1 3, 0, 0}, we should split up\n",
+        "to check this place. I’ll go first.\r"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00009",
+      "en_US": [
+        "Lance: {STRVAR_1 3, 0, 0}, we should split up\n",
+        "to check this place. I’ll go first.\r"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00010",
+      "en_US": [
+        "Whistle...whistle...\r",
+        "Are you bothered by that noise? That’s\n",
+        "me. My false teeth don’t fit right,\f",
+        "and the gap makes the noise.\r",
+        "Enough about that.\n",
+        "Why don’t you buy something?\r"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00011",
+      "en_US": [
+        "The radio is on.\r",
+        "The variety show is airing\n",
+        "The Pokémon Search Party!"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00012",
+      "en_US": [
+        "The radio is on.\r",
+        "The variety show is airing\n",
+        "The Radio Miniseries!"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00013",
+      "en_US": [
+        "The radio is on.\r",
+        "The variety show is airing\n",
+        "Buena’s Password!"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00014",
+      "en_US": [
+        "Team Rocket is declaring its revival on\n",
+        "the radio!"
+      ]
+    },
+    {
+      "id": "msg_0111_D35R0101_00015",
+      "en_US": "You hear something strange...!"
+    }
+  ]
+}

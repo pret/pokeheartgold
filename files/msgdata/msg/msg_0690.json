@@ -1,0 +1,108 @@
+{
+  "key": 45874,
+  "messages": [
+    {
+      "id": "msg_0690_00000",
+      "en_US": "Beverly"
+    },
+    {
+      "id": "msg_0690_00001",
+      "en_US": [
+        "Your Pokémon is so cute and adorable!\n",
+        "You love Pokémon just like I do!\r",
+        "Want to trade phone numbers?\n",
+        "Let’s chat! It’ll be so much fun!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0690_00002",
+      "en_US": [
+        "To be honest, I want a MARILL.\n",
+        "But I make do with my cute SNUBBULL.\r",
+        "Aw! I’m just kidding!\n",
+        "I’m just kidding, SNUBBULL! You’re the\f",
+        "cutest Pokémon ever, really!"
+      ]
+    },
+    {
+      "id": "msg_0690_00003",
+      "en_US": "Oh... That’s disappointing..."
+    },
+    {
+      "id": "msg_0690_00004",
+      "en_US": [
+        "You have such cute and adorable\n",
+        "Pokémon with you! \r",
+        "We should totally trade phone\n",
+        "numbers, don’t you think?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0690_00005",
+      "en_US": [
+        "Oh, sorry to keep you waiting,\n",
+        "{STRVAR_1 3, 0, 0}. Here, I’ll give you this.\r"
+      ]
+    },
+    {
+      "id": "msg_0690_00006",
+      "en_US": [
+        "Let’s see... You’re in the National\n",
+        "Park, aren’t you?\r",
+        "Well, you should come talk to me in\n",
+        "person, don’t you think?"
+      ]
+    },
+    {
+      "id": "msg_0690_00007",
+      "en_US": [
+        "I spruced up my {STRVAR_1 0, 10, 0} and made\n",
+        "it even cuter than before!\r",
+        "I happened to come across a wild\n",
+        "SNUBBULL recently.\r",
+        "My SNUBBULL, I assure you, was far\n",
+        "cuter than the wild one.\r",
+        "You can expect a call from me."
+      ]
+    },
+    {
+      "id": "msg_0690_00008",
+      "en_US": [
+        "I spruced up my {STRVAR_1 0, 10, 0} and\n",
+        "made it even cuter than before!\r",
+        "I happened to see a wild MARILL the\n",
+        "other day. Or so I thought.\r",
+        "A closer look showed it was\n",
+        "{STRVAR_1 0, 11, 0}. I was quite miffed.\r",
+        "You can expect a call from me."
+      ]
+    },
+    {
+      "id": "msg_0690_00009",
+      "en_US": [
+        "My husband got some Nuggets.\r",
+        "If you’d like, you could have one as\n",
+        "thanks for helping me out.\r",
+        "I’ll be at {STRVAR_1 4, 3, 0}.\n",
+        "Please come see me when you can."
+      ]
+    },
+    {
+      "id": "msg_0690_00010",
+      "en_US": [
+        "Pardon?\n",
+        "Oh, the Nugget?\r",
+        "It’s all right! There’s no need\n",
+        "to hurry. Come see me in\f",
+        "{STRVAR_1 4, 3, 0} when you can."
+      ]
+    },
+    {
+      "id": "msg_0690_00011",
+      "en_US": [
+        "Are your Pokémon in prime form?\n",
+        "Let’s chat about Pokémon again."
+      ]
+    }
+  ]
+}

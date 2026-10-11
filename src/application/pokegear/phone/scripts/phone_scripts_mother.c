@@ -1,7 +1,7 @@
 #include "global.h"
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "msgdata/msg/msg_0664.h"
+#include "files/msgdata/msg/msg_0664.h"
 
 #include "map_header.h"
 #include "sys_flags.h"

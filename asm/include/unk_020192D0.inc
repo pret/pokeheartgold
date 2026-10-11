@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Sound_SetSceneAndPlayBGM
 .public OverlayManager_New
@@ -81,9 +81,9 @@
 .public MIi_CpuCopy16
 .public MI_CpuFill8
 .public gSystem
-.public ov00_021EC294
-.public ov00_021EC9D4
-.public ov00_021ECB40
+.public DWC_SetMemFunc
+.public DWC_GetLinkLevel
+.public DWC_UpdateConnection
 .public ov39_02228140
 .public ov39_02228308
 .public ov39_02228370

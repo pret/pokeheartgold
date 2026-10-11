@@ -1,0 +1,110 @@
+{
+  "key": 37915,
+  "messages": [
+    {
+      "id": "msg_0458_T02R0302_00000",
+      "en_US": [
+        "Hello, welcome to our Training Hall.\r",
+        "You may battle our best Trainers and\n",
+        "their favorite Pokémon once\f",
+        "per day.\r",
+        "Would you like to participate? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00001",
+      "garbage": 35
+    },
+    {
+      "id": "msg_0458_T02R0302_00002",
+      "en_US": [
+        "You are ready!\n",
+        "Please go right through.\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00003",
+      "en_US": [
+        "I see...\n",
+        "Please come back again.\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00004",
+      "en_US": "Do you want to exit? {YESNO 0}"
+    },
+    {
+      "id": "msg_0458_T02R0302_00005",
+      "en_US": "Thank you for playing!\r"
+    },
+    {
+      "id": "msg_0458_T02R0302_00006",
+      "en_US": [
+        "I see.\n",
+        "Good luck!\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00007",
+      "en_US": [
+        "Oh, hello!\n",
+        "Right this way, please!\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00008",
+      "en_US": [
+        "This is the Trainer House--\n",
+        "the place for Trainers.\r",
+        "The Pokéwalker will bring your\n",
+        "friends here!\r",
+        "You can challenge various Trainers\n",
+        "once a day.\r",
+        "You’ll earn Battle Points when you win.\f",
+        "Bring out your best!\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00009",
+      "en_US": [
+        "Oh! I’ll borrow your Vs. Recorder\n",
+        "for a moment.\r",
+        "Let’s see... Slide open this part here,\n",
+        "and ticka-tacka-kachunk there!\r",
+        "All done!\r",
+        "Now you can check your Battle Points\n",
+        "using your Vs. Recorder!\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Vs. Recorder was\n",
+        "upgraded."
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00011",
+      "en_US": [
+        "You may exchange your Battle Points\n",
+        "for fabulous prizes at Johto\f",
+        "Battle Frontier!\r"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00012",
+      "en_US": [
+        "Now that you are ready,\n",
+        "would you like to train yourself? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0458_T02R0302_00013",
+      "en_US": "Would you like to battle? {YESNO 0}"
+    },
+    {
+      "id": "msg_0458_T02R0302_00014",
+      "en_US": "See you tomorrow!"
+    }
+  ]
+}

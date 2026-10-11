@@ -1,0 +1,29 @@
+{
+  "key": 33883,
+  "messages": [
+    {
+      "id": "msg_0071_D23R0107_00000",
+      "en_US": [
+        "Goldenrod City\n",
+        "Radio Tower Elevator\f",
+        "Next stop: Observation Deck\r"
+      ]
+    },
+    {
+      "id": "msg_0071_D23R0107_00001",
+      "en_US": [
+        "Goldenrod City\n",
+        "Radio Tower Elevator\f",
+        "Next stop: 5F\r"
+      ]
+    },
+    {
+      "id": "msg_0071_D23R0107_00002",
+      "en_US": "You’ve arrived at the Observation Deck."
+    },
+    {
+      "id": "msg_0071_D23R0107_00003",
+      "en_US": "You have arrived at 5F."
+    }
+  ]
+}

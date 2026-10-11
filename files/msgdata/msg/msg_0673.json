@@ -1,0 +1,107 @@
+{
+  "key": 29614,
+  "messages": [
+    {
+      "id": "msg_0673_00000",
+      "en_US": "Torin"
+    },
+    {
+      "id": "msg_0673_00001",
+      "en_US": [
+        "You know, I’m going to practice a whole\n",
+        "bunch so we can battle again the next\f",
+        "time we meet.\r",
+        "That’s right! Give me your phone\n",
+        "number so I can call you! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0673_00002",
+      "en_US": [
+        "All right, registration complete!\n",
+        "Later!"
+      ]
+    },
+    {
+      "id": "msg_0673_00003",
+      "en_US": "That’s too bad..."
+    },
+    {
+      "id": "msg_0673_00004",
+      "en_US": [
+        "Hey! You really want to trade phone\n",
+        "numbers with me, don’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0673_00005",
+      "en_US": [
+        "Huh?\n",
+        "I can hear the sound of a windmill...\r",
+        "That must mean that you’re nearby,\n",
+        "aren’t you?\r",
+        "So come have a proper conversation!"
+      ]
+    },
+    {
+      "id": "msg_0673_00006",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} works really hard!\r",
+        "Everything I learn at school, it helps\n",
+        "me repeat it right away.\r",
+        "Do your Pokémon listen to what you say?"
+      ]
+    },
+    {
+      "id": "msg_0673_00007",
+      "en_US": [
+        "Yesterday we battled a {STRVAR_1 0, 11, 0}!\r",
+        "We practiced all the stuff I learned\n",
+        "in school!\r",
+        "Where do you go to school?\n",
+        "Seriously, you don’t go to my school?\f",
+        "That can’t be true, can it?"
+      ]
+    },
+    {
+      "id": "msg_0673_00008",
+      "en_US": [
+        "Recently I was trying to catch a\n",
+        "{STRVAR_1 0, 11, 0}, but it ran away!\f",
+        "So disappointing!\r",
+        "And so I don’t forget how disappointing\n",
+        "it was, I’m writing down the name of the\f",
+        "Pokémon that got away on my notebook.\r",
+        "There’re Pokémon names all over\n",
+        "my notebook!"
+      ]
+    },
+    {
+      "id": "msg_0673_00009",
+      "en_US": [
+        "Hey, come battle me again.\n",
+        "I’ll be waiting at {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0673_00010",
+      "en_US": [
+        "Hello? I’m at {STRVAR_1 4, 3, 0}. We\n",
+        "were going to battle, weren’t we?\f",
+        "Hurry on over!"
+      ]
+    },
+    {
+      "id": "msg_0673_00011",
+      "en_US": [
+        "Huh? The only time you ever see me is\n",
+        "when I’m on my way home from school?\r",
+        "I suppose you’re right...\r",
+        "But when I’m on my way to school, I’m\n",
+        "always in a rush so that I’m not late.\r",
+        "I don’t have any time for Pokémon\n",
+        "battles then!"
+      ]
+    }
+  ]
+}

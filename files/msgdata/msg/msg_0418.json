@@ -1,0 +1,27 @@
+{
+  "key": 53945,
+  "messages": [
+    {
+      "id": "msg_0418_00000",
+      "en_US": "Team Rocket Announcement"
+    },
+    {
+      "id": "msg_0418_00001",
+      "en_US": "Team Rocket"
+    },
+    {
+      "id": "msg_0418_00002",
+      "en_US": [
+        "...Uh... um. Testing! Testing 1, 2, 3...\n",
+        "We’re the amazing Team Rocket! It’s been\n",
+        "three years but we’ve rebuilt the team\n",
+        "and restructured! We’re proud to\n",
+        "announce that we’re back!\n",
+        "Giovanni! Can you hear this?!\n",
+        "...We finally did it!\n",
+        "Where could the boss be, I wonder?\n",
+        "I wonder if he heard this announcement...\n"
+      ]
+    }
+  ]
+}

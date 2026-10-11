@@ -1,4 +1,4 @@
-#include "demo/legend.naix"
+#include "files/demo/legend.naix"
 #include "field/overlay_01_021FB878.h"
 #include "overlay_2/event_cutscene.h"
 
@@ -200,9 +200,9 @@ static BOOL CelebiCutscene_IsSwirlFinished(CelebiTimeTravelCutsceneTaskData *dat
 }
 
 static void CelebiCutscene_LoadResources(CelebiTimeTravelCutsceneTaskData *data) {
-    const u32 files[3] = { NARC_legend_legend_00000076_NSBCA, NARC_legend_legend_00000078_NSBTP, NARC_legend_legend_00000077_NSBTA };
+    const u32 files[3] = { legend_00000076_NSBCA, legend_00000078_NSBTP, legend_00000077_NSBTA };
     HeapExp_FndInitAllocator(&data->alloc, HEAP_ID_FIELD1, 32);
-    Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, NARC_legend_legend_00000075_NSBMD, HEAP_ID_FIELD1);
+    Field3dModel_LoadFromFilesystem(&data->model, NARC_demo_legend, legend_00000075_NSBMD, HEAP_ID_FIELD1);
     for (u8 i = 0; i < NELEMS(data->animations); i++) {
         Field3dModelAnimation_LoadFromFilesystem(&data->animations[i], &data->model, NARC_demo_legend, files[i], HEAP_ID_FIELD1, &data->alloc);
     }

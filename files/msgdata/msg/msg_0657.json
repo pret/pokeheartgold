@@ -1,0 +1,143 @@
+{
+  "key": 13213,
+  "messages": [
+    {
+      "id": "msg_0657_00000",
+      "en_US": "Brock"
+    },
+    {
+      "id": "msg_0657_00001",
+      "en_US": [
+        "Huh? I can’t hear you. I think we’ve\n",
+        "got a bad connection.\r",
+        "Go somewhere else and call again!"
+      ]
+    },
+    {
+      "id": "msg_0657_00002",
+      "en_US": [
+        "Hello...\n",
+        "What’s up?\f",
+        "I’m doing great!\r"
+      ]
+    },
+    {
+      "id": "msg_0657_00003",
+      "en_US": [
+        "Hmm... I’d like to battle you again, but\n",
+        "I think there’re some Gyms that you\f",
+        "haven’t visited yet, aren’t there?"
+      ]
+    },
+    {
+      "id": "msg_0657_00004",
+      "en_US": [
+        "I can take a break on Saturday\n",
+        "evenings, if you want to give me a call\f",
+        "again then."
+      ]
+    },
+    {
+      "id": "msg_0657_00005",
+      "en_US": [
+        "Hey, you called at just the right time!\n",
+        "I’m free right now.\f",
+        "Want to battle me again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0657_00006",
+      "en_US": [
+        "All right, all right!\n",
+        "I’m looking forward to it!\r",
+        "I’ll meet you at the Fighting Dojo in\n",
+        "Saffron City!\r",
+        "I won’t be at the Pewter Gym, all right?\n",
+        "Don’t get confused!"
+      ]
+    },
+    {
+      "id": "msg_0657_00007",
+      "en_US": [
+        "Is that so...\n",
+        "Well, I suppose you must have a lot of\f",
+        "things to do yourself..."
+      ]
+    },
+    {
+      "id": "msg_0657_00008",
+      "en_US": [
+        "Yeah, I’d really like to battle with you\n",
+        "again... But I think you’ve got an\f",
+        "appointment with someone else?\r",
+        "Once you’ve taken care of your\n",
+        "obligations with other Trainers,\f",
+        "then call me again!"
+      ]
+    },
+    {
+      "id": "msg_0657_00009",
+      "en_US": [
+        "I’ll be waiting for you to arrive at\n",
+        "the Fighting Dojo in Saffron City.\f",
+        "It’s a promise between Trainers!"
+      ]
+    },
+    {
+      "id": "msg_0657_00010",
+      "en_US": [
+        "This is Brock.\n",
+        "Oh hey, how are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0657_00011",
+      "en_US": [
+        "We made plans to battle at the Fighting\n",
+        "Dojo in Saffron City, didn’t we?\f",
+        "You didn’t forget, did you?"
+      ]
+    },
+    {
+      "id": "msg_0657_00012",
+      "en_US": [
+        "A large earthquake struck recently.\n",
+        "Some of the walls in my Gym\f",
+        "crumbled a bit.\r",
+        "Well, I guess that’s just the kind of\n",
+        "thing my Gym’s known for.\r",
+        "So even if the walls crumbled a bit,\n",
+        "nobody would really notice!"
+      ]
+    },
+    {
+      "id": "msg_0657_00013",
+      "en_US": [
+        "There are so many different types of\n",
+        "Pokémon in the world. As you could\f",
+        "guess, I like Rock-type Pokémon best.\r",
+        "They’re solid and rough, and yet\n",
+        "somewhat brittle at the same time.\f",
+        "Once you’ve really gotten to know\f",
+        "them, they’re even quite cute.\r",
+        "What do you think?"
+      ]
+    },
+    {
+      "id": "msg_0657_00014",
+      "en_US": [
+        "Every town’s Pokémon Gym is different!\n",
+        "The design, the tricks, everything is so\f",
+        "different. It’s interesting!\r",
+        "Each Gym Leader assigned to take care\n",
+        "of a Gym by the Pokémon League gets to\f",
+        "design as they please.\r",
+        "Of course, Pewter Gym’s design is my\n",
+        "pride and joy!\r",
+        "The tricks aren’t much, but you can’t\n",
+        "deny that when you enter, the design\f",
+        "has a breathtaking impact, right?"
+      ]
+    }
+  ]
+}

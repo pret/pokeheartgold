@@ -5,9 +5,9 @@
 #include "constants/game_stats.h"
 #include "constants/sndseq.h"
 
-#include "application/voltorb_flip.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0039.h"
+#include "files/application/voltorb_flip.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0039.h"
 #include "voltorb_flip/voltorb_flip_app_data.h"
 #include "voltorb_flip/voltorb_flip_game.h"
 #include "voltorb_flip/voltorb_flip_input.h"
@@ -154,7 +154,7 @@ static void VF_RenderingOff(void);
 static void ov122_021E8094(OverlayManager *man);
 static void FreeOverlayData(OverlayManager *man);
 
-const u8 sMainMenuMsgNos[] = {
+static const u8 sMainMenuMsgNos[] = {
     // Play
     msg_0039_00017,
     // Game Info
@@ -162,7 +162,7 @@ const u8 sMainMenuMsgNos[] = {
     // Quit
     msg_0039_00019
 };
-const u8 sGameInfoMsgNos[] = {
+static const u8 sGameInfoMsgNos[] = {
     // How to Play
     msg_0039_00021,
     // Hint!
@@ -182,7 +182,7 @@ const u8 ov122_021E9270[] = {
     GF_BG_LYR_SUB_1,
 };
 
-const u8 sCardFaceUpTileIDs[5][2] = {
+static const u8 sCardFaceUpTileIDs[5][2] = {
     // 45º       Face up
     { 0x77, 0x17 },
     { 0x74, 0x14 },
@@ -191,7 +191,7 @@ const u8 sCardFaceUpTileIDs[5][2] = {
     { 0x6B, 0x0B },
 };
 
-const TouchscreenListMenuTemplate sListMenuTemplate = {
+static const TouchscreenListMenuTemplate sListMenuTemplate = {
     .wrapAround = TRUE,
     .centered = TRUE,
     .xOffset = 0,
@@ -213,19 +213,19 @@ const u16 ov122_021E92A0[] = {
 };
 // clang-format on
 
-const MsgNoList sMenuMsgNos[] = {
+static const MsgNoList sMenuMsgNos[] = {
     { sMainMenuMsgNos, NELEMS(sMainMenuMsgNos) },
     { sGameInfoMsgNos, NELEMS(sGameInfoMsgNos) },
 };
 
-const struct GraphicsModes sVoltorbFlipBgModeSet = {
+static const struct GraphicsModes sVoltorbFlipBgModeSet = {
     GX_DISPMODE_GRAPHICS,
     GX_BGMODE_0,
     GX_BGMODE_0,
     GX_BG0_AS_2D,
 };
 
-const u8 sMemoInputGridDrawParam[4][4] = {
+static const u8 sMemoInputGridDrawParam[4][4] = {
     // memoOffAnim, memoOnAnim, spriteID, memoMask
     { 12, 8,  VF_SPRITE_TOGGLE_MEMO_VOLTORB, MEMO_VOLTORB },
     { 15, 11, VF_SPRITE_TOGGLE_MEMO_ONE,     MEMO_ONE     },
@@ -233,7 +233,7 @@ const u8 sMemoInputGridDrawParam[4][4] = {
     { 13, 9,  VF_SPRITE_TOGGLE_MEMO_THREE,   MEMO_THREE   },
 };
 
-const OamCharTransferParam sOamCharTransferParam = {
+static const OamCharTransferParam sOamCharTransferParam = {
     0,
     0x00020000,
     0x00004000,
@@ -241,11 +241,11 @@ const OamCharTransferParam sOamCharTransferParam = {
     GX_OBJVRAMMODE_CHAR_1D_32K,
 };
 
-const SpriteResourceCountsListUnion sResourceCounts = { 2, 2, 2, 2, 0, 0 };
+static const SpriteResourceCountsListUnion sResourceCounts = { 2, 2, 2, 2, 0, 0 };
 
-const OamManagerParam sOamManagerParam = { 0, 126, 0, 32, 1, 126, 0, 32 };
+static const OamManagerParam sOamManagerParam = { 0, 126, 0, 32, 1, 126, 0, 32 };
 
-const GraphicsBanks sVoltorbFlipGraphicsBanks = {
+static const GraphicsBanks sVoltorbFlipGraphicsBanks = {
     GX_VRAM_BG_128_B,
     GX_VRAM_BGEXTPLTT_NONE,
     GX_VRAM_SUB_BG_128_C,
@@ -258,14 +258,14 @@ const GraphicsBanks sVoltorbFlipGraphicsBanks = {
     GX_VRAM_TEXPLTT_NONE,
 };
 
-const MemoRenderOverride sMemoRenderOverrides[4] = {
+static const MemoRenderOverride sMemoRenderOverrides[4] = {
     { 0, 0, 0x21 }, // VOLTORB
     { 2, 0, 0x22 }, // ONE
     { 0, 2, 0x23 }, // TWO
     { 2, 2, 0x24 }, // THREE
 };
 
-const ManagedSpriteTemplate sSpriteTemplate_Sub = {
+static const ManagedSpriteTemplate sSpriteTemplate_Sub = {
     0,
     0,
     0,
@@ -285,7 +285,7 @@ const ManagedSpriteTemplate sSpriteTemplate_Sub = {
     0,
 };
 
-const ManagedSpriteTemplate sSpriteTemplate_Main = {
+static const ManagedSpriteTemplate sSpriteTemplate_Main = {
     0,
     0,
     0,
@@ -305,7 +305,7 @@ const ManagedSpriteTemplate sSpriteTemplate_Main = {
     0,
 };
 
-const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
+static const WindowTemplate sVoltorbFlipWindowTemplates[17] = {
     {
      .bgId = GF_BG_LYR_MAIN_3,
      .left = 2,
@@ -2293,7 +2293,7 @@ static void ov122_021E8094(OverlayManager *man) {
     work->unk22A = Options_GetTextFrameDelay(work->options);
 
     work->narc = NARC_New(NARC_application_voltorb_flip, work->heapID);
-    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0039_bin, work->heapID);
+    work->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0039, work->heapID);
     work->msgFmt = MessageFormat_New(work->heapID);
     work->yesNoPrompt = YesNoPrompt_Create(work->heapID);
 

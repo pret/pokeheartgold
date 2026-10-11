@@ -1,5 +1,7 @@
 #include "MessagesEncoder.h"
 #include "Gmm.h"
+#include "Json.h"
+#include "Options.h"
 
 void MessagesEncoder::CmdmapRegisterCommand(string &command, uint16_t value)
 {
@@ -30,7 +32,25 @@ void MessagesEncoder::ReadMessagesFromText(string& fname) {
 }
 
 void MessagesEncoder::ReadMessagesFromGMM(string& filename) {
-    GMM(filename, std::ios::in).FromFile(*this);
+    int key_from_file = GMM(filename, std::ios::in).FromFile(*this);
+
+    // If key has been specified in the gmm, use 
+    // that instead of the command-line value
+    if (key_from_file != GMM_KEY_NOT_DEFINED) {
+        header.key = key_from_file;
+    }
+
+    header.count = vec_decoded.size();
+    debug_printf("%d lines\n", header.count);
+}
+
+void MessagesEncoder::ReadMessagesFromJson(string& filename) {
+    int key_from_file = Json(filename, std::ios::in).FromFile(*this);
+
+    if (key_from_file != JSON_KEY_NOT_DEFINED) {
+        header.key = key_from_file;
+    }
+
     header.count = vec_decoded.size();
     debug_printf("%d lines\n", header.count);
 }
@@ -151,11 +171,14 @@ void MessagesEncoder::WriteMessagesToBin(string& filename) {
 void MessagesEncoder::ReadInput()
 {
     switch (text_format) {
-    case PlainText:
+    case FMT_PLAIN_TEXT:
         ReadMessagesFromText(textfilename);
         break;
-    case GamefreakGMM:
+    case FMT_GAMEFREAK_GMM:
         ReadMessagesFromGMM(textfilename);
+        break;
+    case FMT_JSON:
+        ReadMessagesFromJson(textfilename);
         break;
     }
 }
