@@ -1,0 +1,26 @@
+{
+  "key": 13438,
+  "messages": [
+    {
+      "id": "msg_0633_T30R0201_00000",
+      "en_US": [
+        "A clan of Trainers who can freely\n",
+        "command Dragon-type Pokémon lives\f",
+        "right here in Blackthorn.\r",
+        "As a result, there are many legends\n",
+        "about dragons in this town."
+      ]
+    },
+    {
+      "id": "msg_0633_T30R0201_00001",
+      "en_US": [
+        "Clair and Lance also trained here to\n",
+        "gain skills as Pokémon Trainers!"
+      ]
+    },
+    {
+      "id": "msg_0633_T30R0201_00002",
+      "en_US": "DRATINI: Draa!"
+    }
+  ]
+}

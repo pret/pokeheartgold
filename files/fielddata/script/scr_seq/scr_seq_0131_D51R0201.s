@@ -2,9 +2,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D51R0201.h"
 #include "msgdata/msg/msg_0146_D51R0201.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D51R0201_000
 	ScrDef scr_seq_D51R0201_001

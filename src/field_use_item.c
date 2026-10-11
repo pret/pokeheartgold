@@ -6,8 +6,8 @@
 #include "field/fieldmap.h"
 #include "fielddata/script/scr_seq/event_D24R0202.h"
 #include "fielddata/script/scr_seq/event_D24R0206.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0010.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0010.h"
 
 #include "alph_checks.h"
 #include "bag_view.h"
@@ -683,7 +683,7 @@ static BOOL Task_ActivateDowsingMchnUI(TaskManager *taskManager) {
 static BOOL ItemFieldUseFunc_GbSounds(struct ItemFieldUseData *data) {
     struct RegisteredKeyItemUseMessagePrintTaskData *env = Heap_Alloc(HEAP_ID_FIELD2, sizeof(struct RegisteredKeyItemUseMessagePrintTaskData));
     env->state = 0;
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, HEAP_ID_FIELD2);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0010, HEAP_ID_FIELD2);
     if (SoundSys_GetGBSoundsState() == TRUE) {
         env->strbuf = NewString_ReadMsgData(msgData, msg_0010_00105);
     } else {

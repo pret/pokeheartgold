@@ -8,7 +8,7 @@
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "constants/field_move_response.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_0206793C.inc"
 	.include "global.inc"
 
@@ -165,4 +165,4 @@ _02067A5C: .word Task_NPCTrade
 
 	.balign 4, 0
 _020FE79C:
-	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71)
+	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, SDK_OVERLAY_OVY_71_ID

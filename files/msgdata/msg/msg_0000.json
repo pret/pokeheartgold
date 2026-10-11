@@ -1,0 +1,72 @@
+{
+  "key": 65256,
+  "messages": [
+    {
+      "id": "msg_0000_00000",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0000_00001",
+      "en_US": "VIEW"
+    },
+    {
+      "id": "msg_0000_00002",
+      "en_US": "DELETE"
+    },
+    {
+      "id": "msg_0000_00003",
+      "en_US": "MOVE"
+    },
+    {
+      "id": "msg_0000_00004",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0000_00005",
+      "en_US": "Please select a photo."
+    },
+    {
+      "id": "msg_0000_00006",
+      "en_US": [
+        "What will you do with the\n",
+        "selected photo?"
+      ]
+    },
+    {
+      "id": "msg_0000_00007",
+      "en_US": "Switch with which photo?"
+    },
+    {
+      "id": "msg_0000_00008",
+      "en_US": [
+        "The selected photos were\n",
+        "switched."
+      ]
+    },
+    {
+      "id": "msg_0000_00009",
+      "en_US": [
+        "Is it OK to delete this\n",
+        "photo?"
+      ]
+    },
+    {
+      "id": "msg_0000_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Photo\n",
+        "Taken: {STRVAR_1 4, 1, 0}\n",
+        "Photo of: {STRVAR_1 1, 2, 0}\n",
+        "{STRVAR_1 51, 4, 0}/{STRVAR_1 51, 5, 0}/{STRVAR_1 53, 3, 0}"
+      ]
+    },
+    {
+      "id": "msg_0000_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s Photo\n",
+        "Taken: {STRVAR_1 4, 1, 0}\n",
+        "Photo of: {STRVAR_1 1, 2, 0} and friends\n",
+        "{STRVAR_1 51, 4, 0}/{STRVAR_1 51, 5, 0}/{STRVAR_1 53, 3, 0}"
+      ]
+    }
+  ]
+}

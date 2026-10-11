@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GF_InitG2dRenderer
 .public sub_02025C54

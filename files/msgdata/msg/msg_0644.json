@@ -1,0 +1,127 @@
+{
+  "key": 22311,
+  "messages": [
+    {
+      "id": "msg_0644_00000",
+      "en_US": "Whitney"
+    },
+    {
+      "id": "msg_0644_00001",
+      "en_US": [
+        "Um, ’scuse me? I can’t hear you very\n",
+        "well. We must have a bad connection.\r",
+        "Try calling again from somewhere else!"
+      ]
+    },
+    {
+      "id": "msg_0644_00002",
+      "en_US": [
+        "Hello...\n",
+        "Um, hey, what’s up?\f",
+        "I’m doing great over here...totally!\r"
+      ]
+    },
+    {
+      "id": "msg_0644_00003",
+      "en_US": [
+        "There are so many Gym Leaders that are\n",
+        "stronger than me... Um, I really need\f",
+        "to work harder and improve!"
+      ]
+    },
+    {
+      "id": "msg_0644_00004",
+      "en_US": [
+        "I’m often bored Saturdays at noon.\n",
+        "There’s nothing to do...\f",
+        "Um... So, call me Saturday, OK?"
+      ]
+    },
+    {
+      "id": "msg_0644_00005",
+      "en_US": [
+        "Yeah, I’m bored! Nothing to do!\n",
+        "Oh, yeah!\f",
+        "You wanna battle me again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0644_00006",
+      "en_US": [
+        "For sure! I really want to battle, too.\r",
+        "Um, you know where to find me...\n",
+        "the Fighting Dojo in Saffron City."
+      ]
+    },
+    {
+      "id": "msg_0644_00007",
+      "en_US": [
+        "What’s that?\n",
+        "Um, bo-ring..."
+      ]
+    },
+    {
+      "id": "msg_0644_00008",
+      "en_US": [
+        "Um, really?\n",
+        "You really have time to battle me?\r",
+        "Don’t break a promise you made to\n",
+        "someone else--that’s not fair!"
+      ]
+    },
+    {
+      "id": "msg_0644_00009",
+      "en_US": [
+        "I’m waiting at the Fighting Dojo in\n",
+        "Saffron City.\f",
+        "Broken promises are unforgivable,\f",
+        "get me?"
+      ]
+    },
+    {
+      "id": "msg_0644_00010",
+      "en_US": [
+        "Um, this is Whitney.\n",
+        "How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0644_00011",
+      "en_US": [
+        "Don’t forget you promised to meet me at\n",
+        "the Fighting Dojo in Saffron City.\f",
+        "You’re not gonna make me wait, are you?"
+      ]
+    },
+    {
+      "id": "msg_0644_00012",
+      "en_US": [
+        "Um, have you ever been to the\n",
+        "Moomoo Farm off Route 39?\r",
+        "My Milky...\n",
+        "Um, I mean, my MILTANK, is staying over\f",
+        "there now..."
+      ]
+    },
+    {
+      "id": "msg_0644_00013",
+      "en_US": [
+        "Um, I’ve gotta tell you, I’m so\n",
+        "hungry... Do you know how it feels?\r",
+        "I’m not an overeater or anything! This\n",
+        "is completely normal for my age!"
+      ]
+    },
+    {
+      "id": "msg_0644_00014",
+      "en_US": [
+        "The coolest member of the Elite Four?\n",
+        "Umm... I’d have to say...\f",
+        "Bruno?\r",
+        "I’m not the only one. Everyone says the\n",
+        "same thing, seriously.\f",
+        "He looks like quite a guy..."
+      ]
+    }
+  ]
+}

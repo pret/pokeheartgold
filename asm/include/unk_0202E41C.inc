@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SaveSubstruct_UpdateCRC
 .public sub_0202E41C

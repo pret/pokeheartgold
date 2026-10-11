@@ -1,0 +1,107 @@
+{
+  "key": 4274,
+  "messages": [
+    {
+      "id": "msg_0706_00000",
+      "en_US": "Kenji"
+    },
+    {
+      "id": "msg_0706_00001",
+      "en_US": [
+        "Our battle was remarkable!\r",
+        "I wish for something to remember\n",
+        "you by!\r",
+        "Perhaps your phone number will do?\r",
+        "My training makes it impossible to\n",
+        "chat much, but... {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0706_00002",
+      "en_US": [
+        "I must train harder to become\n",
+        "the mightiest!"
+      ]
+    },
+    {
+      "id": "msg_0706_00003",
+      "en_US": [
+        "If you decide you want my number, come\n",
+        "and find me."
+      ]
+    },
+    {
+      "id": "msg_0706_00004",
+      "en_US": [
+        "My training makes chatting tough.\n",
+        "So, take down my number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0706_00005",
+      "en_US": [
+        "Today, I’d like to thank you,\n",
+        "{STRVAR_1 3, 0, 0}!\r",
+        "I’ve been training all alone...\n",
+        "I was happy that you cared to call...\r",
+        "{STRVAR_1 3, 0, 0}! I want you to have this!\r"
+      ]
+    },
+    {
+      "id": "msg_0706_00006",
+      "en_US": [
+        "Your strength will not let you carry\n",
+        "another thing! I will hold this till you\f",
+        "lighten your Bag!"
+      ]
+    },
+    {
+      "id": "msg_0706_00007",
+      "en_US": [
+        "Excuse me?\n",
+        "If you’re nearby, then I’d appreciate\f",
+        "the politeness of talking face-to-face!"
+      ]
+    },
+    {
+      "id": "msg_0706_00008",
+      "en_US": [
+        "Are you still on your journey?\n",
+        "I remain dedicated to my training.\f",
+        "Oooooaaarrrgh!"
+      ]
+    },
+    {
+      "id": "msg_0706_00009",
+      "en_US": [
+        "My apologies, but I don’t have time to\n",
+        "chat while I am in training!\r",
+        "I’ll have time to chat tomorrow!\n",
+        "Yiiihah!"
+      ]
+    },
+    {
+      "id": "msg_0706_00010",
+      "en_US": [
+        "I plan to take a lunch break, so come\n",
+        "and visit with me then!\f",
+        "Ayiiiyah!"
+      ]
+    },
+    {
+      "id": "msg_0706_00011",
+      "en_US": [
+        "I’m taking a break on Route 45!\n",
+        "Why not drop by? We can have a battle!"
+      ]
+    },
+    {
+      "id": "msg_0706_00012",
+      "en_US": [
+        "I rested up over my lunch break.\n",
+        "Now, it’s time to resume training!\f",
+        "Oooryaah!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "key": 44465,
+  "messages": [
+    {
+      "id": "msg_0691_00000",
+      "en_US": "Irwin"
+    },
+    {
+      "id": "msg_0691_00001",
+      "en_US": [
+        "You’re the best I’ve ever battled!\r",
+        "Huh? You’re the one who saved all\n",
+        "the SLOWPOKE?\r",
+        "Well, no wonder I couldn’t beat you!\n",
+        "Would it be OK to get your number?\r",
+        "I don’t want to miss anything you\n",
+        "do from now on! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0691_00002",
+      "en_US": [
+        "Wow! Gee, thanks!\r",
+        "Now I can call you anytime, whether\n",
+        "anything’s up or not.\r",
+        "You know, just to chat!"
+      ]
+    },
+    {
+      "id": "msg_0691_00003",
+      "en_US": [
+        "Oh, but...\n",
+        "I’m not dangerous!\r",
+        "I just want to call and chat about\n",
+        "everything and nothing!"
+      ]
+    },
+    {
+      "id": "msg_0691_00004",
+      "en_US": "You will tell me your phone number?{YESNO 0}"
+    },
+    {
+      "id": "msg_0691_00005",
+      "en_US": "Huh? Wait, aren’t you nearby?"
+    },
+    {
+      "id": "msg_0691_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, have you heard?\r",
+        "Goldenrod’s Radio Tower has been taken\n",
+        "over by Team Rocket!\r",
+        "...Um... What’s Team Rocket?"
+      ]
+    },
+    {
+      "id": "msg_0691_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, have you heard?\r",
+        "Goldenrod’s Radio Tower has been taken\n",
+        "over by Team Rocket!\r",
+        "...Um... What’s Team Rocket?"
+      ]
+    },
+    {
+      "id": "msg_0691_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, I heard!\n",
+        "You defeated Whitney?\r",
+        "It makes me proud to be your friend!\n",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00009",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, I heard!\n",
+        "You defeated Whitney?\r",
+        "It makes me proud to be your friend!\n",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00010",
+      "en_US": [
+        "I saw, I heard!\r",
+        "You beat Morty of Ecruteak Gym!\n",
+        "Th-that’s just incredible!\r",
+        "I actually went to the Gym’s entrance\n",
+        "to cheer you on.\r",
+        "Did you know that?\n",
+        "But everyone had these candles on\f",
+        "their heads, it was kinda creepy...\r",
+        "So I chickened out and took off for\n",
+        "home...\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00011",
+      "en_US": [
+        "I saw, I heard!\r",
+        "You beat Morty of Ecruteak Gym!\n",
+        "Th-that’s just incredible!\r",
+        "I actually went to the Gym’s entrance\n",
+        "to cheer you on.\r",
+        "Did you know that?\n",
+        "But everyone had these candles on\f",
+        "their heads, it was kinda creepy...\r",
+        "So I chickened out and took off for\n",
+        "home...\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00012",
+      "en_US": [
+        "Hey, I heard about you!\r",
+        "You saved that Pokémon at the\n",
+        "Lighthouse, didn’t you?\r",
+        "{STRVAR_1 3, 0, 0}, I wish you’d come see me\n",
+        "when I’m sick in bed with a cold!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00013",
+      "en_US": [
+        "Hey, I heard about you!\r",
+        "You saved that Pokémon at the\n",
+        "Lighthouse, didn’t you?\r",
+        "{STRVAR_1 3, 0, 0}, I wish you’d come see me\n",
+        "when I’m sick in bed with a cold!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00014",
+      "en_US": [
+        "I heard, I heard, I heard!\r",
+        "You smashed Team Rocket’s hideout!\n",
+        "You’re like a movie hero, even!\r",
+        "But, um... What was Team Rocket?\r",
+        "I’m totally out of the loop, aren’t I?"
+      ]
+    },
+    {
+      "id": "msg_0691_00015",
+      "en_US": [
+        "I heard, I heard, I heard!\r",
+        "You smashed Team Rocket’s hideout!\n",
+        "You’re like a movie hero, even!\r",
+        "But, um... What was Team Rocket?\r",
+        "I’m totally out of the loop, aren’t I?"
+      ]
+    },
+    {
+      "id": "msg_0691_00016",
+      "en_US": [
+        "I heard, I heard, I heard!\r",
+        "About your heroic liberation of the\n",
+        "Radio Tower! You rock so hard!\r",
+        "I just wanted to make sure you knew\n",
+        "that you’re awesome!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00017",
+      "en_US": [
+        "I heard, I heard, I heard!\r",
+        "About your heroic liberation of the\n",
+        "Radio Tower! You rock so hard!\r",
+        "I just wanted to make sure you knew\n",
+        "that you’re awesome!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00018",
+      "en_US": [
+        "I saw, I saw, I saw you, {STRVAR_1 3, 0, 0}!\n",
+        "I saw you go into the Dragon’s Den!\r",
+        "I’m certain you passed! Aww, no need to\n",
+        "be modest! You can’t fail!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00019",
+      "en_US": [
+        "I saw, I saw, I saw you, {STRVAR_1 3, 0, 0}!\n",
+        "I saw you go into the Dragon’s Den!\r",
+        "I’m certain you passed! Aww, no need to\n",
+        "be modest! You can’t fail!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00020",
+      "en_US": [
+        "Yesterday, I went out to New Bark\n",
+        "Town. There was a lady who looked a lot\f",
+        "like you, {STRVAR_1 3, 0, 0}.\r",
+        "What? That lady was your mom?\n",
+        "Aww, I should’ve introduced myself!\r",
+        "I bet your mom’s really proud of all\n",
+        "that you’ve accomplished.\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00021",
+      "en_US": [
+        "Yesterday, I went out to New Bark\n",
+        "Town. There was a lady who looked a lot\f",
+        "like you, {STRVAR_1 3, 0, 0}.\r",
+        "What? That lady was your mom?\n",
+        "Aww, I should’ve introduced myself!\r",
+        "I bet your mom’s really proud of all\n",
+        "that you’ve accomplished.\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00022",
+      "en_US": [
+        "I saw, I saw, I saw!\r",
+        "You striding onto a ship, {STRVAR_1 3, 0, 0}!\r",
+        "I can’t get over how good you look with\n",
+        "the sea as your backdrop!\r",
+        "I hate having to hang up on you!\n",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00023",
+      "en_US": [
+        "I saw, I saw, I saw!\r",
+        "You striding onto a ship, {STRVAR_1 3, 0, 0}!\r",
+        "I can’t get over how good you look with\n",
+        "the sea as your backdrop!\r",
+        "I hate having to hang up on you!\n",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00024",
+      "en_US": [
+        "I heard, I heard!\r",
+        "You got a Magnet Train Pass!\r",
+        "When I saw you departing on the ship, I\n",
+        "felt sad that I wouldn’t be able to see\f",
+        "you for a while.\r",
+        "But since you have that Pass, you can\n",
+        "zip back anytime!\f",
+        "That’s reassuring!\r",
+        "What? You can Fly back anytime?\r",
+        "What do you mean by Fly?\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00025",
+      "en_US": [
+        "I heard, I heard!\r",
+        "You got a Magnet Train Pass!\r",
+        "When I saw you departing on the ship, I\n",
+        "felt sad that I wouldn’t be able to see\f",
+        "you for a while.\r",
+        "But since you have that Pass, you can\n",
+        "zip back anytime!\f",
+        "That’s reassuring!\r",
+        "What? You can Fly back anytime?\r",
+        "What do you mean by Fly?\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00026",
+      "en_US": [
+        "I saw, I saw!\r",
+        "You waking up SNORLAX!\r",
+        "I was watching you from afar, so I\n",
+        "couldn’t tell what you did exactly.\r",
+        "Did you play a flute to wake it?\r",
+        "Wow! That’s like magic!\n",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00027",
+      "en_US": [
+        "I saw, I saw!\r",
+        "You waking up SNORLAX!\r",
+        "I was watching you from afar, so I\n",
+        "couldn’t tell what you did exactly.\r",
+        "Did you play a flute to wake it?\r",
+        "Wow! That’s like magic!\n",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00028",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, I heard!\r",
+        "You’re kicking up a mighty ruckus over\n",
+        "in Kanto!\r",
+        "What a glorious rampage it must be!\n",
+        "You so rock!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00029",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, I heard!\r",
+        "You’re kicking up a mighty ruckus over\n",
+        "in Kanto!\r",
+        "What a glorious rampage it must be!\n",
+        "You so rock!\r",
+        "Call you later!"
+      ]
+    },
+    {
+      "id": "msg_0691_00030",
+      "en_US": [
+        "I hear gossip about you all over\n",
+        "the place.\r",
+        "It just makes me sigh, {STRVAR_1 3, 0, 0}.\n",
+        "How did you get so strong?\r",
+        "Go for the world championship now!\n",
+        "I’ll always be cheering you on!\r",
+        "Call you later!\f",
+        "...Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0691_00031",
+      "en_US": [
+        "I hear gossip about you all over\n",
+        "the place.\r",
+        "It just makes me sigh, {STRVAR_1 3, 0, 0}.\n",
+        "How did you get so strong?\r",
+        "Go for the world championship now!\n",
+        "I’ll always be cheering you on!\r",
+        "Call you later!\f",
+        "...Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0691_00032",
+      "en_US": [
+        "I’m always looking forward to what\n",
+        "you’ll do next, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0691_00033",
+      "en_US": [
+        "I’m always looking forward to what\n",
+        "you’ll do next, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0691_00034",
+      "en_US": [
+        "Hearing about your escapades rocks my\n",
+        "soul! It sure does!"
+      ]
+    },
+    {
+      "id": "msg_0691_00035",
+      "en_US": [
+        "Hearing about your escapades rocks my\n",
+        "soul! It sure does!"
+      ]
+    },
+    {
+      "id": "msg_0691_00036",
+      "en_US": [
+        "You know, every time I recall your\n",
+        "escapades, {STRVAR_1 3, 0, 0}, I am just so\f",
+        "deeply moved by them!"
+      ]
+    },
+    {
+      "id": "msg_0691_00037",
+      "en_US": [
+        "You know, every time I recall your\n",
+        "escapades, {STRVAR_1 3, 0, 0}, I am just so\f",
+        "deeply moved by them!"
+      ]
+    },
+    {
+      "id": "msg_0691_00038",
+      "en_US": [
+        "Hearing about your escapades rocks my\n",
+        "soul! It sure does!"
+      ]
+    },
+    {
+      "id": "msg_0691_00039",
+      "en_US": [
+        "I’m so glad you called!\r",
+        "I was just about to call you, too!\n",
+        "I guess we must be a good match!"
+      ]
+    },
+    {
+      "id": "msg_0691_00040",
+      "en_US": [
+        "How are you?\r",
+        "What are you doing?\r",
+        "Where are you?\r",
+        "How many Badges do you have now?\r",
+        "How much money have you saved?\r",
+        "How’s your mom?\r",
+        "Have you got lots of Pokémon?\r",
+        "Is it going to be sunny tomorrow?\r",
+        "Arrgh, there’s so much I want to\n",
+        "chat about! This is going nowhere!"
+      ]
+    }
+  ]
+}

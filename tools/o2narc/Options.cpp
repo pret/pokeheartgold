@@ -100,6 +100,9 @@ void Options::OverwritePadding(vector<unsigned char> &rodata, vector<uint32_t> &
     uint32_t end = 0;
     for (auto &size : sizes) {
         end += size;
+        if (end == rodata.size()) {
+            break;
+        }
         uint32_t pad_end = (end + 3) & ~3;
         memset(&rodata[end], padval, pad_end - end);
         end = pad_end;
@@ -148,7 +151,7 @@ void Options::WriteNaix(vector<uint32_t> &sizes, vector<string> &names) {
         char num_buf[9] = "00000000";
         for (int i = 0; i < sizes.size(); i++) {
             naixfile << "    NARC_" << stem << "_";
-            if (naix_names) {
+            if (naix_names && i < names.size()) {
                 naixfile << names[i];
             } else {
                 naixfile << stem << "_" << num_buf;

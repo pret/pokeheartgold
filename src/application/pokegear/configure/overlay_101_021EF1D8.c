@@ -1,5 +1,5 @@
-#include "application/pokegear/configure/pgconf_gra.naix"
 #include "application/pokegear/configure/pokegear_configure_internal.h"
+#include "files/application/pokegear/configure/pgconf_gra.naix"
 
 #include "gf_gfx_loader.h"
 #include "unk_0208805C.h"

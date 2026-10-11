@@ -1,0 +1,57 @@
+{
+  "key": 31140,
+  "messages": [
+    {
+      "id": "msg_0020_00000",
+      "en_US": "It’s lined with Pokémon picture books."
+    },
+    {
+      "id": "msg_0020_00001",
+      "en_US": [
+        "Are these books for Pokémon\n",
+        "to read?"
+      ]
+    },
+    {
+      "id": "msg_0020_00002",
+      "en_US": [
+        "It’s chock-full of Pokémon books and\n",
+        "photo collections."
+      ]
+    },
+    {
+      "id": "msg_0020_00003",
+      "en_US": [
+        "Pokémon magazines!\r",
+        "Pokémon Pal...\n",
+        "Pokémon Handbook...\f",
+        "Adorable Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0020_00004",
+      "en_US": "The trash can is empty."
+    },
+    {
+      "id": "msg_0020_00005",
+      "en_US": [
+        "The shelves are jammed with vibrant\n",
+        "Pokémon goods."
+      ]
+    },
+    {
+      "id": "msg_0020_00006",
+      "en_US": [
+        "There’s a ton of convenient items.\n",
+        "They all look useful."
+      ]
+    },
+    {
+      "id": "msg_0020_00007",
+      "en_US": [
+        "The shelves brim with all sorts of\n",
+        "Pokémon merchandise."
+      ]
+    }
+  ]
+}

@@ -3,8 +3,8 @@
 
 #include "constants/std_script.h"
 
-#include "fielddata/script/scr_seq.naix"
-#include "msgdata/msg.naix"
+#include "files/fielddata/script/scr_seq.naix"
+#include "files/msgdata/msg.naix"
 
 #include "field_system.h"
 #include "map_events.h"
@@ -31,36 +31,36 @@ struct HiddenItemData {
 #include "data/fieldmap.h"
 
 const struct ScriptBankMapping sScriptBankMapping[30] = {
-    { _std_scratch_card,        NARC_scr_seq_scr_seq_0263_bin, NARC_msg_msg_0433_bin },
-    { _std_frontier_records,    NARC_scr_seq_scr_seq_0264_bin, NARC_msg_msg_0019_bin },
-    { _std_frontier_move_tutor, NARC_scr_seq_scr_seq_0002_bin, NARC_msg_msg_0748_bin },
-    { _std_bug_contest,         NARC_scr_seq_scr_seq_0151_bin, NARC_msg_msg_0246_bin },
-    { _std_trainer_house,       NARC_scr_seq_scr_seq_0952_bin, NARC_msg_msg_0726_bin },
-    { 10300,                    NARC_scr_seq_scr_seq_0734_bin, NARC_msg_msg_0444_bin },
-    { _std_mystery_gift,        NARC_scr_seq_scr_seq_0144_bin, NARC_msg_msg_0209_bin },
-    { 10150,                    NARC_scr_seq_scr_seq_0955_bin, NARC_msg_msg_0732_bin },
-    { _std_tv,                  NARC_scr_seq_scr_seq_0954_bin, NARC_msg_msg_0733_bin },
-    { _std_field_move,          NARC_scr_seq_scr_seq_0146_bin, NARC_msg_msg_0211_bin },
-    { _std_dex_evaluation,      NARC_scr_seq_scr_seq_0148_bin, NARC_msg_msg_0666_bin },
-    { 9900,                     NARC_scr_seq_scr_seq_0136_bin, NARC_msg_msg_0040_bin },
-    { _std_pokeathlon,          NARC_scr_seq_scr_seq_0167_bin, NARC_msg_msg_0312_bin },
-    { 9800,                     NARC_scr_seq_scr_seq_0166_bin, NARC_msg_msg_0043_bin },
-    { _std_following_mon,       NARC_scr_seq_scr_seq_0163_bin, NARC_msg_msg_0266_bin },
-    { _std_init,                NARC_scr_seq_scr_seq_0149_bin, NARC_msg_msg_0040_bin },
-    { _std_daycare,             NARC_scr_seq_scr_seq_0265_bin, NARC_msg_msg_0439_bin },
-    { _std_group,               NARC_scr_seq_scr_seq_0143_bin, NARC_msg_msg_0204_bin },
-    { _std_wifi_reception,      NARC_scr_seq_scr_seq_0164_bin, NARC_msg_msg_0267_bin },
-    { _std_colosseum,           NARC_scr_seq_scr_seq_0000_bin, NARC_msg_msg_0014_bin },
-    { _std_comm_reception,      NARC_scr_seq_scr_seq_0004_bin, NARC_msg_msg_0046_bin },
-    { _std_chatot,              NARC_scr_seq_scr_seq_0165_bin, NARC_msg_msg_0268_bin },
-    { _std_safari,              NARC_scr_seq_scr_seq_0262_bin, NARC_msg_msg_0427_bin },
-    { _std_hidden_item,         NARC_scr_seq_scr_seq_0145_bin, NARC_msg_msg_0210_bin }, // Hidden Items
-    { _std_item_ball,           NARC_scr_seq_scr_seq_0141_bin, NARC_msg_msg_0199_bin },
-    { _std_npc_trainer_2,       NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin },
-    { _std_npc_trainer,         NARC_scr_seq_scr_seq_0953_bin, NARC_msg_msg_0040_bin },
-    { _std_apricorn_tree,       NARC_scr_seq_scr_seq_0150_bin, NARC_msg_msg_0023_bin },
-    { _std_bookshelves,         NARC_scr_seq_scr_seq_0001_bin, NARC_msg_msg_0020_bin },
-    { _std_misc,                NARC_scr_seq_scr_seq_0003_bin, NARC_msg_msg_0040_bin },
+    { _std_scratch_card,        scr_seq_0263_bin, msg_0433 },
+    { _std_frontier_records,    scr_seq_0264_bin, msg_0019 },
+    { _std_frontier_move_tutor, scr_seq_0002_bin, msg_0748 },
+    { _std_bug_contest,         scr_seq_0151_bin, msg_0246 },
+    { _std_trainer_house,       scr_seq_0952_bin, msg_0726 },
+    { 10300,                    scr_seq_0734_bin, msg_0444 },
+    { _std_mystery_gift,        scr_seq_0144_bin, msg_0209 },
+    { 10150,                    scr_seq_0955_bin, msg_0732 },
+    { _std_tv,                  scr_seq_0954_bin, msg_0733 },
+    { _std_field_move,          scr_seq_0146_bin, msg_0211 },
+    { _std_dex_evaluation,      scr_seq_0148_bin, msg_0666 },
+    { 9900,                     scr_seq_0136_bin, msg_0040 },
+    { _std_pokeathlon,          scr_seq_0167_bin, msg_0312 },
+    { 9800,                     scr_seq_0166_bin, msg_0043 },
+    { _std_following_mon,       scr_seq_0163_bin, msg_0266 },
+    { _std_init,                scr_seq_0149_bin, msg_0040 },
+    { _std_daycare,             scr_seq_0265_bin, msg_0439 },
+    { _std_group,               scr_seq_0143_bin, msg_0204 },
+    { _std_wifi_reception,      scr_seq_0164_bin, msg_0267 },
+    { _std_colosseum,           scr_seq_0000_bin, msg_0014 },
+    { _std_comm_reception,      scr_seq_0004_bin, msg_0046 },
+    { _std_chatot,              scr_seq_0165_bin, msg_0268 },
+    { _std_safari,              scr_seq_0262_bin, msg_0427 },
+    { _std_hidden_item,         scr_seq_0145_bin, msg_0210 }, // Hidden Items
+    { _std_item_ball,           scr_seq_0141_bin, msg_0199 },
+    { _std_npc_trainer_2,       scr_seq_0953_bin, msg_0040 },
+    { _std_npc_trainer,         scr_seq_0953_bin, msg_0040 },
+    { _std_apricorn_tree,       scr_seq_0150_bin, msg_0023 },
+    { _std_bookshelves,         scr_seq_0001_bin, msg_0020 },
+    { _std_misc,                scr_seq_0003_bin, msg_0040 },
 };
 
 void StartMapSceneScript(FieldSystem *fieldSystem, u16 script, LocalMapObject *lastInteracted) {
@@ -204,7 +204,7 @@ u16 LoadScriptsAndMessagesByMapId(FieldSystem *fieldSystem, ScriptContext *ctx, 
         LoadScriptsAndMessagesForCurrentMap(fieldSystem, ctx);
         return scriptId - 1;
     } else {
-        LoadScriptsAndMessagesParameterized(fieldSystem, ctx, NARC_scr_seq_scr_seq_0140_bin, NARC_msg_msg_0184_bin);
+        LoadScriptsAndMessagesParameterized(fieldSystem, ctx, scr_seq_0140_bin, msg_0184);
         return 0;
     }
 }

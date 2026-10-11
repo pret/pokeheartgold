@@ -1,0 +1,129 @@
+{
+  "key": 64410,
+  "messages": [
+    {
+      "id": "msg_0654_00000",
+      "en_US": "Jasmine"
+    },
+    {
+      "id": "msg_0654_00001",
+      "en_US": [
+        "Hello? I can’t hear you very well...\n",
+        "We must have a bad connection...\r",
+        "Try calling me again from a different\n",
+        "location, please."
+      ]
+    },
+    {
+      "id": "msg_0654_00002",
+      "en_US": [
+        "Hello... How are you?\n",
+        "I’m doing well, thanks.\r"
+      ]
+    },
+    {
+      "id": "msg_0654_00003",
+      "en_US": [
+        "There are so many other Trainers out\n",
+        "there who are much stronger than me...\f",
+        "You should challenge them and see."
+      ]
+    },
+    {
+      "id": "msg_0654_00004",
+      "en_US": [
+        "Let’s see...\n",
+        "I’m usually free on Wednesdays\f",
+        "around noon. I could spare some time...\r",
+        "Why don’t you call me again then..."
+      ]
+    },
+    {
+      "id": "msg_0654_00005",
+      "en_US": [
+        "Amphy’s gotten better lately. I’ve also\n",
+        "been able to take some time to myself.\r",
+        "What do you think? Would you like to\n",
+        "battle me again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0654_00006",
+      "en_US": [
+        "Got it...\n",
+        "Well, I’ll see you in Saffron City at the\f",
+        "Fighting Dojo, OK?"
+      ]
+    },
+    {
+      "id": "msg_0654_00007",
+      "en_US": "I see..."
+    },
+    {
+      "id": "msg_0654_00008",
+      "en_US": [
+        "Huh?\r",
+        "Before you battle me again, don’t you\n",
+        "have other appointments to keep?"
+      ]
+    },
+    {
+      "id": "msg_0654_00009",
+      "en_US": [
+        "Got it. I’ll be waiting at the Fighting\n",
+        "Dojo in Saffron City.\f",
+        "I’ll see you there."
+      ]
+    },
+    {
+      "id": "msg_0654_00010",
+      "en_US": [
+        "This is Jasmine.\n",
+        "How do I sound? Healthy?\r"
+      ]
+    },
+    {
+      "id": "msg_0654_00011",
+      "en_US": [
+        "You didn’t forget about your promise to\n",
+        "meet me for a battle, did you?\r",
+        "I’m still waiting for you at the Fighting\n",
+        "Dojo in Saffron City..."
+      ]
+    },
+    {
+      "id": "msg_0654_00012",
+      "en_US": [
+        "Have you been to the Lighthouse lately?\r",
+        "I’ve been so busy myself. I haven’t\n",
+        "been able to get over there to see\f",
+        "Amphy much...\r",
+        "But...whenever I see the Lighthouse’s\n",
+        "lights at night, I always think,\f",
+        "“I hope you’re doing well, Amphy.”"
+      ]
+    },
+    {
+      "id": "msg_0654_00013",
+      "en_US": [
+        "Um...\n",
+        "There’s something I’ve been meaning to\f",
+        "ask you... What did you think of my Gym?\f",
+        "Was the atmosphere a little strange?\r",
+        "But...I mean, steel always looks\n",
+        "pretty cold and uninviting, but I was\f",
+        "trying to make it at least a little cute."
+      ]
+    },
+    {
+      "id": "msg_0654_00014",
+      "en_US": [
+        "Warden Baoba at the Safari Zone...\n",
+        "He came over to my Gym once to\f",
+        "introduce himself...\r",
+        "He talks a little differently, doesn’t\n",
+        "he? I heard it’s called anastrophe..."
+      ]
+    }
+  ]
+}

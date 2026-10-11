@@ -1,0 +1,143 @@
+{
+  "key": 2795,
+  "messages": [
+    {
+      "id": "msg_0686_00000",
+      "en_US": "Hillary"
+    },
+    {
+      "id": "msg_0686_00001",
+      "en_US": [
+        "I’d love to do some more battle\n",
+        "preparation and review with you...\r",
+        "That’s it!\n",
+        "How about exchanging phone numbers\f",
+        "with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0686_00002",
+      "en_US": [
+        "All right, I’m looking forward to talking\n",
+        "to you again. I’ll be sure to give you a\f",
+        "call if anything comes up!"
+      ]
+    },
+    {
+      "id": "msg_0686_00003",
+      "en_US": [
+        "Hey, you should listen when Teachers\n",
+        "are talking to you!"
+      ]
+    },
+    {
+      "id": "msg_0686_00004",
+      "en_US": [
+        "Did you change your mind about\n",
+        "exchanging phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0686_00005",
+      "en_US": [
+        "You know, I’m pretty sure I just\n",
+        "caught a glimpse of you...\r",
+        "If you’re nearby, you shouldn’t talk\n",
+        "over the phone. You should talk\f",
+        "to me in person."
+      ]
+    },
+    {
+      "id": "msg_0686_00006",
+      "en_US": [
+        "Hey!\r",
+        "You got yet another zero on a test!\n",
+        "You don’t pay attention to anything\f",
+        "I’m saying in class, do you?\f",
+        "Do you honestly think you can beat a\f",
+        "Gym Leader with that kind of...\r",
+        "Huh?\r",
+        "You’re not Travis...\r",
+        "Oh my goodness! I’m so sorry!"
+      ]
+    },
+    {
+      "id": "msg_0686_00007",
+      "en_US": [
+        "You know, I usually use {STRVAR_1 0, 10, 0}.\r",
+        "Don’t you enjoy battling using your\n",
+        "best-loved Pokémon?\r",
+        "But it gets kind of lonely to just keep\n",
+        "using the same Pokémon over and over.\r",
+        "Sometimes I like to walk along with\n",
+        "Pokémon that I’ve just caught.\r",
+        "That can also be a lot of fun, you know?"
+      ]
+    },
+    {
+      "id": "msg_0686_00008",
+      "en_US": [
+        "The other day, I was battling\n",
+        "{STRVAR_1 0, 11, 0} on Route 15. People\f",
+        "stopped to watch, and soon there was\f",
+        "this huge crowd gathered!\f",
+        "I got so nervous...\r",
+        "You know, I’m used to talking in front\n",
+        "of a class of kids...\f",
+        "but Pokémon battles are something else.\r",
+        "I just can’t get comfortable battling in\n",
+        "front of a crowd!"
+      ]
+    },
+    {
+      "id": "msg_0686_00009",
+      "en_US": [
+        "You know...\n",
+        "This is just between us, right?\r",
+        "The other day, I was trying to catch a\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "I made a mistake and accidentally\n",
+        "threw out the wrong Poké Ball, and the\f",
+        "Pokémon got away.\r",
+        "It’s a good thing none of my students\n",
+        "were watching. But still, I was really\f",
+        "embarrassed."
+      ]
+    },
+    {
+      "id": "msg_0686_00010",
+      "en_US": [
+        "By the way, you’d like to prepare for\n",
+        "Pokémon battles and do some review,\f",
+        "wouldn’t you?\r",
+        "We should have another Pokémon battle!\r",
+        "I’m always on {STRVAR_1 4, 3, 0}.\n",
+        "I’ll be waiting for you there!"
+      ]
+    },
+    {
+      "id": "msg_0686_00011",
+      "en_US": [
+        "Hey! Do you remember you made plans\n",
+        "with me?\r",
+        "We said we were going to meet on\n",
+        "{STRVAR_1 4, 3, 0} and have a Pokémon\f",
+        "battle, right? Don’t forget!"
+      ]
+    },
+    {
+      "id": "msg_0686_00012",
+      "en_US": [
+        "That’s right... If you ask me which is\n",
+        "cuter, my students or Pokémon,\f",
+        "I’ll have a hard time making\f",
+        "that decision.\r",
+        "Come to think of it, for a lot of kids,\n",
+        "their first Pokémon is the cutest one in\f",
+        "the world in their young eyes.\r",
+        "And there’s nothing that can be said to\n",
+        "change that opinion."
+      ]
+    }
+  ]
+}

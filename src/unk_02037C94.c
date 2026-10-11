@@ -301,7 +301,7 @@ void sub_0203817C(void) {
         _021D4150->unk24();
     }
     if (sub_02039998()) {
-        sub_0203A930(3 - ov00_021EC9D4());
+        sub_0203A930(3 - DWC_GetLinkLevel());
     } else if (sub_02035650()) {
         sub_0203A930(3 - WM_GetLinkLevel());
     }
@@ -1258,11 +1258,11 @@ BOOL sub_020395B0(void) {
     s32 sp4;
     s32 sp0;
     if (_021D4150->unk4E == 24 || _021D4150->unk4E == 36) {
-        if (ov00_021EC11C(&sp4, &sp0)) {
-            ov00_021EC210();
+        if (DWC_GetLastErrorEx(&sp4, &sp0)) {
+            DWC_ClearError();
             return TRUE;
         }
-    } else if ((_021D4150->unk4E == 25) && ov00_021EC11C(&sp4, &sp0) && (sp0 == 7)) {
+    } else if ((_021D4150->unk4E == 25) && DWC_GetLastErrorEx(&sp4, &sp0) && (sp0 == 7)) {
         return TRUE;
     }
     return FALSE;

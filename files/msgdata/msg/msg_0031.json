@@ -1,0 +1,494 @@
+{
+  "key": 14690,
+  "messages": [
+    {
+      "id": "msg_0031_00000",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00001",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00002",
+      "en_US": "{STRVAR_1 53, 0, 0} CP"
+    },
+    {
+      "id": "msg_0031_00003",
+      "en_US": "{STRVAR_1 53, 0, 0} CP"
+    },
+    {
+      "id": "msg_0031_00004",
+      "en_US": "{STRVAR_1 53, 0, 0} CP"
+    },
+    {
+      "id": "msg_0031_00005",
+      "en_US": "Please choose your Pokémon."
+    },
+    {
+      "id": "msg_0031_00006",
+      "en_US": "{ALN_CENTER}EXIT"
+    },
+    {
+      "id": "msg_0031_00007",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0031_00008",
+      "en_US": "{STRVAR_1 3, 0, 0} chose to exit."
+    },
+    {
+      "id": "msg_0031_00009",
+      "en_US": "HEAL"
+    },
+    {
+      "id": "msg_0031_00010",
+      "en_US": "RENTAL"
+    },
+    {
+      "id": "msg_0031_00011",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0031_00012",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0031_00013",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0031_00014",
+      "en_US": "Restore HP and/or PP."
+    },
+    {
+      "id": "msg_0031_00015",
+      "en_US": [
+        "You may rent a Berry or\n",
+        "an item."
+      ]
+    },
+    {
+      "id": "msg_0031_00016",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0031_00017",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0031_00018",
+      "en_US": [
+        "Go back to the Pokémon-\n",
+        "selection page."
+      ]
+    },
+    {
+      "id": "msg_0031_00019",
+      "en_US": "RESTORE HP"
+    },
+    {
+      "id": "msg_0031_00020",
+      "en_US": "RESTORE PP"
+    },
+    {
+      "id": "msg_0031_00021",
+      "en_US": "RESTORE ALL"
+    },
+    {
+      "id": "msg_0031_00022",
+      "en_US": "RANK UP"
+    },
+    {
+      "id": "msg_0031_00023",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0031_00024",
+      "en_US": "Which would you like to use?"
+    },
+    {
+      "id": "msg_0031_00025",
+      "en_US": [
+        "You will be able to restore PP by going\n",
+        "up in rank."
+      ]
+    },
+    {
+      "id": "msg_0031_00026",
+      "en_US": [
+        "You will be able to restore both HP and\n",
+        "PP by going up in rank."
+      ]
+    },
+    {
+      "id": "msg_0031_00027",
+      "en_US": "Your rank cannot be raised any higher."
+    },
+    {
+      "id": "msg_0031_00028",
+      "en_US": "Return to previous selections."
+    },
+    {
+      "id": "msg_0031_00029",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0031_00030",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0031_00031",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0031_00032",
+      "en_US": "You don’t have enough CP."
+    },
+    {
+      "id": "msg_0031_00033",
+      "en_US": [
+        "You are too low in healing rank to use\n",
+        "this menu item."
+      ]
+    },
+    {
+      "id": "msg_0031_00034",
+      "en_US": "{STRVAR_1 0, 0, 0}’s HP will be restored."
+    },
+    {
+      "id": "msg_0031_00035",
+      "en_US": "{STRVAR_1 0, 0, 0}’s PP will be restored."
+    },
+    {
+      "id": "msg_0031_00036",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0}’s HP and PP will be\n",
+        "restored."
+      ]
+    },
+    {
+      "id": "msg_0031_00037",
+      "en_US": [
+        "There is no benefit to using that\n",
+        "command."
+      ]
+    },
+    {
+      "id": "msg_0031_00038",
+      "en_US": [
+        "Would you like to up your rank\n",
+        "for {STRVAR_1 52, 0, 0} CP?"
+      ]
+    },
+    {
+      "id": "msg_0031_00039",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0031_00040",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0031_00041",
+      "en_US": "You don’t have enough CP."
+    },
+    {
+      "id": "msg_0031_00042",
+      "en_US": [
+        "{STRVAR_1 3, 5, 0} gained the ability to\n",
+        "restore PP!"
+      ]
+    },
+    {
+      "id": "msg_0031_00043",
+      "en_US": [
+        "{STRVAR_1 3, 5, 0} gained the ability to\n",
+        "restore both HP and PP!"
+      ]
+    },
+    {
+      "id": "msg_0031_00044",
+      "en_US": "BERRIES"
+    },
+    {
+      "id": "msg_0031_00045",
+      "en_US": "ITEMS"
+    },
+    {
+      "id": "msg_0031_00046",
+      "en_US": "RANK UP"
+    },
+    {
+      "id": "msg_0031_00047",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0031_00048",
+      "en_US": "You may rent a Berry for this Pokémon."
+    },
+    {
+      "id": "msg_0031_00049",
+      "en_US": "You may rent an item for this Pokémon."
+    },
+    {
+      "id": "msg_0031_00050",
+      "en_US": [
+        "You will be able to rent an item for\n",
+        "your Pokémon by going up in rank."
+      ]
+    },
+    {
+      "id": "msg_0031_00051",
+      "en_US": [
+        "Your choices of items and Berries will\n",
+        "be expanded by going up in rank."
+      ]
+    },
+    {
+      "id": "msg_0031_00052",
+      "en_US": "Your rank cannot be raised any higher."
+    },
+    {
+      "id": "msg_0031_00053",
+      "en_US": "Return to previous selections."
+    },
+    {
+      "id": "msg_0031_00054",
+      "en_US": [
+        "You are too low in rental rank to\n",
+        "use CP."
+      ]
+    },
+    {
+      "id": "msg_0031_00055",
+      "en_US": [
+        "It will cost {STRVAR_1 51, 0, 0} CP.\n",
+        "Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0031_00056",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0031_00057",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0031_00058",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0031_00059",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} was given the\n",
+        "{STRVAR_1 8, 1, 0} to hold."
+      ]
+    },
+    {
+      "id": "msg_0031_00060",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} is already holding\n",
+        "{STRVAR_1 8, 1, 0}."
+      ]
+    },
+    {
+      "id": "msg_0031_00061",
+      "en_US": [
+        "Would you like to switch the\n",
+        "two items?"
+      ]
+    },
+    {
+      "id": "msg_0031_00062",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0031_00063",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0031_00064",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0031_00065",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0031_00066",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0031_00067",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0031_00068",
+      "en_US": [
+        "{STRVAR_1 3, 5, 0} gained the ability to\n",
+        "rent items!"
+      ]
+    },
+    {
+      "id": "msg_0031_00069",
+      "en_US": [
+        "{STRVAR_1 3, 5, 0} expanded the variety of\n",
+        "rentable Berries and items!"
+      ]
+    },
+    {
+      "id": "msg_0031_00070",
+      "en_US": "Item"
+    },
+    {
+      "id": "msg_0031_00071",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00072",
+      "en_US": "Nature"
+    },
+    {
+      "id": "msg_0031_00073",
+      "en_US": "{STRVAR_1 7, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00074",
+      "en_US": "Ability"
+    },
+    {
+      "id": "msg_0031_00075",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00076",
+      "en_US": "Attack"
+    },
+    {
+      "id": "msg_0031_00077",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00078",
+      "en_US": "Defense"
+    },
+    {
+      "id": "msg_0031_00079",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00080",
+      "en_US": "Sp. Atk"
+    },
+    {
+      "id": "msg_0031_00081",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00082",
+      "en_US": "Sp. Def"
+    },
+    {
+      "id": "msg_0031_00083",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00084",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0031_00085",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00086",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0031_00087",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0031_00088",
+      "en_US": "Lv."
+    },
+    {
+      "id": "msg_0031_00089",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0031_00090",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0031_00091",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00092",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0031_00093",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0031_00094",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00095",
+      "en_US": "{STRVAR_1 52, 0, 0}/{STRVAR_1 52, 1, 0}"
+    },
+    {
+      "id": "msg_0031_00096",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00097",
+      "en_US": "{STRVAR_1 6, 1, 0}"
+    },
+    {
+      "id": "msg_0031_00098",
+      "en_US": "{STRVAR_1 6, 2, 0}"
+    },
+    {
+      "id": "msg_0031_00099",
+      "en_US": "{STRVAR_1 6, 3, 0}"
+    },
+    {
+      "id": "msg_0031_00100",
+      "en_US": "{COLOR 2}{STRVAR_1 51, 4, 0}{COLOR 0}/{COLOR 2}{STRVAR_1 51, 5, 0}{COLOR 0}"
+    },
+    {
+      "id": "msg_0031_00101",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0031_00102",
+      "en_US": "--"
+    },
+    {
+      "id": "msg_0031_00103",
+      "en_US": "{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}"
+    },
+    {
+      "id": "msg_0031_00104",
+      "en_US": "{STRVAR_1 51, 0, 0}CP"
+    },
+    {
+      "id": "msg_0031_00105",
+      "en_US": "RETURN"
+    },
+    {
+      "id": "msg_0031_00106",
+      "en_US": "Rental/Berry"
+    },
+    {
+      "id": "msg_0031_00107",
+      "en_US": "Rental/Item"
+    }
+  ]
+}

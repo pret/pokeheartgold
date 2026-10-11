@@ -1,0 +1,136 @@
+{
+  "key": 25726,
+  "messages": [
+    {
+      "id": "msg_0589_T25R0601_00000",
+      "en_US": [
+        "Apparently, there is an odd tree\n",
+        "on Route 36.\r",
+        "They say it dances when you\n",
+        "water it...\r",
+        "Oh, of course not!\r",
+        "This is a Flower Shop, so we do have\n",
+        "watering cans and things like that...\r",
+        "But I cannot let you have one!\n",
+        "It’s too dangerous!\f",
+        "Hmmm...\r",
+        "Well, maybe if you manage to defeat\n",
+        "the Goldenrod Gym Leader, it might\f",
+        "be OK..."
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00001",
+      "en_US": [
+        "Apparently, there is an odd tree\n",
+        "on Route 36.\r",
+        "They say it dances when you water it...\r",
+        "Oh, that’s a Plain Badge from\n",
+        "Goldenrod Gym!\r",
+        "Did you defeat Whitney?!\n",
+        "Well, then there’s nothing to worry\f",
+        "about, is there?\r",
+        "I’ll let you use this SquirtBottle for\n",
+        "a while then... Oh, never mind.\f",
+        "Keep it!\r"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00002",
+      "en_US": [
+        "The odd tree is on Route 36.\n",
+        "Please be careful!"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00003",
+      "en_US": [
+        "Lalala lalalala.\n",
+        "Have plenty of water, my lovely!\r"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00004",
+      "en_US": [
+        "Are you using the Berry Pots?\r",
+        "You can pick any of the Berries you\n",
+        "have planted.\r",
+        "Don’t forget to water them!"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00005",
+      "en_US": [
+        "How...\n",
+        "...\f",
+        "...\f",
+        "...\f",
+        "cute!\r",
+        "Where did you get that...\n",
+        "oh-so-cute Pokémon?\r"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00006",
+      "en_US": [
+        "SHAYMIN, is it?\n",
+        "It’s so cute!\r",
+        "I know!\r",
+        "Let me give it a flower!\n",
+        "I have just the one for it!\r"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00007",
+      "en_US": [
+        "The Gracidea will look perfect on\n",
+        "SHAYMIN!\f",
+        "Put it on SHAYMIN in the daylight."
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00008",
+      "en_US": [
+        "Mulch!\n",
+        "Anyone want Mulch?\r",
+        "Berries love Mulch.\n",
+        "It makes Berries grow faster!\r"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00009",
+      "en_US": [
+        "That {STRVAR_1 8, 0, 0} is a mix of\n",
+        "high-quality soil and Pokémon’s...\f",
+        "er...you know...\r",
+        "It’s full of nutrients!\n",
+        "Berries will surely benefit from it."
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00010",
+      "en_US": [
+        "Thank you.\n",
+        "Please come again!"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00011",
+      "en_US": "You bought the {STRVAR_1 8, 0, 0}.\r"
+    },
+    {
+      "id": "msg_0589_T25R0601_00012",
+      "en_US": [
+        "Ouch!\n",
+        "Your Bag is full!"
+      ]
+    },
+    {
+      "id": "msg_0589_T25R0601_00013",
+      "en_US": [
+        "Well... Excuse me, but\n",
+        "you’re short of money."
+      ]
+    }
+  ]
+}

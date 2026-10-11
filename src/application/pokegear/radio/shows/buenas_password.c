@@ -1,9 +1,9 @@
 #include "global.h"
 
 #include "application/pokegear/radio/radio_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0066_D23R0102.h"
-#include "msgdata/msg/msg_0411.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0066_D23R0102.h"
+#include "files/msgdata/msg/msg_0411.h"
 
 #include "bag.h"
 #include "sound_02004A44.h"
@@ -84,12 +84,12 @@ void RadioShow_BuenasPassword_Init(RadioShow *radioShow) {
     u16 setID;
     String *answer;
 
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0411_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0411, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0411_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0411_00001, radioShow->showHost);
 
     data->msgID = Bag_HasItem(Save_Bag_Get(radioShow->saveData), ITEM_BLUE_CARD, 1, radioShow->heapID) ? msg_0411_00004 : msg_0411_00005;
-    bpMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0066_D23R0102_bin, radioShow->heapID);
+    bpMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0066_D23R0102, radioShow->heapID);
     setID = Save_VarsFlags_GetBuenasPasswordSet(Save_VarsFlags_Get(radioShow->saveData)) % 30;
     answer = NewString_ReadMsgData(bpMsgData, msg_0066_D23R0102_00040 + setID);
     BufferString(radioShow->msgFormat, 0, answer, 2, 1, 2);

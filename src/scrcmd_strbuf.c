@@ -1,4 +1,4 @@
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "field_system.h"
 #include "filesystem.h"
@@ -230,7 +230,7 @@ BOOL ScrCmd_BufferSpeciesName(ScriptContext *ctx) {
 }
 
 String *_get_species_name(u16 species, enum HeapID heapID) {
-    MsgData *msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapID);
+    MsgData *msg_data = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, heapID);
     String *name = NewString_ReadMsgData(msg_data, species);
     DestroyMsgData(msg_data);
     return name;

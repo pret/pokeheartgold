@@ -1,0 +1,123 @@
+{
+  "key": 31522,
+  "messages": [
+    {
+      "id": "msg_0677_00000",
+      "en_US": "Jamie"
+    },
+    {
+      "id": "msg_0677_00001",
+      "en_US": [
+        "You’re very good at battling.\n",
+        "We should battle again sometime.\r",
+        "By challenging a tough Trainer like you,\n",
+        "I think I can get better, too.\r",
+        "So how about it?\n",
+        "Would you give me your\f",
+        "phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0677_00002",
+      "en_US": "Let’s battle again sometime!"
+    },
+    {
+      "id": "msg_0677_00003",
+      "en_US": [
+        "That’s too bad...\n",
+        "Let me know if you change your mind."
+      ]
+    },
+    {
+      "id": "msg_0677_00004",
+      "en_US": [
+        "By challenging a tough Trainer like you,\n",
+        "I think I can get better, too.\r",
+        "So how about it? Would you give me\n",
+        "your phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0677_00005",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0677_00006",
+      "en_US": [
+        "Huh? You... Aren’t you nearby?\r",
+        "Why not come here and just talk to me\n",
+        "face-to-face?"
+      ]
+    },
+    {
+      "id": "msg_0677_00007",
+      "en_US": [
+        "Do you remember my\n",
+        "sweet {STRVAR_1 0, 10, 0}?\r",
+        "{STRVAR_1 0, 10, 0} runs very fast.\r",
+        "It’s exhilarating to ride on its\n",
+        "back when it really gets going.\r",
+        "Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0677_00008",
+      "en_US": [
+        "Oh, have you ever seen a {STRVAR_1 0, 11, 0}\n",
+        "before?\r",
+        "I just battled one...\n",
+        "It was much faster than I expected.\r",
+        "I was a little shocked.\n",
+        "I still won, of course.\r",
+        "Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0677_00009",
+      "en_US": [
+        "Oh, I just saw a wild {STRVAR_1 0, 11, 0}.\n",
+        "I was trying to catch it when I\f",
+        "noticed that I was all out of\f",
+        "Poké Balls.\r",
+        "If you don’t check your items, you\n",
+        "may run out at the worst time.\f",
+        "I hope you learn from my mistake.\r",
+        "Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0677_00010",
+      "en_US": [
+        "Do you want to battle? I’m going to win\n",
+        "this time!\r",
+        "I’ll be waiting for you around\n",
+        "{STRVAR_1 4, 3, 0}. Look for me, OK?"
+      ]
+    },
+    {
+      "id": "msg_0677_00011",
+      "en_US": [
+        "Um... {STRVAR_1 3, 0, 0}? What’s wrong?\n",
+        "Did you forget our deal?\r",
+        "{STRVAR_1 4, 3, 0}.\n",
+        "That’s where I’m waiting."
+      ]
+    },
+    {
+      "id": "msg_0677_00012",
+      "en_US": [
+        "Um... {STRVAR_1 3, 0, 0}? What’s wrong?\n",
+        "Did you forget our deal?\r",
+        "{STRVAR_1 4, 3, 0}.\n",
+        "That’s where I’m waiting."
+      ]
+    },
+    {
+      "id": "msg_0677_00013",
+      "en_US": [
+        "Let’s battle again\n",
+        "sometime!"
+      ]
+    }
+  ]
+}

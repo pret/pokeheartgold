@@ -1,6 +1,7 @@
 {{ doNotModifyHeader }}
 
-#include "pokemon_types_def.h"
+#include "struct_defs/personal_narc_structs.h"
+#include <stddef.h>
 #include "constants/species.h"
 #include "constants/moves.h"
 #include "constants/items.h"

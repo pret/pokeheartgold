@@ -1,0 +1,131 @@
+{
+  "key": 14693,
+  "messages": [
+    {
+      "id": "msg_0485_T06GYM0101_00000",
+      "en_US": [
+        "Lt. Surge: Hey, you little tyke!\r",
+        "It may not be very smart to\n",
+        "challenge me, but it takes guts!\r",
+        "When it comes to Electric-type Pokémon,\n",
+        "I’m number one!\r",
+        "I’ve never lost on the battlefield.\r",
+        "I’ll zap you just like I do all my\n",
+        "enemies in battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00001",
+      "en_US": [
+        "Lt. Surge: Arrrgh!\n",
+        "You are strong!\r",
+        "OK, kid.\n",
+        "You get the Thunder Badge!\r"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Thunder Badge from Lt. Surge!"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00003",
+      "en_US": [
+        "Lt. Surge: That Thunder Badge suits\n",
+        "those who’ve defeated me!\f",
+        "Take good care of it, OK?\r",
+        "There is something else.\n",
+        "Here is a great TM for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00004",
+      "en_US": [
+        "Lt. Surge: That TM contains\n",
+        "Shock Wave... Zzzap!\r",
+        "Use it to go like lightning!\r",
+        "When you go north, you will see\n",
+        "a big city called Saffron!"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00005",
+      "en_US": [
+        "Lt. Surge: Hey, kid!\n",
+        "Still slugging and chugging away?\r",
+        "When you go north, you will see a\n",
+        "big city called Saffron!"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00006",
+      "en_US": [
+        "Yo! Legend in the making!\n",
+        "You lucked out this time.\r",
+        "The traps at this Gym have been out\n",
+        "of order for a while.\r",
+        "But the traps are back up and\n",
+        "running now!\f",
+        "Why lucky, you may ask...\r",
+        "Because you can train yourself better\n",
+        "that way!\r",
+        "Make up your mind and go for Lt. Surge!"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00007",
+      "en_US": [
+        "Whew! That was an electrifying bout!\n",
+        "It sure made my nerves tingle."
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00008",
+      "en_US": "Nope! Nothing here but trash."
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00009",
+      "en_US": [
+        "...\n",
+        "Oh, you found a secret switch at the\f",
+        "bottom of the trash can!\f",
+        "Better press it."
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00010",
+      "en_US": [
+        "Nope! Nothing here but trash.\n",
+        "Oh no, the electric fence is\f",
+        "locked again!"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00011",
+      "en_US": "The first electric fence is unlocked!"
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00012",
+      "en_US": [
+        "The second electric fence is unlocked!\r",
+        "Now the electric fences are gone, and\n",
+        "the path to the Leader is clear!"
+      ]
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00013",
+      "en_US": "Vermilion City Pokémon Gym"
+    },
+    {
+      "id": "msg_0485_T06GYM0101_00014",
+      "en_US": [
+        "Vermilion City Pokémon Gym\r",
+        "Gym Leader: Lt. Surge\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

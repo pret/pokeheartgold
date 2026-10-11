@@ -1,0 +1,40 @@
+{
+  "key": 17522,
+  "messages": [
+    {
+      "id": "msg_0120_D37R0105_00000",
+      "en_US": [
+        "Director: Who? What? You came to\n",
+        "rescue me? Thank you!\r",
+        "The Radio Tower!\n",
+        "What’s happening there?\r",
+        "Taken over by Team Rocket?\n",
+        "Here. Take this Card Key.\r"
+      ]
+    },
+    {
+      "id": "msg_0120_D37R0105_00001",
+      "garbage": 19
+    },
+    {
+      "id": "msg_0120_D37R0105_00002",
+      "en_US": [
+        "Director: Use that to open the\n",
+        "shutters on 3F.\r"
+      ]
+    },
+    {
+      "id": "msg_0120_D37R0105_00003",
+      "en_US": [
+        "I’m begging you to help.\r",
+        "There’s no telling what they’ll do if\n",
+        "they control the transmitter.\r",
+        "They may even be able to control\n",
+        "Pokémon using a special signal!\r",
+        "You’re the only one I can call on.\n",
+        "Please save the Radio Tower...\f",
+        "and all the Pokémon nationwide!"
+      ]
+    }
+  ]
+}

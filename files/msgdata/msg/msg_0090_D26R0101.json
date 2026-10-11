@@ -1,0 +1,21 @@
+{
+  "key": 54339,
+  "messages": [
+    {
+      "id": "msg_0090_D26R0101_00000",
+      "en_US": [
+        "Kurt: Hey there, {STRVAR_1 3, 0, 0}!\r",
+        "The guard up top took off when\n",
+        "I shouted at him.\r",
+        "But then I took a tumble down the well.\r",
+        "I slammed down hard on my back,\n",
+        "so I can’t move.\r",
+        "Rats! If I were fit, my Pokémon\n",
+        "would’ve punished them...\r",
+        "Ah, it can’t be helped.\r",
+        "{STRVAR_1 3, 0, 0}, show them how gutsy\n",
+        "you are in my place!"
+      ]
+    }
+  ]
+}

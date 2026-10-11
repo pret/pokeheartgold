@@ -1,0 +1,40 @@
+{
+  "key": 21527,
+  "messages": [
+    {
+      "id": "msg_0323_R02R0301_00000",
+      "en_US": [
+        "So you are {STRVAR_1 3, 0, 0}?\n",
+        "Professor Oak is waiting for you in his\f",
+        "lab in Pallet Town.\r",
+        "Also, I received this from him.\n",
+        "He wants you to have this.\r"
+      ]
+    },
+    {
+      "id": "msg_0323_R02R0301_00001",
+      "en_US": [
+        "So you are {STRVAR_1 3, 0, 0}?\n",
+        "Professor Oak is waiting for you in his\f",
+        "lab in Pallet Town.\r",
+        "Also, I received this from him.\n",
+        "He wants you to have this.\r"
+      ]
+    },
+    {
+      "id": "msg_0323_R02R0301_00002",
+      "en_US": [
+        "Sacred Ash is an amazing item that can\n",
+        "revive all fainted Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0323_R02R0301_00003",
+      "en_US": [
+        "To the north is Pewter City.\n",
+        "To the south is Viridian City.\r",
+        "I know, I know. I sound like a sign."
+      ]
+    }
+  ]
+}

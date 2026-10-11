@@ -1,0 +1,71 @@
+{
+  "key": 44594,
+  "messages": [
+    {
+      "id": "msg_0463_T03PC0101_00000",
+      "en_US": [
+        "...Yeah, and the Gym in Cinnabar’s\n",
+        "gone. I was really amazed.\r",
+        "...Yes? I’m on the phone.\n",
+        "Go away!"
+      ]
+    },
+    {
+      "id": "msg_0463_T03PC0101_00001",
+      "en_US": "JIGGLYPUFF: Puu pupuu."
+    },
+    {
+      "id": "msg_0463_T03PC0101_00002",
+      "en_US": [
+        "Most Pokémon get drowsy if they\n",
+        "hear a JIGGLYPUFF singing.\r",
+        "There are several moves that can be\n",
+        "used only while a Pokémon is asleep."
+      ]
+    },
+    {
+      "id": "msg_0463_T03PC0101_00003",
+      "en_US": [
+        "Aw...\n",
+        "If only I had a HAUNTER...\r",
+        "If you have a HAUNTER,\n",
+        "you will trade it for my XATU,\f",
+        "won’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0463_T03PC0101_00004",
+      "en_US": [
+        "How wonderful! You made my day!\r",
+        "Thanks to you, I have finally got the\n",
+        "Pokémon I’ve been looking for...\f",
+        "since forever!"
+      ]
+    },
+    {
+      "id": "msg_0463_T03PC0101_00005",
+      "en_US": [
+        "It has to be a HAUNTER!\r",
+        "HAUNTER!!"
+      ]
+    },
+    {
+      "id": "msg_0463_T03PC0101_00006",
+      "en_US": [
+        "You’d never turn down a trade\n",
+        "if you had a HAUNTER.\r",
+        "That means you just don’t have one.\n",
+        "That must be it..."
+      ]
+    },
+    {
+      "id": "msg_0463_T03PC0101_00007",
+      "en_US": [
+        "How do you like the cool XATU\n",
+        "I traded you?\r",
+        "It’s so cool, because it used to be\n",
+        "with cool me!"
+      ]
+    }
+  ]
+}

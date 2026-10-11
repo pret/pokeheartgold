@@ -1,0 +1,330 @@
+{
+  "key": 27742,
+  "messages": [
+    {
+      "id": "msg_0600_T25R1201_00000",
+      "en_US": [
+        "Welcome! This is the Global Trade\n",
+        "Station, or GTS for short.\r",
+        "We enable the trading of Pokémon with\n",
+        "people worldwide over Nintendo WFC.\r",
+        "Would you like to do a global\n",
+        "Pokémon trade? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00001",
+      "en_US": [
+        "Hello!\n",
+        "Welcome to the GTS!\r",
+        "Would you like to do a global Pokémon\n",
+        "trade over Nintendo Wi-Fi\f",
+        "Connection? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00002",
+      "en_US": [
+        "You may trade Pokémon one of two\n",
+        "ways at the GTS.\r",
+        "You may offer a Pokémon for trade,\n",
+        "or search among offered Pokémon.\r",
+        "Should I describe things in greater\n",
+        "detail? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00003",
+      "en_US": [
+        "You will be asked to put up the\n",
+        "Pokémon you are offering to trade.\r",
+        "At that time, you will be asked what\n",
+        "Pokémon you would like in return.\r",
+        "If another player offers your desired\n",
+        "Pokémon in return for your offered\f",
+        "Pokémon, the trade will go through.\r",
+        "Should I explain anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00004",
+      "en_US": [
+        "You may search among the Pokémon\n",
+        "that are offered by other Trainers.\r",
+        "They will all identify what Pokémon\n",
+        "their Trainers want back in return.\r",
+        "If you find one that you want, you\n",
+        "must provide us with the kind of\f",
+        "Pokémon wanted in return.\r",
+        "Should I explain anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00005",
+      "en_US": [
+        "Would you like to make a global\n",
+        "Pokémon trade? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00006",
+      "en_US": "Please do visit again."
+    },
+    {
+      "id": "msg_0600_T25R1201_00007",
+      "en_US": [
+        "I hope you enjoy your visit\n",
+        "to the GTS!\r"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00008",
+      "en_US": [
+        "...Uh-oh!\r",
+        "I’m sorry, but your team and all\n",
+        "your PC Boxes are full.\r",
+        "If you wish to use the GTS, you must\n",
+        "have room on your team or in a PC Box."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00009",
+      "en_US": [
+        "...Uh-oh!\n",
+        "You only have one Pokémon with you.\r",
+        "If you wish to use the GTS, you must\n",
+        "have at least two Pokémon with you.\r",
+        "Please come back with more Pokémon\n",
+        "on your team."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00010",
+      "en_US": [
+        "Such a small world it is, eh?\r",
+        "Eh? Wait, this is a miniature?\n",
+        "The real Earth is millions of times bigger\f",
+        "than this?\r",
+        "Whoaaaaaaa!"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00011",
+      "en_US": [
+        "They say if you communicate with\n",
+        "someone, their location is\f",
+        "recorded on this giant globe."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00012",
+      "en_US": [
+        "All I need to do is leave a Pokémon\n",
+        "here to trade.\r",
+        "Who knows, it might be traded while\n",
+        "I’m asleep tonight."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00013",
+      "en_US": [
+        "Using the equipment here, you can easily\n",
+        "trade Pokémon with other Pokémon fans\f",
+        "on the other side of the world!\r",
+        "That’s incredible!"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00014",
+      "en_US": [
+        "You can register where you live on\n",
+        "this giant globe.\r",
+        "Once you do, you can show your location\n",
+        "to anyone you communicate with."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00015",
+      "en_US": [
+        "Nintendo WFC is so easy to use,\n",
+        "even I can trade Pokémon now!"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00016",
+      "en_US": [
+        "This week, I’ll do it!\r",
+        "I really want to make the Top 4 of the\n",
+        "rankings."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00017",
+      "en_US": [
+        "The Global Terminal has three floors.\r",
+        "You use warp panels for getting from\n",
+        "one floor to another.\r",
+        "A blue panel takes you to the GTS on\n",
+        "the ground floor.\r",
+        "Take a green panel to the studios for\n",
+        "Box Data and Dress-Up Data on 2F.\r",
+        "Take a pink warp panel to the third\n",
+        "floor for the Battle Video Gallery."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00018",
+      "en_US": [
+        "Your favorite is {STRVAR_1 0, 0, 0},\n",
+        "isn’t it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00019",
+      "en_US": [
+        "Your favorite is that Egg,\n",
+        "isn’t it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00020",
+      "en_US": [
+        "Yes, I was right!\n",
+        "I thought so!"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00021",
+      "en_US": [
+        "...Oh? Your favorite really is\n",
+        "{STRVAR_1 0, 0, 0}, isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00022",
+      "en_US": [
+        "...Oh? Your favorite really is that Egg,\n",
+        "isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00023",
+      "en_US": [
+        "I want to know everyone’s favorite\n",
+        "kinds of Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00024",
+      "en_US": [
+        "Yo, yo, yo!\r",
+        "Wanna let the world know about you?\n",
+        "Then you gotta tell me, yo! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00025",
+      "en_US": [
+        "Yo, I know all I need to know about\n",
+        "you now.\r",
+        "If you want to change your message,\n",
+        "I’m the guy to see, yo!"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00026",
+      "en_US": [
+        "Yo! You don’t have anything you want\n",
+        "to say?\r",
+        "If you want to change your message,\n",
+        "I’m the guy to see, yo!"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00027",
+      "en_US": [
+        "There are several portal machines here\n",
+        "at the Global Terminal.\r",
+        "You must set your Vs. Recorder in\n",
+        "the machines for communication.\r",
+        "Please do give the machines a try, as\n",
+        "they guide you through the operation."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00028",
+      "en_US": [
+        "Welcome to the Global Terminal!\r",
+        "Here, you may join the huge community\n",
+        "of Trainers worldwide.\r",
+        "You may view the records of Trainers\n",
+        "like yourself from around the world.\r",
+        "You may also trade Pokémon with the\n",
+        "world’s Trainers."
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00029",
+      "en_US": [
+        "Connect to Nintendo Wi-Fi\n",
+        "Connection for Trainer Rankings? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00030",
+      "en_US": [
+        "Trainer Rankings is a team-based\n",
+        "ranking system for Trainers around\f",
+        "the world.\r",
+        "The Trainers will be divided into several\n",
+        "groups and ranked in many categories.\r",
+        "If you join, your Trainer achievements\n",
+        "are automatically sent to your team.\r",
+        "In other words, what you do as a\n",
+        "Trainer can help your team’s standings.\r",
+        "Beware!\r",
+        "If you enter a ranking category more\n",
+        "than once, only the points earned from\f",
+        "your previous report will be tallied.\r"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00031",
+      "en_US": [
+        "Connect to Nintendo Wi-Fi Connection\n",
+        "and examine the Battle Video\f",
+        "Rankings? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00032",
+      "en_US": [
+        "Battle Video Rankings is a gallery of\n",
+        "popular Battle Videos.\r",
+        "Study many classic battles and sharpen\n",
+        "your own Trainer skills.\r"
+      ]
+    },
+    {
+      "id": "msg_0600_T25R1201_00033",
+      "en_US": "USE"
+    },
+    {
+      "id": "msg_0600_T25R1201_00034",
+      "en_US": "INFO"
+    },
+    {
+      "id": "msg_0600_T25R1201_00035",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0600_T25R1201_00036",
+      "en_US": [
+        "The green panel leads to the studios\n",
+        "for Box Data and Dress-Up Data on 2F.\r",
+        "The pink panel leads to the Battle\n",
+        "Video Gallery on 3F."
+      ]
+    }
+  ]
+}

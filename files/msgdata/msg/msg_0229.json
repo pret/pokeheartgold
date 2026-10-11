@@ -1,0 +1,51 @@
+{
+  "key": 18260,
+  "messages": [
+    {
+      "id": "msg_0229_00000",
+      "en_US": [
+        "The save file is corrupted.\n",
+        "The previous save file will be loaded."
+      ]
+    },
+    {
+      "id": "msg_0229_00001",
+      "en_US": [
+        "The save file will be erased\n",
+        "due to corruption or damage."
+      ]
+    },
+    {
+      "id": "msg_0229_00002",
+      "en_US": [
+        "The most recent Battle Video is\n",
+        "corrupted.\r",
+        "The previously saved Battle Video will\n",
+        "be loaded instead.\n"
+      ]
+    },
+    {
+      "id": "msg_0229_00003",
+      "en_US": [
+        "A Battle Video appears to have been\n",
+        "erased."
+      ]
+    },
+    {
+      "id": "msg_0229_00004",
+      "en_US": [
+        "The most recent Battle Hall record\n",
+        "is corrupted.\r",
+        "The previously saved record will be\n",
+        "loaded instead.\n"
+      ]
+    },
+    {
+      "id": "msg_0229_00005",
+      "en_US": [
+        "The Battle Hall record has been erased.\n",
+        "\n"
+      ]
+    }
+  ]
+}

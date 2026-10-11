@@ -1,0 +1,217 @@
+{
+  "key": 42047,
+  "messages": [
+    {
+      "id": "msg_0053_D11R0106_00000",
+      "en_US": [
+        "Blaine: Hey, you!\r",
+        "My Gym on Cinnabar Island was burned\n",
+        "down by the eruption!\r",
+        "But I will not give up!\n",
+        "Take a look at this cave.\r",
+        "We have turned it into a Gym, and I am\n",
+        "still acting as a Gym Leader!\r",
+        "I will give you the Gym Badge\n",
+        "if you manage to defeat me!\r",
+        "Are you ready? Here we go!\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00001",
+      "en_US": [
+        "Blaine: Awesome. I have burned out...\f",
+        "Take this Volcano Badge!\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Volcano Badge from Blaine!"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00003",
+      "en_US": [
+        "Blaine: Here, I will give you this, too.\n",
+        "It’s called Overheat!\r",
+        "It has a slight drawback, but it’s\n",
+        "powerful and well worth it!\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00004",
+      "en_US": [
+        "Blaine: I did lose this time, but I’m\n",
+        "going to win next time.\r",
+        "When I rebuild my Cinnabar Gym,\n",
+        "we have to hold a rematch."
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00005",
+      "en_US": [
+        "Blaine: My Fire-type Pokémon will be\n",
+        "even stronger! Just you watch!"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00006",
+      "en_US": [
+        "Wow, to see a Gym in a cave like this?\n",
+        "I’d love to explore it.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00007",
+      "en_US": [
+        "Bitterness leads to improvement\n",
+        "tomorrow."
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00008",
+      "en_US": [
+        "Bitterness leads to improvement\n",
+        "tomorrow.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00009",
+      "en_US": [
+        "I am in the middle of collecting\n",
+        "battle records.\r",
+        "Can you help me?\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00010",
+      "en_US": [
+        "I didn’t expect you to be so good!\n",
+        "Who in the world are you?"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00011",
+      "en_US": [
+        "I didn’t expect you to be so good!\n",
+        "Who in the world are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00012",
+      "en_US": [
+        "Ooh!\n",
+        "You look easily defeated!\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00013",
+      "en_US": [
+        "Pardon me!\n",
+        "I failed to sense how strong you are."
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00014",
+      "en_US": [
+        "Pardon me!\n",
+        "I failed to sense how strong you are.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00015",
+      "en_US": [
+        "A white lab coat is a researcher’s life.\n",
+        "We may be living in a cave like this, but\f",
+        "we never forget to do the laundry.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00016",
+      "en_US": [
+        "This white lab coat makes me feel like I\n",
+        "have become smarter for some reason."
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00017",
+      "en_US": [
+        "This white lab coat makes me feel like I\n",
+        "have become smarter for some reason.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00018",
+      "en_US": [
+        "Blaine may have lost his Gym, but he\n",
+        "never gives up. His perseverance\f",
+        "is what motivates me!\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00019",
+      "en_US": [
+        "Together with Blaine, we will rebuild\n",
+        "our Gym!"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00020",
+      "en_US": [
+        "Together with Blaine, we will rebuild\n",
+        "our Gym!\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00021",
+      "en_US": [
+        "We lost the Gym on Cinnabar Island and\n",
+        "felt lost before we came here.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00022",
+      "en_US": [
+        "We take a step back when we are\n",
+        "defeated...\r",
+        "Don’t you think we are downright\n",
+        "honest?\r",
+        "Never put us in the same category as\n",
+        "Scientists who help bad guys."
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00023",
+      "en_US": [
+        "We take a step back when we are\n",
+        "defeated...\r",
+        "Don’t you think we are downright\n",
+        "honest?\r",
+        "Never put us in the same category as\n",
+        "Scientists who help bad guys.\r"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00024",
+      "en_US": [
+        "Yo! Legend in the making!\r",
+        "This Gym has many Trainers and rocks\n",
+        "in the way from the rebuilding.\f",
+        "It sure won’t be easy to get to Blaine!\r",
+        "But keep your cool and defeat the\n",
+        "Trainers one by one, and you will surely\f",
+        "find the path!"
+      ]
+    },
+    {
+      "id": "msg_0053_D11R0106_00025",
+      "en_US": [
+        "The Gym Leader rebuilding his Gym and\n",
+        "the Trainer from Johto who has come to\f",
+        "challenge that Gym Leader...\r",
+        "I have witnessed a hot battle!"
+      ]
+    }
+  ]
+}

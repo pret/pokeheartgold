@@ -1,0 +1,108 @@
+{
+  "key": 9227,
+  "messages": [
+    {
+      "id": "msg_0256_P01R0102_00000",
+      "en_US": [
+        "OK!\n",
+        "You must be the last passenger.\r"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00001",
+      "en_US": [
+        "Huh?\n",
+        "Doesn’t seem like the ship will be moving\f",
+        "anytime soon."
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00002",
+      "en_US": [
+        "If I manage to come back safely from\n",
+        "this journey and take my first steps in\f",
+        "Olivine City, will you live there with me?\r",
+        "Please! I beg you!"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00003",
+      "en_US": [
+        "He’s only a crewman of a\n",
+        "pleasure cruise.\f",
+        "He has a way of exaggerating things.\r"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00004",
+      "en_US": [
+        "Sabrina: Out of the blue...\n",
+        "I get the urge to see the ocean...\r",
+        "It may be fun to exchange numbers\n",
+        "with you...\r",
+        "Do you want mine? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Sabrina\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00006",
+      "en_US": [
+        "Sabrina: I think I can keep my promises\n",
+        "if you call me on Sundays around noon."
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00007",
+      "en_US": [
+        "Sabrina: I see...\n",
+        "I thought you’d make a good friend."
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00008",
+      "en_US": [
+        "Sabrina: Now you want to know\n",
+        "my number?\f",
+        "I can see it in your eyes... {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00009",
+      "en_US": [
+        "Sabrina: It’s you...\r",
+        "How about a picture here\n",
+        "against the pleasant sea breeze? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00010",
+      "en_US": "Sabrina: Are you ready?\r"
+    },
+    {
+      "id": "msg_0256_P01R0102_00011",
+      "en_US": "Sabrina: I think it looks good."
+    },
+    {
+      "id": "msg_0256_P01R0102_00012",
+      "en_US": [
+        "Sabrina: I see...\n",
+        "I thought you’d make a good\f",
+        "picture subject..."
+      ]
+    },
+    {
+      "id": "msg_0256_P01R0102_00013",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    }
+  ]
+}

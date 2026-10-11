@@ -1,0 +1,121 @@
+{
+  "key": 25225,
+  "messages": [
+    {
+      "id": "msg_0295_00000",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}!\n",
+        "Hello!"
+      ]
+    },
+    {
+      "id": "msg_0295_00001",
+      "en_US": [
+        "Glad to meet you!\n",
+        "I love {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0295_00002",
+      "en_US": [
+        "I’m a {STRVAR_1 28, 0, 0} Trainer!\n",
+        "Please battle me!"
+      ]
+    },
+    {
+      "id": "msg_0295_00003",
+      "en_US": [
+        "Please trade!\n",
+        "I’m offering {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0295_00004",
+      "en_US": [
+        "Please trade!\n",
+        "I want a {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0295_00005",
+      "en_US": "I’ve entered the Union Room."
+    },
+    {
+      "id": "msg_0295_00006",
+      "en_US": [
+        "Let’s draw! I want to draw\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0295_00007",
+      "en_US": [
+        "I’ve got to go!\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0295_00008",
+      "en_US": "Please leave me alone..."
+    },
+    {
+      "id": "msg_0295_00009",
+      "en_US": [
+        "Anyone want to\n",
+        "{STRVAR_1 28, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0295_00010",
+      "en_US": "Let’s {STRVAR_1 28, 0, 0}!"
+    },
+    {
+      "id": "msg_0295_00011",
+      "en_US": "Want to {STRVAR_1 28, 0, 0}?"
+    },
+    {
+      "id": "msg_0295_00012",
+      "en_US": "I want to {STRVAR_1 28, 0, 0}!"
+    },
+    {
+      "id": "msg_0295_00013",
+      "en_US": "OK!"
+    },
+    {
+      "id": "msg_0295_00014",
+      "en_US": [
+        "I don’t want to\n",
+        "{STRVAR_1 28, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0295_00015",
+      "en_US": [
+        "I’ll go wait at the Colosseum\n",
+        "now."
+      ]
+    },
+    {
+      "id": "msg_0295_00016",
+      "en_US": "Please talk to me!"
+    },
+    {
+      "id": "msg_0295_00017",
+      "en_US": "Do you know where I am?"
+    },
+    {
+      "id": "msg_0295_00018",
+      "en_US": [
+        "I want to trade my {STRVAR_1 28, 0, 0}.\n",
+        "Please talk to me."
+      ]
+    },
+    {
+      "id": "msg_0295_00019",
+      "en_US": [
+        "I want a {STRVAR_1 28, 0, 0} battle!\n",
+        "Please talk to me!"
+      ]
+    }
+  ]
+}

@@ -5,8 +5,8 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0008.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0008.h"
 
 #include "bg_window.h"
 #include "brightness.h"
@@ -101,7 +101,7 @@ void ShowSaveDataReadError(enum HeapID heapID) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0008_bin, heapID);
+    MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0008, heapID);
     String *error_str = String_New(384, heapID);
 
     ResetAllTextPrinters();
@@ -121,7 +121,7 @@ void ShowSaveDataReadError(enum HeapID heapID) {
 
     while (TRUE) {
         HandleDSLidAction();
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 }
 
@@ -160,7 +160,7 @@ void ShowGBACartRemovedError(enum HeapID heapID) {
     BG_SetMaskColor(GF_BG_LYR_MAIN_0, RGB(1, 1, 27));
     BG_SetMaskColor(GF_BG_LYR_SUB_0, RGB(1, 1, 27));
 
-    MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0008_bin, heapID);
+    MsgData *error_msgdata = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0008, heapID);
     String *error_str = String_New(384, heapID);
 
     ResetAllTextPrinters();
@@ -180,6 +180,6 @@ void ShowGBACartRemovedError(enum HeapID heapID) {
 
     while (TRUE) {
         HandleDSLidAction();
-        OS_WaitIrq(TRUE, OS_IE_VBLANK);
+        OS_WaitIrq(TRUE, OS_IE_V_BLANK);
     }
 }

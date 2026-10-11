@@ -1,0 +1,118 @@
+{
+  "key": 6309,
+  "messages": [
+    {
+      "id": "msg_0705_00000",
+      "en_US": "Gaven"
+    },
+    {
+      "id": "msg_0705_00001",
+      "en_US": [
+        "Wow, you’re tough. I haven’t battled\n",
+        "that seriously in a long time.\r",
+        "Could I get your phone number?\r",
+        "I’d like to battle again after I\n",
+        "heal my Pokémon. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0705_00002",
+      "en_US": [
+        "How should I beat you? I’m tormented\n",
+        "by those thoughts all the time..."
+      ]
+    },
+    {
+      "id": "msg_0705_00003",
+      "en_US": [
+        "OK... I understand...\n",
+        "But if you change your mind, give me\f",
+        "a shout anytime."
+      ]
+    },
+    {
+      "id": "msg_0705_00004",
+      "en_US": [
+        "Could I get your phone number?\r",
+        "I’d like to battle again after I\n",
+        "heal my Pokémon. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0705_00005",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0705_00006",
+      "en_US": [
+        "Huh? This voice...\n",
+        "You’re nearby, aren’t you?\f",
+        "Let’s talk in person."
+      ]
+    },
+    {
+      "id": "msg_0705_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} might be greater than\n",
+        "I imagined.\r",
+        "I doubt I’ll see a wild {STRVAR_1 0, 10, 0}\n",
+        "that’s better than mine."
+      ]
+    },
+    {
+      "id": "msg_0705_00008",
+      "en_US": [
+        "A while back, I tried to catch a wild\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "It managed to elude me.\r",
+        "One wrong decision could mean total\n",
+        "failure... You ought to be careful, too."
+      ]
+    },
+    {
+      "id": "msg_0705_00009",
+      "en_US": [
+        "I managed to barely defeat\n",
+        "{STRVAR_1 0, 11, 0} the other day.\r",
+        "I’ve never seen a wild {STRVAR_1 0, 11, 0}\n",
+        "get that strong...\r",
+        "You shouldn’t let your guard down, even\n",
+        "against a Pokémon you’re used\f",
+        "to seeing."
+      ]
+    },
+    {
+      "id": "msg_0705_00010",
+      "en_US": [
+        "Let’s battle!\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}.\n",
+        "Give me a shout when you’re close."
+      ]
+    },
+    {
+      "id": "msg_0705_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, why aren’t you here?\r",
+        "I’ll take you down on\n",
+        "{STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0705_00012",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, why aren’t you here?\r",
+        "I’ll take you down on\n",
+        "{STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0705_00013",
+      "en_US": [
+        "You know, I just can’t get over how\n",
+        "strong you are...\r",
+        "I obsess over how to beat you every\n",
+        "single day..."
+      ]
+    }
+  ]
+}

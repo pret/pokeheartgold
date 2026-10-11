@@ -1,0 +1,76 @@
+{
+  "key": 61138,
+  "messages": [
+    {
+      "id": "msg_0575_T24PC0101_00000",
+      "en_US": [
+        "Have you met the maniac in this city?\r",
+        "He’s always bragging about his\n",
+        "rare Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0575_T24PC0101_00001",
+      "en_US": [
+        "You can’t help showing off the Pokémon\n",
+        "you have, don’t you agree?\r",
+        "I’d love to show mine to a friend of mine\n",
+        "who lives in Violet..."
+      ]
+    },
+    {
+      "id": "msg_0575_T24PC0101_00002",
+      "en_US": [
+        "The Pokémon at this Gym are all rough\n",
+        "and tough.\r",
+        "They could blow me away in a second.\f",
+        "Let me give you a piece of advice.\r",
+        "The Gym Leader uses Fighting-type\n",
+        "Pokémon.\r",
+        "You can try to fool them with\n",
+        "Psychic-type Pokémon.\r",
+        "Or simply defeat them before they\n",
+        "can demonstrate their power.\r",
+        "By the way, Chuck, the Gym Leader,\n",
+        "is into his waterfall training.\r",
+        "He won’t be able to hear you unless\n",
+        "you somehow stop the pounding water."
+      ]
+    },
+    {
+      "id": "msg_0575_T24PC0101_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}! You won, didn’t you?\n",
+        "Your face tells me you did."
+      ]
+    },
+    {
+      "id": "msg_0575_T24PC0101_00004",
+      "en_US": [
+        "Huh? Do you happen to...\n",
+        "have only one Pokémon?\r",
+        "That must be hard on you.\n",
+        "...\r",
+        "That’s right!\n",
+        "I’ll give you a TENTACOOL!\r",
+        "I just caught a little too many.\n",
+        "I was going to release it,\f",
+        "so take it. Go ahead!\r"
+      ]
+    },
+    {
+      "id": "msg_0575_T24PC0101_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the TENTACOOL!"
+      ]
+    },
+    {
+      "id": "msg_0575_T24PC0101_00006",
+      "en_US": [
+        "Want to give a nickname to\n",
+        "the TENTACOOL? {YESNO 0}"
+      ]
+    }
+  ]
+}

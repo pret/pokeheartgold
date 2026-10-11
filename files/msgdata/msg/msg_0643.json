@@ -1,0 +1,56 @@
+{
+  "key": 49976,
+  "messages": [
+    {
+      "id": "msg_0643_00000",
+      "en_US": "Kurt"
+    },
+    {
+      "id": "msg_0643_00001",
+      "en_US": [
+        "Oh hey, {STRVAR_1 1, 0, 0}!\n",
+        "Talking on the phone’s a bit odd.\f",
+        "Just talk to me!"
+      ]
+    },
+    {
+      "id": "msg_0643_00002",
+      "en_US": [
+        "This is Kurt!\n",
+        "You’re {STRVAR_1 1, 0, 0}, right?\r"
+      ]
+    },
+    {
+      "id": "msg_0643_00003",
+      "en_US": [
+        "Hey, I turned all the Apricorns you\n",
+        "gave me into Poké Balls.\r",
+        "Come pick up the {STRVAR_1 51, 11, 0} {STRVAR_1 8, 10, 0}(s)\n",
+        "whenever you’ve got time!"
+      ]
+    },
+    {
+      "id": "msg_0643_00004",
+      "en_US": [
+        "You just asked me to make ’em!\n",
+        "Ya gotta give me a day at least!"
+      ]
+    },
+    {
+      "id": "msg_0643_00005",
+      "en_US": [
+        "If you bring me some Apricorns, I can\n",
+        "make you some Poké Balls.\f",
+        "Come over whenever you’ve got time!"
+      ]
+    },
+    {
+      "id": "msg_0643_00006",
+      "en_US": [
+        "Oh, hey! My old man had something he\n",
+        "wanted to ask you about!\f",
+        "I’ll put him on the line. Just a sec!\r"
+      ]
+    }
+  ]
+}

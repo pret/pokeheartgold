@@ -1,6 +1,6 @@
 #include "application/pokegear/configure/pokegear_configure_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0270.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0270.h"
 
 #include "font.h"
 #include "screen_fade.h"
@@ -361,7 +361,7 @@ static void PokegearConfigure_LoadContextMenuText(PokegearConfigureAppData *conf
     int i;
 
     configureApp->contextMenuItems = ListMenuItems_New(2, configureApp->heapId);
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0270_bin, configureApp->heapId);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0270, configureApp->heapId);
     for (i = 0; i < 2; ++i) {
         ListMenuItems_AppendFromMsgData(configureApp->contextMenuItems, msgData, msg_0270_00000 + i, i);
     }

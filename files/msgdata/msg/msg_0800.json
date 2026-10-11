@@ -1,0 +1,319 @@
+{
+  "key": 53978,
+  "messages": [
+    {
+      "id": "msg_0800_00000",
+      "en_US": [
+        "Unable to connect to Nintendo\n",
+        "Wi-Fi Connection.\n",
+        "\n",
+        "For help, check the software\n",
+        "Instruction Booklet, or visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00001",
+      "en_US": [
+        "Either Nintendo Wi-Fi Connection\n",
+        "is experiencing high traffic\n",
+        "volumes or the service is down.\n",
+        "Please try again later. \n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00002",
+      "en_US": [
+        "This Nintendo Wi-Fi Connection ID\n",
+        "was removed because it was\n",
+        "inactive for a long time. \n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00003",
+      "en_US": [
+        "Nintendo Wi-Fi Connection service\n",
+        "for this software has been\n",
+        "discontinued.\n",
+        "\n",
+        "Visit support.nintendo.com\n",
+        "for a list of current Nintendo\n",
+        "Wi-Fi Connection-compatible\n",
+        "software. Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00004",
+      "en_US": [
+        "The access point is busy.\n",
+        "Unable to connect.\n",
+        "Please try again later.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00005",
+      "en_US": [
+        "No access point in range.\n",
+        "Please try again when closer to\n",
+        "an access point.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00006",
+      "en_US": [
+        "No compatible access point in\n",
+        "range. \n",
+        "Check your connection settings\n",
+        "and try again. \n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00007",
+      "en_US": [
+        "Unable to connect to the Nintendo\n",
+        "Wi-Fi USB Connector. Check your\n",
+        "connection settings in the\n",
+        "Nintendo Wi-Fi Connection setup.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00008",
+      "en_US": [
+        "Unable to connect to Nintendo \n",
+        "Wi-Fi Connection. \n",
+        "Check your connection settings.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00009",
+      "en_US": [
+        "No response.\n",
+        "Either the player has been\n",
+        "disconnected, or you have\n",
+        "been removed from the\n",
+        "player’s friend roster.\n",
+        "Error code: {STRVAR_1 54, 0, 0}\n",
+        "\n"
+      ]
+    },
+    {
+      "id": "msg_0800_00010",
+      "en_US": [
+        "Communication error.\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00011",
+      "en_US": [
+        "Communication error.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00012",
+      "en_US": [
+        "Download failed.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0800_00013",
+      "en_US": [
+        "Communication error.\n",
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection.\n",
+        "Please try again.\n",
+        "\n",
+        "For help, visit\n",
+        "support.nintendo.com."
+      ]
+    },
+    {
+      "id": "msg_0800_00014",
+      "en_US": "Communication error..."
+    },
+    {
+      "id": "msg_0800_00015",
+      "garbage": 72
+    },
+    {
+      "id": "msg_0800_00016",
+      "en_US": [
+        "Your Nintendo Wi-Fi Connection\n",
+        "User Information may have been\n",
+        "erased. Check your connection\n",
+        "settings with the Nintendo\n",
+        "Wi-Fi Connection configuration."
+      ]
+    },
+    {
+      "id": "msg_0800_00017",
+      "en_US": "Connect to Nintendo Wi-Fi Connection?"
+    },
+    {
+      "id": "msg_0800_00018",
+      "en_US": [
+        "Nintendo Wi-Fi Connection treats\n",
+        "your Nintendo DS Game Card\n",
+        "and the system as a set. Save\n",
+        "this system’s Nintendo Wi-Fi\n",
+        "Connection User Information\n",
+        "to this Game Card\n",
+        "and connect to Nintendo\n",
+        "Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0800_00019",
+      "en_US": [
+        "Nintendo Wi-Fi Connection User\n",
+        "Information for this system\n",
+        "has been saved to the Game Card.\n",
+        "From now on, please use this\n",
+        "system to connect to\n",
+        "Nintendo Wi-Fi Connection."
+      ]
+    },
+    {
+      "id": "msg_0800_00020",
+      "en_US": [
+        "Unable to connect to Nintendo\n",
+        "Wi-Fi Connection because the\n",
+        "Nintendo Wi-Fi Connection User\n",
+        "Information from the system\n",
+        "and the Game Card do not match."
+      ]
+    },
+    {
+      "id": "msg_0800_00021",
+      "en_US": [
+        "Update Nintendo Wi-Fi Connection\n",
+        "User Information saved on the\n",
+        "Game Card?\n",
+        "When you update your Nintendo\n",
+        "Wi-Fi Connection User\n",
+        "Information, you will lose all\n",
+        "data that was used to connect\n",
+        "to Nintendo Wi-Fi Connection."
+      ]
+    },
+    {
+      "id": "msg_0800_00022",
+      "en_US": [
+        "Connect to Nintendo Wi-Fi\n",
+        "Connection to update\n",
+        "Nintendo Wi-Fi Connection\n",
+        "User Information?\n",
+        "\n",
+        "Warning:\n",
+        "All of the friends registered in\n",
+        "your Pal Pad will be deleted."
+      ]
+    },
+    {
+      "id": "msg_0800_00023",
+      "en_US": [
+        "Connecting to Nintendo Wi-Fi\n",
+        "Connection... Please wait a moment..."
+      ]
+    },
+    {
+      "id": "msg_0800_00024",
+      "en_US": [
+        "You cannot access Nintendo Wi-Fi\n",
+        "Connection using this user name.\n",
+        "\n",
+        "Please change your user name."
+      ]
+    },
+    {
+      "id": "msg_0800_00025",
+      "en_US": [
+        "OK to disconnect from Nintendo\n",
+        "Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0800_00026",
+      "en_US": [
+        "Disconnecting from Nintendo Wi-Fi\n",
+        "Connection."
+      ]
+    },
+    {
+      "id": "msg_0800_00027",
+      "en_US": [
+        "You have been disconnected from\n",
+        "Nintendo Wi-Fi Connection."
+      ]
+    },
+    {
+      "id": "msg_0800_00028",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0800_00029",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0800_00030",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0800_00031",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0800_00032",
+      "en_US": [
+        "There was a communication error\n",
+        "in the Wi-Fi Plaza.\n",
+        "Error code: {STRVAR_1 54, 0, 0}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "key": 14267,
+  "messages": [
+    {
+      "id": "msg_0688_00000",
+      "en_US": "Brent"
+    },
+    {
+      "id": "msg_0688_00001",
+      "en_US": [
+        "By the way, you’re a Poké Maniac...\n",
+        "I can tell. Yes, you are.\r",
+        "But your knowledge is shallow still!\r",
+        "Do you know Bill?\n",
+        "He’s an incredible Poké Maniac.\f",
+        "I revere him.\r",
+        "I’ll teach you all I know about Bill,\n",
+        "so leave me your phone number. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0688_00002",
+      "en_US": [
+        "Bill--he’s more than amazing!\r",
+        "To be a Poké Maniac like him someday...\n",
+        "That’s my dream."
+      ]
+    },
+    {
+      "id": "msg_0688_00003",
+      "en_US": "You’re definitely going to regret it..."
+    },
+    {
+      "id": "msg_0688_00004",
+      "en_US": [
+        "I’ll teach you all I know about Bill,\n",
+        "so leave me your phone number. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0688_00005",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0688_00006",
+      "en_US": [
+        "Huh? Do you like to talk to\n",
+        "people nearby over the phone?\r",
+        "You know, this is how I talk to my\n",
+        "mother when I’m home?"
+      ]
+    },
+    {
+      "id": "msg_0688_00007",
+      "en_US": [
+        "Oh yeah, I got an extremely rare\n",
+        "Pokémon in a trade a while back.\r",
+        "Do you want to know what it is?\n",
+        "Hehe, I’m keeping it a secret!\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00008",
+      "en_US": [
+        "Oh yeah, I took down this wild\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "It wasn’t rare enough to bother\n",
+        "catching.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00009",
+      "en_US": [
+        "Oh yeah, I saw a rare Pokémon about\n",
+        "an hour ago.\r",
+        "It was my first sighting. But I\n",
+        "didn’t have any Poké Balls...\r",
+        "Would Bill laugh at my mistakes?\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00010",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill’s father is supposed to be a\f",
+        "great Poké Maniac.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00011",
+      "en_US": [
+        "Did you know...?\n",
+        "Apparently Bill’s grandpa isn’t a\f",
+        "Poké Maniac.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00012",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill’s originally from Goldenrod.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00013",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill evidently lives on Route 25\f",
+        "in Kanto.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00014",
+      "en_US": [
+        "Did you know...?\n",
+        "ABRA was the first Pokémon that Bill\f",
+        "apparently caught.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00015",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill’s younger sister apparently\f",
+        "can’t wink.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00016",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill supposedly hates milk and\f",
+        "can’t drink it.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00017",
+      "en_US": [
+        "Did you know...?\n",
+        "Evidently, Bill isn’t very good at\f",
+        "battling.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00018",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill appears to like the lady at the\f",
+        "Flower Shop.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00019",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill’s mother is said to have been\f",
+        "a Kimono Girl.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00020",
+      "en_US": [
+        "Did you know...?\n",
+        "Bill’s mother is said to have been\f",
+        "a Kimono Girl.\r",
+        "So that’s it then."
+      ]
+    },
+    {
+      "id": "msg_0688_00021",
+      "en_US": [
+        "You’ve got time like usual, right?\n",
+        "Feel like having a battle?\r",
+        "It’ll be a chance to see my rare\n",
+        "Pokémon. It’ll be worth your time!\r",
+        "You know where--{STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0688_00022",
+      "en_US": [
+        "You want to see my rare Pokémon?\n",
+        "Hurry over to {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0688_00023",
+      "en_US": [
+        "You wanted to hear about Bill?\r",
+        "Sorry, but I’m too busy for you.\r",
+        "I’ll call when I have time.\n",
+        "Much thanks!"
+      ]
+    }
+  ]
+}

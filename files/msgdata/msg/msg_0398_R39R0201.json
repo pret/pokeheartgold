@@ -1,0 +1,136 @@
+{
+  "key": 25726,
+  "messages": [
+    {
+      "id": "msg_0398_R39R0201_00000",
+      "en_US": [
+        "Moomoo is sick...\f",
+        "She needs lots of Oran Berries.\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00001",
+      "en_US": [
+        "Thank you!\n",
+        "Moomoo is totally healthy again!\r",
+        "I’ll give you these Seals for\n",
+        "your trouble.\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00002",
+      "en_US": [
+        "Shocking!\n",
+        "I really want to give you some\f",
+        "Seals, but you don’t have a\f",
+        "Seal Case...\r",
+        "But don’t you worry.\n",
+        "My sister can give you a Seal Case!\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00003",
+      "en_US": [
+        "Ha!\n",
+        "Your Seal Case is full!\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00004",
+      "en_US": "Moomoo is totally healthy again!\r"
+    },
+    {
+      "id": "msg_0398_R39R0201_00005",
+      "en_US": [
+        "Moomoo is sick...\f",
+        "She needs lots of Oran Berries.\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00006",
+      "en_US": [
+        "Thank you!\n",
+        "Moomoo is totally healthy again!\r",
+        "I’ll give you this Seal Case for\n",
+        "your trouble.\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00007",
+      "en_US": [
+        "You can customize your Poké Balls.\r",
+        "Select “BALL CAPSULES” from\n",
+        "your PC, and stick your Seals any way\f",
+        "you like on a Capsule, then put the\f",
+        "Capsule on any of your Poké Balls.\r",
+        "Try different things, and you’ll see.\n",
+        "My sister can give you Seals!\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00008",
+      "en_US": [
+        "We sell Moomoo Milk at home.\f",
+        "Don’t forget to drop by!\r"
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00009",
+      "en_US": "MILTANK: ...Moo...\r"
+    },
+    {
+      "id": "msg_0398_R39R0201_00010",
+      "en_US": "Its cry is weak..."
+    },
+    {
+      "id": "msg_0398_R39R0201_00011",
+      "en_US": "MILTANK: Mooo!\r"
+    },
+    {
+      "id": "msg_0398_R39R0201_00012",
+      "en_US": "It’s brimming with energy."
+    },
+    {
+      "id": "msg_0398_R39R0201_00013",
+      "en_US": "Give an Oran Berry to MILTANK? {YESNO 0}"
+    },
+    {
+      "id": "msg_0398_R39R0201_00014",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} gave an Oran Berry\n",
+        "to MILTANK."
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00015",
+      "en_US": "MILTANK became a little healthier!"
+    },
+    {
+      "id": "msg_0398_R39R0201_00016",
+      "en_US": "MILTANK is getting healthier!"
+    },
+    {
+      "id": "msg_0398_R39R0201_00017",
+      "en_US": "MILTANK became totally healthy!"
+    },
+    {
+      "id": "msg_0398_R39R0201_00018",
+      "en_US": "{STRVAR_1 3, 0, 0} has no Oran Berries..."
+    },
+    {
+      "id": "msg_0398_R39R0201_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} wouldn’t give\n",
+        "an Oran Berry.\r",
+        "MILTANK looks sad."
+      ]
+    },
+    {
+      "id": "msg_0398_R39R0201_00020",
+      "en_US": [
+        "The {STRVAR_1 10, 0, 0} were\n",
+        "put away in the Seal Case!"
+      ]
+    }
+  ]
+}

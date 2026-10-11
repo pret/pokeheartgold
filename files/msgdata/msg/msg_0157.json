@@ -1,0 +1,277 @@
+{
+  "key": 26324,
+  "messages": [
+    {
+      "id": "msg_0157_00000",
+      "en_US": "Target {STRVAR_1 50, 3, 0}"
+    },
+    {
+      "id": "msg_0157_00001",
+      "en_US": "Effect No. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0157_00002",
+      "en_US": "Effect name {STRVAR_1 6, 1, 0}"
+    },
+    {
+      "id": "msg_0157_00003",
+      "en_US": "No. of turns {STRVAR_1 51, 2, 0}"
+    },
+    {
+      "id": "msg_0157_00004",
+      "en_US": "Shadow (perspective)"
+    },
+    {
+      "id": "msg_0157_00005",
+      "en_US": "Shadow (direct)"
+    },
+    {
+      "id": "msg_0157_00006",
+      "en_US": "Shadow (basic)"
+    },
+    {
+      "id": "msg_0157_00007",
+      "en_US": "AA to BB"
+    },
+    {
+      "id": "msg_0157_00008",
+      "en_US": "BB to AA"
+    },
+    {
+      "id": "msg_0157_00009",
+      "en_US": "A to B"
+    },
+    {
+      "id": "msg_0157_00010",
+      "en_US": "A to D"
+    },
+    {
+      "id": "msg_0157_00011",
+      "en_US": "C to B"
+    },
+    {
+      "id": "msg_0157_00012",
+      "en_US": "C to D"
+    },
+    {
+      "id": "msg_0157_00013",
+      "en_US": "B to A"
+    },
+    {
+      "id": "msg_0157_00014",
+      "en_US": "B to C"
+    },
+    {
+      "id": "msg_0157_00015",
+      "en_US": "D to A"
+    },
+    {
+      "id": "msg_0157_00016",
+      "en_US": "D to C"
+    },
+    {
+      "id": "msg_0157_00017",
+      "en_US": "A to C"
+    },
+    {
+      "id": "msg_0157_00018",
+      "en_US": "C to A"
+    },
+    {
+      "id": "msg_0157_00019",
+      "en_US": "B to D"
+    },
+    {
+      "id": "msg_0157_00020",
+      "en_US": "D to B"
+    },
+    {
+      "id": "msg_0157_00021",
+      "en_US": "Ball Capsules"
+    },
+    {
+      "id": "msg_0157_00022",
+      "en_US": "Ball Capsules (full)"
+    },
+    {
+      "id": "msg_0157_00023",
+      "en_US": "Ball Capsules (fewer)"
+    },
+    {
+      "id": "msg_0157_00024",
+      "en_US": "Ball Capsules (none)"
+    },
+    {
+      "id": "msg_0157_00025",
+      "en_US": "Egg hatch Demo"
+    },
+    {
+      "id": "msg_0157_00026",
+      "en_US": "Egg demo: MANAPHY"
+    },
+    {
+      "id": "msg_0157_00027",
+      "en_US": "Dummy"
+    },
+    {
+      "id": "msg_0157_00028",
+      "en_US": "Sleep"
+    },
+    {
+      "id": "msg_0157_00029",
+      "en_US": "Poison"
+    },
+    {
+      "id": "msg_0157_00030",
+      "en_US": "Burned"
+    },
+    {
+      "id": "msg_0157_00031",
+      "en_US": "Frozen"
+    },
+    {
+      "id": "msg_0157_00032",
+      "en_US": "Paralysed"
+    },
+    {
+      "id": "msg_0157_00033",
+      "en_US": "Confusion"
+    },
+    {
+      "id": "msg_0157_00034",
+      "en_US": "Infatuation"
+    },
+    {
+      "id": "msg_0157_00035",
+      "en_US": "Level Up"
+    },
+    {
+      "id": "msg_0157_00036",
+      "en_US": "Trainer’s item"
+    },
+    {
+      "id": "msg_0157_00037",
+      "en_US": "Pokémon Berry"
+    },
+    {
+      "id": "msg_0157_00038",
+      "en_US": "Rare effect"
+    },
+    {
+      "id": "msg_0157_00039",
+      "en_US": "Up"
+    },
+    {
+      "id": "msg_0157_00040",
+      "en_US": "Down"
+    },
+    {
+      "id": "msg_0157_00041",
+      "en_US": "Recover"
+    },
+    {
+      "id": "msg_0157_00042",
+      "en_US": "Out of the screen"
+    },
+    {
+      "id": "msg_0157_00043",
+      "en_US": "Into the screen"
+    },
+    {
+      "id": "msg_0157_00044",
+      "en_US": "Item Pocket"
+    },
+    {
+      "id": "msg_0157_00045",
+      "en_US": "Weather: Mist"
+    },
+    {
+      "id": "msg_0157_00046",
+      "en_US": "Weather: Rain"
+    },
+    {
+      "id": "msg_0157_00047",
+      "en_US": "Weather: Hail"
+    },
+    {
+      "id": "msg_0157_00048",
+      "en_US": "Weather: Sandstorm"
+    },
+    {
+      "id": "msg_0157_00049",
+      "en_US": "Weather: Sunny"
+    },
+    {
+      "id": "msg_0157_00050",
+      "en_US": "no use"
+    },
+    {
+      "id": "msg_0157_00051",
+      "en_US": "no use"
+    },
+    {
+      "id": "msg_0157_00052",
+      "en_US": "Call decoy"
+    },
+    {
+      "id": "msg_0157_00053",
+      "en_US": "Delete decoy"
+    },
+    {
+      "id": "msg_0157_00054",
+      "en_US": "Bait: Pleased"
+    },
+    {
+      "id": "msg_0157_00055",
+      "en_US": "Bait: Eat"
+    },
+    {
+      "id": "msg_0157_00056",
+      "en_US": "Upset"
+    },
+    {
+      "id": "msg_0157_00057",
+      "en_US": "Turn: Curse"
+    },
+    {
+      "id": "msg_0157_00058",
+      "en_US": "Turn: Nightmare"
+    },
+    {
+      "id": "msg_0157_00059",
+      "en_US": "Turn: Leech Seed"
+    },
+    {
+      "id": "msg_0157_00060",
+      "en_US": "Turn: Bind"
+    },
+    {
+      "id": "msg_0157_00061",
+      "en_US": "Turn: Wrap"
+    },
+    {
+      "id": "msg_0157_00062",
+      "en_US": "Turn: Fire Spin"
+    },
+    {
+      "id": "msg_0157_00063",
+      "en_US": "Turn: Magma Storm"
+    },
+    {
+      "id": "msg_0157_00064",
+      "en_US": "Turn: Clamp"
+    },
+    {
+      "id": "msg_0157_00065",
+      "en_US": "Turn: Whirlpool"
+    },
+    {
+      "id": "msg_0157_00066",
+      "en_US": "Turn: Sand Tomb"
+    },
+    {
+      "id": "msg_0157_00067",
+      "en_US": "Turn: Ingrain"
+    }
+  ]
+}

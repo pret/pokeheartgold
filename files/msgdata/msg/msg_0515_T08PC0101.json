@@ -1,0 +1,35 @@
+{
+  "key": 12115,
+  "messages": [
+    {
+      "id": "msg_0515_T08PC0101_00000",
+      "en_US": [
+        "Hey! You have a Pokédex!\n",
+        "Did Professor Oak give that to you?"
+      ]
+    },
+    {
+      "id": "msg_0515_T08PC0101_00001",
+      "en_US": [
+        "I got quite a shock at the Gym.\n",
+        "There were all these girls who\f",
+        "looked identical."
+      ]
+    },
+    {
+      "id": "msg_0515_T08PC0101_00002",
+      "en_US": [
+        "I’m Janine! Hocus-pocus...\n",
+        "Poof!\r"
+      ]
+    },
+    {
+      "id": "msg_0515_T08PC0101_00003",
+      "en_US": [
+        "See? I look just like her now!\r",
+        "...?\r",
+        "Huh? Didn’t work?"
+      ]
+    }
+  ]
+}

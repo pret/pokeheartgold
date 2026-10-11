@@ -1,0 +1,17 @@
+{
+  "key": 65118,
+  "messages": [
+    {
+      "id": "msg_0769_00000",
+      "en_US": "Guten Morgen."
+    },
+    {
+      "id": "msg_0769_00001",
+      "en_US": "Guten Tag."
+    },
+    {
+      "id": "msg_0769_00002",
+      "en_US": "Guten Abend."
+    }
+  ]
+}

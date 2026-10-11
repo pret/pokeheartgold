@@ -1,0 +1,73 @@
+{
+  "key": 41478,
+  "messages": [
+    {
+      "id": "msg_0199_00000",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0199_00001",
+      "en_US": "The Bag is full..."
+    },
+    {
+      "id": "msg_0199_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {STRVAR_1 8, 2, 0} Pocket."
+      ]
+    },
+    {
+      "id": "msg_0199_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} found\n",
+        "{STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0199_00004",
+      "en_US": [
+        "Obtained the {STRVAR_1 8, 0, 0}!\r",
+        "Too bad!\n",
+        "The Bag is full..."
+      ]
+    },
+    {
+      "id": "msg_0199_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the Bag."
+      ]
+    },
+    {
+      "id": "msg_0199_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} found\n",
+        "{STRVAR_1 8, 1, 0} {STRVAR_1 6, 2, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0199_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {COLOR 2}{STRVAR_1 8, 1, 0}{COLOR 0}!"
+      ]
+    },
+    {
+      "id": "msg_0199_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {COLOR 1}{STRVAR_1 8, 1, 0}{COLOR 0}!"
+      ]
+    },
+    {
+      "id": "msg_0199_00009",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {COLOR 2}{STRVAR_1 31, 2, 0}{COLOR 0} Pocket."
+      ]
+    }
+  ]
+}

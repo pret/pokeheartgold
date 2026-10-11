@@ -1,0 +1,587 @@
+{
+  "key": 3022,
+  "messages": [
+    {
+      "id": "msg_0166_00000",
+      "en_US": "{COLOR 1}Status{COLOR 0}"
+    },
+    {
+      "id": "msg_0166_00001",
+      "en_US": "{COLOR 1}VS demo{COLOR 0}"
+    },
+    {
+      "id": "msg_0166_00002",
+      "en_US": "{COLOR 1}Move Tutor{COLOR 0}"
+    },
+    {
+      "id": "msg_0166_00003",
+      "en_US": "{COLOR 1}Journal{COLOR 0}"
+    },
+    {
+      "id": "msg_0166_00004",
+      "en_US": "{COLOR 1}せいせき{COLOR 0}"
+    },
+    {
+      "id": "msg_0166_00005",
+      "en_US": "{COLOR 1}デモ{COLOR 0}"
+    },
+    {
+      "id": "msg_0166_00006",
+      "en_US": "Sleep"
+    },
+    {
+      "id": "msg_0166_00007",
+      "en_US": "Touch screen"
+    },
+    {
+      "id": "msg_0166_00008",
+      "en_US": "msg location"
+    },
+    {
+      "id": "msg_0166_00009",
+      "en_US": "Test screen"
+    },
+    {
+      "id": "msg_0166_00010",
+      "en_US": "Script"
+    },
+    {
+      "id": "msg_0166_00011",
+      "en_US": "Map"
+    },
+    {
+      "id": "msg_0166_00012",
+      "en_US": "Pokétch"
+    },
+    {
+      "id": "msg_0166_00013",
+      "en_US": "Shop"
+    },
+    {
+      "id": "msg_0166_00014",
+      "en_US": "♡Berry Max"
+    },
+    {
+      "id": "msg_0166_00015",
+      "en_US": "♡TM & HM Max"
+    },
+    {
+      "id": "msg_0166_00016",
+      "en_US": "F Note ADD"
+    },
+    {
+      "id": "msg_0166_00017",
+      "en_US": "Field"
+    },
+    {
+      "id": "msg_0166_00018",
+      "en_US": "Move Tutor"
+    },
+    {
+      "id": "msg_0166_00019",
+      "en_US": "Move Deleter"
+    },
+    {
+      "id": "msg_0166_00020",
+      "en_US": "Poffin"
+    },
+    {
+      "id": "msg_0166_00021",
+      "en_US": "Condition"
+    },
+    {
+      "id": "msg_0166_00022",
+      "en_US": "Multi 1"
+    },
+    {
+      "id": "msg_0166_00023",
+      "en_US": "Start 1"
+    },
+    {
+      "id": "msg_0166_00024",
+      "en_US": "End 1"
+    },
+    {
+      "id": "msg_0166_00025",
+      "en_US": "Multi 2"
+    },
+    {
+      "id": "msg_0166_00026",
+      "en_US": "Start 2"
+    },
+    {
+      "id": "msg_0166_00027",
+      "en_US": "End 2"
+    },
+    {
+      "id": "msg_0166_00028",
+      "en_US": "End 3"
+    },
+    {
+      "id": "msg_0166_00029",
+      "en_US": "Move Tutor"
+    },
+    {
+      "id": "msg_0166_00030",
+      "en_US": "Move Remainder"
+    },
+    {
+      "id": "msg_0166_00031",
+      "en_US": "♡Set Ribbons"
+    },
+    {
+      "id": "msg_0166_00032",
+      "en_US": "Pokémon icon"
+    },
+    {
+      "id": "msg_0166_00033",
+      "en_US": "Item icon"
+    },
+    {
+      "id": "msg_0166_00034",
+      "en_US": "F Note Clear"
+    },
+    {
+      "id": "msg_0166_00035",
+      "en_US": "タワ－"
+    },
+    {
+      "id": "msg_0166_00036",
+      "en_US": "ファクトリ－"
+    },
+    {
+      "id": "msg_0166_00037",
+      "en_US": "キャッスル"
+    },
+    {
+      "id": "msg_0166_00038",
+      "en_US": "ル－レット"
+    },
+    {
+      "id": "msg_0166_00039",
+      "en_US": "ステ－ジ"
+    },
+    {
+      "id": "msg_0166_00040",
+      "en_US": "ＢＴせいせき"
+    },
+    {
+      "id": "msg_0166_00041",
+      "en_US": "ＢＴリ－ダ－"
+    },
+    {
+      "id": "msg_0166_00042",
+      "en_US": "ルギア"
+    },
+    {
+      "id": "msg_0166_00043",
+      "en_US": "ホウオウ２Ａ"
+    },
+    {
+      "id": "msg_0166_00044",
+      "en_US": "ホウオウ２Ｂ"
+    },
+    {
+      "id": "msg_0166_00045",
+      "en_US": "ホウオウ２Ｃ"
+    },
+    {
+      "id": "msg_0166_00046",
+      "en_US": "ホウオウ３Ａ"
+    },
+    {
+      "id": "msg_0166_00047",
+      "en_US": "ホウオウ３Ｂ"
+    },
+    {
+      "id": "msg_0166_00048",
+      "en_US": "ホウオウ３Ｃ"
+    },
+    {
+      "id": "msg_0166_00049",
+      "en_US": "メ－ルボックス"
+    },
+    {
+      "id": "msg_0166_00050",
+      "en_US": "アルセウス"
+    },
+    {
+      "id": "msg_0166_00051",
+      "en_US": "ｘ"
+    },
+    {
+      "id": "msg_0166_00052",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00053",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00054",
+      "en_US": "Class"
+    },
+    {
+      "id": "msg_0166_00055",
+      "en_US": "Level"
+    },
+    {
+      "id": "msg_0166_00056",
+      "en_US": "Exp. Points"
+    },
+    {
+      "id": "msg_0166_00057",
+      "en_US": "ID"
+    },
+    {
+      "id": "msg_0166_00058",
+      "en_US": "Random value"
+    },
+    {
+      "id": "msg_0166_00059",
+      "en_US": "Gender"
+    },
+    {
+      "id": "msg_0166_00060",
+      "en_US": "Nature"
+    },
+    {
+      "id": "msg_0166_00061",
+      "en_US": "Move 1"
+    },
+    {
+      "id": "msg_0166_00062",
+      "en_US": "Move 2"
+    },
+    {
+      "id": "msg_0166_00063",
+      "en_US": "Move 3"
+    },
+    {
+      "id": "msg_0166_00064",
+      "en_US": "Move 4"
+    },
+    {
+      "id": "msg_0166_00065",
+      "en_US": "Held item"
+    },
+    {
+      "id": "msg_0166_00066",
+      "en_US": "Special ability"
+    },
+    {
+      "id": "msg_0166_00067",
+      "en_US": "HP rnd"
+    },
+    {
+      "id": "msg_0166_00068",
+      "en_US": "HP exp"
+    },
+    {
+      "id": "msg_0166_00069",
+      "en_US": "Attack rnd"
+    },
+    {
+      "id": "msg_0166_00070",
+      "en_US": "Attack exp"
+    },
+    {
+      "id": "msg_0166_00071",
+      "en_US": "Defense rnd"
+    },
+    {
+      "id": "msg_0166_00072",
+      "en_US": "Defense exp"
+    },
+    {
+      "id": "msg_0166_00073",
+      "en_US": "Speed rnd"
+    },
+    {
+      "id": "msg_0166_00074",
+      "en_US": "Speed exp"
+    },
+    {
+      "id": "msg_0166_00075",
+      "en_US": "Sp. Atk rnd"
+    },
+    {
+      "id": "msg_0166_00076",
+      "en_US": "Sp. Atk exp"
+    },
+    {
+      "id": "msg_0166_00077",
+      "en_US": "Sp. Def rnd"
+    },
+    {
+      "id": "msg_0166_00078",
+      "en_US": "Sp. Def exp"
+    },
+    {
+      "id": "msg_0166_00079",
+      "en_US": "Coolness"
+    },
+    {
+      "id": "msg_0166_00080",
+      "en_US": "Beauty"
+    },
+    {
+      "id": "msg_0166_00081",
+      "en_US": "Cuteness"
+    },
+    {
+      "id": "msg_0166_00082",
+      "en_US": "Smartness"
+    },
+    {
+      "id": "msg_0166_00083",
+      "en_US": "Toughness"
+    },
+    {
+      "id": "msg_0166_00084",
+      "en_US": "Luster"
+    },
+    {
+      "id": "msg_0166_00085",
+      "en_US": "Tameness"
+    },
+    {
+      "id": "msg_0166_00086",
+      "en_US": "POKéRUS"
+    },
+    {
+      "id": "msg_0166_00087",
+      "en_US": "Egg"
+    },
+    {
+      "id": "msg_0166_00088",
+      "en_US": "Status"
+    },
+    {
+      "id": "msg_0166_00089",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0166_00090",
+      "en_US": "Attack"
+    },
+    {
+      "id": "msg_0166_00091",
+      "en_US": "Defense"
+    },
+    {
+      "id": "msg_0166_00092",
+      "en_US": "Speed"
+    },
+    {
+      "id": "msg_0166_00093",
+      "en_US": "Special Attack"
+    },
+    {
+      "id": "msg_0166_00094",
+      "en_US": "Special Defense"
+    },
+    {
+      "id": "msg_0166_00095",
+      "en_US": "Event distribution"
+    },
+    {
+      "id": "msg_0166_00096",
+      "en_US": "Area 1"
+    },
+    {
+      "id": "msg_0166_00097",
+      "en_US": "Captured level"
+    },
+    {
+      "id": "msg_0166_00098",
+      "en_US": "Captured cassette"
+    },
+    {
+      "id": "msg_0166_00099",
+      "en_US": "Captured Ball"
+    },
+    {
+      "id": "msg_0166_00100",
+      "en_US": "Country code"
+    },
+    {
+      "id": "msg_0166_00101",
+      "en_US": "Form No."
+    },
+    {
+      "id": "msg_0166_00102",
+      "en_US": "Area 2"
+    },
+    {
+      "id": "msg_0166_00103",
+      "en_US": "year"
+    },
+    {
+      "id": "msg_0166_00104",
+      "en_US": "month"
+    },
+    {
+      "id": "msg_0166_00105",
+      "en_US": "date"
+    },
+    {
+      "id": "msg_0166_00106",
+      "en_US": "nickname"
+    },
+    {
+      "id": "msg_0166_00107",
+      "en_US": "Normal"
+    },
+    {
+      "id": "msg_0166_00108",
+      "en_US": "Sleep"
+    },
+    {
+      "id": "msg_0166_00109",
+      "en_US": "Poison"
+    },
+    {
+      "id": "msg_0166_00110",
+      "en_US": "Burned"
+    },
+    {
+      "id": "msg_0166_00111",
+      "en_US": "Frozen"
+    },
+    {
+      "id": "msg_0166_00112",
+      "en_US": "Paralysed"
+    },
+    {
+      "id": "msg_0166_00113",
+      "en_US": "Badly poisoned"
+    },
+    {
+      "id": "msg_0166_00114",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0166_00115",
+      "en_US": "㊚"
+    },
+    {
+      "id": "msg_0166_00116",
+      "en_US": "㊛"
+    },
+    {
+      "id": "msg_0166_00117",
+      "en_US": "-"
+    },
+    {
+      "id": "msg_0166_00118",
+      "en_US": "ON"
+    },
+    {
+      "id": "msg_0166_00119",
+      "en_US": "OFF"
+    },
+    {
+      "id": "msg_0166_00120",
+      "en_US": "{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00121",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00122",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00123",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00124",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00125",
+      "en_US": "{STRVAR_1 7, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00126",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00127",
+      "en_US": "Added a Pokémon to your party."
+    },
+    {
+      "id": "msg_0166_00128",
+      "en_US": "Added a Pokémon to the Box."
+    },
+    {
+      "id": "msg_0166_00129",
+      "en_US": [
+        "Create Pokémon\n",
+        "  LR: Switch   START: Add"
+      ]
+    },
+    {
+      "id": "msg_0166_00130",
+      "en_US": "ＤＢＰｏｋｅ1"
+    },
+    {
+      "id": "msg_0166_00131",
+      "en_US": "Egg"
+    },
+    {
+      "id": "msg_0166_00132",
+      "en_US": [
+        "(Test message)\n",
+        "Pokémon used a move!"
+      ]
+    },
+    {
+      "id": "msg_0166_00133",
+      "en_US": "Diamond"
+    },
+    {
+      "id": "msg_0166_00134",
+      "en_US": "Pearl"
+    },
+    {
+      "id": "msg_0166_00135",
+      "en_US": "Emerald"
+    },
+    {
+      "id": "msg_0166_00136",
+      "en_US": "Sapphire"
+    },
+    {
+      "id": "msg_0166_00137",
+      "en_US": "{STRVAR_1 0, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00138",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00139",
+      "en_US": "げんざいのＩＤ："
+    },
+    {
+      "id": "msg_0166_00140",
+      "en_US": "へんこうごのＩＤ："
+    },
+    {
+      "id": "msg_0166_00141",
+      "en_US": "{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0166_00142",
+      "en_US": "Ａ：けってい"
+    },
+    {
+      "id": "msg_0166_00143",
+      "en_US": "Ｂ：キャンセル"
+    }
+  ]
+}

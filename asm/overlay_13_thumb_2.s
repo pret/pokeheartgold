@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_13_thumb_2.inc"
 	.include "global.inc"
 
@@ -4140,7 +4140,7 @@ ov13_022228CC: ; 0x022228CC
 	mvn r0, r0
 	pop {r3, r4, r5, pc}
 _022228FE:
-	ldr r5, _02222920 ; =_021D4670
+	ldr r5, _02222920 ; =CPSMyIp
 	ldr r0, [r5]
 	cmp r0, #0
 	bne _02222914
@@ -4157,7 +4157,7 @@ _02222914:
 	.balign 4, 0
 _02222918: .word ov13_022459B4
 _0222291C: .word ov13_022459BC
-_02222920: .word _021D4670
+_02222920: .word CPSMyIp
 	thumb_func_end ov13_022228CC
 
 	thumb_func_start ov13_02222924
@@ -5798,7 +5798,7 @@ _022234AC:
 	mov r1, #0xff
 	mov r2, #6
 	bl MI_CpuFill8
-	ldr r1, _0222355C ; =_02108FC0
+	ldr r1, _0222355C ; =WCM_Bssid_Any
 	ldr r0, _02223554 ; =ov13_0224DEE0
 	str r1, [r0, #0x10]
 _022234BC:
@@ -5842,7 +5842,7 @@ _022234FA:
 	mov r1, #0xff
 	mov r2, #0x20
 	bl MI_CpuFill8
-	ldr r1, _02223564 ; =_02108FC8
+	ldr r1, _02223564 ; =WCM_Essid_Any
 	ldr r0, _02223554 ; =ov13_0224DEE0
 	str r1, [r0, #0x14]
 _0222350A:
@@ -5882,9 +5882,9 @@ _02223548:
 	nop
 _02223554: .word ov13_0224DEE0
 _02223558: .word ov13_0224DF08
-_0222355C: .word _02108FC0
+_0222355C: .word WCM_Bssid_Any
 _02223560: .word ov13_0224DF10
-_02223564: .word _02108FC8
+_02223564: .word WCM_Essid_Any
 	thumb_func_end ov13_02223478
 
 	thumb_func_start ov13_02223568
@@ -6684,7 +6684,7 @@ _02223B58:
 	mov r1, #0xff
 	mov r2, #6
 	bl MI_CpuFill8
-	ldr r1, _02223C04 ; =_02108FC0
+	ldr r1, _02223C04 ; =WCM_Bssid_Any
 	ldr r0, _02223BFC ; =ov13_0224DF30
 	str r1, [r0, #0x44]
 _02223B66:
@@ -6726,7 +6726,7 @@ _02223BA2:
 	mov r1, #0xff
 	mov r2, #0x20
 	bl MI_CpuFill8
-	ldr r1, _02223C0C ; =_02108FC8
+	ldr r1, _02223C0C ; =WCM_Essid_Any
 	ldr r0, _02223BFC ; =ov13_0224DF30
 	str r1, [r0, #0x48]
 _02223BB2:
@@ -6766,9 +6766,9 @@ _02223BF0:
 	nop
 _02223BFC: .word ov13_0224DF30
 _02223C00: .word ov13_0224E3E8
-_02223C04: .word _02108FC0
+_02223C04: .word WCM_Bssid_Any
 _02223C08: .word ov13_0224E420
-_02223C0C: .word _02108FC8
+_02223C0C: .word WCM_Essid_Any
 	thumb_func_end ov13_02223B28
 
 	thumb_func_start ov13_02223C10

@@ -1,0 +1,44 @@
+{
+  "key": 5215,
+  "messages": [
+    {
+      "id": "msg_0367_R26R0201_00000",
+      "en_US": [
+        "There’s something written here.\n",
+        "Read it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0367_R26R0201_00001",
+      "en_US": [
+        "To my brothers and sisters:\r",
+        "We take pride in serving\n",
+        "Pokémon Trainers.\r",
+        "When Trainers talk to you, give them\n",
+        "something useful.\r",
+        "Love,\n",
+        "Monica\r",
+        "Keep reading? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0367_R26R0201_00002",
+      "en_US": [
+        "Monday, Monica\n",
+        "Rt. 40\r",
+        "Tuesday, Tuscany\n",
+        "Rt. 29\r",
+        "Wednesday, Wesley\n",
+        "Lake of Rage\r",
+        "Thursday, Arthur\n",
+        "Rt. 36\r",
+        "Friday, Frieda\n",
+        "Rt. 32\r",
+        "Saturday, Santos\n",
+        "Blackthorn City\r",
+        "Sunday, Sunny\n",
+        "Rt. 37"
+      ]
+    }
+  ]
+}

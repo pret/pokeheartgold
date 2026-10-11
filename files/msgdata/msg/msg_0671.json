@@ -1,0 +1,157 @@
+{
+  "key": 54329,
+  "messages": [
+    {
+      "id": "msg_0671_00000",
+      "en_US": "Jose"
+    },
+    {
+      "id": "msg_0671_00001",
+      "en_US": [
+        "Tweet! Tweeeeeet!\r",
+        "If my FARFETCH’D sees anything pretty,\n",
+        "it goes and gets it.\r",
+        "Do you like pretty things?\n",
+        "I could share if it gets some more.\r",
+        "How about we trade phone numbers?\n",
+        "I’ll call if it finds anything. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0671_00002",
+      "en_US": [
+        "I’ll call you as soon as I get\n",
+        "something pretty."
+      ]
+    },
+    {
+      "id": "msg_0671_00003",
+      "en_US": [
+        "You sure? Well, tell me if you change\n",
+        "your mind."
+      ]
+    },
+    {
+      "id": "msg_0671_00004",
+      "en_US": [
+        "Tweet! Tweeeeeet!\n",
+        "Do you like pretty things?\r",
+        "I could share if FARFETCH’D goes\n",
+        "and gets more.\r",
+        "Will you give me your\n",
+        "phone number? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0671_00005",
+      "en_US": [
+        "Tweet! Tweeeeeet!\r",
+        "Huh?\r",
+        "...Oh, I see.\n",
+        "I thought you came over here because\f",
+        "you were enticed by my whistling.\r",
+        "That wasn’t it. You just came for the\n",
+        "Star Piece, didn’t you? Here you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0671_00006",
+      "en_US": [
+        "Tweet! Tweeeeeet!\r",
+        "...Huh? Wait, don’t tell me that you’re\n",
+        "calling from nearby?\r",
+        "Well, why not come a little closer and\n",
+        "talk in person!"
+      ]
+    },
+    {
+      "id": "msg_0671_00007",
+      "en_US": [
+        "Hey listen, my {STRVAR_1 0, 10, 0}’s stalk\n",
+        "has this really delicious aroma.\r",
+        "That aroma gets my appetite going!\r",
+        "Be seeing you!"
+      ]
+    },
+    {
+      "id": "msg_0671_00008",
+      "en_US": [
+        "A while ago, my FARFETCH’D knocked out\n",
+        "this {STRVAR_1 0, 11, 0}. You should have\f",
+        "seen FARFETCH’D wield that stalk.\r",
+        "Amazing stuff!\n",
+        "Be seeing you!"
+      ]
+    },
+    {
+      "id": "msg_0671_00009",
+      "en_US": [
+        "I ran into a wild {STRVAR_1 0, 11, 0}...\r",
+        "I was trying to catch it, but it took\n",
+        "off faster than I thought it would.\f",
+        "It was a bit disappointing.\r",
+        "Be seeing you!"
+      ]
+    },
+    {
+      "id": "msg_0671_00010",
+      "en_US": [
+        "Want to battle again?\r",
+        "For some reason, my FARFETCH’D is all\n",
+        "worked up and raring to go.\r",
+        "{STRVAR_1 4, 3, 0} is where I’m at.\n",
+        "Keep an eye out for me, OK?"
+      ]
+    },
+    {
+      "id": "msg_0671_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, could you hurry over?\n",
+        "FARFETCH’D is agitated.\r",
+        "If you don’t come soon, it might smack\n",
+        "me with its stalk!\r",
+        "{STRVAR_1 4, 3, 0}!\n",
+        "Please come as soon as you can!"
+      ]
+    },
+    {
+      "id": "msg_0671_00012",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, could you hurry over?\n",
+        "FARFETCH’D is agitated.\r",
+        "If you don’t come soon, it might smack\n",
+        "me with its stalk!\r",
+        "{STRVAR_1 4, 3, 0}!\n",
+        "Please come as soon as you can!"
+      ]
+    },
+    {
+      "id": "msg_0671_00013",
+      "en_US": [
+        "I haven’t gotten what I promised\n",
+        "you yet.\r",
+        "I’ll call you as soon as I get it, so\n",
+        "could you wait a little longer?"
+      ]
+    },
+    {
+      "id": "msg_0671_00014",
+      "en_US": [
+        "My FARFETCH’D had something pretty in\n",
+        "its beak.\r",
+        "Like I promised, you can have it.\r",
+        "Catch up to me on {STRVAR_1 4, 3, 0},\n",
+        "and I’ll let you have it."
+      ]
+    },
+    {
+      "id": "msg_0671_00015",
+      "en_US": [
+        "What’s wrong?\n",
+        "Don’t you want this gift?\r",
+        "Catch up to me on {STRVAR_1 4, 3, 0},\n",
+        "and I’ll let you have it."
+      ]
+    }
+  ]
+}

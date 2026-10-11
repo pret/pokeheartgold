@@ -2,11 +2,11 @@
 
 #include "application/pokedex/pokedex_internal.h"
 #include "application/pokedex/pokedex_internal_constants.h"
-#include "application/zukanlist/zkn_data/zukan_data.naix"
-#include "application/zukanlist/zkn_data/zukan_enc.naix"
-#include "application/zukanlist/zkn_data/zukan_hw_data.naix"
-#include "graphic/zukan_gra.naix"
-#include "msgdata/msg.naix"
+#include "files/application/zukanlist/zkn_data/zukan_data.naix"
+#include "files/application/zukanlist/zkn_data/zukan_enc.naix"
+#include "files/application/zukanlist/zkn_data/zukan_hw_data.naix"
+#include "files/graphic/zukan_gra.naix"
+#include "files/msgdata/msg.naix"
 
 #include "dex_mon_measures.h"
 #include "gf_gfx_loader.h"
@@ -796,7 +796,7 @@ void ov18_021E6204(PokedexAppData *pokedexApp) {
 }
 
 void ov18_021E6244(PokedexAppData *pokedexApp) {
-    pokedexApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0802_bin, HEAP_ID_POKEDEX_APP);
+    pokedexApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0802, HEAP_ID_POKEDEX_APP);
     pokedexApp->msgFormat = MessageFormat_New(HEAP_ID_POKEDEX_APP);
     pokedexApp->strBufFormatted = String_New(0x400, HEAP_ID_POKEDEX_APP);
 }
@@ -809,8 +809,12 @@ void ov18_021E6280(PokedexAppData *pokedexApp) {
 
 void ov18_021E62A8(PokedexAppData *pokedexApp) {
     NARC *narc = NARC_New(NARC_application_zukanlist_zkn_data_zukan_hw_data, HEAP_ID_POKEDEX_APP);
-    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_hw_data_zukan_hw_data_0_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
-    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, NARC_zukan_hw_data_zukan_hw_data_1_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+    pokedexApp->unk_1850 = GfGfxLoader_LoadFromOpenNarc(narc, zukan_hw_data_0_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+#ifdef HEARTGOLD
+    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, zukan_hw_data_1_gold_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+#else
+    pokedexApp->unk_1854 = GfGfxLoader_LoadFromOpenNarc(narc, zukan_hw_data_1_silver_bin, FALSE, HEAP_ID_POKEDEX_APP, FALSE);
+#endif
     NARC_Delete(narc);
 }
 
@@ -1879,28 +1883,28 @@ static void ov18_021E8698(PokedexAppData_UnkSub18DC_0 *a0, u16 species, int a2) 
 
     switch (a2) {
     case 0:
-        base = NARC_zukan_enc_zukan_enc_00000002; // 0 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_0_mon_000_none; // 0 * 495 + 2
         break;
     case 1:
-        base = NARC_zukan_enc_zukan_enc_00000497; // 1 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_1_mon_000_none; // 1 * 495 + 2
         break;
     case 2:
-        base = NARC_zukan_enc_zukan_enc_00000992; // 2 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_2_mon_000_none; // 2 * 495 + 2
         break;
     case 3:
-        base = NARC_zukan_enc_zukan_enc_00002972; // 6 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_6_mon_000_none; // 6 * 495 + 2
         break;
     case 4:
-        base = NARC_zukan_enc_zukan_enc_00001487; // 3 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_3_mon_000_none; // 3 * 495 + 2
         break;
     case 5:
-        base = NARC_zukan_enc_zukan_enc_00001982; // 4 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_4_mon_000_none; // 4 * 495 + 2
         break;
     case 6:
-        base = NARC_zukan_enc_zukan_enc_00002477; // 5 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_5_mon_000_none; // 5 * 495 + 2
         break;
     case 7:
-        base = NARC_zukan_enc_zukan_enc_00003467; // 7 * 495 + 2
+        base = NARC_zukan_enc_gEncounters_method_7_mon_000_none; // 7 * 495 + 2
         break;
     }
     // UB: if unexpected a2, r3 is uninitialized
@@ -2094,8 +2098,8 @@ static u32 ov18_021E8B78(void) {
 void ov18_021E8B94(PokedexAppData *pokedexApp) {
     u32 size;
 
-    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, NARC_zukan_enc_zukan_enc_00000001, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size);
-    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, NARC_zukan_enc_zukan_enc_00000000, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size);
+    pokedexApp->unk_190C = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, NARC_zukan_enc_gOverworlds, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size);
+    pokedexApp->unk_1908 = GfGfxLoader_LoadFromNarc_GetSizeOut(NARC_application_zukanlist_zkn_data_zukan_enc, NARC_zukan_enc_gDungeons, FALSE, HEAP_ID_POKEDEX_APP, FALSE, &size);
 }
 
 void ov18_021E8BD4(PokedexAppData *pokedexApp) {

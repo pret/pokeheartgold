@@ -1,0 +1,794 @@
+{
+  "key": 5865,
+  "messages": [
+    {
+      "id": "msg_0175_00000",
+      "en_US": "Light ON/OFF"
+    },
+    {
+      "id": "msg_0175_00001",
+      "en_US": "Light Color 1"
+    },
+    {
+      "id": "msg_0175_00002",
+      "en_US": "Light Color 2"
+    },
+    {
+      "id": "msg_0175_00003",
+      "en_US": "Light Color 3"
+    },
+    {
+      "id": "msg_0175_00004",
+      "en_US": "Light Color 4"
+    },
+    {
+      "id": "msg_0175_00005",
+      "en_US": "Light Vector 1"
+    },
+    {
+      "id": "msg_0175_00006",
+      "en_US": "Light Vector 2"
+    },
+    {
+      "id": "msg_0175_00007",
+      "en_US": "Light Vector 3"
+    },
+    {
+      "id": "msg_0175_00008",
+      "en_US": "Light Vector 4"
+    },
+    {
+      "id": "msg_0175_00009",
+      "en_US": "Polygon Color: diffused"
+    },
+    {
+      "id": "msg_0175_00010",
+      "en_US": "Environment Lighting: ambient"
+    },
+    {
+      "id": "msg_0175_00011",
+      "en_US": "Specular Reflexion: specular"
+    },
+    {
+      "id": "msg_0175_00012",
+      "en_US": "Radiant Light: emitted"
+    },
+    {
+      "id": "msg_0175_00013",
+      "en_US": "Select debug windows"
+    },
+    {
+      "id": "msg_0175_00014",
+      "en_US": "Light: End Frames"
+    },
+    {
+      "id": "msg_0175_00015",
+      "en_US": "ON"
+    },
+    {
+      "id": "msg_0175_00016",
+      "en_US": "OFF"
+    },
+    {
+      "id": "msg_0175_00017",
+      "en_US": "Y"
+    },
+    {
+      "id": "msg_0175_00018",
+      "en_US": "X"
+    },
+    {
+      "id": "msg_0175_00019",
+      "en_US": "Z"
+    },
+    {
+      "id": "msg_0175_00020",
+      "en_US": "A"
+    },
+    {
+      "id": "msg_0175_00021",
+      "en_US": "B"
+    },
+    {
+      "id": "msg_0175_00022",
+      "en_US": "Y up down"
+    },
+    {
+      "id": "msg_0175_00023",
+      "en_US": "X up down"
+    },
+    {
+      "id": "msg_0175_00024",
+      "en_US": "A up down"
+    },
+    {
+      "id": "msg_0175_00025",
+      "en_US": "B up down"
+    },
+    {
+      "id": "msg_0175_00026",
+      "en_US": "Y left"
+    },
+    {
+      "id": "msg_0175_00027",
+      "en_US": "X up"
+    },
+    {
+      "id": "msg_0175_00028",
+      "en_US": "A right"
+    },
+    {
+      "id": "msg_0175_00029",
+      "en_US": "B down"
+    },
+    {
+      "id": "msg_0175_00030",
+      "en_US": "Red"
+    },
+    {
+      "id": "msg_0175_00031",
+      "en_US": "Green"
+    },
+    {
+      "id": "msg_0175_00032",
+      "en_US": "Blue"
+    },
+    {
+      "id": "msg_0175_00033",
+      "en_US": "Alpha"
+    },
+    {
+      "id": "msg_0175_00034",
+      "en_US": "Light 1"
+    },
+    {
+      "id": "msg_0175_00035",
+      "en_US": "Light 2"
+    },
+    {
+      "id": "msg_0175_00036",
+      "en_US": "Light 3"
+    },
+    {
+      "id": "msg_0175_00037",
+      "en_US": "Light 4"
+    },
+    {
+      "id": "msg_0175_00038",
+      "en_US": "Change template LR"
+    },
+    {
+      "id": "msg_0175_00039",
+      "en_US": "Modes"
+    },
+    {
+      "id": "msg_0175_00040",
+      "en_US": "かかりぐあい"
+    },
+    {
+      "id": "msg_0175_00041",
+      "en_US": "Offset"
+    },
+    {
+      "id": "msg_0175_00042",
+      "en_US": "ON OFF"
+    },
+    {
+      "id": "msg_0175_00043",
+      "en_US": "1 B"
+    },
+    {
+      "id": "msg_0175_00044",
+      "en_US": "10 A"
+    },
+    {
+      "id": "msg_0175_00045",
+      "en_US": "100 X"
+    },
+    {
+      "id": "msg_0175_00046",
+      "en_US": "1000 Y"
+    },
+    {
+      "id": "msg_0175_00047",
+      "en_US": "Fog Settings"
+    },
+    {
+      "id": "msg_0175_00048",
+      "en_US": "Fog Color"
+    },
+    {
+      "id": "msg_0175_00049",
+      "en_US": "Fog Table"
+    },
+    {
+      "id": "msg_0175_00050",
+      "en_US": "Next data X"
+    },
+    {
+      "id": "msg_0175_00051",
+      "en_US": "Previous data B"
+    },
+    {
+      "id": "msg_0175_00052",
+      "en_US": "Data"
+    },
+    {
+      "id": "msg_0175_00053",
+      "en_US": "BGめんに　ひょうじ　SELECT"
+    },
+    {
+      "id": "msg_0175_00054",
+      "en_US": "Sunny"
+    },
+    {
+      "id": "msg_0175_00055",
+      "en_US": "Cloudy"
+    },
+    {
+      "id": "msg_0175_00056",
+      "en_US": "Rain"
+    },
+    {
+      "id": "msg_0175_00057",
+      "en_US": "Heavy Rain"
+    },
+    {
+      "id": "msg_0175_00058",
+      "en_US": "Thunder"
+    },
+    {
+      "id": "msg_0175_00059",
+      "en_US": "Snow"
+    },
+    {
+      "id": "msg_0175_00060",
+      "en_US": "Blizzard"
+    },
+    {
+      "id": "msg_0175_00061",
+      "en_US": "Whiteout"
+    },
+    {
+      "id": "msg_0175_00062",
+      "en_US": "Fog"
+    },
+    {
+      "id": "msg_0175_00063",
+      "en_US": "Volcanic Ash"
+    },
+    {
+      "id": "msg_0175_00064",
+      "en_US": "Sandstorm"
+    },
+    {
+      "id": "msg_0175_00065",
+      "en_US": "Diamond"
+    },
+    {
+      "id": "msg_0175_00066",
+      "en_US": "Defog"
+    },
+    {
+      "id": "msg_0175_00067",
+      "en_US": "Flash"
+    },
+    {
+      "id": "msg_0175_00068",
+      "en_US": "Determination"
+    },
+    {
+      "id": "msg_0175_00069",
+      "en_US": "Mystery"
+    },
+    {
+      "id": "msg_0175_00070",
+      "en_US": "Rainbow"
+    },
+    {
+      "id": "msg_0175_00071",
+      "en_US": "Stop"
+    },
+    {
+      "id": "msg_0175_00072",
+      "en_US": "Ambition"
+    },
+    {
+      "id": "msg_0175_00073",
+      "en_US": "こごれび"
+    },
+    {
+      "id": "msg_0175_00074",
+      "en_US": "Scary Feel"
+    },
+    {
+      "id": "msg_0175_00075",
+      "en_US": "Galactic 00"
+    },
+    {
+      "id": "msg_0175_00076",
+      "en_US": "Lost Tower"
+    },
+    {
+      "id": "msg_0175_00077",
+      "en_US": "Stark Mt."
+    },
+    {
+      "id": "msg_0175_00078",
+      "en_US": "Cave 02"
+    },
+    {
+      "id": "msg_0175_00079",
+      "en_US": "Cell"
+    },
+    {
+      "id": "msg_0175_00080",
+      "en_US": "Image"
+    },
+    {
+      "id": "msg_0175_00081",
+      "en_US": "Wipe"
+    },
+    {
+      "id": "msg_0175_00082",
+      "en_US": "Material"
+    },
+    {
+      "id": "msg_0175_00083",
+      "en_US": "FOG"
+    },
+    {
+      "id": "msg_0175_00084",
+      "en_US": "Weather"
+    },
+    {
+      "id": "msg_0175_00085",
+      "en_US": "Light"
+    },
+    {
+      "id": "msg_0175_00086",
+      "en_US": "ライトスピ"
+    },
+    {
+      "id": "msg_0175_00087",
+      "en_US": "No. of Pokémon encounter"
+    },
+    {
+      "id": "msg_0175_00088",
+      "en_US": "Close"
+    },
+    {
+      "id": "msg_0175_00089",
+      "en_US": "3D Transfer"
+    },
+    {
+      "id": "msg_0175_00090",
+      "en_US": "ON"
+    },
+    {
+      "id": "msg_0175_00091",
+      "en_US": "OFF"
+    },
+    {
+      "id": "msg_0175_00092",
+      "en_US": "High"
+    },
+    {
+      "id": "msg_0175_00093",
+      "en_US": "Low"
+    },
+    {
+      "id": "msg_0175_00094",
+      "en_US": "ST"
+    },
+    {
+      "id": "msg_0175_00095",
+      "en_US": "Test"
+    },
+    {
+      "id": "msg_0175_00096",
+      "en_US": "Pokedex"
+    },
+    {
+      "id": "msg_0175_00097",
+      "en_US": "X　0"
+    },
+    {
+      "id": "msg_0175_00098",
+      "en_US": "X 1"
+    },
+    {
+      "id": "msg_0175_00099",
+      "en_US": "X 2"
+    },
+    {
+      "id": "msg_0175_00100",
+      "en_US": "Y 0"
+    },
+    {
+      "id": "msg_0175_00101",
+      "en_US": "Y 1"
+    },
+    {
+      "id": "msg_0175_00102",
+      "en_US": "Y 2"
+    },
+    {
+      "id": "msg_0175_00103",
+      "en_US": [
+        "SELECT: Trash all Pokémon data\n",
+        "key   A=1 right=10 up=100\n",
+        "key   Y=-1 left=-10 down=-100\n",
+        "L: Start to change\n",
+        "R: End to change\n",
+        "START: Settings\n",
+        "B: Exit from the debug"
+      ]
+    },
+    {
+      "id": "msg_0175_00104",
+      "en_US": "Pokédex control"
+    },
+    {
+      "id": "msg_0175_00105",
+      "en_US": "Begin"
+    },
+    {
+      "id": "msg_0175_00106",
+      "en_US": "End"
+    },
+    {
+      "id": "msg_0175_00107",
+      "en_US": "♡National Pokédex flag ON"
+    },
+    {
+      "id": "msg_0175_00108",
+      "en_US": "♡Set Sinnoh Pokédex"
+    },
+    {
+      "id": "msg_0175_00109",
+      "en_US": "♡Set National Pokédex"
+    },
+    {
+      "id": "msg_0175_00110",
+      "en_US": "♡Seen National Pokédex"
+    },
+    {
+      "id": "msg_0175_00111",
+      "en_US": "♡Seen Sinnoh Pokédex"
+    },
+    {
+      "id": "msg_0175_00112",
+      "en_US": "DEOXYS save data"
+    },
+    {
+      "id": "msg_0175_00113",
+      "en_US": "SHELLOS save data"
+    },
+    {
+      "id": "msg_0175_00114",
+      "en_US": "♡Set all languages"
+    },
+    {
+      "id": "msg_0175_00115",
+      "en_US": "♡Set a random-select language"
+    },
+    {
+      "id": "msg_0175_00116",
+      "en_US": "♡Set English"
+    },
+    {
+      "id": "msg_0175_00117",
+      "en_US": "♡Set French"
+    },
+    {
+      "id": "msg_0175_00118",
+      "en_US": "♡Set Italian"
+    },
+    {
+      "id": "msg_0175_00119",
+      "en_US": "♡Set German"
+    },
+    {
+      "id": "msg_0175_00120",
+      "en_US": "♡Set Spanish"
+    },
+    {
+      "id": "msg_0175_00121",
+      "en_US": "♡Set Unown from A to Z"
+    },
+    {
+      "id": "msg_0175_00122",
+      "en_US": "♡Set full set of Unown"
+    },
+    {
+      "id": "msg_0175_00123",
+      "en_US": "Pokémon"
+    },
+    {
+      "id": "msg_0175_00124",
+      "en_US": "Poison"
+    },
+    {
+      "id": "msg_0175_00125",
+      "en_US": "Climax"
+    },
+    {
+      "id": "msg_0175_00126",
+      "en_US": "Grass 00"
+    },
+    {
+      "id": "msg_0175_00127",
+      "en_US": "Grass 01"
+    },
+    {
+      "id": "msg_0175_00128",
+      "en_US": "Water 00"
+    },
+    {
+      "id": "msg_0175_00129",
+      "en_US": "Water 01"
+    },
+    {
+      "id": "msg_0175_00130",
+      "en_US": "Sweet Scent"
+    },
+    {
+      "id": "msg_0175_00131",
+      "en_US": "Trade"
+    },
+    {
+      "id": "msg_0175_00132",
+      "en_US": "Image records"
+    },
+    {
+      "id": "msg_0175_00133",
+      "en_US": "Accessory Exchange"
+    },
+    {
+      "id": "msg_0175_00134",
+      "en_US": "HM00"
+    },
+    {
+      "id": "msg_0175_00135",
+      "en_US": "HM01"
+    },
+    {
+      "id": "msg_0175_00136",
+      "en_US": "HM02"
+    },
+    {
+      "id": "msg_0175_00137",
+      "en_US": "Mixing teams"
+    },
+    {
+      "id": "msg_0175_00138",
+      "en_US": "World Clock"
+    },
+    {
+      "id": "msg_0175_00139",
+      "en_US": "News"
+    },
+    {
+      "id": "msg_0175_00140",
+      "en_US": "Early Plaza Events"
+    },
+    {
+      "id": "msg_0175_00141",
+      "en_US": "Plaza Room0"
+    },
+    {
+      "id": "msg_0175_00142",
+      "en_US": "Plaza Room1"
+    },
+    {
+      "id": "msg_0175_00143",
+      "en_US": "Plaza Room2"
+    },
+    {
+      "id": "msg_0175_00144",
+      "en_US": "Plaza: normal"
+    },
+    {
+      "id": "msg_0175_00145",
+      "en_US": "Plaza: everyone VIP"
+    },
+    {
+      "id": "msg_0175_00146",
+      "en_US": "Plaza: Delay the lock timing"
+    },
+    {
+      "id": "msg_0175_00147",
+      "en_US": "Dungeon 00"
+    },
+    {
+      "id": "msg_0175_00148",
+      "en_US": "Dungeon 01"
+    },
+    {
+      "id": "msg_0175_00149",
+      "en_US": "TR Grass 00"
+    },
+    {
+      "id": "msg_0175_00150",
+      "en_US": "TR Grass 01"
+    },
+    {
+      "id": "msg_0175_00151",
+      "en_US": "TR Water 00"
+    },
+    {
+      "id": "msg_0175_00152",
+      "en_US": "TR Water 01"
+    },
+    {
+      "id": "msg_0175_00153",
+      "en_US": "TR Dungeon 00"
+    },
+    {
+      "id": "msg_0175_00154",
+      "en_US": "TR Dungeon 01"
+    },
+    {
+      "id": "msg_0175_00155",
+      "en_US": "sp Tower"
+    },
+    {
+      "id": "msg_0175_00156",
+      "en_US": "sp Double"
+    },
+    {
+      "id": "msg_0175_00157",
+      "en_US": "Galactic 00"
+    },
+    {
+      "id": "msg_0175_00158",
+      "en_US": "Galactic 01"
+    },
+    {
+      "id": "msg_0175_00159",
+      "en_US": "Legend"
+    },
+    {
+      "id": "msg_0175_00160",
+      "en_US": "Package"
+    },
+    {
+      "id": "msg_0175_00161",
+      "en_US": "Gym Oreburgh"
+    },
+    {
+      "id": "msg_0175_00162",
+      "en_US": "Gym Eterna"
+    },
+    {
+      "id": "msg_0175_00163",
+      "en_US": "Gym Pastoria"
+    },
+    {
+      "id": "msg_0175_00164",
+      "en_US": "Gym Veilstone"
+    },
+    {
+      "id": "msg_0175_00165",
+      "en_US": "Gym Hearthome"
+    },
+    {
+      "id": "msg_0175_00166",
+      "en_US": "Gym Snowpoint"
+    },
+    {
+      "id": "msg_0175_00167",
+      "en_US": "Gym Canalave"
+    },
+    {
+      "id": "msg_0175_00168",
+      "en_US": "Gym Sunyshore"
+    },
+    {
+      "id": "msg_0175_00169",
+      "en_US": "Point 00"
+    },
+    {
+      "id": "msg_0175_00170",
+      "en_US": "Point 01"
+    },
+    {
+      "id": "msg_0175_00171",
+      "en_US": "Point 02"
+    },
+    {
+      "id": "msg_0175_00172",
+      "en_US": "Point 03"
+    },
+    {
+      "id": "msg_0175_00173",
+      "en_US": "CHANP"
+    },
+    {
+      "id": "msg_0175_00174",
+      "en_US": "ブラシぬり"
+    },
+    {
+      "id": "msg_0175_00175",
+      "en_US": "むかしをさいげん"
+    },
+    {
+      "id": "msg_0175_00176",
+      "en_US": [
+        "Horizontal Rotation　A up down　value:{STRVAR_1 59, 0, 0}\n",
+        "　　　　　　　　　　　　　　　angle:{STRVAR_1 59, 5, 0}"
+      ]
+    },
+    {
+      "id": "msg_0175_00177",
+      "en_US": [
+        "Vertical Rotation　B up down　value:{STRVAR_1 59, 1, 0}\n",
+        "　　　　　　　　　　　　　　　angle:{STRVAR_1 59, 6, 0}"
+      ]
+    },
+    {
+      "id": "msg_0175_00178",
+      "en_US": [
+        "Overall Slope　Y up down　value:{STRVAR_1 59, 2, 0}\n",
+        "                              angle:{STRVAR_1 59, 0, 0}"
+      ]
+    },
+    {
+      "id": "msg_0175_00179",
+      "en_US": "Camera Distance A up down　value:{STRVAR_1 59, 3, 0}"
+    },
+    {
+      "id": "msg_0175_00180",
+      "en_US": "Camera Target　B up down　value:{STRVAR_1 59, 4, 0}"
+    },
+    {
+      "id": "msg_0175_00181",
+      "en_US": [
+        "Stop Timer: START　Switch Control: R\n",
+        "Stop Operation: X  End: L   Start drawing: right"
+      ]
+    },
+    {
+      "id": "msg_0175_00182",
+      "en_US": "Camera Angle　Y up down value:{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0175_00183",
+      "en_US": "Poition　Y up down value:{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0175_00184",
+      "en_US": "Size　A up down value:{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0175_00185",
+      "en_US": "Gravity B up down value:{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0175_00186",
+      "en_US": "Gravity Area　Y up down value:{STRVAR_1 59, 0, 0}"
+    },
+    {
+      "id": "msg_0175_00187",
+      "en_US": [
+        "Room kind？{STRVAR_1 51, 0, 0} \n",
+        "A...Confirm 　UP DOWN...Select"
+      ]
+    },
+    {
+      "id": "msg_0175_00188",
+      "en_US": [
+        "Season？{STRVAR_1 51, 0, 0}\n",
+        "A...Confirm 　UP DOWN...Select"
+      ]
+    },
+    {
+      "id": "msg_0175_00189",
+      "en_US": [
+        "Which Tap Toy？{STRVAR_3 2, 0, 0}\n",
+        "A...Confirm 　UP DOWN...Select"
+      ]
+    }
+  ]
+}

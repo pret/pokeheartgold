@@ -1,0 +1,78 @@
+{
+  "key": 14196,
+  "messages": [
+    {
+      "id": "msg_0206_00000",
+      "en_US": "Please stand by..."
+    },
+    {
+      "id": "msg_0206_00001",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0206_00002",
+      "en_US": [
+        "{STRVAR_1 1, 1, 0} received\n",
+        "{STRVAR_1 1, 2, 0}’s Egg!"
+      ]
+    },
+    {
+      "id": "msg_0206_00003",
+      "en_US": [
+        "Landed on a Bonus Area!\n",
+        "Received a free {STRVAR_1 8, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0206_00004",
+      "en_US": [
+        "Oh, no. The Bag is full...\n",
+        "The Berry had to be refused."
+      ]
+    },
+    {
+      "id": "msg_0206_00005",
+      "en_US": [
+        "Awaiting communication.\n",
+        "Please stand by."
+      ]
+    },
+    {
+      "id": "msg_0206_00006",
+      "garbage": 37
+    },
+    {
+      "id": "msg_0206_00007",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0206_00008",
+      "garbage": 37
+    },
+    {
+      "id": "msg_0206_00009",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0206_00010",
+      "en_US": [
+        "Awaiting communication.\n",
+        "Please stand by."
+      ]
+    },
+    {
+      "id": "msg_0206_00011",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0206_00012",
+      "en_US": [
+        "There is an Egg that can’t be traded.\n",
+        "Spin Trade will be canceled."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,349 @@
+{
+  "key": 37027,
+  "messages": [
+    {
+      "id": "msg_0430_00000",
+      "en_US": "Place the {STRVAR_1 8, 0, 0}?"
+    },
+    {
+      "id": "msg_0430_00001",
+      "en_US": "Placed the {STRVAR_1 8, 0, 0}."
+    },
+    {
+      "id": "msg_0430_00002",
+      "en_US": "There are {STRVAR_1 51, 0, 0} left to place."
+    },
+    {
+      "id": "msg_0430_00003",
+      "en_US": "Cannot place any more."
+    },
+    {
+      "id": "msg_0430_00004",
+      "en_US": "No open spaces left."
+    },
+    {
+      "id": "msg_0430_00005",
+      "en_US": "Cannot place on land."
+    },
+    {
+      "id": "msg_0430_00006",
+      "en_US": "Cannot place on the waterside."
+    },
+    {
+      "id": "msg_0430_00007",
+      "en_US": "Cannot place any more."
+    },
+    {
+      "id": "msg_0430_00008",
+      "en_US": "Return"
+    },
+    {
+      "id": "msg_0430_00009",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0430_00010",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0430_00011",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0430_00012",
+      "en_US": "{STRVAR_1 50, 0, 0}/{STRVAR_1 50, 1, 0}"
+    },
+    {
+      "id": "msg_0430_00013",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0430_00014",
+      "en_US": "Shrubbery"
+    },
+    {
+      "id": "msg_0430_00015",
+      "en_US": "Red Flower"
+    },
+    {
+      "id": "msg_0430_00016",
+      "en_US": "White Flower"
+    },
+    {
+      "id": "msg_0430_00017",
+      "en_US": "Tree"
+    },
+    {
+      "id": "msg_0430_00018",
+      "en_US": "Stump"
+    },
+    {
+      "id": "msg_0430_00019",
+      "en_US": "Branches"
+    },
+    {
+      "id": "msg_0430_00020",
+      "en_US": "Small Rock"
+    },
+    {
+      "id": "msg_0430_00021",
+      "en_US": "Big Rock"
+    },
+    {
+      "id": "msg_0430_00022",
+      "en_US": "Mossy Rock"
+    },
+    {
+      "id": "msg_0430_00023",
+      "en_US": "Puddle"
+    },
+    {
+      "id": "msg_0430_00024",
+      "en_US": "Fountain"
+    },
+    {
+      "id": "msg_0430_00025",
+      "en_US": "Water Hole"
+    },
+    {
+      "id": "msg_0430_00026",
+      "en_US": "Bench"
+    },
+    {
+      "id": "msg_0430_00027",
+      "en_US": "Short Fence1"
+    },
+    {
+      "id": "msg_0430_00028",
+      "en_US": "Short Fence2"
+    },
+    {
+      "id": "msg_0430_00029",
+      "en_US": "Long Fence1"
+    },
+    {
+      "id": "msg_0430_00030",
+      "en_US": "Long Fence2"
+    },
+    {
+      "id": "msg_0430_00031",
+      "en_US": "Signboard"
+    },
+    {
+      "id": "msg_0430_00032",
+      "en_US": "Your Statue"
+    },
+    {
+      "id": "msg_0430_00033",
+      "en_US": "Your Flag"
+    },
+    {
+      "id": "msg_0430_00034",
+      "en_US": "Outside Lamp"
+    },
+    {
+      "id": "msg_0430_00035",
+      "en_US": "Guidepost(R)"
+    },
+    {
+      "id": "msg_0430_00036",
+      "en_US": "Guidepost(L)"
+    },
+    {
+      "id": "msg_0430_00037",
+      "en_US": "Trash Can"
+    },
+    {
+      "id": "msg_0430_00038",
+      "en_US": [
+        "A thick tuft of grass.\n",
+        "The Pokémon on the\n",
+        "Plains seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00039",
+      "en_US": [
+        "A very intensely colored flower.\n",
+        "The Pokémon on the\n",
+        "Plains seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00040",
+      "en_US": [
+        "A very tenderly colored flower.\n",
+        "The Pokémon on the\n",
+        "Plains seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00041",
+      "en_US": [
+        "A somewhat short tree.\n",
+        "The Pokémon in the\n",
+        "Forest seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00042",
+      "en_US": [
+        "A remainder from a tree that was\n",
+        "cut down. The Pokémon in the\n",
+        "Forest seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00043",
+      "en_US": [
+        "A pile of broken branches.\n",
+        "The Pokémon in the\n",
+        "Forest seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00044",
+      "en_US": [
+        "A smallish round rock.\n",
+        "The Pokémon in the\n",
+        "rocky Areas seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00045",
+      "en_US": [
+        "A big, scraggy rock.\n",
+        "The Pokémon in the\n",
+        "rocky Areas seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00046",
+      "en_US": [
+        "A mossy rock.\n",
+        "The Pokémon in the\n",
+        "rocky Areas seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00047",
+      "en_US": [
+        "Water collected on the ground.\n",
+        "The Pokémon by the\n",
+        "water seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00048",
+      "en_US": [
+        "You can place it using Surf.\n",
+        "The Pokémon by the\n",
+        "water seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00049",
+      "en_US": [
+        "Cool, delicious drinking\n",
+        "water. The Pokémon by the\n",
+        "water seem to like it."
+      ]
+    },
+    {
+      "id": "msg_0430_00050",
+      "en_US": [
+        "A long and thin bench.\n",
+        "The kind you would find in\n",
+        "any park or rest area."
+      ]
+    },
+    {
+      "id": "msg_0430_00051",
+      "en_US": [
+        "A short, horizontal fence.\n",
+        "If you used a few of these, you could\n",
+        "probably enclose a lake or flower patch."
+      ]
+    },
+    {
+      "id": "msg_0430_00052",
+      "en_US": [
+        "A short, vertical fence.\n",
+        "If you used a few of these, you could\n",
+        "probably enclose a lake or flower patch."
+      ]
+    },
+    {
+      "id": "msg_0430_00053",
+      "en_US": [
+        "A long, horizontal fence.\n",
+        "If you used a few of these, you could\n",
+        "probably enclose a lake or flower patch."
+      ]
+    },
+    {
+      "id": "msg_0430_00054",
+      "en_US": [
+        "A long, vertical fence.\n",
+        "If you used a few of these, you could\n",
+        "probably enclose a lake or flower patch."
+      ]
+    },
+    {
+      "id": "msg_0430_00055",
+      "en_US": [
+        "A signboard made of wood. If you\n",
+        "planted a stake in the ground, you\n",
+        "could post this sign on it."
+      ]
+    },
+    {
+      "id": "msg_0430_00056",
+      "en_US": [
+        "A stone statue made in your image.\n",
+        "If you placed this, you could really\n",
+        "get the sense of being a great hero."
+      ]
+    },
+    {
+      "id": "msg_0430_00057",
+      "en_US": [
+        "Your own flag that you drew. If you\n",
+        "placed this, you could really get the\n",
+        "sense of being the ruler of the land."
+      ]
+    },
+    {
+      "id": "msg_0430_00058",
+      "en_US": [
+        "An electric light that illuminates the\n",
+        "Area. If placed in the darkness, it could\n",
+        "create a beautiful path of light."
+      ]
+    },
+    {
+      "id": "msg_0430_00059",
+      "en_US": [
+        "A sign pointing right. Any person who\n",
+        "sees this would naturally want to go find\n",
+        "out what it could be pointing to."
+      ]
+    },
+    {
+      "id": "msg_0430_00060",
+      "en_US": [
+        "A sign pointing left. Any person who\n",
+        "sees this would naturally want to go find\n",
+        "out what it could be pointing to."
+      ]
+    },
+    {
+      "id": "msg_0430_00061",
+      "en_US": [
+        "A trash can for disposing of litter.\n",
+        "If you have any litter, be sure to\n",
+        "throw it away or take it with you."
+      ]
+    }
+  ]
+}

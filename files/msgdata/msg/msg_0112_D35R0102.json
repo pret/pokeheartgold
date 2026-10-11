@@ -1,0 +1,76 @@
+{
+  "key": 25710,
+  "messages": [
+    {
+      "id": "msg_0112_D35R0102_00000",
+      "en_US": [
+        "Hey!\n",
+        "Intruder alert!\r"
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00001",
+      "en_US": [
+        "It’s my turn!\n",
+        "There’s no escape!\r"
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00002",
+      "en_US": [
+        "It’s a PERSIAN statue...\n",
+        "Its eyes are glowing red...\r",
+        "You feel that somebody may be\n",
+        "watching..."
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00003",
+      "en_US": [
+        "It’s a PERSIAN statue...\n",
+        "Its eyes are glowing blue...\r",
+        "You don’t feel anyone watching you..."
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00004",
+      "en_US": [
+        "The eyes of the PERSIAN statue\n",
+        "are no longer glowing..."
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00005",
+      "en_US": [
+        "A secret switch!\r",
+        "The red switch is flashing in a\n",
+        "suspicious manner.\f",
+        "Will you press it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00006",
+      "en_US": [
+        "A secret switch!\r",
+        "The blue switch is lit.\f",
+        "Will you press it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0112_D35R0102_00007",
+      "en_US": "Better press it.\r"
+    },
+    {
+      "id": "msg_0112_D35R0102_00008",
+      "en_US": "The secret switch is not lit anymore..."
+    },
+    {
+      "id": "msg_0112_D35R0102_00009",
+      "en_US": "The surveillance system is off!"
+    },
+    {
+      "id": "msg_0112_D35R0102_00010",
+      "en_US": "The surveillance system is on!"
+    }
+  ]
+}

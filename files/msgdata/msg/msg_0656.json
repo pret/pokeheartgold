@@ -1,0 +1,140 @@
+{
+  "key": 53165,
+  "messages": [
+    {
+      "id": "msg_0656_00000",
+      "en_US": "Chuck"
+    },
+    {
+      "id": "msg_0656_00001",
+      "en_US": [
+        "Huh? Wha...? I can’t hear you.\n",
+        "Maybe we’ve got a bad connection.\r",
+        "Go somewhere else and try\n",
+        "calling again!"
+      ]
+    },
+    {
+      "id": "msg_0656_00002",
+      "en_US": [
+        "Hello?!\n",
+        "Oh, hey, sorry for shouting!\r",
+        "I’m doing great!\r"
+      ]
+    },
+    {
+      "id": "msg_0656_00003",
+      "en_US": [
+        "You know there’re some stronger\n",
+        "Gym Leaders around.\f",
+        "Don’t lose heart! Keep going!"
+      ]
+    },
+    {
+      "id": "msg_0656_00004",
+      "en_US": [
+        "Let’s see... I’m free most Wednesday\n",
+        "nights. Give me a call then, OK?"
+      ]
+    },
+    {
+      "id": "msg_0656_00005",
+      "en_US": [
+        "Oh hey! I just finished training.\n",
+        "Do you want to battle again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0656_00006",
+      "en_US": [
+        "All right!\r",
+        "I’ll be waiting over at the Fighting Dojo\n",
+        "in Saffron City!"
+      ]
+    },
+    {
+      "id": "msg_0656_00007",
+      "en_US": [
+        "Noooooo!\n",
+        "That’s terrible!"
+      ]
+    },
+    {
+      "id": "msg_0656_00008",
+      "en_US": [
+        "Hmm... You’re just battling me, right?\n",
+        "Don’t you have other plans?"
+      ]
+    },
+    {
+      "id": "msg_0656_00009",
+      "en_US": [
+        "I’ll be waiting at the Fighting Dojo in\n",
+        "Saffron City.\f",
+        "Look forward to it!"
+      ]
+    },
+    {
+      "id": "msg_0656_00010",
+      "en_US": [
+        "Yo! Chuck here!\n",
+        "What’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0656_00011",
+      "en_US": [
+        "Hey, didn’t we make plans to meet at\n",
+        "the Fighting Dojo in Saffron City?\f",
+        "Don’t tell me you forgot?\f",
+        "Come on, man! I’m waiting!"
+      ]
+    },
+    {
+      "id": "msg_0656_00012",
+      "en_US": [
+        "You know, I spend a lot of time training\n",
+        "under a pounding waterfall every day.\r",
+        "I guess that’s why I’ve been\n",
+        "disagreeing with my wife a lot lately.\r",
+        "I was thinking of taking her on a trip as\n",
+        "an apology, but I can’t think of any\f",
+        "good places to go.\r",
+        "...That’s it!\r",
+        "I should take her to Tohjo Falls! What\n",
+        "do you think?"
+      ]
+    },
+    {
+      "id": "msg_0656_00013",
+      "en_US": [
+        "You know, I’m just going to say this\n",
+        "once, but I...\r",
+        "I really like sweets. They’re the best.\r",
+        "After training every day, the thing\n",
+        "that I absolutely look forward to more\f",
+        "than anything is sneaking behind my\f",
+        "wife’s back to eat something sweet.\r",
+        "Fortunately, I haven’t been packing on\n",
+        "too many pounds...\r",
+        "Oh! Don’t tell my wife! Please!"
+      ]
+    },
+    {
+      "id": "msg_0656_00014",
+      "en_US": [
+        "Lately my Gym’s waterfall device has\n",
+        "been malfunction... Aaaaahh!\r",
+        "Boomwhooshoowhooshoowhoosh\f",
+        "oowhooshoowhooshoowhoosh\f",
+        "oowhooshoowhooshoowhoosh...!\r",
+        "...Haa haaa haaaaa. Sorry.\n",
+        "While I was on the phone with you, the\f",
+        "device broke and I just got doused\f",
+        "with water.\r",
+        "I’ll call you back once things have\n",
+        "calmed down a bit here!"
+      ]
+    }
+  ]
+}

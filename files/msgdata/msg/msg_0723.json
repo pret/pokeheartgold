@@ -1,0 +1,5444 @@
+{
+  "key": 1691,
+  "messages": [
+    {
+      "id": "msg_0723_00000",
+      "en_US": "Here I come!"
+    },
+    {
+      "id": "msg_0723_00001",
+      "en_US": "Yeah!\r"
+    },
+    {
+      "id": "msg_0723_00002",
+      "en_US": "Bleah!\r"
+    },
+    {
+      "id": "msg_0723_00003",
+      "en_US": [
+        "Hey, rookie!\n",
+        "Bring it on!"
+      ]
+    },
+    {
+      "id": "msg_0723_00004",
+      "en_US": [
+        "Yeah, I knew it.\n",
+        "You’re a rookie after all.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00005",
+      "en_US": [
+        "Bleah!\n",
+        "You’re just a rookie!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00006",
+      "en_US": [
+        "I gotta say it, shorts are the best!\n",
+        "They remain comfy and easy to wear!"
+      ]
+    },
+    {
+      "id": "msg_0723_00007",
+      "en_US": "Shorts are the greatest!\r"
+    },
+    {
+      "id": "msg_0723_00008",
+      "en_US": [
+        "I’ll never stop wearing shorts.\n",
+        "Not for anybody!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00009",
+      "en_US": [
+        "I make it a policy to wear\n",
+        "miniskirts!"
+      ]
+    },
+    {
+      "id": "msg_0723_00010",
+      "en_US": "Miniskirts are the ultimate!\r"
+    },
+    {
+      "id": "msg_0723_00011",
+      "en_US": "What’s your policy?\r"
+    },
+    {
+      "id": "msg_0723_00012",
+      "en_US": "I love my miniskirt!"
+    },
+    {
+      "id": "msg_0723_00013",
+      "en_US": "Caught you snoozing!\r"
+    },
+    {
+      "id": "msg_0723_00014",
+      "en_US": [
+        "Miniskirts make legs look longer!\n",
+        "Is that a good thing?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00015",
+      "en_US": [
+        "I’m on the lookout for adorable\n",
+        "Accessories."
+      ]
+    },
+    {
+      "id": "msg_0723_00016",
+      "en_US": [
+        "Let me know if you find any nice\n",
+        "Accessories!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00017",
+      "en_US": "I wish I could dress up!\r"
+    },
+    {
+      "id": "msg_0723_00018",
+      "en_US": [
+        "I want to test out something I\n",
+        "learned at private school."
+      ]
+    },
+    {
+      "id": "msg_0723_00019",
+      "en_US": [
+        "Yes!\n",
+        "It worked perfectly!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00020",
+      "en_US": [
+        "Hmm...\n",
+        "Something’s wrong here.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00021",
+      "en_US": "Uh... Wroar!"
+    },
+    {
+      "id": "msg_0723_00022",
+      "en_US": [
+        "A battle is about momentum and\n",
+        "willpower.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00023",
+      "en_US": [
+        "OK, so willpower doesn’t cut it on\n",
+        "its own.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00024",
+      "en_US": [
+        "I study every day because I want to\n",
+        "work all over the world."
+      ]
+    },
+    {
+      "id": "msg_0723_00025",
+      "en_US": "My dream is worldwide!\r"
+    },
+    {
+      "id": "msg_0723_00026",
+      "en_US": [
+        "I need to study up on Pokémon\n",
+        "battles.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00027",
+      "en_US": [
+        "When I grow up, I’m going to be a\n",
+        "Pokémon professor!"
+      ]
+    },
+    {
+      "id": "msg_0723_00028",
+      "en_US": [
+        "Er-hem! Er-hem!\n",
+        "You’ve much to learn, youngster!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00029",
+      "en_US": [
+        "Er-hem! Er-hem!\n",
+        "Seems I’ve much to learn still!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00030",
+      "en_US": [
+        "When the subject is Pokémon, I simply\n",
+        "don’t lose!"
+      ]
+    },
+    {
+      "id": "msg_0723_00031",
+      "en_US": "It’s a victory of knowledge!\r"
+    },
+    {
+      "id": "msg_0723_00032",
+      "en_US": [
+        "I’m going to review the subject!\n",
+        "And I’ll subject you to my revenge!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00033",
+      "en_US": [
+        "Oh, now you look wimpy.\n",
+        "I might win this."
+      ]
+    },
+    {
+      "id": "msg_0723_00034",
+      "en_US": "I so did it!\r"
+    },
+    {
+      "id": "msg_0723_00035",
+      "en_US": "Ouch, that hurt.\r"
+    },
+    {
+      "id": "msg_0723_00036",
+      "en_US": [
+        "It’s fine, fine.\n",
+        "No need to say a word."
+      ]
+    },
+    {
+      "id": "msg_0723_00037",
+      "en_US": [
+        "It’s fine, fine.\n",
+        "You tried your best, I know.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00038",
+      "en_US": [
+        "It’s fine, fine...\n",
+        "No need to say a word...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00039",
+      "en_US": "I’m rich!"
+    },
+    {
+      "id": "msg_0723_00040",
+      "en_US": [
+        "Well, of course.\n",
+        "I’m rich.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00041",
+      "en_US": [
+        "What happened?\n",
+        "I’m rich, aren’t I?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00042",
+      "en_US": "Hmm. So, you’re good, huh?"
+    },
+    {
+      "id": "msg_0723_00043",
+      "en_US": [
+        "Hmm. You’re no big deal.\n",
+        "Hmm?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00044",
+      "en_US": [
+        "Hmm. So, you are good.\n",
+        "Hmm.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00045",
+      "en_US": [
+        "Oh, yes.\n",
+        "I shall attack now."
+      ]
+    },
+    {
+      "id": "msg_0723_00046",
+      "en_US": "I’ve done it!\r"
+    },
+    {
+      "id": "msg_0723_00047",
+      "en_US": "Oh, how disappointing.\r"
+    },
+    {
+      "id": "msg_0723_00048",
+      "en_US": [
+        "Over it is, your adventure.\n",
+        "Come hither and get whupped!"
+      ]
+    },
+    {
+      "id": "msg_0723_00049",
+      "en_US": "A done deal, it was.\r"
+    },
+    {
+      "id": "msg_0723_00050",
+      "en_US": [
+        "Oh, how vexing this so is.\n",
+        "Verily, I thank you.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00051",
+      "en_US": "How boring..."
+    },
+    {
+      "id": "msg_0723_00052",
+      "en_US": "So truly boring...\r"
+    },
+    {
+      "id": "msg_0723_00053",
+      "en_US": [
+        "That was a good way to waste some\n",
+        "time.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00054",
+      "en_US": [
+        "Hunh?\n",
+        "Where is everyone?"
+      ]
+    },
+    {
+      "id": "msg_0723_00055",
+      "en_US": [
+        "Hey, guys!\n",
+        "Where are you?!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00056",
+      "en_US": [
+        "I came to camp, but I think I got\n",
+        "separated from my friends...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00057",
+      "en_US": [
+        "Oh!\n",
+        "Don’t you have a Pokétch, too?"
+      ]
+    },
+    {
+      "id": "msg_0723_00058",
+      "en_US": [
+        "I was fooling around with my\n",
+        "Pokétch, but I still won!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00059",
+      "en_US": [
+        "I was fooling around with my\n",
+        "Pokétch, and I lost...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00060",
+      "en_US": "My Pokémon trained in forests."
+    },
+    {
+      "id": "msg_0723_00061",
+      "en_US": "It’s the power of the forests.\r"
+    },
+    {
+      "id": "msg_0723_00062",
+      "en_US": "I’m going back to the forest.\r"
+    },
+    {
+      "id": "msg_0723_00063",
+      "en_US": "I’ll battle you like I’m on a picnic!"
+    },
+    {
+      "id": "msg_0723_00064",
+      "en_US": "Lalala!\r"
+    },
+    {
+      "id": "msg_0723_00065",
+      "en_US": [
+        "Pretending this is a picnic won’t let\n",
+        "me win.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00066",
+      "en_US": [
+        "Ooh-la-la!\n",
+        "Here we come!"
+      ]
+    },
+    {
+      "id": "msg_0723_00067",
+      "en_US": [
+        "Ooh-la-la!\n",
+        "So happy I won!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00068",
+      "en_US": [
+        "Ooh-la-la!\n",
+        "Even losing can’t dampen my spirits!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00069",
+      "en_US": [
+        "I’ll teach you what’s fun about\n",
+        "battling."
+      ]
+    },
+    {
+      "id": "msg_0723_00070",
+      "en_US": "Battling me was fun, wasn’t it?\r"
+    },
+    {
+      "id": "msg_0723_00071",
+      "en_US": [
+        "Oh, my, that was inspiring!\n",
+        "You’re the greatest!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00072",
+      "en_US": [
+        "I... I can swim, really!\n",
+        "I don’t need my inflatable tube!"
+      ]
+    },
+    {
+      "id": "msg_0723_00073",
+      "en_US": "It... It’s true!\r"
+    },
+    {
+      "id": "msg_0723_00074",
+      "en_US": "I... I’m not lying!\r"
+    },
+    {
+      "id": "msg_0723_00075",
+      "en_US": [
+        "I like rivers more than the sea.\n",
+        "Which do you prefer?"
+      ]
+    },
+    {
+      "id": "msg_0723_00076",
+      "en_US": [
+        "Water in rivers is cold, but it feels\n",
+        "just super.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00077",
+      "en_US": [
+        "I don’t like the sea because the\n",
+        "salty water burns my eyes!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00078",
+      "en_US": [
+        "Go, go, go!\n",
+        "Go, my Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00079",
+      "en_US": [
+        "That’s the way!\n",
+        "Way to go, my Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00080",
+      "en_US": [
+        "Good effort!\n",
+        "Way to go, my Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00081",
+      "en_US": [
+        "The beach sand is so hot! It makes\n",
+        "me go, “Ouch, ouch, ouch!”"
+      ]
+    },
+    {
+      "id": "msg_0723_00082",
+      "en_US": "I love the sea!\r"
+    },
+    {
+      "id": "msg_0723_00083",
+      "en_US": "Ouch, ouch, ouch!\r"
+    },
+    {
+      "id": "msg_0723_00084",
+      "en_US": "Splish, splash!"
+    },
+    {
+      "id": "msg_0723_00085",
+      "en_US": [
+        "Ker-splash!\n",
+        "Ker-splash!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00086",
+      "en_US": "Flip, flop!\r"
+    },
+    {
+      "id": "msg_0723_00087",
+      "en_US": [
+        "I’m a girl in love with her inflatable\n",
+        "tube! Nice to meet you!"
+      ]
+    },
+    {
+      "id": "msg_0723_00088",
+      "en_US": [
+        "Thank you! I’m a girl in love with\n",
+        "her inflatable tube!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00089",
+      "en_US": [
+        "Good-bye! I’m a girl in love with her\n",
+        "inflatable tube!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00090",
+      "en_US": [
+        "Oh, yeah! I’m feeling it!\n",
+        "I’m tuned in to your wavelength!"
+      ]
+    },
+    {
+      "id": "msg_0723_00091",
+      "en_US": "Tadaaaah!\r"
+    },
+    {
+      "id": "msg_0723_00092",
+      "en_US": [
+        "Tch!\n",
+        "Losing threw off my rhythm!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00093",
+      "en_US": [
+        "Rock? Jazz? Techno?\n",
+        "Anything’ll do for my sound track!"
+      ]
+    },
+    {
+      "id": "msg_0723_00094",
+      "en_US": "Squeeeeeal!\r"
+    },
+    {
+      "id": "msg_0723_00095",
+      "en_US": [
+        "So, yeah... You’ve got me in the\n",
+        "mood for singing the blues...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00096",
+      "en_US": "Let’s get this session on!"
+    },
+    {
+      "id": "msg_0723_00097",
+      "en_US": "You’re obviously short on practice.\r"
+    },
+    {
+      "id": "msg_0723_00098",
+      "en_US": [
+        "My dream of a world tour...\n",
+        "It seems so far away...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00099",
+      "en_US": [
+        "Oh, hello...\n",
+        "Well, isn’t that a chic scarf!"
+      ]
+    },
+    {
+      "id": "msg_0723_00100",
+      "en_US": "Where did you buy that scarf?\r"
+    },
+    {
+      "id": "msg_0723_00101",
+      "en_US": [
+        "Oh, you! You’re not just fashionable,\n",
+        "you’re good with Pokémon! How unfair!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00102",
+      "en_US": "Thanks for supporting me!"
+    },
+    {
+      "id": "msg_0723_00103",
+      "en_US": [
+        "Oh?\n",
+        "You’re not my fan?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00104",
+      "en_US": [
+        "What a horrible way to treat\n",
+        "an Idol...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00105",
+      "en_US": "La, lala, lah."
+    },
+    {
+      "id": "msg_0723_00106",
+      "en_US": [
+        "La lalala.\n",
+        "Lalalah lah.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00107",
+      "en_US": "Bye-bye, lalah!\r"
+    },
+    {
+      "id": "msg_0723_00108",
+      "en_US": [
+        "Let’s see who loves Pokémon more,\n",
+        "you or me."
+      ]
+    },
+    {
+      "id": "msg_0723_00109",
+      "en_US": [
+        "Fuhaha! Looks like my love for\n",
+        "Pokémon trumped yours!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00110",
+      "en_US": [
+        "Grr... Your love of Pokémon is\n",
+        "stronger than mine?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00111",
+      "en_US": [
+        "I tell ya, my Pokémon are some kind\n",
+        "of tough."
+      ]
+    },
+    {
+      "id": "msg_0723_00112",
+      "en_US": "You don’t want to underestimate me.\r"
+    },
+    {
+      "id": "msg_0723_00113",
+      "en_US": "You’re some kind of mighty.\r"
+    },
+    {
+      "id": "msg_0723_00114",
+      "en_US": [
+        "OK, show me your favorite Pokémon.\n",
+        "Don’t be shy now, come on."
+      ]
+    },
+    {
+      "id": "msg_0723_00115",
+      "en_US": [
+        "I see...\n",
+        "Cute, but on the weak side.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00116",
+      "en_US": [
+        "I see!\n",
+        "Cute, and yet tough.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00117",
+      "en_US": [
+        "My Pokémon are cute, but they’re\n",
+        "not very tough!"
+      ]
+    },
+    {
+      "id": "msg_0723_00118",
+      "en_US": [
+        "Oh?\n",
+        "We won? Seriously?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00119",
+      "en_US": [
+        "It’s OK. I like my Pokémon.\n",
+        "That’s all that matters.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00120",
+      "en_US": [
+        "I’ve been pampering my gang too\n",
+        "much lately. Can they do it?"
+      ]
+    },
+    {
+      "id": "msg_0723_00121",
+      "en_US": [
+        "Ooh, they did it!\n",
+        "I knew I could count on my gang!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00122",
+      "en_US": [
+        "Pampering Pokémon too much is\n",
+        "no good...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00123",
+      "en_US": [
+        "Won’t you join our Pokémon Fan\n",
+        "Club?"
+      ]
+    },
+    {
+      "id": "msg_0723_00124",
+      "en_US": [
+        "There’s all sorts of fun things to\n",
+        "do if you join!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00125",
+      "en_US": [
+        "Join us!\n",
+        "Become a Pokéfan like me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00126",
+      "en_US": "May I take your order, please?"
+    },
+    {
+      "id": "msg_0723_00127",
+      "en_US": [
+        "Ah, a fine choice.\n",
+        "One loss served fresh.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00128",
+      "en_US": [
+        "Ah, an excellent choice.\n",
+        "A win served fresh.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00129",
+      "en_US": [
+        "What I really hoped to become\n",
+        "was a cook."
+      ]
+    },
+    {
+      "id": "msg_0723_00130",
+      "en_US": "I don’t mind this job now, mind you.\r"
+    },
+    {
+      "id": "msg_0723_00131",
+      "en_US": [
+        "I just find it hard talking to\n",
+        "strangers.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00132",
+      "en_US": [
+        "For battles and order taking, speed\n",
+        "is essential!"
+      ]
+    },
+    {
+      "id": "msg_0723_00133",
+      "en_US": [
+        "Like, chop-chop!\n",
+        "You got served.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00134",
+      "en_US": [
+        "Food is like battling.\n",
+        "Serve it while it’s hot!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00135",
+      "en_US": [
+        "My job is about serving others.\n",
+        "But don’t expect me to serve here."
+      ]
+    },
+    {
+      "id": "msg_0723_00136",
+      "en_US": "Mufufu.\r"
+    },
+    {
+      "id": "msg_0723_00137",
+      "en_US": [
+        "Why couldn’t you serve me?\n",
+        "You won’t make friends that way!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00138",
+      "en_US": [
+        "Isn’t this cute?\n",
+        "My uniform."
+      ]
+    },
+    {
+      "id": "msg_0723_00139",
+      "en_US": "It’s my favorite!\r"
+    },
+    {
+      "id": "msg_0723_00140",
+      "en_US": "You messed up my uniform!\r"
+    },
+    {
+      "id": "msg_0723_00141",
+      "en_US": "You’re good, aren’t you?"
+    },
+    {
+      "id": "msg_0723_00142",
+      "en_US": [
+        "Oops.\n",
+        "I’m a little disappointed.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00143",
+      "en_US": "I knew you were a tough Trainer.\r"
+    },
+    {
+      "id": "msg_0723_00144",
+      "en_US": [
+        "I catch and raise all sorts of\n",
+        "Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0723_00145",
+      "en_US": [
+        "See?\n",
+        "I’ve raised them pretty good.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00146",
+      "en_US": [
+        "I need to raise my Pokémon some\n",
+        "more!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00147",
+      "en_US": "I’ll snag you with my net!"
+    },
+    {
+      "id": "msg_0723_00148",
+      "en_US": "It’s in the bag!\r"
+    },
+    {
+      "id": "msg_0723_00149",
+      "en_US": [
+        "Hey!\n",
+        "Don’t run away!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00150",
+      "en_US": "Where can I find a giant HERACROSS?"
+    },
+    {
+      "id": "msg_0723_00151",
+      "en_US": [
+        "I want a huge HERACROSS.\n",
+        "Like, king size!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00152",
+      "en_US": "If only I had a giant HERACROSS...\r"
+    },
+    {
+      "id": "msg_0723_00153",
+      "en_US": "Prepare to lose!"
+    },
+    {
+      "id": "msg_0723_00154",
+      "en_US": "The enemy is mine!\r"
+    },
+    {
+      "id": "msg_0723_00155",
+      "en_US": "I lie shattered...\r"
+    },
+    {
+      "id": "msg_0723_00156",
+      "en_US": "Behold my fearsome ninja technique!"
+    },
+    {
+      "id": "msg_0723_00157",
+      "en_US": [
+        "Hahah!\n",
+        "You saw it!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00158",
+      "en_US": [
+        "You didn’t fall for my fake ninja\n",
+        "boasting!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00159",
+      "en_US": [
+        "I shall become a real ninja when\n",
+        "I grow up!"
+      ]
+    },
+    {
+      "id": "msg_0723_00160",
+      "en_US": "Excellent! Excellent!\r"
+    },
+    {
+      "id": "msg_0723_00161",
+      "en_US": [
+        "So, what’s a real ninja supposed to\n",
+        "do?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00162",
+      "en_US": "Should I torment you?"
+    },
+    {
+      "id": "msg_0723_00163",
+      "en_US": "Yay! Yay!\r"
+    },
+    {
+      "id": "msg_0723_00164",
+      "en_US": [
+        "No!\n",
+        "No tormenting me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00165",
+      "en_US": "My mommy made this outfit for me."
+    },
+    {
+      "id": "msg_0723_00166",
+      "en_US": "Isn’t it cute?\r"
+    },
+    {
+      "id": "msg_0723_00167",
+      "en_US": "My mommy is really good at sewing.\r"
+    },
+    {
+      "id": "msg_0723_00168",
+      "en_US": "Let’s do our best, everyone!"
+    },
+    {
+      "id": "msg_0723_00169",
+      "en_US": "Thanks, everyone!\r"
+    },
+    {
+      "id": "msg_0723_00170",
+      "en_US": "Waaaaah!\r"
+    },
+    {
+      "id": "msg_0723_00171",
+      "en_US": [
+        "Sure, we’re going to battle, but\n",
+        "don’t be over the top about it."
+      ]
+    },
+    {
+      "id": "msg_0723_00172",
+      "en_US": [
+        "Hey, relax, relax.\n",
+        "It’s best to be natural, dig?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00173",
+      "en_US": "You have to loosen up some more.\r"
+    },
+    {
+      "id": "msg_0723_00174",
+      "en_US": [
+        "Fish, fish, fish, that’s what I do!\n",
+        "I’m gonna fish it all up!"
+      ]
+    },
+    {
+      "id": "msg_0723_00175",
+      "en_US": [
+        "Kahahah!\n",
+        "I am at the top of my game!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00176",
+      "en_US": [
+        "Oh, waah!\n",
+        "I let that get away!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00177",
+      "en_US": [
+        "Exploring for relics isn’t all fun\n",
+        "and games!"
+      ]
+    },
+    {
+      "id": "msg_0723_00178",
+      "en_US": [
+        "Your skill level says you probably\n",
+        "won’t make a good Ruin Maniac.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00179",
+      "en_US": "Danger lurks everywhere in ruins!\r"
+    },
+    {
+      "id": "msg_0723_00180",
+      "en_US": [
+        "These mates of mine traveled the\n",
+        "world with me!"
+      ]
+    },
+    {
+      "id": "msg_0723_00181",
+      "en_US": [
+        "What do you say?\n",
+        "Pretty tough, right?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00182",
+      "en_US": [
+        "Maybe it’s time we hit the\n",
+        "road again...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00183",
+      "en_US": [
+        "Hey, there! Check this out!\n",
+        "My rare Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00184",
+      "en_US": [
+        "Not just rare, either.\n",
+        "My Pokémon are tough, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00185",
+      "en_US": [
+        "Aiyah! Hey! Wait!\n",
+        "No! Stop! Don’t touch!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00186",
+      "en_US": [
+        "Now just be patient.\n",
+        "I’ll show you my private collection!"
+      ]
+    },
+    {
+      "id": "msg_0723_00187",
+      "en_US": [
+        "See, see? Weren’t they awesome?\n",
+        "They’re the most super of the uber!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00188",
+      "en_US": [
+        "Awawawah... My...\n",
+        "My Pokémon...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00189",
+      "en_US": [
+        "Look! This is my favorite parasol!\n",
+        "Oh, and my fabulous Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00190",
+      "en_US": "Aren’t they both cute?\r"
+    },
+    {
+      "id": "msg_0723_00191",
+      "en_US": [
+        "I’m only showing you!\n",
+        "You can’t have any!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00192",
+      "en_US": "Have you ever seen a rainbow?"
+    },
+    {
+      "id": "msg_0723_00193",
+      "en_US": [
+        "Have you wondered what lies beyond\n",
+        "a rainbow?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00194",
+      "en_US": [
+        "Seeing a rainbow makes me think good\n",
+        "things are in store.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00195",
+      "en_US": [
+        "If you were the weather, what\n",
+        "would you be now?"
+      ]
+    },
+    {
+      "id": "msg_0723_00196",
+      "en_US": [
+        "Right now, I’m feeling sunny\n",
+        "without a cloud in the sky!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00197",
+      "en_US": "I’m feeling fogbound...\r"
+    },
+    {
+      "id": "msg_0723_00198",
+      "en_US": "I really don’t like weak Trainers!"
+    },
+    {
+      "id": "msg_0723_00199",
+      "en_US": "You don’t inspire much trust...\r"
+    },
+    {
+      "id": "msg_0723_00200",
+      "en_US": [
+        "A Pokémon Trainer should be tough\n",
+        "and bursting with life!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00201",
+      "en_US": [
+        "Lately, I’ve had a lot to\n",
+        "worry about..."
+      ]
+    },
+    {
+      "id": "msg_0723_00202",
+      "en_US": [
+        "Winning makes all my worries\n",
+        "seem trivial!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00203",
+      "en_US": "You just added to my worries...\r"
+    },
+    {
+      "id": "msg_0723_00204",
+      "en_US": [
+        "This may hurt a little bit, but we’ll\n",
+        "be done quick. Hold still!"
+      ]
+    },
+    {
+      "id": "msg_0723_00205",
+      "en_US": "There! Done!\r"
+    },
+    {
+      "id": "msg_0723_00206",
+      "en_US": [
+        "Ooh, no!\n",
+        "That hurts!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00207",
+      "en_US": "Sniff... Sniffle..."
+    },
+    {
+      "id": "msg_0723_00208",
+      "en_US": [
+        "Sniffle... Snuffle...\n",
+        "I think I have a cold...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00209",
+      "en_US": [
+        "Sniff... Sniffle...\n",
+        "My nose is clogging up...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00210",
+      "en_US": "Sniff..."
+    },
+    {
+      "id": "msg_0723_00211",
+      "en_US": "Now what could this aroma be?\r"
+    },
+    {
+      "id": "msg_0723_00212",
+      "en_US": [
+        "Do you have some cologne on?\n",
+        "You smell sort of nice!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00213",
+      "en_US": [
+        "You’re going to lose, but you’ll get\n",
+        "to enjoy a nice aroma!"
+      ]
+    },
+    {
+      "id": "msg_0723_00214",
+      "en_US": [
+        "Kyahaha! That’s what you get for\n",
+        "swooning to my aroma!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00215",
+      "en_US": [
+        "Kiiiih!\n",
+        "I am so angry!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00216",
+      "en_US": [
+        "Let my guitar howl!\n",
+        "Hear me scream!"
+      ]
+    },
+    {
+      "id": "msg_0723_00217",
+      "en_US": "Yeahey!\r"
+    },
+    {
+      "id": "msg_0723_00218",
+      "en_US": "Giyaaaah!\r"
+    },
+    {
+      "id": "msg_0723_00219",
+      "en_US": [
+        "You should channel your feelings into\n",
+        "songs with sincerity, man."
+      ]
+    },
+    {
+      "id": "msg_0723_00220",
+      "en_US": [
+        "The way I feel now?\n",
+        "It’s rock!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00221",
+      "en_US": "The way I feel now is kind of folksy.\r"
+    },
+    {
+      "id": "msg_0723_00222",
+      "en_US": [
+        "Now hear me!\n",
+        "The Bird Keeper’s credo number one!"
+      ]
+    },
+    {
+      "id": "msg_0723_00223",
+      "en_US": "Soar high on a win!\r"
+    },
+    {
+      "id": "msg_0723_00224",
+      "en_US": "Rest your wings on a loss!\r"
+    },
+    {
+      "id": "msg_0723_00225",
+      "en_US": "Let’s both do our best!"
+    },
+    {
+      "id": "msg_0723_00226",
+      "en_US": "Yup, we both did the best we could!\r"
+    },
+    {
+      "id": "msg_0723_00227",
+      "en_US": "Good going!\r"
+    },
+    {
+      "id": "msg_0723_00228",
+      "en_US": [
+        "Fly, fly, fly!\n",
+        "We’re going to rule this battle!"
+      ]
+    },
+    {
+      "id": "msg_0723_00229",
+      "en_US": "Zoom!\r"
+    },
+    {
+      "id": "msg_0723_00230",
+      "en_US": "We’re gonna crash!\r"
+    },
+    {
+      "id": "msg_0723_00231",
+      "en_US": [
+        "I’m the Sailor among Sailors!\n",
+        "I was born on the high seas!"
+      ]
+    },
+    {
+      "id": "msg_0723_00232",
+      "en_US": [
+        "The waves rocked me to sleep!\n",
+        "The sea was my mother!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00233",
+      "en_US": [
+        "Urp... Gweh... So, when I get up on\n",
+        "land, I get no-motion sickness...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00234",
+      "en_US": "I love the sea after all..."
+    },
+    {
+      "id": "msg_0723_00235",
+      "en_US": [
+        "Oh... I hear them...\n",
+        "I hear the sound of waves...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00236",
+      "en_US": [
+        "I want to become a big man.\n",
+        "Big like the sea big.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00237",
+      "en_US": "Yahoo!"
+    },
+    {
+      "id": "msg_0723_00238",
+      "en_US": [
+        "Come on!\n",
+        "You holler too!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00239",
+      "en_US": [
+        "Gweff! Hack! Hack!\n",
+        "Hollering choked me up!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00240",
+      "en_US": [
+        "You should aspire to the Hiker’s\n",
+        "way of life!"
+      ]
+    },
+    {
+      "id": "msg_0723_00241",
+      "en_US": [
+        "You see?\n",
+        "You love my lifestyle, don’t you?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00242",
+      "en_US": [
+        "Now, come on now!\n",
+        "You should look up to the way I live!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00243",
+      "en_US": "My Pokémon and I are Idols!"
+    },
+    {
+      "id": "msg_0723_00244",
+      "en_US": [
+        "Say what you will!\n",
+        "We’re Idols!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00245",
+      "en_US": [
+        "We have you beat when it comes down\n",
+        "to popularity...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00246",
+      "en_US": [
+        "Watch me!\n",
+        "All eyes on me!"
+      ]
+    },
+    {
+      "id": "msg_0723_00247",
+      "en_US": [
+        "Ooh...\n",
+        "This is what I live for...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00248",
+      "en_US": [
+        "I became an Idol because I wanted\n",
+        "everyone to see me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00249",
+      "en_US": [
+        "I’m too into battling...\n",
+        "They might fire me as an Idol..."
+      ]
+    },
+    {
+      "id": "msg_0723_00250",
+      "en_US": "Battling is too much fun!\r"
+    },
+    {
+      "id": "msg_0723_00251",
+      "en_US": [
+        "I can’t help myself.\n",
+        "No one can keep me from battling.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00252",
+      "en_US": [
+        "I run a marathon every morning!\n",
+        "It’s great!"
+      ]
+    },
+    {
+      "id": "msg_0723_00253",
+      "en_US": [
+        "My buff physique makes for\n",
+        "easy wins!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00254",
+      "en_US": [
+        "So I lost!\n",
+        "I can still run great marathons!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00255",
+      "en_US": [
+        "I’ll run on the spot while battling\n",
+        "for the good of my health."
+      ]
+    },
+    {
+      "id": "msg_0723_00256",
+      "en_US": "Let’s hear it for good health!\r"
+    },
+    {
+      "id": "msg_0723_00257",
+      "en_US": [
+        "Gasp!\n",
+        "My ankle! I rolled my ankle!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00258",
+      "en_US": [
+        "Out of the way!\n",
+        "I’ve got deliveries to make!"
+      ]
+    },
+    {
+      "id": "msg_0723_00259",
+      "en_US": [
+        "What? You want me to deliver you\n",
+        "somewhere, too?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00260",
+      "en_US": [
+        "All the delivering I do every day...\n",
+        "I’ve got deep muscle pain!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00261",
+      "en_US": [
+        "It was me who put up the buildings\n",
+        "around these parts."
+      ]
+    },
+    {
+      "id": "msg_0723_00262",
+      "en_US": [
+        "So, what do you think?\n",
+        "Cool stuff, huh?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00263",
+      "en_US": [
+        "My dream is to make a building taller\n",
+        "than a mountain!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00264",
+      "en_US": [
+        "Smell that? That’s the smell of hay\n",
+        "clinging to my body."
+      ]
+    },
+    {
+      "id": "msg_0723_00265",
+      "en_US": "Whoa!\r"
+    },
+    {
+      "id": "msg_0723_00266",
+      "en_US": [
+        "This smell I have is the sweet scent\n",
+        "of hay that Pokémon surely love.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00267",
+      "en_US": [
+        "All right, take a run at me!\n",
+        "My barrel chest can take it!"
+      ]
+    },
+    {
+      "id": "msg_0723_00268",
+      "en_US": [
+        "What? That’s all you’ve got?\n",
+        "You can take a harder run at me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00269",
+      "en_US": [
+        "Ooh... Ow... That hurt... It’s like\n",
+        "you broke my barrel chest...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00270",
+      "en_US": [
+        "I’m not getting any younger.\n",
+        "I can’t overexert myself."
+      ]
+    },
+    {
+      "id": "msg_0723_00271",
+      "en_US": [
+        "What I lack in youth, I make up for\n",
+        "in experience.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00272",
+      "en_US": [
+        "Oh, you’re good and young.\n",
+        "There’s a sparkle about you.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00273",
+      "en_US": [
+        "Hey! You there, Trainer!\n",
+        "You and me, we’re battling!"
+      ]
+    },
+    {
+      "id": "msg_0723_00274",
+      "en_US": "Owned!\r"
+    },
+    {
+      "id": "msg_0723_00275",
+      "en_US": "Unbelievable!\r"
+    },
+    {
+      "id": "msg_0723_00276",
+      "en_US": [
+        "These here are my Pokémon.\n",
+        "I raised them with my ma and pa."
+      ]
+    },
+    {
+      "id": "msg_0723_00277",
+      "en_US": [
+        "Sure right kind of tough, aren’t\n",
+        "they?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00278",
+      "en_US": [
+        "Well, I’ll be!\n",
+        "We lost that one!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00279",
+      "en_US": [
+        "I’m going to do my level best.\n",
+        "You’d better keep up!"
+      ]
+    },
+    {
+      "id": "msg_0723_00280",
+      "en_US": "Whew! We sure did our best!\r"
+    },
+    {
+      "id": "msg_0723_00281",
+      "en_US": "Yup! We tried hard, y’all!\r"
+    },
+    {
+      "id": "msg_0723_00282",
+      "en_US": [
+        "OK, everyone!\n",
+        "Big smiles!"
+      ]
+    },
+    {
+      "id": "msg_0723_00283",
+      "en_US": [
+        "Big smiles!\n",
+        "Come on!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00284",
+      "en_US": [
+        "That’s a great smile! Your victory\n",
+        "pose is picture perfect, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00285",
+      "en_US": "Zoom in on you!"
+    },
+    {
+      "id": "msg_0723_00286",
+      "en_US": "Spot-on focus!\r"
+    },
+    {
+      "id": "msg_0723_00287",
+      "en_US": "Zoom out, fade...\r"
+    },
+    {
+      "id": "msg_0723_00288",
+      "en_US": "This camera is pretty hefty, actually."
+    },
+    {
+      "id": "msg_0723_00289",
+      "en_US": [
+        "My shoulder is always rock stiff...\n",
+        "My camera’s toughened me up.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00290",
+      "en_US": [
+        "Oof...\n",
+        "I’m feeling groggy...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00291",
+      "en_US": [
+        "Hello there, Trainer!\n",
+        "Please battle with me!"
+      ]
+    },
+    {
+      "id": "msg_0723_00292",
+      "en_US": "Thanks for your help!\r"
+    },
+    {
+      "id": "msg_0723_00293",
+      "en_US": "I appreciate the lesson!\r"
+    },
+    {
+      "id": "msg_0723_00294",
+      "en_US": [
+        "I’ll do anything for a good\n",
+        "news story!"
+      ]
+    },
+    {
+      "id": "msg_0723_00295",
+      "en_US": "I’m relentless about battling, too!\r"
+    },
+    {
+      "id": "msg_0723_00296",
+      "en_US": [
+        "Stop! Please, stop!\n",
+        "You’ll break my mic!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00297",
+      "en_US": [
+        "So, the question is, what is your\n",
+        "opinion of me?"
+      ]
+    },
+    {
+      "id": "msg_0723_00298",
+      "en_US": [
+        "“What a tough Trainer!” Is that\n",
+        "what you’re thinking?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00299",
+      "en_US": [
+        "I’m doing a live report on the topic\n",
+        "of myself!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00300",
+      "en_US": [
+        "Come on!\n",
+        "We’ll run! Together!"
+      ]
+    },
+    {
+      "id": "msg_0723_00301",
+      "en_US": "Gooooooooaaaaal!\r"
+    },
+    {
+      "id": "msg_0723_00302",
+      "en_US": [
+        "Wait!\n",
+        "Don’t leave me behind!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00303",
+      "en_US": [
+        "Gear change!\n",
+        "We’re attacking at top speed!"
+      ]
+    },
+    {
+      "id": "msg_0723_00304",
+      "en_US": "Vrooooom!\r"
+    },
+    {
+      "id": "msg_0723_00305",
+      "en_US": "Kaboom!\r"
+    },
+    {
+      "id": "msg_0723_00306",
+      "en_US": [
+        "Can you keep up with my Pokémon at\n",
+        "a full run?"
+      ]
+    },
+    {
+      "id": "msg_0723_00307",
+      "en_US": "Too slow!\r"
+    },
+    {
+      "id": "msg_0723_00308",
+      "en_US": [
+        "I’m taking it to a zone beyond\n",
+        "speed!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00309",
+      "en_US": [
+        "I’d rather cycle casually than go\n",
+        "full speed."
+      ]
+    },
+    {
+      "id": "msg_0723_00310",
+      "en_US": "Let’s take it easy.\r"
+    },
+    {
+      "id": "msg_0723_00311",
+      "en_US": [
+        "You ought to take things more\n",
+        "casually...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00312",
+      "en_US": [
+        "I only know how to go at full power,\n",
+        "even against a younger opponent!"
+      ]
+    },
+    {
+      "id": "msg_0723_00313",
+      "en_US": "Full power is how I win!\r"
+    },
+    {
+      "id": "msg_0723_00314",
+      "en_US": [
+        "Please! Let me call you Master\n",
+        "Trainer from now on!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00315",
+      "en_US": [
+        "My spirit burns, my fists are steel,\n",
+        "and my sweat cascades!"
+      ]
+    },
+    {
+      "id": "msg_0723_00316",
+      "en_US": "Hrrumph!\r"
+    },
+    {
+      "id": "msg_0723_00317",
+      "en_US": [
+        "I sweated more. That makes\n",
+        "me the victor!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00318",
+      "en_US": "En garde!"
+    },
+    {
+      "id": "msg_0723_00319",
+      "en_US": "I’m still ready for more.\r"
+    },
+    {
+      "id": "msg_0723_00320",
+      "en_US": "Urgh... Don’t you forget this!\r"
+    },
+    {
+      "id": "msg_0723_00321",
+      "en_US": "Hey! Come on!"
+    },
+    {
+      "id": "msg_0723_00322",
+      "en_US": "Nice fight!\r"
+    },
+    {
+      "id": "msg_0723_00323",
+      "en_US": "You’re not bad, you.\r"
+    },
+    {
+      "id": "msg_0723_00324",
+      "en_US": [
+        "The ultimate of my techniques!\n",
+        "Experience it in its entirety!"
+      ]
+    },
+    {
+      "id": "msg_0723_00325",
+      "en_US": [
+        "I am the greatest!\n",
+        "Gwahahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00326",
+      "en_US": [
+        "I’ve fallen in defeat?\n",
+        "Gw-gwaaah!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00327",
+      "en_US": [
+        "Hi! Little kid!\n",
+        "A battle, please!"
+      ]
+    },
+    {
+      "id": "msg_0723_00328",
+      "en_US": [
+        "Little kid!\n",
+        "Thank you very kindly!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00329",
+      "en_US": [
+        "Little kid!\n",
+        "I’m really upset over this!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00330",
+      "en_US": [
+        "I, um... I’ve never actually learned\n",
+        "how to do karate."
+      ]
+    },
+    {
+      "id": "msg_0723_00331",
+      "en_US": [
+        "You’re kidding?!\n",
+        "I’m naturally talented?!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00332",
+      "en_US": [
+        "A Black Belt is cool, huh?\n",
+        "So I just dress up like one.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00333",
+      "en_US": [
+        "It’s been five years since I took to\n",
+        "the mountains. My hair’s grown wild!"
+      ]
+    },
+    {
+      "id": "msg_0723_00334",
+      "en_US": [
+        "I bathe every day!\n",
+        "How dare you?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00335",
+      "en_US": "Another five years...?\r"
+    },
+    {
+      "id": "msg_0723_00336",
+      "en_US": [
+        "Did I catch you smirking at my\n",
+        "eight-pack abs?"
+      ]
+    },
+    {
+      "id": "msg_0723_00337",
+      "en_US": [
+        "You don’t appreciate the beauty of\n",
+        "pure muscles!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00338",
+      "en_US": "Musculature is the ultimate beauty!\r"
+    },
+    {
+      "id": "msg_0723_00339",
+      "en_US": [
+        "In love and in battles, I’ve never\n",
+        "tasted defeat!"
+      ]
+    },
+    {
+      "id": "msg_0723_00340",
+      "en_US": "See? We won again!\r"
+    },
+    {
+      "id": "msg_0723_00341",
+      "en_US": [
+        "So, I lost. I don’t care!\n",
+        "I have a date soon, so I don’t care!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00342",
+      "en_US": [
+        "This is it! Over the top!\n",
+        "Everyone charge!"
+      ]
+    },
+    {
+      "id": "msg_0723_00343",
+      "en_US": [
+        "The enemy Trainer has fallen!\n",
+        "Victory is ours!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00344",
+      "en_US": [
+        "Retreat!\n",
+        "Sound the retreat!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00345",
+      "en_US": [
+        "My career as a Trainer dates back\n",
+        "75 years. You think you can win?"
+      ]
+    },
+    {
+      "id": "msg_0723_00346",
+      "en_US": "Here’s a toast to my history!\r"
+    },
+    {
+      "id": "msg_0723_00347",
+      "en_US": "My history of glory...\r"
+    },
+    {
+      "id": "msg_0723_00348",
+      "en_US": "Are you prepared?"
+    },
+    {
+      "id": "msg_0723_00349",
+      "en_US": "Ah, a superb battle that was.\r"
+    },
+    {
+      "id": "msg_0723_00350",
+      "en_US": "I tip my hat to you.\r"
+    },
+    {
+      "id": "msg_0723_00351",
+      "en_US": [
+        "Oh, my...\n",
+        "Such an adorable Trainer..."
+      ]
+    },
+    {
+      "id": "msg_0723_00352",
+      "en_US": [
+        "Are we disappointed?\n",
+        "How adorable...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00353",
+      "en_US": [
+        "I see...\n",
+        "You’re more than simply adorable.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00354",
+      "en_US": "Eee-yeah!"
+    },
+    {
+      "id": "msg_0723_00355",
+      "en_US": [
+        "A stirring shout, wouldn’t you say?\n",
+        "I find it quite bracing."
+      ]
+    },
+    {
+      "id": "msg_0723_00356",
+      "en_US": [
+        "Gasp... Gasp...\n",
+        "Oh, dear... I’m worn out.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00357",
+      "en_US": [
+        "Being rich doesn’t shield me from\n",
+        "having worries..."
+      ]
+    },
+    {
+      "id": "msg_0723_00358",
+      "en_US": [
+        "Of course, being well off is much\n",
+        "preferable to poverty, but...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00359",
+      "en_US": [
+        "Lavish parties day after day...\n",
+        "It gets rather tiresome, I must say.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00360",
+      "en_US": [
+        "Come to know defeat...\n",
+        "Learn what it means to battle..."
+      ]
+    },
+    {
+      "id": "msg_0723_00361",
+      "en_US": [
+        "I see you becoming ever more\n",
+        "powerful...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00362",
+      "en_US": "The defeated merely slink away...\r"
+    },
+    {
+      "id": "msg_0723_00363",
+      "en_US": "Look into my eyes!"
+    },
+    {
+      "id": "msg_0723_00364",
+      "en_US": "You fell under my spell!\r"
+    },
+    {
+      "id": "msg_0723_00365",
+      "en_US": [
+        "My power of suggestion failed to\n",
+        "charm you!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00366",
+      "en_US": "..."
+    },
+    {
+      "id": "msg_0723_00367",
+      "en_US": "...Did it.\r"
+    },
+    {
+      "id": "msg_0723_00368",
+      "en_US": "I focused my mind in silence...\r"
+    },
+    {
+      "id": "msg_0723_00369",
+      "en_US": [
+        "My powers!\n",
+        "There’s no trickery about them!"
+      ]
+    },
+    {
+      "id": "msg_0723_00370",
+      "en_US": "This is psychic power!\r"
+    },
+    {
+      "id": "msg_0723_00371",
+      "en_US": "There really is no trickery...\r"
+    },
+    {
+      "id": "msg_0723_00372",
+      "en_US": "Take it all!"
+    },
+    {
+      "id": "msg_0723_00373",
+      "en_US": "Ahaha!\r"
+    },
+    {
+      "id": "msg_0723_00374",
+      "en_US": "Gah!\r"
+    },
+    {
+      "id": "msg_0723_00375",
+      "en_US": [
+        "Close your eyes and count...\n",
+        "Slow... Slower..."
+      ]
+    },
+    {
+      "id": "msg_0723_00376",
+      "en_US": [
+        "That was the countdown to my\n",
+        "victory!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00377",
+      "en_US": [
+        "Tch...\n",
+        "I thought I could lull you to sleep.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00378",
+      "en_US": "I live among Pokémon."
+    },
+    {
+      "id": "msg_0723_00379",
+      "en_US": [
+        "I’ve never been much of a battler,\n",
+        "but...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00380",
+      "en_US": "I’m just not much of a battler.\r"
+    },
+    {
+      "id": "msg_0723_00381",
+      "en_US": [
+        "...They’re Pokémon I’ve raised with\n",
+        "my father..."
+      ]
+    },
+    {
+      "id": "msg_0723_00382",
+      "en_US": [
+        "...Dad, are you seeing this?\n",
+        "I did it...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00383",
+      "en_US": [
+        "Dad, I can’t...\n",
+        "I need to raise them some more...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00384",
+      "en_US": [
+        "Raising Pokémon takes a lot of\n",
+        "honest effort!"
+      ]
+    },
+    {
+      "id": "msg_0723_00385",
+      "en_US": [
+        "Yahaha! I’ve had a hands-on time\n",
+        "raising those Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00386",
+      "en_US": [
+        "Urgwah!\n",
+        "Look what you’ve done to my Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00387",
+      "en_US": [
+        "Will you have a look at the Pokémon\n",
+        "I’ve raised?"
+      ]
+    },
+    {
+      "id": "msg_0723_00388",
+      "en_US": [
+        "Well?\n",
+        "Cute, aren’t they?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00389",
+      "en_US": "Cut a girl some slack!\r"
+    },
+    {
+      "id": "msg_0723_00390",
+      "en_US": "I specialize in raising cute Pokémon!"
+    },
+    {
+      "id": "msg_0723_00391",
+      "en_US": "Cute, yet strong! Right?\r"
+    },
+    {
+      "id": "msg_0723_00392",
+      "en_US": "Oh, but they’re so cute!\r"
+    },
+    {
+      "id": "msg_0723_00393",
+      "en_US": [
+        "Nice to meet you!\n",
+        "Underestimate me at your peril!"
+      ]
+    },
+    {
+      "id": "msg_0723_00394",
+      "en_US": "Told you!\r"
+    },
+    {
+      "id": "msg_0723_00395",
+      "en_US": "I guess I underestimated you...\r"
+    },
+    {
+      "id": "msg_0723_00396",
+      "en_US": [
+        "Hmhm... I must say I like the look\n",
+        "in your eyes."
+      ]
+    },
+    {
+      "id": "msg_0723_00397",
+      "en_US": [
+        "Your eyes remain unclouded in defeat.\n",
+        "Like jewels they are!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00398",
+      "en_US": [
+        "Your eyes shine brighter than any\n",
+        "big gemstone I keep at home!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00399",
+      "en_US": [
+        "When I was your age, I was quite\n",
+        "the daredevil, I must say."
+      ]
+    },
+    {
+      "id": "msg_0723_00400",
+      "en_US": [
+        "Seeing you reminds me of my own\n",
+        "wild youth.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00401",
+      "en_US": [
+        "I daresay, you’re quite the\n",
+        "daredevil yourself!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00402",
+      "en_US": [
+        "If you want to run home to mommy,\n",
+        "here’s your chance, punk!"
+      ]
+    },
+    {
+      "id": "msg_0723_00403",
+      "en_US": "Geheheh!\r"
+    },
+    {
+      "id": "msg_0723_00404",
+      "en_US": [
+        "Waah!\n",
+        "I want my mommy!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00405",
+      "en_US": [
+        "Battles achieve nothing!\n",
+        "Take my hand! It’s about love!"
+      ]
+    },
+    {
+      "id": "msg_0723_00406",
+      "en_US": [
+        "I didn’t mean to battle--but take my\n",
+        "hand! It’s about love!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00407",
+      "en_US": [
+        "Battling is futile!\n",
+        "Take my hand! It’s about love!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00408",
+      "en_US": [
+        "I dropped my glasses.\n",
+        "I can’t see straight."
+      ]
+    },
+    {
+      "id": "msg_0723_00409",
+      "en_US": [
+        "I guess I won.\n",
+        "I can’t see enough to tell.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00410",
+      "en_US": [
+        "I guess I lost.\n",
+        "I can’t see enough to tell.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00411",
+      "en_US": [
+        "Steadily and surely.\n",
+        "You build from the little things up."
+      ]
+    },
+    {
+      "id": "msg_0723_00412",
+      "en_US": "Steadily and surely is how I won!\r"
+    },
+    {
+      "id": "msg_0723_00413",
+      "en_US": [
+        "But I did things steadily and\n",
+        "surely...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00414",
+      "en_US": "Hehehehe..."
+    },
+    {
+      "id": "msg_0723_00415",
+      "en_US": "Gehahahaha!\r"
+    },
+    {
+      "id": "msg_0723_00416",
+      "en_US": "Sob, sob, sob...\r"
+    },
+    {
+      "id": "msg_0723_00417",
+      "en_US": [
+        "Everybody gather around for my\n",
+        "stupendicular Pokémon show!"
+      ]
+    },
+    {
+      "id": "msg_0723_00418",
+      "en_US": "Wasn’t that amusing?\r"
+    },
+    {
+      "id": "msg_0723_00419",
+      "en_US": [
+        "Nrrgh...\n",
+        "I am not amused.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00420",
+      "en_US": "I shall train with you."
+    },
+    {
+      "id": "msg_0723_00421",
+      "en_US": [
+        "Show some spine!\n",
+        "On your feet!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00422",
+      "en_US": [
+        "Fine!\n",
+        "That will do!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00423",
+      "en_US": [
+        "Why get all intellectual about things?\n",
+        "If it’s fun, why question it?"
+      ]
+    },
+    {
+      "id": "msg_0723_00424",
+      "en_US": [
+        "See, I can still win.\n",
+        "I don’t see a problem!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00425",
+      "en_US": [
+        "So I lost!\n",
+        "If it’s fun, it’s cool!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00426",
+      "en_US": [
+        "I expect you to be good...\n",
+        "Don’t you disappoint me!"
+      ]
+    },
+    {
+      "id": "msg_0723_00427",
+      "en_US": "My hope was misplaced...\r"
+    },
+    {
+      "id": "msg_0723_00428",
+      "en_US": "You’ve got good things.\r"
+    },
+    {
+      "id": "msg_0723_00429",
+      "en_US": [
+        "My papa and mama are high-skill\n",
+        "Trainers, too."
+      ]
+    },
+    {
+      "id": "msg_0723_00430",
+      "en_US": "It’s in my lineage!\r"
+    },
+    {
+      "id": "msg_0723_00431",
+      "en_US": [
+        "Papa, Mama!\n",
+        "I’m so sorry!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00432",
+      "en_US": [
+        "I go all out in battle, no matter\n",
+        "what."
+      ]
+    },
+    {
+      "id": "msg_0723_00433",
+      "en_US": "The inevitable conclusion!\r"
+    },
+    {
+      "id": "msg_0723_00434",
+      "en_US": "I concede!\r"
+    },
+    {
+      "id": "msg_0723_00435",
+      "en_US": [
+        "This is it! The biggest battle in my\n",
+        "life! I cannot afford to lose!"
+      ]
+    },
+    {
+      "id": "msg_0723_00436",
+      "en_US": "Woot, yeah!\r"
+    },
+    {
+      "id": "msg_0723_00437",
+      "en_US": "This sets me back to being a Lass...\r"
+    },
+    {
+      "id": "msg_0723_00438",
+      "en_US": [
+        "My love of nature and Pokémon made\n",
+        "a Ranger out of me!"
+      ]
+    },
+    {
+      "id": "msg_0723_00439",
+      "en_US": "I love to battle, too!\r"
+    },
+    {
+      "id": "msg_0723_00440",
+      "en_US": [
+        "Ooh...\n",
+        "I still love to battle, too.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00441",
+      "en_US": [
+        "Hi! Have you ever considered a\n",
+        "career as a Ranger?"
+      ]
+    },
+    {
+      "id": "msg_0723_00442",
+      "en_US": [
+        "Well, you might not make it at your\n",
+        "skill level.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00443",
+      "en_US": [
+        "Yes, you’ve got the mettle.\n",
+        "Being a Ranger is a lot of fun!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00444",
+      "en_US": [
+        "Win or lose, a battle happens only\n",
+        "once!"
+      ]
+    },
+    {
+      "id": "msg_0723_00445",
+      "en_US": "Do you have any regrets?\r"
+    },
+    {
+      "id": "msg_0723_00446",
+      "en_US": "I have no regrets!\r"
+    },
+    {
+      "id": "msg_0723_00447",
+      "en_US": [
+        "It’s my sworn duty to protect nature\n",
+        "and the Pokémon in it."
+      ]
+    },
+    {
+      "id": "msg_0723_00448",
+      "en_US": [
+        "It’s a challenging life, but there’s\n",
+        "a lot to enjoy every day.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00449",
+      "en_US": [
+        "It’s a rewarding career.\n",
+        "How does it sound to you?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00450",
+      "en_US": [
+        "My darling Pokémon will lay a licking\n",
+        "on you!"
+      ]
+    },
+    {
+      "id": "msg_0723_00451",
+      "en_US": "Well? Satisfied?\r"
+    },
+    {
+      "id": "msg_0723_00452",
+      "en_US": [
+        "Well, aren’t you tough?\n",
+        "I’m a little stunned!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00453",
+      "en_US": [
+        "I didn’t sleep while trying to come\n",
+        "up with this new strategy!"
+      ]
+    },
+    {
+      "id": "msg_0723_00454",
+      "en_US": "My strategy worked!\r"
+    },
+    {
+      "id": "msg_0723_00455",
+      "en_US": [
+        "Oh, but...\n",
+        "I really needed to sleep tonight...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00456",
+      "en_US": [
+        "The credo of the Dragon Tamer!\n",
+        "Number one!"
+      ]
+    },
+    {
+      "id": "msg_0723_00457",
+      "en_US": [
+        "In victory, roar!\n",
+        "Roar with your dragon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00458",
+      "en_US": [
+        "Even in defeat, roar!\n",
+        "Roar with your dragon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00459",
+      "en_US": "Mighty! Like a dragon!"
+    },
+    {
+      "id": "msg_0723_00460",
+      "en_US": "Strong, I am!\r"
+    },
+    {
+      "id": "msg_0723_00461",
+      "en_US": [
+        "...Urf...\n",
+        "I wanted to be strong...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00462",
+      "en_US": [
+        "See it! Feel it!\n",
+        "The ultimate power... Probably!"
+      ]
+    },
+    {
+      "id": "msg_0723_00463",
+      "en_US": [
+        "There is no defeat for me, the\n",
+        "ultimate... Probably!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00464",
+      "en_US": [
+        "The title of the ultimate probably!\n",
+        "I confer it on you!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00465",
+      "en_US": [
+        "Oh, wow!\n",
+        "Rare Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00466",
+      "en_US": [
+        "Hihihi... That’s what you get for\n",
+        "letting down your guard.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00467",
+      "en_US": [
+        "Tch.\n",
+        "Couldn’t fool you.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00468",
+      "en_US": [
+        "I can’t stand getting cold, but I’m\n",
+        "quite good."
+      ]
+    },
+    {
+      "id": "msg_0723_00469",
+      "en_US": [
+        "Ch-chatter...\n",
+        "Wa-wahaha. I won, I won!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00470",
+      "en_US": [
+        "Ch-chatter... Urr...\n",
+        "I’m getting sleepy...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00471",
+      "en_US": "My ace Pokémon are on the go!"
+    },
+    {
+      "id": "msg_0723_00472",
+      "en_US": [
+        "You surprise me!\n",
+        "Not too shabby!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00473",
+      "en_US": "I like the sense you show!\r"
+    },
+    {
+      "id": "msg_0723_00474",
+      "en_US": [
+        "Snow is wonderful!\n",
+        "Everything becomes white."
+      ]
+    },
+    {
+      "id": "msg_0723_00475",
+      "en_US": "Snow is so romantic!\r"
+    },
+    {
+      "id": "msg_0723_00476",
+      "en_US": "I’m whiting out...\r"
+    },
+    {
+      "id": "msg_0723_00477",
+      "en_US": [
+        "Don’t you think this coat is cute?\n",
+        "It limits my movements, though."
+      ]
+    },
+    {
+      "id": "msg_0723_00478",
+      "en_US": "It’s toasty warm.\r"
+    },
+    {
+      "id": "msg_0723_00479",
+      "en_US": "I feel snowed under...\r"
+    },
+    {
+      "id": "msg_0723_00480",
+      "en_US": [
+        "I’m the one! Number one out of all\n",
+        "the kids in shorts!"
+      ]
+    },
+    {
+      "id": "msg_0723_00481",
+      "en_US": [
+        "See? That’s what being number one\n",
+        "is about!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00482",
+      "en_US": [
+        "Darn...\n",
+        "I’m number one...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00483",
+      "en_US": [
+        "I’m the one! The only one true one\n",
+        "among shorts-wearing kids!"
+      ]
+    },
+    {
+      "id": "msg_0723_00484",
+      "en_US": [
+        "See? That’s what being the only one\n",
+        "is about!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00485",
+      "en_US": [
+        "Ack...\n",
+        "I’m the only one...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00486",
+      "en_US": [
+        "Um...\n",
+        "I’m pleased to meet you."
+      ]
+    },
+    {
+      "id": "msg_0723_00487",
+      "en_US": [
+        "Awawa... We won?\n",
+        "Um? S-sorry.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00488",
+      "en_US": [
+        "Er, um...\n",
+        "Th-thank you...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00489",
+      "en_US": "Here goes!"
+    },
+    {
+      "id": "msg_0723_00490",
+      "en_US": "Bravo!\r"
+    },
+    {
+      "id": "msg_0723_00491",
+      "en_US": "Yelp!\r"
+    },
+    {
+      "id": "msg_0723_00492",
+      "en_US": "You learn, too!"
+    },
+    {
+      "id": "msg_0723_00493",
+      "en_US": "The harsh realities of battling!\r"
+    },
+    {
+      "id": "msg_0723_00494",
+      "en_US": "The joy of victory!\r"
+    },
+    {
+      "id": "msg_0723_00495",
+      "en_US": "Allow me to study you."
+    },
+    {
+      "id": "msg_0723_00496",
+      "en_US": "You offered me nothing new to learn.\r"
+    },
+    {
+      "id": "msg_0723_00497",
+      "en_US": [
+        "I get it now. In that situation,\n",
+        "I should have used that move.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00498",
+      "en_US": [
+        "My teacher gave me advice on\n",
+        "battling."
+      ]
+    },
+    {
+      "id": "msg_0723_00499",
+      "en_US": [
+        "My teacher was right!\n",
+        "That was just so easy!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00500",
+      "en_US": [
+        "Aww, my teacher was wrong!\n",
+        "None of it worked!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00501",
+      "en_US": [
+        "Why are we battling?\n",
+        "I don’t get it."
+      ]
+    },
+    {
+      "id": "msg_0723_00502",
+      "en_US": "Why? I don’t understand.\r"
+    },
+    {
+      "id": "msg_0723_00503",
+      "en_US": [
+        "Why did you win?\n",
+        "What happens now?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00504",
+      "en_US": [
+        "Ultimately, Pokémon is just another\n",
+        "brand. You know who’ll win, right?"
+      ]
+    },
+    {
+      "id": "msg_0723_00505",
+      "en_US": [
+        "I’m not interested in what was an\n",
+        "inevitable result.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00506",
+      "en_US": [
+        "But how... My...\n",
+        "The Pokémon I’ve raised...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00507",
+      "en_US": [
+        "There isn’t anything that I can’t\n",
+        "buy. Money can buy battles!"
+      ]
+    },
+    {
+      "id": "msg_0723_00508",
+      "en_US": [
+        "There’s nothing that money can’t\n",
+        "buy.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00509",
+      "en_US": [
+        "I’ll give you my allowance if you’ll\n",
+        "let me win.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00510",
+      "en_US": [
+        "You know, I’m really not cut out for\n",
+        "doing this socialite-lady thing..."
+      ]
+    },
+    {
+      "id": "msg_0723_00511",
+      "en_US": "Gahahahah!\r"
+    },
+    {
+      "id": "msg_0723_00512",
+      "en_US": "You swine! Now I’m steamed!\r"
+    },
+    {
+      "id": "msg_0723_00513",
+      "en_US": "I’ll be done with you lickety-split!"
+    },
+    {
+      "id": "msg_0723_00514",
+      "en_US": "Lickety-split is how you were done!\r"
+    },
+    {
+      "id": "msg_0723_00515",
+      "en_US": [
+        "Lickety-split is how I’ll\n",
+        "excuse myself!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00516",
+      "en_US": [
+        "Crunch-crunch...\n",
+        "Crunch-crunch..."
+      ]
+    },
+    {
+      "id": "msg_0723_00517",
+      "en_US": "I love these crunchy Lava Cookies...\r"
+    },
+    {
+      "id": "msg_0723_00518",
+      "en_US": [
+        "What am I standing on?\n",
+        "Busted Poké Balls?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00519",
+      "en_US": [
+        "The way of the Bug Catcher!\n",
+        "Bear witness to it!"
+      ]
+    },
+    {
+      "id": "msg_0723_00520",
+      "en_US": "This is the way of the Bug Catcher!\r"
+    },
+    {
+      "id": "msg_0723_00521",
+      "en_US": "All hail Bug Catchers!\r"
+    },
+    {
+      "id": "msg_0723_00522",
+      "en_US": [
+        "Feast your eyes on secret techniques\n",
+        "of the ancients!"
+      ]
+    },
+    {
+      "id": "msg_0723_00523",
+      "en_US": [
+        "See? What did you think?\n",
+        "Are you awestruck?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00524",
+      "en_US": [
+        "That’s my cue to disappear in a puff\n",
+        "of smoke.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00525",
+      "en_US": "I see it!"
+    },
+    {
+      "id": "msg_0723_00526",
+      "en_US": "Think not ill of me...\r"
+    },
+    {
+      "id": "msg_0723_00527",
+      "en_US": "Gyoeeeh!\r"
+    },
+    {
+      "id": "msg_0723_00528",
+      "en_US": "Pikaaa!"
+    },
+    {
+      "id": "msg_0723_00529",
+      "en_US": "Pikapikaaah!\r"
+    },
+    {
+      "id": "msg_0723_00530",
+      "en_US": "Pi pika...\r"
+    },
+    {
+      "id": "msg_0723_00531",
+      "en_US": [
+        "A battle, you say?\n",
+        "I’m never losing to you!"
+      ]
+    },
+    {
+      "id": "msg_0723_00532",
+      "en_US": [
+        "Yeehah! Yippee!\n",
+        "I won, I won!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00533",
+      "en_US": [
+        "Urk...\n",
+        "We lost...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00534",
+      "en_US": "It’s my job to be cute!"
+    },
+    {
+      "id": "msg_0723_00535",
+      "en_US": "Just being cute is money in the bank!\r"
+    },
+    {
+      "id": "msg_0723_00536",
+      "en_US": [
+        "Ugagaah!\n",
+        "You rotten thief!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00537",
+      "en_US": [
+        "You can shake hands with me!\n",
+        "It would be quite the honor for you!"
+      ]
+    },
+    {
+      "id": "msg_0723_00538",
+      "en_US": [
+        "If you’d won, I would have even\n",
+        "given you my autograph!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00539",
+      "en_US": [
+        "My management team will have\n",
+        "something to say about this!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00540",
+      "en_US": [
+        "Run!\n",
+        "Don’t think! Run!"
+      ]
+    },
+    {
+      "id": "msg_0723_00541",
+      "en_US": [
+        "Faster!\n",
+        "More! More! Faster!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00542",
+      "en_US": [
+        "Run!\n",
+        "Keep running for me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00543",
+      "en_US": [
+        "Hiya.\n",
+        "Nice to meet ya."
+      ]
+    },
+    {
+      "id": "msg_0723_00544",
+      "en_US": [
+        "All right.\n",
+        "Nice seeing ya.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00545",
+      "en_US": [
+        "All right.\n",
+        "Thanks for coming by.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00546",
+      "en_US": [
+        "My cohorts call me the emperor\n",
+        "of fishing!"
+      ]
+    },
+    {
+      "id": "msg_0723_00547",
+      "en_US": "I landed another big one today!\r"
+    },
+    {
+      "id": "msg_0723_00548",
+      "en_US": [
+        "Why the emperor of fishing?\n",
+        "It’s an ancient Chinese legend...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00549",
+      "en_US": [
+        "When you get as good as me, you can\n",
+        "win easily, even if asleep."
+      ]
+    },
+    {
+      "id": "msg_0723_00550",
+      "en_US": "Zzz... Zzz...\r"
+    },
+    {
+      "id": "msg_0723_00551",
+      "en_US": "Sssnore...\r"
+    },
+    {
+      "id": "msg_0723_00552",
+      "en_US": [
+        "My mom and I travel around in search\n",
+        "of lost treasures."
+      ]
+    },
+    {
+      "id": "msg_0723_00553",
+      "en_US": [
+        "The rest of the time, we fish and\n",
+        "tend to crops every single day.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00554",
+      "en_US": "You sure seem to be hectic.\r"
+    },
+    {
+      "id": "msg_0723_00555",
+      "en_US": [
+        "Win! That’s what I’ll do again today!\n",
+        "I’ll win tomorrow, too!"
+      ]
+    },
+    {
+      "id": "msg_0723_00556",
+      "en_US": [
+        "Nahaha! Nahaha!\n",
+        "I’m not gonna lose my whole life!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00557",
+      "en_US": [
+        "Nooooo! No way!\n",
+        "I didn’t lose!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00558",
+      "en_US": [
+        "Allow me to examine your prowess as\n",
+        "a collector."
+      ]
+    },
+    {
+      "id": "msg_0723_00559",
+      "en_US": [
+        "You’re still wanting.\n",
+        "I urge you to keep at it.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00560",
+      "en_US": [
+        "That’s quite the collection.\n",
+        "I’m willing to relieve you of the lot.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00561",
+      "en_US": "There! There! And there!"
+    },
+    {
+      "id": "msg_0723_00562",
+      "en_US": "Yes, sir!\r"
+    },
+    {
+      "id": "msg_0723_00563",
+      "en_US": "Owowowoooh!\r"
+    },
+    {
+      "id": "msg_0723_00564",
+      "en_US": [
+        "I want you to hear it!\n",
+        "A shout from the heart!"
+      ]
+    },
+    {
+      "id": "msg_0723_00565",
+      "en_US": "I love music!\r"
+    },
+    {
+      "id": "msg_0723_00566",
+      "en_US": "Let’s hear it for an encore!\r"
+    },
+    {
+      "id": "msg_0723_00567",
+      "en_US": [
+        "Battle?\n",
+        "I’m up for that."
+      ]
+    },
+    {
+      "id": "msg_0723_00568",
+      "en_US": [
+        "Wow.\n",
+        "Good stuff.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00569",
+      "en_US": "Thanks much.\r"
+    },
+    {
+      "id": "msg_0723_00570",
+      "en_US": "Fwoom!"
+    },
+    {
+      "id": "msg_0723_00571",
+      "en_US": "Flap! Flap!\r"
+    },
+    {
+      "id": "msg_0723_00572",
+      "en_US": "I’m gonna pluck you for that!\r"
+    },
+    {
+      "id": "msg_0723_00573",
+      "en_US": "Sure, let’s duke it out!"
+    },
+    {
+      "id": "msg_0723_00574",
+      "en_US": "Let’s battle again!\r"
+    },
+    {
+      "id": "msg_0723_00575",
+      "en_US": "You’re not half bad!\r"
+    },
+    {
+      "id": "msg_0723_00576",
+      "en_US": [
+        "Looking out over the sea’s breaking\n",
+        "waves... It revives memories."
+      ]
+    },
+    {
+      "id": "msg_0723_00577",
+      "en_US": [
+        "Wroaaaaaar!\n",
+        "Daddy!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00578",
+      "en_US": [
+        "Wroaaaar!\n",
+        "Mommy!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00579",
+      "en_US": [
+        "Come on! Take a run at me!\n",
+        "I can take it!"
+      ]
+    },
+    {
+      "id": "msg_0723_00580",
+      "en_US": [
+        "So, what’d you think?\n",
+        "I was too burly for you to handle?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00581",
+      "en_US": [
+        "Good job!\n",
+        "Way to overcome my size!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00582",
+      "en_US": [
+        "Waah! Wait! Wait a second!\n",
+        "My mind’s not into this yet!"
+      ]
+    },
+    {
+      "id": "msg_0723_00583",
+      "en_US": [
+        "Hunh? It’s over already?\n",
+        "What? I won, you say?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00584",
+      "en_US": [
+        "Huh? Hah? It’s over already?\n",
+        "What? I lost, you say?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00585",
+      "en_US": [
+        "My favorite drink is Moomoo Milk.\n",
+        "Got some?"
+      ]
+    },
+    {
+      "id": "msg_0723_00586",
+      "en_US": [
+        "Wahaha! I get the win!\n",
+        "Let’s celebrate over some Moomoo Milk!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00587",
+      "en_US": [
+        "Gwaah! Moomoo Milk!\n",
+        "Bring me some Moomoo Milk!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00588",
+      "en_US": [
+        "You’re under arrest!\n",
+        "You’re under arrest!"
+      ]
+    },
+    {
+      "id": "msg_0723_00589",
+      "en_US": "Takedown!\r"
+    },
+    {
+      "id": "msg_0723_00590",
+      "en_US": "Officer down!\r"
+    },
+    {
+      "id": "msg_0723_00591",
+      "en_US": [
+        "I’m not a real Policeman.\n",
+        "I’m a uniform collector."
+      ]
+    },
+    {
+      "id": "msg_0723_00592",
+      "en_US": [
+        "You look like a uniform will suit you.\n",
+        "You should try to find one you like.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00593",
+      "en_US": [
+        "I must say, battling is a\n",
+        "wonderful thing.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00594",
+      "en_US": "Who knows what happens tomorrow?"
+    },
+    {
+      "id": "msg_0723_00595",
+      "en_US": [
+        "You can lose one day, and win the\n",
+        "next. That’s how it goes.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00596",
+      "en_US": [
+        "I might win tomorrow.\n",
+        "That’s what I believe.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00597",
+      "en_US": "I’m throwing my all into this match!"
+    },
+    {
+      "id": "msg_0723_00598",
+      "en_US": "Yeah! Yahoo!\r"
+    },
+    {
+      "id": "msg_0723_00599",
+      "en_US": "It’s over!\r"
+    },
+    {
+      "id": "msg_0723_00600",
+      "en_US": [
+        "The indefatigable Camper makes\n",
+        "his stand!"
+      ]
+    },
+    {
+      "id": "msg_0723_00601",
+      "en_US": [
+        "You can become a devotee if\n",
+        "you’d like.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00602",
+      "en_US": "I wish I could become your devotee.\r"
+    },
+    {
+      "id": "msg_0723_00603",
+      "en_US": [
+        "I don’t think I have any chance of\n",
+        "winning, but sure, I’ll battle."
+      ]
+    },
+    {
+      "id": "msg_0723_00604",
+      "en_US": "Wow, I wasn’t expecting to win.\r"
+    },
+    {
+      "id": "msg_0723_00605",
+      "en_US": [
+        "I knew I’d lose.\n",
+        "I’m so sorry for this.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00606",
+      "en_US": [
+        "I think you’re awfully interested in\n",
+        "me, aren’t you?"
+      ]
+    },
+    {
+      "id": "msg_0723_00607",
+      "en_US": [
+        "You lost because you were paying too\n",
+        "much attention to me.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00608",
+      "en_US": [
+        "Why did you win?\n",
+        "I thought you liked me.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00609",
+      "en_US": [
+        "Win or lose, let’s not bear any\n",
+        "grudges."
+      ]
+    },
+    {
+      "id": "msg_0723_00610",
+      "en_US": [
+        "Yay, yay, yay!\n",
+        "We did it!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00611",
+      "en_US": [
+        "Oh, you!\n",
+        "Don’t ever forget this!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00612",
+      "en_US": [
+        "Pokémon are for adults, too...\n",
+        "Let me show you..."
+      ]
+    },
+    {
+      "id": "msg_0723_00613",
+      "en_US": [
+        "What do you think?\n",
+        "Am I deep like an old blues man?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00614",
+      "en_US": [
+        "Though it cuts me deep, it’s a man’s\n",
+        "lot in life to endure the pain...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00615",
+      "en_US": [
+        "What I have here isn’t really a\n",
+        "guitar."
+      ]
+    },
+    {
+      "id": "msg_0723_00616",
+      "en_US": "Beep, boop, bzzt...\r"
+    },
+    {
+      "id": "msg_0723_00617",
+      "en_US": "This here is a keyboard synth.\r"
+    },
+    {
+      "id": "msg_0723_00618",
+      "en_US": [
+        "For work, I sometimes get to be a\n",
+        "Swimmer or a Beauty."
+      ]
+    },
+    {
+      "id": "msg_0723_00619",
+      "en_US": "An Idol can become anybody!\r"
+    },
+    {
+      "id": "msg_0723_00620",
+      "en_US": [
+        "But the real me...\n",
+        "I’m still a Lass in a miniskirt!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00621",
+      "en_US": [
+        "Let’s enjoy ourselves.\n",
+        "I hate anything to do with pain!"
+      ]
+    },
+    {
+      "id": "msg_0723_00622",
+      "en_US": "Ooh! That was fun!\r"
+    },
+    {
+      "id": "msg_0723_00623",
+      "en_US": [
+        "Yowch! Watch it!\n",
+        "You play too rough!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00624",
+      "en_US": [
+        "I’ll put an end to this!\n",
+        "With my favorite Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00625",
+      "en_US": [
+        "The love I have for my Pokémon is\n",
+        "complete and perfectly strong...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00626",
+      "en_US": [
+        "Why? Why?!\n",
+        "Why did I lose?!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00627",
+      "en_US": [
+        "Living with Pokémon...\n",
+        "Every day is the greatest."
+      ]
+    },
+    {
+      "id": "msg_0723_00628",
+      "en_US": [
+        "Ehehe...\n",
+        "Pokémon are the best...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00629",
+      "en_US": [
+        "It’s not a problem if I lose.\n",
+        "I still have my Pokémon...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00630",
+      "en_US": [
+        "I have my Pokémon.\n",
+        "I don’t need anything else."
+      ]
+    },
+    {
+      "id": "msg_0723_00631",
+      "en_US": [
+        "With my Pokémon, I can be happy\n",
+        "every day.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00632",
+      "en_US": [
+        "Isn’t that the same for you?\n",
+        "Isn’t it?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00633",
+      "en_US": [
+        "You won’t guess it now, but I was\n",
+        "quite the party girl in my day."
+      ]
+    },
+    {
+      "id": "msg_0723_00634",
+      "en_US": "Well, I still have it now, you know.\r"
+    },
+    {
+      "id": "msg_0723_00635",
+      "en_US": "I feel nostalgic for those days...\r"
+    },
+    {
+      "id": "msg_0723_00636",
+      "en_US": [
+        "Do your best!\n",
+        "My beloved children!"
+      ]
+    },
+    {
+      "id": "msg_0723_00637",
+      "en_US": [
+        "Wahaha! Well done!\n",
+        "Mama’s proud of you!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00638",
+      "en_US": "My Pokémon are my beloved family.\r"
+    },
+    {
+      "id": "msg_0723_00639",
+      "en_US": [
+        "Little boy? Little girl? Doesn’t\n",
+        "matter which. Let’s do this!"
+      ]
+    },
+    {
+      "id": "msg_0723_00640",
+      "en_US": [
+        "Little boy? Little girl?\n",
+        "Doesn’t matter which, but sorry.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00641",
+      "en_US": [
+        "Little boy? Little girl? Doesn’t\n",
+        "matter which, but you’re sure tough!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00642",
+      "en_US": "Your ride ends here."
+    },
+    {
+      "id": "msg_0723_00643",
+      "en_US": "Told ya it’s over.\r"
+    },
+    {
+      "id": "msg_0723_00644",
+      "en_US": "Too much for me to handle!\r"
+    },
+    {
+      "id": "msg_0723_00645",
+      "en_US": [
+        "We’re going for the win!\n",
+        "Hey-ho, let’s go!"
+      ]
+    },
+    {
+      "id": "msg_0723_00646",
+      "en_US": "Yay! Vavavoom!\r"
+    },
+    {
+      "id": "msg_0723_00647",
+      "en_US": [
+        "Aww, we lost...\n",
+        "Sniffle...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00648",
+      "en_US": [
+        "Let me introduce to you\n",
+        "my cherished partners!"
+      ]
+    },
+    {
+      "id": "msg_0723_00649",
+      "en_US": [
+        "How did you find them?\n",
+        "My cherished partners.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00650",
+      "en_US": [
+        "Awawa...\n",
+        "My partners...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00651",
+      "en_US": [
+        "Winning and losing isn’t all there is\n",
+        "to battling."
+      ]
+    },
+    {
+      "id": "msg_0723_00652",
+      "en_US": [
+        "Well, sure, it makes me happy when\n",
+        "I win.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00653",
+      "en_US": [
+        "The effort you put in is what’s\n",
+        "important.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00654",
+      "en_US": [
+        "It’s no good to be too harsh...\n",
+        "But pampering is also out..."
+      ]
+    },
+    {
+      "id": "msg_0723_00655",
+      "en_US": [
+        "Being a Pokémon Breeder is a deep\n",
+        "and complex challenge.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00656",
+      "en_US": [
+        "Balance is key for raising good\n",
+        "Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00657",
+      "en_US": [
+        "I’ll check how your Pokémon have\n",
+        "grown for you."
+      ]
+    },
+    {
+      "id": "msg_0723_00658",
+      "en_US": [
+        "Not good enough!\n",
+        "Your training style’s not up to par.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00659",
+      "en_US": [
+        "This is impressive! You’ve raised your\n",
+        "Pokémon really thoroughly.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00660",
+      "en_US": [
+        "I’ll win.\n",
+        "No lie."
+      ]
+    },
+    {
+      "id": "msg_0723_00661",
+      "en_US": "See?\r"
+    },
+    {
+      "id": "msg_0723_00662",
+      "en_US": "Huh!\r"
+    },
+    {
+      "id": "msg_0723_00663",
+      "en_US": [
+        "Fwaah! Fwaah!\n",
+        "You think you can beat me?"
+      ]
+    },
+    {
+      "id": "msg_0723_00664",
+      "en_US": [
+        "Fwaah! Fwaah!\n",
+        "I win!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00665",
+      "en_US": "Fwaah!\r"
+    },
+    {
+      "id": "msg_0723_00666",
+      "en_US": [
+        "I’ve caught you now.\n",
+        "Give up."
+      ]
+    },
+    {
+      "id": "msg_0723_00667",
+      "en_US": [
+        "You weren’t bad.\n",
+        "Let’s meet again.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00668",
+      "en_US": "How could this be...?\r"
+    },
+    {
+      "id": "msg_0723_00669",
+      "en_US": [
+        "Yo, yo!\n",
+        "Let’s have a fun time!"
+      ]
+    },
+    {
+      "id": "msg_0723_00670",
+      "en_US": [
+        "Thank you!\n",
+        "Let’s play again!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00671",
+      "en_US": [
+        "Thanks!\n",
+        "Play with me again!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00672",
+      "en_US": [
+        "You’re no good at all.\n",
+        "I’d better teach you."
+      ]
+    },
+    {
+      "id": "msg_0723_00673",
+      "en_US": [
+        "No, no, this won’t do at all.\n",
+        "Up on your feet. Never give up!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00674",
+      "en_US": [
+        "You’ve got good skills.\n",
+        "You tried hard, too. Excellent!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00675",
+      "en_US": [
+        "I’m jacking up the power to max!\n",
+        "All the way to eleven!"
+      ]
+    },
+    {
+      "id": "msg_0723_00676",
+      "en_US": "Ooh, yeah! I’m feeling electric!\r"
+    },
+    {
+      "id": "msg_0723_00677",
+      "en_US": "Eeyow! I got zapped!\r"
+    },
+    {
+      "id": "msg_0723_00678",
+      "en_US": "OK, bring it!"
+    },
+    {
+      "id": "msg_0723_00679",
+      "en_US": [
+        "Hah! Too weak!\n",
+        "Keep trying!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00680",
+      "en_US": [
+        "Hoh! You are tough!\n",
+        "Give me a rematch!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00681",
+      "en_US": "You need to be serious with me!"
+    },
+    {
+      "id": "msg_0723_00682",
+      "en_US": "Oh? That’s it?\r"
+    },
+    {
+      "id": "msg_0723_00683",
+      "en_US": [
+        "OK...\n",
+        "Quite remarkable...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00684",
+      "en_US": [
+        "Ahaha! Too bad for you!\n",
+        "I’m your opponent!"
+      ]
+    },
+    {
+      "id": "msg_0723_00685",
+      "en_US": "Ahaha!\r"
+    },
+    {
+      "id": "msg_0723_00686",
+      "en_US": [
+        "Aha...\n",
+        "Ahaha...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00687",
+      "en_US": [
+        "Are you nervous?\n",
+        "Leave it to the dude!"
+      ]
+    },
+    {
+      "id": "msg_0723_00688",
+      "en_US": [
+        "That was a good battle.\n",
+        "I hope we can meet again.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00689",
+      "en_US": [
+        "Whew...\n",
+        "The dude wasn’t expecting to lose.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00690",
+      "en_US": [
+        "The power of nature!\n",
+        "Let me show you!"
+      ]
+    },
+    {
+      "id": "msg_0723_00691",
+      "en_US": "This is the power of nature!\r"
+    },
+    {
+      "id": "msg_0723_00692",
+      "en_US": "Protect the natural environment..."
+    },
+    {
+      "id": "msg_0723_00693",
+      "en_US": [
+        "A battle with me? I don’t know what\n",
+        "you’re talking about."
+      ]
+    },
+    {
+      "id": "msg_0723_00694",
+      "en_US": [
+        "See?\n",
+        "I thought this would happen.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00695",
+      "en_US": [
+        "Boo! Boo!\n",
+        "This is not right!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00696",
+      "en_US": [
+        "Fuhahaha!\n",
+        "Your next challenge is me!"
+      ]
+    },
+    {
+      "id": "msg_0723_00697",
+      "en_US": [
+        "Fuhahaha! You seriously believed you\n",
+        "could defeat me?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00698",
+      "en_US": [
+        "Fuhahaha!\n",
+        "Let us meet again!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00699",
+      "en_US": [
+        "Off you go! Face my team of totally\n",
+        "trained Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00700",
+      "en_US": [
+        "Bravo!\n",
+        "I knew my Pokémon would do it!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00701",
+      "en_US": [
+        "Oh, no! That’s awful!\n",
+        "What have you done to my Pokémon?!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00702",
+      "en_US": [
+        "A battle is deadly earnest!\n",
+        "Not a moment of inattention!"
+      ]
+    },
+    {
+      "id": "msg_0723_00703",
+      "en_US": "Never let down your guard!\r"
+    },
+    {
+      "id": "msg_0723_00704",
+      "en_US": [
+        "I seemed to have let my\n",
+        "mind wander...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00705",
+      "en_US": "Hey!"
+    },
+    {
+      "id": "msg_0723_00706",
+      "en_US": "Heeey!\r"
+    },
+    {
+      "id": "msg_0723_00707",
+      "en_US": "Hey...\r"
+    },
+    {
+      "id": "msg_0723_00708",
+      "en_US": "I’m tough, that’s all."
+    },
+    {
+      "id": "msg_0723_00709",
+      "en_US": "I won, that’s all.\r"
+    },
+    {
+      "id": "msg_0723_00710",
+      "en_US": "I lost, that’s all.\r"
+    },
+    {
+      "id": "msg_0723_00711",
+      "en_US": "Shaah!"
+    },
+    {
+      "id": "msg_0723_00712",
+      "en_US": "Hwooh!\r"
+    },
+    {
+      "id": "msg_0723_00713",
+      "en_US": "Hawah!\r"
+    },
+    {
+      "id": "msg_0723_00714",
+      "en_US": [
+        "I’ve been here for years, but I never\n",
+        "get tired of this."
+      ]
+    },
+    {
+      "id": "msg_0723_00715",
+      "en_US": [
+        "You might not think so, but I’m still\n",
+        "a kid. I’m in the same grade as you.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00716",
+      "en_US": [
+        "I’d like to keep battling Pokémon\n",
+        "even when my hair is gray.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00717",
+      "en_US": [
+        "Let me make one thing clear...\n",
+        "You aren’t capable of beating me."
+      ]
+    },
+    {
+      "id": "msg_0723_00718",
+      "en_US": [
+        "Did I not say? There is no possible\n",
+        "chance of you beating me.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00719",
+      "en_US": [
+        "How could this be...? Only that girl with\n",
+        "the inflatable tube has beaten me...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00720",
+      "en_US": "Oh, my, a mere child."
+    },
+    {
+      "id": "msg_0723_00721",
+      "en_US": [
+        "Children these days...\n",
+        "So careless.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00722",
+      "en_US": [
+        "Children these days...\n",
+        "Quite exuberant, methinks.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00723",
+      "en_US": [
+        "I would like my children to become\n",
+        "strong and distinguished Trainers."
+      ]
+    },
+    {
+      "id": "msg_0723_00724",
+      "en_US": [
+        "It wouldn’t do if my children were\n",
+        "only as good as you...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00725",
+      "en_US": [
+        "It would be nice if they were as\n",
+        "skilled as you...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00726",
+      "en_US": [
+        "Behold you shall!\n",
+        "Psychic-mystifying power!"
+      ]
+    },
+    {
+      "id": "msg_0723_00727",
+      "en_US": [
+        "You see?\n",
+        "Psychic-mystifying power!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00728",
+      "en_US": [
+        "No, but...\n",
+        "Psychic-mystifying power...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00729",
+      "en_US": "My family will show you a good time!"
+    },
+    {
+      "id": "msg_0723_00730",
+      "en_US": [
+        "Hold up, my family!\n",
+        "That’ll be enough already!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00731",
+      "en_US": "My beloved family...\r"
+    },
+    {
+      "id": "msg_0723_00732",
+      "en_US": "Twirl, twirl, twirl..."
+    },
+    {
+      "id": "msg_0723_00733",
+      "en_US": "Are you feeling dizzy?\r"
+    },
+    {
+      "id": "msg_0723_00734",
+      "en_US": [
+        "Ooorgh...\n",
+        "My head’s spinning...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00735",
+      "en_US": [
+        "My big brother told me!\n",
+        "Eyes! Aim for the eyes!"
+      ]
+    },
+    {
+      "id": "msg_0723_00736",
+      "en_US": [
+        "Yay! I did it!\n",
+        "My big brother’s plan worked!"
+      ]
+    },
+    {
+      "id": "msg_0723_00737",
+      "en_US": [
+        "My big brother told me to lower\n",
+        "the foe’s accuracy!"
+      ]
+    },
+    {
+      "id": "msg_0723_00738",
+      "en_US": [
+        "Hoy! You look pretty tough.\n",
+        "This is gonna be fun!"
+      ]
+    },
+    {
+      "id": "msg_0723_00739",
+      "en_US": [
+        "I thought so!\n",
+        "You are tough!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00740",
+      "en_US": [
+        "Yup, you sure are tough.\n",
+        "Keep it up!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00741",
+      "en_US": [
+        "Ah, welcome!\n",
+        "I’m your server today!"
+      ]
+    },
+    {
+      "id": "msg_0723_00742",
+      "en_US": "Would you care to settle your bill?\r"
+    },
+    {
+      "id": "msg_0723_00743",
+      "en_US": "Thank you so much!\r"
+    },
+    {
+      "id": "msg_0723_00744",
+      "en_US": [
+        "Hello.\n",
+        "Whatcha having?"
+      ]
+    },
+    {
+      "id": "msg_0723_00745",
+      "en_US": "Thanks a million!\r"
+    },
+    {
+      "id": "msg_0723_00746",
+      "en_US": "Be seeing ya!\r"
+    },
+    {
+      "id": "msg_0723_00747",
+      "en_US": [
+        "I love cute customers like you!\n",
+        "I’ll serve you right!"
+      ]
+    },
+    {
+      "id": "msg_0723_00748",
+      "en_US": [
+        "Well, were you happy with the way\n",
+        "I served you?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00749",
+      "en_US": [
+        "Oh, but...\n",
+        "I’m not done serving you.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00750",
+      "en_US": "Stare..."
+    },
+    {
+      "id": "msg_0723_00751",
+      "en_US": "You’ve got something on your nose.\r"
+    },
+    {
+      "id": "msg_0723_00752",
+      "en_US": [
+        "You’re cool, all right.\n",
+        "I had to stare.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00753",
+      "en_US": [
+        "I’ve waited a long time for a Trainer\n",
+        "like you to come along."
+      ]
+    },
+    {
+      "id": "msg_0723_00754",
+      "en_US": [
+        "Yup, you’re as tough as I thought.\n",
+        "You even had me in trouble!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00755",
+      "en_US": [
+        "I knew it!\n",
+        "You are a tough Trainer!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00756",
+      "en_US": [
+        "Now how should I conduct\n",
+        "this offensive?"
+      ]
+    },
+    {
+      "id": "msg_0723_00757",
+      "en_US": [
+        "Oh, now, I need a better effort out\n",
+        "of you than that.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00758",
+      "en_US": [
+        "Oh, you’re finished and content?\n",
+        "OK, another time, then.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00759",
+      "en_US": [
+        "My Pokémon have a different taste\n",
+        "from the usual bunch."
+      ]
+    },
+    {
+      "id": "msg_0723_00760",
+      "en_US": [
+        "Did you notice the difference?\n",
+        "My party has rich depth.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00761",
+      "en_US": [
+        "Did you notice the difference?\n",
+        "My party is refreshingly dry.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00762",
+      "en_US": [
+        "Hiya!\n",
+        "Tough-looking Trainer, aren’t you!"
+      ]
+    },
+    {
+      "id": "msg_0723_00763",
+      "en_US": [
+        "This feeling of elation is bubbling\n",
+        "up in me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00764",
+      "en_US": [
+        "Ooch...\n",
+        "You’re too much to handle.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00765",
+      "en_US": [
+        "Varrroooom!\n",
+        "Watch me go full throttle!"
+      ]
+    },
+    {
+      "id": "msg_0723_00766",
+      "en_US": [
+        "Vavavaroooom!\n",
+        "I’m not close to redlining!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00767",
+      "en_US": [
+        "Vrrr... Vrruuu...\n",
+        "I’m flat out of gas...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00768",
+      "en_US": "Jingle, jingle!"
+    },
+    {
+      "id": "msg_0723_00769",
+      "en_US": "Skreeeech!\r"
+    },
+    {
+      "id": "msg_0723_00770",
+      "en_US": "Thud!\r"
+    },
+    {
+      "id": "msg_0723_00771",
+      "en_US": [
+        "It’s my dream to cycle with my\n",
+        "boyfriend."
+      ]
+    },
+    {
+      "id": "msg_0723_00772",
+      "en_US": "No riding double, though!\r"
+    },
+    {
+      "id": "msg_0723_00773",
+      "en_US": "I wish I had a boyfriend!\r"
+    },
+    {
+      "id": "msg_0723_00774",
+      "en_US": [
+        "What’s your motive?\n",
+        "What brought you here?"
+      ]
+    },
+    {
+      "id": "msg_0723_00775",
+      "en_US": [
+        "You lose.\n",
+        "Now what will you do?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00776",
+      "en_US": "Play it again.\r"
+    },
+    {
+      "id": "msg_0723_00777",
+      "en_US": "We’ll keep this match dry."
+    },
+    {
+      "id": "msg_0723_00778",
+      "en_US": "I admire your technique.\r"
+    },
+    {
+      "id": "msg_0723_00779",
+      "en_US": "I remain humbled...\r"
+    },
+    {
+      "id": "msg_0723_00780",
+      "en_US": [
+        "You’re serious? A battle?\n",
+        "And that’s against me?"
+      ]
+    },
+    {
+      "id": "msg_0723_00781",
+      "en_US": [
+        "Cackle!\n",
+        "You shouldn’t have tried!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00782",
+      "en_US": "Double wow!\r"
+    },
+    {
+      "id": "msg_0723_00783",
+      "en_US": [
+        "I’ll dance and sing and rivet\n",
+        "your attention!"
+      ]
+    },
+    {
+      "id": "msg_0723_00784",
+      "en_US": "Ooh, baby!\r"
+    },
+    {
+      "id": "msg_0723_00785",
+      "en_US": [
+        "So much for riveting your attention.\n",
+        "You nailed my Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00786",
+      "en_US": "Ready, start!"
+    },
+    {
+      "id": "msg_0723_00787",
+      "en_US": "First across the finish line!\r"
+    },
+    {
+      "id": "msg_0723_00788",
+      "en_US": "Waah! Wait for me!\r"
+    },
+    {
+      "id": "msg_0723_00789",
+      "en_US": "Can you explain why I’m here?"
+    },
+    {
+      "id": "msg_0723_00790",
+      "en_US": "I mean, who are you?\r"
+    },
+    {
+      "id": "msg_0723_00791",
+      "en_US": "Why am I battling here?\r"
+    },
+    {
+      "id": "msg_0723_00792",
+      "en_US": [
+        "My fishing-rod-handling technique is\n",
+        "the best in all Sinnoh. Check it out!"
+      ]
+    },
+    {
+      "id": "msg_0723_00793",
+      "en_US": [
+        "See it?\n",
+        "Surprised, I bet!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00794",
+      "en_US": [
+        "How I handle my fishing rod has\n",
+        "nothing to do with battling...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00795",
+      "en_US": [
+        "The two loves of my life are fishing\n",
+        "and battling."
+      ]
+    },
+    {
+      "id": "msg_0723_00796",
+      "en_US": [
+        "I feel fantastic when I land a big\n",
+        "fish or win a big battle.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00797",
+      "en_US": "I was born to fish and battle!\r"
+    },
+    {
+      "id": "msg_0723_00798",
+      "en_US": [
+        "I come here on a ship.\n",
+        "Big ship it was."
+      ]
+    },
+    {
+      "id": "msg_0723_00799",
+      "en_US": [
+        "Sinnoh, I like.\n",
+        "Very nice place.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00800",
+      "en_US": [
+        "You want go to sea? My ship, we will\n",
+        "see wonderful things.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00801",
+      "en_US": [
+        "Huh? You’re my opponent?\n",
+        "This is kind of unnerving..."
+      ]
+    },
+    {
+      "id": "msg_0723_00802",
+      "en_US": [
+        "I’m surprised...\n",
+        "I didn’t think I’d win.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00803",
+      "en_US": [
+        "See, I told you...\n",
+        "I thought you were tough.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00804",
+      "en_US": "Hahah! Howdy!"
+    },
+    {
+      "id": "msg_0723_00805",
+      "en_US": "Hahah! Keep it coming!\r"
+    },
+    {
+      "id": "msg_0723_00806",
+      "en_US": "Thanks for your time!\r"
+    },
+    {
+      "id": "msg_0723_00807",
+      "en_US": [
+        "Let’s be good sports about this!\n",
+        "Big smile!"
+      ]
+    },
+    {
+      "id": "msg_0723_00808",
+      "en_US": [
+        "Ahaha! Ahaha!\n",
+        "Come on, you laugh, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00809",
+      "en_US": [
+        "I’m cheerful even in defeat!\n",
+        "Ahaha! Ahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00810",
+      "en_US": "Buck up."
+    },
+    {
+      "id": "msg_0723_00811",
+      "en_US": "Not bad.\r"
+    },
+    {
+      "id": "msg_0723_00812",
+      "en_US": "You’re good.\r"
+    },
+    {
+      "id": "msg_0723_00813",
+      "en_US": [
+        "The sweetest thing about battling?\n",
+        "The finishing blow!"
+      ]
+    },
+    {
+      "id": "msg_0723_00814",
+      "en_US": [
+        "Take that!\n",
+        "That’s my finishing move!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00815",
+      "en_US": [
+        "Oof...\n",
+        "I feel your final shots...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00816",
+      "en_US": "Hey, you’re looking nifty!"
+    },
+    {
+      "id": "msg_0723_00817",
+      "en_US": "Hey, you tried, right?\r"
+    },
+    {
+      "id": "msg_0723_00818",
+      "en_US": "Hey, you’re kind of tough.\r"
+    },
+    {
+      "id": "msg_0723_00819",
+      "en_US": [
+        "Listen! This is my chorus group.\n",
+        "Me and my Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0723_00820",
+      "en_US": "Shooby-dooby doowop!\r"
+    },
+    {
+      "id": "msg_0723_00821",
+      "en_US": [
+        "Oh, wait!\n",
+        "We’re not done singing!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00822",
+      "en_US": [
+        "I got tips from my online friends on\n",
+        "how to best raise my troop."
+      ]
+    },
+    {
+      "id": "msg_0723_00823",
+      "en_US": [
+        "I must thank my online friends.\n",
+        "I don’t know who they are, though.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00824",
+      "en_US": [
+        "Well, this blows!\n",
+        "My online buddies let me down!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00825",
+      "en_US": [
+        "Can I have a moment?\n",
+        "I’m trying to write some email."
+      ]
+    },
+    {
+      "id": "msg_0723_00826",
+      "en_US": [
+        "I need to get home quick and check\n",
+        "on my email.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00827",
+      "en_US": [
+        "What do you think you’re doing?\n",
+        "I want to go already.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00828",
+      "en_US": [
+        "Father... Mother...\n",
+        "Please watch over me..."
+      ]
+    },
+    {
+      "id": "msg_0723_00829",
+      "en_US": [
+        "Father... Mother...\n",
+        "Were you watching...?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00830",
+      "en_US": [
+        "Father... Mother...\n",
+        "Please forgive me...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00831",
+      "en_US": [
+        "Can’t rightly say I much like\n",
+        "battling, I tell you."
+      ]
+    },
+    {
+      "id": "msg_0723_00832",
+      "en_US": [
+        "I won, but...\n",
+        "I’m still shaking...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00833",
+      "en_US": [
+        "Grr...\n",
+        "I’m so angry I could cry...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00834",
+      "en_US": "It’s the power of science!"
+    },
+    {
+      "id": "msg_0723_00835",
+      "en_US": [
+        "Did you see? Were you amazed?\n",
+        "That’s the power of science!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00836",
+      "en_US": [
+        "It’s inconceivable... How could the\n",
+        "power of science be defeated?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00837",
+      "en_US": [
+        "Charge, my Pokémon! Demonstrate the\n",
+        "fruits of our experimentation!"
+      ]
+    },
+    {
+      "id": "msg_0723_00838",
+      "en_US": [
+        "Yes, my Pokémon proved my theory!\n",
+        "I’ll get my professorship now!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00839",
+      "en_US": [
+        "What kind of experiments?\n",
+        "That’s classified."
+      ]
+    },
+    {
+      "id": "msg_0723_00840",
+      "en_US": [
+        "I shall regress to my childhood for\n",
+        "this battle."
+      ]
+    },
+    {
+      "id": "msg_0723_00841",
+      "en_US": "Googoo gagga.\r"
+    },
+    {
+      "id": "msg_0723_00842",
+      "en_US": "Gagga...\r"
+    },
+    {
+      "id": "msg_0723_00843",
+      "en_US": [
+        "Fwahahaha!\n",
+        "You’ve come a long way!"
+      ]
+    },
+    {
+      "id": "msg_0723_00844",
+      "en_US": "Fwahahahaha!\r"
+    },
+    {
+      "id": "msg_0723_00845",
+      "en_US": [
+        "Fwahahaha!\n",
+        "You’re blessed to have your friends!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00846",
+      "en_US": "I’ll scrap you."
+    },
+    {
+      "id": "msg_0723_00847",
+      "en_US": "I’ll recycle you.\r"
+    },
+    {
+      "id": "msg_0723_00848",
+      "en_US": "Think ecology. Think green.\r"
+    },
+    {
+      "id": "msg_0723_00849",
+      "en_US": [
+        "Why, sure! Sounds great!\n",
+        "We have to do this!"
+      ]
+    },
+    {
+      "id": "msg_0723_00850",
+      "en_US": "Bam! All done!\r"
+    },
+    {
+      "id": "msg_0723_00851",
+      "en_US": [
+        "A battle while working...\n",
+        "It’s a good way to take a break.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00852",
+      "en_US": [
+        "I’ll try to do my best!\n",
+        "Please give me this chance!"
+      ]
+    },
+    {
+      "id": "msg_0723_00853",
+      "en_US": [
+        "I’ve done it!\n",
+        "I’ve achieved my goal!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00854",
+      "en_US": [
+        "I tried the best I could!\n",
+        "Thank you for your encouragement!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00855",
+      "en_US": [
+        "A battle is... It is a love letter\n",
+        "written in sand."
+      ]
+    },
+    {
+      "id": "msg_0723_00856",
+      "en_US": [
+        "Did you understand what I’m trying\n",
+        "to say? I guess you wouldn’t.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00857",
+      "en_US": [
+        "Did you understand what I’m trying\n",
+        "to say? I guess you wouldn’t.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00858",
+      "en_US": [
+        "Hello, you there! Yes, you!\n",
+        "Hold up. Hold it, I say!"
+      ]
+    },
+    {
+      "id": "msg_0723_00859",
+      "en_US": [
+        "OK, kids shouldn’t be out now.\n",
+        "Go home, and be quick about it.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00860",
+      "en_US": [
+        "You shouldn’t mess with a police\n",
+        "officer like that.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00861",
+      "en_US": "Sssnork... Zzz..."
+    },
+    {
+      "id": "msg_0723_00862",
+      "en_US": [
+        "CLEFAIRY... Mumble...\n",
+        "Wait for me... Sssnork...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00863",
+      "en_US": [
+        "Mutter...\n",
+        "Ehehe... Ssssnore...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00864",
+      "en_US": "Let’s keep this elegant!"
+    },
+    {
+      "id": "msg_0723_00865",
+      "en_US": "Mmm, yes!\r"
+    },
+    {
+      "id": "msg_0723_00866",
+      "en_US": "You’re quite the Trainer yourself!\r"
+    },
+    {
+      "id": "msg_0723_00867",
+      "en_US": [
+        "A battle isn’t something you\n",
+        "can calculate."
+      ]
+    },
+    {
+      "id": "msg_0723_00868",
+      "en_US": [
+        "What’d I tell you?\n",
+        "You win when you win.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00869",
+      "en_US": [
+        "What’d I say, huh?\n",
+        "You lose when you lose.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00870",
+      "en_US": [
+        "There’s lots in life that doesn’t\n",
+        "go the way you want."
+      ]
+    },
+    {
+      "id": "msg_0723_00871",
+      "en_US": [
+        "Yippee!\n",
+        "Things went my way!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00872",
+      "en_US": "See...?\r"
+    },
+    {
+      "id": "msg_0723_00873",
+      "en_US": "There’s nowhere to run or hide!"
+    },
+    {
+      "id": "msg_0723_00874",
+      "en_US": "This was a foregone conclusion!\r"
+    },
+    {
+      "id": "msg_0723_00875",
+      "en_US": "Farewell!\r"
+    },
+    {
+      "id": "msg_0723_00876",
+      "en_US": [
+        "I wait for tough Trainers here,\n",
+        "come rain or come shine."
+      ]
+    },
+    {
+      "id": "msg_0723_00877",
+      "en_US": [
+        "Because of that, I’ve grown so\n",
+        "very strong...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00878",
+      "en_US": [
+        "Won’t a tough... No, forget that.\n",
+        "I need a cool Trainer to come...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00879",
+      "en_US": "This is for keeping the sun off."
+    },
+    {
+      "id": "msg_0723_00880",
+      "en_US": [
+        "I’m strong at battling, but I can’t\n",
+        "take sunlight...\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00881",
+      "en_US": "I don’t want to roast my skin.\r"
+    },
+    {
+      "id": "msg_0723_00882",
+      "en_US": [
+        "Well...\n",
+        "Those are rare Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0723_00883",
+      "en_US": [
+        "I’ve never caught those...\n",
+        "Your Pokémon are different, all right.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00884",
+      "en_US": [
+        "Oh, you’re a Trainer?\n",
+        "You’re not a Pokémon?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00885",
+      "en_US": "Ready?"
+    },
+    {
+      "id": "msg_0723_00886",
+      "en_US": "Cool.\r"
+    },
+    {
+      "id": "msg_0723_00887",
+      "en_US": "Bye.\r"
+    },
+    {
+      "id": "msg_0723_00888",
+      "en_US": [
+        "Beat me?\n",
+        "Try again in another ten years!"
+      ]
+    },
+    {
+      "id": "msg_0723_00889",
+      "en_US": "No spine!\r"
+    },
+    {
+      "id": "msg_0723_00890",
+      "en_US": [
+        "You’re tough!\n",
+        "You inspire me!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00891",
+      "en_US": [
+        "Smelling sweet scents makes me\n",
+        "so drowsy..."
+      ]
+    },
+    {
+      "id": "msg_0723_00892",
+      "en_US": [
+        "...Yawn...\n",
+        "Oh? Are we finished so soon?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00893",
+      "en_US": [
+        "...Yawn...\n",
+        "Oh, really? I lost?\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00894",
+      "en_US": [
+        "You’re sure you can handle me?\n",
+        "I’m an ultrastellar talent."
+      ]
+    },
+    {
+      "id": "msg_0723_00895",
+      "en_US": [
+        "Don’t feel bad!\n",
+        "I’m an ultrastellar talent!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00896",
+      "en_US": "You’re in the miracle-star class!\r"
+    },
+    {
+      "id": "msg_0723_00897",
+      "en_US": [
+        "I live only for battles.\n",
+        "Only victories give me hope."
+      ]
+    },
+    {
+      "id": "msg_0723_00898",
+      "en_US": "...Naturally.\r"
+    },
+    {
+      "id": "msg_0723_00899",
+      "en_US": "Who are you...?\r"
+    },
+    {
+      "id": "msg_0723_00900",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0723_00901",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00902",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00903",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0723_00904",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00905",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00906",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0723_00907",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00908",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00909",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0723_00910",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00911",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00912",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0723_00913",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00914",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0723_00915",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0723_00916",
+      "en_US": [
+        "A magnificent bout that was!\n",
+        "Do come visit again!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00917",
+      "en_US": [
+        "Losing to an outstanding Trainer like\n",
+        "you... I can live with that.\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00918",
+      "garbage": 36
+    },
+    {
+      "id": "msg_0723_00919",
+      "en_US": [
+        "A magnificent bout that was!\n",
+        "Do come visit again!\r"
+      ]
+    },
+    {
+      "id": "msg_0723_00920",
+      "en_US": [
+        "Losing to an outstanding Trainer like\n",
+        "you... I can live with that.\r"
+      ]
+    }
+  ]
+}

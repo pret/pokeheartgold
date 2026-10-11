@@ -1,0 +1,121 @@
+{
+  "key": 39396,
+  "messages": [
+    {
+      "id": "msg_0614_T27GYM0101_00000",
+      "en_US": [
+        "Morty: It’s good of you to have come.\r",
+        "Here in Ecruteak, Pokémon have long\n",
+        "been revered.\r",
+        "It’s said that a rainbow-hued\n",
+        "Pokémon will come down to appear\f",
+        "before a truly powerful Trainer.\r",
+        "I believed that tale, so I have\n",
+        "secretly trained here all my life.\r",
+        "As a result, I can now see what\n",
+        "others cannot.\r",
+        "I see a shadow of the person who\n",
+        "will make the Pokémon appear.\r",
+        "I believe that person is me!\r",
+        "You’re going to help me reach\n",
+        "that level!\r"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00001",
+      "en_US": [
+        "Morty: I don’t think our potentials are\n",
+        "so different. But you seem to have\f",
+        "something more than that...\r",
+        "So be it. This Badge is yours.\r"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Fog Badge from Morty!"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00003",
+      "en_US": [
+        "Morty: By having the Fog Badge,\n",
+        "Pokémon up to Lv. 50, including traded\f",
+        "Pokémon, will obey you.\r",
+        "Also, Pokémon will be able to use Surf.\r",
+        "Here is another thing...\n",
+        "I want you to have this, too.\r"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00004",
+      "garbage": 27
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00005",
+      "en_US": [
+        "Morty: It’s Shadow Ball. It causes\n",
+        "damage and may reduce Special Defense.\f",
+        "Use it if it appeals to you."
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00006",
+      "en_US": [
+        "Morty: I get it...\r",
+        "The person the Kimono Girls were\n",
+        "talking about must be you...\r",
+        "Never mind.\r",
+        "You should be strong enough to go\n",
+        "across the sea.\r",
+        "When you go west and then south,\n",
+        "you’ll reach Olivine City.\f",
+        "Why don’t you head for it?"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00007",
+      "en_US": [
+        "Yo! Champ in the making!\n",
+        "The Trainers here use Ghost-type\f",
+        "Pokémon at will.\r",
+        "A ghost is like a shade or a phantom...\n",
+        "It won’t do any good to use physical\f",
+        "strength alone."
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00008",
+      "en_US": [
+        "Whew, {STRVAR_1 3, 0, 0}.\n",
+        "You did great!\r",
+        "I was cowering in the corner out of\n",
+        "pure terror!"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00009",
+      "en_US": [
+        "You have business with the Gym Leader?\r",
+        "Morty, the Gym Leader, has gone to\n",
+        "the Burned Tower.\r",
+        "Sorry, but you’ll have to leave.\n",
+        "Ho ho ho.\r"
+      ]
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00010",
+      "en_US": "Ecruteak City Pokémon Gym"
+    },
+    {
+      "id": "msg_0614_T27GYM0101_00011",
+      "en_US": [
+        "Ecruteak City Pokémon Gym\r",
+        "Leader: Morty\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+subdir('pms_aikotoba')

@@ -1,0 +1,133 @@
+{
+  "key": 43357,
+  "messages": [
+    {
+      "id": "msg_0653_00000",
+      "en_US": "Morty"
+    },
+    {
+      "id": "msg_0653_00001",
+      "en_US": [
+        "Huh? I can’t hear you very well.\n",
+        "We must have a bad connection.\r",
+        "Try calling again from somewhere else!"
+      ]
+    },
+    {
+      "id": "msg_0653_00002",
+      "en_US": [
+        "Hello...\n",
+        "What’s going on?\f",
+        "I’m doing great.\r"
+      ]
+    },
+    {
+      "id": "msg_0653_00003",
+      "en_US": [
+        "There are stronger Gym Leaders than\n",
+        "me out there. They’re all waiting to\f",
+        "cheer you on!"
+      ]
+    },
+    {
+      "id": "msg_0653_00004",
+      "en_US": [
+        "That’s right... If we were to have\n",
+        "another battle, then we’d need to do it\f",
+        "when I’m free, like on Tuesday nights.\r",
+        "Give me a call then."
+      ]
+    },
+    {
+      "id": "msg_0653_00005",
+      "en_US": [
+        "I’m competely free today.\n",
+        "Why don’t we have a battle? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0653_00006",
+      "en_US": [
+        "All right!\r",
+        "Do you know where the Fighting Dojo is\n",
+        "in Saffron City? I’ll be waiting there."
+      ]
+    },
+    {
+      "id": "msg_0653_00007",
+      "en_US": [
+        "I see...\n",
+        "Well, you’ve got your own plans as well,\f",
+        "I understand."
+      ]
+    },
+    {
+      "id": "msg_0653_00008",
+      "en_US": [
+        "Hey! Before you battle me again, don’t\n",
+        "you have someone else you promised to\f",
+        "battle with?"
+      ]
+    },
+    {
+      "id": "msg_0653_00009",
+      "en_US": [
+        "I’ll be at the Fighting Dojo in Saffron\n",
+        "City. Get ready and meet me there!"
+      ]
+    },
+    {
+      "id": "msg_0653_00010",
+      "en_US": [
+        "This is Morty!\n",
+        "How are you doing?\r"
+      ]
+    },
+    {
+      "id": "msg_0653_00011",
+      "en_US": [
+        "Hey, didn’t we make plans to meet at\n",
+        "the Fighting Dojo in Saffron City?\f",
+        "I remembered!\f",
+        "You didn’t forget, did you?"
+      ]
+    },
+    {
+      "id": "msg_0653_00012",
+      "en_US": [
+        "The legendary Pokémon: Suicune, Entei,\n",
+        "and Raikou--which do you like best?\r",
+        "Unlike Eusine, I don’t really have any\n",
+        "interest in Suicune.\r",
+        "So I’d have to say Entei...\n",
+        "But I can’t leave out Raikou...\f",
+        "Hmm... Guess I can’t make up my mind."
+      ]
+    },
+    {
+      "id": "msg_0653_00013",
+      "en_US": [
+        "You know, I once saw Entei. I mean like\n",
+        "up close. It was amazing.\r",
+        "Entei looked me in the eyes. I’ll never\n",
+        "forget its eyes.\r",
+        "It was like it could see right through\n",
+        "me, down into the depths of my heart..."
+      ]
+    },
+    {
+      "id": "msg_0653_00014",
+      "en_US": [
+        "How have you been?\n",
+        "Anything interesting happening?\r",
+        "I’m doing the same as usual, just my\n",
+        "regular Gym Leader duties.\r",
+        "There haven’t been any really strong\n",
+        "Trainers here since you came through.\r",
+        "Seems like you’re one of those genius\n",
+        "Trainers you seldom meet.\r",
+        "Ha ha ha! I don’t mean to flatter you!"
+      ]
+    }
+  ]
+}

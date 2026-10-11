@@ -1,0 +1,107 @@
+{
+  "key": 63975,
+  "messages": [
+    {
+      "id": "msg_0622_T28GYM0101_00000",
+      "en_US": [
+        "Pryce: Pokémon have many experiences\n",
+        "in their lives, just like we do.\r",
+        "I, too, have seen and suffered much in\n",
+        "my life.\r",
+        "Since I am your elder, let me show you\n",
+        "what I mean.\r",
+        "I have been training Pokémon since\n",
+        "before you were born.\r",
+        "I do not lose easily.\n",
+        "I, Pryce--the Winter Trainer--\f",
+        "shall demonstrate my power!\r"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00001",
+      "en_US": [
+        "Pryce: I am impressed by your prowess.\r",
+        "With your strong will, I know you\n",
+        "will overcome all life’s obstacles.\f",
+        "You are worthy of this Badge!\r"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Glacier Badge from Pryce!"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00003",
+      "en_US": [
+        "Pryce: That Badge will raise the Special\n",
+        "stats of Pokémon.\r",
+        "It also lets your Pokémon use\n",
+        "Whirlpool to get across\f",
+        "real whirlpools.\r",
+        "And this... This is a gift from me!\r"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00004",
+      "en_US": [
+        "Pryce: That TM contains Hail.\r",
+        "It summons a hailstorm that lasts for\n",
+        "five turns. The hailstorm damages\f",
+        "all types except Ice."
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00005",
+      "en_US": [
+        "Pryce: When the ice and snow melt,\n",
+        "spring arrives.\r",
+        "You and your Pokémon will be together\n",
+        "for many years to come.\f",
+        "Cherish your time together!"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00006",
+      "en_US": [
+        "Pryce: It is you...\r",
+        "Since you are here, why don’t we\n",
+        "take a picture together? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00007",
+      "en_US": [
+        "Pryce: I have advice to give you before\n",
+        "we take the picture.\r",
+        "Breathe in and relax first.\n",
+        "Then slowly begin to smile.\f",
+        "Are you ready?\r"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00008",
+      "en_US": [
+        "Pryce: Let’s see...\n",
+        "Did we get a good one?"
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00009",
+      "en_US": [
+        "Pryce: That’s OK, too.\n",
+        "Suit yourself."
+      ]
+    },
+    {
+      "id": "msg_0622_T28GYM0101_00010",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC to delete\n",
+        "some pictures."
+      ]
+    }
+  ]
+}

@@ -6,13 +6,13 @@
 #include "constants/easy_chat.h"
 
 #include "battle/battle_setup.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0285.h"
-#include "msgdata/msg/msg_0287.h"
-#include "msgdata/msg/msg_0292.h"
-#include "msgdata/msg/msg_0294.h"
-#include "msgdata/msg/msg_0296.h"
-#include "msgdata/msg/msg_0726.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0285.h"
+#include "files/msgdata/msg/msg_0287.h"
+#include "files/msgdata/msg/msg_0292.h"
+#include "files/msgdata/msg/msg_0294.h"
+#include "files/msgdata/msg/msg_0296.h"
+#include "files/msgdata/msg/msg_0726.h"
 
 #include "assert.h"
 #include "encounter.h"
@@ -166,7 +166,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set) {
     MI_CpuCopy16(&ov25_02259D9C, set, sizeof(TrainerHouseSet));
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD2);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0726, HEAP_ID_FIELD2);
     GF_ASSERT(messageData);
     if (messageData) {
         String *otName = NewString_ReadMsgData(messageData, msg_0726_00003);

@@ -1,0 +1,22 @@
+{
+  "key": 36656,
+  "messages": [
+    {
+      "id": "msg_0565_T23FS0101_00000",
+      "en_US": [
+        "The number of Gym Badges you have\n",
+        "shows how strong a Trainer you are.\r",
+        "The more Badges you have, the\n",
+        "better the items you’ll see in shops!"
+      ]
+    },
+    {
+      "id": "msg_0565_T23FS0101_00001",
+      "en_US": [
+        "A Great Ball is better for catching\n",
+        "Pokémon than a Poké Ball.\r",
+        "But Kurt’s might be better sometimes."
+      ]
+    }
+  ]
+}

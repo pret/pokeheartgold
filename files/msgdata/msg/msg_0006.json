@@ -1,0 +1,428 @@
+{
+  "key": 4003,
+  "messages": [
+    {
+      "id": "msg_0006_00000",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00001",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00002",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00003",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00004",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00005",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00006",
+      "en_US": "Choose a Pokémon."
+    },
+    {
+      "id": "msg_0006_00007",
+      "en_US": "Use on which Pokémon?"
+    },
+    {
+      "id": "msg_0006_00008",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00009",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00010",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0006_00011",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0006_00012",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0006_00013",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0006_00014",
+      "en_US": "PP"
+    },
+    {
+      "id": "msg_0006_00015",
+      "en_US": "SHIFT"
+    },
+    {
+      "id": "msg_0006_00016",
+      "en_US": "♂"
+    },
+    {
+      "id": "msg_0006_00017",
+      "en_US": "♀"
+    },
+    {
+      "id": "msg_0006_00018",
+      "en_US": "SUMMARY"
+    },
+    {
+      "id": "msg_0006_00019",
+      "en_US": "CHECK MOVES"
+    },
+    {
+      "id": "msg_0006_00020",
+      "en_US": "No item held"
+    },
+    {
+      "id": "msg_0006_00021",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00022",
+      "en_US": "{STRVAR_1 1, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00023",
+      "en_US": "Lv."
+    },
+    {
+      "id": "msg_0006_00024",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00025",
+      "en_US": "NEXT LV"
+    },
+    {
+      "id": "msg_0006_00026",
+      "en_US": "{STRVAR_1 55, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00027",
+      "en_US": "{STRVAR_1 5, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00028",
+      "en_US": "HP"
+    },
+    {
+      "id": "msg_0006_00029",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00030",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00031",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0006_00032",
+      "en_US": "ATTACK"
+    },
+    {
+      "id": "msg_0006_00033",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00034",
+      "en_US": "DEFENSE"
+    },
+    {
+      "id": "msg_0006_00035",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00036",
+      "en_US": "SP. ATK"
+    },
+    {
+      "id": "msg_0006_00037",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00038",
+      "en_US": "SP. DEF"
+    },
+    {
+      "id": "msg_0006_00039",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00040",
+      "en_US": "SPEED"
+    },
+    {
+      "id": "msg_0006_00041",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00042",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00043",
+      "en_US": "PP"
+    },
+    {
+      "id": "msg_0006_00044",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00045",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00046",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0006_00047",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0006_00048",
+      "en_US": "POWER"
+    },
+    {
+      "id": "msg_0006_00049",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00050",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0006_00051",
+      "en_US": "ACCURACY"
+    },
+    {
+      "id": "msg_0006_00052",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00053",
+      "en_US": "CATEGORY"
+    },
+    {
+      "id": "msg_0006_00054",
+      "en_US": "PHYSICAL"
+    },
+    {
+      "id": "msg_0006_00055",
+      "en_US": "STATUS"
+    },
+    {
+      "id": "msg_0006_00056",
+      "en_US": "SPECIAL"
+    },
+    {
+      "id": "msg_0006_00057",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0006_00058",
+      "en_US": "FORGET"
+    },
+    {
+      "id": "msg_0006_00059",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0006_00060",
+      "en_US": [
+        "HM moves can’t be\n",
+        "forgotten now."
+      ]
+    },
+    {
+      "id": "msg_0006_00061",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00062",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00063",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00064",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00065",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00066",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00067",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00068",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00069",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00070",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00071",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00072",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00073",
+      "en_US": "{STRVAR_1 6, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00074",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00075",
+      "en_US": "{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0006_00076",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} is already\n",
+        "in battle!"
+      ]
+    },
+    {
+      "id": "msg_0006_00077",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} has no energy\n",
+        "left to battle!"
+      ]
+    },
+    {
+      "id": "msg_0006_00078",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} can’t be switched\n",
+        "out!"
+      ]
+    },
+    {
+      "id": "msg_0006_00079",
+      "en_US": "An Egg can’t battle!"
+    },
+    {
+      "id": "msg_0006_00080",
+      "en_US": [
+        "You can’t switch {STRVAR_1 3, 0, 0}’s\n",
+        "Pokémon with one of yours!"
+      ]
+    },
+    {
+      "id": "msg_0006_00081",
+      "en_US": "It won’t have any effect."
+    },
+    {
+      "id": "msg_0006_00082",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}’s HP was restored\n",
+        "by {STRVAR_1 52, 1, 0} point(s)."
+      ]
+    },
+    {
+      "id": "msg_0006_00083",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was cured of its\n",
+        "poisoning."
+      ]
+    },
+    {
+      "id": "msg_0006_00084",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} was cured of\n",
+        "paralysis."
+      ]
+    },
+    {
+      "id": "msg_0006_00085",
+      "en_US": "{STRVAR_1 1, 0, 0}’s burn was healed."
+    },
+    {
+      "id": "msg_0006_00086",
+      "en_US": "{STRVAR_1 1, 0, 0} was thawed out."
+    },
+    {
+      "id": "msg_0006_00087",
+      "en_US": "PP was restored."
+    },
+    {
+      "id": "msg_0006_00088",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} recovered from\n",
+        "fainting!"
+      ]
+    },
+    {
+      "id": "msg_0006_00089",
+      "en_US": "{STRVAR_1 1, 0, 0} became healthy."
+    },
+    {
+      "id": "msg_0006_00090",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} snapped out of its\n",
+        "confusion."
+      ]
+    },
+    {
+      "id": "msg_0006_00091",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} got over its\n",
+        "infatuation."
+      ]
+    },
+    {
+      "id": "msg_0006_00092",
+      "en_US": "{STRVAR_1 1, 0, 0} woke up."
+    },
+    {
+      "id": "msg_0006_00093",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} has already been\n",
+        "selected."
+      ]
+    },
+    {
+      "id": "msg_0006_00094",
+      "en_US": "Restore which move?"
+    },
+    {
+      "id": "msg_0006_00095",
+      "en_US": [
+        "{STRVAR_1 6, 1, 0}’s effect prevents\n",
+        "the item’s use on {STRVAR_1 1, 0, 0}!"
+      ]
+    }
+  ]
+}

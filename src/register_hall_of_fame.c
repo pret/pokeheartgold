@@ -1,13 +1,15 @@
 #include "register_hall_of_fame.h"
 
+#include <stdlib.h>
+
 #include "global.h"
 
 #include "constants/map_sections.h"
 #include "constants/sndseq.h"
 
-#include "data/mmodel/mmodel.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0180.h"
+#include "files/data/mmodel/mmodel.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0180.h"
 
 #include "bg_window.h"
 #include "camera.h"
@@ -847,7 +849,7 @@ BOOL RegisterHallOfFame_Init(OverlayManager *man, int *state) {
     RegisterHallOfFameData *data = (RegisterHallOfFameData *)OverlayManager_CreateAndGetData(man, sizeof(RegisterHallOfFameData), HEAP_ID_REGISTER_HALL_OF_FAME);
     MI_CpuFill8(data, 0, sizeof(RegisterHallOfFameData));
     data->args = OverlayManager_GetArgs(man);
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0180_bin, HEAP_ID_REGISTER_HALL_OF_FAME);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0180, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->msgFormat = MessageFormat_New(HEAP_ID_REGISTER_HALL_OF_FAME);
     data->strbuf1 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
     data->strbuf2 = String_New(500, HEAP_ID_REGISTER_HALL_OF_FAME);
@@ -2070,9 +2072,9 @@ static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form,
     int ret;
 
     if (species <= 0 || species > SPECIES_ARCEUS) {
-        ret = NARC_mmodel_mmodel_00000001_NSBTX;
+        ret = mmodel_00000001_NSBTX;
     } else {
-        ret = SpeciesToOverworldModelIndexOffset(species) + NARC_mmodel_mmodel_00000297_NSBTX;
+        ret = SpeciesToOverworldModelIndexOffset(species) + mmodel_00000297_NSBTX;
         if (OverworldModelLookupHasFemaleForm(species)) {
             if (gender == MON_FEMALE) {
                 ++ret;

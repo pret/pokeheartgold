@@ -1,0 +1,127 @@
+{
+  "key": 26649,
+  "messages": [
+    {
+      "id": "msg_0700_00000",
+      "en_US": "Dana"
+    },
+    {
+      "id": "msg_0700_00001",
+      "en_US": [
+        "You’re really good with Pokémon!\r",
+        "Boys give me items after battles, but\n",
+        "sometimes they give me too much.\r",
+        "Next time, I can share some if you\n",
+        "want. Let me get your\f",
+        "phone number. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0700_00002",
+      "en_US": [
+        "Next time a boy gives me something after\n",
+        "a battle, I’ll share with you!\r",
+        "Does that make me sound ungrateful?"
+      ]
+    },
+    {
+      "id": "msg_0700_00003",
+      "en_US": [
+        "Aww, you don’t want anything?\n",
+        "But it’s all for free..."
+      ]
+    },
+    {
+      "id": "msg_0700_00004",
+      "en_US": [
+        "I’ll share my gifts with you.\r",
+        "Let me get your phone number.{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0700_00005",
+      "en_US": [
+        "Hi! Are you here for your gift?\r",
+        "This should really make your day!\r"
+      ]
+    },
+    {
+      "id": "msg_0700_00006",
+      "en_US": [
+        "Hey, tell me, don’t you think that the\n",
+        "sight of a girl on the phone is charming?\r",
+        "It’s not?\r",
+        "Ha ha ha, you’re nearby, aren’t you?\n",
+        "Why not come over here and talk in\f",
+        "person?"
+      ]
+    },
+    {
+      "id": "msg_0700_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} is getting prettier!\n",
+        "I’ve been taking tons of pictures!\r",
+        "It took only a second to defeat a wild\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "...Probably because you gave me some\n",
+        "battling tips last time!\r",
+        "Later!"
+      ]
+    },
+    {
+      "id": "msg_0700_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} is getting prettier!\n",
+        "I’ve been taking tons of pictures!\r",
+        "You know what? A wild {STRVAR_1 0, 11, 0}\n",
+        "got away from me again.\r",
+        "It was so close!\n",
+        "Really, just a little bit more, and I\f",
+        "would’ve...\r",
+        "Later!"
+      ]
+    },
+    {
+      "id": "msg_0700_00009",
+      "en_US": [
+        "Right now, I’m on {STRVAR_1 4, 3, 0}.\r",
+        "If you’re close by, let’s battle!\n",
+        "I’ll be waiting for you!"
+      ]
+    },
+    {
+      "id": "msg_0700_00010",
+      "en_US": [
+        "Hi! You haven’t forgotten about your\n",
+        "promise to battle me, have you?\r",
+        "I’m waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0700_00011",
+      "en_US": [
+        "Oh! You wanted a gift, right?\n",
+        "I got one, but I want to keep this.\r",
+        "Can you wait a bit longer?"
+      ]
+    },
+    {
+      "id": "msg_0700_00012",
+      "en_US": [
+        "You know what? I got a good gift!\n",
+        "As I promised, it’s yours!\r",
+        "I’m sure you’ll like it. Come and pick it\n",
+        "up! I’m waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0700_00013",
+      "en_US": [
+        "Hello?\r",
+        "If you don’t come and get your present\n",
+        "soon, I’ll give it to someone else.\r",
+        "I’m waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    }
+  ]
+}

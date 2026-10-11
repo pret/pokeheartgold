@@ -1,0 +1,231 @@
+{
+  "key": 46179,
+  "messages": [
+    {
+      "id": "msg_0549_T20R0402_00000",
+      "en_US": [
+        "Lyra: {STRVAR_1 3, 0, 0}!\r",
+        "Professor Elm was looking for you.\n",
+        "Did you go to his lab?"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00001",
+      "en_US": [
+        "Ethan: {STRVAR_1 3, 0, 0}!\r",
+        "Professor Elm was looking for you.\n",
+        "Did you go to his lab?"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00002",
+      "en_US": [
+        "Lyra: My MARILL is super cute...\n",
+        "But your {STRVAR_1 0, 1, 0} looks pretty\f",
+        "good, too, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00003",
+      "en_US": [
+        "Ethan: My MARILL is super cool...\n",
+        "But your {STRVAR_1 0, 1, 0} looks pretty\f",
+        "good, too, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00004",
+      "en_US": "MARILL: Qurururoon."
+    },
+    {
+      "id": "msg_0549_T20R0402_00005",
+      "en_US": [
+        "Lyra: Isn’t it strange that when we are\n",
+        "with Pokémon, going out is just so much\f",
+        "more fun!\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "Try going to different places and talk\f",
+        "to your Pokémon!\r",
+        "I bet you’ll find out so many things\n",
+        "about them!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00006",
+      "en_US": [
+        "Ethan: Isn’t it strange that when we\n",
+        "are with Pokémon, going out is just so\f",
+        "much more fun!\r",
+        "{STRVAR_1 3, 0, 0}!\n",
+        "Try going to different places and talk\f",
+        "to your Pokémon!\r",
+        "I bet you’ll find so many things\n",
+        "about them!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00007",
+      "en_US": [
+        "Lyra: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How are your Pokémon?\f",
+        "Don’t forget to talk to...\r",
+        "What’s that?\n",
+        "Your Pokémon is holding a leaf...\r",
+        "Could that be a Shiny Leaf?\n",
+        "Legend has it that only Pokémon\f",
+        "that have formed a close bond with\f",
+        "people can find such leaves...\r",
+        "People used to turn the leaves into a\n",
+        "beautiful crown when they managed\f",
+        "to collect five of them.\r",
+        "Wow!\n",
+        "I knew you could obtain one,\f",
+        "{STRVAR_1 3, 0, 0}!\f",
+        "Let me see it when you find another!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00008",
+      "en_US": [
+        "Ethan: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How are your Pokémon?\f",
+        "Don’t forget to talk to...\r",
+        "What’s that?\n",
+        "Your Pokémon is holding a leaf...\r",
+        "Could that be a Shiny Leaf?\n",
+        "Legend has it that only Pokémon\f",
+        "that have formed a close bond with\f",
+        "people can find such leaves...\r",
+        "People used to turn the leaves into a\n",
+        "beautiful crown when they managed\f",
+        "to collect five of them.\r",
+        "Wow!\n",
+        "I knew you could obtain one,\f",
+        "{STRVAR_1 3, 0, 0}!\f",
+        "Let me see it when you find another!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00009",
+      "en_US": [
+        "Lyra: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How is your Pokémon you’re\f",
+        "walking with?\r",
+        "You can talk to it as you walk from time\n",
+        "to time to nurture your friendship!\r",
+        "...\n",
+        "Oh!\r",
+        "You found a Shiny Leaf!\n",
+        "Let me see!\r",
+        "Ha! You’ve collected...\r",
+        "{STRVAR_1 50, 1, 0}!\r",
+        "Way to go!\n",
+        "Keep it up and collect {STRVAR_1 50, 2, 0} more!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00010",
+      "en_US": [
+        "Ethan: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How is your Pokémon you’re\f",
+        "walking with?\r",
+        "You can talk to it as you walk from time\n",
+        "to time to nurture your friendship!\r",
+        "...\n",
+        "Oh!\r",
+        "You found a Shiny Leaf!\n",
+        "Let me see!\r",
+        "Ha! You’ve collected...\r",
+        "{STRVAR_1 50, 1, 0}!\r",
+        "Way to go!\n",
+        "Keep it up and collect {STRVAR_1 50, 2, 0} more!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00011",
+      "en_US": [
+        "Lyra: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How is your Pokémon you’re\f",
+        "walking with?\r",
+        "You can talk to it as you walk from time\n",
+        "to time to nurture your friendship!\r",
+        "...\r",
+        "Ha! You have already collected five\f",
+        "Shiny Leaves!\r",
+        "Let me turn them into a crown!\n",
+        "And what’s more...\f",
+        "I will give you this, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00012",
+      "en_US": [
+        "Ethan: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How is your Pokémon you’re\f",
+        "walking with?\r",
+        "You can talk to it as you walk from time\n",
+        "to time to nurture your friendship!\r",
+        "...\r",
+        "Ha! You have already collected five\f",
+        "Shiny Leaves!\r",
+        "Let me turn them into a crown!\n",
+        "And what’s more...\f",
+        "I will give you this, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00013",
+      "en_US": [
+        "Lyra: Cherish your friendship with\n",
+        "Pokémon for years to come!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00014",
+      "en_US": [
+        "Ethan: Cherish your friendship with\n",
+        "Pokémon for years to come!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00015",
+      "en_US": [
+        "Lyra: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How is your Pokémon?\r",
+        "You can talk to it as you walk from time\n",
+        "to time to nurture your friendship!\r",
+        "...\r",
+        "Oh, I get it.\n",
+        "Are you here to check on the award\f",
+        "with {STRVAR_1 1, 1, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00016",
+      "en_US": [
+        "Ethan: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How is your Pokémon?\r",
+        "You can talk to it as you walk from time\n",
+        "to time to nurture your friendship!\r",
+        "...\r",
+        "Oh, I get it.\n",
+        "Are you here to check on the award\f",
+        "with {STRVAR_1 1, 1, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00017",
+      "en_US": [
+        "It’s a Wii!\r",
+        "Wii is huge in Johto, too!"
+      ]
+    },
+    {
+      "id": "msg_0549_T20R0402_00018",
+      "en_US": [
+        "You shouldn’t mess with someone\n",
+        "else’s PC!"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "key": 21543,
+  "messages": [
+    {
+      "id": "msg_0349_R12R0101_00000",
+      "en_US": [
+        "I’m the Fishing Guru’s younger brother.\r",
+        "You seem to like fishing.\n",
+        "Am I right, or am I right?\f",
+        "People say I have keen eyes! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0349_R12R0101_00001",
+      "en_US": [
+        "Yes, yes. Just as I thought!\r",
+        "Here, fishing fan!\n",
+        "Take this--it’s a Super Rod.\r"
+      ]
+    },
+    {
+      "id": "msg_0349_R12R0101_00002",
+      "en_US": [
+        "Try your hand at fishing wherever there\n",
+        "is water.\r",
+        "Remember--you can catch different\n",
+        "Pokémon depending on which Rod you use."
+      ]
+    },
+    {
+      "id": "msg_0349_R12R0101_00003",
+      "en_US": [
+        "Huh?\n",
+        "My own eyes deceived me?"
+      ]
+    }
+  ]
+}

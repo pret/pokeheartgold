@@ -4,7 +4,7 @@
 #include "constants/moves.h"
 #include "constants/species.h"
 #include "constants/trainer_class.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_12_battle_command.inc"
 	.include "global.inc"
 

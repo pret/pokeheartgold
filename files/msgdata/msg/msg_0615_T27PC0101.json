@@ -1,0 +1,57 @@
+{
+  "key": 61106,
+  "messages": [
+    {
+      "id": "msg_0615_T27PC0101_00000",
+      "en_US": [
+        "Bill: Hi, I’m Bill. And who are you?\r",
+        "Hmm, {STRVAR_1 3, 0, 0}, huh?\r"
+      ]
+    },
+    {
+      "id": "msg_0615_T27PC0101_00001",
+      "en_US": [
+        "You know what?\n",
+        "I’m the one who developed\f",
+        "the system to transfer Pokémon.\r",
+        "But it couldn’t have been done by\n",
+        "me alone.\r",
+        "For example, do you know the Hoenn\n",
+        "region? This girl Lanette from Hoenn\f",
+        "made the Pokémon Storage System\f",
+        "easier to use.\r",
+        "My friends all over the world are\n",
+        "working together to improve\f",
+        "the Pokémon trade and\f",
+        "storage systems.\r",
+        "I have to hurry on back to Goldenrod\n",
+        "and see my folks.\f",
+        "Buh-bye!\r"
+      ]
+    },
+    {
+      "id": "msg_0615_T27PC0101_00002",
+      "en_US": [
+        "Kimono Girls are so pretty.\r",
+        "The way the Kimono Girls dance and\n",
+        "the way they use their Pokémon are\f",
+        "both marvels."
+      ]
+    },
+    {
+      "id": "msg_0615_T27PC0101_00003",
+      "en_US": [
+        "Morty, the Gym Leader, is soooo cool.\r",
+        "His Pokémon are really tough, too."
+      ]
+    },
+    {
+      "id": "msg_0615_T27PC0101_00004",
+      "en_US": [
+        "Lake of Rage...\n",
+        "The appearance of a red GYARADOS...\f",
+        "I smell a conspiracy. I know it!"
+      ]
+    }
+  ]
+}

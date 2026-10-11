@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanABSpeedUpPrint
 .public TextFlags_SetCanTouchSpeedUpPrint

@@ -1,0 +1,42 @@
+{
+  "key": 46206,
+  "messages": [
+    {
+      "id": "msg_0386_R34R0201_00000",
+      "en_US": [
+        "Oh, honey. You’re making a Pokédex?\r",
+        "You must be battling all kinds\n",
+        "of Pokémon.\r",
+        "Try using this TM for a change."
+      ]
+    },
+    {
+      "id": "msg_0386_R34R0201_00001",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0386_R34R0201_00002",
+      "en_US": [
+        "It’s Taunt.\r",
+        "Use it and the target Pokémon\n",
+        "can only use moves that do damage\f",
+        "to your Pokémon for a while."
+      ]
+    },
+    {
+      "id": "msg_0386_R34R0201_00003",
+      "en_US": "BUTTERFREE: Freeh!"
+    },
+    {
+      "id": "msg_0386_R34R0201_00004",
+      "en_US": [
+        "Did you see the shrine that pays homage\n",
+        "to the protector?\r",
+        "This protector watches over the forest\n",
+        "from across time.\r",
+        "I think that it must be a\n",
+        "Grass-type Pokémon."
+      ]
+    }
+  ]
+}

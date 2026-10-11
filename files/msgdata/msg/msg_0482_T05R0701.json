@@ -1,0 +1,126 @@
+{
+  "key": 25654,
+  "messages": [
+    {
+      "id": "msg_0482_T05R0701_00000",
+      "en_US": [
+        "Welcome!\r",
+        "Feel free to look around anywhere\n",
+        "on this floor."
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00001",
+      "en_US": [
+        "Sorry, but you can only tour the\n",
+        "ground floor.\r",
+        "Ever since Johto’s Radio Tower was\n",
+        "taken over by a criminal gang,\f",
+        "we have had to step up our security."
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00002",
+      "en_US": [
+        "Many people are hard at work here\n",
+        "in the Radio Tower.\r",
+        "They must be doing their best to put\n",
+        "on good shows."
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00003",
+      "en_US": [
+        "Oh, no, no, no!\r",
+        "We’ve been off the air ever since the\n",
+        "Power Plant shut down.\r",
+        "All my efforts to start this station\n",
+        "would be wasted if I can’t broadcast.\f",
+        "I’ll be ruined!"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00004",
+      "en_US": [
+        "Ah! So you’re the {STRVAR_1 3, 0, 0} who\n",
+        "solved the Power Plant’s problem?\r",
+        "Thanks to you, I never lost my job.\n",
+        "I tell you, you’re a real lifesaver!\f",
+        "Please take this as my thanks.\r"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00005",
+      "en_US": [
+        "Ah! So you’re the {STRVAR_1 3, 0, 0} who\n",
+        "solved the Power Plant’s problem?\r",
+        "Thanks to you, I never lost my job.\n",
+        "I tell you, you’re a real lifesaver!\f",
+        "Please take this as my thanks.\r"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00006",
+      "en_US": [
+        "The Director loaded the EXPN Card\n",
+        "on {STRVAR_1 3, 0, 0}’s Pokégear!\r",
+        "{STRVAR_1 3, 0, 0}’s Pokégear has been\n",
+        "upgraded!"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00007",
+      "en_US": [
+        "With that thing, you can tune in to\n",
+        "even more radio programs here in\f",
+        "Kanto.\f",
+        "Gahahahaha!"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00008",
+      "en_US": [
+        "Hey there!\n",
+        "I am the super Music Director!\r",
+        "Huh? Your Pokégear can’t tune in to my\n",
+        "music shows.\r",
+        "How unfortunate!\r",
+        "If you upgrade it with the EXPN Card,\n",
+        "you can tune in.\f",
+        "You’d better get one!"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00009",
+      "en_US": [
+        "Hey there!\n",
+        "I am the super Music Director!\r",
+        "I’m responsible for the gorgeous\n",
+        "melodies that go out over the air.\r",
+        "Don’t be square. Grab your music\n",
+        "off the air!"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00010",
+      "en_US": [
+        "1F Reception\n",
+        "2F Sales\f",
+        "3F Personnel\f",
+        "4F Production\f",
+        "5F Director’s Office\n"
+      ]
+    },
+    {
+      "id": "msg_0482_T05R0701_00011",
+      "en_US": [
+        "Perk Up Pokémon with Mellow Sounds\n",
+        "of the Poké Flute.\r",
+        "The Poké Flute broadcast is only\n",
+        "available around the Kanto region.\r",
+        "Try to tune in around the upper area\n",
+        "of the radio!"
+      ]
+    }
+  ]
+}

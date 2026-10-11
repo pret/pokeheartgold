@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02035900.inc"
 	.include "global.inc"
 
@@ -3447,7 +3447,7 @@ _020373C4:
 	ldrb r0, [r1, r0]
 	cmp r0, #0
 	beq _020373EE
-	bl ov00_021EE4FC
+	bl DWC_GetAIDBitmap
 	lsl r0, r0, #0x10
 	lsr r2, r0, #0x10
 	mov r0, #1

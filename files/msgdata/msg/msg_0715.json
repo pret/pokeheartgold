@@ -1,0 +1,108 @@
+{
+  "key": 12505,
+  "messages": [
+    {
+      "id": "msg_0715_00000",
+      "en_US": "Krise"
+    },
+    {
+      "id": "msg_0715_00001",
+      "en_US": [
+        "You...\n",
+        "You think I’m cool right?\r",
+        "So how about we exchange phone\n",
+        "numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0715_00002",
+      "en_US": "Don’t worry, you can call me anytime!"
+    },
+    {
+      "id": "msg_0715_00003",
+      "en_US": [
+        "Oh, I see...\n",
+        "Maybe I was overthinking things..."
+      ]
+    },
+    {
+      "id": "msg_0715_00004",
+      "en_US": [
+        "I knew it! I knew you’d think I\n",
+        "was cool!\r",
+        "So, shall we trade phone\n",
+        "numbers now? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0715_00005",
+      "en_US": [
+        "You must be really shy.\n",
+        "If you’re nearby, you can come talk to\f",
+        "me in person. It’s all right."
+      ]
+    },
+    {
+      "id": "msg_0715_00006",
+      "en_US": [
+        "My prized {STRVAR_1 0, 10, 0} is doing great.\r",
+        "Which Pokémon do you like best?\n",
+        "You should show me sometime."
+      ]
+    },
+    {
+      "id": "msg_0715_00007",
+      "en_US": [
+        "Hey, listen up!\n",
+        "Yesterday we were fighting a wild\f",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "I thoughtlessly used a Potion at the\n",
+        "wrong moment, and it looked like we were\f",
+        "going to lose.\r",
+        "My Pokémon worked so hard. I really\n",
+        "wanted to win, you know?\r",
+        "Well, those kinds of things happen,\n",
+        "I guess."
+      ]
+    },
+    {
+      "id": "msg_0715_00008",
+      "en_US": [
+        "Do you keep all the Pokémon you\n",
+        "capture in PC Boxes?\r",
+        "Me, I usually just let them go...\r",
+        "That reminds me, I recently let this\n",
+        "{STRVAR_1 0, 11, 0} go...\r",
+        "That’s kind of a waste, isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0715_00009",
+      "en_US": [
+        "Hey, what do you think about battling\n",
+        "with me again?\r",
+        "I’m at the {STRVAR_1 4, 3, 0}\n",
+        "right now.\r",
+        "Come on over!"
+      ]
+    },
+    {
+      "id": "msg_0715_00010",
+      "en_US": [
+        "Hello?\n",
+        "Do you remember your promise?\r",
+        "We have to battle soon!\n",
+        "I’ll be at the {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0715_00011",
+      "en_US": [
+        "It wasn’t a very smart move to come to\n",
+        "the Park in a miniskirt, was it...?\r",
+        "I mean, these leaves keep scratching\n",
+        "my legs..."
+      ]
+    }
+  ]
+}

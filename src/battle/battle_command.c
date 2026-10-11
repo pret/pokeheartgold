@@ -21,7 +21,7 @@
 #include "battle/battle_controller_player.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
-#include "msgdata/msg/msg_0197.h"
+#include "files/msgdata/msg/msg_0197.h"
 
 #include "assert.h"
 #include "gf_gfx_loader.h"
@@ -7143,39 +7143,6 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
 extern u8 sStandardBallCatchRates[4];
 extern u8 sSafariCatchRateStages[13][2];
 extern u16 sMoonBallPokemon[14];
-
-#define CP_SQRT_32BIT_MODE (0UL << REG_CP_SQRTCNT_MODE_SHIFT)
-
-static inline void CP_SetSqrtImm32_NS_(u32 param) {
-    *((REGType32 *)REG_SQRT_PARAM_ADDR) = param;
-}
-
-static inline void CP_SetSqrtImm32(u32 param) {
-    *((REGType32 *)REG_SQRT_PARAM_ADDR) = param;
-}
-
-static inline void CP_SetSqrt32(u32 param) {
-    reg_CP_SQRTCNT = CP_SQRT_32BIT_MODE;
-    CP_SetSqrtImm32_NS_(param);
-}
-
-static inline s32 CP_IsSqrtBusy(void) {
-    return reg_CP_SQRTCNT & REG_CP_SQRTCNT_BUSY_MASK;
-}
-
-static inline void CP_WaitSqrt(void) {
-    while (CP_IsSqrtBusy()) {
-    }
-}
-
-static inline u32 CP_GetSqrtResultImm32(void) {
-    return (u32)(*((REGType32 *)REG_SQRT_RESULT_ADDR));
-}
-
-static inline u32 CP_GetSqrtResult32(void) {
-    CP_WaitSqrt();
-    return CP_GetSqrtResultImm32();
-}
 
 static u32 BattleSystem_CalculateBallShakes(BattleSystem *bsys, BattleContext *ctx) {
     s32 catchRate;

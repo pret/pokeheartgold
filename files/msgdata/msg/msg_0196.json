@@ -1,0 +1,153 @@
+{
+  "key": 54176,
+  "messages": [
+    {
+      "id": "msg_0196_00000",
+      "en_US": "POKéDEX"
+    },
+    {
+      "id": "msg_0196_00001",
+      "en_US": "POKéMON"
+    },
+    {
+      "id": "msg_0196_00002",
+      "en_US": "BAG"
+    },
+    {
+      "id": "msg_0196_00003",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0196_00004",
+      "en_US": "SAVE"
+    },
+    {
+      "id": "msg_0196_00005",
+      "en_US": "OPTIONS"
+    },
+    {
+      "id": "msg_0196_00006",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0196_00007",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0196_00008",
+      "en_US": "RETIRE"
+    },
+    {
+      "id": "msg_0196_00009",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0196_00010",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0196_00011",
+      "garbage": 10
+    },
+    {
+      "id": "msg_0196_00012",
+      "en_US": "MENU"
+    },
+    {
+      "id": "msg_0196_00013",
+      "garbage": 6
+    },
+    {
+      "id": "msg_0196_00014",
+      "en_US": "POKéGEAR"
+    },
+    {
+      "id": "msg_0196_00015",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0196_00016",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0196_00017",
+      "en_US": "TALK"
+    },
+    {
+      "id": "msg_0196_00018",
+      "en_US": "CHECK"
+    },
+    {
+      "id": "msg_0196_00019",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0196_00020",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0196_00021",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0196_00022",
+      "en_US": "FISHING"
+    },
+    {
+      "id": "msg_0196_00023",
+      "en_US": "NEXT"
+    },
+    {
+      "id": "msg_0196_00024",
+      "en_US": "BACK"
+    },
+    {
+      "id": "msg_0196_00025",
+      "en_US": "CONFIRM"
+    },
+    {
+      "id": "msg_0196_00026",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0196_00027",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    },
+    {
+      "id": "msg_0196_00028",
+      "en_US": "/"
+    },
+    {
+      "id": "msg_0196_00029",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0196_00030",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0196_00031",
+      "en_US": "{ALN_CENTER}x{STRVAR_1 51, 0, 0}"
+    },
+    {
+      "id": "msg_0196_00032",
+      "en_US": "BALL"
+    },
+    {
+      "id": "msg_0196_00033",
+      "en_US": "{ALN_CENTER}LV. {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0196_00034",
+      "en_US": "CHAT"
+    },
+    {
+      "id": "msg_0196_00035",
+      "en_US": "LOG"
+    },
+    {
+      "id": "msg_0196_00036",
+      "garbage": 13
+    }
+  ]
+}

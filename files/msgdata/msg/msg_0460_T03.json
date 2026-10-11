@@ -1,0 +1,183 @@
+{
+  "key": 18211,
+  "messages": [
+    {
+      "id": "msg_0460_T03_00000",
+      "en_US": [
+        "Have you visited Pewter Gym?\r",
+        "The Gym Leader uses\n",
+        "Rock-type Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00001",
+      "en_US": [
+        "At night, CLEFAIRY come out to play\n",
+        "at Mt. Moon.\r",
+        "But not every night."
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00002",
+      "en_US": [
+        "Ah, you came all the way out here\n",
+        "from Johto?\r",
+        "That brings back memories.\r",
+        "When I was young, I went to Johto\n",
+        "to train.\r",
+        "You remind me so much of what I was\n",
+        "like as a young man.\r",
+        "Here. I want you to have this item\n",
+        "I found in Johto.\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00003",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0460_T03_00004",
+      "garbage": 22
+    },
+    {
+      "id": "msg_0460_T03_00005",
+      "en_US": [
+        "Going to new, unknown places and\n",
+        "seeing new people...\f",
+        "Those are the joys of travel."
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00006",
+      "en_US": [
+        "Steven: It seems that LATIOS became\n",
+        "attracted to it in no time!\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00007",
+      "en_US": [
+        "Steven: It seems that LATIAS became\n",
+        "attracted to it in no time!\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00008",
+      "en_US": [
+        "I can feel that LATIOS is full of\n",
+        "fighting spirit!\r",
+        "I would love to challenge it,\n",
+        "but I will let you go for it!"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00009",
+      "en_US": [
+        "I can feel that LATIAS is full of\n",
+        "fighting spirit!\r",
+        "I would love to challenge it,\n",
+        "but I will let you go for it!"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00010",
+      "en_US": "LATIOS: Shuaaaann!\r"
+    },
+    {
+      "id": "msg_0460_T03_00011",
+      "en_US": "LATIAS: Huaaaaann!\r"
+    },
+    {
+      "id": "msg_0460_T03_00012",
+      "en_US": "LATIOS flew away to the distant sky...\r"
+    },
+    {
+      "id": "msg_0460_T03_00013",
+      "en_US": "LATIAS flew away to the distant sky...\r"
+    },
+    {
+      "id": "msg_0460_T03_00014",
+      "en_US": [
+        "Steven: Impressive!\n",
+        "It was a great battle!\r",
+        "I don’t think you had to give\n",
+        "everything you’ve got,\f",
+        "and that scares me...\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00015",
+      "en_US": [
+        "I’ve been away from the Hoenn\n",
+        "Pokémon League for too long.\r",
+        "I’ll have to excuse myself.\r",
+        "..................\r",
+        "Oh, I never got your name.\f",
+        "...But I won’t ask for it this time.\r",
+        "Our fun will have to wait for the\n",
+        "right time.\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00016",
+      "en_US": [
+        "Steven: Impressive!\n",
+        "It was a great battle!\r",
+        "LATIOS will be back once it recovers\n",
+        "to make amends for the defeat.\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00017",
+      "en_US": [
+        "Steven: Impressive!\n",
+        "It was a great battle!\r",
+        "LATIAS will be back once it recovers\n",
+        "to make amends for the defeat.\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00018",
+      "en_US": [
+        "Steven: I see.\n",
+        "You’d rather hide your true strength\f",
+        "from me. You have room to breathe,\f",
+        "and that scares me.\r"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00019",
+      "en_US": [
+        "Steven: What? You are not scared,\n",
+        "are you? Don’t be reserved. Go for it."
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00020",
+      "en_US": [
+        "Pewter City\n",
+        "Between Rugged Mountains"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00021",
+      "en_US": [
+        "Pewter City Pokémon Gym\n",
+        "Leader: Brock\f",
+        "The Rock-Solid Pokémon Trainer"
+      ]
+    },
+    {
+      "id": "msg_0460_T03_00022",
+      "en_US": "Pewter Museum of Science"
+    },
+    {
+      "id": "msg_0460_T03_00023",
+      "en_US": "Welcome to Pewter City!"
+    },
+    {
+      "id": "msg_0460_T03_00024",
+      "en_US": "The door’s locked..."
+    }
+  ]
+}

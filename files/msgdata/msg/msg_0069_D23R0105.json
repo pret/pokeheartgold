@@ -1,0 +1,82 @@
+{
+  "key": 33875,
+  "messages": [
+    {
+      "id": "msg_0069_D23R0105_00000",
+      "en_US": [
+        "Ahem, do you hear me?\r",
+        "...I am the Director.\r",
+        "We have decided to broadcast wonderful\n",
+        "shows to praise Team Rocket!\r",
+        "Everyone, I don’t want to hear you\n",
+        "complain. Just do a good job to...\r"
+      ]
+    },
+    {
+      "id": "msg_0069_D23R0105_00001",
+      "en_US": [
+        "Yikes!\n",
+        "I am busy impersonating the...\f",
+        "Who are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0069_D23R0105_00002",
+      "en_US": "...Oh no, it’s you again, {STRVAR_1 3, 0, 0}?\r"
+    },
+    {
+      "id": "msg_0069_D23R0105_00003",
+      "en_US": [
+        "Petrel: No, no, no! I was pretending to\n",
+        "be the Director to influence the entire\f",
+        "region to support Team Rocket!\r",
+        "This time I won’t hold back!\n",
+        "Give me all you’ve got!\r"
+      ]
+    },
+    {
+      "id": "msg_0069_D23R0105_00004",
+      "en_US": [
+        "Petrel: Listen carefully.\r",
+        "We stashed the real Director in the\n",
+        "underground warehouse.\r",
+        "It’s at the far end of the\n",
+        "Goldenrod Tunnel.\r",
+        "I am a nice guy. I will give you the\n",
+        "Basement Key to get to the\f",
+        "underground warehouse.\f",
+        "Take it with gratitude!\r"
+      ]
+    },
+    {
+      "id": "msg_0069_D23R0105_00005",
+      "en_US": [
+        "Petrel: We stashed the Director in the\n",
+        "underground warehouse.\r",
+        "It’s at the far end of the\n",
+        "Goldenrod Tunnel.\r",
+        "Hahaha...\n",
+        "I doubt a child like you’ll get that far."
+      ]
+    },
+    {
+      "id": "msg_0069_D23R0105_00006",
+      "en_US": [
+        "Director: Hello, it is you! You know,\n",
+        "I really love Pokémon.\r",
+        "I built this Radio Tower just so I could\n",
+        "express my love of Pokémon.\r",
+        "It would be nice if people enjoyed our\n",
+        "programs."
+      ]
+    },
+    {
+      "id": "msg_0069_D23R0105_00007",
+      "en_US": "5F Director’s Office"
+    },
+    {
+      "id": "msg_0069_D23R0105_00008",
+      "en_US": "Go up for Observation Deck"
+    }
+  ]
+}

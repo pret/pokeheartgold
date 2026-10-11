@@ -1,0 +1,452 @@
+{
+  "key": 17518,
+  "messages": [
+    {
+      "id": "msg_0117_D37R0102_00000",
+      "en_US": [
+        "Hello, dear.\r",
+        "I sell inexpensive herbal medicine.\n",
+        "They’re good, but a trifle bitter.\r",
+        "Your Pokémon may not like them.\n",
+        "Hehehehe... {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00001",
+      "en_US": [
+        "Hiya! Care to see some bargains?\r",
+        "I sell rare items that nobody else\n",
+        "carries--but only one of\f",
+        "each item. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00002",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0} costs\n",
+        "${STRVAR_1 53, 1, 0}. Want it?"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00003",
+      "en_US": "Thanks.\r"
+    },
+    {
+      "id": "msg_0117_D37R0102_00004",
+      "en_US": [
+        "You put the {STRVAR_1 8, 0, 0} in\n",
+        "the {STRVAR_1 18, 1, 0} Pocket. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00005",
+      "en_US": [
+        "You bought that already. I’m all\n",
+        "sold out of it. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00006",
+      "en_US": "Uh-oh, you’re short on funds. {YESNO 0}"
+    },
+    {
+      "id": "msg_0117_D37R0102_00007",
+      "en_US": "Uh-oh, your Bag is chock-full. {YESNO 0}"
+    },
+    {
+      "id": "msg_0117_D37R0102_00008",
+      "en_US": "We’re closed for the day."
+    },
+    {
+      "id": "msg_0117_D37R0102_00009",
+      "en_US": "Come by again sometime."
+    },
+    {
+      "id": "msg_0117_D37R0102_00010",
+      "en_US": [
+        "Welcome!\r",
+        "I run the Pokémon Salon!\r",
+        "I’m the older and better of the two\n",
+        "Haircut Brothers.\r",
+        "I can make your Pokémon beautiful for\n",
+        "just $500.\r",
+        "Grooming gives a better look.\n",
+        "Your Pokémon will become friendlier and\f",
+        "more beautiful.\r",
+        "Would you like me to do that? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00011",
+      "en_US": "Which Pokémon should I work on?"
+    },
+    {
+      "id": "msg_0117_D37R0102_00012",
+      "en_US": "OK! Watch it become beautiful!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00013",
+      "en_US": "There! All done!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00014",
+      "en_US": "Is that right? That’s a shame!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00015",
+      "en_US": "You’ll need more money than that."
+    },
+    {
+      "id": "msg_0117_D37R0102_00016",
+      "en_US": [
+        "I do only one haircut a day, sorry.\n",
+        "I’m done for today."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00017",
+      "en_US": [
+        "Welcome to the Pokémon Salon!\r",
+        "I’m the younger and less expensive of\n",
+        "the two Haircut Brothers.\r",
+        "I’ll spruce up your Pokémon for\n",
+        "just $300.\r",
+        "Grooming gives a better look.\n",
+        "Your Pokémon will become friendlier and\f",
+        "more beautiful.\r",
+        "So? How about it?"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00018",
+      "en_US": "OK, which Pokémon should I spruce up?"
+    },
+    {
+      "id": "msg_0117_D37R0102_00019",
+      "en_US": "OK! I hope I do a good job!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00020",
+      "en_US": "There we go! All done!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00021",
+      "en_US": "No? How disappointing!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00022",
+      "en_US": "You’re a little short on funds."
+    },
+    {
+      "id": "msg_0117_D37R0102_00023",
+      "en_US": [
+        "I have a feeling that it won’t go well\n",
+        "next time. Let me close for the day!"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00024",
+      "en_US": "{STRVAR_1 0, 0, 0} looks a little happier."
+    },
+    {
+      "id": "msg_0117_D37R0102_00025",
+      "en_US": "{STRVAR_1 0, 0, 0} looks happy."
+    },
+    {
+      "id": "msg_0117_D37R0102_00026",
+      "en_US": "{STRVAR_1 0, 0, 0} looks delighted!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00027",
+      "en_US": "NO ENTRY BEYOND THIS POINT"
+    },
+    {
+      "id": "msg_0117_D37R0102_00028",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} inserted the\n",
+        "Basement Key.\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00029",
+      "en_US": [
+        "Welcome to the Memorial Photo Studio.\n",
+        "We are no ordinary studio!\r",
+        "You can wear a Team Rocket uniform\n",
+        "to take a picture!\r",
+        "Would you like to try it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00030",
+      "en_US": [
+        "Please stand in front of the camera\n",
+        "once you have changed.\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00031",
+      "en_US": [
+        "Are you ready?\r",
+        "Come on!\n",
+        "Look cool as if you own the world!\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00032",
+      "en_US": [
+        "Good job.\r",
+        "You can check the picture using the PC."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00033",
+      "en_US": [
+        "You can wear a Team Rocket uniform\n",
+        "to take a picture!\r",
+        "Would you like to try it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00034",
+      "en_US": [
+        "...Fair enough.\r",
+        "No one should look up to Team Rocket."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00035",
+      "en_US": [
+        "Hmm. Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00036",
+      "en_US": [
+        "Huh?\n",
+        "Are you a newcomer, too?\r",
+        "We had to recruit new members for the\n",
+        "Radio Tower mission.\f",
+        "Then we ran out of uniforms.\r",
+        "I heard this studio has some, so I\n",
+        "decided to “borrow” one.\r",
+        "Since you are here, why don’t you\n",
+        "change as well?\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00037",
+      "en_US": [
+        "Look at you! Pretty good!\r",
+        "Oh, but you shouldn’t try to scare\n",
+        "people walking around looking\f",
+        "like that, OK?"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00038",
+      "garbage": 58
+    },
+    {
+      "id": "msg_0117_D37R0102_00039",
+      "en_US": [
+        "Ooh, your Pokémon are so very\n",
+        "charming! How enchanting!\r",
+        "If you dress up your Pokémon here,\n",
+        "make it a sight to behold!\r",
+        "Then I will even hang a picture of one\n",
+        "in the other room!\r",
+        "You will do this, won’t you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00040",
+      "en_US": [
+        "Oh, you silly thing...\n",
+        "Where’s your sense of adventure?"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00041",
+      "en_US": [
+        "Ooh, ooh, yes! How nice!\n",
+        "Let’s not delay!\r",
+        "Should I explain to you how\n",
+        "to dress up your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00042",
+      "en_US": [
+        "Ooh, I wonder which Pokémon you’ll\n",
+        "dress up?\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00043",
+      "en_US": [
+        "Teeheehee...\n",
+        "I hope you will dress it up adorably!\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00044",
+      "en_US": [
+        "You have a Fashion Case, don’t you?\n",
+        "Ah, oui, wonderful!\r",
+        "Just choose the Accessories and put\n",
+        "them on your Pokémon.\r",
+        "When you’re done, I will snap a photo\n",
+        "and put it up beside me!\r",
+        "If you mix your records with others,\n",
+        "you can get their photos, too!\r",
+        "I think it will be much easier if \n",
+        "you will just try! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00045",
+      "en_US": [
+        "Ooh, nice work!\n",
+        "Let’s display the photo right away!\f",
+        "Oh, but it needs to have a title!\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00046",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}...\r",
+        "Ooh, yes, yes! I get it now!\n",
+        "Your aesthetics shine through!\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00047",
+      "en_US": [
+        "Oh, non, non, non!\n",
+        "It will be forlorn without a title.\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00048",
+      "en_US": [
+        "Oh... You came out without doing\n",
+        "anything... How disappointing."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00049",
+      "en_US": [
+        "If you dress up any Pokémon again,\n",
+        "the photo here will be changed.\r",
+        "Would you like to dress up\n",
+        "a Pokémon, dearie? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00050",
+      "en_US": [
+        "Why don’t I dress up myself and hang a\n",
+        "picture...?\r",
+        "The title should be...\n",
+        "Hmm...how about “Girl’s Paradise”?"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00051",
+      "en_US": [
+        "Ooh, non, non, non! That’s an Egg!\n",
+        "It’s too young to be dressing up!\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00052",
+      "en_US": [
+        "I put your photo up right here.\n",
+        "It just looks so perfect there!"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00053",
+      "en_US": [
+        "It’s a frame for holding a\n",
+        "portrait photo."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00054",
+      "garbage": 93
+    },
+    {
+      "id": "msg_0117_D37R0102_00055",
+      "en_US": [
+        "Team Rocket members in black suits\n",
+        "have been running around...\r",
+        "I was wondering what was going on.\n",
+        "So, you took on Team Rocket?\f",
+        "You are impressive!\r",
+        "You may be able to face the\n",
+        "legendary Poké...\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00056",
+      "en_US": [
+        "Hahaha! Never mind.\r",
+        "I must go now.\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00057",
+      "en_US": [
+        "Take a look!\r",
+        "This is a drawing for Accessories.\n",
+        "You never know what you’re gonna get.\r",
+        "Would you like to try for $100? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00058",
+      "en_US": [
+        "Wow, you are great!\n",
+        "So many Accessories and wallpapers!\r",
+        "Go ahead and dress up your Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00059",
+      "en_US": "Please come again!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00060",
+      "en_US": [
+        "Oh, no!\n",
+        "You’re short on funds."
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00061",
+      "en_US": [
+        "Here we go!\r",
+        "..................\n",
+        "..................\f",
+        "......\f",
+        "You win!\r"
+      ]
+    },
+    {
+      "id": "msg_0117_D37R0102_00062",
+      "en_US": "How about a wallpaper?\r"
+    },
+    {
+      "id": "msg_0117_D37R0102_00063",
+      "en_US": "Come again!"
+    },
+    {
+      "id": "msg_0117_D37R0102_00064",
+      "en_US": "Oh, you didn’t win. Sorry.\r"
+    }
+  ]
+}

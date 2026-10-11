@@ -1,0 +1,60 @@
+{
+  "key": 20832,
+  "messages": [
+    {
+      "id": "msg_0432_00000",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0432_00001",
+      "en_US": "{STRVAR_1 8, 0, 0}"
+    },
+    {
+      "id": "msg_0432_00002",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0432_00003",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0432_00004",
+      "en_US": "NEXT CARD"
+    },
+    {
+      "id": "msg_0432_00005",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0432_00006",
+      "en_US": [
+        "Would you like to stop scratching\n",
+        "this card?"
+      ]
+    },
+    {
+      "id": "msg_0432_00007",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0432_00008",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0432_00009",
+      "en_US": "Start card no. {STRVAR_1 50, 0, 0}!"
+    },
+    {
+      "id": "msg_0432_00010",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0432_00011",
+      "en_US": "Too bad!"
+    },
+    {
+      "id": "msg_0432_00012",
+      "en_US": "Please select card no. {STRVAR_1 50, 0, 0}.{YESNO 0}"
+    }
+  ]
+}
