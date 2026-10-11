@@ -6,3 +6,5 @@ meson-*
 metroskrew*
 yyjson-*
 libvct-*
+.wraplock
+packagecache/

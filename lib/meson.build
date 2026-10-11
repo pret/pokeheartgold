@@ -1,8 +1,6 @@
 lib_asm_includes = [
     include_directories('asm/include'),
     include_directories('NitroDWC/asm/include'),
-    #include_directories('NitroSDK/asm/include'),
-    #include_directories('syscall/asm/include'),
 ]
 
 lib_includes = include_directories('include', 'syscall')
@@ -41,5 +39,4 @@ libirc = static_library('irc',
 subdir('dsprot')
 subdir('NitroDWC')
 subdir('syscall')
-subdir('MSL_C')
 
