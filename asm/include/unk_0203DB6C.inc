@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public sub_0203DB6C
 .public sub_0203DB70

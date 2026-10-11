@@ -1,0 +1,112 @@
+{
+  "key": 50211,
+  "messages": [
+    {
+      "id": "msg_0057_D17R0101_00000",
+      "en_US": [
+        "So many people have gone up\n",
+        "the tower with a Rainbow Wing\f",
+        "to try and bring back HO-OH.\r",
+        "But none succeeded in making\n",
+        "HO-OH appear...\r",
+        "The Rainbow Wing is merely to permit you\n",
+        "to go up this tower.\r",
+        "What HO-OH has longed for is the\n",
+        "invisible trust between people and\f",
+        "Pokémon...\r",
+        "Or the person who can restore such\n",
+        "a relationship...\r"
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00001",
+      "en_US": [
+        "A long time ago, there used to be a\n",
+        "Pokémon at the top of this tower,\f",
+        "namely HO-OH.\r",
+        "But it flew away, and no one has seen it\n",
+        "since...\r",
+        "If anyone who could restore deep trust\n",
+        "between people and Pokémon were to\f",
+        "come here with something linked to\f",
+        "HO-OH... It may come down for such\f",
+        "a person...\r"
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00002",
+      "en_US": "That thing you have...!\r"
+    },
+    {
+      "id": "msg_0057_D17R0101_00003",
+      "en_US": [
+        "You have done it...\n",
+        "Please come through."
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00004",
+      "en_US": [
+        "That Rainbow Wing will merely permit you\n",
+        "to go up the tower.\r",
+        "If you are not the kind of person who\n",
+        "would restore the trust between people\f",
+        "and Pokémon, HO-OH will never show\f",
+        "itself to you..."
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00005",
+      "en_US": [
+        "Hmmm.\r",
+        "So it was you and the Bell!"
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00006",
+      "en_US": [
+        "You are quite a remarkable Trainer\n",
+        "for your age..."
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00007",
+      "en_US": [
+        "Morty: Bell Tower is where\n",
+        "people and Pokémon test their trust.\r",
+        "You may be born with some talent...\f",
+        "Can we exchange numbers?\r",
+        "I would love to examine the trust\n",
+        "you have with your Pokémon. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Morty\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00009",
+      "en_US": [
+        "Morty: Give me a call on Tuesday nights.\n",
+        "I should be free and ready."
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00010",
+      "en_US": [
+        "Morty: I really wanted to see the\n",
+        "trust you have with your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0057_D17R0101_00011",
+      "en_US": [
+        "Morty: Do you want to exchange\n",
+        "numbers? {YESNO 0}"
+      ]
+    }
+  ]
+}

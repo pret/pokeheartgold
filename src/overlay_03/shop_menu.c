@@ -410,7 +410,7 @@ static void MartTask_InitMartMessageData(MartData *data) {
 }
 
 static void MartData_InitMessageData(MartData *data) {
-    data->messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0435_bin, HEAP_ID_FIELD2);
+    data->messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0435, HEAP_ID_FIELD2);
     data->messageFormat = MessageFormat_New(HEAP_ID_FIELD2);
 }
 
@@ -541,11 +541,11 @@ static void ov03_022573D4(MartData *data, u32 arg1) {
                 string = String_New(130, HEAP_ID_FIELD2);
                 GetItemDescIntoString(string, itemID, HEAP_ID_FIELD2);
             } else if (data->martType == MART_TYPE_1) {
-                msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0737_bin, HEAP_ID_FIELD2);
+                msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0737, HEAP_ID_FIELD2);
                 string = NewString_ReadMsgData(msgData, itemID + 138);
                 DestroyMsgData(msgData);
             } else {
-                msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0434_bin, HEAP_ID_FIELD2);
+                msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0434, HEAP_ID_FIELD2);
                 string = NewString_ReadMsgData(msgData, sub_020910B8((u8)itemID));
                 DestroyMsgData(msgData);
             }
@@ -1062,13 +1062,13 @@ static u8 ov03_02258170(FieldSystem *fieldSystem, MartData *data) {
 }
 
 static const ResdatIdList ov03_0225946C = {
-    .charRes = NARC_resdat_resdat_00000066_bin,
-    .plttRes = NARC_resdat_resdat_00000067_bin,
-    .cellRes = NARC_resdat_resdat_00000065_bin,
-    .animRes = NARC_resdat_resdat_00000064_bin,
+    .charRes = resdat_00000066_bin,
+    .plttRes = resdat_00000067_bin,
+    .cellRes = resdat_00000065_bin,
+    .animRes = resdat_00000064_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000088_bin
+    .headerId = resdat_00000088_bin
 };
 
 static const UnmanagedSpriteTemplate ov03_022594F8[19] = {

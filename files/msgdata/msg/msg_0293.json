@@ -1,0 +1,133 @@
+{
+  "key": 47894,
+  "messages": [
+    {
+      "id": "msg_0293_00000",
+      "en_US": [
+        "Hello!\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00001",
+      "en_US": "I love {STRVAR_1 28, 0, 0}!"
+    },
+    {
+      "id": "msg_0293_00002",
+      "en_US": [
+        "I love {STRVAR_1 28, 0, 0}!\n",
+        "I love {STRVAR_1 28, 1, 0}, too!"
+      ]
+    },
+    {
+      "id": "msg_0293_00003",
+      "en_US": [
+        "This {STRVAR_1 28, 0, 0} is\n",
+        "{STRVAR_1 28, 1, 0}, isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0293_00004",
+      "en_US": [
+        "I can do anything for\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00005",
+      "en_US": [
+        "This {STRVAR_1 28, 0, 0} is\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00006",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} is the real\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00007",
+      "en_US": "It might be {STRVAR_1 28, 0, 0}..."
+    },
+    {
+      "id": "msg_0293_00008",
+      "en_US": [
+        "There’s only {STRVAR_1 28, 0, 0}\n",
+        "left!"
+      ]
+    },
+    {
+      "id": "msg_0293_00009",
+      "en_US": [
+        "It’s {STRVAR_1 28, 0, 0}!\n",
+        "It’s {STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00010",
+      "en_US": [
+        "I prefer {STRVAR_1 28, 0, 0}\n",
+        "after all!"
+      ]
+    },
+    {
+      "id": "msg_0293_00011",
+      "en_US": [
+        "Is {STRVAR_1 28, 0, 0}\n",
+        "{STRVAR_1 28, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0293_00012",
+      "en_US": "Do you like {STRVAR_1 28, 0, 0}?"
+    },
+    {
+      "id": "msg_0293_00013",
+      "en_US": [
+        "What do you think of\n",
+        "{STRVAR_1 28, 0, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0293_00014",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} is so\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00015",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} are\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00016",
+      "en_US": "{STRVAR_1 28, 0, 0}, right?"
+    },
+    {
+      "id": "msg_0293_00017",
+      "en_US": [
+        "Did you know {STRVAR_1 28, 0, 0}?\n",
+        "It’s {STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00018",
+      "en_US": [
+        "Excuse me...\n",
+        "It’s {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0293_00019",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}, right?\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    }
+  ]
+}

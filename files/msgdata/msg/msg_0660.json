@@ -1,0 +1,83 @@
+{
+  "key": 4592,
+  "messages": [
+    {
+      "id": "msg_0660_00000",
+      "en_US": "Day-C Lady"
+    },
+    {
+      "id": "msg_0660_00001",
+      "en_US": [
+        "Hello...\n",
+        "Oh hello there. Is this {STRVAR_1 3, 0, 0}?\r",
+        "What’s wrong?\n",
+        "Why are you calling even though\f",
+        "you’re nearby?"
+      ]
+    },
+    {
+      "id": "msg_0660_00002",
+      "en_US": [
+        "Hello...\n",
+        "Oh hello there. Is this {STRVAR_1 3, 0, 0}?\r",
+        "What’s wrong?\n",
+        "Why are you calling even though\f",
+        "you’re nearby?"
+      ]
+    },
+    {
+      "id": "msg_0660_00003",
+      "en_US": [
+        "Hello...\n",
+        "Oh, hello there. Is this {STRVAR_1 3, 0, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0660_00004",
+      "en_US": [
+        "Hello...\n",
+        "Oh, hello there. Is this {STRVAR_1 3, 0, 0}?\r"
+      ]
+    },
+    {
+      "id": "msg_0660_00005",
+      "en_US": "Your Pokémon are doing quite well.\r"
+    },
+    {
+      "id": "msg_0660_00006",
+      "en_US": [
+        "By level, your {STRVAR_1 0, 10, 0} has\n",
+        "grown by about {STRVAR_1 52, 11, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0660_00007",
+      "en_US": [
+        "By level, your {STRVAR_1 0, 12, 0} has\n",
+        "grown by about {STRVAR_1 52, 13, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0660_00008",
+      "en_US": [
+        "We can raise two of your Pokémon.\r",
+        "If you’d like us to raise another, stop\n",
+        "by anytime."
+      ]
+    },
+    {
+      "id": "msg_0660_00009",
+      "en_US": [
+        "You should stop by and check on your\n",
+        "Pokémon sometime."
+      ]
+    },
+    {
+      "id": "msg_0660_00010",
+      "en_US": [
+        "If you’d like us to look after your\n",
+        "Pokémon, stop by anytime."
+      ]
+    }
+  ]
+}

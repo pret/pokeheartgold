@@ -8,7 +8,7 @@
 #include "constants/std_script.h"
 #include "fielddata/script/scr_seq/event_D24R0204.h"
 #include "constants/field_move_response.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_data_020FDB44.inc"
 	.include "global.inc"
 

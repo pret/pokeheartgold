@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Delete2dMenu
 .public TextFlags_SetCanTouchSpeedUpPrint

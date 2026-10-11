@@ -1,0 +1,26 @@
+{
+  "key": 30287,
+  "messages": [
+    {
+      "id": "msg_0007_00000",
+      "en_US": "Delete all saved data?"
+    },
+    {
+      "id": "msg_0007_00001",
+      "en_US": [
+        "Once data has been deleted,\n",
+        "there is no way to recover it.\r",
+        "Furthermore, Pokéwalker registered\n",
+        "data will also be erased.\r",
+        "Delete the saved data anyway?"
+      ]
+    },
+    {
+      "id": "msg_0007_00002",
+      "en_US": [
+        "Deleting all data.\n",
+        "Don’t turn off the power."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "key": 63847,
+  "messages": [
+    {
+      "id": "msg_0514_T08GYM0101_00000",
+      "en_US": [
+        "Fufufufu...\n",
+        "I’m sorry to disappoint you...\r",
+        "I’m only joking! I’m the real deal!\r",
+        "Janine of Fuchsia Gym, that’s me!\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00001",
+      "en_US": [
+        "Janine: I see... You have defeated\n",
+        "Koga, my father and a member of the\f",
+        "Elite Four, to come here.\r",
+        "No wonder you are strong!\r",
+        "You’ve definitely won...\n",
+        "Here’s the Soul Badge. Take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Soul Badge from Janine!"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00003",
+      "en_US": [
+        "Janine: You’re so tough!\n",
+        "I have a special gift!\r",
+        "It’s Poison Jab, a powerful Poison-type\n",
+        "move that may poison its victim.\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00004",
+      "en_US": [
+        "Janine: I’m going to really apply\n",
+        "myself and improve my skills.\r",
+        "I want to become much better than\n",
+        "both my father and you!"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00005",
+      "en_US": [
+        "Yo, legend in the making!\n",
+        "Whoops! Take a good look around you.\r",
+        "The Trainers all look like the\n",
+        "Gym Leader, Janine.\r",
+        "Which of them is the real Janine?"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00006",
+      "en_US": [
+        "That was a great battle,\n",
+        "Trainer from Johto!"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00007",
+      "en_US": [
+        "Fooled you!\n",
+        "Hahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00008",
+      "en_US": "Well? Wasn’t my disguise perfect?"
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00009",
+      "en_US": [
+        "Wahahaha!\r",
+        "You betcha! I’m Janine!\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00010",
+      "en_US": [
+        "That’s right, I’m a boy!\n",
+        "What’s wrong with a boy\f",
+        "dressing up as Janine?"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00011",
+      "en_US": [
+        "Fufufu!\r",
+        "I’m Janine, the Gym Leader!\f",
+        "Wait, no I’m not! Gotcha!\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00012",
+      "en_US": [
+        "Fooled you!\n",
+        "Hahaha!\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00013",
+      "en_US": [
+        "It’s so fun to dress up as Janine,\n",
+        "our idol!"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00014",
+      "en_US": [
+        "I’m Janine!\n",
+        "How did you know I was real?\f",
+        "Let’s battle!\r"
+      ]
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00015",
+      "en_US": "Or not!\r"
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00016",
+      "en_US": "I feel stronger dressing up as Janine."
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00017",
+      "en_US": "Fuchsia City Pokémon Gym"
+    },
+    {
+      "id": "msg_0514_T08GYM0101_00018",
+      "en_US": [
+        "Fuchsia City Pokémon Gym\r",
+        "Leader: Janine\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

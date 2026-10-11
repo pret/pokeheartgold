@@ -1,0 +1,124 @@
+{
+  "key": 44521,
+  "messages": [
+    {
+      "id": "msg_0422_00000",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0422_00001",
+      "en_US": "ID: {STRVAR_1 54, 0, 0}"
+    },
+    {
+      "id": "msg_0422_00002",
+      "en_US": [
+        "When the group is ready:\n",
+        "A Button: Proceed   B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0422_00003",
+      "en_US": "Are these members OK?"
+    },
+    {
+      "id": "msg_0422_00004",
+      "en_US": "Cancel record mixing?"
+    },
+    {
+      "id": "msg_0422_00005",
+      "en_US": "Record mixing will be canceled."
+    },
+    {
+      "id": "msg_0422_00006",
+      "en_US": [
+        "There is a member who can no\n",
+        "longer remain available."
+      ]
+    },
+    {
+      "id": "msg_0422_00007",
+      "en_US": [
+        "There are no members.\n",
+        "Record mixing will be canceled."
+      ]
+    },
+    {
+      "id": "msg_0422_00008",
+      "en_US": [
+        "Please wait.\n",
+        "... ... B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0422_00009",
+      "en_US": [
+        "A member is no longer available.\n",
+        "Record mixing will be canceled."
+      ]
+    },
+    {
+      "id": "msg_0422_00010",
+      "en_US": "Cancel record mixing?"
+    },
+    {
+      "id": "msg_0422_00011",
+      "en_US": "Record mixing will be canceled."
+    },
+    {
+      "id": "msg_0422_00012",
+      "en_US": [
+        "Mixing records...\n",
+        "Don’t turn off the power!"
+      ]
+    },
+    {
+      "id": "msg_0422_00013",
+      "en_US": [
+        "Record mixing completed!\n",
+        "Returning to the Union Room."
+      ]
+    },
+    {
+      "id": "msg_0422_00014",
+      "en_US": [
+        "If the leader quits, the group will\n",
+        "disband. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0422_00015",
+      "en_US": "{STRVAR_1 3, 0, 0} has left."
+    },
+    {
+      "id": "msg_0422_00016",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0} the leader has left.\n",
+        "The group will disband."
+      ]
+    },
+    {
+      "id": "msg_0422_00017",
+      "en_US": "Seeking record-mixing friends!"
+    },
+    {
+      "id": "msg_0422_00018",
+      "en_US": "Record mixing under way!"
+    },
+    {
+      "id": "msg_0422_00019",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0422_00020",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0422_00021",
+      "en_US": "Next"
+    },
+    {
+      "id": "msg_0422_00022",
+      "en_US": "Quit"
+    }
+  ]
+}

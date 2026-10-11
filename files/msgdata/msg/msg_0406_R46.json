@@ -1,0 +1,34 @@
+{
+  "key": 22279,
+  "messages": [
+    {
+      "id": "msg_0406_R46_00000",
+      "en_US": [
+        "Rt. 46\n",
+        "Mountain Road ahead"
+      ]
+    },
+    {
+      "id": "msg_0406_R46_00001",
+      "en_US": "Dark Cave"
+    },
+    {
+      "id": "msg_0406_R46_00002",
+      "en_US": [
+        "A dead end...?\r",
+        "Did I take the wrong path?\r",
+        "I didn’t know this was only\n",
+        "one way."
+      ]
+    },
+    {
+      "id": "msg_0406_R46_00003",
+      "en_US": [
+        "You should try different routes\n",
+        "sometime.\r",
+        "You never know what Pokémon\n",
+        "you’re gonna get!"
+      ]
+    }
+  ]
+}

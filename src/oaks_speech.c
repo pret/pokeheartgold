@@ -4,9 +4,9 @@
 
 #include "constants/species.h"
 
-#include "demo/intro/intro.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0219.h"
+#include "files/demo/intro/intro.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0219.h"
 
 #include "brightness.h"
 #include "font.h"
@@ -770,7 +770,7 @@ static void OakSpeech_CleanupBgs(OakSpeechData *data) {
 }
 
 static void OakSpeech_InitMsgPrinter(OakSpeechData *data) {
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0219_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0219, data->heapID);
     ResetAllTextPrinters();
     data->unk_114 = sub_020163E0(NULL, PM_LCD_TOP, 6, data->heapID);
     data->msgFormat = MessageFormat_New(data->heapID);
@@ -1680,7 +1680,7 @@ static BOOL OakSpeech_DoMainTask(OakSpeechData *data) {
         OakSpeech_TouchToAdvanceButtonAction(data, TOUCHTOADVANCE_HIDE);
         BgClearTilemapBufferAndCommit(data->bgConfig, GF_BG_LYR_SUB_0);
         OakSpeechYesNo_SetBackgroundPalette(data->yesnoMenu, 7);
-        OakSpeechYesNo_Start(data->yesnoMenu, NARC_msg_msg_0219_bin, msg_0219_00061, msg_0219_00062);
+        OakSpeechYesNo_Start(data->yesnoMenu, msg_0219, msg_0219_00061, msg_0219_00062);
         data->state = OAK_SPEECH_MAIN_STATE_CONTROL_INFO_ASK_UNDERSTOOD_HANDLE_YESNO;
         break;
     case OAK_SPEECH_MAIN_STATE_CONTROL_INFO_ASK_UNDERSTOOD_HANDLE_YESNO:

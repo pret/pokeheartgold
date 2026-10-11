@@ -1,0 +1,612 @@
+{
+  "key": 59119,
+  "messages": [
+    {
+      "id": "msg_0314_00000",
+      "en_US": "Return"
+    },
+    {
+      "id": "msg_0314_00001",
+      "en_US": "Points"
+    },
+    {
+      "id": "msg_0314_00002",
+      "en_US": "Course record"
+    },
+    {
+      "id": "msg_0314_00003",
+      "en_US": "{STRVAR_4 1, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00004",
+      "en_US": "{STRVAR_4 3, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00005",
+      "en_US": "420 Points for a Collective Trophy"
+    },
+    {
+      "id": "msg_0314_00006",
+      "en_US": "450 Points for a Collective Trophy"
+    },
+    {
+      "id": "msg_0314_00007",
+      "en_US": "Bonus Points"
+    },
+    {
+      "id": "msg_0314_00008",
+      "en_US": "{STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00009",
+      "en_US": "--- Points"
+    },
+    {
+      "id": "msg_0314_00010",
+      "en_US": "{STRVAR_1 50, 0, 0}:{STRVAR_4 0, 1, 0}"
+    },
+    {
+      "id": "msg_0314_00011",
+      "en_US": "{STRVAR_1 3, 0, 0}’s Trophies"
+    },
+    {
+      "id": "msg_0314_00012",
+      "en_US": "Collective Trophy"
+    },
+    {
+      "id": "msg_0314_00013",
+      "en_US": "Trust Trophy"
+    },
+    {
+      "id": "msg_0314_00014",
+      "en_US": "Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00015",
+      "en_US": "Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00016",
+      "en_US": "Pokéathlon: Totals Pts."
+    },
+    {
+      "id": "msg_0314_00017",
+      "en_US": "3,000 Points for the 1st Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00018",
+      "en_US": "3,100 Point for the 2nd Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00019",
+      "en_US": "3,200 Point for the 3rd Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00020",
+      "en_US": "3,300 Points for the 4th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00021",
+      "en_US": "3,400 Points for the 5th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00022",
+      "en_US": "3,600 Points for the 6th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00023",
+      "en_US": "3,800 Points for the 7th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00024",
+      "en_US": "4,000 Points for the 8th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00025",
+      "en_US": "4,200 Points for the 9th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00026",
+      "en_US": "4,500 Points for the 10th Friendship Trophy"
+    },
+    {
+      "id": "msg_0314_00027",
+      "en_US": "Friendship Trophies Complete!"
+    },
+    {
+      "id": "msg_0314_00028",
+      "en_US": "Course Record Total:{CURSOR_X 176}{STRVAR_1 53, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00029",
+      "en_US": "Event Record Total:{CURSOR_X 176}{STRVAR_1 53, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00030",
+      "en_US": "Medal Acquisition Total:{CURSOR_X 176}{STRVAR_1 53, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00031",
+      "en_US": "Total"
+    },
+    {
+      "id": "msg_0314_00032",
+      "en_US": "Earned"
+    },
+    {
+      "id": "msg_0314_00033",
+      "en_US": [
+        "{ALN_CENTER}“A Rookie Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00034",
+      "en_US": [
+        "{ALN_CENTER}“A Beginning Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00035",
+      "en_US": [
+        "{ALN_CENTER}“A Pokéathlete Beginner”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00036",
+      "en_US": [
+        "{ALN_CENTER}“An Intermediate Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00037",
+      "en_US": [
+        "{ALN_CENTER}“An Advanced Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00038",
+      "en_US": [
+        "{ALN_CENTER}“A Super Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00039",
+      "en_US": [
+        "{ALN_CENTER}“A Remarkable Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00040",
+      "en_US": [
+        "{ALN_CENTER}“A Hotshot Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00041",
+      "en_US": [
+        "{ALN_CENTER}“A Skillful Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00042",
+      "en_US": [
+        "{ALN_CENTER}“A Proficient Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00043",
+      "en_US": [
+        "{ALN_CENTER}“An Elite Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00044",
+      "en_US": [
+        "{ALN_CENTER}“An Iron Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00045",
+      "en_US": [
+        "{ALN_CENTER}“An Ultra Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00046",
+      "en_US": [
+        "{ALN_CENTER}“The Strongest Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00047",
+      "en_US": [
+        "{ALN_CENTER}“An Invincible Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00048",
+      "en_US": [
+        "{ALN_CENTER}“A Veteran Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00049",
+      "en_US": [
+        "{ALN_CENTER}“A Genius Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00050",
+      "en_US": [
+        "{ALN_CENTER}“An Expert Pokéathlete”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00051",
+      "en_US": [
+        "{ALN_CENTER}“A Pokéathlete King”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00052",
+      "en_US": [
+        "{ALN_CENTER}“A Pokéathlete Emperor”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00053",
+      "en_US": [
+        "{ALN_CENTER}“A Pokéathlete Master”\n",
+        "{ALN_CENTER}Qualified for his or her Trophies\n",
+        "{ALN_CENTER}and friendships with Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0314_00054",
+      "en_US": "Times Joined: {STRVAR_1 56, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00055",
+      "en_US": "Event Record Single Mode"
+    },
+    {
+      "id": "msg_0314_00056",
+      "en_US": "Event Record Link Mode"
+    },
+    {
+      "id": "msg_0314_00057",
+      "garbage": 11
+    },
+    {
+      "id": "msg_0314_00058",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0314_00059",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0314_00060",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0314_00061",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0314_00062",
+      "en_US": "{STRVAR_4 0, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00063",
+      "en_US": "Please select event"
+    },
+    {
+      "id": "msg_0314_00064",
+      "en_US": "Event Record"
+    },
+    {
+      "id": "msg_0314_00065",
+      "en_US": "Three Pokémon Total Time Record"
+    },
+    {
+      "id": "msg_0314_00066",
+      "en_US": "No. of Pennants Returned"
+    },
+    {
+      "id": "msg_0314_00067",
+      "en_US": "Circle Push Points"
+    },
+    {
+      "id": "msg_0314_00068",
+      "en_US": "Number of Blocks Broken"
+    },
+    {
+      "id": "msg_0314_00069",
+      "en_US": "Disc Catch Points"
+    },
+    {
+      "id": "msg_0314_00070",
+      "en_US": "Lamp Jump Points"
+    },
+    {
+      "id": "msg_0314_00071",
+      "en_US": "Number of Laps Run"
+    },
+    {
+      "id": "msg_0314_00072",
+      "en_US": "Ring Drop Points"
+    },
+    {
+      "id": "msg_0314_00073",
+      "en_US": "Snowball Hit Times"
+    },
+    {
+      "id": "msg_0314_00074",
+      "en_US": "Goal Roll Points"
+    },
+    {
+      "id": "msg_0314_00075",
+      "en_US": "Link Mode"
+    },
+    {
+      "id": "msg_0314_00076",
+      "en_US": "80 Sec. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00077",
+      "en_US": "50 Flags for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00078",
+      "en_US": "60 Pts. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00079",
+      "en_US": "130 Pcs. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00080",
+      "en_US": "70 Pts. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00081",
+      "en_US": "500 Pts. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00082",
+      "en_US": "16 Laps for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00083",
+      "en_US": "100 Pts. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00084",
+      "en_US": "55 Hits for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00085",
+      "en_US": "9 Pts. for a Potential Trophy"
+    },
+    {
+      "id": "msg_0314_00086",
+      "en_US": "{STRVAR_1 52, 0, 0}.{STRVAR_1 51, 1, 0} Sec"
+    },
+    {
+      "id": "msg_0314_00087",
+      "en_US": "{STRVAR_1 52, 0, 0} Flags"
+    },
+    {
+      "id": "msg_0314_00088",
+      "en_US": "{STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00089",
+      "en_US": "{STRVAR_1 52, 0, 0} Pieces"
+    },
+    {
+      "id": "msg_0314_00090",
+      "en_US": "{STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00091",
+      "en_US": "{STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00092",
+      "en_US": "{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} Laps"
+    },
+    {
+      "id": "msg_0314_00093",
+      "en_US": "{STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00094",
+      "en_US": "{STRVAR_1 52, 0, 0} Hits"
+    },
+    {
+      "id": "msg_0314_00095",
+      "en_US": "{STRVAR_1 52, 0, 0} Points"
+    },
+    {
+      "id": "msg_0314_00096",
+      "en_US": "---.-- Sec"
+    },
+    {
+      "id": "msg_0314_00097",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00098",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00099",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00100",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00101",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00102",
+      "en_US": "--- Laps"
+    },
+    {
+      "id": "msg_0314_00103",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00104",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00105",
+      "en_US": "---"
+    },
+    {
+      "id": "msg_0314_00106",
+      "en_US": "Total"
+    },
+    {
+      "id": "msg_0314_00107",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00108",
+      "en_US": "New Record {STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00109",
+      "en_US": "Surpass the no. 1 record!"
+    },
+    {
+      "id": "msg_0314_00110",
+      "en_US": "Link"
+    },
+    {
+      "id": "msg_0314_00111",
+      "en_US": "Single"
+    },
+    {
+      "id": "msg_0314_00112",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0314_00113",
+      "en_US": "Next Trust Trophy: One Medalist"
+    },
+    {
+      "id": "msg_0314_00114",
+      "en_US": "Next Trust Trophy: Two Medalists"
+    },
+    {
+      "id": "msg_0314_00115",
+      "en_US": "Next Trust Trophy: Five Medalists"
+    },
+    {
+      "id": "msg_0314_00116",
+      "en_US": "Next Trust Trophy: Ten Medalists"
+    },
+    {
+      "id": "msg_0314_00117",
+      "en_US": "Next Trust Trophy: 25 Medalists"
+    },
+    {
+      "id": "msg_0314_00118",
+      "en_US": "Next Trust Trophy: 50 Medalists"
+    },
+    {
+      "id": "msg_0314_00119",
+      "en_US": "Next Trust Trophy: 75 Medalists"
+    },
+    {
+      "id": "msg_0314_00120",
+      "en_US": "Next Trust Trophy: 100 Medalists"
+    },
+    {
+      "id": "msg_0314_00121",
+      "en_US": "Next Trust Trophy: 150 Medalists"
+    },
+    {
+      "id": "msg_0314_00122",
+      "en_US": "Next Trust Trophy: 200 Medalists"
+    },
+    {
+      "id": "msg_0314_00123",
+      "en_US": "Trust Trophies Complete!"
+    },
+    {
+      "id": "msg_0314_00124",
+      "en_US": "{STRVAR_1 0, 0, 0}’s Medals"
+    },
+    {
+      "id": "msg_0314_00125",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0314_00126",
+      "en_US": [
+        "Medalist\n",
+        "Pokémon"
+      ]
+    },
+    {
+      "id": "msg_0314_00127",
+      "en_US": "Pokémon Record"
+    },
+    {
+      "id": "msg_0314_00128",
+      "en_US": "Medalist Pokémon: {STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0314_00129",
+      "en_US": "{ALN_CENTER}{STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}"
+    }
+  ]
+}

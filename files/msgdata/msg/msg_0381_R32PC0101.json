@@ -1,0 +1,116 @@
+{
+  "key": 20371,
+  "messages": [
+    {
+      "id": "msg_0381_R32PC0101_00000",
+      "en_US": [
+        "This area is great for fishing.\n",
+        "Looking at all those people fishing,\f",
+        "did you feel like you wanted to try\f",
+        "fishing, too?\r",
+        "Would you like one of my Rods? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00001",
+      "garbage": 31
+    },
+    {
+      "id": "msg_0381_R32PC0101_00002",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0381_R32PC0101_00003",
+      "en_US": [
+        "When you want to go fishing,\n",
+        "face the water and use the Rod first.\r",
+        "Then concentrate and look closely\n",
+        "at the water!\r",
+        "An “!” appears when a Pokémon\n",
+        "has taken a bite!\r",
+        "Press the A Button quickly to pull back\n",
+        "on the line.\r",
+        "You’ll see what happens next.\r",
+        "If there’s water, be it the sea or\n",
+        "a stream, try out your Rod."
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00004",
+      "en_US": "Oh. That’s rather disappointing..."
+    },
+    {
+      "id": "msg_0381_R32PC0101_00005",
+      "en_US": [
+        "When you want to go fishing,\n",
+        "face the water and use the Rod first.\r",
+        "Then concentrate and look closely\n",
+        "at the water!\r",
+        "An “!” appears when a Pokémon\n",
+        "has taken a bite!\r",
+        "Press the A Button quickly to pull back\n",
+        "on the line.\r",
+        "You’ll see what happens next.\n"
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00006",
+      "en_US": [
+        "What should I make my Pokémon hold?\r",
+        "Maybe an item that increases\n",
+        "its Attack power..."
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00007",
+      "en_US": [
+        "Bonjour.\n",
+        "How are you?\f",
+        "Are you picking Apricorns? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00008",
+      "en_US": [
+        "Way to go, little Apricorn collector!\r",
+        "I feel so great, I want to give\n",
+        "you this!\r"
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00009",
+      "en_US": [
+        "How come? What a waste!\r",
+        "I will show you how great\n",
+        "Apricorns are!\r",
+        "Take this first.\r"
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00010",
+      "en_US": [
+        "Lure Ball!\n",
+        "This Poké Ball makes it easy to catch\f",
+        "the Pokémon that appear when you\f",
+        "go fishing!\r",
+        "Actually, this is made from Apricorns.\n",
+        "Consider those two as small gifts\f",
+        "from me.\r",
+        "If you want more, go to Azalea Town.\n",
+        "A man called Kurt can make special\f",
+        "Poké Balls out of Apricorns.\r",
+        "Apricorns rule!"
+      ]
+    },
+    {
+      "id": "msg_0381_R32PC0101_00011",
+      "en_US": [
+        "Kurt is the hero of every Apricorn\n",
+        "collector out there.\r",
+        "If you are to go to Azalea Town,\n",
+        "be sure to visit him.\r",
+        "Apricorn, Apricornier, Apricorniest!"
+      ]
+    }
+  ]
+}

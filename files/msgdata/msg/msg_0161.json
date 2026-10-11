@@ -1,0 +1,277 @@
+{
+  "key": 21630,
+  "messages": [
+    {
+      "id": "msg_0161_00000",
+      "en_US": "Overlay"
+    },
+    {
+      "id": "msg_0161_00001",
+      "en_US": "Test"
+    },
+    {
+      "id": "msg_0161_00002",
+      "en_US": "Acting"
+    },
+    {
+      "id": "msg_0161_00003",
+      "en_US": "Visual"
+    },
+    {
+      "id": "msg_0161_00004",
+      "en_US": "Up to Visual evaluation"
+    },
+    {
+      "id": "msg_0161_00005",
+      "en_US": "Dance"
+    },
+    {
+      "id": "msg_0161_00006",
+      "en_US": "Dance: Get a turn as a Main Dancer"
+    },
+    {
+      "id": "msg_0161_00007",
+      "en_US": "Dance: Won’t get a turn as a Main Dancer"
+    },
+    {
+      "id": "msg_0161_00008",
+      "en_US": "Link Contest"
+    },
+    {
+      "id": "msg_0161_00009",
+      "en_US": "Paticles"
+    },
+    {
+      "id": "msg_0161_00010",
+      "en_US": "Result Annoucement"
+    },
+    {
+      "id": "msg_0161_00011",
+      "en_US": "Dance: without limitaion"
+    },
+    {
+      "id": "msg_0161_00012",
+      "en_US": "Coolness Master ON"
+    },
+    {
+      "id": "msg_0161_00013",
+      "en_US": "Coolness Master OFF"
+    },
+    {
+      "id": "msg_0161_00014",
+      "en_US": "Beauty Master ON"
+    },
+    {
+      "id": "msg_0161_00015",
+      "en_US": "Beauty Master OFF"
+    },
+    {
+      "id": "msg_0161_00016",
+      "en_US": "Cuteness Master ON"
+    },
+    {
+      "id": "msg_0161_00017",
+      "en_US": "Cuteness Master OFF"
+    },
+    {
+      "id": "msg_0161_00018",
+      "en_US": "Smartness Master ON"
+    },
+    {
+      "id": "msg_0161_00019",
+      "en_US": "Smartness Master OFF"
+    },
+    {
+      "id": "msg_0161_00020",
+      "en_US": "Toughness Master ON"
+    },
+    {
+      "id": "msg_0161_00021",
+      "en_US": "Toughness Master OFF"
+    },
+    {
+      "id": "msg_0161_00022",
+      "en_US": "Outside saving"
+    },
+    {
+      "id": "msg_0161_00023",
+      "en_US": "Outside loading"
+    },
+    {
+      "id": "msg_0161_00024",
+      "en_US": "Script Test"
+    },
+    {
+      "id": "msg_0161_00025",
+      "en_US": "Capture"
+    },
+    {
+      "id": "msg_0161_00026",
+      "en_US": "Clear an initialized-outside-saving flag"
+    },
+    {
+      "id": "msg_0161_00027",
+      "en_US": "Wobbuffet Pop(alone)"
+    },
+    {
+      "id": "msg_0161_00028",
+      "en_US": "Update all the Dress-up data at GDS"
+    },
+    {
+      "id": "msg_0161_00029",
+      "en_US": "Battle Recorder at GDS"
+    },
+    {
+      "id": "msg_0161_00030",
+      "en_US": "Footprint Stamps"
+    },
+    {
+      "id": "msg_0161_00031",
+      "en_US": "Rank:Normal"
+    },
+    {
+      "id": "msg_0161_00032",
+      "en_US": "Rank:Great"
+    },
+    {
+      "id": "msg_0161_00033",
+      "en_US": "Rank:Ultra"
+    },
+    {
+      "id": "msg_0161_00034",
+      "en_US": "Rank:Master"
+    },
+    {
+      "id": "msg_0161_00035",
+      "en_US": "Category:Cool"
+    },
+    {
+      "id": "msg_0161_00036",
+      "en_US": "Category:Beauty"
+    },
+    {
+      "id": "msg_0161_00037",
+      "en_US": "Category:Cute"
+    },
+    {
+      "id": "msg_0161_00038",
+      "en_US": "Category:Smart"
+    },
+    {
+      "id": "msg_0161_00039",
+      "en_US": "Category:Tough"
+    },
+    {
+      "id": "msg_0161_00040",
+      "en_US": "Battle Video"
+    },
+    {
+      "id": "msg_0161_00041",
+      "en_US": "Battle Video Ranking"
+    },
+    {
+      "id": "msg_0161_00042",
+      "en_US": "Trainer Ranking"
+    },
+    {
+      "id": "msg_0161_00043",
+      "en_US": "Dress-up"
+    },
+    {
+      "id": "msg_0161_00044",
+      "en_US": "Box data"
+    },
+    {
+      "id": "msg_0161_00045",
+      "en_US": "Sending {STRVAR_1 0, 0, 0}...　{STRVAR_1 50, 1, 0}"
+    },
+    {
+      "id": "msg_0161_00046",
+      "en_US": "An error occurred."
+    },
+    {
+      "id": "msg_0161_00047",
+      "en_US": "My Video: Destroy the current data"
+    },
+    {
+      "id": "msg_0161_00048",
+      "en_US": "My Video: Destroy the mirror data"
+    },
+    {
+      "id": "msg_0161_00049",
+      "en_US": "My Video: Change the current key"
+    },
+    {
+      "id": "msg_0161_00050",
+      "en_US": "My Video: Change the mirror key"
+    },
+    {
+      "id": "msg_0161_00051",
+      "en_US": "Video 1: Destroy the current data"
+    },
+    {
+      "id": "msg_0161_00052",
+      "en_US": "Video 1: Destroy the mirror data"
+    },
+    {
+      "id": "msg_0161_00053",
+      "en_US": "Video 1: Change the current key"
+    },
+    {
+      "id": "msg_0161_00054",
+      "en_US": "Video 1: Change the mirror key"
+    },
+    {
+      "id": "msg_0161_00055",
+      "en_US": "Video 2: Destroy the current data"
+    },
+    {
+      "id": "msg_0161_00056",
+      "en_US": "Video 2: Destroy the mirror data"
+    },
+    {
+      "id": "msg_0161_00057",
+      "en_US": "Video 2: Change the current key"
+    },
+    {
+      "id": "msg_0161_00058",
+      "en_US": "Video 2: Change the mirror key"
+    },
+    {
+      "id": "msg_0161_00059",
+      "en_US": "Video 3: Destroy the current data"
+    },
+    {
+      "id": "msg_0161_00060",
+      "en_US": "Video 3: Destroy the mirror data"
+    },
+    {
+      "id": "msg_0161_00061",
+      "en_US": "Video 3: Change the current key"
+    },
+    {
+      "id": "msg_0161_00062",
+      "en_US": "Video 3: Change the mirror key"
+    },
+    {
+      "id": "msg_0161_00063",
+      "en_US": "Video 3: Destroy the current data"
+    },
+    {
+      "id": "msg_0161_00064",
+      "en_US": "Hall: Destroy the mirror data"
+    },
+    {
+      "id": "msg_0161_00065",
+      "en_US": "Hall: Change the current key"
+    },
+    {
+      "id": "msg_0161_00066",
+      "en_US": "Hall: Change the mirror key"
+    },
+    {
+      "id": "msg_0161_00067",
+      "en_US": "Desroy the regular saved file"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "key": 10217,
+  "messages": [
+    {
+      "id": "msg_0761_00000",
+      "en_US": "What sort of adventure do you like?"
+    },
+    {
+      "id": "msg_0761_00001",
+      "en_US": [
+        "What type of Trainer would you like\n",
+        "to be?"
+      ]
+    },
+    {
+      "id": "msg_0761_00002",
+      "en_US": [
+        "What type of Pokémon did you start\n",
+        "your adventure with?"
+      ]
+    },
+    {
+      "id": "msg_0761_00003",
+      "en_US": [
+        "When you play with a friend, what do\n",
+        "you do?"
+      ]
+    },
+    {
+      "id": "msg_0761_00004",
+      "en_US": [
+        "Have you ever traded Pokémon over\n",
+        "Nintendo Wi-Fi Connection?"
+      ]
+    },
+    {
+      "id": "msg_0761_00005",
+      "en_US": "Where do you go most often?"
+    },
+    {
+      "id": "msg_0761_00006",
+      "en_US": [
+        "What do you care about most when\n",
+        "it comes to your Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00007",
+      "en_US": "Where do you usually play Pokémon?"
+    },
+    {
+      "id": "msg_0761_00008",
+      "en_US": "What have you done while playing?"
+    },
+    {
+      "id": "msg_0761_00009",
+      "en_US": [
+        "What status don’t you like your\n",
+        "Pokémon to get?"
+      ]
+    },
+    {
+      "id": "msg_0761_00010",
+      "en_US": [
+        "What status do you inflict after\n",
+        "reducing HP to capture a Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00011",
+      "en_US": [
+        "What do you use most on your\n",
+        "adventure?"
+      ]
+    },
+    {
+      "id": "msg_0761_00012",
+      "en_US": "Where do you catch Pokémon most often?"
+    },
+    {
+      "id": "msg_0761_00013",
+      "en_US": "When do you play Pokémon?"
+    },
+    {
+      "id": "msg_0761_00014",
+      "en_US": "Who are your Pokémon rivals?"
+    },
+    {
+      "id": "msg_0761_00015",
+      "en_US": [
+        "What item would you like to use on\n",
+        "yourself?"
+      ]
+    },
+    {
+      "id": "msg_0761_00016",
+      "en_US": "Which Pokémon’s Plaza Game do you like?"
+    },
+    {
+      "id": "msg_0761_00017",
+      "en_US": "What do you watch for in moves?"
+    },
+    {
+      "id": "msg_0761_00018",
+      "en_US": [
+        "Do you let your favorite Pokémon\n",
+        "evolve?"
+      ]
+    },
+    {
+      "id": "msg_0761_00019",
+      "en_US": "Which drink sounds the most delicious?"
+    },
+    {
+      "id": "msg_0761_00020",
+      "en_US": [
+        "Which item would you most like to wear\n",
+        "yourself?"
+      ]
+    },
+    {
+      "id": "msg_0761_00021",
+      "en_US": "What kind of gift pleases you most?"
+    },
+    {
+      "id": "msg_0761_00022",
+      "en_US": [
+        "What kind of Pokémon do you enjoy\n",
+        "getting the most?"
+      ]
+    },
+    {
+      "id": "msg_0761_00023",
+      "en_US": [
+        "What kind of Gym Leader do you like\n",
+        "best?"
+      ]
+    },
+    {
+      "id": "msg_0761_00024",
+      "en_US": [
+        "What do you see your favorite\n",
+        "Pokémon as?"
+      ]
+    },
+    {
+      "id": "msg_0761_00025",
+      "en_US": [
+        "What would you do if you were a\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00026",
+      "en_US": "What makes you the angriest?"
+    },
+    {
+      "id": "msg_0761_00027",
+      "en_US": [
+        "What kind of Pokémon music do you like\n",
+        "best?"
+      ]
+    },
+    {
+      "id": "msg_0761_00028",
+      "en_US": "What do you do with Technical Machines?"
+    },
+    {
+      "id": "msg_0761_00029",
+      "en_US": "What are your PC Boxes like?"
+    },
+    {
+      "id": "msg_0761_00030",
+      "en_US": [
+        "What are the levels of the six Pokémon\n",
+        "in your party?"
+      ]
+    },
+    {
+      "id": "msg_0761_00031",
+      "en_US": "What do you let your Pokémon hold?"
+    },
+    {
+      "id": "msg_0761_00032",
+      "en_US": [
+        "Do other people know that you like\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00033",
+      "en_US": "How do you like to get around?"
+    },
+    {
+      "id": "msg_0761_00034",
+      "en_US": "What do you like to do in a battle?"
+    },
+    {
+      "id": "msg_0761_00035",
+      "en_US": [
+        "What do you like most about your\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00036",
+      "en_US": [
+        "What scares you the most about\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00037",
+      "en_US": "Do you save your money?"
+    },
+    {
+      "id": "msg_0761_00038",
+      "en_US": [
+        "What would you like to be, \n",
+        "out of these choices?"
+      ]
+    },
+    {
+      "id": "msg_0761_00039",
+      "en_US": [
+        "What do you consider to be the most\n",
+        "important in Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00040",
+      "en_US": [
+        "Were there any Trainers with the same\n",
+        "name as you?"
+      ]
+    },
+    {
+      "id": "msg_0761_00041",
+      "en_US": [
+        "What kind of nicknames do you give your\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00042",
+      "en_US": "Which move would you most like to use?"
+    },
+    {
+      "id": "msg_0761_00043",
+      "en_US": [
+        "What do you do if a Pokémon is\n",
+        "poisoned?"
+      ]
+    },
+    {
+      "id": "msg_0761_00044",
+      "en_US": [
+        "Do you know anyone that looks like\n",
+        "a Gym Leader?"
+      ]
+    },
+    {
+      "id": "msg_0761_00045",
+      "en_US": "Which move would you most like to use?"
+    },
+    {
+      "id": "msg_0761_00046",
+      "en_US": [
+        "Have you ever drawn a picture of any\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0761_00047",
+      "en_US": [
+        "What intrigues you about the Trainers\n",
+        "visiting the Plaza?"
+      ]
+    },
+    {
+      "id": "msg_0761_00048",
+      "en_US": "What do you focus on in battles?"
+    },
+    {
+      "id": "msg_0761_00049",
+      "en_US": "What kind of Pokémon do you like best?"
+    }
+  ]
+}

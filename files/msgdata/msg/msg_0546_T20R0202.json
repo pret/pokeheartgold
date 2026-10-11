@@ -1,0 +1,23 @@
+{
+  "key": 46163,
+  "messages": [
+    {
+      "id": "msg_0546_T20R0202_00000",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} booted up the PC and\n",
+        "checked the Mailbox!\r"
+      ]
+    },
+    {
+      "id": "msg_0546_T20R0202_00001",
+      "en_US": "There is no Mail..."
+    },
+    {
+      "id": "msg_0546_T20R0202_00002",
+      "en_US": [
+        "It’s a Wii!\r",
+        "Wii is huge in Johto, too!"
+      ]
+    }
+  ]
+}

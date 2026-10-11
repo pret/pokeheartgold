@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GfGfxLoader_LoadFromOpenNarc
 .public SysTask_CreateOnVWaitQueue

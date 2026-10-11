@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "msgdata/msg/msg_0300.h"
+#include "files/msgdata/msg/msg_0300.h"
 
 #include "bag.h"
 #include "field_move.h"

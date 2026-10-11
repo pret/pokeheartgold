@@ -279,7 +279,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
     const int xOffsetCupName = 55;
     const int xRightSide = (24 * 8) - 1;
 
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, HEAP_ID_FIELD1);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0182, HEAP_ID_FIELD1);
     String *fmtString = String_New(180, HEAP_ID_FIELD1);
     String *destString = String_New(180, HEAP_ID_FIELD1);
     Window *window = &menu->windows[REGULATION_MENU_WINDOW_RULES];
@@ -510,7 +510,7 @@ static BattleRegulationMenu *BattleRegulationMenu_New(FieldSystem *fieldSystem) 
     menu->fieldSystem = fieldSystem;
     fieldSystem->linkBattleRuleset = NULL;
     menu->messageFormat = MessageFormat_New(HEAP_ID_FIELD1);
-    menu->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0046_bin, HEAP_ID_FIELD1); // TEXT_BANK_POKEMON_CENTER_2F_COMMON
+    menu->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0046, HEAP_ID_FIELD1); // TEXT_BANK_POKEMON_CENTER_2F_COMMON
     menu->strings[REGULATION_MENU_STRING_FMT] = String_New(180, HEAP_ID_FIELD1);
     menu->strings[REGULATION_MENU_STRING_DESTINATION] = String_New(180, HEAP_ID_FIELD1);
     menu->strings[REGULATION_MENU_STRING_REGULATION_NAME] = String_New(180, HEAP_ID_FIELD1);
@@ -552,7 +552,7 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
     LoadUserFrameGfx1(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 985, 11, 0, HEAP_ID_FIELD1);
     DrawFrameAndWindow1(window, TRUE, 985, 11);
     FillWindowPixelBuffer(window, 15);
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0182_bin, HEAP_ID_FIELD1);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0182, HEAP_ID_FIELD1);
     MessageFormat *messageFormat = MessageFormat_New(HEAP_ID_FIELD1);
     String *fmtString = String_New(180, HEAP_ID_FIELD1);
     String *destString = String_New(180, HEAP_ID_FIELD1);

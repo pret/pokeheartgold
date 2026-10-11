@@ -1,0 +1,275 @@
+{
+  "key": 1030,
+  "messages": [
+    {
+      "id": "msg_0464_T03R0101_00000",
+      "en_US": [
+        "Welcome!\r",
+        "Just to let you know, all the large\n",
+        "specimens have been taken to the\f",
+        "other museums for display.\r",
+        "So for now, admission is free\n",
+        "of charge!\r",
+        "Please go ahead."
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00001",
+      "en_US": [
+        "Did you know that you can\n",
+        "extract Pokémon from Fossils?\r",
+        "If you ever need to, let me take care\n",
+        "of it for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00002",
+      "en_US": [
+        "Please come by again if you ever want to\n",
+        "extract Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00003",
+      "en_US": [
+        "I’ll extract it for you.\r",
+        "Come back after a while!"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00004",
+      "en_US": [
+        "Hi, there!\r",
+        "I have extracted a Pokémon from\n",
+        "your Fossil!\r",
+        "It is called {STRVAR_1 0, 0, 0}.\n",
+        "Take good care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00005",
+      "en_US": [
+        "Oops!\n",
+        "Your party seems full.\r",
+        "Why don’t you go to the PC\n",
+        "to make room for it?"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00006",
+      "en_US": [
+        "Hey!\n",
+        "You don’t have any Fossils.\r",
+        "I heard that sometimes you find Fossils\n",
+        "when you smash rocks at the\f",
+        "Ruins of Alph and other places."
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00007",
+      "en_US": [
+        "Do you want to extract a Pokémon\n",
+        "from the {STRVAR_1 8, 0, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00009",
+      "en_US": [
+        "Would you like to give a nickname\n",
+        "to the {STRVAR_1 0, 1, 0} you received? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00010",
+      "en_US": [
+        "They say that meteorites struck\n",
+        "somewhere near Pewter City.\r",
+        "We would love to display them here\n",
+        "in our museum, but...\r",
+        "These meteorites are said to\n",
+        "emit strange energy and cannot\f",
+        "be carried away..."
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00011",
+      "en_US": [
+        "There are two places that I love!\n",
+        "One is the Ruins of Alph in Johto...\r",
+        "The other is the Pewter Museum!\n",
+        "It’s so quiet and makes me feel calm.\r",
+        "Do you feel its admirable history\n",
+        "silently creeping up on you?"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00012",
+      "en_US": [
+        "I should be grateful for my long life.\r",
+        "Never did I think I would get to\n",
+        "see the bones of a dragon!"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00013",
+      "en_US": [
+        "..................\r",
+        "All those shining stars at night are\n",
+        "the stones I’ll never get to know..."
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00014",
+      "en_US": [
+        "Steven: People who dedicate themselves\n",
+        "to what they believe stand out in\f",
+        "a crowd.\r",
+        "But, my passion is no less than yours.\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00015",
+      "en_US": [
+        "Wow!\n",
+        "The thing you have...\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00016",
+      "en_US": [
+        "This stone is...so mysterious!\r",
+        "Something seems to be shining inside...\n",
+        "The stone is modest...yet hiding\f",
+        "something wonderful!\r",
+        "You should have it studied\n",
+        "by experts.\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00017",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} handed the Enigma Stone\n",
+        "to the researcher!\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00018",
+      "en_US": [
+        "I will check it.\n",
+        "Can you hold on a second?\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00019",
+      "en_US": [
+        "Thank you for your patience!\n",
+        "It took me a little while,\f",
+        "but I have confirmed it!\r",
+        "This is an Orb that contains\n",
+        "what is called {COLOR 2}Soul Dew{COLOR 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00020",
+      "en_US": [
+        "Soul Dew is no ordinary thing\n",
+        "and is rarely seen.\f",
+        "I would love to study it closely."
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00021",
+      "en_US": [
+        "Steven: Soul Dew is said to be the\n",
+        "solidified spirits of LATIAS and LATIOS.\r",
+        "It has the power to bring out the\n",
+        "true potential of LATIAS and LATIOS.\r",
+        "The spirits of these Pokémon and\n",
+        "Soul Dew are said to call out to\f",
+        "each other...\r",
+        "The only thing that puzzles me is\n",
+        "the place Soul Dew was found.\f",
+        "Why Kanto?\r"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00022",
+      "en_US": [
+        "Stringy and winding...\n",
+        "Is this a plant Fossil?"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00023",
+      "en_US": [
+        "It’s a curving, sharp Fossil.\n",
+        "This may be...\f",
+        "the Fossil of a carnivore?"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00024",
+      "en_US": [
+        "It’s flat and looks hard.\n",
+        "This may be...\f",
+        "a part that protected its body?"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00025",
+      "en_US": [
+        "Solid amber tree sap has\n",
+        "something inside!\r",
+        "If you can take it out, you can\n",
+        "extract a Pokémon from\f",
+        "ancient times...?"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00026",
+      "en_US": [
+        "Small bones are put together to form\n",
+        "some kind of a Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00027",
+      "en_US": [
+        "The rough stone has words etched\n",
+        "into it...\r",
+        "“This is an unidentified object\n",
+        "found at Mt. Moon. It is possibly a\f",
+        "moon rock.”"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00028",
+      "en_US": [
+        "There are thick and well-read books!\r",
+        "“The Principles of Fossil Extraction”\f",
+        "“Archaeology Manual”\f",
+        "“Lost Pokémon”\f",
+        "“Pokémon Ancestors”\f",
+        "“Friendships of Trainers and Pokémon”\f",
+        "“Caring at the Loamy Layer of Kanto”"
+      ]
+    },
+    {
+      "id": "msg_0464_T03R0101_00029",
+      "en_US": [
+        "Our museum mainly displays\n",
+        "Fossils and specimens from Kanto.\r",
+        "Please enjoy the extinct Pokémon\n",
+        "through their remembrance, and\f",
+        "step through time to the ancient world."
+      ]
+    }
+  ]
+}

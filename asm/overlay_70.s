@@ -1,6 +1,6 @@
 #include "config.h"
 #include "constants/pokemon.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_70.inc"
 	.include "global.inc"
 
@@ -1536,7 +1536,7 @@ _02238414:
 	mov r4, #0xd
 	mvn r4, r4
 _02238428:
-	bl ov00_021EC210
+	bl DWC_ClearError
 _0223842C:
 	add r0, r4, #0
 	pop {r4, pc}
@@ -1715,7 +1715,7 @@ ov70_022385C0: ; 0x022385C0
 	add r5, r1, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl ov00_021ECB40
+	bl DWC_UpdateConnection
 	bl ov70_022378DC
 	ldr r1, [r5]
 	cmp r1, #5
@@ -1742,7 +1742,7 @@ _022385F0:
 	str r1, [r0]
 	ldr r0, _022386DC ; =ov70_02238DF8
 	ldr r1, _022386E0 ; =ov70_02238E20
-	bl ov00_021EC294
+	bl DWC_SetMemFunc
 	mov r0, #1
 	str r0, [r5]
 	b _022386BA
@@ -2765,7 +2765,7 @@ _02238E40: .word ov70_02246944
 	thumb_func_start ov70_02238E44
 ov70_02238E44: ; 0x02238E44
 	push {r3, lr}
-	bl ov00_021EC9D4
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	pop {r3, pc}
@@ -8834,7 +8834,7 @@ _0223BFC0:
 	str r0, [sp, #0x28]
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl ov00_021ECB94
+	bl DWC_GetDateTime
 	add r0, sp, #0xc
 	bl RTC_ConvertDateToDay
 	add r4, r0, #0
@@ -18628,7 +18628,7 @@ ov70_02240CA0: ; 0x02240CA0
 	add r4, r1, #0
 	add r0, sp, #0xc
 	add r1, sp, #0
-	bl ov00_021ECB94
+	bl DWC_GetDateTime
 	ldr r0, [sp, #0x14]
 	ldr r3, [sp, #0x10]
 	lsl r0, r0, #0x18
@@ -25284,7 +25284,7 @@ ov70_02244038: ; 0x02244038
 	mov r0, #8
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _022440FA
 	ldr r1, [r4]
@@ -26141,7 +26141,7 @@ ov70_022447A0: ; 0x022447A0
 	sub r1, r1, #1
 	cmp r0, r1
 	bne _022447DE
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	bne _022447CA
 	mov r0, #0
@@ -26158,10 +26158,10 @@ _022447CA:
 	str r0, [r4, #0x2c]
 	b _022447FC
 _022447DE:
-	bl ov00_021EC5B4
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _022447EA
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 _022447EA:
 	bl sub_0203946C
 	mov r1, #0
@@ -26206,7 +26206,7 @@ ov70_02244834: ; 0x02244834
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_0203946C
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	mov r1, #0
 	add r0, r4, #0
 	add r2, r1, #0
@@ -26260,10 +26260,10 @@ ov70_02244888: ; 0x02244888
 	mov r1, #2
 	mov r2, #1
 	mov r3, #0x14
-	bl ov00_021EC3F0
+	bl DWC_InitInetEx
 	mov r0, #2
-	bl ov00_021EC454
-	bl ov00_021EC4A4
+	bl DWC_SetAuthServer
+	bl DWC_ConnectInetAsync
 	mov r0, #3
 	str r0, [r4, #0x2c]
 	pop {r4, pc}
@@ -26275,11 +26275,11 @@ ov70_022448C0: ; 0x022448C0
 	push {r4, lr}
 	sub sp, #0x48
 	add r4, r0, #0
-	bl ov00_021EC60C
-	bl ov00_021EC5B4
+	bl DWC_ProcessInet
+	bl DWC_CheckInet
 	cmp r0, #0
 	beq _0224493E
-	bl ov00_021EC724
+	bl DWC_GetInetStatus
 	cmp r0, #8
 	bhi _0224491E
 	add r0, r0, r0
@@ -26301,14 +26301,14 @@ _022448E6: ; jump table
 _022448F8:
 	add r0, sp, #8
 	add r1, sp, #4
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	str r0, [r4, #0x40]
 	ldr r0, [sp, #8]
 	str r0, [r4, #0x44]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x48]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	add r0, r4, #0
 	bl ov70_02238F80
 	mov r0, #0x17
@@ -26316,7 +26316,7 @@ _022448F8:
 	b _0224493E
 _0224491E:
 	add r0, sp, #0
-	bl ov00_021EC0FC
+	bl DWC_GetLastError
 	add r0, r4, #0
 	bl ov70_02238F80
 	mov r0, #0x15
@@ -26326,7 +26326,7 @@ _0224491E:
 	b _0224493E
 _02244934:
 	add r0, sp, #0xc
-	bl ov00_021EC9E0
+	bl DWC_GetApInfo
 	mov r0, #4
 	str r0, [r4, #0x2c]
 _0224493E:
@@ -26339,7 +26339,7 @@ _0224493E:
 ov70_02244944: ; 0x02244944
 	push {r4, lr}
 	add r4, r0, #0
-	bl ov00_021ECD04
+	bl DWC_NASLoginAsync
 	mov r0, #5
 	str r0, [r4, #0x2c]
 	mov r0, #3
@@ -26351,7 +26351,7 @@ ov70_02244954: ; 0x02244954
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl ov00_021ECDC8
+	bl DWC_NASLoginProcess
 	cmp r0, #5
 	bhi _022449F4
 	add r0, r0, r0
@@ -26376,12 +26376,12 @@ _02244980:
 	bl ov70_02238F80
 	add r0, sp, #4
 	add r1, sp, #0
-	bl ov00_021EC11C
+	bl DWC_GetLastErrorEx
 	str r0, [r4, #0x40]
 	ldr r0, [sp, #4]
 	str r0, [r4, #0x44]
-	bl ov00_021EC210
-	bl ov00_021EC8D8
+	bl DWC_ClearError
+	bl DWC_CleanupInet
 	mov r0, #0x17
 	str r0, [r4, #0x2c]
 	ldr r1, [sp]
@@ -26406,7 +26406,7 @@ _022449C2:
 	str r0, [r4, #0x2c]
 	b _022449E2
 _022449C6:
-	bl ov00_021FA0D8
+	bl DWC_ShutdownGHTTP
 	mov r0, #0x17
 	str r0, [r4, #0x2c]
 	b _022449E2
@@ -26414,7 +26414,7 @@ _022449D0:
 	str r0, [r4, #0x2c]
 	b _022449E2
 _022449D4:
-	bl ov00_021ED9B4
+	bl DWC_ShutdownFriendsMatch
 	mov r0, #0x17
 	str r0, [r4, #0x2c]
 	b _022449E2
@@ -27059,7 +27059,7 @@ _02244E86:
 	cmp r0, #0
 	bne _02244F04
 	bl sub_0203946C
-	bl ov00_021EC8D8
+	bl DWC_CleanupInet
 	mov r0, #0x16
 	lsl r0, r0, #8
 	ldrsh r1, [r4, r0]
@@ -27876,7 +27876,7 @@ ov70_02245D48: ; 0x02245D48
 	.byte 0x00, 0x01, 0x02, 0x03, 0x04, 0x00, 0x00, 0x00
 
 ov70_02245D50: ; 0x02245D50
-	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, FS_OVERLAY_ID(OVY_71)
+	.word TradeSequence_Init, TradeSequence_Main, TradeSequence_Exit, SDK_OVERLAY_OVY_71_ID
 
 ov70_02245D60: ; 0x02245D60
 	.byte 0x04, 0x03, 0x04, 0x07, 0x04, 0x0B

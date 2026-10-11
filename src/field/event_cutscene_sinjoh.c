@@ -1,5 +1,5 @@
-#include "demo/legend.naix"
 #include "field/overlay_01_021FB878.h"
+#include "files/demo/legend.naix"
 #include "overlay_2/event_cutscene.h"
 
 #include "follow_mon.h"
@@ -127,14 +127,14 @@ static BOOL Task_SinjohCutscene(TaskManager *taskMan) {
 }
 
 static const u32 sUnownAnimationFiles[2][2] = {
-    { NARC_legend_legend_00000080_NSBCA, NARC_legend_legend_00000081_NSBTA },
-    { NARC_legend_legend_00000083_NSBCA, NARC_legend_legend_00000084_NSBTA },
+    { legend_00000080_NSBCA, legend_00000081_NSBTA },
+    { legend_00000083_NSBCA, legend_00000084_NSBTA },
 };
 
-static const u32 sSinjohEggModelFiles[3] = { NARC_legend_legend_00000088_NSBMD, NARC_legend_legend_00000092_NSBMD, NARC_legend_legend_00000096_NSBMD };
+static const u32 sSinjohEggModelFiles[3] = { legend_00000088_NSBMD, legend_00000092_NSBMD, legend_00000096_NSBMD };
 
-static const u32 sUnownModelFiles[2] = { NARC_legend_legend_00000079_NSBMD, NARC_legend_legend_00000082_NSBMD };
-static const u32 ov02_02253CF8_0[2] = { NARC_legend_legend_00000086_NSBCA, NARC_legend_legend_00000087_NSBMA };
+static const u32 sUnownModelFiles[2] = { legend_00000079_NSBMD, legend_00000082_NSBMD };
+static const u32 ov02_02253CF8_0[2] = { legend_00000086_NSBCA, legend_00000087_NSBMA };
 
 static void SinjohCutscene_LoadResources(SinjohCutsceneData *data) {
     u8 i, j;
@@ -294,9 +294,9 @@ static BOOL Task_SinjohGetEggCutscene(TaskManager *taskMan) {
 }
 
 static const u32 sSinjohEggAnimationFiles[3][4] = {
-    { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000090_NSBTA, NARC_legend_legend_00000091_NSBMA, NARC_legend_legend_00000089_NSBTP },
-    { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000094_NSBTA, NARC_legend_legend_00000095_NSBMA, NARC_legend_legend_00000093_NSBTP },
-    { NARC_legend_legend_00000100_NSBCA, NARC_legend_legend_00000098_NSBTA, NARC_legend_legend_00000099_NSBMA, NARC_legend_legend_00000097_NSBTP },
+    { legend_00000100_NSBCA, legend_00000090_NSBTA, legend_00000091_NSBMA, legend_00000089_NSBTP },
+    { legend_00000100_NSBCA, legend_00000094_NSBTA, legend_00000095_NSBMA, legend_00000093_NSBTP },
+    { legend_00000100_NSBCA, legend_00000098_NSBTA, legend_00000099_NSBMA, legend_00000097_NSBTP },
 };
 
 static void SinjohGetEggCutscene_LoadResources(SinjohGetEggCutsceneData *data) {

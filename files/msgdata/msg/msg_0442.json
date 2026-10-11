@@ -1,0 +1,92 @@
+{
+  "key": 38756,
+  "messages": [
+    {
+      "id": "msg_0442_00000",
+      "en_US": "CONTINUE"
+    },
+    {
+      "id": "msg_0442_00001",
+      "en_US": "NEW GAME"
+    },
+    {
+      "id": "msg_0442_00002",
+      "en_US": "MYSTERY GIFT"
+    },
+    {
+      "id": "msg_0442_00003",
+      "en_US": "CONNECT TO POKéMON RANGER"
+    },
+    {
+      "id": "msg_0442_00004",
+      "en_US": "MIGRATE FROM RUBY"
+    },
+    {
+      "id": "msg_0442_00005",
+      "en_US": "MIGRATE FROM SAPPHIRE"
+    },
+    {
+      "id": "msg_0442_00006",
+      "en_US": "MIGRATE FROM LEAFGREEN"
+    },
+    {
+      "id": "msg_0442_00007",
+      "en_US": "MIGRATE FROM FIRERED"
+    },
+    {
+      "id": "msg_0442_00008",
+      "en_US": "MIGRATE FROM EMERALD"
+    },
+    {
+      "id": "msg_0442_00009",
+      "en_US": "CONNECT TO POKéWALKER"
+    },
+    {
+      "id": "msg_0442_00010",
+      "en_US": "Wii MESSAGE SETTINGS"
+    },
+    {
+      "id": "msg_0442_00011",
+      "en_US": "CONNECT TO Wii"
+    },
+    {
+      "id": "msg_0442_00012",
+      "en_US": [
+        "NINTENDO WI-FI\n",
+        "CONNECTION SETTINGS"
+      ]
+    },
+    {
+      "id": "msg_0442_00013",
+      "en_US": "PLAYER"
+    },
+    {
+      "id": "msg_0442_00014",
+      "en_US": "TIME"
+    },
+    {
+      "id": "msg_0442_00015",
+      "en_US": "POKéDEX"
+    },
+    {
+      "id": "msg_0442_00016",
+      "en_US": "BADGES"
+    },
+    {
+      "id": "msg_0442_00017",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0442_00018",
+      "en_US": "{STRVAR_1 52, 0, 0}:{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0442_00019",
+      "en_US": "{STRVAR_1 52, 0, 0}"
+    },
+    {
+      "id": "msg_0442_00020",
+      "en_US": "{STRVAR_1 50, 0, 0}"
+    }
+  ]
+}

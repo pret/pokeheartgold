@@ -1,0 +1,83 @@
+{
+  "key": 60503,
+  "messages": [
+    {
+      "id": "msg_0598_T25R1007_00000",
+      "en_US": [
+        "Thank you for shopping with us today.\r",
+        "To which floor may I take you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00001",
+      "en_US": "I look forward to serving you again."
+    },
+    {
+      "id": "msg_0598_T25R1007_00002",
+      "en_US": [
+        "Certainly.\n",
+        "Elevator going up.\r"
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00003",
+      "en_US": [
+        "Certainly.\n",
+        "Elevator going down.\r"
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00004",
+      "en_US": "We are already on that floor?!"
+    },
+    {
+      "id": "msg_0598_T25R1007_00005",
+      "en_US": [
+        "First floor has the Service Counter\n",
+        "and the main entrance."
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00006",
+      "en_US": [
+        "Second floor has the Trainer’s Market,\n",
+        "where various useful items are sold."
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00007",
+      "en_US": [
+        "Third floor has the Battle Collection\n",
+        "to aim for strong, tough Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00008",
+      "en_US": [
+        "Fourth floor has the Medicine Box to\n",
+        "improve your Pokémon’s potential."
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00009",
+      "en_US": [
+        "Fifth floor has the TM Corner\n",
+        "to give your Pokémon a new edge."
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00010",
+      "en_US": [
+        "Sixth floor has the Rooftop Atrium.\n",
+        "Don’t miss the Daily Drawing Corner!"
+      ]
+    },
+    {
+      "id": "msg_0598_T25R1007_00011",
+      "en_US": [
+        "The basement has the warehouse.\n",
+        "It is not open to customers."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "key": 50828,
+  "messages": [
+    {
+      "id": "msg_0698_00000",
+      "en_US": "Reena"
+    },
+    {
+      "id": "msg_0698_00001",
+      "en_US": [
+        "Not too shabby... You’re doing\n",
+        "something right if you can beat me,\f",
+        "even by an unlikely fluke...\r",
+        "I like you!\n",
+        "Give me your number!\r",
+        "You can be my practice partner! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0698_00002",
+      "en_US": [
+        "Don’t get too high and mighty\n",
+        "about beating me! It was a fluke!"
+      ]
+    },
+    {
+      "id": "msg_0698_00003",
+      "en_US": [
+        "I don’t believe it! You’re going to\n",
+        "regret this!"
+      ]
+    },
+    {
+      "id": "msg_0698_00004",
+      "en_US": [
+        "Give me your phone number!\r",
+        "You are going to be my practice\n",
+        "partner!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0698_00005",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0698_00006",
+      "en_US": [
+        "What are you saying? \n",
+        "You really like Route 27?\r",
+        "I do too, of course!\r",
+        "I mean, I’m always on Route 27!"
+      ]
+    },
+    {
+      "id": "msg_0698_00007",
+      "en_US": [
+        "Listen, pal of mine...\n",
+        "Do you remember my {STRVAR_1 0, 10, 0}?\r",
+        "Yes, exactly. That lovely {STRVAR_1 0, 10, 0}.\n",
+        "Wouldn’t you agree it’s a perfect match\f",
+        "for me?\r",
+        "Fine, you may go."
+      ]
+    },
+    {
+      "id": "msg_0698_00008",
+      "en_US": [
+        "Have I ever faced a wild {STRVAR_1 0, 11, 0}?\n",
+        "You need to ask?\r",
+        "I’ve beaten {STRVAR_1 0, 11, 0} on numerous\n",
+        "occasions!\r",
+        "Fine, you may go."
+      ]
+    },
+    {
+      "id": "msg_0698_00009",
+      "en_US": [
+        "Have I ever failed to catch a wild\n",
+        "Pokémon?\r",
+        "You need to ask?\r",
+        "I would never fail to catch a wild\n",
+        "{STRVAR_1 0, 11, 0}... Oh! Never mind!"
+      ]
+    },
+    {
+      "id": "msg_0698_00010",
+      "en_US": [
+        "We are going to battle!\r",
+        "The place shall be {STRVAR_1 4, 3, 0}!\n",
+        "Don’t keep me waiting! Got it?"
+      ]
+    },
+    {
+      "id": "msg_0698_00011",
+      "en_US": [
+        "What are you doing?\r",
+        "I told you that the place was\f",
+        "{STRVAR_1 4, 3, 0}! Don’t try to run!"
+      ]
+    },
+    {
+      "id": "msg_0698_00012",
+      "en_US": [
+        "Don’t be too proud just because you\n",
+        "happened to beat me...\f",
+        "It was a fluke!"
+      ]
+    }
+  ]
+}

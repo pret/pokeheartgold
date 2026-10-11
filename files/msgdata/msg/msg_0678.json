@@ -1,0 +1,142 @@
+{
+  "key": 38971,
+  "messages": [
+    {
+      "id": "msg_0678_00000",
+      "en_US": "Ernest"
+    },
+    {
+      "id": "msg_0678_00001",
+      "en_US": [
+        "You have got some nerve!\n",
+        "That’s awesome!\f",
+        "Just what I look for in a friend!\r",
+        "Whadda ya say we trade phone\n",
+        "numbers and be best friends? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0678_00002",
+      "en_US": [
+        "All right!\n",
+        "Call me anytime!\r",
+        "About studying,\n",
+        "or about Pokémon,\f",
+        "or about a puzzle,\f",
+        "or about a Gym trick.\f",
+        "Even if you don’t run into anything\f",
+        "difficult, you can still give me a call!\r",
+        "I probably won’t know the answer, but\n",
+        "I’ll at least be able to listen!\r",
+        "’Cause we’re friends, you know?"
+      ]
+    },
+    {
+      "id": "msg_0678_00003",
+      "en_US": "Hey! What’re you, nervous?"
+    },
+    {
+      "id": "msg_0678_00004",
+      "en_US": [
+        "Oh, I see you’ve finally figured out\n",
+        "just how amazing I am?\r",
+        "Well, that’s to be expected. Let’s\n",
+        "trade phone numbers! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0678_00005",
+      "en_US": [
+        "Well, I probably look a lot scarier than\n",
+        "I really am. Would you believe I’m really\f",
+        "a nice guy?\r",
+        "I won’t bite, so come and talk to me\n",
+        "in person!"
+      ]
+    },
+    {
+      "id": "msg_0678_00006",
+      "en_US": [
+        "Yo, Teddy! You do a pretty good\n",
+        "impression of a motorcycle!\r",
+        "Next time you get a chance, you and I\n",
+        "should go riding and yell like\f",
+        "motorcycles. What do you say?\r",
+        "......Wait, who is this?\r",
+        "Oh no! Wrong number!\n",
+        "Sorry!"
+      ]
+    },
+    {
+      "id": "msg_0678_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} does a great job!\n",
+        "Anyway, its fighting spirit is different.\r",
+        "It’s never lost to any but the\n",
+        "strongest Pokémon!\r",
+        "What about your Pokémon?\n",
+        "Do they have any fighting spirit?\r",
+        "Never mind, you don’t have to answer.\r",
+        "I should know better than anyone just\n",
+        "how strong your Pokémon are!"
+      ]
+    },
+    {
+      "id": "msg_0678_00008",
+      "en_US": [
+        "We’re a Biker gang, you know.\n",
+        "Got Pokémon with poison,\f",
+        "with spikes all over their bodies,\f",
+        "with fangs, and we even have some\f",
+        "Ghost-type Pokémon.\f",
+        "It’s all a big show of how tough we are.\r",
+        "But...\r",
+        "As for me...\r",
+        "I really like cute Pokémon like MARILL!"
+      ]
+    },
+    {
+      "id": "msg_0678_00009",
+      "en_US": [
+        "So, yesterday I thought I was gonna\n",
+        "catch a {STRVAR_1 0, 11, 0}.\f",
+        "But that {STRVAR_1 0, 11, 0}, it took one look\f",
+        "at me and ran off!\r",
+        "It was totally rude!\r",
+        "You wouldn’t run away if you saw me,\n",
+        "would you...?"
+      ]
+    },
+    {
+      "id": "msg_0678_00010",
+      "en_US": [
+        "Yo! So, I really wanna battle you again.\n",
+        "I mean, I am really itching to show off!\r",
+        "I’m always hanging out on\n",
+        "{STRVAR_1 4, 3, 0}. Don’t get all\f",
+        "nervous and run away, got it?!"
+      ]
+    },
+    {
+      "id": "msg_0678_00011",
+      "en_US": [
+        "What’s going on with you?\n",
+        "I’m waiting on {STRVAR_1 4, 3, 0}!\r",
+        "You wouldn’t forget a promise you made\n",
+        "with a buddy, would you?"
+      ]
+    },
+    {
+      "id": "msg_0678_00012",
+      "en_US": [
+        "You know, my bro Markey was talking\n",
+        "about this earlier... Have you thought\f",
+        "about joining our team at all?\r",
+        "We hang out on Cycling Road and make a\n",
+        "lot of noise, throw our garbage around,\f",
+        "then pick up our garbage and take it\f",
+        "home to throw away. It’s so much fun!"
+      ]
+    }
+  ]
+}

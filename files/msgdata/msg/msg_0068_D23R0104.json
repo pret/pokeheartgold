@@ -1,0 +1,102 @@
+{
+  "key": 33879,
+  "messages": [
+    {
+      "id": "msg_0068_D23R0104_00000",
+      "en_US": [
+        "I listened to the radio while I was at\n",
+        "the ruins.\r",
+        "I heard a strange broadcast there."
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00001",
+      "en_US": [
+        "Mary: Why? Why do I have to suffer\n",
+        "through this?\r",
+        "MEOWTH, help me!"
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00002",
+      "en_US": [
+        "Mary: Oh! You’re my little savior! Will\n",
+        "you take this as my thanks?\r"
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the Bright\n",
+        "Powder from Mary!"
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00004",
+      "en_US": [
+        "Mary: When a Pokémon holds it, it\n",
+        "lowers the opponent’s accuracy."
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00005",
+      "en_US": "Nooo! Your Bag is full!"
+    },
+    {
+      "id": "msg_0068_D23R0104_00006",
+      "en_US": [
+        "Mary: Please tune in to me on\n",
+        "Professor Oak’s Pokémon Talk show."
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00007",
+      "en_US": "MEOWTH: Meowth..."
+    },
+    {
+      "id": "msg_0068_D23R0104_00008",
+      "en_US": "4F Production"
+    },
+    {
+      "id": "msg_0068_D23R0104_00009",
+      "en_US": "4F Studio 1"
+    },
+    {
+      "id": "msg_0068_D23R0104_00010",
+      "en_US": [
+        "Ben: Team Rocket... There is something\n",
+        "they lack. It is music!\r",
+        "Music enriches people’s heart and soul.\r",
+        "Music lovers would never do such\n",
+        "horrible things at a place like the\f",
+        "Radio Tower!"
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00011",
+      "en_US": "Ben: Do you listen to our music?"
+    },
+    {
+      "id": "msg_0068_D23R0104_00012",
+      "en_US": [
+        "Proton, the leader of this Radio Tower\n",
+        "mission... He is so cool.\r"
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00013",
+      "en_US": [
+        "Who are you?\r",
+        "If you are in the way of Proton...\n",
+        "I mean Team Rocket. I won’t allow that!\r"
+      ]
+    },
+    {
+      "id": "msg_0068_D23R0104_00014",
+      "en_US": [
+        "Team Rocket and Proton are all I need!\r",
+        "Who cares about Pokémon?"
+      ]
+    }
+  ]
+}

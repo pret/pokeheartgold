@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "msgdata/msg.naix"
+#include "files/msgdata/msg.naix"
 
 #include "heap.h"
 #include "message_format.h"
@@ -276,7 +276,7 @@ void ReadMsgDataIntoU16Array(MsgData *msgData, u32 msg_no, u16 *dest) {
 }
 
 void GetSpeciesNameIntoArray(u16 species, enum HeapID heapID, u16 *dest) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, heapID);
     ReadMsgDataIntoU16Array(msgData, species, dest);
     DestroyMsgData(msgData);
 }
@@ -298,7 +298,7 @@ String *ReadMsgData_ExpandPlaceholders(MessageFormat *messageFormat, MsgData *ms
 }
 
 String *GetMoveName(u32 move, enum HeapID heapno) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0750_bin, heapno);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0750, heapno);
     String *ret;
     if (msgData != NULL) {
         ret = String_New(16, heapno);
@@ -313,7 +313,7 @@ String *GetMoveName(u32 move, enum HeapID heapno) {
 
 String *GetSpeciesName(u16 species, enum HeapID heapID) {
     String *ret;
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0237_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0237, heapID);
     if (msgData != NULL) {
         ret = NewString_ReadMsgData(msgData, species);
         DestroyMsgData(msgData);

@@ -1,0 +1,23 @@
+{
+  "key": 19203,
+  "messages": [
+    {
+      "id": "msg_0393_R37_00000",
+      "en_US": [
+        "Rt. 37\n",
+        "North to Ecruteak City"
+      ]
+    },
+    {
+      "id": "msg_0393_R37_00001",
+      "en_US": [
+        "Trainer Tips\r",
+        "The move Dig can take you back to\n",
+        "the entrance when you use it.\r",
+        "If you want to explore a cave or\n",
+        "something similar, a Pokémon with\f",
+        "Dig will be quite useful."
+      ]
+    }
+  ]
+}

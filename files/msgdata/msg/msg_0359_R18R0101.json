@@ -1,0 +1,23 @@
+{
+  "key": 62503,
+  "messages": [
+    {
+      "id": "msg_0359_R18R0101_00000",
+      "en_US": [
+        "Cycling Road is all uphill from this end.\n",
+        "It’s really challenging.\r",
+        "Although, it may be interesting to go up\n",
+        "once pushing really hard on the pedals."
+      ]
+    },
+    {
+      "id": "msg_0359_R18R0101_00001",
+      "en_US": [
+        "Hey, you!\r",
+        "Cycling Road is for cyclists only.\n",
+        "You have to be on a Bicycle if you want\f",
+        "to proceed!\r"
+      ]
+    }
+  ]
+}

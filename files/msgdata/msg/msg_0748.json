@@ -1,0 +1,296 @@
+{
+  "key": 62028,
+  "messages": [
+    {
+      "id": "msg_0748_00000",
+      "en_US": "{STRVAR_1 6, 0, 0}{CURSOR_X 120}{STRVAR_1 51, 1, 0} BP"
+    },
+    {
+      "id": "msg_0748_00001",
+      "en_US": [
+        "{STRVAR_1 6, 0, 0}\n",
+        "           {STRVAR_1 51, 1, 0} BP"
+      ]
+    },
+    {
+      "id": "msg_0748_00002",
+      "en_US": "NEXT"
+    },
+    {
+      "id": "msg_0748_00003",
+      "en_US": "QUIT"
+    },
+    {
+      "id": "msg_0748_00004",
+      "en_US": [
+        "If you’ve become a bit of a fanatic\n",
+        "about battles, I’m the guy who can\f",
+        "teach your Pokémon all kinds of moves.\r",
+        "May I teach your Pokémon\n",
+        "moves in exchange for BP? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00005",
+      "en_US": [
+        "Oh, how unlucky! There’s no move I can\n",
+        "teach that Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00006",
+      "en_US": [
+        "Oh, what an unhappy thing!\n",
+        "You don’t have enough BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00007",
+      "en_US": [
+        "Giving up on teaching {STRVAR_1 0, 0, 0}\n",
+        "a move!\f",
+        "That’s what you want, right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00008",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} wants to learn the move\n",
+        "{STRVAR_1 6, 1, 0}...\r",
+        "But {STRVAR_1 0, 0, 0} already knows four\n",
+        "moves, so it can’t!\r",
+        "Forget a move so that {STRVAR_1 6, 1, 0}\n",
+        "can be learned?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00009",
+      "en_US": [
+        "{STRVAR_1 6, 2, 0} will be forgotten.\n",
+        "That’s OK, right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00010",
+      "en_US": [
+        "So you want to give up on\n",
+        "{STRVAR_1 6, 1, 0}, am I right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00011",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} gave up on learning\n",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00012",
+      "en_US": "1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!"
+    },
+    {
+      "id": "msg_0748_00013",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r",
+        "And...\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00014",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} learned how to use\n",
+        "{STRVAR_1 6, 1, 0}. Wow!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00015",
+      "en_US": [
+        "Well then!\n",
+        "Until next time!"
+      ]
+    },
+    {
+      "id": "msg_0748_00016",
+      "en_US": [
+        "If you’ve poured your whole life into\n",
+        "Pokémon battles, I’m the guy who can\f",
+        "teach your Pokémon all kinds of moves.\r",
+        "May I teach your Pokémon\n",
+        "moves in exchange for BP? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00017",
+      "en_US": [
+        "Oh no!\n",
+        "There’s no move I can teach that\f",
+        "Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00018",
+      "en_US": [
+        "Oh no!\n",
+        "You don’t have enough BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00019",
+      "en_US": [
+        "Quit trying to teach {STRVAR_1 0, 0, 0} new\n",
+        "moves? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00020",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} wants to learn the move\n",
+        "{STRVAR_1 6, 1, 0}...\r",
+        "But {STRVAR_1 0, 0, 0} already knows four\n",
+        "moves!\r",
+        "Forget a move so that {STRVAR_1 6, 1, 0}\n",
+        "can be learned?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00021",
+      "en_US": [
+        "Forget {STRVAR_1 6, 2, 0}, am I\n",
+        "right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00022",
+      "en_US": [
+        "So you want to give up on\n",
+        "{STRVAR_1 6, 1, 0}, am I right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00023",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} gave up on learning\n",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00024",
+      "en_US": "1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!"
+    },
+    {
+      "id": "msg_0748_00025",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r",
+        "And...\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00026",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} learned how to use\n",
+        "{STRVAR_1 6, 1, 0}. Great!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00027",
+      "en_US": "Well then! See you next time!"
+    },
+    {
+      "id": "msg_0748_00028",
+      "en_US": [
+        "If you’ve poured your heart and soul\n",
+        "into Pokémon battles, I’m the guy who\f",
+        "can teach your Pokémon all kinds\f",
+        "of moves.\r",
+        "May I teach your Pokémon\n",
+        "moves in exchange for BP? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00029",
+      "en_US": [
+        "Oh... There’s no move I can\n",
+        "teach that Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00030",
+      "en_US": [
+        "How sad...\n",
+        "You don’t have enough BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00031",
+      "en_US": [
+        "Giving up on teaching {STRVAR_1 0, 0, 0}\n",
+        "a move, right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00032",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} wants to learn the move\n",
+        "{STRVAR_1 6, 1, 0}...\r",
+        "But {STRVAR_1 0, 0, 0} already knows four\n",
+        "moves!\r",
+        "Forget a move so that {STRVAR_1 6, 1, 0}\n",
+        "can be learned? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00033",
+      "en_US": [
+        "{STRVAR_1 6, 2, 0} will be forgotten.\n",
+        "Do I have that right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00034",
+      "en_US": [
+        "So you want to give up on\n",
+        "{STRVAR_1 6, 1, 0}, right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0748_00035",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} gave up on learning\n",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00036",
+      "en_US": "1{PAUSE 20}, 2{PAUSE 20}, and{PAUSE 20}... {PAUSE 20}... Poof!"
+    },
+    {
+      "id": "msg_0748_00037",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} forgot how to\n",
+        "use {STRVAR_1 6, 1, 0}.\r",
+        "And...\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00038",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} learned how to use\n",
+        "{STRVAR_1 6, 1, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0748_00039",
+      "en_US": [
+        "Until next time!\n",
+        "Come back whenever you’ve got\f",
+        "Battle Points to spend!"
+      ]
+    },
+    {
+      "id": "msg_0748_00040",
+      "en_US": "How in the world do you teach an Egg..."
+    }
+  ]
+}

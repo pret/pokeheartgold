@@ -1,0 +1,1989 @@
+{
+  "key": 59681,
+  "messages": [
+    {
+      "id": "msg_0238_00000",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0238_00001",
+      "en_US": "a {COLOR 255}BULBASAUR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00002",
+      "en_US": "an {COLOR 255}IVYSAUR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00003",
+      "en_US": "a {COLOR 255}VENUSAUR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00004",
+      "en_US": "a {COLOR 255}CHARMANDER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00005",
+      "en_US": "a {COLOR 255}CHARMELEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00006",
+      "en_US": "a {COLOR 255}CHARIZARD{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00007",
+      "en_US": "a {COLOR 255}SQUIRTLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00008",
+      "en_US": "a {COLOR 255}WARTORTLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00009",
+      "en_US": "a {COLOR 255}BLASTOISE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00010",
+      "en_US": "a {COLOR 255}CATERPIE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00011",
+      "en_US": "a {COLOR 255}METAPOD{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00012",
+      "en_US": "a {COLOR 255}BUTTERFREE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00013",
+      "en_US": "a {COLOR 255}WEEDLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00014",
+      "en_US": "a {COLOR 255}KAKUNA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00015",
+      "en_US": "a {COLOR 255}BEEDRILL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00016",
+      "en_US": "a {COLOR 255}PIDGEY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00017",
+      "en_US": "a {COLOR 255}PIDGEOTTO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00018",
+      "en_US": "a {COLOR 255}PIDGEOT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00019",
+      "en_US": "a {COLOR 255}RATTATA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00020",
+      "en_US": "a {COLOR 255}RATICATE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00021",
+      "en_US": "a {COLOR 255}SPEAROW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00022",
+      "en_US": "a {COLOR 255}FEAROW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00023",
+      "en_US": "an {COLOR 255}EKANS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00024",
+      "en_US": "an {COLOR 255}ARBOK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00025",
+      "en_US": "a {COLOR 255}PIKACHU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00026",
+      "en_US": "a {COLOR 255}RAICHU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00027",
+      "en_US": "a {COLOR 255}SANDSHREW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00028",
+      "en_US": "a {COLOR 255}SANDSLASH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00029",
+      "en_US": "a {COLOR 255}NIDORAN♀{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00030",
+      "en_US": "a {COLOR 255}NIDORINA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00031",
+      "en_US": "a {COLOR 255}NIDOQUEEN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00032",
+      "en_US": "a {COLOR 255}NIDORAN♂{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00033",
+      "en_US": "a {COLOR 255}NIDORINO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00034",
+      "en_US": "a {COLOR 255}NIDOKING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00035",
+      "en_US": "a {COLOR 255}CLEFAIRY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00036",
+      "en_US": "a {COLOR 255}CLEFABLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00037",
+      "en_US": "a {COLOR 255}VULPIX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00038",
+      "en_US": "a {COLOR 255}NINETALES{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00039",
+      "en_US": "a {COLOR 255}JIGGLYPUFF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00040",
+      "en_US": "a {COLOR 255}WIGGLYTUFF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00041",
+      "en_US": "a {COLOR 255}ZUBAT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00042",
+      "en_US": "a {COLOR 255}GOLBAT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00043",
+      "en_US": "an {COLOR 255}ODDISH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00044",
+      "en_US": "a {COLOR 255}GLOOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00045",
+      "en_US": "a {COLOR 255}VILEPLUME{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00046",
+      "en_US": "a {COLOR 255}PARAS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00047",
+      "en_US": "a {COLOR 255}PARASECT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00048",
+      "en_US": "a {COLOR 255}VENONAT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00049",
+      "en_US": "a {COLOR 255}VENOMOTH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00050",
+      "en_US": "a {COLOR 255}DIGLETT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00051",
+      "en_US": "a {COLOR 255}DUGTRIO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00052",
+      "en_US": "a {COLOR 255}MEOWTH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00053",
+      "en_US": "a {COLOR 255}PERSIAN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00054",
+      "en_US": "a {COLOR 255}PSYDUCK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00055",
+      "en_US": "a {COLOR 255}GOLDUCK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00056",
+      "en_US": "a {COLOR 255}MANKEY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00057",
+      "en_US": "a {COLOR 255}PRIMEAPE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00058",
+      "en_US": "a {COLOR 255}GROWLITHE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00059",
+      "en_US": "an {COLOR 255}ARCANINE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00060",
+      "en_US": "a {COLOR 255}POLIWAG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00061",
+      "en_US": "a {COLOR 255}POLIWHIRL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00062",
+      "en_US": "a {COLOR 255}POLIWRATH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00063",
+      "en_US": "an {COLOR 255}ABRA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00064",
+      "en_US": "a {COLOR 255}KADABRA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00065",
+      "en_US": "an {COLOR 255}ALAKAZAM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00066",
+      "en_US": "a {COLOR 255}MACHOP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00067",
+      "en_US": "a {COLOR 255}MACHOKE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00068",
+      "en_US": "a {COLOR 255}MACHAMP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00069",
+      "en_US": "a {COLOR 255}BELLSPROUT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00070",
+      "en_US": "a {COLOR 255}WEEPINBELL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00071",
+      "en_US": "a {COLOR 255}VICTREEBEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00072",
+      "en_US": "a {COLOR 255}TENTACOOL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00073",
+      "en_US": "a {COLOR 255}TENTACRUEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00074",
+      "en_US": "a {COLOR 255}GEODUDE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00075",
+      "en_US": "a {COLOR 255}GRAVELER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00076",
+      "en_US": "a {COLOR 255}GOLEM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00077",
+      "en_US": "a {COLOR 255}PONYTA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00078",
+      "en_US": "a {COLOR 255}RAPIDASH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00079",
+      "en_US": "a {COLOR 255}SLOWPOKE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00080",
+      "en_US": "a {COLOR 255}SLOWBRO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00081",
+      "en_US": "a {COLOR 255}MAGNEMITE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00082",
+      "en_US": "a {COLOR 255}MAGNETON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00083",
+      "en_US": "a {COLOR 255}FARFETCH’D{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00084",
+      "en_US": "a {COLOR 255}DODUO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00085",
+      "en_US": "a {COLOR 255}DODRIO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00086",
+      "en_US": "a {COLOR 255}SEEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00087",
+      "en_US": "a {COLOR 255}DEWGONG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00088",
+      "en_US": "a {COLOR 255}GRIMER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00089",
+      "en_US": "a {COLOR 255}MUK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00090",
+      "en_US": "a {COLOR 255}SHELLDER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00091",
+      "en_US": "a {COLOR 255}CLOYSTER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00092",
+      "en_US": "a {COLOR 255}GASTLY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00093",
+      "en_US": "a {COLOR 255}HAUNTER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00094",
+      "en_US": "a {COLOR 255}GENGAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00095",
+      "en_US": "an {COLOR 255}ONIX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00096",
+      "en_US": "a {COLOR 255}DROWZEE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00097",
+      "en_US": "a {COLOR 255}HYPNO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00098",
+      "en_US": "a {COLOR 255}KRABBY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00099",
+      "en_US": "a {COLOR 255}KINGLER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00100",
+      "en_US": "a {COLOR 255}VOLTORB{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00101",
+      "en_US": "an {COLOR 255}ELECTRODE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00102",
+      "en_US": "an {COLOR 255}EXEGGCUTE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00103",
+      "en_US": "an {COLOR 255}EXEGGUTOR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00104",
+      "en_US": "a {COLOR 255}CUBONE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00105",
+      "en_US": "a {COLOR 255}MAROWAK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00106",
+      "en_US": "a {COLOR 255}HITMONLEE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00107",
+      "en_US": "a {COLOR 255}HITMONCHAN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00108",
+      "en_US": "a {COLOR 255}LICKITUNG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00109",
+      "en_US": "a {COLOR 255}KOFFING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00110",
+      "en_US": "a {COLOR 255}WEEZING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00111",
+      "en_US": "a {COLOR 255}RHYHORN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00112",
+      "en_US": "a {COLOR 255}RHYDON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00113",
+      "en_US": "a {COLOR 255}CHANSEY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00114",
+      "en_US": "a {COLOR 255}TANGELA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00115",
+      "en_US": "a {COLOR 255}KANGASKHAN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00116",
+      "en_US": "a {COLOR 255}HORSEA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00117",
+      "en_US": "a {COLOR 255}SEADRA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00118",
+      "en_US": "a {COLOR 255}GOLDEEN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00119",
+      "en_US": "a {COLOR 255}SEAKING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00120",
+      "en_US": "a {COLOR 255}STARYU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00121",
+      "en_US": "a {COLOR 255}STARMIE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00122",
+      "en_US": "a {COLOR 255}MR. MIME{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00123",
+      "en_US": "a {COLOR 255}SCYTHER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00124",
+      "en_US": "a {COLOR 255}JYNX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00125",
+      "en_US": "an {COLOR 255}ELECTABUZZ{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00126",
+      "en_US": "a {COLOR 255}MAGMAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00127",
+      "en_US": "a {COLOR 255}PINSIR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00128",
+      "en_US": "a {COLOR 255}TAUROS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00129",
+      "en_US": "a {COLOR 255}MAGIKARP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00130",
+      "en_US": "a {COLOR 255}GYARADOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00131",
+      "en_US": "a {COLOR 255}LAPRAS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00132",
+      "en_US": "a {COLOR 255}DITTO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00133",
+      "en_US": "an {COLOR 255}EEVEE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00134",
+      "en_US": "a {COLOR 255}VAPOREON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00135",
+      "en_US": "a {COLOR 255}JOLTEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00136",
+      "en_US": "a {COLOR 255}FLAREON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00137",
+      "en_US": "a {COLOR 255}PORYGON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00138",
+      "en_US": "an {COLOR 255}OMANYTE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00139",
+      "en_US": "an {COLOR 255}OMASTAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00140",
+      "en_US": "a {COLOR 255}KABUTO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00141",
+      "en_US": "a {COLOR 255}KABUTOPS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00142",
+      "en_US": "an {COLOR 255}AERODACTYL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00143",
+      "en_US": "a {COLOR 255}SNORLAX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00144",
+      "en_US": "an {COLOR 255}ARTICUNO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00145",
+      "en_US": "a {COLOR 255}ZAPDOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00146",
+      "en_US": "a {COLOR 255}MOLTRES{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00147",
+      "en_US": "a {COLOR 255}DRATINI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00148",
+      "en_US": "a {COLOR 255}DRAGONAIR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00149",
+      "en_US": "a {COLOR 255}DRAGONITE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00150",
+      "en_US": "a {COLOR 255}MEWTWO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00151",
+      "en_US": "a {COLOR 255}MEW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00152",
+      "en_US": "a {COLOR 255}CHIKORITA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00153",
+      "en_US": "a {COLOR 255}BAYLEEF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00154",
+      "en_US": "a {COLOR 255}MEGANIUM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00155",
+      "en_US": "a {COLOR 255}CYNDAQUIL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00156",
+      "en_US": "a {COLOR 255}QUILAVA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00157",
+      "en_US": "a {COLOR 255}TYPHLOSION{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00158",
+      "en_US": "a {COLOR 255}TOTODILE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00159",
+      "en_US": "a {COLOR 255}CROCONAW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00160",
+      "en_US": "a {COLOR 255}FERALIGATR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00161",
+      "en_US": "a {COLOR 255}SENTRET{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00162",
+      "en_US": "a {COLOR 255}FURRET{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00163",
+      "en_US": "a {COLOR 255}HOOTHOOT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00164",
+      "en_US": "a {COLOR 255}NOCTOWL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00165",
+      "en_US": "a {COLOR 255}LEDYBA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00166",
+      "en_US": "a {COLOR 255}LEDIAN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00167",
+      "en_US": "a {COLOR 255}SPINARAK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00168",
+      "en_US": "an {COLOR 255}ARIADOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00169",
+      "en_US": "a {COLOR 255}CROBAT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00170",
+      "en_US": "a {COLOR 255}CHINCHOU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00171",
+      "en_US": "a {COLOR 255}LANTURN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00172",
+      "en_US": "a {COLOR 255}PICHU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00173",
+      "en_US": "a {COLOR 255}CLEFFA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00174",
+      "en_US": "an {COLOR 255}IGGLYBUFF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00175",
+      "en_US": "a {COLOR 255}TOGEPI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00176",
+      "en_US": "a {COLOR 255}TOGETIC{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00177",
+      "en_US": "a {COLOR 255}NATU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00178",
+      "en_US": "a {COLOR 255}XATU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00179",
+      "en_US": "a {COLOR 255}MAREEP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00180",
+      "en_US": "a {COLOR 255}FLAAFFY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00181",
+      "en_US": "an {COLOR 255}AMPHAROS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00182",
+      "en_US": "a {COLOR 255}BELLOSSOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00183",
+      "en_US": "a {COLOR 255}MARILL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00184",
+      "en_US": "an {COLOR 255}AZUMARILL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00185",
+      "en_US": "a {COLOR 255}SUDOWOODO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00186",
+      "en_US": "a {COLOR 255}POLITOED{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00187",
+      "en_US": "a {COLOR 255}HOPPIP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00188",
+      "en_US": "a {COLOR 255}SKIPLOOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00189",
+      "en_US": "a {COLOR 255}JUMPLUFF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00190",
+      "en_US": "an {COLOR 255}AIPOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00191",
+      "en_US": "a {COLOR 255}SUNKERN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00192",
+      "en_US": "a {COLOR 255}SUNFLORA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00193",
+      "en_US": "a {COLOR 255}YANMA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00194",
+      "en_US": "a {COLOR 255}WOOPER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00195",
+      "en_US": "a {COLOR 255}QUAGSIRE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00196",
+      "en_US": "an {COLOR 255}ESPEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00197",
+      "en_US": "an {COLOR 255}UMBREON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00198",
+      "en_US": "a {COLOR 255}MURKROW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00199",
+      "en_US": "a {COLOR 255}SLOWKING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00200",
+      "en_US": "a {COLOR 255}MISDREAVUS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00201",
+      "en_US": "an {COLOR 255}UNOWN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00202",
+      "en_US": "a {COLOR 255}WOBBUFFET{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00203",
+      "en_US": "a {COLOR 255}GIRAFARIG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00204",
+      "en_US": "a {COLOR 255}PINECO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00205",
+      "en_US": "a {COLOR 255}FORRETRESS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00206",
+      "en_US": "a {COLOR 255}DUNSPARCE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00207",
+      "en_US": "a {COLOR 255}GLIGAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00208",
+      "en_US": "a {COLOR 255}STEELIX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00209",
+      "en_US": "a {COLOR 255}SNUBBULL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00210",
+      "en_US": "a {COLOR 255}GRANBULL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00211",
+      "en_US": "a {COLOR 255}QWILFISH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00212",
+      "en_US": "a {COLOR 255}SCIZOR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00213",
+      "en_US": "a {COLOR 255}SHUCKLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00214",
+      "en_US": "a {COLOR 255}HERACROSS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00215",
+      "en_US": "a {COLOR 255}SNEASEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00216",
+      "en_US": "a {COLOR 255}TEDDIURSA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00217",
+      "en_US": "an {COLOR 255}URSARING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00218",
+      "en_US": "a {COLOR 255}SLUGMA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00219",
+      "en_US": "a {COLOR 255}MAGCARGO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00220",
+      "en_US": "a {COLOR 255}SWINUB{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00221",
+      "en_US": "a {COLOR 255}PILOSWINE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00222",
+      "en_US": "a {COLOR 255}CORSOLA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00223",
+      "en_US": "a {COLOR 255}REMORAID{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00224",
+      "en_US": "an {COLOR 255}OCTILLERY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00225",
+      "en_US": "a {COLOR 255}DELIBIRD{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00226",
+      "en_US": "a {COLOR 255}MANTINE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00227",
+      "en_US": "a {COLOR 255}SKARMORY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00228",
+      "en_US": "a {COLOR 255}HOUNDOUR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00229",
+      "en_US": "a {COLOR 255}HOUNDOOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00230",
+      "en_US": "a {COLOR 255}KINGDRA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00231",
+      "en_US": "a {COLOR 255}PHANPY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00232",
+      "en_US": "a {COLOR 255}DONPHAN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00233",
+      "en_US": "a {COLOR 255}PORYGON2{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00234",
+      "en_US": "a {COLOR 255}STANTLER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00235",
+      "en_US": "a {COLOR 255}SMEARGLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00236",
+      "en_US": "a {COLOR 255}TYROGUE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00237",
+      "en_US": "a {COLOR 255}HITMONTOP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00238",
+      "en_US": "a {COLOR 255}SMOOCHUM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00239",
+      "en_US": "an {COLOR 255}ELEKID{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00240",
+      "en_US": "a {COLOR 255}MAGBY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00241",
+      "en_US": "a {COLOR 255}MILTANK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00242",
+      "en_US": "a {COLOR 255}BLISSEY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00243",
+      "en_US": "a {COLOR 255}RAIKOU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00244",
+      "en_US": "an {COLOR 255}ENTEI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00245",
+      "en_US": "a {COLOR 255}SUICUNE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00246",
+      "en_US": "a {COLOR 255}LARVITAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00247",
+      "en_US": "a {COLOR 255}PUPITAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00248",
+      "en_US": "a {COLOR 255}TYRANITAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00249",
+      "en_US": "a {COLOR 255}LUGIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00250",
+      "en_US": "a {COLOR 255}HO-OH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00251",
+      "en_US": "a {COLOR 255}CELEBI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00252",
+      "en_US": "a {COLOR 255}TREECKO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00253",
+      "en_US": "a {COLOR 255}GROVYLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00254",
+      "en_US": "a {COLOR 255}SCEPTILE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00255",
+      "en_US": "a {COLOR 255}TORCHIC{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00256",
+      "en_US": "a {COLOR 255}COMBUSKEN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00257",
+      "en_US": "a {COLOR 255}BLAZIKEN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00258",
+      "en_US": "a {COLOR 255}MUDKIP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00259",
+      "en_US": "a {COLOR 255}MARSHTOMP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00260",
+      "en_US": "a {COLOR 255}SWAMPERT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00261",
+      "en_US": "a {COLOR 255}POOCHYENA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00262",
+      "en_US": "a {COLOR 255}MIGHTYENA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00263",
+      "en_US": "a {COLOR 255}ZIGZAGOON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00264",
+      "en_US": "a {COLOR 255}LINOONE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00265",
+      "en_US": "a {COLOR 255}WURMPLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00266",
+      "en_US": "a {COLOR 255}SILCOON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00267",
+      "en_US": "a {COLOR 255}BEAUTIFLY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00268",
+      "en_US": "a {COLOR 255}CASCOON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00269",
+      "en_US": "a {COLOR 255}DUSTOX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00270",
+      "en_US": "a {COLOR 255}LOTAD{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00271",
+      "en_US": "a {COLOR 255}LOMBRE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00272",
+      "en_US": "a {COLOR 255}LUDICOLO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00273",
+      "en_US": "a {COLOR 255}SEEDOT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00274",
+      "en_US": "a {COLOR 255}NUZLEAF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00275",
+      "en_US": "a {COLOR 255}SHIFTRY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00276",
+      "en_US": "a {COLOR 255}TAILLOW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00277",
+      "en_US": "a {COLOR 255}SWELLOW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00278",
+      "en_US": "a {COLOR 255}WINGULL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00279",
+      "en_US": "a {COLOR 255}PELIPPER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00280",
+      "en_US": "a {COLOR 255}RALTS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00281",
+      "en_US": "a {COLOR 255}KIRLIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00282",
+      "en_US": "a {COLOR 255}GARDEVOIR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00283",
+      "en_US": "a {COLOR 255}SURSKIT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00284",
+      "en_US": "a {COLOR 255}MASQUERAIN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00285",
+      "en_US": "a {COLOR 255}SHROOMISH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00286",
+      "en_US": "a {COLOR 255}BRELOOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00287",
+      "en_US": "a {COLOR 255}SLAKOTH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00288",
+      "en_US": "a {COLOR 255}VIGOROTH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00289",
+      "en_US": "a {COLOR 255}SLAKING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00290",
+      "en_US": "a {COLOR 255}NINCADA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00291",
+      "en_US": "a {COLOR 255}NINJASK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00292",
+      "en_US": "a {COLOR 255}SHEDINJA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00293",
+      "en_US": "a {COLOR 255}WHISMUR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00294",
+      "en_US": "a {COLOR 255}LOUDRED{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00295",
+      "en_US": "an {COLOR 255}EXPLOUD{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00296",
+      "en_US": "a {COLOR 255}MAKUHITA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00297",
+      "en_US": "a {COLOR 255}HARIYAMA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00298",
+      "en_US": "an {COLOR 255}AZURILL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00299",
+      "en_US": "a {COLOR 255}NOSEPASS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00300",
+      "en_US": "a {COLOR 255}SKITTY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00301",
+      "en_US": "a {COLOR 255}DELCATTY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00302",
+      "en_US": "a {COLOR 255}SABLEYE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00303",
+      "en_US": "a {COLOR 255}MAWILE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00304",
+      "en_US": "an {COLOR 255}ARON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00305",
+      "en_US": "a {COLOR 255}LAIRON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00306",
+      "en_US": "an {COLOR 255}AGGRON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00307",
+      "en_US": "a {COLOR 255}MEDITITE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00308",
+      "en_US": "a {COLOR 255}MEDICHAM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00309",
+      "en_US": "an {COLOR 255}ELECTRIKE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00310",
+      "en_US": "a {COLOR 255}MANECTRIC{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00311",
+      "en_US": "a {COLOR 255}PLUSLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00312",
+      "en_US": "a {COLOR 255}MINUN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00313",
+      "en_US": "a {COLOR 255}VOLBEAT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00314",
+      "en_US": "an {COLOR 255}ILLUMISE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00315",
+      "en_US": "a {COLOR 255}ROSELIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00316",
+      "en_US": "a {COLOR 255}GULPIN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00317",
+      "en_US": "a {COLOR 255}SWALOT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00318",
+      "en_US": "a {COLOR 255}CARVANHA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00319",
+      "en_US": "a {COLOR 255}SHARPEDO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00320",
+      "en_US": "a {COLOR 255}WAILMER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00321",
+      "en_US": "a {COLOR 255}WAILORD{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00322",
+      "en_US": "a {COLOR 255}NUMEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00323",
+      "en_US": "a {COLOR 255}CAMERUPT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00324",
+      "en_US": "a {COLOR 255}TORKOAL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00325",
+      "en_US": "a {COLOR 255}SPOINK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00326",
+      "en_US": "a {COLOR 255}GRUMPIG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00327",
+      "en_US": "a {COLOR 255}SPINDA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00328",
+      "en_US": "a {COLOR 255}TRAPINCH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00329",
+      "en_US": "a {COLOR 255}VIBRAVA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00330",
+      "en_US": "a {COLOR 255}FLYGON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00331",
+      "en_US": "a {COLOR 255}CACNEA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00332",
+      "en_US": "a {COLOR 255}CACTURNE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00333",
+      "en_US": "a {COLOR 255}SWABLU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00334",
+      "en_US": "an {COLOR 255}ALTARIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00335",
+      "en_US": "a {COLOR 255}ZANGOOSE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00336",
+      "en_US": "a {COLOR 255}SEVIPER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00337",
+      "en_US": "a {COLOR 255}LUNATONE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00338",
+      "en_US": "a {COLOR 255}SOLROCK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00339",
+      "en_US": "a {COLOR 255}BARBOACH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00340",
+      "en_US": "a {COLOR 255}WHISCASH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00341",
+      "en_US": "a {COLOR 255}CORPHISH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00342",
+      "en_US": "a {COLOR 255}CRAWDAUNT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00343",
+      "en_US": "a {COLOR 255}BALTOY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00344",
+      "en_US": "a {COLOR 255}CLAYDOL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00345",
+      "en_US": "a {COLOR 255}LILEEP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00346",
+      "en_US": "a {COLOR 255}CRADILY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00347",
+      "en_US": "an {COLOR 255}ANORITH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00348",
+      "en_US": "an {COLOR 255}ARMALDO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00349",
+      "en_US": "a {COLOR 255}FEEBAS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00350",
+      "en_US": "a {COLOR 255}MILOTIC{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00351",
+      "en_US": "a {COLOR 255}CASTFORM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00352",
+      "en_US": "a {COLOR 255}KECLEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00353",
+      "en_US": "a {COLOR 255}SHUPPET{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00354",
+      "en_US": "a {COLOR 255}BANETTE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00355",
+      "en_US": "a {COLOR 255}DUSKULL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00356",
+      "en_US": "a {COLOR 255}DUSCLOPS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00357",
+      "en_US": "a {COLOR 255}TROPIUS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00358",
+      "en_US": "a {COLOR 255}CHIMECHO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00359",
+      "en_US": "an {COLOR 255}ABSOL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00360",
+      "en_US": "a {COLOR 255}WYNAUT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00361",
+      "en_US": "a {COLOR 255}SNORUNT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00362",
+      "en_US": "a {COLOR 255}GLALIE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00363",
+      "en_US": "a {COLOR 255}SPHEAL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00364",
+      "en_US": "a {COLOR 255}SEALEO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00365",
+      "en_US": "a {COLOR 255}WALREIN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00366",
+      "en_US": "a {COLOR 255}CLAMPERL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00367",
+      "en_US": "a {COLOR 255}HUNTAIL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00368",
+      "en_US": "a {COLOR 255}GOREBYSS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00369",
+      "en_US": "a {COLOR 255}RELICANTH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00370",
+      "en_US": "a {COLOR 255}LUVDISC{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00371",
+      "en_US": "a {COLOR 255}BAGON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00372",
+      "en_US": "a {COLOR 255}SHELGON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00373",
+      "en_US": "a {COLOR 255}SALAMENCE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00374",
+      "en_US": "a {COLOR 255}BELDUM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00375",
+      "en_US": "a {COLOR 255}METANG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00376",
+      "en_US": "a {COLOR 255}METAGROSS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00377",
+      "en_US": "a {COLOR 255}REGIROCK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00378",
+      "en_US": "a {COLOR 255}REGICE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00379",
+      "en_US": "a {COLOR 255}REGISTEEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00380",
+      "en_US": "a {COLOR 255}LATIAS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00381",
+      "en_US": "a {COLOR 255}LATIOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00382",
+      "en_US": "a {COLOR 255}KYOGRE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00383",
+      "en_US": "a {COLOR 255}GROUDON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00384",
+      "en_US": "a {COLOR 255}RAYQUAZA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00385",
+      "en_US": "a {COLOR 255}JIRACHI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00386",
+      "en_US": "a {COLOR 255}DEOXYS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00387",
+      "en_US": "a {COLOR 255}TURTWIG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00388",
+      "en_US": "a {COLOR 255}GROTLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00389",
+      "en_US": "a {COLOR 255}TORTERRA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00390",
+      "en_US": "a {COLOR 255}CHIMCHAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00391",
+      "en_US": "a {COLOR 255}MONFERNO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00392",
+      "en_US": "an {COLOR 255}INFERNAPE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00393",
+      "en_US": "a {COLOR 255}PIPLUP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00394",
+      "en_US": "a {COLOR 255}PRINPLUP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00395",
+      "en_US": "an {COLOR 255}EMPOLEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00396",
+      "en_US": "a {COLOR 255}STARLY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00397",
+      "en_US": "a {COLOR 255}STARAVIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00398",
+      "en_US": "a {COLOR 255}STARAPTOR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00399",
+      "en_US": "a {COLOR 255}BIDOOF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00400",
+      "en_US": "a {COLOR 255}BIBAREL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00401",
+      "en_US": "a {COLOR 255}KRICKETOT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00402",
+      "en_US": "a {COLOR 255}KRICKETUNE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00403",
+      "en_US": "a {COLOR 255}SHINX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00404",
+      "en_US": "a {COLOR 255}LUXIO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00405",
+      "en_US": "a {COLOR 255}LUXRAY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00406",
+      "en_US": "a {COLOR 255}BUDEW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00407",
+      "en_US": "a {COLOR 255}ROSERADE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00408",
+      "en_US": "a {COLOR 255}CRANIDOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00409",
+      "en_US": "a {COLOR 255}RAMPARDOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00410",
+      "en_US": "a {COLOR 255}SHIELDON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00411",
+      "en_US": "a {COLOR 255}BASTIODON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00412",
+      "en_US": "a {COLOR 255}BURMY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00413",
+      "en_US": "a {COLOR 255}WORMADAM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00414",
+      "en_US": "a {COLOR 255}MOTHIM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00415",
+      "en_US": "a {COLOR 255}COMBEE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00416",
+      "en_US": "a {COLOR 255}VESPIQUEN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00417",
+      "en_US": "a {COLOR 255}PACHIRISU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00418",
+      "en_US": "a {COLOR 255}BUIZEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00419",
+      "en_US": "a {COLOR 255}FLOATZEL{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00420",
+      "en_US": "a {COLOR 255}CHERUBI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00421",
+      "en_US": "a {COLOR 255}CHERRIM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00422",
+      "en_US": "a {COLOR 255}SHELLOS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00423",
+      "en_US": "a {COLOR 255}GASTRODON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00424",
+      "en_US": "an {COLOR 255}AMBIPOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00425",
+      "en_US": "a {COLOR 255}DRIFLOON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00426",
+      "en_US": "a {COLOR 255}DRIFBLIM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00427",
+      "en_US": "a {COLOR 255}BUNEARY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00428",
+      "en_US": "a {COLOR 255}LOPUNNY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00429",
+      "en_US": "a {COLOR 255}MISMAGIUS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00430",
+      "en_US": "a {COLOR 255}HONCHKROW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00431",
+      "en_US": "a {COLOR 255}GLAMEOW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00432",
+      "en_US": "a {COLOR 255}PURUGLY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00433",
+      "en_US": "a {COLOR 255}CHINGLING{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00434",
+      "en_US": "a {COLOR 255}STUNKY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00435",
+      "en_US": "a {COLOR 255}SKUNTANK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00436",
+      "en_US": "a {COLOR 255}BRONZOR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00437",
+      "en_US": "a {COLOR 255}BRONZONG{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00438",
+      "en_US": "a {COLOR 255}BONSLY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00439",
+      "en_US": "a {COLOR 255}MIME JR.{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00440",
+      "en_US": "a {COLOR 255}HAPPINY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00441",
+      "en_US": "a {COLOR 255}CHATOT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00442",
+      "en_US": "a {COLOR 255}SPIRITOMB{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00443",
+      "en_US": "a {COLOR 255}GIBLE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00444",
+      "en_US": "a {COLOR 255}GABITE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00445",
+      "en_US": "a {COLOR 255}GARCHOMP{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00446",
+      "en_US": "a {COLOR 255}MUNCHLAX{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00447",
+      "en_US": "a {COLOR 255}RIOLU{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00448",
+      "en_US": "a {COLOR 255}LUCARIO{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00449",
+      "en_US": "a {COLOR 255}HIPPOPOTAS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00450",
+      "en_US": "a {COLOR 255}HIPPOWDON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00451",
+      "en_US": "a {COLOR 255}SKORUPI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00452",
+      "en_US": "a {COLOR 255}DRAPION{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00453",
+      "en_US": "a {COLOR 255}CROAGUNK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00454",
+      "en_US": "a {COLOR 255}TOXICROAK{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00455",
+      "en_US": "a {COLOR 255}CARNIVINE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00456",
+      "en_US": "a {COLOR 255}FINNEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00457",
+      "en_US": "a {COLOR 255}LUMINEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00458",
+      "en_US": "a {COLOR 255}MANTYKE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00459",
+      "en_US": "a {COLOR 255}SNOVER{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00460",
+      "en_US": "an {COLOR 255}ABOMASNOW{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00461",
+      "en_US": "a {COLOR 255}WEAVILE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00462",
+      "en_US": "a {COLOR 255}MAGNEZONE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00463",
+      "en_US": "a {COLOR 255}LICKILICKY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00464",
+      "en_US": "a {COLOR 255}RHYPERIOR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00465",
+      "en_US": "a {COLOR 255}TANGROWTH{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00466",
+      "en_US": "an {COLOR 255}ELECTIVIRE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00467",
+      "en_US": "a {COLOR 255}MAGMORTAR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00468",
+      "en_US": "a {COLOR 255}TOGEKISS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00469",
+      "en_US": "a {COLOR 255}YANMEGA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00470",
+      "en_US": "a {COLOR 255}LEAFEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00471",
+      "en_US": "a {COLOR 255}GLACEON{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00472",
+      "en_US": "a {COLOR 255}GLISCOR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00473",
+      "en_US": "a {COLOR 255}MAMOSWINE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00474",
+      "en_US": "a {COLOR 255}PORYGON-Z{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00475",
+      "en_US": "a {COLOR 255}GALLADE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00476",
+      "en_US": "a {COLOR 255}PROBOPASS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00477",
+      "en_US": "a {COLOR 255}DUSKNOIR{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00478",
+      "en_US": "a {COLOR 255}FROSLASS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00479",
+      "en_US": "a {COLOR 255}ROTOM{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00480",
+      "en_US": "an {COLOR 255}UXIE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00481",
+      "en_US": "a {COLOR 255}MESPRIT{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00482",
+      "en_US": "an {COLOR 255}AZELF{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00483",
+      "en_US": "a {COLOR 255}DIALGA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00484",
+      "en_US": "a {COLOR 255}PALKIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00485",
+      "en_US": "a {COLOR 255}HEATRAN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00486",
+      "en_US": "a {COLOR 255}REGIGIGAS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00487",
+      "en_US": "a {COLOR 255}GIRATINA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00488",
+      "en_US": "a {COLOR 255}CRESSELIA{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00489",
+      "en_US": "a {COLOR 255}PHIONE{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00490",
+      "en_US": "a {COLOR 255}MANAPHY{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00491",
+      "en_US": "a {COLOR 255}DARKRAI{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00492",
+      "en_US": "a {COLOR 255}SHAYMIN{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00493",
+      "en_US": "an {COLOR 255}ARCEUS{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00494",
+      "en_US": "an {COLOR 255}Egg{COLOR 0}"
+    },
+    {
+      "id": "msg_0238_00495",
+      "en_US": "a {COLOR 255}Bad Egg{COLOR 0}"
+    }
+  ]
+}

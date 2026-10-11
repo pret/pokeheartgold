@@ -1,0 +1,3951 @@
+{
+  "key": 30030,
+  "messages": [
+    {
+      "id": "msg_0806_00000",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0806_00001",
+      "en_US": [
+        "Au matin de sa vie, la graine sur\n",
+        "son dos lui fournit les éléments\n",
+        "dont il a besoin pour grandir."
+      ]
+    },
+    {
+      "id": "msg_0806_00002",
+      "en_US": [
+        "Lorsque le bourgeon sur son dos\n",
+        "éclot, il répand un doux parfum\n",
+        "pour célébrer sa floraison."
+      ]
+    },
+    {
+      "id": "msg_0806_00003",
+      "en_US": [
+        "Le parfum de sa fleur se fait plus\n",
+        "pénétrant les lendemains de pluie.\n",
+        "Cela appâte les autres Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0806_00004",
+      "en_US": [
+        "La flamme de sa queue symbolise sa\n",
+        "vitalité. Elle est intense quand il\n",
+        "est en bonne santé."
+      ]
+    },
+    {
+      "id": "msg_0806_00005",
+      "en_US": [
+        "La nuit, la queue ardente du\n",
+        "REPTINCEL brille comme une étoile\n",
+        "dans son repaire montagneux."
+      ]
+    },
+    {
+      "id": "msg_0806_00006",
+      "en_US": [
+        "On raconte que la flamme du\n",
+        "DRACAUFEU s’intensifie après\n",
+        "un combat difficile."
+      ]
+    },
+    {
+      "id": "msg_0806_00007",
+      "en_US": [
+        "Il se réfugie dans sa carapace\n",
+        "et réplique en éclaboussant\n",
+        "l’ennemi à la première occasion."
+      ]
+    },
+    {
+      "id": "msg_0806_00008",
+      "en_US": [
+        "On prétend qu’il vit 10 000 ans.\n",
+        "Sa queue duveteuse est un\n",
+        "symbole de longévité populaire."
+      ]
+    },
+    {
+      "id": "msg_0806_00009",
+      "en_US": [
+        "Les trombes d’eau projetées par\n",
+        "les canons de sa carapace peuvent\n",
+        "percer le métal le plus résistant."
+      ]
+    },
+    {
+      "id": "msg_0806_00010",
+      "en_US": [
+        "Ses antennes rouges libèrent une\n",
+        "puanteur qui repousse l’ennemi. Il\n",
+        "grandit par mues régulières."
+      ]
+    },
+    {
+      "id": "msg_0806_00011",
+      "en_US": [
+        "Son corps frêle est protégé par sa\n",
+        "carapace d’acier. Il encaisse les\n",
+        "coups durs en attendant d’évoluer."
+      ]
+    },
+    {
+      "id": "msg_0806_00012",
+      "en_US": [
+        "Il raffole du nectar des fleurs. Il\n",
+        "est capable de repérer la plus\n",
+        "petite quantité de pollen."
+      ]
+    },
+    {
+      "id": "msg_0806_00013",
+      "en_US": [
+        "Il mange chaque jour son poids en\n",
+        "feuilles. Il utilise l’aiguillon sur sa\n",
+        "tête pour repousser l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00014",
+      "en_US": [
+        "Il se cache sous les feuilles et les\n",
+        "branches pour fuir les prédateurs\n",
+        "en attendant d’évoluer."
+      ]
+    },
+    {
+      "id": "msg_0806_00015",
+      "en_US": [
+        "Il virevolte rapidement autour de\n",
+        "l’ennemi et frappe de son dard\n",
+        "empoisonné avant de décamper."
+      ]
+    },
+    {
+      "id": "msg_0806_00016",
+      "en_US": [
+        "Ce Pokémon docile préfère éviter\n",
+        "le combat. Toutefois, il se montre\n",
+        "très féroce quand on l’agresse."
+      ]
+    },
+    {
+      "id": "msg_0806_00017",
+      "en_US": [
+        "Il survole son vaste territoire en\n",
+        "quête d’une proie avant de fondre\n",
+        "sur elle toutes griffes en avant."
+      ]
+    },
+    {
+      "id": "msg_0806_00018",
+      "en_US": [
+        "En battant des ailes de toutes ses\n",
+        "forces, ROUCARNAGE génère une\n",
+        "rafale à en déraciner les arbres."
+      ]
+    },
+    {
+      "id": "msg_0806_00019",
+      "en_US": [
+        "D’une prudence extrême, sa nature\n",
+        "robuste lui permet de s’adapter\n",
+        "à tous les terrains."
+      ]
+    },
+    {
+      "id": "msg_0806_00020",
+      "en_US": [
+        "Il grignote sans cesse pour apaiser\n",
+        "la poussée de ses crocs. Il peut\n",
+        "transpercer un mur de parpaings."
+      ]
+    },
+    {
+      "id": "msg_0806_00021",
+      "en_US": [
+        "Il fait battre vigoureusement ses\n",
+        "petites ailes pour voler et cherche\n",
+        "à manger dans l’herbe avec son bec."
+      ]
+    },
+    {
+      "id": "msg_0806_00022",
+      "en_US": [
+        "Il a assez d’énergie pour voler \n",
+        "toute la journée avec ses grandes \n",
+        "ailes. Il frappe de son bec acéré."
+      ]
+    },
+    {
+      "id": "msg_0806_00023",
+      "en_US": [
+        "Il se faufile dans l’herbe sans un\n",
+        "bruit et frappe dans le dos quand\n",
+        "sa proie s’y attend le moins. "
+      ]
+    },
+    {
+      "id": "msg_0806_00024",
+      "en_US": [
+        "Il utilise la marque sur son ventre\n",
+        "pour intimider l’ennemi. Il étouffe\n",
+        "l’ennemi pétrifié par la peur."
+      ]
+    },
+    {
+      "id": "msg_0806_00025",
+      "en_US": [
+        "Il vit en forêt avec ses pairs.\n",
+        "Il accumule l’électricité dans\n",
+        "les poches de ses joues."
+      ]
+    },
+    {
+      "id": "msg_0806_00026",
+      "en_US": [
+        "Il devient agressif lorsque son\n",
+        "corps contient trop d’électricité.\n",
+        "Il la décharge par sa queue."
+      ]
+    },
+    {
+      "id": "msg_0806_00027",
+      "en_US": [
+        "Il vit sur des terres arides\n",
+        "épargnées par la pluie. Il se roule\n",
+        "en boule pour se protéger."
+      ]
+    },
+    {
+      "id": "msg_0806_00028",
+      "en_US": [
+        "Il se met en boule pour percuter\n",
+        "l’ennemi. Ses épines aiguisées\n",
+        "font beaucoup de dégâts."
+      ]
+    },
+    {
+      "id": "msg_0806_00029",
+      "en_US": [
+        "Bien qu’il rechigne à se battre,\n",
+        "une goutte du poison sécrété par\n",
+        "ses piquants peut s’avérer fatale."
+      ]
+    },
+    {
+      "id": "msg_0806_00030",
+      "en_US": [
+        "Ce Pokémon dresse ses piquants\n",
+        "en cas de danger. Ils poussent\n",
+        "moins vite que ceux de NIDORINO."
+      ]
+    },
+    {
+      "id": "msg_0806_00031",
+      "en_US": [
+        "Son corps est recouvert d’écailles\n",
+        "solides. Il donnera sa vie pour\n",
+        "secourir les petits de son terrier. "
+      ]
+    },
+    {
+      "id": "msg_0806_00032",
+      "en_US": [
+        "Il jauge le terrain en laissant\n",
+        "ses oreilles dépasser de l’herbe.\n",
+        "Il se défend avec sa corne toxique."
+      ]
+    },
+    {
+      "id": "msg_0806_00033",
+      "en_US": [
+        "D’un tempérament violent, il\n",
+        "empale l’ennemi sur sa corne qui\n",
+        "distille un poison puissant."
+      ]
+    },
+    {
+      "id": "msg_0806_00034",
+      "en_US": [
+        "Un coup de sa puissante queue\n",
+        "peut briser un poteau téléphonique\n",
+        "comme une allumette."
+      ]
+    },
+    {
+      "id": "msg_0806_00035",
+      "en_US": [
+        "Tout le monde craque pour cet\n",
+        "adorable Pokémon. Il vit en groupe\n",
+        "dans le calme des montagnes."
+      ]
+    },
+    {
+      "id": "msg_0806_00036",
+      "en_US": [
+        "Il joue au bord des lacs déserts\n",
+        "les soirs de pleine lune. Rares\n",
+        "sont ceux qui l’ont aperçu."
+      ]
+    },
+    {
+      "id": "msg_0806_00037",
+      "en_US": [
+        "Il envoie des boules de feu. Avec\n",
+        "l’âge, ses six queues en forment de\n",
+        "nouvelles. "
+      ]
+    },
+    {
+      "id": "msg_0806_00038",
+      "en_US": [
+        "On raconte que ses neuf queues\n",
+        "détiennent un pouvoir mystique.\n",
+        "Il peut vivre pendant mille ans."
+      ]
+    },
+    {
+      "id": "msg_0806_00039",
+      "en_US": [
+        "Lorsqu’il roule ses grands yeux\n",
+        "ronds, il entonne une berceuse\n",
+        "qui endort son auditoire."
+      ]
+    },
+    {
+      "id": "msg_0806_00040",
+      "en_US": [
+        "Sa fourrure est d’une douceur\n",
+        "incomparable au toucher. Il \n",
+        "peut gonfler en aspirant de l’air."
+      ]
+    },
+    {
+      "id": "msg_0806_00041",
+      "en_US": [
+        "Bien que dépourvu d’yeux, il\n",
+        "repère les obstacles grâce aux\n",
+        "ultrasons émis par sa gueule."
+      ]
+    },
+    {
+      "id": "msg_0806_00042",
+      "en_US": [
+        "Il aime le sang des humains et des\n",
+        "Pokémon. Il erre la nuit en quête\n",
+        "d’un cou où planter ses crocs."
+      ]
+    },
+    {
+      "id": "msg_0806_00043",
+      "en_US": [
+        "En journée, il plante ses pieds-\n",
+        "racines dans le sol. La nuit, il se \n",
+        "promène en semant des graines."
+      ]
+    },
+    {
+      "id": "msg_0806_00044",
+      "en_US": [
+        "L’odeur du nectar de sa bouche \n",
+        "est si répugnante qu’elle agresse\n",
+        "les narines à deux kilomètres."
+      ]
+    },
+    {
+      "id": "msg_0806_00045",
+      "en_US": [
+        "Ses pétales sont les plus grands\n",
+        "du monde. Il marche en répandant\n",
+        "un pollen extrêmement allergène."
+      ]
+    },
+    {
+      "id": "msg_0806_00046",
+      "en_US": [
+        "Des champignons appelés\n",
+        "“tochukaso” poussent sur son dos.\n",
+        "Ils évoluent avec le PARAS hôte."
+      ]
+    },
+    {
+      "id": "msg_0806_00047",
+      "en_US": [
+        "Un champignon parasite plus gros\n",
+        "que PARASECT contrôle son corps.\n",
+        "Il répand des spores empoisonnées."
+      ]
+    },
+    {
+      "id": "msg_0806_00048",
+      "en_US": [
+        "Ses grands yeux sont en fait\n",
+        "des amas d’yeux minuscules. La\n",
+        "nuit, il est attiré par la lumière."
+      ]
+    },
+    {
+      "id": "msg_0806_00049",
+      "en_US": [
+        "Il répand ses écailles poudreuses\n",
+        "en battant des ailes. Elles sont\n",
+        "toxiques au toucher."
+      ]
+    },
+    {
+      "id": "msg_0806_00050",
+      "en_US": [
+        "Un Pokémon qui vit sous terre.\n",
+        "Habitué aux souterrains, il fuit la\n",
+        "lumière du jour."
+      ]
+    },
+    {
+      "id": "msg_0806_00051",
+      "en_US": [
+        "Ses trois têtes creusent le sol à\n",
+        "tour de rôle. Il peut atteindre des\n",
+        "profondeurs de 100 kilomètres."
+      ]
+    },
+    {
+      "id": "msg_0806_00052",
+      "en_US": [
+        "Son regard s’anime à la vue\n",
+        "d’un objet brillant. C’est un\n",
+        "Pokémon nocturne."
+      ]
+    },
+    {
+      "id": "msg_0806_00053",
+      "en_US": [
+        "Un Pokémon très snob. La taille du\n",
+        "joyau qui orne son front alimente\n",
+        "bien des débats parmi ses fans."
+      ]
+    },
+    {
+      "id": "msg_0806_00054",
+      "en_US": [
+        "Quand son mal de crâne empire,\n",
+        "il développe d’étranges pouvoirs\n",
+        "dont il ne se souvient jamais."
+      ]
+    },
+    {
+      "id": "msg_0806_00055",
+      "en_US": [
+        "Un habitant des lacs. Il nage\n",
+        "plus vite qu’un champion\n",
+        "humain de natation."
+      ]
+    },
+    {
+      "id": "msg_0806_00056",
+      "en_US": [
+        "Ils vivent en colonies sylvestres.\n",
+        "Quand un FEROSINGE s’énerve,\n",
+        "toute la colonie suit son exemple."
+      ]
+    },
+    {
+      "id": "msg_0806_00057",
+      "en_US": [
+        "Il grogne quand on le toise,\n",
+        "rugit quand on s’enfuit et devient\n",
+        "fou de rage quand on le frappe."
+      ]
+    },
+    {
+      "id": "msg_0806_00058",
+      "en_US": [
+        "Un Pokémon très loyal. Il\n",
+        "restera immobile jusqu’à ce que\n",
+        "son Dresseur lui donne un ordre."
+      ]
+    },
+    {
+      "id": "msg_0806_00059",
+      "en_US": [
+        "Son port altier et son attitude \n",
+        "fière ont depuis longtemps conquis\n",
+        "le cœur des hommes."
+      ]
+    },
+    {
+      "id": "msg_0806_00060",
+      "en_US": [
+        "Sa peau est si mince qu’on\n",
+        "voit ses organes internes. Il tient\n",
+        "à peine sur ses nouveaux pieds."
+      ]
+    },
+    {
+      "id": "msg_0806_00061",
+      "en_US": [
+        "La spirale qui orne son ventre\n",
+        "ondule doucement. Celui qui la fixe\n",
+        "est saisi d’une étrange torpeur. "
+      ]
+    },
+    {
+      "id": "msg_0806_00062",
+      "en_US": [
+        "Il possède de sacrés biscoteaux.\n",
+        "Il peut parcourir sans relâche\n",
+        "l’Océan Pacifique."
+      ]
+    },
+    {
+      "id": "msg_0806_00063",
+      "en_US": [
+        "Il dort 18 heures par jour. Même\n",
+        "éveillé, il ne prend pas la peine\n",
+        "de se lever pour se téléporter."
+      ]
+    },
+    {
+      "id": "msg_0806_00064",
+      "en_US": [
+        "Une ombre inquiétante obscurcit\n",
+        "l’écran télé quand il s’approche.\n",
+        "Le malheur frappe celui qui la voit."
+      ]
+    },
+    {
+      "id": "msg_0806_00065",
+      "en_US": [
+        "Grâce à sa mémoire exceptionnelle,\n",
+        "il n’a rien oublié depuis sa \n",
+        "naissance. Il a un Q.I. de 5 000."
+      ]
+    },
+    {
+      "id": "msg_0806_00066",
+      "en_US": [
+        "Il muscle son corps en soulevant\n",
+        "régulièrement un GRAVALANCH. Il\n",
+        "est rompu à tous les arts martiaux."
+      ]
+    },
+    {
+      "id": "msg_0806_00067",
+      "en_US": [
+        "La force herculéenne du MACHOPEUR\n",
+        "est très dangereuse. Il utilise une\n",
+        "ceinture pour contenir son énergie."
+      ]
+    },
+    {
+      "id": "msg_0806_00068",
+      "en_US": [
+        "Ses quatre bras frappent à une\n",
+        "vitesse aveuglante. Il peut porter\n",
+        "1 000 coups en deux secondes."
+      ]
+    },
+    {
+      "id": "msg_0806_00069",
+      "en_US": [
+        "Il préfère les climats chauds et\n",
+        "humides. Ses lianes peuvent\n",
+        "capturer une proie en un clin d’œil."
+      ]
+    },
+    {
+      "id": "msg_0806_00070",
+      "en_US": [
+        "Un Pokémon végétal. Il capture les\n",
+        "proies étourdies en les endormant\n",
+        "à l’aide d’une poudre toxique."
+      ]
+    },
+    {
+      "id": "msg_0806_00071",
+      "en_US": [
+        "Sa bouche sécrète un fluide à\n",
+        "l’odeur de miel, qui s’avère être\n",
+        "un acide extrêmement corrosif."
+      ]
+    },
+    {
+      "id": "msg_0806_00072",
+      "en_US": [
+        "Son corps est principalement\n",
+        "composé d’eau. Ses yeux cristallins\n",
+        "projettent d’étranges rayons."
+      ]
+    },
+    {
+      "id": "msg_0806_00073",
+      "en_US": [
+        "Ses 80 tentacules ligotent ses\n",
+        "proies et les retiennent jusqu’à\n",
+        "ce que son poison fasse effet."
+      ]
+    },
+    {
+      "id": "msg_0806_00074",
+      "en_US": [
+        "Nombre d’entre eux vivent sur des\n",
+        "chemins montagneux où ils restent\n",
+        "enfouis à épier les alpinistes."
+      ]
+    },
+    {
+      "id": "msg_0806_00075",
+      "en_US": [
+        "GRAVALANCH creuse son terrier\n",
+        "à flanc de montagne en perçant\n",
+        "des galeries horizontales."
+      ]
+    },
+    {
+      "id": "msg_0806_00076",
+      "en_US": [
+        "Il mue une fois par an. Son corps\n",
+        "rocailleux est si dur qu’il résiste\n",
+        "même à la dynamite."
+      ]
+    },
+    {
+      "id": "msg_0806_00077",
+      "en_US": [
+        "La crinière et la queue ardentes\n",
+        "lui donnant sa superbe poussent \n",
+        "une heure après sa naissance."
+      ]
+    },
+    {
+      "id": "msg_0806_00078",
+      "en_US": [
+        "Son galop dépasse les 240 km/h. Il\n",
+        "file comme une flèche, laissant\n",
+        "flotter sa crinière ardente."
+      ]
+    },
+    {
+      "id": "msg_0806_00079",
+      "en_US": [
+        "Bien que lent, c’est un pêcheur\n",
+        "adroit qui utilise sa queue. Elle\n",
+        "est insensible aux morsures."
+      ]
+    },
+    {
+      "id": "msg_0806_00080",
+      "en_US": [
+        "Ce grand benêt connaît des éclairs\n",
+        "de lucidité lorsque le KOKIYAS de sa\n",
+        "queue se met à le mordre."
+      ]
+    },
+    {
+      "id": "msg_0806_00081",
+      "en_US": [
+        "Ses extrémités génèrent les vagues\n",
+        "électromagnétiques qui le font\n",
+        "voler. Il se nourrit d’électricité."
+      ]
+    },
+    {
+      "id": "msg_0806_00082",
+      "en_US": [
+        "Il est formé de trois MAGNETI liés\n",
+        "par magnétisme. En groupe, ils\n",
+        "déclenchent un orage magnétique."
+      ]
+    },
+    {
+      "id": "msg_0806_00083",
+      "en_US": [
+        "Il ne peut pas vivre sans son\n",
+        "légume, c’est pourquoi il le\n",
+        "protégera au péril de sa vie."
+      ]
+    },
+    {
+      "id": "msg_0806_00084",
+      "en_US": [
+        "Ses deux cerveaux semblent\n",
+        "communiquer leurs émotions\n",
+        "grâce à un lien télépathique."
+      ]
+    },
+    {
+      "id": "msg_0806_00085",
+      "en_US": [
+        "Quand DODUO connaît cette étrange\n",
+        "évolution, l’une de ses têtes se \n",
+        "dédouble. Il atteint les 60 km/h."
+      ]
+    },
+    {
+      "id": "msg_0806_00086",
+      "en_US": [
+        "Un habitant des icebergs. \n",
+        "En mer, il utilise la corne sur \n",
+        "sa tête pour briser la banquise."
+      ]
+    },
+    {
+      "id": "msg_0806_00087",
+      "en_US": [
+        "Son corps est couvert d’un grand\n",
+        "manteau blanc qui, dans la neige, le\n",
+        "dissimule aux yeux des prédateurs."
+      ]
+    },
+    {
+      "id": "msg_0806_00088",
+      "en_US": [
+        "Il est né d’un torrent de boue\n",
+        "exposé aux rayons X de la lune.\n",
+        "Il vit dans les ordures."
+      ]
+    },
+    {
+      "id": "msg_0806_00089",
+      "en_US": [
+        "Son corps exsude un fluide toxique\n",
+        "qui tue instantanément les plantes\n",
+        "et les arbres au contact."
+      ]
+    },
+    {
+      "id": "msg_0806_00090",
+      "en_US": [
+        "Il nage à reculons en ouvrant et en\n",
+        "refermant ses deux coquilles. Il\n",
+        "laisse traîner sa large langue."
+      ]
+    },
+    {
+      "id": "msg_0806_00091",
+      "en_US": [
+        "Il se défend en fermant sa coquille\n",
+        "et projette des piquants qui\n",
+        "repoussent ses agresseurs."
+      ]
+    },
+    {
+      "id": "msg_0806_00092",
+      "en_US": [
+        "Le corps de ce Pokémon est\n",
+        "composé de gaz à 95%. Une\n",
+        "bourrasque suffit à le disperser."
+      ]
+    },
+    {
+      "id": "msg_0806_00093",
+      "en_US": [
+        "Il peut traverser n’importe quel\n",
+        "obstacle. Il rôde dans les murs\n",
+        "pour surveiller ses ennemis."
+      ]
+    },
+    {
+      "id": "msg_0806_00094",
+      "en_US": [
+        "On dit que lorsqu’ECTOPLASMA se \n",
+        "cache dans l’ombre, la température\n",
+        "alentour chute de 5 °C."
+      ]
+    },
+    {
+      "id": "msg_0806_00095",
+      "en_US": [
+        "Il provoque des secousses\n",
+        "sismiques en creusant.\n",
+        "Il peut atteindre les 80 km/h."
+      ]
+    },
+    {
+      "id": "msg_0806_00096",
+      "en_US": [
+        "Son grand nez lui permet de lire\n",
+        "les rêves d’autrui. Il adore les\n",
+        "songes amusants."
+      ]
+    },
+    {
+      "id": "msg_0806_00097",
+      "en_US": [
+        "La vue de son pendule oscillant\n",
+        "endort en trois secondes, même\n",
+        "quand on vient de se réveiller. "
+      ]
+    },
+    {
+      "id": "msg_0806_00098",
+      "en_US": [
+        "Il creuse son terrier sur des \n",
+        "plages sablonneuses. Ses \n",
+        "pinces repoussent si on les brise."
+      ]
+    },
+    {
+      "id": "msg_0806_00099",
+      "en_US": [
+        "Sa grande pince possède une\n",
+        "puissance de 10 000 chevaux. Son\n",
+        "poids la rend difficile à manier."
+      ]
+    },
+    {
+      "id": "msg_0806_00100",
+      "en_US": [
+        "Il ressemble à une Poké Ball. Ce Pokémon\n",
+        "dangereux peut exploser ou lancer des\n",
+        "décharges électriques si on le touche."
+      ]
+    },
+    {
+      "id": "msg_0806_00101",
+      "en_US": [
+        "Il se laisse porter par les vents\n",
+        "lorsque son corps est gonflé\n",
+        "d’électricité à en éclater."
+      ]
+    },
+    {
+      "id": "msg_0806_00102",
+      "en_US": [
+        "Ces six œufs communiquent par\n",
+        "télépathie. Ils peuvent se réunir\n",
+        "rapidement si on les sépare."
+      ]
+    },
+    {
+      "id": "msg_0806_00103",
+      "en_US": [
+        "On l’appelle “jungle sur pattes”.\n",
+        "Si une tête devient trop grosse,\n",
+        "elle tombe et produit un NOEUNOEUF."
+      ]
+    },
+    {
+      "id": "msg_0806_00104",
+      "en_US": [
+        "Il pleure en pensant à sa mère\n",
+        "disparue, et ses larmes résonnent\n",
+        "dans son crâne creux."
+      ]
+    },
+    {
+      "id": "msg_0806_00105",
+      "en_US": [
+        "Ce Pokémon sauvage possède des os\n",
+        "depuis sa naissance. Il s’en sert\n",
+        "pour combattre avec dextérité."
+      ]
+    },
+    {
+      "id": "msg_0806_00106",
+      "en_US": [
+        "Ses pattes élastiques s’allongent,\n",
+        "ce qui ne manque jamais de\n",
+        "surprendre au premier combat."
+      ]
+    },
+    {
+      "id": "msg_0806_00107",
+      "en_US": [
+        "Même le béton cède sous ses \n",
+        "poings dévastateurs. Au combat, il\n",
+        "s’essouffle au bout de 3 minutes."
+      ]
+    },
+    {
+      "id": "msg_0806_00108",
+      "en_US": [
+        "Il n’utilise pas ses mains mais sa\n",
+        "langue qui fait deux fois sa taille.\n",
+        "Sa salive est une colle puissante."
+      ]
+    },
+    {
+      "id": "msg_0806_00109",
+      "en_US": [
+        "Il flotte en retenant des gaz plus\n",
+        "légers que l’air. Ceux-ci sont\n",
+        "explosifs, en plus d’être fétides."
+      ]
+    },
+    {
+      "id": "msg_0806_00110",
+      "en_US": [
+        "Il grandit en absorbant les gaz des\n",
+        "détritus. Des triplés existent, bien\n",
+        "qu’ils soient fort rares."
+      ]
+    },
+    {
+      "id": "msg_0806_00111",
+      "en_US": [
+        "Sa peau est très épaisse et sa \n",
+        "charge peut détruire un immeuble.\n",
+        "Dommage qu’il soit stupide."
+      ]
+    },
+    {
+      "id": "msg_0806_00112",
+      "en_US": [
+        "Son cerveau s’est développé depuis\n",
+        "qu’il tient debout. Sa corne peut\n",
+        "traverser la pierre la plus dure. "
+      ]
+    },
+    {
+      "id": "msg_0806_00113",
+      "en_US": [
+        "Il est censé apporter la joie. Ce\n",
+        "Pokémon charitable offre ses\n",
+        "œufs aux blessés."
+      ]
+    },
+    {
+      "id": "msg_0806_00114",
+      "en_US": [
+        "Il s’abrite derrière des lianes\n",
+        "bleues. Nul n’a jamais vu le\n",
+        "visage qu’elles dissimulent."
+      ]
+    },
+    {
+      "id": "msg_0806_00115",
+      "en_US": [
+        "Il élève ses petits dans sa poche\n",
+        "ventrale. Il attend d’être en lieu\n",
+        "sûr pour les laisser jouer dehors."
+      ]
+    },
+    {
+      "id": "msg_0806_00116",
+      "en_US": [
+        "Il niche à l’ombre du corail. Quand\n",
+        "il se sent menacé, il disparaît\n",
+        "dans un nuage d’encre opaque."
+      ]
+    },
+    {
+      "id": "msg_0806_00117",
+      "en_US": [
+        "Son épine dorsale le protège.\n",
+        "Ses os et ses nageoires sont très\n",
+        "prisés en médecine traditionnelle."
+      ]
+    },
+    {
+      "id": "msg_0806_00118",
+      "en_US": [
+        "Il nage élégamment en agitant sa\n",
+        "nageoire caudale comme si c’était\n",
+        "une robe. Il a l’allure d’une reine."
+      ]
+    },
+    {
+      "id": "msg_0806_00119",
+      "en_US": [
+        "Il niche dans des rochers du \n",
+        "ruisseau qu’il évide avec sa corne.\n",
+        "Il donnerait sa vie pour ses œufs."
+      ]
+    },
+    {
+      "id": "msg_0806_00120",
+      "en_US": [
+        "Même amoché, son corps se régénère\n",
+        "tant que le noyau rouge est intact.\n",
+        "Le noyau s’illumine à minuit."
+      ]
+    },
+    {
+      "id": "msg_0806_00121",
+      "en_US": [
+        "Un noyau rouge trône en son\n",
+        "centre. Il envoie des signaux radio\n",
+        "mystérieux vers le ciel nocturne."
+      ]
+    },
+    {
+      "id": "msg_0806_00122",
+      "en_US": [
+        "Un expert de la pantomime dont\n",
+        "les gestes façonnent de solides\n",
+        "murs invisibles."
+      ]
+    },
+    {
+      "id": "msg_0806_00123",
+      "en_US": [
+        "Ses coups de faux sont \n",
+        "pratiquement imparables. Il se \n",
+        "déplace comme un ninja."
+      ]
+    },
+    {
+      "id": "msg_0806_00124",
+      "en_US": [
+        "Son cri ressemble à des paroles\n",
+        "humaines. Mais nul n’est jamais\n",
+        "parvenu à les comprendre. "
+      ]
+    },
+    {
+      "id": "msg_0806_00125",
+      "en_US": [
+        "Ce Pokémon dévore l’électricité des\n",
+        "centrales. Il est responsable de la\n",
+        "moitié des coupures de courant."
+      ]
+    },
+    {
+      "id": "msg_0806_00126",
+      "en_US": [
+        "Il est né au milieu d’un volcan.\n",
+        "Son corps est couvert de flammes\n",
+        "qui flambent comme un soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00127",
+      "en_US": [
+        "Il serre ses proies dans ses pinces\n",
+        "pour les trancher en deux. S’il n’y\n",
+        "arrive pas, il les jette au loin."
+      ]
+    },
+    {
+      "id": "msg_0806_00128",
+      "en_US": [
+        "Après avoir choisi sa cible, il fonce\n",
+        "dessus tête baissée. Il est réputé\n",
+        "pour sa nature violente."
+      ]
+    },
+    {
+      "id": "msg_0806_00129",
+      "en_US": [
+        "Ce Pokémon est réputé pour être\n",
+        "le plus faible au monde. Nul ne\n",
+        "sait comment son espèce perdure."
+      ]
+    },
+    {
+      "id": "msg_0806_00130",
+      "en_US": [
+        "Lorsqu’il apparaît, sa rage ne\n",
+        "cesse qu’après qu’il a rasé les\n",
+        "plaines et montagnes alentour."
+      ]
+    },
+    {
+      "id": "msg_0806_00131",
+      "en_US": [
+        "Il aime naviguer en portant des\n",
+        "humains et des Pokémon sur son\n",
+        "dos. Il comprend le langage humain."
+      ]
+    },
+    {
+      "id": "msg_0806_00132",
+      "en_US": [
+        "Il a la capacité de modifier sa\n",
+        "structure cellulaire pour prendre\n",
+        "l’apparence de ce qu’il voit."
+      ]
+    },
+    {
+      "id": "msg_0806_00133",
+      "en_US": [
+        "Un Pokémon rare qui s’adapte\n",
+        "aux environnements hostiles \n",
+        "en variant ses formes évolutives."
+      ]
+    },
+    {
+      "id": "msg_0806_00134",
+      "en_US": [
+        "Il a évolué pour s’adapter au milieu\n",
+        "aquatique. Il peut se fondre et \n",
+        "disparaître dans l’élément liquide."
+      ]
+    },
+    {
+      "id": "msg_0806_00135",
+      "en_US": [
+        "Il génère une tension de 10 000 volts.\n",
+        "Il peut hérisser sa fourrure comme\n",
+        "s’il s’agissait de piquants."
+      ]
+    },
+    {
+      "id": "msg_0806_00136",
+      "en_US": [
+        "Son corps contient une glande\n",
+        "enflammée. Sa température monte\n",
+        "à 900 °C avant le combat."
+      ]
+    },
+    {
+      "id": "msg_0806_00137",
+      "en_US": [
+        "Le premier Pokémon artificiel au\n",
+        "monde. Il a le pouvoir d’arpenter\n",
+        "l’espace électronique."
+      ]
+    },
+    {
+      "id": "msg_0806_00138",
+      "en_US": [
+        "Un Pokémon ramené à la vie par\n",
+        "la science à partir d’un fossile. Il\n",
+        "peuplait autrefois les mers."
+      ]
+    },
+    {
+      "id": "msg_0806_00139",
+      "en_US": [
+        "On pense que ce Pokémon a\n",
+        "disparu parce que sa coquille en\n",
+        "spirale était devenue trop grosse."
+      ]
+    },
+    {
+      "id": "msg_0806_00140",
+      "en_US": [
+        "On pense qu’il peuplait les plages\n",
+        "il y a 300 millions d’années. Il est\n",
+        "protégé par une coquille robuste."
+      ]
+    },
+    {
+      "id": "msg_0806_00141",
+      "en_US": [
+        "On pense que ce Pokémon est\n",
+        "venu sur la terre ferme pour\n",
+        "suivre l’évolution de ses proies."
+      ]
+    },
+    {
+      "id": "msg_0806_00142",
+      "en_US": [
+        "Un Pokémon qui arpentait le ciel\n",
+        "au temps des dinosaures. Ses \n",
+        "crocs sont pareils à des scies."
+      ]
+    },
+    {
+      "id": "msg_0806_00143",
+      "en_US": [
+        "Son estomac peut digérer n’importe\n",
+        "quel type de nourriture, même \n",
+        "quand elle est moisie ou pourrie."
+      ]
+    },
+    {
+      "id": "msg_0806_00144",
+      "en_US": [
+        "Un Pokémon Oiseau légendaire.\n",
+        "Il peut provoquer des blizzards\n",
+        "en gelant l’humidité de l’air."
+      ]
+    },
+    {
+      "id": "msg_0806_00145",
+      "en_US": [
+        "Un Pokémon Oiseau légendaire dont\n",
+        "on dit qu’il vit dans les nuages \n",
+        "d’orage. Il contrôle la foudre."
+      ]
+    },
+    {
+      "id": "msg_0806_00146",
+      "en_US": [
+        "L’un des Pokémon Oiseaux\n",
+        "légendaires. On dit que sa venue\n",
+        "annonce l’arrivée du printemps."
+      ]
+    },
+    {
+      "id": "msg_0806_00147",
+      "en_US": [
+        "On l’appelle “Pokémon mirage”\n",
+        "en raison de sa rareté. On a\n",
+        "découvert sa mue."
+      ]
+    },
+    {
+      "id": "msg_0806_00148",
+      "en_US": [
+        "La météo change brusquement quand\n",
+        "il est entouré d’une aura. On dit\n",
+        "qu’il peuple les mers et les lacs."
+      ]
+    },
+    {
+      "id": "msg_0806_00149",
+      "en_US": [
+        "On raconte qu’il vit quelque part\n",
+        "en mer. Il guide les équipages\n",
+        "naufragés jusqu’à la terre ferme."
+      ]
+    },
+    {
+      "id": "msg_0806_00150",
+      "en_US": [
+        "Un Pokémon conçu en recombinant\n",
+        "les gènes de MEW. On raconte qu’il\n",
+        "s’agit du Pokémon le plus féroce."
+      ]
+    },
+    {
+      "id": "msg_0806_00151",
+      "en_US": [
+        "Nombre de scientifiques voient en\n",
+        "lui l’ancêtre des Pokémon car il\n",
+        "maîtrise toutes leurs capacités."
+      ]
+    },
+    {
+      "id": "msg_0806_00152",
+      "en_US": [
+        "Il jauge la température et\n",
+        "l’humidité grâce à la feuille sur sa\n",
+        "tête. Il raffole des bains de soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00153",
+      "en_US": [
+        "Le collier de bourgeons à son cou\n",
+        "répand un arôme épicé qui vous\n",
+        "donne du tonus."
+      ]
+    },
+    {
+      "id": "msg_0806_00154",
+      "en_US": [
+        "Son souffle a l’incroyable capacité\n",
+        "de ranimer les plantes et les \n",
+        "fleurs flétries."
+      ]
+    },
+    {
+      "id": "msg_0806_00155",
+      "en_US": [
+        "Ce Pokémon est un grand timide.\n",
+        "Les flammes sur son dos \n",
+        "s’intensifient lorsqu’il prend peur."
+      ]
+    },
+    {
+      "id": "msg_0806_00156",
+      "en_US": [
+        "La chaleur de ses flammes intimide\n",
+        "l’ennemi. Elles s’intensifient\n",
+        "lorsqu’il se prépare à combattre."
+      ]
+    },
+    {
+      "id": "msg_0806_00157",
+      "en_US": [
+        "Il attaque en projetant des\n",
+        "flammes. Il se dissimule derrière\n",
+        "les vagues de chaleur qu’il produit."
+      ]
+    },
+    {
+      "id": "msg_0806_00158",
+      "en_US": [
+        "Il broie tout ce qu’il trouve avec\n",
+        "ses mâchoires puissantes. Même\n",
+        "son Dresseur doit s’en méfier."
+      ]
+    },
+    {
+      "id": "msg_0806_00159",
+      "en_US": [
+        "Quand il mord, il ne lâche pas prise\n",
+        "avant que ses crocs se brisent.\n",
+        "Ils repoussent par la suite."
+      ]
+    },
+    {
+      "id": "msg_0806_00160",
+      "en_US": [
+        "Ce Pokémon à l’air pataud est\n",
+        "capable d’attaquer à la vitesse\n",
+        "de l’éclair pour mordre sa proie."
+      ]
+    },
+    {
+      "id": "msg_0806_00161",
+      "en_US": [
+        "Ce Pokémon très nerveux\n",
+        "prend appui sur sa queue pour\n",
+        "observer ses alentours."
+      ]
+    },
+    {
+      "id": "msg_0806_00162",
+      "en_US": [
+        "La femelle s’enroule autour des\n",
+        "petits pour les bercer. Il accule\n",
+        "l’ennemi grâce à sa vitesse."
+      ]
+    },
+    {
+      "id": "msg_0806_00163",
+      "en_US": [
+        "Il se tient toujours sur un pied. Il\n",
+        "ne prend jamais appui sur les\n",
+        "deux, même en cas d’attaque."
+      ]
+    },
+    {
+      "id": "msg_0806_00164",
+      "en_US": [
+        "Ses yeux sont particuliers. La\n",
+        "plus petite source de lumière leur\n",
+        "permet de distinguer les objets."
+      ]
+    },
+    {
+      "id": "msg_0806_00165",
+      "en_US": [
+        "Il est si timide qu’il ne se déplace\n",
+        "qu’au milieu d’un essaim. Il exprime\n",
+        "ses émotions par l’odeur."
+      ]
+    },
+    {
+      "id": "msg_0806_00166",
+      "en_US": [
+        "Il tire sa force de la lumière des\n",
+        "étoiles. Plus il y en a et plus ses\n",
+        "motifs dorsaux sont grands."
+      ]
+    },
+    {
+      "id": "msg_0806_00167",
+      "en_US": [
+        "Il tisse une toile fine mais solide\n",
+        "pour poser des pièges et se poste\n",
+        "dans l’attente d’une proie."
+      ]
+    },
+    {
+      "id": "msg_0806_00168",
+      "en_US": [
+        "Il attache un fil à sa proie avant\n",
+        "de la libérer. Il s’en servira pour\n",
+        "la retrouver, elle et ses amis."
+      ]
+    },
+    {
+      "id": "msg_0806_00169",
+      "en_US": [
+        "Il vole rapidement et sans faire\n",
+        "de bruit grâce à ses quatre ailes.\n",
+        "C’est un Pokémon nocturne."
+      ]
+    },
+    {
+      "id": "msg_0806_00170",
+      "en_US": [
+        "Il envoie des décharges électriques\n",
+        "positives et négatives du bout de ses\n",
+        "antennes pour paralyser sa proie."
+      ]
+    },
+    {
+      "id": "msg_0806_00171",
+      "en_US": [
+        "La lumière de LANTURN surgit des\n",
+        "profondeurs. On le surnomme\n",
+        "“étoile des profondeurs”."
+      ]
+    },
+    {
+      "id": "msg_0806_00172",
+      "en_US": [
+        "Les poches sur ses joues sont\n",
+        "encore trop petites pour\n",
+        "accumuler beaucoup d’électricité."
+      ]
+    },
+    {
+      "id": "msg_0806_00173",
+      "en_US": [
+        "Sa silhouette rappelle une étoile.\n",
+        "On dit qu’il descend sur terre\n",
+        "en chevauchant une étoile filante."
+      ]
+    },
+    {
+      "id": "msg_0806_00174",
+      "en_US": [
+        "Son corps est doux et élastique.\n",
+        "Quand il commence à rebondir,\n",
+        "on ne peut plus l’arrêter."
+      ]
+    },
+    {
+      "id": "msg_0806_00175",
+      "en_US": [
+        "On prétend que sa coquille est\n",
+        "remplie de bonheur, qu’il partage\n",
+        "avec les êtres au cœur pur."
+      ]
+    },
+    {
+      "id": "msg_0806_00176",
+      "en_US": [
+        "On dit qu’il apparaît aux êtres\n",
+        "bons pour répandre un duvet\n",
+        "brillant appelé “poudre de joie”."
+      ]
+    },
+    {
+      "id": "msg_0806_00177",
+      "en_US": [
+        "Il mange des cactus en prenant\n",
+        "soin d’éviter les bourgeons et les\n",
+        "épines. Il ne tient pas en place."
+      ]
+    },
+    {
+      "id": "msg_0806_00178",
+      "en_US": [
+        "Cet étrange Pokémon peut voir\n",
+        "l’avenir et le passé. Il guette \n",
+        "sans cesse la course du soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00179",
+      "en_US": [
+        "Sa laine fournie enfle lorsqu’il accumule\n",
+        "de l’électricité statique. Son contact\n",
+        "peut causer un choc électrique."
+      ]
+    },
+    {
+      "id": "msg_0806_00180",
+      "en_US": [
+        "Sa queue s’allume lorsque sa\n",
+        "laine se charge d’électricité.\n",
+        "Il projette des poils électrifiés."
+      ]
+    },
+    {
+      "id": "msg_0806_00181",
+      "en_US": [
+        "Le bout de sa queue brille avec\n",
+        "intensité. Jadis, on s’en servait\n",
+        "pour envoyer des signaux."
+      ]
+    },
+    {
+      "id": "msg_0806_00182",
+      "en_US": [
+        "A la fin de la saison des pluies,\n",
+        "il sort danser en plein air,\n",
+        "attiré par la chaleur du soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00183",
+      "en_US": [
+        "Il plonge sous l’eau en utilisant sa\n",
+        "queue comme un flotteur. Il aime\n",
+        "les plantes du fond des rivières."
+      ]
+    },
+    {
+      "id": "msg_0806_00184",
+      "en_US": [
+        "Il peuple les lacs et les mers. Sous\n",
+        "l’eau, ses motifs et ses couleurs\n",
+        "brouillent la vue de l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00185",
+      "en_US": [
+        "On pourrait le prendre pour un\n",
+        "arbre, mais il est plus proche d’une\n",
+        "pierre. L’eau est son point faible."
+      ]
+    },
+    {
+      "id": "msg_0806_00186",
+      "en_US": [
+        "Il rassemble ses pairs pour les\n",
+        "commander. Il utilise son cri \n",
+        "pour diriger PTITARD."
+      ]
+    },
+    {
+      "id": "msg_0806_00187",
+      "en_US": [
+        "Il dérive avec le vent. Sa présence\n",
+        "en nombre dans les champs et les\n",
+        "montagnes annonce le printemps."
+      ]
+    },
+    {
+      "id": "msg_0806_00188",
+      "en_US": [
+        "Il fleurit lorsque les températures\n",
+        "remontent. Il flotte dans le ciel \n",
+        "pour absorber les rayons du soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00189",
+      "en_US": [
+        "Poussé par les vents saisonniers,\n",
+        "il fait le tour du globe en semant\n",
+        "des spores de coton."
+      ]
+    },
+    {
+      "id": "msg_0806_00190",
+      "en_US": [
+        "Il utilise sa queue pour cueillir les\n",
+        "fruits inaccessibles. Elle est plus\n",
+        "agile que ses mains."
+      ]
+    },
+    {
+      "id": "msg_0806_00191",
+      "en_US": [
+        "Il tombe du ciel sans crier gare en\n",
+        "matinée. On en croise énormément \n",
+        "l’année suivant un été froid."
+      ]
+    },
+    {
+      "id": "msg_0806_00192",
+      "en_US": [
+        "Les rayons du soleil lui donnent de\n",
+        "l’énergie. Il est connu pour migrer\n",
+        "vers les régions ensoleillées."
+      ]
+    },
+    {
+      "id": "msg_0806_00193",
+      "en_US": [
+        "Il voit à 360 degrés sans avoir à\n",
+        "tourner la tête. Il ne loupe jamais\n",
+        "une proie, même dans son dos."
+      ]
+    },
+    {
+      "id": "msg_0806_00194",
+      "en_US": [
+        "Il vit en eau froide. Il dort à demi\n",
+        "enfoui dans la boue au fond\n",
+        "de l’eau."
+      ]
+    },
+    {
+      "id": "msg_0806_00195",
+      "en_US": [
+        "C’est un grand paresseux qui \n",
+        "attend au fond de la rivière qu’une\n",
+        "proie lui tombe dans le bec."
+      ]
+    },
+    {
+      "id": "msg_0806_00196",
+      "en_US": [
+        "Son pelage a l’aspect et la texture\n",
+        "du velours. L’orbe sur son front luit\n",
+        "quand il utilise ses pouvoirs psy."
+      ]
+    },
+    {
+      "id": "msg_0806_00197",
+      "en_US": [
+        "La lumière de la lune a modifié\n",
+        "le code génétique d’EVOLI. Il hante\n",
+        "les ténèbres en quête d’une proie."
+      ]
+    },
+    {
+      "id": "msg_0806_00198",
+      "en_US": [
+        "On dit que rencontrer\n",
+        "un CORNEBRE la nuit\n",
+        "est de mauvais augure."
+      ]
+    },
+    {
+      "id": "msg_0806_00199",
+      "en_US": [
+        "La morsure de KOKIYAS a fait\n",
+        "de lui un génie dont l’intelligence\n",
+        "rivalise avec celle d’un prix Nobel."
+      ]
+    },
+    {
+      "id": "msg_0806_00200",
+      "en_US": [
+        "Il adore se faufiler derrière les\n",
+        "gens la nuit pour les effrayer\n",
+        "avec son cri strident."
+      ]
+    },
+    {
+      "id": "msg_0806_00201",
+      "en_US": [
+        "Il rappelle une écriture ancienne.\n",
+        "Reste à savoir qui du langage ou de\n",
+        "ZARBI est apparu en premier."
+      ]
+    },
+    {
+      "id": "msg_0806_00202",
+      "en_US": [
+        "Il cherche désespérément à cacher\n",
+        "sa queue noire. Certains pensent\n",
+        "qu’elle renferme un secret. "
+      ]
+    },
+    {
+      "id": "msg_0806_00203",
+      "en_US": [
+        "Sa queue contient un minuscule\n",
+        "cerveau. Elle mord l’ennemi qui\n",
+        "essaie de le frapper dans le dos."
+      ]
+    },
+    {
+      "id": "msg_0806_00204",
+      "en_US": [
+        "Il ressemble à une pomme de pin.\n",
+        "Sa carapace le protège des Pokémon\n",
+        "Oiseau qui le picorent par erreur."
+      ]
+    },
+    {
+      "id": "msg_0806_00205",
+      "en_US": [
+        "Il est prisonnier d’une coquille \n",
+        "d’acier. Ses yeux vigilants sont la\n",
+        "seule partie visible de son corps."
+      ]
+    },
+    {
+      "id": "msg_0806_00206",
+      "en_US": [
+        "Son nid est un véritable labyrinthe\n",
+        "qu’il creuse à l’aide de sa queue.\n",
+        "Il peut à peine voler."
+      ]
+    },
+    {
+      "id": "msg_0806_00207",
+      "en_US": [
+        "Il chevauche les vents en tendant\n",
+        "ses membres pour frapper depuis\n",
+        "le ciel. Il vise toujours le visage."
+      ]
+    },
+    {
+      "id": "msg_0806_00208",
+      "en_US": [
+        "Grâce à la température élevée et la\n",
+        "haute pression souterraines, son\n",
+        "corps est plus dur que le métal."
+      ]
+    },
+    {
+      "id": "msg_0806_00209",
+      "en_US": [
+        "Son visage horrible fait fuir les\n",
+        "petits Pokémon. Par contre, les\n",
+        "femmes le trouvent mignon."
+      ]
+    },
+    {
+      "id": "msg_0806_00210",
+      "en_US": [
+        "En dépit des apparences, c’est un\n",
+        "grand timide. Quand il s’énerve, il\n",
+        "mord de ses énormes crocs."
+      ]
+    },
+    {
+      "id": "msg_0806_00211",
+      "en_US": [
+        "Il envoie ses piquants empoisonnés\n",
+        "à la ronde. Sa forme sphérique en\n",
+        "fait un piètre nageur."
+      ]
+    },
+    {
+      "id": "msg_0806_00212",
+      "en_US": [
+        "Son corps est dur comme l’acier.\n",
+        "Il intimide ses ennemis en levant\n",
+        "ses pinces pareilles à des yeux. "
+      ]
+    },
+    {
+      "id": "msg_0806_00213",
+      "en_US": [
+        "Il stocke des Baies sous sa\n",
+        "carapace. Elles fermentent et\n",
+        "produisent des jus délicieux."
+      ]
+    },
+    {
+      "id": "msg_0806_00214",
+      "en_US": [
+        "Il arpente la forêt en quête de\n",
+        "sève, son mets favori. Il est assez\n",
+        "fort pour projeter l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00215",
+      "en_US": [
+        "Il se nourrit d’œufs volés dans \n",
+        "des nids. Ses griffes crochues\n",
+        "percent les défenses de l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00216",
+      "en_US": [
+        "Il baigne ses griffes dans le miel \n",
+        "pour les lécher. Chaque paire\n",
+        "de pattes a un goût unique."
+      ]
+    },
+    {
+      "id": "msg_0806_00217",
+      "en_US": [
+        "Il marque de ses griffes les\n",
+        "arbres de son territoire qui\n",
+        "portent des Baies ou des fruits."
+      ]
+    },
+    {
+      "id": "msg_0806_00218",
+      "en_US": [
+        "Son corps est fait de magma.\n",
+        "S’il cesse de bouger, il refroidit\n",
+        "et durcit."
+      ]
+    },
+    {
+      "id": "msg_0806_00219",
+      "en_US": [
+        "Sa température corporelle avoisine\n",
+        "les 10 000 °C. Des flammes \n",
+        "fusent des fissures de sa coquille."
+      ]
+    },
+    {
+      "id": "msg_0806_00220",
+      "en_US": [
+        "Il adore les champignons qui\n",
+        "poussent sous l’herbe morte. Il\n",
+        "trouve aussi des sources chaudes."
+      ]
+    },
+    {
+      "id": "msg_0806_00221",
+      "en_US": [
+        "Il ne voit rien à cause de sa\n",
+        "fourrure touffue et se repère\n",
+        "à l’aide de son nez délicat."
+      ]
+    },
+    {
+      "id": "msg_0806_00222",
+      "en_US": [
+        "On en trouve beaucoup dans les\n",
+        "mers claires du sud. On dirait qu’il\n",
+        "ne peut pas vivre en eau polluée."
+      ]
+    },
+    {
+      "id": "msg_0806_00223",
+      "en_US": [
+        "Il crache un puissant jet d’eau\n",
+        "pour abattre les proies volantes."
+      ]
+    },
+    {
+      "id": "msg_0806_00224",
+      "en_US": [
+        "Il hante les fissures dans la roche\n",
+        "et les trous au fond de la mer. Ses\n",
+        "ventouses ne lâchent jamais prise."
+      ]
+    },
+    {
+      "id": "msg_0806_00225",
+      "en_US": [
+        "Il dépose sa nourriture dans sa\n",
+        "queue enroulée. Il l’offre souvent\n",
+        "aux gens égarés en montagne."
+      ]
+    },
+    {
+      "id": "msg_0806_00226",
+      "en_US": [
+        "Lorsque la mer est calme, il arrive\n",
+        "de croiser un banc de DEMANTA\n",
+        "nageant comme s’ils volaient."
+      ]
+    },
+    {
+      "id": "msg_0806_00227",
+      "en_US": [
+        "Son corps est prisonnier d’une\n",
+        "armure dure comme l’acier, mais il\n",
+        "vole à plus de 300 km/h."
+      ]
+    },
+    {
+      "id": "msg_0806_00228",
+      "en_US": [
+        "Il exprime ses émotions en modulant\n",
+        "son cri. Ce Pokémon rusé chasse\n",
+        "en meute pour abattre ses proies."
+      ]
+    },
+    {
+      "id": "msg_0806_00229",
+      "en_US": [
+        "Jadis, les gens prenaient son\n",
+        "étrange hurlement pour\n",
+        "l’appel de la Faucheuse."
+      ]
+    },
+    {
+      "id": "msg_0806_00230",
+      "en_US": [
+        "Chacun de ses déplacements\n",
+        "provoque des tourbillons. Il vit\n",
+        "dans des grottes sous-marines."
+      ]
+    },
+    {
+      "id": "msg_0806_00231",
+      "en_US": [
+        "Il est fort malgré son aspect\n",
+        "ramassé. Il n’a aucun mal à porter\n",
+        "un humain adulte sur son dos."
+      ]
+    },
+    {
+      "id": "msg_0806_00232",
+      "en_US": [
+        "Il attaque en se roulant en boule\n",
+        "pour percuter l’ennemi. Il peut\n",
+        "abattre une maison d’un seul coup."
+      ]
+    },
+    {
+      "id": "msg_0806_00233",
+      "en_US": [
+        "On lui a installé un logiciel de\n",
+        "terraformation pour lui permettre\n",
+        "de travailler dans l’espace."
+      ]
+    },
+    {
+      "id": "msg_0806_00234",
+      "en_US": [
+        "Quiconque observe ses antennes\n",
+        "ressent une sensation étrange,\n",
+        "comme si leur centre l’attirait."
+      ]
+    },
+    {
+      "id": "msg_0806_00235",
+      "en_US": [
+        "Il marque son territoire en maniant\n",
+        "sa queue comme un pinceau. On\n",
+        "dénombre plus de 5 000 marques."
+      ]
+    },
+    {
+      "id": "msg_0806_00236",
+      "en_US": [
+        "Il est réputé pour sa combativité.\n",
+        "Il se blesse toujours en défiant\n",
+        "des ennemis plus grands."
+      ]
+    },
+    {
+      "id": "msg_0806_00237",
+      "en_US": [
+        "Il combat en tournoyant comme une\n",
+        "toupie. La force centrifuge décuple\n",
+        "sa puissance destructrice."
+      ]
+    },
+    {
+      "id": "msg_0806_00238",
+      "en_US": [
+        "Il goûte à tout du bout des lèvres.\n",
+        "Elles gardent en mémoire ses\n",
+        "goûts et ses dégoûts."
+      ]
+    },
+    {
+      "id": "msg_0806_00239",
+      "en_US": [
+        "Il génère de l’électricité en\n",
+        "battant des bras, mais il n’a aucun\n",
+        "moyen de stocker cette énergie."
+      ]
+    },
+    {
+      "id": "msg_0806_00240",
+      "en_US": [
+        "Sa température corporelle avoisine\n",
+        "les 600 °C. Son souffle est\n",
+        "jaune quand il est en bonne santé."
+      ]
+    },
+    {
+      "id": "msg_0806_00241",
+      "en_US": [
+        "On raconte que les enfants élevés\n",
+        "au lait d’ECREMEUH deviennent des\n",
+        "adultes braves et robustes."
+      ]
+    },
+    {
+      "id": "msg_0806_00242",
+      "en_US": [
+        "Ce Pokémon au cœur d’or\n",
+        "soigne les Pokémon malades.\n",
+        "Il ressent la tristesse d’autrui."
+      ]
+    },
+    {
+      "id": "msg_0806_00243",
+      "en_US": [
+        "On prétend qu’il est tombé avec la\n",
+        "foudre. Il peut lancer des éclairs\n",
+        "grâce aux nuages sur son dos."
+      ]
+    },
+    {
+      "id": "msg_0806_00244",
+      "en_US": [
+        "On raconte qu’à chaque fois qu’il\n",
+        "rugit, un volcan entre en éruption\n",
+        "quelque part dans le monde."
+      ]
+    },
+    {
+      "id": "msg_0806_00245",
+      "en_US": [
+        "Il parcourt le vaste monde pour\n",
+        "purifier les eaux polluées. Il\n",
+        "accompagne le vent du nord."
+      ]
+    },
+    {
+      "id": "msg_0806_00246",
+      "en_US": [
+        "Un Pokémon qui se nourrit de terre.\n",
+        "Après avoir dévoré une montagne,\n",
+        "il s’endort pour grandir."
+      ]
+    },
+    {
+      "id": "msg_0806_00247",
+      "en_US": [
+        "Son corps est dur comme la pierre\n",
+        "souterraine. Il file comme une\n",
+        "fusée en expulsant des gaz."
+      ]
+    },
+    {
+      "id": "msg_0806_00248",
+      "en_US": [
+        "Lorsqu’il est en colère, il abat des\n",
+        "montagnes et enterre des fleuves.\n",
+        "On doit alors modifier les cartes."
+      ]
+    },
+    {
+      "id": "msg_0806_00249",
+      "en_US": [
+        "Il dort dans une faille des grands\n",
+        "fonds. Ses battements d’ailes\n",
+        "génèrent une tempête de 40 jours."
+      ]
+    },
+    {
+      "id": "msg_0806_00250",
+      "en_US": [
+        "Ses plumes possèdent sept \n",
+        "couleurs. On prétend que sa vue\n",
+        "apporte la joie éternelle."
+      ]
+    },
+    {
+      "id": "msg_0806_00251",
+      "en_US": [
+        "Il a le pouvoir de voyager dans le\n",
+        "temps. Cependant, on dit qu’il\n",
+        "n’apparaît qu’en temps de paix."
+      ]
+    },
+    {
+      "id": "msg_0806_00252",
+      "en_US": [
+        "Ses plantes de pieds sont\n",
+        "couvertes d’épines lui permettant\n",
+        "de marcher au mur et au plafond."
+      ]
+    },
+    {
+      "id": "msg_0806_00253",
+      "en_US": [
+        "Il vit dans les jungles denses. \n",
+        "Il saute de branche en branche\n",
+        "pour approcher de sa proie."
+      ]
+    },
+    {
+      "id": "msg_0806_00254",
+      "en_US": [
+        "Les feuilles sur ses bras peuvent\n",
+        "trancher des troncs épais. C’est\n",
+        "le meilleur combattant des jungles."
+      ]
+    },
+    {
+      "id": "msg_0806_00255",
+      "en_US": [
+        "Ses câlins réchauffent car il\n",
+        "renferme une fournaise. Il envoie\n",
+        "des boules de feu à 1 000 °C."
+      ]
+    },
+    {
+      "id": "msg_0806_00256",
+      "en_US": [
+        "Ce maître du coup de pied peut\n",
+        "donner 10 coups par seconde. Ses\n",
+        "cris aigus intimident l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00257",
+      "en_US": [
+        "Des flammes fusent de ses\n",
+        "poignets et ses coups brûlent\n",
+        "l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00258",
+      "en_US": [
+        "Il analyse le courant grâce à la\n",
+        "nageoire sur sa tête. Il est assez\n",
+        "fort pour soulever des rochers."
+      ]
+    },
+    {
+      "id": "msg_0806_00259",
+      "en_US": [
+        "Ses jambes robustes lui donnent\n",
+        "un bon appui, même dans la boue.\n",
+        "Il dort enfoui dans la saleté."
+      ]
+    },
+    {
+      "id": "msg_0806_00260",
+      "en_US": [
+        "Il peut traîner un grand bateau en\n",
+        "nageant. Il assomme l’ennemi d’un\n",
+        "grand coup de ses bras épais."
+      ]
+    },
+    {
+      "id": "msg_0806_00261",
+      "en_US": [
+        "Un Pokémon très obstiné qui\n",
+        "poursuit sa proie jusqu’à ce\n",
+        "qu’elle soit épuisée."
+      ]
+    },
+    {
+      "id": "msg_0806_00262",
+      "en_US": [
+        "Il traque ses proies en groupe.\n",
+        "Il ne désobéira jamais aux\n",
+        "ordres d’un bon Dresseur."
+      ]
+    },
+    {
+      "id": "msg_0806_00263",
+      "en_US": [
+        "Il marche en zigzaguant et n’a\n",
+        "pas son pareil pour trouver des\n",
+        "objets dans l’herbe ou sous terre."
+      ]
+    },
+    {
+      "id": "msg_0806_00264",
+      "en_US": [
+        "Il fonce sur sa proie à plus de 100\n",
+        "km/h. Mais il ne peut pas dévier sa\n",
+        "course et loupe souvent sa cible."
+      ]
+    },
+    {
+      "id": "msg_0806_00265",
+      "en_US": [
+        "Il adore manger des feuilles. Si un\n",
+        "ETOURMI l’attaque, il riposte avec\n",
+        "les piquants de son postérieur."
+      ]
+    },
+    {
+      "id": "msg_0806_00266",
+      "en_US": [
+        "Il s’accroche en enroulant sa soie\n",
+        "autour des branches. Il reste\n",
+        "immobile en attendant d’évoluer."
+      ]
+    },
+    {
+      "id": "msg_0806_00267",
+      "en_US": [
+        "Il est très agressif. Il pique sa \n",
+        "proie avec son long museau \n",
+        "étroit et absorbe sa vitalité."
+      ]
+    },
+    {
+      "id": "msg_0806_00268",
+      "en_US": [
+        "Il est au chaud dans son cocon.\n",
+        "Ses cellules produisent l’énergie\n",
+        "nécessaire à son évolution."
+      ]
+    },
+    {
+      "id": "msg_0806_00269",
+      "en_US": [
+        "Ce Pokémon nocturne est attiré\n",
+        "par les lueurs de la ville et aime\n",
+        "les feuilles des arbres urbains."
+      ]
+    },
+    {
+      "id": "msg_0806_00270",
+      "en_US": [
+        "Il ressemble à une plante aquatique\n",
+        "et fait la navette pour les\n",
+        "Pokémon qui ne savent pas nager."
+      ]
+    },
+    {
+      "id": "msg_0806_00271",
+      "en_US": [
+        "C’est un mauvais plaisantin. Quand\n",
+        "il repère un pêcheur, il tire sur sa\n",
+        "ligne pour le déranger. "
+      ]
+    },
+    {
+      "id": "msg_0806_00272",
+      "en_US": [
+        "Ses muscles se tonifient au son\n",
+        "d’une musique entraînante. Il ne\n",
+        "peut pas s’empêcher de danser."
+      ]
+    },
+    {
+      "id": "msg_0806_00273",
+      "en_US": [
+        "Il ressemble à un gland pendu\n",
+        "à une branche. Il adore effrayer\n",
+        "les autres Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0806_00274",
+      "en_US": [
+        "Le son de sa flûte d’herbe\n",
+        "déstabilise l’auditeur. Il vit au \n",
+        "plus profond des forêts."
+      ]
+    },
+    {
+      "id": "msg_0806_00275",
+      "en_US": [
+        "D’un coup de sa feuille éventail, il\n",
+        "génère des bourrasques de 30 m/s\n",
+        "capables de souffler une maison. "
+      ]
+    },
+    {
+      "id": "msg_0806_00276",
+      "en_US": [
+        "Ce Pokémon téméraire n’a pas peur\n",
+        "d’affronter des ennemis puissants.\n",
+        "Il vole en quête de climats chauds."
+      ]
+    },
+    {
+      "id": "msg_0806_00277",
+      "en_US": [
+        "Il vole en cercle en quête d’une\n",
+        "proie. Dès qu’il l’a repérée, il fond\n",
+        "sur elle en un éclair."
+      ]
+    },
+    {
+      "id": "msg_0806_00278",
+      "en_US": [
+        "Il niche sur les falaises escarpées\n",
+        "face à la mer. Il vole en altitude\n",
+        "grâce aux courants ascendants."
+      ]
+    },
+    {
+      "id": "msg_0806_00279",
+      "en_US": [
+        "Il trempe son grand bec dans la\n",
+        "mer pour charrier de l’eau et\n",
+        "de nombreuses proies."
+      ]
+    },
+    {
+      "id": "msg_0806_00280",
+      "en_US": [
+        "Il perçoit les émotions humaines\n",
+        "grâce aux cornes sur sa tête. On\n",
+        "dit qu’il apprécie la joie de vivre."
+      ]
+    },
+    {
+      "id": "msg_0806_00281",
+      "en_US": [
+        "Il est très à l’écoute des émotions\n",
+        "de son Dresseur. Il danse quand\n",
+        "il est d’humeur joyeuse."
+      ]
+    },
+    {
+      "id": "msg_0806_00282",
+      "en_US": [
+        "Il donnera sa vie pour protéger\n",
+        "un Dresseur dévoué. Il a la\n",
+        "capacité de prédire l’avenir."
+      ]
+    },
+    {
+      "id": "msg_0806_00283",
+      "en_US": [
+        "Il semble patiner sur l’eau. Le\n",
+        "parfum diffusé par le sommet de\n",
+        "sa tête sert à attirer ses proies."
+      ]
+    },
+    {
+      "id": "msg_0806_00284",
+      "en_US": [
+        "Des motifs en forme d’yeux ornent\n",
+        "ses antennes. Ses 4 ailes l’aident\n",
+        "à voler dans toutes les directions."
+      ]
+    },
+    {
+      "id": "msg_0806_00285",
+      "en_US": [
+        "Le sommet de sa tête libère des\n",
+        "spores empoisonnées. Il est\n",
+        "dangereux de les inhaler."
+      ]
+    },
+    {
+      "id": "msg_0806_00286",
+      "en_US": [
+        "Ses petits bras s’étendent quand il\n",
+        "donne un coup de poing. Son talent\n",
+        "égale celui d’un boxeur pro."
+      ]
+    },
+    {
+      "id": "msg_0806_00287",
+      "en_US": [
+        "Il passe le plus clair de son temps\n",
+        "affalé. Rien qu’à le voir, on a\n",
+        "envie de bâiller."
+      ]
+    },
+    {
+      "id": "msg_0806_00288",
+      "en_US": [
+        "Son cœur bat dix fois plus vite que\n",
+        "la normale, c’est pourquoi il ne\n",
+        "tient pas en place."
+      ]
+    },
+    {
+      "id": "msg_0806_00289",
+      "en_US": [
+        "Le Pokémon le plus fainéant du\n",
+        "monde. Il s’allonge pour économiser\n",
+        "ses forces et contre-attaquer."
+      ]
+    },
+    {
+      "id": "msg_0806_00290",
+      "en_US": [
+        "Il grandit sous terre et se repère\n",
+        "grâce à ses antennes car ses\n",
+        "yeux sont quasiment aveugles."
+      ]
+    },
+    {
+      "id": "msg_0806_00291",
+      "en_US": [
+        "Il bouge si vite que l’œil a parfois du\n",
+        "mal à le suivre. Ils se regroupent\n",
+        "près de la sève des arbres."
+      ]
+    },
+    {
+      "id": "msg_0806_00292",
+      "en_US": [
+        "Une carapace d’insecte laissée à\n",
+        "l’abandon. On dit qu’il vole l’âme\n",
+        "de celui qui regarde à l’intérieur. "
+      ]
+    },
+    {
+      "id": "msg_0806_00293",
+      "en_US": [
+        "En temps normal, son cri est pareil\n",
+        "à un murmure. Effrayé, il atteint le\n",
+        "volume d’un avion à réaction."
+      ]
+    },
+    {
+      "id": "msg_0806_00294",
+      "en_US": [
+        "L’onde de choc provoquée par son\n",
+        "cri peut renverser un camion. Il\n",
+        "trépigne pour augmenter sa force."
+      ]
+    },
+    {
+      "id": "msg_0806_00295",
+      "en_US": [
+        "Son hurlement s’entend à 10 km\n",
+        "à la ronde. Ses orifices\n",
+        "émettent toutes sortes de bruits."
+      ]
+    },
+    {
+      "id": "msg_0806_00296",
+      "en_US": [
+        "Il fortifie son corps en fonçant\n",
+        "sur des arbres épais. Son nid est\n",
+        "entouré d’arbres abattus."
+      ]
+    },
+    {
+      "id": "msg_0806_00297",
+      "en_US": [
+        "Il aime mesurer sa force à celle des\n",
+        "plus grands Pokémon. Ses coups de\n",
+        "paume peuvent projeter un camion."
+      ]
+    },
+    {
+      "id": "msg_0806_00298",
+      "en_US": [
+        "Un Pokémon qui vit près de l’eau.\n",
+        "Au sol, il se déplace rapidement en\n",
+        "rebondissant sur sa grosse queue."
+      ]
+    },
+    {
+      "id": "msg_0806_00299",
+      "en_US": [
+        "Son nez est un aimant, c’est\n",
+        "pourquoi ce Pokémon fait toujours\n",
+        "face au nord."
+      ]
+    },
+    {
+      "id": "msg_0806_00300",
+      "en_US": [
+        "Il poursuit tout ce qui bouge. On\n",
+        "le voit parfois courir en cercle,\n",
+        "chassant sa propre queue."
+      ]
+    },
+    {
+      "id": "msg_0806_00301",
+      "en_US": [
+        "Les femmes Dresseurs raffolent\n",
+        "de sa sublime fourrure. Il ne\n",
+        "possède pas de nid."
+      ]
+    },
+    {
+      "id": "msg_0806_00302",
+      "en_US": [
+        "A force de manger des gemmes, \n",
+        "les yeux de ce Pokémon des grottes\n",
+        "obscures sont devenus des joyaux."
+      ]
+    },
+    {
+      "id": "msg_0806_00303",
+      "en_US": [
+        "Ses cornes forment une grande\n",
+        "mâchoire attachée à sa tête. Elle\n",
+        "peut broyer des barres de fer. "
+      ]
+    },
+    {
+      "id": "msg_0806_00304",
+      "en_US": [
+        "Il vit habituellement au cœur des\n",
+        "montagnes. Affamé, il dévore\n",
+        "parfois des rails et des voitures."
+      ]
+    },
+    {
+      "id": "msg_0806_00305",
+      "en_US": [
+        "Il se nourrit du minerai de fer qu’il\n",
+        "fore. Il défend son territoire en\n",
+        "chargeant avec son corps d’acier."
+      ]
+    },
+    {
+      "id": "msg_0806_00306",
+      "en_US": [
+        "Il creuse des galeries à travers la\n",
+        "pierre avec ses cornes d’acier\n",
+        "pour trouver le fer qu’il apprécie. "
+      ]
+    },
+    {
+      "id": "msg_0806_00307",
+      "en_US": [
+        "Il ne mange qu’une Baie par jour.\n",
+        "La faim lui a forgé une volonté\n",
+        "de fer."
+      ]
+    },
+    {
+      "id": "msg_0806_00308",
+      "en_US": [
+        "Il a développé son sixième sens\n",
+        "grâce au yoga. Ses mouvements\n",
+        "sont gracieux."
+      ]
+    },
+    {
+      "id": "msg_0806_00309",
+      "en_US": [
+        "Il améliore ses réflexes en\n",
+        "stimulant ses muscles grâce à \n",
+        "l’électricité dans sa fourrure."
+      ]
+    },
+    {
+      "id": "msg_0806_00310",
+      "en_US": [
+        "Il libère l’électricité par sa\n",
+        "crinière. Il crée un nuage d’orage\n",
+        "pour appeler la foudre."
+      ]
+    },
+    {
+      "id": "msg_0806_00311",
+      "en_US": [
+        "Il absorbe l’énergie des poteaux\n",
+        "électriques et encourage ses amis\n",
+        "avec des pompons d’étincelles. "
+      ]
+    },
+    {
+      "id": "msg_0806_00312",
+      "en_US": [
+        "Il encourage ses amis. Son corps\n",
+        "produit plus d’étincelles quand il\n",
+        "est en mauvaise posture."
+      ]
+    },
+    {
+      "id": "msg_0806_00313",
+      "en_US": [
+        "Il communique avec ses pairs en\n",
+        "allumant son postérieur la nuit. Il\n",
+        "adore le doux parfum de LUMIVOLE."
+      ]
+    },
+    {
+      "id": "msg_0806_00314",
+      "en_US": [
+        "Il utilise son doux parfum pour\n",
+        "aider MUCIOLE à décrire des\n",
+        "arabesques dans le ciel nocturne."
+      ]
+    },
+    {
+      "id": "msg_0806_00315",
+      "en_US": [
+        "Les ROSELIA élevés avec une\n",
+        "eau claire et potable font de\n",
+        "ravissantes fleurs bariolées."
+      ]
+    },
+    {
+      "id": "msg_0806_00316",
+      "en_US": [
+        "Il est principalement composé d’un\n",
+        "estomac dont les sucs digestifs\n",
+        "dissolvent tout ce qu’il avale."
+      ]
+    },
+    {
+      "id": "msg_0806_00317",
+      "en_US": [
+        "Il avale tout en une bouchée. Ses\n",
+        "follicules sécrètent des fluides\n",
+        "toxiques qui endorment l’ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00318",
+      "en_US": [
+        "Il attaque en banc quand on menace\n",
+        "son territoire. Ses dents aiguisées\n",
+        "peuvent percer la coque d’un navire."
+      ]
+    },
+    {
+      "id": "msg_0806_00319",
+      "en_US": [
+        "Ses crocs lacèrent des feuilles\n",
+        "d’acier. Il nage à 120 km/h. On\n",
+        "l’appelle “le tyran des mers”."
+      ]
+    },
+    {
+      "id": "msg_0806_00320",
+      "en_US": [
+        "Par beau temps, il se pose sur les\n",
+        "plages pour jouer et rebondir. Il\n",
+        "expulse de l’eau par son évent."
+      ]
+    },
+    {
+      "id": "msg_0806_00321",
+      "en_US": [
+        "Le plus grand des Pokémon. Il peut\n",
+        "plonger à une profondeur de \n",
+        "3 000 m en retenant son souffle."
+      ]
+    },
+    {
+      "id": "msg_0806_00322",
+      "en_US": [
+        "Son dos bossu renferme une lave\n",
+        "bouillonnante. Elle refroidit par \n",
+        "temps de pluie, ce qui le ralentit."
+      ]
+    },
+    {
+      "id": "msg_0806_00323",
+      "en_US": [
+        "Il porte des volcans sur son dos.\n",
+        "Quand le magma remonte, il\n",
+        "frissonne et entre en éruption."
+      ]
+    },
+    {
+      "id": "msg_0806_00324",
+      "en_US": [
+        "Il tire son énergie du charbon qu’il\n",
+        "brûle dans sa carapace et crache\n",
+        "de la suie noire en cas de danger."
+      ]
+    },
+    {
+      "id": "msg_0806_00325",
+      "en_US": [
+        "Il utilise sa queue comme un \n",
+        "ressort et bondit partout. Chaque\n",
+        "nouveau choc fait battre son cœur."
+      ]
+    },
+    {
+      "id": "msg_0806_00326",
+      "en_US": [
+        "Les perles noires amplifient ses \n",
+        "pouvoirs psy. Sa danse étrange lui\n",
+        "permet de contrôler ses ennemis."
+      ]
+    },
+    {
+      "id": "msg_0806_00327",
+      "en_US": [
+        "Les motifs sur leur fourrure sont\n",
+        "propres à chaque SPINDA. Son pas\n",
+        "chancelant le rend difficile à viser."
+      ]
+    },
+    {
+      "id": "msg_0806_00328",
+      "en_US": [
+        "Il creuse un trou conique dans le\n",
+        "sable du désert et se terre en\n",
+        "attendant qu’une proie trébuche."
+      ]
+    },
+    {
+      "id": "msg_0806_00329",
+      "en_US": [
+        "Ses violents battements d’ailes\n",
+        "génèrent des vagues d’ultrasons\n",
+        "qui donnent mal au crâne."
+      ]
+    },
+    {
+      "id": "msg_0806_00330",
+      "en_US": [
+        "Son puissant battement d’ailes\n",
+        "provoque des tempêtes de sable.\n",
+        "On l’appelle “esprit du désert”."
+      ]
+    },
+    {
+      "id": "msg_0806_00331",
+      "en_US": [
+        "En stockant l’eau dans son corps,\n",
+        "cet habitant du désert peut \n",
+        "survivre 30 jours sans boire."
+      ]
+    },
+    {
+      "id": "msg_0806_00332",
+      "en_US": [
+        "Il sort la nuit pour chasser. Il\n",
+        "traque les proies épuisées après\n",
+        "une journée dans le désert."
+      ]
+    },
+    {
+      "id": "msg_0806_00333",
+      "en_US": [
+        "Ses ailes sont comme des balles\n",
+        "de coton. Perché sur la tête de \n",
+        "quelqu’un, on dirait un chapeau."
+      ]
+    },
+    {
+      "id": "msg_0806_00334",
+      "en_US": [
+        "En vol, il ressemble à un nuage\n",
+        "cotonneux. Il fredonne d’une voix\n",
+        "de soprano."
+      ]
+    },
+    {
+      "id": "msg_0806_00335",
+      "en_US": [
+        "C’est le rival de SEVIPER depuis\n",
+        "des générations. Ses griffes\n",
+        "aiguisées sont son meilleur atout."
+      ]
+    },
+    {
+      "id": "msg_0806_00336",
+      "en_US": [
+        "Le rival historique de MANGRIFF.\n",
+        "Il affûte la lame de sa queue \n",
+        "sur les rochers avant le combat."
+      ]
+    },
+    {
+      "id": "msg_0806_00337",
+      "en_US": [
+        "On suppose qu’il est lié au cycle\n",
+        "lunaire, car il ne sort que les\n",
+        "soirs de pleine lune."
+      ]
+    },
+    {
+      "id": "msg_0806_00338",
+      "en_US": [
+        "Le bruit court que cette nouvelle\n",
+        "espèce vient du soleil. Il produit\n",
+        "de la lumière en tournoyant."
+      ]
+    },
+    {
+      "id": "msg_0806_00339",
+      "en_US": [
+        "Il enduit son corps d’une \n",
+        "substance visqueuse pour glisser\n",
+        "et se libérer quand on l’agrippe."
+      ]
+    },
+    {
+      "id": "msg_0806_00340",
+      "en_US": [
+        "Il est attaché à son territoire.\n",
+        "Il repousse l’ennemi en provoquant\n",
+        "des secousses qui portent à 5 km."
+      ]
+    },
+    {
+      "id": "msg_0806_00341",
+      "en_US": [
+        "Sa nature robuste lui permet de\n",
+        "vivre sur n’importe quel terrain. \n",
+        "Ses pinces ne lâchent jamais prise."
+      ]
+    },
+    {
+      "id": "msg_0806_00342",
+      "en_US": [
+        "C’est un voyou qui utilise ses\n",
+        "pinces pour chasser les autres\n",
+        "Pokémon hors de sa mare."
+      ]
+    },
+    {
+      "id": "msg_0806_00343",
+      "en_US": [
+        "Il se déplace en tournoyant sur\n",
+        "son pied. Ce Pokémon rare fut\n",
+        "découvert dans de vieilles ruines."
+      ]
+    },
+    {
+      "id": "msg_0806_00344",
+      "en_US": [
+        "Une ancienne figurine d’argile qui \n",
+        "s’est animée suite à son exposition\n",
+        "à un rayon de lumière étrange."
+      ]
+    },
+    {
+      "id": "msg_0806_00345",
+      "en_US": [
+        "Il vivait au fond de la mer il y a\n",
+        "100 millions d’années. La science\n",
+        "a permis de le ressusciter."
+      ]
+    },
+    {
+      "id": "msg_0806_00346",
+      "en_US": [
+        "Vit dans les hauts-fonds des mers\n",
+        "chaudes. Il déterre sa proie du\n",
+        "sable quand la marée se retire."
+      ]
+    },
+    {
+      "id": "msg_0806_00347",
+      "en_US": [
+        "Un ancêtre Pokémon réanimé \n",
+        "à partir d’un fossile. Il vivait en\n",
+        "mer et chassait avec ses pinces."
+      ]
+    },
+    {
+      "id": "msg_0806_00348",
+      "en_US": [
+        "Il a gagné la côte après son \n",
+        "évolution. Une armure robuste\n",
+        "recouvre son corps."
+      ]
+    },
+    {
+      "id": "msg_0806_00349",
+      "en_US": [
+        "Il est connu pour son teint maladif.\n",
+        "Bien que nombreux, ces Pokémon\n",
+        "se regroupent aux mêmes endroits."
+      ]
+    },
+    {
+      "id": "msg_0806_00350",
+      "en_US": [
+        "On raconte qu’il surgit du fond des\n",
+        "lacs pour calmer les esprits quand\n",
+        "les gens se querellent."
+      ]
+    },
+    {
+      "id": "msg_0806_00351",
+      "en_US": [
+        "Son aspect change avec la météo.\n",
+        "On a récemment découvert que ses\n",
+        "molécules étaient pareilles à l’eau."
+      ]
+    },
+    {
+      "id": "msg_0806_00352",
+      "en_US": [
+        "Il change de couleur à volonté,\n",
+        "mais le motif en zigzag qui\n",
+        "orne son ventre reste le même."
+      ]
+    },
+    {
+      "id": "msg_0806_00353",
+      "en_US": [
+        "Il aime le goût de la vengeance.\n",
+        "Ils vivent en rangs sous les \n",
+        "gouttières des gens vindicatifs."
+      ]
+    },
+    {
+      "id": "msg_0806_00354",
+      "en_US": [
+        "Une poupée mue par la tristesse qui\n",
+        "la ronge depuis qu’on l’a délaissée.\n",
+        "Elle recherche son propriétaire."
+      ]
+    },
+    {
+      "id": "msg_0806_00355",
+      "en_US": [
+        "Il poursuit assidûment sa proie, où\n",
+        "qu’elle aille. Il n’abandonne sa\n",
+        "traque qu’au lever du soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00356",
+      "en_US": [
+        "Son corps est creux. On raconte\n",
+        "que celui qui regarde à l’intérieur\n",
+        "finira aspiré par le néant."
+      ]
+    },
+    {
+      "id": "msg_0806_00357",
+      "en_US": [
+        "A force de manger son fruit\n",
+        "préféré, il a fini par pousser\n",
+        "autour de son cou."
+      ]
+    },
+    {
+      "id": "msg_0806_00358",
+      "en_US": [
+        "Son langage comporte sept cris.\n",
+        "Il les utilise pour faire vibrer\n",
+        "l’air et projeter son ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00359",
+      "en_US": [
+        "Il pressent les catastrophes et\n",
+        "n’apparaît aux gens que pour les\n",
+        "prévenir d’un danger imminent."
+      ]
+    },
+    {
+      "id": "msg_0806_00360",
+      "en_US": [
+        "Il se muscle en bousculant ses\n",
+        "semblables lors de mêlées. Il\n",
+        "raffole des fruits sucrés."
+      ]
+    },
+    {
+      "id": "msg_0806_00361",
+      "en_US": [
+        "Selon un vieux dicton des régions\n",
+        "enneigées: “STALGAMIN dans la \n",
+        "maison, richesse à l’horizon”."
+      ]
+    },
+    {
+      "id": "msg_0806_00362",
+      "en_US": [
+        "Il gèle l’humidité de l’air pour \n",
+        "former une armure de glace\n",
+        "protectrice autour de son corps."
+      ]
+    },
+    {
+      "id": "msg_0806_00363",
+      "en_US": [
+        "Il gagne la côte en roulant sur les\n",
+        "blocs de glace car sa morphologie\n",
+        "n’est pas adaptée à la nage."
+      ]
+    },
+    {
+      "id": "msg_0806_00364",
+      "en_US": [
+        "Il fait souvent tourner des objets\n",
+        "sur son museau pour connaître\n",
+        "leur odeur et leur texture."
+      ]
+    },
+    {
+      "id": "msg_0806_00365",
+      "en_US": [
+        "Il brise la glace avec ses grosses\n",
+        "défenses. Sa graisse le protège du \n",
+        "froid, mais aussi des attaques."
+      ]
+    },
+    {
+      "id": "msg_0806_00366",
+      "en_US": [
+        "Il ne produit qu’une perle durant\n",
+        "son existence. On raconte qu’elle\n",
+        "amplifie ses pouvoirs psychiques."
+      ]
+    },
+    {
+      "id": "msg_0806_00367",
+      "en_US": [
+        "Il vit loin sous la mer. Il appâte\n",
+        "les proies crédules avec sa\n",
+        "queue qui rappelle un petit poisson."
+      ]
+    },
+    {
+      "id": "msg_0806_00368",
+      "en_US": [
+        "Au printemps, son corps rose se\n",
+        "fait plus vif sans que l’on sache\n",
+        "pourquoi. Il vit au fond de la mer. "
+      ]
+    },
+    {
+      "id": "msg_0806_00369",
+      "en_US": [
+        "Un Pokémon rare aperçu lors d’une\n",
+        "exploration sous-marine. Il n’a pas\n",
+        "évolué depuis 100 millions d’années."
+      ]
+    },
+    {
+      "id": "msg_0806_00370",
+      "en_US": [
+        "Un habitant des mers chaudes. On\n",
+        "dit que le couple qui tombe sur ce\n",
+        "Pokémon connaîtra l’amour éternel."
+      ]
+    },
+    {
+      "id": "msg_0806_00371",
+      "en_US": [
+        "Il rêve de pouvoir voler un jour. \n",
+        "Pour l’heure, il s’entraîne en\n",
+        "sautant du haut des falaises."
+      ]
+    },
+    {
+      "id": "msg_0806_00372",
+      "en_US": [
+        "Ses cellules ont commencé à\n",
+        "changer dans sa robuste coquille.\n",
+        "Il la perd en évoluant."
+      ]
+    },
+    {
+      "id": "msg_0806_00373",
+      "en_US": [
+        "A force de rêver de pouvoir voler,\n",
+        "sa structure cellulaire a évolué\n",
+        "et il s’est vu pousser des ailes."
+      ]
+    },
+    {
+      "id": "msg_0806_00374",
+      "en_US": [
+        "Il dialogue avec les siens par \n",
+        "impulsions magnétiques. En bande,\n",
+        "ils se déplacent à l’unisson."
+      ]
+    },
+    {
+      "id": "msg_0806_00375",
+      "en_US": [
+        "Il est formé de deux TERHAL\n",
+        "soudés. Son corps de fer résiste à\n",
+        "un choc avec un avion à réaction."
+      ]
+    },
+    {
+      "id": "msg_0806_00376",
+      "en_US": [
+        "Il est né de la fusion de plusieurs\n",
+        "METANG. Ses quatre cerveaux en\n",
+        "font l’égal d’un superordinateur."
+      ]
+    },
+    {
+      "id": "msg_0806_00377",
+      "en_US": [
+        "Tout son corps est fait de roche.\n",
+        "S’il s’ébrèche au combat, il utilise\n",
+        "des pierres pour le réparer."
+      ]
+    },
+    {
+      "id": "msg_0806_00378",
+      "en_US": [
+        "Son corps est fait de glace datant\n",
+        "de l’ère glaciaire. Il contrôle un\n",
+        "air gelé à -200 °C."
+      ]
+    },
+    {
+      "id": "msg_0806_00379",
+      "en_US": [
+        "Son corps invulnérable fut forgé\n",
+        "par la pression souterraine durant\n",
+        "des dizaines de milliers d’années."
+      ]
+    },
+    {
+      "id": "msg_0806_00380",
+      "en_US": [
+        "Son corps est recouvert d’un \n",
+        "duvet qui reflète la lumière\n",
+        "et le rend invisible."
+      ]
+    },
+    {
+      "id": "msg_0806_00381",
+      "en_US": [
+        "Un Pokémon très intelligent. Il\n",
+        "peut voler plus vite qu’un avion à\n",
+        "réaction en repliant ses ailes."
+      ]
+    },
+    {
+      "id": "msg_0806_00382",
+      "en_US": [
+        "On dit qu’il a fait monter les eaux\n",
+        "en causant des pluies diluviennes.\n",
+        "Il somnolait dans une fosse marine."
+      ]
+    },
+    {
+      "id": "msg_0806_00383",
+      "en_US": [
+        "Il dormait dans le magma souterrain\n",
+        "depuis sa lutte féroce contre\n",
+        "KYOGRE, il y a longtemps de cela."
+      ]
+    },
+    {
+      "id": "msg_0806_00384",
+      "en_US": [
+        "Il vit dans la couche d’ozone, au\n",
+        "dessus des nuages. Il est invisible\n",
+        "depuis le sol."
+      ]
+    },
+    {
+      "id": "msg_0806_00385",
+      "en_US": [
+        "On raconte qu’une fois tous les\n",
+        "mille ans, il a la capacité d’exaucer\n",
+        "tous les vœux durant une semaine."
+      ]
+    },
+    {
+      "id": "msg_0806_00386",
+      "en_US": [
+        "Il vient d’un virus extraterrestre\n",
+        "arrivé avec une météorite et ayant\n",
+        "subi une mutation génétique."
+      ]
+    },
+    {
+      "id": "msg_0806_00387",
+      "en_US": [
+        "La coquille sur son dos est faite\n",
+        "de terre. Elle durcit lorsqu’il \n",
+        "s’abreuve. Il vit le long des lacs."
+      ]
+    },
+    {
+      "id": "msg_0806_00388",
+      "en_US": [
+        "Il vit en forêt près de l’eau.\n",
+        "En journée, il la quitte pour dorer\n",
+        "sa carapace feuillue au soleil."
+      ]
+    },
+    {
+      "id": "msg_0806_00389",
+      "en_US": [
+        "Il arrive que de petits Pokémon\n",
+        "se rassemblent sur son dos \n",
+        "immobile pour y faire leur nid."
+      ]
+    },
+    {
+      "id": "msg_0806_00390",
+      "en_US": [
+        "Il escalade prestement les falaises\n",
+        "escarpées et vit sur les sommets.\n",
+        "Sa flamme s’éteint quand il dort."
+      ]
+    },
+    {
+      "id": "msg_0806_00391",
+      "en_US": [
+        "Pour intimider ses agresseurs, il\n",
+        "gonfle les flammes de sa queue\n",
+        "pour paraître plus grand."
+      ]
+    },
+    {
+      "id": "msg_0806_00392",
+      "en_US": [
+        "Il pratique un art martial spécial\n",
+        "qui utilise tous ses membres.\n",
+        "Sa flamme ne s’éteint jamais."
+      ]
+    },
+    {
+      "id": "msg_0806_00393",
+      "en_US": [
+        "Il est fier et déteste accepter\n",
+        "la nourriture qu’on lui offre. Son\n",
+        "pelage épais le protège du froid."
+      ]
+    },
+    {
+      "id": "msg_0806_00394",
+      "en_US": [
+        "Il vit seul, à l’écart de ses pairs.\n",
+        "Chaque individu est convaincu\n",
+        "d’être meilleur que les autres."
+      ]
+    },
+    {
+      "id": "msg_0806_00395",
+      "en_US": [
+        "Les trois cornes de son bec sont le\n",
+        "symbole de sa force. Celles du chef\n",
+        "sont plus grosses que les autres."
+      ]
+    },
+    {
+      "id": "msg_0806_00396",
+      "en_US": [
+        "Ils volent en nombre. Bien que\n",
+        "minuscule, il bat des ailes avec\n",
+        "une vigueur impressionnante."
+      ]
+    },
+    {
+      "id": "msg_0806_00397",
+      "en_US": [
+        "Il survole les forêts et les champs\n",
+        "en quête de Pokémon Insecte.\n",
+        "Ils forment de grandes volées."
+      ]
+    },
+    {
+      "id": "msg_0806_00398",
+      "en_US": [
+        "Un Pokémon sauvage qui a le\n",
+        "courage de défier des ennemis\n",
+        "beaucoup plus grands que lui."
+      ]
+    },
+    {
+      "id": "msg_0806_00399",
+      "en_US": [
+        "Rien ne peut perturber ses nerfs\n",
+        "d’acier. Il est plus agile et\n",
+        "énergique qu’il n’y paraît."
+      ]
+    },
+    {
+      "id": "msg_0806_00400",
+      "en_US": [
+        "Il construit des barrages de boue\n",
+        "et d’écorce le long des fleuves. \n",
+        "C’est un ouvrier de renom."
+      ]
+    },
+    {
+      "id": "msg_0806_00401",
+      "en_US": [
+        "Quand il bascule sa tête d’avant \n",
+        "en arrière, ses antennes se\n",
+        "heurtent dans un son de xylophone."
+      ]
+    },
+    {
+      "id": "msg_0806_00402",
+      "en_US": [
+        "Il croise ses bras affûtés devant\n",
+        "son torse pour crier. Il compose\n",
+        "tout un tas de mélodies."
+      ]
+    },
+    {
+      "id": "msg_0806_00403",
+      "en_US": [
+        "Sa fourrure étincelle en cas de\n",
+        "danger. Il profite du fait que \n",
+        "l’ennemi est aveuglé pour s’enfuir."
+      ]
+    },
+    {
+      "id": "msg_0806_00404",
+      "en_US": [
+        "L’électricité libérée par ses\n",
+        "griffes peut assommer l’ennemi.\n",
+        "Il vit en petits groupes."
+      ]
+    },
+    {
+      "id": "msg_0806_00405",
+      "en_US": [
+        "Ses yeux voient à travers tout. Il\n",
+        "repère les proies cachées derrière\n",
+        "un objet pour les capturer."
+      ]
+    },
+    {
+      "id": "msg_0806_00406",
+      "en_US": [
+        "En hiver, son bourgeon se referme\n",
+        "pour résister au froid. Il s’ouvre\n",
+        "au printemps et libère du pollen."
+      ]
+    },
+    {
+      "id": "msg_0806_00407",
+      "en_US": [
+        "Il attire ses proies avec son doux\n",
+        "parfum et les achève grâce aux\n",
+        "fouets d’épines de ses bras."
+      ]
+    },
+    {
+      "id": "msg_0806_00408",
+      "en_US": [
+        "Il vivait dans la jungle il y a \n",
+        "environ 100 millions d’années. Son\n",
+        "crâne est dur comme du fer."
+      ]
+    },
+    {
+      "id": "msg_0806_00409",
+      "en_US": [
+        "Son violent coup de tête est\n",
+        "assez puissant pour pulvériser\n",
+        "les matériaux les plus résistants."
+      ]
+    },
+    {
+      "id": "msg_0806_00410",
+      "en_US": [
+        "Un Pokémon qui vivait dans la jungle\n",
+        "il y a 100 millions d’années. Son\n",
+        "visage est très dur."
+      ]
+    },
+    {
+      "id": "msg_0806_00411",
+      "en_US": [
+        "Il résiste à toute attaque\n",
+        "frontale. C’est un Pokémon docile\n",
+        "qui se nourrit d’herbe et de Baies."
+      ]
+    },
+    {
+      "id": "msg_0806_00412",
+      "en_US": [
+        "Pour se protéger des vents glacés\n",
+        "de l’hiver, il s’est tissé une cape\n",
+        "de feuilles et de brindilles."
+      ]
+    },
+    {
+      "id": "msg_0806_00413",
+      "en_US": [
+        "Quand CHENITI a évolué, sa\n",
+        "cape a fusionné avec son corps.\n",
+        "CHENISELLE ne s’en sépare jamais."
+      ]
+    },
+    {
+      "id": "msg_0806_00414",
+      "en_US": [
+        "Il aime le nectar des fleurs et\n",
+        "n’hésite pas à voler celui\n",
+        "que récupère APITRINI."
+      ]
+    },
+    {
+      "id": "msg_0806_00415",
+      "en_US": [
+        "Un Pokémon qui en regroupe trois\n",
+        "autres. Il est toujours occupé à\n",
+        "apporter du nectar à APIREINE."
+      ]
+    },
+    {
+      "id": "msg_0806_00416",
+      "en_US": [
+        "Son abdomen est un rayon où\n",
+        "vivent ses larves, élevées avec\n",
+        "le nectar récolté par APITRINI."
+      ]
+    },
+    {
+      "id": "msg_0806_00417",
+      "en_US": [
+        "Il roule des boules de poils pleines\n",
+        "d’électricité statique et les range\n",
+        "dans des souches avec des Baies."
+      ]
+    },
+    {
+      "id": "msg_0806_00418",
+      "en_US": [
+        "Sa bouée est pareille à un\n",
+        "collier gonflable. Quand il flotte,\n",
+        "il garde la tête à l’air libre."
+      ]
+    },
+    {
+      "id": "msg_0806_00419",
+      "en_US": [
+        "Il flotte grâce à sa bouée très\n",
+        "développée. Il vole au secours\n",
+        "des gens sur le point de se noyer."
+      ]
+    },
+    {
+      "id": "msg_0806_00420",
+      "en_US": [
+        "La petite boule renferme les\n",
+        "délicieux nutriments sucrés\n",
+        "dont il a besoin pour évoluer."
+      ]
+    },
+    {
+      "id": "msg_0806_00421",
+      "en_US": [
+        "Il fleurit lorsque le soleil est au\n",
+        "beau fixe. Il cherche à prendre sa\n",
+        "revanche sur une vie de bourgeon."
+      ]
+    },
+    {
+      "id": "msg_0806_00422",
+      "en_US": [
+        "Sa couleur et sa forme varient\n",
+        "selon les régions. On en recense\n",
+        "deux types à Sinnoh."
+      ]
+    },
+    {
+      "id": "msg_0806_00423",
+      "en_US": [
+        "Son corps pliable est dépourvu\n",
+        "d’os. Lorsqu’on tranche un de ses\n",
+        "membres, il repousse immédiatement."
+      ]
+    },
+    {
+      "id": "msg_0806_00424",
+      "en_US": [
+        "Il se nourrit de noix qu’il épluche\n",
+        "avec ses deux queues habiles. Il\n",
+        "utilise rarement ses bras."
+      ]
+    },
+    {
+      "id": "msg_0806_00425",
+      "en_US": [
+        "Un Pokémon né de l’esprit des gens\n",
+        "et des Pokémon. Il aime les saisons\n",
+        "chaudes et humides."
+      ]
+    },
+    {
+      "id": "msg_0806_00426",
+      "en_US": [
+        "Il somnole la journée et s’envole\n",
+        "en grands groupes le soir venu. Nul\n",
+        "ne sait où ils vont."
+      ]
+    },
+    {
+      "id": "msg_0806_00427",
+      "en_US": [
+        "Il frappe l’ennemi en déroulant\n",
+        "violemment ses oreilles. Cela\n",
+        "peut faire pleurer un adulte."
+      ]
+    },
+    {
+      "id": "msg_0806_00428",
+      "en_US": [
+        "Un Pokémon extrêmement prudent.\n",
+        "Il couvre son corps de ses oreilles\n",
+        "pelucheuses en cas de danger."
+      ]
+    },
+    {
+      "id": "msg_0806_00429",
+      "en_US": [
+        "Son cri rappelle une incantation.\n",
+        "Ceux qui l’entendent souffrent\n",
+        "de migraines et d’hallucinations."
+      ]
+    },
+    {
+      "id": "msg_0806_00430",
+      "en_US": [
+        "Ce Pokémon nocturne évolue en\n",
+        "grandes volées escortées par des\n",
+        "CORNEBRE."
+      ]
+    },
+    {
+      "id": "msg_0806_00431",
+      "en_US": [
+        "Il griffe quand il est en colère et\n",
+        "ronronne quand il est heureux. \n",
+        "Certains aiment ce côté lunatique."
+      ]
+    },
+    {
+      "id": "msg_0806_00432",
+      "en_US": [
+        "Cette brute arrogante n’hésite pas\n",
+        "à voler le nid d’autres Pokémon\n",
+        "pour s’y installer."
+      ]
+    },
+    {
+      "id": "msg_0806_00433",
+      "en_US": [
+        "Il émet des cris en agitant\n",
+        "l’orbe à l’arrière de sa gorge. Il\n",
+        "avance par bonds désordonnés."
+      ]
+    },
+    {
+      "id": "msg_0806_00434",
+      "en_US": [
+        "Il se protège en expulsant un \n",
+        "fluide nocif par son derrière. \n",
+        "La puanteur dure 24 heures."
+      ]
+    },
+    {
+      "id": "msg_0806_00435",
+      "en_US": [
+        "Il attaque en projetant un\n",
+        "liquide fétide du bout de sa queue.\n",
+        "Il peut tirer à 50 mètres."
+      ]
+    },
+    {
+      "id": "msg_0806_00436",
+      "en_US": [
+        "Il ressemble à des objets trouvés\n",
+        "dans des sépultures anciennes.\n",
+        "Nul ne sait s’ils sont liés."
+      ]
+    },
+    {
+      "id": "msg_0806_00437",
+      "en_US": [
+        "La découverte d’un de ces Pokémon\n",
+        "sur un site de fouilles après 2 000 \n",
+        "ans de sommeil a fait sensation."
+      ]
+    },
+    {
+      "id": "msg_0806_00438",
+      "en_US": [
+        "On dirait qu’il pleure constamment.\n",
+        "En fait, il régule ses fluides\n",
+        "corporels en éliminant le surplus."
+      ]
+    },
+    {
+      "id": "msg_0806_00439",
+      "en_US": [
+        "Il imite ses ennemis. Une fois\n",
+        "imités, ils ne peuvent plus\n",
+        "quitter ce Pokémon des yeux."
+      ]
+    },
+    {
+      "id": "msg_0806_00440",
+      "en_US": [
+        "Ce Pokémon aime ce qui est rond et\n",
+        "blanc et transporte un caillou en\n",
+        "forme d’œuf pour imiter LEVEINARD."
+      ]
+    },
+    {
+      "id": "msg_0806_00441",
+      "en_US": [
+        "On peut lui enseigner quelques\n",
+        "mots. S’ils sont en groupe, ils\n",
+        "retiendront les mêmes phrases."
+      ]
+    },
+    {
+      "id": "msg_0806_00442",
+      "en_US": [
+        "Un Pokémon composé de 108\n",
+        "esprits. Il provient d’une fissure\n",
+        "dans une clé de voûte étrange."
+      ]
+    },
+    {
+      "id": "msg_0806_00443",
+      "en_US": [
+        "Il niche dans les petits trous\n",
+        "horizontaux des murs des grottes.\n",
+        "Il bondit pour saisir sa proie."
+      ]
+    },
+    {
+      "id": "msg_0806_00444",
+      "en_US": [
+        "Selon une croyance ancienne, on\n",
+        "peut utiliser ses écailles pour\n",
+        "guérir les maladies incurables. "
+      ]
+    },
+    {
+      "id": "msg_0806_00445",
+      "en_US": [
+        "Quand il se recroqueville et étend\n",
+        "ses ailes, on dirait un chasseur.\n",
+        "Sa vitesse est supersonique."
+      ]
+    },
+    {
+      "id": "msg_0806_00446",
+      "en_US": [
+        "Il avale son poids en nourriture\n",
+        "chaque jour. Il avale tout sans \n",
+        "prendre le temps de mâcher."
+      ]
+    },
+    {
+      "id": "msg_0806_00447",
+      "en_US": [
+        "Son aura s’intensifie pour\n",
+        "prévenir son entourage quand\n",
+        "il a peur ou qu’il est triste."
+      ]
+    },
+    {
+      "id": "msg_0806_00448",
+      "en_US": [
+        "Il ressent les auras de tout. Il \n",
+        "comprend le langage humain."
+      ]
+    },
+    {
+      "id": "msg_0806_00449",
+      "en_US": [
+        "Il vit dans des endroits arides.\n",
+        "Il exsude des grains de sable\n",
+        "au lieu de transpirer."
+      ]
+    },
+    {
+      "id": "msg_0806_00450",
+      "en_US": [
+        "Il emmagasine du sable qu’il\n",
+        "expulse en tornades par les\n",
+        "pores de sa peau pour attaquer."
+      ]
+    },
+    {
+      "id": "msg_0806_00451",
+      "en_US": [
+        "Il saisit sa proie avec les pinces de\n",
+        "sa queue, lui injecte un poison et\n",
+        "la retient jusqu’à ce qu’il agisse."
+      ]
+    },
+    {
+      "id": "msg_0806_00452",
+      "en_US": [
+        "Il peut réduire une voiture en pièces\n",
+        "avec ses bras. Le bout de ses pinces\n",
+        "contient du poison."
+      ]
+    },
+    {
+      "id": "msg_0806_00453",
+      "en_US": [
+        "Ses joues contiennent des glandes\n",
+        "toxiques. Il attaque par surprise\n",
+        "et utilise son toucher empoisonné."
+      ]
+    },
+    {
+      "id": "msg_0806_00454",
+      "en_US": [
+        "Les griffes de ses poings sécrètent\n",
+        "une toxine si atroce qu’une simple\n",
+        "égratignure peut s’avérer fatale."
+      ]
+    },
+    {
+      "id": "msg_0806_00455",
+      "en_US": [
+        "Il attire sa proie avec sa salive\n",
+        "odorante avant de la croquer. Il\n",
+        "lui faut une journée pour l’avaler."
+      ]
+    },
+    {
+      "id": "msg_0806_00456",
+      "en_US": [
+        "Après une longue exposition au\n",
+        "soleil, les motifs de ses nageoires\n",
+        "caudales luisent à la nuit tombée."
+      ]
+    },
+    {
+      "id": "msg_0806_00457",
+      "en_US": [
+        "Il vit au plus profond de l’océan.\n",
+        "Il attire sa proie en illuminant les\n",
+        "motifs de ses 4 nageoires."
+      ]
+    },
+    {
+      "id": "msg_0806_00458",
+      "en_US": [
+        "Un Pokémon amical qui analyse\n",
+        "les mouvements subtils de l’eau de\n",
+        "mer grâce à ses deux antennes."
+      ]
+    },
+    {
+      "id": "msg_0806_00459",
+      "en_US": [
+        "Il vit sur les monts enneigés.\n",
+        "Ignorant des coutumes humaines,\n",
+        "il lui arrive d’être très curieux."
+      ]
+    },
+    {
+      "id": "msg_0806_00460",
+      "en_US": [
+        "C’est l’abominable homme des\n",
+        "neiges. Il ensevelit les montagnes\n",
+        "sous ses blizzards."
+      ]
+    },
+    {
+      "id": "msg_0806_00461",
+      "en_US": [
+        "Ils vivent par groupes de 4 ou 5\n",
+        "en région froide et chassent de\n",
+        "façon très organisée."
+      ]
+    },
+    {
+      "id": "msg_0806_00462",
+      "en_US": [
+        "Il a évolué suite à son exposition\n",
+        "à un champ magnétique spécial. Ses\n",
+        "3 unités génèrent du magnétisme."
+      ]
+    },
+    {
+      "id": "msg_0806_00463",
+      "en_US": [
+        "Il enroule tout dans sa langue\n",
+        "extensible. Ceux qui l’approchent\n",
+        "finissent couverts de bave."
+      ]
+    },
+    {
+      "id": "msg_0806_00464",
+      "en_US": [
+        "Il bande ses muscles pour projeter des\n",
+        "pierres depuis le creux de ses paumes.\n",
+        "Il lance parfois des RACAILLOU."
+      ]
+    },
+    {
+      "id": "msg_0806_00465",
+      "en_US": [
+        "Il ligote sa proie en étirant ses\n",
+        "bras en lianes. Il ne craint pas de\n",
+        "perdre un bras face à un ennemi."
+      ]
+    },
+    {
+      "id": "msg_0806_00466",
+      "en_US": [
+        "Il place le bout de ses deux \n",
+        "queues sur son ennemi et libère\n",
+        "une décharge de 20 000 volts."
+      ]
+    },
+    {
+      "id": "msg_0806_00467",
+      "en_US": [
+        "Il projette des boules de feu de\n",
+        "2 000 °C à bout de bras. Il\n",
+        "vit dans les cratères volcaniques."
+      ]
+    },
+    {
+      "id": "msg_0806_00468",
+      "en_US": [
+        "Il n’apparaît jamais en temps\n",
+        "de conflit. Récemment, il s’est\n",
+        "fait plus rare."
+      ]
+    },
+    {
+      "id": "msg_0806_00469",
+      "en_US": [
+        "Les ondes de choc qu’il génère\n",
+        "en battant des ailes infligent de\n",
+        "graves blessures internes."
+      ]
+    },
+    {
+      "id": "msg_0806_00470",
+      "en_US": [
+        "Il utilise la photosynthèse comme\n",
+        "une plante. C’est pourquoi il est \n",
+        "toujours entouré d’air pur."
+      ]
+    },
+    {
+      "id": "msg_0806_00471",
+      "en_US": [
+        "Il peut geler sa fourrure pour se\n",
+        "protéger en rendant ses poils\n",
+        "aussi durs que des piquants."
+      ]
+    },
+    {
+      "id": "msg_0806_00472",
+      "en_US": [
+        "Il guette sa proie, pendu à une\n",
+        "branche la tête en bas, et s’en\n",
+        "saisit à la première occasion. "
+      ]
+    },
+    {
+      "id": "msg_0806_00473",
+      "en_US": [
+        "Ses défenses spectaculaires sont\n",
+        "glacées. Sa population a diminué à cause\n",
+        "du réchauffement suivant l’ère glaciaire."
+      ]
+    },
+    {
+      "id": "msg_0806_00474",
+      "en_US": [
+        "Un logiciel supplémentaire fut \n",
+        "installé pour l’améliorer. Mais\n",
+        "depuis, il se comporte bizarrement."
+      ]
+    },
+    {
+      "id": "msg_0806_00475",
+      "en_US": [
+        "Il frappe avec les grandes lames de\n",
+        "ses coudes. Son talent d’escrimeur\n",
+        "n’a d’égal que sa courtoisie."
+      ]
+    },
+    {
+      "id": "msg_0806_00476",
+      "en_US": [
+        "Son corps libère une puissante\n",
+        "force magnétique. Il dirige trois\n",
+        "petites unités appelées Mini-nez."
+      ]
+    },
+    {
+      "id": "msg_0806_00477",
+      "en_US": [
+        "L’antenne sur sa tête capte les\n",
+        "ondes radio du monde des esprits\n",
+        "lui ordonnant d’y porter des gens."
+      ]
+    },
+    {
+      "id": "msg_0806_00478",
+      "en_US": [
+        "MOMARTIK gèle ses ennemis grâce à\n",
+        "son souffle à -50 °C. Ça ne se\n",
+        "voit pas, mais son corps est creux."
+      ]
+    },
+    {
+      "id": "msg_0806_00479",
+      "en_US": [
+        "Son corps est fait de plasma. Il\n",
+        "cause de gros dégâts en infiltrant\n",
+        "des appareils électroniques."
+      ]
+    },
+    {
+      "id": "msg_0806_00480",
+      "en_US": [
+        "On l’appelle “l’être du savoir”.\n",
+        "On raconte que son regard a le\n",
+        "pouvoir d’effacer la mémoire."
+      ]
+    },
+    {
+      "id": "msg_0806_00481",
+      "en_US": [
+        "On l’appelle “l’être de l’émotion”.\n",
+        "Il enseigne aux hommes la beauté de\n",
+        "la tristesse, la douleur et la joie."
+      ]
+    },
+    {
+      "id": "msg_0806_00482",
+      "en_US": [
+        "On l’appelle “l’être de la volonté”.\n",
+        "Il dort au fond d’un lac pour\n",
+        "maintenir l’équilibre du monde."
+      ]
+    },
+    {
+      "id": "msg_0806_00483",
+      "en_US": [
+        "Il peut contrôler le temps. Les\n",
+        "mythes de Sinnoh en parlent\n",
+        "comme d’une divinité ancienne."
+      ]
+    },
+    {
+      "id": "msg_0806_00484",
+      "en_US": [
+        "Il peut modeler l’espace. Les\n",
+        "mythes de Sinnoh en parlent\n",
+        "comme d’une divinité ancienne."
+      ]
+    },
+    {
+      "id": "msg_0806_00485",
+      "en_US": [
+        "Il hante les grottes volcaniques.\n",
+        "Il rampe aux murs et au plafond grâce\n",
+        "à ses pieds en forme de croix."
+      ]
+    },
+    {
+      "id": "msg_0806_00486",
+      "en_US": [
+        "Une légende tenace veut que ce\n",
+        "Pokémon ait traîné les continents\n",
+        "en les attachant à des cordes."
+      ]
+    },
+    {
+      "id": "msg_0806_00487",
+      "en_US": [
+        "Un Pokémon censé vivre dans un\n",
+        "monde à l’opposé du nôtre. Il\n",
+        "apparaît dans un cimetière ancien."
+      ]
+    },
+    {
+      "id": "msg_0806_00488",
+      "en_US": [
+        "Ses ailes libèrent un rideau de\n",
+        "particules brillantes. Ce Pokémon\n",
+        "symboliserait le croissant de lune."
+      ]
+    },
+    {
+      "id": "msg_0806_00489",
+      "en_US": [
+        "Un Pokémon des mers chaudes. Il\n",
+        "gonfle la bouée sur sa tête et\n",
+        "dérive en quête de vivres."
+      ]
+    },
+    {
+      "id": "msg_0806_00490",
+      "en_US": [
+        "Né dans les profondeurs froides de\n",
+        "l’océan, il parcourt un long chemin\n",
+        "pour gagner son lieu de naissance."
+      ]
+    },
+    {
+      "id": "msg_0806_00491",
+      "en_US": [
+        "Il a la capacité de bercer les gens\n",
+        "pour les faire rêver. Il se montre\n",
+        "durant les nuits de nouvelle lune."
+      ]
+    },
+    {
+      "id": "msg_0806_00492",
+      "en_US": [
+        "Il vit dans les champs de fleurs et\n",
+        "se cache en s’enroulant pour\n",
+        "imiter une plante fleurie."
+      ]
+    },
+    {
+      "id": "msg_0806_00493",
+      "en_US": [
+        "La mythologie le décrit comme\n",
+        "le Pokémon qui a façonné\n",
+        "l’univers avec ses 1 000 bras."
+      ]
+    }
+  ]
+}

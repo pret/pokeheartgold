@@ -1,0 +1,189 @@
+{
+  "key": 20275,
+  "messages": [
+    {
+      "id": "msg_0612_T27_00000",
+      "en_US": [
+        "Ecruteak used to have two towers,\n",
+        "one in the east and one in the west."
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00001",
+      "en_US": [
+        "Have you heard that they are talking\n",
+        "about rebuilding the Burned Tower?\r",
+        "There will be two towers again!\n",
+        "I’m looking forward to it!"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00002",
+      "en_US": [
+        "Hmm...\n",
+        "I thought I just heard a woman\f",
+        "screaming or something...\r",
+        "Is that just me?"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00003",
+      "en_US": [
+        "Kimono Girls are always rehearsing their\n",
+        "dances at the Dance Theater there."
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00004",
+      "en_US": [
+        "I’m going to rehearse at the\n",
+        "Dance Theater. Care to join me?"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00005",
+      "en_US": [
+        "The tower that used to be here...\n",
+        "I heard that it used to be much taller\f",
+        "before it was burned by a fire."
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00006",
+      "en_US": [
+        "Three big Pokémon ran off in different\n",
+        "directions. What were they?"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00007",
+      "en_US": [
+        "They say that they will start the\n",
+        "construction work to rebuild this\f",
+        "tower soon!"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00008",
+      "en_US": [
+        "Oh!\n",
+        "That’s a nice Pokémon you’re walking\f",
+        "with! They make you feel uplifted,\f",
+        "don’t they?\r",
+        "They give us the hope of the light,\n",
+        "so to speak.\r",
+        "Speaking of the light, I heard something\n",
+        "about the Lighthouse in Olivine.\r",
+        "The Pokémon that serves as the\n",
+        "beacon has fallen ill.\f",
+        "Sounds like it’s in trouble."
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00009",
+      "en_US": [
+        "The Pokémon at that Lighthouse in\n",
+        "Olivine has fully recovered.\r",
+        "I heard that boats can safely sail out\n",
+        "to sea at night again."
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00010",
+      "en_US": [
+        "If you go west from this city, you’ll\n",
+        "reach a port called Olivine City.\r",
+        "When your Pokémon learns Surf,\n",
+        "you can go out to the ocean from\f",
+        "Route 40 without a ship!"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00011",
+      "en_US": [
+        "Ecruteak City\n",
+        "A Historical City"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00012",
+      "en_US": [
+        "Ecruteak City Pokémon Gym\n",
+        "Leader: Morty\f",
+        "The Mystic Seer of the Future"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00013",
+      "en_US": "Ecruteak Dance Theater"
+    },
+    {
+      "id": "msg_0612_T27_00014",
+      "en_US": [
+        "Burned Tower\n",
+        "It was destroyed by a mysterious fire.\r",
+        "Please stay away, as it is unsafe."
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00015",
+      "en_US": [
+        "Barrier Station to Bell Tower\n",
+        "No Trespassing by the Unworthy"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00016",
+      "en_US": "{SIZE 200}Thud!!"
+    },
+    {
+      "id": "msg_0612_T27_00017",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: How...? How is this\n",
+        "possible? How can I lose to\f",
+        "mere Kimono Girls...?\r"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00018",
+      "en_US": [
+        "{STRVAR_1 3, 1, 0}: You were watching me,\n",
+        "{STRVAR_1 3, 0, 0}...\r",
+        "Yeah, that’s right!\r",
+        "I never thought defeating five Kimono\n",
+        "Girls would be so hard...\r",
+        "I got beaten to a pulp...\r",
+        "...\r",
+        "You must have come here for the same\n",
+        "reason, right?\r",
+        "Don’t get cocky just because you\n",
+        "defeated Team Rocket!\r",
+        "These Kimono Girls are insanely strong.\r",
+        "Go ahead! See if you can defeat them.\r",
+        "But I’m not going back.\n",
+        "I don’t want to see you win.\r"
+      ]
+    },
+    {
+      "id": "msg_0612_T27_00019",
+      "en_US": [
+        "In the distant past...\r",
+        "When this tower burned in a fire,\n",
+        "three nameless Pokémon perished in it.\r",
+        "Then, a rainbow-hued Pokémon\n",
+        "descended from the sky and\f",
+        "somehow brought them back...\r",
+        "The people were afraid of power such as\n",
+        "the rainbow-hued Pokémon had shown.\r",
+        "They tried to control it by force.\r",
+        "The nameless Pokémon made no attempt\n",
+        "to fight back. Instead, their\f",
+        "great sorrow compelled them to leave.\r",
+        "This legend has been passed down\n",
+        "by the Ecruteak Gym Leader. Me?\r",
+        "I was a Trainer way back when.\n",
+        "Ho ho ho!"
+      ]
+    }
+  ]
+}

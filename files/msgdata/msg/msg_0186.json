@@ -1,0 +1,103 @@
+{
+  "key": 37436,
+  "messages": [
+    {
+      "id": "msg_0186_00000",
+      "en_US": [
+        "Welcome to Geonet, the high-tech\n",
+        "globe!\r"
+      ]
+    },
+    {
+      "id": "msg_0186_00001",
+      "en_US": "What would you like to do?"
+    },
+    {
+      "id": "msg_0186_00002",
+      "en_US": [
+        "Here, you may register the location\n",
+        "of where you live.\r",
+        "That information may be provided to\n",
+        "friends and strangers through\f",
+        "DS Wireless Communications or over\f",
+        "Nintendo WFC.\r",
+        "Would you like to register your\n",
+        "home’s location area?"
+      ]
+    },
+    {
+      "id": "msg_0186_00003",
+      "en_US": [
+        "Please select the location in which\n",
+        "you live."
+      ]
+    },
+    {
+      "id": "msg_0186_00004",
+      "en_US": [
+        "Please select the area in which\n",
+        "you live."
+      ]
+    },
+    {
+      "id": "msg_0186_00005",
+      "en_US": [
+        "Once registered, you may not change\n",
+        "your registered location data.\r",
+        "Should this location be registered\n",
+        "as where you live?"
+      ]
+    },
+    {
+      "id": "msg_0186_00006",
+      "en_US": "{STRVAR_1 36, 0, 0}"
+    },
+    {
+      "id": "msg_0186_00007",
+      "en_US": "{STRVAR_1 37, 0, 0}"
+    },
+    {
+      "id": "msg_0186_00008",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0186_00009",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0186_00010",
+      "en_US": "SEE LIST"
+    },
+    {
+      "id": "msg_0186_00011",
+      "en_US": "REGISTER"
+    },
+    {
+      "id": "msg_0186_00012",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0186_00013",
+      "en_US": "{ALN_CENTER}VIEW"
+    },
+    {
+      "id": "msg_0186_00014",
+      "en_US": [
+        "Your registered location:\n",
+        "{STRVAR_1 36, 0, 0}\n",
+        "{STRVAR_1 37, 1, 0}"
+      ]
+    },
+    {
+      "id": "msg_0186_00015",
+      "en_US": [
+        "To display registered locations, line up\n",
+        "the cursor, and press the X Button."
+      ]
+    },
+    {
+      "id": "msg_0186_00016",
+      "en_US": "{ALN_CENTER}QUIT"
+    }
+  ]
+}

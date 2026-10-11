@@ -1,0 +1,255 @@
+{
+  "key": 62543,
+  "messages": [
+    {
+      "id": "msg_0073_D24R0102_00000",
+      "en_US": [
+        "Bravo!\r",
+        "A promising youth who is about to start\n",
+        "the journey of archaeology has\f",
+        "just arrived!\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00001",
+      "en_US": [
+        "What? Just a visitor?\n",
+        "Oh, I see...\f",
+        "You got me excited for nothing."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00002",
+      "en_US": [
+        "My staff here at the Ruins Research\n",
+        "Center is excellent, and the research\f",
+        "makes good progress with absolutely\f",
+        "no effort on my part.\r",
+        "If you have any questions, feel free to\n",
+        "talk to my staff!"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00003",
+      "en_US": [
+        "I managed to unravel quite a lot of the\n",
+        "mystery of UNOWN with your help!\r",
+        "Thank you, thank you.\n",
+        "Thank you, again!"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00004",
+      "en_US": [
+        "The ruins are about 1,500 years old.\n",
+        "That’s all we know about them.\r",
+        "But it’s not known why they were\n",
+        "built...or by whom."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00005",
+      "en_US": [
+        "Wow, did you catch an UNOWN?\n",
+        "That’s wonderful!\r",
+        "Come to think of it... How come we’ve\n",
+        "suddenly started to see UNOWN?"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00006",
+      "en_US": [
+        "You have to hear this!\n",
+        "This is a big discovery!\r",
+        "It was you who solved the stone-panel\n",
+        "puzzle that allowed UNOWN to appear.\r",
+        "Those tablets are the key to waking\n",
+        "up UNOWN!\r",
+        "Still... Why would anyone make such\n",
+        "a key?\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00007",
+      "en_US": [
+        "You have to hear this!\n",
+        "This is a big discovery!\r",
+        "If you turn on the radio in the ruins,\n",
+        "you can receive mysterious radio waves!\r",
+        "It’s proof that UNOWN communicate\n",
+        "with each other using radio waves!\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00008",
+      "en_US": [
+        "You have to hear this!\n",
+        "This is a big discovery!\r",
+        "There are as many UNOWN as there are\n",
+        "letters in the alphabet!\r",
+        "There have been 26 types confirmed.\n",
+        "Why don’t you collect them all?\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00009",
+      "en_US": [
+        "How do you like the UNOWN Report\n",
+        "I gave you?\r",
+        "UNOWN are recorded as you catch them.\n",
+        "It is quite useful!"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00010",
+      "en_US": [
+        "You have to hear this!\n",
+        "This is a big discovery!\r",
+        "We have figured out that UNOWN are in a\n",
+        "certain order!\f",
+        "Let me see your report.\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00011",
+      "en_US": [
+        "There!\n",
+        "I put the UNOWN in the correct order!\f",
+        "We may be able to tell more about them.\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00012",
+      "en_US": [
+        "What?\n",
+        "You found a room with UNOWN symbols?\f",
+        "That is a big discovery!\r",
+        "We will study them right away.\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00013",
+      "en_US": [
+        "You have to hear this!\n",
+        "This is a big discovery!\r",
+        "We have found two new UNOWN symbols!\r",
+        "It means that...\n",
+        "There must be two more kinds of UNOWN\f",
+        "somewhere...\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00014",
+      "en_US": [
+        "You have to hear this!\n",
+        "We are learning more and more about the\f",
+        "symbols on the floor!\r",
+        "...It seems that UNOWN were living at\n",
+        "the ruins with a human clan.\r",
+        "It is thought that this clan made the\n",
+        "Pokémon statues underground.\r",
+        "The UNOWN were easily scared and\n",
+        "wouldn’t go outside.\r",
+        "When more and more people started to\n",
+        "appear around the ruins, the clan that\f",
+        "wished to live in harmony with the UNOWN\f",
+        "eventually left...\r",
+        "Thanks to our research and your\n",
+        "help, we have unraveled so much about\f",
+        "their mystery!\r",
+        "We have so many things we don’t know\n",
+        "left, of course.\r",
+        "Archaeology never ends.\r"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00015",
+      "en_US": [
+        "I will let you know if I find out\n",
+        "anything else."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00016",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} opened the UNOWN Report\n",
+        "and made notes!"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00017",
+      "en_US": [
+        "Thanks to our research and your\n",
+        "help, we have unraveled so much about\f",
+        "their mystery!\r",
+        "We have so many things we don’t know\n",
+        "left, of course.\r",
+        "Archaeology never ends."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00018",
+      "en_US": [
+        "There are odd patterns drawn on the\n",
+        "walls of the ruins.\r",
+        "They must be the keys for unraveling\n",
+        "the mystery of the ruins."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00019",
+      "en_US": [
+        "The strange Pokémon you saw in\n",
+        "the ruins?\r",
+        "They appear to be very much like the\n",
+        "drawings on the walls there.\r",
+        "Hmm...\r",
+        "That must mean there are many\n",
+        "different kinds of them..."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00020",
+      "en_US": [
+        "Huh?\n",
+        "I seem to be doing nothing?\r",
+        "Come on!\n",
+        "I may not look it, but I’m the one who\f",
+        "developed the UNOWN Report!"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00021",
+      "en_US": [
+        "Ruins of Alph\n",
+        "Exploration Year 10"
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00022",
+      "en_US": [
+        "Mystery Pokémon\n",
+        "Name: UNOWN\f",
+        "A total of 26 kinds found."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00023",
+      "en_US": [
+        "Ruins of Alph Research Report\r",
+        "I dedicate this report to the\n",
+        "Research Center’s founder,\f",
+        "Professor Silktree..."
+      ]
+    },
+    {
+      "id": "msg_0073_D24R0102_00024",
+      "en_US": [
+        "There are many academic books.\r",
+        "“Mysteries of the Ancients”\n",
+        "“Code-Breaking Guidebook”\f",
+        "“Weathering Ruins”"
+      ]
+    }
+  ]
+}

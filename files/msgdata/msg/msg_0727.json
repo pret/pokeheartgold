@@ -1,0 +1,120 @@
+{
+  "key": 16542,
+  "messages": [
+    {
+      "id": "msg_0727_00000",
+      "en_US": "ID No."
+    },
+    {
+      "id": "msg_0727_00001",
+      "en_US": "NAME"
+    },
+    {
+      "id": "msg_0727_00002",
+      "en_US": "MONEY"
+    },
+    {
+      "id": "msg_0727_00003",
+      "en_US": "POKéDEX"
+    },
+    {
+      "id": "msg_0727_00004",
+      "en_US": "SCORE"
+    },
+    {
+      "id": "msg_0727_00005",
+      "en_US": "TIME"
+    },
+    {
+      "id": "msg_0727_00006",
+      "en_US": "ADVENTURE STARTED"
+    },
+    {
+      "id": "msg_0727_00007",
+      "en_US": "HALL OF FAME DEBUT"
+    },
+    {
+      "id": "msg_0727_00008",
+      "en_US": "TIMES LINKED"
+    },
+    {
+      "id": "msg_0727_00009",
+      "en_US": "LINK BATTLES"
+    },
+    {
+      "id": "msg_0727_00010",
+      "en_US": "LINK TRADES"
+    },
+    {
+      "id": "msg_0727_00011",
+      "en_US": ":"
+    },
+    {
+      "id": "msg_0727_00012",
+      "en_US": "--"
+    },
+    {
+      "id": "msg_0727_00013",
+      "en_US": "--:--"
+    },
+    {
+      "id": "msg_0727_00014",
+      "en_US": "Cancel"
+    },
+    {
+      "id": "msg_0727_00015",
+      "en_US": "Touch Card to flip."
+    },
+    {
+      "id": "msg_0727_00016",
+      "en_US": "Sign Card"
+    },
+    {
+      "id": "msg_0727_00017",
+      "en_US": "Sign your Trainer Card?"
+    },
+    {
+      "id": "msg_0727_00018",
+      "en_US": [
+        "Your current signature will be erased.\n",
+        "Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0727_00019",
+      "en_US": "${STRVAR_1 55, 5, 0}"
+    },
+    {
+      "id": "msg_0727_00020",
+      "en_US": "{STRVAR_1 51, 0, 0}:{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0727_00021",
+      "en_US": "{STRVAR_1 51, 0, 0}  {STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0727_00022",
+      "en_US": "{STRVAR_34 16, 3, 0} {STRVAR_1 51, 4, 0}, 20{STRVAR_1 51, 2, 0}"
+    },
+    {
+      "id": "msg_0727_00023",
+      "en_US": "W"
+    },
+    {
+      "id": "msg_0727_00024",
+      "en_US": "L"
+    },
+    {
+      "id": "msg_0727_00025",
+      "en_US": "--- --, ----"
+    },
+    {
+      "id": "msg_0727_00026",
+      "en_US": "{STRVAR_1 52, 5, 0}"
+    },
+    {
+      "id": "msg_0727_00027",
+      "en_US": "{STRVAR_1 55, 5, 0}"
+    }
+  ]
+}

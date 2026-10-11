@@ -1,0 +1,45 @@
+{
+  "key": 13318,
+  "messages": [
+    {
+      "id": "msg_0526_T10R0501_00000",
+      "en_US": [
+        "I am Karen of the Elite Four.\r",
+        "You’re {STRVAR_1 3, 0, 0}? How amusing.\n",
+        "I love Dark-type Pokémon.\r",
+        "I’m known for my overpowering tactics.\r",
+        "Think you can take them?\n",
+        "Just try to entertain me.\r",
+        "Let’s go.\r"
+      ]
+    },
+    {
+      "id": "msg_0526_T10R0501_00001",
+      "en_US": [
+        "Strong Pokémon.\r",
+        "Weak Pokémon.\r",
+        "That is only the selfish perception\n",
+        "of people.\r",
+        "Truly skilled Trainers should try to\n",
+        "win with the Pokémon they love best.\r",
+        "I like your style.\n",
+        "You understand what’s important.\r",
+        "Go on--the Champion is waiting.\r"
+      ]
+    },
+    {
+      "id": "msg_0526_T10R0501_00002",
+      "en_US": [
+        "Strong Pokémon.\r",
+        "Weak Pokémon.\r",
+        "That is only the selfish perception\n",
+        "of people.\r",
+        "Truly skilled Trainers should try to\n",
+        "win with the Pokémon they love best.\r",
+        "I like your style.\n",
+        "You understand what’s important.\r",
+        "Go on--the Champion is waiting."
+      ]
+    }
+  ]
+}

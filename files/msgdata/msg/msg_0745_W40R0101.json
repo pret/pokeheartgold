@@ -1,0 +1,49 @@
+{
+  "key": 54407,
+  "messages": [
+    {
+      "id": "msg_0745_W40R0101_00000",
+      "en_US": [
+        "What? I’m the first to arrive!\r",
+        "There will soon be a Battle Frontier\n",
+        "past here.\r",
+        "I’m in line to be the first one there.\n",
+        "I haven’t slept for days.\r",
+        "Get in line if you want to be the second\n",
+        "one in!\r"
+      ]
+    },
+    {
+      "id": "msg_0745_W40R0101_00001",
+      "en_US": [
+        "Zzz...\n",
+        "...\r",
+        "He is standing...but asleep!\r"
+      ]
+    },
+    {
+      "id": "msg_0745_W40R0101_00002",
+      "en_US": [
+        "Zzz... Zzz...\n",
+        "...\r",
+        "He doesn’t seem like he’ll wake up\n",
+        "anytime soon!"
+      ]
+    },
+    {
+      "id": "msg_0745_W40R0101_00003",
+      "en_US": [
+        "This is the entrance to the\n",
+        "Battle Frontier.\f",
+        "You shouldn’t make a line here."
+      ]
+    },
+    {
+      "id": "msg_0745_W40R0101_00004",
+      "en_US": [
+        "The Battle Frontier is open!\r",
+        "Please go ahead."
+      ]
+    }
+  ]
+}

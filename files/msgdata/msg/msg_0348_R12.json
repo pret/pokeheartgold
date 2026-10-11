@@ -1,0 +1,37 @@
+{
+  "key": 17175,
+  "messages": [
+    {
+      "id": "msg_0348_R12_00000",
+      "en_US": [
+        "Rt. 12\n",
+        "North to Lavender Town"
+      ]
+    },
+    {
+      "id": "msg_0348_R12_00001",
+      "en_US": [
+        "Fishing Spot\r",
+        "It’s called the Silence Bridge, because\n",
+        "everyone walks on tiptoe to avoid\f",
+        "scaring the Water-type Pokémon.\n",
+        "\n"
+      ]
+    },
+    {
+      "id": "msg_0348_R12_00002",
+      "en_US": [
+        "There is a large Pokémon sleeping\n",
+        "peacefully.\f",
+        "It looks so content!"
+      ]
+    },
+    {
+      "id": "msg_0348_R12_00003",
+      "en_US": [
+        "...!\r",
+        "The SNORLAX opened its eyes wide!\r"
+      ]
+    }
+  ]
+}

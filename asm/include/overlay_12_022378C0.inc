@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextPrinter_SetDownArrowBaseTile
 .public TextFlags_SetCanABSpeedUpPrint
@@ -184,7 +184,7 @@
 .public WM_GetLinkLevel
 .public NNS_GfdDefaultFuncAllocTexVram
 .public NNS_GfdDefaultFuncAllocPlttVram
-.public ov00_021EC9D4
+.public DWC_GetLinkLevel
 .public ov05_0221BA00
 .public ov06_0221BAF0
 .public ov07_0221BEDC

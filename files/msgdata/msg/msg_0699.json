@@ -1,0 +1,119 @@
+{
+  "key": 12952,
+  "messages": [
+    {
+      "id": "msg_0699_00000",
+      "en_US": "Kenny"
+    },
+    {
+      "id": "msg_0699_00001",
+      "en_US": [
+        "The same opponent, the same Pokémon,\n",
+        "but the battle results are different\f",
+        "every time!\r",
+        "I’d like to battle with you again.\n",
+        "Let’s trade phone numbers!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0699_00002",
+      "en_US": [
+        "Once I’ve gotten ready, I’ll give you\n",
+        "a call!"
+      ]
+    },
+    {
+      "id": "msg_0699_00003",
+      "en_US": [
+        "I see... Well, that’s fine by me.\n",
+        "I’ve always got my mountain!"
+      ]
+    },
+    {
+      "id": "msg_0699_00004",
+      "en_US": [
+        "I’d like to battle with you again.\n",
+        "Let’s exchange numbers! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0699_00005",
+      "en_US": [
+        "That’s strange...\n",
+        "I can hear your voice so clearly...\r",
+        "Wait, you’re nearby, aren’t you!\n",
+        "Let’s talk in person!"
+      ]
+    },
+    {
+      "id": "msg_0699_00006",
+      "en_US": [
+        "Pokémon easily develop an affection for\n",
+        "us nature-loving Hikers!\r",
+        "No, no, it’s not just my imagination!\n",
+        "I’ve got proof! Seriously, my\f",
+        "{STRVAR_1 0, 10, 0} never disobeys me!"
+      ]
+    },
+    {
+      "id": "msg_0699_00007",
+      "en_US": [
+        "Hey, listen up!\r",
+        "Yesterday, I ran into a wild\n",
+        "{STRVAR_1 0, 11, 0}! Just out in nature!\r",
+        "Of course, my Pokémon were in top form\n",
+        "for the battle. It was great.\f",
+        "It all happened so naturally!\r",
+        "How do I describe this wonderful\n",
+        "feeling... How do I put it into words?\f",
+        "Well, for now, how about...\r",
+        "HOOOORAY!"
+      ]
+    },
+    {
+      "id": "msg_0699_00008",
+      "en_US": [
+        "A few days ago, while I was hiking in the\n",
+        "mountains, a wild {STRVAR_1 0, 11, 0}\f",
+        "suddenly jumped out at me.\r",
+        "I was completely unprepared for the\n",
+        "experience, and it ran away.\r",
+        "It’s said we Hikers stake our life on\n",
+        "being prepared for anything, so I have\f",
+        "to count this as a failure as a Hiker!"
+      ]
+    },
+    {
+      "id": "msg_0699_00009",
+      "en_US": [
+        "We absolutely must have another \n",
+        "battle together!\f",
+        "That’s why we’re speaking right now!\r",
+        "Am I right? I hope I am!\n",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0699_00010",
+      "en_US": [
+        "We’re having a battle on\n",
+        "{STRVAR_1 4, 3, 0}, remember. I’m out\f",
+        "here, waiting in the midst of nature!"
+      ]
+    },
+    {
+      "id": "msg_0699_00011",
+      "en_US": [
+        "That’s right... I’m up on this mountain\n",
+        "almost the whole year round...\r",
+        "Baths?\r",
+        "There’s no such thing on a mountain!\r",
+        "Instead, I just look for a flowing\n",
+        "river, and wash myself off in that.\r",
+        "That’s right! A few days ago, when\n",
+        "I was bathing in the river, someone\f",
+        "mistook me for a Swimmer♂!"
+      ]
+    }
+  ]
+}

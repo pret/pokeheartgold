@@ -1,0 +1,120 @@
+{
+  "key": 54391,
+  "messages": [
+    {
+      "id": "msg_0611_T26R0701_00000",
+      "en_US": [
+        "You!\n",
+        "How is your Pokémon training\f",
+        "coming along?\r",
+        "Have you ever noticed that in the\n",
+        "mountains, sometimes there are round\f",
+        "boulders right in your way...?\r",
+        "You can move them with the\n",
+        "hidden move Strength!\r",
+        "Hikers at Mt. Mortar sometimes have\n",
+        "extra, or so I’ve heard..."
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00001",
+      "en_US": [
+        "Gobble...gobble...\r",
+        "...Choke!\n",
+        "Ack... I’m choking!\r",
+        "Whew! That was close.\n",
+        "I should chew before I swallow my food."
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00002",
+      "en_US": [
+        "Whenever I roll into Olivine, I always\n",
+        "visit the Olivine Café.\r",
+        "Everything on the menu makes me feel\n",
+        "stronger. I can’t stop eating!"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00003",
+      "en_US": [
+        "Olivine Café’s menu is chock-full\n",
+        "of hearty fare for beefy Sailors!"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00004",
+      "en_US": [
+        "Jasmine: Hi!\n",
+        "...!\r",
+        "These empty dishes in front of me\n",
+        "are not all mine...\r",
+        "Er...\r",
+        "Actually, the person who sat here\n",
+        "ahead of me ate a lot...\r",
+        "Anyway, do you want to exchange\n",
+        "phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00005",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Jasmine\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00006",
+      "en_US": [
+        "Jasmine: Now we can contact each\n",
+        "other anytime.\r",
+        "I should be able to battle you around\n",
+        "noon on Wednesdays.\f",
+        "I’ll be waiting for your call!"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00007",
+      "en_US": "Jasmine: Oh... I understand..."
+    },
+    {
+      "id": "msg_0611_T26R0701_00008",
+      "en_US": [
+        "Jasmine: Did you change your mind?\n",
+        "Will you exchange numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00009",
+      "en_US": [
+        "Jasmine: We seem to...bump into each\n",
+        "other often.\r",
+        "Why don’t we take a picture\n",
+        "to make this a memory? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00010",
+      "en_US": "Jasmine: Are you ready?\r"
+    },
+    {
+      "id": "msg_0611_T26R0701_00011",
+      "en_US": [
+        "Jasmine: You did a fine job.\n",
+        "We look good."
+      ]
+    },
+    {
+      "id": "msg_0611_T26R0701_00012",
+      "en_US": "Jasmine: I see..."
+    },
+    {
+      "id": "msg_0611_T26R0701_00013",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC to delete\n",
+        "some pictures."
+      ]
+    }
+  ]
+}

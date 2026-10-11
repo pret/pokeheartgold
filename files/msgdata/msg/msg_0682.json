@@ -1,0 +1,154 @@
+{
+  "key": 32231,
+  "messages": [
+    {
+      "id": "msg_0682_00000",
+      "en_US": "Josh"
+    },
+    {
+      "id": "msg_0682_00001",
+      "en_US": [
+        "It was fun battling you!\n",
+        "I’d love to trade phone numbers with\f",
+        "you, please?\f",
+        "Come on, let’s trade numbers! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0682_00002",
+      "en_US": [
+        "Thanks! Let’s have another battle\n",
+        "again sometime!\r",
+        "Just give me a call when you’re ready."
+      ]
+    },
+    {
+      "id": "msg_0682_00003",
+      "en_US": [
+        "Ulp!\r",
+        "Are you saying you think I’m so weak,\n",
+        "I don’t measure up as an opponent?"
+      ]
+    },
+    {
+      "id": "msg_0682_00004",
+      "en_US": [
+        "I’d do anything to get your phone\n",
+        "number!\r",
+        "Please, let’s trade numbers! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0682_00005",
+      "en_US": [
+        "Oh yeah.\n",
+        "This is a Shiny Stone.\r",
+        "It’s all right, don’t be shy! You can\n",
+        "have it. Go ahead!\r"
+      ]
+    },
+    {
+      "id": "msg_0682_00006",
+      "en_US": [
+        "Huh? There’s something odd about your\n",
+        "voice... Don’t tell me... You’re\f",
+        "standing nearby, aren’t you?\r",
+        "If you’ve already gotten this close,\n",
+        "why not come talk in person?"
+      ]
+    },
+    {
+      "id": "msg_0682_00007",
+      "en_US": [
+        "I’m still a featherweight, as usual...\r",
+        "My constant companion, {STRVAR_1 0, 10, 0},\n",
+        "is training hard!\r",
+        "It even knocked out a {STRVAR_1 0, 11, 0} in\n",
+        "under two seconds in a recent battle!\r",
+        "OK, OK, two seconds is a bit of an\n",
+        "exaggeration... It was actually five\f",
+        "minutes and 37 seconds..."
+      ]
+    },
+    {
+      "id": "msg_0682_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} has gotten pretty\n",
+        "strong!\r",
+        "Well, it’s gotten strong, but this\n",
+        "{STRVAR_1 0, 11, 0} it was battling ran away\f",
+        "before the fight was over...\r",
+        "That was {STRVAR_1 0, 10, 0}’s fault, right?\r",
+        "It was my fault?\r",
+        "I guess that’s a possibility!"
+      ]
+    },
+    {
+      "id": "msg_0682_00009",
+      "en_US": [
+        "Earlier, I was contemplating something\n",
+        "while walking...\r",
+        "Suddenly this {STRVAR_1 0, 11, 0} jumped out!\r",
+        "I was pretty surprised, and then it\n",
+        "ran away!\r",
+        "I was thinking about it, and I had made\n",
+        "plans to trade with a friend, so I was\f",
+        "looking for a {STRVAR_1 0, 11, 0}...\r",
+        "It’s too bad..."
+      ]
+    },
+    {
+      "id": "msg_0682_00010",
+      "en_US": [
+        "Where are you now? I’m always on\n",
+        "{STRVAR_1 4, 3, 0} myself.\r",
+        "What do you think about battling with me\n",
+        "again? Sounds like a good idea?\f",
+        "I’ll be waiting!"
+      ]
+    },
+    {
+      "id": "msg_0682_00011",
+      "en_US": [
+        "I’m waiting on {STRVAR_1 4, 3, 0}.\n",
+        "Don’t forget!"
+      ]
+    },
+    {
+      "id": "msg_0682_00012",
+      "en_US": [
+        "Ah... Ah... Achoo!\r",
+        "Ah... Ah... Ah... Achoo!\r",
+        "Oh, it’s nothing. It’s just that my bird\n",
+        "Pokémon suddenly started flapping its\f",
+        "wings...so there’s dust and stuff from\f",
+        "their wings floating around my face...\f",
+        "Ah... Ah... Now my nose is itchy...\r",
+        "Achoooo!"
+      ]
+    },
+    {
+      "id": "msg_0682_00013",
+      "en_US": [
+        "My Pokémon was holding something in its\n",
+        "mouth recently.\r",
+        "I was thinking “What in the world?” and\n",
+        "I pulled it out... It was a Shiny Stone!\f",
+        "I was surprised. Wouldn’t you be?\r",
+        "...But what’s a Shiny Stone?\r",
+        "I don’t really have any use for it, and\n",
+        "I don’t know what it’s worth...so I’ll\f",
+        "just give it to you!\r",
+        "I’ll wait for you on {STRVAR_1 4, 3, 0}.\n",
+        "Come get it!"
+      ]
+    },
+    {
+      "id": "msg_0682_00014",
+      "en_US": [
+        "You want a Shiny Stone, right?\n",
+        "I’m on {STRVAR_1 4, 3, 0}. Come get it!"
+      ]
+    }
+  ]
+}

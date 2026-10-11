@@ -4,9 +4,9 @@
 
 #include "constants/items.h"
 
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0010.h"
-#include "msgdata/msg/msg_0040.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0010.h"
+#include "files/msgdata/msg/msg_0040.h"
 
 #include "coins.h"
 #include "fashion_case.h"
@@ -118,7 +118,7 @@ static u32 GetNumBattlePoints(SaveData *saveData) {
 }
 
 BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, enum HeapID heapID) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0010, heapID);
     MessageFormat *messageFormat = MessageFormat_New(heapID);
     String *string;
 
@@ -156,25 +156,25 @@ void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 item
     switch (code) {
     case ITEMUSEERROR_NODISMOUNT:
         // You can't dismount your Bike here.
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0010, heapID);
         ReadMsgDataIntoString(msgData, msg_0010_00057, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOFOLLOWER:
         // Can't be used when you have someone with you!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0010, heapID);
         ReadMsgDataIntoString(msgData, msg_0010_00118, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOTNOW:
         // You can't be doing that now!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0010, heapID);
         ReadMsgDataIntoString(msgData, msg_0010_00119, dest);
         DestroyMsgData(msgData);
         break;
     default:
         // {PLAYER}! This isn't the time to use that!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0040, heapID);
         MessageFormat *messageFormat = MessageFormat_New(heapID);
         String *src = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(messageFormat, 0, playerProfile);

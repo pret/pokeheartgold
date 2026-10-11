@@ -1,0 +1,160 @@
+{
+  "key": 18187,
+  "messages": [
+    {
+      "id": "msg_0519_T09_00000",
+      "en_US": [
+        "Who are you?\r",
+        "My name’s Blue.\n",
+        "I was once the Kanto Champion.\r",
+        "Although it was short-lived thanks\n",
+        "to Red...\f",
+        "Anyway, take a good look around you...\r"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00001",
+      "en_US": [
+        "Blue: A volcano erupts, and just\n",
+        "like that, a whole town disappears.\r",
+        "We can go on winning and losing in\n",
+        "Pokémon, but if nature so much as\f",
+        "twitches, we can be overwhelmed\f",
+        "in a second...\r",
+        "That’s the way it is...\n",
+        "But, anyway, I’m still a Trainer.\r",
+        "If I see a strong opponent, it makes me\n",
+        "want to battle.\r"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00002",
+      "en_US": [
+        "If you want to battle me...for real,\n",
+        "come to the Viridian Gym.\r"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00003",
+      "en_US": "I’ll be waiting for you!\r"
+    },
+    {
+      "id": "msg_0519_T09_00004",
+      "en_US": [
+        "If you want to battle me...for real,\n",
+        "show me how many Kanto Badges\f",
+        "you’ve got.\r",
+        "...\n",
+        "{STRVAR_1 50, 0, 0}...\r",
+        "You’re not ready to battle me..."
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00005",
+      "en_US": [
+        "Blue: You are quite something!\n",
+        "You defeated Red!?\f",
+        "That’s great!\r",
+        "Let’s take a picture together! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00006",
+      "en_US": "Blue: All right!\r"
+    },
+    {
+      "id": "msg_0519_T09_00007",
+      "en_US": "Blue: Thanks for the nice picture!"
+    },
+    {
+      "id": "msg_0519_T09_00008",
+      "en_US": "Blue: Oh, well..."
+    },
+    {
+      "id": "msg_0519_T09_00009",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC and delete\n",
+        "some pictures."
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00010",
+      "en_US": [
+        "Blaine: I’ll never give up until the \n",
+        "day I’ve rebuilt the Cinnabar Gym!\r",
+        "Why not exchange numbers! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00011",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Blaine\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00012",
+      "en_US": [
+        "Blaine: Hmmm...\n",
+        "We should be able to battle\f",
+        "on Tuesday evenings!"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00013",
+      "en_US": "Blaine: Oh...how disappointing!"
+    },
+    {
+      "id": "msg_0519_T09_00014",
+      "en_US": [
+        "Blaine: Do we want to exchange\n",
+        "numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00015",
+      "en_US": [
+        "Blaine: Oh, it is you!\n",
+        "Say, do you want to take a picture\f",
+        "with me right here? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00016",
+      "en_US": "Blaine: There, stand next to me!\r"
+    },
+    {
+      "id": "msg_0519_T09_00017",
+      "en_US": "Blaine: Oh, this is a good picture!"
+    },
+    {
+      "id": "msg_0519_T09_00018",
+      "en_US": "Blaine: Noooo!"
+    },
+    {
+      "id": "msg_0519_T09_00019",
+      "en_US": [
+        "Your Photo Album is full.\r",
+        "Access your PC to delete\n",
+        "some pictures."
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00020",
+      "en_US": [
+        "There is a notice here...\r",
+        "The Cinnabar Gym has relocated\n",
+        "to Seafoam Islands.\f",
+        "           Blaine"
+      ]
+    },
+    {
+      "id": "msg_0519_T09_00021",
+      "en_US": [
+        "Cinnabar Island\n",
+        "The Ravaged Town of the Past"
+      ]
+    }
+  ]
+}

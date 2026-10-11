@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public DWCi_BM_GetWiFiInfo
 .public DWCi_BACKUPlRead
@@ -189,15 +189,15 @@
 .public memcmp
 .public strlen
 .public strncpy
-.public atol
+.public atoi
 .public swprintf
 .public _ll_udiv
 .public _ull_mod
-.public ov00_021FA75C
-.public ov00_021FA904
-.public ov00_021FA9D4
-.public ov00_021FAAC8
-.public ov00_021FAC20
+.public DWC_AC_Create
+.public DWC_AC_Process
+.public DWC_AC_GetStatus
+.public DWC_AC_Destroy
+.public DWCi_AC_InsertApInfo
 .public MB_CommSetParentStateCallback
 .public MB_CommGetChildUser
 .public MB_CommIsBootable
@@ -216,6 +216,5 @@
 .public ov13_02226D74
 .public ov13_02226E5C
 .public ov13_02226F28
-.public ov13_0222B430
+.public DWC_StartUtility
 .public _0223DC20
-.public _0223F900

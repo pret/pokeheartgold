@@ -1,0 +1,138 @@
+{
+  "key": 46236,
+  "messages": [
+    {
+      "id": "msg_0652_00000",
+      "en_US": "Lt. Surge"
+    },
+    {
+      "id": "msg_0652_00001",
+      "en_US": [
+        "What? I can’t hear you very well.\n",
+        "Maybe we’ve got a bad connection?\r",
+        "Try calling again from somewhere else."
+      ]
+    },
+    {
+      "id": "msg_0652_00002",
+      "en_US": [
+        "Hello? What’s up?\n",
+        "I’m doing great!\r"
+      ]
+    },
+    {
+      "id": "msg_0652_00003",
+      "en_US": [
+        "Aren’t there any other Trainers you’d\n",
+        "like to battle more than me?"
+      ]
+    },
+    {
+      "id": "msg_0652_00004",
+      "en_US": [
+        "My free time?\n",
+        "I’m usually available Friday mornings.\f",
+        "Try calling me again then!"
+      ]
+    },
+    {
+      "id": "msg_0652_00005",
+      "en_US": [
+        "Hey, you!\r",
+        "Battle me again!\n",
+        "What do you say? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0652_00006",
+      "en_US": [
+        "All right!\r",
+        "I’ll be waiting for you in Saffron City’s\n",
+        "Fighting Dojo. Don’t be late!"
+      ]
+    },
+    {
+      "id": "msg_0652_00007",
+      "en_US": [
+        "I see...\n",
+        "You must be pretty busy."
+      ]
+    },
+    {
+      "id": "msg_0652_00008",
+      "en_US": [
+        "Hmm...\n",
+        "Well, I appreciate that you want to\f",
+        "battle me again, but didn’t you promise\f",
+        "someone else?"
+      ]
+    },
+    {
+      "id": "msg_0652_00009",
+      "en_US": [
+        "I’ll be waiting for you at the Fighting\n",
+        "Dojo in Saffron City.\f",
+        "Don’t forget! Come on!"
+      ]
+    },
+    {
+      "id": "msg_0652_00010",
+      "en_US": [
+        "Yo! This is Lt. Surge.\n",
+        "How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0652_00011",
+      "en_US": [
+        "Hey, did you forget that I’m standing\n",
+        "in the Fighting Dojo in Saffron City\f",
+        "waiting for you?\r",
+        "I guess I got here before you.\n",
+        "I’ll be waiting!"
+      ]
+    },
+    {
+      "id": "msg_0652_00012",
+      "en_US": [
+        "So, why do you think I put all those\n",
+        "traps in the Vermilion Gym?\r",
+        "That’s right!\n",
+        "It’s to test the intellect of any\f",
+        "Trainer who comes in to battle!\r",
+        "Pokémon battles aren’t just about\n",
+        "power or stamina.\r",
+        "If you can balance power and\n",
+        "intelligence, then you’ve got the\f",
+        "makings to become a great Trainer!"
+      ]
+    },
+    {
+      "id": "msg_0652_00013",
+      "en_US": [
+        "When I was fighting for my country,\n",
+        "I helped raise a lot of Trainers, taught\f",
+        "them the ropes.\r",
+        "But!\r",
+        "By the time you met me, you’d already\n",
+        "perfected your abilities!\r",
+        "Where did you train? Who taught you how\n",
+        "to battle?\r",
+        "It’s so strange and amazing!"
+      ]
+    },
+    {
+      "id": "msg_0652_00014",
+      "en_US": [
+        "I’ve been studying this region’s\n",
+        "dialect during my time as Gym Leader\f",
+        "here in Vermilion.\r",
+        "But there’s still so many sayings that\n",
+        "I don’t understand.\r",
+        "Hey, will you talk with me some more?\n",
+        "We could teach each other some\f",
+        "new things to say!"
+      ]
+    }
+  ]
+}

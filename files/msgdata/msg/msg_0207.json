@@ -1,0 +1,107 @@
+{
+  "key": 50122,
+  "messages": [
+    {
+      "id": "msg_0207_00000",
+      "en_US": "{STRVAR_1 3, 0, 0}"
+    },
+    {
+      "id": "msg_0207_00001",
+      "en_US": "ID {STRVAR_1 54, 0, 0}"
+    },
+    {
+      "id": "msg_0207_00002",
+      "en_US": [
+        "When the group is ready:\n",
+        "A Button: Proceed   B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0207_00003",
+      "en_US": "Is this group OK?"
+    },
+    {
+      "id": "msg_0207_00004",
+      "en_US": "Cancel the Spin Trade?"
+    },
+    {
+      "id": "msg_0207_00005",
+      "en_US": "The Spin Trade will be canceled."
+    },
+    {
+      "id": "msg_0207_00006",
+      "en_US": "A member has dropped out."
+    },
+    {
+      "id": "msg_0207_00007",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0207_00008",
+      "en_US": [
+        "Please wait.\n",
+        "B Button: Cancel"
+      ]
+    },
+    {
+      "id": "msg_0207_00009",
+      "en_US": [
+        "A member dropped out.\n",
+        "The Spin Trade will be canceled."
+      ]
+    },
+    {
+      "id": "msg_0207_00010",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0207_00011",
+      "en_US": "The Spin Trade will be canceled."
+    },
+    {
+      "id": "msg_0207_00012",
+      "en_US": [
+        "Mixing everyone’s records...\n",
+        "Don’t turn off the power!"
+      ]
+    },
+    {
+      "id": "msg_0207_00013",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0207_00014",
+      "en_US": [
+        "If the leader drops out, the group will\n",
+        "be disbanded. Is that OK?"
+      ]
+    },
+    {
+      "id": "msg_0207_00015",
+      "en_US": "{STRVAR_1 3, 0, 0} has left."
+    },
+    {
+      "id": "msg_0207_00016",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, the leader, has left.\n",
+        "The group will be disbanded."
+      ]
+    },
+    {
+      "id": "msg_0207_00017",
+      "en_US": "Seeking a Spin Trade!"
+    },
+    {
+      "id": "msg_0207_00018",
+      "garbage": 12
+    },
+    {
+      "id": "msg_0207_00019",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0207_00020",
+      "en_US": "NO"
+    }
+  ]
+}

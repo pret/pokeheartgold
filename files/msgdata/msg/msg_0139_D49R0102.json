@@ -1,0 +1,518 @@
+{
+  "key": 9359,
+  "messages": [
+    {
+      "id": "msg_0139_D49R0102_00000",
+      "en_US": [
+        "Young Pokéathlete!\n",
+        "Hello!\r",
+        "...\r",
+        "Running out of energy?\n",
+        "Hello, again!\r",
+        "Good!\n",
+        "My name is Maximo!\r",
+        "I am the Pokéathlon MC!\n",
+        "Nice to meet you!\r",
+        "I’ll be there for you when you\n",
+        "need to know anything about\f",
+        "the Pokéathlon.\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00001",
+      "en_US": [
+        "Maximo: Hello!\r",
+        "I’ll be there for you when you\n",
+        "need to know anything about\f",
+        "the Pokéathlon.\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00002",
+      "en_US": "Do you have any questions? {YESNO 0}"
+    },
+    {
+      "id": "msg_0139_D49R0102_00003",
+      "en_US": [
+        "Which course do you want to\n",
+        "know about? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00004",
+      "en_US": [
+        "Which event do you want to\n",
+        "know about? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00005",
+      "en_US": [
+        "Let me explain the Pokéathlon!\r",
+        "It’s the connection between Pokémon\n",
+        "and Pokéathletes.\r",
+        "It is friendship itself!\n",
+        "...What?\r",
+        "You don’t get it?\n",
+        "OK. I won’t be as brief this time.\r",
+        "You are to form a team of three\n",
+        "Pokémon to compete in ten\f",
+        "different events!\r",
+        "The friendship between Pokémon and\n",
+        "Pokéathletes is tested!\r",
+        "That is what we call friendship!\n",
+        "Do you understand what I mean?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00006",
+      "en_US": [
+        "I’ll explain “Hurdle Dash” for you.\n",
+        "It is an event to test your speed.\r",
+        "Your Pokémon needs to jump\n",
+        "when the Hurdle comes near.\r",
+        "If it jumps at the right time,\n",
+        "it will go over the Hurdle!\r",
+        "The total time of the three Pokémon\n",
+        "gives you the event score.\r",
+        "This is an event for speedy Pokémon\n",
+        "that move quickly like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00007",
+      "en_US": [
+        "I’ll explain “Pennant Capture”\n",
+        "for you.\r",
+        "Your Pokémon grab Pennants on\n",
+        "the beach.\r",
+        "Grabbing Pennants doesn’t add to\n",
+        "your score.\r",
+        "You have to come back with\n",
+        "the Pennants.\r",
+        "This is an event for speedy and skillful\n",
+        "Pokémon that move like I do!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00008",
+      "en_US": [
+        "I’ll explain “Circle Push” for you.\n",
+        "Your Pokémon push others to try\f",
+        "and stay in a Circle.\r",
+        "You will get points as long as your\n",
+        "Pokémon stay in a Circle.\r",
+        "The total time of the three Pokémon\n",
+        "gives your score.\r",
+        "This is an event for powerful Pokémon\n",
+        "with stamina that are strong like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00009",
+      "en_US": [
+        "I’ll explain “Block Smash” for you.\n",
+        "You smash Blocks as the name suggests.\r",
+        "The number of Blocks you smash\n",
+        "will be the score you’ll get.\r",
+        "It’s so simple, isn’t it?\r",
+        "This is an event for powerful Pokémon\n",
+        "that are strong like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00010",
+      "en_US": [
+        "I’ll explain “Disc Catch” for you.\n",
+        "Your Pokémon jump and catch\f",
+        "Discs that come flying toward them.\r",
+        "The longer you wait before they catch\n",
+        "the Discs, the more points you get.\f",
+        "The total points will decide the score.\r",
+        "This is an event for powerful and jumpy\n",
+        "Pokémon that move like me!\r",
+        "Do you understand what I mean?\n",
+        "OK, do you have any other questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00011",
+      "en_US": [
+        "I’ll explain “Lamp Jump” for you.\n",
+        "Your Pokémon bounce to jump high\f",
+        "and touch as many Lamps as they can.\r",
+        "The more Lamps they touch, the more\n",
+        "points you get.\r",
+        "The total points will decide the score.\r",
+        "This is an event for jumpy Pokémon\n",
+        "that are jumpy like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00012",
+      "en_US": [
+        "I’ll explain “Relay Run” for you.\n",
+        "Your Pokémon run in turns as far as\f",
+        "they can in 90 seconds.\r",
+        "The distance of the Relay will decide\n",
+        "the score.\r",
+        "This is an event for speedy Pokémon\n",
+        "with stamina... Ones just like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00013",
+      "en_US": [
+        "I’ll explain “Ring Drop” for you.\n",
+        "Your Pokémon try to knock other\f",
+        "Pokémon out of the Ring.\r",
+        "A tackle gives you one point.\n",
+        "A stomp on another Pokémon\f",
+        "gives you two points.\r",
+        "If your Pokémon knock another Pokémon\n",
+        "off the Ring, making them drop, you get\f",
+        "ten points.\r",
+        "This is an event for Pokémon with\n",
+        "stamina just like I have!\r",
+        "Do you understand what I mean?\n",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00014",
+      "en_US": [
+        "I’ll explain “Snow Throw” for you.\n",
+        "Snow Throw may not ring a bell but...\f",
+        "how about a Snowball fight?\r",
+        "The more your Pokémon hit other\n",
+        "Pokémon with Snow, the higher the\f",
+        "score will be.\r",
+        "This is an event for powerful and\n",
+        "skillful Pokémon... Ones just like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00015",
+      "en_US": [
+        "I’ll explain “Goal Roll” for you.\n",
+        "Your Pokémon try to roll the ball into\f",
+        "the Goals of the other Pokémon teams.\r",
+        "Most balls will give you one point.\r",
+        "Gold-colored balls will give you\n",
+        "two points.\r",
+        "The number of points will decide\n",
+        "your rank, and that decides the score.\r",
+        "This is an event for powerful and\n",
+        "skillful Pokémon... Ones just like me!\r",
+        "Do you understand what I mean?\r",
+        "OK, do you have any more questions?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00016",
+      "en_US": [
+        "Young Pokéathlete!\r",
+        "Don’t forget to do your Pokéathlon\n",
+        "stretches before exercise!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00017",
+      "en_US": [
+        "Me? Are you interested in me?\n",
+        "Hahaha!\f",
+        "Oh, don’t be shy.\r",
+        "Some people call me the “big brother”!\r",
+        "But really, the big brother is...\n",
+        "...\f",
+        "...\f",
+        "my twin brother!\r",
+        "The “big brother,” as they say, is\n",
+        "really the younger brother.\r",
+        "So this “big brother” has a\n",
+        "bigger brother...\r",
+        "Do you get what I mean?\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00018",
+      "en_US": "RATTATA: Ratta."
+    },
+    {
+      "id": "msg_0139_D49R0102_00019",
+      "en_US": "RATTATA: Grrrr."
+    },
+    {
+      "id": "msg_0139_D49R0102_00020",
+      "en_US": "MACHOP: Awwwrr..."
+    },
+    {
+      "id": "msg_0139_D49R0102_00021",
+      "en_US": "MACHOP: Yahhh!"
+    },
+    {
+      "id": "msg_0139_D49R0102_00022",
+      "en_US": "BUTTERFREE: Fluttah fluttah..."
+    },
+    {
+      "id": "msg_0139_D49R0102_00023",
+      "en_US": "BUTTERFREE: Bing bing!"
+    },
+    {
+      "id": "msg_0139_D49R0102_00024",
+      "en_US": [
+        "The Pokéathlon is all about scores.\r",
+        "No one knows who’s going to win\n",
+        "until the last moment!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00025",
+      "en_US": [
+        "Pokéathlete {STRVAR_1 3, 0, 0} is\n",
+        "always splendid!\r",
+        "I can’t take my eyes off\n",
+        "that Pokéathlete!\r",
+        "...\n",
+        "Wait... Wow! Is that really you?"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00026",
+      "en_US": [
+        "Aprijuice for victory!\r",
+        "Your Pokémon can show their\n",
+        "true Performance potential!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00027",
+      "en_US": [
+        "Aprijuice for victory!\r",
+        "What drink do you use,\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0}?\r",
+        "I’ll buy what you buy!\f",
+        "I’m a big fan!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00028",
+      "en_US": [
+        "Er... I...I will try to win at every\n",
+        "course with MAGIKARP!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00029",
+      "en_US": [
+        "Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "Er... How...how can I win at every\n",
+        "course with MAGIKARP?"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00030",
+      "en_US": [
+        "I will break my personal record\n",
+        "at Hurdle Dash!\r",
+        "OK, which Pokémon should\n",
+        "I choose...?"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00031",
+      "en_US": [
+        "Y-y-you’re Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "I have no clue how I could possibly\n",
+        "reach where you are!\f",
+        "You are the Pokéathlon itself!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00032",
+      "en_US": [
+        "Wow!\n",
+        "That guy over there is Magnus,\f",
+        "the Pokéathlon owner!\r",
+        "I heard he once beat a MACHAMP at\n",
+        "arm wrestling. Could it be true?"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00033",
+      "en_US": [
+        "Yikes!\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "I am a huge fan of yours!\n",
+        "Oh my...what should I do?\f",
+        "Can you give me an autograph?"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00034",
+      "en_US": "Arrgh!"
+    },
+    {
+      "id": "msg_0139_D49R0102_00035",
+      "en_US": [
+        "Arrgh!\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "You make me feel young again!\f",
+        "I’ll root for you!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00036",
+      "en_US": "Yeek!!"
+    },
+    {
+      "id": "msg_0139_D49R0102_00037",
+      "en_US": [
+        "Oh my!\n",
+        "It’s Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "You look just like my son.\f",
+        "I’m rooting for you."
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00038",
+      "en_US": [
+        "Oh my!\n",
+        "It’s Pokéathlete {STRVAR_1 3, 0, 0}!\r",
+        "You look just like my daughter.\f",
+        "I’m rooting for you."
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00039",
+      "en_US": [
+        "My boyfriend’s a Pokéathlete.\r",
+        "But he’s so shy about it that I root\n",
+        "for him behind a column so he won’t\f",
+        "spot me!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00040",
+      "en_US": [
+        "Don’t you think he’s so cool dripping\n",
+        "sweat just like his Pokémon?\r",
+        "Not that he even compares to the great\n",
+        "Pokéathlete {STRVAR_1 3, 0, 0}, though."
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00041",
+      "en_US": [
+        "Participate in the Pokéathlon to\n",
+        "reduce stress.\f",
+        "That’s the way to go!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00042",
+      "en_US": [
+        "Don’t you dare underestimate your mom.\n",
+        "The look on her face when she was\f",
+        "selling things at a bargain...\r",
+        "It still gives me shivers!\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00043",
+      "en_US": [
+        "Every father longs to be a hero to\n",
+        "their son.\r",
+        "The Pokéathlon...\n",
+        "Do I want to take it up?\r",
+        "Just you wait and see, Son!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00044",
+      "en_US": [
+        "Ahh... My son!\n",
+        "I’m so sad to hear that.\r",
+        "Let me hear you say you want to be\n",
+        "like your dad...\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00045",
+      "en_US": [
+        "My mom will finally participate.\r",
+        "I was starting to worry because she\n",
+        "never exercises.\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00046",
+      "en_US": [
+        "I’ll grow up to be a great\n",
+        "Pokéathlete like you, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00047",
+      "en_US": "I’m cheering for you!"
+    },
+    {
+      "id": "msg_0139_D49R0102_00048",
+      "en_US": [
+        "Are you Pokéathlete {STRVAR_1 3, 0, 0}?\r",
+        "For real?\n",
+        "I can’t believe it!\n"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00049",
+      "en_US": "I’m watching intently!"
+    },
+    {
+      "id": "msg_0139_D49R0102_00050",
+      "en_US": [
+        "Are you Pokéathlete {STRVAR_1 3, 0, 0}?\r",
+        "Tap... Tap... Tap...\r",
+        "I can’t believe it! I touched my hero!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00051",
+      "en_US": [
+        "I didn’t expect so many rather old\n",
+        "ladies like me participating.\f",
+        "Maybe I can join them.\r",
+        "It may be a chance to get close to\n",
+        "my hero--Pokéathlete Jet!\f",
+        "Hahaha!"
+      ]
+    },
+    {
+      "id": "msg_0139_D49R0102_00052",
+      "en_US": [
+        "Yeek!!\r",
+        "Pokéathlete {STRVAR_1 3, 0, 0}!\n",
+        "Every time you are in the game,\f",
+        "my daughters’ eyes stay wide open!\r",
+        "Could I ask for an autograph?\f",
+        "...No no!\r",
+        "Not for me. It’s for my daughters.\n",
+        "Ha ha!"
+      ]
+    }
+  ]
+}

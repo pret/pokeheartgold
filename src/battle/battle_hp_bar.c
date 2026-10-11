@@ -3,7 +3,7 @@
 #include "global.h"
 
 #include "battle/battle_system.h"
-#include "msgdata/msg/msg_0197.h"
+#include "files/msgdata/msg/msg_0197.h"
 
 #include "math_util.h"
 #include "unk_0208805C.h"

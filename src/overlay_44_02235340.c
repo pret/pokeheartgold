@@ -466,7 +466,7 @@ void FreeWindowList(UnkStruct_ov44_02232F64 *arg0, enum HeapID heapID) {
 
 void InitStringAndMsgData(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     arg0->msgFmt = MessageFormat_New(heapID);
-    arg0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0778_bin, heapID);
+    arg0->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0778, heapID);
     arg0->string1 = String_New(256, heapID);
     arg0->string2 = String_New(256, heapID);
     arg0->printerId = 255;
@@ -1469,14 +1469,14 @@ s32 Wifi_PromptMemberDropped(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args 
     ov44_02233FE8(arg0);
     ov44_02233EB4(arg0, arg1);
     if ((u32)(sub_020390C4() - 4) <= 1U) {
-        ov00_021EDB1C();
+        DWC_ProcessFriendsMatch();
     }
     return 0;
 }
 
 s32 ov44_02234B18(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     if ((u32)(sub_020390C4() - 4) <= 1) {
-        ov00_021EDB1C();
+        DWC_ProcessFriendsMatch();
     }
     if (ov44_02233914(&arg0->unk30) == 0) {
         return 0;

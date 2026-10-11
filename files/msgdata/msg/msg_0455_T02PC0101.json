@@ -1,0 +1,39 @@
+{
+  "key": 11795,
+  "messages": [
+    {
+      "id": "msg_0455_T02PC0101_00000",
+      "en_US": [
+        "Where in the world is Viridian’s\n",
+        "Gym Leader?\f",
+        "I wanted to challenge him..."
+      ]
+    },
+    {
+      "id": "msg_0455_T02PC0101_00001",
+      "en_US": [
+        "Viridian’s Gym Leader does not\n",
+        "rely on others!\r",
+        "The Gym Leader claims that his policy\n",
+        "is to lose to no one without having\f",
+        "any underlings.\r",
+        "That makes him even more popular,\n",
+        "and many Trainers have come to work\f",
+        "for him."
+      ]
+    },
+    {
+      "id": "msg_0455_T02PC0101_00002",
+      "en_US": [
+        "I heard that the Gym in Cinnabar\n",
+        "is gone.\r",
+        "I wonder what became of Blaine,\n",
+        "the Gym Leader."
+      ]
+    },
+    {
+      "id": "msg_0455_T02PC0101_00003",
+      "en_US": "My dream is to become a Gym Leader."
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "key": 62072,
+  "messages": [
+    {
+      "id": "msg_0670_00000",
+      "en_US": "Alfred"
+    },
+    {
+      "id": "msg_0670_00001",
+      "en_US": [
+        "Well, now that we’ve made each other’s\n",
+        "acquaintance, shall we trade phone\f",
+        "numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0670_00002",
+      "en_US": [
+        "Lovely!\n",
+        "Now I shall be able to call you anytime."
+      ]
+    },
+    {
+      "id": "msg_0670_00003",
+      "en_US": [
+        "I see...\r",
+        "As to be expected, children prefer to\n",
+        "spend time with others their own age..."
+      ]
+    },
+    {
+      "id": "msg_0670_00004",
+      "en_US": [
+        "You don’t really want to trade\n",
+        "phone numbers with me, do you? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0670_00005",
+      "en_US": [
+        "What’s wrong? Aren’t we on the same\n",
+        "floor right now?\r",
+        "Why not talk in person?"
+      ]
+    },
+    {
+      "id": "msg_0670_00006",
+      "en_US": [
+        "I was so surprised!\n",
+        "A few days ago, I received a NOCTOWL\f",
+        "when I traded with someone.\r",
+        "It turns out that NOCTOWL was the same\n",
+        "one I gave away in a trade with another\f",
+        "Trainer years ago!\r",
+        "I guess that’s a case of “What goes\n",
+        "around, comes around,” in that it came\f",
+        "back to me.\r",
+        "The world is small after all!"
+      ]
+    },
+    {
+      "id": "msg_0670_00007",
+      "en_US": [
+        "It’s kind of disappointing.\n",
+        "A few days ago, I received a NOCTOWL\f",
+        "when I traded with someone.\r",
+        "It was such a familiar NOCTOWL...\r",
+        "I thought it was the NOCTOWL that I had\n",
+        "originally trained!\r",
+        "It’d somehow found its way back...\n",
+        "I was so moved...\f",
+        "But when I looked closer, I saw that\f",
+        "it wasn’t the NOCTOWL I thought it was.\r",
+        "That kind of thing can’t really happen\n",
+        "in this world, right?"
+      ]
+    },
+    {
+      "id": "msg_0670_00008",
+      "en_US": [
+        "You know, whenever I try to catch a\n",
+        "wild Pokémon, they seem to always run\f",
+        "away. It’s happened so many times.\r",
+        "A couple days ago a RATTATA got away\n",
+        "from me...\r",
+        "You know, whenever I meet a person or\n",
+        "Pokémon, I always make sure to take off\f",
+        "my hat and introduce myself properly,\f",
+        "and that’s when they run away.\r",
+        "RATTATA are such impolite creatures..."
+      ]
+    },
+    {
+      "id": "msg_0670_00009",
+      "en_US": [
+        "Ha ha, would you like to battle again?\n",
+        "I think that’s a fine idea!\r",
+        "I’ll meet you at {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0670_00010",
+      "en_US": [
+        "Is everything all right?\n",
+        "Did you forget about our appointment?\r",
+        "I’m waiting at {STRVAR_1 4, 3, 0}.\n",
+        "I will see you there!"
+      ]
+    },
+    {
+      "id": "msg_0670_00011",
+      "en_US": [
+        "Just like this, when calling a young\n",
+        "person such as yourself, you can trade\f",
+        "information.\r",
+        "Just like this, Pokémon bring people\n",
+        "together, don’t they?\r",
+        "Truly, Pokémon are such\n",
+        "extraordinary creatures."
+      ]
+    }
+  ]
+}

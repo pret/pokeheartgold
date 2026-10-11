@@ -3,9 +3,8 @@
 #include "msgdata/msg/msg_0559_T22PC0101.h"
 #include "msgdata/msg/msg_0191.h"
 #include "constants/map_sections.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_T22PC0101_000
 	ScrDef scr_seq_T22PC0101_001

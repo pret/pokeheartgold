@@ -1,0 +1,73 @@
+{
+  "key": 62768,
+  "messages": [
+    {
+      "id": "msg_0794_00000",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0794_00001",
+      "en_US": "Dolnoslaskie"
+    },
+    {
+      "id": "msg_0794_00002",
+      "en_US": "Kujawsko-Pomorskie"
+    },
+    {
+      "id": "msg_0794_00003",
+      "en_US": "Lubelskie"
+    },
+    {
+      "id": "msg_0794_00004",
+      "en_US": "Lubuskie"
+    },
+    {
+      "id": "msg_0794_00005",
+      "en_US": "Lodzkie"
+    },
+    {
+      "id": "msg_0794_00006",
+      "en_US": "Malopolskie"
+    },
+    {
+      "id": "msg_0794_00007",
+      "en_US": "Mazowieckie"
+    },
+    {
+      "id": "msg_0794_00008",
+      "en_US": "Opolskie"
+    },
+    {
+      "id": "msg_0794_00009",
+      "en_US": "Podkarpackie"
+    },
+    {
+      "id": "msg_0794_00010",
+      "en_US": "Podlaskie"
+    },
+    {
+      "id": "msg_0794_00011",
+      "en_US": "Pomorskie"
+    },
+    {
+      "id": "msg_0794_00012",
+      "en_US": "Slaskie"
+    },
+    {
+      "id": "msg_0794_00013",
+      "en_US": "Swietokrzyskie"
+    },
+    {
+      "id": "msg_0794_00014",
+      "en_US": "Warminsko-Mazurskie"
+    },
+    {
+      "id": "msg_0794_00015",
+      "en_US": "Wielkopolskie"
+    },
+    {
+      "id": "msg_0794_00016",
+      "en_US": "Zachodniopomorskie"
+    }
+  ]
+}

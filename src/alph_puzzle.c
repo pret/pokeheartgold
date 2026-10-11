@@ -4,10 +4,10 @@
 
 #include "constants/sndseq.h"
 
-#include "application/annon/puzzle_gra.naix"
-#include "data/resdat.naix"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0002.h"
+#include "files/application/annon/puzzle_gra.naix"
+#include "files/data/resdat.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0002.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -554,13 +554,13 @@ static const OamManagerParam ov110_021E6EA4 = { 0, 128, 0, 32, 0, 128, 0, 32 };
 static const OamCharTransferParam ov110_021E6DD0 = { 5, 0, 0, GX_OBJVRAMMODE_CHAR_1D_32K, GX_OBJVRAMMODE_CHAR_1D_32K };
 
 static const ResdatIdList sResdatInfo = {
-    .charRes = NARC_resdat_resdat_00000010_bin,
-    .plttRes = NARC_resdat_resdat_00000011_bin,
-    .cellRes = NARC_resdat_resdat_00000009_bin,
-    .animRes = NARC_resdat_resdat_00000008_bin,
+    .charRes = resdat_00000010_bin,
+    .plttRes = resdat_00000011_bin,
+    .cellRes = resdat_00000009_bin,
+    .animRes = resdat_00000008_bin,
     .mcelRes = 0xFFFF,
     .manmRes = 0xFFFF,
-    .headerId = NARC_resdat_resdat_00000074_bin,
+    .headerId = resdat_00000074_bin,
 };
 
 static const UnmanagedSpriteTemplate sSpriteTemplates[3] = {
@@ -1036,7 +1036,7 @@ static void AlphPuzzle_VBlankCB(void *dat) {
     NNS_GfdDoVramTransfer();
     DoScheduledBgGpuUpdates(data->bgConfig);
 
-    OS_SetIrqCheckFlag(OS_IE_VBLANK);
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 static void AlphPuzzle_InitTileData(AlphPuzzleData *data) {
@@ -1159,7 +1159,7 @@ static void AlphPuzzle_FreeBackgroundGraphics(AlphPuzzleData *data) {
 static void AlphPuzzle_InitText(AlphPuzzleData *data) {
     FontID_Alloc(4, data->heapID);
 
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0002_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0002, data->heapID);
     data->messageFormat = MessageFormat_New_Custom(6, 16, data->heapID);
     data->unk30 = String_New(0x80, data->heapID);
 

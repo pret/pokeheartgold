@@ -4,7 +4,7 @@
 #include "constants/items.h"
 #include "constants/pokemon.h"
 #include "constants/std_script.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_02.inc"
 	.include "global.inc"
 

@@ -1,0 +1,118 @@
+{
+  "key": 30811,
+  "messages": [
+    {
+      "id": "msg_0687_00000",
+      "en_US": "Kyler"
+    },
+    {
+      "id": "msg_0687_00001",
+      "en_US": [
+        "I’d like to have another Pokémon battle\n",
+        "with you sometime. Can we trade\f",
+        "phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0687_00002",
+      "en_US": "Hey! Thanks!"
+    },
+    {
+      "id": "msg_0687_00003",
+      "en_US": "Hey! Oh well!"
+    },
+    {
+      "id": "msg_0687_00004",
+      "en_US": [
+        "I’d like to have another Pokémon battle\n",
+        "with you sometime. Can we trade\f",
+        "phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0687_00005",
+      "en_US": [
+        "Even though you’re nearby, talking on\n",
+        "the phone makes you seem far away.\r",
+        "Don’t be shy. Why not come talk\n",
+        "to me in person?"
+      ]
+    },
+    {
+      "id": "msg_0687_00006",
+      "en_US": [
+        "There are some people out there who\n",
+        "say, “You don’t need to give Bait to\f",
+        "your caught Pokémon,” but\f",
+        "I’m different.\r",
+        "My {STRVAR_1 0, 10, 0} does a great job.\r",
+        "So I feed it delicious things, brush it,\n",
+        "pet it, show it affection, and just\f",
+        "cherish it!"
+      ]
+    },
+    {
+      "id": "msg_0687_00007",
+      "en_US": [
+        "Yesterday I went fishing and knocked\n",
+        "out a {STRVAR_1 0, 11, 0}!\r",
+        "I know that if I go to the mountains, or\n",
+        "the forest, or the grassland, or the\f",
+        "caves, or any place like that,\f",
+        "I could find all kinds of Pokémon.\r",
+        "But I just really like Pokémon like\n",
+        "{STRVAR_1 0, 11, 0}, you know..."
+      ]
+    },
+    {
+      "id": "msg_0687_00008",
+      "en_US": [
+        "The biggest Pokémon is always the one\n",
+        "you almost caught, you know?\r",
+        "Just the other day, I had almost\n",
+        "caught a {STRVAR_1 0, 11, 0} when it\f",
+        "ran away! I was so disappointed!\r",
+        "When you’re fishing, don’t have any\n",
+        "regrets! Fish with all your might!\f",
+        "Hey! Fight!"
+      ]
+    },
+    {
+      "id": "msg_0687_00009",
+      "en_US": [
+        "I’m getting sick of fishing. I’d rather\n",
+        "have a Pokémon battle with you!\r",
+        "Hey! I’m waiting on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0687_00010",
+      "en_US": [
+        "Hello? We made plans to meet on\n",
+        "{STRVAR_1 4, 3, 0} for a battle, right?\f",
+        "Hey! Hurry up and get here."
+      ]
+    },
+    {
+      "id": "msg_0687_00011",
+      "en_US": [
+        "The real draw of fishing is that you\n",
+        "never know what you’ll catch until you\f",
+        "actually pull it up out of the water.\r",
+        "Someday maybe I’ll pull up on the\n",
+        "fishing Rod and there will be a\f",
+        "legendary Pokémon on the other end of\f",
+        "my line...\r",
+        "Yeah, right. The chances of that\n",
+        "happening are basically zero.\r",
+        "For example, RAIKOU and the others, as\n",
+        "they’re skipping around all over the\f",
+        "place, maybe their feet would slip and\f",
+        "they’d land in the sea...\r",
+        "What do you think, could I accidentally\n",
+        "catch RAIKOU while fishing?\r",
+        "...How silly, right?"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 #include "constants/items.h"
 #include "constants/moves.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020773AC.inc"
 	.include "global.inc"
 

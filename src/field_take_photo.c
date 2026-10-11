@@ -5,7 +5,7 @@
 #include "constants/scrcmd.h"
 
 #include "field/hblank_system.h"
-#include "graphic/camera_viewfinder.naix"
+#include "files/graphic/camera_viewfinder.naix"
 
 #include "field_warp_tasks.h"
 #include "follow_mon.h"
@@ -844,9 +844,9 @@ static void sub_0206B880(FieldSystem *fieldSystem, Photo *photo) {
 }
 
 static void drawCameraGfx(BgConfig *bgConfig, enum HeapID heapID) {
-    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapID);
-    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapID);
-    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, NARC_camera_viewfinder_camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapID);
+    GfGfxLoader_GXLoadPal(NARC_graphic_camera_viewfinder, camera_viewfinder_NCLR, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0, 0, heapID);
+    GfGfxLoader_LoadCharData(NARC_graphic_camera_viewfinder, camera_viewfinder_NCGR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0, TRUE, heapID);
+    GfGfxLoader_LoadScrnData(NARC_graphic_camera_viewfinder, camera_viewfinder_NSCR_lz, bgConfig, GF_BG_LYR_MAIN_2, 0, 0x600, TRUE, heapID);
     BgCommitTilemapBufferToVram(bgConfig, GF_BG_LYR_MAIN_2);
     SetBgPriority(GF_BG_LYR_MAIN_2, 0);
 }

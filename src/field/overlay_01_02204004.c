@@ -1,5 +1,7 @@
 #include "field/overlay_01_02204004.h"
 
+#include <nnsys/g3d/anm.h>
+
 #include "global.h"
 
 #include "filesystem.h"
@@ -416,7 +418,7 @@ static void *ov01_022046D4(NNSFndAllocator *pAllocator, ResAnim_4004 *anim) {
 }
 
 static void ov01_022046E8(NNSG3dAnmObj *alloc, ResAnim_4004 *anim) {
-    alloc->funcAnm = _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault
+    alloc->funcAnm = NNS_G3dFuncAnmMatNsBtaDefault;
     u8 numMapData = anim->numMapData;
     alloc->numMapData = numMapData;
     MI_CpuClear16(alloc->mapData, numMapData * 2);

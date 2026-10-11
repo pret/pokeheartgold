@@ -1,0 +1,463 @@
+{
+  "key": 57386,
+  "messages": [
+    {
+      "id": "msg_0752_00000",
+      "en_US": [
+        "Monica: Glad to meet you. I’m Monica\n",
+        "of Monday.\r",
+        "As a token of our friendship, I have a\n",
+        "gift for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00001",
+      "en_US": [
+        "Monica: It’s an item that raises the\n",
+        "power of Flying-type moves.\r",
+        "You should equip a bird Pokémon with\n",
+        "that item."
+      ]
+    },
+    {
+      "id": "msg_0752_00002",
+      "en_US": [
+        "Monica: My brothers and sisters are all\n",
+        "over the place.\r",
+        "See if you could find them all!"
+      ]
+    },
+    {
+      "id": "msg_0752_00003",
+      "en_US": [
+        "Monica: Oh no! Today isn’t Monday.\n",
+        "See you another time!"
+      ]
+    },
+    {
+      "id": "msg_0752_00004",
+      "en_US": [
+        "Tuscany: Please allow me to introduce\n",
+        "myself. I am Tuscany of Tuesday.\r",
+        "By way of introduction, please accept\n",
+        "this gift, a TwistedSpoon.\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00005",
+      "en_US": [
+        "Tuscany: Wouldn’t you agree that it is\n",
+        "most adorable?\r",
+        "It strengthens Psychic-type moves.\r",
+        "I am certain it will be of use."
+      ]
+    },
+    {
+      "id": "msg_0752_00006",
+      "en_US": [
+        "Tuscany: Have you met Monica, my older\n",
+        "sister?\r",
+        "Or my younger brother, Wesley?\r",
+        "I am the second of seven children."
+      ]
+    },
+    {
+      "id": "msg_0752_00007",
+      "en_US": [
+        "Tuscany: Tuesday was over before I\n",
+        "even noticed...\r",
+        "I’ll see you again next Tuesday..."
+      ]
+    },
+    {
+      "id": "msg_0752_00008",
+      "en_US": [
+        "Wesley: I’m Wesley of Wednesday.\r",
+        "Pleased to meet you. Please take a\n",
+        "souvenir.\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00009",
+      "en_US": [
+        "Wesley: Black Belt beefs up the power\n",
+        "of Fighting-type moves."
+      ]
+    },
+    {
+      "id": "msg_0752_00010",
+      "en_US": [
+        "Wesley: Since you found me, you must\n",
+        "have met my brothers and sisters.\r",
+        "Or did you just get lucky?"
+      ]
+    },
+    {
+      "id": "msg_0752_00011",
+      "en_US": [
+        "Wesley: No way!\n",
+        "Wednesday’s already over!\f",
+        "See you next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00012",
+      "en_US": [
+        "Arthur: Who are you?\r",
+        "I’m Arthur of Thursday.\r",
+        "Here, take this!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00013",
+      "en_US": [
+        "Arthur: If you use Rock-type moves,\n",
+        "you should give that to your Pokémon.\r",
+        "It raises the strength of\n",
+        "Rock-type moves."
+      ]
+    },
+    {
+      "id": "msg_0752_00014",
+      "en_US": [
+        "Arthur: I’m Arthur of Thursday!\n",
+        "I’m the second son in a line of seven\f",
+        "siblings!"
+      ]
+    },
+    {
+      "id": "msg_0752_00015",
+      "en_US": [
+        "Arthur: Do you think that the middle of\n",
+        "the week is Wednesday?\f",
+        "Or do you think it’s Thursday?\r",
+        "Go decide, and I’ll see you\n",
+        "next Thursday!"
+      ]
+    },
+    {
+      "id": "msg_0752_00016",
+      "en_US": [
+        "Frieda: Yahoo! It’s Friday!\r",
+        "I’m Frieda of Friday!\n",
+        "Nice to meet you!\r",
+        "Here’s a Poison Barb for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00017",
+      "en_US": [
+        "Frieda: Give it to a Pokémon that has\n",
+        "Poison-type moves.\r",
+        "Oh! It’s wicked!\r",
+        "You’ll be shocked how good it makes\n",
+        "Poison-type moves!"
+      ]
+    },
+    {
+      "id": "msg_0752_00018",
+      "en_US": [
+        "Frieda: Hiya! What day do you like?\r",
+        "I love Friday. No doubt about it!\r",
+        "Don’t you think it’s great too?"
+      ]
+    },
+    {
+      "id": "msg_0752_00019",
+      "en_US": [
+        "Frieda: Oh, today’s not Friday?\r",
+        "Man... I wish every day were Friday,\n",
+        "that’d be so much fun!"
+      ]
+    },
+    {
+      "id": "msg_0752_00020",
+      "en_US": [
+        "Santos: ...It’s Saturday...\r",
+        "I’m Santos of Saturday...\r",
+        "Take this...\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00021",
+      "en_US": [
+        "Santos: ...\r",
+        "Soft Sand...\r",
+        "Ground-type moves get stronger...\n",
+        "It will startle you..."
+      ]
+    },
+    {
+      "id": "msg_0752_00022",
+      "en_US": [
+        "Santos: ...\r",
+        "See you again on another Saturday..."
+      ]
+    },
+    {
+      "id": "msg_0752_00023",
+      "en_US": [
+        "Santos: Today’s Saturday...\n",
+        "No... Wait... Huh?\r",
+        "I’ll see you next Saturday then..."
+      ]
+    },
+    {
+      "id": "msg_0752_00024",
+      "en_US": [
+        "Sunny: Hi! I’m Sunny of Sunday, meaning\n",
+        "it’s Sunday today!\r",
+        "I was told to give you this if I saw you!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00025",
+      "en_US": [
+        "Sunny: That thing...\r",
+        "Um...\r",
+        "...What was it now...\r",
+        "...\r",
+        "Oh! I remember now!\r",
+        "A Pokémon that knows Electric-type\n",
+        "moves should hold it.\r",
+        "My sis Monica said it powers up\n",
+        "Electric-type moves!"
+      ]
+    },
+    {
+      "id": "msg_0752_00026",
+      "en_US": [
+        "Sunny: My sister Monica...\n",
+        "My sister Tuscany...\f",
+        "My brother Wesley...\f",
+        "My brother Arthur...\f",
+        "My sister Frieda...\f",
+        "And my brother Santos.\r",
+        "They’re all older than me!"
+      ]
+    },
+    {
+      "id": "msg_0752_00027",
+      "en_US": [
+        "Sunny: Huh? Isn’t today Sunday?\n",
+        "Um... I forgot!"
+      ]
+    },
+    {
+      "id": "msg_0752_00028",
+      "en_US": [
+        "Monica: Hey, you!\n",
+        "The one who found all of my siblings!\f",
+        "Yeah, you!\r",
+        "We’re pretty good friends now, don’t\n",
+        "you agree?\r",
+        "Since we’re such good friends, I’ll give\n",
+        "you this Alert Ribbon!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00029",
+      "en_US": [
+        "Monica: That Alert Ribbon looks great\n",
+        "on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00030",
+      "en_US": "{STRVAR_1 0, 0, 0} put on the Alert Ribbon!"
+    },
+    {
+      "id": "msg_0752_00031",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00032",
+      "en_US": [
+        "Tuscany: Hey, you!\n",
+        "The one who found all of my siblings!\f",
+        "Yeah, you!\r",
+        "We’re pretty good friends now, don’t\n",
+        "you agree?\r",
+        "Since we’re such good friends, I’ll give\n",
+        "you this Shock Ribbon!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00033",
+      "en_US": [
+        "Tuscany: That Shock Ribbon looks great\n",
+        "on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00034",
+      "en_US": "{STRVAR_1 0, 0, 0} put on the Shock Ribbon!"
+    },
+    {
+      "id": "msg_0752_00035",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00036",
+      "en_US": [
+        "Wesley: Hey, you!\n",
+        "The one who found all of my siblings!\f",
+        "Yeah, you!\r",
+        "We’re pretty good friends now, don’t\n",
+        "you agree?\r",
+        "Since we’re such good friends, I’ll give\n",
+        "you this Downcast Ribbon!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00037",
+      "en_US": [
+        "Wesley: That Downcast Ribbon looks\n",
+        "great on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00038",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} put on the\n",
+        "Downcast Ribbon!"
+      ]
+    },
+    {
+      "id": "msg_0752_00039",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00040",
+      "en_US": [
+        "Arthur: Hey, you found all of my\n",
+        "siblings, didn’t you!\r",
+        "We’re pretty good friends now, don’t\n",
+        "you agree?\r",
+        "Since we’re such good friends, I’ll give\n",
+        "you this Careless Ribbon!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00041",
+      "en_US": [
+        "Arthur: That Careless Ribbon looks\n",
+        "great on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00042",
+      "en_US": [
+        "{STRVAR_1 0, 0, 0} put on the\n",
+        "Careless Ribbon!"
+      ]
+    },
+    {
+      "id": "msg_0752_00043",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00044",
+      "en_US": [
+        "Frieda: Hey, you’re the one who found\n",
+        "all of my siblings, aren’t you!\r",
+        "We’re pretty good friends now, don’t\n",
+        "you agree?\r",
+        "Since we’re such good friends, I’ll give\n",
+        "you this Relax Ribbon!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00045",
+      "en_US": [
+        "Frieda: That Relax Ribbon looks great\n",
+        "on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00046",
+      "en_US": "{STRVAR_1 0, 0, 0} put on the Relax Ribbon!"
+    },
+    {
+      "id": "msg_0752_00047",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00048",
+      "en_US": [
+        "Santos: ...\n",
+        "You found all of my siblings...\r",
+        "We’re pretty good friends...\n",
+        "...Right?\r",
+        "Here... Have this Snooze Ribbon...\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00049",
+      "en_US": [
+        "Santos: That Snooze Ribbon looks good\n",
+        "on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00050",
+      "en_US": "{STRVAR_1 0, 0, 0} put on the Snooze Ribbon!"
+    },
+    {
+      "id": "msg_0752_00051",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    },
+    {
+      "id": "msg_0752_00052",
+      "en_US": [
+        "Sunny: Hey, you found all of my siblings!\r",
+        "We’re pretty good friends now, right?\r",
+        "Since we’re such good friends, I’ll give\n",
+        "you this Smile Ribbon!\r"
+      ]
+    },
+    {
+      "id": "msg_0752_00053",
+      "en_US": [
+        "Sunny: That Smile Ribbon looks great\n",
+        "on your Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0752_00054",
+      "en_US": "{STRVAR_1 0, 0, 0} put on the Smile Ribbon!"
+    },
+    {
+      "id": "msg_0752_00055",
+      "en_US": [
+        "You can only get one ribbon per week...\r",
+        "If you want another ribbon, come find\n",
+        "me again next week!"
+      ]
+    }
+  ]
+}

@@ -11,18 +11,19 @@
 #include "Options.h"
 
 static const char* progname = "msgenc";
-static const char* version = "2021.12.21";
+static const char* version = "2025.11.24";
 
 static inline void usage() {
     cout << progname << " v" << version << endl;
-    cout << "Usage: " << progname << " [-h] [-v] -d|-e [OPTIONS] -c CHARMAP INFILE OUTFILE" << endl;
+    cout << "Usage: " << progname << " [-h] [-v] -d|-e [OPTIONS] -c CHARMAP TEXTFILE BINFILE" << endl;
     cout << endl;
-    cout << "INFILE        Required: Path to the input file to convert (-e: plaintext; -d: binary)." << endl;
-    cout << "OUTFILE       Required: Path to the output file (-e: binary; -d: plaintext)." << endl;
+    cout << "TEXTFILE      Required: Path to the text file (-e: input; -d: output)." << endl;
+    cout << "BINFILE       Required: Path to the binary file (ie: output; -d: input)." << endl;
     cout << "-c CHARMAP    Required: Path to a text file with a character mapping, for example pokeheartgold/charmap.txt." << endl;
     cout << "-d            Decode from binary to text, also print the key" << endl;
     cout << "-e            Encode from text to binary using the provided key" << endl;
     cout << "--gmm         Text file is GMM (Gamefreak XML format)" << endl;
+    cout << "--json        Text file is JSON" << endl;
     cout << "-H HEADER     When operating in GMM mode, specify this header file to read/write C constant values" << endl;
     cout << "-k KEY        The 16-bit encryption key for this message bank. Default: computes it from the binary file name" << endl;
     cout << "-v            Print the program version and exit." << endl;
@@ -73,8 +74,10 @@ int do_main(MessagesConverter* &converter, int argc, char ** argv) {
 }
 
 int main(int argc, char ** argv) {
-    MessagesConverter *converter;
+    MessagesConverter *converter = nullptr;
     int result = do_main(converter, argc, argv);
-    delete converter;
+
+    if (converter)
+        delete converter;
     return result;
 }

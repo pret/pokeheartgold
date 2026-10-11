@@ -1,8 +1,10 @@
 #ifndef POKEHEARTGOLD_SOUND_02004A44_H
 #define POKEHEARTGOLD_SOUND_02004A44_H
 
+#ifndef PM_ASM
 #include <nitro.h>
 #include <nnsys.h>
+#endif
 
 typedef struct UnkStruct_02004A44_0 {
     NNSSndWaveOutHandle *unk00;

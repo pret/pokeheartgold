@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "data/resdat.naix"
+#include "files/data/resdat.naix"
 
 #include "oaks_speech_internal.h"
 #include "vram_transfer_manager.h"
@@ -127,13 +127,13 @@ void OakSpeech_InitSpriteEngine(OakSpeechData *data) {
 
     {
         ResdatIdList fileIdList = {
-            .charRes = NARC_resdat_resdat_00000026_bin,
-            .plttRes = NARC_resdat_resdat_00000027_bin,
-            .cellRes = NARC_resdat_resdat_00000025_bin,
-            .animRes = NARC_resdat_resdat_00000024_bin,
+            .charRes = resdat_00000026_bin,
+            .plttRes = resdat_00000027_bin,
+            .cellRes = resdat_00000025_bin,
+            .animRes = resdat_00000024_bin,
             .mcelRes = 0xFFFF,
             .manmRes = 0xFFFF,
-            .headerId = NARC_resdat_resdat_00000078_bin,
+            .headerId = resdat_00000078_bin,
         };
         sub_0200D294(data->spriteRenderer, data->spriteGfxHandler, &fileIdList);
     }

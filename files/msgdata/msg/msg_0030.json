@@ -1,0 +1,90 @@
+{
+  "key": 7854,
+  "messages": [
+    {
+      "id": "msg_0030_00000",
+      "en_US": [
+        "Hello, just when you least expect it!\n",
+        "I am Cameron the Photographer.\r",
+        "You look so photogenic!\n",
+        "Why not have a picture taken? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0030_00001",
+      "en_US": [
+        "All right, then!\n",
+        "Get yourselves ready!\r"
+      ]
+    },
+    {
+      "id": "msg_0030_00002",
+      "en_US": [
+        "Good, good!\n",
+        "We’ve got a nice picture!\r",
+        "You can see all the pictures\n",
+        "on your PC."
+      ]
+    },
+    {
+      "id": "msg_0030_00003",
+      "en_US": [
+        "Wait a second!\r",
+        "My superhuman ability is telling me\n",
+        "that your Photo Album\f",
+        "is full!\r",
+        "Sorry to trouble you, but\n",
+        "can you delete some pictures\f",
+        "before you talk to me again?"
+      ]
+    },
+    {
+      "id": "msg_0030_00004",
+      "en_US": [
+        "Hmmm...\n",
+        "You don’t seem to have a Photo Album.\r",
+        "For you to sort pictures taken,\n",
+        "you will need one.\r",
+        "My big brother runs a memorial photo\n",
+        "studio at Goldenrod City.\f",
+        "Why don’t you go there to get one?"
+      ]
+    },
+    {
+      "id": "msg_0030_00005",
+      "en_US": "Aren’t you a shy one?"
+    },
+    {
+      "id": "msg_0030_00006",
+      "en_US": [
+        "There is an automatic camera.\r",
+        "Do you want to take a picture? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0030_00007",
+      "en_US": "It will proceed to take a picture.\r"
+    },
+    {
+      "id": "msg_0030_00008",
+      "en_US": "It has taken a picture successfully."
+    },
+    {
+      "id": "msg_0030_00009",
+      "en_US": [
+        "The Photo Album is full.\r",
+        "Please delete some pictures before you\n",
+        "come back."
+      ]
+    },
+    {
+      "id": "msg_0030_00010",
+      "en_US": [
+        "You don’t have a Photo Album.\r",
+        "Please go to Goldenrod City.\n",
+        "There is a tunnel there...\f",
+        "And come back with a Photo Album."
+      ]
+    }
+  ]
+}

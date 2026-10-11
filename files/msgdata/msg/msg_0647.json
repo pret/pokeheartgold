@@ -1,0 +1,134 @@
+{
+  "key": 45899,
+  "messages": [
+    {
+      "id": "msg_0647_00000",
+      "en_US": "Blue"
+    },
+    {
+      "id": "msg_0647_00001",
+      "en_US": [
+        "Wha... I can’t make out what you’re\n",
+        "saying! This connection is no good!\r",
+        "Call from somewhere better, OK?"
+      ]
+    },
+    {
+      "id": "msg_0647_00002",
+      "en_US": [
+        "Hello...\n",
+        "Whatever... Don’t worry about me.\f",
+        "I’m doing peachy over here!\r"
+      ]
+    },
+    {
+      "id": "msg_0647_00003",
+      "en_US": [
+        "Are there any Gym Leaders you haven’t\n",
+        "battled yet?\f",
+        "Make your move! Show some initiative!"
+      ]
+    },
+    {
+      "id": "msg_0647_00004",
+      "en_US": [
+        "If it’s not Sunday night, then I’m not\n",
+        "available. Call then or forget about it!"
+      ]
+    },
+    {
+      "id": "msg_0647_00005",
+      "en_US": [
+        "I was just looking for something\n",
+        "to do!\f",
+        "Wanna battle me again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0647_00006",
+      "en_US": [
+        "Whatever!\n",
+        "I won’t lose to you again, got that?\r",
+        "I’ll be waiting at the Fighting Dojo in\n",
+        "Saffron City."
+      ]
+    },
+    {
+      "id": "msg_0647_00007",
+      "en_US": [
+        "Whatever. Sounds like you’re pretty\n",
+        "busy yourself."
+      ]
+    },
+    {
+      "id": "msg_0647_00008",
+      "en_US": [
+        "Wha...?\n",
+        "Oh, c’mon... Haven’t you made plans\f",
+        "with enough other people?"
+      ]
+    },
+    {
+      "id": "msg_0647_00009",
+      "en_US": [
+        "I’m waiting at the Fighting Dojo in\n",
+        "Saffron City.\f",
+        "C’mon, show a little initiative here!"
+      ]
+    },
+    {
+      "id": "msg_0647_00010",
+      "en_US": "I’m Blue.\r"
+    },
+    {
+      "id": "msg_0647_00011",
+      "en_US": [
+        "Remember we made plans to battle at\n",
+        "the Fighting Dojo in Saffron City?\f",
+        "Wha...! Did you seriously forget?\f",
+        "C’mon, I don’t have all day!"
+      ]
+    },
+    {
+      "id": "msg_0647_00012",
+      "en_US": [
+        "When I look at Pokémon, I get a strange\n",
+        "feeling--you ever get that?\r",
+        "There’s round ones, square ones, flying\n",
+        "ones, swimming ones, flaming ones,\f",
+        "freezing ones, shiny ones, dark ones--\f",
+        "there are so many different types, and\f",
+        "yet, they’re all Pokémon.\r",
+        "I mean, like Pokémon, there’s not\n",
+        "just one type of person, either...\r",
+        "But it’s still kind of strange when you\n",
+        "think about it."
+      ]
+    },
+    {
+      "id": "msg_0647_00013",
+      "en_US": [
+        "Anyway, you’re really something.\r",
+        "Traveling all by yourself, visiting all\n",
+        "these different Gyms you find and\f",
+        "beating them all...\r",
+        "Well, you’re not really alone...\n",
+        "You’ve got Pokémon with you!"
+      ]
+    },
+    {
+      "id": "msg_0647_00014",
+      "en_US": [
+        "Man, this guy called Red brought\n",
+        "me down in a heartbeat.\r",
+        "I haven’t seen him in a long time...\n",
+        "I wonder where he is and what he’s\f",
+        "up to...\r",
+        "Come to think of it, you look a little bit\n",
+        "like Red. Yeah, you do.\r",
+        "Just...\n",
+        "Just a little bit. Whatever..."
+      ]
+    }
+  ]
+}

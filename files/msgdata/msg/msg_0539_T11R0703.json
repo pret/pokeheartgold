@@ -1,0 +1,21 @@
+{
+  "key": 42015,
+  "messages": [
+    {
+      "id": "msg_0539_T11R0703_00000",
+      "en_US": [
+        "ROTOM’s electricity affected the\n",
+        "elevator, and now it’s working!\r"
+      ]
+    },
+    {
+      "id": "msg_0539_T11R0703_00001",
+      "en_US": [
+        "...\n",
+        "The elevator doesn’t seem to\f",
+        "be working.\f",
+        "Better move on...\r"
+      ]
+    }
+  ]
+}

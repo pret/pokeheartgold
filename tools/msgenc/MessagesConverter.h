@@ -58,6 +58,7 @@ protected:
     string charmapfilename;
     string binfilename;
     string headerfilename;
+    TextFormat text_format = FMT_PLAIN_TEXT;
 
     MsgArcHeader header = {};
     vector<MsgAlloc> alloc_table;
@@ -73,16 +74,11 @@ protected:
     static void WriteTextFile(string& filename, string const & contents);
 
 public:
-    typedef int txtfmt;
-    static const txtfmt PlainText = 0;
-    static const txtfmt GamefreakGMM = 1;
-protected:
-    txtfmt text_format = PlainText;
-
-public:
     MessagesConverter(Options &options) :
         mode(options.mode),
+        textfilename(options.posargs[0]),
         charmapfilename(options.charmap),
+        binfilename(options.posargs[1]),
         headerfilename(options.gmm_header),
         text_format(options.textFormat)
     {

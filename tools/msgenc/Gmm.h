@@ -19,6 +19,8 @@
 #include "pugixml.hpp"
 #include "MessagesConverter.h"
 
+#define GMM_KEY_NOT_DEFINED -1
+
 class GMM {
     static const int _row_no_buf_ndigit = 5;
     char row_no_buf[_row_no_buf_ndigit + 1] = {0};
@@ -46,7 +48,7 @@ public:
     GMM(string &_filename, ios::openmode _openmode) : filename(_filename), stream(_filename, _openmode) {
         memset(row_no_buf, '0', _row_no_buf_ndigit);
     }
-    void FromFile(MessagesConverter &converter);
+    int FromFile(MessagesConverter &converter);
     void ToFile(MessagesConverter &converter);
 
 private:

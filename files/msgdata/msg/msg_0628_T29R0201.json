@@ -1,0 +1,98 @@
+{
+  "key": 9311,
+  "messages": [
+    {
+      "id": "msg_0628_T29R0201_00000",
+      "en_US": [
+        "The Lake of Rage is actually a crater\n",
+        "made by rampaging GYARADOS.\r",
+        "The crater filled up with rainwater,\n",
+        "and the lake was formed.\r",
+        "That’s the story passed on from my\n",
+        "grandpa’s great-great-grandpa.\r",
+        "It used to be that you could catch\n",
+        "lively MAGIKARP there, but...\r",
+        "I don’t understand what’s happening."
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00001",
+      "en_US": [
+        "The Lake of Rage hasn’t been normal\n",
+        "since those men wearing black arrived."
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00002",
+      "en_US": [
+        "The Lake of Rage is back to normal.\n",
+        "The MAGIKARP have returned.\r",
+        "I may yet achieve my dream of seeing\n",
+        "the world’s largest MAGIKARP.\r",
+        "Do you have a Rod?\n",
+        "Please help me if you do."
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00003",
+      "en_US": [
+        "Ah, you have a MAGIKARP!\n",
+        "Let’s see how big that baby is.\r"
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00004",
+      "en_US": [
+        "{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches!\n",
+        "A MAGIKARP of {STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches!\r",
+        "Wow! This one is outstanding!\n",
+        "I tip my hat to you!\r",
+        "Take this as a memento!\r"
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00005",
+      "en_US": [
+        "The record is the important thing.\n",
+        "Think of that as a bonus!"
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00006",
+      "en_US": [
+        "{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches!\r",
+        "That’s wonderful!\n",
+        "...Or not.\f",
+        "I’ve seen a MAGIKARP\f",
+        "of the same size before."
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00007",
+      "en_US": [
+        "This MAGIKARP is {STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} inches.\r",
+        "But I’ve already seen a MAGIKARP that\n",
+        "was {STRVAR_1 52, 2, 0}.{STRVAR_1 50, 3, 0} inches."
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00008",
+      "en_US": "What? That’s not a MAGIKARP!"
+    },
+    {
+      "id": "msg_0628_T29R0201_00009",
+      "en_US": [
+        "...Your Bag is too full!\n",
+        "Nothing will fit..."
+      ]
+    },
+    {
+      "id": "msg_0628_T29R0201_00010",
+      "en_US": [
+        "Oh... So you didn’t get one good\n",
+        "enough to show me?\f",
+        "Maybe next time."
+      ]
+    }
+  ]
+}

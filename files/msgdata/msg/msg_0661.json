@@ -1,0 +1,101 @@
+{
+  "key": 26096,
+  "messages": [
+    {
+      "id": "msg_0661_00000",
+      "en_US": "Day-C Man"
+    },
+    {
+      "id": "msg_0661_00001",
+      "en_US": [
+        "Hello?\n",
+        "Oh, hello. How are you?\r",
+        "Kids nowadays can just call even though\n",
+        "they’re nearby...\r",
+        "I’d rather talk face-to-face..."
+      ]
+    },
+    {
+      "id": "msg_0661_00002",
+      "en_US": [
+        "Hello?\n",
+        "Oh, it’s you!\r"
+      ]
+    },
+    {
+      "id": "msg_0661_00003",
+      "en_US": [
+        "One of your Pokémon we’re raising is\n",
+        "holding an Egg!\r",
+        "I bet you’d like to know what kind of\n",
+        "Egg it is, right? You should come get it!"
+      ]
+    },
+    {
+      "id": "msg_0661_00004",
+      "en_US": [
+        "We’re not raising any Pokémon for you\n",
+        "right now...\r"
+      ]
+    },
+    {
+      "id": "msg_0661_00005",
+      "en_US": "Your {STRVAR_1 0, 10, 0}’s doing just fine.\r"
+    },
+    {
+      "id": "msg_0661_00006",
+      "en_US": [
+        "Your {STRVAR_1 0, 10, 0} and {STRVAR_1 0, 11, 0}\n",
+        "are doing just fine.\r"
+      ]
+    },
+    {
+      "id": "msg_0661_00007",
+      "en_US": "The two seem to get along very well.\r"
+    },
+    {
+      "id": "msg_0661_00008",
+      "en_US": "The two seem to get along.\r"
+    },
+    {
+      "id": "msg_0661_00009",
+      "en_US": [
+        "The two don’t seem to like each\n",
+        "other much.\r"
+      ]
+    },
+    {
+      "id": "msg_0661_00010",
+      "en_US": [
+        "The two prefer to play separately more\n",
+        "than with each other...\r"
+      ]
+    },
+    {
+      "id": "msg_0661_00011",
+      "en_US": "Come stop by anytime, you hear?"
+    },
+    {
+      "id": "msg_0661_00012",
+      "en_US": [
+        "Hello? It’s me, the Day-Care Man.\r",
+        "We were raising your Pokémon,\n",
+        "and my goodness, were we surprised!\r",
+        "Your Pokémon was holding an Egg!\r",
+        "We don’t know how it got there,\n",
+        "but your Pokémon had it.\r",
+        "I bet you’d like to know what kind of\n",
+        "Egg it is, right? You should come get it!"
+      ]
+    },
+    {
+      "id": "msg_0661_00013",
+      "en_US": [
+        "Hello? It’s me, the Day-Care Man.\r",
+        "Your Pokémon is holding an Egg!\r",
+        "I bet you’d like to know what kind of\n",
+        "Egg it is, right? You should come get it!"
+      ]
+    }
+  ]
+}

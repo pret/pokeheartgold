@@ -1,0 +1,39 @@
+{
+  "key": 63983,
+  "messages": [
+    {
+      "id": "msg_0623_T28GYM0103_00000",
+      "en_US": [
+        "Pryce is a veteran who has trained\n",
+        "Pokémon for some 50 years.\r",
+        "As you’ll find, his attacks will make\n",
+        "you shiver in this freezing Gym.\r",
+        "Are you ready to be frozen solid?\r",
+        "I mean--keep up a hot fighting spirit\n",
+        "against ice!"
+      ]
+    },
+    {
+      "id": "msg_0623_T28GYM0103_00001",
+      "en_US": [
+        "Pryce is something, but you’re\n",
+        "something else!\r",
+        "That was a hot battle that\n",
+        "spanned the generations!"
+      ]
+    },
+    {
+      "id": "msg_0623_T28GYM0103_00002",
+      "en_US": "Mahogany Town Pokémon Gym"
+    },
+    {
+      "id": "msg_0623_T28GYM0103_00003",
+      "en_US": [
+        "Mahogany Town Pokémon Gym\r",
+        "Leader: Pryce\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

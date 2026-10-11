@@ -9,7 +9,7 @@
 #include "constants/std_script.h"
 
 #include "field/fieldmap.h"
-#include "msgdata/msg/msg_0196.h"
+#include "files/msgdata/msg/msg_0196.h"
 
 #include "bag_view.h"
 #include "field_bgm.h"
