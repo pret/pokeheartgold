@@ -1,0 +1,32 @@
+
+
+
+# .test
+  00000000 00000000 .text   $t	(test2.o)
+  00000000 00000000 .text   .text	(test2.o)
+  00000000 00000004 .text   f	(test2.o)
+  00000004 00000004 .text   e	(test2.o)
+  00000004 00000000 .text   $t	(test2.o)
+  00000008 00000000 .text   $t	(test2.o)
+  00000008 00000004 .text   d	(test2.o)
+  0000000C 00000004 .text   c	(test2.o)
+  0000000C 00000000 .text   $t	(test2.o)
+  00000010 00000000 .text   $t	(test2.o)
+  00000010 0000000C .text   b	(test2.o)
+  0000001C 00000000 .text   $t	(test2.o)
+  0000001C 0000000C .text   a	(test2.o)
+  00000028 00000000 .text   $t	(test2.o)
+  00000028 00000024 .text   StringCopy2	(test2.o)
+  0000004C 00000024 .text   StringCopy	(test2.o)
+  0000004C 00000000 .text   $t	(test2.o)
+  00000070 00000020 .text   __startup	(test2.o)
+  00000070 00000000 .text   $t	(test2.o)
+  00000088 00000000 .text   $d	(test2.o)
+
+
+# Memory map:
+  v_addr   p_addr   size     name
+  00000000 00000000 00000090 test
+
+# Link start time: Thu Apr 09 00:28:50 2020
+# Link end time: Thu Apr 09 00:28:50 2020

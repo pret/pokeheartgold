@@ -1,0 +1,274 @@
+
+Metrowerks Linker for Embedded ARM.
+Copyright (c) 2006, Freescale Semiconductor, Inc
+All rights reserved.
+Version 2.0 build 82 (Build 0082)
+Runtime Built: Mar 22 2006 15:32:17
+
+Usage: mwldarm.exe [-options]... [files]... [@response]...
+
+Please enter 'mwldarm.exe -help' for information about options.
+
+-------------------------------------------------------------------------------
+General Command-Line Options                                                   
+                                                                               
+   Please see '-help usage' for details about the meaning of this help.        
+-------------------------------------------------------------------------------
+  -help [keyword[,...]]      # global; for linker;                             
+                             #   display help                                  
+     usage                   #    show usage information                       
+     [no]spaces              #    insert blank lines between options in        
+                             #      printout                                   
+     all                     #    show all standard options                    
+     [no]normal              #    show only standard options                   
+     [no]obsolete            #    show obsolete options                        
+     [no]ignored             #    show ignored options                         
+     [no]deprecated          #    show deprecated options                      
+     [no]meaningless         #    show options meaningless for this target     
+     [no]compatible          #    show compatibility options                   
+     opt[ion]=name           #    show help for a given option; for 'name',    
+                             #      maximum length 63 chars                    
+     search=keyword          #    show help for an option whose name or help   
+                             #      contains 'keyword' (case-sensitive); for   
+                             #      'keyword', maximum length 63 chars         
+     group=keyword           #    show help for groups whose names contain     
+                             #      'keyword' (case-sensitive); for 'keyword', 
+                             #      maximum length 63 chars                    
+                             #                                                 
+  -version                   # global; for linker;                             
+                             #   show version, configuration, and build date   
+  -timing                    # global; collect timing statistics               
+  -progress                  # global; show progress and version               
+  -v[erbose]                 # global; verbose information; cumulative;        
+                             #   implies -progress                             
+  -search                    # global; search access paths for source files    
+                             #   specified on the command line; may specify    
+                             #   object code and libraries as well; this       
+                             #   option provides the IDE's 'access paths'      
+                             #   functionality                                 
+  -[no]wraplines             # global; word wrap messages; default             
+  -maxerrors max             # specify maximum number of errors to print, zero 
+                             #   means no maximum; default is 0                
+  -maxwarnings max           # specify maximum number of warnings to print,    
+                             #   zero means no maximum; default is 0           
+  -msgstyle keyword          # global; set error/warning message style         
+     mpw                     #    use MPW message style                        
+     std                     #    use standard message style; default          
+     gcc                     #    use GCC-like message style                   
+     IDE                     #    use CW IDE-like message style                
+     parseable               #    use context-free machine-parseable message   
+                             #      style                                      
+     EnterpriseIDE           #    use Enterprise-IDE message style             
+                             #                                                 
+  -[no]stderr                # global; use separate stderr and stdout streams; 
+                             #   if using -nostderr, stderr goes to stdout     
+
+-------------------------------------------------------------------------------
+Command-Line Linker Options                                                    
+-------------------------------------------------------------------------------
+  -dis[assemble]             # global; disassemble object code and do not      
+                             #   link; implies '-nostdlib'                     
+  -L+ | -l path              # global; cased; add library search path; default 
+                             #   is to search current working directory and    
+                             #   then system directories (see '-defaults');    
+                             #   search paths have global scope over the       
+                             #   command line and are searched in the order    
+                             #   given                                         
+  -lr path                   # global; like '-l', but add recursive library    
+                             #   search path                                   
+  -l+file                    # cased; add a library by searching access paths  
+                             #   for file named lib<file>.<ext> where <ext> is 
+                             #   a typical library extension; if that fails,   
+                             #   try to add <file> directly; library added in  
+                             #   link order before system libraries (see       
+                             #   '-defaults')                                  
+  -[no]defaults              # global; same as -[no]stdlib; default            
+  -nofail                    # continue importing or disassembling after       
+                             #   errors in earlier files                       
+  -[no]stdlib                # global; use system library access paths         
+                             #   (specified by %MWLibraries%) and add system   
+                             #   libraries (specified by %MWLibraryFiles%) at  
+                             #   end of link order; default                    
+  -reverselibsearchpath      # global; reverse search order of library paths   
+  -S                         # global; cased; disassemble and send output to   
+                             #   file; do not link; implies '-nostdlib'        
+
+-------------------------------------------------------------------------------
+Linker C/C++ Support Options                                                   
+-------------------------------------------------------------------------------
+  -Cpp_exceptions on|off     # enable or disable C++ exceptions; default is on 
+  -dialect | -lang keyword   # specify source language                         
+     c                       #    treat source as C++ unless its extension is  
+                             #      '.c', '.h', or '.pch'; default             
+     c++                     #    treat source as C++ always                   
+                             #                                                 
+
+-------------------------------------------------------------------------------
+Embedded ARM Codegen Options                                                   
+-------------------------------------------------------------------------------
+  -[no]ashla                 # enable ARM shared library architecture support  
+  -[no]big                   # generate code and link for a big-endian target  
+  -[no]little                # generate code and link for a little-endian      
+                             #   target; default                               
+  -[no]constpool             # pool constants and disable dead-stripping       
+  -[no]interworking          # generate ARM/Thumb interworking sequences       
+  -[no]pic                   # generate position-independent code references   
+  -[no]pid                   # generate position-independent data references   
+  -proc[essor] keyword       # specify target processor                        
+     generic                 #    generic ARM processor                        
+     v4                      #    v4 achitecture ARM processor                 
+     v4t                     #    v4t architecture ARM processor               
+     v5t                     #    v5t architecture ARM processor               
+     v5te                    #    v5te architecture ARM processor              
+     v6                      #    v6 architecture ARM processor                
+     v6t2                    #    v6 architecture ARM processor                
+     v7                      #    v6 architecture ARM processor                
+     arm7tdmi                #    arm7tdmi; default                            
+     arm710t                 #    arm710t                                      
+     arm720t                 #    arm720t                                      
+     arm740t                 #    arm740t                                      
+     arm7ej                  #    arm7ej                                       
+     arm9tdmi                #    arm9tdmi                                     
+     arm920t                 #    arm920t                                      
+     arm922t                 #    arm922t                                      
+     arm940t                 #    arm940t                                      
+     arm9ej                  #    arm9ej                                       
+     arm926ej                #    arm926ej                                     
+     arm946e                 #    arm946e                                      
+     arm966e                 #    arm966e                                      
+     arm1020e                #    arm1020e                                     
+     arm1022e                #    arm1022e                                     
+     arm1026ej               #    arm1026ej                                    
+     dbmx1                   #    DragonBall MX1                               
+     dbmxl                   #    DragonBall MXL                               
+     XScale                  #    XScale                                       
+     pxa255                  #    pxa255                                       
+     pxa261                  #    pxa261                                       
+     pxa262                  #    pxa262                                       
+     pxa263                  #    pxa263                                       
+                             #                                                 
+  -sdatathreshold long       # set maximum size in bytes for data              
+                             #   objectsbefore being spilled into .sdata       
+                             #   section; default is 8                         
+  -[no]thumb                 # generate Thumb instructions                     
+  -[no]profile               # generate code for profiling                     
+
+-------------------------------------------------------------------------------
+Embedded ARM Linker Options                                                    
+-------------------------------------------------------------------------------
+  -[no]dead[strip]           # enable dead-stripping of unused code; default   
+  -force_active              # specify a list of symbols as undefined; useful  
+    symbol[,...]             #   to force linking of static libraries          
+                             #                                                 
+  -symtab [keyword[,...]]    # generate symbol table                           
+     sort                    #    sort symbols by address                      
+     mapsymfirst             #    list ARM mapping and tagging symbols first   
+                             #                                                 
+  -m[ain] symbol             # set main entry point for application or shared  
+                             #   library; use '-main ""' to specify no entry   
+                             #   point; for 'symbol', maximum length 63 chars; 
+                             #   default is '__startup'                        
+  -map [keyword[,...]]       # generate link map file                          
+     closure                 #    display symbol closures                      
+     unused                  #    display unused symbols                       
+                             #                                                 
+  -srec                      # generate an S-record file; ignored when         
+                             #   generating static libraries                   
+  -sreceol keyword           # set end-of-line separator for S-record file;    
+                             #   implies '-srec'                               
+     mac                     #    Macintosh ('\r')                             
+     dos                     #    DOS ('\r\n'); default                        
+     unix                    #    Unix ('\n')                                  
+                             #                                                 
+  -sreclength length         # specify length of S-records (should be a        
+                             #   multiple of 4); implies '-srec'; for          
+                             #   'length', range 8 - 252; default is 64        
+  -xrec                      # generate an Intel Hex-record file; ignored when 
+                             #   generating static libraries                   
+  -xreclength length         # specify length of Intel Hex-records (should be  
+                             #   a multiple of 4); implies '-xrec'; for        
+                             #   'length', range 8 - 252; default is 64        
+  -o file                    # specify output filename                         
+
+-------------------------------------------------------------------------------
+Embedded ARM Project Options                                                   
+-------------------------------------------------------------------------------
+  -application               # global; generate an application; default        
+  -library                   # global; generate a static library               
+  -partial                   # global; generate a partial link                 
+
+-------------------------------------------------------------------------------
+ELF Disassembler Options                                                       
+-------------------------------------------------------------------------------
+  -show keyword[,...]        # specify disassembly options                     
+     only|none               #    as in '-show none' or, e.g.,                 
+                             #      '-show only,code,data'                     
+     all                     #    show everything; default                     
+     [no]code | [no]text     #    show disassembly of code sections; default   
+     [no]comments            #    show comment field in code; implies '-show   
+                             #      code'; default                             
+     [no]extended            #    show extended mnemonics; implies '-show      
+                             #      code'; default                             
+     [no]data                #    show data; with '-show verbose', show hex    
+                             #      dumps of sections; default                 
+     [no]debug | [no]sym     #    show symbolics information; default          
+     [no]exceptions          #    show exception tables; implies '-show data'; 
+                             #      default                                    
+     [no]headers             #    show ELF headers; default                    
+     [no]hex                 #    show addresses and opcodes in code           
+                             #      disassembly; implies '-show code'; default 
+     [no]names               #    show symbol table; default                   
+     [no]relocs              #    show resolved relocations in code and        
+                             #      relocation tables; default                 
+     [no]source              #    show source in disassembly; implies '-show   
+                             #      code'; with '-show verbose', displays      
+                             #      entire source file in output, else shows   
+                             #      only four lines around each function;      
+                             #      default                                    
+     [no]xtables             #    show exception tables; default               
+     [no]verbose             #    show verbose information, including hex dump 
+                             #      of program segments in applications;       
+                             #      default                                    
+                             #                                                 
+
+-------------------------------------------------------------------------------
+Debugging Control Options                                                      
+-------------------------------------------------------------------------------
+  -g                         # global; cased; generate debugging information;  
+                             #   same as '-sym full'                           
+  -sym keyword[,...]         # global; specify debugging options               
+     off                     #    do not generate debugging information;       
+                             #      default                                    
+     on                      #    turn on debugging information                
+     full[path]              #    store full paths to source files             
+                             #                                                 
+
+-------------------------------------------------------------------------------
+Overlay Options                                                                
+                                                                               
+   Use these options to place files into specific overlays, in lieu of a       
+   linker command file.                                                        
+   By default, all files go into the main application.  Define overlay groups  
+   with '-overlaygroup', which all appear in memory at the same address.       
+   Define overlays within the overlay groups with '-overlay' to place the      
+   following files in that overlay.                                            
+-------------------------------------------------------------------------------
+  -og | -overlaygroup        # specify new overlay group; for 'name', maximum  
+    name,lo-addr,[hi-addr]   #   length 255 chars; if parameter specified, set 
+                             #   high 32 bits of address; default is 0         
+  -ol | -overlay name        # specify new overlay within overlay group; for   
+                             #   'name', maximum length 255 chars              
+
+-------------------------------------------------------------------------------
+Warning Options                                                                
+-------------------------------------------------------------------------------
+  -w[arn[ings]]              # global; warning options                         
+    keyword[,...]            #                                                 
+     off                     #    turn off all warnings                        
+     on                      #    turn on all warnings                         
+     [no]cmdline             #    command-line parser warnings                 
+     [no]err[or] |           #    treat warnings as errors                     
+       [no]iserr[or]         #                                                 
+     display|dump            #    display list of active warnings              
+                             #                                                 
+

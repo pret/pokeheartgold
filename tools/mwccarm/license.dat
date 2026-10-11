@@ -1,0 +1,12 @@
+###############################################################
+#   CodeWarrior Development Studio for Nintendo DS v1.1       #
+###############################################################
+
+FEATURE Win32_CWIDE_Unlimited metrowks 5.5 permanent uncounted \
+	D683F3FF3C1E HOSTID=ANY TS_OK
+FEATURE Win32_Plugins_ARM metrowks 2.0 permanent uncounted \
+	5DDA68DFE129 HOSTID=ANY TS_OK
+FEATURE Win32_Plugins_ARM_Nitro metrowks 1.0 permanent uncounted \
+	0CF6F6A5792E HOSTID=ANY TS_OK
+FEATURE Win32_Plugins_ARM_DBG metrowks 2.0 permanent uncounted \
+	C81996650D7D HOSTID=ANY TS_OK
