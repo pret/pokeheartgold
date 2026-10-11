@@ -1,5 +1,5 @@
-#include "files/demo/legend.naix"
 #include "field/overlay_01_021FB878.h"
+#include "files/demo/legend.naix"
 #include "overlay_2/event_cutscene.h"
 
 #include "follow_mon.h"

@@ -12,7 +12,6 @@
 #include "pm_string.h"
 #include "pokemon_types_def.h"
 
-
 typedef struct TrainerMonSpecies {
     // IV scale parameter
     u8 difficulty;
