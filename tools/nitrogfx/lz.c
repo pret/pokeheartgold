@@ -100,7 +100,7 @@ static void FindBestBlockForwards(unsigned char *src, int srcPos, int srcSize, c
 {
     int blockStart = srcPos < 0x1000 ? 0 : srcPos - 0x1000;
     int maxBlockSize = extFormat ? 0xF210 : 18;
-
+    
     while (blockStart != srcPos) {
         int blockSize = 0;
 
@@ -122,10 +122,11 @@ static void FindBestBlockForwards(unsigned char *src, int srcPos, int srcSize, c
     }
 }
 
-static void FindBestBlockBackwards(unsigned char *src, int srcPos, int srcSize, const int minDistance, int *outBestBlockDistance, int *outBestBlockSize, bool extFormat) {
+static void FindBestBlockBackwards(unsigned char *src, int srcPos, int srcSize, const int minDistance, int *outBestBlockDistance, int *outBestBlockSize, bool extFormat)
+{
     int blockDistance = minDistance;
     int maxBlockSize = extFormat ? 0xF210 : 18;
-
+    
     while (blockDistance <= srcPos && blockDistance <= 0x1000) {
         int blockStart = srcPos - blockDistance;
         int blockSize = 0;
@@ -149,7 +150,8 @@ static void FindBestBlockBackwards(unsigned char *src, int srcPos, int srcSize, 
 
 typedef void (*FindBestBlockFunc)(unsigned char *src, int srcPos, int srcSize, const int minDistance, int *outBestBlockDistance, int *outBestBlockSize, bool extFormat);
 
-unsigned char *LZCompress(unsigned char *src, int srcSize, int *compressedSize, const int minDistance, bool forwardIteration, bool pad, bool extFormat) {
+unsigned char *LZCompress(unsigned char *src, int srcSize, int *compressedSize, const int minDistance, bool forwardIteration, bool pad, bool extFormat)
+{
     if (srcSize <= 0)
         goto fail;
 
@@ -230,9 +232,8 @@ unsigned char *LZCompress(unsigned char *src, int srcSize, int *compressedSize, 
                     int remainder = destPos % 4;
 
                     if (remainder != 0) {
-                        for (int i = 0; i < 4 - remainder; i++) {
+                        for (int i = 0; i < 4 - remainder; i++)
                             dest[destPos++] = 0;
-                        }
                     }
                 }
 
