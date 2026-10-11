@@ -445,6 +445,9 @@ endif
 ############################################################
 sha1sum = find_program(['sha1sum', 'shasum'], native: true)
 
+
+arm7_sha1 = arm7_sha1_hg # The arm7 hash doesn't change between games
+
 if game_version == 'HEARTGOLD'
     main_sha1 = main_sha1_hg
     filesystem_sha1 = filesystem_sha1_hg
@@ -458,6 +461,11 @@ endif
 test(game_version + ' Main Checksums',
     sha1sum,
     args: ['-c', '--quiet', main_sha1]
+)
+
+test(game_version + ' Sub Checksums',
+    sha1sum,
+    args: ['-c', '--quiet', arm7_sha1]
 )
 
 test(game_version + ' Filesystem Checksums',
