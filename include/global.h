@@ -6,11 +6,12 @@
 #pragma thumb on
 #include <nnsys.h>
 #include <stddef.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 #endif
 
 #include "constants/global.h"
+
 #include "cw/function_target.h"
 
 #include "assert.h"

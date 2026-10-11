@@ -1,5 +1,5 @@
-#include "files/application/pokegear/pgear_gra.naix"
 #include "application/pokegear/pokegear_internal.h"
+#include "files/application/pokegear/pgear_gra.naix"
 #include "files/data/resdat.naix"
 
 #include "math_util.h"

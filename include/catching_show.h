@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_CATCHING_SHOW_H
 #define POKEHEARTGOLD_CATCHING_SHOW_H
 
-#include "battle/battle_setup.h"
 #include "struct_defs/ppark_narc_struct.h"
+
+#include "battle/battle_setup.h"
 
 #include "palPark_migration.h"
 #include "script.h"

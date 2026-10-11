@@ -1,5 +1,5 @@
-#include "files/application/pokegear/map/pgmap_gra.naix"
 #include "application/pokegear/map/pokegear_map_internal.h"
+#include "files/application/pokegear/map/pgmap_gra.naix"
 #include "files/msgdata/msg.naix"
 #include "files/msgdata/msg/msg_0273.h"
 

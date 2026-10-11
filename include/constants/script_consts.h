@@ -6,10 +6,10 @@
 // So they are reused here instead.
 // Do NOT attempt to include this header in a c file
 
-#define TRUE    1
-#define FALSE   0
+#define TRUE  1
+#define FALSE 0
 
-//TODO: Generate these constants instead of having them as literals
+// TODO: Generate these constants instead of having them as literals
 #define RGB_BLACK 0
 #define RGB_WHITE 0x7FFF
 

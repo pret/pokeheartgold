@@ -1,10 +1,11 @@
 #include "field/overlay_01_02204004.h"
 
+#include <nnsys/g3d/anm.h>
+
 #include "global.h"
 
 #include "filesystem.h"
 #include "filesystem_files_def.h"
-#include <nnsys/g3d/anm.h>
 
 static BOOL Field3dRenderObjManager_IsModelAllocatedByIndex(Field3dRenderObjManager *field3dRenderObjManager, int index);
 static Field3dRenderObj *Field3dRenderObjManager_AllocInternal(Field3dRenderObjManager *renderObjMgr, NNSG3dResFileHeader **resFileHeader, int index);

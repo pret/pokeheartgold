@@ -3,9 +3,10 @@
 
 #include "constants/pokemon.h"
 
+#include "struct_defs/personal_narc_structs.h"
+
 #include "filesystem.h"
 #include "seal_case.h"
-#include "struct_defs/personal_narc_structs.h"
 
 // Structs
 

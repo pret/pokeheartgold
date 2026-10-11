@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_UNK_0200A090_H
 #define POKEHEARTGOLD_UNK_0200A090_H
 
+#include "struct_defs/resdat_narc_structs.h"
+
 #include "filesystem.h"
 #include "gf_3d_loader.h"
-#include "struct_defs/resdat_narc_structs.h"
 
 struct CharResExtraData {
     NNSG2dCharacterData *charData;

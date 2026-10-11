@@ -2,8 +2,8 @@
 
 #include "global.h"
 
-#include "files/data/resdat.naix"
 #include "field/field_sprite_manager.h"
+#include "files/data/resdat.naix"
 #include "files/msgdata/msg.naix"
 
 #include "field_take_photo.h"
