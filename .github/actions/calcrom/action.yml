@@ -18,7 +18,7 @@ inputs:
   arm7subdir:
     description: |
       Subdirectory containing ARM7 sources
-    default: subprojects/NitroSDK-4.2.30001/components
+    default: subprojects/NitroSDK-4.2.30001/components/ichneumon
   arm9stem:
     description: |
       Name of the ARM9 binary
