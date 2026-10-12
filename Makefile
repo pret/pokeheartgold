@@ -163,3 +163,11 @@ skrewup: skrewrm skrew
 
 $(SKREW_EXE):
 	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)
+
+distclean:
+	rm -rf $(BUILD)
+
+purge: distclean
+	rm -rf $(SKREW_DIR)
+	! test -f $(MESON) || $(MESON) subprojects purge --confirm
+	rm -rf $(MESON_DIR)
