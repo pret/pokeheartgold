@@ -165,7 +165,7 @@ $(SKREW_EXE):
 	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)
 
 distclean:
-	rm -rf $(BUILD)
+	rm -rf build
 
 purge: distclean
 	rm -rf $(SKREW_DIR)
