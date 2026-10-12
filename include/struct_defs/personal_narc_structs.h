@@ -43,6 +43,7 @@ struct Evolution {
     u16 param;
     u16 target;
 };
+
 #define MAX_EVOS_PER_POKE 7
 
 #endif

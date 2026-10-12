@@ -5,9 +5,8 @@
 	meson   		\
 	release 		\
 	rom 			\
-	setup_heartgold \
 	setup_release 	\
-	setup_soulsilver\
+	setup_rom \
 	skrew			\
 	soulsilver		\
 	skrewrm 		\
@@ -44,7 +43,7 @@ MESON ?= $(MESON_SUB)
 NINJA ?= ninja
 GIT ?= git
 
-BUILD ?= build
+BUILD ?= build/$(target_name).$(target_region)
 
 UNAME_R := $(shell uname -r)
 UNAME_S := $(shell uname -s)
@@ -108,19 +107,17 @@ all: release check
 release: rom
 
 .NOTPARALLEL: heartgold
-heartgold: setup_heartgold
-	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
-	$(MESON) test -C $(BUILD) --verbose
+heartgold:
+	make GAME_VERSION=HEARTGOLD
 
 .NOTPARALLEL: soulsilver
-soulsilver: setup_soulsilver
-	$(NINJA) -C $(BUILD) pokesoulsilver.us.nds
-	$(MESON) test -C $(BUILD) --verbose
+soulsilver:
+	make GAME_VERSION=SOULSILVER
 
 check: rom
 	$(MESON) test -C $(BUILD) --verbose
 
-rom: setup_$(target_name)
+rom: setup_rom
 	$(NINJA) -C $(BUILD) poke$(target_name).$(target_region).nds
 
 target: $(BUILD)/build.ninja
@@ -130,11 +127,8 @@ target: $(BUILD)/build.ninja
 clean: $(BUILD)/build.ninja
 	$(MESON) compile -C $(BUILD) --clean
 
-setup_heartgold: $(BUILD)/build.ninja
-	$(MESON) configure $(BUILD) -Dgame_version=HEARTGOLD
-
-setup_soulsilver: $(BUILD)/build.ninja
-	$(MESON) configure $(BUILD) -Dgame_version=SOULSILVER
+setup_rom: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgame_version=$(GAME_VERSION)
 
 $(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson
 	$(MESON) setup \

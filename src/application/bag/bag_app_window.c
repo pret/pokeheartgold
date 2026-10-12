@@ -1,6 +1,6 @@
 #include "application/bag_app_internal.h"
-#include "graphic/bag/bag_graphics.naix"
-#include "msgdata/msg.naix"
+#include "files/graphic/bag/bag_graphics.naix"
+#include "files/msgdata/msg.naix"
 #include "msgdata/msg/msg_0010.h"
 #include "msgdata/msg/msg_0225.h"
 

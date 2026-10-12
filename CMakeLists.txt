@@ -33,10 +33,15 @@ endforeach()
 
 add_executable(PokeHeartGold ${SOURCES})
 target_include_directories(PokeHeartGold PUBLIC
+    ${CMAKE_SOURCE_DIR}
     src
     include
+    build
+    build/heartgold.us
     build/files
+    build/heartgold.us/files
     lib/include
+    ${CMAKE_SOURCE_DIR}/files
     ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_ARM/Include
     ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_Common_Embedded/Math/Include
     ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_C/MSL_Common/Include
@@ -46,6 +51,7 @@ target_include_directories(PokeHeartGold PUBLIC
     ${CMAKE_SOURCE_DIR}/tools/metroskrew/lib/metroskrew/sdk/ds/2.0/sp2p3/msl/MSL_Extras/MSL_Common/Include/sys
     ${CMAKE_SOURCE_DIR}/subprojects/NitroSDK-4.2.30001/include
     ${CMAKE_SOURCE_DIR}/build/subprojects/NitroSDK-4.2.30001/gen
+    ${CMAKE_SOURCE_DIR}/build/heartgold.us/subprojects/NitroSDK-4.2.30001/gen
     ${CMAKE_SOURCE_DIR}/subprojects/NitroSystem-071126.1/include
     ${CMAKE_SOURCE_DIR}/subprojects/NitroWiFi-2.1.30003/include
     ${CMAKE_SOURCE_DIR}/subprojects/libvct-1.3.1/include

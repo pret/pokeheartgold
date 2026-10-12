@@ -4,8 +4,8 @@
 
 #include "constants/sndseq.h"
 
+#include "files/msgdata/msg.naix"
 #include "frontier/overlay_80_02238034.h"
-#include "msgdata/msg.naix"
 
 #include "filesystem.h"
 #include "font.h"

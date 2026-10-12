@@ -1,6 +1,6 @@
 #include "application/bag_app_internal.h"
-#include "graphic/bag/bag_graphics.naix"
-#include "graphic/shop_gra.naix"
+#include "files/graphic/bag/bag_graphics.naix"
+#include "files/graphic/shop_gra.naix"
 
 #include "gf_gfx_loader.h"
 #include "move.h"

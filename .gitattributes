@@ -16,6 +16,8 @@ Makefile text eol=lf
 *.md text eol=lf
 *.lsf text eol=lf
 *.yml text eol=lf
+*.py text eol=lf
+*.csv text eol=lf
 
 *.bin binary
 

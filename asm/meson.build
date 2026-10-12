@@ -3,7 +3,6 @@ pokeheartgold_asm = files(
     'frontier.s',
     'frontier_map.s',
     'frontier_system.s',
-    'middleware.s',
     'model_attributes.s',
     'nitrocrypto.s',
     'overlay_00_thumb.s',

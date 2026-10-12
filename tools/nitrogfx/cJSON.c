@@ -118,7 +118,7 @@ CJSON_PUBLIC(double) cJSON_GetNumberValue(const cJSON * const item)
 
 /* This is a safeguard to prevent copy-pasters from using incompatible C and header files */
 #if (CJSON_VERSION_MAJOR != 1) || (CJSON_VERSION_MINOR != 7) || (CJSON_VERSION_PATCH != 19)
-#error cJSON.h and cJSON.c have different versions. Make sure that both have the same.
+    #error cJSON.h and cJSON.c have different versions. Make sure that both have the same.
 #endif
 
 CJSON_PUBLIC(const char*) cJSON_Version(void)
@@ -322,7 +322,8 @@ static cJSON_bool parse_number(cJSON * const item, parse_buffer * const input_bu
     /* copy the number into a temporary buffer and replace '.' with the decimal point
      * of the current locale (for strtod)
      * This also takes care of '\0' not necessarily being available for marking the end of the input */
-    for (i = 0; can_access_at_index(input_buffer, i); i++) {
+    for (i = 0; can_access_at_index(input_buffer, i); i++)
+    {
         switch (buffer_at_offset(input_buffer)[i])
         {
             case '0':
@@ -353,17 +354,21 @@ static cJSON_bool parse_number(cJSON * const item, parse_buffer * const input_bu
     }
 loop_end:
     /* malloc for temporary buffer, add 1 for '\0' */
-    number_c_string = (unsigned char *)input_buffer->hooks.allocate(number_string_length + 1);
-    if (number_c_string == NULL) {
+    number_c_string = (unsigned char *) input_buffer->hooks.allocate(number_string_length + 1);
+    if (number_c_string == NULL)
+    {
         return false; /* allocation failure */
     }
 
     memcpy(number_c_string, buffer_at_offset(input_buffer), number_string_length);
     number_c_string[number_string_length] = '\0';
 
-    if (has_decimal_point) {
-        for (i = 0; i < number_string_length; i++) {
-            if (number_c_string[i] == '.') {
+    if (has_decimal_point)
+    {
+        for (i = 0; i < number_string_length; i++)
+        {
+            if (number_c_string[i] == '.')
+            {
                 /* replace '.' with the decimal point of the current locale (for strtod) */
                 number_c_string[i] = decimal_point;
             }

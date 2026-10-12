@@ -2,6 +2,8 @@
 **/*.inc
 **/*.json
 lib/
+tools/nitrogfx/*.c
+tools/nitrogfx/*.h
 tools/nitrorom/src/*.c
 tools/nitrorom/src/**/*.c
 tools/nitrorom/src/**/*.h
