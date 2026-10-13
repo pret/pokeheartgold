@@ -317,29 +317,16 @@ main_sbins_lz = [
     'OVY_128.sbin_LZ',
 ]
 
-if game_version == 'HEARTGOLD'
-    main_lz = custom_target('heartgold.us.lz',
-        command : [ 
-            compstatic_exe,
-            '-9',
-            '-c',
-            '-f', meson.current_build_dir() / 'component.files',
-        ],
-        output : main_sbins_lz,
-        depends : main
-    )
-elif game_version == 'SOULSILVER'
-    main_lz = custom_target('soulsilver.us.lz',
-        command : [ 
-            compstatic_exe,
-            '-9',
-            '-c',
-            '-f', meson.current_build_dir() / 'component.files',
-        ],
-        output : main_sbins_lz,
-        depends : main
-    )
-endif
+main_lz = custom_target('main.lz',
+    command : [ 
+        compstatic_exe,
+        '-9',
+        '-c',
+        '-f', meson.current_build_dir() / 'component.files',
+    ],
+    output : main_sbins_lz,
+    depends : main
+)
 
 ############################################################
 ###                    ARM7 BINARIES                     ###
@@ -400,7 +387,6 @@ endif
 ###                        TESTS                         ###
 ############################################################
 sha1sum = find_program(['sha1sum', 'shasum'], native: true)
-
 
 arm7_sha1 = arm7_sha1_hg # The arm7 hash doesn't change between games
 
