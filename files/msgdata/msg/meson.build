@@ -20,11 +20,3 @@ foreach text_bank : text_bank_consts
         text_bank_files += files(text_bank_name)
     endif
 endforeach
-
-# 3. Generate the ordering for `pl_msg.narc` from `generated/text_banks.txt`.
-text_banks_order = custom_target('text_banks.order',
-    output: 'text_banks.order',
-    input: text_banks_txt,
-    command: [ ordergen_text_banks_py, '@INPUT@', '@OUTPUT@' ],
-)
-

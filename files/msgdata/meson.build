@@ -5,10 +5,10 @@ build_dir = meson.current_build_dir()
 ############################################################
 text_banks_txt = files('NARC_msg.txt')
 
-#Steps 1-3 are handled in the subdir
+#Steps 1 and 2 are handled in the subdir
 subdir('msg')
 
-# 4. Generate individual text bank binaries from JSON files.
+# 3. Generate individual text bank binaries from JSON files.
 bank_header_target = fs.relative_to(meson.current_build_dir() / 'msg', meson.project_build_root())
 bank_header_dir = custom_target('bank_header_dir',
     capture: true,
@@ -41,7 +41,6 @@ text_banks = custom_target('msg.narc',
         nitroarc_exe,
         '--create',
         '--index',
-        '--files-from', text_banks_order,
         '--file', '@OUTPUT0@',
         '@PRIVATE_DIR@',
     ],
