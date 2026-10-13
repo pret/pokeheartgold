@@ -297,7 +297,7 @@ typedef struct MonReturnData {
     u32 unk_74;
 } MonReturnData;
 
-void ov12_0225C9BC(SysTask *, void *);
+void BattleDisplayTask_ReturnPokemon(SysTask *, void *);
 void ov12_0225CC58(SysTask *, void *);
 
 void BattleDisplay_InitTaskReturnPokemon(BattleSystem *battleSys, OpponentData *opponentData, MonReturnMessage *message)
@@ -326,7 +326,7 @@ void BattleDisplay_InitTaskReturnPokemon(BattleSystem *battleSys, OpponentData *
     u32 unk = ov12_0223C140(battleSys, opponentData->battlerId);
     
     if (unk == 255 || unk != monReturnData->unk_74) {
-        SysTask_CreateOnMainQueue(ov12_0225C9BC, monReturnData, 0);
+        SysTask_CreateOnMainQueue(BattleDisplayTask_ReturnPokemon, monReturnData, 0);
     } else {
         SysTask_CreateOnMainQueue(ov12_0225CC58, monReturnData, 0);
     }
@@ -345,7 +345,7 @@ typedef struct OpenCaptureBallData {
 } OpenCaptureBallData;
 
 extern u16 ov12_0226D15A[];
-extern void ov12_0225CDB8(SysTask *, void *);
+extern void BattleDisplayTask_OpenCaptureBall(SysTask *, void *);
 
 void BattleDisplay_InitTaskOpenCaptureBall(BattleSystem *battleSys, OpponentData *opponentData, OpenCaptureBallMessage *message)
 {
@@ -361,7 +361,7 @@ void BattleDisplay_InitTaskOpenCaptureBall(BattleSystem *battleSys, OpponentData
 
     Pokepic_StartPaletteFade(captureOpenBallData->pokepic, 0, 16, 0, ov12_0226D15A[message->ball]);
     Pokepic_SetAttr(captureOpenBallData->pokepic, 0x2D, TRUE);
-    SysTask_CreateOnMainQueue(ov12_0225CDB8, captureOpenBallData, 0);
+    SysTask_CreateOnMainQueue(BattleDisplayTask_OpenCaptureBall, captureOpenBallData, 0);
 }
 
 typedef struct TrainerEncounterData {
@@ -381,7 +381,7 @@ typedef struct TrainerEncounterData {
     int enterFrameCount;
 } TrainerEncounterData;
 
-extern void ov12_0225CE28(SysTask *, void *);
+extern void BattleDisplayTask_SetTrainerEncounter(SysTask *, void *);
 extern u8 BattleDisplay_GetLinkTrainerClass(BattleSystem *battleSys, u8 battler, u8 trainerClass);
 
 void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, OpponentData *opponentData, TrainerEncounterMessage *message)
@@ -463,7 +463,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, Opponent
         BgSetPosTextAndCommit(BattleSystem_GetBgConfig(battleSys), 3, 2, 4 * 33);
     }
 
-    SysTask_CreateOnMainQueue(ov12_0225CE28, trainerEncounterData, 0);
+    SysTask_CreateOnMainQueue(BattleDisplayTask_SetTrainerEncounter, trainerEncounterData, 0);
 }
 
 typedef struct TrainerThrowBallData {
@@ -480,7 +480,7 @@ typedef struct TrainerThrowBallData {
 } TrainerThrowBallData;
 
 extern void ov12_0225D644(SysTask *, void *);
-extern void ov12_0225D138(SysTask *, void *);
+extern void BattleDisplayTask_ThrowTrainerBall(SysTask *, void *);
 
 void BattleDisplay_InitTaskThrowTrainerBall(BattleSystem *battleSys, OpponentData *opponentData, TrainerThrowBallMessage *message)
 {
@@ -507,7 +507,7 @@ void BattleDisplay_InitTaskThrowTrainerBall(BattleSystem *battleSys, OpponentDat
     if (ov12_0223C140(battleSys, opponentData->battlerId) != 255) {
         SysTask_CreateOnMainQueue(ov12_0225D644, trainerThrowBallData, 0);
     } else {
-        SysTask_CreateOnMainQueue(ov12_0225D138, trainerThrowBallData, 0);
+        SysTask_CreateOnMainQueue(BattleDisplayTask_ThrowTrainerBall, trainerThrowBallData, 0);
     }
 }
 
@@ -2397,6 +2397,656 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data)
         break;
     default:
         BattleController_EmitClearCommand(monShowData->battleSys, monShowData->battler, monShowData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+static void ov12_0225C6C8(SysTask *task, void *data)
+{
+    MonShowData *monShowData = data;
+
+    BattleAnimSystem *battleAnimSys = ov12_0223A8DC(monShowData->battleSys);
+
+    switch (monShowData->state) {
+    case 0:
+        PokepicManager *monSpriteMan = BattleSystem_GetPokepicManager(monShowData->battleSys);
+        PokepicAnimScript animScript[10];
+
+        NARC_ReadPokepicAnimScript(monShowData->opponentData->narc, &animScript[0], monShowData->species, monShowData->battlerType);
+        monShowData->opponentData->pokepic = BattleDisplay_NewPokepic(monShowData->battleSys,
+            monSpriteMan,
+            &monShowData->spriteTemplate,
+            gSlideTrainerInCoords[monShowData->battlerType][0],
+            gSlideTrainerInCoords[monShowData->battlerType][1],
+            ov07_022377F4[monShowData->battlerType][2],
+            monShowData->yOffset,
+            monShowData->height,
+            monShowData->shadowXOffset,
+            monShowData->shadowSize,
+            monShowData->battler,
+            &animScript[0],
+            NULL);
+
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, 12, (1 << 8));
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, 13, (1 << 8));
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, 0x2C, FALSE);
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, 6, FALSE);
+
+        monShowData->state++;
+        
+        break;
+    case 1:
+        {
+            MoveAnimation moveAnim;
+    
+            BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 41, monShowData->battler, monShowData->battler, NULL);
+            BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
+            
+            monShowData->state++;   
+        }
+        break;
+    case 3:
+        if (monShowData->face == 2) {
+            Pokepic_SetAttr(monShowData->opponentData->pokepic, 0x2D, 0);    
+        }
+        
+        ov12_02261F38(monShowData->battleSys, monShowData->battler, monShowData->battlerType, monShowData->opponentData->pokepic, monShowData->opponentData->narc, monShowData->species, monShowData->formNum, monShowData->face, monShowData->cryMod);
+
+        monShowData->state = 4;
+        
+        break;
+    case 4:
+        {
+            if (sub_02017068(ov12_0223B750(monShowData->battleSys), monShowData->battler) == 1) {
+                if (Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
+                    if (monShowData->isShiny) {
+                        MoveAnimation moveAnim;
+                
+                        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, NULL);
+                        BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
+                        monShowData->state = 5;
+                    } else {
+                        monShowData->state = 6;
+                    }
+                }
+            }
+        }
+        break;
+    case 2:
+    case 5:
+    case 7:
+    case 9:
+        ov07_0221C394(battleAnimSys);
+        if (ov07_0221C3B0(battleAnimSys) == FALSE) {
+            ov07_0221C3C0(battleAnimSys);
+            monShowData->state++;
+        }
+        break;
+    case 6:
+        {
+            if (monShowData->isSubstitute) {
+                MoveAnimation moveAnim;
+        
+                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 15, monShowData->battler, monShowData->battler, NULL);
+                BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
+                monShowData->state++;
+                break;
+            }
+            monShowData->state = 0xFF;
+        }
+        break;
+    case 8:
+        {
+            BattlerSpriteContext battlerSpriteCtx;
+            MoveAnimation moveAnim;
+    
+            BattleDisplay_PopulateBattlerContext(monShowData->battleSys, &monShowData->moveAnim, &battlerSpriteCtx, monShowData->battler);
+            ov07_02234A20(&battlerSpriteCtx, HEAP_ID_BATTLE);
+            BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 16, monShowData->battler, monShowData->battler, NULL);
+            BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
+    
+            monShowData->opponentData->unk1A0 = 1;
+            monShowData->state++;
+        }
+        break;    
+    default:
+        BattleController_EmitClearCommand(monShowData->battleSys, monShowData->battler, monShowData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+extern int ov12_0226D128[6];
+
+static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data)
+{
+    MonReturnData *monReturnData = data;
+    BattleAnimSystem *battleAnimSys = ov12_0223A8DC(monReturnData->battleSys);
+
+    switch (monReturnData->state) {
+    case 0:
+        if (monReturnData->isSubstitute) {
+            MoveAnimation moveAnim;
+
+            BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 15, monReturnData->battler, monReturnData->battler, NULL);
+            BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
+            monReturnData->state++;
+        } else {
+            monReturnData->state = 4;
+        }
+        break;
+    case 2:
+        BattlerSpriteContext battlerSpriteCtx;
+        MoveAnimation moveAnim;
+
+        BattleDisplay_PopulateBattlerContext(monReturnData->battleSys, &monReturnData->moveAnim, &battlerSpriteCtx, monReturnData->battler);
+        ov07_0223494C(&battlerSpriteCtx, HEAP_ID_BATTLE);
+        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 16, monReturnData->battler, monReturnData->battler, NULL);
+        BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
+        monReturnData->opponentData->unk1A0 = 0;
+        monReturnData->state++;
+        break;
+    case 1:
+    case 3:
+        ov07_0221C394(battleAnimSys);
+
+        if (ov07_0221C3B0(battleAnimSys) == FALSE) {
+            ov07_0221C3C0(battleAnimSys);
+            monReturnData->state++;
+        }
+        break;
+    case 4:
+        if (monReturnData->battlerType & 1) {
+            BallThrow ballThrow;
+
+            ballThrow.type = sBallThrowTypes[monReturnData->battlerType];
+            ballThrow.heapID = HEAP_ID_BATTLE;
+            ballThrow.mode = BALL_THROW_MODE_RECALL;
+            ballThrow.target = monReturnData->battler;
+            ballThrow.ballID = monReturnData->capturedBall;
+            ballThrow.cellActorSys = BattleSystem_GetSpriteSystem(monReturnData->battleSys);
+            ballThrow.paletteSys = BattleSystem_GetPaletteData(monReturnData->battleSys);
+            ballThrow.bgPrio = 1;
+            ballThrow.surface = 0;
+            monReturnData->ballRotation = ov07_02233DB8(&ballThrow);
+        } else {
+            BallThrow ballThrow;
+            int ballThrowTypes[6];
+            ballThrowTypes = ov12_0226D128;
+
+            ballThrow.type = ballThrowTypes[monReturnData->battlerType];
+            ballThrow.heapID = HEAP_ID_BATTLE;
+            ballThrow.mode = BALL_THROW_MODE_RECALL;
+            ballThrow.target = monReturnData->battler;
+            ballThrow.ballID = monReturnData->capturedBall;
+            ballThrow.cellActorSys = BattleSystem_GetSpriteSystem(monReturnData->battleSys);
+            ballThrow.paletteSys = BattleSystem_GetPaletteData(monReturnData->battleSys);
+            ballThrow.bgPrio = 1;
+            ballThrow.surface = 0;
+            monReturnData->ballRotation = ov07_02233DB8(&ballThrow);
+        }
+
+        monReturnData->state = 5;
+        Pokepic_StartPaletteFade(monReturnData->pokepic, 0, 16, 0, ov12_0226D15A[monReturnData->capturedBall]);
+
+        switch (monReturnData->battlerType) {
+        case 0:
+        case 2:
+        case 4:
+            sub_0200602C(SEQ_SE_DP_BOWA2, -0x75);
+            break;
+        case 1:
+        case 3:
+        case 5:
+            sub_0200602C(SEQ_SE_DP_BOWA2, 0x75);
+            break;
+        }
+        break;
+    case 5:
+        if (Pokepic_ResumePaletteFade(monReturnData->pokepic) == FALSE) {
+            monReturnData->state++;
+        }
+        break;
+    case 6:
+        Pokepic_AddAttr(monReturnData->pokepic, 12, -0x20);
+        Pokepic_AddAttr(monReturnData->pokepic, 13, -0x20);
+        sub_0200914C(monReturnData->pokepic, monReturnData->yOffset);
+
+        if (Pokepic_GetAttr(monReturnData->pokepic, 12) <= 0) {
+            Pokepic_Delete(monReturnData->pokepic);
+
+            if (monReturnData->battlerType & 1) {
+                monReturnData->state = 7;
+            } else {
+                monReturnData->state = 7;
+            }
+        }
+
+        break;
+    case 7:
+        if (ov07_02233E88(monReturnData->ballRotation) == 0) {
+            ov07_02233ECC(monReturnData->ballRotation);
+            monReturnData->state = 8;
+        }
+        break;
+    case 8:
+        BattleController_EmitClearCommand(monReturnData->battleSys, monReturnData->battler, monReturnData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+static void ov12_0225CC58(SysTask *task, void *data)
+{
+    MonReturnData *monReturnData = data;
+    BattleAnimSystem *battleAnimSys = ov12_0223A8DC(monReturnData->battleSys);
+
+    switch (monReturnData->state) {
+    case 0:
+        if (monReturnData->isSubstitute) {
+            MoveAnimation moveAnim;
+
+            BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 15, monReturnData->battler, monReturnData->battler, NULL);
+            BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
+            monReturnData->state++;
+        } else {
+            monReturnData->state = 4;
+        }
+        break;
+    case 2:
+        BattlerSpriteContext battlerSpriteCtx;
+        MoveAnimation moveAnim;
+
+        BattleDisplay_PopulateBattlerContext(monReturnData->battleSys, &monReturnData->moveAnim, &battlerSpriteCtx, monReturnData->battler);
+        ov07_0223494C(&battlerSpriteCtx, HEAP_ID_BATTLE);
+        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 16, monReturnData->battler, monReturnData->battler, NULL);
+        BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
+        monReturnData->opponentData->unk1A0 = 0;
+        monReturnData->state++;
+        break;
+    case 1:
+    case 3:
+    case 5:
+        ov07_0221C394(battleAnimSys);
+
+        if (ov07_0221C3B0(battleAnimSys) == FALSE) {
+            ov07_0221C3C0(battleAnimSys);
+            monReturnData->state++;
+        }
+        break;
+    case 4:
+        {
+        MoveAnimation moveAnim;
+
+        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 42, monReturnData->battler, monReturnData->battler, NULL);
+        BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
+       monReturnData->state++;
+        }
+        break;
+    case 6:
+        Pokepic_Delete(monReturnData->pokepic);
+    case 7:
+        BattleController_EmitClearCommand(monReturnData->battleSys, monReturnData->battler, monReturnData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+static void BattleDisplayTask_OpenCaptureBall(SysTask *task, void *data)
+{
+    OpenCaptureBallData *captureOpenBallData = data;
+
+    switch (captureOpenBallData->state) {
+    case 0:
+        Pokepic_AddAttr(captureOpenBallData->pokepic, 12, -0x20);
+        Pokepic_AddAttr(captureOpenBallData->pokepic, 13, -0x20);
+
+        if (captureOpenBallData->yOffset) {
+            captureOpenBallData->yOffset--;
+            Pokepic_AddAttr(captureOpenBallData->pokepic, 1, -1);
+        }
+
+        if (Pokepic_GetAttr(captureOpenBallData->pokepic, 12) <= 0) {
+            Pokepic_Delete(captureOpenBallData->pokepic);
+            captureOpenBallData->state++;
+        }
+        break;
+    case 1:
+        BattleController_EmitClearCommand(captureOpenBallData->battleSys, captureOpenBallData->battler, captureOpenBallData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+static void BattleDisplayTask_SetTrainerEncounter(SysTask *task, void *data)
+{
+    TrainerEncounterData *trainerEncounterData = data;
+    s16 x1, y1, x2, y2;
+    u32 battleType = BattleSystem_GetBattleType(trainerEncounterData->battleSys);
+
+    if (trainerEncounterData->enterFrameCount < 33 && trainerEncounterData->state >= 2
+        && (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER || trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1)) {
+        BgSetPosTextAndCommit(BattleSystem_GetBgConfig(trainerEncounterData->battleSys), 3, 1, 4);
+        trainerEncounterData->enterFrameCount++;
+    }
+
+    switch (trainerEncounterData->state) {
+    case 0:
+        if (ManagedSprite_GetNumFrames(trainerEncounterData->managedSprite) > 2) {
+            ManagedSprite_SetAnimationFrame(trainerEncounterData->managedSprite, 0);
+            ManagedSprite_SetAnim(trainerEncounterData->managedSprite, 2);
+        }
+
+        trainerEncounterData->delay = 28;
+        trainerEncounterData->state = 1;
+    case 1:
+        if (--trainerEncounterData->delay) {
+            break;
+        }
+
+        trainerEncounterData->state = 2;
+    case 2:
+        ManagedSprite_GetPositionXY(trainerEncounterData->terrain->managedSprite, &x1, &y1);
+        ManagedSprite_GetPositionXY(trainerEncounterData->managedSprite, &x2, &y2);
+
+        if (trainerEncounterData->face == 2) {
+            if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_ENEMY || trainerEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
+                if (x1 < (24 * 8)) {
+                    ManagedSprite_OffsetPositionXY(trainerEncounterData->terrain->managedSprite, 8, 0);
+                } else {
+                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 24 * 8, 8 * 11);
+                }
+            }
+
+            ManagedSprite_GetPositionXY(trainerEncounterData->terrain->managedSprite, &x1, &y1);
+
+            if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_ENEMY
+                || (trainerEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_1 && (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_DOUBLES) || battleType == ((BATTLE_TYPE_LINK | BATTLE_TYPE_TRAINER) | BATTLE_TYPE_DOUBLES)))) {
+                ManagedSprite_SetPositionXY(trainerEncounterData->managedSprite, x1, y2);
+            } else if (trainerEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
+                x1 = x2 - x1;
+                x1 -= 24;
+
+                ManagedSprite_OffsetPositionXY(trainerEncounterData->managedSprite, -x1, 0);
+            } else if (trainerEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_2) {
+                x1 = x1 - x2;
+                x1 -= 16;
+
+                ManagedSprite_OffsetPositionXY(trainerEncounterData->managedSprite, x1, 0);
+            }
+
+            ManagedSprite_GetPositionXY(trainerEncounterData->managedSprite, &x2, &y2);
+
+            if (x2 >= trainerEncounterData->targetX) {
+                ManagedSprite_SetPositionXY(trainerEncounterData->managedSprite, trainerEncounterData->targetX, y2);
+
+                if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_ENEMY || trainerEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
+                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 24 * 8, 8 * 11);
+                }
+
+                if (ManagedSprite_GetNumFrames(trainerEncounterData->managedSprite) > 1) {
+                    ManagedSprite_SetAnimationFrame(trainerEncounterData->managedSprite, 0);
+                    ManagedSprite_SetAnim(trainerEncounterData->managedSprite, 1);
+                    trainerEncounterData->ballFlashStarted = 0;
+                    trainerEncounterData->state = 3;
+                } else {
+                    trainerEncounterData->state = 4;
+                }
+            }
+        } else {
+            if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER || trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
+                if (x1 > 64) {
+                    ManagedSprite_OffsetPositionXY(trainerEncounterData->terrain->managedSprite, -8, 0);
+                } else {
+                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 64, 128 + 8);
+                }
+            }
+
+            ManagedSprite_GetPositionXY(trainerEncounterData->terrain->managedSprite, &x1, &y1);
+
+            if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER
+                || (trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1
+                    && (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_FRONTIER | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_TAG | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_LINK | BATTLE_TYPE_DOUBLES)))) {
+                ManagedSprite_SetPositionXY(trainerEncounterData->managedSprite, x1, y2);
+            } else if (trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
+                x1 = x1 - x2;
+                x1 -= 24;
+
+                ManagedSprite_OffsetPositionXY(trainerEncounterData->managedSprite, x1, 0);
+            } else if (trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
+                x1 = x2 - x1;
+                x1 -= 16;
+
+                ManagedSprite_OffsetPositionXY(trainerEncounterData->managedSprite, -x1, 0);
+            }
+
+            ManagedSprite_GetPositionXY(trainerEncounterData->managedSprite, &x2, &y2);
+
+            if (trainerEncounterData->pokepic != NULL) {            
+                Pokepic_SetAttr(trainerEncounterData->pokepic, 0, x2);
+            }
+        
+            if (x2 <= trainerEncounterData->targetX) {
+                if (trainerEncounterData->pokepic) {
+                    Pokepic_Delete(trainerEncounterData->pokepic); 
+                }
+                
+                ManagedSprite_SetPositionXY(trainerEncounterData->managedSprite, trainerEncounterData->targetX, y2);
+
+                if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER || trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
+                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 64, 128 + 8);
+                }
+
+                trainerEncounterData->state = 4;
+            }
+        }
+        break;
+    case 3:
+        if (ManagedSprite_IsAnimated(trainerEncounterData->managedSprite) == TRUE) {
+            if (ov12_02261DC8(trainerEncounterData, trainerEncounterData->managedSprite) == 0) {
+                break;
+            }
+        }
+
+        trainerEncounterData->state = 4;
+    case 4:
+        BattleController_EmitClearCommand(trainerEncounterData->battleSys, trainerEncounterData->battler, trainerEncounterData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+
+extern void ov07_022344A8(UnkBallData *, s16, s16);
+
+extern s16 ov12_0226D1E8[10][6][2];
+
+static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data)
+{
+    TrainerThrowBallData *trainerThrowBallData = data;
+    s16 x, y;
+    int animFrame;
+    u32 battleType;
+
+    battleType = BattleSystem_GetBattleType(trainerThrowBallData->battleSys);
+
+    switch (trainerThrowBallData->state) {
+    case 0:
+        if (trainerThrowBallData->ballTypeIn == 0) {
+            trainerThrowBallData->state = 1;
+        } else {
+            BallThrow ballThrow;
+
+            switch (trainerThrowBallData->ballTypeIn) {
+            default:
+            case 1:
+                ballThrow.type = 15;
+                trainerThrowBallData->ballTargetState = 3;
+                ballThrow.ballID = 5;
+                break;
+            case 2:
+                ballThrow.type = 12;
+                trainerThrowBallData->ballTargetState = 0;
+                ballThrow.ballID = 0x401;
+                break;
+            case 3:
+                ballThrow.type = 13;
+                trainerThrowBallData->ballTargetState = 0;
+                ballThrow.ballID = 0x402;
+                break;
+            case 4:
+                ballThrow.type = 15;
+                trainerThrowBallData->ballTargetState = 3;
+                ballThrow.ballID = 0x400;
+                break;
+            }
+
+            ballThrow.heapID = HEAP_ID_BATTLE;
+            ballThrow.mode = BALL_THROW_MODE_TRAINER_SEND_OUT;
+            ballThrow.target = trainerThrowBallData->battler;
+            ballThrow.cellActorSys = BattleSystem_GetSpriteSystem(trainerThrowBallData->battleSys);
+            ballThrow.paletteSys = BattleSystem_GetPaletteData(trainerThrowBallData->battleSys);
+            ballThrow.surface = 0;
+            ballThrow.battleSys = trainerThrowBallData->battleSys;
+
+            trainerThrowBallData->opponentData->ballData = ov07_02233DB8(&ballThrow);
+
+            ov07_022344C4(trainerThrowBallData->opponentData->ballData, 100);
+            ov07_022344D0(trainerThrowBallData->opponentData->ballData, 2);
+            ov07_022344C0(trainerThrowBallData->opponentData->ballData, 0);
+
+            ManagedSprite_SetAnimationFrame(trainerThrowBallData->opponentData->managedSprite, 0);
+            ManagedSprite_SetAnim(trainerThrowBallData->opponentData->managedSprite, 1);
+            ManagedSprite_SetAnimateFlag(trainerThrowBallData->opponentData->managedSprite, TRUE);
+
+            trainerThrowBallData->state = 3;
+        }
+        break;
+    case 1:
+        if (trainerThrowBallData->face == 2) {
+            ManagedSprite_OffsetPositionXY(trainerThrowBallData->opponentData->managedSprite, 5, 0);
+            ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
+
+            if (x >= (256 - 48) - 48 && ov07_02233F20(trainerThrowBallData->opponentData->ballData) != 0) {
+                ov07_0223449C(trainerThrowBallData->opponentData->ballData, 1);
+                ov07_02233EFC(trainerThrowBallData->opponentData->ballData, 0);
+
+                if (battleType & BATTLE_TYPE_DOUBLES && (battleType & BATTLE_TYPE_MULTI) == 0) {
+                    OpponentData *opponentData = BattleSystem_GetOpponentData(trainerThrowBallData->battleSys, BattleSystem_GetBattlerIdPartner(trainerThrowBallData->battleSys, trainerThrowBallData->battler));
+
+                    ov07_0223449C(opponentData->ballData, 1);
+                    ov07_02233EFC(opponentData->ballData, 0);
+                    ov07_022344DC(opponentData->ballData, 12);
+                }
+            } else if (x >= (256 + 40)) {
+                SpriteManager *spriteMan = BattleSystem_GetSpriteManager(trainerThrowBallData->battleSys);
+                Sprite_DeleteAndFreeResources(trainerThrowBallData->opponentData->managedSprite);
+                trainerThrowBallData->opponentData->managedSprite = NULL;
+
+                SpriteManager_UnloadCharObjById(spriteMan, 20015 + trainerThrowBallData->opponentData->battlerType);
+                SpriteManager_UnloadPlttObjById(spriteMan, 20010 + trainerThrowBallData->opponentData->battlerType);
+                SpriteManager_UnloadCellObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+                SpriteManager_UnloadAnimObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+                trainerThrowBallData->state = 6;
+            }
+        } else {
+            ManagedSprite_SetAnimationFrame(trainerThrowBallData->opponentData->managedSprite, 0);
+            ManagedSprite_SetAnim(trainerThrowBallData->opponentData->managedSprite, 1);
+            ManagedSprite_SetAnimateFlag(trainerThrowBallData->opponentData->managedSprite, TRUE);
+            trainerThrowBallData->state = 2;
+        }
+        break;
+    case 2:
+        ManagedSprite_OffsetPositionXY(trainerThrowBallData->opponentData->managedSprite, -5, 0);
+        ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
+
+        if (trainerThrowBallData->opponentData->ballData) {
+            animFrame = ManagedSprite_GetAnimationFrame(trainerThrowBallData->opponentData->managedSprite);
+
+            if (ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0] != 0x7FFF) {
+                ov07_0223449C(trainerThrowBallData->opponentData->ballData, 1);
+                ov07_022344A8(trainerThrowBallData->opponentData->ballData, x + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0], y + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][1]);
+
+                if (animFrame == 3 && ov07_02233F20(trainerThrowBallData->opponentData->ballData) != 0) {
+                    ov07_02233EFC(trainerThrowBallData->opponentData->ballData, 0);
+                    ov07_022344C0(trainerThrowBallData->opponentData->ballData, 1);
+
+                    if (battleType & BATTLE_TYPE_DOUBLES && (battleType & BATTLE_TYPE_MULTI) == 0) {
+                        OpponentData *opponentData = BattleSystem_GetOpponentData(trainerThrowBallData->battleSys, BattleSystem_GetBattlerIdPartner(trainerThrowBallData->battleSys, trainerThrowBallData->battler));
+
+                        ov07_022344A8(opponentData->ballData, x + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0], y + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][1]);
+                        ov07_0223449C(opponentData->ballData, 1);
+                        ov07_02233EFC(opponentData->ballData, 0);
+                        ov07_022344C0(opponentData->ballData, 1);
+                    }
+                }
+            }
+        }
+
+        if (x <= -40) {
+            SpriteManager *spriteMan = BattleSystem_GetSpriteManager(trainerThrowBallData->battleSys);
+
+            Sprite_DeleteAndFreeResources(trainerThrowBallData->opponentData->managedSprite);
+            trainerThrowBallData->opponentData->managedSprite = NULL;
+
+            SpriteManager_UnloadCharObjById(spriteMan, 20015 + trainerThrowBallData->opponentData->battlerType);
+            SpriteManager_UnloadPlttObjById(spriteMan, 20010 + trainerThrowBallData->opponentData->battlerType);
+            SpriteManager_UnloadCellObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+            SpriteManager_UnloadAnimObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+            trainerThrowBallData->state = 6;
+        }
+        break;
+    case 3:
+        ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
+        animFrame = ManagedSprite_GetAnimationFrame(trainerThrowBallData->opponentData->managedSprite);
+
+        if (animFrame == 4) {
+            trainerThrowBallData->delay = 8;
+            trainerThrowBallData->state = 4;
+        } else if (trainerThrowBallData->opponentData->ballData != NULL) {
+            if (ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0] != 0x7FFF) {
+                ov07_022344A8(trainerThrowBallData->opponentData->ballData, x + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0], y + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][1]);
+
+                if (animFrame == 3 && ov07_02233F20(trainerThrowBallData->opponentData->ballData) != trainerThrowBallData->ballTargetState) {
+                    ov07_02233EFC(trainerThrowBallData->opponentData->ballData, trainerThrowBallData->ballTargetState);
+                    ov07_022344D0(trainerThrowBallData->opponentData->ballData, 1);
+                    ov07_022344C0(trainerThrowBallData->opponentData->ballData, 1);
+
+                    if (trainerThrowBallData->ballTargetState != 3) {
+                        PlaySE(SEQ_SE_DP_THROW);
+                    }
+                }
+            }
+        }
+        break;
+    case 4:
+        if (--trainerThrowBallData->delay == 0) {
+            if (trainerThrowBallData->ballTargetState == 3) {
+                trainerThrowBallData->state = 6;
+            } else {
+                trainerThrowBallData->state = 5;
+            }
+        }
+        break;
+    case 5:
+        if (ov07_02233E88(trainerThrowBallData->opponentData->ballData) == 1) {
+            break;
+        }
+
+        ov07_02233ECC(trainerThrowBallData->opponentData->ballData);
+
+        trainerThrowBallData->opponentData->ballData = NULL;
+        trainerThrowBallData->state = 6;
+        break;
+    case 6:
+        BattleController_EmitClearCommand(trainerThrowBallData->battleSys, trainerThrowBallData->battler, trainerThrowBallData->command);
         Heap_Free(data);
         SysTask_Destroy(task);
         break;
