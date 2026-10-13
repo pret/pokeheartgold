@@ -52,8 +52,8 @@ runs:
         echo 'calcrom_output<<EOF' >> "$GITHUB_OUTPUT"
         cargo run --manifest-path calcrom/Cargo.toml ${{ runner.debug || '--release' }} -- \
           -d "${{ inputs.repodir }}" \
-          ${{ inputs.arm9subdir && '-9 ${{ inputs.arm9subdir }}' || '' }} \
-          ${{ inputs.arm7subdir && '-7 ${{ inputs.arm7subdir }}' || '' }} \
+          ${{ inputs.arm9subdir && '-9' || '' }} ${{ inputs.arm9subdir }} \
+          ${{ inputs.arm7subdir && '-7' || '' }} ${{ inputs.arm7subdir }} \
           -m "${{ inputs.arm9stem }}" \
           -s "${{ inputs.arm7stem }}" \
           ${{ inputs.romnames }} | tee -a "$GITHUB_OUTPUT"
