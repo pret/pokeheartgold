@@ -1,7 +1,8 @@
 #include "unk_02037C94.h"
 
+#include <dwc.h>
+
 #include "communication_error.h"
-#include "dwcaccount.h"
 #include "overlay_00_thumb.h"
 #include "overlay_13_arm_2.h"
 #include "overlay_45_thumb.h"
@@ -1256,7 +1257,7 @@ BOOL sub_020395B0(void) {
         return FALSE;
     }
     s32 sp4;
-    s32 sp0;
+    DWCErrorType sp0;
     if (_021D4150->unk4E == 24 || _021D4150->unk4E == 36) {
         if (DWC_GetLastErrorEx(&sp4, &sp0)) {
             DWC_ClearError();

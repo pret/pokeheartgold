@@ -6,7 +6,7 @@
 
 typedef void (*ControllerFunction)(BattleSystem *, BattleContext *ctx);
 
-void BattleSystem_TryRecvMessage(BattleSystem *battleSys, int recipient);
+void BattleSystem_TryRecvMessage(BattleSystem *battleSystem, int recipient);
 
 void BattleController_EmitSetupBattleUI(BattleSystem *battleSystem, BOOL a1);
 void BattleController_EmitSetEncounter(BattleSystem *battleSystem, int battlerId);
@@ -15,7 +15,7 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battlerId,
 void BattleController_EmitReturnPokemon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void BattleController_EmitDeletePokemon(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitSetTrainerEncounter(BattleSystem *battleSystem, int battlerId);
-void BattleController_EmitTrainerThrowBall(BattleSystem *battleSys, int battler, int ballTypeIn);
+void BattleController_EmitTrainerThrowBall(BattleSystem *battleSystem, int battler, int ballTypeIn);
 void BattleController_EmitTrainerSlideOut(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitTrainerSlideIn(BattleSystem *battleSystem, int battlerId, int posIn);
 void BattleController_EmitSlideInBackground(BattleSystem *battleSystem, int battlerId);
@@ -68,7 +68,7 @@ void BattleSystem_ReloadMonData(BattleSystem *battleSystem, BattleContext *ctx, 
 
 void ov12_022645C8(BattleSystem *battleSystem, BattleContext *ctx, u8 a2);
 void BattleController_EmitSetCommandSelectionMenu(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int index);
-void BattleController_EmitOpenCaptureBall(BattleSystem *battleSys, int battler, int ball);
+void BattleController_EmitOpenCaptureBall(BattleSystem *battleSystem, int battler, int ball);
 void BattleController_EmitSetAlertMessage(BattleSystem *battleSystem, int battlerId, BattleMessage msg);
 void BattleController_EmitStopGaugeAnimation(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitShowMoveSelectMenu(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
@@ -80,6 +80,6 @@ void BattleController_EmitPlayLevelUpAnimation(BattleSystem *battleSystem, int b
 void BattleController_EmitRefreshHPGauge(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
 void BattleController_EmitForgetMove(BattleSystem *battleSystem, int battlerId, int a2, int slot);
 void BattleController_EmitClearMessageBox(BattleSystem *battleSystem);
-void BattleController_SetMoveAnimation(BattleSystem *battleSys, BattleContext *ctx, MoveAnimation *animation, int animMode, int secondaryAnimID, int attacker, int defender, u16 move);
+void BattleController_SetMoveAnimation(BattleSystem *battleSystem, BattleContext *ctx, MoveAnimation *animation, int animMode, int secondaryAnimID, int attacker, int defender, u16 move);
 
 #endif
