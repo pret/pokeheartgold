@@ -804,4 +804,20 @@ typedef struct BallThrow {
     BattleSystem *battleSys;
 } BallThrow;
 
+typedef struct MoveDisplayInfo {
+    u16 move[4];
+    u16 curPP[4];
+    u16 maxPP[4];
+} MoveDisplayInfo;
+
+typedef struct ActionSelectData {
+    u8 battlerType;
+    u8 battler;
+    u8 partySlot;
+    u8 ballStatusBattler;
+    s16 curHp;
+    u16 maxHp;
+    u8 isWaitingForPartner;
+} ActionSelectData;
+
 #endif

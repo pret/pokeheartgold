@@ -122,7 +122,7 @@ u16 BattleSystem_Random(BattleSystem *battleSystem);
 u32 BattleSystem_GetRandTemp(BattleSystem *battleSystem);
 void BattleSystem_SetRandTemp(BattleSystem *battleSystem, u32 temp);
 void ov12_0223BDDC(BattleSystem *battleSystem, int battlerId, u8 data);
-BOOL ov12_0223BE0C(BattleSystem *battleSystem, int battlerId, u8 *data);
+BOOL BattleSystem_ReadNextRecordedInput(BattleSystem *battleSystem, int battlerId, u8 *data);
 u8 ov12_0223BE68(BattleSystem *battleSystem, u8 *buffer);
 void ov12_0223BF14(BattleSystem *battleSystem, u16 size, u8 *buffer);
 u16 ov12_0223BFC0(BattleSystem *battleSystem);

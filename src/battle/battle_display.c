@@ -521,7 +521,7 @@ typedef struct SlideTrainerOutData {
     int unused;
 } SlideTrainerOutData;
 
-extern void ov12_0225D890(SysTask *, void *);
+extern void BattleDisplayTask_SlideTrainerOut(SysTask *, void *);
 
 void BattleDisplay_InitTaskSlideTrainerOut(BattleSystem *battleSys, OpponentData *opponentData)
 {
@@ -539,7 +539,7 @@ void BattleDisplay_InitTaskSlideTrainerOut(BattleSystem *battleSys, OpponentData
         slideTrainerOutData->face = 0;
     }
 
-    SysTask_CreateOnMainQueue(ov12_0225D890, slideTrainerOutData, 0);
+    SysTask_CreateOnMainQueue(BattleDisplayTask_SlideTrainerOut, slideTrainerOutData, 0);
 }
 
 typedef struct SlideTrainerInData {
@@ -553,7 +553,7 @@ typedef struct SlideTrainerInData {
     u16 unused;
 } SlideTrainerInData;
 
-extern void ov12_0225D990(SysTask *, void *);
+extern void BattleDisplayTask_SlideTrainerIn(SysTask *, void *);
 extern const s16 gSlideTrainerInCoords[][3];
 
 void BattleDisplay_InitTaskSlideTrainerIn(BattleSystem *battleSys, OpponentData *opponentData, TrainerSlideInMessage *message)
@@ -580,10 +580,10 @@ void BattleDisplay_InitTaskSlideTrainerIn(BattleSystem *battleSys, OpponentData 
     slideTrainerInData->command = message->command;
     slideTrainerInData->battler = opponentData->battlerId;
 
-    SysTask_CreateOnMainQueue(ov12_0225D990, slideTrainerInData, 0);
+    SysTask_CreateOnMainQueue(BattleDisplayTask_SlideTrainerIn, slideTrainerInData, 0);
 }
 
-extern void ov12_0225DA18(SysTask *, void *);
+extern void BattleDisplayTask_SlideHealthBoxIn(SysTask *, void *);
 
 void BattleDisplay_InitTaskSlideHealthBoxIn(BattleSystem *battleSys, OpponentData *opponentData, HealthBoxData *healthboxData)
 {
@@ -610,10 +610,10 @@ void BattleDisplay_InitTaskSlideHealthBoxIn(BattleSystem *battleSys, OpponentDat
     BattleHpBar_SetEnabled(hpBar, FALSE);
     ov12_0226498C(hpBar, hpBar->hp, -1);
 
-    hpBar->unk10 = SysTask_CreateOnMainQueue(ov12_0225DA18, hpBar, 1000);
+    hpBar->unk10 = SysTask_CreateOnMainQueue(BattleDisplayTask_SlideHealthBoxIn, hpBar, 1000);
 }
 
-extern void ov12_0225DA8C(SysTask *, void *);
+extern void BattleDisplayTask_SlideHealthBoxOut(SysTask *, void *);
 
 void BattleDisplay_InitTaskSlideHealthBoxOut(BattleSystem *battleSys, OpponentData *opponentData)
 {
@@ -626,7 +626,7 @@ void BattleDisplay_InitTaskSlideHealthBoxOut(BattleSystem *battleSys, OpponentDa
 
     ov12_02264FB0(hpBar, 1);
 
-    hpBar->unk10 = SysTask_CreateOnMainQueue(ov12_0225DA8C, hpBar, 1000);
+    hpBar->unk10 = SysTask_CreateOnMainQueue(BattleDisplayTask_SlideHealthBoxOut, hpBar, 1000);
 }
 
 
@@ -3051,4 +3051,539 @@ static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data)
         SysTask_Destroy(task);
         break;
     }
+}
+
+static void ov12_0225D644(SysTask *task, void *data)
+{
+    TrainerThrowBallData *trainerThrowBallData = data;
+    s16 x, y;
+    int animFrame;
+    u32 battleType;
+
+    battleType = BattleSystem_GetBattleType(trainerThrowBallData->battleSys);
+
+    switch (trainerThrowBallData->state) {
+    case 0:
+        if (trainerThrowBallData->face == 2) {
+            ManagedSprite_OffsetPositionXY(trainerThrowBallData->opponentData->managedSprite, 5, 0);
+            ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
+            if (x >= 296) {
+                SpriteManager *spriteMan = BattleSystem_GetSpriteManager(trainerThrowBallData->battleSys);
+                Sprite_DeleteAndFreeResources(trainerThrowBallData->opponentData->managedSprite);
+                trainerThrowBallData->opponentData->managedSprite = NULL;
+
+                SpriteManager_UnloadCharObjById(spriteMan, 20015 + trainerThrowBallData->opponentData->battlerType);
+                SpriteManager_UnloadPlttObjById(spriteMan, 20010 + trainerThrowBallData->opponentData->battlerType);
+                SpriteManager_UnloadCellObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+                SpriteManager_UnloadAnimObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+                trainerThrowBallData->state = 2;
+            }
+        } else {
+            ManagedSprite_SetPriority(trainerThrowBallData->opponentData->managedSprite, 1);
+            ManagedSprite_SetAnimationFrame(trainerThrowBallData->opponentData->managedSprite, 0);
+            ManagedSprite_SetAnim(trainerThrowBallData->opponentData->managedSprite, 1);
+            ManagedSprite_SetAnimateFlag(trainerThrowBallData->opponentData->managedSprite, TRUE);
+            trainerThrowBallData->state = 1;
+        }
+        break;
+    case 1:
+        ManagedSprite_OffsetPositionXY(trainerThrowBallData->opponentData->managedSprite, -5, 0);
+        ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
+
+        if (trainerThrowBallData->opponentData->ballData && (battleType & 2) && !(battleType & 8)) {
+            animFrame = ManagedSprite_GetAnimationFrame(trainerThrowBallData->opponentData->managedSprite);
+
+            if (ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0] != 0x7FFF) {
+                OpponentData *opponentData = BattleSystem_GetOpponentData(trainerThrowBallData->battleSys, BattleSystem_GetBattlerIdPartner(trainerThrowBallData->battleSys, trainerThrowBallData->battler));
+
+                if (animFrame == 3 && ov07_02233F20(opponentData->ballData) != 0) {
+                    ov07_022344A8(opponentData->ballData, x + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0], y + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][1]);
+                    ov07_0223449C(opponentData->ballData, 1);
+                    ov07_02233EFC(opponentData->ballData, 0);
+                    ov07_022344C0(opponentData->ballData, 1);
+                    ov07_022344D0(opponentData->ballData, 1);
+                }
+            }
+        }
+
+        if (x <= -40) {
+            SpriteManager *spriteMan = BattleSystem_GetSpriteManager(trainerThrowBallData->battleSys);
+
+            Sprite_DeleteAndFreeResources(trainerThrowBallData->opponentData->managedSprite);
+            trainerThrowBallData->opponentData->managedSprite = NULL;
+
+            SpriteManager_UnloadCharObjById(spriteMan, 20015 + trainerThrowBallData->opponentData->battlerType);
+            SpriteManager_UnloadPlttObjById(spriteMan, 20010 + trainerThrowBallData->opponentData->battlerType);
+            SpriteManager_UnloadCellObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+            SpriteManager_UnloadAnimObjById(spriteMan, 20007 + trainerThrowBallData->opponentData->battlerType);
+            trainerThrowBallData->state = 2;
+        }
+        break;
+    case 2:
+        BattleController_EmitClearCommand(trainerThrowBallData->battleSys, trainerThrowBallData->battler, trainerThrowBallData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+static void BattleDisplayTask_SlideTrainerOut(SysTask *task, void *data)
+{
+    SlideTrainerOutData *slideTrainerOutData = data;
+    s16 x;
+    s16 y;
+
+    switch (slideTrainerOutData->state) {
+    case 0:
+        if (slideTrainerOutData->face == 2) {
+            ManagedSprite_OffsetPositionXY(slideTrainerOutData->opponentData->managedSprite, 5, 0);
+            ManagedSprite_GetPositionXY(slideTrainerOutData->opponentData->managedSprite, &x, &y);
+
+            if (x >= (256 + 40)) {
+                slideTrainerOutData->state++;
+            }
+        } else {
+            ManagedSprite_OffsetPositionXY(slideTrainerOutData->opponentData->managedSprite, -5, 0);
+            ManagedSprite_GetPositionXY(slideTrainerOutData->opponentData->managedSprite, &x, &y);
+
+            if (x <= -40) {
+                slideTrainerOutData->state++;
+            }
+        }
+        break;
+    case 1:
+        SpriteManager *spriteMan = BattleSystem_GetSpriteManager(slideTrainerOutData->battleSys);
+        Sprite_DeleteAndFreeResources(slideTrainerOutData->opponentData->managedSprite);
+        slideTrainerOutData->opponentData->managedSprite = NULL;
+
+        SpriteManager_UnloadCharObjById(spriteMan, 20015 + slideTrainerOutData->opponentData->battlerType);
+        SpriteManager_UnloadPlttObjById(spriteMan, 20010 + slideTrainerOutData->opponentData->battlerType);
+        SpriteManager_UnloadCellObjById(spriteMan, 20007 + slideTrainerOutData->opponentData->battlerType);
+        SpriteManager_UnloadAnimObjById(spriteMan, 20007 + slideTrainerOutData->opponentData->battlerType);
+        BattleController_EmitClearCommand(slideTrainerOutData->battleSys, slideTrainerOutData->battler, slideTrainerOutData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+static void BattleDisplayTask_SlideTrainerIn(SysTask *task, void *data)
+{
+    SlideTrainerInData *slideTrainerInData = data;
+    s16 x, y;
+
+    switch (slideTrainerInData->state) {
+    case 0:
+        ManagedSprite_GetPositionXY(slideTrainerInData->managedSprite, &x, &y);
+
+        if (slideTrainerInData->face == 0) {
+            x += 5;
+
+            if (x >= slideTrainerInData->x) {
+                x = slideTrainerInData->x;
+                slideTrainerInData->state++;
+            }
+        } else {
+            x -= 5;
+
+            if (x <= slideTrainerInData->x) {
+                x = slideTrainerInData->x;
+                slideTrainerInData->state++;
+            }
+        }
+
+        ManagedSprite_SetPositionXY(slideTrainerInData->managedSprite, x, y);
+        break;
+    case 1:
+        BattleController_EmitClearCommand(slideTrainerInData->battleSys, slideTrainerInData->battler, slideTrainerInData->command);
+        Heap_Free(data);
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+enum SlideHealthBoxInState {
+    SLIDE_HEALTHBOX_IN_STATE_ENABLE = 0,
+    SLIDE_HEALTHBOX_IN_STATE_WAIT,
+    SLIDE_HEALTHBOX_IN_STATE_DONE,
+};
+
+static void BattleDisplayTask_SlideHealthBoxIn(SysTask *task, void *data)
+{
+    BattleHpBar *hpBar = data;
+
+    switch (hpBar->script) {
+    case SLIDE_HEALTHBOX_IN_STATE_ENABLE:
+        if (hpBar->unk4D > 0) {
+            hpBar->unk4D--;
+            break;
+        }
+
+        ov12_02264FB0(hpBar, 0);
+        BattleHpBar_SetEnabled(hpBar, TRUE);
+        hpBar->script++;
+        break;
+
+    case SLIDE_HEALTHBOX_IN_STATE_WAIT:
+        if (hpBar->unk_4F_1 == TRUE) {
+            hpBar->script++;
+        }
+        break;
+
+    default:
+        BattleController_EmitClearCommand(hpBar->battleSystem, hpBar->battlerId, hpBar->unk4C);
+        hpBar->unk10 = NULL;
+        SysTask_Destroy(task);
+        break;
+    }
+}
+
+enum SlideHealthBoxOutState {
+    SLIDE_HEALTHBOX_OUT_STATE_WAIT = 0,
+    SLIDE_HEALTHBOX_OUT_STATE_DONE,
+};
+
+static void BattleDisplayTask_SlideHealthBoxOut(SysTask *task, void *data)
+{
+    BattleHpBar *hpBar = data;
+
+    switch (hpBar->script) {
+    case SLIDE_HEALTHBOX_OUT_STATE_WAIT:
+        if (hpBar->unk_4F_1 == TRUE) {
+            hpBar->script++;
+        }
+        break;
+
+    default:
+        BattleController_EmitClearCommand(hpBar->battleSystem, hpBar->battlerId, hpBar->unk4C);
+        hpBar->unk10 = NULL;
+        SysTask_Destroy(task);
+        BattleHpBar_SetEnabled(hpBar, FALSE);
+        break;
+    }
+}
+
+//static 
+void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *data)
+{
+    CommandSetData *commandSetData = data;
+    BgConfig *bgConfig = BattleSystem_GetBgConfig(commandSetData->battleSys);
+    BattleInput *btlSubscreen = BattleSystem_GetBattleInput(commandSetData->battleSys);
+    OpponentData *opponentData = BattleSystem_GetOpponentData(commandSetData->battleSys, commandSetData->battler);
+    u32 battleType = BattleSystem_GetBattleType(commandSetData->battleSys);
+    int partner = BattleSystem_GetBattlerIdPartner(commandSetData->battleSys, commandSetData->battler);
+    BattleHpBar *hpBar;
+
+    if (partner != commandSetData->battler) {
+        hpBar = BattleSystem_GetHpBar(commandSetData->battleSys, partner);
+    } else {
+        hpBar = NULL;
+    }
+
+    switch (commandSetData->state) {
+    case 0:
+        MoveDisplayInfo moveDisplayInfo;
+        int i;
+
+        for (i = 0; i < 4; i++) {
+            moveDisplayInfo.move[i] = commandSetData->moves[i];
+            moveDisplayInfo.curPP[i] = commandSetData->curPP[i];
+            moveDisplayInfo.maxPP[i] = commandSetData->maxPP[i];
+        }
+
+        BattleInput_LoadFightMenuText(BattleSystem_GetBattleInput(commandSetData->battleSys), commandSetData->battlerType, &moveDisplayInfo);
+        commandSetData->state++;
+
+    case 1: {
+        MsgData *msgLoader = BattleSystem_GetMessageLoader(commandSetData->battleSys);
+        BattleMessage battleMsg;
+
+        if (battleType & BATTLE_TYPE_TUTORIAL) {
+            switch (ov12_0223BB04(commandSetData->battleSys)) {
+            case FALSE:
+                battleMsg.tag = TAG_NICKNAME;
+                battleMsg.param[0] = commandSetData->battler | (commandSetData->partySlot << 8);
+                battleMsg.id = 0x399;
+                BattleSystem_PrintBattleMessage(commandSetData->battleSys, msgLoader, &battleMsg, 0);
+                commandSetData->state = 3;
+                break;
+            case TRUE:
+                battleMsg.tag = TAG_NONE;
+                battleMsg.id = 0x4CA + BattleSystem_GetTrainerGender(commandSetData->battleSys, 0);
+                commandSetData->msgIdx = BattleSystem_PrintBattleMessage(commandSetData->battleSys, msgLoader, &battleMsg, BattleSystem_GetTextFrameDelay(commandSetData->battleSys));
+                commandSetData->state = 2;
+                break;
+            }
+        } else {
+            if (battleType & BATTLE_TYPE_SAFARI) {
+                battleMsg.tag = TAG_TRNAME;
+                battleMsg.param[0] = BattleSystem_GetTrainerIndex(commandSetData->battleSys, commandSetData->battler);
+                battleMsg.id = 0x39A;
+            } else if (battleType & BATTLE_TYPE_PAL_PARK) {
+                battleMsg.tag = TAG_TRNAME;
+                battleMsg.param[0] = BattleSystem_GetTrainerIndex(commandSetData->battleSys, commandSetData->battler);
+                battleMsg.id = 0x4C6;
+            } else {
+                battleMsg.tag = TAG_NICKNAME;
+                battleMsg.param[0] = commandSetData->battler | (commandSetData->partySlot << 8);
+                battleMsg.id = 0x399;
+            }
+
+            BattleSystem_PrintBattleMessage(commandSetData->battleSys, msgLoader, &battleMsg, 0);
+            commandSetData->state = 3;
+        }
+    } break;
+    case 2:
+        if (TextPrinterCheckActive(commandSetData->msgIdx) == FALSE) {
+            commandSetData->state = 3;
+        }
+        break;
+    case 3:
+        ov12_02264E84(commandSetData->hpBar);
+        ov12_02261FD4(opponentData, commandSetData->battleSys);
+        commandSetData->state = 4;
+    case 4:
+        if (BattleInput_CheckFeedbackDone(btlSubscreen) == 0) {
+            break;
+        }
+
+        ActionSelectData actionData;
+
+        NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
+        NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+
+        actionData.battler = commandSetData->battler;
+        actionData.battlerType = commandSetData->battlerType;
+        actionData.partySlot = commandSetData->partySlot;
+        actionData.curHp = commandSetData->curHP;
+        actionData.maxHp = commandSetData->maxHP;
+        actionData.ballStatusBattler = commandSetData->ballStatusBattler;
+        actionData.isWaitingForPartner = ov12_0223B580(commandSetData->battleSys, commandSetData->battler, commandSetData->switchingOrCanPickCommandMask);
+
+        if (opponentData->unk197) {
+            BattleInput_Deadstriped_022698AC(btlSubscreen, 1);
+
+            if (BattleSystem_GetBattleSpecial(commandSetData->battleSys) & 1) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 6, 0, &actionData);
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_PAL_PARK) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 10, 0, &actionData);
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_SAFARI) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 8, 0, &actionData);
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & (1 << 12)) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 20, 0, &actionData);
+            } else if (actionData.battlerType == 4 && (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_MULTI) == FALSE) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 4, 0, &actionData);
+            } else {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 3, 0, &actionData);
+            }
+
+            ov12_0223BB64(commandSetData->battleSys, 1);
+        } else {
+            if (BattleSystem_GetBattleSpecial(commandSetData->battleSys) & 1) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 5, 0, &actionData);
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_PAL_PARK) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 9, 0, &actionData);
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_SAFARI) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 7, 0, &actionData);
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & (1 << 12)) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 19, 0, &actionData);
+            } 
+            else if (actionData.battlerType != 4) {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 1, 0, &actionData);
+            } else {
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 2, 0, &actionData);
+            }
+
+            opponentData->unk197 = 1;
+        }
+
+        BattleInput_SetPartyExpPercents(btlSubscreen, commandSetData->expPercents);
+        BattleInput_UpdateBallGaugeAnimation(btlSubscreen, commandSetData->ballStatus[0], commandSetData->ballStatus[1]);
+        BattleInput_EnableBallGauge(btlSubscreen);
+        NARC_Delete(bgNarc);
+        NARC_Delete(objNarc);
+
+        if (hpBar != NULL) {
+            ov12_02265D70(hpBar);
+        }
+
+        commandSetData->state = 5;
+        break;
+    case 5:
+        if (gSystem.newKeys & PAD_BUTTON_START) {
+            OpponentData *opponentData;
+
+            for (int i = 0; i < BattleSystem_GetMaxBattlers(commandSetData->battleSys); i++) {
+                opponentData = BattleSystem_GetOpponentData(commandSetData->battleSys, i);
+                ov12_02264C84(&opponentData->hpBar);
+            }
+        }
+
+        commandSetData->input = BattleInput_CheckTouch(btlSubscreen);
+
+        if (commandSetData->input != 0xFFFFFFFF) {
+            commandSetData->unused_0B = 10; // set but never used
+            PlaySE(SEQ_SE_DP_DECIDE);
+            commandSetData->state = 6;
+        }
+        break;
+    case 6:
+        if (BattleInput_CheckFeedbackDone(btlSubscreen) == 1 || commandSetData->input == 1) {
+            switch (commandSetData->input) {
+            case 1: // Fight
+                if (BattleSystem_GetBattleType(commandSetData->battleSys) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) {
+                    commandSetData->state = 7;
+                }
+                break;
+            case 2: { // Bag
+                NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
+                NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
+                BattleInput_Deadstriped_022698AC(btlSubscreen, 0);
+                ov12_02265D74(hpBar);
+                ov12_02264EB4(commandSetData->hpBar);
+                ov12_02262014(opponentData);
+                NARC_Delete(bgNarc);
+                NARC_Delete(objNarc);
+            } break;
+            case 3: { // Pokemon
+                NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
+                NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
+                BattleInput_Deadstriped_022698AC(btlSubscreen, 0);
+                ov12_02265D74(hpBar);
+                ov12_02264EB4(commandSetData->hpBar);
+                ov12_02262014(opponentData);
+                NARC_Delete(bgNarc);
+                NARC_Delete(objNarc);
+            } break;
+            case 4: { // Run
+                NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
+                NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+
+                if (BattleInput_GetCancelRunFlag(btlSubscreen) == 1) {
+                    ov12_02265D74(hpBar);
+                    commandSetData->input = 0xFF;
+                }
+
+                BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
+                NARC_Delete(bgNarc);
+                NARC_Delete(objNarc);
+            } break;
+            default:
+                GF_ASSERT(FALSE);
+                break;
+            }
+
+            commandSetData->state = 8;
+        }
+        break;
+    case 7:
+        if (BattleInput_CheckFeedbackDone(btlSubscreen) == 1) {
+            NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
+            NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+
+            BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
+            BattleInput_Deadstriped_022698AC(btlSubscreen, 0);
+            ov12_02265D74(hpBar);
+            ov12_02264EB4(commandSetData->hpBar);
+            ov12_02262014(opponentData);
+            BattleInput_DisableBallGauge(btlSubscreen);
+
+            commandSetData->state = 8;
+
+            NARC_Delete(bgNarc);
+            NARC_Delete(objNarc);
+        }
+        break;
+    case 8:
+        if (ov12_022698B0(btlSubscreen) == 1) {
+            BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->input);
+            BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+            Heap_Free(data);
+            SysTask_Destroy(task);
+        }
+        break;
+    }
+}
+
+//static 
+void BattleDisplayTask_TrainerSetCommandSelection(SysTask *task, void *data)
+{
+    CommandSetData *commandSetData = data;
+    int command = ov10_022205BC(commandSetData->battleSys, commandSetData->battler);
+
+    BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, command);
+    BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+
+    Heap_Free(data);
+    SysTask_Destroy(task);
+}
+
+//static 
+void BattleDisplayTask_LinkSetCommandSelection(SysTask *task, void *data)
+{
+    CommandSetData *commandSetData = data;
+
+    BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+    Heap_Free(data);
+    SysTask_Destroy(task);
+}
+
+extern u8 ov12_0226D140[13][2];
+
+//static 
+void BattleDisplayTask_SafariPokemonSetCommandSelection(SysTask *task, void *data)
+{
+    CommandSetData *commandSetData = data;
+    u8 escapeCount = ov12_0223B694(commandSetData->battleSys);
+    u16 species = BattleMon_Get(BattleSystem_GetBattleContext(commandSetData->battleSys), commandSetData->battler, BMON_DATA_SPECIES, NULL);
+    int fleeRate = GetMonBaseStat(species, 26);
+    fleeRate = fleeRate * ov12_0226D140[escapeCount][0] / ov12_0226D140[escapeCount][1];
+
+    if (BattleSystem_Random(commandSetData->battleSys) % 255 <= fleeRate) {
+        BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, 4);
+    } else {
+        BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, 5);
+    }
+
+    BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+
+    Heap_Free(data);
+    SysTask_Destroy(task);
+}
+
+//static
+void BattleDisplayTask_PalParkPokemonSetCommandSelection(SysTask *task, void *data)
+{
+    CommandSetData *commandSetData = data;
+
+    BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, 4);
+    BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+
+    Heap_Free(data);
+    SysTask_Destroy(task);
+}
+
+//static 
+void BattleDisplayTask_RecordingSetCommandSelection(SysTask *task, void *data)
+{
+    CommandSetData *commandSetData = data;
+    u8 v1;
+
+    if (BattleSystem_ReadNextRecordedInput(commandSetData->battleSys, commandSetData->battler, &v1) == 1) {
+        BattleDisplay_StopPlaybackAlt(commandSetData->battleSys);
+    }
+
+    if (!v1 || v1 > 4 || v1 == 2) {
+        BattleDisplay_StopPlayback(commandSetData->battleSys);
+    }
+
+    BattleController_EmitSelectedCommand(commandSetData->battleSys, commandSetData->battler, v1);
+    BattleController_EmitClearCommand(commandSetData->battleSys, commandSetData->battler, commandSetData->command);
+
+    Heap_Free(data);
+    SysTask_Destroy(task);
 }

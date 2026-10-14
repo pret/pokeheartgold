@@ -213,7 +213,7 @@
 .public BattleSystem_SetCriticalHpMusicFlag
 .public BattleSystem_Random
 .public BattleSystem_SetRandTemp
-.public ov12_0223BE0C
+.public BattleSystem_ReadNextRecordedInput
 .public ov12_0223BF14
 .public ov12_0223BFC0
 .public ov12_0223BFCC

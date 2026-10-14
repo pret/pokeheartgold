@@ -1129,7 +1129,7 @@ void ov12_0223BDDC(BattleSystem *battleSystem, int battlerId, u8 data) {
     }
 }
 
-BOOL ov12_0223BE0C(BattleSystem *battleSystem, int battlerId, u8 *data) {
+BOOL BattleSystem_ReadNextRecordedInput(BattleSystem *battleSystem, int battlerId, u8 *data) {
     BOOL ret;
     *data = 0xFF;
     if ((battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) && (battleSystem->unk245C[battlerId] < 1024)) {
