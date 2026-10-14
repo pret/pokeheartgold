@@ -1,10 +1,7 @@
 #ifndef POKEHEARTGOLD_UNK_02034354_H
 #define POKEHEARTGOLD_UNK_02034354_H
 
-// clang-format off
-#include "global.h"
 #include <dwc.h>
-// clang-format on
 
 #include "player_data.h"
 
