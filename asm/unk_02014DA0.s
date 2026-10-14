@@ -169,7 +169,7 @@ _02014E80:
 	ldr r0, [r0, r5]
 	mov r2, #0xc8
 	mov r3, #5
-	bl SPL_Init
+	bl SPLManager_New
 	str r0, [r4]
 	ldr r1, _02014EB0 ; =_020F6078
 	add r0, r4, #0
@@ -839,26 +839,26 @@ sub_02015300: ; 0x02015300
 	add r4, r0, #0
 	ldr r0, [r4]
 	ldr r1, [r4, #4]
-	bl SPL_Load
+	bl SPLManager_LoadResources
 	ldr r0, _0201533C ; =_021D10A0
 	str r4, [r0]
 	ldr r1, [r4, #0x18]
 	ldr r0, [r4]
 	cmp r1, #0
 	bne _0201531E
-	bl SPL_LoadTexByVRAMManager
+	bl SPLManager_UploadTextures
 	b _02015322
 _0201531E:
-	bl SPL_LoadTexByCallbackFunction
+	bl SPLManager_UploadTexturesEx
 _02015322:
 	ldr r1, [r4, #0x1c]
 	ldr r0, [r4]
 	cmp r1, #0
 	bne _02015330
-	bl SPL_LoadTexPlttByVRAMManager
+	bl SPLManager_UploadPalettes
 	b _02015334
 _02015330:
-	bl SPL_LoadTexPlttByCallbackFunction
+	bl SPLManager_UploadPalettesEx
 _02015334:
 	ldr r0, _0201533C ; =_021D10A0
 	mov r1, #0
@@ -972,7 +972,7 @@ _020153F4:
 	bl NNS_G3dGlbFlushP
 	ldr r0, [r4]
 	ldr r1, _02015410 ; =NNS_G3dGlb + 0x4C
-	bl SPL_Draw
+	bl SPLManager_Draw
 	ldr r0, [r4, #0x20]
 	cmp r0, #0
 	beq _0201540A
@@ -986,11 +986,11 @@ _02015410: .word NNS_G3dGlb + 0x4C
 
 	thumb_func_start sub_02015414
 sub_02015414: ; 0x02015414
-	ldr r3, _0201541C ; =SPL_Calc
+	ldr r3, _0201541C ; =SPLManager_Update
 	ldr r0, [r0]
 	bx r3
 	nop
-_0201541C: .word SPL_Calc
+_0201541C: .word SPLManager_Update
 	thumb_func_end sub_02015414
 
 	thumb_func_start sub_02015420
@@ -1064,7 +1064,7 @@ sub_02015484: ; 0x02015484
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl SPL_Create
+	bl SPLManager_CreateEmitter
 	str r0, [r4, #8]
 	pop {r4, pc}
 	.balign 4, 0
@@ -1077,7 +1077,7 @@ sub_02015494: ; 0x02015494
 	ldr r0, _020154AC ; =_021D10A0
 	str r3, [r0, #4]
 	ldr r0, [r4]
-	bl SPL_CreateWithInitialize
+	bl SPLManager_CreateEmitterWithCallback
 	ldr r1, _020154AC ; =_021D10A0
 	mov r2, #0
 	str r2, [r1, #4]
@@ -1097,20 +1097,20 @@ sub_020154B0: ; 0x020154B0
 
 	thumb_func_start sub_020154B8
 sub_020154B8: ; 0x020154B8
-	ldr r3, _020154C0 ; =SPL_DeleteAll
+	ldr r3, _020154C0 ; =SPLManager_DeleteAllEmitters
 	ldr r0, [r0]
 	bx r3
 	nop
-_020154C0: .word SPL_DeleteAll
+_020154C0: .word SPLManager_DeleteAllEmitters
 	thumb_func_end sub_020154B8
 
 	thumb_func_start sub_020154C4
 sub_020154C4: ; 0x020154C4
-	ldr r3, _020154CC ; =SPL_Delete
+	ldr r3, _020154CC ; =SPLManager_DeleteEmitter
 	ldr r0, [r0]
 	bx r3
 	nop
-_020154CC: .word SPL_Delete
+_020154CC: .word SPLManager_DeleteEmitter
 	thumb_func_end sub_020154C4
 
 	thumb_func_start sub_020154D0
@@ -1226,8 +1226,8 @@ _02015562:
 	cmp r2, #0
 	ble _020155EC
 	ldr r3, [r0, #0x18]
-	ldr r7, _020155F4 ; =spl_calc_random
-	ldr r0, _020155F8 ; =spl_calc_gravity
+	ldr r7, _020155F4 ; =SPLBehavior_ApplyRandom
+	ldr r0, _020155F8 ; =SPLBehavior_ApplyGravity
 _0201556E:
 	cmp r3, #0
 	beq _020155E4
@@ -1262,7 +1262,7 @@ _0201559A:
 	bx lr
 _020155A6:
 	ldr r6, [r3]
-	ldr r5, _020155FC ; =spl_calc_magnet
+	ldr r5, _020155FC ; =SPLBehavior_ApplyMagnet
 	cmp r6, r5
 	bne _020155E4
 	ldr r0, [r3, #4]
@@ -1270,7 +1270,7 @@ _020155A6:
 	bx lr
 _020155B4:
 	ldr r6, [r3]
-	ldr r5, _02015600 ; =spl_calc_spin
+	ldr r5, _02015600 ; =SPLBehavior_ApplySpin
 	cmp r6, r5
 	bne _020155E4
 	ldr r0, [r3, #4]
@@ -1278,7 +1278,7 @@ _020155B4:
 	bx lr
 _020155C2:
 	ldr r6, [r3]
-	ldr r5, _02015604 ; =spl_calc_scfield
+	ldr r5, _02015604 ; =SPLBehavior_ApplyCollisionPlane
 	cmp r6, r5
 	bne _020155E4
 	ldr r0, [r3, #4]
@@ -1286,7 +1286,7 @@ _020155C2:
 	bx lr
 _020155D0:
 	ldr r6, [r3]
-	ldr r5, _02015608 ; =spl_calc_convergence
+	ldr r5, _02015608 ; =SPLBehavior_ApplyConvergence
 	cmp r6, r5
 	bne _020155E4
 	ldr r0, [r3, #4]
@@ -1306,12 +1306,12 @@ _020155EC:
 	pop {r4, r5, r6, r7}
 	bx lr
 	nop
-_020155F4: .word spl_calc_random
-_020155F8: .word spl_calc_gravity
-_020155FC: .word spl_calc_magnet
-_02015600: .word spl_calc_spin
-_02015604: .word spl_calc_scfield
-_02015608: .word spl_calc_convergence
+_020155F4: .word SPLBehavior_ApplyRandom
+_020155F8: .word SPLBehavior_ApplyGravity
+_020155FC: .word SPLBehavior_ApplyMagnet
+_02015600: .word SPLBehavior_ApplySpin
+_02015604: .word SPLBehavior_ApplyCollisionPlane
+_02015608: .word SPLBehavior_ApplyConvergence
 	thumb_func_end sub_02015550
 
 	thumb_func_start sub_0201560C
