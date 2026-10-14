@@ -4,8 +4,7 @@
 #include "spl_internal.h"
 #include "spl_random.h"
 
-void SPLAnim_Scale(SPLParticle *ptcl, SPLResource *res, int lifeRate)
-{
+void SPLAnim_Scale(SPLParticle *ptcl, SPLResource *res, int lifeRate) {
     SPLScaleAnim *scaleAnim = res->scaleAnim;
     int in = scaleAnim->curve.in;
     int out = scaleAnim->curve.out;
@@ -23,8 +22,7 @@ void SPLAnim_Scale(SPLParticle *ptcl, SPLResource *res, int lifeRate)
     }
 }
 
-void SPLAnim_Color(SPLParticle *ptcl, SPLResource *res, int lifeRate)
-{
+void SPLAnim_Color(SPLParticle *ptcl, SPLResource *res, int lifeRate) {
     SPLResourceHeader *header = res->header;
     SPLColorAnim *colorAnim = res->colorAnim;
     int peak = colorAnim->curve.peak;
@@ -80,8 +78,7 @@ void SPLAnim_Color(SPLParticle *ptcl, SPLResource *res, int lifeRate)
     }
 }
 
-void SPLAnim_Alpha(SPLParticle *ptcl, SPLResource *res, int lifeRate)
-{
+void SPLAnim_Alpha(SPLParticle *ptcl, SPLResource *res, int lifeRate) {
     u32 value;
     SPLAlphaAnim *alphaAnim = res->alphaAnim;
     int in = alphaAnim->curve.in;
@@ -100,8 +97,7 @@ void SPLAnim_Alpha(SPLParticle *ptcl, SPLResource *res, int lifeRate)
     ptcl->visibility.animAlpha = SPLRandom_ScaledRangeFX32(value, alphaAnim->flags.randomRange);
 }
 
-void SPLAnim_Texture(SPLParticle *ptcl, SPLResource *res, int lifeRate)
-{
+void SPLAnim_Texture(SPLParticle *ptcl, SPLResource *res, int lifeRate) {
     SPLTexAnim *texAnim = res->texAnim;
     for (int i = 0; i < texAnim->param.frameCount; i++) {
         if (lifeRate < texAnim->param.step * (i + 1)) {
@@ -111,12 +107,10 @@ void SPLAnim_Texture(SPLParticle *ptcl, SPLResource *res, int lifeRate)
     }
 }
 
-void SPLAnim_ChildScale(SPLParticle *ptcl, SPLResource *res, int lifeRate)
-{
+void SPLAnim_ChildScale(SPLParticle *ptcl, SPLResource *res, int lifeRate) {
     ptcl->animScale = res->childResource->endScale + ((res->childResource->endScale - FX16_ONE) * (lifeRate - 255)) / 255;
 }
 
-void SPLAnim_ChildAlpha(SPLParticle *ptcl, SPLResource *res, int lifeRate)
-{
+void SPLAnim_ChildAlpha(SPLParticle *ptcl, SPLResource *res, int lifeRate) {
     ptcl->visibility.animAlpha = ((255 - lifeRate) * 31) / 255;
 }

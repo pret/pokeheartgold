@@ -32,8 +32,7 @@ static void SPLUtil_SetTexture_Stub(SPLTexture *tex);
 static void SPLManager_DrawParticles(SPLManager *mgr);
 static void SPLManager_DrawChildParticles(SPLManager *mgr);
 
-static void SPLUtil_SetTexture(SPLTexture *tex)
-{
+static void SPLUtil_SetTexture(SPLTexture *tex) {
     SPLTextureParam param = tex->param;
 
     G3_TexImageParam(
@@ -53,12 +52,10 @@ static void SPLUtil_SetTexture(SPLTexture *tex)
     G3_MtxMode(GX_MTXMODE_POSITION);
 }
 
-static void SPLUtil_SetTexture_Stub(SPLTexture *tex)
-{
+static void SPLUtil_SetTexture_Stub(SPLTexture *tex) {
 }
 
-void SPLEmitter_Init(SPLEmitter *emtr, SPLResource *res, const VecFx32 *pos)
-{
+void SPLEmitter_Init(SPLEmitter *emtr, SPLResource *res, const VecFx32 *pos) {
     emtr->resource = res;
     emtr->state.all = 0;
 
@@ -122,8 +119,7 @@ void SPLEmitter_Init(SPLEmitter *emtr, SPLResource *res, const VecFx32 *pos)
     emtr->userData.u32 = 0;
 }
 
-void SPLEmitter_Update(SPLManager *mgr, SPLEmitter *emtr)
-{
+void SPLEmitter_Update(SPLManager *mgr, SPLEmitter *emtr) {
     SPLParticle *ptcl;
     SPLParticle *next;
     SPLResource *res;
@@ -322,8 +318,7 @@ void SPLEmitter_Update(SPLManager *mgr, SPLEmitter *emtr)
     }
 }
 
-static void SPLManager_DrawParticles(SPLManager *mgr)
-{
+static void SPLManager_DrawParticles(SPLManager *mgr) {
     SPLEmitter *emtr = mgr->renderState.emitter;
     SPLResourceHeader *header = emtr->resource->header;
     DrawFunc drawFunc = NULL;
@@ -356,8 +351,7 @@ static void SPLManager_DrawParticles(SPLManager *mgr)
     }
 }
 
-static void SPLManager_DrawChildParticles(SPLManager *mgr)
-{
+static void SPLManager_DrawChildParticles(SPLManager *mgr) {
     SPLEmitter *emtr = mgr->renderState.emitter;
     SPLResource *res = emtr->resource;
     DrawFunc drawFunc = NULL;
@@ -391,8 +385,7 @@ static void SPLManager_DrawChildParticles(SPLManager *mgr)
     }
 }
 
-void SPLManager_DoDraw(SPLManager *mgr)
-{
+void SPLManager_DoDraw(SPLManager *mgr) {
     SPLResourceHeader *header = mgr->renderState.emitter->resource->header;
 
     if (header->flags.drawChildrenFirst) {
@@ -410,13 +403,11 @@ void SPLManager_DoDraw(SPLManager *mgr)
     }
 }
 
-void SPLEmitter_Emit(SPLEmitter *emtr, SPLParticleList *list)
-{
+void SPLEmitter_Emit(SPLEmitter *emtr, SPLParticleList *list) {
     SPLEmitter_EmitParticles(emtr, list);
 }
 
-void SPLUtil_SetCylinderEmitterDir(SPLEmitter *emtr, VecFx32 *p1, VecFx32 *p2)
-{
+void SPLUtil_SetCylinderEmitterDir(SPLEmitter *emtr, VecFx32 *p1, VecFx32 *p2) {
     VecFx32 vex;
 
     if (emtr->resource->header->flags.emissionType == 6 || emtr->resource->header->flags.emissionType == 7) {

@@ -31,8 +31,7 @@ static RotFunc sRotationFunctions[2] = {
 };
 
 // Returns `TRUE` if the particle should not be drawn
-static inline BOOL SPLDraw_Setup(const SPLParticle *ptcl, const SPLManager *mgr)
-{
+static inline BOOL SPLDraw_Setup(const SPLParticle *ptcl, const SPLManager *mgr) {
     fx32 alpha = (fx32)(ptcl->visibility.baseAlpha * (ptcl->visibility.animAlpha + 1)) >> 5;
 
     G3_PolygonAttr(
@@ -48,8 +47,7 @@ static inline BOOL SPLDraw_Setup(const SPLParticle *ptcl, const SPLManager *mgr)
     return alpha == 0;
 }
 
-static void SPLUtil_DrawXYPlane(fx16 s, fx16 t, fx16 x, fx16 y)
-{
+static void SPLUtil_DrawXYPlane(fx16 s, fx16 t, fx16 x, fx16 y) {
     G3_Begin(GX_BEGIN_QUADS);
 
     G3_TexCoord(0, 0);
@@ -67,8 +65,7 @@ static void SPLUtil_DrawXYPlane(fx16 s, fx16 t, fx16 x, fx16 y)
     G3_End();
 }
 
-static void SPLUtil_DrawXZPlane(fx16 s, fx16 t, fx16 x, fx16 z)
-{
+static void SPLUtil_DrawXZPlane(fx16 s, fx16 t, fx16 x, fx16 z) {
     G3_Begin(GX_BEGIN_QUADS);
 
     G3_TexCoord(0, 0);
@@ -86,8 +83,7 @@ static void SPLUtil_DrawXZPlane(fx16 s, fx16 t, fx16 x, fx16 z)
     G3_End();
 }
 
-static void SPLUtil_RotateXYZ(fx32 sin, fx32 cos, MtxFx43 *mat)
-{
+static void SPLUtil_RotateXYZ(fx32 sin, fx32 cos, MtxFx43 *mat) {
     fx32 C, Sm, Sp;
 
     C = FX_MUL(FX32_ONE - cos, FX32_CONST(1 / 3.0));
@@ -109,8 +105,7 @@ static void SPLUtil_RotateXYZ(fx32 sin, fx32 cos, MtxFx43 *mat)
     mat->m[3][2] = 0;
 }
 
-static void SPLUtil_RotateY(fx32 sin, fx32 cos, MtxFx43 *mat)
-{
+static void SPLUtil_RotateY(fx32 sin, fx32 cos, MtxFx43 *mat) {
     mat->m[0][0] = cos;
     mat->m[1][0] = 0;
     mat->m[2][0] = sin;
@@ -125,8 +120,7 @@ static void SPLUtil_RotateY(fx32 sin, fx32 cos, MtxFx43 *mat)
     mat->m[3][2] = 0;
 }
 
-void SPLDraw_Billboard(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_Billboard(SPLManager *mgr, SPLParticle *ptcl) {
     VecFx32 trs;
     fx32 sclX, sclY;
     MtxFx43 load;
@@ -218,8 +212,7 @@ void SPLDraw_Billboard(SPLManager *mgr, SPLParticle *ptcl)
         mgr->renderState.emitter->resource->header->polygonY);
 }
 
-void SPLDraw_Child_Billboard(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_Child_Billboard(SPLManager *mgr, SPLParticle *ptcl) {
     VecFx32 trs;
     fx32 sclX, sclY;
     MtxFx43 load;
@@ -309,8 +302,7 @@ void SPLDraw_Child_Billboard(SPLManager *mgr, SPLParticle *ptcl)
     SPLUtil_DrawXYPlane(mgr->renderState.emitter->childTextureS, mgr->renderState.emitter->childTextureT, 0, 0);
 }
 
-void SPLDraw_DirectionalBillboard(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_DirectionalBillboard(SPLManager *mgr, SPLParticle *ptcl) {
     VecFx32 vel_dir;
     VecFx32 trs;
     fx32 sclX, sclY;
@@ -452,8 +444,7 @@ void SPLDraw_DirectionalBillboard(SPLManager *mgr, SPLParticle *ptcl)
         emtr->resource->header->polygonY);
 }
 
-void SPLDraw_Child_DirectionalBillboard(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_Child_DirectionalBillboard(SPLManager *mgr, SPLParticle *ptcl) {
     VecFx32 vel_dir;
     VecFx32 trs;
     fx32 sclX, sclY;
@@ -590,8 +581,7 @@ void SPLDraw_Child_DirectionalBillboard(SPLManager *mgr, SPLParticle *ptcl)
     SPLUtil_DrawXYPlane(mgr->renderState.emitter->childTextureS, mgr->renderState.emitter->childTextureT, 0, 0);
 }
 
-void SPLDraw_Polygon(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_Polygon(SPLManager *mgr, SPLParticle *ptcl) {
     fx32 sclX, sclY;
     MtxFx43 load;
     MtxFx43 rotMat;
@@ -661,8 +651,7 @@ void SPLDraw_Polygon(SPLManager *mgr, SPLParticle *ptcl)
         mgr->renderState.emitter->resource->header->polygonY);
 }
 
-void SPLDraw_Child_Polygon(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_Child_Polygon(SPLManager *mgr, SPLParticle *ptcl) {
     fx32 sclX, sclY;
     MtxFx43 load;
     MtxFx43 rotMat;
@@ -731,8 +720,7 @@ void SPLDraw_Child_Polygon(SPLManager *mgr, SPLParticle *ptcl)
         0);
 }
 
-void SPLDraw_DirectionalPolygon(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_DirectionalPolygon(SPLManager *mgr, SPLParticle *ptcl) {
     MtxFx43 load;
     MtxFx43 rotMat;
     MtxFx43 sclMat;
@@ -836,8 +824,7 @@ void SPLDraw_DirectionalPolygon(SPLManager *mgr, SPLParticle *ptcl)
         mgr->renderState.emitter->resource->header->polygonY);
 }
 
-void SPLDraw_Child_DirectionalPolygon(SPLManager *mgr, SPLParticle *ptcl)
-{
+void SPLDraw_Child_DirectionalPolygon(SPLManager *mgr, SPLParticle *ptcl) {
     MtxFx43 load;
     MtxFx43 rotMat;
     MtxFx43 sclMat;

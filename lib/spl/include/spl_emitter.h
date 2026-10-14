@@ -46,8 +46,8 @@ typedef struct SPLEmitter {
     fx32 radius;
     fx32 length;
     fx32 initVelPositionAmplifier; // amplifies the initial velocity of the particles based on their position
-    fx32 initVelAxisAmplifier; // amplifies the initial velocity of the particles based on the emitter's axis
-    fx32 baseScale; // base scale of the particles
+    fx32 initVelAxisAmplifier;     // amplifies the initial velocity of the particles based on the emitter's axis
+    fx32 baseScale;                // base scale of the particles
     u16 particleLifeTime;
     GXRgb color;
     fx32 collisionPlaneHeight;
@@ -80,30 +80,25 @@ typedef struct SPLEmitterList {
     SPLEmitter *last;
 } SPLEmitterList;
 
-static inline void SPLEmitter_SetPos(SPLEmitter *emtr, const VecFx32 *position)
-{
+static inline void SPLEmitter_SetPos(SPLEmitter *emtr, const VecFx32 *position) {
     emtr->position.x = position->x + emtr->resource->header->emitterBasePos.x;
     emtr->position.y = position->y + emtr->resource->header->emitterBasePos.y;
     emtr->position.z = position->z + emtr->resource->header->emitterBasePos.z;
 }
 
-static inline void SPLEmitter_SetPosX(SPLEmitter *emtr, fx32 x)
-{
+static inline void SPLEmitter_SetPosX(SPLEmitter *emtr, fx32 x) {
     emtr->position.x = x + emtr->resource->header->emitterBasePos.x;
 }
 
-static inline void SPLEmitter_SetPosY(SPLEmitter *emtr, fx32 y)
-{
+static inline void SPLEmitter_SetPosY(SPLEmitter *emtr, fx32 y) {
     emtr->position.y = y + emtr->resource->header->emitterBasePos.y;
 }
 
-static inline void SPLEmitter_SetPosZ(SPLEmitter *emtr, fx32 z)
-{
+static inline void SPLEmitter_SetPosZ(SPLEmitter *emtr, fx32 z) {
     emtr->position.z = z + emtr->resource->header->emitterBasePos.z;
 }
 
-static inline void SPLEmitter_SetAxis(SPLEmitter *emtr, const VecFx16 *axis)
-{
+static inline void SPLEmitter_SetAxis(SPLEmitter *emtr, const VecFx16 *axis) {
     emtr->axis = *axis;
 }
 

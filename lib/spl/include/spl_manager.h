@@ -36,7 +36,7 @@ typedef struct SPLManager {
     } polygonID;
     GXPolygonAttrMisc miscPolygonAttr;
     struct {
-        SPLEmitter *emitter; // current emitter being processed
+        SPLEmitter *emitter;       // current emitter being processed
         const MtxFx43 *viewMatrix; // current view matrix
     } renderState;
     u16 currentCycle;

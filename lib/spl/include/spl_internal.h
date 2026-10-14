@@ -42,53 +42,43 @@ void SPLManager_DoDraw(SPLManager *mgr);
 void SPLEmitter_Init(SPLEmitter *emtr, SPLResource *res, const VecFx32 *pos);
 void SPLEmitter_Emit(SPLEmitter *emtr, SPLParticleList *list);
 
-static inline void SPLParticleList_PushFront(SPLParticleList *list, SPLParticle *ptcl)
-{
+static inline void SPLParticleList_PushFront(SPLParticleList *list, SPLParticle *ptcl) {
     SPLList_PushFront((SPLList *)list, (SPLNode *)ptcl);
 }
 
-static inline void SPLParticleList_PushBack(SPLParticleList *list, SPLParticle *ptcl)
-{
+static inline void SPLParticleList_PushBack(SPLParticleList *list, SPLParticle *ptcl) {
     SPLList_PushBack((SPLList *)list, (SPLNode *)ptcl);
 }
 
-static inline SPLParticle *SPLParticleList_PopFront(SPLParticleList *list)
-{
+static inline SPLParticle *SPLParticleList_PopFront(SPLParticleList *list) {
     return (SPLParticle *)SPLList_PopFront((SPLList *)list);
 }
 
-static inline SPLParticle *SPLParticleList_PopBack(SPLParticleList *list)
-{
+static inline SPLParticle *SPLParticleList_PopBack(SPLParticleList *list) {
     return (SPLParticle *)SPLList_PopBack((SPLList *)list);
 }
 
-static inline SPLParticle *SPLParticleList_Erase(SPLParticleList *list, SPLParticle *ptcl)
-{
+static inline SPLParticle *SPLParticleList_Erase(SPLParticleList *list, SPLParticle *ptcl) {
     return (SPLParticle *)SPLList_Erase((SPLList *)list, (SPLNode *)ptcl);
 }
 
-static inline void SPLEmitterList_PushFront(SPLEmitterList *list, SPLEmitter *emtr)
-{
+static inline void SPLEmitterList_PushFront(SPLEmitterList *list, SPLEmitter *emtr) {
     SPLList_PushFront((SPLList *)list, (SPLNode *)emtr);
 }
 
-static inline void SPLEmitterList_PushBack(SPLEmitterList *list, SPLEmitter *emtr)
-{
+static inline void SPLEmitterList_PushBack(SPLEmitterList *list, SPLEmitter *emtr) {
     SPLList_PushBack((SPLList *)list, (SPLNode *)emtr);
 }
 
-static inline SPLEmitter *SPLEmitterList_PopFront(SPLEmitterList *list)
-{
+static inline SPLEmitter *SPLEmitterList_PopFront(SPLEmitterList *list) {
     return (SPLEmitter *)SPLList_PopFront((SPLList *)list);
 }
 
-static inline SPLEmitter *SPLEmitterList_PopBack(SPLEmitterList *list)
-{
+static inline SPLEmitter *SPLEmitterList_PopBack(SPLEmitterList *list) {
     return (SPLEmitter *)SPLList_PopBack((SPLList *)list);
 }
 
-static inline SPLEmitter *SPLEmitterList_Erase(SPLEmitterList *list, SPLEmitter *emtr)
-{
+static inline SPLEmitter *SPLEmitterList_Erase(SPLEmitterList *list, SPLEmitter *emtr) {
     return (SPLEmitter *)SPLList_Erase((SPLList *)list, (SPLNode *)emtr);
 }
 

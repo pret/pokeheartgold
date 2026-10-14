@@ -20,18 +20,15 @@
 static u32 SPLUtil_AllocTextureVRAM(u32 size, BOOL is4x4);
 static u32 SPLUtil_AllocPaletteVRAM(u32 size, BOOL is4Pltt);
 
-static u32 SPLUtil_AllocTextureVRAM(u32 size, BOOL is4x4)
-{
+static u32 SPLUtil_AllocTextureVRAM(u32 size, BOOL is4x4) {
     return (NNS_GfdAllocTexVram(size, is4x4, 0) & 0xFFFF) * 8;
 }
 
-static u32 SPLUtil_AllocPaletteVRAM(u32 size, BOOL is4Pltt)
-{
+static u32 SPLUtil_AllocPaletteVRAM(u32 size, BOOL is4Pltt) {
     return (NNS_GfdAllocPlttVram(size, is4Pltt, 0) & 0xFFFF) * 8;
 }
 
-SPLManager *SPLManager_New(SPLAllocFunc alloc, u16 maxEmitters, u16 maxParticles, u16 fixPolyID, u16 minPolyID, u16 maxPolyID)
-{
+SPLManager *SPLManager_New(SPLAllocFunc alloc, u16 maxEmitters, u16 maxParticles, u16 fixPolyID, u16 minPolyID, u16 maxPolyID) {
     int i; // Required to match
 
     SPLManager *mgr = alloc(sizeof(SPLManager));
@@ -81,8 +78,7 @@ SPLManager *SPLManager_New(SPLAllocFunc alloc, u16 maxEmitters, u16 maxParticles
     return mgr;
 }
 
-void SPLManager_LoadResources(SPLManager *mgr, const void *data)
-{
+void SPLManager_LoadResources(SPLManager *mgr, const void *data) {
     // Required to match
     int i, offset;
     SPLFileHeader *spa = (SPLFileHeader *)data;
@@ -209,8 +205,7 @@ void SPLManager_LoadResources(SPLManager *mgr, const void *data)
     }
 }
 
-BOOL SPLManager_UploadTexturesEx(SPLManager *mgr, SPLTexVRAMAllocFunc vramAlloc)
-{
+BOOL SPLManager_UploadTexturesEx(SPLManager *mgr, SPLTexVRAMAllocFunc vramAlloc) {
     GX_BeginLoadTex();
 
     for (int i = 0; i < mgr->texCount; i++) {
@@ -232,8 +227,7 @@ BOOL SPLManager_UploadTexturesEx(SPLManager *mgr, SPLTexVRAMAllocFunc vramAlloc)
     return TRUE;
 }
 
-BOOL SPLManager_UploadPalettesEx(SPLManager *mgr, SPLPalVRAMAllocFunc vramAlloc)
-{
+BOOL SPLManager_UploadPalettesEx(SPLManager *mgr, SPLPalVRAMAllocFunc vramAlloc) {
     // Required to match
     s32 i;
     SPLTexture *tex;
@@ -258,18 +252,15 @@ BOOL SPLManager_UploadPalettesEx(SPLManager *mgr, SPLPalVRAMAllocFunc vramAlloc)
     return TRUE;
 }
 
-BOOL SPLManager_UploadTextures(SPLManager *mgr)
-{
+BOOL SPLManager_UploadTextures(SPLManager *mgr) {
     return SPLManager_UploadTexturesEx(mgr, SPLUtil_AllocTextureVRAM);
 }
 
-BOOL SPLManager_UploadPalettes(SPLManager *mgr)
-{
+BOOL SPLManager_UploadPalettes(SPLManager *mgr) {
     return SPLManager_UploadPalettesEx(mgr, SPLUtil_AllocPaletteVRAM);
 }
 
-void SPLManager_Update(SPLManager *mgr)
-{
+void SPLManager_Update(SPLManager *mgr) {
     // Required to match
     SPLEmitter *emtr;
     SPLEmitter *next;
@@ -304,8 +295,7 @@ void SPLManager_Update(SPLManager *mgr)
     }
 }
 
-void SPLManager_Draw(SPLManager *mgr, const MtxFx43 *viewMatrix)
-{
+void SPLManager_Draw(SPLManager *mgr, const MtxFx43 *viewMatrix) {
     G3X_AlphaBlend(TRUE);
 
     mgr->renderState.viewMatrix = viewMatrix;
@@ -326,8 +316,7 @@ void SPLManager_Draw(SPLManager *mgr, const MtxFx43 *viewMatrix)
     }
 }
 
-SPLEmitter *SPLManager_CreateEmitter(SPLManager *mgr, int resourceID, const VecFx32 *pos)
-{
+SPLEmitter *SPLManager_CreateEmitter(SPLManager *mgr, int resourceID, const VecFx32 *pos) {
     SPLEmitter *emtr = NULL;
 
     if (mgr->inactiveEmitters.first != NULL) {
@@ -343,8 +332,7 @@ SPLEmitter *SPLManager_CreateEmitter(SPLManager *mgr, int resourceID, const VecF
     return emtr;
 }
 
-SPLEmitter *SPLManager_CreateEmitterWithCallback(SPLManager *mgr, int resourceID, SPLEmitterCallback initCallback)
-{
+SPLEmitter *SPLManager_CreateEmitterWithCallback(SPLManager *mgr, int resourceID, SPLEmitterCallback initCallback) {
     SPLEmitter *emtr = NULL;
     if (mgr->inactiveEmitters.first != NULL) {
         VecFx32 pos = { 0, 0, 0 };
@@ -365,8 +353,7 @@ SPLEmitter *SPLManager_CreateEmitterWithCallback(SPLManager *mgr, int resourceID
     return emtr;
 }
 
-SPLEmitter *SPLManager_CreateEmitterWithCallbackEx(SPLManager *mgr, int resourceID, VecFx32 *pos, void *param, SPLEmitterCallbackEx initCallback)
-{
+SPLEmitter *SPLManager_CreateEmitterWithCallbackEx(SPLManager *mgr, int resourceID, VecFx32 *pos, void *param, SPLEmitterCallbackEx initCallback) {
     SPLEmitter *emtr = NULL;
     if (mgr->inactiveEmitters.first != NULL) {
         emtr = SPLEmitterList_PopFront(&mgr->inactiveEmitters);
@@ -386,8 +373,7 @@ SPLEmitter *SPLManager_CreateEmitterWithCallbackEx(SPLManager *mgr, int resource
     return emtr;
 }
 
-void SPLManager_DeleteEmitter(SPLManager *mgr, SPLEmitter *emtr)
-{
+void SPLManager_DeleteEmitter(SPLManager *mgr, SPLEmitter *emtr) {
     SPLParticle *ptcl = SPLParticleList_PopFront(&emtr->particles);
     while (ptcl != NULL) {
         SPLParticleList_PushFront(&mgr->inactiveParticles, ptcl);
@@ -404,8 +390,7 @@ void SPLManager_DeleteEmitter(SPLManager *mgr, SPLEmitter *emtr)
     SPLEmitterList_PushFront(&mgr->inactiveEmitters, emtr);
 }
 
-void SPLManager_DeleteAllEmitters(SPLManager *mgr)
-{
+void SPLManager_DeleteAllEmitters(SPLManager *mgr) {
     SPLEmitter *emtr = mgr->activeEmitters.first;
     while (emtr != NULL) {
         SPLEmitter *next = emtr->next;
@@ -414,13 +399,11 @@ void SPLManager_DeleteAllEmitters(SPLManager *mgr)
     }
 }
 
-void SPLManager_Emit(SPLManager *mgr, SPLEmitter *emtr)
-{
+void SPLManager_Emit(SPLManager *mgr, SPLEmitter *emtr) {
     SPLEmitter_Emit(emtr, &mgr->inactiveParticles);
 }
 
-void SPLManager_EmitAt(SPLManager *mgr, SPLEmitter *emtr, VecFx32 *pos)
-{
+void SPLManager_EmitAt(SPLManager *mgr, SPLEmitter *emtr, VecFx32 *pos) {
     emtr->position.x = pos->x + emtr->resource->header->emitterBasePos.x;
     emtr->position.y = pos->y + emtr->resource->header->emitterBasePos.y;
     emtr->position.z = pos->z + emtr->resource->header->emitterBasePos.z;

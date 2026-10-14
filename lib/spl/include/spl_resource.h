@@ -30,16 +30,16 @@ enum SPLCircleAxis {
 };
 
 enum SPLEmissionType {
-    SPL_EMISSION_TYPE_POINT = 0, // A single point
-    SPL_EMISSION_TYPE_SPHERE_SURFACE, // Any point on the surface of a sphere
-    SPL_EMISSION_TYPE_CIRCLE_BORDER, // Any point on a circle around an axis (specified by flags)
+    SPL_EMISSION_TYPE_POINT = 0,             // A single point
+    SPL_EMISSION_TYPE_SPHERE_SURFACE,        // Any point on the surface of a sphere
+    SPL_EMISSION_TYPE_CIRCLE_BORDER,         // Any point on a circle around an axis (specified by flags)
     SPL_EMISSION_TYPE_CIRCLE_BORDER_UNIFORM, // Uniform distribution of points on a circle around an axis (specified by flags)
-    SPL_EMISSION_TYPE_SPHERE, // Any point inside a sphere
-    SPL_EMISSION_TYPE_CIRCLE, // Any point inside a circle around an axis (specified by flags)
-    SPL_EMISSION_TYPE_CYLINDER_SURFACE, // Any point on the surface of a cylinder
-    SPL_EMISSION_TYPE_CYLINDER, // Any point inside a cylinder
-    SPL_EMISSION_TYPE_HEMISPHERE_SURFACE, // Any point on the surface of a hemisphere (direction specified by flags)
-    SPL_EMISSION_TYPE_HEMISPHERE, // Any point inside a hemisphere (direction specified by flags)
+    SPL_EMISSION_TYPE_SPHERE,                // Any point inside a sphere
+    SPL_EMISSION_TYPE_CIRCLE,                // Any point inside a circle around an axis (specified by flags)
+    SPL_EMISSION_TYPE_CYLINDER_SURFACE,      // Any point on the surface of a cylinder
+    SPL_EMISSION_TYPE_CYLINDER,              // Any point inside a cylinder
+    SPL_EMISSION_TYPE_HEMISPHERE_SURFACE,    // Any point on the surface of a hemisphere (direction specified by flags)
+    SPL_EMISSION_TYPE_HEMISPHERE,            // Any point inside a hemisphere (direction specified by flags)
 };
 
 enum SPLChildRotationType {
@@ -93,8 +93,8 @@ typedef union SPLResourceFlags {
         u32 polygonReferencePlane : 1;
         u32 randomizeLoopedAnim : 1;
         u32 drawChildrenFirst : 1; // If set, child particles will be rendered before parent particles
-        u32 hideParent : 1; // If set, only child particles will be rendered
-        u32 useViewSpace : 1; // If set, the rendering calculations will be done in view space
+        u32 hideParent : 1;        // If set, only child particles will be rendered
+        u32 useViewSpace : 1;      // If set, the rendering calculations will be done in view space
         u32 hasGravityBehavior : 1;
         u32 hasRandomBehavior : 1;
         u32 hasMagnetBehavior : 1;
@@ -144,8 +144,8 @@ typedef struct SPLResourceHeader {
     SPLResourceFlags flags;
     VecFx32 emitterBasePos;
     fx32 emissionCount; // Number of particles to emit per emission interval
-    fx32 radius; // Used for circle, sphere, and cylinder emissions
-    fx32 length; // Used for cylinder emission
+    fx32 radius;        // Used for circle, sphere, and cylinder emissions
+    fx32 length;        // Used for cylinder emission
     VecFx16 axis;
     GXRgb color;
     fx32 initVelPosAmplifier;
@@ -179,8 +179,8 @@ typedef struct SPLResourceHeader {
         u32 dbbScale : 16;
         u32 textureTileCountS : 2; // Number of times to tile the texture in the S direction
         u32 textureTileCountT : 2; // Number of times to tile the texture in the T direction
-        u32 scaleAnimDir : 3; // Maps to SPLScaleAnimDir
-        u32 dpolFaceEmitter : 1; // If set, the polygon will face the emitter
+        u32 scaleAnimDir : 3;      // Maps to SPLScaleAnimDir
+        u32 dpolFaceEmitter : 1;   // If set, the polygon will face the emitter
         u32 flipTextureS : 1;
         u32 flipTextureT : 1;
         u32 : 30;
@@ -241,7 +241,7 @@ typedef struct SPLTexAnim {
     u8 textures[SPL_TEX_ANIM_MAX_FRAMES];
     struct {
         u32 frameCount : 8;
-        u32 step : 8; // Number of frames between each texture frame
+        u32 step : 8;          // Number of frames between each texture frame
         u32 randomizeInit : 1; // Randomize the initial texture frame
         u32 loop : 1;
         u32 : 14;
@@ -251,10 +251,10 @@ typedef struct SPLTexAnim {
 typedef struct SPLChildResource {
     SPLChildResourceFlags flags;
     fx16 randomInitVelMag; // Randomization factor for the initial velocity magnitude (0 = no randomization)
-    fx16 endScale; // For scaling animations
+    fx16 endScale;         // For scaling animations
     u16 lifeTime;
     u8 velocityRatio; // Ratio of the parent particle's velocity to inherit (255 = 100%)
-    u8 scaleRatio; // Ratio of the parent particle's scale to inherit (255 = 100%)
+    u8 scaleRatio;    // Ratio of the parent particle's scale to inherit (255 = 100%)
     GXRgb color;
     struct {
         u32 emissionCount : 8; // Number of particles to emit per emission interval

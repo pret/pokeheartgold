@@ -2,8 +2,7 @@
 
 #include <null.h>
 
-void SPLList_PushFront(SPLList *list, SPLNode *node)
-{
+void SPLList_PushFront(SPLList *list, SPLNode *node) {
     if (list->first == NULL) { // list is empty
         list->first = node;
         list->last = node;
@@ -19,13 +18,11 @@ void SPLList_PushFront(SPLList *list, SPLNode *node)
     list->nodeCount += 1;
 }
 
-void SPLList_PushBack(SPLList *list, SPLNode *node)
-{
+void SPLList_PushBack(SPLList *list, SPLNode *node) {
     return;
 }
 
-SPLNode *SPLList_PopFront(SPLList *list)
-{
+SPLNode *SPLList_PopFront(SPLList *list) {
     SPLNode *node = NULL;
     SPLNode *begin = list->first;
 
@@ -46,15 +43,13 @@ SPLNode *SPLList_PopFront(SPLList *list)
     return node;
 }
 
-SPLNode *SPLList_PopBack(SPLList *list)
-{
+SPLNode *SPLList_PopBack(SPLList *list) {
     return NULL;
 }
 
-SPLNode *SPLList_Erase(SPLList *list, SPLNode *node)
-{
+SPLNode *SPLList_Erase(SPLList *list, SPLNode *node) {
     SPLNode *next = node->next;
-    if (next == NULL) { // node is the last node
+    if (next == NULL) {            // node is the last node
         if (list->first == node) { // node is the only node
             list->first = NULL;
             list->last = NULL;

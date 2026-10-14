@@ -34,12 +34,12 @@ typedef struct SPLMagnetBehavior {
 // Applies a rotational force to particles
 typedef struct SPLSpinBehavior {
     u16 angle; // The angle of rotation, in "index" units, where 0x10000 is a full rotation. Applied every frame
-    u16 axis; // The axis of rotation
+    u16 axis;  // The axis of rotation
 } SPLSpinBehavior;
 
 // Applies a collision behavior to particles
 typedef struct SPLCollisionPlaneBehavior {
-    fx32 y; // The Y position of the collision plane
+    fx32 y;          // The Y position of the collision plane
     fx16 elasticity; // The elasticity of the collision, 1.0 being perfectly elastic and 0.0 being perfectly inelastic
     u16 collisionType : 2;
 } SPLCollisionPlaneBehavior;

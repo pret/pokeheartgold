@@ -15,8 +15,7 @@ static void SPLUtil_TiltCoordinates(VecFx32 *ptclPos, VecFx32 *pos, SPLEmitter *
 
 static VecFx16 sUpVector = { 0, FX16_ONE, 0 };
 
-static void SPLEmitter_ComputeOrthogonalAxes(SPLEmitter *emtr)
-{
+static void SPLEmitter_ComputeOrthogonalAxes(SPLEmitter *emtr) {
     VecFx16 vec = sUpVector, axis;
 
     switch (emtr->resource->header->flags.circleAxis) {
@@ -60,8 +59,7 @@ static void SPLEmitter_ComputeOrthogonalAxes(SPLEmitter *emtr)
 }
 
 // Tilt the coordinates of a particle based on the emitter's axis
-static void SPLUtil_TiltCoordinates(VecFx32 *ptclPos, VecFx32 *pos, SPLEmitter *emtr)
-{
+static void SPLUtil_TiltCoordinates(VecFx32 *ptclPos, VecFx32 *pos, SPLEmitter *emtr) {
     VecFx16 vec;
     VEC_Fx16CrossProduct(&emtr->crossAxis1, &emtr->crossAxis2, &vec);
     VEC_Fx16Normalize(&vec, &vec);
@@ -71,8 +69,7 @@ static void SPLUtil_TiltCoordinates(VecFx32 *ptclPos, VecFx32 *pos, SPLEmitter *
     ptclPos->z = FX_MUL(pos->x, emtr->crossAxis1.z) + FX_MUL(pos->y, emtr->crossAxis2.z) + FX_MUL(pos->z, vec.z);
 }
 
-void SPLEmitter_EmitParticles(SPLEmitter *emtr, SPLParticleList *list)
-{
+void SPLEmitter_EmitParticles(SPLEmitter *emtr, SPLParticleList *list) {
     SPLResource *res = emtr->resource;
     SPLResourceHeader *header = res->header;
 
@@ -281,8 +278,7 @@ void SPLEmitter_EmitParticles(SPLEmitter *emtr, SPLParticleList *list)
     }
 }
 
-void SPLEmitter_EmitChildren(SPLParticle *ptcl, SPLEmitter *emtr, SPLParticleList *list)
-{
+void SPLEmitter_EmitChildren(SPLParticle *ptcl, SPLEmitter *emtr, SPLParticleList *list) {
     SPLParticle *child;
 
     SPLChildResource *childRes = emtr->resource->childResource;
