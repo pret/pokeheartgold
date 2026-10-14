@@ -140,7 +140,7 @@ subdir('src')
 
 libdsprot = fs.copyfile('lib/dsprot/libdsprot.a')
 
-main_heartgold_us = executable('heartgold.us',
+main = executable('main',
     sources : [
         pokeheartgold_c,
         pokeheartgold_asm,
@@ -149,56 +149,12 @@ main_heartgold_us = executable('heartgold.us',
     ],
     c_args : [
         '-DPM_KEEP_ASSERTS',
-        '-DHEARTGOLD',
+        '-D' + game_version,
     ],
     nasm_args : [
         '-DPM_ASM',
         '-DSDK_ASM',
-        '-DHEARTGOLD',
-        asm_args
-    ],
-    include_directories : [
-        public_includes,
-        lib_asm_includes,
-    ],
-    dependencies : [
-        nitrosdk_dep,
-        nitrosystem_dep,
-        crypto_static_dep,
-        nitrowifi_dep,
-        nitrodwc_dep,
-        libvct_dep,
-        libdwcppwlobby_dep,
-    ],
-    link_with : [
-        libsyscall,
-        libspl,
-        libdsprot,
-        libirc,
-    ],
-    link_args : [
-        link_args,
-        'main.lcf'
-    ],
-    link_depends : main_lcf,
-    native : false
-)
-
-main_soulsilver_us = executable('soulsilver.us',
-    sources : [
-        pokeheartgold_c,
-        pokeheartgold_asm,
-        nitrodwc_asm,
-        naix_headers,
-    ],
-    c_args : [
-        '-DPM_KEEP_ASSERTS',
-        '-DSOULSILVER',
-    ],
-    nasm_args : [
-        '-DPM_ASM',
-        '-DSDK_ASM',
-        '-DSOULSILVER',
+        '-D' + game_version,
         asm_args
     ],
     include_directories : [
@@ -361,29 +317,16 @@ main_sbins_lz = [
     'OVY_128.sbin_LZ',
 ]
 
-if game_version == 'HEARTGOLD'
-    main_heartgold_us_lz = custom_target('heartgold.us.lz',
-        command : [ 
-            compstatic_exe,
-            '-9',
-            '-c',
-            '-f', meson.current_build_dir() / 'component.files',
-        ],
-        output : main_sbins_lz,
-        depends : main_heartgold_us
-    )
-elif game_version == 'SOULSILVER'
-    main_soulsilver_us_lz = custom_target('soulsilver.us.lz',
-        command : [ 
-            compstatic_exe,
-            '-9',
-            '-c',
-            '-f', meson.current_build_dir() / 'component.files',
-        ],
-        output : main_sbins_lz,
-        depends : main_soulsilver_us
-    )
-endif
+main_lz = custom_target('main.lz',
+    command : [ 
+        compstatic_exe,
+        '-9',
+        '-c',
+        '-f', meson.current_build_dir() / 'component.files',
+    ],
+    output : main_sbins_lz,
+    depends : main
+)
 
 ############################################################
 ###                    ARM7 BINARIES                     ###
@@ -398,7 +341,7 @@ if game_version == 'HEARTGOLD'
     pokeheartgold_nds = custom_target('pokeheartgold.us.nds',
         output : 'pokeheartgold.us.nds',
         input : [
-            main_heartgold_us,
+            main,
             rom_header_template_hg,
             icon_png_hg,
             ichneumon_sub,
@@ -414,13 +357,13 @@ if game_version == 'HEARTGOLD'
             rom_ini_hg,
             filesys_csv_hg,
         ],
-        depends : main_heartgold_us_lz,
+        depends : main_lz,
     )
 elif game_version == 'SOULSILVER'
     pokesoulsilver_nds = custom_target('pokesoulsilver.us.nds',
         output : 'pokesoulsilver.us.nds',
         input : [
-            main_soulsilver_us,
+            main,
             rom_header_template_ss,
             icon_png_ss,
             ichneumon_sub,
@@ -436,7 +379,7 @@ elif game_version == 'SOULSILVER'
             rom_ini_ss,
             filesys_csv_ss,
         ],
-        depends : main_soulsilver_us_lz,
+        depends : main_lz,
     )
 endif
 
@@ -444,7 +387,6 @@ endif
 ###                        TESTS                         ###
 ############################################################
 sha1sum = find_program(['sha1sum', 'shasum'], native: true)
-
 
 arm7_sha1 = arm7_sha1_hg # The arm7 hash doesn't change between games
 
