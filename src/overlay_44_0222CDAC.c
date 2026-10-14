@@ -1,10 +1,11 @@
+#include <dwc.h>
+
 #include "global.h"
 
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0778.h"
 
 #include "bg_window.h"
-#include "dwcaccount.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
