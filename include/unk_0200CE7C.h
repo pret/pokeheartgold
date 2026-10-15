@@ -7,7 +7,7 @@
 #include "message_printer.h"
 
 typedef struct BattleNumberPrinter {
-    FontID fontId;
+    u8 fontId;
     NNSG2dCharacterData *charData;
     u16 strbuf[16];
     int fillVal;
