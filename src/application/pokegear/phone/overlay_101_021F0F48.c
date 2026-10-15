@@ -110,7 +110,7 @@ void PokegearPhone_ContactLinkedListToSlotsArray(PokegearPhoneAppData *phoneApp)
     node = phoneApp->contactListHead;
     for (i = 0; i < ui->numContacts; ++i) {
         ui->slotData[i].index = i;
-        ui->slotData[i].contactID = node->contact.id;
+        ui->slotData[i].contactID = node->contact;
         ui->slotData[i].node = node;
         node = node->next;
     }
@@ -435,7 +435,7 @@ void PhoneContactListUI_DeselectContact(PhoneContactListUI *ui) {
 
 void PhoneContactListNode_Init(PhoneContactListNode *node) {
     node->index = 0;
-    node->contact.id = 255;
+    node->contact = 255;
     node->next = NULL;
     node->prev = NULL;
 }

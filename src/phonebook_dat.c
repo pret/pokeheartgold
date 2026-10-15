@@ -139,6 +139,6 @@ int GetPhoneMessageGmm(int idx) {
     return sPhoneMessageGmm[idx];
 }
 
-BOOL sub_02095FF8(int x) {
+BOOL sub_02095FF8(u8 x) {
     return (x % 3) == 2;
 }
