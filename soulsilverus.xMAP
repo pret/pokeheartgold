@@ -2316,7 +2316,7 @@
                          24](FontID_Release,func) found in global src_font.c.o
                           25](FontData_Delete,func) found in global src_font_data.c.o
                            26](FreeLoadedFontResources,func) found in local src_font_data.c.o
-                            27](_020F6330$13277,object) found in local src_font_data.c.o
+                            27](_020F6330$13316,object) found in local src_font_data.c.o
                              28](InitFontResources_LazyFromNarc,func) found in local src_font_data.c.o
                               29](DecompressGlyphTiles_LazyFromNarc,func) found in local src_font_data.c.o
                                30](NARC_ReadFromAbsolutePos,func) found in global src_filesystem.c.o
@@ -11121,7 +11121,7 @@
                                                                        70](FieldSystem_HasNoGymmick,func) found in local src_field_fieldmap.c.o
                                                                        70](Field3dObjectTaskManager_Create,func) found in global src_field_field_3d_object_task.c.o
                                                                        70](ov01_021E6028,func) found in local src_field_fieldmap.c.o
-                                                                        71](@17444,object) found in local src_field_fieldmap.c.o
+                                                                        71](@17483,object) found in local src_field_fieldmap.c.o
                                                                        70](GF3dRender_InitSimpleManager,func) found in global src_gf_3d_render.c.o
                                                                         71](initializeSimple3DVramManager,func) found in local src_gf_3d_render.c.o
                                                                        70](ov01_021E61E0,func) found in local src_field_fieldmap.c.o
@@ -12393,7 +12393,7 @@
                                                                   65](ov03_02253E20,func) found in local src_overlay_03_communication_club.c.o
                                                                   65](ov03_02254B4C,func) found in local src_overlay_03_communication_club.c.o
                                                                   65](ov03_02254D64,func) found in local src_overlay_03_communication_club.c.o
-                                                                  65](@20672,object) found in local src_overlay_03_communication_club.c.o
+                                                                  65](@20711,object) found in local src_overlay_03_communication_club.c.o
                                                                    66](ov03_02254120,func) found in local src_overlay_03_communication_club.c.o
                                                                     67](ov03_02254150,func) found in local src_overlay_03_communication_club.c.o
                                                                    66](ov03_02254100,func) found in local src_overlay_03_communication_club.c.o
@@ -14036,7 +14036,7 @@
                                                               61](PokegearMap_MainTask_LoadGFX,func) found in local src_application_pokegear_map_pokegear_map.c.o
                                                                62](PokegearMap_LoadGFX,func) found in global src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitBGs,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
-                                                                 64](@17460,object) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
+                                                                 64](@17499,object) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_LoadGraphics,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitWindows,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitMsg,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
@@ -56432,10 +56432,10 @@
   020F6314 00000000 .rodata .rodata	(src_sprite.c.o)
   020F6314 00000008 .rodata sRenderFuncs	(src_sprite.c.o)
   020F631C 00000008 .rodata sAnimFuncs	(src_sprite.c.o)
-  020F6324 00000004 .rodata _020F6324$13238	(src_font_data.c.o)
+  020F6324 00000004 .rodata _020F6324$13277	(src_font_data.c.o)
   020F6324 00000000 .rodata .rodata	(src_font_data.c.o)
-  020F6328 00000008 .rodata _020F6328$13260	(src_font_data.c.o)
-  020F6330 00000008 .rodata _020F6330$13277	(src_font_data.c.o)
+  020F6328 00000008 .rodata _020F6328$13299	(src_font_data.c.o)
+  020F6330 00000008 .rodata _020F6330$13316	(src_font_data.c.o)
   020F6338 00000000 .rodata .rodata	(src_pm_string.c.o)
   020F6338 00000014 .rodata sCharset_JP$13128	(src_pm_string.c.o)
   020F634C 00000014 .rodata sCharset_EN$13129	(src_pm_string.c.o)
@@ -72330,12 +72330,12 @@
   022062D4 00000000 .text   $b	(asm_overlay_01_022053EC.s.o)
   022062DA 00000000 .text   $d	(asm_overlay_01_022053EC.s.o)
   022062DC 00000000 .rodata .rodata	(src_field_fieldmap.c.o)
-  022062DC 00000010 .rodata @17481	(src_field_fieldmap.c.o)
-  022062EC 00000010 .rodata @17458	(src_field_fieldmap.c.o)
+  022062DC 00000010 .rodata @17520	(src_field_fieldmap.c.o)
+  022062EC 00000010 .rodata @17497	(src_field_fieldmap.c.o)
   022062FC 0000001C .rodata sBgTemplate_2	(src_field_fieldmap.c.o)
   02206318 0000001C .rodata sBgTemplate_1	(src_field_fieldmap.c.o)
   02206334 0000001C .rodata sBgTemplate_3	(src_field_fieldmap.c.o)
-  02206350 00000028 .rodata @17444	(src_field_fieldmap.c.o)
+  02206350 00000028 .rodata @17483	(src_field_fieldmap.c.o)
   02206378 00000010 .rodata ov01_02206378	(src_field_field_3d_object_task.c.o)
   02206388 00000003 .rodata sBGMVolume	(src_field_field_control.c.o)
   0220638C 00000000 .rodata .rodata	(src_field_field_control.c.o)
@@ -76188,14 +76188,14 @@
   0225913C 00000008 .rodata ov03_0225913C	(src_overlay_03_communication_club.c.o)
   02259144 00000020 .rodata ov03_02259144	(src_overlay_03_communication_club.c.o)
   02259164 00000020 .rodata ov03_02259164	(src_overlay_03_communication_club.c.o)
-  02259184 00000052 .rodata @20976	(src_overlay_03_communication_club.c.o)
-  022591D6 00000052 .rodata @21074	(src_overlay_03_communication_club.c.o)
-  02259228 00000052 .rodata @21254	(src_overlay_03_communication_club.c.o)
-  0225927A 00000052 .rodata @20672	(src_overlay_03_communication_club.c.o)
-  022592CC 00000052 .rodata @21122	(src_overlay_03_communication_club.c.o)
-  0225931E 00000052 .rodata @20859	(src_overlay_03_communication_club.c.o)
-  02259370 00000052 .rodata @20889	(src_overlay_03_communication_club.c.o)
-  022593C2 00000052 .rodata @21141	(src_overlay_03_communication_club.c.o)
+  02259184 00000052 .rodata @21015	(src_overlay_03_communication_club.c.o)
+  022591D6 00000052 .rodata @21113	(src_overlay_03_communication_club.c.o)
+  02259228 00000052 .rodata @21293	(src_overlay_03_communication_club.c.o)
+  0225927A 00000052 .rodata @20711	(src_overlay_03_communication_club.c.o)
+  022592CC 00000052 .rodata @21161	(src_overlay_03_communication_club.c.o)
+  0225931E 00000052 .rodata @20898	(src_overlay_03_communication_club.c.o)
+  02259370 00000052 .rodata @20928	(src_overlay_03_communication_club.c.o)
+  022593C2 00000052 .rodata @21180	(src_overlay_03_communication_club.c.o)
   02259414 00000000 .rodata .rodata	(src_overlay_03_battle_regulation_menu.c.o)
   02259414 00000004 .rodata xRightSide$17104	(src_overlay_03_battle_regulation_menu.c.o)
   02259418 00000004 .rodata xRightSide$16950	(src_overlay_03_battle_regulation_menu.c.o)
@@ -203527,15 +203527,15 @@
   021F7364 0000000E .rodata @17364	(src_application_pokegear_map_pokegear_map.c.o)
   021F7372 00000640 .rodata sLocationSpecs	(src_application_pokegear_map_pokegear_map.c.o)
   021F79B4 0000017A .rodata gMapFlypointParams	(src_application_pokegear_map_overlay_101_021F79B4.c.o)
-  021F7B30 0000000C .rodata buttonSpecsTrashCan$17516	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B30 0000000C .rodata buttonSpecsTrashCan$17555	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
   021F7B30 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7B3C 00000028 .rodata spriteTemplates$17574	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7B64 00000040 .rodata sWindowTemplates$17485	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7BA4 00000060 .rodata buttonSpecsSelectIcon$17515	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7C04 0000006C .rodata buttonSpecsMarkingsMenu$17514	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7C70 000000A0 .rodata spriteTemplates$17608	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7D10 000000A8 .rodata @17460	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7DB8 000000C8 .rodata spriteTemplates$17551	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B3C 00000028 .rodata spriteTemplates$17613	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B64 00000040 .rodata sWindowTemplates$17524	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7BA4 00000060 .rodata buttonSpecsSelectIcon$17554	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7C04 0000006C .rodata buttonSpecsMarkingsMenu$17553	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7C70 000000A0 .rodata spriteTemplates$17647	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7D10 000000A8 .rodata @17499	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7DB8 000000C8 .rodata spriteTemplates$17590	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
   021F7E80 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021E9270.c.o)
   021F7E80 0000000C .rodata sListMenuTemplate	(src_application_pokegear_map_overlay_101_021E9270.c.o)
   021F7E8C 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021EB568.c.o)
