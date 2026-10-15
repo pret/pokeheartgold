@@ -25,7 +25,7 @@ typedef enum HPBarType {
 #define USE_SUBPIXELS_TEST (maxHp < pixelsWide)
 #endif // FAST_HP_BARS
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s8 sHpBarArrowXOffsets[] = {
     72,
     0,
