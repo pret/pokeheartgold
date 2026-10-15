@@ -2761,20 +2761,74 @@
                  16](ListMenuGetScrollAndRow,func) found in global src_list_menu.c.o
                  16](DestroyListMenu,func) found in global src_list_menu.c.o
                   17](DestroyListMenuCursorObj,func) found in global asm_unk_02014DA0.s.o
-                   18](spl_calc_convergence,func) found in global libspl.a
+                   18](SPLBehavior_ApplyConvergence,func) found in global libspl.a
+                   18](SPLBehavior_ApplyCollisionPlane,func) found in global libspl.a
+                   18](SPLBehavior_ApplySpin,func) found in global libspl.a
                     19](MTX_MultVec33,func) found in global libfx.a
-                    19](.data,section) found in local libspl.a
-                     20](.text,section) found in local libspl.a
-                    19](VEC_Fx16Normalize,func) found in global libfx.a
-                    19](VEC_Fx16DotProduct,func) found in global libfx.a
-                    19](VEC_Fx16CrossProduct,func) found in global libfx.a
-                    19](MTX_Scale43_,func) found in global libfx.a
-                    19](.bss,section) found in local libspl.a
+                   18](SPLBehavior_ApplyMagnet,func) found in global libspl.a
+                   18](SPLBehavior_ApplyGravity,func) found in global libspl.a
+                   18](SPLBehavior_ApplyRandom,func) found in global libspl.a
+                    19](gSPLRandomState,object) found in global libspl.a
                    18](Camera_SetLookAtCamUp,func) found in global src_camera.c.o
+                   18](SPLManager_DeleteEmitter,func) found in global libspl.a
+                    19](SPLList_PopFront,func) found in global libspl.a
+                    19](SPLList_PushFront,func) found in global libspl.a
+                    19](SPLList_Erase,func) found in global libspl.a
+                   18](SPLManager_DeleteAllEmitters,func) found in global libspl.a
+                   18](SPLManager_CreateEmitterWithCallback,func) found in global libspl.a
+                    19](SPLEmitter_Init,func) found in global libspl.a
+                   18](SPLManager_CreateEmitter,func) found in global libspl.a
+                   18](SPLManager_Update,func) found in global libspl.a
+                    19](SPLEmitter_Update,func) found in global libspl.a
+                     20](SPLEmitter_EmitParticles,func) found in global libspl.a
+                      21](SPLEmitter_ComputeOrthogonalAxes,func) found in local libspl.a
+                       22](VEC_Fx16Normalize,func) found in global libfx.a
+                       22](VEC_Fx16DotProduct,func) found in global libfx.a
+                       22](sUpVector,object) found in local libspl.a
+                      21](SPLRandom_VecFx32,func) found in global libspl.a
+                      21](SPLRandom_VecFx32_XY,func) found in global libspl.a
+                      21](SPLUtil_TiltCoordinates,func) found in local libspl.a
+                       22](VEC_Fx16CrossProduct,func) found in global libfx.a
+                     20](SPLEmitter_EmitChildren,func) found in global libspl.a
+                     20](SPLAnim_Scale,func) found in global libspl.a
+                     20](SPLAnim_Color,func) found in global libspl.a
+                     20](SPLAnim_Alpha,func) found in global libspl.a
+                     20](SPLAnim_Texture,func) found in global libspl.a
+                     20](SPLAnim_ChildScale,func) found in global libspl.a
+                     20](SPLAnim_ChildAlpha,func) found in global libspl.a
+                   18](SPLManager_Draw,func) found in global libspl.a
+                    19](SPLManager_DoDraw,func) found in global libspl.a
+                     20](SPLManager_DrawChildParticles,func) found in local libspl.a
+                      21](SPLUtil_SetTexture,func) found in local libspl.a
+                      21](SPLDraw_Child_Billboard,func) found in global libspl.a
+                       22](SPLUtil_DrawXYPlane,func) found in local libspl.a
+                      21](SPLDraw_Child_DirectionalBillboard,func) found in global libspl.a
+                      21](SPLDraw_Child_Polygon,func) found in global libspl.a
+                       22](MTX_Scale43_,func) found in global libfx.a
+                       22](sRotationFunctions,object) found in local libspl.a
+                        23](SPLUtil_RotateXYZ,func) found in local libspl.a
+                        23](SPLUtil_RotateY,func) found in local libspl.a
+                       22](sPlaneDrawingFunctions,object) found in local libspl.a
+                        23](SPLUtil_DrawXZPlane,func) found in local libspl.a
+                      21](SPLDraw_Child_DirectionalPolygon,func) found in global libspl.a
+                     20](SPLManager_DrawParticles,func) found in local libspl.a
+                      21](SPLDraw_Billboard,func) found in global libspl.a
+                      21](SPLDraw_DirectionalBillboard,func) found in global libspl.a
+                      21](SPLDraw_Polygon,func) found in global libspl.a
+                      21](SPLDraw_DirectionalPolygon,func) found in global libspl.a
+                      21](SPLUtil_SetTexture_Stub,func) found in local libspl.a
+                   18](SPLManager_UploadPalettesEx,func) found in global libspl.a
+                   18](SPLManager_UploadPalettes,func) found in global libspl.a
+                    19](SPLUtil_AllocPaletteVRAM,func) found in local libspl.a
+                   18](SPLManager_UploadTexturesEx,func) found in global libspl.a
+                   18](SPLManager_UploadTextures,func) found in global libspl.a
+                    19](SPLUtil_AllocTextureVRAM,func) found in local libspl.a
+                   18](SPLManager_LoadResources,func) found in global libspl.a
                    18](NNS_GfdGetFrmPlttVramState,func) found in global libnnsgfd.a
                    18](NNS_GfdGetFrmTexVramState,func) found in global libnnsgfd.a
                    18](NNS_GfdSetFrmPlttVramState,func) found in global libnnsgfd.a
                    18](NNS_GfdSetFrmTexVramState,func) found in global libnnsgfd.a
+                   18](SPLManager_New,func) found in global libspl.a
                    18](.rodata,section) found in local asm_unk_02014DA0.s.o
                    18](.bss,section) found in local asm_unk_02014DA0.s.o
                  16](ListMenu_ProcessInput,func) found in global src_list_menu.c.o
@@ -49930,125 +49984,146 @@
   02097F9C 00000000 .text   $t	(src_unk_02097F6C.c.o)
   02097F9C 00000058 .text   GetSwarmInfoFromRand	(src_unk_02097F6C.c.o)
   02097FF0 00000000 .text   $d	(src_unk_02097F6C.c.o)
-  02097FF4 00000044 .text   SPL_DeleteAll	(libspl.a asm_jn_spl.s.o )
-  02097FF4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02097FF4 00006018 .text   .text	(libspl.a asm_jn_spl.s.o )
-  02098038 00000094 .text   SPL_Delete	(libspl.a asm_jn_spl.s.o )
-  020980CC 00000094 .text   SPL_CreateWithInitialize	(libspl.a asm_jn_spl.s.o )
-  02098160 00000074 .text   SPL_Create	(libspl.a asm_jn_spl.s.o )
-  020981D4 000000C8 .text   SPL_Draw	(libspl.a asm_jn_spl.s.o )
-  02098298 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209829C 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209829C 00000138 .text   SPL_Calc	(libspl.a asm_jn_spl.s.o )
-  020983D4 00000014 .text   SPL_LoadTexPlttByVRAMManager	(libspl.a asm_jn_spl.s.o )
-  020983E0 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  020983E8 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  020983E8 00000014 .text   SPL_LoadTexByVRAMManager	(libspl.a asm_jn_spl.s.o )
-  020983F4 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  020983FC 000000B4 .text   SPL_LoadTexPlttByCallbackFunction	(libspl.a asm_jn_spl.s.o )
-  020983FC 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  020984B0 000000CC .text   SPL_LoadTexByCallbackFunction	(libspl.a asm_jn_spl.s.o )
-  0209857C 00000378 .text   SPL_Load	(libspl.a asm_jn_spl.s.o )
-  020988DC 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  020988F4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  020988F4 00000190 .text   SPL_Init	(libspl.a asm_jn_spl.s.o )
-  02098A84 00000038 .text   sAllocTexPalette	(libspl.a asm_jn_spl.s.o )
-  02098AB4 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02098ABC 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02098ABC 00000038 .text   sAllocTex	(libspl.a asm_jn_spl.s.o )
-  02098AEC 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02098AF4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02098AF4 0000007C .text   spl_draw	(libspl.a asm_jn_spl.s.o )
-  02098B70 000000E8 .text   sDrawChild	(libspl.a asm_jn_spl.s.o )
-  02098C48 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02098C58 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02098C58 000000EC .text   sDrawParent	(libspl.a asm_jn_spl.s.o )
-  02098D2C 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02098D44 00000848 .text   spl_calc	(libspl.a asm_jn_spl.s.o )
-  02098D44 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02099574 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209958C 000002CC .text   spl_init	(libspl.a asm_jn_spl.s.o )
-  0209958C 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02099850 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02099858 00000004 .text   spl_set_tex_dummy	(libspl.a asm_jn_spl.s.o )
-  02099858 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209985C 000000EC .text   spl_set_tex	(libspl.a asm_jn_spl.s.o )
-  02099934 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02099948 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  02099948 00000480 .text   spl_draw_chld_dpl	(libspl.a asm_jn_spl.s.o )
-  02099DA4 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  02099DC8 0000047C .text   spl_draw_dpl	(libspl.a asm_jn_spl.s.o )
-  02099DC8 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209A220 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209A244 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209A244 00000350 .text   spl_draw_chld_pol	(libspl.a asm_jn_spl.s.o )
-  0209A578 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209A594 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209A594 00000350 .text   spl_draw_pol	(libspl.a asm_jn_spl.s.o )
-  0209A8C8 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209A8E4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209A8E4 000006E0 .text   spl_draw_chld_dbb	(libspl.a asm_jn_spl.s.o )
-  0209AFB4 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209AFC4 000006E8 .text   spl_draw_dbb	(libspl.a asm_jn_spl.s.o )
-  0209AFC4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209B69C 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209B6AC 00000454 .text   spl_draw_chld_bb	(libspl.a asm_jn_spl.s.o )
-  0209B6AC 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209BAEC 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209BB00 0000044C .text   spl_draw_bb	(libspl.a asm_jn_spl.s.o )
-  0209BB00 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209BF38 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209BF4C 00000040 .text   rotTypeY	(libspl.a asm_jn_spl.s.o )
-  0209BF4C 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209BF8C 000000AC .text   rotTypeXYZ	(libspl.a asm_jn_spl.s.o )
-  0209C030 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209C038 000000BC .text   drawXZPlane	(libspl.a asm_jn_spl.s.o )
-  0209C038 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209C0E0 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209C0F4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209C0F4 000000BC .text   drawXYPlane	(libspl.a asm_jn_spl.s.o )
-  0209C19C 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209C1B0 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209C1B0 00000320 .text   spl_gen_child	(libspl.a asm_jn_spl.s.o )
-  0209C4C0 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209C4D0 00000D2C .text   spl_gen_ptcl	(libspl.a asm_jn_spl.s.o )
-  0209C4D0 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209D1DC 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209D1FC 00000160 .text   spl_set_circle_axis	(libspl.a asm_jn_spl.s.o )
-  0209D1FC 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209D35C 00000288 .text   spl_set_cross_to_axis	(libspl.a asm_jn_spl.s.o )
-  0209D5E0 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209D5E4 00000058 .text   spl_chld_alp_out	(libspl.a asm_jn_spl.s.o )
-  0209D5E4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209D638 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209D63C 0000004C .text   spl_chld_scl_out	(libspl.a asm_jn_spl.s.o )
-  0209D63C 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209D684 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209D688 00000064 .text   spl_tex_ptn_anm	(libspl.a asm_jn_spl.s.o )
-  0209D688 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209D6EC 000000DC .text   spl_alp_in_out	(libspl.a asm_jn_spl.s.o )
-  0209D7BC 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209D7C8 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209D7C8 000001CC .text   spl_clr_in_out	(libspl.a asm_jn_spl.s.o )
-  0209D994 00000090 .text   spl_scl_in_out	(libspl.a asm_jn_spl.s.o )
-  0209DA24 00000094 .text   spl_calc_convergence	(libspl.a asm_jn_spl.s.o )
-  0209DAB8 0000011C .text   spl_calc_scfield	(libspl.a asm_jn_spl.s.o )
-  0209DBD4 000000D8 .text   spl_calc_spin	(libspl.a asm_jn_spl.s.o )
-  0209DCA8 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209DCAC 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209DCAC 00000084 .text   spl_calc_magnet	(libspl.a asm_jn_spl.s.o )
-  0209DD30 000000C8 .text   spl_calc_random	(libspl.a asm_jn_spl.s.o )
-  0209DDEC 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209DDF8 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209DDF8 00000034 .text   spl_calc_gravity	(libspl.a asm_jn_spl.s.o )
-  0209DE2C 00000080 .text   spl_del	(libspl.a asm_jn_spl.s.o )
-  0209DEAC 0000004C .text   spl_pop_front	(libspl.a asm_jn_spl.s.o )
-  0209DEF8 00000050 .text   spl_push_front	(libspl.a asm_jn_spl.s.o )
-  0209DF48 0000005C .text   spl_rndm_get_arb_vec_xy	(libspl.a asm_jn_spl.s.o )
-  0209DF98 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
-  0209DFA4 00000000 .text   $a	(libspl.a asm_jn_spl.s.o )
-  0209DFA4 00000068 .text   spl_rndm_get_arb_vec_xyz	(libspl.a asm_jn_spl.s.o )
-  0209E000 00000000 .text   $d	(libspl.a asm_jn_spl.s.o )
+  02097FF4 00000044 .text   SPLManager_DeleteAllEmitters	(libspl.a src_spl_manager)
+  02097FF4 00000000 .text   $a	(libspl.a src_spl_manager)
+  02098038 00000094 .text   SPLManager_DeleteEmitter	(libspl.a src_spl_manager)
+  02098038 00000000 .text   $a	(libspl.a src_spl_manager)
+  020980CC 00000094 .text   SPLManager_CreateEmitterWithCallback	(libspl.a src_spl_manager)
+  020980CC 00000000 .text   $a	(libspl.a src_spl_manager)
+  02098160 00000074 .text   SPLManager_CreateEmitter	(libspl.a src_spl_manager)
+  02098160 00000000 .text   $a	(libspl.a src_spl_manager)
+  020981D4 00000000 .text   $a	(libspl.a src_spl_manager)
+  020981D4 000000C8 .text   SPLManager_Draw	(libspl.a src_spl_manager)
+  02098298 00000000 .text   $d	(libspl.a src_spl_manager)
+  0209829C 00000138 .text   SPLManager_Update	(libspl.a src_spl_manager)
+  0209829C 00000000 .text   $a	(libspl.a src_spl_manager)
+  020983D4 00000000 .text   $a	(libspl.a src_spl_manager)
+  020983D4 00000014 .text   SPLManager_UploadPalettes	(libspl.a src_spl_manager)
+  020983E0 00000000 .text   $d	(libspl.a src_spl_manager)
+  020983E8 00000000 .text   $a	(libspl.a src_spl_manager)
+  020983E8 00000014 .text   SPLManager_UploadTextures	(libspl.a src_spl_manager)
+  020983F4 00000000 .text   $d	(libspl.a src_spl_manager)
+  020983FC 000000B4 .text   SPLManager_UploadPalettesEx	(libspl.a src_spl_manager)
+  020983FC 00000000 .text   $a	(libspl.a src_spl_manager)
+  020984B0 000000CC .text   SPLManager_UploadTexturesEx	(libspl.a src_spl_manager)
+  020984B0 00000000 .text   $a	(libspl.a src_spl_manager)
+  0209857C 00000000 .text   $a	(libspl.a src_spl_manager)
+  0209857C 00000378 .text   SPLManager_LoadResources	(libspl.a src_spl_manager)
+  020988DC 00000000 .text   $d	(libspl.a src_spl_manager)
+  020988F4 00000190 .text   SPLManager_New	(libspl.a src_spl_manager)
+  020988F4 00000000 .text   $a	(libspl.a src_spl_manager)
+  02098A84 00000000 .text   $a	(libspl.a src_spl_manager)
+  02098A84 00000038 .text   SPLUtil_AllocPaletteVRAM	(libspl.a src_spl_manager)
+  02098AB4 00000000 .text   $d	(libspl.a src_spl_manager)
+  02098ABC 00000000 .text   $a	(libspl.a src_spl_manager)
+  02098ABC 00000038 .text   SPLUtil_AllocTextureVRAM	(libspl.a src_spl_manager)
+  02098AEC 00000000 .text   $d	(libspl.a src_spl_manager)
+  02098AF4 0000007C .text   SPLManager_DoDraw	(libspl.a src_spl_emitter)
+  02098AF4 00000000 .text   $a	(libspl.a src_spl_emitter)
+  02098B70 00000000 .text   $a	(libspl.a src_spl_emitter)
+  02098B70 000000E8 .text   SPLManager_DrawChildParticles	(libspl.a src_spl_emitter)
+  02098C48 00000000 .text   $d	(libspl.a src_spl_emitter)
+  02098C58 00000000 .text   $a	(libspl.a src_spl_emitter)
+  02098C58 000000EC .text   SPLManager_DrawParticles	(libspl.a src_spl_emitter)
+  02098D2C 00000000 .text   $d	(libspl.a src_spl_emitter)
+  02098D44 00000000 .text   $a	(libspl.a src_spl_emitter)
+  02098D44 00000848 .text   SPLEmitter_Update	(libspl.a src_spl_emitter)
+  02099574 00000000 .text   $d	(libspl.a src_spl_emitter)
+  0209958C 00000000 .text   $a	(libspl.a src_spl_emitter)
+  0209958C 000002CC .text   SPLEmitter_Init	(libspl.a src_spl_emitter)
+  02099850 00000000 .text   $d	(libspl.a src_spl_emitter)
+  02099858 00000004 .text   SPLUtil_SetTexture_Stub	(libspl.a src_spl_emitter)
+  02099858 00000000 .text   $a	(libspl.a src_spl_emitter)
+  0209985C 00000000 .text   $a	(libspl.a src_spl_emitter)
+  0209985C 000000EC .text   SPLUtil_SetTexture	(libspl.a src_spl_emitter)
+  02099934 00000000 .text   $d	(libspl.a src_spl_emitter)
+  02099948 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  02099948 00000480 .text   SPLDraw_Child_DirectionalPolygon	(libspl.a src_spl_draw.c.)
+  02099DA4 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  02099DC8 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  02099DC8 0000047C .text   SPLDraw_DirectionalPolygon	(libspl.a src_spl_draw.c.)
+  0209A220 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209A244 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209A244 00000350 .text   SPLDraw_Child_Polygon	(libspl.a src_spl_draw.c.)
+  0209A578 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209A594 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209A594 00000350 .text   SPLDraw_Polygon	(libspl.a src_spl_draw.c.)
+  0209A8C8 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209A8E4 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209A8E4 000006E0 .text   SPLDraw_Child_DirectionalBillboard	(libspl.a src_spl_draw.c.)
+  0209AFB4 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209AFC4 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209AFC4 000006E8 .text   SPLDraw_DirectionalBillboard	(libspl.a src_spl_draw.c.)
+  0209B69C 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209B6AC 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209B6AC 00000454 .text   SPLDraw_Child_Billboard	(libspl.a src_spl_draw.c.)
+  0209BAEC 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209BB00 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209BB00 0000044C .text   SPLDraw_Billboard	(libspl.a src_spl_draw.c.)
+  0209BF38 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209BF4C 00000040 .text   SPLUtil_RotateY	(libspl.a src_spl_draw.c.)
+  0209BF4C 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209BF8C 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209BF8C 000000AC .text   SPLUtil_RotateXYZ	(libspl.a src_spl_draw.c.)
+  0209C030 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209C038 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209C038 000000BC .text   SPLUtil_DrawXZPlane	(libspl.a src_spl_draw.c.)
+  0209C0E0 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209C0F4 00000000 .text   $a	(libspl.a src_spl_draw.c.)
+  0209C0F4 000000BC .text   SPLUtil_DrawXYPlane	(libspl.a src_spl_draw.c.)
+  0209C19C 00000000 .text   $d	(libspl.a src_spl_draw.c.)
+  0209C1B0 00000000 .text   $a	(libspl.a src_spl_emit.c.)
+  0209C1B0 00000320 .text   SPLEmitter_EmitChildren	(libspl.a src_spl_emit.c.)
+  0209C4C0 00000000 .text   $d	(libspl.a src_spl_emit.c.)
+  0209C4D0 00000000 .text   $a	(libspl.a src_spl_emit.c.)
+  0209C4D0 00000D2C .text   SPLEmitter_EmitParticles	(libspl.a src_spl_emit.c.)
+  0209D1DC 00000000 .text   $d	(libspl.a src_spl_emit.c.)
+  0209D1FC 00000160 .text   SPLUtil_TiltCoordinates	(libspl.a src_spl_emit.c.)
+  0209D1FC 00000000 .text   $a	(libspl.a src_spl_emit.c.)
+  0209D35C 00000000 .text   $a	(libspl.a src_spl_emit.c.)
+  0209D35C 00000288 .text   SPLEmitter_ComputeOrthogonalAxes	(libspl.a src_spl_emit.c.)
+  0209D5E0 00000000 .text   $d	(libspl.a src_spl_emit.c.)
+  0209D5E4 00000000 .text   $a	(libspl.a src_spl_anim.c.)
+  0209D5E4 00000058 .text   SPLAnim_ChildAlpha	(libspl.a src_spl_anim.c.)
+  0209D638 00000000 .text   $d	(libspl.a src_spl_anim.c.)
+  0209D63C 00000000 .text   $a	(libspl.a src_spl_anim.c.)
+  0209D63C 0000004C .text   SPLAnim_ChildScale	(libspl.a src_spl_anim.c.)
+  0209D684 00000000 .text   $d	(libspl.a src_spl_anim.c.)
+  0209D688 00000064 .text   SPLAnim_Texture	(libspl.a src_spl_anim.c.)
+  0209D688 00000000 .text   $a	(libspl.a src_spl_anim.c.)
+  0209D6EC 00000000 .text   $a	(libspl.a src_spl_anim.c.)
+  0209D6EC 000000DC .text   SPLAnim_Alpha	(libspl.a src_spl_anim.c.)
+  0209D7BC 00000000 .text   $d	(libspl.a src_spl_anim.c.)
+  0209D7C8 000001CC .text   SPLAnim_Color	(libspl.a src_spl_anim.c.)
+  0209D7C8 00000000 .text   $a	(libspl.a src_spl_anim.c.)
+  0209D994 00000090 .text   SPLAnim_Scale	(libspl.a src_spl_anim.c.)
+  0209D994 00000000 .text   $a	(libspl.a src_spl_anim.c.)
+  0209DA24 00000094 .text   SPLBehavior_ApplyConvergence	(libspl.a src_spl_behavio)
+  0209DA24 00000000 .text   $a	(libspl.a src_spl_behavio)
+  0209DAB8 0000011C .text   SPLBehavior_ApplyCollisionPlane	(libspl.a src_spl_behavio)
+  0209DAB8 00000000 .text   $a	(libspl.a src_spl_behavio)
+  0209DBD4 00000000 .text   $a	(libspl.a src_spl_behavio)
+  0209DBD4 000000D8 .text   SPLBehavior_ApplySpin	(libspl.a src_spl_behavio)
+  0209DCA8 00000000 .text   $d	(libspl.a src_spl_behavio)
+  0209DCAC 00000084 .text   SPLBehavior_ApplyMagnet	(libspl.a src_spl_behavio)
+  0209DCAC 00000000 .text   $a	(libspl.a src_spl_behavio)
+  0209DD30 00000000 .text   $a	(libspl.a src_spl_behavio)
+  0209DD30 000000C8 .text   SPLBehavior_ApplyRandom	(libspl.a src_spl_behavio)
+  0209DDEC 00000000 .text   $d	(libspl.a src_spl_behavio)
+  0209DDF8 00000034 .text   SPLBehavior_ApplyGravity	(libspl.a src_spl_behavio)
+  0209DDF8 00000000 .text   $a	(libspl.a src_spl_behavio)
+  0209DE2C 00000080 .text   SPLList_Erase	(libspl.a src_spl_list.c.)
+  0209DE2C 00000000 .text   $a	(libspl.a src_spl_list.c.)
+  0209DEAC 0000004C .text   SPLList_PopFront	(libspl.a src_spl_list.c.)
+  0209DEAC 00000000 .text   $a	(libspl.a src_spl_list.c.)
+  0209DEF8 00000050 .text   SPLList_PushFront	(libspl.a src_spl_list.c.)
+  0209DEF8 00000000 .text   $a	(libspl.a src_spl_list.c.)
+  0209DF48 00000000 .text   $a	(libspl.a src_spl_random.)
+  0209DF48 0000005C .text   SPLRandom_VecFx32_XY	(libspl.a src_spl_random.)
+  0209DF98 00000000 .text   $d	(libspl.a src_spl_random.)
+  0209DFA4 00000000 .text   $a	(libspl.a src_spl_random.)
+  0209DFA4 00000068 .text   SPLRandom_VecFx32	(libspl.a src_spl_random.)
+  0209E000 00000000 .text   $d	(libspl.a src_spl_random.)
   0209E00C 00000000 .text   $a	(libwvr.a src_wvr.c.o    )
   0209E00C 0000023C .text   WVR_StartUpAsync	(libwvr.a src_wvr.c.o    )
   0209E234 00000000 .text   $d	(libwvr.a src_wvr.c.o    )
@@ -57457,7 +57532,9 @@
   021105C0 00000004 .data   sDataNarcId	(src_dex_mon_measures.c.o)
   021105C4 00000004 .data   sHeightMsgBank	(src_dex_mon_measures.c.o)
   021105C8 00000013 .data   @12635	(src_phonebook_dat.c.o)
-  021105DC 00000018 .data   .data	(libspl.a asm_jn_spl.s.o )
+  021105DC 00000008 .data   sPlaneDrawingFunctions	(libspl.a src_spl_draw.c.)
+  021105E4 00000008 .data   sRotationFunctions	(libspl.a src_spl_draw.c.)
+  021105EC 00000006 .data   sUpVector	(libspl.a src_spl_emit.c.)
   021105F4 00000021 .data   @9096	(libdwcaccount.a src_dwc_account)
   02110618 0000000D .data   @9101	(libdwcaccount.a src_dwc_account)
   02110628 00000004 .data   SOCLiConfigPtr	(libsoc.a src_socl_startu)
@@ -57829,7 +57906,7 @@
   021D43B0 00000004 .bss    sAppData	(src_naming_screen.c.o)
   021D43B4 00000000 .bss    .bss	(src_error_message_reset.c.o)
   021D43B4 00000004 .bss    sErrorMessagePrinterLock	(src_error_message_reset.c.o)
-  021D43B8 00000004 .bss    .bss	(libspl.a asm_jn_spl.s.o )
+  021D43B8 00000004 .bss    gSPLRandomState	(libspl.a src_spl_random.)
   021D43BC 00000000 .bss    .bss	(libwvr.a src_wvr.c.o    )
   021D43BC 00000002 .bss    wvrLockId	(libwvr.a src_wvr.c.o    )
   021D43BE 00000002 .bss    wvrVRam	(libwvr.a src_wvr.c.o    )
