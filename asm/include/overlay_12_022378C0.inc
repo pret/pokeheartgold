@@ -207,7 +207,7 @@
 .public BattleSystem_GetBagCursor
 .public BattleSystem_GetMonBall
 .public BattleSystem_GetTrainerGender
-.public BattleSystem_GetFieldSide
+.public BattleSystem_GetBattlerSide
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattleSpecial

@@ -1,0 +1,540 @@
+
+Metrowerks C/C++ for Embedded ARM.
+Copyright (c) 2006, Freescale Semiconductor, Inc
+All rights reserved.
+Version 3.0 build 114 (build 114)
+Runtime Built: Mar 30 2006 14:39:17
+
+Usage: mwccarm [-options]... [files]... [@response]...
+
+Please enter 'mwccarm -help' for information about options.
+
+-------------------------------------------------------------------------------
+General Command-Line Options                                                   
+                                                                               
+   All the options are passed to the linker unless otherwise noted.            
+                                                                               
+   Please see '-help usage' for details about the meaning of this help.        
+-------------------------------------------------------------------------------
+  -help [keyword[,...]]      # global; for this tool;                          
+                             #   display help                                  
+     usage                   #    show usage information                       
+     [no]spaces              #    insert blank lines between options in        
+                             #      printout                                   
+     all                     #    show all standard options                    
+     [no]normal              #    show only standard options                   
+     [no]obsolete            #    show obsolete options                        
+     [no]ignored             #    show ignored options                         
+     [no]deprecated          #    show deprecated options                      
+     [no]meaningless         #    show options meaningless for this target     
+     [no]compatible          #    show compatibility options                   
+     opt[ion]=name           #    show help for a given option; for 'name',    
+                             #      maximum length 63 chars                    
+     search=keyword          #    show help for an option whose name or help   
+                             #      contains 'keyword' (case-sensitive); for   
+                             #      'keyword', maximum length 63 chars         
+     group=keyword           #    show help for groups whose names contain     
+                             #      'keyword' (case-sensitive); for 'keyword', 
+                             #      maximum length 63 chars                    
+     tool=keyword[,...]      #    categorize groups of options by tool;        
+                             #      default                                    
+        all                  #       show all options available in this tool   
+        this                 #       show options executed by this tool;       
+                             #         default                                 
+        other|skipped        #       show options passed to another tool       
+        both                 #       show options used in all tools            
+                             #                                                 
+                             #                                                 
+  -version                   # global; for this tool;                          
+                             #   show version, configuration, and build date   
+  -timing                    # global; collect timing statistics               
+  -progress                  # global; show progress and version               
+  -v[erbose]                 # global; verbose information; cumulative;        
+                             #   implies -progress                             
+  -search                    # global; search access paths for source files    
+                             #   specified on the command line; may specify    
+                             #   object code and libraries as well; this       
+                             #   option provides the IDE's 'access paths'      
+                             #   functionality                                 
+  -[no]wraplines             # global; word wrap messages; default             
+  -maxerrors max             # specify maximum number of errors to print, zero 
+                             #   means no maximum; default is 0                
+  -maxwarnings max           # specify maximum number of warnings to print,    
+                             #   zero means no maximum; default is 0           
+  -msgstyle keyword          # global; set error/warning message style         
+     mpw                     #    use MPW message style                        
+     std                     #    use standard message style; default          
+     gcc                     #    use GCC-like message style                   
+     IDE                     #    use CW IDE-like message style                
+     parseable               #    use context-free machine-parseable message   
+                             #      style                                      
+     EnterpriseIDE           #    use Enterprise-IDE message style             
+                             #                                                 
+  -[no]stderr                # global; use separate stderr and stdout streams; 
+                             #   if using -nostderr, stderr goes to stdout     
+
+-------------------------------------------------------------------------------
+Preprocessing, Precompiling, and Input File Control Options                    
+-------------------------------------------------------------------------------
+  -c                         # global; compile only, do not link               
+  -[no]codegen               # global; generate object code                    
+  -[no]convertpaths          # global; interpret #include filepaths specified  
+                             #   for a foreign operating system; i.e.,         
+                             #   <sys/stat.h> or <:sys:stat.h>; when enabled,  
+                             #   '/' and ':' will separate directories and     
+                             #   cannot be used in filenames (note: this is    
+                             #   not a problem on Win32, since these           
+                             #   characters are already disallowed in          
+                             #   filenames; it is safe to leave the option     
+                             #   'on'); default                                
+  -cwd keyword               # specify #include searching semantics:  before   
+                             #   searching any access paths, the path          
+                             #   specified by this option will be searched     
+     proj                    #    begin search in current working directory;   
+                             #      default                                    
+     source                  #    begin search in directory of source file     
+     explicit                #    no implicit directory; only search '-I' or   
+                             #      '-ir' paths                                
+     include                 #    begin search in directory of referencing     
+                             #      file                                       
+                             #                                                 
+  -D+ | -d[efine]            # cased; define symbol 'name' to 'value' if       
+    name[=value]             #   specified, else '1'                           
+  -[no]defaults              # global; passed to linker;                       
+                             #   same as '-[no]stdinc'; default                
+  -dis[assemble]             # global; passed to all tools;                    
+                             #   disassemble files to stdout                   
+  -E                         # global; cased; preprocess source files          
+  -EP                        # global; cased; preprocess and strip out         
+                             #   #line/#pragma directives                      
+  -enc[oding] keyword        # specify default source encoding; compiler will  
+                             #   automatically detect UTF-8 header or          
+                             #   UCS-2/UCS-4 encodings regardless of setting   
+     ascii                   #    ASCII; default                               
+     autodetect|multibyte|   #    scan file for multibyte_encoding (slower)    
+       mb                    #                                                 
+     system                  #    use system locale                            
+     UTF[8|-8]               #    UTF-8                                        
+     SJIS|Shift-JIS|         #    Shift-JIS                                    
+       ShiftJIS              #                                                 
+     EUC[JP|-JP]             #    EUC-JP                                       
+     ISO[2022JP|-2022-JP]    #    ISO-2022-JP                                  
+                             #                                                 
+  -ext extension             # global; specify extension for generated object  
+                             #   files; with a leading period ('.'), appends   
+                             #   extension; without, replaces source file's    
+                             #   extension; for 'extension', maximum length 14 
+                             #   chars; default is none                        
+  -gccinc[ludes]             # global; adopt GCC #include semantics:  add '-I' 
+                             #   paths to system list if '-I-' is not          
+                             #   specified, and search directory of            
+                             #   referencing file first for #includes (same as 
+                             #   '-cwd include')                               
+  -[no]gccdep[ends]          # global; if set, write dependency file (-MD,     
+                             #   -MMD) with name and location based on output  
+                             #   file (compatible with gcc 3.x); else base     
+                             #   filename on the source file and write to the  
+                             #   current directory (legacy MW behavior)        
+  -i- | -I-                  # global; change target for '-I' access paths to  
+                             #   the system list; implies '-cwd explicit';     
+                             #   while compiling, user paths then system paths 
+                             #   are searched when using '#include "..."; only 
+                             #   system paths are searched with '#include      
+                             #   <...>'                                        
+  -I+ | -i path              # global; cased; append access path to current    
+                             #   #include list(see '-gccincludes' and '-I-')   
+  -include file              # prefix text file or precompiled header onto all 
+                             #   source files                                  
+  -ir path                   # global; append a recursive access path to       
+                             #   current #include list                         
+  -[no]keepobj[ects]         # global; keep object files generated after       
+                             #   invoking linker; if disabled, intermediate    
+                             #   object files are temporary and deleted after  
+                             #   link stage; objects are always kept when      
+                             #   compiling                                     
+  -M                         # global; cased; scan source files for            
+                             #   dependencies and emit Makefile, do not        
+                             #   generate object code                          
+  -MM                        # global; cased; like -M, but do not list system  
+                             #   include files                                 
+  -MD                        # global; cased; like -M, but write dependency    
+                             #   map to a file (see ~gccdep) and generate      
+                             #   object code                                   
+  -MMD                       # global; cased; like -MD, but do not list system 
+                             #   include files                                 
+  -make                      # global; scan source files for dependencies and  
+                             #   emit Makefile, do not generate object code    
+  -nofail                    # continue working after errors in earlier files  
+  -nolink                    # global; compile only, do not link               
+  -noprecompile              # do not precompile any files based on the        
+                             #   filename extension                            
+  -nosyspath                 # global; treat #include <...> like #include      
+                             #   "..."; always search both user and system     
+                             #   path lists                                    
+  -o file|dir                # specify output filename or directory for object 
+                             #   file(s) or text output, or output filename    
+                             #   for linker if called                          
+  -P                         # global; cased; preprocess and send output to    
+                             #   file; do not generate code                    
+  -precompile file|dir       # generate precompiled header from source; write  
+                             #   header to 'file' if specified, or put header  
+                             #   in 'dir'; if argument is "", write header to  
+                             #   source-specified location; if neither is      
+                             #   defined, header filename is derived from      
+                             #   source filename; note: the driver can tell    
+                             #   whether to precompile a file based on its     
+                             #   extension; '-precompile file source' then is  
+                             #   the same as '-c -o file source'               
+  -preprocess                # global; preprocess source files                 
+  -ppopt keyword[,...]       # specify options affecting the preprocessed      
+                             #   output                                        
+     [no]break               #    emit file/line breaks; default               
+     [no]line                #    emit #line directives, else comments;        
+                             #      default                                    
+     [no]full[path]          #    emit full path of file, else base filename;  
+                             #      default                                    
+     [no]pragma              #    keep #pragma directives, else strip them;    
+                             #      default                                    
+     [no]comment             #    keep comments, else strip them               
+     [no]space               #    keep whitespace, else strip it; default      
+                             #                                                 
+  -prefix file               # prefix text file or precompiled header onto all 
+                             #   source files                                  
+  -S                         # global; cased; passed to all tools;             
+                             #   disassemble and send output to file           
+  -[no]stdinc                # global; use standard system include paths       
+                             #   (specified by the environment variable        
+                             #   %MWCIncludes%); added after all system '-I'   
+                             #   paths; default                                
+  -U+ | -u[ndefine] name     # cased; undefine symbol 'name'                   
+  -allow_macro_redefs        # allow macro redefinitions without an error or   
+                             #   warning                                       
+
+-------------------------------------------------------------------------------
+Front-End C/C++ Language Options                                               
+-------------------------------------------------------------------------------
+  -ansi keyword              # specify ANSI conformance options, overriding    
+                             #   the given settings                            
+     off                     #    same as '-stdkeywords off', '-enum min', and 
+                             #      '-strict off'; default                     
+     on|relaxed              #    same as '-stdkeywords on', '-enum min', and  
+                             #      '-strict on'                               
+     strict                  #    same as '-stdkeywords on', '-enum int', and  
+                             #      '-strict on'                               
+                             #                                                 
+  -bool on|off               # enable C++ 'bool' type, 'true' and 'false'      
+                             #   constants; default is on                      
+  -nolonglong                # disable 'long long' support                     
+  -char keyword              # set sign of 'char'                              
+     signed                  #    chars are signed                             
+     unsigned                #    chars are unsigned; default                  
+                             #                                                 
+  -Cpp_exceptions on|off     # passed to linker;                               
+                             #   enable or disable C++ exceptions; default is  
+                             #   on                                            
+  -dialect | -lang keyword   # passed to linker;                               
+                             #   specify source language                       
+     c                       #    treat source as C always                     
+     c++                     #    treat source as C++ always                   
+     ec++                    #    generate warnings for use of C++ features    
+                             #      outside Embedded C++ subset (implies       
+                             #      '-dialect cplus')                          
+     c99                     #    compile with C99 extensions                  
+                             #                                                 
+  -enum keyword              # specify default size for enumeration types      
+     min                     #    use the minimal-sized type; default          
+     int                     #    use int-sized enums                          
+                             #                                                 
+  -min_enum_size keyword     # specify the minimum size for enumeration types  
+                             #   (implies -enum min)                           
+     1                       #    minimum size is 1                            
+     2                       #    minimum size is 2                            
+     4                       #    minimum size is 4                            
+                             #                                                 
+  -for_scoping on|off        # control legacy (non-standard) for-scoping       
+                             #   behavior; when enabled, variables declared in 
+                             #   'for' loops are visible to the enclosing      
+                             #   scope; when disabled, such variables are      
+                             #   scoped to the loop only; default is off       
+  -fl[ag] pragma             # specify an 'on/off' compiler #pragma;           
+                             #   '-flag foo' is the same as '#pragma foo on',  
+                             #   '-flag no-foo' is the same as '#pragma foo    
+                             #   off'; use '-pragma' option for other cases    
+  -gcc[ext | _extensions]    # enable GCC language extensions; default is off  
+    on|off                   #                                                 
+  -inline keyword[,...]      # specify inline options                          
+     on|smart                #    turn on inlining for 'inline' functions;     
+                             #      default                                    
+     none|off                #    turn off inlining                            
+     auto                    #    auto-inline small functions (without         
+                             #      'inline' explicitly specified)             
+     noauto                  #    do not auto-inline; default                  
+     all                     #    turn on aggressive inlining: same as         
+                             #      '-inline on, auto'                         
+     deferred                #    defer inlining until end of compilation      
+                             #      unit; this allows inlining of functions    
+                             #      defined before and after the caller;       
+                             #      deprecated option, use '-ipa file'         
+     level=n                 #    cased; inline functions up to 'n' levels     
+                             #      deep; level 0 is the same as '-inline on'; 
+                             #      for 'n', range 0 - 8                       
+     [no]bottomup            #    inline bottom-up, starting from leaves of    
+                             #      the call graph rather than the top-level   
+                             #      function; default                          
+                             #                                                 
+  -inst[mgr | ance_manager]  # enable C++ template instance manager; must be   
+    keyword[,...]            #   enabled or disabled for all files in a        
+                             #   target; remove the database along with a      
+                             #   'make clean'                                  
+     on                      #    enable manager                               
+     off                     #    disable manager; default                     
+     file=<path>             #    specify database used for instance manager   
+                             #      tracking (default 'cwinst.db')             
+                             #                                                 
+  -ipa keyword[,...]         # select interprocedural analysis level           
+     function|off            #    traditional mode (per-function optimization) 
+     file                    #    per-file optimization (same as 'deferred     
+                             #      codegen')                                  
+     program                 #    per-program optimization (if compiling, use  
+                             #      normally; if linking, pass all files or    
+                             #      *.irobjs on the command line)              
+     program-final|program2  #    per-program optimization (without linking;   
+                             #      pass all files or *.irobjs on the command  
+                             #      line)                                      
+                             #                                                 
+  -iso_templates on|off      # enable ISO C++ template parser; default is off  
+  -[no]mapcr                 # reverse mapping of '\n' and '\r' so that        
+                             #   '\n'==13 and '\r'==10 (for Macintosh MPW      
+                             #   compatability)                                
+  -msext keyword             # [dis]allow Microsoft VC++ extensions            
+     on                      #    enable extensions: redefining macros,        
+                             #      allowing XXX::yyy syntax when declaring    
+                             #      method yyy of class XXX,                   
+                             #      allowing extra commas,                     
+                             #      ignoring casts to the same type,           
+                             #      treating function types with equivalent    
+                             #      parameter lists but different return types 
+                             #      as equal,                                  
+                             #      allowing pointer-to-integer conversions,   
+                             #      and various syntactical differences        
+     off                     #    disable extensions; default on non-x86       
+                             #      targets                                    
+                             #                                                 
+  -once                      # prevent header files from being processed more  
+                             #   than once                                     
+  -pragma ...                # specify a #pragma for the compiler such as      
+                             #   "#pragma ..."; quote the parameter if you     
+                             #   provide an argument (i.e., '-pragma "myopt    
+                             #   reset"')                                      
+  -r[equireprotos]           # require prototypes                              
+  -relax_pointers            # relax pointer type-checking rules in C          
+  -RTTI on|off               # select run-time typing information (for C++);   
+                             #   default is on                                 
+  -stdkeywords on|off        # allow only standard keywords; default is off    
+  -str[ings] keyword[,...]   # specify string constant options                 
+     [no]reuse               #    reuse strings; equivalent strings are the    
+                             #      same object; default                       
+     [no]pool                #    pool strings into a single data object       
+                             #                                                 
+  -strict on|off             # specify ANSI strictness checking; default is    
+                             #   off                                           
+  -trigraphs on|off          # enable recognition of trigraphs; default is off 
+  -wchar_t on|off            # enable wchar_t as a built-in C++ type; default  
+                             #   is on                                         
+
+-------------------------------------------------------------------------------
+C/C++ Warning Options                                                          
+-------------------------------------------------------------------------------
+  -w[arn[ings]]              # global; for this tool;                          
+    keyword[,...]            #   warning options                               
+     off                     #    passed to all tools;                         
+                             #      turn off all warnings                      
+     on                      #    passed to all tools;                         
+                             #      turn on most warnings                      
+     [no]cmdline             #    passed to all tools;                         
+                             #      command-line driver/parser warnings        
+     [no]err[or] |           #    passed to all tools;                         
+       [no]iserr[or]         #      treat warnings as errors                   
+     most                    #    turn on most warnings                        
+     all                     #    turn on almost all warnings, require         
+                             #      prototypes                                 
+     full                    #    turn on all warnings (likely to generate     
+                             #      spurious warnings), require prototypes     
+     [no]pragmas |           #    illegal #pragmas (most)                      
+       [no]illpragmas        #                                                 
+     [no]empty[decl]         #    empty declarations (most)                    
+     [no]possible |          #    possible unwanted effects (most)             
+       [no]unwanted          #                                                 
+     [no]unusedarg           #    unused arguments (most)                      
+     [no]unusedvar           #    unused variables (most)                      
+     [no]unused              #    same as -w [no]unusedarg,[no]unusedvar       
+                             #      (most)                                     
+     [no]extracomma |        #    extra commas (most)                          
+       [no]comma             #                                                 
+     [no]pedantic |          #    pedantic error checking (most)               
+       [no]extended          #                                                 
+     [no]hidevirtual |       #    hidden virtual functions (most)              
+       [no]hidden[virtual]   #                                                 
+     [no]largeargs           #    passing large arguments to unprototyped      
+                             #      functions (most)                           
+     [no]unusedexpr          #    use of expressions as statements without     
+                             #      side effects (most)                        
+     [no]ptrintconv          #    lossy conversions from pointers to integers  
+                             #      (most)                                     
+     [no]tokenpasting        #    token not formed by ## operator (most)       
+     [no]missingreturn       #    return without a value in non-void-returning 
+                             #      function  (most)                           
+     [no]structclass         #    inconsistent use of 'class' and 'struct'     
+                             #      (most)                                     
+     [no]filecaps            #    incorrect capitalization used in #include    
+                             #      "..." (most)                               
+     [no]sysfilecaps         #    incorrect capitalization used in #include    
+                             #      <...> (most)                               
+     [no]implicit[conv]      #    implicit arithmetic conversions; implies     
+                             #      '-warn impl_float2int,impl_signedunsigned' 
+                             #      (all)                                      
+     [no]impl_int2float      #    implicit integral to floating conversions    
+                             #      (all)                                      
+     [no]impl_float2int      #    implicit floating to integral conversions    
+                             #      (all)                                      
+     [no]impl_signedunsigned #    implicit signed/unsigned conversions (all)   
+                             #                                                 
+     [no]undef[macro]        #    use of undefined macros in #if/#elif         
+                             #      conditionals (full)                        
+     [no]notinlined          #    'inline' functions not inlined (full)        
+     [no]padding             #    padding added between struct members (full)  
+     [no]notused             #    result of non-void-returning function not    
+                             #      used (full)                                
+     [no]anyptrintconv       #    any conversions from pointers to integers    
+                             #      (full)                                     
+     display|dump            #    display list of active warnings              
+                             #                                                 
+
+-------------------------------------------------------------------------------
+Optimizer Options                                                              
+                                                                               
+   Note that all options besides '-opt off|on|all|space|speed|level=...' are   
+   for backwards compatibility; other optimization options may be superceded   
+   by use of '-opt level=xxx'.                                                 
+-------------------------------------------------------------------------------
+  -O                         # same as '-O2'                                   
+  -O+keyword[,...]           # cased; control optimization; you may combine    
+                             #   options as in '-O4,p'                         
+     0                       #    same as '-opt off'                           
+     1                       #    same as '-opt level=1'                       
+     2                       #    same as '-opt level=2'                       
+     3                       #    same as '-opt level=3'                       
+     4                       #    same as '-opt level=4'                       
+     p                       #    same as '-opt speed'                         
+     s                       #    same as '-opt space'                         
+                             #                                                 
+  -opt keyword[,...]         # specify optimization options                    
+     off|none                #    suppress all optimizations; default          
+     on                      #    same as '-opt level=2'                       
+     all|full                #    same as '-opt speed, level=4'                
+     [no]space               #    optimize for space; default                  
+     [no]speed               #    optimize for speed                           
+     l[evel]=num             #    set optimization level:                      
+                             #      level 0: no optimizations                  
+                             #                                                 
+                             #      level 1: global register allocation,       
+                             #      peephole, dead code elimination            
+                             #                                                 
+                             #      level 2: adds common subexpression         
+                             #      elimination and copy propagation           
+                             #                                                 
+                             #      level 3: adds loop transformations,        
+                             #      strength reduction, loop-invariant code    
+                             #      motion                                     
+                             #                                                 
+                             #      level 4: adds repeated common              
+                             #      subexpression elimination and              
+                             #      loop-invariant code motion                 
+                             #      ; for 'num', range 0 - 4; default is 0     
+     [no]cse |               #    common subexpression elimination             
+       [no]commonsubs        #                                                 
+     [no]deadcode            #    removal of dead code                         
+     [no]deadstore           #    removal of dead assignments                  
+     [no]lifetimes           #    computation of variable lifetimes            
+     [no]loop[invariants]    #    removal of loop invariants                   
+     [no]prop[agation]       #    propagation of constant and copy assignments 
+     [no]strength            #    strength reduction; reducing multiplication  
+                             #      by an index variable into addition         
+     [no]dead                #    same as '-opt [no]deadcode' and '-opt        
+                             #      [no]deadstore'                             
+     display|dump            #    display complete list of active              
+                             #      optimizations                              
+                             #                                                 
+
+-------------------------------------------------------------------------------
+Embedded ARM Codegen Options                                                   
+-------------------------------------------------------------------------------
+  -[no]ashla                 # enable ARM shared library architecture support  
+  -generic_symbol_names      # for this tool;                                  
+    keyword                  #   specify naming convention of static symbols   
+     on                      #    use generic symbol names for static symbols  
+     off                     #    use original symbol names for static         
+                             #      symbols; default                           
+                             #                                                 
+  -[no]big                   # generate code and link for a big-endian target  
+  -[no]little                # generate code and link for a little-endian      
+                             #   target; default                               
+  -[no]constpool             # pool constants and disable dead-stripping       
+  -fp keyword                # for this tool;                                  
+                             #   specify floating-point options                
+     soft                    #    software floating-point emulation; default   
+                             #                                                 
+  -[no]interworking          # generate ARM/Thumb interworking sequences       
+  -[no]pic                   # generate position-independent code references   
+  -[no]pid                   # generate position-independent data references   
+  -proc[essor] keyword       # specify target processor                        
+     generic                 #    generic ARM processor                        
+     v4                      #    v4 achitecture ARM processor                 
+     v4t                     #    v4t architecture ARM processor               
+     v5t                     #    v5t architecture ARM processor               
+     v5te                    #    v5te architecture ARM processor              
+     v6                      #    v6 architecture ARM processor                
+     arm7tdmi                #    arm7tdmi; default                            
+     arm710t                 #    arm710t                                      
+     arm720t                 #    arm720t                                      
+     arm740t                 #    arm740t                                      
+     arm7ej                  #    arm7ej                                       
+     arm9tdmi                #    arm9tdmi                                     
+     arm920t                 #    arm920t                                      
+     arm922t                 #    arm922t                                      
+     arm940t                 #    arm940t                                      
+     arm9ej                  #    arm9ej                                       
+     arm926ej                #    arm926ej                                     
+     arm946e                 #    arm946e                                      
+     arm966e                 #    arm966e                                      
+     arm1020e                #    arm1020e                                     
+     arm1022e                #    arm1022e                                     
+     arm1026ej               #    arm1026ej                                    
+     dbmx1                   #    DragonBall MX1                               
+     dbmxl                   #    DragonBall MXL                               
+     XScale                  #    XScale                                       
+     pxa255                  #    pxa255                                       
+     pxa261                  #    pxa261                                       
+     pxa262                  #    pxa262                                       
+     pxa263                  #    pxa263                                       
+                             #                                                 
+  -rostr | -readonlystrings  # for this tool;                                  
+                             #   place read-only strings in .rodata section    
+  -sdatathreshold long       # set maximum size in bytes for data              
+                             #   objectsbefore being spilled into .sdata       
+                             #   section; default is 8                         
+  -[no]thumb                 # generate Thumb instructions                     
+  -[no]profile               # generate code for profiling                     
+
+-------------------------------------------------------------------------------
+Debugging Control Options                                                      
+-------------------------------------------------------------------------------
+  -g                         # global; cased; generate debugging information;  
+                             #   same as '-sym full'                           
+  -sym keyword[,...]         # global; specify debugging options               
+     off                     #    do not generate debugging information;       
+                             #      default                                    
+     on                      #    turn on debugging information                
+     full[path]              #    store full paths to source files             
+                             #                                                 
+
