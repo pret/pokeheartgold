@@ -60,7 +60,7 @@ int GetPersonalAttr(const BASE_STATS *baseStats, int attr);
 void FreeMonPersonal(BASE_STATS *personal);
 int GetMonBaseStat_HandleAlternateForm(int species, int form, int stat_id);
 int GetMonBaseStat(int species, int stat_id);
-u8 GetPercentProgressTowardsNextLevel(Pokemon *mon);
+u8 Pokemon_GetPercentToNextLevel(Pokemon *mon);
 u32 CalcMonExpToNextLevel(Pokemon *mon);
 u32 CalcBoxMonExpToNextLevel(BoxPokemon *boxMon);
 u32 GetMonBaseExperienceAtCurrentLevel(Pokemon *mon);

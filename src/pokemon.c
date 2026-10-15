@@ -1862,7 +1862,7 @@ int GetMonBaseStatEx_HandleAlternateForm(NARC *narc, int species, int form, int 
     return ret;
 }
 
-u8 GetPercentProgressTowardsNextLevel(Pokemon *mon) {
+u8 Pokemon_GetPercentToNextLevel(Pokemon *mon) {
     BOOL decry = AcquireMonLock(mon);
     u16 species = (u16)GetMonData(mon, MON_DATA_SPECIES, NULL);
     u8 level = (u8)GetMonData(mon, MON_DATA_LEVEL, NULL);
