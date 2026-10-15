@@ -271,40 +271,6 @@
                   17](FS_WaitAsync,func) found in global libfs.a
                 15](FS_CloseFile,func) found in global libfs.a
                14](sNarcFileList,object) found in global src_filesystem.c.o
-                15](@12875,object) found in local src_filesystem.c.o
-                15](@12874,object) found in local src_filesystem.c.o
-                15](@12873,object) found in local src_filesystem.c.o
-                15](@12872,object) found in local src_filesystem.c.o
-                15](@12871,object) found in local src_filesystem.c.o
-                15](@12870,object) found in local src_filesystem.c.o
-                15](@12869,object) found in local src_filesystem.c.o
-                15](@12868,object) found in local src_filesystem.c.o
-                15](@12867,object) found in local src_filesystem.c.o
-                15](@12866,object) found in local src_filesystem.c.o
-                15](@12865,object) found in local src_filesystem.c.o
-                15](@12864,object) found in local src_filesystem.c.o
-                15](@12863,object) found in local src_filesystem.c.o
-                15](@12862,object) found in local src_filesystem.c.o
-                15](@12861,object) found in local src_filesystem.c.o
-                15](@12860,object) found in local src_filesystem.c.o
-                15](@12859,object) found in local src_filesystem.c.o
-                15](@12858,object) found in local src_filesystem.c.o
-                15](@12857,object) found in local src_filesystem.c.o
-                15](@12856,object) found in local src_filesystem.c.o
-                15](@12855,object) found in local src_filesystem.c.o
-                15](@12854,object) found in local src_filesystem.c.o
-                15](@12853,object) found in local src_filesystem.c.o
-                15](@12852,object) found in local src_filesystem.c.o
-                15](@12851,object) found in local src_filesystem.c.o
-                15](@12850,object) found in local src_filesystem.c.o
-                15](@12849,object) found in local src_filesystem.c.o
-                15](@12848,object) found in local src_filesystem.c.o
-                15](@12847,object) found in local src_filesystem.c.o
-                15](@12846,object) found in local src_filesystem.c.o
-                15](@12845,object) found in local src_filesystem.c.o
-                15](@12844,object) found in local src_filesystem.c.o
-                15](@12843,object) found in local src_filesystem.c.o
-                15](@12842,object) found in local src_filesystem.c.o
                 15](@12841,object) found in local src_filesystem.c.o
                 15](@12840,object) found in local src_filesystem.c.o
                 15](@12839,object) found in local src_filesystem.c.o
@@ -538,6 +504,40 @@
                 15](@12611,object) found in local src_filesystem.c.o
                 15](@12610,object) found in local src_filesystem.c.o
                 15](@12609,object) found in local src_filesystem.c.o
+                15](@12608,object) found in local src_filesystem.c.o
+                15](@12607,object) found in local src_filesystem.c.o
+                15](@12606,object) found in local src_filesystem.c.o
+                15](@12605,object) found in local src_filesystem.c.o
+                15](@12604,object) found in local src_filesystem.c.o
+                15](@12603,object) found in local src_filesystem.c.o
+                15](@12602,object) found in local src_filesystem.c.o
+                15](@12601,object) found in local src_filesystem.c.o
+                15](@12600,object) found in local src_filesystem.c.o
+                15](@12599,object) found in local src_filesystem.c.o
+                15](@12598,object) found in local src_filesystem.c.o
+                15](@12597,object) found in local src_filesystem.c.o
+                15](@12596,object) found in local src_filesystem.c.o
+                15](@12595,object) found in local src_filesystem.c.o
+                15](@12594,object) found in local src_filesystem.c.o
+                15](@12593,object) found in local src_filesystem.c.o
+                15](@12592,object) found in local src_filesystem.c.o
+                15](@12591,object) found in local src_filesystem.c.o
+                15](@12590,object) found in local src_filesystem.c.o
+                15](@12589,object) found in local src_filesystem.c.o
+                15](@12588,object) found in local src_filesystem.c.o
+                15](@12587,object) found in local src_filesystem.c.o
+                15](@12586,object) found in local src_filesystem.c.o
+                15](@12585,object) found in local src_filesystem.c.o
+                15](@12584,object) found in local src_filesystem.c.o
+                15](@12583,object) found in local src_filesystem.c.o
+                15](@12582,object) found in local src_filesystem.c.o
+                15](@12581,object) found in local src_filesystem.c.o
+                15](@12580,object) found in local src_filesystem.c.o
+                15](@12579,object) found in local src_filesystem.c.o
+                15](@12578,object) found in local src_filesystem.c.o
+                15](@12577,object) found in local src_filesystem.c.o
+                15](@12576,object) found in local src_filesystem.c.o
+                15](@12575,object) found in local src_filesystem.c.o
               13](NNS_G2dGetUnpackedPaletteData,func) found in global libnnsg2d.a
                14](NNS_G2dFindBinaryBlock,func) found in global libnnsg2d.a
                14](NNS_G2dUnpackNCL,func) found in global libnnsg2d.a
@@ -561,7 +561,7 @@
                  16](sub_02013FDC,func) found in local src_unk_02013FDC.c.o
                14](sub_02014350,func) found in local src_unk_02013FDC.c.o
                 15](sub_020142D4,func) found in local src_unk_02013FDC.c.o
-               14](@13149,object) found in local src_unk_02013FDC.c.o
+               14](@13115,object) found in local src_unk_02013FDC.c.o
              12](PokepicManager_Delete,func) found in global src_pokepic.c.o
              12](GetPokemonSpriteCharAndPlttNarcIds,func) found in global src_pokemon.c.o
               13](GetBoxmonSpriteCharAndPlttNarcIds,func) found in global src_pokemon.c.o
@@ -574,7 +574,7 @@
                 15](CalcMonChecksum,func) found in global src_pokemon.c.o
                 15](GetBoxMonDataInternal,func) found in local src_pokemon.c.o
                  16](GetSubstruct,func) found in global src_pokemon.c.o
-                  17](offsets$18463,object) found in local src_pokemon.c.o
+                  17](offsets$18429,object) found in local src_pokemon.c.o
                  16](CalcLevelBySpeciesAndExp,func) found in global src_pokemon.c.o
                   17](AllocAndLoadMonPersonal,func) found in global src_pokemon.c.o
                    18](LoadMonPersonal,func) found in global src_pokemon.c.o
@@ -583,7 +583,7 @@
                   17](CalcLevelBySpeciesAndExp_PreloadedPersonal,func) found in global src_pokemon.c.o
                    18](GetPersonalAttr,func) found in global src_pokemon.c.o
                    18](LoadGrowthTable,func) found in global src_pokemon.c.o
-                   18](table$17025,object) found in local src_pokemon.c.o
+                   18](table$16991,object) found in local src_pokemon.c.o
                   17](FreeMonPersonal,func) found in global src_pokemon.c.o
                  16](_ll_shl,notype) found in global FP_fastI_v5t_LE.a
                  16](GetMoveMaxPP,func) found in global src_move.c.o
@@ -937,7 +937,7 @@
                 15](SpriteList_Init,func) found in local src_sprite.c.o
                 15](SpriteList_InitStack,func) found in local src_sprite.c.o
                 15](Sys_AllocAndReadFile,func) found in global src_system.c.o
-                15](@13800,object) found in local src_sprite.c.o
+                15](@13766,object) found in local src_sprite.c.o
               13](Create2DGfxResObjMan,func) found in global src_unk_0200A090.c.o
                14](GF2dGfxRawResMan_Create,func) found in global src_unk_02025534.c.o
                 15](GF2DGfxResObj_Init,func) found in local src_unk_02025534.c.o
@@ -1027,7 +1027,7 @@
                 15](GX_EndLoadBGExtPltt,func) found in global libgx.a
                 15](GXS_BeginLoadBGExtPltt,func) found in global libgx.a
                 15](GXS_EndLoadBGExtPltt,func) found in global libgx.a
-                15](_020F5968$13501,object) found in local src_gf_gfx_loader.c.o
+                15](_020F5968$13467,object) found in local src_gf_gfx_loader.c.o
                  16](GXS_LoadBGExtPltt,func) found in global libgx.a
                  16](GX_LoadBGExtPltt,func) found in global libgx.a
              12](.rodata,section) found in local asm_render_window.s.o
@@ -1880,7 +1880,7 @@
                         23](MessageFormat_InitFields,func) found in global src_message_format.c.o
                       21](BufferIntegerAsString,func) found in global src_message_format.c.o
                        22](String16_FormatInteger,func) found in global src_pm_string.c.o
-                        23](sCharset_JP$13121,object) found in local src_pm_string.c.o
+                        23](sCharset_JP$13087,object) found in local src_pm_string.c.o
                        22](SetStringAsPlaceholder,func) found in global src_message_format.c.o
                       21](StringExpandPlaceholders,func) found in global src_message_format.c.o
                        22](MsgArray_ControlCodeIsStrVar,func) found in global src_string_control_code.c.o
@@ -2316,7 +2316,7 @@
                          24](FontID_Release,func) found in global src_font.c.o
                           25](FontData_Delete,func) found in global src_font_data.c.o
                            26](FreeLoadedFontResources,func) found in local src_font_data.c.o
-                            27](_020F6330$13311,object) found in local src_font_data.c.o
+                            27](_020F6330$13277,object) found in local src_font_data.c.o
                              28](InitFontResources_LazyFromNarc,func) found in local src_font_data.c.o
                               29](DecompressGlyphTiles_LazyFromNarc,func) found in local src_font_data.c.o
                                30](NARC_ReadFromAbsolutePos,func) found in global src_filesystem.c.o
@@ -2372,7 +2372,7 @@
                              28](ScreenSetPalette,func) found in local src_yes_no_prompt.c.o
                            26](SetupTouchHitboxesController,func) found in local src_yes_no_prompt.c.o
                             27](YesNoButton_TouchHitboxCB,func) found in local src_yes_no_prompt.c.o
-                           26](dimensions$13398,object) found in local src_yes_no_prompt.c.o
+                           26](dimensions$13364,object) found in local src_yes_no_prompt.c.o
                          24](YesNoPrompt_Reset,func) found in global src_yes_no_prompt.c.o
                           25](YesNoPromptButton_Clear,func) found in local src_yes_no_prompt.c.o
                           25](YesNoPrompt_Init,func) found in local src_yes_no_prompt.c.o
@@ -8191,7 +8191,7 @@
       5](HpBar_GetColorIdx,func) found in global src_unk_0208805C.c.o
      4](PrintUIntOnWindow,func) found in global src_message_printer.c.o
       5](ConvertUIntToDecimalString,func) found in global src_string_util.c.o
-       6](_power_of_10$12689,object) found in local src_string_util.c.o
+       6](_power_of_10$12655,object) found in local src_string_util.c.o
      4](sub_0200CDAC,func) found in global src_message_printer.c.o
       5](_020F5C24,object) found in local src_message_printer.c.o
      4](sub_0200CE7C,func) found in global src_unk_0200CE7C.c.o
@@ -8226,7 +8226,7 @@
            10](GetMsgCount_ExistingTable,func) found in local src_msgdata.c.o
            10](GetMsgCount_TableFromNarc,func) found in local src_msgdata.c.o
             11](ReadFromNarcMemberByIdPair,func) found in global src_filesystem.c.o
-          9](msgBanks$15114,object) found in local src_message_format.c.o
+          9](msgBanks$15080,object) found in local src_message_format.c.o
         7](FormatCharacteristic,func) found in local src_trainer_memo.c.o
          8](sCharactersticMsgs,object) found in local src_trainer_memo.c.o
         7](FormatFlavorPreference,func) found in local src_trainer_memo.c.o
@@ -9235,7 +9235,7 @@
           9](CalcMoneyLoss,func) found in global src_battle_battle_system.c.o
            10](Party_GetMaxLevel,func) found in global src_pokemon.c.o
            10](PlayerProfile_GetMoney,func) found in global src_player_data.c.o
-           10](sBadgePenalty$18082,object) found in local src_battle_battle_system.c.o
+           10](sBadgePenalty$18048,object) found in local src_battle_battle_system.c.o
           9](PlayerProfile_SubMoney,func) found in global src_player_data.c.o
          8](BtlCmd_PrintTrainerMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_SetHealthbarStatus,func) found in global src_battle_battle_command.c.o
@@ -9826,7 +9826,7 @@
      4](GF_SndHandleInitAll,func) found in global src_sound.c.o
      4](NNS_SndHeapGetSize,func) found in global libnnssnd.a
      4](sub_02004898,func) found in global src_sound.c.o
-     4](@13246,object) found in local src_sound.c.o
+     4](@13208,object) found in local src_sound.c.o
     3](Init_Timer3,func) found in global src_timer3.c.o
      4](.bss,section) found in local src_timer3.c.o
      4](sub_02025438,func) found in local src_timer3.c.o
@@ -9964,7 +9964,7 @@
                           25](NNS_G3dMdlSetMdlDiff,func) found in global libnnsg3d.a
                         23](DrawModelShapewise,func) found in local src_field_map_prop_manager.c.o
                          24](NNS_G3dDraw1Mat1Shp,func) found in global libnnsg3d.a
-                        23](@16934,object) found in local src_field_map_prop_manager.c.o
+                        23](@16900,object) found in local src_field_map_prop_manager.c.o
                        22](ov01_02204688,func) found in global src_field_overlay_01_02204004.c.o
                         23](MapPropAnimation_RemoveFromRenderObj,func) found in global src_field_overlay_01_02204004.c.o
                        22](MapPropManager_Reset,func) found in global src_field_map_prop_manager.c.o
@@ -10408,7 +10408,7 @@
                                                      52](Task_CelebiTimeTravelCutscene,func) found in local src_field_event_cutscene_celebi.c.o
                                                       53](CelebiCutscene_LoadResources,func) found in local src_field_event_cutscene_celebi.c.o
                                                        54](CelebiCutsceneAnimations_FrameSet,func) found in local src_field_event_cutscene_celebi.c.o
-                                                       54](@16857,object) found in local src_field_event_cutscene_celebi.c.o
+                                                       54](@16823,object) found in local src_field_event_cutscene_celebi.c.o
                                                       53](CelebiCutscene_StartSwirlTask,func) found in local src_field_event_cutscene_celebi.c.o
                                                        54](ov01_021F467C,func) found in global asm_overlay_01_021F467C.s.o
                                                         55](ov01_021F44B4,func) found in global asm_overlay_01_021F4464.s.o
@@ -10460,7 +10460,7 @@
                                                       53](LinkBattleRuleset_CheckDexBasedRules,func) found in global src_battle_regulation.c.o
                                                        54](GetEggSpecies,func) found in global src_pokemon.c.o
                                                         55](ReadFromPersonalPmsNarc,func) found in global src_pokemon.c.o
-                                                         56](@22592,object) found in local src_pokemon.c.o
+                                                         56](@22558,object) found in local src_pokemon.c.o
                                                        54](PokedexData_GetHeight,func) found in global src_dex_mon_measures.c.o
                                                        54](SpeciesIsMythical,func) found in global src_pokemon.c.o
                                                        54](MonCheckFrontierIneligibility,func) found in global src_pokemon.c.o
@@ -10554,7 +10554,7 @@
                                                          56](sub_0203A040,func) found in global src_unk_02037C94.c.o
                                                          56](FieldSystem_LaunchApplication,func) found in global src_field_system.c.o
                                                           57](sub_0203DF34,func) found in global src_field_system.c.o
-                                                         56](sOverlayTemplate_NintendoWifiConnect$22719,object) found in local src_launch_application.c.o
+                                                         56](sOverlayTemplate_NintendoWifiConnect$22685,object) found in local src_launch_application.c.o
                                                           57](sub_02019490,func) found in global asm_unk_020192D0.s.o
                                                            58](sub_02087E10,func) found in global asm_unk_02087A78.s.o
                                                             59](.rodata,section) found in local asm_unk_02087A78.s.o
@@ -10578,7 +10578,7 @@
                                                               61](GF_RTC_GetTimeOfDay,func) found in global src_gf_rtc.c.o
                                                                62](GF_RTC_CopyTime,func) found in global src_gf_rtc.c.o
                                                                62](GF_RTC_GetTimeOfDayByHour,func) found in global src_gf_rtc.c.o
-                                                                63](sTimeOfDayByHour$12742,object) found in local src_gf_rtc.c.o
+                                                                63](sTimeOfDayByHour$12708,object) found in local src_gf_rtc.c.o
                                                              60](MapHeader_GetDayMusicId,func) found in global src_map_header.c.o
                                                              60](MapHeader_GetNightMusicId,func) found in global src_map_header.c.o
                                                              60](GetOverriddenMapMusic,func) found in global src_sys_flags.c.o
@@ -10631,7 +10631,7 @@
                                                                          72](GymmickInit_Sinjoh,func) found in global src_field_gymmick_sinjoh.c.o
                                                                           73](SinjohGymmick_Load3dGraphics,func) found in local src_field_gymmick_sinjoh.c.o
                                                                            74](SinjohGymmick_SetAnimsFrames,func) found in local src_field_gymmick_sinjoh.c.o
-                                                                           74](@16654,object) found in local src_field_gymmick_sinjoh.c.o
+                                                                           74](@16620,object) found in local src_field_gymmick_sinjoh.c.o
                                                                           73](SysTask_SinjohGymmick,func) found in local src_field_gymmick_sinjoh.c.o
                                                                            74](SinjohGymmick_AdvanceAnimAndSetAnimIdIfCurrentAnimFinished,func) found in local src_field_gymmick_sinjoh.c.o
                                                                          72](GymmickInit_Viridian,func) found in global src_field_gymmick_viridian.c.o
@@ -10646,7 +10646,7 @@
                                                                           73](BlackthornPlatform_Init,func) found in local src_field_gymmick_blackthorn.c.o
                                                                            74](BlackthornPlatform_ApplyRotation,func) found in local src_field_gymmick_blackthorn.c.o
                                                                             75](BlackthornGymmick_ApplyRotationToPoints,func) found in local src_field_gymmick_blackthorn.c.o
-                                                                          73](@16793,object) found in local src_field_gymmick_blackthorn.c.o
+                                                                          73](@16759,object) found in local src_field_gymmick_blackthorn.c.o
                                                                          72](GymmickInit_Azalea,func) found in global src_field_gymmick_azalea.c.o
                                                                           73](MapPropAnimationManager_AddAnimationToRenderObj,func) found in global src_field_map_prop_animation.c.o
                                                                           73](sSpinarakInitialPositions,object) found in local src_field_gymmick_azalea.c.o
@@ -10655,7 +10655,7 @@
                                                                           73](MapPropManager_FindMapPropByBuildModel,func) found in global src_field_map_prop_manager.c.o
                                                                           73](MapProp_GetTranslation,func) found in global src_field_map_prop_manager.c.o
                                                                           73](MapProp_SetTranslation,func) found in global src_field_map_prop_manager.c.o
-                                                                          73](@16832,object) found in local src_field_gymmick_violet.c.o
+                                                                          73](@16798,object) found in local src_field_gymmick_violet.c.o
                                                                          72](GymmickInit_Vermilion,func) found in global src_field_gymmick_vermilion.c.o
                                                                           73](MapPropAnimationManager_GetPropAnimationCount,func) found in global src_field_map_prop_animation.c.o
                                                                           73](MapPropAnimationManager_RemoveAnimationFromRenderObj,func) found in global src_field_map_prop_animation.c.o
@@ -11005,14 +11005,14 @@
                                                                          72](SysTask_ViewPhoto,func) found in local src_application_view_photo.c.o
                                                                           73](ViewPhotoSysTask_Setup,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_InitBgLayers,func) found in local src_application_view_photo.c.o
-                                                                            75](@17030,object) found in local src_application_view_photo.c.o
+                                                                            75](@16996,object) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_LoadBgGraphics,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_InitMessages,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_InitWindows,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_CreateSprites,func) found in local src_application_view_photo.c.o
                                                                             75](FieldSpriteManager_InitWithResDat,func) found in global src_field_field_sprite_manager.c.o
                                                                             75](FieldSpriteManager_CreateSprite,func) found in global src_field_field_sprite_manager.c.o
-                                                                             76](@14004,object) found in local src_field_field_sprite_manager.c.o
+                                                                             76](@13970,object) found in local src_field_field_sprite_manager.c.o
                                                                            74](ViewPhotoSysTask_PrintTextOnWindows,func) found in local src_application_view_photo.c.o
                                                                             75](formatPhotoFlavorText,func) found in local src_application_view_photo.c.o
                                                                              76](MapID_GetLandmarkName,func) found in global src_unk_02068F84.c.o
@@ -11067,7 +11067,7 @@
                                                                        70](FieldSystem_HasNoGymmick,func) found in local src_field_fieldmap.c.o
                                                                        70](Field3dObjectTaskManager_Create,func) found in global src_field_field_3d_object_task.c.o
                                                                        70](ov01_021E6028,func) found in local src_field_fieldmap.c.o
-                                                                        71](@17478,object) found in local src_field_fieldmap.c.o
+                                                                        71](@17444,object) found in local src_field_fieldmap.c.o
                                                                        70](GF3dRender_InitSimpleManager,func) found in global src_gf_3d_render.c.o
                                                                         71](initializeSimple3DVramManager,func) found in local src_gf_3d_render.c.o
                                                                        70](ov01_021E61E0,func) found in local src_field_fieldmap.c.o
@@ -11807,7 +11807,7 @@
                                                              60](initBallModelPositions,func) found in local src_choose_starter_app.c.o
                                                               61](rendererTranslVecSet,func) found in local src_choose_starter_app.c.o
                                                               61](rendererScaleVecSet,func) found in local src_choose_starter_app.c.o
-                                                              61](@18961,object) found in local src_choose_starter_app.c.o
+                                                              61](@18927,object) found in local src_choose_starter_app.c.o
                                                            58](yRotateSelectedBall,func) found in local src_choose_starter_app.c.o
                                                             59](calcBallTranslationArcStep,func) found in local src_choose_starter_app.c.o
                                                            58](selectedBallIsInSmallWobbleState,func) found in local src_choose_starter_app.c.o
@@ -12084,7 +12084,7 @@
                                                           57](TrainerCard_Exit,func) found in global src_overlay_trainer_card.c.o
                                                           57](TrainerCard_Main,func) found in global src_overlay_trainer_card.c.o
                                                            58](TCardAppRunStep_Init,func) found in local src_overlay_trainer_card.c.o
-                                                            59](template$12756,object) found in local src_overlay_trainer_card.c.o
+                                                            59](template$12722,object) found in local src_overlay_trainer_card.c.o
                                                              60](TrainerCardMainApp_Exit,func) found in global asm_overlay_trainer_card_main.s.o
                                                               61](.rodata,section) found in local asm_overlay_trainer_card_main.s.o
                                                               61](.data,section) found in local asm_overlay_trainer_card_main.s.o
@@ -12339,7 +12339,7 @@
                                                                   65](ov03_02253E20,func) found in local src_overlay_03_communication_club.c.o
                                                                   65](ov03_02254B4C,func) found in local src_overlay_03_communication_club.c.o
                                                                   65](ov03_02254D64,func) found in local src_overlay_03_communication_club.c.o
-                                                                  65](@20706,object) found in local src_overlay_03_communication_club.c.o
+                                                                  65](@20672,object) found in local src_overlay_03_communication_club.c.o
                                                                    66](ov03_02254120,func) found in local src_overlay_03_communication_club.c.o
                                                                     67](ov03_02254150,func) found in local src_overlay_03_communication_club.c.o
                                                                    66](ov03_02254100,func) found in local src_overlay_03_communication_club.c.o
@@ -13091,7 +13091,7 @@
                                                                62](PartyMenu_AddAllWindows,func) found in global src_party_context_menu.c.o
                                                                 63](addFiveWindows,func) found in local src_party_context_menu.c.o
                                                                62](sub_0207EB24,func) found in global src_party_menu_sprites.c.o
-                                                                63](@17053,object) found in local src_party_menu_sprites.c.o
+                                                                63](@17019,object) found in local src_party_menu_sprites.c.o
                                                                62](sub_0207EDD4,func) found in global src_party_menu_sprites.c.o
                                                                62](sub_02079D38,func) found in local src_party_menu.c.o
                                                                 63](sub_0207D998,func) found in global src_party_context_menu.c.o
@@ -13244,7 +13244,7 @@
                                                           57](OptionsMenu_Main,func) found in global src_options_app.c.o
                                                            58](ov54_021E5CE4,func) found in local src_options_app.c.o
                                                             59](OptionsApp_SetupGraphicsBanks,func) found in local src_options_app.c.o
-                                                             60](@14979,object) found in local src_options_app.c.o
+                                                             60](@14945,object) found in local src_options_app.c.o
                                                             59](OptionsApp_SetupBgConfig,func) found in local src_options_app.c.o
                                                             59](OptionsApp_SetupSpriteRenderer,func) found in local src_options_app.c.o
                                                             59](OptionsApp_SetupGraphicsData,func) found in local src_options_app.c.o
@@ -13532,8 +13532,8 @@
                                                             59](FlyMap_LoadGFX,func) found in global src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_InitBGs,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                               61](PokegearApp_SetGraphicsBanks,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                               62](@17166,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                              61](@17474,object) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
+                                                               62](@17132,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
+                                                              61](@17440,object) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_LoadBGGraphics,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_CreateWindows,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_LoadStrings,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
@@ -13598,7 +13598,7 @@
                                                            58](FlyMap_MainTask_HandleInput,func) found in local src_application_pokegear_map_fly_map.c.o
                                                             59](FlyMap_HandleTouchInput_NotDragging,func) found in global src_application_pokegear_map_overlay_101_021EB568.c.o
                                                              60](ov101_021EC980,func) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
-                                                              61](ov101_021F7E9C$17630,object) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
+                                                              61](ov101_021F7E9C$17596,object) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
                                                              60](PokegearMap_GetFlyDestinationAtCoord,func) found in global src_application_pokegear_map_overlay_101_021E9270.c.o
                                                              60](ov101_021EB784,func) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
                                                               61](PokegearMap_SpawnFlyContextMenu,func) found in global src_application_pokegear_map_overlay_101_021E9270.c.o
@@ -13647,7 +13647,7 @@
                                                             59](Pokegear_GetMapUnlockLevel,func) found in global src_save_pokegear.c.o
                                                             59](MapMatrix_MapData_New,func) found in global src_map_matrix.c.o
                                                             59](AllocAndReadPhoneBook,func) found in global src_phonebook_dat.c.o
-                                                             60](@12669,object) found in local src_phonebook_dat.c.o
+                                                             60](@12635,object) found in local src_phonebook_dat.c.o
                                                             59](SavePokegear_AllocAndCopyPhonebook,func) found in global src_save_pokegear.c.o
                                                              60](SavePokegear_FindEmptyPhonebookSlot,func) found in global src_save_pokegear.c.o
                                                             59](Pokegear_GetCurrentRegion,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
@@ -13668,7 +13668,7 @@
                                                                62](PokegearUIManager_LoadInitialGfx,func) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
                                                                 63](PokegearUIManager_LoadInitialSkinGfx,func) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
                                                               61](PokegearUIManager_CreateSprite,func) found in global src_application_pokegear_main_overlay_100_021E6914.c.o
-                                                               62](sPlttOverrides$17023,object) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
+                                                               62](sPlttOverrides$16989,object) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
                                                               61](MapHeader_CanPlacePhoneCalls,func) found in global src_map_header.c.o
                                                              60](Pokegear_AddAppSwitchButtons,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                               61](PokegearCursorManager_Alloc,func) found in global src_application_pokegear_main_pokegear_cursor.c.o
@@ -13677,8 +13677,8 @@
                                                               61](PokegearCursorManager_SetSpecIndexAndCursorPos,func) found in global src_application_pokegear_main_pokegear_cursor.c.o
                                                                62](PokegearCursorManager_UpdateCursorSpritePosition,func) found in local src_application_pokegear_main_pokegear_cursor.c.o
                                                               61](PokegearApp_AppIdToButtonIndex,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                              61](sAppSwitchButtonSpecs$17236,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                              61](sAppSwitchButtonCounts$17237,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
+                                                              61](sAppSwitchButtonSpecs$17202,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
+                                                              61](sAppSwitchButtonCounts$17203,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                            58](Pokegear_MainStep_Teardown,func) found in local src_application_pokegear_main_pokegear_main.c.o
                                                             59](PokegearApp_UnloadGFX,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
                                                              60](Pokegear_RemoveAppSwitchButtons,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
@@ -13691,7 +13691,7 @@
                                                              60](PokegearApp_FreePaletteData,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                              60](PokegearApp_FreeBGs,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                            58](Pokegear_MainStep_LaunchConfigure,func) found in local src_application_pokegear_main_pokegear_main.c.o
-                                                            59](sOverlayTemplate_GearConfigure$17091,object) found in local src_application_pokegear_main_pokegear_main.c.o
+                                                            59](sOverlayTemplate_GearConfigure$17057,object) found in local src_application_pokegear_main_pokegear_main.c.o
                                                              60](PokegearPhone_Exit,func) found in global src_application_pokegear_phone_pokegear_phone.c.o
                                                               61](PokegearPhone_UnloadContactsAndDeregisterCallbacks,func) found in local src_application_pokegear_phone_pokegear_phone.c.o
                                                                62](PokegearPhone_ContactList_FlushAndDestroyLinkedList,func) found in global src_application_pokegear_phone_overlay_101_021F0880.c.o
@@ -13700,7 +13700,7 @@
                                                               61](PokegearPhone_MainTask_Setup,func) found in global src_application_pokegear_phone_pokegear_phone.c.o
                                                                62](PokegearPhone_SetUp,func) found in global src_application_pokegear_phone_overlay_101_021EFD20.c.o
                                                                 63](ov101_021F017C,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
-                                                                 64](@17425,object) found in local src_application_pokegear_phone_overlay_101_021F017C.c.o
+                                                                 64](@17391,object) found in local src_application_pokegear_phone_overlay_101_021F017C.c.o
                                                                 63](ov101_021F0284,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
                                                                 63](ov101_021F0578,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
                                                                 63](ov101_021F05EC,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
@@ -13829,7 +13829,7 @@
                                                                   65](IsBuenasPasswordOnAir,func) found in local src_application_pokegear_phone_scripts_phone_scripts_buena.c.o
                                                                    66](sub_02095FF8,func) found in global src_phonebook_dat.c.o
                                                                  64](PhoneCall_GetScriptId_EthanLyra,func) found in global src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
-                                                                  65](ov101_021F86C8$17252,object) found in local src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
+                                                                  65](ov101_021F86C8$17218,object) found in local src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
                                                                  64](PhoneCall_GetScriptId_Kurt,func) found in global src_application_pokegear_phone_scripts_phone_scripts_kurt.c.o
                                                                  64](PhoneCall_GetScriptId_GymLeader,func) found in global src_application_pokegear_phone_scripts_phone_scripts_gym_leader.c.o
                                                                  64](PhoneCall_GetScriptId_Kenji,func) found in global src_application_pokegear_phone_scripts_phone_scripts_blackbelt_kenji.c.o
@@ -13922,7 +13922,7 @@
                                                               61](PokegearConfigure_MainTask_LoadGFX,func) found in local src_application_pokegear_configure_pokegear_configure.c.o
                                                                62](PokegearConfigure_LoadGFX,func) found in global src_application_pokegear_configure_overlay_101_021EED44.c.o
                                                                 63](PokegearConfigure_InitBGs,func) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
-                                                                 64](@17069,object) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
+                                                                 64](@17035,object) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
                                                                 63](PokegearConfigure_LoadGraphics,func) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
                                                                  64](PokegearConfigure_LoadGraphics_Internal,func) found in global src_application_pokegear_configure_overlay_101_021EF1D8.c.o
                                                                 63](PokegearConfigure_CreateSpriteManager,func) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
@@ -13982,7 +13982,7 @@
                                                               61](PokegearMap_MainTask_LoadGFX,func) found in local src_application_pokegear_map_pokegear_map.c.o
                                                                62](PokegearMap_LoadGFX,func) found in global src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitBGs,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
-                                                                 64](@17494,object) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
+                                                                 64](@17460,object) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_LoadGraphics,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitWindows,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitMsg,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
@@ -14073,7 +14073,7 @@
                                                               61](PokegearRadio_MainTask_VideoInit,func) found in global src_application_pokegear_radio_pokegear_radio.c.o
                                                                62](Radio_VideoInit,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                 63](Radio_InitBGs,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
-                                                                 64](@17349,object) found in local src_application_pokegear_radio_overlay_101_021F49F8.c.o
+                                                                 64](@17315,object) found in local src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                 63](Radio_LoadGraphics,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                 63](Radio_InitWindows,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                  64](RadioShow_Create,func) found in global src_application_pokegear_radio_overlay_101_021F57B8.c.o
@@ -14398,14 +14398,14 @@
                                                      52](BugContest_BackUpParty,func) found in global src_overlay_bug_contest.c.o
                                                      52](BugContest_InitOpponents,func) found in global src_overlay_bug_contest.c.o
                                                       53](BugContest_ContestantIsRegisteredN,func) found in global src_overlay_bug_contest.c.o
-                                                      53](@17200,object) found in local src_overlay_bug_contest.c.o
+                                                      53](@17166,object) found in local src_overlay_bug_contest.c.o
                                                      52](BugContest_InitEncounters,func) found in global src_overlay_bug_contest.c.o
-                                                      53](@17216,object) found in local src_overlay_bug_contest.c.o
+                                                      53](@17182,object) found in local src_overlay_bug_contest.c.o
                                                     51](BugContest_Delete,func) found in global src_overlay_bug_contest.c.o
                                                      52](BugContest_RestoreParty_RetrieveCaughtPokemon,func) found in global src_overlay_bug_contest.c.o
                                                       53](PCStorage_PlaceMonInFirstEmptySlotInAnyBox,func) found in global src_pokemon_storage_system.c.o
                                                    50](ScrCmd_ScriptOverlayCmd,func) found in global src_scrcmd_c.c.o
-                                                    51](_020FACB0$27705,object) found in local src_scrcmd_c.c.o
+                                                    51](_020FACB0$27671,object) found in local src_scrcmd_c.c.o
                                                    50](ScrCmd_SetFollowMonInhibitState,func) found in global src_scrcmd_c.c.o
                                                    50](ScrCmd_MartSell,func) found in global src_scrcmd_mart.c.o
                                                     51](Mart_Init,func) found in global src_overlay_03_shop_menu.c.o
@@ -14785,7 +14785,7 @@
                                                     51](GetLearnableTutorMoves,func) found in local src_field_scrcmd_move_tutor.c.o
                                                      52](GetMoveTutorLearnsetIndex,func) found in local src_field_scrcmd_move_tutor.c.o
                                                      52](GetMoveTutorLearnset,func) found in local src_field_scrcmd_move_tutor.c.o
-                                                      53](@19265,object) found in local src_field_scrcmd_move_tutor.c.o
+                                                      53](@19231,object) found in local src_field_scrcmd_move_tutor.c.o
                                                      52](sTutorMoves,object) found in local src_field_scrcmd_move_tutor.c.o
                                                    50](ScrCmd_TutorMoveGetPrice,func) found in global src_field_scrcmd_move_tutor.c.o
                                                    50](ScrCmd_TutorMoveTeachInSlot,func) found in global src_field_scrcmd_move_tutor.c.o
@@ -14797,7 +14797,7 @@
                                                    50](ScrCmd_ScratchOffCardEnd,func) found in global src_scrcmd_c.c.o
                                                    50](ScrCmd_ScratchOffCard,func) found in global src_scrcmd_c.c.o
                                                     51](ScratchOffCards_LaunchApp,func) found in global src_launch_application.c.o
-                                                     52](sOverlayTemplate_ScratchOffCards$22805,object) found in local src_launch_application.c.o
+                                                     52](sOverlayTemplate_ScratchOffCards$22771,object) found in local src_launch_application.c.o
                                                       53](ScratchOffCards_Exit,func) found in global asm_overlay_87.s.o
                                                        54](.rodata,section) found in local asm_overlay_87.s.o
                                                        54](.data,section) found in local asm_overlay_87.s.o
@@ -14907,7 +14907,7 @@
                                                        54](.data,section) found in local asm_overlay_85.s.o
                                                       53](.text,section) found in local asm_unk_02097024.s.o
                                                      52](PokemonSummary_CreateArgs,func) found in global src_launch_application.c.o
-                                                      53](_020FA1B0$22148,object) found in local src_launch_application.c.o
+                                                      53](_020FA1B0$22114,object) found in local src_launch_application.c.o
                                                     51](sub_020429D4,func) found in local src_scrcmd_c.c.o
                                                    50](ScrCmd_628,func) found in global src_scrcmd_20.c.o
                                                    50](ScrCmd_627,func) found in global src_scrcmd_c.c.o
@@ -15414,7 +15414,7 @@
                                                     51](Save_VarsFlags_ClearPalParkSysFlag,func) found in global src_sys_flags.c.o
                                                     51](CatchingShow_End,func) found in global src_catching_show.c.o
                                                      52](GF_RTC_TimeDelta,func) found in global src_gf_rtc.c.o
-                                                      53](@12758,object) found in local src_gf_rtc.c.o
+                                                      53](@12724,object) found in local src_gf_rtc.c.o
                                                    50](ScrCmd_CountPCEmptySpace,func) found in global src_scrcmd_c.c.o
                                                    50](ScrCmd_BufferBoxMonNick,func) found in global src_scrcmd_strbuf.c.o
                                                    50](ScrCmd_LotoIDSet,func) found in global src_scrcmd_lottery.c.o
@@ -15726,7 +15726,7 @@
                                                     51](sub_0203E864,func) found in global src_launch_application.c.o
                                                    50](ScrCmd_394,func) found in global src_scrcmd_move_relearner.c.o
                                                     51](LearnForgetMove_LaunchApp,func) found in global src_launch_application.c.o
-                                                     52](_020FA1A8$22159,object) found in local src_launch_application.c.o
+                                                     52](_020FA1A8$22125,object) found in local src_launch_application.c.o
                                                    50](ScrCmd_BufferRecordSize,func) found in global src_scrcmd_size_record.c.o
                                                     51](Save_VarsFlags_GetFishingCompetitionLengthRecord,func) found in global src_sys_vars.c.o
                                                     51](FormatSizeRecord,func) found in local src_scrcmd_size_record.c.o
@@ -15779,8 +15779,8 @@
                                                      52](DaycareMon_BufferLevelGrowthAndNick,func) found in local src_get_egg.c.o
                                                    50](ScrCmd_370,func) found in global src_scrcmd_c.c.o
                                                     51](Bag_LaunchApp_WithPocket,func) found in global src_launch_application.c.o
-                                                     52](sItemPocket$22043,object) found in local src_launch_application.c.o
-                                                     52](sBerryPocket$22042,object) found in local src_launch_application.c.o
+                                                     52](sItemPocket$22009,object) found in local src_launch_application.c.o
+                                                     52](sBerryPocket$22008,object) found in local src_launch_application.c.o
                                                    50](ScrCmd_EggHatchAnim,func) found in global src_scrcmd_c.c.o
                                                     51](HatchEggInParty,func) found in global src_launch_application.c.o
                                                      52](Party_GetMonToHatch,func) found in global src_get_egg.c.o
@@ -15914,13 +15914,13 @@
                                                     51](CianwoodGymmick_ActivateWinch,func) found in global src_field_gymmick_cianwood.c.o
                                                      52](CianwoodGymmick_LaunchWinchTask,func) found in local src_field_gymmick_cianwood.c.o
                                                       53](Task_CianwoodGymmick_LiftWinchCutscene,func) found in local src_field_gymmick_cianwood.c.o
-                                                       54](@16652,object) found in local src_field_gymmick_cianwood.c.o
+                                                       54](@16618,object) found in local src_field_gymmick_cianwood.c.o
                                                    50](ScrCmd_CianwoodGymInit,func) found in global src_scrcmd_c.c.o
                                                     51](InitCianwoodGym,func) found in global src_gymmick_init.c.o
                                                    50](ScrCmd_ExtinguishEcruteakGymCandle,func) found in global src_scrcmd_c.c.o
                                                     51](EcruteakGymmick_ExtinguishCandle,func) found in global src_field_gymmick_ecruteak.c.o
                                                      52](MortyGymTrainerObjectToCandleIdx,func) found in local src_field_gymmick_ecruteak.c.o
-                                                      53](sMortyGymTrainerObjectIds$16692,object) found in local src_field_gymmick_ecruteak.c.o
+                                                      53](sMortyGymTrainerObjectIds$16658,object) found in local src_field_gymmick_ecruteak.c.o
                                                      52](Task_ExtinguishCandle,func) found in local src_field_gymmick_ecruteak.c.o
                                                       53](MapProp_GetScale,func) found in global src_field_map_prop_manager.c.o
                                                    50](ScrCmd_UnbindEcruteakGymCandleFromTrainerSprite,func) found in global src_scrcmd_c.c.o
@@ -16147,7 +16147,7 @@
                                                     51](LaunchStarterChoiceScene,func) found in global src_choose_starter.c.o
                                                      52](CreateStarter,func) found in local src_choose_starter.c.o
                                                       53](ChooseStarter_LaunchApp,func) found in global src_launch_application.c.o
-                                                      53](@18140,object) found in local src_choose_starter.c.o
+                                                      53](@18106,object) found in local src_choose_starter.c.o
                                                    50](ScrCmd_166,func) found in global src_scrcmd_c.c.o
                                                     51](sub_02078B78,func) found in global asm_unk_02078834.s.o
                                                      52](sub_020398C8,func) found in global src_unk_02037C94.c.o
@@ -17390,7 +17390,7 @@
                    18](ov53_021E67C4,func) found in local src_oaks_speech.c.o
                  16](OakSpeech_InitMsgPrinter,func) found in local src_oaks_speech.c.o
                  16](OakSpeech_InitSpriteEngine,func) found in global src_oaks_speech_obj.c.o
-                  17](@18152,object) found in local src_oaks_speech_obj.c.o
+                  17](@18118,object) found in local src_oaks_speech_obj.c.o
                  16](OakSpeech_CreateSprites,func) found in global src_oaks_speech_obj.c.o
                  16](OakSpeechYesNo_Create,func) found in global src_oaks_speech_yesnomenu.c.o
                   17](OakSpeechYesNo_CreateWindows,func) found in local src_oaks_speech_yesnomenu.c.o
@@ -17443,7 +17443,7 @@
                 15](Save_SetPositionToPlayerRoom,func) found in global src_location_backup.c.o
               13](ov36_TitleScreen_NewGame_AppInit,func) found in local src_overlay_36.c.o
              12](gApp_MainMenu_SelectOption_MysteryGift,notype) found in global asm_overlay_74_thumb.s.o
-             12](@16564,object) found in local src_application_main_menu_main_menu.c.o
+             12](@16530,object) found in local src_application_main_menu_main_menu.c.o
              12](gApp_MainMenu_SelectOption_NintendoWFCSetup,notype) found in global asm_unk_020915B0.s.o
              12](ov112_App_MainMenu_SelectOption_ConnectToPokewalker,notype) found in global asm_overlay_112.s.o
               13](.text,section) found in local asm_overlay_112.s.o
@@ -17838,7 +17838,7 @@
               13](MainMenu_NewGame_HandleTouchInput,func) found in local src_application_main_menu_main_menu.c.o
                14](sNewGameButtonHitboxes,object) found in local src_application_main_menu_main_menu.c.o
              12](AdvanceButtonBorderAnimation,func) found in local src_application_main_menu_main_menu.c.o
-              13](sButtonBorderAnimation$15657,object) found in local src_application_main_menu_main_menu.c.o
+              13](sButtonBorderAnimation$15623,object) found in local src_application_main_menu_main_menu.c.o
                14](MainMenu_PrintWiiMessageSettingsButton,func) found in local src_application_main_menu_main_menu.c.o
                 15](ClearWirelessIcon,func) found in local src_application_main_menu_main_menu.c.o
                 15](sMainMenuButtons,object) found in local src_application_main_menu_main_menu.c.o
@@ -17980,7 +17980,7 @@
         7](IntroMovie_Scene5_Init,func) found in local src_intro_movie_scene_5.c.o
          8](IntroMovie_GetBgConfig,func) found in global src_intro_movie_scenes_lib.c.o
          8](IntroMovie_Scene5_InitBgs,func) found in local src_intro_movie_scene_5.c.o
-          9](@13767,object) found in local src_intro_movie_scene_5.c.o
+          9](@13733,object) found in local src_intro_movie_scene_5.c.o
          8](IntroMovie_InitBgAnimGxState,func) found in global src_intro_movie_scenes_lib.c.o
          8](IntroMovie_Scene5_LoadBgGfx,func) found in local src_intro_movie_scene_5.c.o
          8](IntroMovie_RendererSetSurfaceCoords,func) found in global src_intro_movie_scenes_lib.c.o
@@ -18002,7 +18002,7 @@
        6](IntroMovie_Scene4,func) found in global src_intro_movie_scene_4.c.o
         7](IntroMovie_Scene4_Init,func) found in local src_intro_movie_scene_4.c.o
          8](IntroMovie_Scene4_InitBgs,func) found in local src_intro_movie_scene_4.c.o
-          9](@13940,object) found in local src_intro_movie_scene_4.c.o
+          9](@13906,object) found in local src_intro_movie_scene_4.c.o
          8](InroMovie_Scene4_LoadBgGfx,func) found in local src_intro_movie_scene_4.c.o
          8](IntroMovie_Scene4_LoadSpriteGfx,func) found in local src_intro_movie_scene_4.c.o
           9](IntroMovie_CreateSpriteResourceManagers,func) found in global src_intro_movie_scenes_lib.c.o
@@ -18033,7 +18033,7 @@
        6](IntroMovie_Scene3,func) found in global src_intro_movie_scene_3.c.o
         7](IntroMovie_Scene3_Init,func) found in local src_intro_movie_scene_3.c.o
          8](IntroMovie_Scene3_InitBGLayers,func) found in local src_intro_movie_scene_3.c.o
-          9](@13968,object) found in local src_intro_movie_scene_3.c.o
+          9](@13934,object) found in local src_intro_movie_scene_3.c.o
          8](IntroMovie_Scene3_LoadBGGraphics,func) found in local src_intro_movie_scene_3.c.o
          8](IntroMovie_Scene3_LoadOBJGraphics,func) found in local src_intro_movie_scene_3.c.o
           9](sIntroMovieScene3SpriteResCounts,object) found in local src_intro_movie_scene_3.c.o
@@ -18055,7 +18055,7 @@
        6](IntroMovie_Scene2,func) found in global src_intro_movie_scene_2.c.o
         7](IntroMovie_Scene2_Init,func) found in local src_intro_movie_scene_2.c.o
          8](IntroMovie_Scene2_InitBgs,func) found in local src_intro_movie_scene_2.c.o
-          9](@13934,object) found in local src_intro_movie_scene_2.c.o
+          9](@13900,object) found in local src_intro_movie_scene_2.c.o
          8](IntroMovie_Scene2_LoadBgGfx,func) found in local src_intro_movie_scene_2.c.o
          8](IntroMovie_Scene2_LoadSpriteGfx,func) found in local src_intro_movie_scene_2.c.o
           9](sIntroMovieScene2SpriteResCounts,object) found in local src_intro_movie_scene_2.c.o
@@ -18074,7 +18074,7 @@
        6](IntroMovie_Scene1,func) found in global src_intro_movie_scene_1.c.o
         7](IntroMovie_Scene1_Init,func) found in local src_intro_movie_scene_1.c.o
          8](IntroMovie_Scene1_InitBgs,func) found in local src_intro_movie_scene_1.c.o
-          9](@13850,object) found in local src_intro_movie_scene_1.c.o
+          9](@13816,object) found in local src_intro_movie_scene_1.c.o
          8](IntroMovie_Scene1_LoadBgGfx,func) found in local src_intro_movie_scene_1.c.o
          8](IntroMovie_Scene1_LoadSpriteGfx,func) found in local src_intro_movie_scene_1.c.o
           9](sIntroMovieScene1SpriteResCounts,object) found in local src_intro_movie_scene_1.c.o
@@ -18088,7 +18088,7 @@
          8](IntroMovie_Scene1_DestroySpritesAndObjectGfx,func) found in local src_intro_movie_scene_1.c.o
      4](IntroMovie_Init,func) found in local src_intro_movie.c.o
       5](IntroMovie_SetGraphicsBanks,func) found in local src_intro_movie.c.o
-       6](@13924,object) found in local src_intro_movie.c.o
+       6](@13890,object) found in local src_intro_movie.c.o
       5](IntroMovie_InitSpriteGraphicsHW,func) found in local src_intro_movie.c.o
 
 # .main
@@ -56280,18 +56280,18 @@
   020F566C 00000001 .rodata gGameVersion	(src_pm_version.c.o)
   020F5670 00000001 .rodata gGameLanguage	(src_pm_version.c.o)
   020F5674 00000000 .rodata .rodata	(src_string_util.c.o)
-  020F5674 00000020 .rodata _digit_strcode$12688	(src_string_util.c.o)
-  020F5694 00000028 .rodata _power_of_10$12689	(src_string_util.c.o)
+  020F5674 00000020 .rodata _digit_strcode$12654	(src_string_util.c.o)
+  020F5694 00000028 .rodata _power_of_10$12655	(src_string_util.c.o)
   020F56BC 00000004 .rodata sDownArrowTileOffsets	(src_render_text.c.o)
   020F56C0 00000000 .rodata .rodata	(src_font.c.o)
   020F56C0 00000018 .rodata sFontArcParam	(src_font.c.o)
   020F56D8 00000038 .rodata sFontInfos	(src_font.c.o)
   020F5710 00000240 .rodata .rodata	(asm_unk_02004A44.s.o)
   020F5950 00000000 .rodata .rodata	(src_gf_gfx_loader.c.o)
-  020F5950 00000008 .rodata _020F5950$13561	(src_gf_gfx_loader.c.o)
-  020F5958 00000008 .rodata _020F5958$13539	(src_gf_gfx_loader.c.o)
-  020F5960 00000008 .rodata _020F5960$13546	(src_gf_gfx_loader.c.o)
-  020F5968 00000020 .rodata _020F5968$13501	(src_gf_gfx_loader.c.o)
+  020F5950 00000008 .rodata _020F5950$13527	(src_gf_gfx_loader.c.o)
+  020F5958 00000008 .rodata _020F5958$13505	(src_gf_gfx_loader.c.o)
+  020F5960 00000008 .rodata _020F5960$13512	(src_gf_gfx_loader.c.o)
+  020F5968 00000020 .rodata _020F5968$13467	(src_gf_gfx_loader.c.o)
   020F5988 00000000 .rodata .rodata	(src_pokepic.c.o)
   020F5988 00000040 .rodata sPokepicShadowUVParams	(src_pokepic.c.o)
   020F59C8 00000068 .rodata sSpindaSpot3Coords	(src_pokepic.c.o)
@@ -56300,7 +56300,7 @@
   020F5B04 00000080 .rodata sPokepicUVParams	(src_pokepic.c.o)
   020F5B84 00000096 .rodata sSpindaSpot4Coords	(src_pokepic.c.o)
   020F5C1C 00000000 .rodata .rodata	(src_message_format.c.o)
-  020F5C1C 00000006 .rodata msgBanks$15114	(src_message_format.c.o)
+  020F5C1C 00000006 .rodata msgBanks$15080	(src_message_format.c.o)
   020F5C24 00000000 .rodata .rodata	(src_message_printer.c.o)
   020F5C24 0000001C .rodata _020F5C24	(src_message_printer.c.o)
   020F5C40 0000006C .rodata .rodata	(asm_render_window.s.o)
@@ -56308,16 +56308,16 @@
   020F5D58 000001D4 .rodata .rodata	(asm_unk_0201010C.s.o)
   020F5F2C 00000018 .rodata .rodata	(asm_unk_02013534.s.o)
   020F5F44 00000000 .rodata .rodata	(src_unk_02013FDC.c.o)
-  020F5F44 00000008 .rodata @13011	(src_unk_02013FDC.c.o)
-  020F5F4C 00000010 .rodata @13174	(src_unk_02013FDC.c.o)
-  020F5F5C 00000010 .rodata @13240	(src_unk_02013FDC.c.o)
-  020F5F6C 00000060 .rodata @13149	(src_unk_02013FDC.c.o)
-  020F5FCC 00000060 .rodata @13207	(src_unk_02013FDC.c.o)
-  020F602C 0000000C .rodata @12760	(src_gf_rtc.c.o)
+  020F5F44 00000008 .rodata @12977	(src_unk_02013FDC.c.o)
+  020F5F4C 00000010 .rodata @13140	(src_unk_02013FDC.c.o)
+  020F5F5C 00000010 .rodata @13206	(src_unk_02013FDC.c.o)
+  020F5F6C 00000060 .rodata @13115	(src_unk_02013FDC.c.o)
+  020F5FCC 00000060 .rodata @13173	(src_unk_02013FDC.c.o)
+  020F602C 0000000C .rodata @12726	(src_gf_rtc.c.o)
   020F602C 00000000 .rodata .rodata	(src_gf_rtc.c.o)
-  020F6038 00000010 .rodata @12758	(src_gf_rtc.c.o)
-  020F6048 00000018 .rodata sGF_DaysPerMonth$12719	(src_gf_rtc.c.o)
-  020F6060 00000018 .rodata sTimeOfDayByHour$12742	(src_gf_rtc.c.o)
+  020F6038 00000010 .rodata @12724	(src_gf_rtc.c.o)
+  020F6048 00000018 .rodata sGF_DaysPerMonth$12685	(src_gf_rtc.c.o)
+  020F6060 00000018 .rodata sTimeOfDayByHour$12708	(src_gf_rtc.c.o)
   020F6078 00000068 .rodata .rodata	(asm_unk_02014DA0.s.o)
   020F60E0 00000000 .rodata .rodata	(src_mail_message.c.o)
   020F60E0 0000000A .rodata sMessageBanks	(src_mail_message.c.o)
@@ -56339,7 +56339,7 @@
   020F6142 00000016 .rodata sNarcMsgCounts	(src_easy_chat.c.o)
   020F6158 00000060 .rodata sIdenticalPhrases	(src_easy_chat.c.o)
   020F61B8 00000000 .rodata .rodata	(src_yes_no_prompt.c.o)
-  020F61B8 00000004 .rodata dimensions$13398	(src_yes_no_prompt.c.o)
+  020F61B8 00000004 .rodata dimensions$13364	(src_yes_no_prompt.c.o)
   020F61BC 000000C4 .rodata .rodata	(asm_unk_02016EDC.s.o)
   020F6280 00000008 .rodata .rodata	(asm_unk_02017FAC.s.o)
   020F6288 00000010 .rodata .rodata	(asm_unk_020192D0.s.o)
@@ -56357,17 +56357,17 @@
   020F6314 00000000 .rodata .rodata	(src_sprite.c.o)
   020F6314 00000008 .rodata sRenderFuncs	(src_sprite.c.o)
   020F631C 00000008 .rodata sAnimFuncs	(src_sprite.c.o)
-  020F6324 00000004 .rodata _020F6324$13272	(src_font_data.c.o)
+  020F6324 00000004 .rodata _020F6324$13238	(src_font_data.c.o)
   020F6324 00000000 .rodata .rodata	(src_font_data.c.o)
-  020F6328 00000008 .rodata _020F6328$13294	(src_font_data.c.o)
-  020F6330 00000008 .rodata _020F6330$13311	(src_font_data.c.o)
+  020F6328 00000008 .rodata _020F6328$13260	(src_font_data.c.o)
+  020F6330 00000008 .rodata _020F6330$13277	(src_font_data.c.o)
   020F6338 00000000 .rodata .rodata	(src_pm_string.c.o)
-  020F6338 00000014 .rodata sCharset_JP$13162	(src_pm_string.c.o)
-  020F634C 00000014 .rodata sCharset_EN$13163	(src_pm_string.c.o)
-  020F6360 00000014 .rodata sCharset_EN$13122	(src_pm_string.c.o)
-  020F6374 00000014 .rodata sCharset_JP$13121	(src_pm_string.c.o)
-  020F6388 00000028 .rodata sPowersOfTen$13120	(src_pm_string.c.o)
-  020F63B0 000000A0 .rodata sPowersOfTen$13161	(src_pm_string.c.o)
+  020F6338 00000014 .rodata sCharset_JP$13128	(src_pm_string.c.o)
+  020F634C 00000014 .rodata sCharset_EN$13129	(src_pm_string.c.o)
+  020F6360 00000014 .rodata sCharset_EN$13088	(src_pm_string.c.o)
+  020F6374 00000014 .rodata sCharset_JP$13087	(src_pm_string.c.o)
+  020F6388 00000028 .rodata sPowersOfTen$13086	(src_pm_string.c.o)
+  020F63B0 000000A0 .rodata sPowersOfTen$13127	(src_pm_string.c.o)
   020F6450 00000000 .rodata .rodata	(src_touch_hitbox_controller.c.o)
   020F6450 00000008 .rodata _020F6450	(src_touch_hitbox_controller.c.o)
   020F6458 00000004 .rodata .rodata	(asm_unk_02027010.s.o)
@@ -56427,58 +56427,58 @@
   020FA17C 00000000 .rodata .rodata	(src_location_backup.c.o)
   020FA17C 00000014 .rodata sLocation_PlayerRoom	(src_location_backup.c.o)
   020FA190 00000014 .rodata sLocation_OutsidePlayerHome	(src_location_backup.c.o)
-  020FA1A4 00000002 .rodata sItemPocket$22043	(src_launch_application.c.o)
-  020FA1A8 00000002 .rodata _020FA1A8$22159	(src_launch_application.c.o)
-  020FA1AC 00000002 .rodata sBerryPocket$22042	(src_launch_application.c.o)
-  020FA1B0 00000005 .rodata _020FA1B0$22148	(src_launch_application.c.o)
+  020FA1A4 00000002 .rodata sItemPocket$22009	(src_launch_application.c.o)
+  020FA1A8 00000002 .rodata _020FA1A8$22125	(src_launch_application.c.o)
+  020FA1AC 00000002 .rodata sBerryPocket$22008	(src_launch_application.c.o)
+  020FA1B0 00000005 .rodata _020FA1B0$22114	(src_launch_application.c.o)
   020FA1B8 00000009 .rodata sAllPockets	(src_launch_application.c.o)
   020FA1C4 00000000 .rodata .rodata	(src_launch_application.c.o)
-  020FA1C4 00000010 .rodata _020FA1C4$22826	(src_launch_application.c.o)
-  020FA1D4 00000010 .rodata _020FA1D4$22847	(src_launch_application.c.o)
-  020FA1E4 00000010 .rodata @22758	(src_launch_application.c.o)
-  020FA1F4 00000010 .rodata sOverlayTemplate_Credits$22751	(src_launch_application.c.o)
-  020FA204 00000010 .rodata sOverlayTemplate_HallOfFameShowcase$22741	(src_launch_application.c.o)
-  020FA214 00000010 .rodata sOverlayTemplate_RegisterHallOfFame$22736	(src_launch_application.c.o)
+  020FA1C4 00000010 .rodata _020FA1C4$22792	(src_launch_application.c.o)
+  020FA1D4 00000010 .rodata _020FA1D4$22813	(src_launch_application.c.o)
+  020FA1E4 00000010 .rodata @22724	(src_launch_application.c.o)
+  020FA1F4 00000010 .rodata sOverlayTemplate_Credits$22717	(src_launch_application.c.o)
+  020FA204 00000010 .rodata sOverlayTemplate_HallOfFameShowcase$22707	(src_launch_application.c.o)
+  020FA214 00000010 .rodata sOverlayTemplate_RegisterHallOfFame$22702	(src_launch_application.c.o)
   020FA224 00000010 .rodata sOverlayTemplate_GeonetGlobe	(src_launch_application.c.o)
-  020FA234 00000010 .rodata sOverlayTemplate_VoltorbFlip$22770	(src_launch_application.c.o)
-  020FA244 00000010 .rodata sOverlayTemplate_PokeathlonCourse$22834	(src_launch_application.c.o)
-  020FA254 00000010 .rodata sOverlayTemplate_TrainerCardSignature$22703	(src_launch_application.c.o)
-  020FA264 00000010 .rodata _020FA264$22710	(src_launch_application.c.o)
-  020FA274 00000010 .rodata sOverlayTemplate_ChooseStarter$22698	(src_launch_application.c.o)
-  020FA284 00000010 .rodata sOverlayTemplate_Pokedex$22692	(src_launch_application.c.o)
-  020FA294 00000010 .rodata sOverlayTemplate_TrainerCard$22686	(src_launch_application.c.o)
+  020FA234 00000010 .rodata sOverlayTemplate_VoltorbFlip$22736	(src_launch_application.c.o)
+  020FA244 00000010 .rodata sOverlayTemplate_PokeathlonCourse$22800	(src_launch_application.c.o)
+  020FA254 00000010 .rodata sOverlayTemplate_TrainerCardSignature$22669	(src_launch_application.c.o)
+  020FA264 00000010 .rodata _020FA264$22676	(src_launch_application.c.o)
+  020FA274 00000010 .rodata sOverlayTemplate_ChooseStarter$22664	(src_launch_application.c.o)
+  020FA284 00000010 .rodata sOverlayTemplate_Pokedex$22658	(src_launch_application.c.o)
+  020FA294 00000010 .rodata sOverlayTemplate_TrainerCard$22652	(src_launch_application.c.o)
   020FA2A4 00000010 .rodata sOverlayTemplate_PalPad	(src_launch_application.c.o)
   020FA2B4 00000010 .rodata _020FA2B4	(src_launch_application.c.o)
   020FA2C4 00000010 .rodata _020FA2C4	(src_launch_application.c.o)
   020FA2D4 00000010 .rodata sOverlayTemplate_TradeSequence	(src_launch_application.c.o)
-  020FA2E4 00000010 .rodata _020FA2E4$22473	(src_launch_application.c.o)
-  020FA2F4 00000010 .rodata _020FA2F4$22466	(src_launch_application.c.o)
-  020FA304 00000010 .rodata sOverlayTemplate_Certificates$22779	(src_launch_application.c.o)
-  020FA314 00000010 .rodata sOverlayTemplate_PokeathlonMedals$22393	(src_launch_application.c.o)
-  020FA324 00000010 .rodata sOverlayTemplate_PokeathlonEventRecord$22407	(src_launch_application.c.o)
-  020FA334 00000010 .rodata sOverlayTemplate_NintendoWifiConnect$22719	(src_launch_application.c.o)
-  020FA344 00000010 .rodata sOverlayTemplate_PokeathlonCourseRecord$22380	(src_launch_application.c.o)
-  020FA354 00000010 .rodata sOverlayTemplate_OptionsMenu$22365	(src_launch_application.c.o)
-  020FA364 00000010 .rodata sOverlayTemplate_BugContestSwapMon$22351	(src_launch_application.c.o)
-  020FA374 00000010 .rodata sOverlayTemplate_ApricornBox$22327	(src_launch_application.c.o)
-  020FA384 00000010 .rodata sOverlayTemplate_BerryPots$22315	(src_launch_application.c.o)
-  020FA394 00000010 .rodata gOverlayTemplate_UnownReport$22303	(src_launch_application.c.o)
-  020FA3A4 00000010 .rodata sOverlayTemplate_AlphPuzzle$22290	(src_launch_application.c.o)
-  020FA3B4 00000010 .rodata sOverlayTemplate_PhotoAlbum$22276	(src_launch_application.c.o)
-  020FA3C4 00000010 .rodata sOverlayTemplate_SafariDecoration$22264	(src_launch_application.c.o)
-  020FA3D4 00000010 .rodata sOverlayTemplate_SafariAreaCustomizer$22252	(src_launch_application.c.o)
-  020FA3E4 00000010 .rodata sOverlayTemplate_TownMap$22234	(src_launch_application.c.o)
-  020FA3F4 00000010 .rodata sOverlayTemplate_Pokegear$22227	(src_launch_application.c.o)
-  020FA404 00000010 .rodata sOverlayTemplate_EasyChat$22221	(src_launch_application.c.o)
-  020FA414 00000010 .rodata sOverlayTemplate_PCBox$22170	(src_launch_application.c.o)
-  020FA424 00000010 .rodata sOverlayTemplate_PokeathlonUnkApp$22420	(src_launch_application.c.o)
-  020FA434 00000010 .rodata _020FA434$22433	(src_launch_application.c.o)
-  020FA444 00000010 .rodata _020FA444$22726	(src_launch_application.c.o)
-  020FA454 00000010 .rodata _020FA454$22840	(src_launch_application.c.o)
-  020FA464 00000010 .rodata sOverlayTemplate_Bag$22027	(src_launch_application.c.o)
-  020FA474 00000010 .rodata sOverlayTemplate_LegendaryCinematic$22857	(src_launch_application.c.o)
+  020FA2E4 00000010 .rodata _020FA2E4$22439	(src_launch_application.c.o)
+  020FA2F4 00000010 .rodata _020FA2F4$22432	(src_launch_application.c.o)
+  020FA304 00000010 .rodata sOverlayTemplate_Certificates$22745	(src_launch_application.c.o)
+  020FA314 00000010 .rodata sOverlayTemplate_PokeathlonMedals$22359	(src_launch_application.c.o)
+  020FA324 00000010 .rodata sOverlayTemplate_PokeathlonEventRecord$22373	(src_launch_application.c.o)
+  020FA334 00000010 .rodata sOverlayTemplate_NintendoWifiConnect$22685	(src_launch_application.c.o)
+  020FA344 00000010 .rodata sOverlayTemplate_PokeathlonCourseRecord$22346	(src_launch_application.c.o)
+  020FA354 00000010 .rodata sOverlayTemplate_OptionsMenu$22331	(src_launch_application.c.o)
+  020FA364 00000010 .rodata sOverlayTemplate_BugContestSwapMon$22317	(src_launch_application.c.o)
+  020FA374 00000010 .rodata sOverlayTemplate_ApricornBox$22293	(src_launch_application.c.o)
+  020FA384 00000010 .rodata sOverlayTemplate_BerryPots$22281	(src_launch_application.c.o)
+  020FA394 00000010 .rodata gOverlayTemplate_UnownReport$22269	(src_launch_application.c.o)
+  020FA3A4 00000010 .rodata sOverlayTemplate_AlphPuzzle$22256	(src_launch_application.c.o)
+  020FA3B4 00000010 .rodata sOverlayTemplate_PhotoAlbum$22242	(src_launch_application.c.o)
+  020FA3C4 00000010 .rodata sOverlayTemplate_SafariDecoration$22230	(src_launch_application.c.o)
+  020FA3D4 00000010 .rodata sOverlayTemplate_SafariAreaCustomizer$22218	(src_launch_application.c.o)
+  020FA3E4 00000010 .rodata sOverlayTemplate_TownMap$22200	(src_launch_application.c.o)
+  020FA3F4 00000010 .rodata sOverlayTemplate_Pokegear$22193	(src_launch_application.c.o)
+  020FA404 00000010 .rodata sOverlayTemplate_EasyChat$22187	(src_launch_application.c.o)
+  020FA414 00000010 .rodata sOverlayTemplate_PCBox$22136	(src_launch_application.c.o)
+  020FA424 00000010 .rodata sOverlayTemplate_PokeathlonUnkApp$22386	(src_launch_application.c.o)
+  020FA434 00000010 .rodata _020FA434$22399	(src_launch_application.c.o)
+  020FA444 00000010 .rodata _020FA444$22692	(src_launch_application.c.o)
+  020FA454 00000010 .rodata _020FA454$22806	(src_launch_application.c.o)
+  020FA464 00000010 .rodata sOverlayTemplate_Bag$21993	(src_launch_application.c.o)
+  020FA474 00000010 .rodata sOverlayTemplate_LegendaryCinematic$22823	(src_launch_application.c.o)
   020FA484 00000010 .rodata gOverlayTemplate_Battle	(src_launch_application.c.o)
-  020FA494 00000010 .rodata sViewRankingsAppTemplate$22864	(src_launch_application.c.o)
+  020FA494 00000010 .rodata sViewRankingsAppTemplate$22830	(src_launch_application.c.o)
   020FA4A4 00000000 .rodata .rodata	(src_script_manager.c.o)
   020FA4A4 000000B4 .rodata sScriptBankMapping	(src_script_manager.c.o)
   020FA558 00000738 .rodata sHiddenItemParam	(src_script_manager.c.o)
@@ -56486,9 +56486,9 @@
   020FAC94 00000000 .rodata .rodata	(src_scrcmd_c.c.o)
   020FAC94 00000008 .rodata _020FAC94	(src_scrcmd_c.c.o)
   020FAC9C 00000012 .rodata sConditionTable	(src_scrcmd_c.c.o)
-  020FACB0 00000014 .rodata _020FACB0$27705	(src_scrcmd_c.c.o)
-  020FACC4 00000018 .rodata @26507	(src_scrcmd_c.c.o)
-  020FACDC 00000024 .rodata @27327	(src_scrcmd_c.c.o)
+  020FACB0 00000014 .rodata _020FACB0$27671	(src_scrcmd_c.c.o)
+  020FACC4 00000018 .rodata @26473	(src_scrcmd_c.c.o)
+  020FACDC 00000024 .rodata @27293	(src_scrcmd_c.c.o)
   020FAD00 00000D54 .rodata gScriptCmdTable	(src_scrcmd_c.c.o)
   020FBA54 00000000 .rodata .rodata	(src_scrcmd_mart.c.o)
   020FBA54 00000006 .rodata _020FBA54	(src_scrcmd_mart.c.o)
@@ -56777,17 +56777,17 @@
   020FF4AE 00000036 .rodata sIncenseMons	(src_get_egg.c.o)
   020FF4E4 00000000 .rodata .rodata	(src_pokemon.c.o)
   020FF4E4 00000008 .rodata sItemOdds	(src_pokemon.c.o)
-  020FF4EC 0000000C .rodata form_moves$18172	(src_pokemon.c.o)
+  020FF4EC 0000000C .rodata form_moves$18138	(src_pokemon.c.o)
   020FF4F8 00000012 .rodata sMythicalMonsList	(src_pokemon.c.o)
   020FF50C 00000018 .rodata _020FF50C	(src_pokemon.c.o)
   020FF524 0000001E .rodata sFriendshipModTable	(src_pokemon.c.o)
-  020FF544 00000020 .rodata @18748	(src_pokemon.c.o)
+  020FF544 00000020 .rodata @18714	(src_pokemon.c.o)
   020FF564 00000024 .rodata sBattleFrontierBanlist	(src_pokemon.c.o)
   020FF588 00000034 .rodata _020FF588	(src_pokemon.c.o)
   020FF5BC 0000007D .rodata sFlavorPreferencesByNature	(src_pokemon.c.o)
   020FF639 0000007D .rodata gNatureStatMods	(src_pokemon.c.o)
   020FF6B6 0000007D .rodata sPokeathlonPerformanceNatureMods	(src_pokemon.c.o)
-  020FF733 00000080 .rodata offsets$18463	(src_pokemon.c.o)
+  020FF733 00000080 .rodata offsets$18429	(src_pokemon.c.o)
   020FF7B4 000003DC .rodata sPokeathlonPerformanceArcIdxs	(src_pokemon.c.o)
   020FFB90 00000080 .rodata sTrainerGenders	(src_trainer_data.c.o)
   020FFC10 00000220 .rodata sPokemonPalNoBySpeciesAndForm	(src_pokemon_icon_idx.c.o)
@@ -56801,18 +56801,18 @@
   0210125C 00000054 .rodata .rodata	(asm_unk_02078834.s.o)
   021012B0 00000000 .rodata .rodata	(src_party_menu.c.o)
   021012B0 0000000C .rodata _021012B0	(src_party_menu.c.o)
-  021012BC 00000010 .rodata @17858	(src_party_menu.c.o)
+  021012BC 00000010 .rodata @17824	(src_party_menu.c.o)
   021012CC 00000018 .rodata _021012CC	(src_party_menu.c.o)
-  021012E4 0000001C .rodata @17866	(src_party_menu.c.o)
-  02101300 0000001C .rodata @17872	(src_party_menu.c.o)
-  0210131C 0000001C .rodata @17864	(src_party_menu.c.o)
-  02101338 0000001C .rodata @17868	(src_party_menu.c.o)
-  02101354 0000001C .rodata @17860	(src_party_menu.c.o)
-  02101370 0000001C .rodata @17852	(src_party_menu.c.o)
-  0210138C 0000001C .rodata @17870	(src_party_menu.c.o)
-  021013A8 0000001C .rodata @17862	(src_party_menu.c.o)
+  021012E4 0000001C .rodata @17832	(src_party_menu.c.o)
+  02101300 0000001C .rodata @17838	(src_party_menu.c.o)
+  0210131C 0000001C .rodata @17830	(src_party_menu.c.o)
+  02101338 0000001C .rodata @17834	(src_party_menu.c.o)
+  02101354 0000001C .rodata @17826	(src_party_menu.c.o)
+  02101370 0000001C .rodata @17818	(src_party_menu.c.o)
+  0210138C 0000001C .rodata @17836	(src_party_menu.c.o)
+  021013A8 0000001C .rodata @17828	(src_party_menu.c.o)
   021013C4 00000020 .rodata sFieldMoves	(src_party_menu.c.o)
-  021013E4 00000028 .rodata @17846	(src_party_menu.c.o)
+  021013E4 00000028 .rodata @17812	(src_party_menu.c.o)
   0210140C 00000040 .rodata _0210140C	(src_party_menu.c.o)
   0210144C 00000040 .rodata _0210144C	(src_party_menu.c.o)
   0210148C 00000040 .rodata _0210148C	(src_party_menu.c.o)
@@ -56828,9 +56828,9 @@
   021016B4 00000080 .rodata sButtonWindowIDs	(src_party_context_menu.c.o)
   02101734 00000180 .rodata sMainWindowTemplates	(src_party_context_menu.c.o)
   021018B4 00000000 .rodata .rodata	(src_party_menu_sprites.c.o)
-  021018B4 0000000E .rodata @17057	(src_party_menu_sprites.c.o)
-  021018C4 00000014 .rodata @17055	(src_party_menu_sprites.c.o)
-  021018D8 00000020 .rodata @17053	(src_party_menu_sprites.c.o)
+  021018B4 0000000E .rodata @17023	(src_party_menu_sprites.c.o)
+  021018C4 00000014 .rodata @17021	(src_party_menu_sprites.c.o)
+  021018D8 00000020 .rodata @17019	(src_party_menu_sprites.c.o)
   021018F8 000003C0 .rodata sSpriteTemplates	(src_party_menu_sprites.c.o)
   02101CB8 00000000 .rodata .rodata	(src_party_menu_list_items.c.o)
   02101CB8 00000084 .rodata _02101CB8	(src_party_menu_list_items.c.o)
@@ -56840,22 +56840,22 @@
   02101D4C 00000007 .rodata sHomeRowCursorAnimIDs	(src_naming_screen.c.o)
   02101D54 0000000C .rodata sSpriteGfxOffsets	(src_naming_screen.c.o)
   02101D54 00000000 .rodata .rodata	(src_naming_screen.c.o)
-  02101D60 00000010 .rodata @18792	(src_naming_screen.c.o)
-  02101D70 00000010 .rodata @18867	(src_naming_screen.c.o)
+  02101D60 00000010 .rodata @18758	(src_naming_screen.c.o)
+  02101D70 00000010 .rodata @18833	(src_naming_screen.c.o)
   02101D80 00000010 .rodata sHomeRowCursorXCoords	(src_naming_screen.c.o)
   02101D90 00000016 .rodata sPrompt_YourName	(src_naming_screen.c.o)
   02101DA6 00000018 .rodata sPrompt_BoxName	(src_naming_screen.c.o)
   02101DBE 0000001A .rodata sKeyboardHomeRow_All	(src_naming_screen.c.o)
   02101DD8 0000001A .rodata sKeyboardHomeRow_Numpad	(src_naming_screen.c.o)
   02101DF2 0000001C .rodata sKeyboardRow_JPMisc_2	(src_naming_screen.c.o)
-  02101E10 0000001C .rodata @18800	(src_naming_screen.c.o)
+  02101E10 0000001C .rodata @18766	(src_naming_screen.c.o)
   02101E2C 0000001C .rodata sKeyboardRow_Upper_4	(src_naming_screen.c.o)
   02101E48 0000001C .rodata sKeyboardRow_JPMisc_5	(src_naming_screen.c.o)
   02101E64 0000001C .rodata sKeyboardRow_Upper_5	(src_naming_screen.c.o)
   02101E80 0000001C .rodata sKeyboardRow_Upper_1	(src_naming_screen.c.o)
   02101E9C 0000001C .rodata sKeyboardRow_Upper_2	(src_naming_screen.c.o)
   02101EB8 0000001C .rodata sKeyboardRow_Upper_3	(src_naming_screen.c.o)
-  02101ED4 0000001C .rodata @18794	(src_naming_screen.c.o)
+  02101ED4 0000001C .rodata @18760	(src_naming_screen.c.o)
   02101EF0 0000001C .rodata sKeyboardRow_Lower_1	(src_naming_screen.c.o)
   02101F0C 0000001C .rodata sKeyboardRow_Lower_2	(src_naming_screen.c.o)
   02101F28 0000001C .rodata sKeyboardRow_JPMisc_4	(src_naming_screen.c.o)
@@ -56863,20 +56863,20 @@
   02101F60 0000001C .rodata sKeyboardRow_Lower_4	(src_naming_screen.c.o)
   02101F7C 0000001C .rodata sKeyboardRow_JPMisc_1	(src_naming_screen.c.o)
   02101F98 0000001C .rodata sKeyboardRow_Symbols_1	(src_naming_screen.c.o)
-  02101FB4 0000001C .rodata @18796	(src_naming_screen.c.o)
+  02101FB4 0000001C .rodata @18762	(src_naming_screen.c.o)
   02101FD0 0000001C .rodata sKeyboardRow_Symbols_2	(src_naming_screen.c.o)
   02101FEC 0000001C .rodata sKeyboardRow_Symbols_3	(src_naming_screen.c.o)
   02102008 0000001C .rodata sKeyboardRow_Symbols_4	(src_naming_screen.c.o)
   02102024 0000001C .rodata sKeyboardRow_Lower_5	(src_naming_screen.c.o)
   02102040 0000001C .rodata sKeyboardRow_Symbols_5	(src_naming_screen.c.o)
   0210205C 0000001C .rodata sKeyboardRow_Lower_3	(src_naming_screen.c.o)
-  02102078 0000001C .rodata @18798	(src_naming_screen.c.o)
+  02102078 0000001C .rodata @18764	(src_naming_screen.c.o)
   02102094 0000001E .rodata sPrompt_PokemonsNickname	(src_naming_screen.c.o)
   021020B4 00000020 .rodata _021020B4	(src_naming_screen.c.o)
   021020D4 00000024 .rodata sKeyboardRow_Numpad_1	(src_naming_screen.c.o)
   021020F8 00000024 .rodata sKeyboardRow_Numpad_2	(src_naming_screen.c.o)
   0210211C 00000024 .rodata sKeyboardRow_Numpad_345	(src_naming_screen.c.o)
-  02102140 00000028 .rodata @18786	(src_naming_screen.c.o)
+  02102140 00000028 .rodata @18752	(src_naming_screen.c.o)
   02102168 00000028 .rodata sDpadMovementCoordDeltas	(src_naming_screen.c.o)
   02102190 00000028 .rodata sHandakutenTable	(src_naming_screen.c.o)
   021021B8 00000030 .rodata sDakutenTable	(src_naming_screen.c.o)
@@ -56974,7 +56974,7 @@
   0210847C 00000000 .rodata .rodata	(src_phonebook_dat.c.o)
   0210847C 00000096 .rodata sPhoneMessageGmm	(src_phonebook_dat.c.o)
   02108514 00000000 .rodata .rodata	(src_choose_starter.c.o)
-  02108514 0000000C .rodata @18140	(src_choose_starter.c.o)
+  02108514 0000000C .rodata @18106	(src_choose_starter.c.o)
   02108520 00000000 .rodata .rodata	(src_error_message_reset.c.o)
   02108520 00000008 .rodata sErrorMessageWindowTemplate	(src_error_message_reset.c.o)
   02108528 00000008 .rodata sErrorMessageHeapParams	(src_error_message_reset.c.o)
@@ -56986,7 +56986,7 @@
   02108594 00000270 .rodata .rodata	(asm_unk_02096910.s.o)
   02108804 0000069C .rodata .rodata	(asm_unk_02096C88.s.o)
   02108EA0 00000038 .rodata .rodata	(asm_unk_02097024.s.o)
-  02108ED8 00000002 .rodata ffff$17058	(src_unk_02097268.c.o)
+  02108ED8 00000002 .rodata ffff$17024	(src_unk_02097268.c.o)
   02108ED8 00000000 .rodata .rodata	(src_unk_02097268.c.o)
   02108EDA 00000014 .rodata sObjectLevelBoosts	(src_unk_02097268.c.o)
   02108EEE 00000048 .rodata sObjects	(src_unk_02097268.c.o)
@@ -57124,274 +57124,274 @@
 #>0210E970          SDK_STATIC_SINIT_END (linker command file)
 #>0210E980          SDK_STATIC_TEXT_END (linker command file)
 #>0210E980          SDK_STATIC_DATA_START (linker command file)
-  0210E980 0000001E .data   @13246	(src_sound.c.o)
-  0210E9A0 00000008 .data   @12610	(src_filesystem.c.o)
-  0210E9A8 00000008 .data   @12874	(src_filesystem.c.o)
-  0210E9B0 00000008 .data   @12609	(src_filesystem.c.o)
-  0210E9B8 00000008 .data   @12872	(src_filesystem.c.o)
-  0210E9C0 00000008 .data   @12871	(src_filesystem.c.o)
-  0210E9C8 00000008 .data   @12870	(src_filesystem.c.o)
-  0210E9D0 00000008 .data   @12869	(src_filesystem.c.o)
-  0210E9D8 00000008 .data   @12875	(src_filesystem.c.o)
-  0210E9E0 00000008 .data   @12867	(src_filesystem.c.o)
-  0210E9E8 00000008 .data   @12866	(src_filesystem.c.o)
-  0210E9F0 00000008 .data   @12865	(src_filesystem.c.o)
-  0210E9F8 00000008 .data   @12864	(src_filesystem.c.o)
-  0210EA00 00000008 .data   @12863	(src_filesystem.c.o)
-  0210EA08 00000008 .data   @12862	(src_filesystem.c.o)
-  0210EA10 00000008 .data   @12861	(src_filesystem.c.o)
-  0210EA18 00000008 .data   @12860	(src_filesystem.c.o)
-  0210EA20 00000008 .data   @12873	(src_filesystem.c.o)
-  0210EA28 00000008 .data   @12858	(src_filesystem.c.o)
-  0210EA30 00000008 .data   @12857	(src_filesystem.c.o)
-  0210EA38 00000008 .data   @12856	(src_filesystem.c.o)
-  0210EA40 00000008 .data   @12855	(src_filesystem.c.o)
-  0210EA48 00000008 .data   @12854	(src_filesystem.c.o)
-  0210EA50 00000008 .data   @12853	(src_filesystem.c.o)
-  0210EA58 00000008 .data   @12852	(src_filesystem.c.o)
-  0210EA60 00000008 .data   @12851	(src_filesystem.c.o)
-  0210EA68 00000008 .data   @12850	(src_filesystem.c.o)
-  0210EA70 00000008 .data   @12849	(src_filesystem.c.o)
-  0210EA78 00000008 .data   @12848	(src_filesystem.c.o)
-  0210EA80 00000008 .data   @12847	(src_filesystem.c.o)
-  0210EA88 00000008 .data   @12846	(src_filesystem.c.o)
-  0210EA90 00000008 .data   @12845	(src_filesystem.c.o)
-  0210EA98 00000008 .data   @12844	(src_filesystem.c.o)
-  0210EAA0 00000008 .data   @12843	(src_filesystem.c.o)
-  0210EAA8 00000008 .data   @12842	(src_filesystem.c.o)
-  0210EAB0 00000008 .data   @12859	(src_filesystem.c.o)
-  0210EAB8 00000008 .data   @12868	(src_filesystem.c.o)
-  0210EAC0 00000008 .data   @12839	(src_filesystem.c.o)
-  0210EAC8 00000008 .data   @12838	(src_filesystem.c.o)
-  0210EAD0 00000008 .data   @12837	(src_filesystem.c.o)
-  0210EAD8 00000008 .data   @12836	(src_filesystem.c.o)
-  0210EAE0 00000008 .data   @12835	(src_filesystem.c.o)
-  0210EAE8 00000008 .data   @12834	(src_filesystem.c.o)
-  0210EAF0 00000008 .data   @12833	(src_filesystem.c.o)
-  0210EAF8 00000008 .data   @12832	(src_filesystem.c.o)
-  0210EB00 00000008 .data   @12831	(src_filesystem.c.o)
-  0210EB08 00000008 .data   @12830	(src_filesystem.c.o)
-  0210EB10 00000008 .data   @12829	(src_filesystem.c.o)
-  0210EB18 00000008 .data   @12828	(src_filesystem.c.o)
-  0210EB20 00000008 .data   @12827	(src_filesystem.c.o)
-  0210EB28 00000008 .data   @12826	(src_filesystem.c.o)
-  0210EB30 00000008 .data   @12825	(src_filesystem.c.o)
-  0210EB38 00000008 .data   @12824	(src_filesystem.c.o)
-  0210EB40 00000008 .data   @12823	(src_filesystem.c.o)
-  0210EB48 00000008 .data   @12822	(src_filesystem.c.o)
-  0210EB50 00000008 .data   @12821	(src_filesystem.c.o)
-  0210EB58 00000008 .data   @12820	(src_filesystem.c.o)
-  0210EB60 00000008 .data   @12819	(src_filesystem.c.o)
-  0210EB68 00000008 .data   @12818	(src_filesystem.c.o)
-  0210EB70 00000008 .data   @12817	(src_filesystem.c.o)
-  0210EB78 00000008 .data   @12816	(src_filesystem.c.o)
-  0210EB80 00000008 .data   @12815	(src_filesystem.c.o)
-  0210EB88 00000008 .data   @12814	(src_filesystem.c.o)
-  0210EB90 00000008 .data   @12813	(src_filesystem.c.o)
-  0210EB98 00000008 .data   @12812	(src_filesystem.c.o)
-  0210EBA0 00000008 .data   @12811	(src_filesystem.c.o)
-  0210EBA8 00000008 .data   @12810	(src_filesystem.c.o)
-  0210EBB0 00000008 .data   @12809	(src_filesystem.c.o)
-  0210EBB8 00000008 .data   @12808	(src_filesystem.c.o)
-  0210EBC0 00000008 .data   @12807	(src_filesystem.c.o)
-  0210EBC8 00000008 .data   @12806	(src_filesystem.c.o)
-  0210EBD0 00000008 .data   @12805	(src_filesystem.c.o)
-  0210EBD8 00000008 .data   @12841	(src_filesystem.c.o)
-  0210EBE0 00000008 .data   @12840	(src_filesystem.c.o)
-  0210EBE8 00000008 .data   @12802	(src_filesystem.c.o)
-  0210EBF0 00000008 .data   @12801	(src_filesystem.c.o)
-  0210EBF8 00000008 .data   @12800	(src_filesystem.c.o)
-  0210EC00 00000008 .data   @12799	(src_filesystem.c.o)
-  0210EC08 00000008 .data   @12798	(src_filesystem.c.o)
-  0210EC10 00000008 .data   @12797	(src_filesystem.c.o)
-  0210EC18 00000008 .data   @12796	(src_filesystem.c.o)
-  0210EC20 00000008 .data   @12795	(src_filesystem.c.o)
-  0210EC28 00000008 .data   @12794	(src_filesystem.c.o)
-  0210EC30 00000008 .data   @12793	(src_filesystem.c.o)
-  0210EC38 00000008 .data   @12792	(src_filesystem.c.o)
-  0210EC40 00000008 .data   @12791	(src_filesystem.c.o)
-  0210EC48 00000008 .data   @12790	(src_filesystem.c.o)
-  0210EC50 00000008 .data   @12789	(src_filesystem.c.o)
-  0210EC58 00000008 .data   @12788	(src_filesystem.c.o)
-  0210EC60 00000008 .data   @12787	(src_filesystem.c.o)
-  0210EC68 00000008 .data   @12786	(src_filesystem.c.o)
-  0210EC70 00000008 .data   @12785	(src_filesystem.c.o)
-  0210EC78 00000008 .data   @12784	(src_filesystem.c.o)
-  0210EC80 00000008 .data   @12783	(src_filesystem.c.o)
-  0210EC88 00000008 .data   @12782	(src_filesystem.c.o)
-  0210EC90 00000008 .data   @12781	(src_filesystem.c.o)
-  0210EC98 00000008 .data   @12780	(src_filesystem.c.o)
-  0210ECA0 00000008 .data   @12779	(src_filesystem.c.o)
-  0210ECA8 00000008 .data   @12778	(src_filesystem.c.o)
-  0210ECB0 00000008 .data   @12777	(src_filesystem.c.o)
-  0210ECB8 00000008 .data   @12776	(src_filesystem.c.o)
-  0210ECC0 00000008 .data   @12775	(src_filesystem.c.o)
-  0210ECC8 00000008 .data   @12774	(src_filesystem.c.o)
-  0210ECD0 00000008 .data   @12773	(src_filesystem.c.o)
-  0210ECD8 00000008 .data   @12772	(src_filesystem.c.o)
-  0210ECE0 00000008 .data   @12771	(src_filesystem.c.o)
-  0210ECE8 00000008 .data   @12770	(src_filesystem.c.o)
-  0210ECF0 00000008 .data   @12769	(src_filesystem.c.o)
-  0210ECF8 00000008 .data   @12768	(src_filesystem.c.o)
-  0210ED00 00000008 .data   @12767	(src_filesystem.c.o)
-  0210ED08 00000008 .data   @12766	(src_filesystem.c.o)
-  0210ED10 00000008 .data   @12765	(src_filesystem.c.o)
-  0210ED18 00000008 .data   @12764	(src_filesystem.c.o)
-  0210ED20 00000008 .data   @12763	(src_filesystem.c.o)
-  0210ED28 00000008 .data   @12762	(src_filesystem.c.o)
-  0210ED30 00000008 .data   @12761	(src_filesystem.c.o)
-  0210ED38 00000008 .data   @12760	(src_filesystem.c.o)
-  0210ED40 00000008 .data   @12759	(src_filesystem.c.o)
-  0210ED48 00000008 .data   @12758	(src_filesystem.c.o)
-  0210ED50 00000008 .data   @12757	(src_filesystem.c.o)
-  0210ED58 00000008 .data   @12756	(src_filesystem.c.o)
-  0210ED60 00000008 .data   @12755	(src_filesystem.c.o)
-  0210ED68 00000008 .data   @12754	(src_filesystem.c.o)
-  0210ED70 00000008 .data   @12753	(src_filesystem.c.o)
-  0210ED78 00000008 .data   @12752	(src_filesystem.c.o)
-  0210ED80 00000008 .data   @12751	(src_filesystem.c.o)
-  0210ED88 00000008 .data   @12750	(src_filesystem.c.o)
-  0210ED90 00000008 .data   @12749	(src_filesystem.c.o)
-  0210ED98 00000008 .data   @12748	(src_filesystem.c.o)
-  0210EDA0 00000008 .data   @12747	(src_filesystem.c.o)
-  0210EDA8 00000008 .data   @12746	(src_filesystem.c.o)
-  0210EDB0 00000008 .data   @12745	(src_filesystem.c.o)
-  0210EDB8 00000008 .data   @12744	(src_filesystem.c.o)
-  0210EDC0 00000008 .data   @12743	(src_filesystem.c.o)
-  0210EDC8 00000008 .data   @12742	(src_filesystem.c.o)
-  0210EDD0 00000008 .data   @12741	(src_filesystem.c.o)
-  0210EDD8 00000008 .data   @12740	(src_filesystem.c.o)
-  0210EDE0 00000008 .data   @12739	(src_filesystem.c.o)
-  0210EDE8 00000008 .data   @12738	(src_filesystem.c.o)
-  0210EDF0 00000008 .data   @12737	(src_filesystem.c.o)
-  0210EDF8 00000008 .data   @12736	(src_filesystem.c.o)
-  0210EE00 00000008 .data   @12735	(src_filesystem.c.o)
-  0210EE08 00000008 .data   @12734	(src_filesystem.c.o)
-  0210EE10 00000008 .data   @12733	(src_filesystem.c.o)
-  0210EE18 00000008 .data   @12732	(src_filesystem.c.o)
-  0210EE20 00000008 .data   @12731	(src_filesystem.c.o)
-  0210EE28 00000008 .data   @12730	(src_filesystem.c.o)
-  0210EE30 00000008 .data   @12729	(src_filesystem.c.o)
-  0210EE38 00000008 .data   @12728	(src_filesystem.c.o)
-  0210EE40 00000008 .data   @12727	(src_filesystem.c.o)
-  0210EE48 00000008 .data   @12726	(src_filesystem.c.o)
-  0210EE50 00000008 .data   @12725	(src_filesystem.c.o)
-  0210EE58 00000008 .data   @12724	(src_filesystem.c.o)
-  0210EE60 00000008 .data   @12723	(src_filesystem.c.o)
-  0210EE68 00000008 .data   @12722	(src_filesystem.c.o)
-  0210EE70 00000008 .data   @12721	(src_filesystem.c.o)
-  0210EE78 00000008 .data   @12720	(src_filesystem.c.o)
-  0210EE80 00000008 .data   @12719	(src_filesystem.c.o)
-  0210EE88 00000008 .data   @12718	(src_filesystem.c.o)
-  0210EE90 00000008 .data   @12717	(src_filesystem.c.o)
-  0210EE98 00000008 .data   @12716	(src_filesystem.c.o)
-  0210EEA0 00000008 .data   @12715	(src_filesystem.c.o)
-  0210EEA8 00000008 .data   @12714	(src_filesystem.c.o)
-  0210EEB0 00000008 .data   @12713	(src_filesystem.c.o)
-  0210EEB8 00000008 .data   @12712	(src_filesystem.c.o)
-  0210EEC0 00000008 .data   @12711	(src_filesystem.c.o)
-  0210EEC8 00000008 .data   @12710	(src_filesystem.c.o)
-  0210EED0 00000008 .data   @12709	(src_filesystem.c.o)
-  0210EED8 00000008 .data   @12708	(src_filesystem.c.o)
-  0210EEE0 00000008 .data   @12707	(src_filesystem.c.o)
-  0210EEE8 00000008 .data   @12706	(src_filesystem.c.o)
-  0210EEF0 00000008 .data   @12705	(src_filesystem.c.o)
-  0210EEF8 00000008 .data   @12704	(src_filesystem.c.o)
-  0210EF00 00000008 .data   @12703	(src_filesystem.c.o)
-  0210EF08 00000008 .data   @12702	(src_filesystem.c.o)
-  0210EF10 00000008 .data   @12701	(src_filesystem.c.o)
-  0210EF18 00000008 .data   @12700	(src_filesystem.c.o)
-  0210EF20 00000008 .data   @12699	(src_filesystem.c.o)
-  0210EF28 00000008 .data   @12698	(src_filesystem.c.o)
-  0210EF30 00000008 .data   @12697	(src_filesystem.c.o)
-  0210EF38 00000008 .data   @12696	(src_filesystem.c.o)
-  0210EF40 00000008 .data   @12695	(src_filesystem.c.o)
-  0210EF48 00000008 .data   @12694	(src_filesystem.c.o)
-  0210EF50 00000008 .data   @12693	(src_filesystem.c.o)
-  0210EF58 00000008 .data   @12692	(src_filesystem.c.o)
-  0210EF60 00000008 .data   @12691	(src_filesystem.c.o)
-  0210EF68 00000008 .data   @12690	(src_filesystem.c.o)
-  0210EF70 00000008 .data   @12689	(src_filesystem.c.o)
-  0210EF78 00000008 .data   @12688	(src_filesystem.c.o)
-  0210EF80 00000008 .data   @12687	(src_filesystem.c.o)
-  0210EF88 00000008 .data   @12686	(src_filesystem.c.o)
-  0210EF90 00000008 .data   @12685	(src_filesystem.c.o)
-  0210EF98 00000008 .data   @12684	(src_filesystem.c.o)
-  0210EFA0 00000008 .data   @12683	(src_filesystem.c.o)
-  0210EFA8 00000008 .data   @12682	(src_filesystem.c.o)
-  0210EFB0 00000008 .data   @12681	(src_filesystem.c.o)
-  0210EFB8 00000008 .data   @12680	(src_filesystem.c.o)
-  0210EFC0 00000008 .data   @12679	(src_filesystem.c.o)
-  0210EFC8 00000008 .data   @12678	(src_filesystem.c.o)
-  0210EFD0 00000008 .data   @12677	(src_filesystem.c.o)
-  0210EFD8 00000008 .data   @12676	(src_filesystem.c.o)
-  0210EFE0 00000008 .data   @12675	(src_filesystem.c.o)
-  0210EFE8 00000008 .data   @12674	(src_filesystem.c.o)
-  0210EFF0 00000008 .data   @12673	(src_filesystem.c.o)
-  0210EFF8 00000008 .data   @12672	(src_filesystem.c.o)
-  0210F000 00000008 .data   @12671	(src_filesystem.c.o)
-  0210F008 00000008 .data   @12670	(src_filesystem.c.o)
-  0210F010 00000008 .data   @12669	(src_filesystem.c.o)
-  0210F018 00000008 .data   @12668	(src_filesystem.c.o)
-  0210F020 00000008 .data   @12667	(src_filesystem.c.o)
-  0210F028 00000008 .data   @12666	(src_filesystem.c.o)
-  0210F030 00000008 .data   @12665	(src_filesystem.c.o)
-  0210F038 00000008 .data   @12664	(src_filesystem.c.o)
-  0210F040 00000008 .data   @12663	(src_filesystem.c.o)
-  0210F048 00000008 .data   @12662	(src_filesystem.c.o)
-  0210F050 00000008 .data   @12661	(src_filesystem.c.o)
-  0210F058 00000008 .data   @12660	(src_filesystem.c.o)
-  0210F060 00000008 .data   @12659	(src_filesystem.c.o)
-  0210F068 00000008 .data   @12658	(src_filesystem.c.o)
-  0210F070 00000008 .data   @12657	(src_filesystem.c.o)
-  0210F078 00000008 .data   @12656	(src_filesystem.c.o)
-  0210F080 00000008 .data   @12655	(src_filesystem.c.o)
-  0210F088 00000008 .data   @12654	(src_filesystem.c.o)
-  0210F090 00000008 .data   @12653	(src_filesystem.c.o)
-  0210F098 00000008 .data   @12652	(src_filesystem.c.o)
-  0210F0A0 00000008 .data   @12651	(src_filesystem.c.o)
-  0210F0A8 00000008 .data   @12650	(src_filesystem.c.o)
-  0210F0B0 00000008 .data   @12649	(src_filesystem.c.o)
-  0210F0B8 00000008 .data   @12648	(src_filesystem.c.o)
-  0210F0C0 00000008 .data   @12647	(src_filesystem.c.o)
-  0210F0C8 00000008 .data   @12646	(src_filesystem.c.o)
-  0210F0D0 00000008 .data   @12645	(src_filesystem.c.o)
-  0210F0D8 00000008 .data   @12644	(src_filesystem.c.o)
-  0210F0E0 00000008 .data   @12643	(src_filesystem.c.o)
-  0210F0E8 00000008 .data   @12642	(src_filesystem.c.o)
-  0210F0F0 00000008 .data   @12641	(src_filesystem.c.o)
-  0210F0F8 00000008 .data   @12640	(src_filesystem.c.o)
-  0210F100 00000008 .data   @12639	(src_filesystem.c.o)
-  0210F108 00000008 .data   @12638	(src_filesystem.c.o)
-  0210F110 00000008 .data   @12637	(src_filesystem.c.o)
-  0210F118 00000008 .data   @12636	(src_filesystem.c.o)
-  0210F120 00000008 .data   @12635	(src_filesystem.c.o)
-  0210F128 00000008 .data   @12634	(src_filesystem.c.o)
-  0210F130 00000008 .data   @12633	(src_filesystem.c.o)
-  0210F138 00000008 .data   @12632	(src_filesystem.c.o)
-  0210F140 00000008 .data   @12631	(src_filesystem.c.o)
-  0210F148 00000008 .data   @12630	(src_filesystem.c.o)
-  0210F150 00000008 .data   @12629	(src_filesystem.c.o)
-  0210F158 00000008 .data   @12628	(src_filesystem.c.o)
-  0210F160 00000008 .data   @12627	(src_filesystem.c.o)
-  0210F168 00000008 .data   @12626	(src_filesystem.c.o)
-  0210F170 00000008 .data   @12625	(src_filesystem.c.o)
-  0210F178 00000008 .data   @12624	(src_filesystem.c.o)
-  0210F180 00000008 .data   @12623	(src_filesystem.c.o)
-  0210F188 00000008 .data   @12622	(src_filesystem.c.o)
-  0210F190 00000008 .data   @12621	(src_filesystem.c.o)
-  0210F198 00000008 .data   @12620	(src_filesystem.c.o)
-  0210F1A0 00000008 .data   @12619	(src_filesystem.c.o)
-  0210F1A8 00000008 .data   @12618	(src_filesystem.c.o)
-  0210F1B0 00000008 .data   @12617	(src_filesystem.c.o)
-  0210F1B8 00000008 .data   @12616	(src_filesystem.c.o)
-  0210F1C0 00000008 .data   @12615	(src_filesystem.c.o)
-  0210F1C8 00000008 .data   @12614	(src_filesystem.c.o)
-  0210F1D0 00000008 .data   @12613	(src_filesystem.c.o)
-  0210F1D8 00000008 .data   @12612	(src_filesystem.c.o)
-  0210F1E0 00000008 .data   @12611	(src_filesystem.c.o)
-  0210F1E8 00000011 .data   @12803	(src_filesystem.c.o)
-  0210F1FC 00000013 .data   @12804	(src_filesystem.c.o)
+  0210E980 0000001E .data   @13208	(src_sound.c.o)
+  0210E9A0 00000008 .data   @12576	(src_filesystem.c.o)
+  0210E9A8 00000008 .data   @12840	(src_filesystem.c.o)
+  0210E9B0 00000008 .data   @12575	(src_filesystem.c.o)
+  0210E9B8 00000008 .data   @12838	(src_filesystem.c.o)
+  0210E9C0 00000008 .data   @12837	(src_filesystem.c.o)
+  0210E9C8 00000008 .data   @12836	(src_filesystem.c.o)
+  0210E9D0 00000008 .data   @12835	(src_filesystem.c.o)
+  0210E9D8 00000008 .data   @12841	(src_filesystem.c.o)
+  0210E9E0 00000008 .data   @12833	(src_filesystem.c.o)
+  0210E9E8 00000008 .data   @12832	(src_filesystem.c.o)
+  0210E9F0 00000008 .data   @12831	(src_filesystem.c.o)
+  0210E9F8 00000008 .data   @12830	(src_filesystem.c.o)
+  0210EA00 00000008 .data   @12829	(src_filesystem.c.o)
+  0210EA08 00000008 .data   @12828	(src_filesystem.c.o)
+  0210EA10 00000008 .data   @12827	(src_filesystem.c.o)
+  0210EA18 00000008 .data   @12826	(src_filesystem.c.o)
+  0210EA20 00000008 .data   @12839	(src_filesystem.c.o)
+  0210EA28 00000008 .data   @12824	(src_filesystem.c.o)
+  0210EA30 00000008 .data   @12823	(src_filesystem.c.o)
+  0210EA38 00000008 .data   @12822	(src_filesystem.c.o)
+  0210EA40 00000008 .data   @12821	(src_filesystem.c.o)
+  0210EA48 00000008 .data   @12820	(src_filesystem.c.o)
+  0210EA50 00000008 .data   @12819	(src_filesystem.c.o)
+  0210EA58 00000008 .data   @12818	(src_filesystem.c.o)
+  0210EA60 00000008 .data   @12817	(src_filesystem.c.o)
+  0210EA68 00000008 .data   @12816	(src_filesystem.c.o)
+  0210EA70 00000008 .data   @12815	(src_filesystem.c.o)
+  0210EA78 00000008 .data   @12814	(src_filesystem.c.o)
+  0210EA80 00000008 .data   @12813	(src_filesystem.c.o)
+  0210EA88 00000008 .data   @12812	(src_filesystem.c.o)
+  0210EA90 00000008 .data   @12811	(src_filesystem.c.o)
+  0210EA98 00000008 .data   @12810	(src_filesystem.c.o)
+  0210EAA0 00000008 .data   @12809	(src_filesystem.c.o)
+  0210EAA8 00000008 .data   @12808	(src_filesystem.c.o)
+  0210EAB0 00000008 .data   @12825	(src_filesystem.c.o)
+  0210EAB8 00000008 .data   @12834	(src_filesystem.c.o)
+  0210EAC0 00000008 .data   @12805	(src_filesystem.c.o)
+  0210EAC8 00000008 .data   @12804	(src_filesystem.c.o)
+  0210EAD0 00000008 .data   @12803	(src_filesystem.c.o)
+  0210EAD8 00000008 .data   @12802	(src_filesystem.c.o)
+  0210EAE0 00000008 .data   @12801	(src_filesystem.c.o)
+  0210EAE8 00000008 .data   @12800	(src_filesystem.c.o)
+  0210EAF0 00000008 .data   @12799	(src_filesystem.c.o)
+  0210EAF8 00000008 .data   @12798	(src_filesystem.c.o)
+  0210EB00 00000008 .data   @12797	(src_filesystem.c.o)
+  0210EB08 00000008 .data   @12796	(src_filesystem.c.o)
+  0210EB10 00000008 .data   @12795	(src_filesystem.c.o)
+  0210EB18 00000008 .data   @12794	(src_filesystem.c.o)
+  0210EB20 00000008 .data   @12793	(src_filesystem.c.o)
+  0210EB28 00000008 .data   @12792	(src_filesystem.c.o)
+  0210EB30 00000008 .data   @12791	(src_filesystem.c.o)
+  0210EB38 00000008 .data   @12790	(src_filesystem.c.o)
+  0210EB40 00000008 .data   @12789	(src_filesystem.c.o)
+  0210EB48 00000008 .data   @12788	(src_filesystem.c.o)
+  0210EB50 00000008 .data   @12787	(src_filesystem.c.o)
+  0210EB58 00000008 .data   @12786	(src_filesystem.c.o)
+  0210EB60 00000008 .data   @12785	(src_filesystem.c.o)
+  0210EB68 00000008 .data   @12784	(src_filesystem.c.o)
+  0210EB70 00000008 .data   @12783	(src_filesystem.c.o)
+  0210EB78 00000008 .data   @12782	(src_filesystem.c.o)
+  0210EB80 00000008 .data   @12781	(src_filesystem.c.o)
+  0210EB88 00000008 .data   @12780	(src_filesystem.c.o)
+  0210EB90 00000008 .data   @12779	(src_filesystem.c.o)
+  0210EB98 00000008 .data   @12778	(src_filesystem.c.o)
+  0210EBA0 00000008 .data   @12777	(src_filesystem.c.o)
+  0210EBA8 00000008 .data   @12776	(src_filesystem.c.o)
+  0210EBB0 00000008 .data   @12775	(src_filesystem.c.o)
+  0210EBB8 00000008 .data   @12774	(src_filesystem.c.o)
+  0210EBC0 00000008 .data   @12773	(src_filesystem.c.o)
+  0210EBC8 00000008 .data   @12772	(src_filesystem.c.o)
+  0210EBD0 00000008 .data   @12771	(src_filesystem.c.o)
+  0210EBD8 00000008 .data   @12807	(src_filesystem.c.o)
+  0210EBE0 00000008 .data   @12806	(src_filesystem.c.o)
+  0210EBE8 00000008 .data   @12768	(src_filesystem.c.o)
+  0210EBF0 00000008 .data   @12767	(src_filesystem.c.o)
+  0210EBF8 00000008 .data   @12766	(src_filesystem.c.o)
+  0210EC00 00000008 .data   @12765	(src_filesystem.c.o)
+  0210EC08 00000008 .data   @12764	(src_filesystem.c.o)
+  0210EC10 00000008 .data   @12763	(src_filesystem.c.o)
+  0210EC18 00000008 .data   @12762	(src_filesystem.c.o)
+  0210EC20 00000008 .data   @12761	(src_filesystem.c.o)
+  0210EC28 00000008 .data   @12760	(src_filesystem.c.o)
+  0210EC30 00000008 .data   @12759	(src_filesystem.c.o)
+  0210EC38 00000008 .data   @12758	(src_filesystem.c.o)
+  0210EC40 00000008 .data   @12757	(src_filesystem.c.o)
+  0210EC48 00000008 .data   @12756	(src_filesystem.c.o)
+  0210EC50 00000008 .data   @12755	(src_filesystem.c.o)
+  0210EC58 00000008 .data   @12754	(src_filesystem.c.o)
+  0210EC60 00000008 .data   @12753	(src_filesystem.c.o)
+  0210EC68 00000008 .data   @12752	(src_filesystem.c.o)
+  0210EC70 00000008 .data   @12751	(src_filesystem.c.o)
+  0210EC78 00000008 .data   @12750	(src_filesystem.c.o)
+  0210EC80 00000008 .data   @12749	(src_filesystem.c.o)
+  0210EC88 00000008 .data   @12748	(src_filesystem.c.o)
+  0210EC90 00000008 .data   @12747	(src_filesystem.c.o)
+  0210EC98 00000008 .data   @12746	(src_filesystem.c.o)
+  0210ECA0 00000008 .data   @12745	(src_filesystem.c.o)
+  0210ECA8 00000008 .data   @12744	(src_filesystem.c.o)
+  0210ECB0 00000008 .data   @12743	(src_filesystem.c.o)
+  0210ECB8 00000008 .data   @12742	(src_filesystem.c.o)
+  0210ECC0 00000008 .data   @12741	(src_filesystem.c.o)
+  0210ECC8 00000008 .data   @12740	(src_filesystem.c.o)
+  0210ECD0 00000008 .data   @12739	(src_filesystem.c.o)
+  0210ECD8 00000008 .data   @12738	(src_filesystem.c.o)
+  0210ECE0 00000008 .data   @12737	(src_filesystem.c.o)
+  0210ECE8 00000008 .data   @12736	(src_filesystem.c.o)
+  0210ECF0 00000008 .data   @12735	(src_filesystem.c.o)
+  0210ECF8 00000008 .data   @12734	(src_filesystem.c.o)
+  0210ED00 00000008 .data   @12733	(src_filesystem.c.o)
+  0210ED08 00000008 .data   @12732	(src_filesystem.c.o)
+  0210ED10 00000008 .data   @12731	(src_filesystem.c.o)
+  0210ED18 00000008 .data   @12730	(src_filesystem.c.o)
+  0210ED20 00000008 .data   @12729	(src_filesystem.c.o)
+  0210ED28 00000008 .data   @12728	(src_filesystem.c.o)
+  0210ED30 00000008 .data   @12727	(src_filesystem.c.o)
+  0210ED38 00000008 .data   @12726	(src_filesystem.c.o)
+  0210ED40 00000008 .data   @12725	(src_filesystem.c.o)
+  0210ED48 00000008 .data   @12724	(src_filesystem.c.o)
+  0210ED50 00000008 .data   @12723	(src_filesystem.c.o)
+  0210ED58 00000008 .data   @12722	(src_filesystem.c.o)
+  0210ED60 00000008 .data   @12721	(src_filesystem.c.o)
+  0210ED68 00000008 .data   @12720	(src_filesystem.c.o)
+  0210ED70 00000008 .data   @12719	(src_filesystem.c.o)
+  0210ED78 00000008 .data   @12718	(src_filesystem.c.o)
+  0210ED80 00000008 .data   @12717	(src_filesystem.c.o)
+  0210ED88 00000008 .data   @12716	(src_filesystem.c.o)
+  0210ED90 00000008 .data   @12715	(src_filesystem.c.o)
+  0210ED98 00000008 .data   @12714	(src_filesystem.c.o)
+  0210EDA0 00000008 .data   @12713	(src_filesystem.c.o)
+  0210EDA8 00000008 .data   @12712	(src_filesystem.c.o)
+  0210EDB0 00000008 .data   @12711	(src_filesystem.c.o)
+  0210EDB8 00000008 .data   @12710	(src_filesystem.c.o)
+  0210EDC0 00000008 .data   @12709	(src_filesystem.c.o)
+  0210EDC8 00000008 .data   @12708	(src_filesystem.c.o)
+  0210EDD0 00000008 .data   @12707	(src_filesystem.c.o)
+  0210EDD8 00000008 .data   @12706	(src_filesystem.c.o)
+  0210EDE0 00000008 .data   @12705	(src_filesystem.c.o)
+  0210EDE8 00000008 .data   @12704	(src_filesystem.c.o)
+  0210EDF0 00000008 .data   @12703	(src_filesystem.c.o)
+  0210EDF8 00000008 .data   @12702	(src_filesystem.c.o)
+  0210EE00 00000008 .data   @12701	(src_filesystem.c.o)
+  0210EE08 00000008 .data   @12700	(src_filesystem.c.o)
+  0210EE10 00000008 .data   @12699	(src_filesystem.c.o)
+  0210EE18 00000008 .data   @12698	(src_filesystem.c.o)
+  0210EE20 00000008 .data   @12697	(src_filesystem.c.o)
+  0210EE28 00000008 .data   @12696	(src_filesystem.c.o)
+  0210EE30 00000008 .data   @12695	(src_filesystem.c.o)
+  0210EE38 00000008 .data   @12694	(src_filesystem.c.o)
+  0210EE40 00000008 .data   @12693	(src_filesystem.c.o)
+  0210EE48 00000008 .data   @12692	(src_filesystem.c.o)
+  0210EE50 00000008 .data   @12691	(src_filesystem.c.o)
+  0210EE58 00000008 .data   @12690	(src_filesystem.c.o)
+  0210EE60 00000008 .data   @12689	(src_filesystem.c.o)
+  0210EE68 00000008 .data   @12688	(src_filesystem.c.o)
+  0210EE70 00000008 .data   @12687	(src_filesystem.c.o)
+  0210EE78 00000008 .data   @12686	(src_filesystem.c.o)
+  0210EE80 00000008 .data   @12685	(src_filesystem.c.o)
+  0210EE88 00000008 .data   @12684	(src_filesystem.c.o)
+  0210EE90 00000008 .data   @12683	(src_filesystem.c.o)
+  0210EE98 00000008 .data   @12682	(src_filesystem.c.o)
+  0210EEA0 00000008 .data   @12681	(src_filesystem.c.o)
+  0210EEA8 00000008 .data   @12680	(src_filesystem.c.o)
+  0210EEB0 00000008 .data   @12679	(src_filesystem.c.o)
+  0210EEB8 00000008 .data   @12678	(src_filesystem.c.o)
+  0210EEC0 00000008 .data   @12677	(src_filesystem.c.o)
+  0210EEC8 00000008 .data   @12676	(src_filesystem.c.o)
+  0210EED0 00000008 .data   @12675	(src_filesystem.c.o)
+  0210EED8 00000008 .data   @12674	(src_filesystem.c.o)
+  0210EEE0 00000008 .data   @12673	(src_filesystem.c.o)
+  0210EEE8 00000008 .data   @12672	(src_filesystem.c.o)
+  0210EEF0 00000008 .data   @12671	(src_filesystem.c.o)
+  0210EEF8 00000008 .data   @12670	(src_filesystem.c.o)
+  0210EF00 00000008 .data   @12669	(src_filesystem.c.o)
+  0210EF08 00000008 .data   @12668	(src_filesystem.c.o)
+  0210EF10 00000008 .data   @12667	(src_filesystem.c.o)
+  0210EF18 00000008 .data   @12666	(src_filesystem.c.o)
+  0210EF20 00000008 .data   @12665	(src_filesystem.c.o)
+  0210EF28 00000008 .data   @12664	(src_filesystem.c.o)
+  0210EF30 00000008 .data   @12663	(src_filesystem.c.o)
+  0210EF38 00000008 .data   @12662	(src_filesystem.c.o)
+  0210EF40 00000008 .data   @12661	(src_filesystem.c.o)
+  0210EF48 00000008 .data   @12660	(src_filesystem.c.o)
+  0210EF50 00000008 .data   @12659	(src_filesystem.c.o)
+  0210EF58 00000008 .data   @12658	(src_filesystem.c.o)
+  0210EF60 00000008 .data   @12657	(src_filesystem.c.o)
+  0210EF68 00000008 .data   @12656	(src_filesystem.c.o)
+  0210EF70 00000008 .data   @12655	(src_filesystem.c.o)
+  0210EF78 00000008 .data   @12654	(src_filesystem.c.o)
+  0210EF80 00000008 .data   @12653	(src_filesystem.c.o)
+  0210EF88 00000008 .data   @12652	(src_filesystem.c.o)
+  0210EF90 00000008 .data   @12651	(src_filesystem.c.o)
+  0210EF98 00000008 .data   @12650	(src_filesystem.c.o)
+  0210EFA0 00000008 .data   @12649	(src_filesystem.c.o)
+  0210EFA8 00000008 .data   @12648	(src_filesystem.c.o)
+  0210EFB0 00000008 .data   @12647	(src_filesystem.c.o)
+  0210EFB8 00000008 .data   @12646	(src_filesystem.c.o)
+  0210EFC0 00000008 .data   @12645	(src_filesystem.c.o)
+  0210EFC8 00000008 .data   @12644	(src_filesystem.c.o)
+  0210EFD0 00000008 .data   @12643	(src_filesystem.c.o)
+  0210EFD8 00000008 .data   @12642	(src_filesystem.c.o)
+  0210EFE0 00000008 .data   @12641	(src_filesystem.c.o)
+  0210EFE8 00000008 .data   @12640	(src_filesystem.c.o)
+  0210EFF0 00000008 .data   @12639	(src_filesystem.c.o)
+  0210EFF8 00000008 .data   @12638	(src_filesystem.c.o)
+  0210F000 00000008 .data   @12637	(src_filesystem.c.o)
+  0210F008 00000008 .data   @12636	(src_filesystem.c.o)
+  0210F010 00000008 .data   @12635	(src_filesystem.c.o)
+  0210F018 00000008 .data   @12634	(src_filesystem.c.o)
+  0210F020 00000008 .data   @12633	(src_filesystem.c.o)
+  0210F028 00000008 .data   @12632	(src_filesystem.c.o)
+  0210F030 00000008 .data   @12631	(src_filesystem.c.o)
+  0210F038 00000008 .data   @12630	(src_filesystem.c.o)
+  0210F040 00000008 .data   @12629	(src_filesystem.c.o)
+  0210F048 00000008 .data   @12628	(src_filesystem.c.o)
+  0210F050 00000008 .data   @12627	(src_filesystem.c.o)
+  0210F058 00000008 .data   @12626	(src_filesystem.c.o)
+  0210F060 00000008 .data   @12625	(src_filesystem.c.o)
+  0210F068 00000008 .data   @12624	(src_filesystem.c.o)
+  0210F070 00000008 .data   @12623	(src_filesystem.c.o)
+  0210F078 00000008 .data   @12622	(src_filesystem.c.o)
+  0210F080 00000008 .data   @12621	(src_filesystem.c.o)
+  0210F088 00000008 .data   @12620	(src_filesystem.c.o)
+  0210F090 00000008 .data   @12619	(src_filesystem.c.o)
+  0210F098 00000008 .data   @12618	(src_filesystem.c.o)
+  0210F0A0 00000008 .data   @12617	(src_filesystem.c.o)
+  0210F0A8 00000008 .data   @12616	(src_filesystem.c.o)
+  0210F0B0 00000008 .data   @12615	(src_filesystem.c.o)
+  0210F0B8 00000008 .data   @12614	(src_filesystem.c.o)
+  0210F0C0 00000008 .data   @12613	(src_filesystem.c.o)
+  0210F0C8 00000008 .data   @12612	(src_filesystem.c.o)
+  0210F0D0 00000008 .data   @12611	(src_filesystem.c.o)
+  0210F0D8 00000008 .data   @12610	(src_filesystem.c.o)
+  0210F0E0 00000008 .data   @12609	(src_filesystem.c.o)
+  0210F0E8 00000008 .data   @12608	(src_filesystem.c.o)
+  0210F0F0 00000008 .data   @12607	(src_filesystem.c.o)
+  0210F0F8 00000008 .data   @12606	(src_filesystem.c.o)
+  0210F100 00000008 .data   @12605	(src_filesystem.c.o)
+  0210F108 00000008 .data   @12604	(src_filesystem.c.o)
+  0210F110 00000008 .data   @12603	(src_filesystem.c.o)
+  0210F118 00000008 .data   @12602	(src_filesystem.c.o)
+  0210F120 00000008 .data   @12601	(src_filesystem.c.o)
+  0210F128 00000008 .data   @12600	(src_filesystem.c.o)
+  0210F130 00000008 .data   @12599	(src_filesystem.c.o)
+  0210F138 00000008 .data   @12598	(src_filesystem.c.o)
+  0210F140 00000008 .data   @12597	(src_filesystem.c.o)
+  0210F148 00000008 .data   @12596	(src_filesystem.c.o)
+  0210F150 00000008 .data   @12595	(src_filesystem.c.o)
+  0210F158 00000008 .data   @12594	(src_filesystem.c.o)
+  0210F160 00000008 .data   @12593	(src_filesystem.c.o)
+  0210F168 00000008 .data   @12592	(src_filesystem.c.o)
+  0210F170 00000008 .data   @12591	(src_filesystem.c.o)
+  0210F178 00000008 .data   @12590	(src_filesystem.c.o)
+  0210F180 00000008 .data   @12589	(src_filesystem.c.o)
+  0210F188 00000008 .data   @12588	(src_filesystem.c.o)
+  0210F190 00000008 .data   @12587	(src_filesystem.c.o)
+  0210F198 00000008 .data   @12586	(src_filesystem.c.o)
+  0210F1A0 00000008 .data   @12585	(src_filesystem.c.o)
+  0210F1A8 00000008 .data   @12584	(src_filesystem.c.o)
+  0210F1B0 00000008 .data   @12583	(src_filesystem.c.o)
+  0210F1B8 00000008 .data   @12582	(src_filesystem.c.o)
+  0210F1C0 00000008 .data   @12581	(src_filesystem.c.o)
+  0210F1C8 00000008 .data   @12580	(src_filesystem.c.o)
+  0210F1D0 00000008 .data   @12579	(src_filesystem.c.o)
+  0210F1D8 00000008 .data   @12578	(src_filesystem.c.o)
+  0210F1E0 00000008 .data   @12577	(src_filesystem.c.o)
+  0210F1E8 00000011 .data   @12769	(src_filesystem.c.o)
+  0210F1FC 00000013 .data   @12770	(src_filesystem.c.o)
   0210F210 0000042C .data   sNarcFileList	(src_filesystem.c.o)
   0210F210 00000000 .data   .data	(src_filesystem.c.o)
   0210F63C 00000000 .data   .data	(src_pokepic.c.o)
@@ -57404,7 +57404,7 @@
   0210F6D8 00000004 .data   sFonts	(src_text.c.o)
   0210F6DC 00000004 .data   gG3dDepthBufferingMode	(src_camera.c.o)
   0210F6DC 00000000 .data   .data	(src_camera.c.o)
-  0210F6E0 00000018 .data   @13800	(src_sprite.c.o)
+  0210F6E0 00000018 .data   @13766	(src_sprite.c.o)
   0210F6F8 0000000C .data   sRulesetIndexes	(src_link_ruleset_data.c.o)
   0210F704 00000000 .data   .data	(src_link_ruleset_data.c.o)
   0210F704 00000020 .data   sDefaultRuleset	(src_link_ruleset_data.c.o)
@@ -57417,12 +57417,12 @@
   0210F914 00000006 .data   _0210F914	(src_unk_02037C94.c.o)
   0210F91C 0000005C .data   .data	(asm_unk_0203A3B0.s.o)
   0210F978 00000000 .data   .data	(src_launch_application.c.o)
-  0210F978 00000004 .data   sPockets$22044	(src_launch_application.c.o)
-  0210F97C 00000010 .data   sOverlayTemplate_ScratchOffCards$22805	(src_launch_application.c.o)
+  0210F978 00000004 .data   sPockets$22010	(src_launch_application.c.o)
+  0210F97C 00000010 .data   sOverlayTemplate_ScratchOffCards$22771	(src_launch_application.c.o)
   0210F98C 00000010 .data   sOverlayTemplate_WirelessTradeSelectMon	(src_launch_application.c.o)
-  0210F99C 00000010 .data   sOverlayTemplate_AccessoryPortrait$22524	(src_launch_application.c.o)
-  0210F9AC 00000010 .data   _0210F9AC$22518	(src_launch_application.c.o)
-  0210F9BC 00000010 .data   _0210F9BC$22789	(src_launch_application.c.o)
+  0210F99C 00000010 .data   sOverlayTemplate_AccessoryPortrait$22490	(src_launch_application.c.o)
+  0210F9AC 00000010 .data   _0210F9AC$22484	(src_launch_application.c.o)
+  0210F9BC 00000010 .data   _0210F9BC$22755	(src_launch_application.c.o)
   0210F9CC 00000008 .data   _0210F9CC	(src_scrcmd_mart.c.o)
   0210F9CC 00000000 .data   .data	(src_scrcmd_mart.c.o)
   0210F9D4 00000014 .data   _0210F9D4	(src_scrcmd_mart.c.o)
@@ -57437,7 +57437,7 @@
   0210FAE8 000005DC .data   sMapPreviewGraphicData	(src_map_preview_graphic.c.o)
   021100C4 00000000 .data   .data	(src_field_take_photo.c.o)
   021100C4 00000024 .data   sCameraParam	(src_field_take_photo.c.o)
-  021100E8 0000001B .data   @22592	(src_pokemon.c.o)
+  021100E8 0000001B .data   @22558	(src_pokemon.c.o)
   02110104 00000000 .data   .data	(src_party_menu.c.o)
   02110104 00000024 .data   _02110104	(src_party_menu.c.o)
   02110128 00000040 .data   _02110128	(src_party_menu.c.o)
@@ -57456,7 +57456,7 @@
   021105BC 00000000 .data   .data	(src_dex_mon_measures.c.o)
   021105C0 00000004 .data   sDataNarcId	(src_dex_mon_measures.c.o)
   021105C4 00000004 .data   sHeightMsgBank	(src_dex_mon_measures.c.o)
-  021105C8 00000013 .data   @12669	(src_phonebook_dat.c.o)
+  021105C8 00000013 .data   @12635	(src_phonebook_dat.c.o)
   021105DC 00000018 .data   .data	(libspl.a asm_jn_spl.s.o )
   021105F4 00000021 .data   @9096	(libdwcaccount.a src_dwc_account)
   02110618 0000000D .data   @9101	(libdwcaccount.a src_dwc_account)
@@ -57727,7 +57727,7 @@
   02111888 00000004 .bss    sTouchScreenHitbox	(src_render_text.c.o)
   0211188C 00000000 .bss    .bss	(src_font.c.o)
   0211188C 00000004 .bss    sFontWork	(src_font.c.o)
-  02111890 000000BC .bss    work$13446	(src_font.c.o)
+  02111890 000000BC .bss    work$13412	(src_font.c.o)
   0211194C 00000004 .bss    _0211194C	(src_sound.c.o)
   0211194C 00000000 .bss    .bss	(src_sound.c.o)
   02111950 00000004 .bss    _02111950	(src_sound.c.o)
@@ -57809,9 +57809,9 @@
   021D4158 00000004 .bss    sFieldSysPtr	(src_field_system.c.o)
   021D415C 00000000 .bss    .bss	(src_scrcmd_c.c.o)
   021D415C 00000001 .bss    _021D415C	(src_scrcmd_c.c.o)
-  021D4160 00000004 .bss    sHeap4Size$26978	(src_scrcmd_c.c.o)
-  021D4164 00000004 .bss    sHeap11Size$26980	(src_scrcmd_c.c.o)
-  021D4168 00000004 .bss    sHeap32Size$26979	(src_scrcmd_c.c.o)
+  021D4160 00000004 .bss    sHeap4Size$26944	(src_scrcmd_c.c.o)
+  021D4164 00000004 .bss    sHeap11Size$26946	(src_scrcmd_c.c.o)
+  021D4168 00000004 .bss    sHeap32Size$26945	(src_scrcmd_c.c.o)
   021D416C 00000000 .bss    .bss	(src_scrcmd_lottery.c.o)
   021D416C 00000002 .bss    sLotoId	(src_scrcmd_lottery.c.o)
   021D416E 00000002 .bss    sOtId	(src_scrcmd_lottery.c.o)
@@ -57822,9 +57822,9 @@
   021D41C8 00000004 .bss    .bss	(asm_unk_02058034.s.o)
   021D41CC 0000004C .bss    .bss	(asm_unk_02058AEC.s.o)
   021D4218 00000000 .bss    .bss	(src_get_egg.c.o)
-  021D4218 00000004 .bss    _021D4218$17281	(src_get_egg.c.o)
+  021D4218 00000004 .bss    _021D4218$17247	(src_get_egg.c.o)
   021D421C 00000000 .bss    .bss	(src_pokemon.c.o)
-  021D421C 00000194 .bss    table$17025	(src_pokemon.c.o)
+  021D421C 00000194 .bss    table$16991	(src_pokemon.c.o)
   021D43B0 00000000 .bss    .bss	(src_naming_screen.c.o)
   021D43B0 00000004 .bss    sAppData	(src_naming_screen.c.o)
   021D43B4 00000000 .bss    .bss	(src_error_message_reset.c.o)
@@ -72253,19 +72253,19 @@
   022062D4 00000000 .text   $b	(asm_overlay_01_022053EC.s.o)
   022062DA 00000000 .text   $d	(asm_overlay_01_022053EC.s.o)
   022062DC 00000000 .rodata .rodata	(src_field_fieldmap.c.o)
-  022062DC 00000010 .rodata @17515	(src_field_fieldmap.c.o)
-  022062EC 00000010 .rodata @17492	(src_field_fieldmap.c.o)
+  022062DC 00000010 .rodata @17481	(src_field_fieldmap.c.o)
+  022062EC 00000010 .rodata @17458	(src_field_fieldmap.c.o)
   022062FC 0000001C .rodata sBgTemplate_2	(src_field_fieldmap.c.o)
   02206318 0000001C .rodata sBgTemplate_1	(src_field_fieldmap.c.o)
   02206334 0000001C .rodata sBgTemplate_3	(src_field_fieldmap.c.o)
-  02206350 00000028 .rodata @17478	(src_field_fieldmap.c.o)
+  02206350 00000028 .rodata @17444	(src_field_fieldmap.c.o)
   02206378 00000010 .rodata ov01_02206378	(src_field_field_3d_object_task.c.o)
   02206388 00000003 .rodata sBGMVolume	(src_field_field_control.c.o)
   0220638C 00000000 .rodata .rodata	(src_field_field_control.c.o)
   0220638C 00000030 .rodata sSoundplateVolume	(src_field_field_control.c.o)
   022063BC 00000040 .rodata sSoundplateSounds	(src_field_field_control.c.o)
   022063FC 00000000 .rodata .rodata	(src_field_field_sprite_manager.c.o)
-  022063FC 0000000C .rodata @14004	(src_field_field_sprite_manager.c.o)
+  022063FC 0000000C .rodata @13970	(src_field_field_sprite_manager.c.o)
   02206408 0000005C .rodata .rodata	(asm_overlay_01_021E90C0.s.o)
   02206464 00000278 .rodata .rodata	(asm_overlay_01_021EABA8.s.o)
   022066DC 00000060 .rodata .rodata	(asm_overlay_01_021EAF00.s.o)
@@ -72276,10 +72276,10 @@
   02206988 0000000C .rodata .rodata	(asm_overlay_01_021F1348.s.o)
   02206994 000000E4 .rodata .rodata	(asm_overlay_01_021F1AFC.s.o)
   02206A78 00000000 .rodata .rodata	(src_field_map_prop_manager.c.o)
-  02206A78 0000000C .rodata @17050	(src_field_map_prop_manager.c.o)
-  02206A84 0000000C .rodata @16900	(src_field_map_prop_manager.c.o)
-  02206A90 00000024 .rodata @16934	(src_field_map_prop_manager.c.o)
-  02206AB4 00000024 .rodata @17069	(src_field_map_prop_manager.c.o)
+  02206A78 0000000C .rodata @17016	(src_field_map_prop_manager.c.o)
+  02206A84 0000000C .rodata @16866	(src_field_map_prop_manager.c.o)
+  02206A90 00000024 .rodata @16900	(src_field_map_prop_manager.c.o)
+  02206AB4 00000024 .rodata @17035	(src_field_map_prop_manager.c.o)
   02206AD8 000000BC .rodata .rodata	(asm_overlay_01_021F3F50.s.o)
   02206B94 0000002C .rodata .rodata	(asm_overlay_01_021F467C.s.o)
   02206BC0 00000048 .rodata .rodata	(asm_overlay_01_021F4704.s.o)
@@ -72398,7 +72398,7 @@
   02209A88 00000058 .data   .data	(asm_overlay_01_021FB878.s.o)
   02209AE0 00000000 .data   .data	(src_field_scrcmd_pokemon_misc.c.o)
   02209AE0 00000012 .data   ov01_02209AE0	(src_field_scrcmd_pokemon_misc.c.o)
-  02209AF4 00000023 .data   @19265	(src_field_scrcmd_move_tutor.c.o)
+  02209AF4 00000023 .data   @19231	(src_field_scrcmd_move_tutor.c.o)
   02209B18 00000040 .data   .data	(asm_overlay_01_022031C0.s.o)
 #>02209B60          SDK_OVERLAY.field.DATA_END (linker command file)
 #>02209B60          SDK_OVERLAY.field.END (linker command file)
@@ -75571,9 +75571,9 @@
   02253288 00000002 .rodata sUnlockedUnown_Sinjoh	(src_field_encounter_check.c.o)
   0225328C 00000004 .rodata sUnlockedUnown_HoOh	(src_field_encounter_check.c.o)
   02253290 00000000 .rodata .rodata	(src_field_encounter_check.c.o)
-  02253290 00000004 .rodata @18393	(src_field_encounter_check.c.o)
-  02253294 0000000C .rodata @18395	(src_field_encounter_check.c.o)
-  022532A0 00000014 .rodata @18397	(src_field_encounter_check.c.o)
+  02253290 00000004 .rodata @18359	(src_field_encounter_check.c.o)
+  02253294 0000000C .rodata @18361	(src_field_encounter_check.c.o)
+  022532A0 00000014 .rodata @18363	(src_field_encounter_check.c.o)
   022532B4 00000028 .rodata sUnlockedUnown	(src_field_encounter_check.c.o)
   022532DC 00000005 .rodata sUnlockedUnown_Aerodactyl	(src_field_encounter_check.c.o)
   022532E4 00000007 .rodata sUnlockedUnown_Omanyte	(src_field_encounter_check.c.o)
@@ -75589,10 +75589,10 @@
   02253C20 00000064 .rodata sCameraParam_SoulSilver	(src_field_legend_cutscene_camera.c.o)
   02253C84 00000000 .rodata .rodata	(src_field_overlay_2_gear_phone.c.o)
   02253C84 0000004E .rodata ov02_02253C84	(src_field_overlay_2_gear_phone.c.o)
-  02253CD4 0000000C .rodata @16834	(src_field_event_cutscene_celebi.c.o)
+  02253CD4 0000000C .rodata @16800	(src_field_event_cutscene_celebi.c.o)
   02253CD4 00000000 .rodata .rodata	(src_field_event_cutscene_celebi.c.o)
-  02253CE0 0000000C .rodata @16818	(src_field_event_cutscene_celebi.c.o)
-  02253CEC 0000000C .rodata @16857	(src_field_event_cutscene_celebi.c.o)
+  02253CE0 0000000C .rodata @16784	(src_field_event_cutscene_celebi.c.o)
+  02253CEC 0000000C .rodata @16823	(src_field_event_cutscene_celebi.c.o)
   02253CF8 00000000 .rodata .rodata	(src_field_event_cutscene_sinjoh.c.o)
   02253CF8 00000008 .rodata ov02_02253CF8_0	(src_field_event_cutscene_sinjoh.c.o)
   02253D00 00000008 .rodata sUnownModelFiles	(src_field_event_cutscene_sinjoh.c.o)
@@ -76111,25 +76111,25 @@
   0225913C 00000008 .rodata ov03_0225913C	(src_overlay_03_communication_club.c.o)
   02259144 00000020 .rodata ov03_02259144	(src_overlay_03_communication_club.c.o)
   02259164 00000020 .rodata ov03_02259164	(src_overlay_03_communication_club.c.o)
-  02259184 00000052 .rodata @21010	(src_overlay_03_communication_club.c.o)
-  022591D6 00000052 .rodata @21108	(src_overlay_03_communication_club.c.o)
-  02259228 00000052 .rodata @21288	(src_overlay_03_communication_club.c.o)
-  0225927A 00000052 .rodata @20706	(src_overlay_03_communication_club.c.o)
-  022592CC 00000052 .rodata @21156	(src_overlay_03_communication_club.c.o)
-  0225931E 00000052 .rodata @20893	(src_overlay_03_communication_club.c.o)
-  02259370 00000052 .rodata @20923	(src_overlay_03_communication_club.c.o)
-  022593C2 00000052 .rodata @21175	(src_overlay_03_communication_club.c.o)
+  02259184 00000052 .rodata @20976	(src_overlay_03_communication_club.c.o)
+  022591D6 00000052 .rodata @21074	(src_overlay_03_communication_club.c.o)
+  02259228 00000052 .rodata @21254	(src_overlay_03_communication_club.c.o)
+  0225927A 00000052 .rodata @20672	(src_overlay_03_communication_club.c.o)
+  022592CC 00000052 .rodata @21122	(src_overlay_03_communication_club.c.o)
+  0225931E 00000052 .rodata @20859	(src_overlay_03_communication_club.c.o)
+  02259370 00000052 .rodata @20889	(src_overlay_03_communication_club.c.o)
+  022593C2 00000052 .rodata @21141	(src_overlay_03_communication_club.c.o)
   02259414 00000000 .rodata .rodata	(src_overlay_03_battle_regulation_menu.c.o)
-  02259414 00000004 .rodata xRightSide$17138	(src_overlay_03_battle_regulation_menu.c.o)
-  02259418 00000004 .rodata xRightSide$16984	(src_overlay_03_battle_regulation_menu.c.o)
-  0225941C 00000004 .rodata xOffset$16978	(src_overlay_03_battle_regulation_menu.c.o)
-  02259420 00000004 .rodata xOffsetCupName$16982	(src_overlay_03_battle_regulation_menu.c.o)
-  02259424 00000004 .rodata lineHeight$17136	(src_overlay_03_battle_regulation_menu.c.o)
-  02259428 00000004 .rodata lineHeight$16980	(src_overlay_03_battle_regulation_menu.c.o)
-  0225942C 00000004 .rodata yOffset$17134	(src_overlay_03_battle_regulation_menu.c.o)
-  02259430 00000004 .rodata xOffsetCupName$17132	(src_overlay_03_battle_regulation_menu.c.o)
-  02259434 00000004 .rodata xOffset$17130	(src_overlay_03_battle_regulation_menu.c.o)
-  02259438 00000004 .rodata yOffset$16976	(src_overlay_03_battle_regulation_menu.c.o)
+  02259414 00000004 .rodata xRightSide$17104	(src_overlay_03_battle_regulation_menu.c.o)
+  02259418 00000004 .rodata xRightSide$16950	(src_overlay_03_battle_regulation_menu.c.o)
+  0225941C 00000004 .rodata xOffset$16944	(src_overlay_03_battle_regulation_menu.c.o)
+  02259420 00000004 .rodata xOffsetCupName$16948	(src_overlay_03_battle_regulation_menu.c.o)
+  02259424 00000004 .rodata lineHeight$17102	(src_overlay_03_battle_regulation_menu.c.o)
+  02259428 00000004 .rodata lineHeight$16946	(src_overlay_03_battle_regulation_menu.c.o)
+  0225942C 00000004 .rodata yOffset$17100	(src_overlay_03_battle_regulation_menu.c.o)
+  02259430 00000004 .rodata xOffsetCupName$17098	(src_overlay_03_battle_regulation_menu.c.o)
+  02259434 00000004 .rodata xOffset$17096	(src_overlay_03_battle_regulation_menu.c.o)
+  02259438 00000004 .rodata yOffset$16942	(src_overlay_03_battle_regulation_menu.c.o)
   0225943C 00000020 .rodata sListMenuTemplate	(src_overlay_03_battle_regulation_menu.c.o)
   0225945C 00000008 .rodata ov03_0225945C	(src_overlay_03_shop_menu.c.o)
   0225945C 00000000 .rodata .rodata	(src_overlay_03_shop_menu.c.o)
@@ -76143,7 +76143,7 @@
   022597FC 00000000 .rodata .rodata	(src_overlay_03_custom_safari_zone.c.o)
   022597FC 0000000C .rodata ov03_022597FC	(src_overlay_03_custom_safari_zone.c.o)
   02259808 00000000 .rodata .rodata	(src_overlay_03_overlay_03_scrcmds.c.o)
-  02259808 00000004 .rodata @19439	(src_overlay_03_overlay_03_scrcmds.c.o)
+  02259808 00000004 .rodata @19405	(src_overlay_03_overlay_03_scrcmds.c.o)
   0225980C 00000000 .rodata .rodata	(src_overlay_03_pokeathlon_records.c.o)
   0225980C 0000000C .rodata ov03_0225980C	(src_overlay_03_pokeathlon_records.c.o)
 #>02259818          SDK_OVERLAY.OVY_3.SINIT_START (linker command file)
@@ -76397,11 +76397,11 @@
   02257308 00000020 .text   Task_SinjohGymmick_WaitAnimFinished	(src_field_gymmick_sinjoh.c.o)
   02257308 00000000 .text   $t	(src_field_gymmick_sinjoh.c.o)
   02257328 00000000 .rodata .rodata	(src_field_gymmick_violet.c.o)
-  02257328 0000000C .rodata @16832	(src_field_gymmick_violet.c.o)
+  02257328 0000000C .rodata @16798	(src_field_gymmick_violet.c.o)
   02257334 00000010 .rodata sEdgeColorTable	(src_field_gymmick_violet.c.o)
   02257344 00000000 .rodata .rodata	(src_field_gymmick_azalea.c.o)
-  02257344 0000000C .rodata @16967	(src_field_gymmick_azalea.c.o)
-  02257350 0000000C .rodata @16938	(src_field_gymmick_azalea.c.o)
+  02257344 0000000C .rodata @16933	(src_field_gymmick_azalea.c.o)
+  02257350 0000000C .rodata @16904	(src_field_gymmick_azalea.c.o)
   0225735C 00000010 .rodata sSpinarakRoute_8to12	(src_field_gymmick_azalea.c.o)
   0225736C 00000010 .rodata sSpinarakRoute_7to11	(src_field_gymmick_azalea.c.o)
   0225737C 00000018 .rodata sSpinarakRoute_3to4	(src_field_gymmick_azalea.c.o)
@@ -76425,22 +76425,22 @@
   022575A4 00000030 .rodata sSpinarakRoutes_Froms	(src_field_gymmick_azalea.c.o)
   022575D4 00000030 .rodata sSpinarakInitialPositions	(src_field_gymmick_azalea.c.o)
   02257604 00000000 .rodata .rodata	(src_field_gymmick_ecruteak.c.o)
-  02257604 00000010 .rodata sMortyGymTrainerObjectIds$16692	(src_field_gymmick_ecruteak.c.o)
+  02257604 00000010 .rodata sMortyGymTrainerObjectIds$16658	(src_field_gymmick_ecruteak.c.o)
   02257614 00000004 .rodata sLeadingEdgeRotationExtents_Type1	(src_field_gymmick_blackthorn.c.o)
   02257618 00000005 .rodata sLeadingEdgeRotationExtents_Type0	(src_field_gymmick_blackthorn.c.o)
   02257620 00000000 .rodata .rodata	(src_field_gymmick_blackthorn.c.o)
-  02257620 0000000C .rodata @16802	(src_field_gymmick_blackthorn.c.o)
-  0225762C 0000000C .rodata @16793	(src_field_gymmick_blackthorn.c.o)
+  02257620 0000000C .rodata @16768	(src_field_gymmick_blackthorn.c.o)
+  0225762C 0000000C .rodata @16759	(src_field_gymmick_blackthorn.c.o)
   02257638 0000000E .rodata sMainAreaRotationExtents_Type0	(src_field_gymmick_blackthorn.c.o)
   02257648 00000018 .rodata sMainAreaRotationExtents_Type1	(src_field_gymmick_blackthorn.c.o)
   02257660 00000000 .rodata .rodata	(src_field_gymmick_cianwood.c.o)
-  02257660 0000000C .rodata @16652	(src_field_gymmick_cianwood.c.o)
+  02257660 0000000C .rodata @16618	(src_field_gymmick_cianwood.c.o)
   0225766C 00000000 .rodata .rodata	(src_field_gymmick_fuchsia.c.o)
   0225766C 000004B0 .rodata sWallData	(src_field_gymmick_fuchsia.c.o)
-  02257B1C 0000000C .rodata @16656	(src_field_gymmick_sinjoh.c.o)
+  02257B1C 0000000C .rodata @16622	(src_field_gymmick_sinjoh.c.o)
   02257B1C 00000000 .rodata .rodata	(src_field_gymmick_sinjoh.c.o)
-  02257B28 00000018 .rodata @16654	(src_field_gymmick_sinjoh.c.o)
-  02257B40 00000024 .rodata @16693	(src_field_gymmick_sinjoh.c.o)
+  02257B28 00000018 .rodata @16620	(src_field_gymmick_sinjoh.c.o)
+  02257B40 00000024 .rodata @16659	(src_field_gymmick_sinjoh.c.o)
 #>02257B64          SDK_OVERLAY.OVY_4.SINIT_START (linker command file)
 #>02257B68          SDK_OVERLAY.OVY_4.SINIT_END (linker command file)
 #>02257B80          SDK_OVERLAY.OVY_4.TEXT_END (linker command file)
@@ -94394,7 +94394,7 @@
   0226BF04 000000D4 .text   ov12_0226BF04	(src_battle_overlay_12_0226BEC4.c.o)
   0226BFD4 00000000 .text   $d	(src_battle_overlay_12_0226BEC4.c.o)
   0226BFD8 00000308 .rodata .rodata	(asm_overlay_12_022378C0.s.o)
-  0226C2E0 00000009 .rodata sBadgePenalty$18082	(src_battle_battle_system.c.o)
+  0226C2E0 00000009 .rodata sBadgePenalty$18048	(src_battle_battle_system.c.o)
   0226C2EC 00000788 .rodata .rodata	(asm_overlay_12_battle_command.s.o)
   0226C2EC 00000000 .rodata sStandardBallCatchRates	(asm_overlay_12_battle_command.s.o)
   0226C2F0 00000000 .rodata sTrumpCardPowerTable	(asm_overlay_12_battle_command.s.o)
@@ -94466,7 +94466,7 @@
   0226E1FC 00000000 .rodata .rodata	(src_battle_battle_input.c.o)
   0226E1FC 00000002 .rodata sCursorArrayPalParkMenu	(src_battle_battle_input.c.o)
   0226E200 00000002 .rodata sTwoOptionsMenuCursorInput	(src_battle_battle_input.c.o)
-  0226E202 00000004 .rodata @17836	(src_battle_battle_input.c.o)
+  0226E202 00000004 .rodata @17802	(src_battle_battle_input.c.o)
   0226E208 00000004 .rodata sTouchArrayVsRecorderPlayback	(src_battle_battle_input.c.o)
   0226E20C 00000004 .rodata ov12_0226E20C	(src_battle_battle_input.c.o)
   0226E210 00000006 .rodata sTargetMenuButtonInputArray	(src_battle_battle_input.c.o)
@@ -94480,7 +94480,7 @@
   0226E250 00000008 .rodata sTouchArrayTwoOptionsMenu	(src_battle_battle_input.c.o)
   0226E258 00000008 .rodata ov12_0226E258	(src_battle_battle_input.c.o)
   0226E260 00000008 .rodata ov12_0226E260	(src_battle_battle_input.c.o)
-  0226E268 0000000C .rodata @18796	(src_battle_battle_input.c.o)
+  0226E268 0000000C .rodata @18762	(src_battle_battle_input.c.o)
   0226E274 0000000C .rodata sTouchscreenRectPalParkButtons	(src_battle_battle_input.c.o)
   0226E280 0000000C .rodata ov12_0226E286	(src_battle_battle_input.c.o)
   0226E28C 0000000C .rodata sTouchscreenRectTwoOptionsMenuButtons	(src_battle_battle_input.c.o)
@@ -111058,23 +111058,23 @@
   021F96F0 00000000 .rodata .rodata	(src_application_pokedex_ov18_021E590C.c.o)
   021F9708 00000018 .rodata ov18_021F970C	(src_application_pokedex_ov18_021E590C.c.o)
   021F9720 00000018 .rodata ov18_021F9724	(src_application_pokedex_ov18_021E590C.c.o)
-  021F9738 00000003 .rodata @15938	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9738 00000003 .rodata @15904	(src_application_pokedex_ov18_021E5C40.c.o)
   021F9738 00000000 .rodata .rodata	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F973C 00000010 .rodata @15739	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F974C 00000010 .rodata @15714	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F975C 00000010 .rodata @15744	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F973C 00000010 .rodata @15705	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F974C 00000010 .rodata @15680	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F975C 00000010 .rodata @15710	(src_application_pokedex_ov18_021E5C40.c.o)
   021F976C 00000010 .rodata ov18_021F9770	(src_application_pokedex_ov18_021E5C40.c.o)
   021F977C 00000018 .rodata ov18_021F9780	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F9794 0000001C .rodata @15728	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F97B0 0000001C .rodata @15718	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F97CC 0000001C .rodata @15730	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F97E8 0000001C .rodata @15716	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F9804 0000001C .rodata @15746	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F9820 0000001C .rodata @15722	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F983C 0000001C .rodata @15724	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F9858 0000001C .rodata @15726	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F9874 0000001C .rodata @15741	(src_application_pokedex_ov18_021E5C40.c.o)
-  021F9890 0000001C .rodata @15720	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9794 0000001C .rodata @15694	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F97B0 0000001C .rodata @15684	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F97CC 0000001C .rodata @15696	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F97E8 0000001C .rodata @15682	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9804 0000001C .rodata @15712	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9820 0000001C .rodata @15688	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F983C 0000001C .rodata @15690	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9858 0000001C .rodata @15692	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9874 0000001C .rodata @15707	(src_application_pokedex_ov18_021E5C40.c.o)
+  021F9890 0000001C .rodata @15686	(src_application_pokedex_ov18_021E5C40.c.o)
   021F98AC 00000028 .rodata sGraphicsBanks	(src_application_pokedex_ov18_021E5C40.c.o)
   021F98D4 00000034 .rodata sDungeonMapIDs	(src_application_pokedex_ov18_021E5C40.c.o)
   021F9908 00000048 .rodata ov18_021F990C	(src_application_pokedex_ov18_021E5C40.c.o)
@@ -111262,9 +111262,9 @@
   0225A040 00000000 .rodata .rodata	(src_application_view_photo.c.o)
   0225A04E 00000010 .rodata ov19_0225A04E	(src_application_view_photo.c.o)
   0225A05E 00000010 .rodata ov19_0225A05E	(src_application_view_photo.c.o)
-  0225A070 0000001C .rodata @17030	(src_application_view_photo.c.o)
-  0225A08C 0000001C .rodata @17032	(src_application_view_photo.c.o)
-  0225A0A8 0000001C .rodata @17034	(src_application_view_photo.c.o)
+  0225A070 0000001C .rodata @16996	(src_application_view_photo.c.o)
+  0225A08C 0000001C .rodata @16998	(src_application_view_photo.c.o)
+  0225A0A8 0000001C .rodata @17000	(src_application_view_photo.c.o)
   0225A0C4 00000078 .rodata sSpriteTemplates	(src_application_view_photo.c.o)
 #>0225A13C          SDK_OVERLAY.OVY_19.SINIT_START (linker command file)
 #>0225A140          SDK_OVERLAY.OVY_19.SINIT_END (linker command file)
@@ -111483,8 +111483,8 @@
 #>02259F40          SDK_OVERLAY.bug_contest.SINIT_END (linker command file)
 #>02259F40          SDK_OVERLAY.bug_contest.TEXT_END (linker command file)
 #>02259F40          SDK_OVERLAY.bug_contest.DATA_START (linker command file)
-  02259F40 0000001D .data   @17200	(src_overlay_bug_contest.c.o)
-  02259F60 0000001D .data   @17216	(src_overlay_bug_contest.c.o)
+  02259F40 0000001D .data   @17166	(src_overlay_bug_contest.c.o)
+  02259F60 0000001D .data   @17182	(src_overlay_bug_contest.c.o)
 #>02259F80          SDK_OVERLAY.bug_contest.DATA_END (linker command file)
 #>02259F80          SDK_OVERLAY.bug_contest.END (linker command file)
 #>00000680          SDK_OVERLAY.bug_contest.TEXT_SIZE (linker command file)
@@ -129389,10 +129389,10 @@
   02235508 00000020 .rodata ov44_02235508	(src_overlay_44_0222CDAC.c.o)
   02235528 00000020 .rodata ov44_02235528	(src_overlay_44_0222CDAC.c.o)
   02235548 00000028 .rodata ov44_02235548	(src_overlay_44_0222CDAC.c.o)
-  02235570 00000090 .rodata @22909	(src_overlay_44_0222CDAC.c.o)
+  02235570 00000090 .rodata @22875	(src_overlay_44_0222CDAC.c.o)
   02235600 00000000 .rodata .rodata	(src_overlay_44_02231A14.c.o)
   02235600 00000004 .rodata ov44_02235600	(src_overlay_44_02231A14.c.o)
-  02235604 0000000B .rodata @18039	(src_overlay_44_02231A14.c.o)
+  02235604 0000000B .rodata @18005	(src_overlay_44_02231A14.c.o)
   0223560F 00000020 .rodata ov44_0223560F	(src_overlay_44_02231A14.c.o)
   02235630 00000000 .rodata .rodata	(src_overlay_44_02232E90.c.o)
   02235630 00000010 .rodata ov44_02235630	(src_overlay_44_02232E90.c.o)
@@ -140611,8 +140611,8 @@
   021E5A3C 0000004E .text   TCardAppRunStep_SignatureExec	(src_overlay_trainer_card.c.o)
   021E5A3C 00000000 .text   $t	(src_overlay_trainer_card.c.o)
   021E5A8C 00000000 .rodata .rodata	(src_overlay_trainer_card.c.o)
-  021E5A8C 00000010 .rodata template$12756	(src_overlay_trainer_card.c.o)
-  021E5A9C 00000010 .rodata @12772	(src_overlay_trainer_card.c.o)
+  021E5A8C 00000010 .rodata template$12722	(src_overlay_trainer_card.c.o)
+  021E5A9C 00000010 .rodata @12738	(src_overlay_trainer_card.c.o)
 #>021E5AAC          SDK_OVERLAY.trainer_card.SINIT_START (linker command file)
 #>021E5AB0          SDK_OVERLAY.trainer_card.SINIT_END (linker command file)
 #>021E5AC0          SDK_OVERLAY.trainer_card.TEXT_END (linker command file)
@@ -141806,9 +141806,9 @@
   021E86B0 00000040 .rodata sMultichoiceMenuParam	(src_oaks_speech.c.o)
   021E86F0 00000050 .rodata sBgPicNCGR_NCLR	(src_oaks_speech.c.o)
   021E8740 00000000 .rodata .rodata	(src_oaks_speech_obj.c.o)
-  021E8740 0000000E .rodata @18156	(src_oaks_speech_obj.c.o)
-  021E8750 00000014 .rodata @18154	(src_oaks_speech_obj.c.o)
-  021E8764 00000020 .rodata @18152	(src_oaks_speech_obj.c.o)
+  021E8740 0000000E .rodata @18122	(src_oaks_speech_obj.c.o)
+  021E8750 00000014 .rodata @18120	(src_oaks_speech_obj.c.o)
+  021E8764 00000020 .rodata @18118	(src_oaks_speech_obj.c.o)
   021E8784 000000F0 .rodata sSpriteTemplates	(src_oaks_speech_obj.c.o)
   021E8874 00000000 .rodata .rodata	(src_oaks_speech_yesnomenu.c.o)
   021E8874 00000008 .rodata sCoords	(src_oaks_speech_yesnomenu.c.o)
@@ -141908,19 +141908,19 @@
   021E6C08 00000000 .text   $t	(src_options_app.c.o)
   021E6C30 00000007 .rodata sOptionsApp_UnkWindowWidthOffsets	(src_options_app.c.o)
   021E6C38 00000000 .rodata .rodata	(src_options_app.c.o)
-  021E6C38 0000000E .rodata @15234	(src_options_app.c.o)
-  021E6C48 00000010 .rodata @15018	(src_options_app.c.o)
+  021E6C38 0000000E .rodata @15200	(src_options_app.c.o)
+  021E6C48 00000010 .rodata @14984	(src_options_app.c.o)
   021E6C58 00000014 .rodata sOptionsAppBgLayers	(src_options_app.c.o)
-  021E6C6C 00000014 .rodata @15232	(src_options_app.c.o)
+  021E6C6C 00000014 .rodata @15198	(src_options_app.c.o)
   021E6C80 0000001C .rodata sMenuEntryBorderYCoords	(src_options_app.c.o)
   021E6C9C 0000001C .rodata sNumChoicesPerMenuEntry	(src_options_app.c.o)
-  021E6CB8 00000020 .rodata @15230	(src_options_app.c.o)
-  021E6CD8 00000028 .rodata @14979	(src_options_app.c.o)
+  021E6CB8 00000020 .rodata @15196	(src_options_app.c.o)
+  021E6CD8 00000028 .rodata @14945	(src_options_app.c.o)
   021E6D00 0000002A .rodata sOptionChoiceLabelXCoords	(src_options_app.c.o)
   021E6D2C 0000003C .rodata sActiveButtonXCoords	(src_options_app.c.o)
   021E6D68 00000040 .rodata sOptionsAppTouchscreenHitboxes	(src_options_app.c.o)
   021E6DA8 00000078 .rodata ov54_021E6DA8	(src_options_app.c.o)
-  021E6E20 0000008C .rodata @15020	(src_options_app.c.o)
+  021E6E20 0000008C .rodata @14986	(src_options_app.c.o)
   021E6EAC 00000168 .rodata ov54_021E6EAC	(src_options_app.c.o)
 #>021E7014          SDK_OVERLAY.options_app.SINIT_START (linker command file)
 #>021E7018          SDK_OVERLAY.options_app.SINIT_END (linker command file)
@@ -145425,111 +145425,111 @@
   021EAE10 00000000 .text   $t	(src_intro_movie_scene_5.c.o)
   021EAE14 00000000 .rodata .rodata	(src_title_screen.c.o)
   021EAE14 00000008 .rodata sTouchToStartWindow	(src_title_screen.c.o)
-  021EAE1C 0000000C .rodata @14516	(src_title_screen.c.o)
-  021EAE28 0000000C .rodata @14513	(src_title_screen.c.o)
-  021EAE34 00000010 .rodata @14576	(src_title_screen.c.o)
-  021EAE44 0000001C .rodata @14582	(src_title_screen.c.o)
-  021EAE60 0000001C .rodata @14584	(src_title_screen.c.o)
-  021EAE7C 0000001C .rodata @14586	(src_title_screen.c.o)
-  021EAE98 0000001C .rodata @14578	(src_title_screen.c.o)
-  021EAEB4 0000001C .rodata @14580	(src_title_screen.c.o)
-  021EAED0 0000001C .rodata @14588	(src_title_screen.c.o)
-  021EAEEC 00000024 .rodata @14560	(src_title_screen.c.o)
-  021EAF10 00000028 .rodata @14474	(src_title_screen.c.o)
+  021EAE1C 0000000C .rodata @14482	(src_title_screen.c.o)
+  021EAE28 0000000C .rodata @14479	(src_title_screen.c.o)
+  021EAE34 00000010 .rodata @14542	(src_title_screen.c.o)
+  021EAE44 0000001C .rodata @14548	(src_title_screen.c.o)
+  021EAE60 0000001C .rodata @14550	(src_title_screen.c.o)
+  021EAE7C 0000001C .rodata @14552	(src_title_screen.c.o)
+  021EAE98 0000001C .rodata @14544	(src_title_screen.c.o)
+  021EAEB4 0000001C .rodata @14546	(src_title_screen.c.o)
+  021EAED0 0000001C .rodata @14554	(src_title_screen.c.o)
+  021EAEEC 00000024 .rodata @14526	(src_title_screen.c.o)
+  021EAF10 00000028 .rodata @14440	(src_title_screen.c.o)
   021EAF38 00000050 .rodata sCameraScript_HG	(src_title_screen.c.o)
   021EAF88 00000050 .rodata sCameraScript_SS	(src_title_screen.c.o)
   021EAFD8 00000010 .rodata gApplication_TitleScreen	(src_title_screen.c.o)
-  021EAFE8 00000008 .rodata sDeadstrippedRodata$13863	(src_intro_movie.c.o)
+  021EAFE8 00000008 .rodata sDeadstrippedRodata$13829	(src_intro_movie.c.o)
   021EAFE8 00000000 .rodata .rodata	(src_intro_movie.c.o)
-  021EAFF0 00000010 .rodata @13934	(src_intro_movie.c.o)
-  021EB000 00000028 .rodata @13924	(src_intro_movie.c.o)
+  021EAFF0 00000010 .rodata @13900	(src_intro_movie.c.o)
+  021EB000 00000028 .rodata @13890	(src_intro_movie.c.o)
   021EB028 00000010 .rodata gApplication_IntroMovie	(src_intro_movie.c.o)
   021EB038 00000000 .rodata .rodata	(src_intro_movie_scene_1.c.o)
-  021EB038 00000004 .rodata sDeadstrippedRodata$13898	(src_intro_movie_scene_1.c.o)
-  021EB03C 00000010 .rodata @13850	(src_intro_movie_scene_1.c.o)
-  021EB04C 0000001C .rodata @13864	(src_intro_movie_scene_1.c.o)
-  021EB068 0000001C .rodata @13858	(src_intro_movie_scene_1.c.o)
-  021EB084 0000001C .rodata @13856	(src_intro_movie_scene_1.c.o)
-  021EB0A0 0000001C .rodata @13860	(src_intro_movie_scene_1.c.o)
-  021EB0BC 0000001C .rodata @13852	(src_intro_movie_scene_1.c.o)
-  021EB0D8 0000001C .rodata @13854	(src_intro_movie_scene_1.c.o)
-  021EB0F4 0000001C .rodata @13862	(src_intro_movie_scene_1.c.o)
-  021EB110 0000001C .rodata @13866	(src_intro_movie_scene_1.c.o)
+  021EB038 00000004 .rodata sDeadstrippedRodata$13864	(src_intro_movie_scene_1.c.o)
+  021EB03C 00000010 .rodata @13816	(src_intro_movie_scene_1.c.o)
+  021EB04C 0000001C .rodata @13830	(src_intro_movie_scene_1.c.o)
+  021EB068 0000001C .rodata @13824	(src_intro_movie_scene_1.c.o)
+  021EB084 0000001C .rodata @13822	(src_intro_movie_scene_1.c.o)
+  021EB0A0 0000001C .rodata @13826	(src_intro_movie_scene_1.c.o)
+  021EB0BC 0000001C .rodata @13818	(src_intro_movie_scene_1.c.o)
+  021EB0D8 0000001C .rodata @13820	(src_intro_movie_scene_1.c.o)
+  021EB0F4 0000001C .rodata @13828	(src_intro_movie_scene_1.c.o)
+  021EB110 0000001C .rodata @13832	(src_intro_movie_scene_1.c.o)
   021EB12C 00000004 .rodata sIntroMovieScene1SpriteResCounts	(src_intro_movie_scene_1.c.o)
   021EB130 00000004 .rodata sIntroMovieScene2SpriteResCounts	(src_intro_movie_scene_2.c.o)
-  021EB134 00000004 .rodata sDeadstrippedRodata$14034	(src_intro_movie_scene_2.c.o)
+  021EB134 00000004 .rodata sDeadstrippedRodata$14000	(src_intro_movie_scene_2.c.o)
   021EB134 00000000 .rodata .rodata	(src_intro_movie_scene_2.c.o)
-  021EB138 0000000A .rodata @13984	(src_intro_movie_scene_2.c.o)
-  021EB144 00000010 .rodata @13934	(src_intro_movie_scene_2.c.o)
-  021EB154 0000001C .rodata @13936	(src_intro_movie_scene_2.c.o)
-  021EB170 0000001C .rodata @13942	(src_intro_movie_scene_2.c.o)
-  021EB18C 0000001C .rodata @13938	(src_intro_movie_scene_2.c.o)
-  021EB1A8 0000001C .rodata @13940	(src_intro_movie_scene_2.c.o)
+  021EB138 0000000A .rodata @13950	(src_intro_movie_scene_2.c.o)
+  021EB144 00000010 .rodata @13900	(src_intro_movie_scene_2.c.o)
+  021EB154 0000001C .rodata @13902	(src_intro_movie_scene_2.c.o)
+  021EB170 0000001C .rodata @13908	(src_intro_movie_scene_2.c.o)
+  021EB18C 0000001C .rodata @13904	(src_intro_movie_scene_2.c.o)
+  021EB1A8 0000001C .rodata @13906	(src_intro_movie_scene_2.c.o)
   021EB1C4 00000028 .rodata sIntroMovie_Scene2_FlowerSpriteAppearTiming	(src_intro_movie_scene_2.c.o)
   021EB1EC 00000004 .rodata sIntroMovieScene3SpriteResCounts	(src_intro_movie_scene_3.c.o)
   021EB1F0 00000000 .rodata .rodata	(src_intro_movie_scene_3.c.o)
-  021EB1F0 00000004 .rodata sDeadstrippedRodata_021EB1F8$14100	(src_intro_movie_scene_3.c.o)
+  021EB1F0 00000004 .rodata sDeadstrippedRodata_021EB1F8$14066	(src_intro_movie_scene_3.c.o)
   021EB1F4 00000006 .rodata sMaterialSpecular	(src_intro_movie_scene_3.c.o)
   021EB1FA 00000006 .rodata sDiffUse	(src_intro_movie_scene_3.c.o)
   021EB200 00000006 .rodata sAmbient	(src_intro_movie_scene_3.c.o)
   021EB206 00000006 .rodata sMaterialEmission	(src_intro_movie_scene_3.c.o)
-  021EB20C 0000000C .rodata @14028	(src_intro_movie_scene_3.c.o)
-  021EB218 0000000C .rodata @14030	(src_intro_movie_scene_3.c.o)
+  021EB20C 0000000C .rodata @13994	(src_intro_movie_scene_3.c.o)
+  021EB218 0000000C .rodata @13996	(src_intro_movie_scene_3.c.o)
   021EB224 0000000C .rodata sMap3dResHeaderFileIds	(src_intro_movie_scene_3.c.o)
-  021EB230 0000000C .rodata @14058	(src_intro_movie_scene_3.c.o)
-  021EB23C 0000000C .rodata @14068	(src_intro_movie_scene_3.c.o)
-  021EB248 0000000C .rodata @13856	(src_intro_movie_scene_3.c.o)
-  021EB254 0000000C .rodata @13985	(src_intro_movie_scene_3.c.o)
-  021EB260 00000010 .rodata @13968	(src_intro_movie_scene_3.c.o)
+  021EB230 0000000C .rodata @14024	(src_intro_movie_scene_3.c.o)
+  021EB23C 0000000C .rodata @14034	(src_intro_movie_scene_3.c.o)
+  021EB248 0000000C .rodata @13822	(src_intro_movie_scene_3.c.o)
+  021EB254 0000000C .rodata @13951	(src_intro_movie_scene_3.c.o)
+  021EB260 00000010 .rodata @13934	(src_intro_movie_scene_3.c.o)
   021EB270 00000010 .rodata sEdgeColors	(src_intro_movie_scene_3.c.o)
-  021EB280 00000010 .rodata @13983	(src_intro_movie_scene_3.c.o)
+  021EB280 00000010 .rodata @13949	(src_intro_movie_scene_3.c.o)
   021EB290 00000014 .rodata sCameraParam	(src_intro_movie_scene_3.c.o)
   021EB2A4 00000018 .rodata sLightColors	(src_intro_movie_scene_3.c.o)
   021EB2BC 00000018 .rodata sMap3dObjFileIds	(src_intro_movie_scene_3.c.o)
-  021EB2D4 0000001C .rodata @13970	(src_intro_movie_scene_3.c.o)
-  021EB2F0 0000001C .rodata @13972	(src_intro_movie_scene_3.c.o)
-  021EB30C 0000001C .rodata @13974	(src_intro_movie_scene_3.c.o)
-  021EB328 0000001C .rodata @13976	(src_intro_movie_scene_3.c.o)
-  021EB344 00000024 .rodata @14066	(src_intro_movie_scene_3.c.o)
-  021EB368 0000002C .rodata @13923	(src_intro_movie_scene_3.c.o)
-  021EB394 0000002C .rodata @13928	(src_intro_movie_scene_3.c.o)
-  021EB3C0 0000002C .rodata @13868	(src_intro_movie_scene_3.c.o)
-  021EB3EC 0000002C .rodata @13872	(src_intro_movie_scene_3.c.o)
-  021EB418 0000002C .rodata @13877	(src_intro_movie_scene_3.c.o)
-  021EB444 0000002C .rodata @13882	(src_intro_movie_scene_3.c.o)
-  021EB470 0000002C .rodata @13890	(src_intro_movie_scene_3.c.o)
-  021EB49C 0000002C .rodata @13902	(src_intro_movie_scene_3.c.o)
-  021EB4C8 0000002C .rodata @13907	(src_intro_movie_scene_3.c.o)
-  021EB4F4 0000002C .rodata @13912	(src_intro_movie_scene_3.c.o)
-  021EB520 0000002C .rodata @13918	(src_intro_movie_scene_3.c.o)
+  021EB2D4 0000001C .rodata @13936	(src_intro_movie_scene_3.c.o)
+  021EB2F0 0000001C .rodata @13938	(src_intro_movie_scene_3.c.o)
+  021EB30C 0000001C .rodata @13940	(src_intro_movie_scene_3.c.o)
+  021EB328 0000001C .rodata @13942	(src_intro_movie_scene_3.c.o)
+  021EB344 00000024 .rodata @14032	(src_intro_movie_scene_3.c.o)
+  021EB368 0000002C .rodata @13889	(src_intro_movie_scene_3.c.o)
+  021EB394 0000002C .rodata @13894	(src_intro_movie_scene_3.c.o)
+  021EB3C0 0000002C .rodata @13834	(src_intro_movie_scene_3.c.o)
+  021EB3EC 0000002C .rodata @13838	(src_intro_movie_scene_3.c.o)
+  021EB418 0000002C .rodata @13843	(src_intro_movie_scene_3.c.o)
+  021EB444 0000002C .rodata @13848	(src_intro_movie_scene_3.c.o)
+  021EB470 0000002C .rodata @13856	(src_intro_movie_scene_3.c.o)
+  021EB49C 0000002C .rodata @13868	(src_intro_movie_scene_3.c.o)
+  021EB4C8 0000002C .rodata @13873	(src_intro_movie_scene_3.c.o)
+  021EB4F4 0000002C .rodata @13878	(src_intro_movie_scene_3.c.o)
+  021EB520 0000002C .rodata @13884	(src_intro_movie_scene_3.c.o)
   021EB54C 00000090 .rodata sLightVectors	(src_intro_movie_scene_3.c.o)
   021EB5DC 00000004 .rodata sIntroMovieScene4SpriteResCounts	(src_intro_movie_scene_4.c.o)
-  021EB5E0 00000004 .rodata sDeadstrippedRodata$14072	(src_intro_movie_scene_4.c.o)
+  021EB5E0 00000004 .rodata sDeadstrippedRodata$14038	(src_intro_movie_scene_4.c.o)
   021EB5E0 00000000 .rodata .rodata	(src_intro_movie_scene_4.c.o)
-  021EB5E4 0000000C .rodata @13972	(src_intro_movie_scene_4.c.o)
-  021EB5F0 0000000C .rodata @13978	(src_intro_movie_scene_4.c.o)
-  021EB5FC 0000000C .rodata @13974	(src_intro_movie_scene_4.c.o)
-  021EB608 0000000C .rodata @13970	(src_intro_movie_scene_4.c.o)
-  021EB614 0000000C .rodata @14017	(src_intro_movie_scene_4.c.o)
-  021EB620 0000000C .rodata @13976	(src_intro_movie_scene_4.c.o)
-  021EB62C 00000010 .rodata @13940	(src_intro_movie_scene_4.c.o)
-  021EB63C 0000001C .rodata @13942	(src_intro_movie_scene_4.c.o)
-  021EB658 0000001C .rodata @13944	(src_intro_movie_scene_4.c.o)
-  021EB674 0000001C .rodata @13946	(src_intro_movie_scene_4.c.o)
-  021EB690 0000001C .rodata @13948	(src_intro_movie_scene_4.c.o)
-  021EB6AC 0000001C .rodata @13950	(src_intro_movie_scene_4.c.o)
-  021EB6C8 0000001C .rodata @13952	(src_intro_movie_scene_4.c.o)
+  021EB5E4 0000000C .rodata @13938	(src_intro_movie_scene_4.c.o)
+  021EB5F0 0000000C .rodata @13944	(src_intro_movie_scene_4.c.o)
+  021EB5FC 0000000C .rodata @13940	(src_intro_movie_scene_4.c.o)
+  021EB608 0000000C .rodata @13936	(src_intro_movie_scene_4.c.o)
+  021EB614 0000000C .rodata @13983	(src_intro_movie_scene_4.c.o)
+  021EB620 0000000C .rodata @13942	(src_intro_movie_scene_4.c.o)
+  021EB62C 00000010 .rodata @13906	(src_intro_movie_scene_4.c.o)
+  021EB63C 0000001C .rodata @13908	(src_intro_movie_scene_4.c.o)
+  021EB658 0000001C .rodata @13910	(src_intro_movie_scene_4.c.o)
+  021EB674 0000001C .rodata @13912	(src_intro_movie_scene_4.c.o)
+  021EB690 0000001C .rodata @13914	(src_intro_movie_scene_4.c.o)
+  021EB6AC 0000001C .rodata @13916	(src_intro_movie_scene_4.c.o)
+  021EB6C8 0000001C .rodata @13918	(src_intro_movie_scene_4.c.o)
   021EB6E4 00000024 .rodata sStarterParticleResIds	(src_intro_movie_scene_4.c.o)
-  021EB708 0000002C .rodata @13889	(src_intro_movie_scene_4.c.o)
-  021EB734 0000002C .rodata @13875	(src_intro_movie_scene_4.c.o)
-  021EB760 0000002C .rodata @13877	(src_intro_movie_scene_4.c.o)
-  021EB78C 0000002C .rodata @13887	(src_intro_movie_scene_4.c.o)
+  021EB708 0000002C .rodata @13855	(src_intro_movie_scene_4.c.o)
+  021EB734 0000002C .rodata @13841	(src_intro_movie_scene_4.c.o)
+  021EB760 0000002C .rodata @13843	(src_intro_movie_scene_4.c.o)
+  021EB78C 0000002C .rodata @13853	(src_intro_movie_scene_4.c.o)
   021EB7B8 00000000 .rodata .rodata	(src_intro_movie_scene_5.c.o)
-  021EB7B8 00000010 .rodata @13767	(src_intro_movie_scene_5.c.o)
-  021EB7C8 0000001C .rodata @13771	(src_intro_movie_scene_5.c.o)
-  021EB7E4 0000001C .rodata @13769	(src_intro_movie_scene_5.c.o)
-  021EB800 0000001C .rodata @13773	(src_intro_movie_scene_5.c.o)
-  021EB81C 0000001C .rodata @13775	(src_intro_movie_scene_5.c.o)
+  021EB7B8 00000010 .rodata @13733	(src_intro_movie_scene_5.c.o)
+  021EB7C8 0000001C .rodata @13737	(src_intro_movie_scene_5.c.o)
+  021EB7E4 0000001C .rodata @13735	(src_intro_movie_scene_5.c.o)
+  021EB800 0000001C .rodata @13739	(src_intro_movie_scene_5.c.o)
+  021EB81C 0000001C .rodata @13741	(src_intro_movie_scene_5.c.o)
 #>021EB838          SDK_OVERLAY.intro_title.SINIT_START (linker command file)
 #>021EB83C          SDK_OVERLAY.intro_title.SINIT_END (linker command file)
 #>021EB840          SDK_OVERLAY.intro_title.TEXT_END (linker command file)
@@ -145673,24 +145673,24 @@
   021E7330 00000000 .text   $d	(src_choose_starter_app.c.o)
   021E7348 00000036 .text   calcBallTranslationArcStep	(src_choose_starter_app.c.o)
   021E7348 00000000 .text   $t	(src_choose_starter_app.c.o)
-  021E7380 0000000C .rodata @18718	(src_choose_starter_app.c.o)
+  021E7380 0000000C .rodata @18684	(src_choose_starter_app.c.o)
   021E7380 00000000 .rodata .rodata	(src_choose_starter_app.c.o)
-  021E738C 0000000C .rodata @19193	(src_choose_starter_app.c.o)
+  021E738C 0000000C .rodata @19159	(src_choose_starter_app.c.o)
   021E7398 0000000C .rodata sSpecies	(src_choose_starter_app.c.o)
-  021E73A4 0000000C .rodata @18715	(src_choose_starter_app.c.o)
-  021E73B0 0000000C .rodata @18961	(src_choose_starter_app.c.o)
-  021E73BC 0000000C .rodata @18721	(src_choose_starter_app.c.o)
-  021E73C8 0000000C .rodata @18824	(src_choose_starter_app.c.o)
-  021E73D4 0000000C .rodata @19191	(src_choose_starter_app.c.o)
-  021E73E0 0000000C .rodata @18794	(src_choose_starter_app.c.o)
-  021E73EC 0000000C .rodata @18778	(src_choose_starter_app.c.o)
-  021E73F8 00000010 .rodata @18753	(src_choose_starter_app.c.o)
-  021E7408 0000001C .rodata @18813	(src_choose_starter_app.c.o)
-  021E7424 0000001C .rodata @18815	(src_choose_starter_app.c.o)
-  021E7440 0000001C .rodata @18817	(src_choose_starter_app.c.o)
-  021E745C 0000001C .rodata @18809	(src_choose_starter_app.c.o)
-  021E7478 0000001C .rodata @18811	(src_choose_starter_app.c.o)
-  021E7494 00000028 .rodata @18747	(src_choose_starter_app.c.o)
+  021E73A4 0000000C .rodata @18681	(src_choose_starter_app.c.o)
+  021E73B0 0000000C .rodata @18927	(src_choose_starter_app.c.o)
+  021E73BC 0000000C .rodata @18687	(src_choose_starter_app.c.o)
+  021E73C8 0000000C .rodata @18790	(src_choose_starter_app.c.o)
+  021E73D4 0000000C .rodata @19157	(src_choose_starter_app.c.o)
+  021E73E0 0000000C .rodata @18760	(src_choose_starter_app.c.o)
+  021E73EC 0000000C .rodata @18744	(src_choose_starter_app.c.o)
+  021E73F8 00000010 .rodata @18719	(src_choose_starter_app.c.o)
+  021E7408 0000001C .rodata @18779	(src_choose_starter_app.c.o)
+  021E7424 0000001C .rodata @18781	(src_choose_starter_app.c.o)
+  021E7440 0000001C .rodata @18783	(src_choose_starter_app.c.o)
+  021E745C 0000001C .rodata @18775	(src_choose_starter_app.c.o)
+  021E7478 0000001C .rodata @18777	(src_choose_starter_app.c.o)
+  021E7494 00000028 .rodata @18713	(src_choose_starter_app.c.o)
 #>021E74BC          SDK_OVERLAY.OVY_61.SINIT_START (linker command file)
 #>021E74C0          SDK_OVERLAY.OVY_61.SINIT_END (linker command file)
 #>021E74C0          SDK_OVERLAY.OVY_61.TEXT_END (linker command file)
@@ -162612,8 +162612,8 @@
   0223B2C4 00000000 .rodata .rodata	(src_application_main_menu_main_menu.c.o)
   0223B2C4 0000000C .rodata sArrowButtonHitboxes	(src_application_main_menu_main_menu.c.o)
   0223B2D0 0000000C .rodata sNewGameButtonHitboxes	(src_application_main_menu_main_menu.c.o)
-  0223B2DC 00000010 .rodata sMainMenuGraphicsModes$15346	(src_application_main_menu_main_menu.c.o)
-  0223B2EC 00000028 .rodata sMainMenuGraphicsBanks$15344	(src_application_main_menu_main_menu.c.o)
+  0223B2DC 00000010 .rodata sMainMenuGraphicsModes$15312	(src_application_main_menu_main_menu.c.o)
+  0223B2EC 00000028 .rodata sMainMenuGraphicsBanks$15310	(src_application_main_menu_main_menu.c.o)
   0223B314 0000082C .rodata .rodata	(asm_overlay_74_thumb.s.o)
   0223B314 00000000 .rodata gApp_MainMenu	(asm_overlay_74_thumb.s.o)
   0223B324 00000000 .rodata gApp_MainMenu_SelectOption_ConnectToRanger	(asm_overlay_74_thumb.s.o)
@@ -162625,12 +162625,12 @@
 #>0223BBC0          SDK_OVERLAY.OVY_74.TEXT_END (linker command file)
 #>0223BBC0          SDK_OVERLAY.OVY_74.DATA_START (linker command file)
   0223BBC0 00000000 .data   .data	(src_application_main_menu_main_menu.c.o)
-  0223BBC0 00000014 .data   sContinueButtonMsgs$15411	(src_application_main_menu_main_menu.c.o)
-  0223BBD4 0000001C .data   ov74_0223BBD4$15205	(src_application_main_menu_main_menu.c.o)
-  0223BBF0 0000003E .data   sButtonBorderAnimation$15657	(src_application_main_menu_main_menu.c.o)
-  0223BC30 0000008C .data   ov74_0223BC30$15272	(src_application_main_menu_main_menu.c.o)
+  0223BBC0 00000014 .data   sContinueButtonMsgs$15377	(src_application_main_menu_main_menu.c.o)
+  0223BBD4 0000001C .data   ov74_0223BBD4$15171	(src_application_main_menu_main_menu.c.o)
+  0223BBF0 0000003E .data   sButtonBorderAnimation$15623	(src_application_main_menu_main_menu.c.o)
+  0223BC30 0000008C .data   ov74_0223BC30$15238	(src_application_main_menu_main_menu.c.o)
   0223BCBC 00000090 .data   sMainMenuButtons	(src_application_main_menu_main_menu.c.o)
-  0223BD4C 0000000D .data   @16564	(src_application_main_menu_main_menu.c.o)
+  0223BD4C 0000000D .data   @16530	(src_application_main_menu_main_menu.c.o)
   0223BD5C 000012FC .data   .data	(asm_overlay_74_thumb.s.o)
   0223D058 0000001C .data   .data	(asm_nitrocrypto.s.o)
 #>0223D080          SDK_OVERLAY.OVY_74.DATA_END (linker command file)
@@ -202151,24 +202151,24 @@
   021E7414 00000000 .text   $t	(src_application_pokegear_main_pokegear_cursor.c.o)
   021E7414 0000008C .text   PokegearCursorManager_SetCursorSpritesAnimateFlag	(src_application_pokegear_main_pokegear_cursor.c.o)
   021E749C 00000000 .text   $d	(src_application_pokegear_main_pokegear_cursor.c.o)
-  021E74A0 00000004 .rodata sAppSwitchButtonCounts$17237	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E74A0 00000004 .rodata sAppSwitchButtonCounts$17203	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E74A4 00000000 .rodata .rodata	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E74A4 00000010 .rodata @17172	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E74A4 00000010 .rodata @17138	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E74B4 00000010 .rodata sAppToButtonIndex	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E74C4 00000018 .rodata sTouchscreenButtonHitboxes	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E74DC 00000024 .rodata sAppButtonSpec_NoCards$17232	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7500 00000028 .rodata @17166	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7528 00000030 .rodata sAppButtonSpec_MapOnly$17233	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7558 00000030 .rodata sAppButtonSpec_RadioOnly$17234	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7588 00000038 .rodata @17174	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E75C0 0000003C .rodata sAppButtonSpec_BothCards$17235	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E74DC 00000024 .rodata sAppButtonSpec_NoCards$17198	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7500 00000028 .rodata @17132	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7528 00000030 .rodata sAppButtonSpec_MapOnly$17199	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7558 00000030 .rodata sAppButtonSpec_RadioOnly$17200	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7588 00000038 .rodata @17140	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E75C0 0000003C .rodata sAppButtonSpec_BothCards$17201	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E75FC 00000000 .rodata .rodata	(src_application_pokegear_main_pokegear_main.c.o)
-  021E75FC 00000010 .rodata sOverlayTemplate_GearPhone$17108	(src_application_pokegear_main_pokegear_main.c.o)
-  021E760C 00000010 .rodata sOverlayTemplate_GearConfigure$17091	(src_application_pokegear_main_pokegear_main.c.o)
-  021E761C 00000010 .rodata sOverlayTemplate_EasyChat$17076	(src_application_pokegear_main_pokegear_main.c.o)
-  021E762C 00000010 .rodata sOverlayTemplate_GearMap$17057	(src_application_pokegear_main_pokegear_main.c.o)
-  021E763C 00000010 .rodata sOverlayTemplate_GearRadio$17125	(src_application_pokegear_main_pokegear_main.c.o)
-  021E764C 00000004 .rodata @17041	(src_application_pokegear_main_overlay_100_021E6914.c.o)
+  021E75FC 00000010 .rodata sOverlayTemplate_GearPhone$17074	(src_application_pokegear_main_pokegear_main.c.o)
+  021E760C 00000010 .rodata sOverlayTemplate_GearConfigure$17057	(src_application_pokegear_main_pokegear_main.c.o)
+  021E761C 00000010 .rodata sOverlayTemplate_EasyChat$17042	(src_application_pokegear_main_pokegear_main.c.o)
+  021E762C 00000010 .rodata sOverlayTemplate_GearMap$17023	(src_application_pokegear_main_pokegear_main.c.o)
+  021E763C 00000010 .rodata sOverlayTemplate_GearRadio$17091	(src_application_pokegear_main_pokegear_main.c.o)
+  021E764C 00000004 .rodata @17007	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E764C 00000000 .rodata .rodata	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E7650 0000000E .rodata sResList_Configure	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E765E 0000000E .rodata sResList_Phone	(src_application_pokegear_main_overlay_100_021E6914.c.o)
@@ -202177,13 +202177,13 @@
   021E7688 00000014 .rodata sOamCharTransferParam	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E769C 00000020 .rodata sOamManagerParam	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E76BC 00000050 .rodata sPokegearObjResSpecs	(src_application_pokegear_main_overlay_100_021E6914.c.o)
-  021E770C 00000008 .rodata sPlttOverrides$17023	(src_application_pokegear_main_overlay_100_021E6914.c.o)
+  021E770C 00000008 .rodata sPlttOverrides$16989	(src_application_pokegear_main_overlay_100_021E6914.c.o)
 #>021E7714          SDK_OVERLAY.pokegear.SINIT_START (linker command file)
 #>021E7718          SDK_OVERLAY.pokegear.SINIT_END (linker command file)
 #>021E7720          SDK_OVERLAY.pokegear.TEXT_END (linker command file)
 #>021E7720          SDK_OVERLAY.pokegear.DATA_START (linker command file)
   021E7720 00000000 .data   .data	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7720 00000010 .data   sAppSwitchButtonSpecs$17236	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7720 00000010 .data   sAppSwitchButtonSpecs$17202	(src_application_pokegear_main_overlay_100_021E5900.c.o)
 #>021E7740          SDK_OVERLAY.pokegear.DATA_END (linker command file)
 #>021E7740          SDK_OVERLAY.pokegear.END (linker command file)
 #>00001E20          SDK_OVERLAY.pokegear.TEXT_SIZE (linker command file)
@@ -203446,41 +203446,41 @@
   021F7354 00000000 .text   $d	(src_application_pokegear_radio_shows_mahogany_signal.c.o)
   021F7358 00000000 .rodata .rodata	(src_application_pokegear_map_pokegear_map.c.o)
   021F7358 00000006 .rodata sMapXScrollLimits	(src_application_pokegear_map_pokegear_map.c.o)
-  021F735E 00000006 .rodata @17384	(src_application_pokegear_map_pokegear_map.c.o)
-  021F7364 0000000E .rodata @17398	(src_application_pokegear_map_pokegear_map.c.o)
+  021F735E 00000006 .rodata @17350	(src_application_pokegear_map_pokegear_map.c.o)
+  021F7364 0000000E .rodata @17364	(src_application_pokegear_map_pokegear_map.c.o)
   021F7372 00000640 .rodata sLocationSpecs	(src_application_pokegear_map_pokegear_map.c.o)
   021F79B4 0000017A .rodata gMapFlypointParams	(src_application_pokegear_map_overlay_101_021F79B4.c.o)
-  021F7B30 0000000C .rodata buttonSpecsTrashCan$17550	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B30 0000000C .rodata buttonSpecsTrashCan$17516	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
   021F7B30 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7B3C 00000028 .rodata spriteTemplates$17608	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7B64 00000040 .rodata sWindowTemplates$17519	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7BA4 00000060 .rodata buttonSpecsSelectIcon$17549	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7C04 0000006C .rodata buttonSpecsMarkingsMenu$17548	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7C70 000000A0 .rodata spriteTemplates$17642	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7D10 000000A8 .rodata @17494	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7DB8 000000C8 .rodata spriteTemplates$17585	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B3C 00000028 .rodata spriteTemplates$17574	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B64 00000040 .rodata sWindowTemplates$17485	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7BA4 00000060 .rodata buttonSpecsSelectIcon$17515	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7C04 0000006C .rodata buttonSpecsMarkingsMenu$17514	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7C70 000000A0 .rodata spriteTemplates$17608	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7D10 000000A8 .rodata @17460	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7DB8 000000C8 .rodata spriteTemplates$17551	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
   021F7E80 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021E9270.c.o)
   021F7E80 0000000C .rodata sListMenuTemplate	(src_application_pokegear_map_overlay_101_021E9270.c.o)
   021F7E8C 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E8C 00000004 .rodata scrollLimits$17508	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E90 00000004 .rodata dummy$17702	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E94 00000008 .rodata sTouchscreenHitbox_CloseButton$17335	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E9C 00000008 .rodata ov101_021F7E9C$17630	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E8C 00000004 .rodata scrollLimits$17474	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E90 00000004 .rodata dummy$17668	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E94 00000008 .rodata sTouchscreenHitbox_CloseButton$17301	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E9C 00000008 .rodata ov101_021F7E9C$17596	(src_application_pokegear_map_overlay_101_021EB568.c.o)
   021F7EA4 00000008 .rodata ov101_021F7EA4	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7EAC 0000000C .rodata ov101_021F7EAC$17307	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7EB8 00000014 .rodata touchscreenHitboxes$17754	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7ECC 00000028 .rodata touchscreenHitboxes$17802	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7EF4 00000048 .rodata hitboxes$17701	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7EAC 0000000C .rodata ov101_021F7EAC$17273	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7EB8 00000014 .rodata touchscreenHitboxes$17720	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7ECC 00000028 .rodata touchscreenHitboxes$17768	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7EF4 00000048 .rodata hitboxes$17667	(src_application_pokegear_map_overlay_101_021EB568.c.o)
   021F7F3C 00000000 .rodata .rodata	(src_application_pokegear_map_fly_map.c.o)
   021F7F3C 00000006 .rodata sMapXScrollLimits	(src_application_pokegear_map_fly_map.c.o)
-  021F7F44 00000010 .rodata @17474	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
+  021F7F44 00000010 .rodata @17440	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F7F44 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F7F54 00000048 .rodata sWindowTemplates	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
-  021F7F9C 000000E0 .rodata @17476	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
+  021F7F9C 000000E0 .rodata @17442	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F807C 00000190 .rodata sSpriteTemplates	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F820C 00000048 .rodata sCursorButtons	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
   021F820C 00000000 .rodata .rodata	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
-  021F8254 000000A8 .rodata @17069	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
+  021F8254 000000A8 .rodata @17035	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
   021F82FC 000000C8 .rodata sSpriteTemplates	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
   021F83C4 00000000 .rodata .rodata	(src_application_pokegear_configure_overlay_101_021EF1D8.c.o)
   021F83C4 0000000C .rodata sContextMenuTemplate	(src_application_pokegear_configure_overlay_101_021EF1D8.c.o)
@@ -203492,10 +203492,10 @@
   021F8404 0000001C .rodata sContextMenuParam	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F8420 00000020 .rodata sWindowTemplates	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F8420 00000000 .rodata .rodata	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
-  021F8440 000000A8 .rodata @17425	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
+  021F8440 000000A8 .rodata @17391	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F84E8 00000140 .rodata sSpriteTemplates	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F8628 00000000 .rodata .rodata	(src_application_pokegear_phone_overlay_101_021F0880.c.o)
-  021F8628 0000000C .rodata @17322	(src_application_pokegear_phone_overlay_101_021F0880.c.o)
+  021F8628 0000000C .rodata @17288	(src_application_pokegear_phone_overlay_101_021F0880.c.o)
   021F8634 00000000 .rodata .rodata	(src_application_pokegear_phone_overlay_101_021F0F48.c.o)
   021F8634 00000024 .rodata ov101_021F8634	(src_application_pokegear_phone_overlay_101_021F0F48.c.o)
   021F8658 00000024 .rodata ov101_021F8658	(src_application_pokegear_phone_overlay_101_021F0F48.c.o)
@@ -203504,8 +203504,8 @@
   021F86BC 00000000 .rodata .rodata	(src_application_pokegear_phone_scripts_phone_scripts_prof_elm.c.o)
   021F86BC 0000000A .rodata sPhoneCallData_ProfElm_MapScripts	(src_application_pokegear_phone_scripts_phone_scripts_prof_elm.c.o)
   021F86C8 00000000 .rodata .rodata	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
-  021F86C8 00000004 .rodata ov101_021F86C8$17252	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
-  021F86CC 00000092 .rodata ov101_021F86CC$17315	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
+  021F86C8 00000004 .rodata ov101_021F86C8$17218	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
+  021F86CC 00000092 .rodata ov101_021F86CC$17281	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
   021F8760 00000049 .rodata ov101_021F8760	(src_application_pokegear_phone_extra_ethan_lyra_data.c.o)
   021F87AC 00000002 .rodata sNumSpecialRadioMaps	(src_application_pokegear_radio_pokegear_radio.c.o)
   021F87B0 0000000A .rodata sAlphMaps	(src_application_pokegear_radio_pokegear_radio.c.o)
@@ -203513,7 +203513,7 @@
   021F87BA 00000022 .rodata sMahoganyMaps	(src_application_pokegear_radio_pokegear_radio.c.o)
   021F87DC 00000018 .rodata sWindowTemplates	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
   021F87DC 00000000 .rodata .rodata	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
-  021F87F4 000000A8 .rodata @17349	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
+  021F87F4 000000A8 .rodata @17315	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
   021F889C 000000C8 .rodata sSpriteTemplates	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
   021F8964 00000000 .rodata .rodata	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
   021F8964 00000004 .rodata sTuningHitboxes_NoSignal	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
@@ -203545,7 +203545,7 @@
   021FB2C0 00000000 .data   .data	(src_application_pokegear_radio_pokegear_radio.c.o)
   021FB2C0 00000008 .data   sSpecialRadioMapIDs	(src_application_pokegear_radio_pokegear_radio.c.o)
   021FB2C8 00000000 .data   .data	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
-  021FB2C8 00000008 .data   coords$17039	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
+  021FB2C8 00000008 .data   coords$17005	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
   021FB2D0 0000001C .data   sTuningHitboxes	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
 #>021FB300          SDK_OVERLAY.pokegear_app.DATA_END (linker command file)
 #>021FB300          SDK_OVERLAY.pokegear_app.END (linker command file)
@@ -215649,15 +215649,15 @@
   021E700C 00000000 .text   $d	(src_application_view_rankings.c.o)
   021E7014 00000000 .rodata .rodata	(src_application_view_rankings.c.o)
   021E7014 00000008 .rodata sRecordPageParams	(src_application_view_rankings.c.o)
-  021E701C 00000010 .rodata @14814	(src_application_view_rankings.c.o)
-  021E702C 00000010 .rodata @14829	(src_application_view_rankings.c.o)
-  021E703C 0000001C .rodata @14822	(src_application_view_rankings.c.o)
-  021E7058 0000001C .rodata @14816	(src_application_view_rankings.c.o)
-  021E7074 0000001C .rodata @14818	(src_application_view_rankings.c.o)
-  021E7090 0000001C .rodata @14820	(src_application_view_rankings.c.o)
-  021E70AC 0000001C .rodata @14824	(src_application_view_rankings.c.o)
+  021E701C 00000010 .rodata @14780	(src_application_view_rankings.c.o)
+  021E702C 00000010 .rodata @14795	(src_application_view_rankings.c.o)
+  021E703C 0000001C .rodata @14788	(src_application_view_rankings.c.o)
+  021E7058 0000001C .rodata @14782	(src_application_view_rankings.c.o)
+  021E7074 0000001C .rodata @14784	(src_application_view_rankings.c.o)
+  021E7090 0000001C .rodata @14786	(src_application_view_rankings.c.o)
+  021E70AC 0000001C .rodata @14790	(src_application_view_rankings.c.o)
   021E70C8 00000020 .rodata sRecordPageParam_Pokemon	(src_application_view_rankings.c.o)
-  021E70E8 00000028 .rodata @14808	(src_application_view_rankings.c.o)
+  021E70E8 00000028 .rodata @14774	(src_application_view_rankings.c.o)
   021E7110 00000030 .rodata sRecordPageParam_BattleTower	(src_application_view_rankings.c.o)
   021E7140 00000054 .rodata sCursorPositionParams	(src_application_view_rankings.c.o)
 #>021E7194          SDK_OVERLAY.view_rankings_app.SINIT_START (linker command file)
@@ -216128,7 +216128,7 @@
   021E9374 00000034 .rodata sSpriteTemplate_Main	(src_voltorb_flip_voltorb_flip.c.o)
   021E93A8 00000034 .rodata sSpriteTemplate_Sub	(src_voltorb_flip_voltorb_flip.c.o)
   021E93DC 00000088 .rodata sVoltorbFlipWindowTemplates	(src_voltorb_flip_voltorb_flip.c.o)
-  021E9464 000000A8 .rodata @16283	(src_voltorb_flip_voltorb_flip.c.o)
+  021E9464 000000A8 .rodata @16249	(src_voltorb_flip_voltorb_flip.c.o)
   021E950C 00000140 .rodata sVoltorbFlipWorkflows	(src_voltorb_flip_voltorb_flip_tasks.c.o)
   021E964C 00000140 .rodata sBoardConfigs	(src_voltorb_flip_voltorb_flip_game.c.o)
   021E964C 00000000 .rodata .rodata	(src_voltorb_flip_voltorb_flip_game.c.o)
