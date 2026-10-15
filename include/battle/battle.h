@@ -819,5 +819,43 @@ typedef struct ActionSelectData {
     u16 maxHp;
     u8 isWaitingForPartner;
 } ActionSelectData;
+typedef struct MoveSelectData {
+    u16 moveIDs[4];
+    u8 currPP[4];
+    u8 maxPP[4];
+    u8 battlerType;
+} MoveSelectData;
+
+typedef struct TargetSelectData {
+    TargetPokemon targetMonData[4];
+    u8 battlerType;
+    u8 targetingLayout;
+} TargetSelectData;
+
+typedef struct BattleBagContext {
+    BattleSystem *battleSys;
+    PlayerProfile *trainerInfo;
+    Bag *bag;
+    enum HeapID heapID;
+    s32 battler;
+    BOOL isInCatchTutorial;
+    u32 embargoRemainingTurns;
+    u16 selectedBattleBagItem;
+    u8 selectedBattleBagPocket;
+    u8 lastUsedItemPocket;
+    u16 lastUsedItem;
+    u8 hasTwoOpponents;
+    u8 opponentHidden; // Has used fly, bounce, dig, etc
+    u8 opponentSubstituted;
+    u8 isCursorEnabled;
+    u8 battleBagExited;
+    u8 pocketCurrentPagePositions[5];
+    u8 pocketCurrentPages[5];
+} BattleBagContext;
+
+typedef struct GiveUpMoveData {
+    u16 move;
+    u16 unused_02;
+} GiveUpMoveData;
 
 #endif
