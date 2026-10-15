@@ -9345,10 +9345,10 @@ ov08_02220AEC: ; 0x02220AEC
 	add r4, r2, #0
 	bl BattleSystem_GetSpriteSystem
 	str r0, [sp, #8]
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	str r0, [sp, #0xc]
 	add r0, r6, #0
-	bl GetTypeIconGfxCharFileId
+	bl TypeIconGfx_GetCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -9359,7 +9359,7 @@ ov08_02220AEC: ; 0x02220AEC
 	ldr r2, [sp, #0xc]
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r6, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	add r1, r0, #0
 	add r0, r7, #0
 	add r1, r1, #4

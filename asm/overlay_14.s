@@ -28791,10 +28791,10 @@ ov14_021F3D0C: ; 0x021F3D0C
 	add r7, r1, #0
 	add r5, r0, #0
 	add r4, r2, #0
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	add r6, r0, #0
 	add r0, r7, #0
-	bl GetTypeIconGfxCharFileId
+	bl TypeIconGfx_GetCharFileId
 	add r1, r0, #0
 	mov r0, #0xa
 	str r0, [sp]
@@ -28820,7 +28820,7 @@ ov14_021F3D0C: ; 0x021F3D0C
 	bl ManagedSprite_GetPaletteOverrideOffset
 	add r6, r0, #0
 	add r0, r7, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	add r1, r0, #0
 	ldr r0, [r5, r4]
 	add r1, r6, r1

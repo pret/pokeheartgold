@@ -6953,7 +6953,7 @@ ov49_0225BA5C: ; 0x0225BA5C
 	ldrh r2, [r4, r2]
 	mov r0, #4
 	bl LoadFontPal0
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	add r6, r0, #0
 	bl GetMoveTypeAndCategoryIconPlttFileId
 	add r1, r0, #0
@@ -7486,10 +7486,10 @@ _0225BEB8:
 	bl ov45_0222D7C0
 	lsl r0, r0, #0x10
 	lsr r7, r0, #0x10
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	str r0, [sp, #0x28]
 	add r0, r7, #0
-	bl GetTypeIconGfxCharFileId
+	bl TypeIconGfx_GetCharFileId
 	add r1, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -7531,7 +7531,7 @@ _0225BEB8:
 	lsr r3, r3, #0x18
 	bl CopyToBgTilemapRect
 	add r0, r7, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	mov r1, #4
 	add r0, #0xb
 	str r1, [sp]

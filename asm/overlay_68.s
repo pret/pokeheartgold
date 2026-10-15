@@ -2913,10 +2913,10 @@ _021E7044:
 	add r6, r0, #0
 	add r6, #0x12
 _021E7050:
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	add r7, r0, #0
 	add r0, r6, #0
-	bl GetTypeIconGfxCharFileId
+	bl TypeIconGfx_GetCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2933,7 +2933,7 @@ _021E7050:
 	cmp r4, #4
 	bhs _021E709A
 	add r0, r6, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	add r1, r0, #0
 	add r0, r4, #4
 	lsl r0, r0, #2
@@ -2947,7 +2947,7 @@ _021E7050:
 	pop {r3, r4, r5, r6, r7, pc}
 _021E709A:
 	add r0, r6, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	add r1, r0, #0
 	add r0, r4, #4
 	lsl r0, r0, #2

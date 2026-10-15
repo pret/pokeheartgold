@@ -1118,10 +1118,10 @@ sub_0208BA88: ; 0x0208BA88
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	str r0, [sp, #8]
 	add r0, r7, #0
-	bl GetTypeIconGfxCharFileId
+	bl TypeIconGfx_GetCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1134,7 +1134,7 @@ sub_0208BA88: ; 0x0208BA88
 	ldr r2, [sp, #8]
 	bl SpriteSystem_ReplaceCharResObj
 	add r0, r7, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	add r2, r0, #0
 	lsl r0, r4, #2
 	add r1, r5, r0

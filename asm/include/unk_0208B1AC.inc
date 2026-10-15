@@ -39,9 +39,9 @@
 .public Pokemon_GetIconPalette
 .public Party_GetMonByIndex
 .public Party_GetMonAprijuiceModifiers
-.public GetTypeIconGfxCharFileId
-.public GetTypeIconGfxPlttOverride
-.public GetTypeIconGfxNarcId
+.public TypeIconGfx_GetCharFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public GetMoveCategoryIconGfxCharFileId
 .public GetMoveCategoryIconGfxPlttOverride
 .public GetMoveCategoryIconGfxNarcId

@@ -117,9 +117,9 @@
 .public sub_020744A4
 .public Party_GetCount
 .public Party_GetMonByIndex
-.public GetTypeIconGfxCharFileId
-.public GetTypeIconGfxPlttOverride
-.public GetTypeIconGfxNarcId
+.public TypeIconGfx_GetCharFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public SpriteSystem_LoadMoveTypeIconCharResObj
 .public SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer
 .public SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim

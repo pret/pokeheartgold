@@ -53,8 +53,8 @@ sTypeIconGfxPlttOverrides:
 
 	.text
 
-	thumb_func_start GetTypeIconGfxCharFileId
-GetTypeIconGfxCharFileId: ; 0x02077678
+	thumb_func_start TypeIconGfx_GetCharFileId
+TypeIconGfx_GetCharFileId: ; 0x02077678
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r4, #0x17
@@ -67,7 +67,7 @@ _02077684:
 	pop {r4, pc}
 	.balign 4, 0
 _0207768C: .word sTypeIconGfxCharFileIds
-	thumb_func_end GetTypeIconGfxCharFileId
+	thumb_func_end TypeIconGfx_GetCharFileId
 
 	thumb_func_start GetMoveTypeAndCategoryIconPlttFileId
 GetMoveTypeAndCategoryIconPlttFileId: ; 0x02077690
@@ -87,8 +87,8 @@ GetMoveTypeAndCategoryIconAnimFileId: ; 0x02077698
 	bx lr
 	thumb_func_end GetMoveTypeAndCategoryIconAnimFileId
 
-	thumb_func_start GetTypeIconGfxPlttOverride
-GetTypeIconGfxPlttOverride: ; 0x0207769C
+	thumb_func_start TypeIconGfx_GetPlttOverride
+TypeIconGfx_GetPlttOverride: ; 0x0207769C
 	push {r4, lr}
 	add r4, r0, #0
 	cmp r4, #0x17
@@ -100,13 +100,13 @@ _020776A8:
 	pop {r4, pc}
 	nop
 _020776B0: .word sTypeIconGfxPlttOverrides
-	thumb_func_end GetTypeIconGfxPlttOverride
+	thumb_func_end TypeIconGfx_GetPlttOverride
 
-	thumb_func_start GetTypeIconGfxNarcId
-GetTypeIconGfxNarcId: ; 0x020776B4
+	thumb_func_start TypeIconGfx_GetNarcId
+TypeIconGfx_GetNarcId: ; 0x020776B4
 	mov r0, #8 // NARC_a_0_0_8
 	bx lr
-	thumb_func_end GetTypeIconGfxNarcId
+	thumb_func_end TypeIconGfx_GetNarcId
 
 	thumb_func_start SpriteSystem_LoadMoveTypeIconCharResObj
 SpriteSystem_LoadMoveTypeIconCharResObj: ; 0x020776B8
@@ -116,10 +116,10 @@ SpriteSystem_LoadMoveTypeIconCharResObj: ; 0x020776B8
 	add r5, r0, #0
 	add r6, r1, #0
 	add r4, r2, #0
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	str r0, [sp, #0xc]
 	add r0, r7, #0
-	bl GetTypeIconGfxCharFileId
+	bl TypeIconGfx_GetCharFileId
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -143,7 +143,7 @@ SpriteSystem_LoadMoveTypeAndCategoryIconsPltt: ; 0x020776EC
 	add r7, r1, #0
 	add r5, r2, #0
 	add r4, r3, #0
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	str r0, [sp, #0x10]
 	bl GetMoveTypeAndCategoryIconPlttFileId
 	add r3, r0, #0
@@ -170,7 +170,7 @@ SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer: ; 0x02077720
 	add r6, r1, #0
 	add r7, r2, #0
 	str r3, [sp, #0x18]
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	add r4, r0, #0
 	bl GetMoveTypeAndCategoryIconPlttFileId
 	str r4, [sp]
@@ -201,7 +201,7 @@ SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim: ; 0x0207775C
 	add r4, r1, #0
 	add r6, r2, #0
 	add r7, r3, #0
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	str r0, [sp, #8]
 	bl GetMoveTypeAndCategoryIconCellFileId
 	add r3, r0, #0
@@ -212,7 +212,7 @@ SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim: ; 0x0207775C
 	add r1, r4, #0
 	str r6, [sp, #4]
 	bl SpriteSystem_LoadCellResObj
-	bl GetTypeIconGfxNarcId
+	bl TypeIconGfx_GetNarcId
 	add r6, r0, #0
 	bl GetMoveTypeAndCategoryIconAnimFileId
 	add r3, r0, #0
@@ -272,7 +272,7 @@ _020777D6:
 	ldr r0, [r6]
 	str r0, [r5]
 	add r0, r2, #0
-	bl GetTypeIconGfxPlttOverride
+	bl TypeIconGfx_GetPlttOverride
 	str r0, [sp, #0xc]
 	add r0, r4, #0
 	add r1, r7, #0

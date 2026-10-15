@@ -258,9 +258,9 @@
 .public SaveArray_Party_Get
 .public SaveArray_IsNatDexEnabled
 .public Pokedex_ConvertToCurrentDexNo
-.public GetTypeIconGfxCharFileId
-.public GetTypeIconGfxPlttOverride
-.public GetTypeIconGfxNarcId
+.public TypeIconGfx_GetCharFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public BagView_Init
 .public BagView_GetItemId
 .public GetItemIndexMapping

@@ -139,9 +139,9 @@
 .public Mon_GetBoxMon
 .public GetMoveAttr
 .public GetMoveMaxPP
-.public GetTypeIconGfxCharFileId
-.public GetTypeIconGfxPlttOverride
-.public GetTypeIconGfxNarcId
+.public TypeIconGfx_GetCharFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public SpriteSystem_LoadMoveTypeIconCharResObj
 .public SpriteSystem_LoadMoveTypeAndCategoryIconsPltt
 .public SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim

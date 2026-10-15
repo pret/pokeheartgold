@@ -2907,7 +2907,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0)) {
             moveType = GetMoveAttr(moveMemory->moveNo[i], MOVEATTR_TYPE);
-            charData = GfGfxLoader_GetCharData(GetTypeIconGfxNarcId(), GetTypeIconGfxCharFileId(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
+            charData = GfGfxLoader_GetCharData(TypeIconGfx_GetNarcId(), TypeIconGfx_GetCharFileId(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
             MI_CpuCopy32(charDataNNS->pRawData, moveDisplayObj->typeIcon[i], size);
             Heap_Free(charData);
         }

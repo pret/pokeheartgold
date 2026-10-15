@@ -233,10 +233,10 @@
 .public sub_02039B38
 .public sub_0203A880
 .public sub_02070D84
-.public GetTypeIconGfxCharFileId
+.public TypeIconGfx_GetCharFileId
 .public GetMoveTypeAndCategoryIconPlttFileId
-.public GetTypeIconGfxPlttOverride
-.public GetTypeIconGfxNarcId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G2dInitOamManagerModule
 .public NNS_G3dAnmObjDisableID

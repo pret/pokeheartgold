@@ -3,14 +3,14 @@
 
 #include "sprite_system.h"
 
-int GetTypeIconGfxCharFileId(int moveType);
-int GetTypeIconGfxPlttOverride(u16 moveType);
-NarcId GetTypeIconGfxNarcId(void);
+int TypeIconGfx_GetCharFileId(int moveType);
+int TypeIconGfx_GetPlttOverride(u16 moveType);
+NarcId TypeIconGfx_GetNarcId(void);
 void SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer(PaletteData *paletteData, PaletteBufferId bufferId, SpriteSystem *spriteSystem, SpriteManager *spriteManager, int vram, int plttTag);
 void SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int cellTag, int animTag);
-void SpriteSystem_LoadMoveTypeIconCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int resId); // load type icon graphics?
+void SpriteSystem_LoadMoveTypeIconCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int resId);
 void SpriteSystem_LoadMoveTypeAndCategoryIconsPltt(SpriteSystem *spriteSystem, SpriteManager *spriteManager, int vram, int resId);
-void SpriteSystem_LoadMoveCategoryIconCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int resId); // load type icon graphics?
+void SpriteSystem_LoadMoveCategoryIconCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NNS_G2D_VRAM_TYPE vramType, int type, int resId);
 void SpriteManager_UnloadMoveTypeIconCharResObjByTag(SpriteManager *spriteManager, int a1);
 void SpriteManager_UnloadMoveTypeAndCategoryIconPlttResObjByTag(SpriteManager *spriteManager, int a1);
 void SpriteManager_UnloadMoveTypeAndCategoryIconCellAndAnimResObjsByTags(SpriteManager *spriteManager, int a1, int a2);

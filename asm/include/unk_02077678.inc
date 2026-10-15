@@ -12,10 +12,10 @@
 .public SpriteManager_UnloadAnimObjById
 .public Sprite_DeleteAndFreeResources
 .public GF_AssertFail
-.public GetTypeIconGfxCharFileId
+.public TypeIconGfx_GetCharFileId
 .public GetMoveTypeAndCategoryIconPlttFileId
-.public GetTypeIconGfxPlttOverride
-.public GetTypeIconGfxNarcId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public SpriteSystem_LoadMoveTypeIconCharResObj
 .public SpriteSystem_LoadMoveTypeAndCategoryIconsPltt
 .public SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer
