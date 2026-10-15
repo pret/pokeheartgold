@@ -328,7 +328,7 @@ _021FE9C4:
 	add r0, sp, #0x18
 	lsr r2, r2, #0x10
 	add r3, r1, #0
-	bl sub_02020DA4
+	bl MTX_Rot33Angles
 	add r0, r6, #0
 	add r1, sp, #0xc
 	bl sub_02068DB8
