@@ -181,7 +181,7 @@ static void NamingScreen_GetPlayerInput(NamingScreenAppData *data);
 static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement);
 static void NamingScreen_PaletteGlowEffect(u16 *pSinArg);
 static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
-static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color);
+static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, enum Font fontId, u32 color);
 static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16 *tmpBuf, void *charBuf, String *string);
 static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entryBuf, u16 cursorPos, u16 *tmpBuf, void *charBuf, String *string);
 static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageNum);
@@ -1541,7 +1541,7 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
 
 static const u8 _02101D3C[] = { 0x60, 0x68, 0x50, 0x58 };
 
-static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color) {
+static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, enum Font fontId, u32 color) {
     AddTextPrinterParameterizedWithColor(window, fontId, string, 0, 0, TEXT_SPEED_NOTRANSFER, color, NULL);
     return window->pixelBuffer;
 }

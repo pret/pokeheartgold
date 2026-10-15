@@ -54,13 +54,13 @@ static ManagedSprite *BattleInput_SetPokemonIcon(BattleInput *battleInput, Pokem
 static ManagedSprite *BattleInput_SetBugContestPokemonIcon(BattleInput *battleInput, Pokemon *pokemon);
 static void Task_AnimatePokemonIconSprite(SysTask *task, void *data);
 static int ov12_022684F8(u8 task);
-static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut);
-static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
+static void String_GetFontLength(String *str, enum Font fontId, int *lengthOut, int *charLengthOut);
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, enum Font fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
 static void BattleInput_DeleteTextObjects(BattleInput *battleInput);
 static void ov12_022686BC(BattleInput *battleInput);
 static BattleInputMoveMemory *BattleInput_GetMoveMemory(BattleInput *battleInput, int battlerType);
 static void BattleInput_FreeMoveMemory(BattleInput *battleInput);
-static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, enum Font fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
 static void BattleInput_CreateMoveTypeIcons(BattleInput *battleInput);
 static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput);
 static void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput);
@@ -2705,7 +2705,7 @@ static int ov12_022684F8(u8 task) {
     return animationState;
 }
 
-static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut) {
+static void String_GetFontLength(String *str, enum Font fontId, int *lengthOut, int *charLengthOut) {
     int length, charLength;
 
     length = FontID_String_GetWidth(fontId, str, 0);
@@ -2719,7 +2719,7 @@ static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *c
     *charLengthOut = charLength;
 }
 
-static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *battleTextObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *battleTextObj, String *str, enum Font fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
     TextOBJTemplate textObjTemplate;
     Window window;
     UnkStruct_02021AC8 charTransferAlloc;
@@ -2942,7 +2942,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     moveDisplayObj->move = *moveMemory;
 }
 
-static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, enum Font fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
     int length, charLength;
 
     String_GetFontLength(str, fontId, &length, &charLength);

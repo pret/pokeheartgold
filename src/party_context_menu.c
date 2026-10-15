@@ -19,7 +19,7 @@ static void addFiveWindows(BgConfig *bgConfig, Window *window, const WindowTempl
 static void PartyMenu_DrawSlashOnMonHpTextWindow(PartyMenu *partyMenu, u8 partySlot);
 static void PartyMenu_PrintMonNicknameOnWindow(PartyMenu *partyMenu, u8 partySlot);
 static void PartyMenu_PrintMonMaxHpOnWindow(PartyMenu *partyMenu, u8 partySlot);
-static u32 getStringCenterXPos(FontID fontId, String *string, u32 windowWidth);
+static u32 getStringCenterXPos(enum Font fontId, String *string, u32 windowWidth);
 static void PartyMenu_PrintMessageOnWindowEx(PartyMenu *partyMenu, Window *window, int msgId, BOOL drawFrame);
 static BOOL TextPrinterCB_PartyMenuWin34Msg(TextPrinterTemplate *template, u16 glyphId);
 static void PartyMenu_PrintEvoStoneCompatString(PartyMenu *partyMenu, u8 partySlot, u8 compatibilityParam);
@@ -720,7 +720,7 @@ void sub_0207D8EC(PartyMenu *partyMenu, u8 partySlot) {
     sub_0207DD7C(partyMenu, partySlot, 7);
 }
 
-static u32 getStringCenterXPos(FontID fontId, String *string, u32 windowWidth) {
+static u32 getStringCenterXPos(enum Font fontId, String *string, u32 windowWidth) {
     return (windowWidth - FontID_String_GetWidth(fontId, string, 0)) / 2;
 }
 

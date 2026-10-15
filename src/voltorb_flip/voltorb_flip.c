@@ -124,8 +124,8 @@ static int VoltorbFlip_HandleListMenuInput(VoltorbFlipAppData *work);
 static void VoltorbFlip_RenderTopScreen(VoltorbFlipAppData *work);
 static void VoltorbFlip_AddWindows(VoltorbFlipAppData *work);
 static void VoltorbFlip_RemoveWindows(VoltorbFlipAppData *work);
-static void VoltorbFlip_PaintMessageOnWindow(VoltorbFlipAppData *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y);
-static void VoltorbFlip_PrintMessageOnWindow(VoltorbFlipAppData *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textColor);
+static void VoltorbFlip_PaintMessageOnWindow(VoltorbFlipAppData *work, enum Font fontId, u8 msgNo, Window *window, u8 x, u8 y);
+static void VoltorbFlip_PrintMessageOnWindow(VoltorbFlipAppData *work, enum Font fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textColor);
 static void VoltorbFlip_PrintMessageToSmallWindow(VoltorbFlipAppData *work, int msgNo);
 static void VoltorbFlip_PrintTextWindow(VoltorbFlipAppData *work, int msgNo, BOOL clearWindow);
 static BOOL VoltorbFlip_IsPrinterFinished(VoltorbFlipAppData *work);
@@ -1869,11 +1869,11 @@ static void VoltorbFlip_RemoveWindows(VoltorbFlipAppData *work) {
 }
 
 // Like PrintMessageOnWindow but it gets printed all at once.
-static void VoltorbFlip_PaintMessageOnWindow(VoltorbFlipAppData *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y) {
+static void VoltorbFlip_PaintMessageOnWindow(VoltorbFlipAppData *work, enum Font fontId, u8 msgNo, Window *window, u8 x, u8 y) {
     VoltorbFlip_PrintMessageOnWindow(work, fontId, msgNo, window, x, y, MAKE_TEXT_COLOR(1, 2, 0));
 }
 
-static void VoltorbFlip_PrintMessageOnWindow(VoltorbFlipAppData *work, FontID fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textColor) {
+static void VoltorbFlip_PrintMessageOnWindow(VoltorbFlipAppData *work, enum Font fontId, u8 msgNo, Window *window, u8 x, u8 y, u32 textColor) {
     FillWindowPixelBuffer(window, 0);
 
     String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapID);
