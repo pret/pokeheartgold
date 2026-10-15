@@ -54,13 +54,13 @@ static ManagedSprite *BattleInput_SetPokemonIcon(BattleInput *battleInput, Pokem
 static ManagedSprite *BattleInput_SetBugContestPokemonIcon(BattleInput *battleInput, Pokemon *pokemon);
 static void Task_AnimatePokemonIconSprite(SysTask *task, void *data);
 static int ov12_022684F8(u8 task);
-static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut);
-static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
+static void String_GetFontLength(String *str, enum Font fontId, int *lengthOut, int *charLengthOut);
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, enum Font fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
 static void BattleInput_DeleteTextObjects(BattleInput *battleInput);
 static void ov12_022686BC(BattleInput *battleInput);
 static BattleInputMoveMemory *BattleInput_GetMoveMemory(BattleInput *battleInput, int battlerType);
 static void BattleInput_FreeMoveMemory(BattleInput *battleInput);
-static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, enum Font fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
 static void BattleInput_CreateMoveTypeIcons(BattleInput *battleInput);
 static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput);
 static void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput);
@@ -108,7 +108,7 @@ static BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem);
 
 // Data
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sBottomScreenBgTilemapId[7] = {
     43,
     36,
@@ -119,7 +119,7 @@ static const u16 sBottomScreenBgTilemapId[7] = {
     39
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sTypeIconPositions[][2] = {
     { 32,  61  },
     { 160, 60  },
@@ -127,7 +127,7 @@ static const u16 sTypeIconPositions[][2] = {
     { 160, 123 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sMovePPTextPositions[4][2] = {
     { 59,  61  },
     { 187, 60  },
@@ -135,7 +135,7 @@ static const u16 sMovePPTextPositions[4][2] = {
     { 187, 123 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sMovePPMaxTextPositions[4][2] = {
     { 76,  61  },
     { 204, 60  },
@@ -143,7 +143,7 @@ static const u16 sMovePPMaxTextPositions[4][2] = {
     { 204, 123 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sTargetPokemonMenuPositions[][2] = {
     { 60,  116 },
     { 196, 32  },
@@ -152,7 +152,7 @@ static const u16 sTargetPokemonMenuPositions[][2] = {
     { 128, 175 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sPokemonIconPositions[][2] = {
     { 60,  116 },
     { 196, 56  },
@@ -269,7 +269,7 @@ static const int sTouchArrayMainMenu[] = {
     BATTLE_INPUT_RUN
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB04[] = {
     1,
     2,
@@ -277,7 +277,7 @@ static const u8 ov12_0226EB04[] = {
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sCursorArrayMainMenu[2][3] = {
     { CURSOR_INPUT_FIGHT, CURSOR_INPUT_FIGHT, CURSOR_INPUT_FIGHT   },
     { CURSOR_INPUT_BAG,   CURSOR_INPUT_RUN,   CURSOR_INPUT_POKEMON }
@@ -330,13 +330,13 @@ static const int sTouchArrayPalPark[] = {
     0
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB00[] = {
     1,
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sCursorArrayPalParkMenu[2][1] = {
     { CURSOR_INPUT_PAL_PARK_BALL },
     { CURSOR_INPUT_PAL_PARK_RUN }
@@ -401,7 +401,7 @@ static const int sTouchArrayFightMenu[] = {
     BATTLE_INPUT_MOVE_4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB08[] = {
     4,
     8,
@@ -410,7 +410,7 @@ static const u8 ov12_0226EB08[] = {
     11
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sCursorArrayFightMenu[][2] = {
     { CURSOR_INPUT_MOVE_1,       CURSOR_INPUT_MOVE_2       },
     { CURSOR_INPUT_MOVE_3,       CURSOR_INPUT_MOVE_4       },
@@ -449,13 +449,13 @@ static const int sTouchArrayTwoOptionsMenu[] = {
     BATTLE_INPUT_CANCEL
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EAFC[] = {
     1,
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sTwoOptionsMenuCursorInput[2][1] = {
     { CURSOR_INPUT_TWO_OPTION_TOP },
     { CURSOR_INPUT_TWO_OPTION_BOTTOM }
@@ -520,7 +520,7 @@ static const int sTouchArrayTargetMenu[] = {
     BATTLE_INPUT_CANCEL
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB10[] = {
     6,
     12,
@@ -529,7 +529,7 @@ static const u8 ov12_0226EB10[] = {
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sTargetMenuButtonInputArray[][2] = {
     { CURSOR_INPUT_TARGET_OPPONENT_LEFT, CURSOR_INPUT_TARGET_OPPONENT_RIGHT },
     { CURSOR_INPUT_TARGET_PLAYER_LEFT,   CURSOR_INPUT_TARGET_PLAYER_RIGHT   },
@@ -559,7 +559,7 @@ static const int sTouchArrayVsRecorderPlayback[] = {
     BATTLE_INPUT_STOP
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226E1F8[] = {
     4
 };
@@ -932,7 +932,7 @@ static const ManagedSpriteTemplate sSpriteTemplateSportBall = {
     .vramTransfer = 0
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 sMainMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 },
     { 0, 192, 384 },
@@ -940,7 +940,7 @@ static const s16 sMainMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox sMainMenuButtonsTouchscreenRect[] = {
     {
      .rect = {
@@ -976,7 +976,7 @@ static const TouchscreenHitbox sMainMenuButtonsTouchscreenRect[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 sFightMenuButtonsScreenOffsets[5][3] = {
     { 0, 192, 384 },
     { 0, 192, 384 },
@@ -985,7 +985,7 @@ static const s16 sFightMenuButtonsScreenOffsets[5][3] = {
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox sFightMenuButtonsTouchscreenRect[] = {
     {
      .rect = {
@@ -1029,10 +1029,10 @@ static const TouchscreenHitbox sFightMenuButtonsTouchscreenRect[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E258[] = { 0x22F, 0x22C, 0x229, 0x226 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E2A8[] = {
     {
      .rect = {
@@ -1068,7 +1068,7 @@ static const TouchscreenHitbox ov12_0226E2A8[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 sTargetMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 },
     { 0, 192, 384 },
@@ -1077,7 +1077,7 @@ static const s16 sTargetMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E348[] = {
     {
      .rect = {
@@ -1121,7 +1121,7 @@ static const TouchscreenHitbox ov12_0226E348[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E238[] = {
     0x238,
     0x235,
@@ -1129,7 +1129,7 @@ static const s16 ov12_0226E238[] = {
     0x23B
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E2F8[] = {
     {
      .rect = {
@@ -1165,13 +1165,13 @@ static const TouchscreenHitbox ov12_0226E2F8[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E286[][3] = {
     { 0, 5,   10  },
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E24C[] = {
     {
      .rect = {
@@ -1191,10 +1191,10 @@ static const TouchscreenHitbox ov12_0226E24C[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E228[] = { 0, 192, 384 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E20C = {
     .rect = {
              .top = 18,
@@ -1204,14 +1204,14 @@ static const TouchscreenHitbox ov12_0226E20C = {
              },
 };
 
-static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
+static const ATTRIBUTE_ALIGN(4) S16Pos ov12_0226E2D8[] = {
     { 128,  76   },
     { 40,   0xA4 },
     { 0xD8, 0xA4 },
     { 128,  168  }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const int sMoveRangeHitMons[][4] = {
     { 1, 1, 1, 1 },
     { 0, 1, 0, 1 },
@@ -2705,7 +2705,7 @@ static int ov12_022684F8(u8 task) {
     return animationState;
 }
 
-static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut) {
+static void String_GetFontLength(String *str, enum Font fontId, int *lengthOut, int *charLengthOut) {
     int length, charLength;
 
     length = FontID_String_GetWidth(fontId, str, 0);
@@ -2719,7 +2719,7 @@ static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *c
     *charLengthOut = charLength;
 }
 
-static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *battleTextObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *battleTextObj, String *str, enum Font fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
     TextOBJTemplate textObjTemplate;
     Window window;
     UnkStruct_02021AC8 charTransferAlloc;
@@ -2942,7 +2942,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     moveDisplayObj->move = *moveMemory;
 }
 
-static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, enum Font fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
     int length, charLength;
 
     String_GetFontLength(str, fontId, &length, &charLength);

@@ -118,7 +118,7 @@ u8 SavePokegear_FindEmptyPhonebookSlot(SavePokegear *pokegear) {
     u8 i;
 
     for (i = 0; i < NUM_PHONE_CONTACTS; i++) {
-        if (pokegear->phoneContacts[i].id == PHONE_CONTACT_NONE) {
+        if (pokegear->phoneContacts[i] == PHONE_CONTACT_NONE) {
             return i;
         }
     }
@@ -130,10 +130,10 @@ u8 SavePokegear_IsNumberRegistered(SavePokegear *pokegear, u8 contact) {
     u8 i;
 
     for (i = 0; i < NUM_PHONE_CONTACTS; i++) {
-        if (pokegear->phoneContacts[i].id == contact) {
+        if (pokegear->phoneContacts[i] == contact) {
             return i;
         }
-        if (pokegear->phoneContacts[i].id == PHONE_CONTACT_NONE) {
+        if (pokegear->phoneContacts[i] == PHONE_CONTACT_NONE) {
             return 0xFF;
         }
     }
@@ -151,7 +151,7 @@ void SavePokegear_RegisterPhoneNumber(SavePokegear *pokegear, u8 contact) {
 
     if (SavePokegear_IsNumberRegistered(pokegear, contact) == 0xFF) {
         slot = SavePokegear_FindEmptyPhonebookSlot(pokegear);
-        pokegear->phoneContacts[slot].id = contact;
+        pokegear->phoneContacts[slot] = contact;
     }
 }
 
@@ -172,7 +172,7 @@ void SavePokegear_SetPhonebookFromBuffer(SavePokegear *pokegear, PhoneContact *c
 
 static void SavePokegear_PhonebookInit(SavePokegear *pokegear) {
     MI_CpuFill8(pokegear->phoneContacts, PHONE_CONTACT_NONE, NUM_PHONE_CONTACTS * sizeof(PhoneContact));
-    pokegear->phoneContacts[0].id = PHONE_CONTACT_MOTHER;
+    pokegear->phoneContacts[0] = PHONE_CONTACT_MOTHER;
 }
 
 static PhoneCallPersistentState *SavePokegear_GetPhoneCallPersistentState(SavePokegear *pokegear) {

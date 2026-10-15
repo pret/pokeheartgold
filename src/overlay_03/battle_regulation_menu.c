@@ -75,7 +75,7 @@ static const ListMenuTemplate sListMenuTemplate = {
     .lettersSpacing = 0,
     .itemVerticalPadding = 16,
     .scrollMultiple = LIST_MULTIPLE_SCROLL_DPAD,
-    .fontId = 0, // FONT_SYSTEM
+    .fontId = FONT_SYSTEM,
     .cursorKind = 0,
     .data = NULL
 };
