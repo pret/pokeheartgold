@@ -8621,62 +8621,34 @@
        6](ov12_0223BBC0,func) found in global src_battle_battle_system.c.o
        6](ov12_0223BBA8,func) found in global src_battle_battle_system.c.o
        6](ov12_0223BB94,func) found in global src_battle_battle_system.c.o
-       6](ov12_0223B688,func) found in global src_battle_battle_system.c.o
+       6](BattleSystem_IsInitialized,func) found in global src_battle_battle_system.c.o
        6](BattleSystem_GetBattleSpecial,func) found in global src_battle_battle_system.c.o
-       6](ov12_0226430C,func) found in global asm_overlay_12_battle_controller.s.o
-        7](BattleSystem_GetParty,func) found in global src_battle_battle_system.c.o
-        7](ov12_0223C140,func) found in global src_battle_battle_system.c.o
-        7](CheckAbilityActive,func) found in global src_battle_overlay_12_0224E4FC.c.o
-         8](GetBattlerAbility,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](BattleSystem_GetTerrainId,func) found in global src_battle_battle_system.c.o
-        7](ov12_0224ED00,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](ov12_0223BE68,func) found in global src_battle_battle_system.c.o
-        7](BattleBuffer_Clear,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](BattleSystem_CheckMonCaught,func) found in global src_battle_battle_system.c.o
-         8](Pokedex_CheckMonCaughtFlag,func) found in global src_pokedex.c.o
-          9](DexSpeciesIsInvalid,func) found in global src_pokedex.c.o
-        7](GetBattlerStatusCondition,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](StruggleCheck,func) found in global src_battle_overlay_12_0224E4FC.c.o
-         8](GetBattlerHeldItemEffect,func) found in global src_battle_overlay_12_0224E4FC.c.o
-          9](GetBattlerHeldItem,func) found in global src_battle_overlay_12_0224E4FC.c.o
-          9](GetItemVar,func) found in global src_battle_overlay_12_0224E4FC.c.o
-           10](GetItemIndexMapping,func) found in global src_item.c.o
-           10](GetItemDataPtrFromArray,func) found in global src_item.c.o
-         8](BattleContext_CheckMoveImprisoned,func) found in global src_battle_overlay_12_0224E4FC.c.o
-         8](BattleContext_CheckMoveUnuseableInGravity,func) found in global src_battle_overlay_12_0224E4FC.c.o
-          9](sGravityUnusableMoves,object) found in local src_battle_overlay_12_0224E4FC.c.o
-         8](BattleContext_CheckMoveHealBlocked,func) found in global src_battle_overlay_12_0224E4FC.c.o
-         8](BattleMon_GetMoveIndex,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](GetBattlerVar,func) found in global src_battle_overlay_12_0224E4FC.c.o
-         8](Battler_GetType,func) found in local src_battle_overlay_12_0224E4FC.c.o
-        7](ov12_0223ABB8,func) found in global src_battle_battle_system.c.o
-        7](GetPercentProgressTowardsNextLevel,func) found in global src_pokemon.c.o
-        7](Battler_CanSelectAction,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](ov12_0223B854,func) found in global src_battle_battle_system.c.o
-        7](ov12_02256748,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](BattleSystem_GetRandTemp,func) found in global src_battle_battle_system.c.o
-        7](ov12_0224ECC4,func) found in global src_battle_overlay_12_0224E4FC.c.o
-        7](sub_02074F9C,func) found in global asm_unk_02074E5C.s.o
-         8](SavePalPad_Merge,func) found in global src_save_palpad.c.o
-          9](PalPadEntry_IsEqual,func) found in local src_save_palpad.c.o
-         8](ov12_0223BC2C,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223BC20,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223BC14,func) found in global src_battle_battle_system.c.o
-         8](ov12_02264334,func) found in global asm_overlay_12_battle_controller.s.o
-         8](ov12_0223A990,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223A984,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223A978,func) found in global src_battle_battle_system.c.o
-         8](BattleSystem_GetRecvBufferPtr,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223A96C,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223A960,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223A954,func) found in global src_battle_battle_system.c.o
-         8](BattleSystem_GetSendBufferPtr,func) found in global src_battle_battle_system.c.o
-         8](PartyCore_sizeof,func) found in global src_party.c.o
-         8](Party_Copy,func) found in global src_party.c.o
-         8](Chatot_Copy,func) found in global src_sav_chatot.c.o
-         8](ov12_0223BC08,func) found in global src_battle_battle_system.c.o
-         8](ov12_0223BBFC,func) found in global src_battle_battle_system.c.o
-         8](.rodata,section) found in local asm_unk_02074E5C.s.o
+       6](BattleController_EmitClearCommand,func) found in global src_battle_battle_controller.c.o
+        7](SendMessage,func) found in local src_battle_battle_controller.c.o
+         8](ov12_0224ECC4,func) found in global src_battle_overlay_12_0224E4FC.c.o
+         8](sub_02074F9C,func) found in global asm_unk_02074E5C.s.o
+          9](SavePalPad_Merge,func) found in global src_save_palpad.c.o
+           10](PalPadEntry_IsEqual,func) found in local src_save_palpad.c.o
+          9](ov12_0223BC2C,func) found in global src_battle_battle_system.c.o
+          9](ov12_0223BC20,func) found in global src_battle_battle_system.c.o
+          9](ov12_0223BC14,func) found in global src_battle_battle_system.c.o
+          9](BattleController_RecvCommMessage,func) found in global src_battle_battle_controller.c.o
+           10](ov12_0224ED00,func) found in global src_battle_overlay_12_0224E4FC.c.o
+          9](BattleSystem_GetClientEndIndex,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetClientWriteIndex,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetClientReadIndex,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetClientMessage,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetServerEndIndex,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetServerWriteIndex,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetServerReadIndex,func) found in global src_battle_battle_system.c.o
+          9](BattleSystem_GetServerMessage,func) found in global src_battle_battle_system.c.o
+          9](PartyCore_sizeof,func) found in global src_party.c.o
+          9](Party_Copy,func) found in global src_party.c.o
+          9](Chatot_Copy,func) found in global src_sav_chatot.c.o
+          9](ov12_0223BC08,func) found in global src_battle_battle_system.c.o
+          9](ov12_0223BBFC,func) found in global src_battle_battle_system.c.o
+          9](.rodata,section) found in local asm_unk_02074E5C.s.o
+         8](BattleController_SendLocalMessage,func) found in local src_battle_battle_controller.c.o
        6](Pokepic_StartPaletteFadeAll,func) found in global src_pokepic.c.o
        6](sub_0201649C,func) found in global asm_unk_020163E0.s.o
        6](BattleSystem_GetMessageIcon,func) found in global src_battle_battle_system.c.o
@@ -8706,6 +8678,7 @@
          8](GetFlippedAnimationFrame,func) found in local src_battle_party_gauge.c.o
          8](Task_ShowPokeballs_StartOfBattle,func) found in local src_battle_party_gauge.c.o
          8](Task_ShowPokeballs_MidBattle,func) found in local src_battle_party_gauge.c.o
+       6](BattleController_EmitPartyMenuResult,func) found in global src_battle_battle_controller.c.o
        6](ov12_02237BB8,func) found in global src_battle_battle_022378C0.c.o
         7](ov12_0223BBF0,func) found in global src_battle_battle_system.c.o
         7](sub_02026E9C,func) found in global src_unk_02026E84.c.o
@@ -8737,7 +8710,20 @@
          8](Task_AnimateBallGauge,func) found in local src_battle_battle_input.c.o
         7](ov12_0223A620,func) found in global asm_overlay_12_022378C0.s.o
        6](ov10_0221BE20,func) found in global src_battle_trainer_ai.c.o
+        7](StruggleCheck,func) found in global src_battle_overlay_12_0224E4FC.c.o
+         8](GetBattlerHeldItemEffect,func) found in global src_battle_overlay_12_0224E4FC.c.o
+          9](GetBattlerHeldItem,func) found in global src_battle_overlay_12_0224E4FC.c.o
+           10](GetBattlerAbility,func) found in global src_battle_overlay_12_0224E4FC.c.o
+          9](GetItemVar,func) found in global src_battle_overlay_12_0224E4FC.c.o
+           10](GetItemIndexMapping,func) found in global src_item.c.o
+           10](GetItemDataPtrFromArray,func) found in global src_item.c.o
+         8](BattleContext_CheckMoveImprisoned,func) found in global src_battle_overlay_12_0224E4FC.c.o
+         8](BattleContext_CheckMoveUnuseableInGravity,func) found in global src_battle_overlay_12_0224E4FC.c.o
+          9](sGravityUnusableMoves,object) found in local src_battle_overlay_12_0224E4FC.c.o
+         8](BattleContext_CheckMoveHealBlocked,func) found in global src_battle_overlay_12_0224E4FC.c.o
+         8](BattleMon_GetMoveIndex,func) found in global src_battle_overlay_12_0224E4FC.c.o
         7](BattleSystem_Random,func) found in global src_battle_battle_system.c.o
+       6](BattleSystem_GetParty,func) found in global src_battle_battle_system.c.o
        6](ov12_02237B0C,func) found in global src_battle_battle_022378C0.c.o
         7](BattleInput_Free,func) found in global src_battle_battle_input.c.o
          8](BattleInput_FreeBallGaugeResources,func) found in local src_battle_battle_input.c.o
@@ -8751,10 +8737,15 @@
        6](.rodata,section) found in local asm_overlay_12_battle_controller_opponent.s.o
        6](ov12_0223BAEC,func) found in global src_battle_battle_system.c.o
        6](ov12_0223BAE0,func) found in global src_battle_battle_system.c.o
+       6](BattleSystem_GetTerrainId,func) found in global src_battle_battle_system.c.o
+       6](BattleController_EmitAlertMessageAck,func) found in global src_battle_battle_controller.c.o
        6](ov12_0223BB80,func) found in global src_battle_battle_system.c.o
        6](ov12_0223BB78,func) found in global src_battle_battle_system.c.o
        6](BattleHpBar_BeginExpBarFullFlashEffect,func) found in global src_battle_battle_hp_bar.c.o
         7](Task_ExpBarFullFlash,func) found in local src_battle_battle_hp_bar.c.o
+       6](BattleController_SetMoveAnimation,func) found in global src_battle_battle_controller.c.o
+        7](CheckAbilityActive,func) found in global src_battle_overlay_12_0224E4FC.c.o
+        7](ov12_0223C140,func) found in global src_battle_battle_system.c.o
        6](ov12_0223A8DC,func) found in global src_battle_battle_system.c.o
        6](ov12_02264E68,func) found in global src_battle_battle_hp_bar.c.o
         7](ov12_022657E4,func) found in local src_battle_battle_hp_bar.c.o
@@ -8788,6 +8779,7 @@
        6](BattleSystem_SetCriticalHpMusicFlag,func) found in global src_battle_battle_system.c.o
        6](PokepicManager_SetG3UpdateFlagsMask,func) found in global src_pokepic.c.o
        6](BattleSystem_SetHpBarDisabled,func) found in global src_battle_battle_system.c.o
+       6](BattleController_EmitSelectedCommand,func) found in global src_battle_battle_controller.c.o
        6](ov12_0223BE0C,func) found in global src_battle_battle_system.c.o
        6](ov12_02265D74,func) found in global src_battle_battle_hp_bar.c.o
        6](ov12_02262014,func) found in global src_battle_battle_02261FD4.c.o
@@ -8840,6 +8832,7 @@
        6](CopyPokemonToPokemon,func) found in global src_pokemon.c.o
        6](SaveArray_Party_Alloc,func) found in global src_party.c.o
        6](BattleInput_GetKeyPressed,func) found in global src_battle_battle_input.c.o
+       6](BattleController_EmitSelectedBagItem,func) found in global src_battle_battle_controller.c.o
        6](BattleHpBar_Util_GetBarTypeFromBattlerSide,func) found in global src_battle_battle_hp_bar.c.o
        6](ov08_022225D4,func) found in global asm_overlay_08.s.o
         7](ov12_0226BAFC,func) found in global src_battle_battle_cursor.c.o
@@ -8866,6 +8859,8 @@
         7](PCStorage_FindFirstBoxWithEmptySlot,func) found in global src_pokemon_storage_system.c.o
         7](BattleSystem_GetPcStorage,func) found in global src_battle_battle_system.c.o
         7](BattleSystem_RecoverStatus,func) found in global src_battle_battle_system.c.o
+         8](BattleMon_Get,func) found in global src_battle_overlay_12_0224E4FC.c.o
+          9](Battler_GetType,func) found in local src_battle_overlay_12_0224E4FC.c.o
          8](SetBattlerVar,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](ov12_022582B8,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](AddBattlerVar,func) found in global src_battle_overlay_12_0224E4FC.c.o
@@ -8887,9 +8882,12 @@
         7](sub_0207CAA8,func) found in global src_party_menu.c.o
         7](sub_0207CAA4,func) found in global src_party_menu.c.o
         7](sub_0207CAA0,func) found in global src_party_menu.c.o
+       6](BattleController_EmitSelectedTarget,func) found in global src_battle_battle_controller.c.o
        6](ov12_02266C84,func) found in global src_battle_battle_input.c.o
+       6](BattleController_EmitSelectedMove,func) found in global src_battle_battle_controller.c.o
        6](ov12_022506D4,func) found in global src_battle_overlay_12_0224E4FC.c.o
         7](Battler_GetRandomOpposingBattlerId,func) found in global src_battle_overlay_12_0224E4FC.c.o
+         8](ov12_0223ABB8,func) found in global src_battle_battle_system.c.o
        6](ov10_0221BEF4,func) found in global src_battle_trainer_ai.c.o
         7](ov10_0221BF44,func) found in global asm_overlay_10_trainer_ai.s.o
          8](ov12_02252054,func) found in global src_battle_overlay_12_0224E4FC.c.o
@@ -8990,6 +8988,8 @@
     3](BattleContext_Delete,func) found in global src_battle_battle_controller_player.c.o
     3](ov12_0223B870,func) found in global src_battle_battle_system.c.o
     3](BattleSystem_TryChangeForm,func) found in global src_battle_battle_system.c.o
+    3](BattleSystem_TryRecvMessage,func) found in global src_battle_battle_controller.c.o
+     4](BattleController_RecvMessage,func) found in local src_battle_battle_controller.c.o
     3](BattleContext_Main,func) found in global src_battle_battle_controller_player.c.o
      4](sPlayerBattleCommands,object) found in local src_battle_battle_controller_player.c.o
       5](ov12_0224D53C,func) found in local src_battle_battle_controller_player.c.o
@@ -9015,6 +9015,7 @@
          8](Mon_UpdateGiratinaForm,func) found in global src_pokemon.c.o
           9](BoxMon_UpdateGiratinaForm,func) found in global src_pokemon.c.o
            10](UpdateBoxMonAbility,func) found in global src_pokemon.c.o
+         8](BattleController_EmitUpdatePartyMon,func) found in global src_battle_battle_controller.c.o
         7](CheckUseHeldItem,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](CopyBattleMonToPartyMon,func) found in global src_battle_overlay_12_0224E4FC.c.o
           9](ov12_022585A8,func) found in local src_battle_overlay_12_0224E4FC.c.o
@@ -9031,6 +9032,7 @@
       5](ov12_0224D1DC,func) found in local src_battle_battle_controller_player.c.o
       5](ov12_0224D03C,func) found in local src_battle_battle_controller_player.c.o
        6](ov12_02252D14,func) found in global src_battle_overlay_12_0224E4FC.c.o
+       6](BattleController_EmitClearMessageBox,func) found in global src_battle_battle_controller.c.o
       5](ov12_0224D014,func) found in local src_battle_battle_controller_player.c.o
       5](ov12_0224CF10,func) found in local src_battle_battle_controller_player.c.o
       5](ov12_0224CF14,func) found in local src_battle_battle_controller_player.c.o
@@ -9049,6 +9051,7 @@
        6](CheckAbilityEffectOnHit,func) found in global src_battle_overlay_12_0224E4FC.c.o
        6](TryItemFlinch,func) found in local src_battle_battle_controller_player.c.o
       5](BattleControllerPlayer_HpCalc,func) found in local src_battle_battle_controller_player.c.o
+       6](BattleController_EmitIncrementGameStat,func) found in global src_battle_battle_controller.c.o
       5](ov12_0224C678,func) found in local src_battle_battle_controller_player.c.o
       5](ov12_0224C5F8,func) found in local src_battle_battle_controller_player.c.o
       5](ov12_0224C5C8,func) found in local src_battle_battle_controller_player.c.o
@@ -9073,6 +9076,7 @@
         7](ApplyDamageRange,func) found in global src_battle_overlay_12_0224E4FC.c.o
        6](TryDisobedience,func) found in local src_battle_battle_controller_player.c.o
         7](ov12_02256854,func) found in global src_battle_overlay_12_0224E4FC.c.o
+        7](Battler_CanSelectAction,func) found in global src_battle_overlay_12_0224E4FC.c.o
         7](PlayerProfile_CountBadges,func) found in global src_player_data.c.o
         7](PlayerProfile_TestBadgeFlag,func) found in global src_player_data.c.o
        6](ov12_0224B1FC,func) found in local src_battle_battle_controller_player.c.o
@@ -9090,6 +9094,7 @@
          8](BtlCmd_223,func) found in global src_battle_battle_command.c.o
           9](BattleScriptIncrementPointer,func) found in local src_battle_battle_command.c.o
           9](BattleScriptReadWord,func) found in global src_battle_battle_command.c.o
+          9](ov12_022645C8,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_222,func) found in global src_battle_battle_command.c.o
           9](BattleSystem_GetBattlerIDBySide,func) found in local src_battle_battle_command.c.o
           9](TrainerMessageWithIdPairExists,func) found in global src_trainer_data.c.o
@@ -9101,8 +9106,11 @@
          8](BtlCmd_WaitTime,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CheckSafariGameDone,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PlayBGM,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlayMusic,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayMoveHitSound,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlayMoveHitSoundEffect,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_RefreshSprite,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitRefreshSprite,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_CheckItemHoldEffectOnUTurn,func) found in global src_battle_battle_command.c.o
           9](CheckItemEffectOnUTurn,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_SetRandomTarget,func) found in global src_battle_battle_command.c.o
@@ -9112,42 +9120,63 @@
           9](CheckStatusHealSwitch,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_CheckHoldOnWith1HP,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PrintForfeitMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintForefitMessage,func) found in global src_battle_battle_controller.c.o
+           10](ov12_0223BE68,func) found in global src_battle_battle_system.c.o
          8](BtlCmd_PrintEscapeMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintEscapeMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PrintBattleResultMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintResultMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_CheckItemHoldEffectOnHit,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_TryRecycle,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_RemoveItem,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_BoostRandomStatBy2,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CheckWhiteout,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_OAMToSprite,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitOAMToSprite,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_SpriteToOAM,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSpriteToOAM,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_TriggerAbilityOnHit,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_RestoreSprite,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitRestoreSprite,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_IncrementGameStat,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_FreePartyGaugeGraphics,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitFreePartyGaugeGraphics,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_LoadPartyGaugeGraphics,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitLoadPartyGaugeGraphics,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_HidePartyGauge,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitHidePartyGauge,func) found in global src_battle_battle_controller.c.o
+           10](PartyGaugeData_New,func) found in local src_battle_battle_controller.c.o
          8](BtlCmd_ShowPartyGauge,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitShowPartyGauge,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_HideBattleStartPartyGauge,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitHideInitialPartyGauge,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_ShowBattleStartPartyGauge,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitShowInitialPartyGauge,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_TryEscape,func) found in global src_battle_battle_command.c.o
           9](BattleTryRun,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_UseBagItem,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_SetBattleBackground,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitUpdateBackground,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_ChangeForm,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitChangeForm,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_SetMosaic,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlayMosaicAnimation,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_GetCurrentMoveData,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CheckChatterActivation,func) found in global src_battle_battle_command.c.o
           9](BattleSystem_GetChatotVoiceParam,func) found in global src_battle_battle_system.c.o
          8](BtlCmd_CheckEffectActivation,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CheckStealthRock,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_SetLinkBattleResult,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSetBattleResults,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_WaitPokemonMenuResult,func) found in global src_battle_battle_command.c.o
           9](BattleBuffer_GetNext,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_ChoosePokemonMenu,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitShowPartyMenu,func) found in global src_battle_battle_controller.c.o
+           10](BattleBuffer_Clear,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_WaitYesNoResult,func) found in global src_battle_battle_command.c.o
           9](ov12_0223BDDC,func) found in global src_battle_battle_system.c.o
          8](BtlCmd_YesNoMenu,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitShowYesNoMenu,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_TryFling,func) found in global src_battle_battle_command.c.o
           9](TryFling,func) found in global src_battle_overlay_12_0224E4FC.c.o
            10](GetHeldItemFlingEffect,func) found in global src_battle_overlay_12_0224E4FC.c.o
@@ -9248,6 +9277,7 @@
          8](BtlCmd_TryStealItem,func) found in global src_battle_battle_command.c.o
           9](CanStealHeldItem,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_TryPartyStatusRefresh,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitRefreshPartyStatus,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_TrySpite,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CalcFlailPower,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_TrySleepTalk,func) found in global src_battle_battle_command.c.o
@@ -9274,13 +9304,20 @@
          8](BtlCmd_CompareVarToVar,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_TryConversion,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PrintBufferedTrainerMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintTrainerMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PrintFirstSendOutMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintLeadMonMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PrintEncounterMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintEncounterMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PrintSendOutMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintSendOutMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PrintRecallMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintReturnMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayBattleAnimationFromVar,func) found in global src_battle_battle_command.c.o
           9](CheckStatusEffectsSubstitute,func) found in global src_battle_overlay_12_0224E4FC.c.o
+          9](BattleController_EmitPlayStatusEffect,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayBattleAnimationOnMons,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlayStatusEffectAttackerToDefender,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayBattleAnimation,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PayPrizeMoney,func) found in global src_battle_battle_command.c.o
           9](CalcPrizeMoney,func) found in global src_battle_battle_command.c.o
@@ -9289,10 +9326,11 @@
           9](CalcMoneyLoss,func) found in global src_battle_battle_system.c.o
            10](Party_GetMaxLevel,func) found in global src_pokemon.c.o
            10](PlayerProfile_GetMoney,func) found in global src_player_data.c.o
-           10](sBadgePenalty$18048,object) found in local src_battle_battle_system.c.o
+           10](sBadgePenalty$18059,object) found in local src_battle_battle_system.c.o
           9](PlayerProfile_SubMoney,func) found in global src_player_data.c.o
          8](BtlCmd_PrintTrainerMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_SetHealthbarStatus,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSetStatusIcon,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_UnlockMoveChoice,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_LockMoveChoice,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_ResetAllStatChanges,func) found in global src_battle_battle_command.c.o
@@ -9306,6 +9344,7 @@
          8](BtlCmd_Random,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CheckAbility,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_ToggleVanish,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitToggleVanishMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_ClearVolatileStatus,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_UpdateMonData,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_ChangeStatStage,func) found in global src_battle_battle_command.c.o
@@ -9315,7 +9354,11 @@
          8](BtlCmd_StartCatchMonTask,func) found in global src_battle_battle_command.c.o
           9](ItemToBallId,func) found in global src_item.c.o
           9](Task_GetPokemon,func) found in local src_battle_battle_command.c.o
+           10](BattleController_EmitOpenCaptureBall,func) found in global src_battle_battle_controller.c.o
            10](BattleSystem_CalculateBallShakes,func) found in local src_battle_battle_command.c.o
+            11](BattleSystem_CheckMonCaught,func) found in global src_battle_battle_system.c.o
+             12](Pokedex_CheckMonCaughtFlag,func) found in global src_pokedex.c.o
+              13](DexSpeciesIsInvalid,func) found in global src_pokedex.c.o
             11](BattleSystem_GetTimezone,func) found in global src_battle_battle_system.c.o
             11](BattleSystem_IsFishing,func) found in global src_battle_battle_system.c.o
             11](GetMonWeight,func) found in local src_battle_battle_command.c.o
@@ -9517,6 +9560,9 @@
              12](NamingScreen_LoadMonIcon,func) found in local src_naming_screen.c.o
              12](NamingScreen_VBlankCB,func) found in local src_naming_screen.c.o
              12](.bss,section) found in local src_naming_screen.c.o
+           10](BattleController_EmitShowPokemon,func) found in global src_battle_battle_controller.c.o
+            11](ov12_02256748,func) found in global src_battle_overlay_12_0224E4FC.c.o
+            11](ov12_0223B854,func) found in global src_battle_battle_system.c.o
          8](BtlCmd_GoToIfAnySwitches,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_SwitchAndUpdateMon,func) found in global src_battle_battle_command.c.o
           9](BattleSystem_GetBattleMon,func) found in global src_battle_overlay_12_0224E4FC.c.o
@@ -9536,6 +9582,7 @@
            10](ov12_02258584,func) found in local src_battle_overlay_12_0224E4FC.c.o
            10](ov12_0225859C,func) found in local src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_WaitMonSelection,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintLinkWaitMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_ShowParty,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_WaitGetExpTaskLoop,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_WaitGetExpTask,func) found in global src_battle_battle_command.c.o
@@ -9545,7 +9592,11 @@
            10](GetMonBaseExperienceAtCurrentLevel,func) found in global src_pokemon.c.o
            10](BattleScript_CalcEffortValues,func) found in local src_battle_battle_command.c.o
             11](AllocAndLoadMonPersonal_HandleAlternateForm,func) found in global src_pokemon.c.o
+           10](BattleController_EmitUpdateExpGauge,func) found in global src_battle_battle_controller.c.o
            10](Pokemon_TryLevelUp,func) found in global src_pokemon.c.o
+           10](BattleController_EmitPlayLevelUpAnimation,func) found in global src_battle_battle_controller.c.o
+           10](BattleController_EmitRefreshHPGauge,func) found in global src_battle_battle_controller.c.o
+            11](Battler_GetStatusCondition,func) found in global src_battle_overlay_12_0224E4FC.c.o
            10](BattleSystem_LoadLevelUpNameplate,func) found in local src_battle_battle_command.c.o
             11](BattleSystem_GetMessageBuffer,func) found in global src_battle_battle_system.c.o
             11](SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType,func) found in global src_sprite_system.c.o
@@ -9555,6 +9606,7 @@
            10](BattleSystem_UnloadLevelUpNameplate,func) found in local src_battle_battle_command.c.o
            10](MonTryLearnMoveOnLevelUp,func) found in global src_pokemon.c.o
             11](TryAppendMonMove,func) found in global src_pokemon.c.o
+           10](BattleController_EmitForgetMove,func) found in global src_battle_battle_controller.c.o
            10](MonSetMoveInSlot,func) found in global src_pokemon.c.o
          8](BtlCmd_CalcExpGain,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CalcCrit,func) found in global src_battle_battle_command.c.o
@@ -9564,19 +9616,26 @@
          8](BtlCmd_GoToEffectScript,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_GoToSubscript,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_FadeOutBattle,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitFadeOut,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_CompareMonDataToValue,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_CompareVarToValue,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PlaySound,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlaySound,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_WaitButtonABTime,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PlayFaintAnimation,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlayFaintingSequence,func) found in global src_battle_battle_controller.c.o
           9](InitFaintedWork,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_TryFaintMon,func) found in global src_battle_battle_command.c.o
           9](UpdateFriendshipFainted,func) found in local src_battle_battle_command.c.o
          8](BtlCmd_UpdateHealthbar,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitUpdateHPGauge,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_UpdateHealthbarValue,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_FlickerMon,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitFlickerBattlerSprite,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayMoveAnimationOnMons,func) found in global src_battle_battle_command.c.o
+          9](BattleController_SetMoveAnimationAttackerToDefender,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayMoveAnimation,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPlayMoveAnimation,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_BufferLocalMessage,func) found in global src_battle_battle_command.c.o
           9](InitBattleMsgData,func) found in local src_battle_battle_command.c.o
           9](InitBattleMsg,func) found in local src_battle_battle_command.c.o
@@ -9593,34 +9652,49 @@
            10](ov12_02248218,func) found in local src_battle_battle_command.c.o
            10](ov12_022481DC,func) found in local src_battle_battle_command.c.o
            10](ov12_0224820C,func) found in local src_battle_battle_command.c.o
+          9](BattleController_EmitPrintMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_BufferMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PrintBufferedMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PrintGlobalMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PrintMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_PrintAttackMessage,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitPrintAttackMessage,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_CalcDamageRaw,func) found in global src_battle_battle_command.c.o
           9](DamageCalcDefault,func) found in local src_battle_battle_command.c.o
          8](BtlCmd_CalcDamage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_Wait,func) found in global src_battle_battle_command.c.o
           9](Link_CheckTimeout,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_HealthbarSlideOut,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSlideHealthBoxOut,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_HealthbarSlideInDelay,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSlideHealthBoxIn,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_HealthbarSlideIn,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_BackgroundSlideIn,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSlideInBackground,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_TrainerSlideIn,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitTrainerSlideIn,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_TrainerSlideOut,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitTrainerSlideOut,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_ThrowPokeball,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitTrainerThrowBall,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_SetTrainerEncounter,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSetTrainerEncounter,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_DeletePokemon,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitDeletePokemon,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_RecallPokemon,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitReturnPokemon,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PokemonSendOut,func) found in global src_battle_battle_command.c.o
           9](BattleSystem_SetPokedexSeen,func) found in global src_battle_battle_system.c.o
            10](Pokedex_SetMonSeenFlag,func) found in global src_pokedex.c.o
           9](BattleSystem_SetExperienceEarnFlags,func) found in global src_battle_overlay_12_0224E4FC.c.o
           9](BattleSystem_ClearExperienceEarnFlags,func) found in global src_battle_overlay_12_0224E4FC.c.o
          8](BtlCmd_PokemonSlideIn,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitShowEncounter,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_SetPokemonEncounter,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSetEncounter,func) found in global src_battle_battle_controller.c.o
          8](BtlCmd_PlayEncounterAnimation,func) found in global src_battle_battle_command.c.o
+          9](BattleController_EmitSetupBattleUI,func) found in global src_battle_battle_controller.c.o
+           10](BattleSystem_GetRandTemp,func) found in global src_battle_battle_system.c.o
       5](BattleControllerPlayer_CatchingContestThrowBall,func) found in local src_battle_battle_controller_player.c.o
        6](BattleSystem_SetSafariBallCount,func) found in global src_battle_battle_system.c.o
       5](BattleControllerPlayer_SafariWatching,func) found in local src_battle_battle_controller_player.c.o
@@ -9648,9 +9722,17 @@
       5](BattleControllerPlayer_BeforeTurn,func) found in local src_battle_battle_controller_player.c.o
       5](BattleControllerPlayer_CalcExecutionOrder,func) found in local src_battle_battle_controller_player.c.o
       5](BattleControllerPlayer_SelectionScreenInput,func) found in local src_battle_battle_controller_player.c.o
+       6](BattleController_EmitSetCommandSelectionMenu,func) found in global src_battle_battle_controller.c.o
+        7](Pokemon_GetPercentToNextLevel,func) found in global src_pokemon.c.o
+       6](BattleController_EmitSetAlertMessage,func) found in global src_battle_battle_controller.c.o
+       6](BattleController_EmitStopGaugeAnimation,func) found in global src_battle_battle_controller.c.o
+       6](BattleController_EmitShowMoveSelectMenu,func) found in global src_battle_battle_controller.c.o
        6](ov12_02251A28,func) found in global src_battle_overlay_12_0224E4FC.c.o
        6](ov12_0224DB64,func) found in local src_battle_battle_controller_player.c.o
+       6](BattleCommand_EmitShowTargetSelectMenu,func) found in global src_battle_battle_controller.c.o
+       6](BattleController_EmitShowBagMenu,func) found in global src_battle_battle_controller.c.o
        6](BattlerCanSwitch,func) found in global src_battle_overlay_12_0224E4FC.c.o
+       6](BattleController_EmitClearTouchScreen,func) found in global src_battle_battle_controller.c.o
        6](ov12_0224E414,func) found in local src_battle_battle_controller_player.c.o
       5](BattleControllerPlayer_SelectionScreenInit,func) found in local src_battle_battle_controller_player.c.o
       5](BattleControllerPlayer_PokemonAppear,func) found in local src_battle_battle_controller_player.c.o
@@ -42668,7 +42750,7 @@
   0206FBE8 00000000 .text   $t	(src_pokemon.c.o)
   0206FC08 00000038 .text   GetMonBaseStatEx_HandleAlternateForm	(src_pokemon.c.o)
   0206FC08 00000000 .text   $t	(src_pokemon.c.o)
-  0206FC40 00000060 .text   GetPercentProgressTowardsNextLevel	(src_pokemon.c.o)
+  0206FC40 00000060 .text   Pokemon_GetPercentToNextLevel	(src_pokemon.c.o)
   0206FC40 00000000 .text   $t	(src_pokemon.c.o)
   0206FCA0 00000000 .text   $t	(src_pokemon.c.o)
   0206FCA0 00000008 .text   CalcMonExpToNextLevel	(src_pokemon.c.o)
@@ -89214,28 +89296,28 @@
   0223A938 00000000 .text   $t	(src_battle_battle_system.c.o)
   0223A93C 00000004 .text   BattleSystem_GetPokedex	(src_battle_battle_system.c.o)
   0223A93C 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A940 00000008 .text   BattleSystem_GetSendBufferPtr	(src_battle_battle_system.c.o)
+  0223A940 00000008 .text   BattleSystem_GetServerMessage	(src_battle_battle_system.c.o)
   0223A940 00000000 .text   $t	(src_battle_battle_system.c.o)
   0223A948 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A948 0000000C .text   BattleSystem_GetRecvBufferPtr	(src_battle_battle_system.c.o)
+  0223A948 0000000C .text   BattleSystem_GetClientMessage	(src_battle_battle_system.c.o)
   0223A950 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A954 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A954 0000000C .text   ov12_0223A954	(src_battle_battle_system.c.o)
+  0223A954 0000000C .text   BattleSystem_GetServerReadIndex	(src_battle_battle_system.c.o)
   0223A95C 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A960 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A960 0000000C .text   ov12_0223A960	(src_battle_battle_system.c.o)
+  0223A960 0000000C .text   BattleSystem_GetServerWriteIndex	(src_battle_battle_system.c.o)
   0223A968 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A96C 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A96C 0000000C .text   ov12_0223A96C	(src_battle_battle_system.c.o)
+  0223A96C 0000000C .text   BattleSystem_GetServerEndIndex	(src_battle_battle_system.c.o)
   0223A974 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A978 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A978 0000000C .text   ov12_0223A978	(src_battle_battle_system.c.o)
+  0223A978 0000000C .text   BattleSystem_GetClientReadIndex	(src_battle_battle_system.c.o)
   0223A980 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A984 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A984 0000000C .text   ov12_0223A984	(src_battle_battle_system.c.o)
+  0223A984 0000000C .text   BattleSystem_GetClientWriteIndex	(src_battle_battle_system.c.o)
   0223A98C 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A990 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223A990 0000000C .text   ov12_0223A990	(src_battle_battle_system.c.o)
+  0223A990 0000000C .text   BattleSystem_GetClientEndIndex	(src_battle_battle_system.c.o)
   0223A998 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223A99C 00000008 .text   ov12_0223A99C	(src_battle_battle_system.c.o)
   0223A99C 00000000 .text   $t	(src_battle_battle_system.c.o)
@@ -89303,7 +89385,7 @@
   0223B5EC 0000009C .text   BattleSystem_CheckEvolution	(src_battle_battle_system.c.o)
   0223B5EC 00000000 .text   $t	(src_battle_battle_system.c.o)
   0223B688 00000000 .text   $t	(src_battle_battle_system.c.o)
-  0223B688 0000000C .text   ov12_0223B688	(src_battle_battle_system.c.o)
+  0223B688 0000000C .text   BattleSystem_IsInitialized	(src_battle_battle_system.c.o)
   0223B690 00000000 .text   $d	(src_battle_battle_system.c.o)
   0223B694 00000020 .text   ov12_0223B694	(src_battle_battle_system.c.o)
   0223B694 00000000 .text   $t	(src_battle_battle_system.c.o)
@@ -90506,7 +90588,7 @@
   0224EDB8 00000000 .text   $d	(src_battle_overlay_12_0224E4FC.c.o)
   0224EDC0 00000020 .text   BattleBuffer_Clear	(src_battle_overlay_12_0224E4FC.c.o)
   0224EDC0 00000000 .text   $t	(src_battle_overlay_12_0224E4FC.c.o)
-  0224EDE0 00000386 .text   GetBattlerVar	(src_battle_overlay_12_0224E4FC.c.o)
+  0224EDE0 00000386 .text   BattleMon_Get	(src_battle_overlay_12_0224E4FC.c.o)
   0224EDE0 00000000 .text   $t	(src_battle_overlay_12_0224E4FC.c.o)
   0224F168 00000000 .text   $t	(src_battle_overlay_12_0224E4FC.c.o)
   0224F168 0000062C .text   SetBattlerVar	(src_battle_overlay_12_0224E4FC.c.o)
@@ -90556,7 +90638,7 @@
   02250CA0 0000005C .text   UnlockBattlerOutOfCurrentMove	(src_battle_overlay_12_0224E4FC.c.o)
   02250CE4 00000000 .text   $d	(src_battle_overlay_12_0224E4FC.c.o)
   02250CFC 00000000 .text   $t	(src_battle_overlay_12_0224E4FC.c.o)
-  02250CFC 00000050 .text   GetBattlerStatusCondition	(src_battle_overlay_12_0224E4FC.c.o)
+  02250CFC 00000050 .text   Battler_GetStatusCondition	(src_battle_overlay_12_0224E4FC.c.o)
   02250D48 00000000 .text   $d	(src_battle_overlay_12_0224E4FC.c.o)
   02250D4C 00000000 .text   $t	(src_battle_overlay_12_0224E4FC.c.o)
   02250D4C 000001F8 .text   CheckTrainerMessage	(src_battle_overlay_12_0224E4FC.c.o)
@@ -93376,522 +93458,209 @@
   02262014 00000000 .text   $t	(src_battle_battle_02261FD4.c.o)
   0226203C 0000005A .text   ov12_0226203C	(src_battle_battle_02261FD4.c.o)
   0226203C 00000000 .text   $t	(src_battle_battle_02261FD4.c.o)
-  02262098 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262098 00000098 .text   BattleController_SendData	(asm_overlay_12_battle_controller.s.o)
-  02262098 0000278C .text   .text	(asm_overlay_12_battle_controller.s.o)
-  022620A8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022620B0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022620B8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022620BE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022620C6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022620CE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226212E 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262130 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262130 00000094 .text   BattleController_RecvData	(asm_overlay_12_battle_controller.s.o)
-  022621AA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621BA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621C4 0000007C .text   ov12_022621C4	(asm_overlay_12_battle_controller.s.o)
-  022621CC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621D4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621DC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621E4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621EA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621F2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022621FA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262202 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262220 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226223E 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262240 00000088 .text   ov12_02262240	(asm_overlay_12_battle_controller.s.o)
-  02262240 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262266 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262276 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226227C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262292 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022622A8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022622BA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022622C4 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022622C8 00000028 .text   BattleController_EmitPlayEncounterAnimation	(asm_overlay_12_battle_controller.s.o)
-  022622C8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022622D4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022622E6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022622EE 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022622F0 00000100 .text   BattleController_EmitPokemonEncounter	(asm_overlay_12_battle_controller.s.o)
-  022622F0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262360 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226236C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226239A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022623AA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022623BA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022623D0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022623E0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022623E8 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022623F0 00000134 .text   BattleController_EmitPokemonSlideIn	(asm_overlay_12_battle_controller.s.o)
-  022623F0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262460 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226246C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022624A6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022624BA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022624CA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022624DA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022624EA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262500 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262510 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262518 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262524 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262524 00000210 .text   BattleController_EmitPokemonSendOut	(asm_overlay_12_battle_controller.s.o)
-  022625BE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022625CA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226262C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226263C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226264C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226265C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262672 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262710 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262718 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262734 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262734 0000016C .text   BattleController_EmitRecallPokemon	(asm_overlay_12_battle_controller.s.o)
-  022627A0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022627C4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262878 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262880 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022628A0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022628A0 000000B8 .text   ov12_022628A0	(asm_overlay_12_battle_controller.s.o)
-  02262908 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226292C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262946 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262950 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262958 0000001C .text   BattleController_EmitDeletePokemon	(asm_overlay_12_battle_controller.s.o)
-  02262958 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226296A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262972 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262974 00000030 .text   BattleController_EmitTrainerEncounter	(asm_overlay_12_battle_controller.s.o)
-  02262974 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226299C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022629A4 00000038 .text   BattleController_EmitThrowPokeball	(asm_overlay_12_battle_controller.s.o)
-  022629B4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022629D0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022629D8 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022629DC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022629DC 0000001C .text   BattleController_EmitTrainerSlideOut	(asm_overlay_12_battle_controller.s.o)
-  022629EE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022629F6 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022629F8 00000034 .text   BattleController_EmitTrainerSlideIn	(asm_overlay_12_battle_controller.s.o)
-  022629F8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262A24 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262A2C 00000138 .text   BattleController_EmitHealthbarSlideIn	(asm_overlay_12_battle_controller.s.o)
-  02262A40 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262A4A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262A56 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262A86 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262AE6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262AFE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B08 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B14 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B2E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B46 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B50 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262B64 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262B64 0000001C .text   BattleController_EmitHealthbarSlideOut	(asm_overlay_12_battle_controller.s.o)
-  02262B76 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B7E 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262B80 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262B80 000003A4 .text   ov12_02262B80	(asm_overlay_12_battle_controller.s.o)
-  02262B92 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B98 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262B9E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262BA8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262BB4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262BBE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262BC8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262BE8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C0C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C14 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C38 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C42 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C56 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C64 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C88 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262C96 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262CC0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262CCC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262CD6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262CE0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262CE8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D02 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D0C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D20 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D2E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D4E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D5A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D66 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D70 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D7A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D82 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262D9E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262DA8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262DBC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262DCA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262DEA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262DFA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E04 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E0C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E26 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E30 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E44 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E52 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E72 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E8A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262E9A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262EAA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262ED0 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262EE0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262F1A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262F22 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262F24 0000001C .text   ov12_02262F24	(asm_overlay_12_battle_controller.s.o)
-  02262F24 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262F32 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262F3E 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262F40 000000A0 .text   ov12_02262F40	(asm_overlay_12_battle_controller.s.o)
-  02262F40 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262F4A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262F50 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262F8E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262FB4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262FC8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262FD0 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262FE0 0000001C .text   ov12_02262FE0	(asm_overlay_12_battle_controller.s.o)
-  02262FE0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02262FEE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02262FFA 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02262FFC 00000120 .text   ov12_02262FFC	(asm_overlay_12_battle_controller.s.o)
-  02262FFC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226300C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263012 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022630FE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263108 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226311C 0000001C .text   ov12_0226311C	(asm_overlay_12_battle_controller.s.o)
-  0226311C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226312A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263136 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263138 00000188 .text   ov12_02263138	(asm_overlay_12_battle_controller.s.o)
-  02263138 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263146 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226319E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022631A8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022631B8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022631D6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263250 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022632A4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022632AC 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022632C0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022632C0 0000001C .text   ov12_022632C0	(asm_overlay_12_battle_controller.s.o)
-  022632CE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022632DA 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022632DC 00000084 .text   BattleController_EmitShowMonList	(asm_overlay_12_battle_controller.s.o)
-  022632DC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022632EC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226334A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263354 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263360 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263360 0000001C .text   ov12_02263360	(asm_overlay_12_battle_controller.s.o)
-  0226336E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226337A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226337C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226337C 0000003C .text   BattleController_EmitDrawYesNoBox	(asm_overlay_12_battle_controller.s.o)
-  0226338A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022633AE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022633B6 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022633B8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022633B8 00000038 .text   BattleController_EmitPrintAttackMessage	(asm_overlay_12_battle_controller.s.o)
-  022633DE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022633E8 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022633F0 0000001C .text   BattleController_EmitPrintMessage	(asm_overlay_12_battle_controller.s.o)
-  022633F0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263404 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226340C 00000030 .text   BattleController_SetMoveAnimation	(asm_overlay_12_battle_controller.s.o)
-  02263424 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263434 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226343C 00000030 .text   ov12_0226343C	(asm_overlay_12_battle_controller.s.o)
-  02263452 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263462 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226346A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226346C 0000001C .text   BattleController_EmitMonFlicker	(asm_overlay_12_battle_controller.s.o)
-  0226346C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226347E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263486 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263488 000000DC .text   BattleController_EmitHealthbarUpdate	(asm_overlay_12_battle_controller.s.o)
-  02263488 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226349A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022634A4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022634B0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263512 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263524 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226352E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263542 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226354C 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263564 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263564 00000084 .text   ov12_02263564	(asm_overlay_12_battle_controller.s.o)
-  02263578 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263582 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226358E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022635A2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022635B8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022635C2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022635D6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022635E0 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022635E8 00000114 .text   BattleController_EmitPlayFaintAnimation	(asm_overlay_12_battle_controller.s.o)
-  022635E8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022636DC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022636E4 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022636FC 00000020 .text   BattleController_EmitPlaySE	(asm_overlay_12_battle_controller.s.o)
-  022636FC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263712 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226371A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226371C 0000001C .text   BattleController_EmitFadeOutBattle	(asm_overlay_12_battle_controller.s.o)
-  0226371C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226372E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263736 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263738 000000D0 .text   BattleController_EmitToggleVanish	(asm_overlay_12_battle_controller.s.o)
-  02263738 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022637E6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022637F0 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263808 00000020 .text   BattleController_EmitHealthbarStatus	(asm_overlay_12_battle_controller.s.o)
-  02263808 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263820 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263828 00000020 .text   BattleController_EmitPrintTrainerMessage	(asm_overlay_12_battle_controller.s.o)
-  02263840 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263848 00000030 .text   BattleController_EmitSetStatus2Effect	(asm_overlay_12_battle_controller.s.o)
-  0226385E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226386E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263876 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263878 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263878 00000030 .text   BattleController_EmitCopyStatus2Effect	(asm_overlay_12_battle_controller.s.o)
-  02263890 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022638A0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022638A8 00000044 .text   BattleController_EmitPrintReturnMessage	(asm_overlay_12_battle_controller.s.o)
-  022638C8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022638DC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022638E4 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022638EC 0000004C .text   BattleController_EmitPrintSendOutMessage	(asm_overlay_12_battle_controller.s.o)
-  022638EC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263918 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226392C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263934 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263938 00000018 .text   BattleController_EmitPrintEncounterMessage	(asm_overlay_12_battle_controller.s.o)
-  02263938 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263948 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263950 0000004C .text   BattleController_EmitPrintFirstSendOutMessage	(asm_overlay_12_battle_controller.s.o)
-  02263962 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226397A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226398E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263998 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226399C 0000001C .text   ov12_0226399C	(asm_overlay_12_battle_controller.s.o)
-  0226399C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022639AE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022639B6 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022639B8 00000048 .text   ov12_022639B8	(asm_overlay_12_battle_controller.s.o)
-  022639B8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022639C2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022639C8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022639F0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022639FE 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263A00 0000001C .text   ov12_02263A00	(asm_overlay_12_battle_controller.s.o)
-  02263A00 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263A12 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263A1A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263A1C 00000130 .text   ov12_02263A1C	(asm_overlay_12_battle_controller.s.o)
-  02263A1C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263A2E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263A38 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263A44 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263A74 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263AD4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263AEC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263AF6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263B02 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263B1C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263B2E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263B38 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263B4C 00000164 .text   BattleController_EmitBattleMonToPartyMonCopy	(asm_overlay_12_battle_controller.s.o)
-  02263B4C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263BA8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263C7E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263C88 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263CB0 0000001C .text   BattleController_EmitBackgroundSlideIn	(asm_overlay_12_battle_controller.s.o)
-  02263CB0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263CC2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263CCA 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263CCC 0000001C .text   ov12_02263CCC	(asm_overlay_12_battle_controller.s.o)
-  02263CCC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263CDE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263CE6 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263CE8 0000002C .text   BattleControl_EmitPartyStatusHeal	(asm_overlay_12_battle_controller.s.o)
-  02263CE8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263D08 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263D10 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263D14 00000034 .text   ov12_02263D14	(asm_overlay_12_battle_controller.s.o)
-  02263D14 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263D20 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263D26 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263D40 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263D48 00000024 .text   BattleController_EmitPlayMosaicAnimation	(asm_overlay_12_battle_controller.s.o)
-  02263D62 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263D6A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263D6C 00000090 .text   BattleController_EmitChangeForm	(asm_overlay_12_battle_controller.s.o)
-  02263D6C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263DF0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263DF8 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263DFC 0000001C .text   BattleController_EmitSetBattleBackground	(asm_overlay_12_battle_controller.s.o)
-  02263DFC 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263E0E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263E16 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263E18 0000001C .text   ov12_02263E18	(asm_overlay_12_battle_controller.s.o)
-  02263E18 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263E2A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263E32 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263E34 00000028 .text   BattleController_EmitInitStartBallGauge	(asm_overlay_12_battle_controller.s.o)
-  02263E34 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263E44 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263E54 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263E5C 00000028 .text   BattleController_EmitDeleteStartBallGauge	(asm_overlay_12_battle_controller.s.o)
-  02263E6C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263E7C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263E84 00000028 .text   BattleController_EmitInitBallGauge	(asm_overlay_12_battle_controller.s.o)
-  02263E94 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263EA4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263EAC 00000028 .text   BattleController_EmitDeleteBallGauge	(asm_overlay_12_battle_controller.s.o)
-  02263EBC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263ECC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263ED4 0000001C .text   BattleController_EmitLoadBallGfx	(asm_overlay_12_battle_controller.s.o)
-  02263EE6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263EEE 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263EF0 0000001C .text   BattleController_EmitDeleteBallGfx	(asm_overlay_12_battle_controller.s.o)
-  02263EF0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263F02 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F0A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263F0C 00000024 .text   BattleController_EmitIncrementGameStat	(asm_overlay_12_battle_controller.s.o)
-  02263F0C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263F26 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F2E 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263F30 0000005C .text   BattleController_EmitShowWaitMessage	(asm_overlay_12_battle_controller.s.o)
-  02263F30 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02263F38 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F4C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F62 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F70 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F80 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02263F88 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02263F8C 000000AC .text   ov12_02263F8C	(asm_overlay_12_battle_controller.s.o)
-  02263F8C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226401C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264024 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02264038 0000001C .text   ov12_02264038	(asm_overlay_12_battle_controller.s.o)
-  02264038 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226404A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264052 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02264054 0000001C .text   ov12_02264054	(asm_overlay_12_battle_controller.s.o)
-  02264054 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264066 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226406E 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02264070 0000001C .text   BattleController_EmitPrintResultMessage	(asm_overlay_12_battle_controller.s.o)
-  02264070 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264082 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226408A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226408C 00000094 .text   BattleController_EmitRunAwayMessage	(asm_overlay_12_battle_controller.s.o)
-  0226408C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264094 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022640A8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022640BC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022640CC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022640DC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022640F2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264100 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264110 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264118 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02264120 0000005C .text   BattleController_EmitForefitMessage	(asm_overlay_12_battle_controller.s.o)
-  02264120 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264126 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226413A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264150 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226415E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226416E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264178 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226417C 000000AC .text   BattleController_EmitSwapToSubstituteSprite	(asm_overlay_12_battle_controller.s.o)
-  0226417C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226420C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264214 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02264228 00000040 .text   BattleController_EmitPlayMoveSE	(asm_overlay_12_battle_controller.s.o)
-  02264228 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  0226425A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264264 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  02264268 00000020 .text   BattleController_EmitPlaySong	(asm_overlay_12_battle_controller.s.o)
-  02264268 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264280 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264288 00000068 .text   BattleController_EmitSetBattleResults	(asm_overlay_12_battle_controller.s.o)
-  0226428E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226429C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022642AE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022642C4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022642D2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022642E2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022642EC 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022642F0 0000001C .text   BattleController_EmitBlankMessage	(asm_overlay_12_battle_controller.s.o)
-  022642F0 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264302 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226430A 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  0226430C 00000028 .text   ov12_0226430C	(asm_overlay_12_battle_controller.s.o)
-  0226430C 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  02264318 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226432C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264334 00000094 .text   ov12_02264334	(asm_overlay_12_battle_controller.s.o)
-  022643AE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022643BE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022643C6 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022643C8 00000200 .text   ov12_022643C8	(asm_overlay_12_battle_controller.s.o)
-  022643C8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022643F2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226444E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264462 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264554 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226457C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022645A0 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022645C8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022645C8 00000030 .text   ov12_022645C8	(asm_overlay_12_battle_controller.s.o)
-  022645D6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022645EE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022645F6 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
-  022645F8 00000000 .text   $t	(asm_overlay_12_battle_controller.s.o)
-  022645F8 0000022C .text   ov12_022645F8	(asm_overlay_12_battle_controller.s.o)
-  0226460E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264614 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226462E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226463E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264650 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226465C 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226466A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264676 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264680 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226468A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022646A2 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022646AC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022646C0 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022646CE 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022646F4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264700 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226470A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264724 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226472E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264742 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264750 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  02264776 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226479A 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022647A4 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022647BC 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022647C6 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022647DA 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  022647E8 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226480E 00000000 .text   $b	(asm_overlay_12_battle_controller.s.o)
-  0226481C 00000000 .text   $d	(asm_overlay_12_battle_controller.s.o)
+  02262098 00000096 .text   BattleController_SendLocalMessage	(src_battle_battle_controller.c.o)
+  02262098 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262130 00000094 .text   BattleController_RecvMessage	(src_battle_battle_controller.c.o)
+  02262130 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022621C4 0000007A .text   BattleSystem_TryRecvMessage	(src_battle_battle_controller.c.o)
+  022621C4 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262240 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262240 00000088 .text   SendMessage	(src_battle_battle_controller.c.o)
+  022622C4 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022622C8 00000026 .text   BattleController_EmitSetupBattleUI	(src_battle_battle_controller.c.o)
+  022622C8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022622F0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022622F0 00000100 .text   BattleController_EmitSetEncounter	(src_battle_battle_controller.c.o)
+  022623E8 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022623F0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022623F0 00000134 .text   BattleController_EmitShowEncounter	(src_battle_battle_controller.c.o)
+  02262518 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02262524 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262524 00000210 .text   BattleController_EmitShowPokemon	(src_battle_battle_controller.c.o)
+  02262718 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02262734 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262734 0000016C .text   BattleController_EmitReturnPokemon	(src_battle_battle_controller.c.o)
+  02262880 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022628A0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022628A0 000000B8 .text   BattleController_EmitOpenCaptureBall	(src_battle_battle_controller.c.o)
+  02262950 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02262958 0000001A .text   BattleController_EmitDeletePokemon	(src_battle_battle_controller.c.o)
+  02262958 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262974 00000030 .text   BattleController_EmitSetTrainerEncounter	(src_battle_battle_controller.c.o)
+  02262974 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022629A4 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022629A4 00000038 .text   BattleController_EmitTrainerThrowBall	(src_battle_battle_controller.c.o)
+  022629D8 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022629DC 0000001A .text   BattleController_EmitTrainerSlideOut	(src_battle_battle_controller.c.o)
+  022629DC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022629F8 00000034 .text   BattleController_EmitTrainerSlideIn	(src_battle_battle_controller.c.o)
+  022629F8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262A2C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262A2C 00000138 .text   BattleController_EmitSlideHealthBoxIn	(src_battle_battle_controller.c.o)
+  02262B50 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02262B64 0000001A .text   BattleController_EmitSlideHealthBoxOut	(src_battle_battle_controller.c.o)
+  02262B64 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262B80 000003A2 .text   BattleController_EmitSetCommandSelectionMenu	(src_battle_battle_controller.c.o)
+  02262B80 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262ED0 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02262EE0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262F24 0000001A .text   BattleController_EmitSelectedCommand	(src_battle_battle_controller.c.o)
+  02262F24 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262F40 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262F40 000000A0 .text   BattleController_EmitShowMoveSelectMenu	(src_battle_battle_controller.c.o)
+  02262FD0 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02262FE0 0000001A .text   BattleController_EmitSelectedMove	(src_battle_battle_controller.c.o)
+  02262FE0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262FFC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02262FFC 00000120 .text   BattleCommand_EmitShowTargetSelectMenu	(src_battle_battle_controller.c.o)
+  02263108 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  0226311C 0000001A .text   BattleController_EmitSelectedTarget	(src_battle_battle_controller.c.o)
+  0226311C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263138 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263138 00000188 .text   BattleController_EmitShowBagMenu	(src_battle_battle_controller.c.o)
+  022632AC 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022632C0 0000001A .text   BattleController_EmitSelectedBagItem	(src_battle_battle_controller.c.o)
+  022632C0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022632DC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022632DC 00000084 .text   BattleController_EmitShowPartyMenu	(src_battle_battle_controller.c.o)
+  02263354 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263360 0000001A .text   BattleController_EmitPartyMenuResult	(src_battle_battle_controller.c.o)
+  02263360 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226337C 0000003A .text   BattleController_EmitShowYesNoMenu	(src_battle_battle_controller.c.o)
+  0226337C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022633B8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022633B8 00000038 .text   BattleController_EmitPrintAttackMessage	(src_battle_battle_controller.c.o)
+  022633E8 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022633F0 0000001C .text   BattleController_EmitPrintMessage	(src_battle_battle_controller.c.o)
+  022633F0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226340C 00000030 .text   BattleController_EmitPlayMoveAnimation	(src_battle_battle_controller.c.o)
+  0226340C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226343C 0000002E .text   BattleController_SetMoveAnimationAttackerToDefender	(src_battle_battle_controller.c.o)
+  0226343C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226346C 0000001A .text   BattleController_EmitFlickerBattlerSprite	(src_battle_battle_controller.c.o)
+  0226346C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263488 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263488 000000DC .text   BattleController_EmitUpdateHPGauge	(src_battle_battle_controller.c.o)
+  0226354C 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263564 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263564 00000084 .text   BattleController_EmitUpdateExpGauge	(src_battle_battle_controller.c.o)
+  022635E0 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022635E8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022635E8 00000114 .text   BattleController_EmitPlayFaintingSequence	(src_battle_battle_controller.c.o)
+  022636E4 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022636FC 0000001E .text   BattleController_EmitPlaySound	(src_battle_battle_controller.c.o)
+  022636FC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226371C 0000001A .text   BattleController_EmitFadeOut	(src_battle_battle_controller.c.o)
+  0226371C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263738 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263738 000000D0 .text   BattleController_EmitToggleVanishMessage	(src_battle_battle_controller.c.o)
+  022637F0 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263808 00000020 .text   BattleController_EmitSetStatusIcon	(src_battle_battle_controller.c.o)
+  02263808 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263828 00000020 .text   BattleController_EmitPrintTrainerMessage	(src_battle_battle_controller.c.o)
+  02263828 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263848 0000002E .text   BattleController_EmitPlayStatusEffect	(src_battle_battle_controller.c.o)
+  02263848 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263878 00000030 .text   BattleController_EmitPlayStatusEffectAttackerToDefender	(src_battle_battle_controller.c.o)
+  02263878 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022638A8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022638A8 00000044 .text   BattleController_EmitPrintReturnMessage	(src_battle_battle_controller.c.o)
+  022638E4 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022638EC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022638EC 0000004C .text   BattleController_EmitPrintSendOutMessage	(src_battle_battle_controller.c.o)
+  02263934 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263938 00000018 .text   BattleController_EmitPrintEncounterMessage	(src_battle_battle_controller.c.o)
+  02263938 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263950 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263950 0000004C .text   BattleController_EmitPrintLeadMonMessage	(src_battle_battle_controller.c.o)
+  02263998 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  0226399C 0000001A .text   BattleController_EmitPlayLevelUpAnimation	(src_battle_battle_controller.c.o)
+  0226399C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022639B8 00000046 .text   BattleController_EmitSetAlertMessage	(src_battle_battle_controller.c.o)
+  022639B8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263A00 0000001A .text   BattleController_EmitAlertMessageAck	(src_battle_battle_controller.c.o)
+  02263A00 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263A1C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263A1C 00000130 .text   BattleController_EmitRefreshHPGauge	(src_battle_battle_controller.c.o)
+  02263B38 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263B4C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263B4C 00000164 .text   BattleController_EmitUpdatePartyMon	(src_battle_battle_controller.c.o)
+  02263C88 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263CB0 0000001A .text   BattleController_EmitSlideInBackground	(src_battle_battle_controller.c.o)
+  02263CB0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263CCC 0000001A .text   BattleController_EmitStopGaugeAnimation	(src_battle_battle_controller.c.o)
+  02263CCC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263CE8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263CE8 0000002C .text   BattleController_EmitRefreshPartyStatus	(src_battle_battle_controller.c.o)
+  02263D10 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263D14 00000034 .text   BattleController_EmitForgetMove	(src_battle_battle_controller.c.o)
+  02263D14 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263D48 00000022 .text   BattleController_EmitPlayMosaicAnimation	(src_battle_battle_controller.c.o)
+  02263D48 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263D6C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263D6C 00000090 .text   BattleController_EmitChangeForm	(src_battle_battle_controller.c.o)
+  02263DF8 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263DFC 0000001A .text   BattleController_EmitUpdateBackground	(src_battle_battle_controller.c.o)
+  02263DFC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263E18 0000001A .text   BattleController_EmitClearTouchScreen	(src_battle_battle_controller.c.o)
+  02263E18 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263E34 00000028 .text   BattleController_EmitShowInitialPartyGauge	(src_battle_battle_controller.c.o)
+  02263E34 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263E5C 00000028 .text   BattleController_EmitHideInitialPartyGauge	(src_battle_battle_controller.c.o)
+  02263E5C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263E84 00000028 .text   BattleController_EmitShowPartyGauge	(src_battle_battle_controller.c.o)
+  02263E84 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263EAC 00000028 .text   BattleController_EmitHidePartyGauge	(src_battle_battle_controller.c.o)
+  02263EAC 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263ED4 0000001A .text   BattleController_EmitLoadPartyGaugeGraphics	(src_battle_battle_controller.c.o)
+  02263ED4 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263EF0 0000001A .text   BattleController_EmitFreePartyGaugeGraphics	(src_battle_battle_controller.c.o)
+  02263EF0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263F0C 00000022 .text   BattleController_EmitIncrementGameStat	(src_battle_battle_controller.c.o)
+  02263F0C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263F30 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263F30 0000005C .text   BattleController_EmitPrintLinkWaitMessage	(src_battle_battle_controller.c.o)
+  02263F88 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02263F8C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02263F8C 000000AC .text   BattleController_EmitRestoreSprite	(src_battle_battle_controller.c.o)
+  02264024 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02264038 0000001A .text   BattleController_EmitSpriteToOAM	(src_battle_battle_controller.c.o)
+  02264038 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264054 0000001A .text   BattleController_EmitOAMToSprite	(src_battle_battle_controller.c.o)
+  02264054 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264070 0000001A .text   BattleController_EmitPrintResultMessage	(src_battle_battle_controller.c.o)
+  02264070 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226408C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226408C 00000094 .text   BattleController_EmitPrintEscapeMessage	(src_battle_battle_controller.c.o)
+  02264118 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02264120 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264120 0000005C .text   BattleController_EmitPrintForefitMessage	(src_battle_battle_controller.c.o)
+  02264178 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  0226417C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226417C 000000AC .text   BattleController_EmitRefreshSprite	(src_battle_battle_controller.c.o)
+  02264214 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02264228 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264228 00000040 .text   BattleController_EmitPlayMoveHitSoundEffect	(src_battle_battle_controller.c.o)
+  02264264 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  02264268 00000020 .text   BattleController_EmitPlayMusic	(src_battle_battle_controller.c.o)
+  02264268 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264288 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264288 00000068 .text   BattleController_EmitSetBattleResults	(src_battle_battle_controller.c.o)
+  022642EC 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022642F0 0000001A .text   BattleController_EmitClearMessageBox	(src_battle_battle_controller.c.o)
+  022642F0 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  0226430C 00000028 .text   BattleController_EmitClearCommand	(src_battle_battle_controller.c.o)
+  0226430C 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  02264334 00000092 .text   BattleController_RecvCommMessage	(src_battle_battle_controller.c.o)
+  02264334 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022643C8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022643C8 00000200 .text   BattleController_SetMoveAnimation	(src_battle_battle_controller.c.o)
+  022645A0 00000000 .text   $d	(src_battle_battle_controller.c.o)
+  022645C8 0000002E .text   ov12_022645C8	(src_battle_battle_controller.c.o)
+  022645C8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022645F8 00000000 .text   $t	(src_battle_battle_controller.c.o)
+  022645F8 0000022C .text   PartyGaugeData_New	(src_battle_battle_controller.c.o)
+  0226481C 00000000 .text   $d	(src_battle_battle_controller.c.o)
   02264824 00000000 .text   $t	(src_battle_battle_hp_bar.c.o)
   02264824 000000C8 .text   ov12_02264824	(src_battle_battle_hp_bar.c.o)
   022648E0 00000000 .text   $d	(src_battle_battle_hp_bar.c.o)
@@ -94471,7 +94240,7 @@
   0226BF04 000000D4 .text   ov12_0226BF04	(src_battle_overlay_12_0226BEC4.c.o)
   0226BFD4 00000000 .text   $d	(src_battle_overlay_12_0226BEC4.c.o)
   0226BFD8 00000308 .rodata .rodata	(asm_overlay_12_022378C0.s.o)
-  0226C2E0 00000009 .rodata sBadgePenalty$18048	(src_battle_battle_system.c.o)
+  0226C2E0 00000009 .rodata sBadgePenalty$18059	(src_battle_battle_system.c.o)
   0226C2EC 00000788 .rodata .rodata	(asm_overlay_12_battle_command.s.o)
   0226C2EC 00000000 .rodata sStandardBallCatchRates	(asm_overlay_12_battle_command.s.o)
   0226C2F0 00000000 .rodata sTrumpCardPowerTable	(asm_overlay_12_battle_command.s.o)
