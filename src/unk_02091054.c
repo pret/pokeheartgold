@@ -99,7 +99,6 @@ static const SealTypeValues sSealTypeValues[81] = {
     [SEAL_TWINKLE] = { 0x77, msg_0015_00080, 0x84, 0, msg_0434_00051 },
 };
 
-// Has something to do with seals...
 u8 CapsuleMenu_GetSealMemberIdx(u32 idx) {
     GF_ASSERT(idx < NELEMS(sSealTypeValues));
     return sSealTypeValues[idx].memberIdx;
