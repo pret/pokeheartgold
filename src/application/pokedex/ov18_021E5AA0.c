@@ -66,7 +66,7 @@ BOOL Pokedex_Exit(OverlayManager *man, int *state) {
     OverlayManager_FreeData(man);
     Heap_Destroy(HEAP_ID_POKEDEX_APP);
     GF_SndHandleSetPlayerVolume(1, 127);
-    sub_02004B10();
+    Sound_LoadHeapStateBGMAndResetSubScene();
     if (!DSProt_DetectNotDummy(ov18_021E5C3C)) {
         Heap_AllocAtEnd(HEAP_ID_3, 1000);
     }

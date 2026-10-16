@@ -1,55 +1,55 @@
 {
-  "header": "fielddata/script/scr_seq/event_R39R0101.h",
-  "objects": [
-    {
-      "id": "obj_R39R0101_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_R39R0101_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 4,
-      "y": 0
-    },
-    {
-      "id": "obj_R39R0101_middlewoman1_2",
-      "spriteId": "SPRITE_MIDDLEWOMAN1_2",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_R39R0101_001 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 5,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 6,
-      "z": 10,
-      "header": "MAP_ROUTE_39",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1,
-      "z": 8,
-      "header": "MAP_ROUTE_39_MOOMOO_FARM_STABLE",
-      "anchor": 1,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R39R0101.h",
+    "objects": [
+        {
+            "id": "obj_R39R0101_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_R39R0101_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 4,
+            "y": 0
+        },
+        {
+            "id": "obj_R39R0101_middlewoman1_2",
+            "spriteId": "SPRITE_MIDDLEWOMAN1_2",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_R39R0101_001 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 5,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 6,
+            "z": 10,
+            "header": "MAP_ROUTE_39",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1,
+            "z": 8,
+            "header": "MAP_ROUTE_39_MOOMOO_FARM_STABLE",
+            "anchor": 1,
+            "y": 0
+        }
+    ]
 }

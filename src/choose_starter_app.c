@@ -2,10 +2,10 @@
 
 #include "global.h"
 
-#include "files/application/choose_starter/choose_starter_main_res.naix"
-#include "files/application/choose_starter/choose_starter_sub_res.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0190.h"
+#include "application/choose_starter/choose_starter_main_res.naix"
+#include "application/choose_starter/choose_starter_sub_res.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0190.h"
 
 #include "camera.h"
 #include "camera_translation.h"

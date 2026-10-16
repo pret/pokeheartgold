@@ -3,8 +3,8 @@
 #include "constants/items.h"
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0271.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0271.h"
 
 #include "map_header.h"
 #include "math_util.h"

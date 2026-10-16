@@ -5,8 +5,8 @@
 #include "constants/sndseq.h"
 
 #include "credits/credits.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0040.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0040.h"
 
 #include "bg_window.h"
 #include "field_bgm.h"

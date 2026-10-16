@@ -311,8 +311,8 @@ BOOL CheckFlag982(SaveVarsFlags *state) {
     return CheckScriptFlag(state, FLAG_UNK_982);
 }
 
-BOOL CheckFlag09A(SaveVarsFlags *state) {
-    return CheckScriptFlag(state, FLAG_UNK_09A);
+BOOL CheckUnlockedPokeBallsInMarts(SaveVarsFlags *state) {
+    return CheckScriptFlag(state, FLAG_WATCHED_CATCHING_TUTORIAL);
 }
 
 BOOL CheckFlag997(SaveVarsFlags *state) {

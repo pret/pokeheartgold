@@ -16,6 +16,6 @@ void sub_02058720(void);
 BOOL sub_02058740(void);
 void sub_020588CC(void);
 void sub_020588DC(void);
-int sub_020881C0(s16 *quantity, u16 a1);
+int AdjustQuantityUsingDPad(s16 *quantity, u16 a1);
 
 #endif // POKEHEARTGOLD_UNK_02058034_H

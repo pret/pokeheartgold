@@ -320,7 +320,7 @@ Static main
     Object main.nef.p/src_application_check_savedata.c.o
     Object main.nef.p/src_save_data_read_error.c.o
     Object main.nef.p/src_save_data_write_error.c.o
-    Object main.nef.p/asm_unk_02092B04.s.o
+    Object main.nef.p/src_unk_02092B04.c.o
     Object main.nef.p/src_unk_02092BB8.c.o
     Object main.nef.p/src_unk_02092BE8.c.o
     Object main.nef.p/src_mom_gift.c.o
@@ -606,7 +606,9 @@ Overlay OVY_14
 Overlay OVY_15
 {
     After OVY_14
-    Object main.nef.p/asm_overlay_15.s.o
+    Object main.nef.p/src_application_bag_bag_app_main.c.o
+    Object main.nef.p/src_application_bag_bag_app_window.c.o
+    Object main.nef.p/src_application_bag_bag_app_sprite.c.o
 }
 Overlay OVY_16
 {

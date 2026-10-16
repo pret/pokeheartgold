@@ -2069,6 +2069,7 @@ BOOL ScrCmd_ChooseStarter(ScriptContext *ctx) {
     return TRUE;
 }
 
+// unused debug commands?
 BOOL ScrCmd_333(ScriptContext *ctx) { // todo: bag select screen
     void **p_work;
     u8 pocketType = ScriptReadByte(ctx) != 0 ? POCKET_TYPE_BERRIES : POCKET_TYPE_ITEMS;

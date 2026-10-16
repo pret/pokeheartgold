@@ -2,11 +2,11 @@
 
 #include "global.h"
 
-#include "files/data/namein.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0197.h"
-#include "files/msgdata/msg/msg_0249.h"
-#include "files/msgdata/msg/msg_0254.h"
+#include "data/namein.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0197.h"
+#include "msgdata/msg/msg_0249.h"
+#include "msgdata/msg/msg_0254.h"
 
 #include "bg_window.h"
 #include "filesystem.h"

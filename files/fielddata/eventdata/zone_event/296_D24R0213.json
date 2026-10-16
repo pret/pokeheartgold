@@ -1,128 +1,128 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0213.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
-      "type": 0,
-      "x": 4,
-      "z": 4,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
-      "type": 0,
-      "x": 8,
-      "z": 4,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
-      "type": 0,
-      "x": 4,
-      "z": 3,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
-      "type": 0,
-      "x": 8,
-      "z": 3,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D24R0213_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_HEAL_POWDER",
-      "scriptId": "std_itemball_d24r0213_heal_powder",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 8,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0213_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_ENERGY_ROOT",
-      "scriptId": "std_itemball_d24r0213_energy_root",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 8,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0213_monstarball_3",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_SITRUS_BERRY",
-      "scriptId": "std_itemball_d24r0213_sitrus_berry",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 12,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0213_monstarball_4",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_MOON_STONE",
-      "scriptId": "std_itemball_d24r0213_moon_stone",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 12,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 6,
-      "z": 17,
-      "header": "MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM",
-      "anchor": 1,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_D24R0213_000 + 1",
-      "x": 6,
-      "z": 3,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40D0"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D24R0213.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
+            "type": 0,
+            "x": 4,
+            "z": 4,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
+            "type": 0,
+            "x": 8,
+            "z": 4,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
+            "type": 0,
+            "x": 4,
+            "z": 3,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_D24R0213_001 + 1",
+            "type": 0,
+            "x": 8,
+            "z": 3,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D24R0213_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_HEAL_POWDER",
+            "scriptId": "std_itemball_d24r0213_heal_powder",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 8,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0213_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_ENERGY_ROOT",
+            "scriptId": "std_itemball_d24r0213_energy_root",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 8,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0213_monstarball_3",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_SITRUS_BERRY",
+            "scriptId": "std_itemball_d24r0213_sitrus_berry",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 12,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0213_monstarball_4",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0213_MOON_STONE",
+            "scriptId": "std_itemball_d24r0213_moon_stone",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 12,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 6,
+            "z": 17,
+            "header": "MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM",
+            "anchor": 1,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_D24R0213_000 + 1",
+            "x": 6,
+            "z": 3,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40D0"
+        }
+    ]
 }

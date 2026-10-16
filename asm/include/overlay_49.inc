@@ -78,7 +78,7 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
@@ -233,10 +233,10 @@
 .public sub_02039B38
 .public sub_0203A880
 .public sub_02070D84
-.public sub_02077678
-.public sub_02077690
-.public sub_0207769C
-.public sub_020776B4
+.public TypeIconGfx_GetCharFileId
+.public GetMoveTypeAndCategoryIconPlttFileId
+.public TypeIconGfx_GetPlttOverride
+.public TypeIconGfx_GetNarcId
 .public NNS_G2dGetUnpackedCharacterData
 .public NNS_G2dInitOamManagerModule
 .public NNS_G3dAnmObjDisableID

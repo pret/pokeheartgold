@@ -4,9 +4,9 @@
 
 #include "constants/ranking.h"
 
-#include "files/application/guinness.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0421.h"
+#include "application/guinness.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0421.h"
 
 #include "bg_window.h"
 #include "font.h"

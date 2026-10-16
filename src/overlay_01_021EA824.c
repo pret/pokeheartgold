@@ -26,7 +26,7 @@ int ov01_021EA85C(FogData *fog) {
 }
 
 u16 ov01_021EA860(FogData *fog) {
-    return fog->unk10;
+    return fog->color;
 }
 
 void ov01_021EA864(FogData *fog, s32 arg1, BOOL enable, GXFogBlend fogMode, GXFogSlope fogSlope, int fogOffset) {
@@ -45,14 +45,14 @@ void ov01_021EA864(FogData *fog, s32 arg1, BOOL enable, GXFogBlend fogMode, GXFo
     G3X_SetFog(fog->enable, fog->fogMode, fog->fogSlope, fog->fogOffset);
 }
 
-void ov01_021EA89C(FogData *fog, u32 arg1, u16 arg2, u32 arg3) {
-    if (arg1 & 1 << 4) {
-        fog->unk10 = arg2;
+void ov01_021EA89C(FogData *fog, u32 flag, u16 color, u32 alpha) {
+    if (flag & 1 << 4) {
+        fog->color = color;
     }
-    if (arg1 & 1 << 5) {
-        fog->unk14 = arg3;
+    if (flag & 1 << 5) {
+        fog->alpha = alpha;
     }
-    reg_G3X_FOG_COLOR = fog->unk10 | (fog->unk14 << 16);
+    G3X_SetFogColor(fog->color, fog->alpha);
 }
 
 void ov01_021EA8C4(FogData *fog, const u32 *src) {

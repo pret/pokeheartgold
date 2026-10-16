@@ -1,6 +1,6 @@
 #include "unk_0200CE7C.h"
 
-void sub_0200CE7C(MessagePrinter *msgPrinter, u8 glyphId, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y) {
+void FontSpecialChars_DrawPartyScreenText(MessagePrinter *msgPrinter, u8 glyphId, u32 num, u32 ndigits, PrintingMode mode, Window *window, u32 x, u32 y) {
     sub_0200CDAC(msgPrinter, glyphId, window, x, y);
     PrintUIntOnWindow(msgPrinter, num, ndigits, mode, window, x + 16, y);
 }

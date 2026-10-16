@@ -139,7 +139,7 @@ _021E5A04:
 	bne _021E5A6C
 	mov r0, #1
 	mov r1, #0x97
-	bl sub_020880CC
+	bl App_StartScreenFade
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -174,7 +174,7 @@ _021E5A5A:
 	bl ov105_021E5BCC
 	add r0, r7, #0
 	mov r1, #0x97
-	bl sub_020880CC
+	bl App_StartScreenFade
 	add r0, r7, #0
 	str r0, [r6]
 _021E5A6C:

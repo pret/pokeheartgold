@@ -236,8 +236,8 @@ BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp) {
         sub_0200FBF4(PM_LCD_BOTTOM, RGB_BLACK);
         ResetVisibleHardwareWindows(PM_LCD_TOP);
         ResetVisibleHardwareWindows(PM_LCD_BOTTOM);
-        sub_020210BC();
-        sub_02021148(2);
+        EnableTouchPad();
+        InitializeTouchPad(2);
         break;
     case 1:
         PokegearApp_InitBGs(pokegearApp);
@@ -257,7 +257,7 @@ BOOL PokegearApp_LoadGFX(PokegearAppData *pokegearApp) {
 }
 
 BOOL PokegearApp_UnloadGFX(PokegearAppData *pokegearApp) {
-    sub_02021238();
+    DisableTouchPad();
     Main_SetVBlankIntrCB(NULL, pokegearApp);
     Pokegear_RemoveAppSwitchButtons(pokegearApp);
     PokegearApp_UnloadGraphics(pokegearApp);
