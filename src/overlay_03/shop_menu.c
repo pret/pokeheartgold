@@ -517,7 +517,7 @@ static void ov03_022573D4(MartData *data, u32 arg1) {
             } else {
                 // These msg ids are stubbed out in English
                 msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0434, HEAP_ID_FIELD2);
-                string = NewString_ReadMsgData(msgData, sub_020910B8(itemID));
+                string = NewString_ReadMsgData(msgData, CapsuleMenu_GetSealNonAlphabetIndex(itemID));
                 DestroyMsgData(msgData);
             }
             AddTextPrinterParameterizedWithColor(&data->windows[1], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);

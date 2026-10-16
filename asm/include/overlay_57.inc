@@ -203,8 +203,8 @@
 .public sub_02074490
 .public sub_0207449C
 .public sub_020744A8
-.public sub_02091054
-.public sub_0209106C
+.public CapsuleMenu_GetSealMemberIdx
+.public CapsuleMenu_GetSealNameIndex
 .public NNS_G2dSetupSoftwareSpriteCamera
 .public G2x_SetBlendAlpha_
 .public G3X_SetFog

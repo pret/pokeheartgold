@@ -989,7 +989,7 @@ ov57_0223809C: ; 0x0223809C
 	add r3, r5, #0
 	bl SpriteSystem_LoadPaletteBuffer
 	add r0, r7, #0
-	bl sub_02091054
+	bl CapsuleMenu_GetSealMemberIdx
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -1239,7 +1239,7 @@ _0223828C:
 	str r0, [sp, #0x24]
 	str r0, [sp, #0x28]
 	ldrb r0, [r4, #4]
-	bl sub_02091054
+	bl CapsuleMenu_GetSealMemberIdx
 	ldr r0, _022382E8 ; =0x00004E20
 	add r1, r6, #0
 	add r0, r5, r0
@@ -1453,7 +1453,7 @@ ov57_02238438: ; 0x02238438
 	lsl r4, r7, #4
 	add r6, r5, r0
 	ldrb r0, [r6, r4]
-	bl sub_02091054
+	bl CapsuleMenu_GetSealMemberIdx
 	add r0, r5, #0
 	add r0, #0xe0
 	ldr r1, _02238488 ; =0x00004E20
@@ -2141,7 +2141,7 @@ _02238972:
 	add r1, r7, r4
 	lsl r0, r0, #4
 	ldrb r0, [r1, r0]
-	bl sub_02091054
+	bl CapsuleMenu_GetSealMemberIdx
 	add r3, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -5526,7 +5526,7 @@ _0223A43E:
 	add r1, r4, r6
 	lsl r0, r0, #4
 	ldrb r0, [r1, r0]
-	bl sub_0209106C
+	bl CapsuleMenu_GetSealNameIndex
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xec
@@ -6978,7 +6978,7 @@ _0223B05A:
 	add r1, #0xd4
 	str r0, [r1]
 	ldrb r0, [r6, r5]
-	bl sub_0209106C
+	bl CapsuleMenu_GetSealNameIndex
 	add r1, r0, #0
 	add r0, r4, #0
 	add r0, #0xec
@@ -7021,7 +7021,7 @@ _0223B0CC:
 	mov r0, #0x35
 	lsl r0, r0, #4
 	ldrb r0, [r1, r0]
-	bl sub_0209106C
+	bl CapsuleMenu_GetSealNameIndex
 	add r4, #0xec
 	add r1, r0, #0
 	add r0, r4, #0
