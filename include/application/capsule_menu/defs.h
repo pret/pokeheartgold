@@ -55,4 +55,25 @@ typedef struct CapsuleAppManager {
     NARC *unk_45C;
 } CapsuleAppManager; // size: 0x460
 
+void ov57_022378C0(void);
+void ov57_02237CA8(enum HeapID heapId);
+void ov57_02237CDC(enum HeapID heapId);
+void ov57_02237CEC(BgConfig *bgConfig);
+void ov57_02237E38(void *cbArg);
+u8 ov57_02237E78(CapsuleAppData *a0);
+void ov57_02237E80(CapsuleAppData *a0, u8 a1);
+void ov57_022383AC(CapsuleAppManager *data);
+void ov57_022386F0(CapsuleAppManager *data);
+void ov57_02238714(CapsuleAppManager *data);
+GF3DVramMan *ov57_02238B28(void);
+void ov57_02238BCC(void);
+void ov57_02238C0C(void);
+void ov57_02239058(CapsuleGraphicsManager *a0);
+void ov57_022390F4(CapsuleGraphicsManager *a0);
+void ov57_022395B8(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
+void ov57_02239670(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
+BOOL ov57_0223A0E0(CapsuleAppManager *data);
+void ov57_0223BB5C(void);
+void ov57_0223BB84(CapsuleAppManager *data);
+
 #endif // GUARD_APPLICATION_CAPSULE_MENU_DEFS_H
