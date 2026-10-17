@@ -1,6 +1,6 @@
 
 #pragma once
-.public sub_02020DA4
+.public MTX_Rot33Angles
 .public GF_AssertFail
 .public MapObject_GetPriorityPlusValue
 .public MapObject_GetFieldSystem
