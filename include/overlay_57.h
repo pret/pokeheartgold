@@ -7,7 +7,7 @@
 #include "overlay_manager.h"
 #include "pokemon_types_def.h"
 
-typedef struct UnkStruct_0206B984 {
+typedef struct CapsuleAppData {
     u32 partyCount;
     Pokemon *mons[PARTY_SIZE];
     Party *party;
@@ -17,7 +17,7 @@ typedef struct UnkStruct_0206B984 {
     void *menuInputStatePtr;
     u8 unk30;
     u8 unk31;
-} UnkStruct_0206B984;
+} CapsuleAppData;
 
 int ov57_022378DC(OverlayManager *manager, int *state);
 int ov57_02237AF8(OverlayManager *manager, int *state);

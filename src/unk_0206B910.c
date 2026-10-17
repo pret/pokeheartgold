@@ -30,7 +30,7 @@ FS_EXTERN_OVERLAY(OVY_57);
 
 typedef struct UnkStruct_0206B910 {
     u8 filler00[4];
-    UnkStruct_0206B984 *unk04;
+    CapsuleAppData *unk04;
     PartyMenuArgs *partyMenu;
     SaveData *saveData;
     u32 state;
@@ -70,8 +70,8 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     UnkStruct_0206B910 *r4 = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206B910));
     memset(r4, 0, sizeof(UnkStruct_0206B910));
     r4->saveData = saveData;
-    r4->unk04 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0206B984));
-    memset(r4->unk04, 0, sizeof(UnkStruct_0206B984));
+    r4->unk04 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(CapsuleAppData));
+    memset(r4->unk04, 0, sizeof(CapsuleAppData));
     r4->unk04->options = Save_PlayerData_GetOptionsAddr(saveData);
     r4->unk04->saveData = saveData;
     r4->unk04->menuInputStatePtr = &fieldSystem->menuInputState;
@@ -82,7 +82,7 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
 
 static BOOL sub_0206B984(TaskManager *taskManager) {
     UnkStruct_0206B910 *r7 = TaskManager_GetEnvironment(taskManager);
-    UnkStruct_0206B984 *r6 = r7->unk04;
+    CapsuleAppData *r6 = r7->unk04;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     switch (r7->state) {
     case 0:

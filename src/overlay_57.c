@@ -2,6 +2,8 @@
 
 #include <nitro/sinit.h>
 
+#include "application/capsule_menu/defs.h"
+
 #include "bg_window.h"
 #include "gf_3d_vramman.h"
 #include "menu_input_state.h"
@@ -15,69 +17,26 @@
 FS_EXTERN_OVERLAY(OVY_6);
 FS_EXTERN_OVERLAY(OVY_7);
 
-typedef struct Overlay57Data_Sub004 {
-    int partyIdx;
-    CAPSULE *capsule;
-} Overlay57Data_Sub004;
-
-typedef struct Overlay57Data_Sub0D4 {
-    int unk_000;
-    u8 filler_004[4];
-    SpriteSystem *unk_008;
-    SpriteManager *unk_00C;
-    BgConfig *unk_010;
-    PaletteData *unk_014;
-    u8 filler_018[0xD8];
-    PokepicManager *unk_0F0;
-    u8 filler_0F4[0x24];
-    TouchHitboxController *unk_118;
-    u8 filler_11C[0x58];
-    TouchscreenListMenuSpawner *unk_174;
-} Overlay57Data_Sub0D4;
-
-typedef struct Overlay57Data {
-    UnkStruct_0206B984 *unk_000;
-    Overlay57Data_Sub004 unk_004[MAX_CAPSULES];
-    SEALBAG *unk_064;
-    u8 filler_068[0x6C];
-    Overlay57Data_Sub0D4 unk_0D4;
-    u8 filler_24C[12];
-    GF3DVramMan *unk_258;
-    u8 filler_25C[0x28];
-    UnkStruct_02016EDC *unk_284;
-    u8 filler_288[0x164];
-    int unk_3EC;
-    int unk_3F0;
-    u8 filler_3F4[0x18];
-    MenuInputState unk_40C;
-    u8 filler_410[0x38];
-    int unk_448;
-    int unk_44C;
-    u8 filler_450[8];
-    Pokemon *unk_458;
-    NARC *unk_45C;
-} Overlay57Data; // size: 0x460
-
 void ov57_022378C0(void);
 void ov57_02237CA8(enum HeapID heapId);
 void ov57_02237CDC(enum HeapID heapId);
 void ov57_02237CEC(BgConfig *bgConfig);
 void ov57_02237E38(void *cbArg);
-u8 ov57_02237E78(UnkStruct_0206B984 *a0);
-void ov57_02237E80(UnkStruct_0206B984 *a0, u8 a1);
-void ov57_022383AC(Overlay57Data *data);
-void ov57_022386F0(Overlay57Data *data);
-void ov57_02238714(Overlay57Data *data);
+u8 ov57_02237E78(CapsuleAppData *a0);
+void ov57_02237E80(CapsuleAppData *a0, u8 a1);
+void ov57_022383AC(CapsuleAppManager *data);
+void ov57_022386F0(CapsuleAppManager *data);
+void ov57_02238714(CapsuleAppManager *data);
 GF3DVramMan *ov57_02238B28(void);
 void ov57_02238BCC(void);
 void ov57_02238C0C(void);
-void ov57_02239058(Overlay57Data_Sub0D4 *a0);
-void ov57_022390F4(Overlay57Data_Sub0D4 *a0);
+void ov57_02239058(CapsuleGraphicsManager *a0);
+void ov57_022390F4(CapsuleGraphicsManager *a0);
 void ov57_022395B8(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
 void ov57_02239670(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
-BOOL ov57_0223A0E0(Overlay57Data *data);
+BOOL ov57_0223A0E0(CapsuleAppManager *data);
 void ov57_0223BB5C(void);
-void ov57_0223BB84(Overlay57Data *data);
+void ov57_0223BB84(CapsuleAppManager *data);
 
 static void NitroStaticInit(void) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_6), OVY_LOAD_ASYNC);
@@ -87,8 +46,8 @@ static void NitroStaticInit(void) {
 int ov57_022378DC(OverlayManager *manager, int *state) {
     int i;
     Heap_Create(HEAP_ID_3, HEAP_ID_52, 0x80000);
-    Overlay57Data *data = OverlayManager_CreateAndGetData(manager, sizeof(Overlay57Data), HEAP_ID_52);
-    memset(data, 0, sizeof(Overlay57Data));
+    CapsuleAppManager *data = OverlayManager_CreateAndGetData(manager, sizeof(CapsuleAppManager), HEAP_ID_52);
+    memset(data, 0, sizeof(CapsuleAppManager));
     data->unk_000 = OverlayManager_GetArgs(manager);
     data->unk_45C = NARC_New(NARC_a_1_8_0, HEAP_ID_52);
     data->unk_40C = MenuInputStateMgr_GetState(data->unk_000->menuInputStatePtr);
@@ -107,7 +66,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     data->unk_3F0 = ov57_02237E78(data->unk_000);
     data->unk_064 = SealCase_inventory_Get(data->unk_000->sealCase);
     for (i = 0; i < MAX_CAPSULES; ++i) {
-        CAPSULE *capsule = SealCase_GetCapsuleI(data->unk_000->sealCase, i);
+        BallCapsule *capsule = SealCase_GetCapsuleI(data->unk_000->sealCase, i);
         data->unk_004[i].partyIdx = 0xFF;
         data->unk_004[i].capsule = capsule;
     }
@@ -148,7 +107,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
 }
 
 ov57_02237AF8(OverlayManager *manager, int *state) {
-    Overlay57Data *data = OverlayManager_GetData(manager);
+    CapsuleAppManager *data = OverlayManager_GetData(manager);
     if (!ov57_0223A0E0(data)) {
         return TRUE;
     }
@@ -158,7 +117,7 @@ ov57_02237AF8(OverlayManager *manager, int *state) {
 }
 
 int ov57_02237B20(OverlayManager *manager, int *state) {
-    Overlay57Data *data = OverlayManager_GetData(manager);
+    CapsuleAppManager *data = OverlayManager_GetData(manager);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
@@ -218,8 +177,18 @@ void ov57_02237CDC(enum HeapID heapId) {
 void ov57_02237CEC(BgConfig *bgConfig) {
     GfGfx_DisableEngineAPlanes();
 
-    extern const GraphicsBanks ov57_0223BC90;
-    GraphicsBanks sp10 = ov57_0223BC90;
+    GraphicsBanks sp10 = {
+        GX_VRAM_BG_128_A,
+        GX_VRAM_BGEXTPLTT_NONE,
+        GX_VRAM_SUB_BG_32_H,
+        GX_VRAM_SUB_BGEXTPLTT_NONE,
+        GX_VRAM_OBJ_64_E,
+        GX_VRAM_OBJEXTPLTT_NONE,
+        GX_VRAM_SUB_OBJ_16_I,
+        GX_VRAM_SUB_OBJEXTPLTT_NONE,
+        GX_VRAM_TEX_01_BC,
+        GX_VRAM_TEXPLTT_01_FG,
+    };
     GfGfx_SetBanks(&sp10);
 
     MI_CpuClear32((void *)HW_BG_VRAM, HW_BG_VRAM_SIZE);
@@ -227,13 +196,58 @@ void ov57_02237CEC(BgConfig *bgConfig) {
     MI_CpuClear32((void *)HW_OBJ_VRAM, HW_OBJ_VRAM_SIZE);
     MI_CpuClear32((void *)HW_DB_OBJ_VRAM, HW_DB_OBJ_VRAM_SIZE);
 
-    extern const GraphicsModes ov57_0223BC80;
-    GraphicsModes sp00 = ov57_0223BC80;
+    GraphicsModes sp00 = {
+        GX_DISPMODE_GRAPHICS,
+        GX_BGMODE_0,
+        GX_BGMODE_0,
+        GX_BG0_AS_3D,
+    };
     SetBothScreensModesAndDisable(&sp00);
 
-    extern const BgTemplate ov57_0223BCB8[3];
-    BgTemplate spA8[3];
-    ARRAY_ASSIGN(spA8, ov57_0223BCB8);
+    BgTemplate spA8[3] = {
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x0000,
+         .charBase = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 0,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x2000,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x1000,
+         .charBase = GX_BG_CHARBASE_0x0c000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 2,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x1000,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x3000,
+         .charBase = GX_BG_CHARBASE_0x10000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 3,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+    };
     InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &spA8[0], GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &spA8[1], GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &spA8[2], GF_BG_TYPE_TEXT);
@@ -243,9 +257,64 @@ void ov57_02237CEC(BgConfig *bgConfig) {
     G2_SetBG0Priority(1);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
 
-    extern const BgTemplate ov57_0223BD0C[4];
-    BgTemplate sp38[4];
-    ARRAY_ASSIGN(sp38, ov57_0223BD0C);
+    BgTemplate sp38[4] = {
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x6800,
+         .charBase = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 0,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x7000,
+         .charBase = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 2,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x6000,
+         .charBase = GX_BG_CHARBASE_0x00000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 1,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+        {
+         .x = 0,
+         .y = 0,
+         .bufferSize = 0x800,
+         .baseTile = 0,
+         .size = GF_BG_SCR_SIZE_256x256,
+         .colorMode = GX_BG_COLORMODE_16,
+         .screenBase = GX_BG_SCRBASE_0x7800,
+         .charBase = GX_BG_CHARBASE_0x04000,
+         .bgExtPltt = GX_BG_EXTPLTT_01,
+         .priority = 3,
+         .areaOver = 0,
+         .mosaic = FALSE,
+         },
+    };
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &sp38[0], GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &sp38[1], GF_BG_TYPE_TEXT);
     InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &sp38[2], GF_BG_TYPE_TEXT);
