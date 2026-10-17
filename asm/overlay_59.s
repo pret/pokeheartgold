@@ -8895,7 +8895,7 @@ _0223C202:
 	bne _0223C288
 	ldr r0, [r5, #0x78]
 	ldr r0, [r0, #0x24]
-	bl sub_020154B8
+	bl ParticleSystem_DeleteAllEmitters
 	ldrb r0, [r4, #5]
 	add sp, #0xc
 	add r0, r0, #1
@@ -9007,7 +9007,7 @@ ov59_0223C304: ; 0x0223C304
 	push {r4, lr}
 	add r4, r0, #0
 	bl Thunk_G3X_Reset
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	bl Camera_PushLookAtToNNSGlb
@@ -9024,7 +9024,7 @@ ov59_0223C304: ; 0x0223C304
 	bl NNS_G2dSetupSoftwareSpriteCamera
 	ldr r0, [r4, #0xc]
 	bl PokepicManager_DrawAll
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	ldr r0, _0223C34C ; =0x04000540
 	mov r1, #1
 	str r1, [r0]
@@ -9105,10 +9105,10 @@ ov59_0223C3C0: ; 0x0223C3C0
 	ldr r0, [r4, #0x24]
 	ldr r2, _0223C3D8 ; =ov59_0223C4EC
 	add r3, r4, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, [r4, #0x24]
 	mov r1, #1
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	pop {r4, pc}
 	.balign 4, 0
 _0223C3D8: .word ov59_0223C4EC
@@ -9118,7 +9118,7 @@ _0223C3D8: .word ov59_0223C4EC
 ov59_0223C3DC: ; 0x0223C3DC
 	push {r3, lr}
 	ldr r0, [r0, #0x24]
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	beq _0223C3EC
 	mov r0, #1
@@ -9213,7 +9213,7 @@ _0223C49C:
 	bne _0223C4A4
 	bl GF_AssertFail
 _0223C4A4:
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	pop {r3, r4, r5, pc}
 	nop
 _0223C4AC: .word NNS_GfdDefaultFuncAllocTexVram
@@ -9228,7 +9228,7 @@ ov59_0223C4B4: ; 0x0223C4B4
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015354
+	bl ParticleSystem_RegisterTextureKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -9244,7 +9244,7 @@ ov59_0223C4D0: ; 0x0223C4D0
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015394
+	bl ParticleSystem_RegisterPaletteKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -9309,9 +9309,9 @@ ov59_0223C53C: ; 0x0223C53C
 	ldr r1, _0223C580 ; =ov59_0223C4D0
 	lsl r3, r3, #0xa
 	str r4, [sp, #4]
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	add r4, r0, #0
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	beq _0223C574
 	mov r0, #1
@@ -9336,16 +9336,16 @@ ov59_0223C584: ; 0x0223C584
 	bl ov59_0223C53C
 	str r0, [r4, #0x24]
 	mov r1, #1
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	ldr r2, [r4]
 	mov r0, #0xf4
 	mov r1, #0xa
-	bl sub_02015264
+	bl ParticleSystem_LoadResourceFromNARC
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r2, #0xa
 	mov r3, #1
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov59_0223C584
@@ -9355,7 +9355,7 @@ ov59_0223C5B0: ; 0x0223C5B0
 	push {r4, lr}
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	ldr r0, [r4, #0x24]
 	bl Heap_Free
 	pop {r4, pc}

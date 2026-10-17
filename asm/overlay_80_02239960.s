@@ -15,7 +15,7 @@ ov80_02239960: ; 0x02239960
 	mov r2, #0x24
 	bl MI_CpuFill8
 	strh r5, [r4, #0x20]
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -69,9 +69,9 @@ _022399BA:
 	str r0, [sp, #4]
 	ldr r0, _02239A18 ; =ov80_02239AB0
 	lsl r3, r3, #0xa
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	add r4, r0, #0
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	mov r0, #1
 	mov r1, #0xe1
@@ -80,16 +80,16 @@ _022399BA:
 	bl Camera_SetPerspectiveClippingPlane
 	ldr r1, [sp, #8]
 	add r0, r4, #0
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	ldrh r2, [r5, #0x20]
 	mov r0, #0xbc
 	add r1, r7, #0
-	bl sub_02015264
+	bl ParticleSystem_LoadResourceFromNARC
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0xa
 	mov r3, #1
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	str r4, [r5, r6]
 	add r0, r4, #0
 	add sp, #0xc
@@ -120,18 +120,18 @@ _02239A2C:
 ov80_02239A38: ; 0x02239A38
 	push {r3, lr}
 	bl Thunk_G3X_Reset
-	bl sub_02015420
+	bl ParticleSystem_GetActiveAmount
 	cmp r0, #0
 	bne _02239A4A
 	mov r0, #0
 	pop {r3, pc}
 _02239A4A:
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 	cmp r0, #0
 	ble _02239A56
 	bl Thunk_G3X_Reset
 _02239A56:
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
@@ -160,7 +160,7 @@ _02239A7A:
 	ldr r0, [r5]
 	cmp r0, #0
 	beq _02239A8C
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	ble _02239A8C
 	mov r0, #0
@@ -178,10 +178,10 @@ _02239A8C:
 ov80_02239A98: ; 0x02239A98
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020154D0
+	bl ParticleSystem_GetHeapStart
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r3, r4, r5, pc}
@@ -199,7 +199,7 @@ ov80_02239AB0: ; 0x02239AB0
 	bl GF_AssertFail
 _02239AC2:
 	add r0, r4, #0
-	bl sub_02015354
+	bl ParticleSystem_RegisterTextureKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -219,7 +219,7 @@ ov80_02239AD4: ; 0x02239AD4
 	bl GF_AssertFail
 _02239AE6:
 	add r0, r4, #0
-	bl sub_02015394
+	bl ParticleSystem_RegisterPaletteKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}

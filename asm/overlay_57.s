@@ -2460,7 +2460,7 @@ _02238BF4:
 	bne _02238BFC
 	bl GF_AssertFail
 _02238BFC:
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	pop {r3, r4, r5, pc}
 	nop
 _02238C04: .word NNS_GfdDefaultFuncAllocTexVram
@@ -2471,13 +2471,13 @@ _02238C08: .word NNS_GfdDefaultFuncAllocPlttVram
 ov57_02238C0C: ; 0x02238C0C
 	push {r3, lr}
 	bl Thunk_G3X_Reset
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 	cmp r0, #0
 	ble _02238C22
 	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 _02238C22:
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers

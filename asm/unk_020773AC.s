@@ -155,7 +155,7 @@ _020774C8:
 	bne _020774D0
 	bl GF_AssertFail
 _020774D0:
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	pop {r3, r4, r5, pc}
 	nop
 _020774D8: .word NNS_GfdDefaultFuncAllocTexVram
@@ -166,13 +166,13 @@ _020774DC: .word NNS_GfdDefaultFuncAllocPlttVram
 sub_020774E0: ; 0x020774E0
 	push {r3, lr}
 	bl Thunk_G3X_Reset
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 	cmp r0, #0
 	ble _020774F6
 	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 _020774F6:
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers
@@ -187,7 +187,7 @@ sub_02077504: ; 0x02077504
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015354
+	bl ParticleSystem_RegisterTextureKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -203,7 +203,7 @@ sub_02077520: ; 0x02077520
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015394
+	bl ParticleSystem_RegisterPaletteKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -227,9 +227,9 @@ sub_0207753C: ; 0x0207753C
 	ldr r1, _02077580 ; =sub_02077520
 	lsl r3, r3, #0xa
 	str r4, [sp, #4]
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	add r4, r0, #0
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	beq _02077574
 	mov r0, #1
@@ -257,12 +257,12 @@ sub_02077584: ; 0x02077584
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_02015264
+	bl ParticleSystem_LoadResourceFromNARC
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0xa
 	mov r3, #1
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02077584
@@ -271,10 +271,10 @@ sub_02077584: ; 0x02077584
 sub_020775AC: ; 0x020775AC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020154D0
+	bl ParticleSystem_GetHeapStart
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r3, r4, r5, pc}
@@ -336,7 +336,7 @@ _02077618:
 	bl sub_02077584
 	mov r1, #1
 	str r0, [r4, #0xc]
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02077604
@@ -348,10 +348,10 @@ sub_02077634: ; 0x02077634
 	ldr r0, [r4, #0xc]
 	ldr r2, _0207764C ; =sub_020775C4
 	add r3, r4, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	pop {r4, pc}
 	.balign 4, 0
 _0207764C: .word sub_020775C4
@@ -361,7 +361,7 @@ _0207764C: .word sub_020775C4
 sub_02077650: ; 0x02077650
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	beq _02077660
 	mov r0, #1
