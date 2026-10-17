@@ -84,7 +84,8 @@ Static main
     Object main.nef.p/asm_unk_0202068C.s.o
     Object main.nef.p/src_unk_02020A0C.c.o
     Object main.nef.p/src_ascii_util.c.o
-    Object main.nef.p/asm_unk_02020B8C.s.o
+    Object main.nef.p/src_fx_util.c.o
+    Object main.nef.p/src_unk_02020E80.c.o
     Object main.nef.p/asm_unk_020210A0.s.o
     Object main.nef.p/src_obj_char_transfer.c.o
     Object main.nef.p/src_obj_pltt_transfer.c.o
