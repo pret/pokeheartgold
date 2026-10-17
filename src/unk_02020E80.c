@@ -22,7 +22,7 @@ VecFx322D sub_02020EF4(int arg0, int arg1, int arg2, int arg3) {
     if (v1 != 0) {
         ret.x = FX_Div(v0 << FX32_SHIFT, v1 << FX32_SHIFT);
     } else {
-        ret.x = 0xFF << FX32_SHIFT;
+        ret.x = FX32_CONST(0xFF);
     }
 
     ret.y = (arg1 << FX32_SHIFT) - FX_Mul(ret.x, arg0 << FX32_SHIFT);

@@ -1,28 +1,19 @@
 #include "fx_util.h"
 
-#include "nitro/fx/fx_trig.h"
 #include <nitro.h>
+#include <nitro/fx/fx_trig.h>
 #include <nnsys.h>
+
+#include "global.h"
 
 #include "math_util.h"
 
-#define F32_PI               ((f32)3.14159265358979323846)
-#define FX_F32_RAD_TO_IDX(f) ((u16)(FX_RAD_TO_IDX(FX32_CONST(f))))
-
 fx32 FX_Min(fx32 a, fx32 b) {
-    if (a < b) {
-        return a;
-    } else {
-        return b;
-    }
+    return a < b ? a : b;
 }
 
 fx32 FX_Max(fx32 a, fx32 b) {
-    if (a > b) {
-        return a;
-    } else {
-        return b;
-    }
+    return a > b ? a : b;
 }
 
 fx32 VEC_DistanceFromPointToLine(const VecFx32 *point, const VecFx32 *a, const VecFx32 *b) {
@@ -50,7 +41,7 @@ fx32 VEC_AngleBetween(const VecFx32 *a, const VecFx32 *b) {
 
     fx32 angle;
     if (cos == 0) {
-        angle = sin > 0 ? FX_F32_RAD_TO_IDX(F32_PI / 2) : FX_F32_RAD_TO_IDX(-F32_PI / 2);
+        angle = sin > 0 ? FX_DEG_TO_IDX(FX32_CONST(90)) : FX_DEG_TO_IDX(FX32_CONST(270));
     } else {
         angle = FX_Atan2Idx(sin, cos);
     }
@@ -84,6 +75,6 @@ void FX_CalcLinearFov(u16 angularFov, fx32 distance, fx32 aspectRatio, fx32 *out
     fx32 tan = FX_Div(sin, cos);
 
     *outHeight = FX_Mul(distance, tan);
-    *outHeight = FX_Mul(*outHeight, 2 * FX32_ONE);
+    *outHeight = FX_Mul(*outHeight, FX32_CONST(2));
     *outWidth = FX_Mul(*outHeight, aspectRatio);
 }
