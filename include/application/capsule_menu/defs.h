@@ -32,6 +32,16 @@ typedef struct CapsuleGraphicsManager {
     TouchscreenListMenuSpawner *unk_174;
 } CapsuleGraphicsManager;
 
+typedef struct SealRenderInfo {
+    BOOL shouldRender;
+    u8 type;
+    u8 x;
+    u8 y;
+    u8 unk_7;
+    ManagedSprite *sprite;
+    TouchscreenHitbox *touchscreenHitbox;
+} SealRenderInfo;
+
 typedef struct CapsuleAppManager {
     CapsuleAppData *unk_000;
     IndexedCapsule unk_004[MAX_CAPSULES];
@@ -42,7 +52,9 @@ typedef struct CapsuleAppManager {
     GF3DVramMan *unk_258;
     u8 filler_25C[0x28];
     UnkStruct_02016EDC *unk_284;
-    u8 filler_288[0x164];
+    u8 filler_288[0xC4];
+    SealRenderInfo unk_34C[8];
+    u8 filler_3CC[0x20];
     int unk_3EC;
     int unk_3F0;
     u8 filler_3F4[0x18];
@@ -55,25 +67,31 @@ typedef struct CapsuleAppManager {
     NARC *unk_45C;
 } CapsuleAppManager; // size: 0x460
 
-void ov57_022378C0(void);
 void ov57_02237CA8(enum HeapID heapId);
 void ov57_02237CDC(enum HeapID heapId);
 void ov57_02237CEC(BgConfig *bgConfig);
 void ov57_02237E38(void *cbArg);
-u8 ov57_02237E78(CapsuleAppData *a0);
-void ov57_02237E80(CapsuleAppData *a0, u8 a1);
-void ov57_022383AC(CapsuleAppManager *data);
-void ov57_022386F0(CapsuleAppManager *data);
-void ov57_02238714(CapsuleAppManager *data);
+u8 ov57_02237E78(CapsuleAppData *appData);
+void ov57_02237E80(CapsuleAppData *appData, u8 a1);
+void ov57_02237E88(CapsuleAppData *appData, u8 a1);
+void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y);
+void ov57_02237EA8(TouchscreenHitbox *rect);
+void ov57_02237EB8(TouchscreenHitbox *rect, ManagedSprite *sprite, BOOL touchingSprite);
+void ov57_02237F14(CapsuleAppManager *appManager);
+void ov57_02237F3C(CapsuleAppManager *appManager);
+void ov57_022383AC(CapsuleAppManager *appManager);
+void ov57_022386F0(CapsuleAppManager *appManager);
+void ov57_02238714(CapsuleAppManager *appManager);
+void ov57_02238260(CapsuleAppManager *appManager, u8 index);
 GF3DVramMan *ov57_02238B28(void);
 void ov57_02238BCC(void);
 void ov57_02238C0C(void);
-void ov57_02239058(CapsuleGraphicsManager *a0);
-void ov57_022390F4(CapsuleGraphicsManager *a0);
+void ov57_02239058(CapsuleGraphicsManager *gfxManager);
+void ov57_022390F4(CapsuleGraphicsManager *gfxManager);
 void ov57_022395B8(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
 void ov57_02239670(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
-BOOL ov57_0223A0E0(CapsuleAppManager *data);
+BOOL ov57_0223A0E0(CapsuleAppManager *appManager);
 void ov57_0223BB5C(void);
-void ov57_0223BB84(CapsuleAppManager *data);
+void ov57_0223BB84(CapsuleAppManager *appManager);
 
 #endif // GUARD_APPLICATION_CAPSULE_MENU_DEFS_H

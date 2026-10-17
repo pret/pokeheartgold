@@ -1,6 +1,8 @@
 
 #include "application/capsule_menu/defs.h"
 
+#include "vram_transfer_manager.h"
+
 void ov57_02237CA8(enum HeapID heapId) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
@@ -165,4 +167,14 @@ void ov57_02237CEC(BgConfig *bgConfig) {
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_3);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+}
+
+void ov57_02237E38(void *cbArg) {
+    CapsuleAppManager *appManager = cbArg;
+    PokepicManager_HandleLoadImgAndOrPltt(appManager->unk_0D4.unk_0F0);
+    SpriteSystem_TransferOam();
+    PaletteData_PushTransparentBuffers(appManager->unk_0D4.unk_014);
+    DoScheduledBgGpuUpdates(appManager->unk_0D4.unk_010);
+    GF_RunVramTransferTasks();
+    OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }

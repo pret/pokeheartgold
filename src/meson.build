@@ -463,4 +463,6 @@ pokeheartgold_c = files(
     ##############################
     'application/capsule_menu/main_overlay.c',
     'application/capsule_menu/manager_overlay.c',
+    'application/capsule_menu/main_overlay_2.c',
+    'application/capsule_menu/placement.c',
 )
