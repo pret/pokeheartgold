@@ -5,6 +5,7 @@
 #include "menu_input_state.h"
 #include "poke_overlay.h"
 #include "pokemon.h"
+#include "touch_hitbox_controller.h"
 #include "touchscreen_list_menu.h"
 #include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
@@ -26,7 +27,9 @@ typedef struct Overlay57Data_Sub0D4 {
     PaletteData *unk_014;
     u8 filler_018[0xD8];
     PokepicManager *unk_0F0;
-    u8 filler_0F4[0x80];
+    u8 filler_0F4[0x24];
+    TouchHitboxController *unk_118;
+    u8 filler_11C[0x58];
     TouchscreenListMenuSpawner *unk_174;
 } Overlay57Data_Sub0D4;
 
@@ -39,7 +42,7 @@ typedef struct Overlay57Data {
     u8 filler_24C[12];
     GF3DVramMan *unk_258;
     u8 filler_25C[0x28];
-    void *unk_284;
+    UnkStruct_02016EDC *unk_284;
     u8 filler_288[0x164];
     int unk_3EC;
     int unk_3F0;
@@ -55,15 +58,22 @@ typedef struct Overlay57Data {
 
 void ov57_022378C0(void);
 void ov57_02237CA8(enum HeapID heapId);
+void ov57_02237CDC(enum HeapID heapId);
 void ov57_02237CEC(BgConfig *bgConfig);
-u8 ov57_02237E78(UnkStruct_0206B984 *a0);
 void ov57_02237E38(void *cbArg);
+u8 ov57_02237E78(UnkStruct_0206B984 *a0);
+void ov57_02237E80(UnkStruct_0206B984 *a0, u8 a1);
+void ov57_022383AC(Overlay57Data *data);
 void ov57_022386F0(Overlay57Data *data);
+void ov57_02238714(Overlay57Data *data);
 GF3DVramMan *ov57_02238B28(void);
 void ov57_02238BCC(void);
+void ov57_02238C0C(void);
 void ov57_02239058(Overlay57Data_Sub0D4 *a0);
+void ov57_022390F4(Overlay57Data_Sub0D4 *a0);
 void ov57_022395B8(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
 void ov57_02239670(BgConfig *bgConfig, PaletteData *plttData, u32 frame);
+BOOL ov57_0223A0E0(Overlay57Data *data);
 void ov57_0223BB5C(void);
 void ov57_0223BB84(Overlay57Data *data);
 
@@ -132,5 +142,59 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     ov57_0223BB84(data);
     Main_SetVBlankIntrCB(ov57_02237E38, data);
     ov57_022386F0(data);
+    return TRUE;
+}
+
+ov57_02237AF8(OverlayManager *manager, int *state) {
+    Overlay57Data *data = OverlayManager_GetData(manager);
+    if (!ov57_0223A0E0(data)) {
+        return TRUE;
+    }
+    PokepicManager_DrawAll(data->unk_0D4.unk_0F0);
+    ov57_02238C0C();
+    return FALSE;
+}
+
+int ov57_02237B20(OverlayManager *manager, int *state) {
+    Overlay57Data *data = OverlayManager_GetData(manager);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG3, GF_PLANE_TOGGLE_OFF);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_MAIN_1);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_MAIN_2);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_MAIN_3);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_SUB_0);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_SUB_1);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_SUB_2);
+    FreeBgTilemapBuffer(data->unk_0D4.unk_010, GF_BG_LYR_SUB_3);
+    Heap_Free(data->unk_0D4.unk_010);
+    PaletteData_FreeBuffers(data->unk_0D4.unk_014, PLTTBUF_MAIN_BG);
+    PaletteData_FreeBuffers(data->unk_0D4.unk_014, PLTTBUF_SUB_BG);
+    PaletteData_FreeBuffers(data->unk_0D4.unk_014, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(data->unk_0D4.unk_014, PLTTBUF_SUB_OBJ);
+    PaletteData_Free(data->unk_0D4.unk_014);
+    ov57_02237E80(data->unk_000, data->unk_3EC);
+    Heap_Free(data->unk_458);
+    ov57_022383AC(data);
+    TouchHitboxController_Destroy(data->unk_0D4.unk_118);
+    PokepicManager_Delete(data->unk_0D4.unk_0F0);
+    sub_02016F2C(data->unk_284);
+    ov57_02238714(data);
+    ov57_022390F4(&data->unk_0D4);
+    GF_DestroyVramTransferManager();
+    GF_3DVramMan_Delete(data->unk_258);
+    ov57_02237CDC(HEAP_ID_52);
+    NARC_Delete(data->unk_45C);
+    MenuInputStateMgr_SetState(data->unk_000->menuInputStatePtr, data->unk_40C);
+    OverlayManager_FreeData(manager);
+    DisableTouchPad();
+    Heap_Destroy(HEAP_ID_52);
+    UnloadOverlayByID(FS_OVERLAY_ID(OVY_6));
+    UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
     return TRUE;
 }
