@@ -1071,7 +1071,7 @@ _0223861E:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl sub_02016F2C
-	bl sub_02014F84
+	bl ParticleSystem_FreeAll
 	add r0, r4, #0
 	add r0, #0x8c
 	ldr r0, [r0]
@@ -3099,7 +3099,7 @@ _02239718:
 	bne _02239720
 	bl GF_AssertFail
 _02239720:
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	pop {r3, r4, r5, pc}
 	nop
 _02239728: .word NNS_GfdDefaultFuncAllocTexVram

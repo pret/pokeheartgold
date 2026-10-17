@@ -6,13 +6,13 @@
 
 #include "gf_gfx_loader.h"
 #include "obj_char_transfer.h"
+#include "particle_system.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
 #include "render_window.h"
 #include "screen_fade.h"
 #include "text.h"
 #include "unk_02013534.h"
-#include "unk_02014DA0.h"
 #include "unk_02026E30.h"
 
 #define CAPSULE_MENU_EDIT           0
@@ -324,7 +324,7 @@ void CapsuleGraphics_AllocTexPlttVram(void) {
     texKeyAddr = NNS_GfdGetTexKeyAddr(texKey);
     plttKeyAddr = NNS_GfdGetPlttKeyAddr(plttKey);
 
-    sub_02014DA0();
+    ParticleSystem_ZeroAll();
 }
 
 void CapsuleGraphics_SwapBuffers(void) {
@@ -332,14 +332,14 @@ void CapsuleGraphics_SwapBuffers(void) {
 
     Thunk_G3X_Reset();
 
-    result = sub_0201543C();
+    result = ParticleSystem_DrawAll();
 
     if (result > 0) {
         Thunk_G3X_Reset();
         NNS_G2dSetupSoftwareSpriteCamera();
     }
 
-    sub_02015460();
+    ParticleSystem_UpdateAll();
     RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
 }
 
