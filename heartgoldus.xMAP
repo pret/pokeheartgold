@@ -2630,11 +2630,9 @@
                  16](Camera_Init_FromTargetAndPos,func) found in global src_camera.c.o
                   17](Camera_InitInternal,func) found in local src_camera.c.o
                   17](VEC_Subtract,func) found in global libfx.a
-                  17](CalcAngleBetweenVecs,func) found in global asm_unk_02020B8C.s.o
-                   18](FX_Modf,func) found in global libfx.a
+                  17](VEC_AngleBetween,func) found in global src_fx_util.c.o
                    18](FX_Atan2Idx,func) found in global libfx.a
                     19](FX_AtanIdxTable_,object) found in global libfx.a
-                   18](VEC_MultAdd,func) found in global libfx.a
                  16](SpriteSystem_DrawSprites,func) found in global src_sprite_system.c.o
                  16](NNS_G3dGlbMaterialColorSpecEmi,func) found in global libnnsg3d.a
                  16](NNS_G3dGlbMaterialColorDiffAmb,func) found in global libnnsg3d.a
@@ -3100,6 +3098,7 @@
                  16](Camera_SetAngleTarget,func) found in global src_camera.c.o
                   17](Camera_CalcLookAtTargetFromPosAndAngle,func) found in local src_camera.c.o
                  16](SaveArray_Party_Get,func) found in global src_party.c.o
+                 16](FX_CalcLinearFov,func) found in global src_fx_util.c.o
                  16](Camera_GetPerspectiveAngle,func) found in global src_camera.c.o
                  16](PaletteData_CopyPalette,func) found in global src_palette.c.o
                14](.data,section) found in local asm_overlay_45_thumb.s.o
@@ -8592,6 +8591,7 @@
          8](Sprite_GetPriority,func) found in global src_sprite.c.o
         7](ManagedSprite_SetMosaicFlag,func) found in global src_sprite_system.c.o
          8](Sprite_SetMosaic,func) found in global src_sprite.c.o
+        7](FX_Modf,func) found in global libfx.a
         7](ov06_0221BAD8,func) found in global src_overlay_06.c.o
         7](ov06_0221BA88,func) found in global src_overlay_06.c.o
          8](ov06_0221BB14,func) found in global src_overlay_06.c.o
@@ -10100,7 +10100,7 @@
                           25](NNS_G3dMdlSetMdlDiff,func) found in global libnnsg3d.a
                         23](DrawModelShapewise,func) found in local src_field_map_prop_manager.c.o
                          24](NNS_G3dDraw1Mat1Shp,func) found in global libnnsg3d.a
-                        23](@16900,object) found in local src_field_map_prop_manager.c.o
+                        23](@16915,object) found in local src_field_map_prop_manager.c.o
                        22](ov01_02204688,func) found in global src_field_overlay_01_02204004.c.o
                         23](MapPropAnimation_RemoveFromRenderObj,func) found in global src_field_overlay_01_02204004.c.o
                        22](MapPropManager_Reset,func) found in global src_field_map_prop_manager.c.o
@@ -10127,6 +10127,7 @@
                            26](ov01_021F1640,func) found in global asm_overlay_01_021F1348.s.o
                             27](NNS_G3dResDefaultSetup,func) found in global libnnsg3d.a
                             27](sub_02069894,func) found in global asm_unk_0206979C.s.o
+                             28](MTX_Rot33Angles,func) found in global src_fx_util.c.o
                              28](.rodata,section) found in local asm_unk_0206979C.s.o
                             27](sub_02069714,func) found in global asm_unk_02069660.s.o
                             27](GF3dGfxRawResMan_FreeObjVramAndSecondaryHeaderById,func) found in global src_unk_02025534.c.o
@@ -10168,6 +10169,7 @@
                              28](ov01_02203E64,func) found in global asm_overlay_01_02203E40.s.o
                               29](.rodata,section) found in local asm_overlay_01_02203E40.s.o
                                30](.text,section) found in local asm_overlay_01_02203E40.s.o
+                              29](VEC_MultAdd,func) found in global libfx.a
                               29](VEC_Distance,func) found in global libfx.a
                              28](ov01_02203A38,func) found in global asm_overlay_01_02203A18.s.o
                               29](sub_0205F9B0,func) found in global src_map_object.c.o
@@ -11196,6 +11198,7 @@
                                                                          72](MapPropAnimation_IsOnLastFrame,func) found in local src_field_overlay_01_02204004.c.o
                                                                         71](ov01_021E6220,func) found in local src_field_fieldmap.c.o
                                                                          72](ov01_021F3C9C,func) found in global src_field_map_prop_manager.c.o
+                                                                          73](MTX_Rot33Vec,func) found in global src_fx_util.c.o
                                                                          72](Field3dObjectTaskManager_RunDrawTasks,func) found in global src_field_field_3d_object_task.c.o
                                                                       69](FieldMap_Init,func) found in global src_field_fieldmap.c.o
                                                                        70](ov01_021E6364,func) found in local src_field_fieldmap.c.o
@@ -11770,6 +11773,10 @@
                                                             59](MATH_QSort,func) found in global libmath.a
                                                             59](TintPalette_GrayScale,func) found in global src_palette.c.o
                                                             59](ov96_0221DC80,object) found in global src_pokeathlon_pokeathlon_data.c.o
+                                                            59](sub_02020EB0,func) found in global src_unk_02020E80.c.o
+                                                             60](sub_02020E80,func) found in global src_unk_02020E80.c.o
+                                                            59](sub_02020F4C,func) found in global src_unk_02020E80.c.o
+                                                             60](sub_02020EF4,func) found in global src_unk_02020E80.c.o
                                                             59](ov96_0221E5A4,object) found in global src_pokeathlon_pokeathlon_data.c.o
                                                             59](.data,section) found in local asm_overlay_96.s.o
                                                              60](ov96_0221DC88,object) found in global src_pokeathlon_pokeathlon_data.c.o
@@ -11933,6 +11940,7 @@
                                                                62](mtx_inverse44,func) found in local libnnsg3d.a
                                                                 63](FX_InvFx64c,func) found in global libfx.a
                                                             59](getTappedBallId,func) found in local src_choose_starter_app.c.o
+                                                             60](VEC_DistanceFromPointToLine,func) found in global src_fx_util.c.o
                                                             59](getRotateDirection,func) found in local src_choose_starter_app.c.o
                                                            58](setAllButSelectedMonSpritesInvisible,func) found in local src_choose_starter_app.c.o
                                                             59](setAllMonSpritesInvisible,func) found in local src_choose_starter_app.c.o
@@ -11943,7 +11951,7 @@
                                                              60](initBallModelPositions,func) found in local src_choose_starter_app.c.o
                                                               61](rendererTranslVecSet,func) found in local src_choose_starter_app.c.o
                                                               61](rendererScaleVecSet,func) found in local src_choose_starter_app.c.o
-                                                              61](@18927,object) found in local src_choose_starter_app.c.o
+                                                              61](@18942,object) found in local src_choose_starter_app.c.o
                                                            58](yRotateSelectedBall,func) found in local src_choose_starter_app.c.o
                                                             59](calcBallTranslationArcStep,func) found in local src_choose_starter_app.c.o
                                                            58](selectedBallIsInSmallWobbleState,func) found in local src_choose_starter_app.c.o
@@ -17209,6 +17217,8 @@
                       21](Gymmick_CheckCollision,func) found in global src_unk_020648EC.c.o
                       21](TerrainAttributes_Get,func) found in global src_terrain_attributes.c.o
                       21](ov01_021FAE50,func) found in global asm_overlay_01_021FAD1C.s.o
+                       22](FX_Min,func) found in global src_fx_util.c.o
+                       22](FX_Max,func) found in global src_fx_util.c.o
                       21](.rodata,section) found in local asm_unk_02054648.s.o
                      20](.rodata,section) found in local asm_unk_0205FD20.s.o
                       21](sub_0205B960,func) found in global src_metatile_behavior.c.o
@@ -24682,79 +24692,32 @@
   02020B78 00000000 .text   $t	(src_ascii_util.c.o)
   02020B78 00000014 .text   sub_02020B78	(src_ascii_util.c.o)
   02020B88 00000000 .text   $d	(src_ascii_util.c.o)
-  02020B8C 00000000 .text   $t	(asm_unk_02020B8C.s.o)
-  02020B8C 00000008 .text   sub_02020B8C	(asm_unk_02020B8C.s.o)
-  02020B8C 00000514 .text   .text	(asm_unk_02020B8C.s.o)
-  02020B94 00000008 .text   sub_02020B94	(asm_unk_02020B8C.s.o)
-  02020B9C 000000C8 .text   GetDistanceFromPointToLine	(asm_unk_02020B8C.s.o)
-  02020BB2 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020BBC 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020BD6 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020BE4 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020BF4 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C04 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C40 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C4A 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C54 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C5A 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C62 00000000 .text   $d	(asm_unk_02020B8C.s.o)
-  02020C64 00000000 .text   $t	(asm_unk_02020B8C.s.o)
-  02020C64 000000C8 .text   CalcAngleBetweenVecs	(asm_unk_02020B8C.s.o)
-  02020C6C 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C74 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020C98 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020CA8 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020CD8 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020CE8 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020D20 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020D28 00000000 .text   $d	(asm_unk_02020B8C.s.o)
-  02020D2C 00000000 .text   $t	(asm_unk_02020B8C.s.o)
-  02020D2C 00000078 .text   sub_02020D2C	(asm_unk_02020B8C.s.o)
-  02020D4A 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020D66 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020D70 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020D8C 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020D96 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DA0 00000000 .text   $d	(asm_unk_02020B8C.s.o)
-  02020DA4 00000000 .text   $t	(asm_unk_02020B8C.s.o)
-  02020DA4 0000006C .text   sub_02020DA4	(asm_unk_02020B8C.s.o)
-  02020DB2 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DBA 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DC4 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DCA 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DD2 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DDC 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DE6 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DEC 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DF4 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020DFE 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020E08 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020E10 00000070 .text   sub_02020E10	(asm_unk_02020B8C.s.o)
-  02020E2A 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020E36 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020E66 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020E7C 00000000 .text   $d	(asm_unk_02020B8C.s.o)
-  02020E80 00000000 .text   $t	(asm_unk_02020B8C.s.o)
-  02020E80 00000030 .text   sub_02020E80	(asm_unk_02020B8C.s.o)
-  02020EAE 00000000 .text   $d	(asm_unk_02020B8C.s.o)
-  02020EB0 00000000 .text   $t	(asm_unk_02020B8C.s.o)
-  02020EB0 00000044 .text   sub_02020EB0	(asm_unk_02020B8C.s.o)
-  02020EBA 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020EC6 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020ED6 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020EE2 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020EF4 00000058 .text   sub_02020EF4	(asm_unk_02020B8C.s.o)
-  02020F12 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020F28 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020F4C 00000154 .text   sub_02020F4C	(asm_unk_02020B8C.s.o)
-  02020F6C 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020F86 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020F9A 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020FB4 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020FC2 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02020FE4 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  02021006 00000000 .text   $b	(asm_unk_02020B8C.s.o)
-  0202109C 00000000 .text   $d	(asm_unk_02020B8C.s.o)
+  02020B8C 00000008 .text   FX_Min	(src_fx_util.c.o)
+  02020B8C 00000000 .text   $t	(src_fx_util.c.o)
+  02020B94 00000008 .text   FX_Max	(src_fx_util.c.o)
+  02020B94 00000000 .text   $t	(src_fx_util.c.o)
+  02020B9C 000000C6 .text   VEC_DistanceFromPointToLine	(src_fx_util.c.o)
+  02020B9C 00000000 .text   $t	(src_fx_util.c.o)
+  02020C64 00000000 .text   $t	(src_fx_util.c.o)
+  02020C64 000000C8 .text   VEC_AngleBetween	(src_fx_util.c.o)
+  02020D28 00000000 .text   $d	(src_fx_util.c.o)
+  02020D2C 00000000 .text   $t	(src_fx_util.c.o)
+  02020D2C 00000078 .text   MTX_Rot33Vec	(src_fx_util.c.o)
+  02020DA0 00000000 .text   $d	(src_fx_util.c.o)
+  02020DA4 0000006C .text   MTX_Rot33Angles	(src_fx_util.c.o)
+  02020DA4 00000000 .text   $t	(src_fx_util.c.o)
+  02020E10 00000000 .text   $t	(src_fx_util.c.o)
+  02020E10 00000070 .text   FX_CalcLinearFov	(src_fx_util.c.o)
+  02020E7C 00000000 .text   $d	(src_fx_util.c.o)
+  02020E80 0000002E .text   sub_02020E80	(src_unk_02020E80.c.o)
+  02020E80 00000000 .text   $t	(src_unk_02020E80.c.o)
+  02020EB0 00000044 .text   sub_02020EB0	(src_unk_02020E80.c.o)
+  02020EB0 00000000 .text   $t	(src_unk_02020E80.c.o)
+  02020EF4 00000058 .text   sub_02020EF4	(src_unk_02020E80.c.o)
+  02020EF4 00000000 .text   $t	(src_unk_02020E80.c.o)
+  02020F4C 00000000 .text   $t	(src_unk_02020E80.c.o)
+  02020F4C 00000154 .text   sub_02020F4C	(src_unk_02020E80.c.o)
+  0202109C 00000000 .text   $d	(src_unk_02020E80.c.o)
   020210A0 00000500 .text   .text	(asm_unk_020210A0.s.o)
   020210A0 0000001C .text   GF_TouchpadInit	(asm_unk_020210A0.s.o)
   020210A0 00000000 .text   $t	(asm_unk_020210A0.s.o)
@@ -72435,10 +72398,10 @@
   02206988 0000000C .rodata .rodata	(asm_overlay_01_021F1348.s.o)
   02206994 000000E4 .rodata .rodata	(asm_overlay_01_021F1AFC.s.o)
   02206A78 00000000 .rodata .rodata	(src_field_map_prop_manager.c.o)
-  02206A78 0000000C .rodata @17016	(src_field_map_prop_manager.c.o)
-  02206A84 0000000C .rodata @16866	(src_field_map_prop_manager.c.o)
-  02206A90 00000024 .rodata @16900	(src_field_map_prop_manager.c.o)
-  02206AB4 00000024 .rodata @17035	(src_field_map_prop_manager.c.o)
+  02206A78 0000000C .rodata @17031	(src_field_map_prop_manager.c.o)
+  02206A84 0000000C .rodata @16881	(src_field_map_prop_manager.c.o)
+  02206A90 00000024 .rodata @16915	(src_field_map_prop_manager.c.o)
+  02206AB4 00000024 .rodata @17050	(src_field_map_prop_manager.c.o)
   02206AD8 000000BC .rodata .rodata	(asm_overlay_01_021F3F50.s.o)
   02206B94 0000002C .rodata .rodata	(asm_overlay_01_021F467C.s.o)
   02206BC0 00000048 .rodata .rodata	(asm_overlay_01_021F4704.s.o)
@@ -145271,17 +145234,17 @@
   021EAE18 00000000 .text   $t	(src_intro_movie_scene_5.c.o)
   021EAE1C 00000000 .rodata .rodata	(src_title_screen.c.o)
   021EAE1C 00000008 .rodata sTouchToStartWindow	(src_title_screen.c.o)
-  021EAE24 0000000C .rodata @14482	(src_title_screen.c.o)
-  021EAE30 0000000C .rodata @14479	(src_title_screen.c.o)
-  021EAE3C 00000010 .rodata @14542	(src_title_screen.c.o)
-  021EAE4C 0000001C .rodata @14548	(src_title_screen.c.o)
-  021EAE68 0000001C .rodata @14550	(src_title_screen.c.o)
-  021EAE84 0000001C .rodata @14552	(src_title_screen.c.o)
-  021EAEA0 0000001C .rodata @14544	(src_title_screen.c.o)
-  021EAEBC 0000001C .rodata @14546	(src_title_screen.c.o)
-  021EAED8 0000001C .rodata @14554	(src_title_screen.c.o)
-  021EAEF4 00000024 .rodata @14526	(src_title_screen.c.o)
-  021EAF18 00000028 .rodata @14440	(src_title_screen.c.o)
+  021EAE24 0000000C .rodata @14497	(src_title_screen.c.o)
+  021EAE30 0000000C .rodata @14494	(src_title_screen.c.o)
+  021EAE3C 00000010 .rodata @14557	(src_title_screen.c.o)
+  021EAE4C 0000001C .rodata @14563	(src_title_screen.c.o)
+  021EAE68 0000001C .rodata @14565	(src_title_screen.c.o)
+  021EAE84 0000001C .rodata @14567	(src_title_screen.c.o)
+  021EAEA0 0000001C .rodata @14559	(src_title_screen.c.o)
+  021EAEBC 0000001C .rodata @14561	(src_title_screen.c.o)
+  021EAED8 0000001C .rodata @14569	(src_title_screen.c.o)
+  021EAEF4 00000024 .rodata @14541	(src_title_screen.c.o)
+  021EAF18 00000028 .rodata @14455	(src_title_screen.c.o)
   021EAF40 00000050 .rodata sCameraScript_HG	(src_title_screen.c.o)
   021EAF90 00000050 .rodata sCameraScript_SS	(src_title_screen.c.o)
   021EAFE0 00000010 .rodata gApplication_TitleScreen	(src_title_screen.c.o)
@@ -145519,24 +145482,24 @@
   021E7330 00000000 .text   $d	(src_choose_starter_app.c.o)
   021E7348 00000036 .text   calcBallTranslationArcStep	(src_choose_starter_app.c.o)
   021E7348 00000000 .text   $t	(src_choose_starter_app.c.o)
-  021E7380 0000000C .rodata @18684	(src_choose_starter_app.c.o)
+  021E7380 0000000C .rodata @18699	(src_choose_starter_app.c.o)
   021E7380 00000000 .rodata .rodata	(src_choose_starter_app.c.o)
-  021E738C 0000000C .rodata @19159	(src_choose_starter_app.c.o)
+  021E738C 0000000C .rodata @19174	(src_choose_starter_app.c.o)
   021E7398 0000000C .rodata sSpecies	(src_choose_starter_app.c.o)
-  021E73A4 0000000C .rodata @18681	(src_choose_starter_app.c.o)
-  021E73B0 0000000C .rodata @18927	(src_choose_starter_app.c.o)
-  021E73BC 0000000C .rodata @18687	(src_choose_starter_app.c.o)
-  021E73C8 0000000C .rodata @18790	(src_choose_starter_app.c.o)
-  021E73D4 0000000C .rodata @19157	(src_choose_starter_app.c.o)
-  021E73E0 0000000C .rodata @18760	(src_choose_starter_app.c.o)
-  021E73EC 0000000C .rodata @18744	(src_choose_starter_app.c.o)
-  021E73F8 00000010 .rodata @18719	(src_choose_starter_app.c.o)
-  021E7408 0000001C .rodata @18779	(src_choose_starter_app.c.o)
-  021E7424 0000001C .rodata @18781	(src_choose_starter_app.c.o)
-  021E7440 0000001C .rodata @18783	(src_choose_starter_app.c.o)
-  021E745C 0000001C .rodata @18775	(src_choose_starter_app.c.o)
-  021E7478 0000001C .rodata @18777	(src_choose_starter_app.c.o)
-  021E7494 00000028 .rodata @18713	(src_choose_starter_app.c.o)
+  021E73A4 0000000C .rodata @18696	(src_choose_starter_app.c.o)
+  021E73B0 0000000C .rodata @18942	(src_choose_starter_app.c.o)
+  021E73BC 0000000C .rodata @18702	(src_choose_starter_app.c.o)
+  021E73C8 0000000C .rodata @18805	(src_choose_starter_app.c.o)
+  021E73D4 0000000C .rodata @19172	(src_choose_starter_app.c.o)
+  021E73E0 0000000C .rodata @18775	(src_choose_starter_app.c.o)
+  021E73EC 0000000C .rodata @18759	(src_choose_starter_app.c.o)
+  021E73F8 00000010 .rodata @18734	(src_choose_starter_app.c.o)
+  021E7408 0000001C .rodata @18794	(src_choose_starter_app.c.o)
+  021E7424 0000001C .rodata @18796	(src_choose_starter_app.c.o)
+  021E7440 0000001C .rodata @18798	(src_choose_starter_app.c.o)
+  021E745C 0000001C .rodata @18790	(src_choose_starter_app.c.o)
+  021E7478 0000001C .rodata @18792	(src_choose_starter_app.c.o)
+  021E7494 00000028 .rodata @18728	(src_choose_starter_app.c.o)
 #>021E74BC          SDK_OVERLAY.OVY_61.SINIT_START (linker command file)
 #>021E74C0          SDK_OVERLAY.OVY_61.SINIT_END (linker command file)
 #>021E74C0          SDK_OVERLAY.OVY_61.TEXT_END (linker command file)
