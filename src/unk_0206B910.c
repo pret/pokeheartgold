@@ -28,18 +28,6 @@
 
 FS_EXTERN_OVERLAY(OVY_57);
 
-typedef struct UnkStruct_0206B984 {
-    u32 partyCount;
-    Pokemon *mons[PARTY_SIZE];
-    Party *party;
-    SealCase *sealCase;
-    Options *options;
-    SaveData *saveData;
-    void *menuInputStatePtr;
-    u8 unk30;
-    u8 unk31;
-} UnkStruct_0206B984;
-
 typedef struct UnkStruct_0206B910 {
     u8 filler00[4];
     UnkStruct_0206B984 *unk04;

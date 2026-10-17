@@ -25,6 +25,7 @@ struct UnkStruct_0207294C {
     u8 unk_4;
 };
 
+void *sub_02016EDC(enum HeapID heapId, int a1, int a2);
 void sub_02016F40(void *, void *, struct UnkStruct_0207294C *, u8);
 
 #endif // POKEHEARTGOLD_UNK_02016EDC_H

@@ -118,6 +118,7 @@ pokeheartgold_c = files(
     'overlay_44_02232E90.c',
     'overlay_44_02235340.c',
     'overlay_55.c',
+    'overlay_57.c',
     'overlay_94.c',
     'overlay_124.c',
     'overlay_bug_contest.c',

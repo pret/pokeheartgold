@@ -840,6 +840,7 @@ Overlay OVY_56
 Overlay OVY_57
 {
     After OVY_7
+    Object main.nef.p/src_overlay_57.c.o
     Object main.nef.p/asm_overlay_57.s.o
 }
 Overlay OVY_58
