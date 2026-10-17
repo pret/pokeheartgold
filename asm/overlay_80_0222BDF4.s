@@ -4278,7 +4278,7 @@ FrtCmd_067: ; 0x0222DDBC
 	mov r2, #0
 	add r1, r4, #0
 	add r3, r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	mov r0, #0
 	pop {r4, r5, r6, pc}
 	thumb_func_end FrtCmd_067

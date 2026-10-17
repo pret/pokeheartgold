@@ -154,7 +154,7 @@ _021E5A20:
 	bne _021E5A28
 	bl GF_AssertFail
 _021E5A28:
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	pop {r3, r4, r5, pc}
 	nop
 _021E5A30: .word NNS_GfdDefaultFuncAllocTexVram
@@ -294,13 +294,13 @@ _021E5B54: .word 0x00003FF8
 ov95_021E5B58: ; 0x021E5B58
 	push {r3, lr}
 	bl Thunk_G3X_Reset
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 	cmp r0, #0
 	ble _021E5B6E
 	bl Thunk_G3X_Reset
 	bl NNS_G2dSetupSoftwareSpriteCamera
 _021E5B6E:
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	mov r0, #1
 	mov r1, #0
 	bl RequestSwap3DBuffers
@@ -581,7 +581,7 @@ ov95_021E5D98: ; 0x021E5D98
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015354
+	bl ParticleSystem_RegisterTextureKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -597,7 +597,7 @@ ov95_021E5DB4: ; 0x021E5DB4
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015394
+	bl ParticleSystem_RegisterPaletteKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -621,9 +621,9 @@ ov95_021E5DD0: ; 0x021E5DD0
 	ldr r1, _021E5E14 ; =ov95_021E5DB4
 	lsl r3, r3, #0xa
 	str r4, [sp, #4]
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	add r4, r0, #0
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	beq _021E5E08
 	mov r0, #1
@@ -651,12 +651,12 @@ ov95_021E5E18: ; 0x021E5E18
 	add r0, r6, #0
 	add r1, r7, #0
 	add r2, r5, #0
-	bl sub_02015264
+	bl ParticleSystem_LoadResourceFromNARC
 	add r1, r0, #0
 	add r0, r4, #0
 	mov r2, #0xa
 	mov r3, #1
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov95_021E5E18
@@ -665,10 +665,10 @@ ov95_021E5E18: ; 0x021E5E18
 ov95_021E5E40: ; 0x021E5E40
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_020154D0
+	bl ParticleSystem_GetHeapStart
 	add r4, r0, #0
 	add r0, r5, #0
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	add r0, r4, #0
 	bl Heap_Free
 	pop {r3, r4, r5, pc}
@@ -726,7 +726,7 @@ _021E5EA4:
 	bl ov95_021E5E18
 	mov r1, #1
 	str r0, [r4, #0xc]
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov95_021E5E90
@@ -738,10 +738,10 @@ ov95_021E5EC0: ; 0x021E5EC0
 	ldr r0, [r4, #0xc]
 	ldr r2, _021E5ED8 ; =ov95_021E5E58
 	add r3, r4, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, [r4, #0xc]
 	mov r1, #1
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	pop {r4, pc}
 	.balign 4, 0
 _021E5ED8: .word ov95_021E5E58
@@ -751,7 +751,7 @@ _021E5ED8: .word ov95_021E5E58
 ov95_021E5EDC: ; 0x021E5EDC
 	push {r3, lr}
 	ldr r0, [r0, #0xc]
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	beq _021E5EEC
 	mov r0, #1
