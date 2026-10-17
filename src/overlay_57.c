@@ -1,5 +1,7 @@
 #include "overlay_57.h"
 
+#include <nitro/sinit.h>
+
 #include "bg_window.h"
 #include "gf_3d_vramman.h"
 #include "menu_input_state.h"
@@ -77,7 +79,7 @@ BOOL ov57_0223A0E0(Overlay57Data *data);
 void ov57_0223BB5C(void);
 void ov57_0223BB84(Overlay57Data *data);
 
-void ov57_022378C0(void) {
+static void NitroStaticInit(void) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_6), OVY_LOAD_ASYNC);
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), OVY_LOAD_ASYNC);
 }
@@ -197,4 +199,60 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_6));
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
     return TRUE;
+}
+
+void ov57_02237CA8(enum HeapID heapId) {
+    Main_SetVBlankIntrCB(NULL, NULL);
+    HBlankInterruptDisable();
+    GfGfx_DisableEngineAPlanes();
+    GfGfx_DisableEngineBPlanes();
+    GX_SetVisiblePlane(GX_PLANEMASK_NONE);
+    GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
+}
+
+void ov57_02237CDC(enum HeapID heapId) {
+    Main_SetVBlankIntrCB(NULL, NULL);
+    HBlankInterruptDisable();
+}
+
+void ov57_02237CEC(BgConfig *bgConfig) {
+    GfGfx_DisableEngineAPlanes();
+
+    extern const GraphicsBanks ov57_0223BC90;
+    GraphicsBanks sp10 = ov57_0223BC90;
+    GfGfx_SetBanks(&sp10);
+
+    MI_CpuClear32((void *)HW_BG_VRAM, HW_BG_VRAM_SIZE);
+    MI_CpuClear32((void *)HW_DB_BG_VRAM, HW_DB_BG_VRAM_SIZE);
+    MI_CpuClear32((void *)HW_OBJ_VRAM, HW_OBJ_VRAM_SIZE);
+    MI_CpuClear32((void *)HW_DB_OBJ_VRAM, HW_DB_OBJ_VRAM_SIZE);
+
+    extern const GraphicsModes ov57_0223BC80;
+    GraphicsModes sp00 = ov57_0223BC80;
+    SetBothScreensModesAndDisable(&sp00);
+
+    extern const BgTemplate ov57_0223BCB8[3];
+    BgTemplate spA8[3];
+    ARRAY_ASSIGN(spA8, ov57_0223BCB8);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &spA8[0], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &spA8[1], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &spA8[2], GF_BG_TYPE_TEXT);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_3);
+    G2_SetBG0Priority(1);
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
+
+    extern const BgTemplate ov57_0223BD0C[4];
+    BgTemplate sp38[4];
+    ARRAY_ASSIGN(sp38, ov57_0223BD0C);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &sp38[0], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &sp38[1], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &sp38[2], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &sp38[3], GF_BG_TYPE_TEXT);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_1);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
+    BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_3);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
 }
