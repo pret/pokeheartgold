@@ -4,9 +4,9 @@
 #include "field/map_prop.h"
 #include "field/overlay_01_021EA6C4.h"
 
+#include "fx_util.h"
 #include "gf_3d_render.h"
 #include "unk_0201F990.h"
-#include "unk_02020B8C.h"
 #include "unk_02097268.h"
 
 typedef struct MapPropArcData {
@@ -331,7 +331,7 @@ void ov01_021F3C9C(MapPropManager *mapPropManager, AreaDataManager *areaDataMana
         u16 sp10;
         ov01_021EA7F8(mapProp->buildModel, r6, &sp10);
         if (mapProp->overrideRotation) {
-            sub_02020D2C(&baseRot, &mapProp->rotation);
+            MTX_Rot33Vec(&baseRot, &mapProp->rotation);
         }
         if (sp10 == 0) {
             GF3dRender_DrawModel(&mapProp->render->renderObj, &mapProp->translation, &baseRot, &mapProp->scale);
