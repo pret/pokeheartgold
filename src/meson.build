@@ -236,6 +236,7 @@ pokeheartgold_c = files(
     'unk_02013FDC.c',
     'unk_02019BA4.c',
     'unk_02020A0C.c',
+    'unk_02026DE0.c',
     'unk_02026E30.c',
     'unk_02026E84.c',
     'unk_02055BF0.c',
