@@ -744,11 +744,11 @@ void ManagedSprite_SetPriority(ManagedSprite *managedSprite, int a1) {
     thunk_Sprite_SetPriority(managedSprite->sprite, a1);
 }
 
-void thunk_Sprite_SetDrawPriority(Sprite *sprite, u16 a1) {
+void thunk_Sprite_SetDrawPriority(Sprite *sprite, u32 a1) {
     Sprite_SetDrawPriority(sprite, a1);
 }
 
-void ManagedSprite_SetDrawPriority(ManagedSprite *managedSprite, u16 a1) {
+void ManagedSprite_SetDrawPriority(ManagedSprite *managedSprite, u32 a1) {
     thunk_Sprite_SetDrawPriority(managedSprite->sprite, a1);
 }
 

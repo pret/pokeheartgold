@@ -54,9 +54,9 @@ void ov57_02237F3C(CapsuleAppManager *appManager) {
             ov57_02238260(appManager, i);
             ov57_02237EB8(appManager->unk_34C[i].touchscreenHitbox, appManager->unk_34C[i].sprite, FALSE);
 
-            appManager->unk_34C[i].shouldRender = 1;
+            appManager->unk_34C[i].shouldRender = TRUE;
         } else {
-            appManager->unk_34C[i].shouldRender = 0;
+            appManager->unk_34C[i].shouldRender = FALSE;
             appManager->unk_34C[i].type = 0;
         }
     }
@@ -66,7 +66,7 @@ int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex) {
     u32 touchX, touchY;
 
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
-        if (appMan->unk_34C[i].shouldRender == 1) {
+        if (appMan->unk_34C[i].shouldRender == TRUE) {
             continue;
         }
 
@@ -82,10 +82,42 @@ int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex) {
         ov57_02238260(appMan, i);
         ov57_02238044(appMan, i);
 
-        appMan->unk_34C[i].shouldRender = 1;
+        appMan->unk_34C[i].shouldRender = TRUE;
 
         return i;
     }
 
     return 0xFF;
+}
+
+BOOL ov57_02238028(CapsuleAppManager *appMan) {
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if (appMan->unk_34C[i].shouldRender == TRUE) {
+            continue;
+        }
+
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if (appMan->unk_34C[i].shouldRender != TRUE) {
+            continue;
+        }
+
+        if (i == index) {
+            ManagedSprite_SetDrawPriority(appMan->unk_34C[i].sprite, 0);
+        } else {
+            int priority = ManagedSprite_GetDrawPriority(appMan->unk_34C[i].sprite);
+
+            if (priority == 0) {
+                ManagedSprite_SetDrawPriority(appMan->unk_34C[i].sprite, priority + 1);
+            } else {
+                ManagedSprite_SetDrawPriority(appMan->unk_34C[i].sprite, priority + 2);
+            }
+        }
+    }
 }
