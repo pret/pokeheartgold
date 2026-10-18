@@ -9,10 +9,10 @@
 #include "gf_3d_vramman.h"
 #include "mail.h"
 #include "message_printer.h"
+#include "particle_system.h"
 #include "pokedex.h"
 #include "pokemon_types_def.h"
 #include "task.h"
-#include "unk_02014DA0.h"
 #include "unk_02020A0C.h"
 #include "unk_0202E41C.h"
 #include "yes_no_prompt.h"
@@ -312,7 +312,7 @@ typedef struct IconFormChangeData {
     int species;
     int fileId;
     int partyMonIndex; // same information as B's unkc65
-    SPLEmitter *particleSystem;
+    ParticleSystem *particleSystem;
 } IconFormChangeData;
 
 typedef struct PartyMenu PartyMenu;

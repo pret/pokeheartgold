@@ -11,6 +11,7 @@
 #include "assert.h"
 #include "field_system.h"
 #include "heap.h"
+#include "particle_system.h"
 #include "party.h"
 #include "party_context_menu.h"
 #include "party_menu.h"
@@ -21,7 +22,6 @@
 #include "scrcmd.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_02014DA0.h"
 #include "unk_02026E30.h"
 
 static void _DestroyLocalWork(PartyMenu *partyMenu);
@@ -151,7 +151,7 @@ static void _CreateParticleSystem(IconFormChangeData *partyMenu) {
     ParticleSystem_ZeroAll();
     void *particleHeap = Heap_Alloc(HEAP_ID_PARTY_MENU, PARTICLE_HEAP_SIZE);
 
-    partyMenu->particleSystem = ParticleSystem_New(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, 1, HEAP_ID_PARTY_MENU);
+    partyMenu->particleSystem = ParticleSystem_New(texAlloc, plttAlloc, particleHeap, PARTICLE_HEAP_SIZE, TRUE, HEAP_ID_PARTY_MENU);
 
     Camera_SetPerspectiveClippingPlane(1 * FX32_ONE, 900 * FX32_ONE, ParticleSystem_GetCamera(partyMenu->particleSystem));
 }
@@ -185,8 +185,8 @@ static const fx32 sPartyMonSpritePositions[][2] = {
 
 static void particleEmitCallback(SPLEmitter *emitter) {
     IconFormChangeData *unkA = ParticleSystem_GetEmitterCallbackParam();
-    SPL_SetEmitterPositionX(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][0]);
-    SPL_SetEmitterPositionY(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][1]);
+    SPLEmitter_SetPosX(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][0]);
+    SPLEmitter_SetPosY(emitter, sPartyMonSpritePositions[unkA->partyMonIndex][1]);
 }
 
 static s32 _RunParticleSystem(void) {

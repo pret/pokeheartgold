@@ -7,6 +7,7 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "particle_system.h"
 #include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "sys_task_api.h"
@@ -50,7 +51,7 @@ static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroM
 static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData);
 static u32 IntroMovie_Scene4_TexAlloc(u32 size, BOOL is4x4comp);
 static u32 IntroMovie_Scene4_PlttAlloc(u32 size, BOOL is4pltt);
-static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter);
+static void IntroMovie_Scene4_SPLEmitterCB(SPLEmitter *emitter);
 static void IntroMovie_Scene4_3DMain(void);
 static void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter);
 static void IntroMovie_Scene4_3DVRamManInit(void);
@@ -492,13 +493,13 @@ static u32 IntroMovie_Scene4_PlttAlloc(u32 size, BOOL is4pltt) {
     return NNS_GfdGetPlttKeyAddr(key);
 }
 
-static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter) {
+static void IntroMovie_Scene4_SPLEmitterCB(SPLEmitter *emitter) {
     VecFx32 pos = { 0, 0, 0 };
     SetVec(pos, 0, 0, FX32_CONST(0.015625));
 
-    SPL_SetEmitterPositionX(emitter, pos.x);
-    SPL_SetEmitterPositionY(emitter, pos.y);
-    SPL_SetEmitterPositionZ(emitter, pos.z);
+    SPLEmitter_SetPosX(emitter, pos.x);
+    SPLEmitter_SetPosY(emitter, pos.y);
+    SPLEmitter_SetPosZ(emitter, pos.z);
 }
 
 static void IntroMovie_Scene4_3DMain(void) {
@@ -509,7 +510,7 @@ static void IntroMovie_Scene4_3DMain(void) {
 }
 
 static void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter) {
-    ParticleSystem_SetCameraProjection(sceneData->particleSystem, 1);
+    ParticleSystem_SetCameraProjection(sceneData->particleSystem, CAMERA_PERSPECTIVE_TYPE_ORTHOGRAPHIC);
     ParticleSystem_CreateEmitterWithCallback(sceneData->particleSystem, sStarterParticleResIds[whichStarter][0], IntroMovie_Scene4_SPLEmitterCB, NULL);
     ParticleSystem_CreateEmitterWithCallback(sceneData->particleSystem, sStarterParticleResIds[whichStarter][1], IntroMovie_Scene4_SPLEmitterCB, NULL);
     ParticleSystem_CreateEmitterWithCallback(sceneData->particleSystem, sStarterParticleResIds[whichStarter][2], IntroMovie_Scene4_SPLEmitterCB, NULL);
