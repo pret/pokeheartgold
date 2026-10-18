@@ -2262,7 +2262,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r2, _02259B9C ; =0x00001555
 	add r0, r4, #0
 	add r3, sp, #0x10
-	bl sub_02020E10
+	bl FX_CalcLinearFov
 	add r0, r5, #0
 	ldr r1, [sp, #0x10]
 	add r0, #0xd0

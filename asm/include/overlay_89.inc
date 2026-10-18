@@ -134,7 +134,7 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_02020E10
+.public FX_CalcLinearFov
 .public EnableTouchPad
 .public InitializeTouchPad
 .public DisableTouchPad

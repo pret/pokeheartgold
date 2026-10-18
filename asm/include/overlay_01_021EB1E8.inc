@@ -43,7 +43,7 @@
 .public BG_LoadPlttData
 .public BgTilemapRectChangePalette
 .public MTRandom
-.public sub_02020E10
+.public FX_CalcLinearFov
 .public GfGfx_EngineATogglePlanes
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance
