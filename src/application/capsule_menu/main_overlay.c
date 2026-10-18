@@ -60,7 +60,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     }
     ov57_02237CA8(HEAP_ID_52);
     ov57_0223BB5C();
-    appManager->unk_258 = ov57_02238B28();
+    appManager->unk_0D4.unk_184 = ov57_02238B28();
     appManager->unk_0D4.unk_010 = BgConfig_Alloc(HEAP_ID_52);
     GF_CreateVramTransferManager(0x40, HEAP_ID_52);
     appManager->unk_0D4.unk_014 = PaletteData_Init(HEAP_ID_52);
@@ -72,7 +72,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     ov57_02237CEC(appManager->unk_0D4.unk_010);
     ov57_02238BCC();
     appManager->unk_0D4.unk_0F0 = PokepicManager_Create(HEAP_ID_52);
-    appManager->unk_284 = sub_02016EDC(HEAP_ID_52, 1, 0);
+    appManager->unk_0D4.unk_1B0 = sub_02016EDC(HEAP_ID_52, 1, 0);
     u32 frame = Options_GetFrame(appManager->unk_000->options);
     ov57_022395B8(appManager->unk_0D4.unk_010, appManager->unk_0D4.unk_014, frame);
     ov57_02239670(appManager->unk_0D4.unk_010, appManager->unk_0D4.unk_014, frame);
@@ -123,11 +123,11 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     ov57_022383AC(appManager);
     TouchHitboxController_Destroy(appManager->unk_0D4.unk_118);
     PokepicManager_Delete(appManager->unk_0D4.unk_0F0);
-    sub_02016F2C(appManager->unk_284);
+    sub_02016F2C(appManager->unk_0D4.unk_1B0);
     ov57_02238714(appManager);
     ov57_022390F4(&appManager->unk_0D4);
     GF_DestroyVramTransferManager();
-    GF_3DVramMan_Delete(appManager->unk_258);
+    GF_3DVramMan_Delete(appManager->unk_0D4.unk_184);
     ov57_02237CDC(HEAP_ID_52);
     NARC_Delete(appManager->unk_45C);
     MenuInputStateMgr_SetState(appManager->unk_000->menuInputStatePtr, appManager->unk_40C);

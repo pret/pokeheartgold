@@ -45,6 +45,11 @@ typedef struct CapsuleGraphicsManager {
     TouchHitboxController *unk_118;
     u8 filler_11C[0x58];
     TouchscreenListMenuSpawner *unk_174;
+    u8 filler_178[12];
+    GF3DVramMan *unk_184;
+    u8 filler_188[0x28];
+    UnkStruct_02016EDC *unk_1B0;
+    BOOL unk_1B4;
 } CapsuleGraphicsManager;
 
 typedef struct SealRenderInfo {
@@ -63,11 +68,7 @@ typedef struct CapsuleAppManager {
     SealCounts *unk_064;
     u8 filler_068[0x6C];
     CapsuleGraphicsManager unk_0D4;
-    u8 filler_24C[12];
-    GF3DVramMan *unk_258;
-    u8 filler_25C[0x28];
-    UnkStruct_02016EDC *unk_284;
-    u8 filler_288[0xC4];
+    u8 filler_28C[0xC0];
     SealRenderInfo unk_34C[8];
     u8 filler_3CC[0x20];
     int unk_3EC;

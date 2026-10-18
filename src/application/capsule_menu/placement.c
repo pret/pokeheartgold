@@ -1,5 +1,7 @@
 #include "application/capsule_menu/defs.h"
 
+#include "unk_02091054.h"
+
 void ov57_02238044(CapsuleAppManager *appManager, u8 index);
 
 void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
@@ -119,5 +121,94 @@ void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
                 ManagedSprite_SetDrawPriority(appMan->unk_34C[i].sprite, priority + 2);
             }
         }
+    }
+}
+
+#define MAKE_OBJECT_TAG(type, fileIdx) (20000 + (type) * 1000 + (fileIdx))
+
+void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+
+    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_a_0_8_7, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_PLTT, 6));
+
+    int memberIdx = CapsuleMenu_GetSealMemberIdx(type);
+    int objID = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CHAR, sealIndex);
+
+    SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_a_0_8_7, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, objID);
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 38, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, 38));
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 36, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, 36));
+}
+
+void ov57_02238134(CapsuleAppManager *appMan) {
+    int i;
+    int dummy;
+    int priorities[8];
+    int indices[8];
+
+    if (appMan->unk_0D4.unk_1B4 == FALSE) {
+        return;
+    }
+
+    appMan->unk_0D4.unk_1B4 = FALSE;
+
+    dummy = 0;
+
+    for (i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        priorities[i] = 0xFF;
+        indices[i] = 0xFF;
+
+        if (appMan->unk_34C[i].sprite != NULL) {
+            priorities[i] = ManagedSprite_GetDrawPriority(appMan->unk_34C[i].sprite);
+            indices[i] = i;
+            dummy++;
+        }
+    }
+
+    int tmp1;
+    int tmp2;
+
+    for (i = 0; i < MAX_SEALS_ON_CAPSULE - 1; i++) {
+        for (int j = MAX_SEALS_ON_CAPSULE - 1; j > i; j--) {
+            if (priorities[j - 1] >= priorities[j]) {
+                tmp1 = priorities[j];
+                tmp2 = indices[j];
+                priorities[j] = priorities[j - 1];
+                indices[j] = indices[j - 1];
+                priorities[j - 1] = tmp1;
+                indices[j - 1] = tmp2;
+            }
+        }
+    }
+
+    BallCapsule capsule;
+    BallCapsule capsule_dupe;
+
+    for (i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        capsule.seals[i].kind = appMan->unk_34C[i].type;
+        capsule.seals[i].x = appMan->unk_34C[i].x;
+        capsule.seals[i].y = appMan->unk_34C[i].y;
+    }
+
+    capsule_dupe = capsule;
+
+    for (i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if (indices[i] == 0xFF) {
+            appMan->unk_34C[i].type = 0;
+            appMan->unk_34C[i].x = 0;
+            appMan->unk_34C[i].y = 0;
+            continue;
+        }
+
+        appMan->unk_34C[i].type = capsule_dupe.seals[indices[i]].kind;
+        appMan->unk_34C[i].x = capsule_dupe.seals[indices[i]].x;
+        appMan->unk_34C[i].y = capsule_dupe.seals[indices[i]].y;
+
+        if (appMan->unk_34C[indices[i]].sprite == NULL) {
+            continue;
+        }
+
+        ManagedSprite_SetDrawPriority(appMan->unk_34C[indices[i]].sprite, i);
     }
 }
