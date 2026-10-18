@@ -4,7 +4,7 @@
 
 #include "constants/geonet_globe.h"
 
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 typedef struct LocationGmmDat {
     u8 country;

@@ -49,8 +49,8 @@ typedef struct PokeathlonSave {
     u8 unk_AEC[0x14];                       // pointed to by PokeathlonSave_GetUnkAEC
     Pokeathlon_UnkSubStruct_B00 unk_B00;    // pointed to by PokeathlonSave_GetUnkB00 / PokeathlonSave_GetAgainUnkB00
     int athletePoints;                      // 0xB74 - capped at 99999
-    u32 unk_B78;                            // bitfield, bits 0-26 (PokeathlonSave_GetUnkB78_AtIndex / PokeathlonSave_SetUnkB78_AtIndex)
-    u16 unk_B7C;                            // bitfield (PokeathlonSave_GetUnkB7C_AtIndex / PokeathlonSave_SetUnkB7C_AtIndex / PokeathlonSave_ResetUnkB7C)
+    u32 receivedDataCards;                  // bitfield, bits 0-26 (PokeathlonSave_CheckReceivedDataCard / PokeathlonSave_SetReceivedDataCard)
+    u16 receivedDailyShopItems;             // bitfield (PokeathlonSave_CheckReceivedDailyItemSlot / PokeathlonSave_SetReceivedDailyItemSlot / PokeathlonSave_ResetDailyItemReceivedFlags)
     u16 unk_B7E;
 } PokeathlonSave; // size: 0xB80
 
@@ -83,11 +83,11 @@ void PokeathlonSave_SetUnkDC_AtIndex(PokeathlonSave *pokeathlonSave, int shift, 
 void PokeathlonSave_AddAthletePoints(PokeathlonSave *pokeathlonSave, u16 amount);
 void PokeathlonSave_SubAthletePoints(PokeathlonSave *pokeathlonSave, u16 amount);
 u32 PokeathlonSave_GetAthletePoints(PokeathlonSave *pokeathlonSave);
-BOOL PokeathlonSave_GetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx);
-void PokeathlonSave_SetUnkB78_AtIndex(PokeathlonSave *pokeathlon, int idx);
-BOOL PokeathlonSave_GetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx);
-void PokeathlonSave_SetUnkB7C_AtIndex(PokeathlonSave *pokeathlon, int idx);
-void PokeathlonSave_ResetUnkB7C(PokeathlonSave *pokeathlon);
+BOOL PokeathlonSave_CheckReceivedDataCard(PokeathlonSave *pokeathlon, int idx);
+void PokeathlonSave_SetReceivedDataCard(PokeathlonSave *pokeathlon, int idx);
+BOOL PokeathlonSave_CheckReceivedDailyItemSlot(PokeathlonSave *pokeathlon, int idx);
+void PokeathlonSave_SetReceivedDailyItemSlot(PokeathlonSave *pokeathlon, int idx);
+void PokeathlonSave_ResetDailyItemReceivedFlags(PokeathlonSave *pokeathlon);
 
 u32 PokeathlonSave_FriendshipRecords_sizeof();
 void PokeathlonSave_FriendshipRecords_Init(PokeathlonSave_FriendshipRecords *dest);

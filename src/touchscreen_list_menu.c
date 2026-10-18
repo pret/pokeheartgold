@@ -4,7 +4,7 @@
 
 #include "constants/sndseq.h"
 
-#include "files/data/sbox_gra.naix"
+#include "data/sbox_gra.naix"
 
 #include "font.h"
 #include "gf_gfx_loader.h"

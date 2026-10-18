@@ -3,7 +3,7 @@
 #include "constants/species.h"
 
 #include "battle/battle_command.h"
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "assert.h"
 #include "heap.h"
@@ -236,9 +236,7 @@ static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapID, u32 index) {
     }
     // subtract 2 because SPECIES_EGG and SPECIES_BAD_EGG are missing
     u32 filesize = (NUM_SPECIES - 2) * sizeof(MoveTutorLearnset);
-    if (file.prop.file.bottom - file.prop.file.top != filesize) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(file.prop.file.bottom - file.prop.file.top == filesize);
     MoveTutorLearnset *learnset = Heap_AllocAtEnd(heapID, sizeof(MoveTutorLearnset));
     FS_SeekFile(&file, index * sizeof(MoveTutorLearnset), FS_SEEK_SET);
     FS_ReadFile(&file, learnset, sizeof(MoveTutorLearnset));

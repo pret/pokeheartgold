@@ -5,9 +5,9 @@
 #include "constants/moves.h"
 
 #include "field/field_control.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0066_D23R0102.h"
-#include "files/msgdata/msg/msg_0096_D31R0201.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0066_D23R0102.h"
+#include "msgdata/msg/msg_0096_D31R0201.h"
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"
 #include "pokeathlon/pokeathlon_save.h"
@@ -47,7 +47,7 @@
 #include "unk_0206D494.h"
 #include "unk_02092BE8.h"
 #include "update_dex_received.h"
-// #include "files/application/zukanlist/zkn_data/zukan_data.naix"
+// #include "application/zukanlist/zkn_data/zukan_data.naix"
 
 typedef struct UnkStructScr_648 {
     FieldSystem *fieldSystem;
@@ -348,7 +348,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
     int i;
     PlaySE(SEQ_SE_DP_SELECT);
     DestroyListMenu(unkPtr->listMenu_23C, NULL, NULL);
-    sub_0200E5D4(unkPtr->listMenuTemplate.window, FALSE);
+    ClearWindowPixelBuffer(unkPtr->listMenuTemplate.window, FALSE);
     RemoveWindow(&unkPtr->window_8);
 
     for (i = 0; i < 0x78; i++) {
@@ -978,9 +978,7 @@ static LocalMapObject *ov01_02201F98(MapObjectManager *mapObjectManager, u8 unkA
 
     mapObj = MapObject_CreateWithParams(mapObjectManager, x, y, DIR_SOUTH, size + 0x19f, 0, mapId, 0, 0, spriteId);
 
-    if (!mapObj) {
-        GF_AssertFail();
-    }
+    GF_ASSERT(mapObj != NULL);
 
     MapObject_SetID(mapObj, unkA + 0xf6);
     MapObject_SetType(mapObj, 0);

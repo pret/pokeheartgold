@@ -101,7 +101,7 @@ static void ov03_02258E88(UnkStruct_02258CFC *data) {
     String_Delete(data->strings[0]);
     MessageFormat_Delete(data->messageFormat);
     DestroyMsgData(data->msgData);
-    sub_0200E5D4(&data->window, TRUE);
+    ClearWindowPixelBuffer(&data->window, TRUE);
     RemoveWindow(&data->window);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 3);
 }
@@ -146,7 +146,7 @@ static BOOL ov03_02258ECC(UnkStruct_02258CFC *data, int index_02259880) {
     if (index == 0) {
         return TRUE;
     }
-    return PokeathlonSave_GetUnkB78_AtIndex(data->pokeathlonSave, index - 1);
+    return PokeathlonSave_CheckReceivedDataCard(data->pokeathlonSave, index - 1);
 }
 
 static const int ov03_0225980C[3] = {

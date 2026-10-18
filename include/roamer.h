@@ -5,6 +5,11 @@
 
 #include "save.h"
 
+#define FLUTE_NONE  0
+#define FLUTE_BLACK 1
+#define FLUTE_WHITE 2
+#define FLUTE_MAX   (FLUTE_WHITE)
+
 enum RoamerDataParam {
     ROAMER_DATA_MET_LOCATION = 1,
     ROAMER_DATA_IVS = 2,

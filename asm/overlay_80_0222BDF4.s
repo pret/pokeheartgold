@@ -5706,7 +5706,7 @@ ov80_0222E88C: ; 0x0222E88C
 	add r0, #0xa8
 	ldr r0, [r0]
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -6378,7 +6378,7 @@ _0222EDB0:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r6, #0
 	add r0, #8
 	bl RemoveWindow

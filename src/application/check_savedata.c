@@ -5,8 +5,8 @@
 #include "global.h"
 
 #include "application/main_menu/main_menu.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0229.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0229.h"
 
 #include "bg_window.h"
 #include "font.h"

@@ -135,9 +135,9 @@
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
 .public FX_CalcLinearFov
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public sub_02021AC8
 .public sub_02021B5C
 .public GfGfx_SetBanks

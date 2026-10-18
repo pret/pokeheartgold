@@ -6,8 +6,8 @@
 
 #include "constants/mmodel.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0004.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0004.h"
 
 #include "bg_window.h"
 #include "follow_mon.h"
