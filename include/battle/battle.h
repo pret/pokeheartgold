@@ -701,18 +701,27 @@ typedef struct BattleItem {
     u8 monIndex;
 } BattleItem;
 
-typedef struct UnkStruct_134 {
-    s32 unk0;
+enum BallThrowMode {
+    BALL_THROW_MODE_SEND_OUT = 0,
+    BALL_THROW_MODE_SEND_OUT_QUICK,
+    BALL_THROW_MODE_UNUSED,
+    BALL_THROW_MODE_THROW,
+    BALL_THROW_MODE_TRAINER_SEND_OUT,
+    BALL_THROW_MODE_RECALL,
+};
+
+typedef struct BallThrow {
+    int type;
     enum HeapID heapID;
-    s32 unk8;
-    s32 unkC;
-    int ball;
-    s32 unk14;
-    s32 unk18;
+    int mode;
+    int target;
+    int ballID;
+    int bgPrio;
+    int surface;
     SpriteSystem *spriteSystem;
     PaletteData *paletteData;
     BattleSystem *battleSystem;
-} UnkStruct_134;
+} BallThrow;
 
 typedef struct UnkStruct_50C {
     BgConfig *bgConfig;
@@ -741,7 +750,7 @@ struct UnkBallData { // TODO: Give a better name.
     SpriteManager *spriteManager;
     ManagedSprite *managedSprite;
     u8 unk34[0x5C];
-    UnkStruct_134 unk90;
+    BallThrow unk90;
     u8 unkB8[0xC];
     int unkC4;
     int unkC8;
@@ -794,26 +803,6 @@ typedef struct {
     int ballTypeOverride;
     Pokemon *mon;
 } BallCapsuleConfig;
-enum BallThrowMode {
-    BALL_THROW_MODE_SEND_OUT = 0,
-    BALL_THROW_MODE_SEND_OUT_QUICK,
-    BALL_THROW_MODE_UNUSED,
-    BALL_THROW_MODE_THROW,
-    BALL_THROW_MODE_TRAINER_SEND_OUT,
-    BALL_THROW_MODE_RECALL,
-};
-typedef struct BallThrow {
-    int type;
-    enum HeapID heapID;
-    int mode;
-    int target;
-    int ballID;
-    int bgPrio;
-    int surface;
-    SpriteSystem *cellActorSys;
-    PaletteData *paletteSys;
-    BattleSystem *battleSys;
-} BallThrow;
 
 typedef struct MoveDisplayInfo {
     u16 move[4];

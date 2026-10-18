@@ -28,7 +28,7 @@
 #include "item.h"
 #include "naming_screen.h"
 #include "obj_char_transfer.h"
-#include "overlay_07.h"
+#include "battle/overlay_07.h"
 #include "overlay_18.h"
 #include "overlay_manager.h"
 #include "palette.h"
@@ -6656,26 +6656,26 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
     switch (data->state) {
     case STATE_GET_POKEMON_START:
         if (data->captureType == CAPTURE_NORMAL) {
-            UnkStruct_134 unkStruct;
-            unkStruct.unk8 = 3;
-            unkStruct.heapID = HEAP_ID_BATTLE;
-            unkStruct.unkC = battlerId + 20000;
-            unkStruct.ball = data->ballID;
-            unkStruct.spriteSystem = BattleSystem_GetSpriteSystem(data->battleSystem);
-            unkStruct.paletteData = BattleSystem_GetPaletteData(data->battleSystem);
-            unkStruct.unk14 = 1;
-            unkStruct.unk18 = 0;
-            unkStruct.battleSystem = data->battleSystem;
+            BallThrow ballThrow;
+            ballThrow.mode = 3;
+            ballThrow.heapID = HEAP_ID_BATTLE;
+            ballThrow.target = battlerId + 20000;
+            ballThrow.ballID = data->ballID;
+            ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(data->battleSystem);
+            ballThrow.paletteData = BattleSystem_GetPaletteData(data->battleSystem);
+            ballThrow.bgPrio = 1;
+            ballThrow.surface = 0;
+            ballThrow.battleSystem = data->battleSystem;
             if (BattleSystem_GetBattleType(data->battleSystem) & BATTLE_TYPE_DOUBLES) {
                 if (battlerId == BATTLER_ENEMY) {
-                    unkStruct.unk0 = 16;
+                    ballThrow.type = 16;
                 } else { // BATTLER_ENEMY2, assumedly.
-                    unkStruct.unk0 = 17;
+                    ballThrow.type = 17;
                 }
             } else { // This is a single battle.
-                unkStruct.unk0 = 15;
+                ballThrow.type = 15;
             }
-            data->ballData = ov07_02233DB8(&unkStruct); // Initializes whatever this is and gets it all ready to go.
+            data->ballData = ov07_02233DB8(&ballThrow); // Initializes whatever this is and gets it all ready to go.
             data->state = STATE_GET_POKEMON_CHECK_IF_TRAINER;
             PlaySE(SEQ_SE_DP_THROW);
             data->battleSystem->unk2422++;
