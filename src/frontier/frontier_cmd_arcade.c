@@ -9,11 +9,10 @@
 #include "frontier/overlay_80_022340E8.h"
 #include "frontier/overlay_80_02238034.h"
 #include "frontier/overlay_80_02239960.h"
-#include "library/spl_emitter.h"
 
 #include "launch_application.h"
 #include "overlay_42.h"
-#include "unk_02014DA0.h"
+#include "particle_system.h"
 #include "unk_02034354.h"
 #include "unk_02096910.h"
 
@@ -445,8 +444,8 @@ static void ov80_02233F40(SPLEmitter *emitter) {
     if (ctx->unkA7A == 1) {
         ParticleSystem_GetEmitterAxis(emitter, &axis);
         axis.x *= -1;
-        SPL_SetEmitterAxis(emitter, &axis);
-        SPL_SetEmitterPosition(emitter, &pos);
+        SPLEmitter_SetAxis(emitter, &axis);
+        SPLEmitter_SetPos(emitter, &pos);
     }
 }
 
