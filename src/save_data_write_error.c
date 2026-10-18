@@ -5,8 +5,8 @@
 
 #include "global.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0009.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0009.h"
 
 #include "bg_window.h"
 #include "brightness.h"

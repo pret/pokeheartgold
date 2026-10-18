@@ -237,6 +237,7 @@ pokeheartgold_c = files(
     'unk_02013FDC.c',
     'unk_02019BA4.c',
     'unk_02020A0C.c',
+    'billboard_gfx_sequence.c',
     'unk_02026E30.c',
     'unk_02026E84.c',
     'unk_02055BF0.c',
@@ -255,6 +256,7 @@ pokeheartgold_c = files(
     'unk_02069528.c',
     'unk_02091054.c',
     'unk_02091278.c',
+    'unk_02092B04.c',
     'unk_02097720.c',
     'unk_02091564.c',
     'unk_020968B0.c',
@@ -277,6 +279,12 @@ pokeheartgold_c = files(
     'application/view_photo.c',
     'application/view_rankings.c',
     'application/main_menu/main_menu.c',
+        ##############################
+        ###          BAG           ###
+        ##############################
+        'application/bag/bag_app_main.c',
+        'application/bag/bag_app_window.c',
+        'application/bag/bag_app_sprite.c',
         ##############################
         ###        POKEDEX         ###
         ##############################

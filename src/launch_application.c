@@ -4,6 +4,7 @@
 
 #include "constants/flags.h"
 
+#include "application/bag_app.h"
 #include "application/pokegear/pokegear_main.h"
 #include "application/view_rankings.h"
 #include "battle/battle_022378C0.h"
@@ -34,7 +35,6 @@
 #include "overlay_111.h"
 #include "overlay_113.h"
 #include "overlay_14.h"
-#include "overlay_15.h"
 #include "overlay_16.h"
 #include "overlay_18.h"
 #include "overlay_37.h"
@@ -189,14 +189,14 @@ void Bag_LaunchApp(FieldSystem *fieldSystem, BagView *args) {
     FieldSystem_LaunchApplication(fieldSystem, &template, args);
 }
 
-BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *taskman) {
+BagView *sub_0203E3FC(FieldSystem *fieldSystem, ItemCheckUseData *checkUseData) {
     BagView *bagView = Bag_CreateView(Save_Bag_Get(fieldSystem->saveData), sAllPockets, HEAP_ID_FIELD2);
-    sub_0207789C(bagView, fieldSystem->saveData, 0, fieldSystem->bagCursor, &fieldSystem->menuInputState);
-    sub_020778E8(bagView, fieldSystem->mapLoadType);
+    BagView_Init(bagView, fieldSystem->saveData, BAG_VIEW_CONTEXT_NORMAL, fieldSystem->bagCursor, &fieldSystem->menuInputState);
+    BagView_SetMapLoadType(bagView, fieldSystem->mapLoadType);
     if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
-        sub_020778C8(bagView);
+        BagView_SetOnBike(bagView);
     }
-    sub_020778DC(bagView, taskman);
+    BagView_SetCheckUseData(bagView, checkUseData);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
 }
@@ -219,14 +219,14 @@ BagView *Bag_LaunchApp_WithPocket(FieldSystem *fieldSystem, u8 pocketType) {
     }
 
     BagView *bagView = Bag_CreateView(bag, sPockets, HEAP_ID_FIELD3);
-    sub_0207789C(bagView, fieldSystem->saveData, 3, fieldSystem->bagCursor, &fieldSystem->menuInputState);
+    BagView_Init(bagView, fieldSystem->saveData, BAG_VIEW_CONTEXT_GARDENING, fieldSystem->bagCursor, &fieldSystem->menuInputState);
     Bag_LaunchApp(fieldSystem, bagView);
     return bagView;
 }
 
 int BagView_SelectResult(BagView *bagView) {
     int result = BagView_GetItemId(bagView);
-    GF_ASSERT(result == 0 || sub_0207790C(bagView) != 5);
+    GF_ASSERT(result == 0 || BagView_GetReturnCode(bagView) != 5);
     return result;
 }
 
@@ -250,7 +250,7 @@ static PartyMenuArgs *PartyMenu_CreateArgs(enum HeapID heapID, FieldSystem *fiel
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheckData *fieldMoveCheckData, u8 partySlot) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD2, fieldSystem, 0, PARTY_MENU_CONTEXT_0);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD2, fieldSystem, 0, PARTY_MENU_CONTEXT_FIELD);
     args->fieldMoveCheckData = fieldMoveCheckData;
     args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
@@ -258,7 +258,7 @@ PartyMenuArgs *PartyMenu_LaunchApp_Unk1(FieldSystem *fieldSystem, FieldMoveCheck
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk2(enum HeapID heapID, FieldSystem *fieldSystem) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD2, fieldSystem, 0, PARTY_MENU_CONTEXT_3);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD2, fieldSystem, 0, PARTY_MENU_CONTEXT_SELECT_MON_NO_PROMPT);
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;
 }
@@ -274,7 +274,7 @@ int PartyMenuArgs_GetSlot(PartyMenuArgs *partyMenuArgs) {
 }
 
 PartyMenuArgs *PartyMenu_LaunchApp_Unk4(enum HeapID heapID, FieldSystem *fieldSystem, u16 partySlot) {
-    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD2, fieldSystem, 0, PARTY_MENU_CONTEXT_18);
+    PartyMenuArgs *args = PartyMenu_CreateArgs(HEAP_ID_FIELD2, fieldSystem, 0, PARTY_MENU_CONTEXT_DAYCARE);
     args->partySlot = partySlot;
     FieldSystem_LaunchApplication(fieldSystem, &gOverlayTemplate_PartyMenu, args);
     return args;

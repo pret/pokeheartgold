@@ -264,7 +264,7 @@ ov01_02203BB4: ; 0x02203BB4
 	add r1, r4, #0
 	str r0, [r4, #0x54]
 	add r1, #0x40
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldr r0, [r4, #0x58]
 	bl NNS_G3dGetTex
 	str r0, [r4, #0x50]

@@ -109,7 +109,7 @@ files/poketool/waza/waza_tbl.narc,/a/0/1/1
 files/fielddata/script/scr_seq.narc,/a/0/1/2
 files/a/0/1/3,/a/0/1/3
 files/a/0/1/4,/a/0/1/4
-files/a/0/1/5,/a/0/1/5
+files/graphic/bag/bag_graphics.narc,/a/0/1/5
 files/graphic/font.narc,/a/0/1/6
 files/itemtool/itemdata/item_data.narc,/a/0/1/7
 files/itemtool/itemdata/item_icon.narc,/a/0/1/8
@@ -154,7 +154,7 @@ files/poketool/trainer/trpoke.narc,/a/0/5/6
 files/poketool/trmsg/trtbl.narc,/a/0/5/7
 files/a/0/5/8,/a/0/5/8
 files/a/0/5/9,/a/0/5/9
-files/a/0/6/0,/a/0/6/0
+files/graphic/shop_gra.narc,/a/0/6/0
 files/a/0/6/1,/a/0/6/1
 files/a/0/6/2,/a/0/6/2
 files/a/0/6/3,/a/0/6/3

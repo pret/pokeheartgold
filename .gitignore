@@ -107,3 +107,4 @@ compile_commands.json
 __pycache__
 .venv/
 *.pyc
+tmp*

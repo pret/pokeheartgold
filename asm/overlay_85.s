@@ -56,9 +56,9 @@ ov85_021E5900: ; 0x021E5900
 	mov r0, #8
 	mov r1, #0x66
 	bl GF_CreateVramTransferManager
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r6, #0
 	bl ov85_021E678C
 	ldr r0, _021E5A2C ; =ov85_021E6764
@@ -142,7 +142,7 @@ ov85_021E5A34: ; 0x021E5A34
 	add r5, r0, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_02021238
+	bl DisableTouchPad
 	cmp r0, #1
 	beq _021E5A4A
 	bl GF_AssertFail

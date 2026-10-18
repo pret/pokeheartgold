@@ -14,7 +14,7 @@
 #include "battle/battle_input.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
-#include "files/msgdata/msg/msg_0197.h"
+#include "msgdata/msg/msg_0197.h"
 
 #include "msgdata.h"
 #include "party.h"

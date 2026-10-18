@@ -495,9 +495,9 @@ _02237FD8:
 	str r0, [r1]
 	add r0, r4, #0
 	bl ov12_022389B8
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xc5
@@ -1133,7 +1133,7 @@ _022386C0:
 	bl SysTask_Destroy
 	ldr r0, [r4, #0x20]
 	bl SysTask_Destroy
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r0, [r4]
 	bl ov12_022396E8
 	ldr r0, _02238798 ; =0x00002434

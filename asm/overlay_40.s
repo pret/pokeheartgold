@@ -80,9 +80,9 @@ ov40_0222B6E0: ; 0x0222B6E0
 	bl ov40_0222BA90
 	add r0, r4, #0
 	bl ov40_0222BC68
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #1
 	str r0, [r4, #0x44]
 	add r0, r4, #0
@@ -343,7 +343,7 @@ _0222B9FE:
 	ldr r0, [r5, #0x18]
 	bl SpriteSystem_Free
 	bl sub_0203A914
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r0, [r5, #0x2c]
 	bl TouchHitboxController_Destroy
 	mov r0, #0

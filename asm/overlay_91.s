@@ -1240,7 +1240,7 @@ ov91_0225CDF4: ; 0x0225CDF4
 	ldr r0, _0225CE7C ; =ov91_022627C0
 	mov r1, #8
 	mov r2, #4
-	bl sub_020210D8
+	bl InitializeTouchPadWithExternalBuffer
 	cmp r0, #1
 	beq _0225CE5E
 	bl GF_AssertFail
@@ -1261,7 +1261,7 @@ _0225CE7C: .word ov91_022627C0
 ov91_0225CE80: ; 0x0225CE80
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02021238
+	bl DisableTouchPad
 	cmp r0, #1
 	beq _0225CE90
 	bl GF_AssertFail
@@ -2924,7 +2924,7 @@ ov91_0225DB5C: ; 0x0225DB5C
 	add r4, r0, #0
 	add r0, #0xc
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r4, #0xc
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

@@ -674,7 +674,7 @@ _0220588A:
 	bl ov01_021FC5A4
 	add r4, #0xc
 	add r1, r4, #0
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov01_02205870
 

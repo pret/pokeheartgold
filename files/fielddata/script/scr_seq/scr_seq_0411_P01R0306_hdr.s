@@ -10,7 +10,7 @@
 	InitScriptEntryEnd
 
 scr_seq_P01R0306_map_scripts_2:
-	InitScriptGoToIfEqual VAR_UNK_40CB, 5, _EV_scr_seq_P01R0306_003 + 1
+	InitScriptGoToIfEqual VAR_SCENE_SS_AQUA, 5, _EV_scr_seq_P01R0306_003 + 1
 	InitScriptFrameTableEnd
 
 	InitScriptEnd

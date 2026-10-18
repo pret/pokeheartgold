@@ -1,272 +1,272 @@
 {
-  "header": "fielddata/script/scr_seq/event_T07R0203.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_004 + 1",
-      "type": 0,
-      "x": 5,
-      "z": 2,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 5,
-      "z": 8,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 5,
-      "z": 12,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 6,
-      "z": 12,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 10,
-      "z": 12,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 11,
-      "z": 12,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 10,
-      "z": 8,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
-      "type": 0,
-      "x": 11,
-      "z": 8,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_005 + 1",
-      "type": 0,
-      "x": 1,
-      "z": 9,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_005 + 1",
-      "type": 0,
-      "x": 1,
-      "z": 12,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
-      "type": 0,
-      "x": 14,
-      "z": 9,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
-      "type": 0,
-      "x": 15,
-      "z": 12,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
-      "type": 0,
-      "x": 15,
-      "z": 9,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
-      "type": 0,
-      "x": 14,
-      "z": 12,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T07R0203_013 + 1",
-      "type": 0,
-      "x": 7,
-      "z": 2,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T07R0203_gsman1",
-      "spriteId": "SPRITE_GSMAN1",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0203_002 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_sunglasses",
-      "spriteId": "SPRITE_SUNGLASSES",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0203_001 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 14,
-      "z": 10,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_gsbigman",
-      "spriteId": "SPRITE_GSBIGMAN",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0203_003 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 9,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_gsman3",
-      "spriteId": "SPRITE_GSMAN3",
-      "movement": 5,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0203_000 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 2,
-      "yRange": 0,
-      "x": 8,
-      "z": 5,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_gsboy1",
-      "spriteId": "SPRITE_GSBOY1",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0203_009 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 2,
-      "yRange": 0,
-      "x": 14,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_var_1",
-      "spriteId": "SPRITE_VAR_1",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 15,
-      "z": 30,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_tsure_poke_static_marill",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 16,
-      "z": 30,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0203_suit",
-      "spriteId": "SPRITE_SUIT",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0203_012 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 12,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 3,
-      "z": 2,
-      "header": "MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T07R0203.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_004 + 1",
+            "type": 0,
+            "x": 5,
+            "z": 2,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 5,
+            "z": 8,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 5,
+            "z": 12,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 6,
+            "z": 12,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 10,
+            "z": 12,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 11,
+            "z": 12,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 10,
+            "z": 8,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_007 + 1",
+            "type": 0,
+            "x": 11,
+            "z": 8,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_005 + 1",
+            "type": 0,
+            "x": 1,
+            "z": 9,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_005 + 1",
+            "type": 0,
+            "x": 1,
+            "z": 12,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
+            "type": 0,
+            "x": 14,
+            "z": 9,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
+            "type": 0,
+            "x": 15,
+            "z": 12,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
+            "type": 0,
+            "x": 15,
+            "z": 9,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_006 + 1",
+            "type": 0,
+            "x": 14,
+            "z": 12,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T07R0203_013 + 1",
+            "type": 0,
+            "x": 7,
+            "z": 2,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T07R0203_gsman1",
+            "spriteId": "SPRITE_GSMAN1",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0203_002 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_sunglasses",
+            "spriteId": "SPRITE_SUNGLASSES",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0203_001 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 14,
+            "z": 10,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_gsbigman",
+            "spriteId": "SPRITE_GSBIGMAN",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0203_003 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 9,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_gsman3",
+            "spriteId": "SPRITE_GSMAN3",
+            "movement": 5,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0203_000 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 2,
+            "yRange": 0,
+            "x": 8,
+            "z": 5,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_gsboy1",
+            "spriteId": "SPRITE_GSBOY1",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0203_009 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 2,
+            "yRange": 0,
+            "x": 14,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_var_1",
+            "spriteId": "SPRITE_VAR_1",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 15,
+            "z": 30,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_tsure_poke_static_marill",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MARILL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 16,
+            "z": 30,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0203_suit",
+            "spriteId": "SPRITE_SUIT",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0203_012 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 12,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 3,
+            "z": 2,
+            "header": "MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }
