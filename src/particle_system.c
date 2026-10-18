@@ -164,9 +164,9 @@ void ParticleSystem_Free(ParticleSystem *particleSystem) {
         }
     }
 
-    if (particleSystem->vramAutoRelease & (1 << 2)) {
+    if (particleSystem->vramAutoRelease & VRAM_AUTO_RELEASE_PALETTE_FRM) {
         NNS_GfdSetFrmPlttVramState(&particleSystem->paletteVRAMState);
-    } else if (particleSystem->vramAutoRelease & (1 << 3)) {
+    } else if (particleSystem->vramAutoRelease & VRAM_AUTO_RELEASE_PALETTE_LNK) {
         for (int i = 0; i < MAX_PALETTE_KEYS; i++) {
             if (particleSystem->paletteKeys[i] != NNS_GFD_ALLOC_ERROR_PLTTKEY) {
                 NNS_GfdFreeLnkPlttVram(particleSystem->paletteKeys[i]);

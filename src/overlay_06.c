@@ -3,6 +3,7 @@
 #include "global.h"
 
 #include "palette.h"
+#include "particle_system.h"
 #include "unk_02026E30.h"
 
 const u16 *ov06_0221BA00(int param_1) {
@@ -18,9 +19,9 @@ void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferI
     PaletteData_LoadPalette(palData, srcData, bufferId, paletteSlot * 16, 32);
 }
 
-SPLEmitter *ov06_0221BA40(enum HeapID heapID) {
+ParticleSystem *ov06_0221BA40(enum HeapID heapID) {
     void *particleHeap;
-    SPLEmitter *pPVar1;
+    ParticleSystem *pPVar1;
     Camera *pGVar2;
 
     particleHeap = Heap_Alloc(heapID, 0x4800);
@@ -32,9 +33,9 @@ SPLEmitter *ov06_0221BA40(enum HeapID heapID) {
     return pPVar1;
 }
 
-SPLEmitter *ov06_0221BA88(enum HeapID heapID) {
+ParticleSystem *ov06_0221BA88(enum HeapID heapID) {
     void *particleHeap;
-    SPLEmitter *pPVar1;
+    ParticleSystem *pPVar1;
     Camera *pGVar2;
 
     particleHeap = Heap_Alloc(heapID, 0x4200);
@@ -49,7 +50,7 @@ SPLEmitter *ov06_0221BA88(enum HeapID heapID) {
     return pPVar1;
 }
 
-void ov06_0221BAD8(SPLEmitter *param_1) {
+void ov06_0221BAD8(ParticleSystem *param_1) {
     void *pvVar1;
 
     pvVar1 = ParticleSystem_GetHeapStart(param_1);
