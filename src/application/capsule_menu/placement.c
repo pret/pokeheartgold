@@ -212,3 +212,44 @@ void ov57_02238134(CapsuleAppManager *appMan) {
         ManagedSprite_SetDrawPriority(appMan->unk_34C[indices[i]].sprite, i);
     }
 }
+
+BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
+    int dummy;
+    SealRenderInfo *sealInfo;
+    ManagedSpriteTemplate spriteTemplate;
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+    sealInfo = &appMan->unk_34C[sealIndex];
+
+    if (sealInfo->shouldRender == TRUE) {
+        GF_ASSERT(FALSE);
+        return FALSE;
+    }
+
+    ov57_0223809C(appMan, sealInfo->type, sealIndex);
+
+    spriteTemplate.x = sealInfo->x;
+    spriteTemplate.y = sealInfo->y;
+    spriteTemplate.z = 0;
+    spriteTemplate.animation = 0;
+    spriteTemplate.pal = 0;
+    spriteTemplate.vramTransfer = FALSE;
+    spriteTemplate.drawPriority = 0;
+    spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DSUB;
+    spriteTemplate.bgPriority = 1;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+
+    dummy = CapsuleMenu_GetSealMemberIdx(sealInfo->type);
+
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CHAR, sealIndex);
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_PLTT, 6);
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, 38);
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, 36);
+    sealInfo->sprite = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+
+    ManagedSprite_TickFrame(sealInfo->sprite);
+
+    return TRUE;
+}
