@@ -2209,7 +2209,7 @@ ov01_021FA370: ; 0x021FA370
 	bl ov01_021FC5A4
 	add r1, r4, #0
 	add r1, #0xc
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	add r0, r6, #0
 	bl ov01_021FA1F4
 	add r1, r5, #0
@@ -3123,7 +3123,7 @@ _021FAA20:
 	add r1, r5, #0
 	add r1, #0x14
 	str r0, [r5, #0xc]
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldr r0, [sp, #0x18]
 	bl GetMoveModelNoBySpriteId
 	add r1, r0, #0
