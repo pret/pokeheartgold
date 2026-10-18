@@ -6,35 +6,35 @@
       "garbage": 8
     },
     {
-      "id": "msg_0197_00001",
+      "id": "msg_0197_gained_exp",
       "en_US": [
         "{STRVAR_1 1, 0, 0} gained\n",
         "{STRVAR_1 54, 1, 0} Exp. Points!\r"
       ]
     },
     {
-      "id": "msg_0197_00002",
+      "id": "msg_0197_gained_boosted_exp",
       "en_US": [
         "{STRVAR_1 1, 0, 0} gained a boosted\n",
         "{STRVAR_1 54, 1, 0} Exp. Points!\r"
       ]
     },
     {
-      "id": "msg_0197_00003",
+      "id": "msg_0197_grew_to_level",
       "en_US": [
         "{STRVAR_1 1, 0, 0} grew to\n",
         "Lv. {STRVAR_1 52, 1, 0}!{WAIT 5}{WAIT 2}\r"
       ]
     },
     {
-      "id": "msg_0197_00004",
+      "id": "msg_0197_learned_move",
       "en_US": [
         "{STRVAR_1 1, 0, 0} learned\n",
         "{STRVAR_1 6, 1, 0}!{WAIT 5}{WAIT 2}\r"
       ]
     },
     {
-      "id": "msg_0197_00005",
+      "id": "msg_0197_trying_to_learn_move",
       "en_US": [
         "{STRVAR_1 1, 0, 0} is trying to\n",
         "learn {STRVAR_1 6, 1, 0}.\r"
@@ -6281,15 +6281,15 @@
       "en_US": "... ...?\r"
     },
     {
-      "id": "msg_0197_00921",
+      "id": "msg_0197_what_will_mon_do",
       "en_US": "What will {STRVAR_1 1, 0, 0} do?{YESNO 0}"
     },
     {
-      "id": "msg_0197_00922",
+      "id": "msg_0197_what_will_trainer_throw",
       "en_US": "What will {STRVAR_1 3, 0, 0} throw?{YESNO 0}"
     },
     {
-      "id": "msg_0197_00923",
+      "id": "msg_0197_stand_by",
       "en_US": "Communicating. Please stand by..."
     },
     {
@@ -8212,7 +8212,7 @@
       "en_US": "Left: {STRVAR_1 51, 0, 0}"
     },
     {
-      "id": "msg_0197_01222",
+      "id": "msg_0197_what_will_trainer_do",
       "en_US": "What will {STRVAR_1 3, 0, 0} do?{YESNO 0}"
     },
     {
@@ -8228,14 +8228,14 @@
       "en_US": "{STRVAR_1 1, 0, 0}, come back!"
     },
     {
-      "id": "msg_0197_01226",
+      "id": "msg_0197_tutorial_low_hp_lyra",
       "en_US": [
         "All right! I got its HP down!\n",
         "Time to throw a Poké Ball!{YESNO 0}"
       ]
     },
     {
-      "id": "msg_0197_01227",
+      "id": "msg_0197_tutorial_low_hp_ethan",
       "en_US": [
         "OK! Its HP is down!\n",
         "It’s ready for a Poké Ball!{YESNO 0}"

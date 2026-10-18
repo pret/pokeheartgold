@@ -20,6 +20,7 @@
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_controller_player.h"
 #include "battle/battle_system.h"
+#include "battle/overlay_07.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "msgdata/msg/msg_0197.h"
 
@@ -28,7 +29,6 @@
 #include "item.h"
 #include "naming_screen.h"
 #include "obj_char_transfer.h"
-#include "battle/overlay_07.h"
 #include "overlay_18.h"
 #include "overlay_manager.h"
 #include "palette.h"
@@ -6043,7 +6043,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
         u32 totalExp = 0;
         // "{0} gained {1} Exp. Points!"
-        msg.id = msg_0197_00001;
+        msg.id = msg_0197_gained_exp;
 
         if (GetMonData(mon, MON_DATA_HP, NULL) && GetMonData(mon, MON_DATA_LEVEL, NULL) != 100) {
             if (data->ctx->unk_A4[side] & MaskOfFlagNo(slot)) {
@@ -6069,7 +6069,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                     totalExp = totalExp * 150 / 100;
                 }
                 // "{0} gained a boosted {1} Exp. Points!"
-                msg.id = msg_0197_00002;
+                msg.id = msg_0197_gained_boosted_exp;
             }
 
             u32 newExp = GetMonData(mon, MON_DATA_EXPERIENCE, NULL);
@@ -6166,7 +6166,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
             data->ctx->levelUpMons |= MaskOfFlagNo(slot);
             BattleController_EmitRefreshHPGauge(data->battleSystem, data->ctx, expBattler);
             // "{0} grew to Lv. {1}!"
-            msg.id = msg_0197_00003;
+            msg.id = msg_0197_grew_to_level;
             msg.tag = TAG_NICKNAME_NUM;
             msg.param[0] = expBattler | (slot << 8);
             msg.param[1] = level;
@@ -6303,7 +6303,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
                 BattleSystem_ReloadMonData(data->battleSystem, data->ctx, expBattler, data->ctx->selectedMonIndex[expBattler]);
             }
             // "{0} learned {1}!"
-            msg.id = msg_0197_00004;
+            msg.id = msg_0197_learned_move;
             msg.tag = TAG_NICKNAME_MOVE;
             msg.param[0] = expBattler | (slot << 8);
             msg.param[1] = move;

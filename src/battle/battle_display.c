@@ -5,6 +5,7 @@
 #include "constants/sndseq.h"
 
 #include "battle/overlay_07.h"
+#include "msgdata/msg/msg_0197.h"
 
 typedef struct TrainerEncounterData {
     BattleSystem *battleSys;
@@ -151,7 +152,7 @@ void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSys, OpponentData *o
 
     monEncounterData->state = 0;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         monEncounterData->face = 2;
         monEncounterData->terrain = ov12_0223A8F4(battleSys, 1);
         ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & 1][0], 8 * 11);
@@ -187,16 +188,16 @@ void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSys, OpponentData *o
         NULL);
 
     if (monEncounterData->face == 2) {
-        Pokepic_StartPaletteFade(monEncounterData->sprite, 8, 8, 0, 0);
+        Pokepic_StartPaletteFade(monEncounterData->sprite, 8, 8, 0, RGB_BLACK);
     }
 
     if (monEncounterData->face == 2 && (BattleSystem_GetBattleSpecial(battleSys) & 0x40)) {
         int v10 = ((24 * 8) + 80) / 2;
         int spriteYCenter = Pokepic_GetAttr(monEncounterData->sprite, 1);
 
-        Pokepic_SetAttr(monEncounterData->sprite, 46, 0);
-        Pokepic_SetAttr(monEncounterData->sprite, 0, 256 - 64);
-        Pokepic_SetAttr(monEncounterData->sprite, 1, spriteYCenter - v10);
+        Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_SHADOW_SIZE, 0);
+        Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_X, 256 - 64);
+        Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_Y, spriteYCenter - v10);
 
         monEncounterData->targetPos = spriteYCenter;
     } else {
@@ -214,7 +215,7 @@ void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSys, OpponentData *o
     monEncounterData->nature = GetNatureFromPersonality(message->personality);
     monEncounterData->isShiny = message->isShiny;
 
-    if (monEncounterData->face == 2 && (BattleSystem_GetBattleSpecial(battleSys) & 0x40)) {
+    if (monEncounterData->face == 2 && (BattleSystem_GetBattleSpecial(battleSys) & BATTLE_SPECIAL_GIRATINA)) {
         SysTask_CreateOnMainQueue(BattleDisplayTask_SetGiratinaEncounter, monEncounterData, 0);
     } else {
         SysTask_CreateOnMainQueue(BattleDisplayTask_SetEncounter, monEncounterData, 0);
@@ -259,7 +260,7 @@ void BattleDisplay_InitTaskShowEncounter(BattleSystem *battleSys, OpponentData *
     int battleType = BattleSystem_GetBattleType(battleSys);
     monShowData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(MonShowData));
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         monShowData->face = 2;
     } else {
         monShowData->face = 0;
@@ -297,7 +298,7 @@ void BattleDisplay_InitTaskShowEncounter(BattleSystem *battleSys, OpponentData *
     battleType = BattleSystem_GetBattleType(battleSys);
 
     if (ov12_0223C140(battleSys, opponentData->battlerId) != 255) {
-        if ((battleType & 2) && !(battleType & 8) && opponentData->battlerType > 3) {
+        if ((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & BATTLE_TYPE_MULTI) && opponentData->battlerType > BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
             SysTask_CreateOnMainQueue(BattleDisplayTask_ShowEncounter, monShowData, 0);
         } else {
             SysTask_CreateOnMainQueue(ov12_0225BE38, monShowData, 0);
@@ -314,7 +315,7 @@ void BattleDisplay_InitTaskShowPokemon(BattleSystem *battleSys, OpponentData *op
     monShowData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(MonShowData));
     monShowData->state = 0;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         monShowData->face = 2;
     } else {
         monShowData->face = 0;
@@ -347,7 +348,7 @@ void BattleDisplay_InitTaskShowPokemon(BattleSystem *battleSys, OpponentData *op
     monShowData->delay = 0;
     monShowData->isSubstitute = message->isSubstitute;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
         monShowData->moveAnim.species[i] = message->battleMonSpecies[i];
         monShowData->moveAnim.genders[i] = message->battleMonGenders[i];
         monShowData->moveAnim.isShiny[i] = message->battleMonIsShiny[i];
@@ -395,7 +396,7 @@ void BattleDisplay_InitTaskReturnPokemon(BattleSystem *battleSys, OpponentData *
     monReturnData->isSubstitute = message->isSubstitute;
     monReturnData->unk_74 = message->unk2C;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
         monReturnData->moveAnim.species[i] = message->battleMonSpecies[i];
         monReturnData->moveAnim.genders[i] = message->battleMonGenders[i];
         monReturnData->moveAnim.isShiny[i] = message->battleMonIsShiny[i];
@@ -438,7 +439,7 @@ void BattleDisplay_InitTaskOpenCaptureBall(BattleSystem *battleSys, OpponentData
     captureOpenBallData->yOffset = message->yOffset;
 
     Pokepic_StartPaletteFade(captureOpenBallData->pokepic, 0, 16, 0, ov12_0226D15A[message->ball]);
-    Pokepic_SetAttr(captureOpenBallData->pokepic, 0x2D, TRUE);
+    Pokepic_SetAttr(captureOpenBallData->pokepic, POKEPIC_SHADOW_AFFINE, TRUE);
     SysTask_CreateOnMainQueue(BattleDisplayTask_OpenCaptureBall, captureOpenBallData, 0);
 }
 
@@ -448,7 +449,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, Opponent
 
     trainerEncounterData->state = 0;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         trainerEncounterData->face = 2;
         trainerEncounterData->terrain = ov12_0223A8F4(battleSys, 1);
         ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & 1][0], 8 * 11);
@@ -462,7 +463,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, Opponent
         || (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_TAG && opponentData->battlerType & BATTLE_TYPE_TRAINER)) {
         side = opponentData->battlerType;
     } else {
-        side = opponentData->battlerType & 1;
+        side = opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY;
     }
 
     message->trainerType = BattleDisplay_GetLinkTrainerClass(battleSys, opponentData->battlerId, message->trainerType);
@@ -471,7 +472,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, Opponent
     u32 flag = 0;
 
     if (ov12_0223C140(battleSys, opponentData->battlerId) != 255) {
-        if (battleType & 2 && !(battleType & 8)) {
+        if (battleType & BATTLE_TYPE_DOUBLES && !(battleType & BATTLE_TYPE_MULTI)) {
             flag = 0;
         } else {
             flag = 1;
@@ -487,12 +488,12 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, Opponent
         ov07_022377F4[side][1]);
 
     if (trainerEncounterData->face == 0
-        && (BattleSystem_GetBattleType(battleSys) == 0
-            || BattleSystem_GetBattleType(battleSys) == 0x20
-            || BattleSystem_GetBattleType(battleSys) == (1 << 8)
-            || BattleSystem_GetBattleType(battleSys) == (1 << 9)
-            || BattleSystem_GetBattleType(battleSys) == (1 << 10)
-            || BattleSystem_GetBattleType(battleSys) == (1 << 12))) {
+        && (BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_NONE
+            || BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_SAFARI
+            || BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_ROAMER
+            || BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_PAL_PARK
+            || BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_TUTORIAL
+            || BattleSystem_GetBattleType(battleSys) == BATTLE_TYPE_BUG_CONTEST)) {
         PokepicManager *pokepicManager = BattleSystem_GetPokepicManager(battleSys);
         PokepicTemplate pokepicTemplate;
         UnkStruct_02070D3C unkStruct;
@@ -517,7 +518,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, Opponent
 
     if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER
         || trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
-        BgSetPosTextAndCommit(BattleSystem_GetBgConfig(battleSys), 3, 2, 4 * 33);
+        BgSetPosTextAndCommit(BattleSystem_GetBgConfig(battleSys), GF_BG_LYR_MAIN_3, BG_POS_OP_SUB_X, 4 * 33);
     }
 
     SysTask_CreateOnMainQueue(BattleDisplayTask_SetTrainerEncounter, trainerEncounterData, 0);
@@ -546,7 +547,7 @@ void BattleDisplay_InitTaskThrowTrainerBall(BattleSystem *battleSys, OpponentDat
     trainerThrowBallData->battler = opponentData->battlerId;
     trainerThrowBallData->opponentData = opponentData;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         trainerThrowBallData->face = 2;
         trainerThrowBallData->backSpriteIdx = 0;
     } else {
@@ -583,7 +584,7 @@ void BattleDisplay_InitTaskSlideTrainerOut(BattleSystem *battleSys, OpponentData
     slideTrainerOutData->battler = opponentData->battlerId;
     slideTrainerOutData->opponentData = opponentData;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         slideTrainerOutData->face = 2;
     } else {
         slideTrainerOutData->face = 0;
@@ -610,14 +611,14 @@ void BattleDisplay_InitTaskSlideTrainerIn(BattleSystem *battleSys, OpponentData 
     SlideTrainerInData *slideTrainerInData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(SlideTrainerInData));
     slideTrainerInData->state = 0;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         slideTrainerInData->face = 2;
     } else {
         slideTrainerInData->face = 0;
     }
 
     slideTrainerInData->managedSprite = opponentData->managedSprite = BattleDisplay_NewManagedSpriteTrainer(battleSys,
-        opponentData->battlerType & 1,
+        opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY,
         message->trainerType,
         opponentData->battlerType,
         0,
@@ -713,12 +714,12 @@ void BattleDisplay_InitTaskSetCommandSelection(BattleSystem *battleSys, Opponent
     commandSetData->switchingOrCanPickCommandMask = message->switchingOrCanPickCommandMask;
 
     for (i = 0; i < 2; i++) {
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < PARTY_SIZE; j++) {
             commandSetData->ballStatus[i][j] = message->ballStatus[i][j];
         }
     }
 
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < PARTY_SIZE; i++) {
         if (message->ballStatus[0][i] == 2) {
             commandSetData->expPercents[i] = 0;
         } else {
@@ -726,7 +727,7 @@ void BattleDisplay_InitTaskSetCommandSelection(BattleSystem *battleSys, Opponent
         }
     }
 
-    for (int battler = 0; battler < 4; battler++) {
+    for (int battler = 0; battler < MAX_MON_MOVES; battler++) {
         commandSetData->moves[battler] = message->moves[battler];
         commandSetData->curPP[battler] = message->curPP[battler];
         commandSetData->maxPP[battler] = message->maxPP[battler];
@@ -762,7 +763,7 @@ void BattleDisplay_InitTaskShowMoveSelectMenu(BattleSystem *battleSys, OpponentD
     moveSelectMenuData->hpBar = &opponentData->hpBar;
     moveSelectMenuData->partySlot = message->partySlot;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < MAX_MON_MOVES; i++) {
         moveSelectMenuData->moves[i] = message->moves[i];
         moveSelectMenuData->ppCur[i] = message->ppCur[i];
         moveSelectMenuData->ppMax[i] = message->ppMax[i];
@@ -865,10 +866,10 @@ void BattleDisplay_InitTaskShowBagMenu(BattleSystem *battleSys, OpponentData *op
     bagMenuData->semiInvulnerable = message->semiInvulnerable;
     bagMenuData->substitute = message->substitute;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < BATTLER_MAX; i++) {
         bagMenuData->partyMenuData->partySlots[i] = message->partySlots[i];
 
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < PARTY_SIZE; j++) {
             bagMenuData->partyOrder[i][j] = message->partyOrder[i][j];
         }
 
@@ -891,10 +892,10 @@ void BattleDisplay_InitTaskShowPartyMenu(BattleSystem *battleSys, OpponentData *
     partyMenuData->selectedBattleBagItem = 0;
     partyMenuData->battlersSwitchingMask = message->battlersSwitchingMask;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < BATTLER_MAX; i++) {
         partyMenuData->partySlots[i] = message->selectedPartySlot[i];
 
-        for (int j = 0; j < 6; j++) {
+        for (int j = 0; j < PARTY_SIZE; j++) {
             partyMenuData->partyOrder[i][j] = message->partyOrder[i][j];
         }
     }
@@ -1099,7 +1100,7 @@ typedef struct FaintingSequenceData {
 void BattleDisplay_InitTaskPlayFaintingSequence(BattleSystem *battleSys, OpponentData *opponentData, FaintingSequenceMessage *message) {
     FaintingSequenceData *faintingSequenceData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(FaintingSequenceData));
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         faintingSequenceData->face = 2;
     } else {
         faintingSequenceData->face = 0;
@@ -1118,7 +1119,7 @@ void BattleDisplay_InitTaskPlayFaintingSequence(BattleSystem *battleSys, Opponen
     faintingSequenceData->isSubstitute = message->isSubstitute;
     faintingSequenceData->isTransformed = message->isTransformed;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < BATTLER_MAX; i++) {
         faintingSequenceData->moveAnim.species[i] = message->monSpecies[i];
         faintingSequenceData->moveAnim.genders[i] = message->monGenders[i];
         faintingSequenceData->moveAnim.isShiny[i] = message->monShiny[i];
@@ -1132,7 +1133,7 @@ void BattleDisplay_InitTaskPlayFaintingSequence(BattleSystem *battleSys, Opponen
 void BattleDisplay_PlaySound(BattleSystem *battleSys, OpponentData *opponentData, PlaySoundMessage *message) {
     int pan;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
         pan = 0x75;
     } else {
         pan = -0x75;
@@ -1183,7 +1184,7 @@ void BattleDisplay_InitTaskToggleVanish(BattleSystem *battleSys, OpponentData *o
     toggleVanishData->toggleHide = message->toggle;
     toggleVanishData->isSubstitute = message->isSubstitute;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < BATTLER_MAX; i++) {
         toggleVanishData->moveAnim.species[i] = message->species[i];
         toggleVanishData->moveAnim.genders[i] = message->gender[i];
         toggleVanishData->moveAnim.isShiny[i] = message->isShiny[i];
@@ -1263,7 +1264,7 @@ void BattleDisplay_PrintBattleStartMessage(BattleSystem *battleSys, OpponentData
     waitTask = (BattleMessageWaitTask *)Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleMessageWaitTask));
 
     waitTask->battleSys = battleSys;
-    waitTask->command = 34;
+    waitTask->command = BATTLE_COMMAND_PRINT_ENCOUNTER_MESSAGE;
     waitTask->battler = opponentData->battlerId;
     waitTask->msgIdx = BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, BattleSystem_GetTextFrameDelay(battleSys));
 
@@ -1472,7 +1473,7 @@ void BattleDisplay_InitTaskShowPartyGauge(BattleSystem *battleSys, OpponentData 
     task->battler = opponentData->battlerId;
     task->battlerType = opponentData->battlerType;
 
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < PARTY_SIZE; i++) {
         task->status[i] = partyGauge->status[i];
     }
 
@@ -1500,7 +1501,8 @@ void BattleDisplay_PrintLinkWaitMessage(BattleSystem *battleSys, OpponentData *o
     if (opponentData->unk196 == 0) {
         msgLoader = BattleSystem_GetMessageLoader(battleSys);
 
-        battleMsg.id = 0x39B;
+        // Communicating. Please stand by...
+        battleMsg.id = msg_0197_stand_by;
         battleMsg.tag = TAG_NONE;
 
         BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, NULL);
@@ -3235,13 +3237,14 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
             case FALSE:
                 battleMsg.tag = TAG_NICKNAME;
                 battleMsg.param[0] = commandSetData->battler | (commandSetData->partySlot << 8);
-                battleMsg.id = 0x399;
+                // What will {MON} do?
+                battleMsg.id = msg_0197_what_will_mon_do;
                 BattleSystem_PrintBattleMessage(commandSetData->battleSys, msgLoader, &battleMsg, 0);
                 commandSetData->state = 3;
                 break;
             case TRUE:
                 battleMsg.tag = TAG_NONE;
-                battleMsg.id = 0x4CA + BattleSystem_GetTrainerGender(commandSetData->battleSys, 0);
+                battleMsg.id = msg_0197_tutorial_low_hp_lyra + BattleSystem_GetTrainerGender(commandSetData->battleSys, 0);
                 commandSetData->msgIdx = BattleSystem_PrintBattleMessage(commandSetData->battleSys, msgLoader, &battleMsg, BattleSystem_GetTextFrameDelay(commandSetData->battleSys));
                 commandSetData->state = 2;
                 break;
@@ -3250,15 +3253,18 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
             if (battleType & BATTLE_TYPE_SAFARI) {
                 battleMsg.tag = TAG_TRNAME;
                 battleMsg.param[0] = BattleSystem_GetTrainerIndex(commandSetData->battleSys, commandSetData->battler);
-                battleMsg.id = 0x39A;
+                // What will {TRAINER} throw?
+                battleMsg.id = msg_0197_what_will_trainer_throw;
             } else if (battleType & BATTLE_TYPE_PAL_PARK) {
                 battleMsg.tag = TAG_TRNAME;
                 battleMsg.param[0] = BattleSystem_GetTrainerIndex(commandSetData->battleSys, commandSetData->battler);
-                battleMsg.id = 0x4C6;
+                // What will {TRAINER} do?
+                battleMsg.id = msg_0197_what_will_trainer_do;
             } else {
                 battleMsg.tag = TAG_NICKNAME;
                 battleMsg.param[0] = commandSetData->battler | (commandSetData->partySlot << 8);
-                battleMsg.id = 0x399;
+                // What will {MON} do?
+                battleMsg.id = msg_0197_what_will_mon_do;
             }
 
             BattleSystem_PrintBattleMessage(commandSetData->battleSys, msgLoader, &battleMsg, 0);
@@ -3281,8 +3287,8 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
 
         ActionSelectData actionData;
 
-        NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-        NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+        NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+        NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
         actionData.battler = commandSetData->battler;
         actionData.battlerType = commandSetData->battlerType;
@@ -3295,15 +3301,15 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
         if (opponentData->unk197) {
             BattleInput_Deadstriped_022698AC(btlSubscreen, 1);
 
-            if (BattleSystem_GetBattleSpecial(commandSetData->battleSys) & 1) {
+            if (BattleSystem_GetBattleSpecial(commandSetData->battleSys) & BATTLE_SPECIAL_FIRST_RIVAL) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 6, 0, &actionData);
             } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_PAL_PARK) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 10, 0, &actionData);
             } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_SAFARI) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 8, 0, &actionData);
-            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & (1 << 12)) {
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_BUG_CONTEST) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 20, 0, &actionData);
-            } else if (actionData.battlerType == 4 && (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_MULTI) == FALSE) {
+            } else if (actionData.battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_2 && (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_MULTI) == FALSE) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 4, 0, &actionData);
             } else {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 3, 0, &actionData);
@@ -3311,15 +3317,15 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
 
             ov12_0223BB64(commandSetData->battleSys, 1);
         } else {
-            if (BattleSystem_GetBattleSpecial(commandSetData->battleSys) & 1) {
+            if (BattleSystem_GetBattleSpecial(commandSetData->battleSys) & BATTLE_SPECIAL_FIRST_RIVAL) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 5, 0, &actionData);
             } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_PAL_PARK) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 9, 0, &actionData);
             } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_SAFARI) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 7, 0, &actionData);
-            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & (1 << 12)) {
+            } else if (BattleSystem_GetBattleType(commandSetData->battleSys) & BATTLE_TYPE_BUG_CONTEST) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 19, 0, &actionData);
-            } else if (actionData.battlerType != 4) {
+            } else if (actionData.battlerType != BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 1, 0, &actionData);
             } else {
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 2, 0, &actionData);
@@ -3367,8 +3373,8 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
                 }
                 break;
             case 2: { // Bag
-                NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-                NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+                NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+                NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
                 BattleInput_Deadstriped_022698AC(btlSubscreen, 0);
@@ -3379,8 +3385,8 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
                 NARC_Delete(objNarc);
             } break;
             case 3: { // Pokemon
-                NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-                NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+                NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+                NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
                 BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
                 BattleInput_Deadstriped_022698AC(btlSubscreen, 0);
@@ -3391,8 +3397,8 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
                 NARC_Delete(objNarc);
             } break;
             case 4: { // Run
-                NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-                NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+                NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+                NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
                 if (BattleInput_GetCancelRunFlag(btlSubscreen) == 1) {
                     ov12_02265D74(hpBar);
@@ -3413,8 +3419,8 @@ static void BattleDisplayTask_PlayerSetCommandSelection(SysTask *task, void *dat
         break;
     case 7:
         if (BattleInput_CheckFeedbackDone(btlSubscreen) == 1) {
-            NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-            NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+            NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+            NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
             BattleInput_ChangeMenu(bgNarc, objNarc, btlSubscreen, 0, 0, NULL);
             BattleInput_Deadstriped_022698AC(btlSubscreen, 0);
@@ -3465,7 +3471,7 @@ static void BattleDisplayTask_SafariPokemonSetCommandSelection(SysTask *task, vo
     CommandSetData *commandSetData = data;
     u8 escapeCount = ov12_0223B694(commandSetData->battleSys);
     u16 species = BattleMon_Get(BattleSystem_GetBattleContext(commandSetData->battleSys), commandSetData->battler, BMON_DATA_SPECIES, NULL);
-    int fleeRate = GetMonBaseStat(species, 26);
+    int fleeRate = GetMonBaseStat(species, BASE_GREAT_MARSH_RATE);
     fleeRate = fleeRate * ov12_0226D140[escapeCount][0] / ov12_0226D140[escapeCount][1];
 
     if (BattleSystem_Random(commandSetData->battleSys) % 255 <= fleeRate) {
@@ -3535,17 +3541,18 @@ static void BattleDisplayTask_PlayerShowMoveSelectMenu(SysTask *task, void *data
 
         battleMsg.tag = TAG_NICKNAME;
         battleMsg.param[0] = moveSelectMenuData->battler | (moveSelectMenuData->partySlot << 8);
-        battleMsg.id = 0x399;
+        // What will {MON} do?
+        battleMsg.id = msg_0197_what_will_mon_do;
 
         BattleSystem_PrintBattleMessage(moveSelectMenuData->battleSys, msgLoader, &battleMsg, 0);
 
         BattleInput_EnableBallGauge(btlSubscreen);
 
         MoveSelectData moveSelectData;
-        NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-        NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+        NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+        NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < MAX_MON_MOVES; i++) {
             moveSelectData.moveIDs[i] = moveSelectMenuData->moves[i];
             moveSelectData.currPP[i] = moveSelectMenuData->ppCur[i];
             moveSelectData.maxPP[i] = moveSelectMenuData->ppMax[i];
@@ -3600,7 +3607,7 @@ static void BattleDisplayTask_TrainerShowMoveSelectMenu(SysTask *task, void *dat
     BattleContext *battleCtx = BattleSystem_GetBattleContext(moveSelectMenuData->battleSys);
 
     if ((battleType & (BATTLE_TYPE_TRAINER | BATTLE_TYPE_ROAMER))
-        || (BattleSystem_GetBattleSpecial(moveSelectMenuData->battleSys) & 1)
+        || (BattleSystem_GetBattleSpecial(moveSelectMenuData->battleSys) & BATTLE_SPECIAL_FIRST_RIVAL)
         || BattleSystem_GetFieldSide(moveSelectMenuData->battleSys, moveSelectMenuData->battler) == 0) {
         action = ov10_0221BEF4(moveSelectMenuData->battleSys, moveSelectMenuData->battler);
 
@@ -3616,7 +3623,7 @@ static void BattleDisplayTask_TrainerShowMoveSelectMenu(SysTask *task, void *dat
         int validMoves[4];
         int validMovesCount = 0;
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < MAX_MON_MOVES; i++) {
             if ((moveSelectMenuData->invalidMoves & MaskOfFlagNo(i)) == FALSE) {
                 validMoves[validMovesCount] = i + 1;
                 validMovesCount++;
@@ -3689,10 +3696,10 @@ static void BattleDisplayTask_PlayerShowTargetSelectMenu(SysTask *task, void *da
         }
 
         TargetSelectData targetSelectData;
-        NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-        NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+        NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+        NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < BATTLER_MAX; i++) {
             targetSelectData.targetMonData[i] = targetSelectMenuData->targetMon[i];
         }
 
@@ -4051,7 +4058,8 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
     case 9:
         BattleMessage battleMsg;
 
-        battleMsg.id = 0x4B6;
+        // Used the {ITEM}!
+        battleMsg.id = msg_0197_01206;
         battleMsg.tag = TAG_ITEM;
         battleMsg.param[0] = bagMenuData->battleBagCtx->selectedBattleBagItem;
 
@@ -4104,7 +4112,8 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
     case 15: {
         BattleMessage battleMsg;
 
-        battleMsg.id = 0x4B3;
+        // {STAT} rose!
+        battleMsg.id = msg_0197_01203;
         battleMsg.tag = TAG_NICKNAME_STAT;
         battleMsg.param[0] = bagMenuData->battler | (bagMenuData->partyMenuData->partySlots[bagMenuData->battler] << 8);
 
@@ -4128,11 +4137,11 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
             battleMsg.param[1] = 5;
             break;
         case 55:
-            battleMsg.id = 0x4B4;
+            battleMsg.id = msg_0197_01204;
             battleMsg.tag = TAG_NONE;
             break;
         case 56:
-            battleMsg.id = 0x4B5;
+            battleMsg.id = msg_0197_01205;
             battleMsg.tag = TAG_NICKNAME;
             break;
         }
@@ -4190,12 +4199,14 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
         int battler = bagMenuData->partyMenuData->battlePartyCtx->selectedPartyIndex * 2;
 
         if (bagMenuData->partyMenuData->battlePartyCtx->currentDamage) {
-            battleMsg.id = 0x4BE;
+            // {MON}'s HP was restored.
+            battleMsg.id = msg_0197_01214;
             battleMsg.tag = TAG_NICKNAME_NUM;
             battleMsg.param[0] = battler | (bagMenuData->partyMenuData->partySlots[battler] << 8);
             battleMsg.param[1] = bagMenuData->partyMenuData->battlePartyCtx->currentDamage;
         } else {
-            battleMsg.id = 0x4E2;
+            // {MON} became healthy.
+            battleMsg.id = msg_0197_01250;
             battleMsg.tag = TAG_NICKNAME;
             battleMsg.param[0] = battler | (bagMenuData->partyMenuData->partySlots[battler] << 8);
         }
@@ -4260,29 +4271,37 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
         }
 
         if (effect != 1) {
-            battleMsg.id = 0x4CD;
+            // {MON} got over its status.
+            battleMsg.id = msg_0197_01229;
         } else {
             switch (msgType) {
             case 0:
-                battleMsg.id = 0x4BA;
+                // {MON} woke up.
+                battleMsg.id = msg_0197_01210;
                 break;
             case 1:
-                battleMsg.id = 0x4B7;
+                // {MON} was cured of its poisoning.
+                battleMsg.id = msg_0197_01207;
                 break;
             case 2:
-                battleMsg.id = 0x4B9;
+                // {MON}'s burn was healed
+                battleMsg.id = msg_0197_01209;
                 break;
             case 3:
-                battleMsg.id = 0x4BB;
+                // {MON} was thawed out.
+                battleMsg.id = msg_0197_01211;
                 break;
             case 4:
-                battleMsg.id = 0x4B8;
+                // {MON} was cured of paralysis.
+                battleMsg.id = msg_0197_01208;
                 break;
             case 5:
-                battleMsg.id = 0x4BC;
+                // {MON} snapped out of its confusion.
+                battleMsg.id = msg_0197_01212;
                 break;
             case 6:
-                battleMsg.id = 0x4BD;
+                // {MON} got over its infatuation.
+                battleMsg.id = msg_0197_01213;
                 break;
             }
         }
@@ -4423,7 +4442,7 @@ static void BattleDisplayTask_PlayerShowPartyMenu(SysTask *task, void *data) {
 
                 monSrc = AllocMonZeroed(HEAP_ID_BATTLE);
 
-                for (i = 0; i < 6; i++) {
+                for (i = 0; i < PARTY_SIZE; i++) {
                     Party_AddMon(partyMenuData->battlePartyCtx->party, monSrc);
                 }
 
@@ -4656,8 +4675,8 @@ static void BattleDisplayTask_PlayerShowYesNoMenu(SysTask *task, void *data) {
         break;
     case 1:
         if (TextPrinterCheckActive(yesNoMenuData->msgIdx) == FALSE || yesNoMenuData->promptMsg == 0) {
-            NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-            NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+            NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+            NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
             GiveUpMoveData giveUpMoveData;
 
             BattleInput_DisableBallGauge(btlSubscreen);
@@ -4702,8 +4721,8 @@ static void BattleDisplayTask_PlayerShowYesNoMenu(SysTask *task, void *data) {
         break;
     case 3:
         if (BattleInput_CheckFeedbackDone(btlSubscreen) == 1) {
-            NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-            NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+            NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+            NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
             ov12_02264EB4(yesNoMenuData->hpBar);
             ov12_02262014(opponentData);
@@ -5023,21 +5042,21 @@ static void BattleDisplayTask_PlayFaintingSequence(SysTask *task, void *data) {
             sub_0200602C(SEQ_SE_DP_POKE_DEAD3, -0x75);
         }
 
-        if (Pokepic_GetAttr(faintingSequenceData->pokepic, 0x29) > 0) {
+        if (Pokepic_GetAttr(faintingSequenceData->pokepic, POKEPIC_SHADOW_H) > 0) {
             faintingSequenceData->state = 7;
         } else {
             faintingSequenceData->state = 8;
         }
         break;
     case 7:
-        height = Pokepic_GetAttr(faintingSequenceData->pokepic, 0x29);
+        height = Pokepic_GetAttr(faintingSequenceData->pokepic, POKEPIC_SHADOW_H);
         height -= 8;
 
         if (height < 0) {
             height = 0;
         }
 
-        Pokepic_SetAttr(faintingSequenceData->pokepic, 0x29, height);
+        Pokepic_SetAttr(faintingSequenceData->pokepic, POKEPIC_SHADOW_H, height);
 
         if (height) {
             break;
@@ -5051,17 +5070,17 @@ static void BattleDisplayTask_PlayFaintingSequence(SysTask *task, void *data) {
         faintingSequenceData->state++;
         break;
     case 9:
-        y = Pokepic_GetAttr(faintingSequenceData->pokepic, 1);
+        y = Pokepic_GetAttr(faintingSequenceData->pokepic, POKEPIC_Y);
         y += 8;
-        Pokepic_SetAttr(faintingSequenceData->pokepic, 1, y);
-        height = Pokepic_GetAttr(faintingSequenceData->pokepic, 18);
+        Pokepic_SetAttr(faintingSequenceData->pokepic, POKEPIC_Y, y);
+        height = Pokepic_GetAttr(faintingSequenceData->pokepic, POKEPIC_H);
         height -= 8;
 
         if (height < 0) {
             height = 0;
         }
 
-        Pokepic_SetAttr(faintingSequenceData->pokepic, 18, height);
+        Pokepic_SetAttr(faintingSequenceData->pokepic, POKEPIC_H, height);
 
         if (height == 0) {
             Pokepic_Delete(faintingSequenceData->pokepic);
@@ -5281,7 +5300,7 @@ static void ov12_02260668(SysTask *task, void *data) {
         if (uiSetupTaskData->frameCount == 28) {
             MI_CpuCopy16(ov12_0223BAE0(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 0), 32 * 7);
 
-            if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) == 0x4A) {
+            if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
                 MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 5);
             } else if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) & BATTLE_TYPE_DOUBLES) {
                 MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 7);
@@ -5319,7 +5338,7 @@ static void ov12_02260668(SysTask *task, void *data) {
     case 5:
         MI_CpuCopy16(ov12_0223BAE0(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 0), 32 * 7);
 
-        if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) == 0x4A) {
+        if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
             MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 5);
         } else if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) & BATTLE_TYPE_DOUBLES) {
             MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 7);
@@ -5400,7 +5419,7 @@ static void BattleDisplayTask_SetMosaic(SysTask *task, void *data) {
     case 0:
         if (setMosaicData->counter == setMosaicData->wait) {
             setMosaicData->counter = 0;
-            intensity = Pokepic_GetAttr(setMosaicData->pokepic, 0x28);
+            intensity = Pokepic_GetAttr(setMosaicData->pokepic, POKEPIC_MOSAIC);
 
             if (intensity > setMosaicData->intensity) {
                 intensity--;
@@ -5408,7 +5427,7 @@ static void BattleDisplayTask_SetMosaic(SysTask *task, void *data) {
                 intensity++;
             }
 
-            Pokepic_SetAttr(setMosaicData->pokepic, 0x28, intensity);
+            Pokepic_SetAttr(setMosaicData->pokepic, POKEPIC_MOSAIC, intensity);
 
             if (intensity == setMosaicData->intensity) {
                 setMosaicData->state++;
@@ -5452,10 +5471,10 @@ static void BattleDisplayTask_ShowPartyGauge(SysTask *task, void *data) {
             showType = 1;
 
             switch (gaugeTask->battlerType) {
-            case 3:
+            case BATTLER_TYPE_ENEMY_SIDE_SLOT_1:
                 gaugePosition = 0;
                 break;
-            case 5:
+            case BATTLER_TYPE_ENEMY_SIDE_SLOT_2:
                 gaugePosition = 2;
                 break;
             default:
@@ -5603,7 +5622,7 @@ static void ov12_02260D84(SysTask *sysTask, void *data) {
 
 void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentData) {
     u32 battleType = BattleSystem_GetBattleType(battleSys);
-    u32 battleStatusMask = BattleSystem_GetBattleSpecial(battleSys);
+    u32 battleSpecial = BattleSystem_GetBattleSpecial(battleSys);
 
     if (battleType & BATTLE_TYPE_AI) {
         if (opponentData->battlerId) {
@@ -5615,7 +5634,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk0[5] = &BattleDisplayTask_TrainerShowYesNoMenu;
             opponentData->unk196 = 1;
         } else {
-            if (battleStatusMask & 0x10) {
+            if (battleSpecial & BATTLE_SPECIAL_RECORDING) {
                 opponentData->unk0[0] = &BattleDisplayTask_RecordingSetCommandSelection;
                 opponentData->unk0[1] = &BattleDisplayTask_RecordingShowMoveSelectMenu;
                 opponentData->unk0[2] = &BattleDisplayTask_RecordingShowTargetSelectMenu;
@@ -5634,7 +5653,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             }
         }
     } else if ((battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_FRONTIER)) == (BATTLE_TYPE_MULTI | BATTLE_TYPE_FRONTIER)) {
-        if (opponentData->battlerType & 1) {
+        if (opponentData->battlerType & BATTLER_ENEMY) {
             if (BattleSystem_IsInitialized(battleSys)) {
                 opponentData->unk0[0] = &BattleDisplayTask_TrainerSetCommandSelection;
                 opponentData->unk0[1] = &BattleDisplayTask_TrainerShowMoveSelectMenu;
@@ -5652,7 +5671,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
                 opponentData->unk0[5] = &BattleDisplayTask_LinkShowYesNoMenu;
                 opponentData->unk196 = 2;
             }
-        } else if (battleStatusMask & 0x10) {
+        } else if (battleSpecial & BATTLE_SPECIAL_RECORDING) {
             opponentData->unk0[0] = &BattleDisplayTask_RecordingSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_RecordingShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_RecordingShowTargetSelectMenu;
@@ -5678,7 +5697,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk196 = 0;
         }
     } else if (battleType & BATTLE_TYPE_MULTI) {
-        if (battleStatusMask & 0x10) {
+        if (battleSpecial & BATTLE_SPECIAL_RECORDING) {
             opponentData->unk0[0] = &BattleDisplayTask_RecordingSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_RecordingShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_RecordingShowTargetSelectMenu;
@@ -5704,7 +5723,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk196 = 0;
         }
     } else if (battleType & BATTLE_TYPE_LINK) {
-        if (battleStatusMask & 0x10) {
+        if (battleSpecial & BATTLE_SPECIAL_RECORDING) {
             opponentData->unk0[0] = &BattleDisplayTask_RecordingSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_RecordingShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_RecordingShowTargetSelectMenu;
@@ -5712,7 +5731,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk0[4] = &BattleDisplayTask_RecordingShowPartyMenu;
             opponentData->unk0[5] = &BattleDisplayTask_RecordingShowYesNoMenu;
             opponentData->unk196 = 0;
-        } else if (opponentData->battlerType & 1) {
+        } else if (opponentData->battlerType & BATTLER_ENEMY) {
             opponentData->unk0[0] = &BattleDisplayTask_LinkSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_LinkShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_LinkShowTargetSelectMenu;
@@ -5730,7 +5749,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk196 = 0;
         }
     } else if (battleType & BATTLE_TYPE_PAL_PARK) {
-        if (opponentData->battlerType & 1) {
+        if (opponentData->battlerType & BATTLER_ENEMY) {
             opponentData->unk0[0] = &BattleDisplayTask_PalParkPokemonSetCommandSelection;
             opponentData->unk0[1] = NULL;
             opponentData->unk0[2] = NULL;
@@ -5748,7 +5767,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk196 = 0;
         }
     } else if (battleType & BATTLE_TYPE_SAFARI) {
-        if (opponentData->battlerType & 1) {
+        if (opponentData->battlerType & BATTLER_ENEMY) {
             opponentData->unk0[0] = &BattleDisplayTask_SafariPokemonSetCommandSelection;
             opponentData->unk0[1] = NULL;
             opponentData->unk0[2] = NULL;
@@ -5766,7 +5785,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk196 = 0;
         }
     } else {
-        if (opponentData->battlerType & 1) {
+        if (opponentData->battlerType & BATTLER_ENEMY) {
             opponentData->unk0[0] = &BattleDisplayTask_TrainerSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_TrainerShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_TrainerShowTargetSelectMenu;
@@ -5775,7 +5794,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk0[5] = &BattleDisplayTask_TrainerShowYesNoMenu;
             opponentData->unk196 = 1;
         } else {
-            if (battleStatusMask & 0x10) {
+            if (battleSpecial & BATTLE_SPECIAL_RECORDING) {
                 opponentData->unk0[0] = &BattleDisplayTask_RecordingSetCommandSelection;
                 opponentData->unk0[1] = &BattleDisplayTask_RecordingShowMoveSelectMenu;
                 opponentData->unk0[2] = &BattleDisplayTask_RecordingShowTargetSelectMenu;
@@ -5836,7 +5855,7 @@ static Pokepic *BattleDisplay_NewPokepic(BattleSystem *battleSys, PokepicManager
     int battlerType = ov12_0223AB0C(battleSys, battler);
     int face;
 
-    if (battlerType & 1) {
+    if (battlerType & BATTLER_ENEMY) {
         face = 2;
     } else {
         face = 0;
@@ -5849,17 +5868,17 @@ static Pokepic *BattleDisplay_NewPokepic(BattleSystem *battleSys, PokepicManager
 
     pokepic = PokepicManager_CreatePokepicAt(monSpriteMan, spriteTemplate, x, y + yOffset, z, battler, battler, animScript, callback);
 
-    if (battlerType & 1) {
+    if (battlerType & BATTLER_ENEMY) {
         if (battlerType > BATTLER_TYPE_SOLO_ENEMY) {
             battlerType = battlerType >> 1;
         }
 
-        Pokepic_SetAttr(pokepic, 0x2A, battlerType);
-        Pokepic_SetAttr(pokepic, 0x2E, shadowSize);
-        Pokepic_SetAttr(pokepic, 0x14, y + 36);
-        Pokepic_SetAttr(pokepic, 0x15, xOffset);
-        Pokepic_SetAttr(pokepic, 0x16, 36 - yOffset);
-        Pokepic_SetAttr(pokepic, 0x29, height);
+        Pokepic_SetAttr(pokepic, POKEPIC_SHADOW_PLTT, battlerType);
+        Pokepic_SetAttr(pokepic, POKEPIC_SHADOW_SIZE, shadowSize);
+        Pokepic_SetAttr(pokepic, POKEPIC_SHADOW_Y, y + 36);
+        Pokepic_SetAttr(pokepic, POKEPIC_SHADOW_XOFFSET, xOffset);
+        Pokepic_SetAttr(pokepic, POKEPIC_SHADOW_YOFFSET, 36 - yOffset);
+        Pokepic_SetAttr(pokepic, POKEPIC_SHADOW_H, height);
     }
 
     return pokepic;
@@ -5868,12 +5887,14 @@ static Pokepic *BattleDisplay_NewPokepic(BattleSystem *battleSys, PokepicManager
 static void ov12_02261390(BattleSystem *battleSys, OpponentData *opponentData, RecallMsgMessage *message, BattleMessage *battleMsg) {
     if (opponentData->battlerType & 1) {
         if (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_LINK) {
-            battleMsg->id = 0x3DE;
+            // {TRAINER} withdrew {MON}!
+            battleMsg->id = msg_0197_00990;
             battleMsg->tag = TAG_TRNAME_NICKNAME;
             battleMsg->param[0] = opponentData->battlerId;
             battleMsg->param[1] = opponentData->battlerId | (message->partySlot << 8);
         } else {
-            battleMsg->id = 0x3DD;
+            // {CLASS} {TRAINER} withdrew {MON}
+            battleMsg->id = msg_0197_00989;
             battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME;
             battleMsg->param[0] = opponentData->battlerId;
             battleMsg->param[1] = opponentData->battlerId;
@@ -5882,18 +5903,24 @@ static void ov12_02261390(BattleSystem *battleSys, OpponentData *opponentData, R
     } else {
         if ((BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_DOUBLES) == FALSE && (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_LINK) == FALSE) {
             if (message->hpPercent == 0) {
-                battleMsg->id = 0x3D8;
+                // {MON}, switch out! Come back!
+                battleMsg->id = msg_0197_00984;
             } else if (message->hpPercent < 25) {
-                battleMsg->id = 0x3D9;
+                // {MON}, come back!
+                battleMsg->id = msg_0197_00985;
             } else if (message->hpPercent < 50) {
-                battleMsg->id = 0x3DC;
+                // {MON}, good! Come back!
+                battleMsg->id = msg_0197_00988;
             } else if (message->hpPercent < 75) {
-                battleMsg->id = 0x3DA;
+                // {MON}, OK! Come back!
+                battleMsg->id = msg_0197_00986;
             } else {
-                battleMsg->id = 0x3DB;
+                // {MON}, enough! Get back!
+                battleMsg->id = msg_0197_00987;
             }
         } else {
-            battleMsg->id = 0x3D9;
+            // {MON}, come back!
+            battleMsg->id = msg_0197_00985;
         }
 
         battleMsg->tag = TAG_NICKNAME;
@@ -5904,13 +5931,15 @@ static void ov12_02261390(BattleSystem *battleSys, OpponentData *opponentData, R
 static void ov12_02261464(BattleSystem *battleSys, OpponentData *opponentData, SendOutMsgMessage *message, BattleMessage *battleMsg) {
     if (opponentData->battlerType & 1) {
         if (!(BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_LINK)) {
-            battleMsg->id = 0x3CC;
+            // {CLASS} {TRAINER} sent out {MON}!
+            battleMsg->id = msg_0197_00972;
             battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME;
             battleMsg->param[0] = opponentData->battlerId;
             battleMsg->param[1] = opponentData->battlerId;
             battleMsg->param[2] = opponentData->battlerId | (message->partySlot << 8);
         } else {
-            battleMsg->id = 0x3CE;
+            // {TRAINER} sent out {MON}!
+            battleMsg->id = msg_0197_00974;
             battleMsg->tag = TAG_TRNAME_NICKNAME;
             battleMsg->param[0] = opponentData->battlerId;
             battleMsg->param[1] = opponentData->battlerId | (message->partySlot << 8);
@@ -5918,18 +5947,24 @@ static void ov12_02261464(BattleSystem *battleSys, OpponentData *opponentData, S
     } else {
         if ((BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_DOUBLES) == FALSE && (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_LINK) == FALSE) {
             if (message->hpPercent < 100) {
-                battleMsg->id = 0x3D6;
+                // Your foe's weak! Get 'em {MON}!
+                battleMsg->id = msg_0197_00982;
             } else if (message->hpPercent < 325) {
-                battleMsg->id = 0x3D7;
+                // Just a little more! Hang in there, {MON}!
+                battleMsg->id = msg_0197_00983;
             } else if (message->hpPercent < 550) {
-                battleMsg->id = 0x3D5;
+                // Go for it, {MON}!
+                battleMsg->id = msg_0197_00981;
             } else if (message->hpPercent < 775) {
-                battleMsg->id = 0x3D4;
+                // You're in charge, {MON}!
+                battleMsg->id = msg_0197_00980;
             } else {
-                battleMsg->id = 0x3D3;
+                // Go! {MON}!
+                battleMsg->id = msg_0197_00979;
             }
         } else {
-            battleMsg->id = 0x3D3;
+            // Go! {MON}!
+            battleMsg->id = msg_0197_00979;
         }
 
         battleMsg->tag = TAG_NICKNAME;
@@ -5952,32 +5987,37 @@ static void ov12_02261544(BattleSystem *battleSys, OpponentData *unused, BattleM
 
     if (battleType & BATTLE_TYPE_LINK) {
         if (battleType & BATTLE_TYPE_FRONTIER) {
-            battleMsg->id = 0x3e0;
+            // You are challenged by {CLASS} {TRAINER} and {CLASS} {TRAINER}!
+            battleMsg->id = msg_0197_00992;
             battleMsg->tag = TAG_TRCLASS_TRNAME_TRCLASS_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler1;
             battleMsg->param[2] = battler2;
             battleMsg->param[3] = battler2;
         } else if (battleType & BATTLE_TYPE_MULTI) {
-            battleMsg->id = 0x3cb;
+            // You are challegend by {TRAINER} and {TRAINER}!
+            battleMsg->id = msg_0197_00971;
             battleMsg->tag = TAG_TRNAME_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler2;
         } else {
-            battleMsg->id = 0x3ca;
+            // You are challenged by {TRAINER}!
+            battleMsg->id = msg_0197_00970;
             battleMsg->tag = TAG_TRNAME;
             battleMsg->param[0] = battler1;
         }
     } else {
         if (battleType & BATTLE_TYPE_TAG || battleType & BATTLE_TYPE_MULTI) {
-            battleMsg->id = 0x3e0;
+            // You are challenged by {CLASS} {TRAINER} and {CLASS} {TRAINER}!
+            battleMsg->id = msg_0197_00992;
             battleMsg->tag = TAG_TRCLASS_TRNAME_TRCLASS_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler1;
             battleMsg->param[2] = battler2;
             battleMsg->param[3] = battler2;
         } else {
-            battleMsg->id = 0x3c9;
+            // You are challegend by {CLASS} {TRAINER}
+            battleMsg->id = msg_0197_00969;
             battleMsg->tag = TAG_TRCLASS_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler1;
@@ -5990,7 +6030,7 @@ static void ov12_022615F0(BattleSystem *battleSys, OpponentData *opponentData, L
     int battler1;
     int battler2;
 
-    if (opponentData->battlerType & 1) {
+    if (opponentData->battlerType & BATTLER_ENEMY) {
         if (battleType & BATTLE_TYPE_DOUBLES) {
             battler1 = opponentData->battlerId;
             battler2 = BattleSystem_GetBattlerIdPartner(battleSys, opponentData->battlerId);
@@ -6001,7 +6041,9 @@ static void ov12_022615F0(BattleSystem *battleSys, OpponentData *opponentData, L
 
         if (battleType & BATTLE_TYPE_LINK) {
             if (battleType & BATTLE_TYPE_FRONTIER) {
-                battleMsg->id = 0x3df;
+                // {CLASS} {TRAINER} sent out {MON}!
+                // {CLASS} {TRAINER} sent out {MON}!
+                battleMsg->id = msg_0197_00991;
                 battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME_TRCLASS_TRNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1;
@@ -6010,27 +6052,33 @@ static void ov12_022615F0(BattleSystem *battleSys, OpponentData *opponentData, L
                 battleMsg->param[4] = battler2;
                 battleMsg->param[5] = battler2 | (message->partySlot[battler2] << 8);
             } else if (battleType & BATTLE_TYPE_MULTI) {
-                battleMsg->id = 0x3d0;
+                // {Trainer} sent out {MON}!
+                // {Trainer} sent out {MON}!
+                battleMsg->id = msg_0197_00976;
                 battleMsg->tag = TAG_TRNAME_NICKNAME_TRNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[2] = battler2;
                 battleMsg->param[3] = battler2 | (message->partySlot[battler2] << 8);
             } else if (battleType & BATTLE_TYPE_DOUBLES) {
-                battleMsg->id = 0x3cf;
+                // {TRAINER} sent out {MON} and {MON}!
+                battleMsg->id = msg_0197_00975;
                 battleMsg->tag = TAG_TRNAME_NICKNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[2] = battler2 | (message->partySlot[battler2] << 8);
             } else {
-                battleMsg->id = 0x3ce;
+                // {TRAINER} sent out {MON}!
+                battleMsg->id = msg_0197_00974;
                 battleMsg->tag = TAG_TRNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1 | (message->partySlot[battler1] << 8);
             }
         } else {
             if (battleType & BATTLE_TYPE_TAG || battleType & BATTLE_TYPE_MULTI) {
-                battleMsg->id = 0x3df;
+                // {CLASS} {TRAINER} sent out {MON}!
+                // {CLASS} {TRAINER} sent out {MON}!
+                battleMsg->id = msg_0197_00991;
                 battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME_TRCLASS_TRNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1;
@@ -6039,14 +6087,16 @@ static void ov12_022615F0(BattleSystem *battleSys, OpponentData *opponentData, L
                 battleMsg->param[4] = battler2;
                 battleMsg->param[5] = battler2 | (message->partySlot[battler2] << 8);
             } else if (battleType & BATTLE_TYPE_DOUBLES) {
-                battleMsg->id = 0x3cd;
+                // {CLASS} {TRAINER} sent out {MON} and {MON}!
+                battleMsg->id = msg_0197_00973;
                 battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1;
                 battleMsg->param[2] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[3] = battler2 | (message->partySlot[battler2] << 8);
             } else {
-                battleMsg->id = 0x3cc;
+                // {CLASS} {TRAINER} sent out {MON}!
+                battleMsg->id = msg_0197_00972;
                 battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1;
@@ -6090,36 +6140,42 @@ static void ov12_022615F0(BattleSystem *battleSys, OpponentData *opponentData, L
 
         if (battleType & BATTLE_TYPE_LINK) {
             if (battleType & BATTLE_TYPE_MULTI) {
-                battleMsg->id = 0x3d1;
+                // {TRAINER} Sent out {MON}! Go! {MON}!
+                battleMsg->id = msg_0197_00977;
                 battleMsg->tag = TAG_TRNAME_NICKNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[2] = battler2 | (message->partySlot[battler2] << 8);
             } else if (battleType & BATTLE_TYPE_DOUBLES) {
-                battleMsg->id = 0x3d2;
+                // Go! {MON} and {MON}!
+                battleMsg->id = msg_0197_00978;
                 battleMsg->tag = TAG_NICKNAME_NICKNAME;
                 battleMsg->param[0] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[1] = battler2 | (message->partySlot[battler2] << 8);
             } else {
-                battleMsg->id = 0x3d3;
+                // Go! {MON}!
+                battleMsg->id = msg_0197_00979;
                 battleMsg->tag = TAG_NICKNAME;
                 battleMsg->param[0] = battler1 | (message->partySlot[battler1] << 8);
             }
         } else {
             if (battleType & BATTLE_TYPE_MULTI) {
-                battleMsg->id = 0x3e1;
+                // {CLASS} {TRAINER} sent out {MON}! Go! {MON}!
+                battleMsg->id = msg_0197_00993;
                 battleMsg->tag = TAG_TRCLASS_TRNAME_NICKNAME_NICKNAME;
                 battleMsg->param[0] = battler1;
                 battleMsg->param[1] = battler1;
                 battleMsg->param[2] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[3] = battler2 | (message->partySlot[battler2] << 8);
             } else if (battleType & BATTLE_TYPE_DOUBLES) {
-                battleMsg->id = 0x3d2;
+                // Go! {MON} and {MON}!
+                battleMsg->id = msg_0197_00978;
                 battleMsg->tag = TAG_NICKNAME_NICKNAME;
                 battleMsg->param[0] = battler1 | (message->partySlot[battler1] << 8);
                 battleMsg->param[1] = battler2 | (message->partySlot[battler2] << 8);
             } else {
-                battleMsg->id = 0x3d3;
+                // Go! {MON}!
+                battleMsg->id = msg_0197_00979;
                 battleMsg->tag = TAG_NICKNAME;
                 battleMsg->param[0] = battler1 | (message->partySlot[battler1] << 8);
             }
@@ -6144,36 +6200,42 @@ static void ov12_02261928(BattleSystem *battleSys, OpponentData *opponentData, B
     switch (battleResultMask) {
     case BATTLE_RESULT_WIN:
         if (battleType & BATTLE_TYPE_MULTI) {
-            battleMsg->id = 0x312;
+            // Player defeated {TRAINER} and {TRAINER}!
+            battleMsg->id = msg_0197_00786;
             battleMsg->tag = TAG_TRNAME_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler2;
         } else {
-            battleMsg->id = 0x311;
+            // Player defeated {TRAINER}!
+            battleMsg->id = msg_0197_00785;
             battleMsg->tag = TAG_TRNAME;
             battleMsg->param[0] = battler1;
         }
         break;
     case BATTLE_RESULT_LOSE:
         if (battleType & BATTLE_TYPE_MULTI) {
-            battleMsg->id = 0x314;
+            // Player lost to {TRAINER} and {TRAINER}!
+            battleMsg->id = msg_0197_00788;
             battleMsg->tag = TAG_TRNAME_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler2;
         } else {
-            battleMsg->id = 0x313;
+            // Player lost against {TRAINER}!
+            battleMsg->id = msg_0197_00787;
             battleMsg->tag = TAG_TRNAME;
             battleMsg->param[0] = battler1;
         }
         break;
     case BATTLE_RESULT_DRAW:
         if (battleType & BATTLE_TYPE_MULTI) {
-            battleMsg->id = 0x316;
+            // Player battled to a draw against {TRAINER} and {TRAINER}!
+            battleMsg->id = msg_0197_00790;
             battleMsg->tag = TAG_TRNAME_TRNAME;
             battleMsg->param[0] = battler1;
             battleMsg->param[1] = battler2;
         } else {
-            battleMsg->id = 0x315;
+            // Player battled to a draw against {TRAINER}!
+            battleMsg->id = msg_0197_00789;
             battleMsg->tag = TAG_TRNAME;
             battleMsg->param[0] = battler1;
         }
@@ -6196,25 +6258,30 @@ static void ov12_022619E4(BattleSystem *battleSys, OpponentData *opponentData, E
     }
 
     if (playerMonCount && enemyMonCount) {
-        battleMsg->id = 0x30d;
+        // Got away safely!
+        battleMsg->id = msg_0197_00781;
         battleMsg->tag = TAG_NONE;
         BattleSystem_SetBattleOutcomeFlags(battleSys, BATTLE_RESULT_DRAW | BATTLE_RESULT_TRY_FLEE | BATTLE_RESULT_TRY_FLEE_WAIT);
     } else if (playerMonCount) {
-        battleMsg->id = 0x30d;
+        // Got away safely!
+        battleMsg->id = msg_0197_00781;
         battleMsg->tag = TAG_NONE;
         BattleSystem_SetBattleOutcomeFlags(battleSys, BATTLE_RESULT_LOSE | BATTLE_RESULT_TRY_FLEE | BATTLE_RESULT_TRY_FLEE_WAIT);
     } else {
         if (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_MULTI) {
-            battleMsg->id = 0x318;
+            // {TRAINER} and {TRAINER} fled!
+            battleMsg->id = msg_0197_00792;
             battleMsg->tag = TAG_TRNAME_TRNAME;
             battleMsg->param[0] = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_ENEMY_SIDE_SLOT_1);
             battleMsg->param[1] = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_ENEMY_SIDE_SLOT_2);
         } else if (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_DOUBLES) {
-            battleMsg->id = 0x317;
+            // {TRAINER} fled!
+            battleMsg->id = msg_0197_00791;
             battleMsg->tag = TAG_TRNAME;
             battleMsg->param[0] = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_ENEMY_SIDE_SLOT_1);
         } else {
-            battleMsg->id = 0x317;
+            // {TRAINER} fled!
+            battleMsg->id = msg_0197_00791;
             battleMsg->tag = TAG_TRNAME;
             battleMsg->param[0] = BattleSystem_GetBattlerFromBattlerType(battleSys, BATTLER_TYPE_SOLO_ENEMY);
         }
@@ -6224,7 +6291,8 @@ static void ov12_022619E4(BattleSystem *battleSys, OpponentData *opponentData, E
 }
 
 static void ov12_02261AD4(BattleSystem *battleSys, OpponentData *opponentData, BattleMessage *battleMsg) {
-    battleMsg->id = 0x3bc;
+    // {TRAINER} forfeited the match!
+    battleMsg->id = msg_0197_00956;
     battleMsg->tag = TAG_TRNAME;
 
     if (BattleSystem_GetBattleType(battleSys) & BATTLE_TYPE_LINK) {
@@ -6304,7 +6372,7 @@ static void BattleDisplay_PopulateBattlerContext(BattleSystem *battleSys, MoveAn
     battlerSpriteCtx->targetBattler = battler;
     battlerSpriteCtx->sourceBattler = battler;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < BATTLER_MAX; i++) {
         battlerSpriteCtx->pokemonSpriteData[i] = ov12_0223BB88(battleSys, i);
         battlerSpriteCtx->species[i] = animation->species[i];
         battlerSpriteCtx->genders[i] = animation->genders[i];
