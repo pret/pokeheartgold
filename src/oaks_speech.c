@@ -4,9 +4,9 @@
 
 #include "constants/species.h"
 
-#include "files/demo/intro/intro.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0219.h"
+#include "demo/intro/intro.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0219.h"
 
 #include "brightness.h"
 #include "font.h"

@@ -21,7 +21,7 @@
 #include "battle/battle_controller_player.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
-#include "files/msgdata/msg/msg_0197.h"
+#include "msgdata/msg/msg_0197.h"
 
 #include "assert.h"
 #include "gf_gfx_loader.h"
@@ -2204,9 +2204,7 @@ u32 CalcPrizeMoney(BattleSystem *battleSystem, BattleContext *ctx, int trainerIn
             }
         }
 
-        if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
-            GF_ASSERT(FALSE);
-        }
+        GF_ASSERT(i < (int)NELEMS(sPrizeMoneyTbl));
         if (i >= (int)NELEMS(sPrizeMoneyTbl)) {
             i = 2;
         }
@@ -6268,7 +6266,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
     case STATE_GET_EXP_LEVEL_UP_CLEAR: {
         Window *window = BattleSystem_GetWindow(data->battleSystem, 1);
 
-        sub_0200E5D4(window, 0);
+        ClearWindowPixelBuffer(window, 0);
         RemoveWindow(window);
 
         G2_SetBG0Priority(1);
@@ -7478,9 +7476,7 @@ static int BattleSystem_GetBattlerIDBySide(BattleSystem *battleSystem, BattleCon
         break;
     }
 
-    if (battlerID == BATTLER_NONE) {
-        GF_AssertFail();
-    }
+    GF_ASSERT(battlerID != BATTLER_NONE);
 
     return battlerID;
 }
@@ -8011,7 +8007,7 @@ static void BattleSystem_LoadLevelUpNameplate(BattleSystem *battleSystem, Getter
     String_Delete(string);
     InitWindow(&window);
     AddTextWindowTopLeftCorner(bgConfig, &window, 12, 4, 0, 0);
-    AddTextPrinterParameterizedWithColor(&window, 0, messageBuffer, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL); // Second param should be something like FONT_ID_0.
+    AddTextPrinterParameterizedWithColor(&window, FONT_SYSTEM, messageBuffer, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     sub_02021AC8(sub_02013688(&window, NNS_G2D_VRAM_TYPE_2DMAIN, 5), TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, &unkStruct);
     textObjTemplate.fontSystem = data->tempPointers[POINTER_LEVEL_UP_NAMEPLATE_FONT_SYSTEM];
     textObjTemplate.window = &window;

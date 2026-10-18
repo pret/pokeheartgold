@@ -1,5 +1,7 @@
 #include "battle/battle_io_command.h"
 
+#include "global.h"
+
 #include "constants/abilities.h"
 
 #include "battle/battle_message_structs.h"
@@ -328,7 +330,7 @@ static void BattleIOCmd_SetMoveAnimation(BattleSystem *battleSystem, OpponentDat
 }
 
 static void BattleIOCmd_FlickerBattler(BattleSystem *battleSystem, OpponentData *opponentData) {
-    if (Pokepic_GetAttr(opponentData->pokepic, 6) == TRUE) {
+    if (Pokepic_GetAttr(opponentData->pokepic, POKEPIC_VANISHED) == TRUE) {
         BattleController_EmitClearCommand(battleSystem, opponentData->battlerId, BATTLE_COMMAND_FLICKER_BATTLER);
     } else {
         BattleDisplay_InitTaskFlickerBattler(battleSystem, opponentData);
@@ -442,7 +444,7 @@ static void BattleIOCmd_UpdatePartyMon(BattleSystem *battleSystem, OpponentData 
     Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, opponentData->battlerId, message->partySlot);
 
     if ((message->status2 & STATUS2_TRANSFORM) == FALSE) {
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < MAX_MON_MOVES; i++) {
             if ((message->mimickedMoveSlot & MaskOfFlagNo(i)) == FALSE) {
                 SetMonData(mon, MON_DATA_MOVE1 + i, (u8 *)&message->moves[i]);
                 SetMonData(mon, MON_DATA_MOVE1_PP + i, (u8 *)&message->ppCur[i]);
@@ -559,7 +561,7 @@ static void BattleIOCmd_ChangeForm(BattleSystem *battleSystem, OpponentData *opp
     ov12_0223BBD8(ov12_0223A99C(battleSystem), opponentData->battlerId, y);
 
     y = ov07_02234B5C(opponentData->battlerType, 1) + y;
-    Pokepic_SetAttr(opponentData->pokepic, 1, y);
+    Pokepic_SetAttr(opponentData->pokepic, POKEPIC_Y, y);
 
     BattleController_EmitClearCommand(battleSystem, opponentData->battlerId, message->command);
     ov12_02259928(opponentData);
@@ -576,8 +578,8 @@ static void BattleIOCmd_ClearTouchScreen(BattleSystem *battleSystem, OpponentDat
         BattleInput *battleInput;
         int partner;
         BattleHpBar *hpBar;
-        NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-        NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+        NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+        NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
         battleInput = BattleSystem_GetBattleInput(battleSystem);
 
         BattleInput_ChangeMenu(bgNarc, objNarc, battleInput, 0, 0, NULL);

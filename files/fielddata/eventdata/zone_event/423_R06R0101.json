@@ -1,33 +1,33 @@
 {
-  "header": "fielddata/script/scr_seq/event_R06R0101.h",
-  "warps": [
-    {
-      "x": 5,
-      "z": 9,
-      "header": "MAP_ROUTE_6",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 8,
-      "z": 3,
-      "header": "MAP_ROUTE_5_UNDERGROUND_PATH",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 8,
-      "z": 4,
-      "header": "MAP_ROUTE_5_UNDERGROUND_PATH",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 8,
-      "z": 5,
-      "header": "MAP_ROUTE_5_UNDERGROUND_PATH",
-      "anchor": 3,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R06R0101.h",
+    "warps": [
+        {
+            "x": 5,
+            "z": 9,
+            "header": "MAP_ROUTE_6",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 8,
+            "z": 3,
+            "header": "MAP_ROUTE_5_UNDERGROUND_PATH",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 8,
+            "z": 4,
+            "header": "MAP_ROUTE_5_UNDERGROUND_PATH",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 8,
+            "z": 5,
+            "header": "MAP_ROUTE_5_UNDERGROUND_PATH",
+            "anchor": 3,
+            "y": 0
+        }
+    ]
 }

@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "files/data/resdat.naix"
+#include "data/resdat.naix"
 
 #include "oaks_speech_internal.h"
 #include "vram_transfer_manager.h"

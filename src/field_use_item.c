@@ -6,8 +6,8 @@
 #include "field/fieldmap.h"
 #include "fielddata/script/scr_seq/event_D24R0202.h"
 #include "fielddata/script/scr_seq/event_D24R0206.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0010.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0010.h"
 
 #include "alph_checks.h"
 #include "bag_view.h"

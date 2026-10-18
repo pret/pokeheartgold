@@ -1,90 +1,90 @@
 {
-  "header": "fielddata/script/scr_seq/event_T28GYM0103.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T28GYM0103_001 + 1",
-      "type": 0,
-      "x": 2,
-      "z": 18,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T28GYM0103_001 + 1",
-      "type": 0,
-      "x": 6,
-      "z": 18,
-      "y": 0,
-      "dir": 0
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T28GYM0103_ice",
-      "spriteId": "SPRITE_ICE",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 12,
-      "y": 0
-    },
-    {
-      "id": "obj_T28GYM0103_ice_2",
-      "spriteId": "SPRITE_ICE",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 8,
-      "y": 0
-    },
-    {
-      "id": "obj_T28GYM0103_sunglasses",
-      "spriteId": "SPRITE_SUNGLASSES",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T28GYM0103_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 17,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 19,
-      "header": "MAP_MAHOGANY",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 3,
-      "z": 2,
-      "header": "MAP_MAHOGANY_GYM_ROOM_2",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T28GYM0103.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T28GYM0103_001 + 1",
+            "type": 0,
+            "x": 2,
+            "z": 18,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T28GYM0103_001 + 1",
+            "type": 0,
+            "x": 6,
+            "z": 18,
+            "y": 0,
+            "dir": 0
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T28GYM0103_ice",
+            "spriteId": "SPRITE_ICE",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 12,
+            "y": 0
+        },
+        {
+            "id": "obj_T28GYM0103_ice_2",
+            "spriteId": "SPRITE_ICE",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 8,
+            "y": 0
+        },
+        {
+            "id": "obj_T28GYM0103_sunglasses",
+            "spriteId": "SPRITE_SUNGLASSES",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T28GYM0103_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 17,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 19,
+            "header": "MAP_MAHOGANY",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 3,
+            "z": 2,
+            "header": "MAP_MAHOGANY_GYM_ROOM_2",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

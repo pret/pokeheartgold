@@ -77,7 +77,7 @@ void RemoveTextPrinter(u8 printerId) {
     DestroyTextPrinterSysTask(printerId);
 }
 
-u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, PrinterCallback_t callback) {
+u8 AddTextPrinterParameterized(Window *window, enum Font fontId, String *string, u32 x, u32 y, u32 textSpeed, PrinterCallback_t callback) {
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;
@@ -100,7 +100,7 @@ u8 AddTextPrinterParameterized(Window *window, FontID fontId, String *string, u3
     return AddTextPrinter(&template, textSpeed, callback);
 }
 
-u8 AddTextPrinterParameterizedWithColor(Window *window, FontID fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback) {
+u8 AddTextPrinterParameterizedWithColor(Window *window, enum Font fontId, String *string, u32 x, u32 y, u32 textSpeed, u32 color, PrinterCallback_t callback) {
     TextPrinterTemplate template;
 
     template.currentChar.wrapped = string;

@@ -1,4 +1,4 @@
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "field_system.h"
 #include "filesystem.h"

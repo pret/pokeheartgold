@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_BATTLE_BATTLE_MESSAGE_STRUCTS_H
 #define POKEHEARTGOLD_BATTLE_BATTLE_MESSAGE_STRUCTS_H
 
+#include "constants/pokemon.h"
+
 #include "battle/battle.h"
 
 typedef struct EncounterAnimationMessage {
@@ -17,9 +19,9 @@ typedef struct MonEncounterMessage {
     u32 personality;
     u32 cryModulation;
     // These arrays are set but never used
-    u16 moves[4];
-    u16 curPP[4];
-    u16 maxPP[4];
+    u16 moves[MAX_MON_MOVES];
+    u16 curPP[MAX_MON_MOVES];
+    u16 maxPP[MAX_MON_MOVES];
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 padding_3A[2];
 } MonEncounterMessage;
@@ -35,18 +37,18 @@ typedef struct MonShowMessage {
     int selectedPartySlot;
     int capturedBall;
     int isQuickSendOut;
-    u16 moves[4];
-    u16 curPP[4];
-    u16 maxPP[4];
+    u16 moves[MAX_MON_MOVES];
+    u16 curPP[MAX_MON_MOVES];
+    u16 maxPP[MAX_MON_MOVES];
     u16 nickname[POKEMON_NAME_LENGTH + 1];
     u8 padding_46[2];
     int partnerPartySlot;
     int isSubstitute;
-    u16 battleMonSpecies[4];
-    u8 battleMonGenders[4];
-    u8 battleMonIsShiny[4];
-    u8 battleMonFormNums[4];
-    u32 battleMonPersonalities[4];
+    u16 battleMonSpecies[BATTLER_MAX];
+    u8 battleMonGenders[BATTLER_MAX];
+    u8 battleMonIsShiny[BATTLER_MAX];
+    u8 battleMonFormNums[BATTLER_MAX];
+    u32 battleMonPersonalities[BATTLER_MAX];
 } MonShowMessage;
 
 typedef struct MonReturnMessage {
@@ -54,11 +56,11 @@ typedef struct MonReturnMessage {
     u8 yOffset;
     u16 capturedBall;
     int isSubstitute;
-    u16 battleMonSpecies[4];
-    u8 battleMonGenders[4];
-    u8 battleMonIsShiny[4];
-    u8 battleMonFormNums[4];
-    u32 battleMonPersonalities[4];
+    u16 battleMonSpecies[BATTLER_MAX];
+    u8 battleMonGenders[BATTLER_MAX];
+    u8 battleMonIsShiny[BATTLER_MAX];
+    u8 battleMonFormNums[BATTLER_MAX];
+    u32 battleMonPersonalities[BATTLER_MAX];
     u32 unk2C;
 } MonReturnMessage;
 
@@ -107,9 +109,9 @@ typedef struct CommandSetMessage {
     u8 partySlot;
     u8 expPercents[6];
     u8 ballStatus[2][6];
-    u16 moves[4];
-    u8 curPP[4];
-    u8 maxPP[4];
+    u16 moves[MAX_MON_MOVES];
+    u8 curPP[MAX_MON_MOVES];
+    u8 maxPP[MAX_MON_MOVES];
     s16 curHP;
     u16 maxHP;
     u8 ballStatusBattler;
@@ -121,9 +123,9 @@ typedef struct MoveSelectMenuMessage {
     u8 command;
     u8 partySlot;
     u16 invalidMoves;
-    u16 moves[4];
-    u8 ppCur[4];
-    u8 ppMax[4];
+    u16 moves[MAX_MON_MOVES];
+    u8 ppCur[MAX_MON_MOVES];
+    u8 ppMax[MAX_MON_MOVES];
 } MoveSelectMenuMessage;
 
 typedef struct TargetSelectMenuMessage {
@@ -138,9 +140,9 @@ typedef struct BagMenuMessage {
     u8 hasTwoOpponents;
     u8 semiInvulnerable;
     u8 substitute;
-    u8 partySlots[4];
-    u8 partyOrder[4][6];
-    u8 embargoTurns[4];
+    u8 partySlots[BATTLER_MAX];
+    u8 partyOrder[BATTLER_MAX][PARTY_SIZE];
+    u8 embargoTurns[BATTLER_MAX];
 } BagMenuMessage;
 
 typedef struct BattleItemUse {
@@ -154,8 +156,8 @@ typedef struct PartyMenuMessage {
     u8 battler;
     u8 listMode;
     u8 doublesSelection;
-    u8 selectedPartySlot[4];
-    u8 partyOrder[4][6];
+    u8 selectedPartySlot[BATTLER_MAX];
+    u8 partyOrder[BATTLER_MAX][PARTY_SIZE];
     int canSwitch;
     u8 battlersSwitchingMask;
     u8 padding_25[3];
@@ -187,16 +189,16 @@ typedef struct MoveAnimation {
     u16 isTransformed : 1;
     u16 unk_0E_2 : 1;
     u16 unk_0E_3 : 1;
-    u16 : 12;
+    u16 unk_0E_4 : 12;
     u32 fieldConditions;
     u16 attacker;
     u16 defender;
-    u16 species[4];
-    u8 genders[4];
-    u8 isShiny[4];
-    u8 formNums[4];
-    u32 personalities[4];
-    u32 moveEffectMasks[4];
+    u16 species[BATTLER_MAX];
+    u8 genders[BATTLER_MAX];
+    u8 isShiny[BATTLER_MAX];
+    u8 formNums[BATTLER_MAX];
+    u32 personalities[BATTLER_MAX];
+    u32 moveEffectMasks[BATTLER_MAX];
     int animMode;
     int secondaryAnimID;
     int terrain;
@@ -231,11 +233,11 @@ typedef struct FaintingSequenceMessage {
     u8 isSubstitute;
     u8 isTransformed;
     u8 unk_0B;
-    u16 monSpecies[4];
-    u8 monGenders[4];
-    u8 monShiny[4];
-    u8 monFormNums[4];
-    u32 monPersonalities[4];
+    u16 monSpecies[BATTLER_MAX];
+    u8 monGenders[BATTLER_MAX];
+    u8 monShiny[BATTLER_MAX];
+    u8 monFormNums[BATTLER_MAX];
+    u32 monPersonalities[BATTLER_MAX];
 } FaintingSequenceMessage;
 
 typedef struct PlaySoundMessage {
@@ -249,11 +251,11 @@ typedef struct ToggleVanishMessage {
     u8 toggle;
     u8 isSubstitute;
     u8 padding_03;
-    u16 species[4];
-    u8 gender[4];
-    u8 isShiny[4];
-    u8 formNum[4];
-    u32 personality[4];
+    u16 species[BATTLER_MAX];
+    u8 gender[BATTLER_MAX];
+    u8 isShiny[BATTLER_MAX];
+    u8 formNum[BATTLER_MAX];
+    u32 personality[BATTLER_MAX];
 } ToggleVanishMessage;
 
 typedef struct SetStatusIconMessage {
@@ -314,8 +316,8 @@ typedef struct UpdatePartyMonMessage {
     u32 status;
     u32 knockedOffItemsMask;
     u16 heldItem;
-    u16 moves[4];
-    u8 ppCur[4];
+    u16 moves[MOVES_MAX];
+    u8 ppCur[MOVES_MAX];
     u8 padding_16[2];
     u32 status2;
     u16 formNum;
@@ -357,7 +359,7 @@ typedef struct MonChangeFormMessage {
 typedef struct PartyGaugeData {
     u8 command;
     u8 padding_01;
-    u8 status[6];
+    u8 status[PARTY_SIZE];
 } PartyGaugeData;
 
 typedef struct RecordIncrementMessage {

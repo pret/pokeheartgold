@@ -96,7 +96,7 @@
 .public Sprite_GetCurrentAnimFrameExAttr
 .public Sprite_GetCellAnim
 .public GF_AssertFail
-.public sub_02026DE0
+.public BillboardGfxSequence_GetTexPlttIndexAt
 .public NNS_G2dGetUnpackedAnimBank
 .public NNS_G2dGetAnimSequenceByIdx
 .public NNS_G2dGetAnimCtrlCurrentFrame

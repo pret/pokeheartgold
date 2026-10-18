@@ -8,6 +8,6 @@
 .public TaskManager_GetFieldSystem
 .public TaskManager_GetEnvironment
 .public sub_0207791C
-.public sub_02092B04
+.public Task_Bag_SellMenu
 .public FieldMap_FadeScreen
 .public Task_Mart

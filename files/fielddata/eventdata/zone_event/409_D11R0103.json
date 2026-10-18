@@ -1,177 +1,177 @@
 {
-  "header": "fielddata/script/scr_seq/event_D11R0103.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d11r0103_pearl",
-      "type": 2,
-      "x": 5,
-      "z": 7,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d11r0103_pearl_2",
-      "type": 2,
-      "x": 42,
-      "z": 18,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_EVERYWHERE_boarder",
-      "spriteId": "SPRITE_BOARDER",
-      "movement": 14,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_BOARDER_BRYCE)",
-      "facingDirection": 0,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 33,
-      "z": 14,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_boarder_2",
-      "spriteId": "SPRITE_BOARDER",
-      "movement": 20,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_BOARDER_SHAUN)",
-      "facingDirection": 2,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 4,
-      "yRange": 0,
-      "x": 25,
-      "z": 8,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_skierw",
-      "spriteId": "SPRITE_SKIERW",
-      "movement": 16,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_SKIER_CADY)",
-      "facingDirection": 2,
-      "param0": 1,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 17,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0103_WATER_STONE",
-      "scriptId": "std_itemball_d11r0103_water_stone",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 19,
-      "z": 25,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 34,
-      "z": 25,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 15,
-      "z": 21,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 18,
-      "z": 12,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 23,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 43,
-      "z": 12,
-      "header": "MAP_SEAFOAM_ISLANDS_B3F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 42,
-      "z": 23,
-      "header": "MAP_SEAFOAM_ISLANDS_B3F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 23,
-      "z": 14,
-      "header": "MAP_SEAFOAM_ISLANDS_B3F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 5,
-      "z": 24,
-      "header": "MAP_SEAFOAM_ISLANDS_B3F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 34,
-      "z": 24,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 18,
-      "z": 11,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 15,
-      "z": 20,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 22,
-      "header": "MAP_SEAFOAM_ISLANDS_B1F",
-      "anchor": 5,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D11R0103.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d11r0103_pearl",
+            "type": 2,
+            "x": 5,
+            "z": 7,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d11r0103_pearl_2",
+            "type": 2,
+            "x": 42,
+            "z": 18,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_EVERYWHERE_boarder",
+            "spriteId": "SPRITE_BOARDER",
+            "movement": 14,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_BOARDER_BRYCE)",
+            "facingDirection": 0,
+            "param0": 2,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 33,
+            "z": 14,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_boarder_2",
+            "spriteId": "SPRITE_BOARDER",
+            "movement": 20,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_BOARDER_SHAUN)",
+            "facingDirection": 2,
+            "param0": 2,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 4,
+            "yRange": 0,
+            "x": 25,
+            "z": 8,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_skierw",
+            "spriteId": "SPRITE_SKIERW",
+            "movement": 16,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_SKIER_CADY)",
+            "facingDirection": 2,
+            "param0": 1,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 17,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D11R0103_WATER_STONE",
+            "scriptId": "std_itemball_d11r0103_water_stone",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 19,
+            "z": 25,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 34,
+            "z": 25,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 15,
+            "z": 21,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 18,
+            "z": 12,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 23,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 43,
+            "z": 12,
+            "header": "MAP_SEAFOAM_ISLANDS_B3F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 42,
+            "z": 23,
+            "header": "MAP_SEAFOAM_ISLANDS_B3F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 23,
+            "z": 14,
+            "header": "MAP_SEAFOAM_ISLANDS_B3F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 5,
+            "z": 24,
+            "header": "MAP_SEAFOAM_ISLANDS_B3F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 34,
+            "z": 24,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 18,
+            "z": 11,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 15,
+            "z": 20,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 22,
+            "header": "MAP_SEAFOAM_ISLANDS_B1F",
+            "anchor": 5,
+            "y": 0
+        }
+    ]
 }

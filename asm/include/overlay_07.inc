@@ -165,8 +165,8 @@
 .public sub_020729D8
 .public sub_020729FC
 .public sub_02072A20
-.public sub_02091084
-.public sub_0209109C
+.public CapsuleMenu_GetSealParticleIndex
+.public CapsuleMenu_IsAlphabetSeal
 .public FX_Div
 .public FX_Sqrt
 .public FX_Atan2Idx

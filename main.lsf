@@ -84,7 +84,8 @@ Static main
     Object main.nef.p/asm_unk_0202068C.s.o
     Object main.nef.p/src_unk_02020A0C.c.o
     Object main.nef.p/src_ascii_util.c.o
-    Object main.nef.p/asm_unk_02020B8C.s.o
+    Object main.nef.p/src_fx_util.c.o
+    Object main.nef.p/src_unk_02020E80.c.o
     Object main.nef.p/asm_unk_020210A0.s.o
     Object main.nef.p/src_obj_char_transfer.c.o
     Object main.nef.p/src_obj_pltt_transfer.c.o
@@ -100,7 +101,7 @@ Static main
     Object main.nef.p/src_font_data.c.o
     Object main.nef.p/src_pm_string.c.o
     Object main.nef.p/src_touch_hitbox_controller.c.o
-    Object main.nef.p/asm_unk_02026DE0.s.o
+    Object main.nef.p/src_billboard_gfx_sequence.c.o
     Object main.nef.p/src_unk_02026E30.c.o
     Object main.nef.p/src_unk_02026E84.c.o
     Object main.nef.p/src_gf_3d_vramman.c.o
@@ -320,7 +321,7 @@ Static main
     Object main.nef.p/src_application_check_savedata.c.o
     Object main.nef.p/src_save_data_read_error.c.o
     Object main.nef.p/src_save_data_write_error.c.o
-    Object main.nef.p/asm_unk_02092B04.s.o
+    Object main.nef.p/src_unk_02092B04.c.o
     Object main.nef.p/src_unk_02092BB8.c.o
     Object main.nef.p/src_unk_02092BE8.c.o
     Object main.nef.p/src_mom_gift.c.o
@@ -609,7 +610,9 @@ Overlay OVY_14
 Overlay OVY_15
 {
     After OVY_14
-    Object main.nef.p/asm_overlay_15.s.o
+    Object main.nef.p/src_application_bag_bag_app_main.c.o
+    Object main.nef.p/src_application_bag_bag_app_window.c.o
+    Object main.nef.p/src_application_bag_bag_app_sprite.c.o
 }
 Overlay OVY_16
 {

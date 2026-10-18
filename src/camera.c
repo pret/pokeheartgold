@@ -4,6 +4,8 @@
 
 #include "global.h"
 
+#include "fx_util.h"
+
 static void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera);
 static void Camera_CalcLookAtTargetFromPosAndAngle(Camera *camera);
 static void Camera_InitInternal(u16 perspectiveAngle, Camera *camera);
@@ -14,7 +16,6 @@ GXBufferMode gG3dDepthBufferingMode = GX_BUFFERMODE_W;
 static Camera *sCameraPtr;
 
 extern void Camera_OffsetLookAtPosAndTarget(const VecFx32 *delta, Camera *camera);
-extern fx16 CalcAngleBetweenVecs(VecFx32 *a, VecFx32 *b);
 
 static void Camera_CalcLookAtPosFromTargetAndAngle(Camera *camera) {
     u16 negx = -camera->angle.x;
@@ -239,7 +240,7 @@ void Camera_Init_FromTargetAndPos(const VecFx32 *target, const VecFx32 *pos, u16
     sp00.z = FX32_ONE;
     sp0C = vec_from_pos_to_target;
     sp0C.y = 0;
-    camera->angle.y = CalcAngleBetweenVecs(&sp00, &sp0C);
+    camera->angle.y = VEC_AngleBetween(&sp00, &sp0C);
 
     sp00.x = FX32_ONE;
     sp00.y = 0;
@@ -247,7 +248,7 @@ void Camera_Init_FromTargetAndPos(const VecFx32 *target, const VecFx32 *pos, u16
     sp0C.x = vec_from_pos_to_target.z;
     sp0C.z = vec_from_pos_to_target.y;
     sp0C.y = 0;
-    camera->angle.x = CalcAngleBetweenVecs(&sp00, &sp0C);
+    camera->angle.x = VEC_AngleBetween(&sp00, &sp0C);
 
     camera->angle.z = 0;
     Camera_ApplyPerspectiveType(perspectiveType, camera);

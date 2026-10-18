@@ -2,13 +2,14 @@
 
 #include "global.h"
 
-#include "files/application/choose_starter/choose_starter_main_res.naix"
-#include "files/application/choose_starter/choose_starter_sub_res.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0190.h"
+#include "application/choose_starter/choose_starter_main_res.naix"
+#include "application/choose_starter/choose_starter_sub_res.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0190.h"
 
 #include "camera.h"
 #include "camera_translation.h"
+#include "fx_util.h"
 #include "gf_3d_render.h"
 #include "gf_3d_vramman.h"
 #include "gf_gfx_loader.h"
@@ -28,7 +29,6 @@
 #include "unk_02009D48.h"
 #include "unk_0200B150.h"
 #include "unk_02013FDC.h"
-#include "unk_02020B8C.h"
 #include "unk_02026E30.h"
 
 enum ChooseStarterInput {
@@ -1156,7 +1156,7 @@ static int getRotateDirection(int a0, u8 a1, int a2) {
 static int getTappedBallId(VecFx32 *vecs, VecFx32 *near, VecFx32 *far, fx32 radius) {
     u8 i;
     for (i = 0; i < 3; i++) {
-        if (GetDistanceFromPointToLine(&vecs[i], near, far) <= radius) {
+        if (VEC_DistanceFromPointToLine(&vecs[i], near, far) <= radius) {
             break;
         }
     }

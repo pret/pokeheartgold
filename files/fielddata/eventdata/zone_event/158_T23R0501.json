@@ -1,83 +1,83 @@
 {
-  "header": "fielddata/script/scr_seq/event_T23R0501.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T23R0501_004 + 1",
-      "type": 0,
-      "x": 9,
-      "z": 2,
-      "y": 0,
-      "dir": 0
-    },
-    {
-      "scriptId": "_EV_scr_seq_T23R0501_006 + 1",
-      "type": 0,
-      "x": 6,
-      "z": 3,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T23R0501_gantetsu",
-      "spriteId": "SPRITE_GANTETSU",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_19E",
-      "scriptId": "_EV_scr_seq_T23R0501_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 4,
-      "y": 0
-    },
-    {
-      "id": "obj_T23R0501_gsbabygirl1",
-      "spriteId": "SPRITE_GSBABYGIRL1",
-      "movement": 2,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T23R0501_002 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 5,
-      "y": 0
-    },
-    {
-      "id": "obj_T23R0501_tsure_poke_static_slowpoke",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_SLOWPOKE",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_AZALEA_SLOWPOKES",
-      "scriptId": "_EV_scr_seq_T23R0501_003 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 7,
-      "z": 5,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 9,
-      "header": "MAP_AZALEA",
-      "anchor": 6,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T23R0501.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T23R0501_004 + 1",
+            "type": 0,
+            "x": 9,
+            "z": 2,
+            "y": 0,
+            "dir": 0
+        },
+        {
+            "scriptId": "_EV_scr_seq_T23R0501_006 + 1",
+            "type": 0,
+            "x": 6,
+            "z": 3,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T23R0501_gantetsu",
+            "spriteId": "SPRITE_GANTETSU",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_19E",
+            "scriptId": "_EV_scr_seq_T23R0501_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 4,
+            "y": 0
+        },
+        {
+            "id": "obj_T23R0501_gsbabygirl1",
+            "spriteId": "SPRITE_GSBABYGIRL1",
+            "movement": 2,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T23R0501_002 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 5,
+            "y": 0
+        },
+        {
+            "id": "obj_T23R0501_tsure_poke_static_slowpoke",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_SLOWPOKE",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_AZALEA_SLOWPOKES",
+            "scriptId": "_EV_scr_seq_T23R0501_003 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 7,
+            "z": 5,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 9,
+            "header": "MAP_AZALEA",
+            "anchor": 6,
+            "y": 0
+        }
+    ]
 }

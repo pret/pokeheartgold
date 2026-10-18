@@ -3,7 +3,7 @@
 
 #include "battle/battle.h"
 
-void BattleSystem_ExecuteBattlerCommand(BattleSystem *battleSys, OpponentData *OpponentData);
-void OpponentData_Delete(BattleSystem *battleSys, OpponentData *opponentData, int renderMode);
+void BattleSystem_ExecuteBattlerCommand(BattleSystem *battleSystem, OpponentData *OpponentData);
+void OpponentData_Delete(BattleSystem *battleSystem, OpponentData *opponentData, int renderMode);
 
 #endif

@@ -5,6 +5,6 @@
 
 #include "task.h"
 
-BOOL sub_02092B04(TaskManager *taskManager);
+BOOL Task_Bag_SellMenu(TaskManager *taskManager);
 
 #endif // POKEHEARTGOLD_UNK_02092B04_H

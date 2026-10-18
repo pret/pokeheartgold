@@ -15,7 +15,7 @@
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
-#include "files/msgdata/msg/msg_0197.h"
+#include "msgdata/msg/msg_0197.h"
 
 #include "heap.h"
 #include "screen_fade.h"

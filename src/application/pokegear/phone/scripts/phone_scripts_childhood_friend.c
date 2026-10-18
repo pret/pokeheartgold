@@ -3,7 +3,7 @@
 #include "constants/maps.h"
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "files/msgdata/msg/msg_0662.h"
+#include "msgdata/msg/msg_0662.h"
 
 #include "math_util.h"
 #include "sys_flags.h"
@@ -11,7 +11,7 @@
 u16 GearPhoneCall_GetEthanLyraMessage(u16 mapId);
 
 u16 PhoneCall_GetScriptId_EthanLyra(PokegearPhoneCallContext *ctx, PokegearPhoneCallState *state) {
-    ALIGN(4)
+    ATTRIBUTE_ALIGN(4)
     static const u16 ov101_021F86C8[] = {
         PHONE_SCRIPT_102,
         PHONE_SCRIPT_101,

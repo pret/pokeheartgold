@@ -63,7 +63,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public WaitingIcon_New

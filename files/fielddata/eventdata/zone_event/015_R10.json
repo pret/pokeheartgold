@@ -1,100 +1,100 @@
 {
-  "header": "fielddata/script/scr_seq/event_R10.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_r10_carbos",
-      "type": 2,
-      "x": 1418,
-      "z": 183,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_R10_005 + 1",
-      "type": 1,
-      "x": 1421,
-      "z": 185,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_R10_006 + 1",
-      "type": 1,
-      "x": 1422,
-      "z": 164,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_R10_gsleader9",
-      "spriteId": "SPRITE_GSLEADER9",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ROUTE_10_LT_SURGE",
-      "scriptId": "_EV_scr_seq_R10_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1430,
-      "z": 183,
-      "y": 0
-    },
-    {
-      "id": "obj_R10_tsure_poke_static_zapdos",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_ZAPDOS",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ROUTE_10_ZAPDOS",
-      "scriptId": "_EV_scr_seq_R10_003 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1419,
-      "z": 184,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1419,
-      "z": 163,
-      "header": "MAP_ROCK_TUNNEL_1F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 1423,
-      "z": 184,
-      "header": "MAP_ROUTE_10_POWER_PLANT_REPAIRED",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1426,
-      "z": 163,
-      "header": "MAP_ROUTE_10_POKECENTER_1F",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_R10_000 + 1",
-      "x": 1423,
-      "z": 184,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_4084"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R10.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_r10_carbos",
+            "type": 2,
+            "x": 1418,
+            "z": 183,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_R10_005 + 1",
+            "type": 1,
+            "x": 1421,
+            "z": 185,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_R10_006 + 1",
+            "type": 1,
+            "x": 1422,
+            "z": 164,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_R10_gsleader9",
+            "spriteId": "SPRITE_GSLEADER9",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ROUTE_10_LT_SURGE",
+            "scriptId": "_EV_scr_seq_R10_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1430,
+            "z": 183,
+            "y": 0
+        },
+        {
+            "id": "obj_R10_tsure_poke_static_zapdos",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_ZAPDOS",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ROUTE_10_ZAPDOS",
+            "scriptId": "_EV_scr_seq_R10_003 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1419,
+            "z": 184,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1419,
+            "z": 163,
+            "header": "MAP_ROCK_TUNNEL_1F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 1423,
+            "z": 184,
+            "header": "MAP_ROUTE_10_POWER_PLANT_REPAIRED",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1426,
+            "z": 163,
+            "header": "MAP_ROUTE_10_POKECENTER_1F",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_R10_000 + 1",
+            "x": 1423,
+            "z": 184,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_4084"
+        }
+    ]
 }
