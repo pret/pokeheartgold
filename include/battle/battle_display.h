@@ -19,5 +19,6 @@ void BattleDisplay_InitTaskSetupUI(BattleSystem *battleSys, OpponentData *oppone
 void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSys, OpponentData *opponentData, MonEncounterMessage *message);
 void BattleDisplay_InitTaskShowEncounter(BattleSystem *battleSys, OpponentData *opponentData, MonShowMessage *message);
 void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSys, OpponentData *opponentData, TrainerEncounterMessage *message);
+void OpponentData_ClearBattleCursorPosition(OpponentData *opponentData);
 
 #endif

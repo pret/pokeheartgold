@@ -3,7 +3,7 @@
 
 #include "constants/battle.h"
 #include "constants/moves.h"
-
+#include "battle/party_gauge.h"
 #include "bag.h"
 #include "bag_cursor.h"
 #include "bg_window.h"
@@ -484,17 +484,28 @@ typedef struct BattleHpBar {
 
 typedef struct UnkBallData UnkBallData;
 
+typedef struct BattleCursorPosition {
+    s8 commandX;
+    s8 commandY;
+    s8 moveX;
+    s8 moveY;
+    s8 targetX;
+    s8 targetY;
+    s8 monTargetType;
+    u8 unk_07[1];
+} BattleCursorPosition;
+
 typedef struct OpponentData {
     SysTaskFunc unk0[6];
     ManagedSprite *managedSprite;
-    u32 *unk1C;
+    Pokepic *unk1C;
     Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
-    void *unk80;
-    u8 unk84[0x4];
+    BattleCursorPosition battleCursorPosition;
     UnkBallData *ballData;
-    u8 unk8C[0x8];
+    void *unk8C;
+    u8 unk90[0x4];
     u8 unk94[0x100];
     u8 battlerId;
     u8 battlerType;
@@ -567,7 +578,7 @@ struct BattleSystem {
     Trainer trainers[4];
     UnkBattleSystemSub17C unk17C[2]; // Battle Background..?
     BattleInput *battleInput;
-    u32 *unk1A0[2];
+    PartyGauge *unk1A0[2];
     BattleNumberPrinter *hpNumPrinter;
     BattleNumberPrinter *levelNumPrinter;
     void *msgIcon;
@@ -687,8 +698,6 @@ typedef struct BattleItem {
     u8 page;
     u8 monIndex;
 } BattleItem;
-
-typedef struct BattleCursorPosition BattleCursorPosition;
 
 typedef struct UnkStruct_134 {
     s32 unk0;
@@ -857,5 +866,45 @@ typedef struct GiveUpMoveData {
     u16 move;
     u16 unused_02;
 } GiveUpMoveData;
+
+typedef struct {
+    int resourceID;
+    int cameraProjection;
+} ParticleEffectTemplate;
+
+typedef struct BattleBackgroundReference {
+    int narcID;
+    int tilesNarcMemberIdx;
+    int paletteNarcMemberIdx;
+    int tilemapNarcMemberIdx;
+    int paletteDestStart;
+    int paletteSrcSize;
+} BattleBackgroundReference;
+
+typedef struct BattleAnimBattlerContext {
+    SpriteSystem *spriteSystem;
+    BgConfig *bgConfig;
+    PaletteData *paletteData;
+    UnkBattleSystemSub1D0 *pokemonSpriteData[4];
+    u8 battlerTypes[4];
+    Pokepic *pokemonSprites[4];
+    u32 battleType;
+    u16 battlerSpecies[4];
+    u8 battlerGenders[4];
+    u8 battlerShinyFlags[4];
+    u8 battlerForms[4];
+    u32 battlerPersonalities[4];
+    u32 battlerMoveEffects[4];
+    int moveArcID;
+    BattleBackgroundReference battleBgRef;
+    void *chatotCry;
+    u8 *bgTiles;
+    u16 *bgPaletteBuffer;
+} BattleAnimBattlerContext;
+
+typedef struct BallThrowFlashData {
+    int state;
+    int unread_04;
+} BallThrowFlashData;
 
 #endif

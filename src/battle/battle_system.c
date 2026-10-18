@@ -123,11 +123,11 @@ BattleInput *BattleSystem_GetBattleInput(BattleSystem *battleSystem) {
     return battleSystem->battleInput;
 }
 
-u32 *ov12_0223A908(BattleSystem *battleSystem, int index) {
+PartyGauge *ov12_0223A908(BattleSystem *battleSystem, int index) {
     return battleSystem->unk1A0[index];
 }
 
-void ov12_0223A914(BattleSystem *battleSystem, int index, u32 *a2) {
+void ov12_0223A914(BattleSystem *battleSystem, int index, PartyGauge *a2) {
     battleSystem->unk1A0[index] = a2;
 }
 
@@ -256,7 +256,7 @@ u32 BattleSystem_GetTrainerGender(BattleSystem *battleSystem, int battlerId) {
 int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int battlerType) {
     int battlerId;
     for (battlerId = 0; battlerId < battleSystem->maxBattlers; battlerId++) {
-        if (ov12_02261258(battleSystem->opponentData[battlerId]) == battlerType) {
+        if (OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]) == battlerType) {
             break;
         }
     }
@@ -267,11 +267,11 @@ int BattleSystem_GetBattlerFromBattlerType(BattleSystem *battleSystem, int battl
 }
 
 u8 ov12_0223AB0C(BattleSystem *battleSystem, int battlerId) {
-    return ov12_02261258(battleSystem->opponentData[battlerId]);
+    return OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]);
 }
 
 u8 BattleSystem_GetFieldSide(BattleSystem *battleSystem, int battlerId) {
-    return ov12_02261258(battleSystem->opponentData[battlerId]) & 1;
+    return OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]) & 1;
 }
 
 void *BattleSystem_GetMessageIcon(BattleSystem *battleSystem) {
@@ -1042,7 +1042,7 @@ void BattleSystem_HpBar_Init(BattleSystem *battleSystem) {
     for (i = 0; i < battleSystem->maxBattlers; i++) {
         hpBar = OpponentData_GetHpBar(battleSystem->opponentData[i]);
         hpBar->battleSystem = battleSystem;
-        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(ov12_02261258(battleSystem->opponentData[i]), BattleSystem_GetBattleType(battleSystem));
+        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(OpponentData_GetBattlerType(battleSystem->opponentData[i]), BattleSystem_GetBattleType(battleSystem));
         BattleHpBar_LoadResources(hpBar);
         BattleHpBar_SetEnabled(hpBar, FALSE);
     }
@@ -1272,7 +1272,7 @@ u8 ov12_0223C140(BattleSystem *battleSystem, u32 battlerId) {
 void ov12_0223C1A0(BattleSystem *battleSystem, u8 *buffer) {
     int i;
     for (i = 0; i < battleSystem->maxBattlers; i++) {
-        buffer[ov12_02261258(battleSystem->opponentData[i])] = i;
+        buffer[OpponentData_GetBattlerType(battleSystem->opponentData[i])] = i;
     }
 }
 
@@ -1284,11 +1284,11 @@ void ov12_0223C1C4(BattleSystem *battleSystem, u8 *buffer) {
     }
 
     for (i = 0; i < battleSystem->maxBattlers; i++) {
-        buffer[i] = ov12_02261258(battleSystem->opponentData[i]);
+        buffer[i] = OpponentData_GetBattlerType(battleSystem->opponentData[i]);
     }
 }
 
-void ov12_0223C1F4(BattleSystem *battleSystem, void **a1) {
+void ov12_0223C1F4(BattleSystem *battleSystem, Pokepic **a1) {
     int i;
 
     for (i = 0; i < 4; i++) {
@@ -1296,7 +1296,7 @@ void ov12_0223C1F4(BattleSystem *battleSystem, void **a1) {
     }
 
     for (i = 0; i < battleSystem->maxBattlers; i++) {
-        a1[i] = ov12_02261270(battleSystem->opponentData[i]);
+        a1[i] = OpponentData_GetPokepic(battleSystem->opponentData[i]);
     }
 }
 
@@ -1329,7 +1329,7 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
 }
 
 void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
-    u32 flag = ov12_02261258(battleSystem->opponentData[battlerId]);
+    u32 flag = OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]);
     Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, ov12_022581D4(battleSystem, battleSystem->ctx, 2, battlerId));
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
@@ -1343,7 +1343,7 @@ void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
 }
 
 void BattleSystem_SetPokedexCaught(BattleSystem *battleSystem, int battlerId) {
-    u32 flag = ov12_02261258(battleSystem->opponentData[battlerId]);
+    u32 flag = OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]);
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
         int selectedMonIndex = ov12_022581D4(battleSystem, battleSystem->ctx, 2, battlerId);

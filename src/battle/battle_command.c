@@ -6842,7 +6842,7 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
             ov12_02237CC4(data->battleSystem);
             ov12_02265FC4(ov12_0223A8F4(data->battleSystem, 0), 0);
             ov12_02265FC4(ov12_0223A8F4(data->battleSystem, 1), 0);
-            ov12_02261294(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
+            OpponentData_SetTrainerVisibility(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
             UnkStruct_50C unkStruct;
             unkStruct.bgConfig = BattleSystem_GetBgConfig(data->battleSystem);
             unkStruct.paletteData = BattleSystem_GetPaletteData(data->battleSystem);
@@ -6898,7 +6898,7 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
             Pokemon *mon = BattleSystem_GetPartyMon(data->battleSystem, battlerId, data->ctx->selectedMonIndex[battlerId]);
             ov07_02233ECC(data->ballData);
             PokepicManager_DeleteAllPics(pokepicManager);
-            ov12_02261294(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
+            OpponentData_SetTrainerVisibility(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
             ov12_02237CC4(data->battleSystem);
             ov12_02237D00(data->battleSystem);
             PokepicTemplate picTemplate;
