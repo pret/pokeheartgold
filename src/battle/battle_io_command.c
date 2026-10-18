@@ -1,5 +1,7 @@
 #include "battle/battle_io_command.h"
 
+#include "global.h"
+
 #include "constants/abilities.h"
 
 #include "battle/battle_message_structs.h"
