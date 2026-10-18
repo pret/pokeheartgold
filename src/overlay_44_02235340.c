@@ -451,12 +451,12 @@ void FreeWindowList(UnkStruct_ov44_02232F64 *arg0, enum HeapID heapID) {
     ov44_02233954(arg0);
     ClearFrameAndWindow2(&arg0->windowList[0], 0);
     RemoveWindow(&arg0->windowList[0]);
-    sub_0200E5D4(&arg0->windowList[1], 0);
+    ClearWindowPixelBuffer(&arg0->windowList[1], 0);
     RemoveWindow(&arg0->windowList[1]);
     RemoveWindow(&arg0->windowList[2]);
-    sub_0200E5D4(&arg0->windowList[3], 0);
+    ClearWindowPixelBuffer(&arg0->windowList[3], 0);
     RemoveWindow(&arg0->windowList[3]);
-    sub_0200E5D4(&arg0->windowList[4], 0);
+    ClearWindowPixelBuffer(&arg0->windowList[4], 0);
     RemoveWindow(&arg0->windowList[4]);
 
     if (arg0->listMenu2D != NULL) {
@@ -613,7 +613,7 @@ void ov44_0223398C(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44_args *arg1, s32
 }
 
 void ov44_02233A34(UnkStruct_ov44_02232F64 *arg0) {
-    sub_0200E5D4(&arg0->windowList[4], 1);
+    ClearWindowPixelBuffer(&arg0->windowList[4], 1);
     ClearWindowTilemapAndScheduleTransfer(&arg0->windowList[4]);
 }
 
@@ -725,13 +725,13 @@ void ov44_02233D8C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enu
     s32 var_r5;
 
     if (arg0->unk4 != 0) {
-        if ((u8)(arg0->unk5 + 229) <= 2) {
+        if (arg0->unk5 == 27 || arg0->unk5 == 28 || arg0->unk5 == 29) {
             return;
         }
         if ((sub_020390C4() <= 2) && (ov44_02233F64(arg0) <= 1) && (ov44_02233E6C(arg0) == 0)) {
             return;
         }
-    } else if ((arg0->unk5 == 15) || (arg0->unk5 == 16) || (arg0->unk5 == 17) || ((u8)(arg0->unk5 + 250) <= 1)) {
+    } else if ((arg0->unk5 == 15) || (arg0->unk5 == 16) || (arg0->unk5 == 17) || arg0->unk5 == 6 || arg0->unk5 == 7) {
         return;
     }
 

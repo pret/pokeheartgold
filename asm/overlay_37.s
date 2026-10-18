@@ -92,9 +92,9 @@ _021E5916:
 	add r0, r4, #0
 	add r1, r7, #0
 	bl ov37_021E5F98
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #2
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r0, _021E5A78 ; =ov37_021E5CC8
 	ldr r1, [r4]
 	bl Main_SetVBlankIntrCB
@@ -361,7 +361,7 @@ _021E5BF8:
 	bl ov37_021E6540
 	ldr r0, [r6]
 	bl ov37_021E5F5C
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r0, [r6, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r6, #0xc]

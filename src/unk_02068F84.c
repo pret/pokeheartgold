@@ -2,7 +2,7 @@
 
 #include "global.h"
 
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "font.h"
 

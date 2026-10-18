@@ -6,8 +6,8 @@
 void GF_TouchpadInit(void);
 void GF_TouchpadPauseOnLidClose(void);
 void GF_TouchpadResumeOnLidOpen(void);
-void sub_020210BC(void);
-BOOL sub_02021148(int);
-BOOL sub_02021238(void);
+void EnableTouchPad(void);
+BOOL InitializeTouchPad(int);
+BOOL DisableTouchPad(void);
 
 #endif // POKEHEARTGOLD_UNK_020210A0_H

@@ -6,8 +6,6 @@
 #include "screen_fade.h"
 #include "system.h"
 
-u8 sub_02088108(s16 *a0, u16 a1, s16 a2);
-
 static const u16 _02103894[] = {
     0x20,
     0x80,
@@ -15,7 +13,7 @@ static const u16 _02103894[] = {
     0x800,
     0x40,
     0x80,
-    0x100,
+    0x100, // this is the only one that ever gets used
     0x400,
     0x40,
     0x80,
@@ -57,50 +55,50 @@ u8 CalculateHpBarColor(u16 hp, u16 maxHp, u32 pixelsWide) {
     return HpBar_GetColorIdx(CalculateHpBarPixelsLength(hp, maxHp, pixelsWide), pixelsWide);
 }
 
-void sub_020880CC(u8 a0, enum HeapID heapID) {
-    if (a0 == 0) {
+void App_StartScreenFade(u8 fadeOut, enum HeapID heapID) {
+    if (fadeOut == FALSE) {
         BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, heapID);
     } else {
-        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, heapID);
+        BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_CAMERA_SHUTTER_CLOSE, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, heapID);
     }
 }
 
-u8 sub_02088108(s16 *a0, u16 a1, s16 a2) {
-    s16 prev = *a0;
-    switch (a2) {
+static u8 handleAdjustQuantity(s16 *pAmount, u16 limit, s16 addend) {
+    s16 prev = *pAmount;
+    switch (addend) {
     case -1:
-        --(*a0);
-        if (*a0 <= 0) {
-            *a0 = a1;
+        --(*pAmount);
+        if (*pAmount <= 0) {
+            *pAmount = limit;
         }
-        if (*a0 == prev) {
+        if (*pAmount == prev) {
             return 0;
         }
         return 2;
     case -10:
-        *a0 -= 10;
-        if (*a0 <= 0) {
-            *a0 = 1;
+        *pAmount -= 10;
+        if (*pAmount <= 0) {
+            *pAmount = 1;
         }
-        if (*a0 == prev) {
+        if (*pAmount == prev) {
             return 0;
         }
         return 2;
     case 1:
-        ++(*a0);
-        if (*a0 > a1) {
-            *a0 = 1;
+        ++(*pAmount);
+        if (*pAmount > limit) {
+            *pAmount = 1;
         }
-        if (*a0 == prev) {
+        if (*pAmount == prev) {
             return 0;
         }
         return 1;
     case 10:
-        *a0 += 10;
-        if (*a0 > a1) {
-            *a0 = a1;
+        *pAmount += 10;
+        if (*pAmount > limit) {
+            *pAmount = limit;
         }
-        if (*a0 == prev) {
+        if (*pAmount == prev) {
             return 0;
         }
         return 1;
@@ -109,18 +107,18 @@ u8 sub_02088108(s16 *a0, u16 a1, s16 a2) {
     return 0;
 }
 
-int sub_020881C0(s16 *a0, u16 a1) {
+int AdjustQuantityUsingDPad(s16 *pAmount, u16 limit) {
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-        return sub_02088108(a0, a1, 1);
+        return handleAdjustQuantity(pAmount, limit, 1);
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        return sub_02088108(a0, a1, -1);
+        return handleAdjustQuantity(pAmount, limit, -1);
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        return sub_02088108(a0, a1, -10);
+        return handleAdjustQuantity(pAmount, limit, -10);
     }
     if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        return sub_02088108(a0, a1, 10);
+        return handleAdjustQuantity(pAmount, limit, 10);
     }
     return 0;
 }

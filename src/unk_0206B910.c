@@ -153,7 +153,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
             Pokemon *mon = r7->unk04->mons[partyMenu->partySlot];
             SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &index);
             SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(r6->sealCase, index - 1));
-            sub_0209106C(SealOnCapsuleGetID(CapsuleGetSealI(SealCase_GetCapsuleI(r6->sealCase, index - 1), 0)));
+            CapsuleMenu_GetSealNameIndex(SealOnCapsuleGetID(CapsuleGetSealI(SealCase_GetCapsuleI(r6->sealCase, index - 1), 0)));
             sub_020270C4(fieldSystem->saveData);
         }
         r7->state = 1;

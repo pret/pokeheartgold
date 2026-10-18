@@ -94,7 +94,7 @@
 .public String_New
 .public String_Delete
 .public CopyStringToU16Array
-.public sub_02026E18
+.public BillboardGfxSequence_SetData
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_RTC_Get
 .public Save_PlayerData_GetProfile

@@ -3,6 +3,9 @@
 
 #include "script.h"
 
+#define MART_BUY  0
+#define MART_SELL 1
+
 struct MartItem {
     u16 item_id;
     u16 cost;

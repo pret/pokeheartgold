@@ -2,10 +2,10 @@
 
 #include "global.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0017.h"
-#include "files/msgdata/msg/msg_0442.h"
-#include "files/msgdata/msg/msg_0800.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0017.h"
+#include "msgdata/msg/msg_0442.h"
+#include "msgdata/msg/msg_0800.h"
 
 #include "bg_window.h"
 #include "font.h"
@@ -516,7 +516,7 @@ static BOOL ov74_02227584(MainMenuAppData *data) {
     } else {
         if (ov74_02227060(data) & (PAD_BUTTON_B | PAD_BUTTON_A)) {
             PlaySE(SEQ_SE_DP_SELECT);
-            sub_0200E5D4(&data->unk190, FALSE);
+            ClearWindowPixelBuffer(&data->unk190, FALSE);
             RemoveWindow(&data->unk190);
         }
         return TRUE;

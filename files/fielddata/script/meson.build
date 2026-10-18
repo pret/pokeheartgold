@@ -5,8 +5,9 @@ build_dir = meson.current_build_dir()
 ############################################################
 subdir('scr_seq')
 
-scr_seq_gen = generator(makescript_sh,
-    arguments : [
+scr_seq_gen = generator(
+    makescript_sh,
+    arguments: [
         '--out-dir', build_dir / 'scr_seq.narc.p',
         '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
@@ -20,23 +21,24 @@ scr_seq_gen = generator(makescript_sh,
         '-i', relative_source_root,
         '@INPUT@',
     ],
-    output : '@BASENAME@.bin'
+    depends: text_banks,
+    output: '@BASENAME@.bin',
 )
 
-scr_seq_narc = custom_target('scr_seq.narc',
-    output : [
+scr_seq_narc = custom_target(
+    'scr_seq.narc',
+    output: [
         'scr_seq.narc',
         'scr_seq.naix',
     ],
-    input : scr_seq_gen.process(scr_seq_asm),
-    command : [
+    input: scr_seq_gen.process(scr_seq_asm),
+    command: [
         nitroarc_exe,
         '--create',
         '--index',
         '--file', '@OUTPUT0@',
-        '@PRIVATE_DIR@'
+        '@PRIVATE_DIR@',
     ],
-    depends : text_banks,
 )
 
 nitrofs_files += scr_seq_narc

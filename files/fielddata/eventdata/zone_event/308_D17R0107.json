@@ -1,59 +1,59 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R0107.h",
-  "objects": [
-    {
-      "id": "obj_D17R0107_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0107_MAX_REVIVE",
-      "scriptId": "std_itemball_d17r0107_max_revive",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 23,
-      "z": 7,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 6,
-      "z": 19,
-      "header": "MAP_BELL_TOWER_6F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 15,
-      "z": 26,
-      "header": "MAP_BELL_TOWER_8F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 12,
-      "z": 16,
-      "header": "MAP_BELL_TOWER_9F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 18,
-      "z": 16,
-      "header": "MAP_BELL_TOWER_7F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 10,
-      "header": "MAP_BELL_TOWER_7F",
-      "anchor": 3,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D17R0107.h",
+    "objects": [
+        {
+            "id": "obj_D17R0107_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D17R0107_MAX_REVIVE",
+            "scriptId": "std_itemball_d17r0107_max_revive",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 23,
+            "z": 7,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 6,
+            "z": 19,
+            "header": "MAP_BELL_TOWER_6F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 15,
+            "z": 26,
+            "header": "MAP_BELL_TOWER_8F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 12,
+            "z": 16,
+            "header": "MAP_BELL_TOWER_9F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 18,
+            "z": 16,
+            "header": "MAP_BELL_TOWER_7F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 10,
+            "header": "MAP_BELL_TOWER_7F",
+            "anchor": 3,
+            "y": 0
+        }
+    ]
 }

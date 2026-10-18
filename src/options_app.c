@@ -4,9 +4,9 @@
 
 #include "global.h"
 
-#include "files/data/resdat.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0045.h"
+#include "data/resdat.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0045.h"
 
 #include "bg_window.h"
 #include "font.h"
@@ -691,7 +691,7 @@ static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
 }
 
 static void OptionsApp_FreeWindows(OptionsApp_Data *data) {
-    sub_0200E5D4(&data->windows.selectedOption, FALSE);
+    ClearWindowPixelBuffer(&data->windows.selectedOption, FALSE);
     ClearFrameAndWindow2(&data->windows.frameAndTextSpeedTest, FALSE);
 
     for (u16 i = 0; i < NELEMS(data->windows.asArray); i++) {

@@ -1,181 +1,181 @@
 {
-  "header": "fielddata/script/scr_seq/event_D43R0102.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d43r0102_max_revive",
-      "type": 2,
-      "x": 15,
-      "z": 27,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d43r0102_pp_up",
-      "type": 2,
-      "x": 28,
-      "z": 38,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d43r0102_ultra_ball",
-      "type": 2,
-      "x": 57,
-      "z": 42,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D43R0102_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_TM26",
-      "scriptId": "std_itemball_d43r0102_tm26",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 13,
-      "z": 24,
-      "y": 0
-    },
-    {
-      "id": "obj_D43R0102_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP",
-      "scriptId": "std_itemball_d43r0102_hp_up",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 31,
-      "z": 36,
-      "y": 0
-    },
-    {
-      "id": "obj_D43R0102_monstarball_3",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE",
-      "scriptId": "std_itemball_d43r0102_full_restore",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 44,
-      "z": 24,
-      "y": 0
-    },
-    {
-      "id": "obj_D43R0102_rock",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 25,
-      "y": 0
-    },
-    {
-      "id": "obj_D43R0102_rock_2",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 50,
-      "z": 28,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 7,
-      "z": 31,
-      "header": "MAP_VICTORY_ROAD_1F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 45,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 44,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 51,
-      "z": 39,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 51,
-      "z": 38,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 56,
-      "z": 22,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 56,
-      "z": 21,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 7,
-      "z": 18,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 7,
-      "z": 17,
-      "header": "MAP_VICTORY_ROAD_3F",
-      "anchor": 4,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D43R0102.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d43r0102_max_revive",
+            "type": 2,
+            "x": 15,
+            "z": 27,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d43r0102_pp_up",
+            "type": 2,
+            "x": 28,
+            "z": 38,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d43r0102_ultra_ball",
+            "type": 2,
+            "x": 57,
+            "z": 42,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D43R0102_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_TM26",
+            "scriptId": "std_itemball_d43r0102_tm26",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 13,
+            "z": 24,
+            "y": 0
+        },
+        {
+            "id": "obj_D43R0102_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_HP_UP",
+            "scriptId": "std_itemball_d43r0102_hp_up",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 31,
+            "z": 36,
+            "y": 0
+        },
+        {
+            "id": "obj_D43R0102_monstarball_3",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D43R0102_FULL_RESTORE",
+            "scriptId": "std_itemball_d43r0102_full_restore",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 44,
+            "z": 24,
+            "y": 0
+        },
+        {
+            "id": "obj_D43R0102_rock",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 25,
+            "y": 0
+        },
+        {
+            "id": "obj_D43R0102_rock_2",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 50,
+            "z": 28,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 7,
+            "z": 31,
+            "header": "MAP_VICTORY_ROAD_1F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 45,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 44,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 51,
+            "z": 39,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 51,
+            "z": 38,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 56,
+            "z": 22,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 56,
+            "z": 21,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 7,
+            "z": 18,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 7,
+            "z": 17,
+            "header": "MAP_VICTORY_ROAD_3F",
+            "anchor": 4,
+            "y": 0
+        }
+    ]
 }

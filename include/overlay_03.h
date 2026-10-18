@@ -22,10 +22,10 @@ enum PokeathlonData {
 
 enum MartTypes {
     MART_TYPE_NORMAL = 0,
-    MART_TYPE_1, // MART_TYPE_DECOR?
+    MART_TYPE_SEALS,
     MART_TYPE_SEAL,
-    MART_TYPE_3, // MART_TYPE_FRONTIER?
-    MART_TYPE_4, // MART_TYPE_POKEATHLON?
+    MART_TYPE_POKEATHLON_DAILY,
+    MART_TYPE_DATA_CARDS,
 };
 
 enum BattleRegulationValidationResult {
@@ -35,6 +35,37 @@ enum BattleRegulationValidationResult {
     BATTLE_REGULATION_VALIDATION_RESULT_DUPLICATE_ITEMS,
     BATTLE_REGULATION_VALIDATION_RESULT_INVALID_TEAM_SIZE,
     BATTLE_REGULATION_VALIDATION_RESULT_INVALID_POKEMON,
+};
+
+enum MartTaskStates {
+    TASK_MART_START,
+    TASK_MART_1,
+    TASK_MART_2,
+    TASK_MART_3,
+    TASK_MART_4,
+    TASK_MART_5,
+    TASK_MART_6,
+    TASK_MART_7,
+    TASK_MART_8,
+    TASK_MART_9,
+    TASK_MART_10,
+    TASK_MART_11,
+    TASK_MART_12,
+    TASK_MART_13,
+    TASK_MART_14,
+    TASK_MART_15,
+    TASK_MART_16,
+    TASK_MART_17,
+    TASK_MART_18,
+    TASK_MART_19,
+    TASK_MART_20,
+    TASK_MART_21,
+    TASK_MART_SELLMENU_FADEOUTTO,
+    TASK_MART_SELLMENU_WAITFADEOUT,
+    TASK_MART_SELLMENU_RUN,
+    TASK_MART_SELLMENU_FINISH,
+    TASK_MART_SELLMENU_RETURN,
+    TASK_MART_EXIT
 };
 
 typedef struct UnkMiniStruct {
@@ -59,13 +90,13 @@ typedef struct MartData {
     SaveApricornBox *apricornBox;
     GameStats *gameStats;
     SaveVarsFlags *varsFlags;
-    u32 unk264;
-    u16 *unk268;
+    u32 whichDecorationMart;
+    u16 *items;
     const struct MartItem *priceOverrides;
-    u8 unk270;
-    u8 unk271;
+    u8 count;
+    u8 pageOffset;
     u8 state;
-    u8 unk273;
+    u8 buyOrSell;
     String *string;
     u8 bgPriority[4];
     u32 engineAPlanes;
@@ -75,14 +106,14 @@ typedef struct MartData {
     u8 martType;
     u16 item;
     s16 quantity;
-    u16 unk288;
+    u16 maxInBudget;
     u16 unk28A;
     int cost;
-    int unk290;
-    u32 unk294;
+    int cursorPos;
+    u32 queuedButtonPress;
     u32 unk298;
     UnkMiniStruct unk29C;
-    u32 unk2A0;
+    u16 *unk2A0;
 } MartData;
 
 void ov03_02255BB0(FieldSystem *fieldSystem, u32 commType, u16 arg2, u16 arg3);
@@ -100,9 +131,9 @@ u16 ov03_02256A2C(FieldSystem *fieldSystem, MessageFormat *msgFmt, u32 a2);
 u32 ov03_02256B40(int);
 
 BOOL Task_Mart(TaskManager *taskManager);
-int ov03_02257814(MartData *data, u32 unkAmount);
+int MartData_BuyMenu_CheckCanPurchaseItem(MartData *data, u32 unkAmount);
 int ov03_02257978(MartData *data, int itemID);
-u32 ov03_02258120(MartData *data, u16 itemID);
+u32 ShopMenu_GetItemPrice(MartData *data, u16 itemID);
 void ov03_022581BC(MartData *data);
 void ov03_02258910(FieldSystem *fieldSystem);
 void ov03_02258CFC(TaskManager *taskManager, enum PokeathlonData data);

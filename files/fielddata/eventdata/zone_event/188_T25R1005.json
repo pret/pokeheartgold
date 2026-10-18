@@ -1,123 +1,123 @@
 {
-  "header": "fielddata/script/scr_seq/event_T25R1005.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T25R1005_004 + 1",
-      "type": 0,
-      "x": 17,
-      "z": 2,
-      "y": 0,
-      "dir": 0
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T25R1005_shopm1_2",
-      "spriteId": "SPRITE_SHOPM1_2",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T25R1005_000 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 23,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_T25R1005_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T25R1005_001 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 19,
-      "z": 11,
-      "y": 0
-    },
-    {
-      "id": "obj_T25R1005_gsbigman",
-      "spriteId": "SPRITE_GSBIGMAN",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T25R1005_003 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 2,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T25R1005_gsgirl3",
-      "spriteId": "SPRITE_GSGIRL3",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T25R1005_002 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 2,
-      "yRange": 0,
-      "x": 12,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_T25R1005_gswoman1",
-      "spriteId": "SPRITE_GSWOMAN1",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY",
-      "scriptId": "_EV_scr_seq_T25R1005_006 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 23,
-      "z": 5,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 18,
-      "z": 7,
-      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_4F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 13,
-      "z": 7,
-      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_6F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 19,
-      "z": 2,
-      "header": "MAP_GOLDENROD_DEPARTMENT_STORE_ELEVATOR",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T25R1005.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T25R1005_004 + 1",
+            "type": 0,
+            "x": 17,
+            "z": 2,
+            "y": 0,
+            "dir": 0
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T25R1005_shopm1_2",
+            "spriteId": "SPRITE_SHOPM1_2",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T25R1005_000 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 23,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_T25R1005_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T25R1005_001 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 19,
+            "z": 11,
+            "y": 0
+        },
+        {
+            "id": "obj_T25R1005_gsbigman",
+            "spriteId": "SPRITE_GSBIGMAN",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T25R1005_003 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 2,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T25R1005_gsgirl3",
+            "spriteId": "SPRITE_GSGIRL3",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T25R1005_002 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 2,
+            "yRange": 0,
+            "x": 12,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_T25R1005_gswoman1",
+            "spriteId": "SPRITE_GSWOMAN1",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_GOLDENROD_DEPT_STORE_5F_RETURN_FRUSTRATION_LADY",
+            "scriptId": "_EV_scr_seq_T25R1005_006 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 23,
+            "z": 5,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 18,
+            "z": 7,
+            "header": "MAP_GOLDENROD_DEPARTMENT_STORE_4F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 13,
+            "z": 7,
+            "header": "MAP_GOLDENROD_DEPARTMENT_STORE_6F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 19,
+            "z": 2,
+            "header": "MAP_GOLDENROD_DEPARTMENT_STORE_ELEVATOR",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

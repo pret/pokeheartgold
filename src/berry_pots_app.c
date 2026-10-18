@@ -4,9 +4,9 @@
 
 #include "global.h"
 
-#include "files/data/resdat.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0248.h"
+#include "data/resdat.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0248.h"
 
 #include "bag.h"
 #include "berry_pots_app_internal.h"
@@ -386,8 +386,8 @@ static BOOL ov17_02201DF0(BerryPotsAppData *data) {
         break;
     case 1:
         ov17_02202528(data);
-        sub_020210BC();
-        sub_02021148(1);
+        EnableTouchPad();
+        InitializeTouchPad(1);
         Sound_SetSceneAndPlayBGM(0x45, 0, 0);
 
         data->state70 = 0;
@@ -398,7 +398,7 @@ static BOOL ov17_02201DF0(BerryPotsAppData *data) {
 }
 
 static BOOL ov17_02201E3C(BerryPotsAppData *data) {
-    sub_02021238();
+    DisableTouchPad();
     BerryPotsApp_FreeResources(data);
     return TRUE;
 }

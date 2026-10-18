@@ -1,155 +1,155 @@
 {
-  "header": "fielddata/script/scr_seq/event_T28.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T28_006 + 1",
-      "type": 1,
-      "x": 516,
-      "z": 172,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T28_007 + 1",
-      "type": 1,
-      "x": 526,
-      "z": 174,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T28_008 + 1",
-      "type": 1,
-      "x": 520,
-      "z": 184,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T28_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_205",
-      "scriptId": "_EV_scr_seq_T28_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 540,
-      "z": 175,
-      "y": 0
-    },
-    {
-      "id": "obj_T28_gsoldman1",
-      "spriteId": "SPRITE_GSOLDMAN1",
-      "movement": 5,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T28_002 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 0,
-      "x": 523,
-      "z": 175,
-      "y": 0
-    },
-    {
-      "id": "obj_T28_gsbigman",
-      "spriteId": "SPRITE_GSBIGMAN",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_1F9",
-      "scriptId": "_EV_scr_seq_T28_004 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 523,
-      "z": 184,
-      "y": 0
-    },
-    {
-      "id": "obj_T28_gsgirl1",
-      "spriteId": "SPRITE_GSGIRL1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN",
-      "scriptId": "_EV_scr_seq_T28_003 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 530,
-      "z": 175,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 524,
-      "z": 165,
-      "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 525,
-      "z": 165,
-      "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 523,
-      "z": 183,
-      "header": "MAP_MAHOGANY_GYM_ROOM_1",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 534,
-      "z": 183,
-      "header": "MAP_MAHOGANY_POKECENTER_1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 537,
-      "z": 174,
-      "header": "MAP_MAHOGANY_EAST_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 528,
-      "z": 174,
-      "header": "MAP_MAHOGANY_SOUVENIR_SHOP",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_T28_001 + 1",
-      "x": 540,
-      "z": 176,
-      "w": 1,
-      "h": 2,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_407A"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T28.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T28_006 + 1",
+            "type": 1,
+            "x": 516,
+            "z": 172,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T28_007 + 1",
+            "type": 1,
+            "x": 526,
+            "z": 174,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T28_008 + 1",
+            "type": 1,
+            "x": 520,
+            "z": 184,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T28_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_205",
+            "scriptId": "_EV_scr_seq_T28_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 540,
+            "z": 175,
+            "y": 0
+        },
+        {
+            "id": "obj_T28_gsoldman1",
+            "spriteId": "SPRITE_GSOLDMAN1",
+            "movement": 5,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T28_002 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 0,
+            "x": 523,
+            "z": 175,
+            "y": 0
+        },
+        {
+            "id": "obj_T28_gsbigman",
+            "spriteId": "SPRITE_GSBIGMAN",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_1F9",
+            "scriptId": "_EV_scr_seq_T28_004 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 523,
+            "z": 184,
+            "y": 0
+        },
+        {
+            "id": "obj_T28_gsgirl1",
+            "spriteId": "SPRITE_GSGIRL1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_MAHOGANY_SHOP_SALESWOMAN",
+            "scriptId": "_EV_scr_seq_T28_003 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 530,
+            "z": 175,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 524,
+            "z": 165,
+            "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 525,
+            "z": 165,
+            "header": "MAP_ROUTE_43_MAHOGANY_GATEHOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 523,
+            "z": 183,
+            "header": "MAP_MAHOGANY_GYM_ROOM_1",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 534,
+            "z": 183,
+            "header": "MAP_MAHOGANY_POKECENTER_1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 537,
+            "z": 174,
+            "header": "MAP_MAHOGANY_EAST_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 528,
+            "z": 174,
+            "header": "MAP_MAHOGANY_SOUVENIR_SHOP",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_T28_001 + 1",
+            "x": 540,
+            "z": 176,
+            "w": 1,
+            "h": 2,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_407A"
+        }
+    ]
 }

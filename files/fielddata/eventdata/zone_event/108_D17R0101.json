@@ -1,67 +1,67 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R0101.h",
-  "objects": [
-    {
-      "id": "obj_D17R0101_bozu",
-      "spriteId": "SPRITE_BOZU",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_D17R0101_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 8,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 15,
-      "z": 26,
-      "header": "MAP_BELLCHIME_TOWER",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 8,
-      "header": "MAP_BELL_TOWER_2F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 9,
-      "z": 7,
-      "header": "MAP_BELL_TOWER_2F",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_D17R0101_001 + 1",
-      "x": 7,
-      "z": 12,
-      "w": 3,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40F3"
-    },
-    {
-      "scriptId": "_EV_scr_seq_D17R0101_001 + 1",
-      "x": 12,
-      "z": 7,
-      "w": 1,
-      "h": 4,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40F3"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D17R0101.h",
+    "objects": [
+        {
+            "id": "obj_D17R0101_bozu",
+            "spriteId": "SPRITE_BOZU",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_D17R0101_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 8,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 15,
+            "z": 26,
+            "header": "MAP_BELLCHIME_TOWER",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 8,
+            "header": "MAP_BELL_TOWER_2F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 9,
+            "z": 7,
+            "header": "MAP_BELL_TOWER_2F",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_D17R0101_001 + 1",
+            "x": 7,
+            "z": 12,
+            "w": 3,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40F3"
+        },
+        {
+            "scriptId": "_EV_scr_seq_D17R0101_001 + 1",
+            "x": 12,
+            "z": 7,
+            "w": 1,
+            "h": 4,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40F3"
+        }
+    ]
 }
