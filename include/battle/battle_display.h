@@ -2,8 +2,8 @@
 #define POKEHEARTGOLD_BATTLE_BATTLE_DISPLAY_H
 
 #include "battle/battle.h"
-#include "battle/battle_system.h"
 #include "battle/battle_message_structs.h"
+#include "battle/battle_system.h"
 
 typedef struct UISetupTaskData {
     BattleSystem *battleSys;

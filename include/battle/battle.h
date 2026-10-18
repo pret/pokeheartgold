@@ -3,7 +3,9 @@
 
 #include "constants/battle.h"
 #include "constants/moves.h"
+
 #include "battle/party_gauge.h"
+
 #include "bag.h"
 #include "bag_cursor.h"
 #include "bg_window.h"
