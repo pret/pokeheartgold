@@ -78,14 +78,11 @@ if [ $quiet != yes ]; then
     echo -e "Would replace the following:"
     paste "$tmp_in" <("$SED" -r "$sed_cmd" "$tmp_in")
 fi
-if [ -z "$force" ]; then
-    if git grep -wf <("$SED" -r "$sed_cmd" "$tmp_in") >/dev/null; then
-        read -r -p "WARNING: Replacement symbol(s) already exist. Proceed anyway? [y/N] " yn
-    elif [ $dryrun != yes ]; then
-        read -r -p "Okay to proceed? [y/N] " yn
-    else
-        yn=y
-    fi
+if git grep -wf <("$SED" -r "$sed_cmd" "$tmp_in") >/dev/null; then
+    echo -e "WARNING: Replacement symbol(s) already exist." >&2
+fi
+if [ -z "$force" ] && [ $dryrun != yes ]; then
+    read -r -p "Okay to proceed? [y/N] " yn
     case $yn in
         [yY] )
             ;;
