@@ -1,8 +1,8 @@
 #include "global.h"
 
 #include "application/pokegear/radio/radio_internal.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0415.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0415.h"
 
 #include "math_util.h"
 #include "sound_02004A44.h"

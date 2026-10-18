@@ -1,345 +1,345 @@
 {
-  "header": "fielddata/script/scr_seq/event_T24.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T24_008 + 1",
-      "type": 1,
-      "x": 176,
-      "z": 362,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T24_009 + 1",
-      "type": 1,
-      "x": 175,
-      "z": 358,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T24_010 + 1",
-      "type": 1,
-      "x": 182,
-      "z": 370,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T24_011 + 1",
-      "type": 1,
-      "x": 179,
-      "z": 354,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T24_004 + 1",
-      "type": 1,
-      "x": 172,
-      "z": 344,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_t24_revive",
-      "type": 2,
-      "x": 170,
-      "z": 332,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_t24_stardust",
-      "type": 2,
-      "x": 189,
-      "z": 357,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T24_007 + 1",
-      "type": 0,
-      "x": 185,
-      "z": 354,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T24_middlewoman1_2",
-      "spriteId": "SPRITE_MIDDLEWOMAN1_2",
-      "movement": 2,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T24_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 1,
-      "x": 173,
-      "z": 360,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_gsboy1",
-      "spriteId": "SPRITE_GSBOY1",
-      "movement": 4,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T24_012 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 1,
-      "x": 178,
-      "z": 352,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T24_013 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 177,
-      "z": 346,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_gsgirl1",
-      "spriteId": "SPRITE_GSGIRL1",
-      "movement": 5,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T24_014 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 0,
-      "x": 173,
-      "z": 371,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_middlewoman1_2_2",
-      "spriteId": "SPRITE_MIDDLEWOMAN1_2",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T24_015 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 181,
-      "z": 373,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_tsure_poke_static_suicune",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_CIANWOOD_SUICUNE",
-      "scriptId": "_EV_scr_seq_T24_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 174,
-      "z": 330,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_minaki",
-      "spriteId": "SPRITE_MINAKI",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_CIANWOOD_EUSINE",
-      "scriptId": "_EV_scr_seq_T24_003 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 176,
-      "z": 343,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_breakrock",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 170,
-      "z": 333,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_breakrock_2",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_011",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 169,
-      "z": 341,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_breakrock_3",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_013",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 171,
-      "z": 335,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_breakrock_4",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_014",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 166,
-      "z": 338,
-      "y": 0
-    },
-    {
-      "id": "obj_T24_breakrock_5",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_015",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 170,
-      "z": 342,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 172,
-      "z": 357,
-      "header": "MAP_CIANWOOD_GYM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 187,
-      "z": 369,
-      "header": "MAP_CIANWOOD_POKECENTER_1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 179,
-      "z": 370,
-      "header": "MAP_CIANWOOD_PHARMACY",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 170,
-      "z": 367,
-      "header": "MAP_CIANWOOD_KIRKS_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 181,
-      "z": 362,
-      "header": "MAP_CIANWOOD_CENTRAL_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 181,
-      "z": 354,
-      "header": "MAP_CIANWOOD_CAMERONS_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 171,
-      "z": 347,
-      "header": "MAP_CLIFF_EDGE_GATE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 167,
-      "z": 335,
-      "header": "MAP_CIANWOOD_NORTH_HOUSE",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_T24_002 + 1",
-      "x": 176,
-      "z": 334,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_UNK_4076"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T24.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T24_008 + 1",
+            "type": 1,
+            "x": 176,
+            "z": 362,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T24_009 + 1",
+            "type": 1,
+            "x": 175,
+            "z": 358,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T24_010 + 1",
+            "type": 1,
+            "x": 182,
+            "z": 370,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T24_011 + 1",
+            "type": 1,
+            "x": 179,
+            "z": 354,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T24_004 + 1",
+            "type": 1,
+            "x": 172,
+            "z": 344,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_t24_revive",
+            "type": 2,
+            "x": 170,
+            "z": 332,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_t24_stardust",
+            "type": 2,
+            "x": 189,
+            "z": 357,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T24_007 + 1",
+            "type": 0,
+            "x": 185,
+            "z": 354,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T24_middlewoman1_2",
+            "spriteId": "SPRITE_MIDDLEWOMAN1_2",
+            "movement": 2,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T24_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 1,
+            "x": 173,
+            "z": 360,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_gsboy1",
+            "spriteId": "SPRITE_GSBOY1",
+            "movement": 4,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T24_012 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 1,
+            "x": 178,
+            "z": 352,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T24_013 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 177,
+            "z": 346,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_gsgirl1",
+            "spriteId": "SPRITE_GSGIRL1",
+            "movement": 5,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T24_014 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 0,
+            "x": 173,
+            "z": 371,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_middlewoman1_2_2",
+            "spriteId": "SPRITE_MIDDLEWOMAN1_2",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T24_015 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 181,
+            "z": 373,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_tsure_poke_static_suicune",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_SUICUNE",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_CIANWOOD_SUICUNE",
+            "scriptId": "_EV_scr_seq_T24_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 174,
+            "z": 330,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_minaki",
+            "spriteId": "SPRITE_MINAKI",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_CIANWOOD_EUSINE",
+            "scriptId": "_EV_scr_seq_T24_003 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 176,
+            "z": 343,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_breakrock",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 170,
+            "z": 333,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_breakrock_2",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_011",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 169,
+            "z": 341,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_breakrock_3",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_013",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 171,
+            "z": 335,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_breakrock_4",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_014",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 166,
+            "z": 338,
+            "y": 0
+        },
+        {
+            "id": "obj_T24_breakrock_5",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_015",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 170,
+            "z": 342,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 172,
+            "z": 357,
+            "header": "MAP_CIANWOOD_GYM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 187,
+            "z": 369,
+            "header": "MAP_CIANWOOD_POKECENTER_1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 179,
+            "z": 370,
+            "header": "MAP_CIANWOOD_PHARMACY",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 170,
+            "z": 367,
+            "header": "MAP_CIANWOOD_KIRKS_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 181,
+            "z": 362,
+            "header": "MAP_CIANWOOD_CENTRAL_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 181,
+            "z": 354,
+            "header": "MAP_CIANWOOD_CAMERONS_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 171,
+            "z": 347,
+            "header": "MAP_CLIFF_EDGE_GATE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 167,
+            "z": 335,
+            "header": "MAP_CIANWOOD_NORTH_HOUSE",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_T24_002 + 1",
+            "x": 176,
+            "z": 334,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_UNK_4076"
+        }
+    ]
 }

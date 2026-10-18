@@ -282,9 +282,9 @@ _02237F4C:
 	b _02237F6E
 _02237F58:
 	bl ov59_022386D0
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #1
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0
 	strh r0, [r4, #0x3c]
 	mov r0, #1
@@ -305,7 +305,7 @@ ov59_02237F74: ; 0x02237F74
 	cmp r0, #1
 	b _02237F94
 _02237F82:
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r4, #0
 	bl ov59_022386A8
 	ldrh r0, [r4, #0x3c]
@@ -5920,9 +5920,9 @@ _0223AAD0:
 	b _0223AAFA
 _0223AAE2:
 	bl ov59_0223AD84
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #1
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #0
 	add r4, #0x40
 	strh r0, [r4]
@@ -5945,7 +5945,7 @@ ov59_0223AB00: ; 0x0223AB00
 	cmp r0, #1
 	b _0223AB28
 _0223AB10:
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r4, #0
 	bl ov59_0223AD58
 	add r0, r4, #0

@@ -70,7 +70,7 @@
 .public sub_0200E3D8
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FB70
@@ -121,9 +121,9 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

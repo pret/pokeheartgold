@@ -1,50 +1,50 @@
 {
-  "header": "fielddata/script/scr_seq/event_D10R0101.h",
-  "objects": [
-    {
-      "id": "obj_D10R0101_mount_2",
-      "spriteId": "SPRITE_MOUNT_2",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_D10R0101_005 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 28,
-      "z": 48,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 24,
-      "z": 52,
-      "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 25,
-      "z": 52,
-      "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_D10R0101_004 + 1",
-      "x": 22,
-      "z": 48,
-      "w": 6,
-      "h": 1,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_UNK_4124"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D10R0101.h",
+    "objects": [
+        {
+            "id": "obj_D10R0101_mount_2",
+            "spriteId": "SPRITE_MOUNT_2",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_D10R0101_005 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 28,
+            "z": 48,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 24,
+            "z": 52,
+            "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 25,
+            "z": 52,
+            "header": "MAP_FUCHSIA_PAL_PARK_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_D10R0101_004 + 1",
+            "x": 22,
+            "z": 48,
+            "w": 6,
+            "h": 1,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_UNK_4124"
+        }
+    ]
 }

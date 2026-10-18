@@ -342,12 +342,8 @@ void ov42_02227720(UnkStruct_ov42_02227060 *arg0, s32 arg1, s32 arg2, s32 arg3, 
             charData->szByte = 6144;
         }
     }
-    if (SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk10[arg1].unk4) == 0) {
-        GF_ASSERT(FALSE);
-    }
-    if (SpriteTransfer_CreatePlttTransferTask(arg0->unk10[arg1].unk8) == 0) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk10[arg1].unk4) != 0);
+    GF_ASSERT(SpriteTransfer_CreatePlttTransferTask(arg0->unk10[arg1].unk8) != 0);
     if (arg0->unk4 != 0) {
         ov42_02227E78(arg0, arg0->unk10[arg1].unk8, 1);
     }
@@ -425,9 +421,7 @@ void ov42_022279FC(UnkStruct_ov42_02227060 *arg0, s32 arg1, enum HeapID heapID) 
         arg0->unk22B8[i + 2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk22F0[i + 2], arg0->unk2304, i, 0, 288, (GfGfxResType)(i + 2), heapID);
     }
     arg0->unk22B8[0] = AddCharResObjFromOpenNarc(arg0->unk22F0[0], arg0->unk2304, 2, 0, 288, arg1, heapID);
-    if (SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk22B8[0]) == 0) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(SpriteTransfer_CreateCharTransferTask_UpdateMappingTypeFromHW_AllocAtEnd(arg0->unk22B8[0]) != 0);
     sub_0200A740(arg0->unk22B8[0]);
     CreateSpriteResourcesHeader(&arg0->unk22C8, 288, sp30 + 512, 288, 288, -1, -1, 0, 0, arg0->unk22F0[0], arg0->unk22F0[1], arg0->unk22F0[2], arg0->unk22F0[3], 0, 0);
 }

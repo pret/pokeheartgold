@@ -1,5 +1,5 @@
-#ifndef POKEHEARTGOLD_OVY_15_H
-#define POKEHEARTGOLD_OVY_15_H
+#ifndef POKEHEARTGOLD_APPLICATION_BAG_APP_H
+#define POKEHEARTGOLD_APPLICATION_BAG_APP_H
 
 #include "overlay_manager.h"
 
@@ -7,4 +7,4 @@ BOOL Bag_Init(OverlayManager *man, int *state);
 BOOL Bag_Main(OverlayManager *man, int *state);
 BOOL Bag_Exit(OverlayManager *man, int *state);
 
-#endif // POKEHEARTGOLD_OVY_15_H
+#endif // POKEHEARTGOLD_APPLICATION_BAG_APP_H

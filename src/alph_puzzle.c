@@ -4,10 +4,10 @@
 
 #include "constants/sndseq.h"
 
-#include "files/application/annon/puzzle_gra.naix"
-#include "files/data/resdat.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0002.h"
+#include "application/annon/puzzle_gra.naix"
+#include "data/resdat.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0002.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -682,8 +682,8 @@ static BOOL AlphPuzzle_OverlayEnterStep(AlphPuzzleData *data) {
         break;
     case 1:
         AlphPuzzle_DrawHintTextAndHideCursor(data);
-        sub_020210BC();
-        sub_02021148(1);
+        EnableTouchPad();
+        InitializeTouchPad(1);
         data->unkState = 0;
         return TRUE;
     }
@@ -691,7 +691,7 @@ static BOOL AlphPuzzle_OverlayEnterStep(AlphPuzzleData *data) {
 }
 
 static BOOL AlphPuzzle_OverlayExitStep(AlphPuzzleData *data) {
-    sub_02021238();
+    DisableTouchPad();
     AlphPuzzle_TeardownGraphics(data);
     return TRUE;
 }

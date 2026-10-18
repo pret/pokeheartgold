@@ -4,7 +4,7 @@
 
 #include "constants/phone_contacts.h"
 
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "gear_phone.h"
 

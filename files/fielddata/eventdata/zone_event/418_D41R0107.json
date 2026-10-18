@@ -1,29 +1,29 @@
 {
-  "header": "fielddata/script/scr_seq/event_D41R0107.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d41r0107_max_revive",
-      "type": 2,
-      "x": 24,
-      "z": 2,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "warps": [
-    {
-      "x": 34,
-      "z": 18,
-      "header": "MAP_MOUNT_SILVER_CAVE_UPPER_MOUNTAINSIDE",
-      "anchor": 6,
-      "y": 0
-    },
-    {
-      "x": 13,
-      "z": 1,
-      "header": "MAP_MOUNT_SILVER_CAVE_SUMMIT",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D41R0107.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d41r0107_max_revive",
+            "type": 2,
+            "x": 24,
+            "z": 2,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "warps": [
+        {
+            "x": 34,
+            "z": 18,
+            "header": "MAP_MOUNT_SILVER_CAVE_UPPER_MOUNTAINSIDE",
+            "anchor": 6,
+            "y": 0
+        },
+        {
+            "x": 13,
+            "z": 1,
+            "header": "MAP_MOUNT_SILVER_CAVE_SUMMIT",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

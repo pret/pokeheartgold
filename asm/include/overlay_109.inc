@@ -90,9 +90,9 @@
 .public AddTextPrinterParameterizedWithColor
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

@@ -1,38 +1,38 @@
 {
-  "header": "fielddata/script/scr_seq/event_R02R0401.h",
-  "objects": [
-    {
-      "id": "obj_R02R0401_counterm",
-      "spriteId": "SPRITE_COUNTERM",
-      "movement": 17,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_R02R0401_000 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1,
-      "z": 8,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 5,
-      "z": 12,
-      "header": "MAP_ROUTE_2",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 5,
-      "z": 2,
-      "header": "MAP_VIRIDIAN_FOREST",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R02R0401.h",
+    "objects": [
+        {
+            "id": "obj_R02R0401_counterm",
+            "spriteId": "SPRITE_COUNTERM",
+            "movement": 17,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_R02R0401_000 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1,
+            "z": 8,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 5,
+            "z": 12,
+            "header": "MAP_ROUTE_2",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 5,
+            "z": 2,
+            "header": "MAP_VIRIDIAN_FOREST",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

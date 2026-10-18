@@ -142,7 +142,7 @@ static void BattleRegulationMenu_ShowListMenuRegulations(BattleRegulationMenu *m
 static void BattleRegulationMenu_RemoveListMenuRegulations(BattleRegulationMenu *menu) {
     if (menu->listMenu[REGULATION_MENU_REGULATIONS]) {
         DestroyListMenu(menu->listMenu[REGULATION_MENU_REGULATIONS], NULL, NULL);
-        sub_0200E5D4(&menu->windows[REGULATION_MENU_STRING_DESTINATION], TRUE);
+        ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_STRING_DESTINATION], TRUE);
         ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_STRING_DESTINATION].bgConfig, menu->windows[REGULATION_MENU_STRING_DESTINATION].bgId);
         RemoveWindow(&menu->windows[REGULATION_MENU_STRING_DESTINATION]);
         ListMenuItems_Delete(menu->items[REGULATION_MENU_REGULATIONS]);
@@ -235,7 +235,7 @@ static int BattleRegulationMenu_ProcessListMenuInputConfirm(BattleRegulationMenu
 
     if (menu->listMenu[REGULATION_MENU_CONFIRM]) {
         DestroyListMenu(menu->listMenu[REGULATION_MENU_CONFIRM], NULL, NULL);
-        sub_0200E5D4(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE);
+        ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE);
         ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_WINDOW_CONFIRM].bgConfig, menu->windows[REGULATION_MENU_WINDOW_CONFIRM].bgId);
         RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM]);
         ListMenuItems_Delete(menu->items[REGULATION_MENU_CONFIRM]);
@@ -369,7 +369,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
 }
 
 static void BattleRegulationMenu_RemoveRulesWindow(BattleRegulationMenu *menu) {
-    sub_0200E5D4(&menu->windows[REGULATION_MENU_WINDOW_RULES], TRUE);
+    ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_WINDOW_RULES], TRUE);
     ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_WINDOW_RULES].bgConfig, menu->windows[REGULATION_MENU_WINDOW_RULES].bgId);
     RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_RULES]);
 }

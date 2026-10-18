@@ -1,62 +1,62 @@
 {
-  "header": "fielddata/script/scr_seq/event_R05.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_R05_001 + 1",
-      "type": 1,
-      "x": 1308,
-      "z": 186,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_R05_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_258",
-      "scriptId": "_EV_scr_seq_R05_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1306,
-      "z": 186,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1300,
-      "z": 189,
-      "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 1301,
-      "z": 189,
-      "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 1306,
-      "z": 185,
-      "header": "MAP_ROUTE_5_UNDERGROUND_PATH_GATE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 1297,
-      "z": 171,
-      "header": "MAP_ROUTE_5_HOUSE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R05.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_R05_001 + 1",
+            "type": 1,
+            "x": 1308,
+            "z": 186,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_R05_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_258",
+            "scriptId": "_EV_scr_seq_R05_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1306,
+            "z": 186,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1300,
+            "z": 189,
+            "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 1301,
+            "z": 189,
+            "header": "MAP_ROUTE_5_SAFFRON_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 1306,
+            "z": 185,
+            "header": "MAP_ROUTE_5_UNDERGROUND_PATH_GATE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 1297,
+            "z": 171,
+            "header": "MAP_ROUTE_5_HOUSE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }
