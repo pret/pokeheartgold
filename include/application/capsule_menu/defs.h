@@ -12,10 +12,25 @@
 #include "touchscreen_list_menu.h"
 #include "unk_02016EDC.h"
 
+#define SEALS_PER_PAGE                8
+#define CAPSULE_TOUCH_RECTS           21
+#define CAPSULE_SELECTION_ARROWS      4
+#define CAPSULE_MENU_WINDOW_NUM       11
+#define CAPSULE_MENU_EMPTY_CAPSULE    0
+#define CAPSULE_MENU_HAS_SEALS        1
+#define CAPSULE_MENU_HAS_POKEMON      2
+#define CAPSULE_MENU_UNREACHABLE_CASE 3
+
 typedef struct IndexedCapsule {
     int partyIdx;
     BallCapsule *capsule;
 } IndexedCapsule;
+
+typedef struct SealPages {
+    int page;
+    int maxPage;
+    u8 sealIDs[SEALS_PER_PAGE];
+} SealPages;
 
 typedef struct CapsuleGraphicsManager {
     int unk_000;
@@ -60,9 +75,7 @@ typedef struct CapsuleAppManager {
     u8 filler_3F4[0x18];
     MenuInputState unk_40C;
     u8 filler_410[0x38];
-    int unk_448;
-    int unk_44C;
-    u8 filler_450[8];
+    SealPages unk_448;
     Pokemon *unk_458;
     NARC *unk_45C;
 } CapsuleAppManager; // size: 0x460

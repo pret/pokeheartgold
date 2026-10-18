@@ -1,5 +1,7 @@
 #include "application/capsule_menu/defs.h"
 
+void ov57_02238044(CapsuleAppManager *appManager, u8 index);
+
 void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
     rect->rect.top = y - 10;
     rect->rect.left = x - 10;
@@ -58,4 +60,32 @@ void ov57_02237F3C(CapsuleAppManager *appManager) {
             appManager->unk_34C[i].type = 0;
         }
     }
+}
+
+int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex) {
+    u32 touchX, touchY;
+
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if (appMan->unk_34C[i].shouldRender == 1) {
+            continue;
+        }
+
+        appMan->unk_34C[i].type = appMan->unk_448.sealIDs[sealIndex];
+        appMan->unk_34C[i].x = 190;
+        appMan->unk_34C[i].y = 70;
+
+        System_GetTouchHeldCoords(&touchX, &touchY);
+
+        appMan->unk_34C[i].x = touchX;
+        appMan->unk_34C[i].y = touchY;
+
+        ov57_02238260(appMan, i);
+        ov57_02238044(appMan, i);
+
+        appMan->unk_34C[i].shouldRender = 1;
+
+        return i;
+    }
+
+    return 0xFF;
 }

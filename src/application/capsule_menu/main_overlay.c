@@ -32,14 +32,14 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     appManager->unk_40C = MenuInputStateMgr_GetState(appManager->unk_000->menuInputStatePtr);
     appManager->unk_458 = AllocMonZeroed(HEAP_ID_52);
     appManager->unk_0D4.unk_000 = 0xFF;
-    appManager->unk_448 = 0;
+    appManager->unk_448.page = 0;
     BOOL r5 = FALSE;
     if (SealCase_CountUniqueSeals(appManager->unk_000->sealCase) % 8 != 0) {
         r5 = TRUE;
     }
-    appManager->unk_44C = SealCase_CountUniqueSeals(appManager->unk_000->sealCase) / 8 + r5;
-    if (appManager->unk_44C > 10) {
-        appManager->unk_44C = 10;
+    appManager->unk_448.maxPage = SealCase_CountUniqueSeals(appManager->unk_000->sealCase) / 8 + r5;
+    if (appManager->unk_448.maxPage > 10) {
+        appManager->unk_448.maxPage = 10;
     }
     appManager->unk_3EC = ov57_02237E78(appManager->unk_000);
     appManager->unk_3F0 = ov57_02237E78(appManager->unk_000);
