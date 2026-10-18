@@ -1384,7 +1384,7 @@
                  16](NNS_G3dReleaseMdlPltt,func) found in global libnnsg3d.a
                 15](NNS_G3dGetTex,func) found in global libnnsg3d.a
                 15](NNS_G3dGetMdlSet,func) found in global libnnsg3d.a
-                15](sub_02026DE0,func) found in global asm_unk_02026DE0.s.o
+                15](BillboardGfxSequence_GetTexPlttIndexAt,func) found in global src_billboard_gfx_sequence.c.o
                 15](sub_02020764,func) found in global asm_unk_0202068C.s.o
                  16](NNS_G3dGetResDataByName,func) found in global libnnsg3d.a
                  16](sub_02020B3C,func) found in global src_ascii_util.c.o
@@ -3105,6 +3105,7 @@
                14](GF3dGfxRawResObj_GetPlttKey,func) found in global src_unk_02025534.c.o
                14](GF3dGfxRawResObj_GetTex4x4Key,func) found in global src_unk_02025534.c.o
                14](GF3dGfxRawResObj_GetTexKey,func) found in global src_unk_02025534.c.o
+               14](BillboardGfxSequence_SetData,func) found in global src_billboard_gfx_sequence.c.o
                14](GF3dGfxRawResObj_GetTex,func) found in global src_unk_02025534.c.o
                 15](GF_3DGfxResObj_GetTex_Internal,func) found in local src_unk_02025534.c.o
                14](GF3dGfxRawResMan_GetObjById,func) found in global src_unk_02025534.c.o
@@ -26085,12 +26086,10 @@
   02026DD4 00000000 .text   $d	(src_touch_hitbox_controller.c.o)
   02026DD8 00000008 .text   sub_02026DD8	(src_touch_hitbox_controller.c.o)
   02026DD8 00000000 .text   $t	(src_touch_hitbox_controller.c.o)
-  02026DE0 00000038 .text   sub_02026DE0	(asm_unk_02026DE0.s.o)
-  02026DE0 00000000 .text   $t	(asm_unk_02026DE0.s.o)
-  02026DE0 00000050 .text   .text	(asm_unk_02026DE0.s.o)
-  02026E16 00000000 .text   $d	(asm_unk_02026DE0.s.o)
-  02026E18 00000018 .text   sub_02026E18	(asm_unk_02026DE0.s.o)
-  02026E18 00000000 .text   $t	(asm_unk_02026DE0.s.o)
+  02026DE0 00000036 .text   BillboardGfxSequence_GetTexPlttIndexAt	(src_billboard_gfx_sequence.c.o)
+  02026DE0 00000000 .text   $t	(src_billboard_gfx_sequence.c.o)
+  02026E18 00000018 .text   BillboardGfxSequence_SetData	(src_billboard_gfx_sequence.c.o)
+  02026E18 00000000 .text   $t	(src_billboard_gfx_sequence.c.o)
   02026E30 00000000 .text   $t	(src_unk_02026E30.c.o)
   02026E30 00000018 .text   Init3DBufferSwapRequestState	(src_unk_02026E30.c.o)
   02026E40 00000000 .text   $d	(src_unk_02026E30.c.o)
