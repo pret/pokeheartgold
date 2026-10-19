@@ -136,7 +136,7 @@ s32 sub_0203988C(void);
 UnkStruct_ov44_0223197C *sub_020398C8(void);
 void sub_020398D4(s8 arg0, s8 arg1);
 BOOL sub_02039918(void);
-u8 sub_0203993C(void);
+u8 CommManager_GetCommType(void);
 u8 sub_02039954(void);
 void sub_0203996C(void *arg0);
 void sub_02039980(void *arg0);

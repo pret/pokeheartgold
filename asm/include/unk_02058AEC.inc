@@ -72,7 +72,7 @@
 .public sub_02038C1C
 .public sub_020398D4
 .public sub_02039918
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_0203996C
 .public FieldSystem_LaunchApplication
 .public sub_0203E2F4

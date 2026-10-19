@@ -977,7 +977,7 @@ sub_0205876C: ; 0x0205876C
 	pop {r4, pc}
 _02058782:
 	mov r4, #5
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #5
 	bgt _0205879C
 	cmp r0, #2

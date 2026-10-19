@@ -1358,7 +1358,7 @@ _02059546:
 	mov r0, #0xb
 	bl ListMenuCursorNew
 	str r0, [r4, #0x78]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	add r1, r4, #0
 	add r1, #0x88
 	strb r0, [r1]

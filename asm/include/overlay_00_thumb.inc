@@ -14,7 +14,7 @@
 .public sub_02034098
 .public CommSystem_GetConnectedCount
 .public sub_02038F74
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039AD8
 .public DWC_IsBuddyFriendData
 .public DWC_GetFriendDataType

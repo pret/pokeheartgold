@@ -154,7 +154,7 @@ _02034C18:
 sub_02034C20: ; 0x02034C20
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	add r5, r0, #0
 	bl sub_02039954
 	add r4, r6, #0
@@ -977,7 +977,7 @@ _0203522C:
 	bl sub_02033298
 	cmp r0, #1
 	bne _02035282
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	ldr r2, _02035288 ; =_021D4134
 	mov r1, #0xc0
 	add r4, r5, #0
@@ -1064,7 +1064,7 @@ _020352D4: .word 0x00000D74
 	thumb_func_start sub_020352D8
 sub_020352D8: ; 0x020352D8
 	push {r3, r4, r5, lr}
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	add r5, r0, #0
 	bl sub_02035784
 	add r4, r0, #0
@@ -1102,7 +1102,7 @@ _0203530A:
 	add r0, r4, #0
 	bl PlayerProfile_GetTrainerID
 	str r0, [r5]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	strb r0, [r5, #4]
 	bl sub_02039954
 	strb r0, [r5, #5]
@@ -1125,7 +1125,7 @@ _02035360:
 	ldr r4, [r2, r1]
 	bl PlayerProfile_GetTrainerID
 	str r0, [r4]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	strb r0, [r4, #4]
 	bl sub_02039954
 	strb r0, [r4, #5]
@@ -1375,12 +1375,12 @@ _02035548:
 	strh r0, [r1]
 _02035562:
 	bl sub_020352D8
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
 	add r4, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02035724

@@ -105,7 +105,7 @@
 .public sub_02037ADC
 .public sub_0203817C
 .public sub_020398D4
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039A00
 .public MI_CpuFill8
 .public MI_CpuCopy8

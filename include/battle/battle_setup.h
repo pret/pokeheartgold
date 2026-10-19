@@ -89,11 +89,11 @@ void BattleSetup_InitFromFieldSystem(BattleSetup *setup,
 void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup,
     FieldSystem *fieldSystem,
     int level);
-void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
+void BattleSetup_InitWithPartyOrder(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
 void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots);
-void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem);
-void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem);
-void sub_02052544(BattleSetup *setup);
+void BattleSetup_UpdateFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem);
+void BattleSetup_UpdatePokedex(BattleSetup *setup, FieldSystem *fieldSystem);
+void BattleSetup_SetWaterTerrain(BattleSetup *setup);
 BOOL IsBattleResultWin(u32 a0);
 BOOL IsBattleResultStaticWildWin(u32 a0);
 BOOL IsBattleResultLatiCaught(u32 a0);

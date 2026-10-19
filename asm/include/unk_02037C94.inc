@@ -159,7 +159,7 @@
 .public sub_020398C8
 .public sub_020398D4
 .public sub_02039918
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039954
 .public sub_0203996C
 .public sub_02039980

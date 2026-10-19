@@ -37,7 +37,7 @@
 .public sub_02037E9C
 .public sub_02037EC8
 .public sub_020398D4
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039980
 .public sub_020399FC
 .public FieldSystem_GetSaveData

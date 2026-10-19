@@ -20,7 +20,7 @@
 .public sub_020376E0
 .public sub_0203774C
 .public sub_02037894
-.public sub_0203993C
+.public CommManager_GetCommType
 .public Field_GetNumObjectEvents
 .public Field_GetObjectEvents
 .public sub_0203E2F4

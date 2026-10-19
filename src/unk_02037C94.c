@@ -1417,7 +1417,7 @@ BOOL sub_02039918(void) {
     return FALSE;
 }
 
-u8 sub_0203993C(void) {
+u8 CommManager_GetCommType(void) {
     if (_021D4150) {
         return _021D4150->unk4E;
     }
@@ -1440,7 +1440,7 @@ void sub_02039980(void *arg0) {
 }
 
 int sub_02039998(void) {
-    sub_0203993C();
+    CommManager_GetCommType();
     return sub_02034044();
 }
 

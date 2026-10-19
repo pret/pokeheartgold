@@ -2115,7 +2115,7 @@ _02057CB2:
 	add r2, r2, #2
 	sub r1, r1, #1
 	bne _02057CB2
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_0203774C
 	add r6, r0, #0
 	mov r0, #0
@@ -2219,7 +2219,7 @@ _02057D70: .word _021D41C4
 sub_02057D74: ; 0x02057D74
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_0203774C
 	add r7, r0, #0
 	cmp r7, #2
@@ -2331,7 +2331,7 @@ _02057E4C: .word _021D41C4
 sub_02057E50: ; 0x02057E50
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_0203774C
 	str r0, [sp]
 	ldr r1, [sp]
