@@ -125,7 +125,7 @@ void Sprite_SetDrawFlag(Sprite *sprite, BOOL flag);
 void Sprite_SetAnimActiveFlag(Sprite *sprite, BOOL flag);
 void Sprite_SetAnimSpeed(Sprite *sprite, fx32 frame);
 void Sprite_SetAffineOverwriteMode(Sprite *sprite, u8 affine);
-void Sprite_SetFlipMode(Sprite *sprite, u8 flip);
+void Sprite_SetFlipMode(Sprite *sprite, BOOL flip);
 VecFx32 *Sprite_GetMatrixPtr(Sprite *sprite);
 VecFx32 *Sprite_GetScalePtr(Sprite *sprite);
 u16 Sprite_GetRotation(Sprite *sprite);

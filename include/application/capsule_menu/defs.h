@@ -86,8 +86,8 @@ typedef struct CapsuleAppManager {
     CapsuleSprites unk_0D8[MAX_CAPSULES];
     u8 filler_31C[0x8];
     ManagedSprite *unk_324[PARTY_SIZE];
-    u8 filler_33C[16];
-    SealRenderInfo unk_34C[8];
+    ManagedSprite *unk_33C[CAPSULE_SELECTION_ARROWS];
+    SealRenderInfo unk_34C[MAX_SEALS_ON_CAPSULE];
     u8 filler_3CC[0x20];
     int unk_3EC;
     int unk_3F0;

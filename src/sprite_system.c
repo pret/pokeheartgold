@@ -927,11 +927,11 @@ u16 ManagedSprite_GetRotation(ManagedSprite *managedSprite) {
     return thunk_Sprite_GetRotation(managedSprite->sprite);
 }
 
-void thunk_Sprite_SetFlipMode(Sprite *sprite, u8 a1) {
+void thunk_Sprite_SetFlipMode(Sprite *sprite, BOOL a1) {
     Sprite_SetFlipMode(sprite, a1);
 }
 
-void ManagedSprite_SetFlipMode(ManagedSprite *managedSprite, u8 a1) {
+void ManagedSprite_SetFlipMode(ManagedSprite *managedSprite, BOOL a1) {
     thunk_Sprite_SetFlipMode(managedSprite->sprite, a1);
 }
 

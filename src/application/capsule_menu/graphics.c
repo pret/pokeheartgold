@@ -241,8 +241,7 @@ void ov57_02238A00(CapsuleAppManager *appMan) {
         pageSprites[i] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
     }
 
-    extern const s16 ov57_0223BDD4[8][2];
-    s16 initialXY[8][2] /*= {
+    s16 initialXY[8][2] = {
         { 19, 23 },
         { 75, 23 },
         { 19, 47 },
@@ -251,8 +250,7 @@ void ov57_02238A00(CapsuleAppManager *appMan) {
         { 75, 71 },
         { 19, 95 },
         { 75, 95 },
-    }*/;
-    ARRAY_ASSIGN(initialXY, ov57_0223BDD4);
+    };
 
     for (i = 0; i < SEALS_PER_PAGE; i++) {
         ManagedSprite_SetPositionXY(appMan->unk_414[i], initialXY[i][0], initialXY[i][1] - 1);
@@ -524,8 +522,8 @@ void ov57_02239014(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_02239058(CapsuleGraphicsManager *graphicsMan) {
-    graphicsMan->unk_008 = SpriteSystem_Alloc(HEAP_ID_52);
+void ov57_02239058(CapsuleGraphicsManager *unk_0D4) {
+    unk_0D4->unk_008 = SpriteSystem_Alloc(HEAP_ID_52);
     const OamManagerParam renderOAMTemplate = {
         0,
         128,
@@ -540,7 +538,7 @@ void ov57_02239058(CapsuleGraphicsManager *graphicsMan) {
         48 + 48, 1024 * 0x40, 512 * 0x20, GX_OBJVRAMMODE_CHAR_1D_64K, GX_OBJVRAMMODE_CHAR_1D_32K
     };
 
-    SpriteSystem_Init(graphicsMan->unk_008, &renderOAMTemplate, &transferTemplate, SPRITE_SYSTEM_PLTT_CAPACITY);
+    SpriteSystem_Init(unk_0D4->unk_008, &renderOAMTemplate, &transferTemplate, SPRITE_SYSTEM_PLTT_CAPACITY);
 
     BOOL result;
     const SpriteResourceCountsListUnion spriteResourceCapacities = {
@@ -552,18 +550,57 @@ void ov57_02239058(CapsuleGraphicsManager *graphicsMan) {
         16,
     };
 
-    graphicsMan->unk_00C = SpriteManager_New(graphicsMan->unk_008);
-    result = SpriteSystem_InitSprites(graphicsMan->unk_008, graphicsMan->unk_00C, 128);
+    unk_0D4->unk_00C = SpriteManager_New(unk_0D4->unk_008);
+    result = SpriteSystem_InitSprites(unk_0D4->unk_008, unk_0D4->unk_00C, 128);
     GF_ASSERT(result);
 
-    result = SpriteSystem_InitManagerWithCapacities(graphicsMan->unk_008, graphicsMan->unk_00C, &spriteResourceCapacities);
+    result = SpriteSystem_InitManagerWithCapacities(unk_0D4->unk_008, unk_0D4->unk_00C, &spriteResourceCapacities);
     GF_ASSERT(result);
 
-    graphicsMan->unk_174 = TouchscreenListMenuSpawner_Create(HEAP_ID_52, graphicsMan->unk_014);
+    unk_0D4->unk_174 = TouchscreenListMenuSpawner_Create(HEAP_ID_52, unk_0D4->unk_014);
 }
 
-void ov57_022390F4(CapsuleGraphicsManager *graphicsMan) {
-    TouchscreenListMenuSpawner_Destroy(graphicsMan->unk_174);
-    SpriteSystem_FreeResourcesAndManager(graphicsMan->unk_008, graphicsMan->unk_00C);
-    SpriteSystem_Free(graphicsMan->unk_008);
+void ov57_022390F4(CapsuleGraphicsManager *unk_0D4) {
+    TouchscreenListMenuSpawner_Destroy(unk_0D4->unk_174);
+    SpriteSystem_FreeResourcesAndManager(unk_0D4->unk_008, unk_0D4->unk_00C);
+    SpriteSystem_Free(unk_0D4->unk_008);
+}
+
+void ov57_02239114(CapsuleAppManager *appMan, NARC *narc) {
+    SpriteSystem_LoadCharResObjFromOpenNarc(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, narc, 14, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 45000);
+    SpriteSystem_LoadCellResObjFromOpenNarc(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, narc, 16, TRUE, 47000);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, narc, 15, TRUE, 48000);
+}
+
+void ov57_02239184(CapsuleAppManager *appMan) {
+    ManagedSpriteTemplate spriteTemplate;
+    extern const int ov57_0223BE18[4][3];
+    int startingStates[4][3] /* = {
+         { 136, 16,  1 },
+         { 136, 128, 3 },
+         { 240, 16,  0 },
+         { 240, 128, 2 },
+     }*/;
+    ARRAY_ASSIGN(startingStates, ov57_0223BE18);
+
+    for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
+        spriteTemplate.x = startingStates[i][0];
+        spriteTemplate.y = startingStates[i][1];
+        spriteTemplate.z = 0;
+        spriteTemplate.animation = 0;
+        spriteTemplate.drawPriority = 40;
+        spriteTemplate.pal = 2;
+        spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DSUB;
+        spriteTemplate.bgPriority = 1;
+        spriteTemplate.vramTransfer = FALSE;
+        spriteTemplate.resIdList[0] = 45000;
+        spriteTemplate.resIdList[1] = 26004;
+        spriteTemplate.resIdList[2] = 47000;
+        spriteTemplate.resIdList[3] = 48000;
+        spriteTemplate.resIdList[4] = -1;
+        spriteTemplate.resIdList[5] = -1;
+        appMan->unk_33C[i] = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
+
+        ManagedSprite_SetFlipMode(appMan->unk_33C[i], startingStates[i][2]);
+    }
 }
