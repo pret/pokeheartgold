@@ -173,7 +173,7 @@
 .public BattleSystem_GetBag
 .public BattleSystem_GetTrainerGender
 .public BattleSystem_GetBattlerFromBattlerType
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetMessageIcon
 .public BattleSystem_GetTerrainId

@@ -45,6 +45,9 @@
 #define BATTLER_CATEGORY_SWITCHED_MON_AFTER 22
 #define BATTLER_CATEGORY_MSG_TEMP           0xFF
 
+// Battler Status
+#define BATTLER_STATUS_SWITCHING    1
+
 #ifndef PM_ASM
 
 typedef enum BattleBg {

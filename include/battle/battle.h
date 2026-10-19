@@ -348,7 +348,7 @@ typedef struct BattleContext {
     int msgTemp;
     int calcTemp;
     int tempData;
-    u32 unk_13C[4];
+    u32 battlerStatusFlags[4];
     u32 unk_14C;
     int totalTurns;
     int totalTimesFainted[4];

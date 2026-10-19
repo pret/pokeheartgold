@@ -1325,7 +1325,7 @@ BOOL BtlCmd_ShowParty(BattleSystem *battleSystem, BattleContext *ctx) {
     unkB = 0;
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->unk_13C[battlerId] & 1) {
+        if (ctx->battlerStatusFlags[battlerId] & BATTLER_STATUS_SWITCHING) {
             unkB |= MaskOfFlagNo(battlerId);
             BattleController_EmitShowPartyMenu(battleSystem, ctx, battlerId, 1, 0, 6);
         }
@@ -1346,7 +1346,7 @@ BOOL BtlCmd_ShowParty(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->unk_13C[battlerId] & 1) {
+        if (ctx->battlerStatusFlags[battlerId] & BATTLER_STATUS_SWITCHING) {
             ctx->battlerIdSwitch = battlerId;
             break;
         }
@@ -1362,13 +1362,13 @@ BOOL BtlCmd_WaitMonSelection(BattleSystem *battleSystem, BattleContext *ctx) {
     int switchCnt = 0;
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->unk_13C[battlerId] & 1) {
+        if (ctx->battlerStatusFlags[battlerId] & BATTLER_STATUS_SWITCHING) {
             switchCnt++;
         }
     }
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if ((ctx->unk_13C[battlerId] & 1) && BattleBuffer_GetNext(ctx, battlerId)) {
+        if ((ctx->battlerStatusFlags[battlerId] & BATTLER_STATUS_SWITCHING) && BattleBuffer_GetNext(ctx, battlerId)) {
             ctx->unk_21A0[battlerId] = ctx->battleBuffer[battlerId][0] - 1;
             switchCnt--;
             if (!(ctx->battleStatus2 & (MaskOfFlagNo(battlerId) << BATTLE_STATUS_FAINTED_SHIFT))) {
@@ -1380,8 +1380,8 @@ BOOL BtlCmd_WaitMonSelection(BattleSystem *battleSystem, BattleContext *ctx) {
 
     if (switchCnt == 0) {
         for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-            if ((ctx->unk_13C[battlerId] & 1) && BattleBuffer_GetNext(ctx, battlerId)) {
-                ov12_0223BDDC(battleSystem, battlerId, ctx->battleBuffer[battlerId][0]);
+            if ((ctx->battlerStatusFlags[battlerId] & BATTLER_STATUS_SWITCHING) && BattleBuffer_GetNext(ctx, battlerId)) {
+                BattleSystem_Record(battleSystem, battlerId, ctx->battleBuffer[battlerId][0]);
             }
         }
         ctx->battleStatus2 &= 0xf0ffffff;
@@ -1412,7 +1412,7 @@ BOOL BtlCmd_SwitchAndUpdateMon(BattleSystem *battleSystem, BattleContext *ctx) {
         break;
     }
 
-    ctx->unk_13C[battlerId] &= ~1;
+    ctx->battlerStatusFlags[battlerId] &= ~BATTLER_STATUS_SWITCHING;
     ctx->switchInFlag &= (MaskOfFlagNo(battlerId) ^ ~0);
     ctx->selectedMonIndex[battlerId] = ctx->unk_21A0[battlerId];
     ctx->unk_21A0[battlerId] = 6;
@@ -1436,7 +1436,7 @@ BOOL BtlCmd_GoToIfAnySwitches(BattleSystem *battleSystem, BattleContext *ctx) {
     u32 adrs = BattleScriptReadWord(ctx);
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->unk_13C[battlerId] & 1) {
+        if (ctx->battlerStatusFlags[battlerId] & BATTLER_STATUS_SWITCHING) {
             ctx->battlerIdSwitch = battlerId;
             BattleScriptIncrementPointer(ctx, adrs);
             break;
@@ -3599,7 +3599,7 @@ BOOL BtlCmd_TryReplaceFaintedMon(BattleSystem *battleSystem, BattleContext *ctx)
     if (!CanSwitchMon(battleSystem, ctx, battlerId)) {
         BattleScriptIncrementPointer(ctx, adrs);
     } else if (flag == 1) {
-        ctx->unk_13C[battlerId] |= 1;
+        ctx->battlerStatusFlags[battlerId] |= BATTLER_STATUS_SWITCHING;
     }
 
     return FALSE;
@@ -4990,7 +4990,7 @@ BOOL BtlCmd_WaitYesNoResult(BattleSystem *battleSystem, BattleContext *ctx) {
             BattleScriptIncrementPointer(ctx, adrsYes);
         }
 
-        ov12_0223BDDC(battleSystem, 0, selection);
+        BattleSystem_Record(battleSystem, 0, selection);
     }
 
     ctx->battleContinueFlag = TRUE;
@@ -5399,7 +5399,7 @@ BOOL BtlCmd_CheckWhiteout(BattleSystem *battleSystem, BattleContext *ctx) {
             }
         }
 
-        if ((battleType == 75 || battleType == 74) && BattleSystem_GetFieldSide(battleSystem, battlerId) == 0 && ov12_0223AB0C(battleSystem, battlerId) == 2) {
+        if ((battleType == 75 || battleType == 74) && BattleSystem_GetFieldSide(battleSystem, battlerId) == 0 && BattleSystem_GetBattlerType(battleSystem, battlerId) == 2) {
 
         } else {
             for (i = 0; i < Party_GetCount(party2); i++) {

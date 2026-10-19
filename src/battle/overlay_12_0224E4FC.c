@@ -1933,7 +1933,7 @@ void InitFaintedWork(BattleSystem *battleSystem, BattleContext *ctx, int battler
         ctx->moveNoCopiedHit[i][battlerId] = 0;
     }
 
-    ctx->unk_13C[battlerId] &= ~1;
+    ctx->battlerStatusFlags[battlerId] &= ~BATTLER_STATUS_SWITCHING;
 
     ov12_02258584(ctx, battlerId);
     ov12_0225859C(ctx, battlerId);
@@ -2680,7 +2680,7 @@ BOOL CanSwitchMon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId)
     party = BattleSystem_GetParty(battleSystem, battlerId);
     partySize = BattleSystem_GetPartySize(battleSystem, battlerId);
 
-    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(battleSystem, battlerId) & 1))) {
+    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
         start = 0;
         cntMax = 1;
         monIndex1 = ctx->selectedMonIndex[battlerId];
@@ -5428,8 +5428,8 @@ void ov12_02256F78(BattleSystem *battleSystem, BattleContext *ctx, int battlerId
     int flag;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
-    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(battleSystem, battlerId) & 1))) {
-        if (ov12_0223AB0C(battleSystem, battlerId) == 4 || ov12_0223AB0C(battleSystem, battlerId) == 5) {
+    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
+        if (BattleSystem_GetBattlerType(battleSystem, battlerId) == 4 || BattleSystem_GetBattlerType(battleSystem, battlerId) == 5) {
             flag = 1;
         } else {
             flag = 0;

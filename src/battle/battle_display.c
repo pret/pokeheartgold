@@ -4168,7 +4168,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
 
         BattleHpBar *hpBar = BattleSystem_GetHpBar(bagMenuData->battleSys, battler);
         MI_CpuClear8(&hpBar->script, sizeof(u8));
-        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(ov12_0223AB0C(bagMenuData->battleSys, battler), BattleSystem_GetBattleType(bagMenuData->battleSys));
+        hpBar->type = BattleHpBar_Util_GetBarTypeFromBattlerSide(BattleSystem_GetBattlerType(bagMenuData->battleSys, battler), BattleSystem_GetBattleType(bagMenuData->battleSys));
 
         Pokemon *mon = BattleSystem_GetPartyMon(bagMenuData->battleSys, battler, slots);
         hpBar->hp = GetMonData(mon, MON_DATA_HP, NULL) - bagMenuData->partyMenuData->battlePartyCtx->currentDamage;
@@ -4432,7 +4432,7 @@ static void BattleDisplayTask_PlayerShowPartyMenu(SysTask *task, void *data) {
 
             if ((BattleSystem_GetBattleType(partyMenuData->battleSys) & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)
                 || BattleSystem_GetBattleType(partyMenuData->battleSys) == (((BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES) | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI) | BATTLE_TYPE_FRONTIER)) {
-                if (ov12_0223AB0C(partyMenuData->battleSys, partyMenuData->battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
+                if (BattleSystem_GetBattlerType(partyMenuData->battleSys, partyMenuData->battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
                     battler1 = partyMenuData->battler;
                     battler2 = BattleSystem_GetBattlerIdPartner(partyMenuData->battleSys, partyMenuData->battler);
                 } else {
@@ -4462,7 +4462,7 @@ static void BattleDisplayTask_PlayerShowPartyMenu(SysTask *task, void *data) {
                     partyMenuData->battlePartyCtx->pokemonPartySlots[i * 2 + 1] = partyMenuData->partyOrder[battler2][i];
                 }
 
-                if (ov12_0223AB0C(partyMenuData->battleSys, partyMenuData->battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
+                if (BattleSystem_GetBattlerType(partyMenuData->battleSys, partyMenuData->battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
                     partyMenuData->battlePartyCtx->selectedPartyIndex = 1;
                 } else {
                     partyMenuData->battlePartyCtx->selectedPartyIndex = 0;
@@ -4475,7 +4475,7 @@ static void BattleDisplayTask_PlayerShowPartyMenu(SysTask *task, void *data) {
                     battler = partyMenuData->battler;
                 }
 
-                if (ov12_0223AB0C(partyMenuData->battleSys, partyMenuData->battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
+                if (BattleSystem_GetBattlerType(partyMenuData->battleSys, partyMenuData->battler) == BATTLER_TYPE_PLAYER_SIDE_SLOT_2) {
                     partyMenuData->battlePartyCtx->selectedPartyIndex = 1;
                 } else {
                     partyMenuData->battlePartyCtx->selectedPartyIndex = 0;
@@ -5679,7 +5679,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk0[4] = &BattleDisplayTask_RecordingShowPartyMenu;
             opponentData->unk0[5] = &BattleDisplayTask_RecordingShowYesNoMenu;
             opponentData->unk196 = 0;
-        } else if (opponentData->battlerType != ov12_0223AB0C(battleSys, ov12_0223BFC0(battleSys) * 2)) {
+        } else if (opponentData->battlerType != BattleSystem_GetBattlerType(battleSys, ov12_0223BFC0(battleSys) * 2)) {
             opponentData->unk0[0] = &BattleDisplayTask_LinkSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_LinkShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_LinkShowTargetSelectMenu;
@@ -5705,7 +5705,7 @@ void OpponentData_SetTaskFuncs(BattleSystem *battleSys, OpponentData *opponentDa
             opponentData->unk0[4] = &BattleDisplayTask_RecordingShowPartyMenu;
             opponentData->unk0[5] = &BattleDisplayTask_RecordingShowYesNoMenu;
             opponentData->unk196 = 0;
-        } else if (opponentData->battlerType != ov12_0223AB0C(battleSys, ov12_0223BFC0(battleSys))) {
+        } else if (opponentData->battlerType != BattleSystem_GetBattlerType(battleSys, ov12_0223BFC0(battleSys))) {
             opponentData->unk0[0] = &BattleDisplayTask_LinkSetCommandSelection;
             opponentData->unk0[1] = &BattleDisplayTask_LinkShowMoveSelectMenu;
             opponentData->unk0[2] = &BattleDisplayTask_LinkShowTargetSelectMenu;
@@ -5852,7 +5852,7 @@ void OpponentData_SetTrainerVisibility(OpponentData *opponentData, BOOL drawFlag
 static Pokepic *BattleDisplay_NewPokepic(BattleSystem *battleSys, PokepicManager *monSpriteMan, PokepicTemplate *spriteTemplate, int x, int y, int z, int yOffset, int height, int xOffset, int shadowSize, int battler, PokepicAnimScript *animScript, PokepicCallback callback) {
     Pokepic *pokepic;
     u8 *tiles = ov12_0223BB94(ov12_0223A99C(battleSys), battler);
-    int battlerType = ov12_0223AB0C(battleSys, battler);
+    int battlerType = BattleSystem_GetBattlerType(battleSys, battler);
     int face;
 
     if (battlerType & BATTLER_ENEMY) {
