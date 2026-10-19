@@ -6,109 +6,13 @@
 
 	.extern ov57_02237E88
 	.extern ov57_02237E90
-	.extern ov57_02237EA8
 	.extern ov57_02237EB8
 	.extern ov57_02237F14
 	.extern ov57_02237F3C
 	.extern ov57_02237FAC
 	.extern ov57_02238028
-	.extern ov57_02238044
-	.extern ov57_0223809C
 	.extern ov57_02238134
-
-	thumb_func_start ov57_022382F8
-ov57_022382F8: ; 0x022382F8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r2, #0
-	add r6, r1, #0
-	mov r1, #0xd3
-	add r4, r0, #0
-	lsl r7, r5, #4
-	add r3, r4, r7
-	lsl r1, r1, #2
-	ldr r2, [r3, r1]
-	cmp r2, #0
-	bne _02238312
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_02238312:
-	cmp r6, #3
-	bhi _022383A2
-	add r2, r6, r6
-	add r2, pc
-	ldrh r2, [r2, #6]
-	lsl r2, r2, #0x10
-	asr r2, r2, #0x10
-	add pc, r2
-_02238322: ; jump table
-	.short _0223832A - _02238322 - 2 ; case 0
-	.short _0223836A - _02238322 - 2 ; case 1
-	.short _02238340 - _02238322 - 2 ; case 2
-	.short _0223836A - _02238322 - 2 ; case 3
-_0223832A:
-	add r1, r4, #0
-	add r1, #0xd4
-	ldr r1, [r1]
-	cmp r1, #0xff
-	bne _022383A6
-	add r4, #0xd4
-	add r1, r5, #0
-	str r5, [r4]
-	bl ov57_02238044
-	b _022383A6
-_02238340:
-	add r0, #0xd4
-	ldr r0, [r0]
-	cmp r0, r5
-	bne _022383A6
-	add r0, r1, #0
-	add r0, #0xc
-	add r1, #8
-	ldr r0, [r3, r0]
-	ldr r1, [r3, r1]
-	mov r2, #1
-	bl ov57_02237EB8
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov57_0223848C
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov57_02238508
-	b _022383A6
-_0223836A:
-	add r1, r4, #0
-	add r1, #0xd4
-	ldr r1, [r1]
-	cmp r1, #0xff
-	bne _022383A6
-	add r1, r5, #0
-	bl ov57_022383F8
-	mov r1, #0xd6
-	add r2, r4, r7
-	lsl r1, r1, #2
-	add r6, r0, #0
-	ldr r0, [r2, r1]
-	sub r1, r1, #4
-	ldr r1, [r2, r1]
-	mov r2, #0
-	bl ov57_02237EB8
-	cmp r6, #0
-	bne _0223839A
-	add r0, r4, #0
-	add r1, r5, #0
-	bl ov57_02238438
-_0223839A:
-	mov r0, #0xff
-	add r4, #0xd4
-	str r0, [r4]
-	b _022383A6
-_022383A2:
-	bl GF_AssertFail
-_022383A6:
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end ov57_022382F8
+	.extern ov57_022382F8
 
 	thumb_func_start ov57_022383AC
 ov57_022383AC: ; 0x022383AC

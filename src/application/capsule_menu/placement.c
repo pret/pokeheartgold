@@ -3,6 +3,10 @@
 #include "unk_02091054.h"
 
 void ov57_02238044(CapsuleAppManager *appManager, u8 index);
+void ov57_0223848C(CapsuleAppManager *appManager, int index);
+void ov57_02238508(CapsuleAppManager *appManager, int index);
+BOOL ov57_022383F8(CapsuleAppManager *appManager, int index);
+void ov57_02238438(CapsuleAppManager *appManager, int index);
 
 void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
     rect->rect.top = y - 10;
@@ -252,4 +256,46 @@ BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
     ManagedSprite_TickFrame(sealInfo->sprite);
 
     return TRUE;
+}
+
+BOOL ov57_022382F8(CapsuleAppManager *appMan, u32 touchscreenState, u8 index) {
+    if (appMan->unk_34C[index].shouldRender == 0) {
+        return 1;
+    }
+
+    switch (touchscreenState) {
+    case 0:
+        if (appMan->unk_0D4.unk_000 == 0xFF) {
+            appMan->unk_0D4.unk_000 = index;
+            ov57_02238044(appMan, index);
+        }
+        break;
+    case 2: {
+        if (appMan->unk_0D4.unk_000 == index) {
+            ov57_02237EB8(appMan->unk_34C[index].touchscreenHitbox, appMan->unk_34C[index].sprite, TRUE);
+            ov57_0223848C(appMan, index);
+            ov57_02238508(appMan, index);
+        }
+    } break;
+    case 1:
+    case 3: {
+        BOOL shouldFree;
+
+        if (appMan->unk_0D4.unk_000 == 0xFF) {
+            shouldFree = ov57_022383F8(appMan, index);
+            ov57_02237EB8(appMan->unk_34C[index].touchscreenHitbox, appMan->unk_34C[index].sprite, FALSE);
+
+            if (!shouldFree) {
+                ov57_02238438(appMan, index);
+            }
+
+            appMan->unk_0D4.unk_000 = 0xFF;
+        }
+    } break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+
+    return 1;
 }
