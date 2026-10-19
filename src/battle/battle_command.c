@@ -1446,7 +1446,7 @@ BOOL BtlCmd_GoToIfAnySwitches(BattleSystem *battleSystem, BattleContext *ctx) {
     return FALSE;
 }
 
-static void Task_GetPokemon(SysTask *task, void *data);
+static void Task_CatchPokemon(SysTask *task, void *data);
 
 BOOL BtlCmd_StartCatchMonTask(BattleSystem *battleSystem, BattleContext *ctx) {
     BattleScriptIncrementPointer(ctx, 1);
@@ -1460,7 +1460,7 @@ BOOL BtlCmd_StartCatchMonTask(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->getterWork->captureType = captureType;
     ctx->getterWork->ballID = ItemToBallId(ctx->itemTemp);
 
-    SysTask_CreateOnMainQueue(Task_GetPokemon, ctx->getterWork, 0);
+    SysTask_CreateOnMainQueue(Task_CatchPokemon, ctx->getterWork, 0);
 
     return FALSE;
 }
@@ -6640,7 +6640,7 @@ enum {
     BALL_ANIM_FADE,
 };
 
-static void Task_GetPokemon(SysTask *task, void *inData) {
+static void Task_CatchPokemon(SysTask *task, void *inData) {
     GetterWork *data = inData;
     SysTask *sysTask = task;
     PokepicManager *pokepicManager;
