@@ -5,10 +5,14 @@
 #include "obj_char_transfer.h"
 #include "text.h"
 #include "unk_02013534.h"
+#include "unk_02014DA0.h"
+#include "unk_02026E30.h"
 #include "unk_02091054.h"
 
 void ov57_02239814(BgConfig *bgConfig, Window *window, int left, int top, int width, int height, int pltt, int baseTile);
 void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
+void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1);
+void ov57_02238B48(void);
 
 void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
     s16 x, y;
@@ -228,4 +232,72 @@ void ov57_02238A00(CapsuleAppManager *appMan) {
         ManagedSprite_TickFrame(appMan->unk_414[i]);
         ManagedSprite_SetAnimationFrame(appMan->unk_414[i], 0);
     }
+}
+
+void ov57_02238AC0(CapsuleAppManager *appMan) {
+    for (int i = 0; i < SEALS_PER_PAGE; i++) {
+        SpriteManager_UnloadCharObjById(appMan->unk_0D4.unk_00C, i + 25000);
+        Sprite_DeleteAndFreeResources(appMan->unk_414[i]);
+    }
+}
+
+void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1) {
+    s16 dx = 56 * a1;
+    s16 dy = -16 * a1;
+    for (int i = 0; i < SEALS_PER_PAGE; ++i) {
+        if (appMan->unk_34C[i].shouldRender) {
+            ManagedSprite_OffsetPositionXY(appMan->unk_34C[i].sprite, dx, dy);
+        }
+    }
+}
+
+GF3DVramMan *ov57_02238B28(void) {
+    return GF_3DVramMan_Create(HEAP_ID_52, 0, 2, 0, 2, ov57_02238B48);
+}
+
+void ov57_02238B48(void) {
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
+
+    G2_SetBG0Priority(1);
+    G3X_SetShading(GX_SHADING_TOON);
+    G3X_AntiAlias(TRUE);
+    G3X_AlphaTest(FALSE, 0);
+    G3X_AlphaBlend(TRUE);
+    G3X_EdgeMarking(FALSE);
+    G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
+    G3X_SetClearColor(GX_RGB(0, 0, 0), 0, 0x7FFF, 63, 0);
+    G3_ViewPort(0, 0, 255, 191);
+}
+
+void ov57_02238BCC(void) {
+    NNSGfdTexKey texKey;
+    NNSGfdPlttKey plttKey;
+    u32 texKeyAddr, plttKeyAddr;
+
+    texKey = NNS_GfdAllocTexVram(0x8000, FALSE, 0);
+    plttKey = NNS_GfdAllocPlttVram(0x80, FALSE, 0);
+
+    GF_ASSERT(texKey != NNS_GFD_ALLOC_ERROR_TEXKEY);
+    GF_ASSERT(plttKey != NNS_GFD_ALLOC_ERROR_PLTTKEY);
+
+    texKeyAddr = NNS_GfdGetTexKeyAddr(texKey);
+    plttKeyAddr = NNS_GfdGetPlttKeyAddr(plttKey);
+
+    sub_02014DA0();
+}
+
+void ov57_02238C0C(void) {
+    int result;
+
+    Thunk_G3X_Reset();
+
+    result = sub_0201543C();
+
+    if (result > 0) {
+        Thunk_G3X_Reset();
+        NNS_G2dSetupSoftwareSpriteCamera();
+    }
+
+    sub_02015460();
+    RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
 }
