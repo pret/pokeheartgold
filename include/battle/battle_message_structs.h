@@ -421,4 +421,9 @@ typedef struct Message_022645C8 {
     u8 filler[2];
 } Message_022645C8;
 
+typedef struct UISetupMessage {
+    int command;
+    u32 seed;
+} UISetupMessage;
+
 #endif
