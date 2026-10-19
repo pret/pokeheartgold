@@ -755,8 +755,8 @@ _0221C3A4:
 	pop {r4, pc}
 	thumb_func_end ov07_0221C394
 
-	thumb_func_start ov07_0221C3B0
-ov07_0221C3B0: ; 0x0221C3B0
+	thumb_func_start BattleAnimSystem_IsMoveActive
+BattleAnimSystem_IsMoveActive: ; 0x0221C3B0
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
 	bne _0221C3BA
@@ -766,10 +766,10 @@ _0221C3BA:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov07_0221C3B0
+	thumb_func_end BattleAnimSystem_IsMoveActive
 
-	thumb_func_start ov07_0221C3C0
-ov07_0221C3C0: ; 0x0221C3C0
+	thumb_func_start BattleAnimSystem_FreeScriptData
+BattleAnimSystem_FreeScriptData: ; 0x0221C3C0
 	push {r3, lr}
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
@@ -784,7 +784,7 @@ _0221C3D2:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov07_0221C3C0
+	thumb_func_end BattleAnimSystem_FreeScriptData
 
 	thumb_func_start ov07_0221C3DC
 ov07_0221C3DC: ; 0x0221C3DC
@@ -47992,7 +47992,7 @@ _02233272:
 	add r1, r7, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200602C
+	bl Sound_PlayPannedEffect
 _02233286:
 	add r6, r6, #1
 	add r4, #8
@@ -48117,7 +48117,7 @@ _02233352:
 	bne _0223335E
 	ldr r0, _02233384 ; =0x000005FD
 	mov r1, #0x75
-	bl sub_0200602C
+	bl Sound_PlayPannedEffect
 _0223335E:
 	ldr r0, [r5, #0x30]
 	add r1, r4, #0
@@ -48692,7 +48692,7 @@ _02233786:
 	bne _0223379A
 	ldr r0, _02233870 ; =0x000007E8
 	mov r1, #0x75
-	bl sub_0200602C
+	bl Sound_PlayPannedEffect
 _0223379A:
 	ldr r0, [r4, #8]
 	add r0, r0, #1
@@ -51331,7 +51331,7 @@ ov07_02234B5C: ; 0x02234B5C
 	cmp r1, #0
 	bne _02234B68
 	lsl r1, r0, #2
-	ldr r0, _02234B78 ; =ov07_022377DC
+	ldr r0, _02234B78 ; =gBattlerEncounterX
 	ldrsh r0, [r0, r1]
 	bx lr
 _02234B68:
@@ -51343,7 +51343,7 @@ _02234B68:
 	ldrsh r0, [r1, r0]
 	bx lr
 	nop
-_02234B78: .word ov07_022377DC
+_02234B78: .word gBattlerEncounterX
 _02234B7C: .word ov07_022377F4
 	thumb_func_end ov07_02234B5C
 
@@ -52634,8 +52634,8 @@ ov07_02237784: ; 0x02237784
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 	.byte 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00
 
-	.public ov07_022377DC
-ov07_022377DC: ; 0x022377DC
+	.public gBattlerEncounterX
+gBattlerEncounterX: ; 0x022377DC
 	.byte 0x40, 0x00, 0x20, 0x00
 	.byte 0xC0, 0x00, 0xE0, 0x00, 0x28, 0x00, 0x20, 0x00, 0xD8, 0x00, 0xE0, 0x00, 0x50, 0x00, 0x20, 0x00
 	.byte 0xB0, 0x00, 0xE0, 0x00
@@ -52648,6 +52648,9 @@ ov07_022377F4: ; 0x022377F4
 	.short 0xFFC4, 0x0032, 0xFF9C
 	.short 0x0164, 0x0078, 0x0000
 	.short 0xFF9C, 0x002A, 0xFD80
+
+	.public gSlideTrainerInCoords
+gSlideTrainerInCoords:
 	.short 0xFFB0, 0x0070, 0xFE00
 	.short 0x0150, 0x0032, 0xFD80
 	.short 0xFFB0, 0x0070, 0xFE00

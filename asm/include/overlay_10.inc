@@ -18,7 +18,7 @@
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
 .public BattleSystem_GetBattlerFromBattlerType
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetFieldSide
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_Random

@@ -393,8 +393,8 @@ _0200602A:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02005FD8
 
-	thumb_func_start sub_0200602C
-sub_0200602C: ; 0x0200602C
+	thumb_func_start Sound_PlayPannedEffect
+Sound_PlayPannedEffect: ; 0x0200602C
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
 	add r4, r1, #0
@@ -408,7 +408,7 @@ sub_0200602C: ; 0x0200602C
 	pop {r4, r5, r6, pc}
 	nop
 _02006048: .word 0x0000FFFF
-	thumb_func_end sub_0200602C
+	thumb_func_end Sound_PlayPannedEffect
 
 	thumb_func_start PlaySE
 PlaySE: ; 0x0200604C

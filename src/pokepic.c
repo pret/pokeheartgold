@@ -451,7 +451,7 @@ void PokepicManager_Delete(PokepicManager *pokepicManager) {
     Heap_Free(pokepicManager);
 }
 
-void Pokepic_StartAnim(Pokepic *pokepic) {
+void Pokepic_StartAnim(Pokepic *pokepic, u32 unused) {
     pokepic->whichAnim = 0;
     for (int i = 0; i < 10; ++i) {
         pokepic->animLoopTimers[i] = 0;
@@ -474,7 +474,7 @@ BOOL Pokepic_IsAnimFinished(Pokepic *pokepic) {
     return !!pokepic->animActive;
 }
 
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback) {
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, s32 x, s32 y, s32 z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback) {
     int i;
     for (i = 0; i < 4; ++i) {
         if (!pokepicManager->pics[i].active) {
