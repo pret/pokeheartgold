@@ -110,7 +110,7 @@ void SpriteSystem_Free(SpriteSystem *spriteSystem);
 BOOL sub_0200D294(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList);
 BOOL sub_0200D2A4(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const ResdatIdList *fileIdList, int loadCharMode, int loadPlttMode);
 Sprite *SpriteSystem_CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const UnmanagedSpriteTemplate *template);
-BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, SpriteResourceCountsListUnion *countsArray);
+BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const SpriteResourceCountsListUnion *countsArray);
 BOOL SpriteSystem_LoadCharResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int vram, int resId);
 BOOL SpriteSystem_LoadCharResObjFromOpenNarc(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NARC *narc, int fileId, BOOL compressed, int vram, int resId);
 s8 SpriteSystem_LoadPlttResObj(SpriteSystem *spriteSystem, SpriteManager *spriteManager, NarcId narcId, int fileId, BOOL compressed, int pltt_num, int vram, int resId);

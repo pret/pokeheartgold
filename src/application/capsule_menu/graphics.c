@@ -33,6 +33,8 @@ void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palet
 void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1);
 void ov57_02238B48(void);
 int ov57_0223A0A8(CapsuleAppManager *appMan, int capsuleIndex);
+int ov57_0223A07C(BallCapsule *capsule);
+void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex);
 
 extern const struct {
     s32 index;
@@ -473,4 +475,95 @@ void ov57_02238E48(CapsuleAppManager *appMan) {
         Sprite_SetPalOffsetRespectVramOffset(appMan->unk_324[i]->sprite, paletteIndex);
         ManagedSprite_SetAnim(appMan->unk_324[i], 1);
     }
+}
+
+void ov57_02238F48(CapsuleAppManager *appMan) {
+    int i;
+    int index;
+    s16 x, y;
+
+    for (i = 0; i < appMan->unk_000->partyCount; i++) {
+        ManagedSprite_SetDrawFlag(appMan->unk_324[i], 0);
+    }
+
+    for (i = 0; i < MAX_CAPSULES; i++) {
+        index = appMan->unk_004[i].partyIdx;
+
+        if (index != 0xFF) {
+            ov57_02238DAC(i, &x, &y);
+            ManagedSprite_SetPositionXY(appMan->unk_324[index], x + CAPSULE_MON_X_OFFSET, y + CAPSULE_MON_Y_OFFSET);
+            ManagedSprite_SetDrawFlag(appMan->unk_324[index], 1);
+        }
+    }
+}
+
+void ov57_02238FC4(CapsuleAppManager *appMan) {
+    for (int i = 0; i < appMan->unk_000->partyCount; i++) {
+        ManagedSprite_TickFrame(appMan->unk_324[i]);
+    }
+}
+
+void ov57_02238FEC(CapsuleAppManager *appMan) {
+    for (int i = 0; i < appMan->unk_000->partyCount; i++) {
+        Sprite_DeleteAndFreeResources(appMan->unk_324[i]);
+    }
+}
+
+void ov57_02239014(CapsuleAppManager *appMan) {
+    int dummy = 0;
+    BallCapsule *capsule;
+
+    for (int i = 0; i < MAX_CAPSULES; i++) {
+        capsule = appMan->unk_004[i].capsule;
+        appMan->unk_0D8[i].animIdx = ov57_0223A07C(capsule);
+        appMan->unk_0D8[i].pokemonIndex = appMan->unk_004[i].partyIdx;
+
+        if ((appMan->unk_0D8[i].animIdx == 0) && (appMan->unk_0D8[i].pokemonIndex != 0xFF)) {
+            ov57_0223BC4C(appMan, i);
+        }
+    }
+}
+
+void ov57_02239058(CapsuleGraphicsManager *graphicsMan) {
+    graphicsMan->unk_008 = SpriteSystem_Alloc(HEAP_ID_52);
+    const OamManagerParam renderOAMTemplate = {
+        0,
+        128,
+        0,
+        32,
+        0,
+        128,
+        0,
+        32,
+    };
+    const OamCharTransferParam transferTemplate = {
+        48 + 48, 1024 * 0x40, 512 * 0x20, GX_OBJVRAMMODE_CHAR_1D_64K, GX_OBJVRAMMODE_CHAR_1D_32K
+    };
+
+    SpriteSystem_Init(graphicsMan->unk_008, &renderOAMTemplate, &transferTemplate, SPRITE_SYSTEM_PLTT_CAPACITY);
+
+    BOOL result;
+    const SpriteResourceCountsListUnion spriteResourceCapacities = {
+        48 + 48,
+        16 + 16,
+        64,
+        64,
+        16,
+        16,
+    };
+
+    graphicsMan->unk_00C = SpriteManager_New(graphicsMan->unk_008);
+    result = SpriteSystem_InitSprites(graphicsMan->unk_008, graphicsMan->unk_00C, 128);
+    GF_ASSERT(result);
+
+    result = SpriteSystem_InitManagerWithCapacities(graphicsMan->unk_008, graphicsMan->unk_00C, &spriteResourceCapacities);
+    GF_ASSERT(result);
+
+    graphicsMan->unk_174 = TouchscreenListMenuSpawner_Create(HEAP_ID_52, graphicsMan->unk_014);
+}
+
+void ov57_022390F4(CapsuleGraphicsManager *graphicsMan) {
+    TouchscreenListMenuSpawner_Destroy(graphicsMan->unk_174);
+    SpriteSystem_FreeResourcesAndManager(graphicsMan->unk_008, graphicsMan->unk_00C);
+    SpriteSystem_Free(graphicsMan->unk_008);
 }

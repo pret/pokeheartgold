@@ -278,7 +278,7 @@ static Sprite *CreateSpriteFromResourceHeader(SpriteSystem *spriteSystem, Sprite
     return ret;
 }
 
-BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, SpriteResourceCountsListUnion *countsArray) {
+BOOL SpriteSystem_InitManagerWithCapacities(SpriteSystem *spriteSystem, SpriteManager *spriteManager, const SpriteResourceCountsListUnion *countsArray) {
     int i, j;
     int numGfxResTypes = GF_GFX_RES_TYPE_MAX;
     int num;

@@ -28,6 +28,12 @@ typedef struct IndexedCapsule {
     BallCapsule *capsule;
 } IndexedCapsule;
 
+typedef struct CapsuleSprites {
+    int pokemonIndex;
+    int animIdx;
+    ManagedSprite *sprite;
+} CapsuleSprites;
+
 typedef struct SealPages {
     int page;
     int maxPage;
@@ -77,7 +83,8 @@ typedef struct CapsuleAppManager {
     u8 filler_068[0x18];
     u8 unk_080[SEAL_MAX + 1];
     CapsuleGraphicsManager unk_0D4;
-    u8 filler_28C[0x98];
+    CapsuleSprites unk_0D8[MAX_CAPSULES];
+    u8 filler_31C[0x8];
     ManagedSprite *unk_324[PARTY_SIZE];
     u8 filler_33C[16];
     SealRenderInfo unk_34C[8];
