@@ -1,5 +1,6 @@
 #include "application/capsule_menu/defs.h"
 
+#include "overlay_07.h"
 #include "unk_02091054.h"
 
 void ov57_02238044(CapsuleAppManager *appManager, u8 index);
@@ -148,8 +149,8 @@ void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
 void ov57_02238134(CapsuleAppManager *appMan) {
     int i;
     int dummy;
-    int priorities[8];
-    int indices[8];
+    int priorities[MAX_SEALS_ON_CAPSULE];
+    int indices[MAX_SEALS_ON_CAPSULE];
 
     if (appMan->unk_0D4.unk_1B4 == FALSE) {
         return;
@@ -298,4 +299,108 @@ BOOL ov57_022382F8(CapsuleAppManager *appMan, u32 touchscreenState, u8 index) {
     }
 
     return 1;
+}
+
+void ov57_022383AC(CapsuleAppManager *appMan) {
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if (appMan->unk_34C[i].shouldRender != TRUE) {
+            continue;
+        }
+
+        ov57_02238438(appMan, i);
+    }
+}
+
+void ov57_022383D0(CapsuleAppManager *appMan, int flag) {
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if (appMan->unk_34C[i].shouldRender != TRUE) {
+            continue;
+        }
+
+        ManagedSprite_SetDrawFlag(appMan->unk_34C[i].sprite, flag);
+    }
+}
+
+BOOL ov57_022383F8(CapsuleAppManager *appMan, int index) {
+    int distance;
+    s16 x, y;
+
+    if (!appMan->unk_34C[index].shouldRender) {
+        return TRUE;
+    }
+
+    ManagedSprite_GetPositionXY(appMan->unk_34C[index].sprite, &x, &y);
+    distance = ov07_022344E4(x, y, 190, 70);
+
+    if (distance > 60) {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+void ov57_02238438(CapsuleAppManager *appMan, int sealIndex) {
+    int dummy;
+
+    dummy = CapsuleMenu_GetSealMemberIdx(appMan->unk_34C[sealIndex].type);
+
+    SpriteManager_UnloadCharObjById(appMan->unk_0D4.unk_00C, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CHAR, sealIndex));
+    Sprite_DeleteAndFreeResources(appMan->unk_34C[sealIndex].sprite);
+
+    appMan->unk_34C[sealIndex].sprite = NULL;
+    appMan->unk_34C[sealIndex].shouldRender = FALSE;
+    appMan->unk_34C[sealIndex].type = 0;
+    appMan->unk_34C[sealIndex].x = 0;
+    appMan->unk_34C[sealIndex].y = 0;
+
+    ov57_02237E90(appMan->unk_34C[sealIndex].touchscreenHitbox, 0, 0);
+}
+
+void ov57_0223848C(CapsuleAppManager *appMan, int index) {
+    BOOL isValid = ov57_022383F8(appMan, index);
+
+    if (!isValid) {
+        ManagedSprite_SetOamMode(appMan->unk_34C[index].sprite, GX_OAM_MODE_XLU);
+    } else {
+        ManagedSprite_SetOamMode(appMan->unk_34C[index].sprite, GX_OAM_MODE_NORMAL);
+    }
+}
+
+BOOL ov57_022384C0(CapsuleAppManager *appMan) {
+    int index;
+    BallCapsule *capsule;
+
+    index = appMan->unk_3EC;
+    capsule = appMan->unk_004[index].capsule;
+
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        if ((appMan->unk_34C[i].type != capsule->seals[i].kind)
+            || (appMan->unk_34C[i].x != capsule->seals[i].x)
+            || (appMan->unk_34C[i].y != capsule->seals[i].y)) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+void ov57_02238508(CapsuleAppManager *appMan, int sealIndex) {
+    s16 x, y;
+
+    ManagedSprite_GetPositionXY(appMan->unk_34C[sealIndex].sprite, &x, &y);
+
+    appMan->unk_34C[sealIndex].x = (u8)x;
+    appMan->unk_34C[sealIndex].y = (u8)y;
+}
+
+void ov57_0223853C(CapsuleAppManager *appMan) {
+    BallCapsule capsule;
+
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        capsule.seals[i].kind = appMan->unk_34C[i].type;
+        capsule.seals[i].x = appMan->unk_34C[i].x;
+        capsule.seals[i].y = appMan->unk_34C[i].y;
+    }
+
+    SealCase_SetCapsuleI(appMan->unk_000->sealCase, &capsule, appMan->unk_3EC);
 }
