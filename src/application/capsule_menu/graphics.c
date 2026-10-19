@@ -3,6 +3,8 @@
 #include "msgdata/msg/msg_0011.h"
 
 #include "obj_char_transfer.h"
+#include "pokemon.h"
+#include "pokemon_icon_idx.h"
 #include "text.h"
 #include "unk_02013534.h"
 #include "unk_02014DA0.h"
@@ -403,4 +405,72 @@ void ov57_02238C30(BgConfig *bgConfig, Window *window, int bgLayer, CapsuleAppMa
     menuTemplate.bgConfig = bgConfig;
     menuTemplate.numWindows = ySize;
     appMan->unk_0D4.unk_178 = TouchscreenListMenu_Create(appMan->unk_0D4.unk_174, &menuTemplate, appMan->unk_40C, 22, 23 - ySize * 3, 8, 0);
+}
+
+void ov57_02238D80(CapsuleAppManager *appMan) {
+    appMan->unk_40C = appMan->unk_0D4.unk_178->isTouch;
+    TouchscreenListMenu_Destroy(appMan->unk_0D4.unk_178);
+    ListMenuItems_Delete(appMan->unk_0D4.unk_0E8);
+}
+
+void ov57_02238DAC(int index, s16 *x, s16 *y) {
+    int tile = (index % 4);
+    *x = 32 + 8 + (tile * 56);
+    tile = (index >> 2);
+    *y = 27 + (tile * 53);
+}
+
+void ov57_02238DD0(CapsuleAppManager *appMan) {
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+
+    SpriteSystem_LoadPaletteBuffer(paletteData, 2, spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, sub_02074490(), 0, 3, NNS_G2D_VRAM_TYPE_2DMAIN, 16000);
+
+    int iconIndex = sub_0207449C();
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, iconIndex, 0, 17000);
+
+    iconIndex = sub_020744A8();
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, iconIndex, 0, 18000);
+}
+
+void ov57_02238E48(CapsuleAppManager *appMan) {
+    int isEgg;
+    int species;
+    u8 paletteIndex;
+    int form;
+    Pokemon *pokemon;
+    ManagedSpriteTemplate spriteTemplate;
+
+    for (int i = 0; i < appMan->unk_000->partyCount; i++) {
+        pokemon = appMan->unk_000->mons[i];
+
+        SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, NARC_poketool_icongra_poke_icon, Pokemon_GetIconNaix(pokemon), FALSE, NNS_G2D_VRAM_TYPE_2DMAIN, i + 15000);
+
+        spriteTemplate.x = 0;
+        spriteTemplate.y = 0;
+        spriteTemplate.z = 0;
+        spriteTemplate.animation = 0;
+        spriteTemplate.drawPriority = 10;
+        spriteTemplate.pal = 0;
+        spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+        spriteTemplate.bgPriority = 2;
+        spriteTemplate.vramTransfer = FALSE;
+        spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = i + 15000;
+        spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = 16000;
+        spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = 17000;
+        spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = 18000;
+        spriteTemplate.resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+        spriteTemplate.resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+
+        appMan->unk_324[i] = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
+
+        species = GetMonData(pokemon, MON_DATA_SPECIES, NULL);
+        isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
+        form = GetMonData(pokemon, MON_DATA_FORM, NULL);
+        paletteIndex = GetMonIconPaletteEx(species, form, isEgg);
+
+        Sprite_SetPalOffsetRespectVramOffset(appMan->unk_324[i]->sprite, paletteIndex);
+        ManagedSprite_SetAnim(appMan->unk_324[i], 1);
+    }
 }

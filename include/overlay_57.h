@@ -8,7 +8,7 @@
 #include "pokemon_types_def.h"
 
 typedef struct CapsuleAppData {
-    u32 partyCount;
+    int partyCount;
     Pokemon *mons[PARTY_SIZE];
     Party *party;
     SealCase *sealCase;
