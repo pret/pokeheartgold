@@ -49,7 +49,7 @@ static u32 ov03_02258830(int mult, int arg1) {
 }
 
 static void ov03_0225884C(BOOL unkBool, u32 arg1_unused, SafariZoneAreaSet *areaSetSrc, UnkCommStruct *unkCommStruct) {
-    if (unkBool != sub_0203769C()) {
+    if (unkBool != CommSystem_GetCurNetId()) {
         SafariZone_SetAreaSet(unkCommStruct->safariZone, 1, areaSetSrc);
         SafariZone_SetLinkLeaderFromProfile(unkCommStruct->safariZone, sub_02034818(unkBool), HEAP_ID_FIELD2);
     }
@@ -73,7 +73,7 @@ static BOOL ov03_02258894(TaskManager *taskManager) {
 
 static void ov03_022588B0(UnkCommStruct *unkCommStruct) {
     if (sub_02037B38(13)) {
-        sub_02034818(1 - sub_0203769C());
+        sub_02034818(1 - CommSystem_GetCurNetId());
         ov03_02258810(NULL, unkCommStruct);
     }
 }

@@ -5,7 +5,7 @@
 .public sub_0203410C
 .public sub_020342C0
 .public sub_020342C4
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020378E4
 .public sub_0208F658
 .public sub_0208F7E0

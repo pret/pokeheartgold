@@ -305,7 +305,7 @@ _02058D1E:
 	thumb_func_start sub_02058D24
 sub_02058D24: ; 0x02058D24
 	push {r3, r4, r5, lr}
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	add r5, r0, #0
 	mov r4, #0
 	cmp r5, #0
@@ -1369,7 +1369,7 @@ _02059546:
 	str r1, [r4, #0x50]
 	add r0, #0x89
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r1, r4, #0
 	add r1, #0x86
 	strh r0, [r1]
@@ -2359,7 +2359,7 @@ _02059D40: .word 0x0000066C
 sub_02059D44: ; 0x02059D44
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r5, r0, #0
 	bl sub_02057ADC
 	add r7, r0, #0
@@ -2367,7 +2367,7 @@ sub_02059D44: ; 0x02059D44
 	bl sub_02057B14
 	add r6, r0, #0
 	mov r4, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #0
 	ble _02059DA6
 _02059D66:
@@ -2395,7 +2395,7 @@ _02059D66:
 	pop {r3, r4, r5, r6, r7, pc}
 _02059D9C:
 	add r4, r4, #1
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r4, r0
 	blt _02059D66
 _02059DA6:
@@ -2796,7 +2796,7 @@ _0205A09C: .word sub_0205A0A0
 sub_0205A0A0: ; 0x0205A0A0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	bne _0205A0B2
 	add r0, r4, #0
@@ -2881,7 +2881,7 @@ sub_0205A144: ; 0x0205A144
 	bl sub_02037F94
 	cmp r0, #1
 	bne _0205A178
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_02034818
 	cmp r0, #0
 	beq _0205A1A0
@@ -3187,13 +3187,13 @@ sub_0205A35C: ; 0x0205A35C
 	mov r0, #7
 	pop {r4, pc}
 _0205A36A:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #2
 	bge _0205A376
 	mov r0, #7
 	pop {r4, pc}
 _0205A376:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0205A38A
 	bl sub_02037FCC

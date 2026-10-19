@@ -818,7 +818,7 @@ _02035118: .word 0x00000D84
 	thumb_func_start sub_0203511C
 sub_0203511C: ; 0x0203511C
 	push {r4, lr}
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	bne _0203512A
 	mov r0, #0

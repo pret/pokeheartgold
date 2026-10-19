@@ -12,7 +12,7 @@
 .public sub_02031214
 .public sub_02034084
 .public sub_02034098
-.public sub_02037454
+.public CommSystem_GetConnectedCount
 .public sub_02038F74
 .public sub_0203993C
 .public sub_02039AD8

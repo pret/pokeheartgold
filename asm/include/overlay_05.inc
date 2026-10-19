@@ -135,7 +135,7 @@
 .public sub_0202FE14
 .public sub_020304B4
 .public sub_02034818
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020378AC
 .public sub_02037AC0
 .public sub_02037B38

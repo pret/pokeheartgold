@@ -1283,7 +1283,7 @@ ov80_02232F60: ; 0x02232F60
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r6, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02232F74
 	mov r0, #0
@@ -1388,7 +1388,7 @@ _0223302E:
 	cmp r0, #0x14
 	blt _0223302E
 	strb r4, [r6, #0x12]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02233048
 	mov r0, #0
@@ -1901,7 +1901,7 @@ _02233432:
 	bne _02233440
 	bl GF_AssertFail
 _02233440:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02233454
 	add r0, r5, #0
@@ -1995,7 +1995,7 @@ _022334F8:
 	bne _02233506
 	bl GF_AssertFail
 _02233506:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0223353A
 	ldr r0, [r5, #4]

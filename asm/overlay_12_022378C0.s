@@ -3934,7 +3934,7 @@ _02239E0A:
 	strb r1, [r4, r0]
 	b _0223A06C
 _02239E1A:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239E32
 	mov r0, #0x39
@@ -3961,7 +3961,7 @@ _02239E4E:
 	mov r1, #1
 	sub r0, r0, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239E72
 	mov r0, #0x39
@@ -3989,7 +3989,7 @@ _02239E72:
 	strb r1, [r4, r0]
 	b _0223A06C
 _02239E8A:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239EA2
 	mov r0, #0x3a
@@ -4016,7 +4016,7 @@ _02239EBE:
 	mov r1, #1
 	sub r0, r0, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239EE0
 	mov r0, #0x3a
@@ -4041,7 +4041,7 @@ _02239EE0:
 	strb r1, [r4, r0]
 	b _0223A06C
 _02239EF8:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239F10
 	mov r0, #0x3b
@@ -4072,7 +4072,7 @@ _02239F38:
 	mov r1, #1
 	sub r0, r0, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239F5A
 	mov r0, #0x3b
@@ -4100,7 +4100,7 @@ _02239F6A:
 	strb r1, [r4, r0]
 	b _0223A06C
 _02239F74:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239F8C
 	mov r0, #0x3c
@@ -4127,7 +4127,7 @@ _02239FA8:
 	mov r1, #1
 	sub r0, r0, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02239FCA
 	mov r0, #0x3c
@@ -4152,7 +4152,7 @@ _02239FCA:
 	strb r1, [r4, r0]
 	b _0223A06C
 _02239FE2:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _0223A078 ; =0x00001020
 	ldrb r2, [r4, r1]
 	cmp r2, r0
@@ -4317,7 +4317,7 @@ _0223A130:
 	mov r0, #0
 	mov r2, #0x30
 	bl MIi_CpuClearFast
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	add r0, r5, #0
@@ -4488,7 +4488,7 @@ _0223A288:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _0223A290:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	mov r0, #5
@@ -4683,7 +4683,7 @@ _0223A414:
 	mov r0, #0
 	pop {r4, r5, r6, r7, pc}
 _0223A41A:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	ldr r0, _0223A5DC ; =SDK_OVERLAY_OVY_5_ID
@@ -4999,9 +4999,9 @@ _0223A68A:
 	stmia r5!, {r2}
 	cmp r3, #4
 	blt _0223A68A
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	str r0, [sp, #0x10]
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	str r0, [sp, #0xc]
 	mov r0, #0
 	str r0, [sp, #4]

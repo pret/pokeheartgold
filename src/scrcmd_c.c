@@ -590,7 +590,7 @@ BOOL ScrCmd_SetOrCopyVar(ScriptContext *ctx) {
 BOOL ScrCmd_048(ScriptContext *ctx) {
     u8 msg_no = ScriptReadByte(ctx);
 
-    if (!sub_02037474()) {
+    if (!CommSystem_IsInitialized()) {
         ov01_021EF4DC(ctx, ctx->msgdata, msg_no, TRUE, NULL);
     } else {
         struct UnkStruct_Ov01_021EF4C4 unk_struct;
@@ -1853,7 +1853,7 @@ BOOL ScrCmd_153(ScriptContext *ctx) {
 
 BOOL ScrCmd_451(ScriptContext *ctx) {
     u16 *p_dest = ScriptGetVarPointer(ctx);
-    *p_dest = sub_0203769C();
+    *p_dest = CommSystem_GetCurNetId();
     return TRUE;
 }
 
@@ -2658,7 +2658,7 @@ BOOL ScrCmd_257(ScriptContext *ctx) {
 }
 
 BOOL sub_02044054(ScriptContext *ctx) {
-    if (sub_02037454() < 2) {
+    if (CommSystem_GetConnectedCount() < 2) {
         return TRUE;
     } else {
         return sub_02037B38(ctx->data[0]);
@@ -2693,7 +2693,7 @@ BOOL ScrCmd_261(ScriptContext *ctx) {
     } else if (command == 11) {
         sub_02038104();
     }
-    if (!sub_0203769C()) {
+    if (!CommSystem_GetCurNetId()) {
         sub_0205A904(command);
     }
     return FALSE;
@@ -2731,7 +2731,7 @@ BOOL ScrCmd_266(ScriptContext *ctx) {
 }
 
 BOOL sub_020441C4(ScriptContext *ctx) {
-    return sub_02037454() < 2;
+    return CommSystem_GetConnectedCount() < 2;
 }
 
 BOOL ScrCmd_267(ScriptContext *ctx) {

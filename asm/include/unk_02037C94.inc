@@ -79,10 +79,10 @@
 .public sub_020369CC
 .public sub_02037184
 .public sub_020373B4
-.public sub_02037454
-.public sub_02037474
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
 .public sub_020374E4
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020376E0
 .public sub_020376F8
 .public sub_02037700

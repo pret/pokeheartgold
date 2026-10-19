@@ -693,11 +693,11 @@ _02075290:
 	ldr r1, [r4]
 	tst r0, r1
 	beq _020752A2
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	lsl r0, r0, #3
 	b _020752A8
 _020752A2:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	lsl r0, r0, #2
 _020752A8:
 	add r0, r4, r0
@@ -1122,7 +1122,7 @@ sub_020755B4: ; 0x020755B4
 	add r5, r0, #0
 	add r6, r2, #0
 	add r4, r3, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _020755D6
 	mov r0, #0x52

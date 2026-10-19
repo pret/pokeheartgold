@@ -20,7 +20,7 @@
 .public sub_02036FD8
 .public sub_02037030
 .public sub_02037190
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02037B38
 .public PartyCore_sizeof
 .public Party_Copy

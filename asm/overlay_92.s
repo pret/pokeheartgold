@@ -156,7 +156,7 @@ ov92_0225C5C4: ; 0x0225C5C4
 	bl Heap_Free
 	bl sub_020347A0
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	str r0, [r5, #0x44]
 	add r0, r5, #0
 	bl ov92_0225C5A8
@@ -1753,7 +1753,7 @@ _0225D3AC:
 	bl sub_02037B38
 	cmp r0, #1
 	beq _0225D3C4
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	add r4, r0, #0
 	bl sub_020347A0
 	cmp r4, r0

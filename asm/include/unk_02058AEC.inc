@@ -51,9 +51,9 @@
 .public sub_02037030
 .public sub_02037088
 .public sub_02037108
-.public sub_02037454
-.public sub_02037474
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
+.public CommSystem_GetCurNetId
 .public sub_020376F8
 .public sub_0203778C
 .public sub_02037AC0

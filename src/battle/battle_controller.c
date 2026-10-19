@@ -131,7 +131,7 @@ static void SendMessage(BattleSystem *battleSystem, int recipient, int battler, 
 
     if (battleSystem->battleType & BATTLE_TYPE_LINK && (battleSystem->battleSpecial & BATTLE_TYPE_TAG) == FALSE) {
         if (recipient == 1) {
-            for (int i = 0; i < sub_02037454(); i++) {
+            for (int i = 0; i < CommSystem_GetConnectedCount(); i++) {
                 ov12_0224ECC4(battleSystem->ctx, i, battler, *data);
             }
         }
@@ -1366,7 +1366,7 @@ void BattleController_EmitClearCommand(BattleSystem *battleSystem, int battler, 
     CommandClearMsg message;
 
     message.command = command;
-    message.netID = sub_0203769C();
+    message.netID = CommSystem_GetCurNetId();
 
     SendMessage(battleSystem, 2, battler, &message, sizeof(CommandClearMsg));
 }

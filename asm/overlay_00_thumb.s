@@ -2148,7 +2148,7 @@ ov00_021E69A8: ; 0x021E69A8
 	bl sub_02034084
 	add r5, r0, #0
 	beq _021E69DC
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	sub r4, r0, #1
 	cmp r4, #1
 	bge _021E69C6

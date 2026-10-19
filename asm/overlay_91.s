@@ -195,7 +195,7 @@ _0225C680:
 	bhi _0225C6C8
 	bl GF_AssertFail
 _0225C6C8:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r1, r4, #0
 	add r1, #0x44
 	strh r0, [r1]
@@ -626,7 +626,7 @@ _0225CA44:
 	bl sub_02037B38
 	cmp r0, #0
 	bne _0225CA5C
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	add r4, r0, #0
 	bl sub_020347A0
 	cmp r4, r0
@@ -11270,7 +11270,7 @@ ov91_02261B64: ; 0x02261B64
 	add r1, r4, #0
 	add r2, r5, #0
 	bl ov91_0225CA90
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02261B88
 	add r0, r6, #0
