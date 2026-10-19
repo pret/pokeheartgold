@@ -404,3 +404,11 @@ void ov57_0223853C(CapsuleAppManager *appMan) {
 
     SealCase_SetCapsuleI(appMan->unk_000->sealCase, &capsule, appMan->unk_3EC);
 }
+
+void ov57_0223857C(BallCapsule *capsule, CapsuleAppManager *appMan) {
+    for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
+        capsule->seals[i].kind = appMan->unk_34C[i].type;
+        capsule->seals[i].x = appMan->unk_34C[i].x;
+        capsule->seals[i].y = appMan->unk_34C[i].y;
+    }
+}
