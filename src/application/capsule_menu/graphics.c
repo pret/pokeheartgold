@@ -9,10 +9,33 @@
 #include "unk_02026E30.h"
 #include "unk_02091054.h"
 
+#define CAPSULE_MENU_EDIT           0
+#define CAPSULE_MENU_QUIT           1
+#define CAPSULE_MENU_SET            2
+#define CAPSULE_MENU_REMOVE         3
+#define CAPSULE_MENU_SHIFT          4
+#define CAPSULE_MON_X_OFFSET        -16
+#define CAPSULE_MON_Y_OFFSET        12
+#define MESSAGE_BOX_PLTT_OFFSET     15
+#define MESSAGE_BOX_TILE_OFFSET     1
+#define SEAL_COUNT_TEXT_XOFFSET     7
+#define SPRITE_SYSTEM_MAX_SPRITES   128
+#define SPRITE_SYSTEM_PLTT_CAPACITY 32
+#define STD_WINDOW_PLTT_OFFSET      13
+#define STD_WINDOW_TILE_OFFSET      31
+#define WINDOW_BGLAYER              6
+#define WINDOW_PALETTE              11
+
 void ov57_02239814(BgConfig *bgConfig, Window *window, int left, int top, int width, int height, int pltt, int baseTile);
 void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
 void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1);
 void ov57_02238B48(void);
+int ov57_0223A0A8(CapsuleAppManager *appMan, int capsuleIndex);
+
+extern const struct {
+    s32 index;
+    BOOL (*func)(CapsuleAppManager *appMan);
+} ov57_0223BECC[];
 
 void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
     s16 x, y;
@@ -300,4 +323,84 @@ void ov57_02238C0C(void) {
 
     sub_02015460();
     RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
+}
+
+void ov57_02238C30(BgConfig *bgConfig, Window *window, int bgLayer, CapsuleAppManager *appMan, int capsuleIndex) {
+    TouchscreenListMenuHeader menuTemplate;
+    int field;
+    int tilemapLeft, tilemapTop, width, height, baseTile, ySize;
+    int stringIDs[4];
+
+    field = ov57_0223A0A8(appMan, capsuleIndex);
+    baseTile = ((9 * 8) + ((27 * 2) + (0 + ((1 + (18 + 12)) + 9))));
+    tilemapLeft = 21;
+    width = 9;
+
+    switch (field) {
+    case CAPSULE_MENU_EMPTY_CAPSULE:
+        tilemapTop = (15 - 2);
+        height = 6;
+        stringIDs[0] = CAPSULE_MENU_EDIT;
+        stringIDs[1] = CAPSULE_MENU_SHIFT;
+        stringIDs[2] = CAPSULE_MENU_QUIT;
+        break;
+    case CAPSULE_MENU_HAS_SEALS:
+        tilemapTop = 11;
+        height = 8;
+        stringIDs[0] = CAPSULE_MENU_SET;
+        stringIDs[1] = CAPSULE_MENU_EDIT;
+        stringIDs[2] = CAPSULE_MENU_SHIFT;
+        stringIDs[3] = CAPSULE_MENU_QUIT;
+        break;
+    case CAPSULE_MENU_HAS_POKEMON:
+        tilemapTop = 11;
+        height = 8;
+        stringIDs[0] = CAPSULE_MENU_REMOVE;
+        stringIDs[1] = CAPSULE_MENU_EDIT;
+        stringIDs[2] = CAPSULE_MENU_SHIFT;
+        stringIDs[3] = CAPSULE_MENU_QUIT;
+        break;
+    case CAPSULE_MENU_UNREACHABLE_CASE:
+        tilemapTop = 11;
+        height = 8;
+        stringIDs[0] = CAPSULE_MENU_SET;
+        stringIDs[1] = CAPSULE_MENU_EDIT;
+        stringIDs[2] = CAPSULE_MENU_SHIFT;
+        stringIDs[3] = CAPSULE_MENU_QUIT;
+        break;
+    }
+
+    ySize = (height / 2);
+
+    appMan->unk_0D4.unk_0E8 = ListMenuItems_New(ySize, HEAP_ID_52);
+
+    String *string;
+    MsgData *messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+
+    for (int i = 0; i < ySize; i++) {
+        string = NewString_ReadMsgData(messageLoader, ov57_0223BECC[stringIDs[i]].index);
+
+        ListMenuItems_AddItem(appMan->unk_0D4.unk_0E8, string, (int)ov57_0223BECC[stringIDs[i]].func);
+        String_Delete(string);
+    }
+
+    DestroyMsgData(messageLoader);
+
+    MI_CpuClear8(&menuTemplate, sizeof(TouchscreenListMenuHeader));
+    menuTemplate.template = (TouchscreenListMenuTemplate) {
+        .wrapAround = TRUE,
+        .centered = TRUE,
+        .xOffset = 0,
+        .bgId = GF_BG_LYR_MAIN_1,
+        .plttOffset = 11,
+        .unk4 = 0,
+        .unk5 = 0,
+        .baseTile = 0x086,
+        .charOffset = 0x001F,
+        .unkA = 0x005A,
+    };
+    menuTemplate.listMenuItems = appMan->unk_0D4.unk_0E8;
+    menuTemplate.bgConfig = bgConfig;
+    menuTemplate.numWindows = ySize;
+    appMan->unk_0D4.unk_178 = TouchscreenListMenu_Create(appMan->unk_0D4.unk_174, &menuTemplate, appMan->unk_40C, 22, 23 - ySize * 3, 8, 0);
 }
