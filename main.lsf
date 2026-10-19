@@ -101,7 +101,7 @@ Static main
     Object main.nef.p/src_font_data.c.o
     Object main.nef.p/src_pm_string.c.o
     Object main.nef.p/src_touch_hitbox_controller.c.o
-    Object main.nef.p/asm_unk_02026DE0.s.o
+    Object main.nef.p/src_billboard_gfx_sequence.c.o
     Object main.nef.p/src_unk_02026E30.c.o
     Object main.nef.p/src_unk_02026E84.c.o
     Object main.nef.p/src_gf_3d_vramman.c.o

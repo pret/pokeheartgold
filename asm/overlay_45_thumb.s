@@ -14791,7 +14791,7 @@ _02230774:
 	bl GF2dGfxRawResMan_GetObjById
 	bl GF2dGfxRawResObj_GetData
 	add r1, sp, #0x40
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldrh r0, [r6, #2]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x1f

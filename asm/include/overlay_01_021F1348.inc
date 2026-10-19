@@ -27,7 +27,7 @@
 .public GF3dGfxRawResObj_GetTexKey
 .public GF3dGfxRawResObj_GetTex4x4Key
 .public GF3dGfxRawResObj_GetPlttKey
-.public sub_02026E18
+.public BillboardGfxSequence_SetData
 .public MapObject_GetFieldSystem
 .public sub_020689C8
 .public sub_020689F8
