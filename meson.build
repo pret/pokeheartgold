@@ -159,6 +159,7 @@ main = executable('main',
     ],
     include_directories : [
         public_includes,
+        libspl_public_includes,
         lib_asm_includes,
     ],
     dependencies : [

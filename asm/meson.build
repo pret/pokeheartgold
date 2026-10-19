@@ -207,7 +207,6 @@ pokeheartgold_asm = files(
     'unk_02005D10.s',
     'unk_02012DD8.s',
     'unk_02014A08.s',
-    'unk_02014DA0.s',
     'unk_02015DD8.s',
     'unk_02016EDC.s',
     'unk_02017FAC.s',

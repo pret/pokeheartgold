@@ -7,6 +7,7 @@
 #include "math_util.h"
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
+#include "particle_system.h"
 #include "screen_fade.h"
 #include "sprite_transfer.h"
 #include "sys_task_api.h"
@@ -50,7 +51,7 @@ static void IntroMovie_Scene4_DestroySprites(IntroMovieOverlayData *data, IntroM
 static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMovieScene4Data *sceneData);
 static u32 IntroMovie_Scene4_TexAlloc(u32 size, BOOL is4x4comp);
 static u32 IntroMovie_Scene4_PlttAlloc(u32 size, BOOL is4pltt);
-static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter);
+static void IntroMovie_Scene4_SPLEmitterCB(SPLEmitter *emitter);
 static void IntroMovie_Scene4_3DMain(void);
 static void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter);
 static void IntroMovie_Scene4_3DVRamManInit(void);
@@ -113,11 +114,11 @@ static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4
     IntroMovie_Scene4_LoadSpriteGfx(data, sceneData);
     IntroMovie_Scene4_CreateSprites(data, sceneData);
     sceneData->gf3dVramMan = GF_3DVramMan_Create(HEAP_ID_INTRO_MOVIE, 0, 1, 0, 4, IntroMovie_Scene4_3DVRamManInit);
-    sub_02014DA0();
+    ParticleSystem_ZeroAll();
     sceneData->particleHeap = Heap_Alloc(HEAP_ID_INTRO_MOVIE, 0x4800);
-    sceneData->particleSystem = sub_02014DB4(IntroMovie_Scene4_TexAlloc, IntroMovie_Scene4_PlttAlloc, sceneData->particleHeap, 0x4800, TRUE, HEAP_ID_INTRO_MOVIE);
-    Camera_SetPerspectiveClippingPlane(FX32_CONST(1), FX32_CONST(900), sub_02015524(sceneData->particleSystem));
-    sub_0201526C(sceneData->particleSystem, sub_02015264(NARC_a_0_5_9, 4, HEAP_ID_INTRO_MOVIE), 0x0A, TRUE);
+    sceneData->particleSystem = ParticleSystem_New(IntroMovie_Scene4_TexAlloc, IntroMovie_Scene4_PlttAlloc, sceneData->particleHeap, 0x4800, TRUE, HEAP_ID_INTRO_MOVIE);
+    Camera_SetPerspectiveClippingPlane(FX32_CONST(1), FX32_CONST(900), ParticleSystem_GetCamera(sceneData->particleSystem));
+    ParticleSystem_SetResource(sceneData->particleSystem, ParticleSystem_LoadResourceFromNARC(NARC_a_0_5_9, 4, HEAP_ID_INTRO_MOVIE), 0x0A, TRUE);
     IntroMovie_Scene4_EnableBgLayers(data, bgConfig);
     G2_SetBlendAlpha(0, 0x3E, 0, 0);
     sceneData->needFreeGfx = TRUE;
@@ -203,7 +204,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE4_RUN_GRASS_PARTICLES:
-        if (!sub_020154B0(sceneData->particleSystem)) {
+        if (!ParticleSystem_GetActiveEmitterCount(sceneData->particleSystem)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
@@ -220,7 +221,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE4_RUN_FIRE_PARTICLES:
-        if (!sub_020154B0(sceneData->particleSystem)) {
+        if (!ParticleSystem_GetActiveEmitterCount(sceneData->particleSystem)) {
             IntroMovie_AdvanceSceneStep(data);
         }
         break;
@@ -237,7 +238,7 @@ static BOOL IntroMovie_Scene4_Main(IntroMovieOverlayData *data, IntroMovieScene4
         IntroMovie_AdvanceSceneStep(data);
         break;
     case INTRO_SCENE4_RUN_WATER_PARTICLES:
-        if (!sub_020154B0(sceneData->particleSystem)) {
+        if (!ParticleSystem_GetActiveEmitterCount(sceneData->particleSystem)) {
             BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_CAMERA_SHUTTER_CLOSE, FADE_TYPE_CAMERA_SHUTTER_CLOSE, RGB_BLACK, 26, 1, HEAP_ID_INTRO_MOVIE);
             IntroMovie_AdvanceSceneStep(data);
         }
@@ -276,7 +277,7 @@ static void IntroMovie_Scene4_Exit(IntroMovieOverlayData *data, IntroMovieScene4
     Main_SetVBlankIntrCB(NULL, NULL);
     if (sceneData->needFreeGfx) {
         G2_BlendNone();
-        sub_02014EBC(sceneData->particleSystem);
+        ParticleSystem_Free(sceneData->particleSystem);
         Heap_Free(sceneData->particleHeap);
         GF_3DVramMan_Delete(sceneData->gf3dVramMan);
         IntroMovie_Scene4_DestroySprites(data, sceneData);
@@ -480,7 +481,7 @@ static void IntroMovie_Scene4_CreateSprites(IntroMovieOverlayData *data, IntroMo
 
 static u32 IntroMovie_Scene4_TexAlloc(u32 size, BOOL is4x4comp) {
     NNSGfdTexKey key = NNS_GfdAllocTexVram(size, is4x4comp, 0);
-    sub_02015354(key);
+    ParticleSystem_RegisterTextureKey(key);
     GF_ASSERT(key != NNS_GFD_ALLOC_ERROR_TEXKEY);
     return NNS_GfdGetTexKeyAddr(key);
 }
@@ -488,31 +489,31 @@ static u32 IntroMovie_Scene4_TexAlloc(u32 size, BOOL is4x4comp) {
 static u32 IntroMovie_Scene4_PlttAlloc(u32 size, BOOL is4pltt) {
     NNSGfdPlttKey key = NNS_GfdAllocPlttVram(size, is4pltt, 1);
     GF_ASSERT(key != NNS_GFD_ALLOC_ERROR_PLTTKEY);
-    sub_02015394(key);
+    ParticleSystem_RegisterPaletteKey(key);
     return NNS_GfdGetPlttKeyAddr(key);
 }
 
-static void IntroMovie_Scene4_SPLEmitterCB(struct SPLEmitter *emitter) {
+static void IntroMovie_Scene4_SPLEmitterCB(SPLEmitter *emitter) {
     VecFx32 pos = { 0, 0, 0 };
     SetVec(pos, 0, 0, FX32_CONST(0.015625));
 
-    SPL_SetEmitterPositionX(emitter, pos.x);
-    SPL_SetEmitterPositionY(emitter, pos.y);
-    SPL_SetEmitterPositionZ(emitter, pos.z);
+    SPLEmitter_SetPosX(emitter, pos.x);
+    SPLEmitter_SetPosY(emitter, pos.y);
+    SPLEmitter_SetPosZ(emitter, pos.z);
 }
 
 static void IntroMovie_Scene4_3DMain(void) {
     Thunk_G3X_Reset();
-    sub_0201543C();
-    sub_02015460();
+    ParticleSystem_DrawAll();
+    ParticleSystem_UpdateAll();
     RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
 }
 
 static void IntroMovie_Scene4_StartParticleEmitters(IntroMovieScene4Data *sceneData, int whichStarter) {
-    sub_02015528(sceneData->particleSystem, 1);
-    sub_02015494(sceneData->particleSystem, sStarterParticleResIds[whichStarter][0], IntroMovie_Scene4_SPLEmitterCB, NULL);
-    sub_02015494(sceneData->particleSystem, sStarterParticleResIds[whichStarter][1], IntroMovie_Scene4_SPLEmitterCB, NULL);
-    sub_02015494(sceneData->particleSystem, sStarterParticleResIds[whichStarter][2], IntroMovie_Scene4_SPLEmitterCB, NULL);
+    ParticleSystem_SetCameraProjection(sceneData->particleSystem, CAMERA_PERSPECTIVE_TYPE_ORTHOGRAPHIC);
+    ParticleSystem_CreateEmitterWithCallback(sceneData->particleSystem, sStarterParticleResIds[whichStarter][0], IntroMovie_Scene4_SPLEmitterCB, NULL);
+    ParticleSystem_CreateEmitterWithCallback(sceneData->particleSystem, sStarterParticleResIds[whichStarter][1], IntroMovie_Scene4_SPLEmitterCB, NULL);
+    ParticleSystem_CreateEmitterWithCallback(sceneData->particleSystem, sStarterParticleResIds[whichStarter][2], IntroMovie_Scene4_SPLEmitterCB, NULL);
 }
 
 static void IntroMovie_Scene4_3DVRamManInit(void) {
