@@ -180,3 +180,52 @@ void ov57_02238958(CapsuleAppManager *appMan) {
     SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 37, TRUE, 27037);
     SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 35, TRUE, 28035);
 }
+
+void ov57_02238A00(CapsuleAppManager *appMan) {
+    int i;
+    ManagedSprite **pageSprites;
+    ManagedSpriteTemplate spriteTemplate;
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+    pageSprites = appMan->unk_414;
+
+    spriteTemplate.x = 0;
+    spriteTemplate.y = 0;
+    spriteTemplate.z = 0;
+    spriteTemplate.animation = 0;
+    spriteTemplate.drawPriority = 60;
+    spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DSUB;
+    spriteTemplate.bgPriority = 1;
+    spriteTemplate.vramTransfer = FALSE;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+    spriteTemplate.pal = 0;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = 26007;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = 27037;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = 28035;
+
+    for (i = 0; i < SEALS_PER_PAGE; i++) {
+        spriteTemplate.resIdList[0] = (i + 25000);
+        pageSprites[i] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+    }
+
+    extern const s16 ov57_0223BDD4[8][2];
+    s16 initialXY[8][2] /*= {
+        { 19, 23 },
+        { 75, 23 },
+        { 19, 47 },
+        { 75, 47 },
+        { 19, 71 },
+        { 75, 71 },
+        { 19, 95 },
+        { 75, 95 },
+    }*/;
+    ARRAY_ASSIGN(initialXY, ov57_0223BDD4);
+
+    for (i = 0; i < SEALS_PER_PAGE; i++) {
+        ManagedSprite_SetPositionXY(appMan->unk_414[i], initialXY[i][0], initialXY[i][1] - 1);
+        ManagedSprite_TickFrame(appMan->unk_414[i]);
+        ManagedSprite_SetAnimationFrame(appMan->unk_414[i], 0);
+    }
+}

@@ -82,7 +82,8 @@ typedef struct CapsuleAppManager {
     int unk_3F0;
     u8 filler_3F4[0x18];
     MenuInputState unk_40C;
-    u8 filler_410[0x38];
+    u8 filler_410[4];
+    ManagedSprite *unk_414[13];
     SealPages unk_448;
     Pokemon *unk_458;
     NARC *unk_45C;
