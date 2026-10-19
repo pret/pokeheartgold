@@ -3752,7 +3752,7 @@ static int BattleInput_CursorMove_MainMenu(BattleInput *battleInput, int shouldI
     cursor = &battleInput->menuCursor;
     menu = &sBattleMenuTemplates[battleInput->curMenuId];
     battlerId = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
-    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battlerId));
+    cursorPos = OpponentData_GetBattleCursorPosition(BattleSystem_GetOpponentData(battleInput->battleSystem, battlerId));
 
     if (shouldInitialize == TRUE) {
         cursor->menuX = cursorPos->commandX;
@@ -3830,7 +3830,7 @@ static void BattleInput_CursorSave_MainMenu(BattleInput *battleInput, int input)
     battler = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
 
     if ((input != 3) || (battleInput->cancelRunDisplay == 0)) {
-        cursor = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
+        cursor = OpponentData_GetBattleCursorPosition(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
 
         for (y = 0; y < 2; y++) {
             for (x = 0; x < 3; x++) {
@@ -3890,7 +3890,7 @@ static int BattleInput_CursorMove_FightMenu(BattleInput *battleInput, int param1
     BattleInputFightMenu *menu;
     BattleCursorPosition *cursorPos;
 
-    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType)));
+    cursorPos = OpponentData_GetBattleCursorPosition(BattleSystem_GetOpponentData(battleInput->battleSystem, BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType)));
     cursor = &battleInput->menuCursor;
     menuTemplate = &sBattleMenuTemplates[battleInput->curMenuId];
     menu = &battleInput->menu.fight;
@@ -3954,7 +3954,7 @@ static void BattleInput_CursorSave_FightMenu(BattleInput *battleInput, int input
     }
 
     battler = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
-    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
+    cursorPos = OpponentData_GetBattleCursorPosition(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
 
     for (y = 0; y < 3; y++) {
         for (x = 0; x < 2; x++) {
@@ -3983,7 +3983,7 @@ static int BattleInput_CursorMove_TargetMenu(BattleInput *battleInput, int param
     int anim;
     BattleCursorPosition *cursorPos;
 
-    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType)));
+    cursorPos = OpponentData_GetBattleCursorPosition(BattleSystem_GetOpponentData(battleInput->battleSystem, BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType)));
     cursor = &battleInput->menuCursor;
     menuTemplate = &sBattleMenuTemplates[battleInput->curMenuId];
 
@@ -4234,7 +4234,7 @@ static void BattleInput_CursorSave_TargetMenu(BattleInput *battleInput, int inpu
     }
 
     battler = BattleSystem_GetBattlerFromBattlerType(battleInput->battleSystem, battleInput->battlerType);
-    cursorPos = ov12_02261280(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
+    cursorPos = OpponentData_GetBattleCursorPosition(BattleSystem_GetOpponentData(battleInput->battleSystem, battler));
 
     cursorPos->monTargetType = battleInput->monTargetType;
 

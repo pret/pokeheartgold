@@ -640,7 +640,7 @@ void BattleHpBar_LoadResources(BattleHpBar *hpBar) {
     hpBar->boxObj = ov12_02264968(spriteSystem, spriteManager, hpBar->type);
 
     ov12_022648EC(spriteSystem, spriteManager, narc, plttData, hpBar->type);
-    if (hpBar->arrowObj != NULL) {
+    if (hpBar->arrowObj != 0) {
         Sprite_SetPositionXY(hpBar->arrowObj->sprite, tmplate->x - sHpBarArrowXOffsets[hpBar->type], tmplate->y + 0);
     }
     NARC_Delete(narc);
@@ -783,12 +783,12 @@ void BattleHpBar_SetEnabled(BattleHpBar *hpBar, BOOL a1) {
 static void ov12_02264F44(BattleHpBar *hpBar, int x, int y) {
     const ManagedSpriteTemplate *tmplate;
 
-    GF_ASSERT(hpBar->boxObj != NULL);
+    GF_ASSERT(hpBar->boxObj != 0);
 
     tmplate = BattleHpBar_Util_GetHpBoxSpriteTemplate(hpBar->type);
 
     Sprite_SetPositionXY(hpBar->boxObj->sprite, tmplate->x + x, tmplate->y + y);
-    if (hpBar->arrowObj != NULL) {
+    if (hpBar->arrowObj != 0) {
         Sprite_SetPositionXY(hpBar->arrowObj->sprite,
             tmplate->x + x - sHpBarArrowXOffsets[hpBar->type],
             tmplate->y + y + 0);
@@ -866,7 +866,7 @@ static void ov12_02265054(SysTask *task, void *data) {
         break;
     }
     ManagedSprite_SetPositionXY(hpBar->boxObj, x, y);
-    if (hpBar->arrowObj != NULL) {
+    if (hpBar->arrowObj != 0) {
         ManagedSprite_SetPositionXY(hpBar->arrowObj, x - sHpBarArrowXOffsets[hpBar->type], y + 0);
     }
 
