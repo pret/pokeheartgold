@@ -55,34 +55,34 @@ static BOOL BattleSystem_CheckMoveHit(BattleSystem *battleSystem, BattleContext 
 static BOOL BattleSystem_CheckMoveEffect(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdAttacker, int battlerIdTarget, int move);
 static BOOL ov12_0224C204(BattleSystem *battleSystem, BattleContext *ctx);
 static void BattleControllerPlayer_RunScript(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224C38C(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224C4D8(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224C5C8(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224C5F8(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224C678(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_BeforeMove(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_TryMove(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_PrimaryEffect(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_CheckMoveFailure(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_UseMove(BattleSystem *battleSystem, BattleContext *ctx);
 static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224CAA4(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_AfterMoveMessage(BattleSystem *battleSystem, BattleContext *ctx);
 static void ov12_0224CC84(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224CC88(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_AfterMoveEffects(BattleSystem *battleSystem, BattleContext *ctx);
 static void ov12_0224CF10(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224CF14(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D014(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D03C(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D1DC(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D224(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_LoopMultiHit(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_LoopWhileFainted(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_LoopSpreadMoves(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_FaintAfterSelfdestruct(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_TriggerAfterHitEffects(BattleSystem *battleSystem, BattleContext *ctx);
 static void ov12_0224D238(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D23C(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D368(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D448(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D464(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D4F0(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D504(BattleSystem *battleSystem, BattleContext *ctx);
-static void ov12_0224D53C(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_UpdateMoveBuffers(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_MoveEnd(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_CheckAnyFainted(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_HandleResult(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_ScreenWipe(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_EndFight(BattleSystem *battleSystem, BattleContext *ctx);
+static void BattleControllerPlayer_EndWait(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224D540(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224D7EC(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224DB64(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *a6);
 static void ov12_0224DC0C(BattleSystem *battleSystem, BattleContext *ctx);
-static BOOL TryFaintMon(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2, int a3);
+static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2, int a3);
 static BOOL ov12_0224DD18(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2);
 static void ov12_0224DD74(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224DF7C(BattleSystem *battleSystem, BattleContext *ctx);
@@ -90,7 +90,7 @@ static BOOL ov12_0224DF98(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL TryBuildRage(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL TryItemFlinch(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL ov12_0224E130(BattleSystem *battleSystem, BattleContext *ctx);
-static BOOL ov12_0224E1BC(BattleSystem *battleSystem, BattleContext *ctx);
+static BOOL BattleControllerPlayer_TriggerAfterMoveHitEffects(BattleSystem *battleSystem, BattleContext *ctx);
 static void ov12_0224E384(BattleSystem *battleSystem, BattleContext *ctx);
 static void ov12_0224E414(BattleSystem *battleSystem, BattleContext *ctx);
 
@@ -118,29 +118,29 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
     [CONTROLLER_COMMAND_SAFARI_WATCHING] = BattleControllerPlayer_SafariWatching,
     [CONTROLLER_COMMAND_CATCHING_CONSTEST_THROW_BALL] = BattleControllerPlayer_CatchingContestThrowBall,
     [CONTROLLER_COMMAND_RUN_SCRIPT] = BattleControllerPlayer_RunScript,
-    [CONTROLLER_COMMAND_23] = ov12_0224C38C,
-    [CONTROLLER_COMMAND_24] = ov12_0224C4D8,
-    [CONTROLLER_COMMAND_25] = ov12_0224C5C8,
-    [CONTROLLER_COMMAND_26] = ov12_0224C5F8,
-    [CONTROLLER_COMMAND_27] = ov12_0224C678,
+    [CONTROLLER_COMMAND_23] = BattleControllerPlayer_BeforeMove,
+    [CONTROLLER_COMMAND_24] = BattleControllerPlayer_TryMove,
+    [CONTROLLER_COMMAND_25] = BattleControllerPlayer_PrimaryEffect,
+    [CONTROLLER_COMMAND_26] = BattleControllerPlayer_CheckMoveFailure,
+    [CONTROLLER_COMMAND_27] = BattleControllerPlayer_UseMove,
     [CONTROLLER_COMMAND_HP_CALC] = BattleControllerPlayer_HpCalc,
-    [CONTROLLER_COMMAND_29] = ov12_0224CAA4,
+    [CONTROLLER_COMMAND_29] = BattleControllerPlayer_AfterMoveMessage,
     [CONTROLLER_COMMAND_30] = ov12_0224CC84,
-    [CONTROLLER_COMMAND_31] = ov12_0224CC88,
-    [CONTROLLER_COMMAND_32] = ov12_0224CF14,
+    [CONTROLLER_COMMAND_31] = BattleControllerPlayer_AfterMoveEffects,
+    [CONTROLLER_COMMAND_32] = BattleControllerPlayer_LoopMultiHit,
     [CONTROLLER_COMMAND_33] = ov12_0224CF10,
-    [CONTROLLER_COMMAND_34] = ov12_0224D014,
-    [CONTROLLER_COMMAND_35] = ov12_0224D03C,
-    [CONTROLLER_COMMAND_36] = ov12_0224D1DC,
-    [CONTROLLER_COMMAND_37] = ov12_0224D224,
+    [CONTROLLER_COMMAND_34] = BattleControllerPlayer_LoopWhileFainted,
+    [CONTROLLER_COMMAND_35] = BattleControllerPlayer_LoopSpreadMoves,
+    [CONTROLLER_COMMAND_36] = BattleControllerPlayer_FaintAfterSelfdestruct,
+    [CONTROLLER_COMMAND_37] = BattleControllerPlayer_TriggerAfterHitEffects,
     [CONTROLLER_COMMAND_38] = ov12_0224D238,
-    [CONTROLLER_COMMAND_39] = ov12_0224D23C,
-    [CONTROLLER_COMMAND_40] = ov12_0224D368,
-    [CONTROLLER_COMMAND_41] = ov12_0224D448,
-    [CONTROLLER_COMMAND_42] = ov12_0224D464,
-    [CONTROLLER_COMMAND_43] = ov12_0224D4F0,
-    [CONTROLLER_COMMAND_44] = ov12_0224D504,
-    [CONTROLLER_COMMAND_45] = ov12_0224D53C
+    [CONTROLLER_COMMAND_39] = BattleControllerPlayer_UpdateMoveBuffers,
+    [CONTROLLER_COMMAND_40] = BattleControllerPlayer_MoveEnd,
+    [CONTROLLER_COMMAND_41] = BattleControllerPlayer_CheckAnyFainted,
+    [CONTROLLER_COMMAND_42] = BattleControllerPlayer_HandleResult,
+    [CONTROLLER_COMMAND_43] = BattleControllerPlayer_ScreenWipe,
+    [CONTROLLER_COMMAND_44] = BattleControllerPlayer_EndFight,
+    [CONTROLLER_COMMAND_45] = BattleControllerPlayer_EndWait
 };
 
 BattleContext *BattleContext_New(BattleSystem *battleSystem) {
@@ -825,7 +825,7 @@ static void BattleControllerPlayer_UpdateFieldCondition(BattleSystem *battleSyst
     int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
 
     do {
-        if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
+        if (BattleControllerPlayer_AnyFainted(ctx, ctx->command, ctx->command, 1) == TRUE) {
             return;
         }
         if (ov12_0224DD18(ctx, ctx->command, ctx->command) == TRUE) {
@@ -1178,7 +1178,7 @@ static void BattleControllerPlayer_UpdateMonCondition(BattleSystem *battleSystem
 
     maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
 
-    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
+    if (BattleControllerPlayer_AnyFainted(ctx, ctx->command, ctx->command, 1) == TRUE) {
         return;
     }
 
@@ -1572,7 +1572,7 @@ static void BattleControllerPlayer_UpdateFieldConditionExtra(BattleSystem *battl
     int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
     int battlerId;
 
-    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
+    if (BattleControllerPlayer_AnyFainted(ctx, ctx->command, ctx->command, 1) == TRUE) {
         return;
     }
 
@@ -2644,7 +2644,7 @@ static void BattleControllerPlayer_RunScript(BattleSystem *battleSystem, BattleC
     }
 }
 
-static void ov12_0224C38C(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_BeforeMove(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (ctx->unk_48) {
     case 0:
         ov12_0224BCA4(battleSystem, ctx);
@@ -2711,12 +2711,12 @@ static void ov12_0224C38C(BattleSystem *battleSystem, BattleContext *ctx) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_0, ctx->moveNoCur);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = CONTROLLER_COMMAND_24;
-        ov12_02252E30(battleSystem, ctx);
+        BattleSystem_UpdateLastResort(battleSystem, ctx);
     }
-    ov12_022565E0(battleSystem, ctx);
+    BattleSystem_UpdateMetronomeCount(battleSystem, ctx);
 }
 
-static void ov12_0224C4D8(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_TryMove(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (ctx->unk_4C) {
     case 0:
         ctx->unk_4C++;
@@ -2761,7 +2761,7 @@ static void ov12_0224C4D8(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_25;
 }
 
-static void ov12_0224C5C8(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_PrimaryEffect(BattleSystem *battleSystem, BattleContext *ctx) {
     int script;
 
     if (ov12_022503EC(battleSystem, ctx, &script) == TRUE) {
@@ -2773,7 +2773,7 @@ static void ov12_0224C5C8(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224C5F8(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_CheckMoveFailure(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->moveStatusFlag & MOVE_STATUS_NO_MORE_WORK) {
         ctx->command = CONTROLLER_COMMAND_35;
     } else if (ctx->moveStatusFlag & MOVE_STATUS_NO_PP) {
@@ -2793,7 +2793,7 @@ static void ov12_0224C5F8(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224C678(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_UseMove(BattleSystem *battleSystem, BattleContext *ctx) {
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_USE_MOVE);
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
     ctx->commandNext = CONTROLLER_COMMAND_HP_CALC;
@@ -2900,7 +2900,7 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleCont
     }
 }
 
-static void ov12_0224CAA4(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_AfterMoveMessage(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (ctx->unk_38) {
     case 0:
         switch (ctx->unk_3C) {
@@ -3030,7 +3030,7 @@ static void ov12_0224CC84(BattleSystem *battleSystem, BattleContext *ctx) {
 }
 
 // static
-void ov12_0224CC88(BattleSystem *battleSystem, BattleContext *ctx) {
+void BattleControllerPlayer_AfterMoveEffects(BattleSystem *battleSystem, BattleContext *ctx) {
     switch (ctx->unk_40) {
     case 0: {
         int flag = 0;
@@ -3163,7 +3163,7 @@ void ov12_0224CC88(BattleSystem *battleSystem, BattleContext *ctx) {
 static void ov12_0224CF10(BattleSystem *battleSystem, BattleContext *ctx) {
 }
 
-static void ov12_0224CF14(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_LoopMultiHit(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->multiHitCountTemp != 0) {
         if (ctx->battlerIdFainted == BATTLER_NONE && !(ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) && !(ctx->moveStatusFlag & MOVE_STATUS_MULTI_HIT_DISRUPTED)) {
             if (--ctx->multiHitCount) {
@@ -3196,15 +3196,15 @@ static void ov12_0224CF14(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D014(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_LoopWhileFainted(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->battleStatus & BATTLE_STATUS_FAINTED) {
-        TryFaintMon(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
+        BattleControllerPlayer_AnyFainted(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
     } else {
         ctx->command = CONTROLLER_COMMAND_35;
     }
 }
 
-static void ov12_0224D03C(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_LoopSpreadMoves(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->battleStatus2 & BATTLE_STATUS2_MAGIC_COAT) {
         ctx->battleStatus2 &= ~BATTLE_STATUS2_MAGIC_COAT;
         ctx->battlerIdTarget = ctx->battlerIdAttacker;
@@ -3258,7 +3258,7 @@ static void ov12_0224D03C(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D1DC(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_FaintAfterSelfdestruct(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->battleStatus & BATTLE_STATUS_SELFDESTRUCTED) {
         ctx->battlerIdFainted = LowestFlagNo((ctx->battleStatus & BATTLE_STATUS_SELFDESTRUCTED) >> BATTLE_STATUS_SELFDESTRUCTED_SHIFT);
         ctx->battleStatus &= ~BATTLE_STATUS_SELFDESTRUCTED;
@@ -3270,8 +3270,8 @@ static void ov12_0224D1DC(BattleSystem *battleSystem, BattleContext *ctx) {
     }
 }
 
-static void ov12_0224D224(BattleSystem *battleSystem, BattleContext *ctx) {
-    if (!(ov12_0224E1BC(battleSystem, ctx) == TRUE)) {
+static void BattleControllerPlayer_TriggerAfterHitEffects(BattleSystem *battleSystem, BattleContext *ctx) {
+    if (!(BattleControllerPlayer_TriggerAfterMoveHitEffects(battleSystem, ctx) == TRUE)) {
         ctx->command = CONTROLLER_COMMAND_39;
     }
 }
@@ -3279,7 +3279,7 @@ static void ov12_0224D224(BattleSystem *battleSystem, BattleContext *ctx) {
 static void ov12_0224D238(BattleSystem *battleSystem, BattleContext *ctx) {
 }
 
-static void ov12_0224D23C(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_UpdateMoveBuffers(BattleSystem *battleSystem, BattleContext *ctx) {
     u8 item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
     if (ctx->battleStatus & BATTLE_STATUS_CHARGE_TURN || ctx->battleStatus2 & BATTLE_STATUS2_DISPLAY_ATTACK_MESSAGE) {
         if (item == HOLD_EFFECT_CHOICE_ATK || item == HOLD_EFFECT_CHOICE_SPEED || item == HOLD_EFFECT_CHOICE_SPATK) {
@@ -3315,7 +3315,7 @@ static void ov12_0224D23C(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_40;
 }
 
-static void ov12_0224D368(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_MoveEnd(BattleSystem *battleSystem, BattleContext *ctx) {
     int script;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
@@ -3361,13 +3361,13 @@ static void ov12_0224D368(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_8;
 }
 
-static void ov12_0224D448(BattleSystem *battleSystem, BattleContext *ctx) {
-    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) != TRUE) {
+static void BattleControllerPlayer_CheckAnyFainted(BattleSystem *battleSystem, BattleContext *ctx) {
+    if (BattleControllerPlayer_AnyFainted(ctx, ctx->command, ctx->command, 1) != TRUE) {
         ctx->command = CONTROLLER_COMMAND_40;
     }
 }
 
-static void ov12_0224D464(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_HandleResult(BattleSystem *battleSystem, BattleContext *ctx) {
     if (BattleSystem_GetBattleOutcomeFlags(battleSystem) & BATTLE_RESULT_TRY_FLEE) {
         ctx->command = CONTROLLER_COMMAND_44;
     } else if (BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_RESULT_LOSE || BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_RESULT_DRAW) {
@@ -3387,13 +3387,13 @@ static void ov12_0224D464(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->battleEndFlag = TRUE;
 }
 
-static void ov12_0224D4F0(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_ScreenWipe(BattleSystem *battleSystem, BattleContext *ctx) {
     if (IsPaletteFadeFinished() == TRUE) {
         ctx->command = CONTROLLER_COMMAND_44;
     }
 }
 
-static void ov12_0224D504(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_EndFight(BattleSystem *battleSystem, BattleContext *ctx) {
     Party *party;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
@@ -3410,7 +3410,7 @@ static void ov12_0224D504(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->command = CONTROLLER_COMMAND_45;
 }
 
-static void ov12_0224D53C(BattleSystem *battleSystem, BattleContext *ctx) {
+static void BattleControllerPlayer_EndWait(BattleSystem *battleSystem, BattleContext *ctx) {
 }
 
 static BOOL ov12_0224D540(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -3655,7 +3655,7 @@ static void ov12_0224DC0C(BattleSystem *battleSystem, BattleContext *ctx) {
     ctx->conversion2Move[ctx->battlerIdAttacker] = 0;
 }
 
-static BOOL TryFaintMon(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag) {
+static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag) {
     int turn = 0;
     int faintedFlag = MaskOfFlagNo(ctx->turnOrder[turn]) << BATTLE_STATUS_FAINTED_SHIFT;
 
@@ -3867,14 +3867,14 @@ static BOOL ov12_0224E130(BattleSystem *battleSystem, BattleContext *ctx) {
     return ret;
 }
 
-static BOOL ov12_0224E1BC(BattleSystem *battleSystem, BattleContext *ctx) {
+static BOOL BattleControllerPlayer_TriggerAfterMoveHitEffects(BattleSystem *battleSystem, BattleContext *ctx) {
     int flag = 0;
 
     int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
     int item = GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker);
     int itemMod = GetHeldItemModifier(ctx, ctx->battlerIdAttacker, 0);
 
-    if (TryFaintMon(ctx, ctx->command, ctx->command, 1) == TRUE) {
+    if (BattleControllerPlayer_AnyFainted(ctx, ctx->command, ctx->command, 1) == TRUE) {
         return TRUE;
     }
 

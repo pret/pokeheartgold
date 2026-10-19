@@ -2969,7 +2969,7 @@ BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *battleSystem, BattleContex
     return ret;
 }
 
-void ov12_02252E30(BattleSystem *battleSystem, BattleContext *ctx) {
+void BattleSystem_UpdateLastResort(BattleSystem *battleSystem, BattleContext *ctx) {
     int i;
 
     if (ctx->moveNoTemp == MOVE_LAST_RESORT || ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount == MAX_MON_MOVES) {
@@ -5157,7 +5157,7 @@ BOOL TryFling(BattleSystem *battleSystem, BattleContext *ctx, int battlerId) {
     return TRUE;
 }
 
-void ov12_022565E0(BattleSystem *battleSystem, BattleContext *ctx) {
+void BattleSystem_UpdateMetronomeCount(BattleSystem *battleSystem, BattleContext *ctx) {
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
         if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAMPAGE) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             if (ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp) {
