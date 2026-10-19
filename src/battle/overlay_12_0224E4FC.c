@@ -1779,7 +1779,7 @@ void InitSwitchWork(BattleSystem *battleSystem, BattleContext *ctx, int battlerI
 
     maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
     BattleSystem_GetBattleType(battleSystem);
-    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
+    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_MOVE_END;
 
     if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < maxBattlers; i++) {
@@ -4513,7 +4513,7 @@ u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId) {
 }
 
 BOOL ov12_0225561C(BattleContext *ctx, int battlerId) {
-    return ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_40;
+    return ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_MOVE_END;
 }
 
 BOOL CheckItemEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int *script) {
@@ -6212,7 +6212,7 @@ void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerI
 
 BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleContext *ctx) {
     if (BattleSystem_IsRecordingPaused(battleSystem)) {
-        ctx->command = CONTROLLER_COMMAND_43;
+        ctx->command = CONTROLLER_COMMAND_SCREEN_WIPE;
         return TRUE;
     }
     return FALSE;

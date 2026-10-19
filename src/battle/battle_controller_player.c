@@ -118,29 +118,29 @@ static const ControllerFunction sPlayerBattleCommands[CONTROLLER_COMMAND_MAX] = 
     [CONTROLLER_COMMAND_SAFARI_WATCHING] = BattleControllerPlayer_SafariWatching,
     [CONTROLLER_COMMAND_CATCHING_CONSTEST_THROW_BALL] = BattleControllerPlayer_CatchingContestThrowBall,
     [CONTROLLER_COMMAND_RUN_SCRIPT] = BattleControllerPlayer_RunScript,
-    [CONTROLLER_COMMAND_23] = BattleControllerPlayer_BeforeMove,
-    [CONTROLLER_COMMAND_24] = BattleControllerPlayer_TryMove,
-    [CONTROLLER_COMMAND_25] = BattleControllerPlayer_PrimaryEffect,
-    [CONTROLLER_COMMAND_26] = BattleControllerPlayer_CheckMoveFailure,
-    [CONTROLLER_COMMAND_27] = BattleControllerPlayer_UseMove,
+    [CONTROLLER_COMMAND_BEFORE_MOVE] = BattleControllerPlayer_BeforeMove,
+    [CONTROLLER_COMMAND_TRY_MOVE] = BattleControllerPlayer_TryMove,
+    [CONTROLLER_COMMAND_PRIMARY_EFFECT] = BattleControllerPlayer_PrimaryEffect,
+    [CONTROLLER_COMMAND_MOVE_FAILED] = BattleControllerPlayer_CheckMoveFailure,
+    [CONTROLLER_COMMAND_USE_MOVE] = BattleControllerPlayer_UseMove,
     [CONTROLLER_COMMAND_HP_CALC] = BattleControllerPlayer_HpCalc,
-    [CONTROLLER_COMMAND_29] = BattleControllerPlayer_AfterMoveMessage,
+    [CONTROLLER_COMMAND_AFTER_MOVE_MESSAGE] = BattleControllerPlayer_AfterMoveMessage,
     [CONTROLLER_COMMAND_30] = ov12_0224CC84,
-    [CONTROLLER_COMMAND_31] = BattleControllerPlayer_AfterMoveEffects,
-    [CONTROLLER_COMMAND_32] = BattleControllerPlayer_LoopMultiHit,
+    [CONTROLLER_COMMAND_AFTER_MOVE_EFFECT] = BattleControllerPlayer_AfterMoveEffects,
+    [CONTROLLER_COMMAND_LOOP_MULTI_HIT] = BattleControllerPlayer_LoopMultiHit,
     [CONTROLLER_COMMAND_33] = ov12_0224CF10,
-    [CONTROLLER_COMMAND_34] = BattleControllerPlayer_LoopWhileFainted,
-    [CONTROLLER_COMMAND_35] = BattleControllerPlayer_LoopSpreadMoves,
-    [CONTROLLER_COMMAND_36] = BattleControllerPlayer_FaintAfterSelfdestruct,
-    [CONTROLLER_COMMAND_37] = BattleControllerPlayer_TriggerAfterHitEffects,
+    [CONTROLLER_COMMAND_LOOP_WHILE_FAINTED] = BattleControllerPlayer_LoopWhileFainted,
+    [CONTROLLER_COMMAND_LOOP_SPREAD_MOVE] = BattleControllerPlayer_LoopSpreadMoves,
+    [CONTROLLER_COMMAND_FAINT_AFTER_SELF_DESTRUCT] = BattleControllerPlayer_FaintAfterSelfdestruct,
+    [CONTROLLER_COMMAND_TRIGGER_AFTER_MOVE_EFFECTS] = BattleControllerPlayer_TriggerAfterHitEffects,
     [CONTROLLER_COMMAND_38] = ov12_0224D238,
-    [CONTROLLER_COMMAND_39] = BattleControllerPlayer_UpdateMoveBuffers,
-    [CONTROLLER_COMMAND_40] = BattleControllerPlayer_MoveEnd,
-    [CONTROLLER_COMMAND_41] = BattleControllerPlayer_CheckAnyFainted,
-    [CONTROLLER_COMMAND_42] = BattleControllerPlayer_HandleResult,
-    [CONTROLLER_COMMAND_43] = BattleControllerPlayer_ScreenWipe,
-    [CONTROLLER_COMMAND_44] = BattleControllerPlayer_EndFight,
-    [CONTROLLER_COMMAND_45] = BattleControllerPlayer_EndWait
+    [CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS] = BattleControllerPlayer_UpdateMoveBuffers,
+    [CONTROLLER_COMMAND_MOVE_END] = BattleControllerPlayer_MoveEnd,
+    [CONTROLLER_COMMAND_CHECK_ANY_FAINTED] = BattleControllerPlayer_CheckAnyFainted,
+    [CONTROLLER_COMMAND_HANDLE_RESULT] = BattleControllerPlayer_HandleResult,
+    [CONTROLLER_COMMAND_SCREEN_WIPE] = BattleControllerPlayer_ScreenWipe,
+    [CONTROLLER_COMMAND_END_FIGHT] = BattleControllerPlayer_EndFight,
+    [CONTROLLER_COMMAND_END_WAIT] = BattleControllerPlayer_EndWait
 };
 
 BattleContext *BattleContext_New(BattleSystem *battleSystem) {
@@ -159,12 +159,12 @@ BattleContext *BattleContext_New(BattleSystem *battleSystem) {
 BOOL BattleContext_Main(BattleSystem *battleSystem, BattleContext *ctx) {
     if (!ctx->battleEndFlag) {
         if (BattleSystem_GetBattleOutcomeFlags(battleSystem) && !(BattleSystem_GetBattleOutcomeFlags(battleSystem) & 0x40)) {
-            ctx->command = CONTROLLER_COMMAND_42;
+            ctx->command = CONTROLLER_COMMAND_HANDLE_RESULT;
         }
     }
 
     sPlayerBattleCommands[ctx->command](battleSystem, ctx);
-    if (ctx->command == CONTROLLER_COMMAND_45) {
+    if (ctx->command == CONTROLLER_COMMAND_END_WAIT) {
         return TRUE;
     }
     return FALSE;
@@ -281,7 +281,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *battleSyst
             }
             if (ctx->switchInFlag & MaskOfFlagNo(battlerId)) {
                 ctx->unk_0[battlerId] = SSI_STATE_13;
-                ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
+                ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_MOVE_END;
                 break;
             } else if (Battler_CanSelectAction(ctx, battlerId) == 0) {
                 ctx->turnData[battlerId].unk0_1 = 1;
@@ -787,7 +787,7 @@ static void ov12_02249460(BattleSystem *battleSystem, BattleContext *ctx) {
 
     ctx->battlersOnField = 0;
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
-        if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_40) {
+        if (ctx->playerActions[battlerId].command != CONTROLLER_COMMAND_MOVE_END) {
             ctx->battlersOnField++;
         }
     }
@@ -1702,7 +1702,7 @@ static void BattleControllerPlayer_FightInput(BattleSystem *battleSystem, Battle
         ctx->moveNoTemp = ctx->battleMons[ctx->battlerIdAttacker].moves[ctx->movePos[ctx->battlerIdAttacker]];
     }
     ctx->moveNoCur = ctx->moveNoTemp;
-    ctx->command = CONTROLLER_COMMAND_23;
+    ctx->command = CONTROLLER_COMMAND_BEFORE_MOVE;
     ctx->battlerIdTarget = ov12_022506D4(battleSystem, ctx, ctx->battlerIdAttacker, ctx->moveNoTemp, flag, 0);
     BattleController_EmitClearMessageBox(battleSystem);
 }
@@ -1763,7 +1763,7 @@ static void BattleControllerPlayer_ItemInput(BattleSystem *battleSystem, BattleC
 
     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
     ctx->moveStatusFlag |= MOVE_STATUS_NO_MORE_WORK;
 }
 
@@ -1772,7 +1772,7 @@ static void BattleControllerPlayer_PokemonInput(BattleSystem *battleSystem, Batt
     ctx->battlerIdAttacker = ctx->executionOrder[ctx->executionIndex];
     ctx->battlerIdSwitch = ctx->battlerIdAttacker;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_41;
+    ctx->commandNext = CONTROLLER_COMMAND_CHECK_ANY_FAINTED;
     ctx->tempData = 0;
     ctx->moveStatusFlag |= MOVE_STATUS_NO_MORE_WORK;
 }
@@ -1785,24 +1785,24 @@ static void BattleControllerPlayer_RunInput(BattleSystem *battleSystem, BattleCo
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 286);
             ctx->scriptSeqNo = 0;
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_40;
+            ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
         } else {
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 230);
             ctx->scriptSeqNo = 0;
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_44;
+            ctx->commandNext = CONTROLLER_COMMAND_END_FIGHT;
         }
     } else {
         if (BattleTryRun(battleSystem, ctx, ctx->battlerIdAttacker)) {
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 3);
             ctx->scriptSeqNo = 0;
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_44;
+            ctx->commandNext = CONTROLLER_COMMAND_END_FIGHT;
         } else {
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, 8);
             ctx->scriptSeqNo = 0;
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_40;
+            ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
         }
     }
 }
@@ -1814,7 +1814,7 @@ static void BattleControllerPlayer_SafariThrowBall(BattleSystem *battleSystem, B
     ctx->battlerIdAttacker = BATTLER_PLAYER;
     ctx->battlerIdTarget = BATTLER_ENEMY;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
     ctx->itemTemp = ITEM_SAFARI_BALL;
     cnt = BattleSystem_GetSafariBallCount(battleSystem) - 1;
     BattleSystem_SetSafariBallCount(battleSystem, cnt);
@@ -1826,7 +1826,7 @@ static void BattleControllerPlayer_SafariThrowMud(BattleSystem *battleSystem, Ba
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
     ctx->tempData = BattleSystem_Random(battleSystem) % 10;
     if (ctx->safariRunAttempts > 0) {
         ctx->safariRunAttempts--;
@@ -1844,7 +1844,7 @@ static void BattleControllerPlayer_SafariRun(BattleSystem *battleSystem, BattleC
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
     ctx->tempData = BattleSystem_Random(battleSystem) % 10;
     if (ctx->safariCatchRateStage < 12) {
         ctx->safariCatchRateStage++;
@@ -1859,7 +1859,7 @@ static void BattleControllerPlayer_SafariWatching(BattleSystem *battleSystem, Ba
     ctx->battlerIdAttacker = 0;
     ctx->battlerIdTarget = 1;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
 }
 
 static void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -1869,7 +1869,7 @@ static void BattleControllerPlayer_CatchingContestThrowBall(BattleSystem *battle
     ctx->battlerIdAttacker = BATTLER_PLAYER;
     ctx->battlerIdTarget = BATTLER_ENEMY;
     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-    ctx->commandNext = CONTROLLER_COMMAND_40;
+    ctx->commandNext = CONTROLLER_COMMAND_MOVE_END;
     ctx->itemTemp = ITEM_SPORT_BALL;
     cnt = BattleSystem_GetSafariBallCount(battleSystem) - 1;
     BattleSystem_SetSafariBallCount(battleSystem, cnt);
@@ -2073,7 +2073,7 @@ static BOOL ov12_0224B398(BattleSystem *battleSystem, BattleContext *ctx) {
     if ((ctx->battlerIdTarget == BATTLER_NONE && !BattleCtx_IsIdenticalToCurrentMove(ctx, ctx->moveNoCur))
         || (ctx->battlerIdTarget == BATTLER_NONE && BattleCtx_IsIdenticalToCurrentMove(ctx, ctx->moveNoCur) == TRUE && (ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE || ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT))) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_TARGET);
-        ctx->commandNext = CONTROLLER_COMMAND_39;
+        ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ret = TRUE;
     }
@@ -2136,7 +2136,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                         if (ctx->moveNoCur != MOVE_SNORE && ctx->moveNoTemp != MOVE_SLEEP_TALK) {
                             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_SLEEPING);
                             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                            ctx->commandNext = CONTROLLER_COMMAND_39;
+                            ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                             ret = 2;
                         }
                     } else {
@@ -2156,7 +2156,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                     if (effect != MOVE_EFFECT_THAW_AND_BURN_HIT && effect != MOVE_EFFECT_RECOIL_BURN_HIT) {
                         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_FROZEN);
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                        ctx->commandNext = CONTROLLER_COMMAND_39;
+                        ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                         ret = 1;
                     }
                 } else {
@@ -2173,7 +2173,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
             if (CheckTruant(ctx, ctx->battlerIdAttacker) == TRUE) {
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_LOAFING_AROUND);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2183,7 +2183,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->battleMons[ctx->battlerIdAttacker].status2 &= ~STATUS2_RECHARGE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_RECHARGING);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2194,7 +2194,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->moveFail[ctx->battlerIdAttacker].flinch = TRUE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_FLINCHED);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2204,7 +2204,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->moveFail[ctx->battlerIdAttacker].disabled = TRUE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_IS_DISABLED);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2214,7 +2214,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->moveFail[ctx->battlerIdAttacker].unk0_5 = TRUE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_FAIL_TAUNTED);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2224,7 +2224,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->moveFail[ctx->battlerIdAttacker].imprison = TRUE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_IS_IMPRISONED);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2234,7 +2234,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->moveFail[ctx->battlerIdAttacker].gravity = TRUE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_FAIL_GRAVITY);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2244,7 +2244,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                 ctx->moveFail[ctx->battlerIdAttacker].healBlock = TRUE;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MOVE_IS_HEAL_BLOCKED);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_39;
+                ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                 ret = 1;
             }
             ctx->unk_50++;
@@ -2268,7 +2268,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                         ctx->hpCalc *= -1;
                         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_HURT_SELF_IN_CONFUSION);
                         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                        ctx->commandNext = CONTROLLER_COMMAND_34;
+                        ctx->commandNext = CONTROLLER_COMMAND_LOOP_WHILE_FAINTED;
                         ret = 1;
                     }
                 } else {
@@ -2285,7 +2285,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                     ctx->moveFail[ctx->battlerIdAttacker].paralysis = TRUE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_FULLY_PARALYZED);
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                    ctx->commandNext = CONTROLLER_COMMAND_39;
+                    ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                     ret = 1;
                 }
             }
@@ -2303,7 +2303,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                     ctx->moveFail[ctx->battlerIdAttacker].infatuation = TRUE;
                     ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_IMMOBILIZED_BY_LOVE);
                     ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                    ctx->commandNext = CONTROLLER_COMMAND_39;
+                    ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                     ret = 1;
                 }
             }
@@ -2321,7 +2321,7 @@ static BOOL ov12_0224B528(BattleSystem *battleSystem, BattleContext *ctx) {
                         ctx->battlerIdTarget = Battler_GetRandomOpposingBattlerId(battleSystem, ctx, ctx->battlerIdAttacker);
                         if (ctx->battleMons[ctx->battlerIdTarget].hp == 0) {
                             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BIDE_NO_TARGET);
-                            ctx->commandNext = CONTROLLER_COMMAND_39;
+                            ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
                             ret = 2;
                             break;
@@ -2664,13 +2664,13 @@ static void BattleControllerPlayer_BeforeMove(BattleSystem *battleSystem, Battle
             if (ret) {
                 switch (ret) {
                 case 1:
-                    ctx->commandNext = CONTROLLER_COMMAND_39;
+                    ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
                     break;
                 case 2:
                     ctx->commandNext = ctx->command;
                     break;
                 case 3:
-                    ctx->commandNext = CONTROLLER_COMMAND_34;
+                    ctx->commandNext = CONTROLLER_COMMAND_LOOP_WHILE_FAINTED;
                     break;
                 }
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
@@ -2705,12 +2705,12 @@ static void BattleControllerPlayer_BeforeMove(BattleSystem *battleSystem, Battle
     }
 
     if (ctx->moveStatusFlag & MOVE_STATUS_FAIL) {
-        ctx->command = CONTROLLER_COMMAND_26;
+        ctx->command = CONTROLLER_COMMAND_MOVE_FAILED;
     } else {
         ctx->battleStatus2 |= BATTLE_STATUS2_MOVE_SUCCEEDED;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_0, ctx->moveNoCur);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_24;
+        ctx->commandNext = CONTROLLER_COMMAND_TRY_MOVE;
         BattleSystem_UpdateLastResort(battleSystem, ctx);
     }
     BattleSystem_UpdateMetronomeCount(battleSystem, ctx);
@@ -2758,7 +2758,7 @@ static void BattleControllerPlayer_TryMove(BattleSystem *battleSystem, BattleCon
         ctx->unk_4C = 0;
         break;
     }
-    ctx->command = CONTROLLER_COMMAND_25;
+    ctx->command = CONTROLLER_COMMAND_PRIMARY_EFFECT;
 }
 
 static void BattleControllerPlayer_PrimaryEffect(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -2767,29 +2767,29 @@ static void BattleControllerPlayer_PrimaryEffect(BattleSystem *battleSystem, Bat
     if (ov12_022503EC(battleSystem, ctx, &script) == TRUE) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, script);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_26;
+        ctx->commandNext = CONTROLLER_COMMAND_MOVE_FAILED;
     } else {
-        ctx->command = CONTROLLER_COMMAND_26;
+        ctx->command = CONTROLLER_COMMAND_MOVE_FAILED;
     }
 }
 
 static void BattleControllerPlayer_CheckMoveFailure(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->moveStatusFlag & MOVE_STATUS_NO_MORE_WORK) {
-        ctx->command = CONTROLLER_COMMAND_35;
+        ctx->command = CONTROLLER_COMMAND_LOOP_SPREAD_MOVE;
     } else if (ctx->moveStatusFlag & MOVE_STATUS_NO_PP) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_NO_PP);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_39;
+        ctx->commandNext = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
     } else if (ctx->unk_2180 && (ctx->moveStatusFlag & MOVE_STATUS_MISSED)) {
         ctx->moveStatusFlag &= ~MOVE_STATUS_MISSED;
         ctx->moveStatusFlag |= MOVE_STATUS_MULTI_HIT_DISRUPTED;
-        ctx->command = CONTROLLER_COMMAND_29;
+        ctx->command = CONTROLLER_COMMAND_AFTER_MOVE_MESSAGE;
     } else if (ctx->moveStatusFlag & MOVE_STATUS_DID_NOT_HIT) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_MISSED);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_34;
+        ctx->commandNext = CONTROLLER_COMMAND_LOOP_WHILE_FAINTED;
     } else {
-        ctx->command = CONTROLLER_COMMAND_27;
+        ctx->command = CONTROLLER_COMMAND_USE_MOVE;
     }
 }
 
@@ -2833,7 +2833,7 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleCont
             ctx->battlerIdTemp = ctx->battlerIdTarget;
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_HIT_SUBSTITUTE);
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_29;
+            ctx->commandNext = CONTROLLER_COMMAND_AFTER_MOVE_MESSAGE;
         } else {
             // False Swipe
             if (ctx->trainerAIData.moveData[ctx->moveNoCur].effect == MOVE_EFFECT_LEAVE_WITH_1_HP && ctx->battleMons[ctx->battlerIdTarget].hp + ctx->damage <= 0) {
@@ -2892,11 +2892,11 @@ static void BattleControllerPlayer_HpCalc(BattleSystem *battleSystem, BattleCont
             ctx->hpCalc = ctx->damage;
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_UPDATE_HP);
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_29;
+            ctx->commandNext = CONTROLLER_COMMAND_AFTER_MOVE_MESSAGE;
             ctx->battleStatus |= BATTLE_STATUS_MOVE_SUCCESSFUL;
         }
     } else {
-        ctx->command = CONTROLLER_COMMAND_29;
+        ctx->command = CONTROLLER_COMMAND_AFTER_MOVE_MESSAGE;
     }
 }
 
@@ -3023,7 +3023,7 @@ static void BattleControllerPlayer_AfterMoveMessage(BattleSystem *battleSystem, 
         }
     }
     ctx->unk_3C = 0;
-    ctx->command = CONTROLLER_COMMAND_31;
+    ctx->command = CONTROLLER_COMMAND_AFTER_MOVE_EFFECT;
 }
 
 static void ov12_0224CC84(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -3157,7 +3157,7 @@ void BattleControllerPlayer_AfterMoveEffects(BattleSystem *battleSystem, BattleC
 
     ctx->unk_40 = 0;
     ctx->unk_44 = 0;
-    ctx->command = CONTROLLER_COMMAND_32;
+    ctx->command = CONTROLLER_COMMAND_LOOP_MULTI_HIT;
 }
 
 static void ov12_0224CF10(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -3173,12 +3173,12 @@ static void BattleControllerPlayer_LoopMultiHit(BattleSystem *battleSystem, Batt
                 ctx->unk_2184 = ctx->checkMultiHit;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_0, ctx->moveNoCur);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_24;
+                ctx->commandNext = CONTROLLER_COMMAND_TRY_MOVE;
             } else {
                 ctx->msgTemp = ctx->multiHitCountTemp;
                 ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_HIT_X_TIMES);
                 ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-                ctx->commandNext = CONTROLLER_COMMAND_34;
+                ctx->commandNext = CONTROLLER_COMMAND_LOOP_WHILE_FAINTED;
             }
         } else {
             if (ctx->battlerIdFainted != BATTLER_NONE || ctx->battleMons[ctx->battlerIdAttacker].status & STATUS_SLEEP) {
@@ -3188,19 +3188,19 @@ static void BattleControllerPlayer_LoopMultiHit(BattleSystem *battleSystem, Batt
             }
             ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_HIT_X_TIMES);
             ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-            ctx->commandNext = CONTROLLER_COMMAND_34;
+            ctx->commandNext = CONTROLLER_COMMAND_LOOP_WHILE_FAINTED;
         }
         BattleController_EmitClearMessageBox(battleSystem);
     } else {
-        ctx->command = CONTROLLER_COMMAND_34;
+        ctx->command = CONTROLLER_COMMAND_LOOP_WHILE_FAINTED;
     }
 }
 
 static void BattleControllerPlayer_LoopWhileFainted(BattleSystem *battleSystem, BattleContext *ctx) {
     if (ctx->battleStatus & BATTLE_STATUS_FAINTED) {
-        BattleControllerPlayer_AnyFainted(ctx, CONTROLLER_COMMAND_34, CONTROLLER_COMMAND_34, 0);
+        BattleControllerPlayer_AnyFainted(ctx, CONTROLLER_COMMAND_LOOP_WHILE_FAINTED, CONTROLLER_COMMAND_LOOP_WHILE_FAINTED, 0);
     } else {
-        ctx->command = CONTROLLER_COMMAND_35;
+        ctx->command = CONTROLLER_COMMAND_LOOP_SPREAD_MOVE;
     }
 }
 
@@ -3227,7 +3227,7 @@ static void BattleControllerPlayer_LoopSpreadMoves(BattleSystem *battleSystem, B
                 if (((flag & 1) && !(OpponentData_GetBattlerType(opponent) & 1)) || (!(flag & 1) && OpponentData_GetBattlerType(opponent) & 1)) {
                     ov12_02252D14(battleSystem, ctx);
                     ctx->battlerIdTarget = battlerId;
-                    ctx->command = CONTROLLER_COMMAND_23;
+                    ctx->command = CONTROLLER_COMMAND_BEFORE_MOVE;
                     break;
                 }
             }
@@ -3246,7 +3246,7 @@ static void BattleControllerPlayer_LoopSpreadMoves(BattleSystem *battleSystem, B
                 if (battlerId != ctx->battlerIdAttacker) {
                     ov12_02252D14(battleSystem, ctx);
                     ctx->battlerIdTarget = battlerId;
-                    ctx->command = CONTROLLER_COMMAND_23;
+                    ctx->command = CONTROLLER_COMMAND_BEFORE_MOVE;
                     break;
                 }
             }
@@ -3254,7 +3254,7 @@ static void BattleControllerPlayer_LoopSpreadMoves(BattleSystem *battleSystem, B
 
         BattleController_EmitClearMessageBox(battleSystem);
     } else {
-        ctx->command = CONTROLLER_COMMAND_36;
+        ctx->command = CONTROLLER_COMMAND_FAINT_AFTER_SELF_DESTRUCT;
     }
 }
 
@@ -3264,15 +3264,15 @@ static void BattleControllerPlayer_FaintAfterSelfdestruct(BattleSystem *battleSy
         ctx->battleStatus &= ~BATTLE_STATUS_SELFDESTRUCTED;
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_AFTER_SELFDESTRUCT);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_37;
+        ctx->commandNext = CONTROLLER_COMMAND_TRIGGER_AFTER_MOVE_EFFECTS;
     } else {
-        ctx->command = CONTROLLER_COMMAND_37;
+        ctx->command = CONTROLLER_COMMAND_TRIGGER_AFTER_MOVE_EFFECTS;
     }
 }
 
 static void BattleControllerPlayer_TriggerAfterHitEffects(BattleSystem *battleSystem, BattleContext *ctx) {
     if (!(BattleControllerPlayer_TriggerAfterMoveHitEffects(battleSystem, ctx) == TRUE)) {
-        ctx->command = CONTROLLER_COMMAND_39;
+        ctx->command = CONTROLLER_COMMAND_UPDATE_MOVE_BUFFERS;
     }
 }
 
@@ -3312,7 +3312,7 @@ static void BattleControllerPlayer_UpdateMoveBuffers(BattleSystem *battleSystem,
 
     ov12_0224DD74(battleSystem, ctx);
     ov12_02256694(battleSystem, ctx);
-    ctx->command = CONTROLLER_COMMAND_40;
+    ctx->command = CONTROLLER_COMMAND_MOVE_END;
 }
 
 static void BattleControllerPlayer_MoveEnd(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -3346,7 +3346,7 @@ static void BattleControllerPlayer_MoveEnd(BattleSystem *battleSystem, BattleCon
         ov12_0224DC0C(battleSystem, ctx);
     }
 
-    ctx->playerActions[ctx->executionOrder[ctx->executionIndex]].command = CONTROLLER_COMMAND_40;
+    ctx->playerActions[ctx->executionOrder[ctx->executionIndex]].command = CONTROLLER_COMMAND_MOVE_END;
 
     if (ctx->selfTurnData[ctx->battlerIdAttacker].trickRoomFlag) {
         SortExecutionOrderBySpeed(battleSystem, ctx);
@@ -3363,33 +3363,33 @@ static void BattleControllerPlayer_MoveEnd(BattleSystem *battleSystem, BattleCon
 
 static void BattleControllerPlayer_CheckAnyFainted(BattleSystem *battleSystem, BattleContext *ctx) {
     if (BattleControllerPlayer_AnyFainted(ctx, ctx->command, ctx->command, 1) != TRUE) {
-        ctx->command = CONTROLLER_COMMAND_40;
+        ctx->command = CONTROLLER_COMMAND_MOVE_END;
     }
 }
 
 static void BattleControllerPlayer_HandleResult(BattleSystem *battleSystem, BattleContext *ctx) {
     if (BattleSystem_GetBattleOutcomeFlags(battleSystem) & BATTLE_RESULT_TRY_FLEE) {
-        ctx->command = CONTROLLER_COMMAND_44;
+        ctx->command = CONTROLLER_COMMAND_END_FIGHT;
     } else if (BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_RESULT_LOSE || BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_RESULT_DRAW) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BATTLE_LOST);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_44;
+        ctx->commandNext = CONTROLLER_COMMAND_END_FIGHT;
     } else if (BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_OUTCOME_WIN) {
         ReadBattleScriptFromNarc(ctx, NARC_a_0_0_1, BATTLE_SUBSCRIPT_BATTLE_WON);
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_44;
+        ctx->commandNext = CONTROLLER_COMMAND_END_FIGHT;
     } else if (BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_RESULT_CAPTURED_MON) {
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
-        ctx->commandNext = CONTROLLER_COMMAND_44;
+        ctx->commandNext = CONTROLLER_COMMAND_END_FIGHT;
     } else if (BattleSystem_GetBattleOutcomeFlags(battleSystem) == BATTLE_RESULT_PLAYER_FLED) {
-        ctx->command = CONTROLLER_COMMAND_44;
+        ctx->command = CONTROLLER_COMMAND_END_FIGHT;
     }
     ctx->battleEndFlag = TRUE;
 }
 
 static void BattleControllerPlayer_ScreenWipe(BattleSystem *battleSystem, BattleContext *ctx) {
     if (IsPaletteFadeFinished() == TRUE) {
-        ctx->command = CONTROLLER_COMMAND_44;
+        ctx->command = CONTROLLER_COMMAND_END_FIGHT;
     }
 }
 
@@ -3407,7 +3407,7 @@ static void BattleControllerPlayer_EndFight(BattleSystem *battleSystem, BattleCo
         sub_020376EC(22);
     }
 
-    ctx->command = CONTROLLER_COMMAND_45;
+    ctx->command = CONTROLLER_COMMAND_END_WAIT;
 }
 
 static void BattleControllerPlayer_EndWait(BattleSystem *battleSystem, BattleContext *ctx) {
@@ -3674,7 +3674,7 @@ static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerComm
         }
         ctx->command = CONTROLLER_COMMAND_RUN_SCRIPT;
         ctx->commandNext = commandNext;
-        ctx->playerActions[ctx->battlerIdFainted].command = CONTROLLER_COMMAND_40;
+        ctx->playerActions[ctx->battlerIdFainted].command = CONTROLLER_COMMAND_MOVE_END;
         return TRUE;
     } else {
         ctx->command = command;
@@ -3966,7 +3966,7 @@ static void ov12_0224E414(BattleSystem *battleSystem, BattleContext *ctx) {
     u32 data;
 
     for (battler = 0; battler < maxBattlers; battler++) {
-        if (ctx->playerActions[battler].command != CONTROLLER_COMMAND_40) {
+        if (ctx->playerActions[battler].command != CONTROLLER_COMMAND_MOVE_END) {
             if (ctx->unk_314C[battler] & 1) {
                 data = ctx->playerActions[battler].command - CONTROLLER_COMMAND_FIGHT_INPUT + BATTLE_INPUT_FIGHT;
                 ov12_0223BDDC(battleSystem, battler, data);
