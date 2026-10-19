@@ -46,7 +46,7 @@
 #define BATTLER_CATEGORY_MSG_TEMP           0xFF
 
 // Battler Status
-#define BATTLER_STATUS_SWITCHING    1
+#define BATTLER_STATUS_SWITCHING 1
 
 #ifndef PM_ASM
 
