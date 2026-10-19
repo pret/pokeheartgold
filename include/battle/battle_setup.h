@@ -40,7 +40,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     void *unk_128;
     SaveWiFiHistory *wifiHistory;
     Options *options; // 130
-    struct UnkStruct_02067A60 *unk_134;
+    struct CaptureAttempt *captureAttempt;
     struct BattleSetupSub_138 unk138;
     GameStats *gameStats; // 144
     SavePalPad *palPad;   // 148

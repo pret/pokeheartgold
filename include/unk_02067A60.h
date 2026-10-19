@@ -5,11 +5,11 @@
 #include "heap.h"
 #include "pokemon_types_def.h"
 
-struct UnkStruct_02067A60;
+struct CaptureAttempt;
 struct UnkStruct_02067BF8;
 
-struct UnkStruct_02067A60 *sub_02067A60(enum HeapID heapID);
-void sub_02067A78(struct UnkStruct_02067A60 *);
+struct CaptureAttempt *CaptureAttempt_New(enum HeapID heapID);
+void CaptureAttempt_Free(struct CaptureAttempt *);
 
 struct UnkStruct_02067BF8 *sub_02067BF8(enum HeapID heapID, FieldSystem *fieldSystem, Pokemon *pokemon, u16 r3, u16 a4, s16 a5, s16 a6);
 BOOL sub_02067C30(TaskManager *taskManager);
