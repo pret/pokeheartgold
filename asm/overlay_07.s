@@ -755,8 +755,8 @@ _0221C3A4:
 	pop {r4, pc}
 	thumb_func_end ov07_0221C394
 
-	thumb_func_start ov07_0221C3B0
-ov07_0221C3B0: ; 0x0221C3B0
+	thumb_func_start BattleAnimSystem_IsMoveActive
+BattleAnimSystem_IsMoveActive: ; 0x0221C3B0
 	ldr r0, [r0, #0x10]
 	cmp r0, #1
 	bne _0221C3BA
@@ -766,10 +766,10 @@ _0221C3BA:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end ov07_0221C3B0
+	thumb_func_end BattleAnimSystem_IsMoveActive
 
-	thumb_func_start ov07_0221C3C0
-ov07_0221C3C0: ; 0x0221C3C0
+	thumb_func_start BattleAnimSystem_FreeScriptData
+BattleAnimSystem_FreeScriptData: ; 0x0221C3C0
 	push {r3, lr}
 	ldr r0, [r0, #0x14]
 	cmp r0, #0
@@ -784,7 +784,7 @@ _0221C3D2:
 	mov r0, #1
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end ov07_0221C3C0
+	thumb_func_end BattleAnimSystem_FreeScriptData
 
 	thumb_func_start ov07_0221C3DC
 ov07_0221C3DC: ; 0x0221C3DC
@@ -47992,7 +47992,7 @@ _02233272:
 	add r1, r7, #0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	bl sub_0200602C
+	bl Sound_PlayPannedEffect
 _02233286:
 	add r6, r6, #1
 	add r4, #8
@@ -48117,7 +48117,7 @@ _02233352:
 	bne _0223335E
 	ldr r0, _02233384 ; =0x000005FD
 	mov r1, #0x75
-	bl sub_0200602C
+	bl Sound_PlayPannedEffect
 _0223335E:
 	ldr r0, [r5, #0x30]
 	add r1, r4, #0
@@ -48692,7 +48692,7 @@ _02233786:
 	bne _0223379A
 	ldr r0, _02233870 ; =0x000007E8
 	mov r1, #0x75
-	bl sub_0200602C
+	bl Sound_PlayPannedEffect
 _0223379A:
 	ldr r0, [r4, #8]
 	add r0, r0, #1

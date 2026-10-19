@@ -8,7 +8,7 @@
 .public sub_02005B58
 .public PlayBGM
 .public GF_SndStartFadeOutBGM
-.public sub_0200602C
+.public Sound_PlayPannedEffect
 .public PlaySE
 .public StopSE
 .public IsCryFinished
@@ -77,7 +77,7 @@
 .public sub_02070C24
 .public sub_02070D84
 .public CopyPokemonToPokemon
-.public sub_0207204C
+.public Species_PlayDelayedCry
 .public MaskOfFlagNo
 .public TrainerClassToBackpicID
 .public NARC_ReadPokepicAnimScript
@@ -103,8 +103,8 @@
 .public ov07_0221BFE0
 .public ov07_0221C01C
 .public ov07_0221C394
-.public ov07_0221C3B0
-.public ov07_0221C3C0
+.public BattleAnimSystem_IsMoveActive
+.public BattleAnimSystem_FreeScriptData
 .public ov07_0221FB90
 .public ov07_0221FDFC
 .public ov07_0221FE08
@@ -156,7 +156,7 @@
 .public BattleSystem_GetPartySize
 .public BattleSystem_GetPartyMon
 .public BattleSystem_GetPokepicManager
-.public ov12_0223A8DC
+.public BattleSystem_GetAnimationSystem
 .public BattleSystem_GetSpriteSystem
 .public BattleSystem_GetSpriteManager
 .public ov12_0223A8F4

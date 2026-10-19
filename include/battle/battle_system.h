@@ -18,7 +18,7 @@ Party *BattleSystem_GetParty(BattleSystem *battleSystem, int battlerId);
 int BattleSystem_GetPartySize(BattleSystem *battleSystem, int battlerId);
 Pokemon *BattleSystem_GetPartyMon(BattleSystem *battleSystem, int battlerId, int index);
 PokepicManager *BattleSystem_GetPokepicManager(BattleSystem *battleSystem);
-BattleAnimSystem *ov12_0223A8DC(BattleSystem *battleSystem);
+BattleAnimSystem *BattleSystem_GetAnimationSystem(BattleSystem *battleSystem);
 SpriteSystem *BattleSystem_GetSpriteSystem(BattleSystem *battleSystem);
 SpriteManager *BattleSystem_GetSpriteManager(BattleSystem *battleSystem);
 UnkBattleSystemSub17C *ov12_0223A8F4(BattleSystem *battleSystem, int index);
