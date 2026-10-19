@@ -5,9 +5,10 @@
 #include "obj_char_transfer.h"
 #include "text.h"
 #include "unk_02013534.h"
+#include "unk_02091054.h"
 
 void ov57_02239814(BgConfig *bgConfig, Window *window, int left, int top, int width, int height, int pltt, int baseTile);
-void ov57_022387E0(CapsuleAppManager *appMan, int index, int a2, int a3, int a4);
+void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
 
 void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
     s16 x, y;
@@ -77,4 +78,105 @@ void ov57_02238794(CapsuleAppManager *appMan) {
 void ov57_022387C0(CapsuleAppManager *appMan, BOOL flag) {
     TextOBJ_SetSpritesDrawFlag(appMan->unk_0D4.unk_18C[0], flag);
     TextOBJ_SetSpritesDrawFlag(appMan->unk_0D4.unk_18C[1], flag);
+}
+
+void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette) {
+    TextOBJTemplate fontOAMManager;
+    String *string;
+    int unk_448;
+    int v3;
+    MsgData *messageLoader;
+    Window window;
+
+    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+    string = NewString_ReadMsgData(messageLoader, msg_0011_00005 + index);
+
+    InitWindow(&window);
+    AddTextWindowTopLeftCorner(appMan->unk_0D4.unk_010, &window, 10, 2, 0, 0);
+    AddTextPrinterParameterizedWithColor(&window, FONT_SUBSCREEN, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 13, 2), NULL);
+
+    unk_448 = 30000;
+    v3 = sub_02013688(&window, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_52);
+    sub_02021AC8(v3, 1, NNS_G2D_VRAM_TYPE_2DSUB, &appMan->unk_0D4.unk_194[index]);
+
+    fontOAMManager.fontSystem = appMan->unk_0D4.unk_188;
+    fontOAMManager.window = &window;
+    fontOAMManager.spriteList = SpriteManager_GetSpriteList(appMan->unk_0D4.unk_00C);
+    fontOAMManager.plttResourceProxy = SpriteManager_FindPlttResourceProxy(appMan->unk_0D4.unk_00C, unk_448);
+    fontOAMManager.sprite = NULL;
+    fontOAMManager.offset = appMan->unk_0D4.unk_194[index].offset;
+    fontOAMManager.x = x - FontID_String_GetWidth(FONT_SUBSCREEN, string, 0) / 2;
+    fontOAMManager.y = y + 192;
+    fontOAMManager.unk_20 = 1;
+    fontOAMManager.unk_24 = 40;
+    fontOAMManager.vram = NNS_G2D_VRAM_TYPE_2DSUB;
+    fontOAMManager.heapID = HEAP_ID_52;
+    appMan->unk_0D4.unk_18C[index] = sub_020135D8(&fontOAMManager);
+
+    sub_020138E0(appMan->unk_0D4.unk_18C[index], palette);
+    String_Delete(string);
+    DestroyMsgData(messageLoader);
+    RemoveWindow(&window);
+}
+
+void ov57_022388E4(CapsuleAppManager *appMan, int pageCutoff) {
+    int i;
+    int sealIndex;
+    int uniqueSeals;
+    int maxSeals;
+    BOOL sealOnCapsule;
+    int sealCounts;
+
+    sealIndex = 0;
+    uniqueSeals = 0;
+    maxSeals = pageCutoff;
+    maxSeals *= SEALS_PER_PAGE;
+
+    for (i = 0; i < SEALS_PER_PAGE; i++) {
+        appMan->unk_448.sealIDs[i] = SEAL_NONE;
+    }
+
+    for (i = 0; i < SEAL_MAX + 1; i++) {
+        for (int j = 0; j < MAX_CAPSULES; j++) {
+            sealOnCapsule = SealIsOnCapsule(appMan->unk_004[j].capsule, i);
+
+            if (sealOnCapsule) {
+                break;
+            }
+        }
+
+        sealCounts = appMan->unk_080[i];
+
+        if (sealCounts != 0 || sealOnCapsule == TRUE) {
+            uniqueSeals++;
+
+            if (uniqueSeals <= maxSeals) {
+                continue;
+            }
+
+            appMan->unk_448.sealIDs[sealIndex] = i + 1;
+            sealIndex++;
+
+            if (sealIndex >= SEALS_PER_PAGE) {
+                break;
+            }
+        }
+    }
+}
+
+void ov57_02238958(CapsuleAppManager *appMan) {
+    int i;
+    int memberIdx;
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+
+    for (i = 0; i < SEALS_PER_PAGE; i++) {
+        memberIdx = CapsuleMenu_GetSealMemberIdx(appMan->unk_448.sealIDs[i]);
+        SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_a_0_8_7, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, i + 25000);
+    }
+
+    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_a_0_8_7, 6, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 26007);
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 37, TRUE, 27037);
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 35, TRUE, 28035);
 }
