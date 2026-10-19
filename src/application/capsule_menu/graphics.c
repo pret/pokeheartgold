@@ -1,4 +1,8 @@
 #include "application/capsule_menu/defs.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0011.h"
+
+#include "text.h"
 
 void ov57_02239814(BgConfig *bgConfig, Window *window, int left, int top, int width, int height, int pltt, int baseTile);
 
@@ -23,4 +27,20 @@ void ov57_0223864C(CapsuleAppManager *appManager) {
     RemoveWindow(&appManager->unk_0D4.unk_018[0]);
     RemoveWindow(&appManager->unk_0D4.unk_018[3]);
     RemoveWindow(&appManager->unk_0D4.unk_018[2]);
+}
+
+void ov57_0223866C(CapsuleAppManager *appManager, BOOL show) {
+    if (show) {
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+        String *string = NewString_ReadMsgData(msgData, msg_0011_00017);
+        FillWindowPixelBuffer(&appManager->unk_0D4.unk_018[2], 0);
+        u32 x = (64 - FontID_String_GetWidth(4, string, 0));
+        x /= 2;
+        AddTextPrinterParameterizedWithColor(&appManager->unk_0D4.unk_018[2], 4, string, x, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 15, 0), NULL);
+        String_Delete(string);
+        DestroyMsgData(msgData);
+        ScheduleWindowCopyToVram(&appManager->unk_0D4.unk_018[2]);
+    } else {
+        ClearWindowTilemapAndScheduleTransfer(&appManager->unk_0D4.unk_018[2]);
+    }
 }
