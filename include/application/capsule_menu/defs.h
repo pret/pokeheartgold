@@ -4,12 +4,14 @@
 #include "bg_window.h"
 #include "gf_3d_vramman.h"
 #include "menu_input_state.h"
+#include "obj_char_transfer.h"
 #include "overlay_57.h"
 #include "pokepic.h"
 #include "seal_case.h"
 #include "sprite_system.h"
 #include "touch_hitbox_controller.h"
 #include "touchscreen_list_menu.h"
+#include "unk_02013534.h"
 #include "unk_02016EDC.h"
 
 #define SEALS_PER_PAGE                8
@@ -48,7 +50,10 @@ typedef struct CapsuleGraphicsManager {
     TouchscreenListMenuSpawner *unk_174;
     u8 filler_178[12];
     GF3DVramMan *unk_184;
-    u8 filler_188[0x28];
+    UnkStruct_02013534 *unk_188;
+    TextOBJ *unk_18C[2];
+    UnkStruct_02021AC8 unk_194[2];
+    BOOL unk_1AC;
     UnkStruct_02016EDC *unk_1B0;
     BOOL unk_1B4;
 } CapsuleGraphicsManager;
