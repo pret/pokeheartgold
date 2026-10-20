@@ -111,8 +111,8 @@
 .public ov07_02233DB8
 .public ov07_02233ECC
 .public ov07_02233F20
-.public ov12_02237B6C
-.public ov12_02237CC4
+.public BattleSystem_FreeGraphics
+.public BattleSystem_HideBattleScreen
 .public ov12_02237D00
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetWindow
@@ -145,10 +145,10 @@
 .public BattleSystem_MetBill
 .public BattleSystem_GameStatIncrement
 .public ov12_0223BB44
-.public ov12_0223BBF0
+.public BattleSystem_SetRenderMode
 .public BattleSystem_HpBar_Delete
 .public BattleSystem_SetCriticalHpMusicFlag
-.public ov12_0223BD8C
+.public BattleSystem_SetCaughtBattlerIndex
 .public BattleSystem_Random
 .public BattleSystem_GetBugContestCaughtMon
 .public ov12_0223C224

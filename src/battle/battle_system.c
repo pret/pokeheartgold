@@ -1007,7 +1007,7 @@ void ov12_0223BBD8(UnkBattleSystemSub1D0 *ptr, int index, int a2) {
     ptr[index].unkC = a2;
 }
 
-void ov12_0223BBF0(BattleSystem *battleSystem, u8 a1) {
+void BattleSystem_SetRenderMode(BattleSystem *battleSystem, u8 a1) {
     battleSystem->unk23FD = a1;
 }
 
@@ -1105,8 +1105,8 @@ void BattleSystem_SetCriticalHpMusicDelay(BattleSystem *battleSystem, u8 delay) 
     battleSystem->criticalHpMusicDelay = delay;
 }
 
-void ov12_0223BD8C(BattleSystem *battleSystem, int a1) {
-    battleSystem->unk243C = a1;
+void BattleSystem_SetCaughtBattlerIndex(BattleSystem *battleSystem, int a1) {
+    battleSystem->battlerIdCaught = a1;
 }
 
 u16 BattleSystem_Random(BattleSystem *battleSystem) {

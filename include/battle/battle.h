@@ -633,7 +633,7 @@ struct BattleSystem {
     BOOL metBill;
     u32 unk2434;
     int unk2438;
-    int unk243C;
+    int battlerIdCaught;
     int unk2440;
     u8 unk2442;
     u8 unk2445;

@@ -143,8 +143,8 @@
 .public ov10_0221BE20
 .public ov10_0221BEF4
 .public ov10_022205BC
-.public ov12_02237B0C
-.public ov12_02237BB8
+.public BattleSystem_EnterSubMenu
+.public BattleSystem_ExitSubMenu
 .public ov12_02237ED0
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetWindow

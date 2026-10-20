@@ -6785,7 +6785,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
         break;
     case STATE_GET_POKEMON_CHECK_MON_DATA:
         if (!ov07_02232F60(data->ballData, BALL_ANIM_FADE) && !(data->tempData[DATA_GET_POKEMON_FRAME_COUNTER]--, data->tempData[DATA_GET_POKEMON_FRAME_COUNTER])) {
-            ov12_0223BD8C(data->battleSystem, battlerId);
+            BattleSystem_SetCaughtBattlerIndex(data->battleSystem, battlerId);
             Pokemon *mon = BattleSystem_GetPartyMon(data->battleSystem, battlerId, data->ctx->selectedMonIndex[battlerId]); // Get the data of the caught Pokemon.
             if (BattleSystem_GetBattleType(data->battleSystem) & (BATTLE_TYPE_PAL_PARK | BATTLE_TYPE_TUTORIAL)) {           // If this was the Catching Demo or a Pal Park encounter...
                 ov12_022567D4(data->battleSystem, data->ctx, BattleSystem_GetPartyMon(data->battleSystem, battlerId, data->ctx->selectedMonIndex[battlerId]));
@@ -6837,7 +6837,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
         if (!PaletteData_GetSelectedBuffersBitmask(paletteData)) {
             ov07_02233ECC(data->ballData);
             PokepicManager_DeleteAllPics(pokepicManager);
-            ov12_02237CC4(data->battleSystem);
+            BattleSystem_HideBattleScreen(data->battleSystem);
             ov12_02265FC4(ov12_0223A8F4(data->battleSystem, 0), 0);
             ov12_02265FC4(ov12_0223A8F4(data->battleSystem, 1), 0);
             OpponentData_SetTrainerVisibility(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
@@ -6897,7 +6897,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
             ov07_02233ECC(data->ballData);
             PokepicManager_DeleteAllPics(pokepicManager);
             OpponentData_SetTrainerVisibility(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
-            ov12_02237CC4(data->battleSystem);
+            BattleSystem_HideBattleScreen(data->battleSystem);
             ov12_02237D00(data->battleSystem);
             PokepicTemplate picTemplate;
             GetPokemonSpriteCharAndPlttNarcIds(&picTemplate, mon, 2);
@@ -6957,8 +6957,8 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
                 }
             }
 
-            ov12_02237B6C(data->battleSystem);
-            ov12_0223BBF0(data->battleSystem, 1);
+            BattleSystem_FreeGraphics(data->battleSystem);
+            BattleSystem_SetRenderMode(data->battleSystem, 1);
         }
         break;
     case STATE_GET_POKEMON_WAIT_FOR_NAMING_SCREEN:
@@ -6971,7 +6971,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
             }
             NamingScreen_DeleteArgs(namingScreenArgs);
             OverlayManager_Delete(data->tempPointers[POINTER_GET_POKEMON_NAMING_SCREEN_OVERLAY_MANAGER]);
-            ov12_0223BBF0(data->battleSystem, 2);
+            BattleSystem_SetRenderMode(data->battleSystem, 2);
             data->state = STATE_GET_POKEMON_STORE_MON_AFTER_NAMING_SCREEN;
         }
         break;

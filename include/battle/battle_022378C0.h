@@ -6,10 +6,10 @@
 #include "overlay_manager.h"
 
 BOOL Battle_Run(OverlayManager *man, int *state);
-void ov12_02237B0C(BattleSystem *battleSystem);
-void ov12_02237B6C(BattleSystem *battleSystem);
-void ov12_02237BB8(BattleSystem *battleSystem);
-void ov12_02237CC4(BattleSystem *battleSystem);
+void BattleSystem_EnterSubMenu(BattleSystem *battleSystem);
+void BattleSystem_FreeGraphics(BattleSystem *battleSystem);
+void BattleSystem_ExitSubMenu(BattleSystem *battleSystem);
+void BattleSystem_HideBattleScreen(BattleSystem *battleSystem);
 void ov12_02237D00(BattleSystem *battleSystem);
 
 // the following functions are static and have yet to be decompiled

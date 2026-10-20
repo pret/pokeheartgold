@@ -168,12 +168,12 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
     return FALSE;
 }
 
-void ov12_02237B0C(BattleSystem *battleSystem) {
+void BattleSystem_EnterSubMenu(BattleSystem *battleSystem) {
     BattleInput_Free(battleSystem->battleInput);
     BgConfig_CleanupBattleMenuBackgrounds(battleSystem->bgConfig);
     battleSystem->unk240E_F = 1;
     FontID_Release(4);
-    ov12_0223BBF0(battleSystem, 3);
+    BattleSystem_SetRenderMode(battleSystem, 3);
 
     if (battleSystem->unk2445 == 0) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
@@ -183,7 +183,7 @@ void ov12_02237B0C(BattleSystem *battleSystem) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_8), OVY_LOAD_ASYNC);
 }
 
-void ov12_02237B6C(BattleSystem *battleSystem) {
+void BattleSystem_FreeGraphics(BattleSystem *battleSystem) {
     Main_SetVBlankIntrCB(NULL, NULL);
     BattleInput_Free(battleSystem->battleInput);
     RemoveWindow(battleSystem->window);
@@ -195,7 +195,7 @@ void ov12_02237B6C(BattleSystem *battleSystem) {
     FontID_Release(4);
 }
 
-void ov12_02237BB8(BattleSystem *battleSystem) {
+void BattleSystem_ExitSubMenu(BattleSystem *battleSystem) {
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_8));
 
     if (battleSystem->unk2445 == 0) {
@@ -204,7 +204,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), OVY_LOAD_ASYNC);
     }
 
-    ov12_0223BBF0(battleSystem, 0);
+    BattleSystem_SetRenderMode(battleSystem, 0);
 
     int size = sub_02026E9C();
     void *data = GetSubBgPlttAddr();
@@ -234,7 +234,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(battleSystem->spriteRenderer), 0, FX32_CONST(272));
 }
 
-void ov12_02237CC4(BattleSystem *battleSystem) {
+void BattleSystem_HideBattleScreen(BattleSystem *battleSystem) {
     RemoveWindow(battleSystem->window);
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);

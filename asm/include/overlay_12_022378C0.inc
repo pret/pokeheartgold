@@ -190,10 +190,10 @@
 .public ov07_0221BEDC
 .public ov07_0221BFE0
 .public Battle_Run
-.public ov12_02237B0C
-.public ov12_02237B6C
-.public ov12_02237BB8
-.public ov12_02237CC4
+.public BattleSystem_EnterSubMenu
+.public BattleSystem_FreeGraphics
+.public BattleSystem_ExitSubMenu
+.public BattleSystem_HideBattleScreen
 .public ov12_02237D00
 .public ov12_02237ED0
 .public ov12_022399BC
@@ -216,7 +216,7 @@
 .public BattleSystem_GetFrame
 .public BattleSystem_TryChangeForm
 .public ov12_0223B870
-.public ov12_0223BBF0
+.public BattleSystem_SetRenderMode
 .public BattleSystem_HpBar_Init
 .public BattleSystem_SetHpBarDisabled
 .public BattleSystem_GetCriticalHpMusicFlag

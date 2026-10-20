@@ -3844,7 +3844,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
         break;
     case 1:
         if (PaletteData_GetSelectedBuffersBitmask(paletteData) == 0) {
-            ov12_02237B0C(bagMenuData->battleSys);
+            BattleSystem_EnterSubMenu(bagMenuData->battleSys);
 
             bagMenuData->battleBagCtx = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattleBagContext));
             memset(bagMenuData->battleBagCtx, 0, sizeof(BattleBagContext));
@@ -3945,7 +3945,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
         }
         break;
     case 6:
-        ov12_02237BB8(bagMenuData->battleSys);
+        BattleSystem_ExitSubMenu(bagMenuData->battleSys);
         BattleInput_SetKeyPressed(BattleSystem_GetBattleInput(bagMenuData->battleSys), bagMenuData->isCursorEnabled);
         PaletteData_BeginPaletteFade(paletteData, PLTTBUF_MAIN_BG_F | PLTTBUF_MAIN_OBJ_F, 0xC00, -8, 7, 0, 0);
         PaletteData_BeginPaletteFade(paletteData, PLTTBUF_SUB_BG_F | PLTTBUF_SUB_OBJ_F, 0xFFFF, -8, 16, 0, 0);
@@ -4425,7 +4425,7 @@ static void BattleDisplayTask_PlayerShowPartyMenu(SysTask *task, void *data) {
             int battler1, battler2;
             Pokemon *monSrc, *monDst;
 
-            ov12_02237B0C(partyMenuData->battleSys);
+            BattleSystem_EnterSubMenu(partyMenuData->battleSys);
 
             partyMenuData->battlePartyCtx = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattlePartyContext));
             partyMenuData->battlePartyCtx->party = SaveArray_Party_Alloc(HEAP_ID_BATTLE);
@@ -4520,7 +4520,7 @@ static void BattleDisplayTask_PlayerShowPartyMenu(SysTask *task, void *data) {
         break;
     case 2:
         if (partyMenuData->battlePartyCtx->battlePartyExited) {
-            ov12_02237BB8(partyMenuData->battleSys);
+            BattleSystem_ExitSubMenu(partyMenuData->battleSys);
             BattleInput_SetKeyPressed(BattleSystem_GetBattleInput(partyMenuData->battleSys), partyMenuData->battlePartyCtx->isCursorEnabled);
             PaletteData_BeginPaletteFade(paletteData, PLTTBUF_MAIN_BG_F | PLTTBUF_MAIN_OBJ_F, 0xC00, -8, 7, 0, 0);
             PaletteData_BeginPaletteFade(paletteData, PLTTBUF_SUB_BG_F | PLTTBUF_SUB_OBJ_F, 0xFFFF, -8, 16, 0, 0);
@@ -5367,7 +5367,7 @@ static void BattleDisplayTask_ForgetMove(SysTask *task, void *data) {
         break;
     case 1:
         if (PaletteData_GetSelectedBuffersBitmask(paletteData) == 0) {
-            ov12_02237B0C(forgetMoveData->battleSys);
+            BattleSystem_EnterSubMenu(forgetMoveData->battleSys);
 
             forgetMoveData->battlePartyCtx = Heap_Alloc(HEAP_ID_BATTLE, sizeof(BattlePartyContext));
             forgetMoveData->battlePartyCtx->party = BattleSystem_GetParty(forgetMoveData->battleSys, forgetMoveData->battler);
@@ -5388,7 +5388,7 @@ static void BattleDisplayTask_ForgetMove(SysTask *task, void *data) {
         break;
     case 2:
         if (forgetMoveData->battlePartyCtx->battlePartyExited) {
-            ov12_02237BB8(forgetMoveData->battleSys);
+            BattleSystem_ExitSubMenu(forgetMoveData->battleSys);
             PaletteData_BeginPaletteFade(paletteData, PLTTBUF_SUB_BG_F | PLTTBUF_SUB_OBJ_F, 0xFFFF, -8, 16, 0, 0);
             forgetMoveData->state++;
         }

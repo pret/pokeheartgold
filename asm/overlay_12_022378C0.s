@@ -1104,7 +1104,7 @@ _022386A8:
 	cmp r0, #2
 	beq _022386C0
 	add r0, r4, #0
-	bl ov12_02237B6C
+	bl BattleSystem_FreeGraphics
 _022386C0:
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
