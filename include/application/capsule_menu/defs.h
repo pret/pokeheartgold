@@ -42,7 +42,7 @@ typedef struct SealPages {
 
 typedef struct CapsuleGraphicsManager {
     int unk_000;
-    u8 filler_004[4];
+    int unk_004;
     SpriteSystem *unk_008;
     SpriteManager *unk_00C;
     BgConfig *unk_010;
@@ -84,7 +84,7 @@ typedef struct CapsuleAppManager {
     u8 unk_080[SEAL_MAX + 1];
     CapsuleGraphicsManager unk_0D4;
     CapsuleSprites unk_0D8[MAX_CAPSULES];
-    u8 filler_31C[0x8];
+    ManagedSprite *unk_31C[2];
     ManagedSprite *unk_324[PARTY_SIZE];
     ManagedSprite *unk_33C[CAPSULE_SELECTION_ARROWS];
     SealRenderInfo unk_34C[MAX_SEALS_ON_CAPSULE];

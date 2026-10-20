@@ -604,3 +604,90 @@ void ov57_02239184(CapsuleAppManager *appMan) {
         ManagedSprite_SetFlipMode(appMan->unk_33C[i], startingStates[i][2]);
     }
 }
+
+void ov57_0223921C(CapsuleAppManager *appMan) {
+    if (appMan->unk_0D4.unk_004 == 0) {
+        return;
+    }
+
+    for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
+        ManagedSprite_TickFrame(appMan->unk_33C[i]);
+    }
+}
+
+void ov57_02239240(CapsuleAppManager *appMan, int flag) {
+    for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
+        ManagedSprite_SetDrawFlag(appMan->unk_33C[i], flag);
+    }
+}
+
+void ov57_02239260(CapsuleAppManager *appMan) {
+    for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
+        Sprite_DeleteAndFreeResources(appMan->unk_33C[i]);
+    }
+}
+
+void ov57_0223927C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, int bufferId, int paletteIdx, NARC *narc) {
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, charFileId, TRUE, vramType, charFileId + 11000);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(paletteData, bufferId, spriteSystem, spriteManager, narc, plttFileId, FALSE, paletteIdx, vramType, plttFileId + 11000);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, cellFileId, TRUE, cellFileId + 11000);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, animFileId, TRUE, animFileId + 11000);
+}
+
+void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
+    ov57_0223927C(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, appMan->unk_0D4.unk_014, 17, 3, 19, 18, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
+    ov57_0223927C(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, appMan->unk_0D4.unk_014, 32, 5, 34, 33, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
+    ManagedSpriteTemplate spriteTemplate;
+
+    for (int i = 0; i < MAX_CAPSULES; i++) {
+        spriteTemplate.x = 0;
+        spriteTemplate.y = 0;
+        spriteTemplate.z = 0;
+        spriteTemplate.animation = appMan->unk_0D8[i].animIdx;
+        spriteTemplate.drawPriority = 40 - i;
+        spriteTemplate.pal = 0;
+        spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+        spriteTemplate.bgPriority = 2;
+        spriteTemplate.vramTransfer = FALSE;
+        spriteTemplate.resIdList[0] = 11017;
+        spriteTemplate.resIdList[1] = 11003;
+        spriteTemplate.resIdList[2] = 11019;
+        spriteTemplate.resIdList[3] = 11018;
+        spriteTemplate.resIdList[4] = -1;
+        spriteTemplate.resIdList[5] = -1;
+
+        appMan->unk_0D8[i].sprite = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
+        s16 x, y;
+
+        ov57_02238DAC(i, &x, &y);
+        ManagedSprite_SetPositionXY(appMan->unk_0D8[i].sprite, x, y);
+    }
+
+    spriteTemplate.x = 0;
+    spriteTemplate.y = 0;
+    spriteTemplate.z = 0;
+    spriteTemplate.animation = 0;
+    spriteTemplate.drawPriority = 20;
+    spriteTemplate.pal = 0;
+    spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+    spriteTemplate.bgPriority = 2;
+    spriteTemplate.vramTransfer = FALSE;
+    spriteTemplate.resIdList[0] = 11032;
+    spriteTemplate.resIdList[1] = 11005;
+    spriteTemplate.resIdList[2] = 11034;
+    spriteTemplate.resIdList[3] = 11033;
+    spriteTemplate.resIdList[4] = -1;
+    spriteTemplate.resIdList[5] = -1;
+
+    appMan->unk_31C[0] = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
+    appMan->unk_31C[1] = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
+
+    s16 x, y;
+
+    ov57_02238DAC(appMan->unk_3EC, &x, &y);
+    ManagedSprite_SetPositionXY(appMan->unk_31C[0], x, y);
+    ManagedSprite_SetPositionXY(appMan->unk_31C[1], x, y);
+    ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 25);
+    ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
+    ManagedSprite_SetAnim(appMan->unk_31C[1], 0);
+}
