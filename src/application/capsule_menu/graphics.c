@@ -513,10 +513,10 @@ void ov57_02239014(CapsuleAppManager *appMan) {
 
     for (int i = 0; i < MAX_CAPSULES; i++) {
         capsule = appMan->unk_004[i].capsule;
-        appMan->unk_0D8[i].animIdx = ov57_0223A07C(capsule);
-        appMan->unk_0D8[i].pokemonIndex = appMan->unk_004[i].partyIdx;
+        appMan->unk_28C[i].animIdx = ov57_0223A07C(capsule);
+        appMan->unk_28C[i].pokemonIndex = appMan->unk_004[i].partyIdx;
 
-        if ((appMan->unk_0D8[i].animIdx == 0) && (appMan->unk_0D8[i].pokemonIndex != 0xFF)) {
+        if ((appMan->unk_28C[i].animIdx == 0) && (appMan->unk_28C[i].pokemonIndex != 0xFF)) {
             ov57_0223BC4C(appMan, i);
         }
     }
@@ -643,7 +643,7 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
         spriteTemplate.x = 0;
         spriteTemplate.y = 0;
         spriteTemplate.z = 0;
-        spriteTemplate.animation = appMan->unk_0D8[i].animIdx;
+        spriteTemplate.animation = appMan->unk_28C[i].animIdx;
         spriteTemplate.drawPriority = 40 - i;
         spriteTemplate.pal = 0;
         spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
@@ -656,11 +656,11 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
         spriteTemplate.resIdList[4] = -1;
         spriteTemplate.resIdList[5] = -1;
 
-        appMan->unk_0D8[i].sprite = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
+        appMan->unk_28C[i].sprite = SpriteSystem_NewSprite(appMan->unk_0D4.unk_008, appMan->unk_0D4.unk_00C, &spriteTemplate);
         s16 x, y;
 
         ov57_02238DAC(i, &x, &y);
-        ManagedSprite_SetPositionXY(appMan->unk_0D8[i].sprite, x, y);
+        ManagedSprite_SetPositionXY(appMan->unk_28C[i].sprite, x, y);
     }
 
     spriteTemplate.x = 0;
@@ -690,4 +690,66 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
     ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 25);
     ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
     ManagedSprite_SetAnim(appMan->unk_31C[1], 0);
+}
+
+void ov57_022394AC(CapsuleAppManager *appMan) {
+    ov57_02239014(appMan);
+    ov57_02238F48(appMan);
+
+    for (int i = 0; i < MAX_CAPSULES; i++) {
+        if (appMan->unk_28C[i].sprite == NULL) {
+            continue;
+        }
+
+        ManagedSprite_SetAnim(appMan->unk_28C[i].sprite, appMan->unk_28C[i].animIdx);
+    }
+}
+
+void ov57_022394D8(CapsuleAppManager *appMan, int capsuleIdx1, int capsuleIdx2) {
+    int tmp;
+    int index1;
+    int index2;
+    int capsuleID1;
+    int capsuleID2;
+    BallCapsule tmpCapsule;
+
+    index1 = appMan->unk_004[capsuleIdx1].partyIdx;
+    index2 = appMan->unk_004[capsuleIdx2].partyIdx;
+
+    if (index1 != 0xFF) {
+        capsuleID1 = capsuleIdx2 + 1;
+        SetMonData(appMan->unk_000->mons[index1], MON_DATA_BALL_CAPSULE_ID, (u8 *)&capsuleID1);
+    }
+
+    if (index2 != 0xFF) {
+        capsuleID2 = capsuleIdx1 + 1;
+        SetMonData(appMan->unk_000->mons[index2], MON_DATA_BALL_CAPSULE_ID, (u8 *)&capsuleID2);
+    }
+
+    tmp = appMan->unk_004[capsuleIdx1].partyIdx;
+    appMan->unk_004[capsuleIdx1].partyIdx = appMan->unk_004[capsuleIdx2].partyIdx;
+    appMan->unk_004[capsuleIdx2].partyIdx = tmp;
+
+    CopyCapsule(appMan->unk_004[capsuleIdx1].capsule, &tmpCapsule);
+    CopyCapsule(appMan->unk_004[capsuleIdx2].capsule, appMan->unk_004[capsuleIdx1].capsule);
+    CopyCapsule(&tmpCapsule, appMan->unk_004[capsuleIdx2].capsule);
+    ov57_022394AC(appMan);
+}
+
+void ov57_02239558(CapsuleAppManager *appMan) {
+    for (int i = 0; i < MAX_CAPSULES; i++) {
+        ManagedSprite_TickFrame(appMan->unk_28C[i].sprite);
+    }
+
+    ManagedSprite_TickFrame(appMan->unk_31C[0]);
+    ManagedSprite_TickFrame(appMan->unk_31C[1]);
+}
+
+void ov57_02239588(CapsuleAppManager *appMan) {
+    for (int i = 0; i < MAX_CAPSULES; i++) {
+        Sprite_DeleteAndFreeResources(appMan->unk_28C[i].sprite);
+    }
+
+    Sprite_DeleteAndFreeResources(appMan->unk_31C[0]);
+    Sprite_DeleteAndFreeResources(appMan->unk_31C[1]);
 }
