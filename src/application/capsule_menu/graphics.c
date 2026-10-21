@@ -7,6 +7,7 @@
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
 #include "render_window.h"
+#include "screen_fade.h"
 #include "text.h"
 #include "unk_02013534.h"
 #include "unk_02014DA0.h"
@@ -880,7 +881,7 @@ void ov57_022399F8(CapsuleAppManager *appMan) {
         index = i - 5;
         sealID = appMan->unk_448.sealIDs[index];
 
-        if (sealID == 0) {
+        if (sealID == SEAL_NONE) {
             FillWindowPixelBuffer(window, 0xEE);
             ScheduleWindowCopyToVram(window);
             continue;
@@ -891,9 +892,76 @@ void ov57_022399F8(CapsuleAppManager *appMan) {
         string = String_New(100, HEAP_ID_52);
         sealCount = SealCaseInventory_GetSealQuantity(appMan->unk_064, sealID - 1);
 
-        String16_FormatInteger(string, sealCount, 3, 1, 1);
+        String16_FormatInteger(string, sealCount, 3, PRINTING_MODE_RIGHT_ALIGN, 1);
         AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, SEAL_COUNT_TEXT_XOFFSET, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         ScheduleWindowCopyToVram(window);
         String_Delete(string);
     }
+}
+
+void ov57_02239A8C(CapsuleAppManager *appMan, int index) {
+    int index_dupe;
+    int sealID;
+    int sealCount;
+    String *string;
+    Window *window = &appMan->unk_0D4.unk_018[index + 5];
+    index_dupe = index;
+    sealID = appMan->unk_448.sealIDs[index_dupe];
+
+    if (sealID == SEAL_NONE) {
+        FillWindowPixelBuffer(window, 0xEE);
+        ScheduleWindowCopyToVram(window);
+        return;
+    }
+
+    FillWindowPixelBuffer(window, 0);
+
+    string = String_New(100, HEAP_ID_52);
+    sealCount = SealCaseInventory_GetSealQuantity(appMan->unk_064, sealID - 1);
+
+    String16_FormatInteger(string, sealCount, 3, PRINTING_MODE_RIGHT_ALIGN, 1);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, SEAL_COUNT_TEXT_XOFFSET, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    ScheduleWindowCopyToVram(window);
+    String_Delete(string);
+}
+
+void ov57_02239B0C(CapsuleAppManager *appMan) {
+    for (int i = 5; i < CAPSULE_MENU_WINDOW_NUM; i++) {
+        ClearWindowTilemapAndScheduleTransfer(&appMan->unk_0D4.unk_018[i]);
+        RemoveWindow(&appMan->unk_0D4.unk_018[i]);
+    }
+}
+
+void ov57_02239B2C(Window *window, int entryID) {
+    MsgData *messageLoader;
+    String *string;
+
+    if (entryID == 0xFFFF) {
+        FillWindowPixelBuffer(window, 15);
+        ScheduleWindowCopyToVram(window);
+        return;
+    }
+
+    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0015, HEAP_ID_52);
+    string = NewString_ReadMsgData(messageLoader, entryID);
+
+    FillWindowPixelBuffer(window, 15);
+    AddTextPrinterParameterized(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_INSTANT, NULL);
+    ScheduleWindowCopyToVram(window);
+    String_Delete(string);
+    DestroyMsgData(messageLoader);
+}
+
+void ov57_02239B94(void) {
+    GfGfx_BothDispOn();
+    GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
+}
+
+void ov57_02239BAC(void) {
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_52);
+}
+
+void ov57_02239BCC(void) {
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_52);
 }
