@@ -602,14 +602,12 @@ void ov57_02239114(CapsuleAppManager *appMan, NARC *narc) {
 
 void ov57_02239184(CapsuleAppManager *appMan) {
     ManagedSpriteTemplate spriteTemplate;
-    extern const int ov57_0223BE18[4][3];
-    int startingStates[4][3] /* = {
-         { 136, 16,  1 },
-         { 136, 128, 3 },
-         { 240, 16,  0 },
-         { 240, 128, 2 },
-     }*/;
-    ARRAY_ASSIGN(startingStates, ov57_0223BE18);
+    int startingStates[4][3] = {
+        { 136, 16,  1 },
+        { 136, 128, 3 },
+        { 240, 16,  0 },
+        { 240, 128, 2 },
+    };
 
     for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
         spriteTemplate.x = startingStates[i][0];
@@ -1027,4 +1025,114 @@ void ov57_02239D48(CapsuleAppManager *appMan, NARC *narc) {
     SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 23, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 35023);
     SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 25, TRUE, 27025);
     SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 24, TRUE, 28024);
+}
+
+void ov57_02239EB4(CapsuleAppManager *appMan) {
+    int i;
+    ManagedSprite **pageSprites;
+    ManagedSpriteTemplate spriteTemplate;
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+    pageSprites = appMan->unk_414;
+
+    spriteTemplate.x = 0;
+    spriteTemplate.y = 0;
+    spriteTemplate.z = 0;
+    spriteTemplate.animation = 0;
+    spriteTemplate.drawPriority = 60;
+    spriteTemplate.vram = NNS_G2D_VRAM_TYPE_2DSUB;
+    spriteTemplate.bgPriority = 1;
+    spriteTemplate.vramTransfer = FALSE;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_MCEL] = -1;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_MANM] = -1;
+
+    i = 8;
+
+    spriteTemplate.pal = 1;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = 25026;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = 26004;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = 27028;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = 28027;
+    pageSprites[i++] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = 25029;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = 26004;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = 27031;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = 28030;
+    pageSprites[i++] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+
+    spriteTemplate.bgPriority = 1;
+    spriteTemplate.pal = 1;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = 35023;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = 26004;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = 27025;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = 28024;
+    pageSprites[i++] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+
+    spriteTemplate.bgPriority = 1;
+    spriteTemplate.pal = 0;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = 25020;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = 26004;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = 27022;
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = 28021;
+    pageSprites[i++] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+    pageSprites[i++] = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
+
+    const s16 xyPos[][2] = {
+        { 20,  23  },
+        { 20,  47  },
+        { 20,  71  },
+        { 20,  95  },
+        { 76,  23  },
+        { 76,  47  },
+        { 76,  71  },
+        { 76,  95  },
+        { 27,  124 },
+        { 67,  124 },
+        { 32,  171 },
+        { 104, 171 },
+        { 192, 171 },
+    };
+    const s16 xyOffset[][2] = {
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 0xFF, 0xFF },
+        { 13,   10   },
+        { 13,   10   },
+        { 16,   12   },
+        { 28,   12   },
+        { 28,   12   },
+    };
+
+    for (i = 8; i < 13; i++) {
+        ManagedSprite_SetPositionXY(appMan->unk_414[i], xyPos[i][0], xyPos[i][1]);
+        ManagedSprite_TickFrame(appMan->unk_414[i]);
+        ManagedSprite_SetAnimationFrame(appMan->unk_414[i], 0);
+        ov57_022385A4(&appMan->unk_0D4.unk_11C[i], appMan->unk_414[i], xyOffset[i][0], xyOffset[i][1]);
+    }
+}
+
+void ov57_0223A034(CapsuleAppManager *appMan, int flag) {
+    for (int i = 0; i < 13; i++) {
+        if (appMan->unk_414[i] == NULL) {
+            continue;
+        }
+
+        ManagedSprite_SetDrawFlag(appMan->unk_414[i], flag);
+    }
+}
+
+void ov57_0223A058(CapsuleAppManager *appMan) {
+}
+
+void ov57_0223A05C(CapsuleAppManager *appMan) {
+    for (int i = 8; i < 13; i++) {
+        Sprite_DeleteAndFreeResources(appMan->unk_414[i]);
+    }
 }

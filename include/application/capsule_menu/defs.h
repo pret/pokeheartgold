@@ -53,7 +53,8 @@ typedef struct CapsuleGraphicsManager {
     PokepicManager *unk_0F0;
     u8 filler_0F4[0x24];
     TouchHitboxController *unk_118;
-    u8 filler_11C[0x58];
+    TouchscreenHitbox unk_11C[21];
+    u8 filler_170[4];
     TouchscreenListMenuSpawner *unk_174;
     TouchscreenListMenu *unk_178;
     u8 filler_17C[8];
