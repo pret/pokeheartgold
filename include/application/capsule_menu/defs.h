@@ -17,7 +17,7 @@
 #define SEALS_PER_PAGE                8
 #define CAPSULE_TOUCH_RECTS           21
 #define CAPSULE_SELECTION_ARROWS      4
-#define CAPSULE_MENU_WINDOW_NUM       11
+#define CAPSULE_MENU_WINDOW_NUM       13
 #define CAPSULE_MENU_EMPTY_CAPSULE    0
 #define CAPSULE_MENU_HAS_SEALS        1
 #define CAPSULE_MENU_HAS_POKEMON      2
@@ -47,7 +47,7 @@ typedef struct CapsuleGraphicsManager {
     SpriteManager *unk_00C;
     BgConfig *unk_010;
     PaletteData *unk_014;
-    Window unk_018[13];
+    Window unk_018[CAPSULE_MENU_WINDOW_NUM];
     ListMenuItem *unk_0E8;
     u8 filler_0EC[0x4];
     PokepicManager *unk_0F0;

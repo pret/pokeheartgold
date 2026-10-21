@@ -27,8 +27,21 @@
 #define SPRITE_SYSTEM_PLTT_CAPACITY 32
 #define STD_WINDOW_PLTT_OFFSET      13
 #define STD_WINDOW_TILE_OFFSET      31
-#define WINDOW_BGLAYER              6
+#define WINDOW_BGLAYER              (GF_BG_LYR_SUB_2)
 #define WINDOW_PALETTE              11
+
+#define CAPSULE_BASE_TILE_1         1 + MESSAGE_WINDOW_TILE_COUNT + SCROLLING_MESSAGE_BOX_TILE_COUNT + STANDARD_WINDOW_TILE_COUNT + 18
+#define CAPSULE_BASE_TILE_2         CAPSULE_BASE_TILE_1 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_3         CAPSULE_BASE_TILE_2 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_4         CAPSULE_BASE_TILE_3 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_5         CAPSULE_BASE_TILE_4 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_6         CAPSULE_BASE_TILE_5 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_7         CAPSULE_BASE_TILE_6 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_8         CAPSULE_BASE_TILE_7 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_9         CAPSULE_BASE_TILE_8 + CAPSULE_BASE_TILE_INCREMENT
+#define CAPSULE_BASE_TILE_INCREMENT (CAPSULE_WINDOW_WIDTH) * CAPSULE_WINDOW_HEIGHT
+#define CAPSULE_WINDOW_HEIGHT       2
+#define CAPSULE_WINDOW_WIDTH        4
 
 void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile);
 void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
@@ -835,4 +848,52 @@ void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, in
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, left, top, width, height, 14, baseTile);
     FillWindowPixelBuffer(window, 15);
+}
+
+void ov57_02239868(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile, int palette) {
+    InitWindow(window);
+    AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, palette, baseTile);
+    FillWindowPixelBuffer(window, 15);
+    ScheduleWindowCopyToVram(window);
+}
+
+void ov57_022398C4(CapsuleAppManager *appMan) {
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[5], WINDOW_BGLAYER, 3, 2, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_1, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[6], WINDOW_BGLAYER, 10, 2, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_2, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[7], WINDOW_BGLAYER, 3, 5, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_3, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[8], WINDOW_BGLAYER, 10, 5, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_4, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[9], WINDOW_BGLAYER, 3, 8, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_5, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[10], WINDOW_BGLAYER, 10, 8, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_6, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[11], WINDOW_BGLAYER, 3, 11, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_7, WINDOW_PALETTE);
+    ov57_02239868(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[12], WINDOW_BGLAYER, 10, 11, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_8, WINDOW_PALETTE);
+}
+
+void ov57_022399F8(CapsuleAppManager *appMan) {
+    int index;
+    int sealID;
+    int sealCount;
+    String *string;
+    Window *window;
+
+    for (int i = 5; i < CAPSULE_MENU_WINDOW_NUM; i++) {
+        window = &appMan->unk_0D4.unk_018[i];
+        index = i - 5;
+        sealID = appMan->unk_448.sealIDs[index];
+
+        if (sealID == 0) {
+            FillWindowPixelBuffer(window, 0xEE);
+            ScheduleWindowCopyToVram(window);
+            continue;
+        }
+
+        FillWindowPixelBuffer(window, 0);
+
+        string = String_New(100, HEAP_ID_52);
+        sealCount = SealCaseInventory_GetSealQuantity(appMan->unk_064, sealID - 1);
+
+        String16_FormatInteger(string, sealCount, 3, 1, 1);
+        AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, SEAL_COUNT_TEXT_XOFFSET, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        ScheduleWindowCopyToVram(window);
+        String_Delete(string);
+    }
 }
