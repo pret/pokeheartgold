@@ -2,9 +2,11 @@
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0011.h"
 
+#include "gf_gfx_loader.h"
 #include "obj_char_transfer.h"
 #include "pokemon.h"
 #include "pokemon_icon_idx.h"
+#include "render_window.h"
 #include "text.h"
 #include "unk_02013534.h"
 #include "unk_02014DA0.h"
@@ -28,7 +30,7 @@
 #define WINDOW_BGLAYER              6
 #define WINDOW_PALETTE              11
 
-void ov57_02239814(BgConfig *bgConfig, Window *window, int left, int top, int width, int height, int pltt, int baseTile);
+void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile);
 void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
 void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1);
 void ov57_02238B48(void);
@@ -40,6 +42,18 @@ extern const struct {
     s32 index;
     BOOL (*func)(CapsuleAppManager *appMan);
 } ov57_0223BECC[];
+
+const int ov57_0223BDF4[] = {
+    0x00000018,
+    0x00000019,
+    0x0000001B,
+    0x00000028,
+    0x00000029,
+    0x0000002B,
+    0x00000048,
+    0x00000049,
+    0x0000004B,
+};
 
 void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
     s16 x, y;
@@ -53,9 +67,9 @@ void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, 
 }
 
 void ov57_022385DC(CapsuleAppManager *appManager) {
-    ov57_02239814(appManager->unk_0D4.unk_010, &appManager->unk_0D4.unk_018[0], 1, 1, 21, 30, 2, 0x03A);
-    ov57_02239814(appManager->unk_0D4.unk_010, &appManager->unk_0D4.unk_018[3], 1, 1, 21, 20, 2, 0x03A);
-    ov57_02239814(appManager->unk_0D4.unk_010, &appManager->unk_0D4.unk_018[2], 1, 23, 21, 8, 2, 0x076);
+    ov57_02239814(appManager->unk_0D4.unk_010, &appManager->unk_0D4.unk_018[0], GF_BG_LYR_MAIN_1, 1, 21, 30, 2, 0x03A);
+    ov57_02239814(appManager->unk_0D4.unk_010, &appManager->unk_0D4.unk_018[3], GF_BG_LYR_MAIN_1, 1, 21, 20, 2, 0x03A);
+    ov57_02239814(appManager->unk_0D4.unk_010, &appManager->unk_0D4.unk_018[2], GF_BG_LYR_MAIN_1, 23, 21, 8, 2, 0x076);
 }
 
 void ov57_0223864C(CapsuleAppManager *appManager) {
@@ -752,4 +766,73 @@ void ov57_02239588(CapsuleAppManager *appMan) {
 
     Sprite_DeleteAndFreeResources(appMan->unk_31C[0]);
     Sprite_DeleteAndFreeResources(appMan->unk_31C[1]);
+}
+
+void ov57_022395B8(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
+    {
+        NNSG2dCharacterData *sp18;
+        void *sp14 = GfGfxLoader_GetCharData(NARC_a_0_8_7, 8, TRUE, &sp18, HEAP_ID_52);
+        u8 *r7 = sp18->pRawData;
+        DC_FlushRange(r7, sp18->szByte);
+        for (int i = 0; i < NELEMS(ov57_0223BDF4); ++i) {
+            BG_LoadCharTilesData(bgConfig, GF_BG_LYR_MAIN_1, r7 + 32 * ov57_0223BDF4[i], 0x20, i + 1);
+        }
+        Heap_Free(sp14);
+    }
+    PaletteData_LoadFromNarc(paletteData, NARC_a_0_8_7, 2, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
+    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_1, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_52);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xE0);
+}
+
+void ov57_02239670(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
+    LoadUserFrameGfx2(bgConfig, GF_BG_LYR_SUB_0, MESSAGE_BOX_TILE_OFFSET, MESSAGE_BOX_PLTT_OFFSET, messageBoxFrame, HEAP_ID_52);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E640(messageBoxFrame), HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xC0);
+    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_SUB_0, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_52);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xE0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0x30);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_8_7, 0, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xB0);
+}
+
+void ov57_02239728(Window *window, int frame, int entryID, BOOL drawFrame) {
+    MsgData *messageLoader;
+    String *string;
+
+    if (drawFrame) {
+        if (frame == 0) {
+            DrawFrameAndWindow1(window, TRUE, 1, 12);
+        } else {
+            DrawFrameAndWindow2(window, TRUE, 1, 12);
+        }
+    }
+
+    if (entryID == 0xFFFF) {
+        FillWindowPixelBuffer(window, 15);
+        ScheduleWindowCopyToVram(window);
+        return;
+    }
+
+    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+    string = NewString_ReadMsgData(messageLoader, entryID);
+
+    FillWindowPixelBuffer(window, 15);
+    AddTextPrinterParameterized(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_INSTANT, NULL);
+    ScheduleWindowCopyToVram(window);
+    String_Delete(string);
+    DestroyMsgData(messageLoader);
+}
+
+void ov57_022397B0(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile) {
+    InitWindow(window);
+    AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, 14, baseTile);
+    DrawFrameAndWindow2(window, 1, 1, 12);
+    FillWindowPixelBuffer(window, 15);
+    ScheduleWindowCopyToVram(window);
+}
+
+void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile) {
+    InitWindow(window);
+    AddWindowParameterized(bgConfig, window, bgLayer, left, top, width, height, 14, baseTile);
+    FillWindowPixelBuffer(window, 15);
 }

@@ -21,6 +21,7 @@ struct PokepicManager *DrawPokemonPicFromSpecies(BgConfig *bgConfig, GFBgLayer l
 struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, Pokemon *mon, enum HeapID heapID);
 void sub_0200E398(BgConfig *bgConfig, u32 a1, u32 a2, u32 a3, enum HeapID heapID);
 u32 sub_0200E3D8(void);
+u32 sub_0200E640(int frame);
 void sub_0200EB68(Window *window, int a1);
 void sub_0200F478(void);
 
