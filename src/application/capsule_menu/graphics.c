@@ -965,3 +965,66 @@ void ov57_02239BAC(void) {
 void ov57_02239BCC(void) {
     BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_52);
 }
+
+void ov57_02239BEC(CapsuleAppManager *appMan, NARC *narc) {
+    NarcId narcID = NARC_a_0_8_7;
+    int narcTileIdx = 8;
+    int narcTilemapIdx = 12;
+    int narcMemberIdx = 2;
+    int bgLayer = GF_BG_LYR_MAIN_2;
+
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    PaletteData_LoadNarc(appMan->unk_0D4.unk_014, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x60, 0);
+
+    narcTileIdx = 9;
+    narcTilemapIdx = 13;
+    bgLayer = GF_BG_LYR_MAIN_3;
+
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+}
+
+void ov57_02239C88(CapsuleAppManager *appMan, NARC *narc) {
+    NarcId narcID = NARC_a_0_8_7;
+    int narcTileIdx = 7;
+    int narcTilemapIdx = 11;
+    int narcMemberIdx = 1;
+    int bgLayer = GF_BG_LYR_SUB_1;
+
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    PaletteData_LoadNarc(appMan->unk_0D4.unk_014, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20 * 2, 0);
+}
+
+void ov57_02239CE8(CapsuleAppManager *appMan, NARC *narc) {
+    NarcId narcID = NARC_a_0_8_7;
+    int narcTileIdx = 7;
+    int narcTilemapIdx = 10;
+    int narcMemberIdx = 1;
+    int bgLayer = GF_BG_LYR_SUB_3;
+
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->unk_0D4.unk_010, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    PaletteData_LoadNarc(appMan->unk_0D4.unk_014, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_SUB_BG, 0x40, 0);
+}
+
+void ov57_02239D48(CapsuleAppManager *appMan, NARC *narc) {
+    SpriteSystem *spriteSystem = appMan->unk_0D4.unk_008;
+    SpriteManager *spriteManager = appMan->unk_0D4.unk_00C;
+    PaletteData *paletteData = appMan->unk_0D4.unk_014;
+
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, narc, 4, FALSE, 3, NNS_G2D_VRAM_TYPE_2DSUB, 26004);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 26, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25026);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 28, TRUE, 27028);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 27, TRUE, 28027);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 29, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25029);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 31, TRUE, 27031);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 30, TRUE, 28030);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 20, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25020);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 22, TRUE, 27022);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 21, TRUE, 28021);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, 23, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 35023);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, 25, TRUE, 27025);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 24, TRUE, 28024);
+}
