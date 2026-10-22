@@ -34,6 +34,7 @@ BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 void ov57_0223B12C(CapsuleAppManager *appMan);
 void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
 int ov57_0223B308(CapsuleAppManager *appMan);
+BOOL ov57_0223B940(CapsuleAppManager *appMan);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -343,5 +344,58 @@ BOOL ov57_0223A5AC(CapsuleAppManager *appMan) {
     ov57_02238FC4(appMan);
     ov57_02239558(appMan);
 
-    return 1;
+    return TRUE;
+}
+
+BOOL ov57_0223A6B4(CapsuleAppManager *appMan) {
+    return FALSE;
+}
+
+int ov57_0223A6B8(CapsuleAppManager *appMan) {
+    switch (appMan->unk_404) {
+    case 0:
+        ov57_0223B948(appMan, 0);
+        ov57_022398C4(appMan);
+        ov57_022399F8(appMan);
+        ov57_0223B75C(appMan);
+        ov57_0223B78C(appMan);
+        appMan->unk_0D4.unk_1B4 = 0;
+        appMan->unk_410 = 0;
+        ov57_02239BCC();
+        ++appMan->unk_404;
+        break;
+    case 1:
+        if (ov57_0223B940(appMan) == TRUE) {
+            break;
+        }
+        if (IsPaletteFadeFinished() != TRUE) {
+            break;
+        }
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_ON);
+        SetBgPriority(GF_BG_LYR_SUB_3, 1);
+        ov57_0223A034(appMan, TRUE);
+        ov57_02239240(appMan, TRUE);
+        ov57_022387C0(appMan, TRUE);
+        ov57_02238AF0(appMan, TRUE);
+        ManagedSprite_SetAnimationFrame(appMan->unk_414[8], 0);
+        ManagedSprite_SetAnimationFrame(appMan->unk_414[9], 0);
+        ManagedSprite_SetAnimationFrame(appMan->unk_414[10], 0);
+        SetBgPriority(GF_BG_LYR_MAIN_3, 1);
+        ClearWindowTilemapAndCopyToVram(&appMan->unk_0D4.unk_018[3]);
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 0xFFFF, TRUE);
+        GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
+        ov57_02239BAC();
+        ++appMan->unk_404;
+        break;
+    case 2:
+        if (IsPaletteFadeFinished() != TRUE) {
+            break;
+        }
+        ov57_0223B948(appMan, 1);
+        appMan->unk_404 = 0;
+        return 4;
+    }
+
+    return 0;
 }

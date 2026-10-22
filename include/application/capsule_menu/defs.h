@@ -95,7 +95,9 @@ typedef struct CapsuleAppManager {
     int unk_3F4;
     int unk_3F8;
     int unk_3FC;
-    u8 filler_400[0xC];
+    u8 filler_400[4];
+    int unk_404;
+    u8 filler_408[4];
     MenuInputState unk_40C;
     int unk_410;
     ManagedSprite *unk_414[13];
