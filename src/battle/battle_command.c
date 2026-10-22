@@ -14,7 +14,7 @@
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 
-#include "battle/battle_022378C0.h"
+#include "battle/battle_main.h"
 #include "battle/battle_02265E28.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"

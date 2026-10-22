@@ -5,14 +5,6 @@
 	.include "overlay_12_022378C0.inc"
 	.include "global.inc"
 
-	.text
-	.public ov12_02237F18
-	.public ov12_02238A68
-	.public ov12_02239664
-	.public ov12_022397E4
-	.public ov12_02239854
-	.public ov12_022399BC
-
 	.rodata
 
 .public _0226BFD8

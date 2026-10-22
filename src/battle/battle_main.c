@@ -1,6 +1,7 @@
+#include "battle/battle_main.h"
+
 #include "constants/game_stats.h"
 
-#include "battle/battle_022378C0.h"
 #include "battle/battle_input.h"
 #include "battle/battle_system.h"
 
@@ -23,26 +24,6 @@ FS_EXTERN_OVERLAY(OVY_7);
 FS_EXTERN_OVERLAY(OVY_8);
 FS_EXTERN_OVERLAY(OVY_10);
 FS_EXTERN_OVERLAY(OVY_18);
-// static
-void ov12_022387AC(BattleSystem *battleSys, BgConfig *bgConfig);
-// static
-void ov12_022389B8(BattleSystem *battleSys);
-// static
-void ov12_02238A30(BgConfig *bgConfig);
-// static
-void ov12_02238A64(BattleSystem *battleSystem);
-// static
-BOOL ov12_022395BC(u16 trainerClass);
-// static
-void ov12_022396E8(GF3DVramMan *pipelineBuffers);
-// static
-void ov12_02239730(void *inBattleSys);
-// static
-void ov12_022396F0(void);
-// static
-void ov12_0223A664(BattleSystem *battleSys, BattleSetup *dto);
-// static
-void ov12_0223A7A0(void);
 
 typedef enum BattleState {
     BSTATE_INIT,
@@ -62,6 +43,37 @@ typedef enum BattleState {
     BSTATE_EVOLUTION_MAIN,
     BSTATE_EXIT
 } BattleState;
+
+static void ov12_02237F18(OverlayManager *appMan);
+static int ov12_02238358(OverlayManager *appMan);
+static void ov12_0223843C(OverlayManager *appMan);
+static void ov12_022387AC(BattleSystem *battleSystem, BgConfig *bgConfig);
+static void ov12_022389B8(BattleSystem *battleSystem);
+static void ov12_02238A30(BgConfig *bgConfig);
+static void ov12_02238A64(BattleSystem *battleSystem);
+static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup);
+static BOOL ov12_022395BC(u16 trainerClass);
+static GF3DVramMan *ov12_02239644(void);
+static void ov12_02239664(void);
+static void ov12_022396E8(GF3DVramMan *pipelineBuffers);
+static void ov12_022396F0(void);
+static void ov12_02239730(void *inBattleSys);
+static void ov12_022397E4(void *commState);
+static void ov12_02239810(SysTask *task, void *inBattleSys);
+static void ov12_02239854(SysTask *task, void *inBattleSys);
+static void ov12_0223998C(SysTask *task, void *inBattleSys);
+static void ov12_022399D4(OverlayManager *appMan, BattleSetup *battleSetup);
+static BOOL ov12_02239C28(OverlayManager *appMan);
+static void ov12_0223A088(OverlayManager *appMan);
+static BOOL ov12_0223A0D4(OverlayManager *appMan);
+static BOOL ov12_0223A218(OverlayManager *appMan);
+static BOOL ov12_0223A260(OverlayManager *appMan);
+static BOOL ov12_0223A3A8(OverlayManager *appMan);
+static BOOL ov12_0223A3F0(OverlayManager *appMan);
+static BOOL ov12_0223A5E4(OverlayManager *appMan);
+static void ov12_0223A620(BattleSystem *battleSystem);
+static void ov12_0223A664(BattleSystem *battleSystem, BattleSetup *battleSetup);
+static void ov12_0223A7A0(void);
 
 BOOL Battle_Run(OverlayManager *man, int *state) {
     BattleSetup *setup = OverlayManager_GetArgs(man);
@@ -267,31 +279,31 @@ void BattleSystem_HideBattleScreen(BattleSystem *battleSystem) {
 }
 
 extern BgTemplate ov12_0226C120[3];
-void ov12_02237D00(BattleSystem *battleSys) {
-    battleSys->unk240F_0 = 1;
+void ov12_02237D00(BattleSystem *battleSystem) {
+    battleSystem->unk240F_0 = 1;
 
     BgTemplate bgTemplates[3];
 
     bgTemplates = ov12_0226C120;
 
-    InitBgFromTemplate(battleSys->bgConfig, 1, &bgTemplates[0], 0);
-    BgClearTilemapBufferAndCommit(battleSys->bgConfig, 1);
-    InitBgFromTemplate(battleSys->bgConfig, 2, &bgTemplates[1], 0);
-    BgClearTilemapBufferAndCommit(battleSys->bgConfig, 2);
-    InitBgFromTemplate(battleSys->bgConfig, 3, &bgTemplates[2], 0);
-    BgClearTilemapBufferAndCommit(battleSys->bgConfig, 3);
+    InitBgFromTemplate(battleSystem->bgConfig, 1, &bgTemplates[0], 0);
+    BgClearTilemapBufferAndCommit(battleSystem->bgConfig, 1);
+    InitBgFromTemplate(battleSystem->bgConfig, 2, &bgTemplates[1], 0);
+    BgClearTilemapBufferAndCommit(battleSystem->bgConfig, 2);
+    InitBgFromTemplate(battleSystem->bgConfig, 3, &bgTemplates[2], 0);
+    BgClearTilemapBufferAndCommit(battleSystem->bgConfig, 3);
 
     G2_SetBG0Priority(1);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, TRUE);
 
-    int frame = BattleSystem_GetFrame(battleSys);
+    int frame = BattleSystem_GetFrame(battleSystem);
 
-    sub_0200EB80(battleSys->bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
-    GfGfxLoader_LoadCharData(7, 3 + battleSys->backgroundId, battleSys->bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
-    PaletteData_LoadNarc(battleSys->palette, 7, 176 + battleSys->backgroundId * 3 + ov12_0223B52C(battleSys), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
-    PaletteData_LoadNarc(battleSys->palette, 0x26, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xA0);
-    PaletteData_LoadNarc(battleSys->palette, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xB0);
-    GfGfxLoader_LoadScrnData(7, 2, battleSys->bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
+    sub_0200EB80(battleSystem->bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
+    GfGfxLoader_LoadCharData(7, 3 + battleSystem->backgroundId, battleSystem->bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
+    PaletteData_LoadNarc(battleSystem->palette, 7, 176 + battleSystem->backgroundId * 3 + ov12_0223B52C(battleSystem), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
+    PaletteData_LoadNarc(battleSystem->palette, 0x26, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xA0);
+    PaletteData_LoadNarc(battleSystem->palette, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xB0);
+    GfGfxLoader_LoadScrnData(7, 2, battleSystem->bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
 
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
     GXS_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -302,21 +314,21 @@ void ov12_02237D00(BattleSystem *battleSys) {
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
-    Main_SetVBlankIntrCB(ov12_02239730, battleSys);
+    Main_SetVBlankIntrCB(ov12_02239730, battleSystem);
 
-    battleSys->unk240F_1 = 1;
+    battleSystem->unk240F_1 = 1;
 
-    AddWindowParameterized(battleSys->bgConfig, battleSys->window, 1, 2, 19, 27, 4, 11, (18 + 12) + 1);
-    FillWindowPixelBuffer(battleSys->window, 0xFF);
-    DrawFrameAndWindow2(&battleSys->window[0], 0, 1, 10);
+    AddWindowParameterized(battleSystem->bgConfig, battleSystem->window, 1, 2, 19, 27, 4, 11, (18 + 12) + 1);
+    FillWindowPixelBuffer(battleSystem->window, 0xFF);
+    DrawFrameAndWindow2(&battleSystem->window[0], 0, 1, 10);
 
-    ov12_0223A620(battleSys);
+    ov12_0223A620(battleSystem);
 }
 
-void ov12_02237ED0(BattleSystem *battleSys, int flags) {
-    GF_ASSERT(battleSys->unk2445 != flags);
+void ov12_02237ED0(BattleSystem *battleSystem, int flags) {
+    GF_ASSERT(battleSystem->unk2445 != flags);
 
-    battleSys->unk2445 = flags;
+    battleSystem->unk2445 = flags;
 
     if (flags == FALSE) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_10));
@@ -327,46 +339,40 @@ void ov12_02237ED0(BattleSystem *battleSys, int flags) {
     }
 }
 
-// static
-GF3DVramMan *ov12_02239644();
 extern const int ov12_0226C1C8[][3];
-void ov12_02239810(SysTask *task, void *inBattleSys);
-void ov12_02239854(SysTask *, void *);
-void ov12_0223998C(SysTask *, void *);
 extern OamManagerParam ov12_0226C060;
 extern OamCharTransferParam ov12_0226C018;
 extern SpriteResourceCountsListUnion ov12_0226C02C;
 
-// static
-void ov12_02237F18(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_GetData(appMan);
-    BattleSetup *dto = OverlayManager_GetArgs(appMan);
+static void ov12_02237F18(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_GetData(appMan);
+    BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     int idx;
 
     MI_CpuFill16((void *)GetMainBgPlttAddr(), 0, sub_02026E8C());
     MI_CpuFill16((void *)GetSubBgPlttAddr(), 0, sub_02026E9C());
 
-    battleSys->unk0 = ov12_02239644();
+    battleSystem->unk0 = ov12_02239644();
 
     HBlankInterruptDisable();
     FontID_Alloc(4, HEAP_ID_BATTLE);
 
-    battleSys->hpNumPrinter = (BattleNumberPrinter *)MessagePrinter_New(14, 2, 15, HEAP_ID_BATTLE);
+    battleSystem->hpNumPrinter = (BattleNumberPrinter *)MessagePrinter_New(14, 2, 15, HEAP_ID_BATTLE);
 
-    battleSys->levelNumPrinter = battleSys->hpNumPrinter;
-    battleSys->palette = PaletteData_Init(HEAP_ID_BATTLE);
+    battleSystem->levelNumPrinter = battleSystem->hpNumPrinter;
+    battleSystem->palette = PaletteData_Init(HEAP_ID_BATTLE);
 
-    PaletteData_SetAutoTransparent(battleSys->palette, TRUE);
-    PaletteData_AllocBuffers(battleSys->palette, PLTTBUF_MAIN_BG, 32 * 16, HEAP_ID_BATTLE);
-    PaletteData_AllocBuffers(battleSys->palette, PLTTBUF_SUB_BG, 32 * 16, HEAP_ID_BATTLE);
-    PaletteData_AllocBuffers(battleSys->palette, PLTTBUF_MAIN_OBJ, 32 * 14, HEAP_ID_BATTLE);
-    PaletteData_AllocBuffers(battleSys->palette, PLTTBUF_SUB_OBJ, 32 * 16, HEAP_ID_BATTLE);
+    PaletteData_SetAutoTransparent(battleSystem->palette, TRUE);
+    PaletteData_AllocBuffers(battleSystem->palette, PLTTBUF_MAIN_BG, 32 * 16, HEAP_ID_BATTLE);
+    PaletteData_AllocBuffers(battleSystem->palette, PLTTBUF_SUB_BG, 32 * 16, HEAP_ID_BATTLE);
+    PaletteData_AllocBuffers(battleSystem->palette, PLTTBUF_MAIN_OBJ, 32 * 14, HEAP_ID_BATTLE);
+    PaletteData_AllocBuffers(battleSystem->palette, PLTTBUF_SUB_OBJ, 32 * 16, HEAP_ID_BATTLE);
 
-    battleSys->bgConfig = BgConfig_Alloc(HEAP_ID_BATTLE);
-    battleSys->window = AllocWindows(HEAP_ID_BATTLE, 3);
+    battleSystem->bgConfig = BgConfig_Alloc(HEAP_ID_BATTLE);
+    battleSystem->window = AllocWindows(HEAP_ID_BATTLE, 3);
 
     for (idx = 0; idx < 4; idx++) {
-        battleSys->unk1D0[idx].unk0 = Heap_Alloc(HEAP_ID_BATTLE, 32 * 10 * 10);
+        battleSystem->unk1D0[idx].unk0 = Heap_Alloc(HEAP_ID_BATTLE, 32 * 10 * 10);
     }
 
     GF_CreateVramTransferManager(64, HEAP_ID_BATTLE);
@@ -374,154 +380,152 @@ void ov12_02237F18(OverlayManager *appMan) {
     NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
     NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
 
-    battleSys->battleInput = BattleInput_NewInit(bgNarc, objNarc, battleSys, BattleSystem_GetTrainerGender(battleSys, ov12_0223BFC0(battleSys)), battleSys->unk1C0);
+    battleSystem->battleInput = BattleInput_NewInit(bgNarc, objNarc, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
 
     NARC_Delete(bgNarc);
     NARC_Delete(objNarc);
 
-    ov12_022387AC(battleSys, battleSys->bgConfig);
+    ov12_022387AC(battleSystem, battleSystem->bgConfig);
 
-    AddWindowParameterized(battleSys->bgConfig, &battleSys->window[0], 1, 2, 0x13, 27, 4, 11, (18 + 12) + 1);
-    FillWindowPixelBuffer(&battleSys->window[0], 0xFF);
-    DrawFrameAndWindow2(&battleSys->window[0], 0, 1, 10);
+    AddWindowParameterized(battleSystem->bgConfig, &battleSystem->window[0], 1, 2, 0x13, 27, 4, 11, (18 + 12) + 1);
+    FillWindowPixelBuffer(&battleSystem->window[0], 0xFF);
+    DrawFrameAndWindow2(&battleSystem->window[0], 0, 1, 10);
 
-    battleSys->spriteRenderer = SpriteSystem_Alloc(HEAP_ID_BATTLE);
+    battleSystem->spriteRenderer = SpriteSystem_Alloc(HEAP_ID_BATTLE);
 
-    SpriteSystem_Init(battleSys->spriteRenderer, &ov12_0226C060, &ov12_0226C018, 16 + 16);
+    SpriteSystem_Init(battleSystem->spriteRenderer, &ov12_0226C060, &ov12_0226C018, 16 + 16);
     G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_64K);
     G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN);
 
-    battleSys->gfxHandler = SpriteManager_New(battleSys->spriteRenderer);
+    battleSystem->gfxHandler = SpriteManager_New(battleSystem->spriteRenderer);
 
-    SpriteSystem_InitSprites(battleSys->spriteRenderer, battleSys->gfxHandler, 64 + 64);
-    SpriteSystem_InitManagerWithCapacities(battleSys->spriteRenderer, battleSys->gfxHandler, &ov12_0226C02C);
-    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(battleSys->spriteRenderer), 0, (192 + 80) << FX32_SHIFT);
+    SpriteSystem_InitSprites(battleSystem->spriteRenderer, battleSystem->gfxHandler, 64 + 64);
+    SpriteSystem_InitManagerWithCapacities(battleSystem->spriteRenderer, battleSystem->gfxHandler, &ov12_0226C02C);
+    G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(battleSystem->spriteRenderer), 0, (192 + 80) << FX32_SHIFT);
 
-    BattleInput_LoadDefaultResources(battleSys->battleInput);
+    BattleInput_LoadDefaultResources(battleSystem->battleInput);
 
     NARC *bgNarc2 = NARC_New(7, HEAP_ID_BATTLE);
     NARC *objNarc2 = NARC_New(8, HEAP_ID_BATTLE);
 
-    BattleInput_ChangeMenu(bgNarc2, objNarc2, battleSys->battleInput, 0, 1, NULL);
-    BattleInput_LoadBallGaugeResources(objNarc2, battleSys->battleInput);
+    BattleInput_ChangeMenu(bgNarc2, objNarc2, battleSystem->battleInput, 0, 1, NULL);
+    BattleInput_LoadBallGaugeResources(objNarc2, battleSystem->battleInput);
 
     NARC_Delete(bgNarc2);
     NARC_Delete(objNarc2);
 
-    battleSys->pokepicManager = PokepicManager_Create(HEAP_ID_BATTLE);
-    PokepicManager_SetPlttBaseAddrAndSize(battleSys->pokepicManager, 0, 32 * 6);
+    battleSystem->pokepicManager = PokepicManager_Create(HEAP_ID_BATTLE);
+    PokepicManager_SetPlttBaseAddrAndSize(battleSystem->pokepicManager, 0, 32 * 6);
 
-    BattleSystem_HpBar_Init(battleSys);
+    BattleSystem_HpBar_Init(battleSystem);
     ov12_022396F0();
 
-    battleSys->unk8C = ov07_0221BEDC(HEAP_ID_BATTLE);
+    battleSystem->unk8C = ov07_0221BEDC(HEAP_ID_BATTLE);
 
-    ov12_022389B8(battleSys);
+    ov12_022389B8(battleSystem);
 
     EnableTouchPad();
     InitializeTouchPad(4);
 
-    battleSys->msgData = NewMsgDataFromNarc(1, 27, 0xc5, HEAP_ID_BATTLE);
-    battleSys->unk10 = NewMsgDataFromNarc(1, 27, 3, HEAP_ID_BATTLE);
-    battleSys->msgFormat = MessageFormat_New(HEAP_ID_BATTLE);
-    battleSys->msgBuffer = String_New(2 * 160, HEAP_ID_BATTLE);
+    battleSystem->msgData = NewMsgDataFromNarc(1, 27, 0xc5, HEAP_ID_BATTLE);
+    battleSystem->unk10 = NewMsgDataFromNarc(1, 27, 3, HEAP_ID_BATTLE);
+    battleSystem->msgFormat = MessageFormat_New(HEAP_ID_BATTLE);
+    battleSystem->msgBuffer = String_New(2 * 160, HEAP_ID_BATTLE);
 
-    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSys->palette, 0), &battleSys->unk2228[0], 32 * 7);
-    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSys->palette, 2), &battleSys->unk2308[0], 32 * 7);
+    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSystem->palette, 0), &battleSystem->unk2228[0], 32 * 7);
+    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSystem->palette, 2), &battleSystem->unk2308[0], 32 * 7);
 
-    int offset = ov12_0223B52C(battleSys);
+    int offset = ov12_0223B52C(battleSystem);
 
-    PaletteData_FillPaletteInBuffer(battleSys->palette, PLTTBUF_MAIN_BG, PLTTSEL_BOTH, ov12_0226C1C8[battleSys->backgroundId][offset], 0, 112);
-    PaletteData_FillPaletteInBuffer(battleSys->palette, PLTTBUF_MAIN_BG, PLTTSEL_BOTH, ov12_0226C1C8[battleSys->backgroundId][offset], 0xC * 16, 0xC * 16 + 4 * 16);
-    PaletteData_FillPaletteInBuffer(battleSys->palette, PLTTBUF_MAIN_OBJ, PLTTSEL_BOTH, ov12_0226C1C8[battleSys->backgroundId][offset], 0, ((16 - 2) * 16) - 1);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_BG, PLTTSEL_BOTH, ov12_0226C1C8[battleSystem->backgroundId][offset], 0, 112);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_BG, PLTTSEL_BOTH, ov12_0226C1C8[battleSystem->backgroundId][offset], 0xC * 16, 0xC * 16 + 4 * 16);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_OBJ, PLTTSEL_BOTH, ov12_0226C1C8[battleSystem->backgroundId][offset], 0, ((16 - 2) * 16) - 1);
 
-    PaletteData_FillPaletteInBuffer(battleSys->palette, PLTTBUF_MAIN_BG, 0, 0, 10 * 16, 10 * 16 + 2 * 16);
-    PaletteData_FillPaletteInBuffer(battleSys->palette, PLTTBUF_SUB_BG, 0, 0, 0, 255);
-    PaletteData_FillPaletteInBuffer(battleSys->palette, PLTTBUF_SUB_OBJ, 0, 0xFFFF, 0, 255);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_BG, 0, 0, 10 * 16, 10 * 16 + 2 * 16);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_SUB_BG, 0, 0, 0, 255);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_SUB_OBJ, 0, 0xFFFF, 0, 255);
 
-    battleSys->msgIcon = sub_020163E0(battleSys->palette, 0, 11, HEAP_ID_BATTLE);
-    sub_0201649C(battleSys->msgIcon, 1);
+    battleSystem->msgIcon = sub_020163E0(battleSystem->palette, 0, 11, HEAP_ID_BATTLE);
+    sub_0201649C(battleSystem->msgIcon, 1);
 
-    battleSys->unk1C = SysTask_CreateOnMainQueue(ov12_02239810, battleSys, 60000);
-    battleSys->unk20 = SysTask_CreateOnMainQueue(ov12_02239854, battleSys, 50000);
-    battleSys->unk24 = SysTask_CreateOnVBlankQueue(ov12_0223998C, battleSys, 1200);
-    battleSys->unk2438 = -51;
+    battleSystem->unk1C = SysTask_CreateOnMainQueue(ov12_02239810, battleSystem, 60000);
+    battleSystem->unk20 = SysTask_CreateOnMainQueue(ov12_02239854, battleSystem, 50000);
+    battleSystem->unk24 = SysTask_CreateOnVBlankQueue(ov12_0223998C, battleSystem, 1200);
+    battleSystem->unk2438 = -51;
 
-    ov12_0223A620(battleSys);
-    BagCursor_Battle_Init(BattleSystem_GetBagCursor(battleSys));
+    ov12_0223A620(battleSystem);
+    BagCursor_Battle_Init(BattleSystem_GetBagCursor(battleSystem));
 
-    battleSys->unk1C8 = sub_02016EDC(HEAP_ID_BATTLE, 4, FALSE);
-    battleSys->unk1CC = sub_02020654(4, HEAP_ID_BATTLE);
+    battleSystem->unk1C8 = sub_02016EDC(HEAP_ID_BATTLE, 4, FALSE);
+    battleSystem->unk1CC = sub_02020654(4, HEAP_ID_BATTLE);
 
-    if (battleSys->battleSpecial & 0x10) {
+    if (battleSystem->battleSpecial & 0x10) {
         for (idx = 0; idx < 4; idx++) {
-            battleSys->chatotVoiceParam[idx] = dto->unk1BC[idx];
+            battleSystem->chatotVoiceParam[idx] = battleSetup->unk1BC[idx];
         }
     }
 }
 
-// static
-int ov12_02238358(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_GetData(appMan);
+static int ov12_02238358(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_GetData(appMan);
     int battler;
 
-    if (battleSys->battleType & BATTLE_TYPE_LINK && (battleSys->battleSpecial & 0x10) == FALSE) {
-        if (battleSys->unk23FC) {
-            BattleContext_Main(battleSys, battleSys->ctx);
+    if (battleSystem->battleType & BATTLE_TYPE_LINK && (battleSystem->battleSpecial & 0x10) == FALSE) {
+        if (battleSystem->unk23FC) {
+            BattleContext_Main(battleSystem, battleSystem->ctx);
         }
 
-        for (battler = 0; battler < battleSys->maxBattlers; battler++) {
-            BattleSystem_ExecuteBattlerCommand(battleSys, battleSys->opponentData[battler]);
+        for (battler = 0; battler < battleSystem->maxBattlers; battler++) {
+            BattleSystem_ExecuteBattlerCommand(battleSystem, battleSystem->opponentData[battler]);
         }
     } else {
-        if (battleSys->unk23FC) {
-            battleSys->unk23FE = BattleContext_Main(battleSys, battleSys->ctx);
-            BattleSystem_TryRecvMessage(battleSys, 1);
+        if (battleSystem->unk23FC) {
+            battleSystem->unk23FE = BattleContext_Main(battleSystem, battleSystem->ctx);
+            BattleSystem_TryRecvMessage(battleSystem, 1);
         }
 
-        for (battler = 0; battler < battleSys->maxBattlers; battler++) {
-            BattleSystem_ExecuteBattlerCommand(battleSys, battleSys->opponentData[battler]);
-            BattleSystem_TryRecvMessage(battleSys, 0);
+        for (battler = 0; battler < battleSystem->maxBattlers; battler++) {
+            BattleSystem_ExecuteBattlerCommand(battleSystem, battleSystem->opponentData[battler]);
+            BattleSystem_TryRecvMessage(battleSystem, 0);
         }
 
-        if (battleSys->unk23FE == FALSE) {
-            if (battleSys->unk23FC) {
-                battleSys->unk23FE = BattleContext_Main(battleSys, battleSys->ctx);
-                BattleSystem_TryRecvMessage(battleSys, 1);
+        if (battleSystem->unk23FE == FALSE) {
+            if (battleSystem->unk23FC) {
+                battleSystem->unk23FE = BattleContext_Main(battleSystem, battleSystem->ctx);
+                BattleSystem_TryRecvMessage(battleSystem, 1);
             }
 
-            for (battler = 0; battler < battleSys->maxBattlers; battler++) {
-                BattleSystem_ExecuteBattlerCommand(battleSys, battleSys->opponentData[battler]);
-                BattleSystem_TryRecvMessage(battleSys, 0);
+            for (battler = 0; battler < battleSystem->maxBattlers; battler++) {
+                BattleSystem_ExecuteBattlerCommand(battleSystem, battleSystem->opponentData[battler]);
+                BattleSystem_TryRecvMessage(battleSystem, 0);
             }
         }
     }
 
-    return battleSys->unk23FE;
+    return battleSystem->unk23FE;
 }
 
-// static
-void ov12_0223843C(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_GetData(appMan);
-    BattleSetup *dto = OverlayManager_GetArgs(appMan);
+static void ov12_0223843C(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_GetData(appMan);
+    BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     int battlerId;
 
-    dto->unk_19C = battleSys->randTemp;
-    dto->battleSpecial = battleSys->battleSpecial;
+    battleSetup->unk_19C = battleSystem->randTemp;
+    battleSetup->battleSpecial = battleSystem->battleSpecial;
 
-    if ((battleSys->battleSpecial & 0x10) == FALSE) {
-        sub_020302A4(dto);
+    if ((battleSystem->battleSpecial & 0x10) == FALSE) {
+        sub_020302A4(battleSetup);
     }
 
-    if (battleSys->unk2445 != FALSE) {
-        ov12_02237ED0(battleSys, FALSE);
+    if (battleSystem->unk2445 != FALSE) {
+        ov12_02237ED0(battleSystem, FALSE);
     }
 
     int color;
 
-    if (dto->battleType & 0xAA4) {
+    if (battleSetup->battleType & 0xAA4) {
         color = RGB_BLACK;
-    } else if (battleSys->battleOutcomeFlag == 2 || battleSys->battleOutcomeFlag == 3) {
+    } else if (battleSystem->battleOutcomeFlag == 2 || battleSystem->battleOutcomeFlag == 3) {
         color = RGB_WHITE;
     } else {
         color = RGB_BLACK;
@@ -529,99 +533,99 @@ void ov12_0223843C(OverlayManager *appMan) {
 
     sub_0200FBF4(0, color);
     sub_0200FBF4(1, color);
-    BattleSystem_TryChangeForm(battleSys);
+    BattleSystem_TryChangeForm(battleSystem);
 
-    if (battleSys->battleOutcomeFlag != BATTLE_RESULT_CAPTURED_MON) {
-        ov12_0223B870(battleSys, Party_GetMonByIndex(battleSys->trainerParty[1], 0));
+    if (battleSystem->battleOutcomeFlag != BATTLE_RESULT_CAPTURED_MON) {
+        ov12_0223B870(battleSystem, Party_GetMonByIndex(battleSystem->trainerParty[1], 0));
     }
 
     for (battlerId = 0; battlerId < 4; battlerId++) {
-        Party_Copy(battleSys->trainerParty[battlerId], dto->party[battlerId]);
-        Heap_Free(battleSys->trainerParty[battlerId]);
-        PlayerProfile_Copy(battleSys->playerProfile[battlerId], dto->profile[battlerId]);
-        Heap_Free(battleSys->playerProfile[battlerId]);
+        Party_Copy(battleSystem->trainerParty[battlerId], battleSetup->party[battlerId]);
+        Heap_Free(battleSystem->trainerParty[battlerId]);
+        PlayerProfile_Copy(battleSystem->playerProfile[battlerId], battleSetup->profile[battlerId]);
+        Heap_Free(battleSystem->playerProfile[battlerId]);
     }
 
-    sub_020164C4(battleSys->msgIcon);
-    Save_Bag_Copy(battleSys->bag, dto->bag);
-    Heap_Free(battleSys->bag);
-    Pokedex_Copy(battleSys->pokedex, dto->pokedex);
-    Heap_Free(battleSys->pokedex);
-    dto->storagePC = battleSys->storage;
-    dto->bagCursor = battleSys->bagCursor;
-    dto->unk1B8 = battleSys->unk1C0;
-    dto->unk_128 = battleSys->unk98;
-    dto->captureAttempt = battleSys->unk9C;
-    dto->safariBalls = battleSys->safariBallCnt;
-    dto->winFlag = battleSys->battleOutcomeFlag & (0xC0 ^ 0xFF);
-    dto->unk_170 = battleSys->battlerIdCaught;
-    dto->levelUpFlag = ov12_022581D4(battleSys, battleSys->ctx, 4, NULL);
-    dto->unk138.unk_0 += ov12_022581D4(battleSys, battleSys->ctx, 3, NULL);
-    dto->unk138.unk_4 += ov12_022581D4(battleSys, battleSys->ctx, 6, 0) + ov12_022581D4(battleSys, battleSys->ctx, 6, 2);
-    dto->unk138.unk_8 += ov12_022581D4(battleSys, battleSys->ctx, 7, 0) + ov12_022581D4(battleSys, battleSys->ctx, 7, 2);
-    dto->unk1B4 = ov12_022581D4(battleSys, battleSys->ctx, 3, NULL);
-    dto->unk1C4 = battleSys->isRecordingPaused;
+    sub_020164C4(battleSystem->msgIcon);
+    Save_Bag_Copy(battleSystem->bag, battleSetup->bag);
+    Heap_Free(battleSystem->bag);
+    Pokedex_Copy(battleSystem->pokedex, battleSetup->pokedex);
+    Heap_Free(battleSystem->pokedex);
+    battleSetup->storagePC = battleSystem->storage;
+    battleSetup->bagCursor = battleSystem->bagCursor;
+    battleSetup->unk1B8 = battleSystem->unk1C0;
+    battleSetup->unk_128 = battleSystem->unk98;
+    battleSetup->captureAttempt = battleSystem->unk9C;
+    battleSetup->safariBalls = battleSystem->safariBallCnt;
+    battleSetup->winFlag = battleSystem->battleOutcomeFlag & (0xC0 ^ 0xFF);
+    battleSetup->unk_170 = battleSystem->battlerIdCaught;
+    battleSetup->levelUpFlag = ov12_022581D4(battleSystem, battleSystem->ctx, 4, NULL);
+    battleSetup->unk138.unk_0 += ov12_022581D4(battleSystem, battleSystem->ctx, 3, NULL);
+    battleSetup->unk138.unk_4 += ov12_022581D4(battleSystem, battleSystem->ctx, 6, 0) + ov12_022581D4(battleSystem, battleSystem->ctx, 6, 2);
+    battleSetup->unk138.unk_8 += ov12_022581D4(battleSystem, battleSystem->ctx, 7, 0) + ov12_022581D4(battleSystem, battleSystem->ctx, 7, 2);
+    battleSetup->unk1B4 = ov12_022581D4(battleSystem, battleSystem->ctx, 3, NULL);
+    battleSetup->unk1C4 = battleSystem->isRecordingPaused;
 
     for (battlerId = 0; battlerId < 4; battlerId++) {
-        Heap_Free(battleSys->unk1D0[battlerId].unk0);
+        Heap_Free(battleSystem->unk1D0[battlerId].unk0);
     }
 
-    Heap_Free(battleSys->msgBuffer);
-    PaletteData_FreeBuffers(battleSys->palette, 0);
-    PaletteData_FreeBuffers(battleSys->palette, 1);
-    PaletteData_FreeBuffers(battleSys->palette, 2);
-    PaletteData_FreeBuffers(battleSys->palette, 3);
-    PaletteData_Free(battleSys->palette);
-    DestroyMsgData(battleSys->msgData);
-    DestroyMsgData(battleSys->unk10);
-    MessageFormat_Delete(battleSys->msgFormat);
-    sub_02016F2C(battleSys->unk1C8);
+    Heap_Free(battleSystem->msgBuffer);
+    PaletteData_FreeBuffers(battleSystem->palette, 0);
+    PaletteData_FreeBuffers(battleSystem->palette, 1);
+    PaletteData_FreeBuffers(battleSystem->palette, 2);
+    PaletteData_FreeBuffers(battleSystem->palette, 3);
+    PaletteData_Free(battleSystem->palette);
+    DestroyMsgData(battleSystem->msgData);
+    DestroyMsgData(battleSystem->unk10);
+    MessageFormat_Delete(battleSystem->msgFormat);
+    sub_02016F2C(battleSystem->unk1C8);
     sub_02014F84();
 
-    ov07_0221BFE0(battleSys->unk8C);
-    BattleContext_Delete(battleSys->ctx);
+    ov07_0221BFE0(battleSystem->unk8C);
+    BattleContext_Delete(battleSystem->ctx);
 
-    for (battlerId = 0; battlerId < battleSys->maxBattlers; battlerId++) {
-        OpponentData_Delete(battleSys, battleSys->opponentData[battlerId], battleSys->unk23FD);
+    for (battlerId = 0; battlerId < battleSystem->maxBattlers; battlerId++) {
+        OpponentData_Delete(battleSystem, battleSystem->opponentData[battlerId], battleSystem->unk23FD);
     }
 
-    PokepicManager_Delete(battleSys->pokepicManager);
+    PokepicManager_Delete(battleSystem->pokepicManager);
 
-    if (battleSys->unk23FD != 2) {
-        BattleSystem_FreeGraphics(battleSys);
+    if (battleSystem->unk23FD != 2) {
+        BattleSystem_FreeGraphics(battleSystem);
     }
 
     TextFlags_SetCanABSpeedUpPrint(FALSE);
     TextFlags_SetAutoScrollParam(0);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
-    WindowArray_Delete(battleSys->window, 3);
-    Heap_Free(battleSys->bgConfig);
-    Heap_Free(battleSys->unk220);
-    Heap_Free(battleSys->unk224);
-    MessagePrinter_Delete((MessagePrinter *)battleSys->hpNumPrinter);
-    SysTask_Destroy(battleSys->unk1C);
-    SysTask_Destroy(battleSys->unk20);
+    WindowArray_Delete(battleSystem->window, 3);
+    Heap_Free(battleSystem->bgConfig);
+    Heap_Free(battleSystem->unk220);
+    Heap_Free(battleSystem->unk224);
+    MessagePrinter_Delete((MessagePrinter *)battleSystem->hpNumPrinter);
+    SysTask_Destroy(battleSystem->unk1C);
+    SysTask_Destroy(battleSystem->unk20);
     DisableTouchPad();
 
-    ov12_022396E8(battleSys->unk0);
+    ov12_022396E8(battleSystem->unk0);
 
-    SetLCRNGSeed(battleSys->unk2434);
+    SetLCRNGSeed(battleSystem->unk2434);
 
-    if (BattleSystem_GetCriticalHpMusicFlag(battleSys)) {
+    if (BattleSystem_GetCriticalHpMusicFlag(battleSystem)) {
         StopSE(0x704, 0);
     }
 
-    sub_0202067C(battleSys->unk1CC);
+    sub_0202067C(battleSystem->unk1CC);
 
-    if (BattleSystem_IsRecordingPaused(battleSys)) {
+    if (BattleSystem_IsRecordingPaused(battleSystem)) {
         Sound_SetMasterVolume(127);
     }
 
-    if (battleSys->unk247C) {
-        ov12_0226BEF0(battleSys->unk247C);
+    if (battleSystem->unk247C) {
+        ov12_0226BEF0(battleSystem->unk247C);
     }
 
-    Heap_Free(battleSys);
+    Heap_Free(battleSystem);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_6));
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
 
@@ -633,8 +637,7 @@ void ov12_0223843C(OverlayManager *appMan) {
 extern GraphicsBanks ov12_0226C0A8;
 extern GraphicsModes ov12_0226BFE8;
 extern BgTemplate ov12_0226C174[3];
-// static
-void ov12_022387AC(BattleSystem *battleSys, BgConfig *bgConfig) {
+static void ov12_022387AC(BattleSystem *battleSystem, BgConfig *bgConfig) {
     GfGfx_DisableEngineAPlanes();
 
     GraphicsBanks banks = ov12_0226C0A8;
@@ -653,7 +656,7 @@ void ov12_022387AC(BattleSystem *battleSys, BgConfig *bgConfig) {
 
     SetBothScreensModesAndDisable(&graphicsModes);
 
-    battleSys->unk240F_0 = 1;
+    battleSystem->unk240F_0 = 1;
 
     BgTemplate bgTemplates[3];
     bgTemplates = ov12_0226C174;
@@ -670,13 +673,13 @@ void ov12_022387AC(BattleSystem *battleSys, BgConfig *bgConfig) {
 
     BgConfig_InitBattleMenuBackgrounds(bgConfig);
 
-    int frame = BattleSystem_GetFrame(battleSys);
+    int frame = BattleSystem_GetFrame(battleSystem);
 
     sub_0200EB80(bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
-    GfGfxLoader_LoadCharData(7, 3 + battleSys->backgroundId, bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
-    PaletteData_LoadNarc(battleSys->palette, 7, 176 + battleSys->backgroundId * 3 + ov12_0223B52C(battleSys), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
-    PaletteData_LoadNarc(battleSys->palette, 38, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 10 * 16);
-    PaletteData_LoadNarc(battleSys->palette, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
+    GfGfxLoader_LoadCharData(7, 3 + battleSystem->backgroundId, bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
+    PaletteData_LoadNarc(battleSystem->palette, 7, 176 + battleSystem->backgroundId * 3 + ov12_0223B52C(battleSystem), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
+    PaletteData_LoadNarc(battleSystem->palette, 38, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 10 * 16);
+    PaletteData_LoadNarc(battleSystem->palette, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
     GfGfxLoader_LoadScrnData(7, 2, bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
 
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -687,31 +690,29 @@ void ov12_022387AC(BattleSystem *battleSys, BgConfig *bgConfig) {
     GfGfx_BothDispOn();
     GfGfx_EngineATogglePlanes(16, TRUE);
     GfGfx_EngineBTogglePlanes(16, TRUE);
-    Main_SetVBlankIntrCB(ov12_02239730, battleSys);
+    Main_SetVBlankIntrCB(ov12_02239730, battleSystem);
 }
 
-// static
-void ov12_022389B8(BattleSystem *battleSys) {
-    int terrain = BattleSystem_GetTerrainId(battleSys);
+static void ov12_022389B8(BattleSystem *battleSystem) {
+    int terrain = BattleSystem_GetTerrainId(battleSystem);
     int selectedPartySlot;
     Pokemon *mon;
 
-    ov12_02265FD4(&battleSys->unk17C[0], battleSys, 0, terrain);
-    ov12_02265FD4(&battleSys->unk17C[1], battleSys, 1, terrain);
+    ov12_02265FD4(&battleSystem->unk17C[0], battleSystem, 0, terrain);
+    ov12_02265FD4(&battleSystem->unk17C[1], battleSystem, 1, terrain);
 
-    BattleContext *battleCtx = BattleSystem_GetBattleContext(battleSys);
+    BattleContext *battleCtx = BattleSystem_GetBattleContext(battleSystem);
 
-    for (int battler = 0; battler < battleSys->maxBattlers; battler++) {
-        selectedPartySlot = ov12_022581D4(battleSys, battleCtx, 2, battler);
-        mon = BattleSystem_GetPartyMon(battleSys, battler, selectedPartySlot);
-        ov12_02258DB0(battleSys, battleSys->opponentData[battler], BattleSystem_GetMonBall(battleSys, mon), selectedPartySlot);
+    for (int battler = 0; battler < battleSystem->maxBattlers; battler++) {
+        selectedPartySlot = ov12_022581D4(battleSystem, battleCtx, 2, battler);
+        mon = BattleSystem_GetPartyMon(battleSystem, battler, selectedPartySlot);
+        ov12_02258DB0(battleSystem, battleSystem->opponentData[battler], BattleSystem_GetMonBall(battleSystem, mon), selectedPartySlot);
     }
 
     ov12_0223A7A0();
 }
 
-// static
-void ov12_02238A30(BgConfig *bgConfig) {
+static void ov12_02238A30(BgConfig *bgConfig) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, FALSE);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, FALSE);
     FreeBgTilemapBuffer(bgConfig, 1);
@@ -721,8 +722,7 @@ void ov12_02238A30(BgConfig *bgConfig) {
     BgConfig_CleanupBattleMenuBackgrounds(bgConfig);
 }
 
-// static
-void ov12_02238A64(BattleSystem *battleSystem) {
+static void ov12_02238A64(BattleSystem *battleSystem) {
 }
 
 typedef struct BattlerInitData {
@@ -736,106 +736,105 @@ extern u8 ov12_0226BFDC[2][2];
 extern u8 ov12_0226BFE0[2][4];
 extern u8 ov12_0226C008[4][4];
 
-// static
-void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
+static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) {
     int i, slot;
     BattlerInitData battlerInitData;
     Pokemon *mon;
 
-    battleSys->battleType = dto->battleType;
+    battleSystem->battleType = battleSetup->battleType;
 
     for (i = 0; i < 4; i++) {
-        battleSys->playerProfile[i] = PlayerProfile_New(HEAP_ID_BATTLE);
-        PlayerProfile_Copy(dto->profile[i], battleSys->playerProfile[i]);
-        battleSys->chatotVoice[i] = dto->chatot[i];
+        battleSystem->playerProfile[i] = PlayerProfile_New(HEAP_ID_BATTLE);
+        PlayerProfile_Copy(battleSetup->profile[i], battleSystem->playerProfile[i]);
+        battleSystem->chatotVoice[i] = battleSetup->chatot[i];
     }
 
-    battleSys->unk2446 = dto->unk1B0;
+    battleSystem->unk2446 = battleSetup->unk1B0;
 
     for (i = 0; i < 4; i++) {
-        battleSys->unk2464[i] = dto->unk_1A0[i];
+        battleSystem->unk2464[i] = battleSetup->unk_1A0[i];
     }
 
-    battleSys->unk2434 = GetLCRNGSeed();
-    battleSys->rand = dto->unk_19C;
-    battleSys->randTemp = dto->unk_19C;
-    battleSys->battleSpecial = dto->battleSpecial;
-    battleSys->bag = Save_Bag_New(HEAP_ID_BATTLE);
+    battleSystem->unk2434 = GetLCRNGSeed();
+    battleSystem->rand = battleSetup->unk_19C;
+    battleSystem->randTemp = battleSetup->unk_19C;
+    battleSystem->battleSpecial = battleSetup->battleSpecial;
+    battleSystem->bag = Save_Bag_New(HEAP_ID_BATTLE);
 
-    Save_Bag_Copy(dto->bag, battleSys->bag);
-    battleSys->pokedex = Pokedex_New(HEAP_ID_BATTLE);
-    Pokedex_Copy(dto->pokedex, battleSys->pokedex);
+    Save_Bag_Copy(battleSetup->bag, battleSystem->bag);
+    battleSystem->pokedex = Pokedex_New(HEAP_ID_BATTLE);
+    Pokedex_Copy(battleSetup->pokedex, battleSystem->pokedex);
 
-    battleSys->storage = dto->storagePC;
-    battleSys->options = dto->options;
-    battleSys->unk1B8 = (u32 *)dto->palPad;
-    battleSys->bagCursor = dto->bagCursor;
-    battleSys->unk1C0 = dto->unk1B8;
-    battleSys->unk98 = dto->unk_128;
-    battleSys->unk2424 = dto->evolutionLocation;
-    battleSys->unk9C = dto->captureAttempt;
-    battleSys->safariBallCnt = dto->safariBalls;
-    battleSys->terrain = dto->terrain;
-    battleSys->backgroundId = dto->battleBg;
-    battleSys->location = dto->mapSection;
-    battleSys->timezone = (u32)dto->timeOfDay;
-    battleSys->unk241C = dto->fixedDamaageMovesBanned;
-    battleSys->unk2428 = dto->unk_164;
-    battleSys->metBill = dto->metBill;
-    battleSys->unk2474_1 = dto->momsSavingsActive;
-    battleSys->isFishing = dto->unk_1D0;
-    battleSys->weather = dto->weatherType;
-    battleSys->gameStats = dto->gameStats;
+    battleSystem->storage = battleSetup->storagePC;
+    battleSystem->options = battleSetup->options;
+    battleSystem->unk1B8 = (u32 *)battleSetup->palPad;
+    battleSystem->bagCursor = battleSetup->bagCursor;
+    battleSystem->unk1C0 = battleSetup->unk1B8;
+    battleSystem->unk98 = battleSetup->unk_128;
+    battleSystem->unk2424 = battleSetup->evolutionLocation;
+    battleSystem->unk9C = battleSetup->captureAttempt;
+    battleSystem->safariBallCnt = battleSetup->safariBalls;
+    battleSystem->terrain = battleSetup->terrain;
+    battleSystem->backgroundId = battleSetup->battleBg;
+    battleSystem->location = battleSetup->mapSection;
+    battleSystem->timezone = (u32)battleSetup->timeOfDay;
+    battleSystem->unk241C = battleSetup->fixedDamaageMovesBanned;
+    battleSystem->unk2428 = battleSetup->unk_164;
+    battleSystem->metBill = battleSetup->metBill;
+    battleSystem->unk2474_1 = battleSetup->momsSavingsActive;
+    battleSystem->isFishing = battleSetup->unk_1D0;
+    battleSystem->weather = battleSetup->weatherType;
+    battleSystem->gameStats = battleSetup->gameStats;
 
-    GF_ASSERT(dto->gameStats != NULL);
+    GF_ASSERT(battleSetup->gameStats != NULL);
 
-    battleSys->bugContestCaughtMon = dto->bugContestMon;
+    battleSystem->bugContestCaughtMon = battleSetup->bugContestMon;
 
     for (i = 0; i < 4; i++) {
-        battleSys->trainerId[i] = dto->trainerId[i];
-        battleSys->trainers[i] = dto->trainer[i];
+        battleSystem->trainerId[i] = battleSetup->trainerId[i];
+        battleSystem->trainers[i] = battleSetup->trainer[i];
     }
 
-    battleSys->ctx = BattleContext_New(battleSys);
+    battleSystem->ctx = BattleContext_New(battleSystem);
 
     for (i = 0; i < 4; i++) {
-        battleSys->trainerParty[i] = SaveArray_Party_Alloc(HEAP_ID_BATTLE);
-        battleSys->unk248C[i] = dto->unk1CC[i];
+        battleSystem->trainerParty[i] = SaveArray_Party_Alloc(HEAP_ID_BATTLE);
+        battleSystem->unk248C[i] = battleSetup->unk1CC[i];
     }
 
     int gender;
 
     for (i = 0; i < 4; i++) {
-        for (slot = 0; slot < Party_GetCount(dto->party[i]); slot++) {
-            mon = Party_GetMonByIndex(dto->party[i], slot);
+        for (slot = 0; slot < Party_GetCount(battleSetup->party[i]); slot++) {
+            mon = Party_GetMonByIndex(battleSetup->party[i], slot);
             gender = GetMonGender(mon);
             SetMonData(mon, MON_DATA_GENDER, &gender);
         }
     }
 
-    if (battleSys->battleType & BATTLE_TYPE_LINK) {
-        sub_02074E5C(battleSys);
-        u8 networkID = ov12_0223BFC0(battleSys);
+    if (battleSystem->battleType & BATTLE_TYPE_LINK) {
+        sub_02074E5C(battleSystem);
+        u8 networkID = ov12_0223BFC0(battleSystem);
 
-        ov12_0223A664(battleSys, dto);
+        ov12_0223A664(battleSystem, battleSetup);
 
-        if (battleSys->battleType & BATTLE_TYPE_FRONTIER) {
+        if (battleSystem->battleType & BATTLE_TYPE_FRONTIER) {
             for (i = 0; i < 4; i++) {
                 battlerInitData.battler = i;
                 battlerInitData.battlerType = ov12_0226C2DC[i];
-                battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
+                battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
             }
 
-            battleSys->maxBattlers = i;
+            battleSystem->maxBattlers = i;
 
             for (i = 0; i < 4; i++) {
-                OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
-                Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+                OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
+                Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
             }
 
-            for (i = 0; i < battleSys->maxBattlers; i++) {
-                for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i]); slot++) {
-                    mon = Party_GetMonByIndex(battleSys->trainerParty[i], slot);
+            for (i = 0; i < battleSystem->maxBattlers; i++) {
+                for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i]); slot++) {
+                    mon = Party_GetMonByIndex(battleSystem->trainerParty[i], slot);
 
                     if (GetMonData(mon, MON_DATA_SPECIES, NULL)
                         && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
@@ -844,27 +843,27 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                     }
                 }
 
-                ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+                ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
             }
 
-            ov12_02256F28(battleSys, battleSys->ctx);
-        } else if (battleSys->battleType & BATTLE_TYPE_MULTI) {
+            ov12_02256F28(battleSystem, battleSystem->ctx);
+        } else if (battleSystem->battleType & BATTLE_TYPE_MULTI) {
             for (i = 0; i < 4; i++) {
                 battlerInitData.battler = i;
-                battlerInitData.battlerType = ov12_0226C008[ov12_0223BFCC(battleSys, networkID)][ov12_0223BFCC(battleSys, i)];
-                battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
+                battlerInitData.battlerType = ov12_0226C008[ov12_0223BFCC(battleSystem, networkID)][ov12_0223BFCC(battleSystem, i)];
+                battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
             }
 
-            battleSys->maxBattlers = i;
+            battleSystem->maxBattlers = i;
 
             for (i = 0; i < 4; i++) {
-                OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
-                Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+                OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
+                Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
             }
 
-            for (i = 0; i < battleSys->maxBattlers; i++) {
-                for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i]); slot++) {
-                    mon = Party_GetMonByIndex(battleSys->trainerParty[i], slot);
+            for (i = 0; i < battleSystem->maxBattlers; i++) {
+                for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i]); slot++) {
+                    mon = Party_GetMonByIndex(battleSystem->trainerParty[i], slot);
 
                     if (GetMonData(mon, MON_DATA_SPECIES, NULL)
                         && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
@@ -873,30 +872,30 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                     }
                 }
 
-                ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+                ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
             }
 
-            ov12_02256F28(battleSys, battleSys->ctx);
-        } else if (battleSys->battleType & BATTLE_TYPE_DOUBLES) {
+            ov12_02256F28(battleSystem, battleSystem->ctx);
+        } else if (battleSystem->battleType & BATTLE_TYPE_DOUBLES) {
             for (i = 0; i < 4; i++) {
                 battlerInitData.battler = i;
                 battlerInitData.battlerType = ov12_0226BFE0[networkID][i];
-                battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
-                OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
+                battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
+                OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
             }
 
-            battleSys->maxBattlers = i;
+            battleSystem->maxBattlers = i;
 
             for (i = 0; i < 4; i++) {
-                Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+                Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
             }
 
-            for (i = 0; i < battleSys->maxBattlers; i++) {
-                for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i & 1]); slot++) {
-                    mon = Party_GetMonByIndex(battleSys->trainerParty[i & 1], slot);
+            for (i = 0; i < battleSystem->maxBattlers; i++) {
+                for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i & 1]); slot++) {
+                    mon = Party_GetMonByIndex(battleSystem->trainerParty[i & 1], slot);
 
                     if (i > 1) {
-                        if ((ov12_022581D4(battleSys, battleSys->ctx, 2, i & 1) != slot)
+                        if ((ov12_022581D4(battleSystem, battleSystem->ctx, 2, i & 1) != slot)
                             && GetMonData(mon, MON_DATA_SPECIES, NULL)
                             && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
                             && GetMonData(mon, MON_DATA_HP, NULL)) {
@@ -911,23 +910,23 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                     }
                 }
 
-                ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+                ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
             }
         } else {
             for (i = 0; i < 2; i++) {
                 battlerInitData.battler = i;
                 battlerInitData.battlerType = ov12_0226BFDC[networkID][i];
-                battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
-                OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
+                battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
+                OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
             }
 
-            battleSys->maxBattlers = i;
+            battleSystem->maxBattlers = i;
 
             for (i = 0; i < 4; i++) {
-                Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+                Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
 
-                for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i]); slot++) {
-                    mon = Party_GetMonByIndex(battleSys->trainerParty[i], slot);
+                for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i]); slot++) {
+                    mon = Party_GetMonByIndex(battleSystem->trainerParty[i], slot);
 
                     if (GetMonData(mon, MON_DATA_SPECIES, NULL)
                         && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
@@ -936,29 +935,29 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                     }
                 }
 
-                ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+                ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
             }
         }
-        ov12_02256F28(battleSys, battleSys->ctx);
-    } else if (battleSys->battleType & BATTLE_TYPE_TAG) {
+        ov12_02256F28(battleSystem, battleSystem->ctx);
+    } else if (battleSystem->battleType & BATTLE_TYPE_TAG) {
         int playerSlot;
 
         for (i = 0; i < 4; i++) {
             battlerInitData.battler = i;
             battlerInitData.battlerType = ov12_0226C2DC[i];
-            battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
-            OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
+            battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
+            OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
         }
 
-        battleSys->maxBattlers = i;
+        battleSystem->maxBattlers = i;
 
         for (i = 0; i < 4; i++) {
-            Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+            Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
         }
 
-        for (i = 0; i < battleSys->maxBattlers; i++) {
-            for (slot = 0; slot < BattleSystem_GetPartySize(battleSys, i); slot++) {
-                mon = BattleSystem_GetPartyMon(battleSys, i, slot);
+        for (i = 0; i < battleSystem->maxBattlers; i++) {
+            for (slot = 0; slot < BattleSystem_GetPartySize(battleSystem, i); slot++) {
+                mon = BattleSystem_GetPartyMon(battleSystem, i, slot);
 
                 if (i == 2) {
                     if (GetMonData(mon, MON_DATA_SPECIES, NULL)
@@ -976,31 +975,31 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                 }
             }
 
-            ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+            ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
 
             if (i == 0) {
                 playerSlot = slot;
             }
         }
-        ov12_02256F28(battleSys, battleSys->ctx);
-        battleSys->unk23FC = 1;
-    } else if (battleSys->battleType & BATTLE_TYPE_MULTI) {
+        ov12_02256F28(battleSystem, battleSystem->ctx);
+        battleSystem->unk23FC = 1;
+    } else if (battleSystem->battleType & BATTLE_TYPE_MULTI) {
         for (i = 0; i < 4; i++) {
             battlerInitData.battler = i;
             battlerInitData.battlerType = ov12_0226C2DC[i];
-            battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
-            OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
+            battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
+            OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
         }
 
-        battleSys->maxBattlers = i;
+        battleSystem->maxBattlers = i;
 
         for (i = 0; i < 4; i++) {
-            Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+            Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
         }
 
-        for (i = 0; i < battleSys->maxBattlers; i++) {
-            for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i]); slot++) {
-                mon = Party_GetMonByIndex(battleSys->trainerParty[i], slot);
+        for (i = 0; i < battleSystem->maxBattlers; i++) {
+            for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i]); slot++) {
+                mon = Party_GetMonByIndex(battleSystem->trainerParty[i], slot);
 
                 if (GetMonData(mon, MON_DATA_SPECIES, NULL)
                     && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
@@ -1009,31 +1008,31 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                 }
             }
 
-            ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+            ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
         }
 
-        ov12_02256F28(battleSys, battleSys->ctx);
-        battleSys->unk23FC = 1;
-    } else if (battleSys->battleType & BATTLE_TYPE_DOUBLES) {
+        ov12_02256F28(battleSystem, battleSystem->ctx);
+        battleSystem->unk23FC = 1;
+    } else if (battleSystem->battleType & BATTLE_TYPE_DOUBLES) {
         for (i = 0; i < 4; i++) {
             battlerInitData.battler = i;
             battlerInitData.battlerType = ov12_0226C2DC[i];
-            battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
-            OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
+            battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
+            OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
         }
 
-        battleSys->maxBattlers = i;
+        battleSystem->maxBattlers = i;
 
         for (i = 0; i < 4; i++) {
-            Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+            Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
         }
 
-        for (i = 0; i < battleSys->maxBattlers; i++) {
-            for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i & 1]); slot++) {
-                mon = Party_GetMonByIndex(battleSys->trainerParty[i & 1], slot);
+        for (i = 0; i < battleSystem->maxBattlers; i++) {
+            for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i & 1]); slot++) {
+                mon = Party_GetMonByIndex(battleSystem->trainerParty[i & 1], slot);
 
                 if (i > 1) {
-                    if (ov12_022581D4(battleSys, battleSys->ctx, 2, i & 1) != slot
+                    if (ov12_022581D4(battleSystem, battleSystem->ctx, 2, i & 1) != slot
                         && GetMonData(mon, MON_DATA_SPECIES, NULL)
                         && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
                         && GetMonData(mon, MON_DATA_HP, NULL)) {
@@ -1048,26 +1047,26 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                 }
             }
 
-            ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+            ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
         }
 
-        ov12_02256F28(battleSys, battleSys->ctx);
-        battleSys->unk23FC = 1;
+        ov12_02256F28(battleSystem, battleSystem->ctx);
+        battleSystem->unk23FC = 1;
     } else {
         for (i = 0; i < 2; i++) {
             battlerInitData.battler = i;
             battlerInitData.battlerType = _0226BFD8[i];
-            battleSys->opponentData[i] = ov12_02258D74(battleSys, &battlerInitData);
-            OpponentData_SetTaskFuncs(battleSys, battleSys->opponentData[i]);
+            battleSystem->opponentData[i] = ov12_02258D74(battleSystem, &battlerInitData);
+            OpponentData_SetTaskFuncs(battleSystem, battleSystem->opponentData[i]);
         }
 
-        battleSys->maxBattlers = i;
+        battleSystem->maxBattlers = i;
 
         for (i = 0; i < 4; i++) {
-            Party_Copy(dto->party[i], battleSys->trainerParty[i]);
+            Party_Copy(battleSetup->party[i], battleSystem->trainerParty[i]);
 
-            for (slot = 0; slot < Party_GetCount(battleSys->trainerParty[i]); slot++) {
-                mon = Party_GetMonByIndex(battleSys->trainerParty[i], slot);
+            for (slot = 0; slot < Party_GetCount(battleSystem->trainerParty[i]); slot++) {
+                mon = Party_GetMonByIndex(battleSystem->trainerParty[i], slot);
 
                 if (GetMonData(mon, MON_DATA_SPECIES, NULL)
                     && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
@@ -1076,58 +1075,57 @@ void ov12_02238A68(BattleSystem *battleSys, BattleSetup *dto) {
                 }
             }
 
-            ov12_022582B8(battleSys, battleSys->ctx, 2, i, slot);
+            ov12_022582B8(battleSystem, battleSystem->ctx, 2, i, slot);
         }
 
-        ov12_02256F28(battleSys, battleSys->ctx);
-        battleSys->unk23FC = 1;
+        ov12_02256F28(battleSystem, battleSystem->ctx);
+        battleSystem->unk23FC = 1;
     }
 
-    if (battleSys->battleType & BATTLE_TYPE_PAL_PARK) {
-        mon = Party_GetMonByIndex(battleSys->trainerParty[1], 0);
-        GetMonData(mon, MON_DATA_OT_NAME, (u8 *)&battleSys->trainers[1].name);
+    if (battleSystem->battleType & BATTLE_TYPE_PAL_PARK) {
+        mon = Party_GetMonByIndex(battleSystem->trainerParty[1], 0);
+        GetMonData(mon, MON_DATA_OT_NAME, (u8 *)&battleSystem->trainers[1].name);
     }
 
-    if (battleSys->battleType & BATTLE_TYPE_TRAINER) {
-        if (ov12_022395BC(battleSys->trainers[1].data.trainerClass) == TRUE
-            || ov12_022395BC(battleSys->trainers[3].data.trainerClass) == TRUE) {
-            for (i = 0; i < Party_GetCount(battleSys->trainerParty[0]); i++) {
-                mon = Party_GetMonByIndex(battleSys->trainerParty[0], i);
-                MonApplyFriendshipMod(mon, 3, battleSys->location);
+    if (battleSystem->battleType & BATTLE_TYPE_TRAINER) {
+        if (ov12_022395BC(battleSystem->trainers[1].data.trainerClass) == TRUE
+            || ov12_022395BC(battleSystem->trainers[3].data.trainerClass) == TRUE) {
+            for (i = 0; i < Party_GetCount(battleSystem->trainerParty[0]); i++) {
+                mon = Party_GetMonByIndex(battleSystem->trainerParty[0], i);
+                MonApplyFriendshipMod(mon, 3, battleSystem->location);
                 ApplyMonMoodModifier(mon, 2);
             }
 
-            for (i = 0; i < Party_GetCount(battleSys->trainerParty[2]); i++) {
-                mon = Party_GetMonByIndex(battleSys->trainerParty[2], i);
-                MonApplyFriendshipMod(mon, 3, battleSys->location);
+            for (i = 0; i < Party_GetCount(battleSystem->trainerParty[2]); i++) {
+                mon = Party_GetMonByIndex(battleSystem->trainerParty[2], i);
+                MonApplyFriendshipMod(mon, 3, battleSystem->location);
                 ApplyMonMoodModifier(mon, 2);
             }
         }
     }
 
-    battleSys->unk2478 = 0;
-    battleSys->unk2474_2 = 0;
+    battleSystem->unk2478 = 0;
+    battleSystem->unk2474_2 = 0;
 
     u32 flag = 0;
-    for (int i = 0; i < battleSys->maxBattlers; i++) {
-        u32 version = PlayerProfile_GetVersion(BattleSystem_GetPlayerProfile(battleSys, i));
+    for (int i = 0; i < battleSystem->maxBattlers; i++) {
+        u32 version = PlayerProfile_GetVersion(BattleSystem_GetPlayerProfile(battleSystem, i));
         if (version != GAME_VERSION) {
             flag = 1;
         }
         if (version != VERSION_HEARTGOLD && version != VERSION_SOULSILVER) {
-            battleSys->unk2474_2 = 1;
+            battleSystem->unk2474_2 = 1;
         }
     }
 
-    if (battleSys->unk23FC) {
-        battleSys->unk2478 = flag;
+    if (battleSystem->unk23FC) {
+        battleSystem->unk2478 = flag;
     } else {
-        battleSys->unk2478 = 0;
+        battleSystem->unk2478 = 0;
     }
 }
 
-// static
-BOOL ov12_022395BC(u16 trainerClass) {
+static BOOL ov12_022395BC(u16 trainerClass) {
     switch (trainerClass) {
     case TRAINERCLASS_LEADER_FALKNER:
     case TRAINERCLASS_LEADER_BUGSY:
@@ -1157,16 +1155,11 @@ BOOL ov12_022395BC(u16 trainerClass) {
     return FALSE;
 }
 
-// static
-void ov12_02239664(void);
-
-// static
-GF3DVramMan *ov12_02239644(void) {
+static GF3DVramMan *ov12_02239644(void) {
     return GF_3DVramMan_Create(HEAP_ID_BATTLE, 0, 2, 0, 2, ov12_02239664);
 }
 
-// static
-void ov12_02239664(void) {
+static void ov12_02239664(void) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, TRUE);
 
     G2_SetBG0Priority(1);
@@ -1180,13 +1173,11 @@ void ov12_02239664(void) {
     G3_ViewPort(0, 0, HW_LCD_WIDTH - 1, HW_LCD_HEIGHT - 1);
 }
 
-// static
-void ov12_022396E8(GF3DVramMan *pipelineBuffers) {
+static void ov12_022396E8(GF3DVramMan *pipelineBuffers) {
     GF_3DVramMan_Delete(pipelineBuffers);
 }
 
-// static
-void ov12_022396F0(void) {
+static void ov12_022396F0(void) {
     NNSGfdTexKey texKey = NNS_GfdAllocTexVram(0x2000 * 4, 0, 0);
     NNSGfdPlttKey plttKey = NNS_GfdAllocPlttVram(0x20 * (4 + 2), 0, 0);
 
@@ -1198,18 +1189,17 @@ void ov12_022396F0(void) {
 
 extern GraphicsBanks ov12_0226C0D0;
 extern GraphicsBanks ov12_0226C0F8;
-// static
-void ov12_02239730(void *inBattleSys) {
-    BattleSystem *battleSys = inBattleSys;
+static void ov12_02239730(void *inBattleSys) {
+    BattleSystem *battleSystem = inBattleSys;
 
-    if (battleSys->unk240F_0) {
-        battleSys->unk240F_0 = 0;
+    if (battleSystem->unk240F_0) {
+        battleSystem->unk240F_0 = 0;
         G2_BlendNone();
         G2S_BlendNone();
     }
 
-    if (battleSys->unk240F_1) {
-        battleSys->unk240F_1 = 0;
+    if (battleSystem->unk240F_1) {
+        battleSystem->unk240F_1 = 0;
 
         GraphicsBanks banks;
         banks = ov12_0226C0D0;
@@ -1217,8 +1207,8 @@ void ov12_02239730(void *inBattleSys) {
         GfGfx_SetBanks(&banks);
     }
 
-    if (battleSys->unk240E_F) {
-        battleSys->unk240E_F = 0;
+    if (battleSystem->unk240E_F) {
+        battleSystem->unk240E_F = 0;
 
         GraphicsBanks banks;
         banks = ov12_0226C0F8;
@@ -1226,17 +1216,17 @@ void ov12_02239730(void *inBattleSys) {
         GfGfx_SetBanks(&banks);
     }
 
-    PokepicManager_HandleLoadImgAndOrPltt(battleSys->pokepicManager);
+    PokepicManager_HandleLoadImgAndOrPltt(battleSystem->pokepicManager);
     GF_RunVramTransferTasks();
     SpriteSystem_TransferOam();
-    PaletteData_PushTransparentBuffers(battleSys->palette);
-    DoScheduledBgGpuUpdates(battleSys->bgConfig);
+    PaletteData_PushTransparentBuffers(battleSystem->palette);
+    DoScheduledBgGpuUpdates(battleSystem->bgConfig);
 
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
 typedef struct LinkBattleCommState {
-    BattleSetup *dto;
+    BattleSetup *battleSetup;
     BgConfig *bgConfig;
     Window *window;
     PaletteData *paletteData;
@@ -1248,8 +1238,7 @@ typedef struct LinkBattleCommState {
     void *waitDial;
 } LinkBattleCommState;
 
-// static
-void ov12_022397E4(void *commState) {
+static void ov12_022397E4(void *commState) {
     LinkBattleCommState *linkBattleCommState = commState;
 
     PaletteData_PushTransparentBuffers(linkBattleCommState->paletteData);
@@ -1259,52 +1248,50 @@ void ov12_022397E4(void *commState) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-// static
-void ov12_02239810(SysTask *task, void *inBattleSys) {
-    BattleSystem *battleSys = inBattleSys;
+static void ov12_02239810(SysTask *task, void *inBattleSys) {
+    BattleSystem *battleSystem = inBattleSys;
 
-    sub_020399FC(HEAP_ID_BATTLE, battleSys->bgConfig);
+    sub_020399FC(HEAP_ID_BATTLE, battleSystem->bgConfig);
 
-    if (battleSys->unk23FD == 0 || battleSys->unk23FD == 3) {
-        if (battleSys->unk23FD == 0) {
+    if (battleSystem->unk23FD == 0 || battleSystem->unk23FD == 3) {
+        if (battleSystem->unk23FD == 0) {
             ov06_0221BAF0();
         }
 
-        PokepicManager_DrawAll(battleSys->pokepicManager);
-        SpriteSystem_DrawSprites(battleSys->gfxHandler);
+        PokepicManager_DrawAll(battleSystem->pokepicManager);
+        SpriteSystem_DrawSprites(battleSystem->gfxHandler);
         SpriteSystem_UpdateTransfer();
         RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
     }
 }
 
-// static
-void ov12_02239854(SysTask *task, void *inBattleSys) {
-    BattleSystem *battleSys = inBattleSys;
+static void ov12_02239854(SysTask *task, void *inBattleSys) {
+    BattleSystem *battleSystem = inBattleSys;
     OpponentData *battlerData;
     BattleHpBar *healthbox;
 
-    int maxBattlers = BattleSystem_GetMaxBattlers(battleSys);
+    int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
     int flags = 0;
-    int redHPSoundFlag = BattleSystem_GetCriticalHpMusicFlag(battleSys);
+    int redHPSoundFlag = BattleSystem_GetCriticalHpMusicFlag(battleSystem);
 
-    if (BattleSystem_GetBattleType(battleSys) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) {
+    if (BattleSystem_GetBattleType(battleSystem) & (BATTLE_TYPE_SAFARI | BATTLE_TYPE_PAL_PARK)) {
         return;
     }
 
     if (redHPSoundFlag & 2) {
         if (redHPSoundFlag & 1) {
             StopSE(0x704, 0);
-            BattleSystem_SetCriticalHpMusicFlag(battleSys, 2);
+            BattleSystem_SetCriticalHpMusicFlag(battleSystem, 2);
         }
 
         return;
     }
 
     for (int i = 0; i < maxBattlers; i++) {
-        battlerData = BattleSystem_GetOpponentData(battleSys, i);
+        battlerData = BattleSystem_GetOpponentData(battleSystem, i);
 
-        if ((ov12_02261264(battlerData) == 0 && (BattleSystem_GetBattleSpecial(battleSys) & 0x10) == FALSE)
-            || (BattleSystem_GetFieldSide(battleSys, i) == 0 && BattleSystem_GetBattleSpecial(battleSys) & 0x10)) {
+        if ((ov12_02261264(battlerData) == 0 && (BattleSystem_GetBattleSpecial(battleSystem) & 0x10) == FALSE)
+            || (BattleSystem_GetFieldSide(battleSystem, i) == 0 && BattleSystem_GetBattleSpecial(battleSystem) & 0x10)) {
             healthbox = OpponentData_GetHpBar(battlerData);
 
             if (healthbox != NULL) {
@@ -1315,59 +1302,54 @@ void ov12_02239854(SysTask *task, void *inBattleSys) {
         }
     }
 
-    if (flags && BattleSystem_GetCriticalHpMusicFlag(battleSys) == FALSE) {
+    if (flags && BattleSystem_GetCriticalHpMusicFlag(battleSystem) == FALSE) {
         PlaySE(0x704);
-        BattleSystem_SetCriticalHpMusicFlag(battleSys, 1);
-        BattleSystem_SetCriticalHpMusicDelay(battleSys, 4);
-    } else if (flags == 0 && BattleSystem_GetCriticalHpMusicFlag(battleSys)) {
+        BattleSystem_SetCriticalHpMusicFlag(battleSystem, 1);
+        BattleSystem_SetCriticalHpMusicDelay(battleSystem, 4);
+    } else if (flags == 0 && BattleSystem_GetCriticalHpMusicFlag(battleSystem)) {
         StopSE(0x704, 0);
-        BattleSystem_SetCriticalHpMusicFlag(battleSys, 0);
+        BattleSystem_SetCriticalHpMusicFlag(battleSystem, 0);
     }
 
-    if (BattleSystem_GetCriticalHpMusicFlag(battleSys)) {
-        int delay = BattleSystem_GetCriticalHpMusicDelay(battleSys);
+    if (BattleSystem_GetCriticalHpMusicFlag(battleSystem)) {
+        int delay = BattleSystem_GetCriticalHpMusicDelay(battleSystem);
 
         if (IsSEPlaying(0x704) == FALSE) {
             if (--delay == 0) {
                 PlaySE(0x704);
-                BattleSystem_SetCriticalHpMusicDelay(battleSys, 4);
+                BattleSystem_SetCriticalHpMusicDelay(battleSystem, 4);
             } else {
-                BattleSystem_SetCriticalHpMusicDelay(battleSys, delay);
+                BattleSystem_SetCriticalHpMusicDelay(battleSystem, delay);
             }
         }
     }
 }
 
-// static
-void ov12_0223998C(SysTask *task, void *inBattleSys) {
-    BattleSystem *battleSys = inBattleSys;
+static void ov12_0223998C(SysTask *task, void *inBattleSys) {
+    BattleSystem *battleSystem = inBattleSys;
 
-    battleSys->unk2438 += 3;
-    BgSetPosTextAndCommit(battleSys->bgConfig, 1, 3, battleSys->unk2438);
+    battleSystem->unk2438 += 3;
+    BgSetPosTextAndCommit(battleSystem->bgConfig, 1, 3, battleSystem->unk2438);
 
-    if (battleSys->unk2438 == 0) {
+    if (battleSystem->unk2438 == 0) {
         SysTask_Destroy(task);
     }
 }
 
-// static
 void ov12_022399BC(void) {
     if (!sub_02039998()) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_18), 2);
     }
 }
 
-extern void ov12_022397E4();
-
 extern GraphicsBanks ov12_0226C080;
 extern GraphicsModes ov12_0226BFF8;
 extern BgTemplate ov12_0226C044;
 
-// static
-void ov12_022399D4(OverlayManager *appMan, BattleSetup *dto) {
+static void ov12_022399D4(OverlayManager *appMan, BattleSetup *battleSetup) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_CreateAndGetData(appMan, sizeof(LinkBattleCommState), HEAP_ID_BATTLE);
 
-    linkBattleCommState->dto = dto;
+    linkBattleCommState->battleSetup = battleSetup;
     linkBattleCommState->recvCount = 0;
     linkBattleCommState->handshakeStep = 0;
     linkBattleCommState->syncTimer = 0;
@@ -1402,7 +1384,7 @@ void ov12_022399D4(OverlayManager *appMan, BattleSetup *dto) {
     InitBgFromTemplate(linkBattleCommState->bgConfig, 1, &bgTemplate, 0);
     BgClearTilemapBufferAndCommit(linkBattleCommState->bgConfig, 1);
 
-    int frame = Options_GetFrame(dto->options);
+    int frame = Options_GetFrame(battleSetup->options);
 
     sub_0200EB80(linkBattleCommState->bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
     PaletteData_LoadNarc(linkBattleCommState->paletteData, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
@@ -1433,8 +1415,7 @@ void ov12_022399D4(OverlayManager *appMan, BattleSetup *dto) {
     ov12_0223A7A0();
 }
 
-// static
-BOOL ov12_02239C28(OverlayManager *appMan) {
+static BOOL ov12_02239C28(OverlayManager *appMan) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_GetData(appMan);
 
     sub_020399FC(HEAP_ID_BATTLE, linkBattleCommState->bgConfig);
@@ -1530,7 +1511,7 @@ BOOL ov12_02239C28(OverlayManager *appMan) {
         }
         break;
     case 21:
-        if ((linkBattleCommState->dto->battleType & BATTLE_TYPE_FRONTIER) == 0) {
+        if ((linkBattleCommState->battleSetup->battleType & BATTLE_TYPE_FRONTIER) == 0) {
             linkBattleCommState->handshakeStep = 33;
         } else {
             if (CommSystem_GetCurNetId()) {
@@ -1659,8 +1640,7 @@ BOOL ov12_02239C28(OverlayManager *appMan) {
     return result;
 }
 
-// static
-void ov12_0223A088(OverlayManager *appMan) {
+static void ov12_0223A088(OverlayManager *appMan) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_GetData(appMan);
 
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -1674,148 +1654,143 @@ void ov12_0223A088(OverlayManager *appMan) {
     Heap_Free(linkBattleCommState);
 }
 
-// static
-BOOL ov12_0223A0D4(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_CreateAndGetData(appMan, sizeof(BattleSystem), HEAP_ID_BATTLE);
-    BattleSetup *dto = OverlayManager_GetArgs(appMan);
+static BOOL ov12_0223A0D4(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_CreateAndGetData(appMan, sizeof(BattleSystem), HEAP_ID_BATTLE);
+    BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     u8 netID;
 
-    MI_CpuClearFast(battleSys, sizeof(BattleSystem));
-    ov12_02238A68(battleSys, dto);
+    MI_CpuClearFast(battleSystem, sizeof(BattleSystem));
+    ov12_02238A68(battleSystem, battleSetup);
 
-    if ((battleSys->battleType & BATTLE_TYPE_LINK) == FALSE
-        || battleSys->battleSpecial & 0x10
-        || battleSys->battleType & BATTLE_TYPE_FRONTIER) {
+    if ((battleSystem->battleType & BATTLE_TYPE_LINK) == FALSE
+        || battleSystem->battleSpecial & 0x10
+        || battleSystem->battleType & BATTLE_TYPE_FRONTIER) {
         sub_0203A914();
         return FALSE;
     }
 
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_5), 2);
 
-    if ((battleSys->battleType & BATTLE_TYPE_MULTI) == FALSE) {
+    if ((battleSystem->battleType & BATTLE_TYPE_MULTI) == FALSE) {
         return FALSE;
     }
 
-    battleSys->unk1C4 = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerIntroData));
-    MI_CpuClearFast(battleSys->unk1C4, sizeof(TrainerIntroData));
+    battleSystem->unk1C4 = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerIntroData));
+    MI_CpuClearFast(battleSystem->unk1C4, sizeof(TrainerIntroData));
     netID = CommSystem_GetCurNetId();
 
     switch (sub_020378AC(netID)) {
     case 0:
     case 3:
-        battleSys->unk1C4->party[0] = battleSys->trainerParty[netID];
-        battleSys->unk1C4->party[2] = battleSys->trainerParty[BattleSystem_GetBattlerIdPartner(battleSys, netID)];
+        battleSystem->unk1C4->party[0] = battleSystem->trainerParty[netID];
+        battleSystem->unk1C4->party[2] = battleSystem->trainerParty[BattleSystem_GetBattlerIdPartner(battleSystem, netID)];
         break;
     case 1:
     case 2:
-        battleSys->unk1C4->party[0] = battleSys->trainerParty[BattleSystem_GetBattlerIdPartner(battleSys, netID)];
-        battleSys->unk1C4->party[2] = battleSys->trainerParty[netID];
+        battleSystem->unk1C4->party[0] = battleSystem->trainerParty[BattleSystem_GetBattlerIdPartner(battleSystem, netID)];
+        battleSystem->unk1C4->party[2] = battleSystem->trainerParty[netID];
         break;
     }
 
-    battleSys->unk1C4->heapID = HEAP_ID_BATTLE;
-    battleSys->unk1C4->mode = 0;
+    battleSystem->unk1C4->heapID = HEAP_ID_BATTLE;
+    battleSystem->unk1C4->mode = 0;
 
     switch (sub_020378AC(netID)) {
     case 0:
     case 3:
-        battleSys->unk1C4->playerSide = 0;
+        battleSystem->unk1C4->playerSide = 0;
         break;
     case 1:
     case 2:
-        battleSys->unk1C4->playerSide = 1;
+        battleSystem->unk1C4->playerSide = 1;
         break;
     }
 
-    ov05_0221BA00(battleSys->unk1C4);
+    ov05_0221BA00(battleSystem->unk1C4);
 
     return TRUE;
 }
 
-// static
-BOOL ov12_0223A218(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_GetData(appMan);
+static BOOL ov12_0223A218(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_GetData(appMan);
 
-    if (battleSys->unk1C4->isDone) {
+    if (battleSystem->unk1C4->isDone) {
         for (int i = 0; i < 4; i++) {
-            if (battleSys->unk1C4->trainerNames[i] != NULL) {
-                Heap_Free(battleSys->unk1C4->trainerNames[i]);
+            if (battleSystem->unk1C4->trainerNames[i] != NULL) {
+                Heap_Free(battleSystem->unk1C4->trainerNames[i]);
             }
         }
 
-        Heap_Free(battleSys->unk1C4);
+        Heap_Free(battleSystem->unk1C4);
         return TRUE;
     }
 
     return FALSE;
 }
 
-// static
-BOOL ov12_0223A260(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_GetData(appMan);
-    BattleSetup *dto = OverlayManager_GetArgs(appMan);
+static BOOL ov12_0223A260(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_GetData(appMan);
+    BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
 
-    if ((battleSys->battleType & BATTLE_TYPE_LINK) == FALSE
-        || battleSys->battleSpecial & 0x10
-        || battleSys->battleType & BATTLE_TYPE_FRONTIER) {
+    if ((battleSystem->battleType & BATTLE_TYPE_LINK) == FALSE
+        || battleSystem->battleSpecial & 0x10
+        || battleSystem->battleType & BATTLE_TYPE_FRONTIER) {
         sub_0203A914();
         return FALSE;
     }
 
     u8 netID = CommSystem_GetCurNetId();
-    battleSys->unk1C4 = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerIntroData));
+    battleSystem->unk1C4 = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerIntroData));
 
-    MI_CpuClearFast(battleSys->unk1C4, sizeof(TrainerIntroData));
+    MI_CpuClearFast(battleSystem->unk1C4, sizeof(TrainerIntroData));
 
-    if (battleSys->battleType & BATTLE_TYPE_MULTI) {
+    if (battleSystem->battleType & BATTLE_TYPE_MULTI) {
         for (int i = 0; i < 4; i++) {
-            battleSys->unk1C4->party[sub_020378AC(i)] = battleSys->trainerParty[i];
-            battleSys->unk1C4->trainerNames[sub_020378AC(i)] = PlayerProfile_GetPlayerName_NewString(battleSys->playerProfile[i], HEAP_ID_BATTLE);
+            battleSystem->unk1C4->party[sub_020378AC(i)] = battleSystem->trainerParty[i];
+            battleSystem->unk1C4->trainerNames[sub_020378AC(i)] = PlayerProfile_GetPlayerName_NewString(battleSystem->playerProfile[i], HEAP_ID_BATTLE);
         }
 
-        battleSys->unk1C4->heapID = HEAP_ID_BATTLE;
-        battleSys->unk1C4->mode = 1;
-        battleSys->unk1C4->playerSide = 1;
+        battleSystem->unk1C4->heapID = HEAP_ID_BATTLE;
+        battleSystem->unk1C4->mode = 1;
+        battleSystem->unk1C4->playerSide = 1;
     } else {
-        battleSys->unk1C4->party[sub_020378AC(netID)] = battleSys->trainerParty[netID];
-        battleSys->unk1C4->party[sub_020378AC(netID ^ 1)] = battleSys->trainerParty[netID ^ 1];
-        battleSys->unk1C4->trainerNames[sub_020378AC(netID)] = PlayerProfile_GetPlayerName_NewString(battleSys->playerProfile[netID], HEAP_ID_BATTLE);
-        battleSys->unk1C4->trainerNames[sub_020378AC(netID ^ 1)] = PlayerProfile_GetPlayerName_NewString(battleSys->playerProfile[netID ^ 1], HEAP_ID_BATTLE);
-        battleSys->unk1C4->heapID = HEAP_ID_BATTLE;
-        battleSys->unk1C4->mode = 1;
-        battleSys->unk1C4->playerSide = 0;
+        battleSystem->unk1C4->party[sub_020378AC(netID)] = battleSystem->trainerParty[netID];
+        battleSystem->unk1C4->party[sub_020378AC(netID ^ 1)] = battleSystem->trainerParty[netID ^ 1];
+        battleSystem->unk1C4->trainerNames[sub_020378AC(netID)] = PlayerProfile_GetPlayerName_NewString(battleSystem->playerProfile[netID], HEAP_ID_BATTLE);
+        battleSystem->unk1C4->trainerNames[sub_020378AC(netID ^ 1)] = PlayerProfile_GetPlayerName_NewString(battleSystem->playerProfile[netID ^ 1], HEAP_ID_BATTLE);
+        battleSystem->unk1C4->heapID = HEAP_ID_BATTLE;
+        battleSystem->unk1C4->mode = 1;
+        battleSystem->unk1C4->playerSide = 0;
     }
 
-    ov05_0221BA00(battleSys->unk1C4);
+    ov05_0221BA00(battleSystem->unk1C4);
 
     return TRUE;
 }
 
-// static
-BOOL ov12_0223A3A8(OverlayManager *appMan) {
-    BattleSystem *battleSys = OverlayManager_GetData(appMan);
+static BOOL ov12_0223A3A8(OverlayManager *appMan) {
+    BattleSystem *battleSystem = OverlayManager_GetData(appMan);
 
-    if (battleSys->unk1C4->isDone) {
+    if (battleSystem->unk1C4->isDone) {
         for (int i = 0; i < 4; i++) {
-            if (battleSys->unk1C4->trainerNames[i] != NULL) {
-                Heap_Free(battleSys->unk1C4->trainerNames[i]);
+            if (battleSystem->unk1C4->trainerNames[i] != NULL) {
+                Heap_Free(battleSystem->unk1C4->trainerNames[i]);
             }
         }
 
-        Heap_Free(battleSys->unk1C4);
+        Heap_Free(battleSystem->unk1C4);
         return TRUE;
     }
 
     return FALSE;
 }
 
-// static
-BOOL ov12_0223A3F0(OverlayManager *appMan) {
-    BattleSetup *dto = OverlayManager_GetArgs(appMan);
+static BOOL ov12_0223A3F0(OverlayManager *appMan) {
+    BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
 
-    if ((dto->battleType & BATTLE_TYPE_LINK) == FALSE
-        || dto->battleSpecial & 0x10
-        || dto->battleType & BATTLE_TYPE_FRONTIER) {
+    if ((battleSetup->battleType & BATTLE_TYPE_LINK) == FALSE
+        || battleSetup->battleSpecial & 0x10
+        || battleSetup->battleType & BATTLE_TYPE_FRONTIER) {
         return FALSE;
     }
 
@@ -1823,77 +1798,76 @@ BOOL ov12_0223A3F0(OverlayManager *appMan) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_5), 2);
     TrainerIntroData *trainerIntroData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerIntroData));
 
-    dto->evolutionTaskData = trainerIntroData;
+    battleSetup->evolutionTaskData = trainerIntroData;
     MI_CpuClearFast(trainerIntroData, sizeof(TrainerIntroData));
-    trainerIntroData->dto = dto;
+    trainerIntroData->battleSetup = battleSetup;
 
-    switch (dto->winFlag) {
+    switch (battleSetup->winFlag) {
     case BATTLE_RESULT_WIN:
         if (!sub_02039998()) {
-            GameStats_Inc(dto->gameStats, 22);
+            GameStats_Inc(battleSetup->gameStats, 22);
         } else {
-            GameStats_Inc(dto->gameStats, 27);
+            GameStats_Inc(battleSetup->gameStats, 27);
         }
         break;
     case BATTLE_RESULT_LOSE:
         if (!sub_02039998()) {
-            GameStats_Inc(dto->gameStats, 23);
+            GameStats_Inc(battleSetup->gameStats, 23);
         } else {
-            GameStats_Inc(dto->gameStats, 28);
+            GameStats_Inc(battleSetup->gameStats, 28);
         }
         break;
     case BATTLE_RESULT_DRAW:
     case BATTLE_RESULT_PLAYER_FLED:
         if (!sub_02039998()) {
-            GameStats_Inc(dto->gameStats, 24);
+            GameStats_Inc(battleSetup->gameStats, 24);
         } else {
-            GameStats_Inc(dto->gameStats, 29);
+            GameStats_Inc(battleSetup->gameStats, 29);
         }
         break;
     }
 
-    if (dto->battleType & BATTLE_TYPE_MULTI) {
+    if (battleSetup->battleType & BATTLE_TYPE_MULTI) {
         for (int i = 0; i < 4; i++) {
-            trainerIntroData->party[sub_020378AC(i)] = dto->party[i];
-            trainerIntroData->trainerNames[sub_020378AC(i)] = PlayerProfile_GetPlayerName_NewString(dto->profile[i], HEAP_ID_BATTLE);
+            trainerIntroData->party[sub_020378AC(i)] = battleSetup->party[i];
+            trainerIntroData->trainerNames[sub_020378AC(i)] = PlayerProfile_GetPlayerName_NewString(battleSetup->profile[i], HEAP_ID_BATTLE);
         }
 
         trainerIntroData->heapID = HEAP_ID_BATTLE;
         trainerIntroData->mode = 2;
         trainerIntroData->playerSide = 1;
 
-        if (dto->winFlag != BATTLE_RESULT_PLAYER_FLED) {
-            trainerIntroData->battleResult = dto->winFlag;
+        if (battleSetup->winFlag != BATTLE_RESULT_PLAYER_FLED) {
+            trainerIntroData->battleResult = battleSetup->winFlag;
         } else {
             trainerIntroData->battleResult = 3;
         }
     } else {
-        trainerIntroData->party[sub_020378AC(netID)] = dto->party[netID];
-        trainerIntroData->party[sub_020378AC(netID ^ 1)] = dto->party[netID ^ 1];
-        trainerIntroData->trainerNames[sub_020378AC(netID)] = PlayerProfile_GetPlayerName_NewString(dto->profile[netID], HEAP_ID_BATTLE);
-        trainerIntroData->trainerNames[sub_020378AC(netID ^ 1)] = PlayerProfile_GetPlayerName_NewString(dto->profile[netID ^ 1], HEAP_ID_BATTLE);
+        trainerIntroData->party[sub_020378AC(netID)] = battleSetup->party[netID];
+        trainerIntroData->party[sub_020378AC(netID ^ 1)] = battleSetup->party[netID ^ 1];
+        trainerIntroData->trainerNames[sub_020378AC(netID)] = PlayerProfile_GetPlayerName_NewString(battleSetup->profile[netID], HEAP_ID_BATTLE);
+        trainerIntroData->trainerNames[sub_020378AC(netID ^ 1)] = PlayerProfile_GetPlayerName_NewString(battleSetup->profile[netID ^ 1], HEAP_ID_BATTLE);
         trainerIntroData->heapID = HEAP_ID_BATTLE;
         trainerIntroData->mode = 2;
         trainerIntroData->playerSide = 0;
 
-        if (dto->winFlag != BATTLE_RESULT_PLAYER_FLED) {
-            trainerIntroData->battleResult = dto->winFlag;
+        if (battleSetup->winFlag != BATTLE_RESULT_PLAYER_FLED) {
+            trainerIntroData->battleResult = battleSetup->winFlag;
         } else {
             trainerIntroData->battleResult = 3;
         }
     }
 
-    trainerIntroData->recordingType = dto->unk1B2;
+    trainerIntroData->recordingType = battleSetup->unk1B2;
 
     ov05_0221BA00(trainerIntroData);
 
     return TRUE;
 }
 
-// static
-BOOL ov12_0223A5E4(OverlayManager *appMan) {
-    BattleSetup *dto = OverlayManager_GetArgs(appMan);
-    TrainerIntroData *unk1C4 = dto->evolutionTaskData;
+static BOOL ov12_0223A5E4(OverlayManager *appMan) {
+    BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
+    TrainerIntroData *unk1C4 = battleSetup->evolutionTaskData;
 
     if (unk1C4->isDone) {
         for (int i = 0; i < 4; i++) {
@@ -1909,10 +1883,9 @@ BOOL ov12_0223A5E4(OverlayManager *appMan) {
     return FALSE;
 }
 
-// static
-void ov12_0223A620(BattleSystem *battleSys) {
-    if ((battleSys->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TUTORIAL))
-        || battleSys->battleSpecial & 0x10) {
+static void ov12_0223A620(BattleSystem *battleSystem) {
+    if ((battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TUTORIAL))
+        || battleSystem->battleSpecial & 0x10) {
         TextFlags_SetAutoScrollParam(1);
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetCanTouchSpeedUpPrint(FALSE);
@@ -1923,20 +1896,19 @@ void ov12_0223A620(BattleSystem *battleSys) {
     }
 }
 
-// static
-void ov12_0223A664(BattleSystem *battleSys, BattleSetup *dto) {
+static void ov12_0223A664(BattleSystem *battleSystem, BattleSetup *battleSetup) {
     int i, j, temp;
     int netIDs[4];
     int versions[4];
 
-    if (battleSys->battleSpecial & 0x10) {
-        battleSys->unk23FC = 1;
+    if (battleSystem->battleSpecial & 0x10) {
+        battleSystem->unk23FC = 1;
         return;
     }
 
     for (i = 0; i < 4; i++) {
         netIDs[i] = i;
-        versions[i] = dto->filler_17C[i];
+        versions[i] = battleSetup->filler_17C[i];
     }
 
     int netID = CommSystem_GetCurNetId();
@@ -1956,35 +1928,34 @@ void ov12_0223A664(BattleSystem *battleSys, BattleSetup *dto) {
     }
 
     if (netIDs[0] == netID) {
-        battleSys->unk23FC = 1;
+        battleSystem->unk23FC = 1;
     } else {
-        if ((battleSys->battleType & BATTLE_TYPE_FRONTIER) == FALSE) {
-            if (battleSys->battleType & BATTLE_TYPE_MULTI) {
+        if ((battleSystem->battleType & BATTLE_TYPE_FRONTIER) == FALSE) {
+            if (battleSystem->battleType & BATTLE_TYPE_MULTI) {
                 temp = sub_020378AC(netID);
 
                 switch (sub_020378AC(netIDs[0])) {
                 case 0:
                 case 2:
                     if (temp & 1) {
-                        battleSys->battleSpecial |= 0x20;
+                        battleSystem->battleSpecial |= 0x20;
                     }
                     break;
                 case 1:
                 case 3:
                     if ((temp & 1) == 0) {
-                        battleSys->battleSpecial |= 0x20;
+                        battleSystem->battleSpecial |= 0x20;
                     }
                     break;
                 }
             } else {
-                battleSys->battleSpecial |= 0x20;
+                battleSystem->battleSpecial |= 0x20;
             }
         }
     }
 }
 
-// static
-void ov12_0223A7A0(void) {
+static void ov12_0223A7A0(void) {
     sub_0203A880();
 
     if (sub_02039998()) {

@@ -9,7 +9,7 @@
 #include "constants/message_tags.h"
 #include "constants/move_effects.h"
 
-#include "battle/battle_022378C0.h"
+#include "battle/battle_main.h"
 #include "battle/battle_command.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"

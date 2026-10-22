@@ -550,7 +550,7 @@ typedef struct UnkBattleSystemSub220 {
 typedef struct BattleInput BattleInput;
 
 typedef struct TrainerIntroData {
-    BattleSetup *dto;
+    BattleSetup *battleSetup;
     Party *party[4];
     String *trainerNames[4];
     enum HeapID heapID;
