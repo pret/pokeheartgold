@@ -381,7 +381,7 @@ static BOOL ov01_021E6ED8() { // CheckTrainerInfo?
 }
 
 BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
-    if (sub_02033250() & 0xFE) {                     // WirelessManager_GetConnectedBitmap?
+    if (sub_02033250() & 0xFE) {                                     // WirelessManager_GetConnectedBitmap?
         if (ov01_021E6ED8() && CommSystem_GetConnectedCount() > 1) { // CommSystem_GetConnectedCount == CommSys_ConnectedCount?
             StartMapSceneScript(fieldSystem, 5, NULL);
             return TRUE;

@@ -4,6 +4,7 @@
 #include "constants/battle.h"
 #include "constants/moves.h"
 
+#include "battle/battle_setup.h"
 #include "battle/party_gauge.h"
 
 #include "bag.h"
@@ -12,6 +13,7 @@
 #include "filesystem.h"
 #include "font.h"
 #include "game_stats.h"
+#include "gf_3d_vramman.h"
 #include "item.h"
 #include "move.h"
 #include "msgdata.h"
@@ -29,6 +31,7 @@
 #include "trainer_data.h"
 #include "unk_0200CE7C.h"
 #include "unk_02013534.h"
+#include "unk_02067A60.h"
 
 typedef struct BattleMessage {
     u8 unk0;
@@ -546,8 +549,20 @@ typedef struct UnkBattleSystemSub220 {
 
 typedef struct BattleInput BattleInput;
 
+typedef struct TrainerIntroData {
+    BattleSetup *dto;
+    Party *party[4];
+    String *trainerNames[4];
+    enum HeapID heapID;
+    u8 mode;
+    u8 playerSide;
+    u8 battleResult;
+    u8 isDone;
+    u8 recordingType;
+} TrainerIntroData;
+
 struct BattleSystem {
-    u32 *unk0;
+    GF3DVramMan *unk0;
     BgConfig *bgConfig;
     Window *window;
     MsgData *msgData;
@@ -574,7 +589,7 @@ struct BattleSystem {
     SpriteSystem *spriteRenderer;
     SpriteManager *gfxHandler;
     u32 *unk98;
-    u32 *unk9C;
+    CaptureAttempt *unk9C;
     u16 trainerId[4];
     u8 trainerGender[4];
     Trainer trainers[4];
@@ -588,9 +603,9 @@ struct BattleSystem {
     u32 *unk1B8;
     void *unk1BC;
     u8 *unk1C0;
-    u32 *unk1C4;
+    TrainerIntroData *unk1C4;
     void *unk1C8; // related to animations
-    u32 *unk1CC;
+    NNSG2dCellTransferState *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
     UnkBattleSystemSub220 unk210;
     GameStats *gameStats;

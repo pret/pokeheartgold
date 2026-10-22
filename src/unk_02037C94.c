@@ -1470,7 +1470,7 @@ void sub_020399EC(void) {
     while (TRUE) {}
 }
 
-void sub_020399FC(void) {
+void sub_020399FC(int heapID, BgConfig *bgConfig) {
 }
 
 void sub_02039A00(void) {

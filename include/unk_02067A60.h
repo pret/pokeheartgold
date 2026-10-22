@@ -5,7 +5,7 @@
 #include "heap.h"
 #include "pokemon_types_def.h"
 
-struct CaptureAttempt;
+typedef struct CaptureAttempt CaptureAttempt;
 struct UnkStruct_02067BF8;
 
 struct CaptureAttempt *CaptureAttempt_New(enum HeapID heapID);

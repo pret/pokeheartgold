@@ -146,7 +146,7 @@ void sub_020399A4(s8 arg0);
 u8 sub_020399B8(void);
 void sub_020399DC(u32 errorCode);
 void sub_020399EC(void);
-void sub_020399FC(void);
+void sub_020399FC(int heapID, BgConfig *bgConfig);
 void sub_02039A00(void);
 BOOL sub_02039AA4(void);
 BOOL sub_02039AD8(int arg0);

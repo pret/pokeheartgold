@@ -56,11 +56,11 @@ struct BattleSetup {                     // declared in trainer_data.h
     u32 unk_170;
     u32 weatherType; // 174
     int levelUpFlag; // 178
-    u8 filler_17C[0x10];
+    u32 filler_17C[4];
     u32 battleSpecial; // 18C
     int safariBalls;   // 190
     BOOL fixedDamaageMovesBanned;
-    EvolutionTaskData *evolutionTaskData;
+    void *evolutionTaskData; // this seems more generic than evolution data
     int unk_19C;
     int unk_1A0[4];
     u16 unk1B0;
@@ -68,7 +68,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     u8 unk1B3;
     int unk1B4;
     void *unk1B8;
-    int unk1BC;
+    u8 unk1BC[4];
     SaveData *saveData; // 1c0
     int unk1C4;
     Pokemon *bugContestMon; // 1c8
