@@ -480,7 +480,7 @@ static int BattleMain_ExecuteBattlerCommands(OverlayManager *appMan) {
         }
     } else {
         if (battleSystem->unk23FC) {
-            battleSystem->unk23FE = BattleContext_Main(battleSystem, battleSystem->ctx);
+            battleSystem->commandIsEndWait = BattleContext_Main(battleSystem, battleSystem->ctx);
             BattleSystem_TryRecvMessage(battleSystem, 1);
         }
 
@@ -489,9 +489,9 @@ static int BattleMain_ExecuteBattlerCommands(OverlayManager *appMan) {
             BattleSystem_TryRecvMessage(battleSystem, 0);
         }
 
-        if (battleSystem->unk23FE == FALSE) {
+        if (battleSystem->commandIsEndWait == FALSE) {
             if (battleSystem->unk23FC) {
-                battleSystem->unk23FE = BattleContext_Main(battleSystem, battleSystem->ctx);
+                battleSystem->commandIsEndWait = BattleContext_Main(battleSystem, battleSystem->ctx);
                 BattleSystem_TryRecvMessage(battleSystem, 1);
             }
 
@@ -502,7 +502,7 @@ static int BattleMain_ExecuteBattlerCommands(OverlayManager *appMan) {
         }
     }
 
-    return battleSystem->unk23FE;
+    return battleSystem->commandIsEndWait;
 }
 
 static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan) {

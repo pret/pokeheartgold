@@ -625,7 +625,7 @@ struct BattleSystem {
     u8 *unk23F8;
     u8 unk23FC;
     u8 unk23FD;
-    u8 unk23FE;
+    u8 commandIsEndWait;
     u8 unk240F_0 : 1;
     u8 unk240F_1 : 1;
     u8 unk240E_F : 1;

@@ -55,5 +55,5 @@
 .public ov12_0223BC08
 .public ov12_0223BC14
 .public ov12_0223BC20
-.public ov12_0223BC2C
+.public BattleSystem_SetCommandIsEndWait
 .public BattleController_RecvCommMessage

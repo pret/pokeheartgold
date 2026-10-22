@@ -1064,7 +1064,7 @@ sub_02075534: ; 0x02075534
 	bl ov12_0223BC20
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_0223BC2C
+	bl BattleSystem_SetCommandIsEndWait
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end sub_02075534

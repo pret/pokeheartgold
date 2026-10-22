@@ -1027,8 +1027,8 @@ void ov12_0223BC20(BattleSystem *battleSystem, u8 a1) {
     *battleSystem->unk23F8 = a1;
 }
 
-void ov12_0223BC2C(BattleSystem *battleSystem, u8 a1) {
-    battleSystem->unk23FE = a1;
+void BattleSystem_SetCommandIsEndWait(BattleSystem *battleSystem, u8 a1) {
+    battleSystem->commandIsEndWait = a1;
 }
 
 BattleHpBar *BattleSystem_GetHpBar(BattleSystem *battleSystem, int battlerId) {
