@@ -3763,7 +3763,7 @@ static void BattleDisplayTask_PlayerShowTargetSelectMenu(SysTask *task, void *da
 static void BattleDisplayTask_TrainerShowTargetSelectMenu(SysTask *task, void *data) {
     TargetSelectMenuData *targetSelectMenuData = data;
     BattleContext *battleCtx = BattleSystem_GetBattleContext(targetSelectMenuData->battleSys);
-    int selectedTarget = ov12_022581D4(targetSelectMenuData->battleSys, battleCtx, 11, targetSelectMenuData->battler) + 1;
+    int selectedTarget = BattleContext_Get(targetSelectMenuData->battleSys, battleCtx, 11, targetSelectMenuData->battler) + 1;
 
     GF_ASSERT(selectedTarget < 5);
 
@@ -4027,7 +4027,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
             }
 
             if (bagMenuData->state != 8) {
-                ov12_02237ED0(bagMenuData->battleSys, FALSE);
+                BattleSystem_LoadFightOverlay(bagMenuData->battleSys, FALSE);
             }
         }
         break;
@@ -4331,7 +4331,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
     case 30:
         if (TextPrinterCheckActive(bagMenuData->msgIdx) == FALSE) {
             if (--bagMenuData->delay == 0) {
-                ov12_02237ED0(bagMenuData->battleSys, TRUE);
+                BattleSystem_LoadFightOverlay(bagMenuData->battleSys, TRUE);
                 bagMenuData->state = 8;
             }
         }

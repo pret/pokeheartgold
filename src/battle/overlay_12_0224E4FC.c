@@ -5628,7 +5628,7 @@ int CalcMoveDamage(BattleSystem *battleSystem, BattleContext *ctx, u32 moveNo, u
         monAtk *= 2;
     }
 
-    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(ov12_022581D4(battleSystem, ctx, 3, 0) - BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
+    if (calcAttacker.ability == ABILITY_SLOW_START && (int)(BattleContext_Get(battleSystem, ctx, 3, 0) - BattleMon_Get(ctx, battlerIdAttacker, BMON_DATA_SLOW_START_TURN_NUMBER, NULL)) < 5) {
         monAtk /= 2;
     }
 
@@ -6218,7 +6218,7 @@ BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleCon
     return FALSE;
 }
 
-int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId) {
+int BattleContext_Get(BattleSystem *battleSystem, BattleContext *ctx, int var, int battlerId) {
     switch (var) {
     case 0:
         return ctx->fieldSideConditionFlags[BattleSystem_GetFieldSide(battleSystem, battlerId)];

@@ -79,7 +79,7 @@ void *ov12_0223B750(BattleSystem *battleSystem);
 SOUND_CHATOT *BattleSystem_GetChatotVoice(BattleSystem *battleSystem, int battlerId);
 void BattleSystem_TryChangeForm(BattleSystem *battleSystem);
 void ov12_0223B854(BattleSystem *battleSystem, int battlerId, int selectedMonIndex);
-void ov12_0223B870();
+void BattleSystem_InitCaptureAttempt();
 void BattleSystem_SetBackground(BattleSystem *battleSystem);
 u8 *ov12_0223BAD0(BattleSystem *battleSystem);
 u16 *ov12_0223BAD8(BattleSystem *battleSystem);

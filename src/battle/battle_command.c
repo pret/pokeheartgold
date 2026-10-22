@@ -14,11 +14,11 @@
 #include "constants/pokemon.h"
 #include "constants/sndseq.h"
 
-#include "battle/battle_main.h"
 #include "battle/battle_02265E28.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_controller_player.h"
+#include "battle/battle_main.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_07.h"
 #include "battle/overlay_12_0224E4FC.h"
@@ -1213,7 +1213,7 @@ BOOL BtlCmd_CalcCrit(BattleSystem *battleSystem, BattleContext *ctx) {
     if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TUTORIAL) || (BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_FIRST_RIVAL)) {
         ctx->criticalMultiplier = 1;
     } else {
-        ctx->criticalMultiplier = TryCriticalHit(battleSystem, ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalCnt, ov12_022581D4(battleSystem, ctx, 0, ctx->battlerIdTarget));
+        ctx->criticalMultiplier = TryCriticalHit(battleSystem, ctx, ctx->battlerIdAttacker, ctx->battlerIdTarget, ctx->criticalCnt, BattleContext_Get(battleSystem, ctx, 0, ctx->battlerIdTarget));
     }
 
     return FALSE;
@@ -2248,7 +2248,7 @@ BOOL BtlCmd_PayPrizeMoney(BattleSystem *battleSystem, BattleContext *ctx) {
         ctx->msgTemp = 0;
     }
 
-    ctx->tempData = battleSystem->unk2474_1;
+    ctx->tempData = battleSystem->momsSavingsActive;
 
     return FALSE;
 }
@@ -6887,7 +6887,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
     case STATE_GET_POKEMON_15:
         ov18_021F89D0(data->tempPointers[POINTER_GET_POKEMON_OVERLAY_MANAGER]);
         ObjCharTransfer_PushTaskManager(data->tempPointers[POINTER_GET_POKEMON_TASK_MANAGER]);
-        ov12_02237D00(data->battleSystem);
+        BattleSystem_SetupBattleScreen(data->battleSystem);
         PaletteData_BeginPaletteFade(paletteData, 5, 0xFFFF, 1, 16, 0, RGB_BLACK);
         data->state = STATE_GET_POKEMON_FADE_TO_NICKNAME_ASK;
         break;
@@ -6898,7 +6898,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
             PokepicManager_DeleteAllPics(pokepicManager);
             OpponentData_SetTrainerVisibility(BattleSystem_GetOpponentData(data->battleSystem, BATTLER_PLAYER), 0);
             BattleSystem_HideBattleScreen(data->battleSystem);
-            ov12_02237D00(data->battleSystem);
+            BattleSystem_SetupBattleScreen(data->battleSystem);
             PokepicTemplate picTemplate;
             GetPokemonSpriteCharAndPlttNarcIds(&picTemplate, mon, 2);
             PokepicManager_CreatePokepic(pokepicManager, &picTemplate, 128, 72, 0, 0, 0, 0);
@@ -6983,13 +6983,13 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
             Pokemon *mon = BattleSystem_GetPartyMon(data->battleSystem, battlerId, data->ctx->selectedMonIndex[battlerId]);
             BattleSystem_SetPokedexCaught(data->battleSystem, battlerId);
             ov12_022567D4(data->battleSystem, data->ctx, mon);
-            ov12_0223B870(data->battleSystem, mon);
+            BattleSystem_InitCaptureAttempt(data->battleSystem, mon);
             BattleController_EmitIncrementGameStat(data->battleSystem, BATTLER_PLAYER, 0, GAME_STAT_CAUGHT_MON);
             if (BattleSystem_GetBattleType(data->battleSystem) & BATTLE_TYPE_BUG_CONTEST) {
                 if (data->state == STATE_GET_POKEMON_STORE_NEW_MON_BUG_CONTEST) {
                     ov18_021F89D0(data->tempPointers[POINTER_GET_POKEMON_OVERLAY_MANAGER]);                // We have not overwritten our original OverlayManager if we arrive here through this state.
                     ObjCharTransfer_PushTaskManager(data->tempPointers[POINTER_GET_POKEMON_TASK_MANAGER]); // Nor our TaskManager.
-                    ov12_02237D00(data->battleSystem);
+                    BattleSystem_SetupBattleScreen(data->battleSystem);
                 }
                 CopyPokemonToPokemon(mon, BattleSystem_GetBugContestCaughtMon(data->battleSystem));
                 if (data->state == STATE_GET_POKEMON_STORE_MON_NO_NAMING_SCREEN) {

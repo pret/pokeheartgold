@@ -9,10 +9,10 @@
 #include "constants/message_tags.h"
 #include "constants/move_effects.h"
 
-#include "battle/battle_main.h"
 #include "battle/battle_command.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
+#include "battle/battle_main.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "msgdata/msg/msg_0197.h"
@@ -235,7 +235,7 @@ static void BattleControllerPlayer_SelectionScreenInit(BattleSystem *battleSyste
     }
 
     ov12_0223BB64(battleSystem, 0);
-    ov12_02237ED0(battleSystem, 1);
+    BattleSystem_LoadFightOverlay(battleSystem, 1);
 
     ctx->command = CONTROLLER_COMMAND_SELECTION_SCREEN_INPUT;
 }
@@ -620,7 +620,7 @@ static void BattleControllerPlayer_SelectionScreenInput(BattleSystem *battleSyst
 
     if (var == battlersMax) {
         BattleSystem_RecordCommand(battleSystem, ctx);
-        ov12_02237ED0(battleSystem, 0);
+        BattleSystem_LoadFightOverlay(battleSystem, 0);
 
         ctx->command = CONTROLLER_COMMAND_CALC_EXECUTION_ORDER;
 

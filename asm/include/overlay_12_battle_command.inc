@@ -113,7 +113,7 @@
 .public ov07_02233F20
 .public BattleSystem_FreeGraphics
 .public BattleSystem_HideBattleScreen
-.public ov12_02237D00
+.public BattleSystem_SetupBattleScreen
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
@@ -141,7 +141,7 @@
 .public BattleSystem_GetTimezone
 .public BattleSystem_GetOptions
 .public BattleSystem_GetTextFrameDelay
-.public ov12_0223B870
+.public BattleSystem_InitCaptureAttempt
 .public BattleSystem_MetBill
 .public BattleSystem_GameStatIncrement
 .public ov12_0223BB44

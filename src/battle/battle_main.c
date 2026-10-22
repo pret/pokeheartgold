@@ -44,36 +44,36 @@ typedef enum BattleState {
     BSTATE_EXIT
 } BattleState;
 
-static void ov12_02237F18(OverlayManager *appMan);
-static int ov12_02238358(OverlayManager *appMan);
-static void ov12_0223843C(OverlayManager *appMan);
-static void ov12_022387AC(BattleSystem *battleSystem, BgConfig *bgConfig);
-static void ov12_022389B8(BattleSystem *battleSystem);
-static void ov12_02238A30(BgConfig *bgConfig);
+static void BattleMain_InitGraphics(OverlayManager *appMan);
+static int BattleMain_ExecuteBattlerCommands(OverlayManager *appMan);
+static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan);
+static void BattleMain_InitBattleGraphics(BattleSystem *battleSystem, BgConfig *bgConfig);
+static void BattleMain_InitTerrainsBattleMain_InitTerrains(BattleSystem *battleSystem);
+static void BattleMain_FreeBgLayers(BgConfig *bgConfig);
 static void ov12_02238A64(BattleSystem *battleSystem);
-static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup);
-static BOOL ov12_022395BC(u16 trainerClass);
-static GF3DVramMan *ov12_02239644(void);
-static void ov12_02239664(void);
-static void ov12_022396E8(GF3DVramMan *pipelineBuffers);
-static void ov12_022396F0(void);
-static void ov12_02239730(void *inBattleSys);
-static void ov12_022397E4(void *commState);
-static void ov12_02239810(SysTask *task, void *inBattleSys);
-static void ov12_02239854(SysTask *task, void *inBattleSys);
-static void ov12_0223998C(SysTask *task, void *inBattleSys);
-static void ov12_022399D4(OverlayManager *appMan, BattleSetup *battleSetup);
-static BOOL ov12_02239C28(OverlayManager *appMan);
-static void ov12_0223A088(OverlayManager *appMan);
-static BOOL ov12_0223A0D4(OverlayManager *appMan);
-static BOOL ov12_0223A218(OverlayManager *appMan);
-static BOOL ov12_0223A260(OverlayManager *appMan);
-static BOOL ov12_0223A3A8(OverlayManager *appMan);
-static BOOL ov12_0223A3F0(OverlayManager *appMan);
-static BOOL ov12_0223A5E4(OverlayManager *appMan);
-static void ov12_0223A620(BattleSystem *battleSystem);
-static void ov12_0223A664(BattleSystem *battleSystem, BattleSetup *battleSetup);
-static void ov12_0223A7A0(void);
+static void BattleSystem_New(BattleSystem *battleSystem, BattleSetup *battleSetup);
+static BOOL TrainerClass_IsEliteTrainer(u16 trainerClass);
+static GF3DVramMan *InitG3DPipelineBuffers(void);
+static void G3DPipeline_SetupCallback(void);
+static void FreeG3DPipelineBuffers(GF3DVramMan *pipelineBuffers);
+static void BattleMain_InitParticleSystem(void);
+static void BattleMain_VBlankCallback(void *inBattleSys);
+static void BattleMain_LinkCommVBlankCallback(void *commState);
+static void SysTask_DrawSprites(SysTask *task, void *inBattleSys);
+static void SysTask_UpdateCriticalHpMusic(SysTask *task, void *inBattleSys);
+static void SysTask_FlyInMessageBox(SysTask *task, void *inBattleSys);
+static void BattleMain_InitLinkCommScreen(OverlayManager *appMan, BattleSetup *battleSetup);
+static BOOL BattleMain_HandleLinkCommHandshake(OverlayManager *appMan);
+static void BattleMain_FreeeLinkCommScreen(OverlayManager *appMan);
+static BOOL BattleMain_InitPartnerIntro(OverlayManager *appMan);
+static BOOL BattleMain_WaitPartnerIntro(OverlayManager *appMan);
+static BOOL BattleMain_InitTrainerIntro(OverlayManager *appMan);
+static BOOL BattleMain_WaitTrainerIntro(OverlayManager *appMan);
+static BOOL BattleMain_HandleLinkBattleResult(OverlayManager *appMan);
+static BOOL BattleMain_WaitLinkBattleEnd(OverlayManager *appMan);
+static void BattleSys_SetRenderControlFlags(BattleSystem *battleSystem);
+static void BattleMain_AssignRecordingRoles(BattleSystem *battleSystem, BattleSetup *battleSetup);
+static void BattleMain_SetNetworkIconStrength(void);
 
 BOOL Battle_Run(OverlayManager *man, int *state) {
     BattleSetup *setup = OverlayManager_GetArgs(man);
@@ -88,7 +88,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         }
         break;
     case BSTATE_LINK_INIT:
-        ov12_022399D4(man, setup);
+        BattleMain_InitLinkCommScreen(man, setup);
         sub_02039F68(setup->wifiHistory);
         if (!sub_02039998()) {
             GameStats_Inc(setup->gameStats, GAME_STAT_LOCAL_LINK_BATTLES);
@@ -101,32 +101,32 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         *state = BSTATE_LINK_MAIN;
         break;
     case BSTATE_LINK_MAIN:
-        if (ov12_02239C28(man) == TRUE) {
-            ov12_0223A088(man);
+        if (BattleMain_HandleLinkCommHandshake(man) == TRUE) {
+            BattleMain_FreeeLinkCommScreen(man);
             *state = BSTATE_UNK_A_INIT;
         }
         break;
     case BSTATE_UNK_A_INIT:
-        if (ov12_0223A0D4(man) == TRUE) {
+        if (BattleMain_InitPartnerIntro(man) == TRUE) {
             *state = BSTATE_UNK_A_MAIN;
         } else {
             *state = BSTATE_UNK_B_INIT;
         }
         break;
     case BSTATE_UNK_A_MAIN:
-        if (ov12_0223A218(man) == TRUE) {
+        if (BattleMain_WaitPartnerIntro(man) == TRUE) {
             *state = BSTATE_UNK_B_INIT;
         }
         break;
     case BSTATE_UNK_B_INIT:
-        if (ov12_0223A260(man) == TRUE) {
+        if (BattleMain_InitTrainerIntro(man) == TRUE) {
             *state = BSTATE_UNK_B_MAIN;
         } else {
             *state = BSTATE_BATTLE_INIT;
         }
         break;
     case BSTATE_UNK_B_MAIN:
-        if (ov12_0223A3A8(man) == TRUE) {
+        if (BattleMain_WaitTrainerIntro(man) == TRUE) {
             UnloadOverlayByID(FS_OVERLAY_ID(OVY_5));
             *state = BSTATE_SYNC;
             sub_02037AC0(0x3D);
@@ -140,18 +140,18 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
     case BSTATE_BATTLE_INIT:
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_6), OVY_LOAD_ASYNC);
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), OVY_LOAD_ASYNC);
-        ov12_02237F18(man);
+        BattleMain_InitGraphics(man);
         *state = BSTATE_BATTLE_MAIN;
         break;
     case BSTATE_BATTLE_MAIN:
-        if (ov12_02238358(man) == TRUE) {
-            ov12_0223843C(man);
+        if (BattleMain_ExecuteBattlerCommands(man) == TRUE) {
+            BattleMain_CopyBattleSysToBattleSetupAndFree(man);
             sub_02005BEC(0);
             *state = BSTATE_END_INIT;
         }
         break;
     case BSTATE_END_INIT:
-        if (ov12_0223A3F0(man) == TRUE) {
+        if (BattleMain_HandleLinkBattleResult(man) == TRUE) {
             *state = BSTATE_END_MAIN;
         } else {
             Heap_Destroy(HEAP_ID_BATTLE);
@@ -159,7 +159,7 @@ BOOL Battle_Run(OverlayManager *man, int *state) {
         }
         break;
     case BSTATE_END_MAIN:
-        if (ov12_0223A5E4(man) == TRUE) {
+        if (BattleMain_WaitLinkBattleEnd(man) == TRUE) {
             UnloadOverlayByID(FS_OVERLAY_ID(OVY_5));
             Heap_Destroy(HEAP_ID_BATTLE);
             *state = BSTATE_END_WAIT;
@@ -220,7 +220,7 @@ void BattleSystem_FreeGraphics(BattleSystem *battleSystem) {
     Main_SetVBlankIntrCB(NULL, NULL);
     BattleInput_Free(battleSystem->battleInput);
     RemoveWindow(battleSystem->window);
-    ov12_02238A30(battleSystem->bgConfig);
+    BattleMain_FreeBgLayers(battleSystem->bgConfig);
     ov12_02238A64(battleSystem);
     SpriteSystem_FreeResourcesAndManager(battleSystem->spriteRenderer, battleSystem->gfxHandler);
     SpriteSystem_Free(battleSystem->spriteRenderer);
@@ -262,7 +262,7 @@ void BattleSystem_ExitSubMenu(BattleSystem *battleSystem) {
     NARC_Delete(unkNarcB);
 
     TextPrinter_SetDownArrowBaseTile(1);
-    ov12_0223A620(battleSystem);
+    BattleSys_SetRenderControlFlags(battleSystem);
 
     G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(battleSystem->spriteRenderer), 0, FX32_CONST(272));
 }
@@ -279,7 +279,7 @@ void BattleSystem_HideBattleScreen(BattleSystem *battleSystem) {
 }
 
 extern BgTemplate ov12_0226C120[3];
-void ov12_02237D00(BattleSystem *battleSystem) {
+void BattleSystem_SetupBattleScreen(BattleSystem *battleSystem) {
     battleSystem->unk240F_0 = 1;
 
     BgTemplate bgTemplates[3];
@@ -314,7 +314,7 @@ void ov12_02237D00(BattleSystem *battleSystem) {
 
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
-    Main_SetVBlankIntrCB(ov12_02239730, battleSystem);
+    Main_SetVBlankIntrCB(BattleMain_VBlankCallback, battleSystem);
 
     battleSystem->unk240F_1 = 1;
 
@@ -322,10 +322,10 @@ void ov12_02237D00(BattleSystem *battleSystem) {
     FillWindowPixelBuffer(battleSystem->window, 0xFF);
     DrawFrameAndWindow2(&battleSystem->window[0], 0, 1, 10);
 
-    ov12_0223A620(battleSystem);
+    BattleSys_SetRenderControlFlags(battleSystem);
 }
 
-void ov12_02237ED0(BattleSystem *battleSystem, int flags) {
+void BattleSystem_LoadFightOverlay(BattleSystem *battleSystem, int flags) {
     GF_ASSERT(battleSystem->unk2445 != flags);
 
     battleSystem->unk2445 = flags;
@@ -344,7 +344,7 @@ extern OamManagerParam ov12_0226C060;
 extern OamCharTransferParam ov12_0226C018;
 extern SpriteResourceCountsListUnion ov12_0226C02C;
 
-static void ov12_02237F18(OverlayManager *appMan) {
+static void BattleMain_InitGraphics(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_GetData(appMan);
     BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     int idx;
@@ -352,7 +352,7 @@ static void ov12_02237F18(OverlayManager *appMan) {
     MI_CpuFill16((void *)GetMainBgPlttAddr(), 0, sub_02026E8C());
     MI_CpuFill16((void *)GetSubBgPlttAddr(), 0, sub_02026E9C());
 
-    battleSystem->unk0 = ov12_02239644();
+    battleSystem->unk0 = InitG3DPipelineBuffers();
 
     HBlankInterruptDisable();
     FontID_Alloc(4, HEAP_ID_BATTLE);
@@ -385,7 +385,7 @@ static void ov12_02237F18(OverlayManager *appMan) {
     NARC_Delete(bgNarc);
     NARC_Delete(objNarc);
 
-    ov12_022387AC(battleSystem, battleSystem->bgConfig);
+    BattleMain_InitBattleGraphics(battleSystem, battleSystem->bgConfig);
 
     AddWindowParameterized(battleSystem->bgConfig, &battleSystem->window[0], 1, 2, 0x13, 27, 4, 11, (18 + 12) + 1);
     FillWindowPixelBuffer(&battleSystem->window[0], 0xFF);
@@ -418,11 +418,11 @@ static void ov12_02237F18(OverlayManager *appMan) {
     PokepicManager_SetPlttBaseAddrAndSize(battleSystem->pokepicManager, 0, 32 * 6);
 
     BattleSystem_HpBar_Init(battleSystem);
-    ov12_022396F0();
+    BattleMain_InitParticleSystem();
 
     battleSystem->unk8C = ov07_0221BEDC(HEAP_ID_BATTLE);
 
-    ov12_022389B8(battleSystem);
+    BattleMain_InitTerrainsBattleMain_InitTerrains(battleSystem);
 
     EnableTouchPad();
     InitializeTouchPad(4);
@@ -448,12 +448,12 @@ static void ov12_02237F18(OverlayManager *appMan) {
     battleSystem->msgIcon = sub_020163E0(battleSystem->palette, 0, 11, HEAP_ID_BATTLE);
     sub_0201649C(battleSystem->msgIcon, 1);
 
-    battleSystem->unk1C = SysTask_CreateOnMainQueue(ov12_02239810, battleSystem, 60000);
-    battleSystem->unk20 = SysTask_CreateOnMainQueue(ov12_02239854, battleSystem, 50000);
-    battleSystem->unk24 = SysTask_CreateOnVBlankQueue(ov12_0223998C, battleSystem, 1200);
+    battleSystem->unk1C = SysTask_CreateOnMainQueue(SysTask_DrawSprites, battleSystem, 60000);
+    battleSystem->unk20 = SysTask_CreateOnMainQueue(SysTask_UpdateCriticalHpMusic, battleSystem, 50000);
+    battleSystem->unk24 = SysTask_CreateOnVBlankQueue(SysTask_FlyInMessageBox, battleSystem, 1200);
     battleSystem->unk2438 = -51;
 
-    ov12_0223A620(battleSystem);
+    BattleSys_SetRenderControlFlags(battleSystem);
     BagCursor_Battle_Init(BattleSystem_GetBagCursor(battleSystem));
 
     battleSystem->unk1C8 = sub_02016EDC(HEAP_ID_BATTLE, 4, FALSE);
@@ -466,7 +466,7 @@ static void ov12_02237F18(OverlayManager *appMan) {
     }
 }
 
-static int ov12_02238358(OverlayManager *appMan) {
+static int BattleMain_ExecuteBattlerCommands(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_GetData(appMan);
     int battler;
 
@@ -505,12 +505,12 @@ static int ov12_02238358(OverlayManager *appMan) {
     return battleSystem->unk23FE;
 }
 
-static void ov12_0223843C(OverlayManager *appMan) {
+static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_GetData(appMan);
     BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     int battlerId;
 
-    battleSetup->unk_19C = battleSystem->randTemp;
+    battleSetup->rand = battleSystem->randTemp;
     battleSetup->battleSpecial = battleSystem->battleSpecial;
 
     if ((battleSystem->battleSpecial & 0x10) == FALSE) {
@@ -518,7 +518,7 @@ static void ov12_0223843C(OverlayManager *appMan) {
     }
 
     if (battleSystem->unk2445 != FALSE) {
-        ov12_02237ED0(battleSystem, FALSE);
+        BattleSystem_LoadFightOverlay(battleSystem, FALSE);
     }
 
     int color;
@@ -536,7 +536,7 @@ static void ov12_0223843C(OverlayManager *appMan) {
     BattleSystem_TryChangeForm(battleSystem);
 
     if (battleSystem->battleOutcomeFlag != BATTLE_RESULT_CAPTURED_MON) {
-        ov12_0223B870(battleSystem, Party_GetMonByIndex(battleSystem->trainerParty[1], 0));
+        BattleSystem_InitCaptureAttempt(battleSystem, Party_GetMonByIndex(battleSystem->trainerParty[1], 0));
     }
 
     for (battlerId = 0; battlerId < 4; battlerId++) {
@@ -555,16 +555,16 @@ static void ov12_0223843C(OverlayManager *appMan) {
     battleSetup->bagCursor = battleSystem->bagCursor;
     battleSetup->unk1B8 = battleSystem->unk1C0;
     battleSetup->unk_128 = battleSystem->unk98;
-    battleSetup->captureAttempt = battleSystem->unk9C;
+    battleSetup->captureAttempt = battleSystem->captureAttempt;
     battleSetup->safariBalls = battleSystem->safariBallCnt;
     battleSetup->winFlag = battleSystem->battleOutcomeFlag & (0xC0 ^ 0xFF);
-    battleSetup->unk_170 = battleSystem->battlerIdCaught;
-    battleSetup->levelUpFlag = ov12_022581D4(battleSystem, battleSystem->ctx, 4, NULL);
-    battleSetup->unk138.unk_0 += ov12_022581D4(battleSystem, battleSystem->ctx, 3, NULL);
-    battleSetup->unk138.unk_4 += ov12_022581D4(battleSystem, battleSystem->ctx, 6, 0) + ov12_022581D4(battleSystem, battleSystem->ctx, 6, 2);
-    battleSetup->unk138.unk_8 += ov12_022581D4(battleSystem, battleSystem->ctx, 7, 0) + ov12_022581D4(battleSystem, battleSystem->ctx, 7, 2);
-    battleSetup->unk1B4 = ov12_022581D4(battleSystem, battleSystem->ctx, 3, NULL);
-    battleSetup->unk1C4 = battleSystem->isRecordingPaused;
+    battleSetup->battlerIdCaught = battleSystem->battlerIdCaught;
+    battleSetup->levelUpFlag = BattleContext_Get(battleSystem, battleSystem->ctx, 4, NULL);
+    battleSetup->unk138.unk_0 += BattleContext_Get(battleSystem, battleSystem->ctx, 3, NULL);
+    battleSetup->unk138.unk_4 += BattleContext_Get(battleSystem, battleSystem->ctx, 6, 0) + BattleContext_Get(battleSystem, battleSystem->ctx, 6, 2);
+    battleSetup->unk138.unk_8 += BattleContext_Get(battleSystem, battleSystem->ctx, 7, 0) + BattleContext_Get(battleSystem, battleSystem->ctx, 7, 2);
+    battleSetup->unk1B4 = BattleContext_Get(battleSystem, battleSystem->ctx, 3, NULL);
+    battleSetup->isRecordingPaused = battleSystem->isRecordingPaused;
 
     for (battlerId = 0; battlerId < 4; battlerId++) {
         Heap_Free(battleSystem->unk1D0[battlerId].unk0);
@@ -607,7 +607,7 @@ static void ov12_0223843C(OverlayManager *appMan) {
     SysTask_Destroy(battleSystem->unk20);
     DisableTouchPad();
 
-    ov12_022396E8(battleSystem->unk0);
+    FreeG3DPipelineBuffers(battleSystem->unk0);
 
     SetLCRNGSeed(battleSystem->unk2434);
 
@@ -637,7 +637,7 @@ static void ov12_0223843C(OverlayManager *appMan) {
 extern GraphicsBanks ov12_0226C0A8;
 extern GraphicsModes ov12_0226BFE8;
 extern BgTemplate ov12_0226C174[3];
-static void ov12_022387AC(BattleSystem *battleSystem, BgConfig *bgConfig) {
+static void BattleMain_InitBattleGraphics(BattleSystem *battleSystem, BgConfig *bgConfig) {
     GfGfx_DisableEngineAPlanes();
 
     GraphicsBanks banks = ov12_0226C0A8;
@@ -690,10 +690,10 @@ static void ov12_022387AC(BattleSystem *battleSystem, BgConfig *bgConfig) {
     GfGfx_BothDispOn();
     GfGfx_EngineATogglePlanes(16, TRUE);
     GfGfx_EngineBTogglePlanes(16, TRUE);
-    Main_SetVBlankIntrCB(ov12_02239730, battleSystem);
+    Main_SetVBlankIntrCB(BattleMain_VBlankCallback, battleSystem);
 }
 
-static void ov12_022389B8(BattleSystem *battleSystem) {
+static void BattleMain_InitTerrainsBattleMain_InitTerrains(BattleSystem *battleSystem) {
     int terrain = BattleSystem_GetTerrainId(battleSystem);
     int selectedPartySlot;
     Pokemon *mon;
@@ -704,15 +704,15 @@ static void ov12_022389B8(BattleSystem *battleSystem) {
     BattleContext *battleCtx = BattleSystem_GetBattleContext(battleSystem);
 
     for (int battler = 0; battler < battleSystem->maxBattlers; battler++) {
-        selectedPartySlot = ov12_022581D4(battleSystem, battleCtx, 2, battler);
+        selectedPartySlot = BattleContext_Get(battleSystem, battleCtx, 2, battler);
         mon = BattleSystem_GetPartyMon(battleSystem, battler, selectedPartySlot);
         ov12_02258DB0(battleSystem, battleSystem->opponentData[battler], BattleSystem_GetMonBall(battleSystem, mon), selectedPartySlot);
     }
 
-    ov12_0223A7A0();
+    BattleMain_SetNetworkIconStrength();
 }
 
-static void ov12_02238A30(BgConfig *bgConfig) {
+static void BattleMain_FreeBgLayers(BgConfig *bgConfig) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, FALSE);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, FALSE);
     FreeBgTilemapBuffer(bgConfig, 1);
@@ -736,7 +736,7 @@ extern u8 ov12_0226BFDC[2][2];
 extern u8 ov12_0226BFE0[2][4];
 extern u8 ov12_0226C008[4][4];
 
-static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) {
+static void BattleSystem_New(BattleSystem *battleSystem, BattleSetup *battleSetup) {
     int i, slot;
     BattlerInitData battlerInitData;
     Pokemon *mon;
@@ -756,8 +756,8 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
     }
 
     battleSystem->unk2434 = GetLCRNGSeed();
-    battleSystem->rand = battleSetup->unk_19C;
-    battleSystem->randTemp = battleSetup->unk_19C;
+    battleSystem->rand = battleSetup->rand;
+    battleSystem->randTemp = battleSetup->rand;
     battleSystem->battleSpecial = battleSetup->battleSpecial;
     battleSystem->bag = Save_Bag_New(HEAP_ID_BATTLE);
 
@@ -771,8 +771,8 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
     battleSystem->bagCursor = battleSetup->bagCursor;
     battleSystem->unk1C0 = battleSetup->unk1B8;
     battleSystem->unk98 = battleSetup->unk_128;
-    battleSystem->unk2424 = battleSetup->evolutionLocation;
-    battleSystem->unk9C = battleSetup->captureAttempt;
+    battleSystem->evolutionLocation = battleSetup->evolutionLocation;
+    battleSystem->captureAttempt = battleSetup->captureAttempt;
     battleSystem->safariBallCnt = battleSetup->safariBalls;
     battleSystem->terrain = battleSetup->terrain;
     battleSystem->backgroundId = battleSetup->battleBg;
@@ -781,8 +781,8 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
     battleSystem->unk241C = battleSetup->fixedDamaageMovesBanned;
     battleSystem->unk2428 = battleSetup->unk_164;
     battleSystem->metBill = battleSetup->metBill;
-    battleSystem->unk2474_1 = battleSetup->momsSavingsActive;
-    battleSystem->isFishing = battleSetup->unk_1D0;
+    battleSystem->momsSavingsActive = battleSetup->momsSavingsActive;
+    battleSystem->isFishing = battleSetup->isFishing;
     battleSystem->weather = battleSetup->weatherType;
     battleSystem->gameStats = battleSetup->gameStats;
 
@@ -816,7 +816,7 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
         sub_02074E5C(battleSystem);
         u8 networkID = ov12_0223BFC0(battleSystem);
 
-        ov12_0223A664(battleSystem, battleSetup);
+        BattleMain_AssignRecordingRoles(battleSystem, battleSetup);
 
         if (battleSystem->battleType & BATTLE_TYPE_FRONTIER) {
             for (i = 0; i < 4; i++) {
@@ -895,7 +895,7 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
                     mon = Party_GetMonByIndex(battleSystem->trainerParty[i & 1], slot);
 
                     if (i > 1) {
-                        if ((ov12_022581D4(battleSystem, battleSystem->ctx, 2, i & 1) != slot)
+                        if ((BattleContext_Get(battleSystem, battleSystem->ctx, 2, i & 1) != slot)
                             && GetMonData(mon, MON_DATA_SPECIES, NULL)
                             && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
                             && GetMonData(mon, MON_DATA_HP, NULL)) {
@@ -1032,7 +1032,7 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
                 mon = Party_GetMonByIndex(battleSystem->trainerParty[i & 1], slot);
 
                 if (i > 1) {
-                    if (ov12_022581D4(battleSystem, battleSystem->ctx, 2, i & 1) != slot
+                    if (BattleContext_Get(battleSystem, battleSystem->ctx, 2, i & 1) != slot
                         && GetMonData(mon, MON_DATA_SPECIES, NULL)
                         && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE
                         && GetMonData(mon, MON_DATA_HP, NULL)) {
@@ -1088,8 +1088,8 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
     }
 
     if (battleSystem->battleType & BATTLE_TYPE_TRAINER) {
-        if (ov12_022395BC(battleSystem->trainers[1].data.trainerClass) == TRUE
-            || ov12_022395BC(battleSystem->trainers[3].data.trainerClass) == TRUE) {
+        if (TrainerClass_IsEliteTrainer(battleSystem->trainers[1].data.trainerClass) == TRUE
+            || TrainerClass_IsEliteTrainer(battleSystem->trainers[3].data.trainerClass) == TRUE) {
             for (i = 0; i < Party_GetCount(battleSystem->trainerParty[0]); i++) {
                 mon = Party_GetMonByIndex(battleSystem->trainerParty[0], i);
                 MonApplyFriendshipMod(mon, 3, battleSystem->location);
@@ -1125,7 +1125,7 @@ static void ov12_02238A68(BattleSystem *battleSystem, BattleSetup *battleSetup) 
     }
 }
 
-static BOOL ov12_022395BC(u16 trainerClass) {
+static BOOL TrainerClass_IsEliteTrainer(u16 trainerClass) {
     switch (trainerClass) {
     case TRAINERCLASS_LEADER_FALKNER:
     case TRAINERCLASS_LEADER_BUGSY:
@@ -1155,11 +1155,11 @@ static BOOL ov12_022395BC(u16 trainerClass) {
     return FALSE;
 }
 
-static GF3DVramMan *ov12_02239644(void) {
-    return GF_3DVramMan_Create(HEAP_ID_BATTLE, 0, 2, 0, 2, ov12_02239664);
+static GF3DVramMan *InitG3DPipelineBuffers(void) {
+    return GF_3DVramMan_Create(HEAP_ID_BATTLE, 0, 2, 0, 2, G3DPipeline_SetupCallback);
 }
 
-static void ov12_02239664(void) {
+static void G3DPipeline_SetupCallback(void) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, TRUE);
 
     G2_SetBG0Priority(1);
@@ -1173,11 +1173,11 @@ static void ov12_02239664(void) {
     G3_ViewPort(0, 0, HW_LCD_WIDTH - 1, HW_LCD_HEIGHT - 1);
 }
 
-static void ov12_022396E8(GF3DVramMan *pipelineBuffers) {
+static void FreeG3DPipelineBuffers(GF3DVramMan *pipelineBuffers) {
     GF_3DVramMan_Delete(pipelineBuffers);
 }
 
-static void ov12_022396F0(void) {
+static void BattleMain_InitParticleSystem(void) {
     NNSGfdTexKey texKey = NNS_GfdAllocTexVram(0x2000 * 4, 0, 0);
     NNSGfdPlttKey plttKey = NNS_GfdAllocPlttVram(0x20 * (4 + 2), 0, 0);
 
@@ -1189,7 +1189,7 @@ static void ov12_022396F0(void) {
 
 extern GraphicsBanks ov12_0226C0D0;
 extern GraphicsBanks ov12_0226C0F8;
-static void ov12_02239730(void *inBattleSys) {
+static void BattleMain_VBlankCallback(void *inBattleSys) {
     BattleSystem *battleSystem = inBattleSys;
 
     if (battleSystem->unk240F_0) {
@@ -1238,7 +1238,7 @@ typedef struct LinkBattleCommState {
     void *waitDial;
 } LinkBattleCommState;
 
-static void ov12_022397E4(void *commState) {
+static void BattleMain_LinkCommVBlankCallback(void *commState) {
     LinkBattleCommState *linkBattleCommState = commState;
 
     PaletteData_PushTransparentBuffers(linkBattleCommState->paletteData);
@@ -1248,7 +1248,7 @@ static void ov12_022397E4(void *commState) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-static void ov12_02239810(SysTask *task, void *inBattleSys) {
+static void SysTask_DrawSprites(SysTask *task, void *inBattleSys) {
     BattleSystem *battleSystem = inBattleSys;
 
     sub_020399FC(HEAP_ID_BATTLE, battleSystem->bgConfig);
@@ -1265,7 +1265,7 @@ static void ov12_02239810(SysTask *task, void *inBattleSys) {
     }
 }
 
-static void ov12_02239854(SysTask *task, void *inBattleSys) {
+static void SysTask_UpdateCriticalHpMusic(SysTask *task, void *inBattleSys) {
     BattleSystem *battleSystem = inBattleSys;
     OpponentData *battlerData;
     BattleHpBar *healthbox;
@@ -1325,7 +1325,7 @@ static void ov12_02239854(SysTask *task, void *inBattleSys) {
     }
 }
 
-static void ov12_0223998C(SysTask *task, void *inBattleSys) {
+static void SysTask_FlyInMessageBox(SysTask *task, void *inBattleSys) {
     BattleSystem *battleSystem = inBattleSys;
 
     battleSystem->unk2438 += 3;
@@ -1336,7 +1336,7 @@ static void ov12_0223998C(SysTask *task, void *inBattleSys) {
     }
 }
 
-void ov12_022399BC(void) {
+void NitroStaticInit(void) {
     if (!sub_02039998()) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_18), 2);
     }
@@ -1346,7 +1346,7 @@ extern GraphicsBanks ov12_0226C080;
 extern GraphicsModes ov12_0226BFF8;
 extern BgTemplate ov12_0226C044;
 
-static void ov12_022399D4(OverlayManager *appMan, BattleSetup *battleSetup) {
+static void BattleMain_InitLinkCommScreen(OverlayManager *appMan, BattleSetup *battleSetup) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_CreateAndGetData(appMan, sizeof(LinkBattleCommState), HEAP_ID_BATTLE);
 
     linkBattleCommState->battleSetup = battleSetup;
@@ -1407,15 +1407,15 @@ static void ov12_022399D4(OverlayManager *appMan, BattleSetup *battleSetup) {
     String_Delete(string);
     DestroyMsgData(msgLoader);
 
-    Main_SetVBlankIntrCB(ov12_022397E4, linkBattleCommState);
+    Main_SetVBlankIntrCB(BattleMain_LinkCommVBlankCallback, linkBattleCommState);
     PaletteData_BeginPaletteFade(linkBattleCommState->paletteData, PLTTBUF_MAIN_BG_F | PLTTBUF_MAIN_OBJ_F, 0xFFFF, 0, 16, 0, 0);
 
     linkBattleCommState->waitDial = WaitingIcon_New(linkBattleCommState->window, 1);
 
-    ov12_0223A7A0();
+    BattleMain_SetNetworkIconStrength();
 }
 
-static BOOL ov12_02239C28(OverlayManager *appMan) {
+static BOOL BattleMain_HandleLinkCommHandshake(OverlayManager *appMan) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_GetData(appMan);
 
     sub_020399FC(HEAP_ID_BATTLE, linkBattleCommState->bgConfig);
@@ -1640,7 +1640,7 @@ static BOOL ov12_02239C28(OverlayManager *appMan) {
     return result;
 }
 
-static void ov12_0223A088(OverlayManager *appMan) {
+static void BattleMain_FreeeLinkCommScreen(OverlayManager *appMan) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_GetData(appMan);
 
     Main_SetVBlankIntrCB(NULL, NULL);
@@ -1654,13 +1654,13 @@ static void ov12_0223A088(OverlayManager *appMan) {
     Heap_Free(linkBattleCommState);
 }
 
-static BOOL ov12_0223A0D4(OverlayManager *appMan) {
+static BOOL BattleMain_InitPartnerIntro(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_CreateAndGetData(appMan, sizeof(BattleSystem), HEAP_ID_BATTLE);
     BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     u8 netID;
 
     MI_CpuClearFast(battleSystem, sizeof(BattleSystem));
-    ov12_02238A68(battleSystem, battleSetup);
+    BattleSystem_New(battleSystem, battleSetup);
 
     if ((battleSystem->battleType & BATTLE_TYPE_LINK) == FALSE
         || battleSystem->battleSpecial & 0x10
@@ -1711,7 +1711,7 @@ static BOOL ov12_0223A0D4(OverlayManager *appMan) {
     return TRUE;
 }
 
-static BOOL ov12_0223A218(OverlayManager *appMan) {
+static BOOL BattleMain_WaitPartnerIntro(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_GetData(appMan);
 
     if (battleSystem->unk1C4->isDone) {
@@ -1728,7 +1728,7 @@ static BOOL ov12_0223A218(OverlayManager *appMan) {
     return FALSE;
 }
 
-static BOOL ov12_0223A260(OverlayManager *appMan) {
+static BOOL BattleMain_InitTrainerIntro(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_GetData(appMan);
     BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
 
@@ -1768,7 +1768,7 @@ static BOOL ov12_0223A260(OverlayManager *appMan) {
     return TRUE;
 }
 
-static BOOL ov12_0223A3A8(OverlayManager *appMan) {
+static BOOL BattleMain_WaitTrainerIntro(OverlayManager *appMan) {
     BattleSystem *battleSystem = OverlayManager_GetData(appMan);
 
     if (battleSystem->unk1C4->isDone) {
@@ -1785,7 +1785,7 @@ static BOOL ov12_0223A3A8(OverlayManager *appMan) {
     return FALSE;
 }
 
-static BOOL ov12_0223A3F0(OverlayManager *appMan) {
+static BOOL BattleMain_HandleLinkBattleResult(OverlayManager *appMan) {
     BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
 
     if ((battleSetup->battleType & BATTLE_TYPE_LINK) == FALSE
@@ -1865,7 +1865,7 @@ static BOOL ov12_0223A3F0(OverlayManager *appMan) {
     return TRUE;
 }
 
-static BOOL ov12_0223A5E4(OverlayManager *appMan) {
+static BOOL BattleMain_WaitLinkBattleEnd(OverlayManager *appMan) {
     BattleSetup *battleSetup = OverlayManager_GetArgs(appMan);
     TrainerIntroData *unk1C4 = battleSetup->evolutionTaskData;
 
@@ -1883,7 +1883,7 @@ static BOOL ov12_0223A5E4(OverlayManager *appMan) {
     return FALSE;
 }
 
-static void ov12_0223A620(BattleSystem *battleSystem) {
+static void BattleSys_SetRenderControlFlags(BattleSystem *battleSystem) {
     if ((battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_TUTORIAL))
         || battleSystem->battleSpecial & 0x10) {
         TextFlags_SetAutoScrollParam(1);
@@ -1896,7 +1896,7 @@ static void ov12_0223A620(BattleSystem *battleSystem) {
     }
 }
 
-static void ov12_0223A664(BattleSystem *battleSystem, BattleSetup *battleSetup) {
+static void BattleMain_AssignRecordingRoles(BattleSystem *battleSystem, BattleSetup *battleSetup) {
     int i, j, temp;
     int netIDs[4];
     int versions[4];
@@ -1955,7 +1955,7 @@ static void ov12_0223A664(BattleSystem *battleSystem, BattleSetup *battleSetup) 
     }
 }
 
-static void ov12_0223A7A0(void) {
+static void BattleMain_SetNetworkIconStrength(void) {
     sub_0203A880();
 
     if (sub_02039998()) {

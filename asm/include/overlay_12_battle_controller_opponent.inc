@@ -145,7 +145,7 @@
 .public ov10_022205BC
 .public BattleSystem_EnterSubMenu
 .public BattleSystem_ExitSubMenu
-.public ov12_02237ED0
+.public BattleSystem_LoadFightOverlay
 .public BattleSystem_GetBgConfig
 .public BattleSystem_GetWindow
 .public BattleSystem_GetBattleType
@@ -236,7 +236,7 @@
 .public CalcMoveDamage
 .public GetItemVar
 .public BattleController_TryEmitExitRecording
-.public ov12_022581D4
+.public BattleContext_Get
 .public ov12_022582B8
 .public ov12_02258800
 .public ov12_02258BB4

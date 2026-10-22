@@ -194,9 +194,9 @@
 .public BattleSystem_FreeGraphics
 .public BattleSystem_ExitSubMenu
 .public BattleSystem_HideBattleScreen
-.public ov12_02237D00
-.public ov12_02237ED0
-.public ov12_022399BC
+.public BattleSystem_SetupBattleScreen
+.public BattleSystem_LoadFightOverlay
+.public NitroStaticInit
 .public BattleSystem_GetBattleType
 .public BattleSystem_GetBattleContext
 .public BattleSystem_GetOpponentData
@@ -215,7 +215,7 @@
 .public BattleSystem_CheckEvolution
 .public BattleSystem_GetFrame
 .public BattleSystem_TryChangeForm
-.public ov12_0223B870
+.public BattleSystem_InitCaptureAttempt
 .public BattleSystem_SetRenderMode
 .public BattleSystem_HpBar_Init
 .public BattleSystem_SetHpBarDisabled
@@ -230,7 +230,7 @@
 .public BattleContext_Main
 .public BattleContext_Delete
 .public ov12_02256F28
-.public ov12_022581D4
+.public BattleContext_Get
 .public ov12_022582B8
 .public ov12_02258D74
 .public ov12_02258DB0

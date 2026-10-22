@@ -589,7 +589,7 @@ struct BattleSystem {
     SpriteSystem *spriteRenderer;
     SpriteManager *gfxHandler;
     u32 *unk98;
-    CaptureAttempt *unk9C;
+    CaptureAttempt *captureAttempt;
     u16 trainerId[4];
     u8 trainerGender[4];
     Trainer trainers[4];
@@ -642,7 +642,7 @@ struct BattleSystem {
     u8 battleOutcomeFlag;
     u8 unk2421;
     u16 unk2422;
-    int unk2424;
+    int evolutionLocation;
     int unk2428;
     int weather;
     BOOL metBill;
@@ -660,7 +660,7 @@ struct BattleSystem {
     u16 unk245C[4];
     int unk2464[4];
     u32 isRecordingPaused : 1;
-    u32 unk2474_1 : 1;
+    u32 momsSavingsActive : 1;
     u32 unk2474_2 : 1;
     u32 isFishing : 1;
     u32 unk2474_4 : 28;

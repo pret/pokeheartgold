@@ -6,12 +6,12 @@
 #include "constants/message_tags.h"
 #include "constants/sndseq.h"
 
-#include "battle/battle_main.h"
 #include "battle/battle_02265E28.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_hp_bar.h"
 #include "battle/battle_input.h"
+#include "battle/battle_main.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/overlay_12_0226BEC4.h"
 #include "msgdata/msg/msg_0197.h"
@@ -338,12 +338,12 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     Pokemon *mon;
     BOOL ret = FALSE;
     int data;
-    int index1 = ov12_022581D4(battleSystem, ctx, 2, battlerId);
+    int index1 = BattleContext_Get(battleSystem, ctx, 2, battlerId);
     int index2;
     int friendship;
 
     if (BattleSystem_GetBattleType(battleSystem) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_TRAINER) || ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG) && !(BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
-        index2 = ov12_022581D4(battleSystem, ctx, 2, BattleSystem_GetBattlerIdPartner(battleSystem, battlerId));
+        index2 = BattleContext_Get(battleSystem, ctx, 2, BattleSystem_GetBattlerIdPartner(battleSystem, battlerId));
         if (index2 == selectedMonIndex) {
             battlerId = BattleSystem_GetBattlerIdPartner(battleSystem, battlerId);
         }
@@ -449,9 +449,9 @@ BOOL BattleSystem_RecoverStatus(BattleSystem *battleSystem, int battlerId, int s
     }
 
     if (GetItemAttr(item, ITEMATTR_GUARD_SPEC, HEAP_ID_BATTLE)) {
-        data = ov12_022581D4(battleSystem, ctx, 1, battlerId);
+        data = BattleContext_Get(battleSystem, ctx, 1, battlerId);
         if (!data) {
-            data = ov12_022581D4(battleSystem, ctx, 0, battlerId);
+            data = BattleContext_Get(battleSystem, ctx, 0, battlerId);
             data |= SIDE_CONDITION_MIST;
             ov12_022582B8(battleSystem, ctx, 0, battlerId, data);
             ov12_022582B8(battleSystem, ctx, 1, battlerId, 5);
@@ -687,8 +687,8 @@ u8 ov12_0223B580(BattleSystem *battleSystem, int battlerId, u8 a2) {
                 return 1;
             }
         } else {
-            item = ov12_022581D4(battleSystem, battleSystem->ctx, 12, 0);
-            if ((ov12_022581D4(battleSystem, battleSystem->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
+            item = BattleContext_Get(battleSystem, battleSystem->ctx, 12, 0);
+            if ((BattleContext_Get(battleSystem, battleSystem->ctx, 8, 0) == 14 && item > ITEM_CHERISH_BALL) || (a2 & MaskOfFlagNo(0))) {
                 return 0;
             } else {
                 return 1;
@@ -730,7 +730,7 @@ u8 BattleSystem_IsInitialized(BattleSystem *battleSystem) {
 
 u8 ov12_0223B694(BattleSystem *battleSystem) {
     GF_ASSERT(battleSystem->ctx != NULL);
-    return ov12_022581D4(battleSystem, battleSystem->ctx, 5, 0);
+    return BattleContext_Get(battleSystem, battleSystem->ctx, 5, 0);
 }
 
 int BattleSystem_GetSafariBallCount(BattleSystem *battleSystem) {
@@ -838,7 +838,7 @@ void ov12_0223B854(BattleSystem *battleSystem, int battlerId, int selectedMonInd
 }
 
 // used to be related to poketch in dppt
-void ov12_0223B870() {
+void BattleSystem_InitCaptureAttempt() {
 }
 
 void BattleSystem_SetBackground(BattleSystem *battleSystem) {
@@ -1209,7 +1209,7 @@ BOOL BattleSystem_IsRecordingPaused(BattleSystem *battleSystem) {
 }
 
 void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
-    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || ov12_022581D4(battleSystem, battleSystem->ctx, 13, 0) == 44 || ov12_022581D4(battleSystem, battleSystem->ctx, 14, 0) == 44) {
+    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || BattleContext_Get(battleSystem, battleSystem->ctx, 13, 0) == 44 || BattleContext_Get(battleSystem, battleSystem->ctx, 14, 0) == 44) {
         return;
     }
 
@@ -1221,7 +1221,7 @@ void ov12_0223BFFC(BattleSystem *battleSystem, u32 flag) {
 }
 
 BOOL ov12_0223C080(BattleSystem *battleSystem) {
-    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || ov12_022581D4(battleSystem, battleSystem->ctx, 13, 0) == 44 || ov12_022581D4(battleSystem, battleSystem->ctx, 14, 0) == 44) {
+    if (!(battleSystem->battleSpecial & BATTLE_SPECIAL_RECORDING) || battleSystem->isRecordingPaused || BattleContext_Get(battleSystem, battleSystem->ctx, 13, 0) == 44 || BattleContext_Get(battleSystem, battleSystem->ctx, 14, 0) == 44) {
         return FALSE;
     }
     return TRUE;
@@ -1330,7 +1330,7 @@ u32 CalcMoneyLoss(Party *party, PlayerProfile *profile) {
 
 void BattleSystem_SetPokedexSeen(BattleSystem *battleSystem, int battlerId) {
     u32 flag = OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]);
-    Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, ov12_022581D4(battleSystem, battleSystem->ctx, 2, battlerId));
+    Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, BattleContext_Get(battleSystem, battleSystem->ctx, 2, battlerId));
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER))) {
         if ((flag & 1) || battleSystem->battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI) || battleSystem->battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_AI | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) {
@@ -1346,7 +1346,7 @@ void BattleSystem_SetPokedexCaught(BattleSystem *battleSystem, int battlerId) {
     u32 flag = OpponentData_GetBattlerType(battleSystem->opponentData[battlerId]);
 
     if (!(battleSystem->battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_FRONTIER)) && (flag & 1)) {
-        int selectedMonIndex = ov12_022581D4(battleSystem, battleSystem->ctx, 2, battlerId);
+        int selectedMonIndex = BattleContext_Get(battleSystem, battleSystem->ctx, 2, battlerId);
         Pokemon *mon = BattleSystem_GetPartyMon(battleSystem, battlerId, selectedMonIndex);
         Pokedex_SetMonCaughtFlag(battleSystem->pokedex, mon);
     }

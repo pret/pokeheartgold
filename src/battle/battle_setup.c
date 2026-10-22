@@ -71,7 +71,7 @@ BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleTypeFlags) {
     setup->fixedDamaageMovesBanned = FALSE;
     setup->bugContestMon = AllocMonZeroed(heapID);
 
-    setup->unk_19C = RngSeedFromRTC();
+    setup->rand = RngSeedFromRTC();
 
     if (CommSystem_IsInitialized() == TRUE) {
         for (i = 0; i < CommSystem_GetConnectedCount(); ++i) {
@@ -524,7 +524,7 @@ static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
 
 void BattleSetup_SetWaterTerrain(BattleSetup *setup) {
     setup->terrain = TERRAIN_WATER;
-    setup->unk_1D0 = TRUE;
+    setup->isFishing = TRUE;
 }
 
 BOOL IsBattleResultWin(u32 result) {

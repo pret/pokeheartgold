@@ -10,8 +10,8 @@ void BattleSystem_EnterSubMenu(BattleSystem *battleSystem);
 void BattleSystem_FreeGraphics(BattleSystem *battleSystem);
 void BattleSystem_ExitSubMenu(BattleSystem *battleSystem);
 void BattleSystem_HideBattleScreen(BattleSystem *battleSystem);
-void ov12_02237D00(BattleSystem *battleSystem);
-void ov12_02237ED0(BattleSystem *battleSys, int flags);
-void ov12_022399BC(void);
+void BattleSystem_SetupBattleScreen(BattleSystem *battleSystem);
+void BattleSystem_LoadFightOverlay(BattleSystem *battleSys, int flags);
+void NitroStaticInit(void);
 
 #endif
