@@ -1,6 +1,10 @@
 #include "application/capsule_menu/defs.h"
 
+#include "game_stats.h"
+#include "pokemon.h"
 #include "screen_fade.h"
+#include "unk_02005D10.h"
+#include "unk_02091054.h"
 
 #define CAPSULE_INIT_STATE_ID              0
 #define CAPSULE_FADE_IN_STATE_ID           1
@@ -13,12 +17,18 @@
 #define CAPSULE_EXIT_FADE_OUT_STATE_ID     8
 #define CAPSULE_DEINIT_GFX_STATE_ID        9
 #define CAPSULE_WAIT_EXIT_STATE_ID         10
+#define CAPSULE_UNK_11_STATE_ID            11
 
 void ov57_0223B75C(CapsuleAppManager *appMan);
 void ov57_0223B78C(CapsuleAppManager *appMan);
 void ov57_0223B948(CapsuleAppManager *appMan, int a1);
 int ov57_0223B180(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
+int ov57_0223A6B8(CapsuleAppManager *appMan);
+int ov57_0223B620(CapsuleAppManager *appMan);
+int ov57_0223AB58(CapsuleAppManager *appMan);
+int ov57_0223A8FC(CapsuleAppManager *appMan);
+BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -180,5 +190,90 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
     ov57_02238FC4(appMan);
     ov57_02239558(appMan);
 
+    return TRUE;
+}
+
+BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
+    switch (appMan->unk_3FC) {
+    case CAPSULE_INIT_STATE_ID:
+        appMan->unk_3FC = ov57_0223A6B8(appMan);
+        break;
+    case CAPSULE_CAPSULE_MENU_STATE_ID:
+        appMan->unk_3FC = ov57_0223B620(appMan);
+        break;
+    case CAPSULE_FADE_OUT_STATE_ID:
+        appMan->unk_3FC = ov57_0223AB58(appMan);
+        break;
+    case CAPSULE_FADE_OUT_WAIT_STATE_ID:
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 12, FALSE);
+        appMan->unk_410 = 20;
+        if (ov57_022384C0(appMan) == TRUE) {
+            appMan->unk_0D4.unk_1B4 = TRUE;
+        }
+        ov57_0223853C(appMan);
+        ov57_022394AC(appMan);
+        GameStats_AddScore(Save_GameStats_Get(appMan->unk_000->saveData), SCORE_EVENT_BALL_CAPSULE_MODIFIED);
+        if (appMan->unk_28C[appMan->unk_3EC].pokemonIndex != 0xFF) {
+            Pokemon *mon = appMan->unk_000->mons[appMan->unk_28C[appMan->unk_3EC].pokemonIndex];
+            SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(appMan->unk_000->sealCase, appMan->unk_3EC));
+        }
+        appMan->unk_3FC = 11;
+        break;
+    case CAPSULE_CANCEL_PRESSED_STATE_ID:
+        appMan->unk_3FC = ov57_0223A8FC(appMan);
+        break;
+    case CAPSULE_UNK_11_STATE_ID:
+        if (ov57_0223A7DC(appMan)) {
+            return TRUE;
+        }
+        break;
+    }
+
+    if (appMan->unk_3FC == CAPSULE_CAPSULE_MENU_STATE_ID || appMan->unk_3FC == CAPSULE_INIT_STATE_ID) {
+
+        if (appMan->unk_0D4.unk_000 == 0xFF) {
+            TouchHitboxController_IsTriggered(appMan->unk_0D4.unk_118);
+        } else {
+            u32 x, y;
+            int index;
+            BOOL isScreenHeld;
+
+            index = appMan->unk_0D4.unk_000;
+            isScreenHeld = System_GetTouchHeldCoords(&x, &y);
+            if (appMan->unk_3FC != CAPSULE_CAPSULE_MENU_STATE_ID) {
+                isScreenHeld = FALSE;
+            }
+
+            if (isScreenHeld) {
+                int sealIndex;
+
+                sealIndex = CapsuleMenu_GetSealNameIndex(appMan->unk_34C[index].type);
+                ov57_02239B2C(&appMan->unk_0D4.unk_018[0], sealIndex);
+                ManagedSprite_SetPositionXY(appMan->unk_34C[index].sprite, x, y);
+                ov57_0223848C(appMan, index);
+                ov57_02238508(appMan, index);
+            } else {
+                BOOL valid;
+
+                valid = ov57_022383F8(appMan, index);
+                ov57_02237EB8(appMan->unk_34C[index].touchscreenHitbox, appMan->unk_34C[index].sprite, 0);
+
+                if (valid == 0) {
+                    GiveOrTakeSeal2(appMan->unk_000->sealCase, appMan->unk_34C[index].type, 1);
+                    ov57_022399F8(appMan);
+                    ov57_02238438(appMan, index);
+                }
+
+                PlaySE(SEQ_SE_DP_BOX01);
+                appMan->unk_0D4.unk_000 = 0xFF;
+                ov57_02239B2C(appMan->unk_0D4.unk_018, 0xFFFF);
+            }
+        }
+    }
+
+    ov57_0223A058(appMan);
+    ov57_0223921C(appMan);
+    ov57_02238FC4(appMan);
+    ov57_02239558(appMan);
     return TRUE;
 }
