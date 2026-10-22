@@ -399,3 +399,52 @@ int ov57_0223A6B8(CapsuleAppManager *appMan) {
 
     return 0;
 }
+
+BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
+    switch (appMan->unk_404) {
+    case 0:
+        if (appMan->unk_410 > 0) {
+            --appMan->unk_410;
+            return FALSE;
+        }
+        appMan->unk_410 = 0;
+        ov57_02239BCC();
+        ++appMan->unk_404;
+        break;
+    case 1:
+        if (IsPaletteFadeFinished() != TRUE) {
+            break;
+        }
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+        SetBgPriority(GF_BG_LYR_MAIN_3, 3);
+        SetBgPriority(GF_BG_LYR_SUB_3, 3);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
+        ov57_0223A034(appMan, FALSE);
+        ov57_02239240(appMan, FALSE);
+        ov57_022387C0(appMan, FALSE);
+        ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
+        CopyWindowToVram(&appMan->unk_0D4.unk_018[3]);
+        ov57_0223866C(appMan, TRUE);
+        GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
+        ov57_02238AF0(appMan, -1);
+        ov57_0223B948(appMan, 0);
+        ov57_02239BAC();
+        ++appMan->unk_404;
+        break;
+    case 2:
+        if (ov57_0223B940(appMan) == TRUE) {
+            break;
+        }
+        if (IsPaletteFadeFinished() != TRUE) {
+            break;
+        }
+        ManagedSprite_SetDrawFlag(appMan->unk_31C[1], FALSE);
+        ov57_0223B828(appMan, 0, 0xFF, 0);
+        ov57_02239B0C(appMan);
+        appMan->unk_404 = 0;
+        return TRUE;
+    }
+
+    return FALSE;
+}
