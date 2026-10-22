@@ -5,7 +5,6 @@
 	.text
 
 	.extern ov57_02237E88
-	.extern ov57_02237EB8
 	.extern ov57_02237F14
 	.extern ov57_02237F3C
 	.extern ov57_02237FAC
@@ -14,11 +13,7 @@
 	.extern ov57_022382F8
 	.extern ov57_022383AC
 	.extern ov57_022383D0
-	.extern ov57_022383F8
-	.extern ov57_02238438
-	.extern ov57_0223848C
 	.extern ov57_022384C0
-	.extern ov57_02238508
 	.extern ov57_0223853C
 	.extern ov57_0223857C
 	.extern ov57_0223866C
@@ -32,7 +27,6 @@
 	.extern ov57_02238D80
 	.extern ov57_02238DAC
 	.extern ov57_02238FC4
-	.extern ov57_0223921C
 	.extern ov57_02239240
 	.extern ov57_022394AC
 	.extern ov57_022394D8
@@ -47,90 +41,9 @@
 	.extern ov57_02239BAC
 	.extern ov57_02239BCC
 	.extern ov57_0223A034
-	.extern ov57_0223A058
 	.extern ov57_0223A104
 	.extern ov57_0223A31C
-
-	thumb_func_start ov57_0223A504
-ov57_0223A504: ; 0x0223A504
-	push {r4, lr}
-	mov r1, #0xff
-	add r4, r0, #0
-	lsl r1, r1, #2
-	ldr r2, [r4, r1]
-	cmp r2, #0
-	beq _0223A51C
-	cmp r2, #1
-	beq _0223A53E
-	cmp r2, #2
-	beq _0223A560
-	b _0223A594
-_0223A51C:
-	sub r1, #0x10
-	ldr r1, [r4, r1]
-	bl ov57_0223BC4C
-	add r0, r4, #0
-	add r0, #0xec
-	mov r1, #0
-	mov r2, #9
-	mov r3, #1
-	bl ov57_02239728
-	mov r0, #0xff
-	lsl r0, r0, #2
-	ldr r1, [r4, r0]
-	add r1, r1, #1
-	str r1, [r4, r0]
-	b _0223A594
-_0223A53E:
-	bl ov57_0223B12C
-	ldr r0, _0223A5A4 ; =gSystem
-	ldr r1, [r0, #0x48]
-	ldr r0, _0223A5A8 ; =0x00000CF3
-	tst r0, r1
-	bne _0223A554
-	bl System_GetTouchNew
-	cmp r0, #0
-	beq _0223A594
-_0223A554:
-	mov r0, #0xff
-	lsl r0, r0, #2
-	ldr r1, [r4, r0]
-	add r1, r1, #1
-	str r1, [r4, r0]
-	b _0223A594
-_0223A560:
-	mov r1, #0
-	mov r2, #0xff
-	add r3, r1, #0
-	bl ov57_0223B828
-	add r0, r4, #0
-	add r0, #0xec
-	mov r1, #1
-	bl ClearWindowPixelBuffer
-	add r0, r4, #0
-	add r0, #0xec
-	bl ClearWindowTilemapAndScheduleTransfer
-	add r0, r4, #0
-	mov r1, #1
-	bl ov57_0223866C
-	mov r0, #0x47
-	lsl r0, r0, #2
-	add r0, r4, r0
-	mov r1, #3
-	mov r2, #7
-	mov r3, #0
-	bl ov57_02239728
-_0223A594:
-	add r0, r4, #0
-	bl ov57_02238FC4
-	add r0, r4, #0
-	bl ov57_02239558
-	mov r0, #1
-	pop {r4, pc}
-	.balign 4, 0
-_0223A5A4: .word gSystem
-_0223A5A8: .word 0x00000CF3
-	thumb_func_end ov57_0223A504
+	.extern ov57_0223A504
 
 	thumb_func_start ov57_0223A5AC
 ov57_0223A5AC: ; 0x0223A5AC

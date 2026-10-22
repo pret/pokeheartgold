@@ -2,6 +2,7 @@
 
 #include "game_stats.h"
 #include "pokemon.h"
+#include "render_window.h"
 #include "screen_fade.h"
 #include "unk_02005D10.h"
 #include "unk_02091054.h"
@@ -29,6 +30,8 @@ int ov57_0223B620(CapsuleAppManager *appMan);
 int ov57_0223AB58(CapsuleAppManager *appMan);
 int ov57_0223A8FC(CapsuleAppManager *appMan);
 BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
+void ov57_0223B12C(CapsuleAppManager *appMan);
+void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -275,5 +278,32 @@ BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
     ov57_0223921C(appMan);
     ov57_02238FC4(appMan);
     ov57_02239558(appMan);
+    return TRUE;
+}
+
+BOOL ov57_0223A504(CapsuleAppManager *appMan) {
+    switch (appMan->unk_3FC) {
+    case CAPSULE_INIT_STATE_ID:
+        ov57_0223BC4C(appMan, appMan->unk_3EC);
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 9, TRUE);
+        appMan->unk_3FC++;
+        break;
+    case CAPSULE_FADE_IN_STATE_ID:
+        ov57_0223B12C(appMan);
+        if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN | PAD_BUTTON_X | PAD_BUTTON_Y) || System_GetTouchNew()) {
+            appMan->unk_3FC++;
+        }
+        break;
+    case CAPSULE_FADE_IN_WAIT_STATE_ID:
+        ov57_0223B828(appMan, 0, 0xFF, 0);
+        ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
+        ClearWindowTilemapAndScheduleTransfer(&appMan->unk_0D4.unk_018[0]);
+        ov57_0223866C(appMan, TRUE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, 7, FALSE);
+    }
+
+    ov57_02238FC4(appMan);
+    ov57_02239558(appMan);
+
     return TRUE;
 }

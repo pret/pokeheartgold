@@ -44,14 +44,6 @@
 #define CAPSULE_WINDOW_HEIGHT       2
 #define CAPSULE_WINDOW_WIDTH        4
 
-void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile);
-void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
-void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1);
-void ov57_02238B48(void);
-int ov57_0223A0A8(CapsuleAppManager *appMan, int capsuleIndex);
-int ov57_0223A07C(BallCapsule *capsule);
-void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex);
-
 extern const struct {
     s32 index;
     BOOL (*func)(CapsuleAppManager *appMan);
