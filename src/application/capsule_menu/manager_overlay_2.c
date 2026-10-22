@@ -1,4 +1,5 @@
 #include "application/capsule_menu/defs.h"
+#include "msgdata/msg/msg_0011.h"
 
 #include "game_stats.h"
 #include "pokemon.h"
@@ -32,6 +33,7 @@ int ov57_0223A8FC(CapsuleAppManager *appMan);
 BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 void ov57_0223B12C(CapsuleAppManager *appMan);
 void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
+int ov57_0223B308(CapsuleAppManager *appMan);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -118,7 +120,7 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         ov57_02239240(appMan, 0);
         ov57_02238794(appMan);
         ov57_022387C0(appMan, 0);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, 7, FALSE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
         ov57_02239B94();
         ov57_0223B948(appMan, 0);
         ov57_0223866C(appMan, TRUE);
@@ -151,7 +153,7 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         switch (result) {
         case LIST_CANCEL:
             ov57_0223B700(appMan);
-            ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, 7, FALSE);
+            ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
             appMan->unk_3FC = CAPSULE_CAPSULE_SELECTION_STATE_ID;
             break;
         case LIST_NOTHING_CHOSEN:
@@ -167,7 +169,7 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
                     break;
                 }
 
-                ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, 7, FALSE);
+                ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
                 appMan->unk_3FC = CAPSULE_CAPSULE_SELECTION_STATE_ID;
             }
             break;
@@ -208,7 +210,7 @@ BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
         appMan->unk_3FC = ov57_0223AB58(appMan);
         break;
     case CAPSULE_FADE_OUT_WAIT_STATE_ID:
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 12, FALSE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00012, FALSE);
         appMan->unk_410 = 20;
         if (ov57_022384C0(appMan) == TRUE) {
             appMan->unk_0D4.unk_1B4 = TRUE;
@@ -285,7 +287,7 @@ BOOL ov57_0223A504(CapsuleAppManager *appMan) {
     switch (appMan->unk_3FC) {
     case CAPSULE_INIT_STATE_ID:
         ov57_0223BC4C(appMan, appMan->unk_3EC);
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 9, TRUE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00009, TRUE);
         appMan->unk_3FC++;
         break;
     case CAPSULE_FADE_IN_STATE_ID:
@@ -299,11 +301,47 @@ BOOL ov57_0223A504(CapsuleAppManager *appMan) {
         ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appMan->unk_0D4.unk_018[0]);
         ov57_0223866C(appMan, TRUE);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, 7, FALSE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
     }
 
     ov57_02238FC4(appMan);
     ov57_02239558(appMan);
 
     return TRUE;
+}
+
+BOOL ov57_0223A5AC(CapsuleAppManager *appMan) {
+    switch (appMan->unk_3FC) {
+    case CAPSULE_INIT_STATE_ID:
+        ManagedSprite_SetDrawPriority(appMan->unk_31C[0], 25);
+        ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 20);
+        ManagedSprite_SetAnim(appMan->unk_31C[0], 1);
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00010, 0);
+        ManagedSprite_SetDrawFlag(appMan->unk_31C[1], 1);
+        appMan->unk_3FC++;
+    case CAPSULE_FADE_IN_STATE_ID:
+        appMan->unk_3FC = ov57_0223B308(appMan);
+        break;
+    case CAPSULE_FADE_IN_WAIT_STATE_ID:
+        ov57_0223B12C(appMan);
+        if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN | PAD_BUTTON_X | PAD_BUTTON_Y) || System_GetTouchNew()) {
+            appMan->unk_3FC = CAPSULE_CAPSULE_SELECTION_STATE_ID;
+        }
+        break;
+    case CAPSULE_CAPSULE_SELECTION_STATE_ID:
+        ManagedSprite_SetDrawPriority(appMan->unk_31C[0], 20);
+        ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 25);
+        ov57_0223B828(appMan, 0, 0xFF, 0);
+        ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
+        ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
+        ClearWindowTilemapAndScheduleTransfer(&appMan->unk_0D4.unk_018[0]);
+        ov57_0223866C(appMan, TRUE);
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, 0);
+        break;
+    }
+
+    ov57_02238FC4(appMan);
+    ov57_02239558(appMan);
+
+    return 1;
 }
