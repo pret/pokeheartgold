@@ -66,8 +66,8 @@
 .public sub_02037184
 .public sub_02037190
 .public sub_020373B4
-.public sub_02037454
-.public sub_02037474
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
 .public sub_02037498
 .public sub_020374AC
 .public sub_020374C0
@@ -77,7 +77,7 @@
 .public sub_02037618
 .public sub_02037640
 .public sub_02037668
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020376D4
 .public sub_020376E0
 .public sub_020376EC
@@ -105,7 +105,7 @@
 .public sub_02037ADC
 .public sub_0203817C
 .public sub_020398D4
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039A00
 .public MI_CpuFill8
 .public MI_CpuCopy8

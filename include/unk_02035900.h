@@ -9,11 +9,11 @@
 BOOL sub_02036144(void);
 BOOL sub_020373B4(u16 arg0);
 BOOL sub_02037030(int arg0, void *arg1, int arg2);
-int sub_02037454(void);
-BOOL sub_02037474(void);
+int CommSystem_GetConnectedCount(void);
+BOOL CommSystem_IsInitialized(void);
 void sub_020374E4(void);
 void sub_02037504(void);
-u16 sub_0203769C(void);
+u16 CommSystem_GetCurNetId(void);
 void sub_020378E4(int a0);
 void sub_020376D4(s32 arg0, SafariZoneAreaSet *areaSet);
 void sub_020376EC(int arg0);

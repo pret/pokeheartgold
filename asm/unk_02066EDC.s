@@ -458,7 +458,7 @@ sub_02067238: ; 0x02067238
 	add r0, r4, #0
 	bl TaskManager_GetEnvironment
 	add r5, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	sub r0, r1, r0
 	bl sub_02037C44

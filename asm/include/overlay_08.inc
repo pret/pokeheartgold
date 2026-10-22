@@ -174,13 +174,13 @@
 .public BattleSystem_GetTrainer
 .public BattleSystem_GetBag
 .public BattleSystem_GetBagCursor
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_RecoverStatus
 .public BattleSystem_GetFrame
 .public BattleSystem_GetTextFrameDelay
-.public ov12_022581D4
+.public BattleContext_Get
 .public BattleCursor_LoadResources
 .public BattleCursor_FreeResources
 .public BattleCursor_New

@@ -1098,7 +1098,7 @@ _0223E634:
 	ldrb r0, [r4, #0x18]
 	cmp r0, #0x14
 	bhs _0223E652
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0223E64C
 	mov r0, #2
@@ -1109,7 +1109,7 @@ _0223E64C:
 	strb r0, [r4, #8]
 	b _0223E7D6
 _0223E652:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0223E660
 	mov r0, #3
@@ -1671,7 +1671,7 @@ _0223EA3C:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	bl ov82_0223FD18
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	beq _0223EB12
 	mov r0, #1
@@ -3320,7 +3320,7 @@ ov82_0223F74C: ; 0x0223F74C
 ov82_0223F764: ; 0x0223F764
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	pop {r4, pc}
 	thumb_func_end ov82_0223F764
@@ -3335,7 +3335,7 @@ ov82_0223F770: ; 0x0223F770
 	add r4, r2, #0
 	add r0, r0, #2
 	strh r4, [r5, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0223F790
 	ldrb r0, [r5, #0x18]
@@ -3370,14 +3370,14 @@ ov82_0223F7B4: ; 0x0223F7B4
 	add r5, r2, #0
 	add r0, r0, #1
 	strb r0, [r4, #0x16]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0223F804
 	ldrh r1, [r5, #2]
 	mov r0, #0x9f
 	lsl r0, r0, #2
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0223F7F6
 	ldrb r0, [r4, #0x18]
@@ -3425,7 +3425,7 @@ ov82_0223F814: ; 0x0223F814
 	add r5, r0, #0
 	add r4, r2, #0
 	add r6, r3, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0223F82E
 	ldrh r1, [r4, #2]

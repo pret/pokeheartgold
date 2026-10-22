@@ -295,7 +295,7 @@ s32 ov44_022330A8(OverlayManager *arg0) {
 void ov44_02233100(UnkStruct_ov44_02235340 *arg0, String *arg1) {
     if (arg0->unk4 == 0) {
 
-        if (arg1->maxsize == sub_0203769C()) {
+        if (arg1->maxsize == CommSystem_GetCurNetId()) {
             switch (arg1->magic) {
             case 1:
                 arg0->unk13 = 1;
@@ -347,7 +347,7 @@ void ov44_0223319C(UnkStruct_ov44_02235340 *arg0) {
 }
 
 s32 ov44_022331B0(UnkStruct_ov44_02235340 *arg0) {
-    if (sub_0203769C() == 0) {
+    if (CommSystem_GetCurNetId() == 0) {
         return 1;
     }
     return 0;
@@ -654,7 +654,7 @@ void ov44_02233AB8(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_02232F64 *arg1,
     AddTextPrinterParameterizedWithColor(&arg1->windowList[3], 0, string2, 72, temp_r6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg1->windowList[3]);
     s32 var_r2;
-    if (arg3 == sub_0203769C()) {
+    if (arg3 == CommSystem_GetCurNetId()) {
         if (arg0->unk0->unk21 != 0) {
             var_r2 = 2;
         } else {
@@ -737,7 +737,7 @@ void ov44_02233D8C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enu
 
     temp_r6 = ov44_02234458(arg0);
     temp_r7 = ov44_02234044(arg0);
-    if (ov44_02233F64(arg0) > sub_02037454()) {
+    if (ov44_02233F64(arg0) > CommSystem_GetConnectedCount()) {
         var_r5 = 1;
     } else {
         var_r5 = 0;
@@ -758,7 +758,7 @@ void ov44_02233E48(UnkStruct_ov44_02235340 *arg0) {
 }
 
 s32 ov44_02233E6C(UnkStruct_ov44_02235340 *arg0) {
-    if (sub_02037454() > 0) {
+    if (CommSystem_GetConnectedCount() > 0) {
         return 1;
     }
     return 0;
@@ -838,7 +838,7 @@ s32 ov44_02233F64(UnkStruct_ov44_02235340 *arg0) {
 
 s32 ov44_02233F6C(UnkStruct_ov44_02235340 *arg0, enum HeapID heapID) {
     s32 var_r7 = 1;
-    for (s32 i = sub_0203769C() - 1; i >= 0; i--) {
+    for (s32 i = CommSystem_GetCurNetId() - 1; i >= 0; i--) {
         if (sub_02034714(i) == 1) {
             ov44_022340BC(arg0, i, heapID);
         } else if (sub_02034750(i) == 0) {
@@ -936,7 +936,7 @@ void ov44_022340EC(UnkStruct_ov44_02235340 *arg0, s32 arg1, enum HeapID heapID) 
     if (arg0->unk30.unk15C[arg1].unk0 == 0) {
         sp4 = ov44_02236510[arg1];
 
-        if (arg1 != sub_0203769C()) {
+        if (arg1 != CommSystem_GetCurNetId()) {
             PlayerProfile *playerProfile = sub_02034818(arg1);
             GF_ASSERT(playerProfile);
             sp4.unkA = PlayerProfile_GetAvatar(playerProfile);
@@ -1101,7 +1101,7 @@ s32 ov44_02234474(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
     }
     ov00_021E7220(0);
     sub_020398D4(0, 1);
-    ov44_022340EC(arg0, sub_0203769C(), heapID);
+    ov44_022340EC(arg0, CommSystem_GetCurNetId(), heapID);
     arg0->unk5 = 1;
     return 0;
 }
@@ -1265,7 +1265,7 @@ s32 ov44_02234764(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 }
 
 s32 ov44_0223479C(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
-    if (sub_02037454() != sub_020347A0()) {
+    if (CommSystem_GetConnectedCount() != sub_020347A0()) {
         ov44_02233FA8(arg0);
         return 0;
     }
@@ -1301,7 +1301,7 @@ s32 ov44_022347FC(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 s32 ov44_02234828(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     if (sub_02037B38(14) != 0) {
         s16 subroutine_arg0 = (s16)arg0->unk0->unk1B;
-        if (sub_02037C0C(sub_0203769C(), &subroutine_arg0) == 1) {
+        if (sub_02037C0C(CommSystem_GetCurNetId(), &subroutine_arg0) == 1) {
             arg0->unk5 = 16;
         }
     }
@@ -1311,7 +1311,7 @@ s32 ov44_02234828(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 s32 ov44_02234858(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     s32 i = 0;
     s32 temp_r7 = ov44_02233F64(arg0);
-    s32 sp0 = sub_0203769C();
+    s32 sp0 = CommSystem_GetCurNetId();
     s32 var_r5 = 0;
 
     for (i = 0; i < temp_r7; i++) {
@@ -1591,7 +1591,7 @@ s32 ov44_02234CE8(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 
     Wifi_LoadAndPrintTextToWindow(&arg0->unk30, arg1, msg_0778_00115, 30, heapID);
     arg0->unk5 = 5;
-    ov44_022340BC(arg0, sub_0203769C(), HEAP_ID_103);
+    ov44_022340BC(arg0, CommSystem_GetCurNetId(), HEAP_ID_103);
     return 0;
 }
 
@@ -1675,7 +1675,7 @@ s32 ov44_02234EA4(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 
     if (sub_02037B38(14) != 0) {
         s16 subroutine_arg0 = (s16)arg0->unk0->unk1B;
-        if (ov44_02233F64(arg0) != sub_02037454()) {
+        if (ov44_02233F64(arg0) != CommSystem_GetConnectedCount()) {
             temp_r0 = arg0->unk8 - 1;
             arg0->unk8 = temp_r0;
             if (temp_r0 <= 0) {
@@ -1683,7 +1683,7 @@ s32 ov44_02234EA4(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
             }
             return 0;
         }
-        if (sub_02037C0C(sub_0203769C(), &subroutine_arg0) == 1) {
+        if (sub_02037C0C(CommSystem_GetCurNetId(), &subroutine_arg0) == 1) {
             arg0->unk5 = 12;
         }
     }
@@ -1693,7 +1693,7 @@ s32 ov44_02234EA4(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum
 s32 ov44_02234EF4(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     s32 i = 0;
     s32 temp_r7 = ov44_02233F64(arg0);
-    s32 sp0 = sub_0203769C();
+    s32 sp0 = CommSystem_GetCurNetId();
     s32 var_r5 = 0;
 
     for (i = 0; i < temp_r7; i++) {

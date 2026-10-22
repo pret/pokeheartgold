@@ -359,7 +359,7 @@ FrtCmd_137: ; 0x022356AC
 _022356E6:
 	bl GF_AssertFail
 _022356EA:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, _0223570C ; =0x0000083E
 	add r1, r4, r1
 	bl sub_02037C0C
@@ -439,7 +439,7 @@ ov80_02235774: ; 0x02235774
 	add r4, r0, #0
 	add r6, r1, #0
 	add r5, r3, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	sub r0, r1, r0
 	bl sub_02037C44

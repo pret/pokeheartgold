@@ -109,8 +109,8 @@
 .public sub_020356EC
 .public sub_02037030
 .public sub_02037108
-.public sub_02037454
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_GetCurNetId
 .public sub_0203783C
 .public sub_02037854
 .public sub_02037AC0

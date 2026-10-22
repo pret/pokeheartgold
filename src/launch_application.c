@@ -7,7 +7,7 @@
 #include "application/bag_app.h"
 #include "application/pokegear/pokegear_main.h"
 #include "application/view_rankings.h"
-#include "battle/battle_022378C0.h"
+#include "battle/battle_main.h"
 #include "pokeathlon/pokeathlon.h"
 
 #include "alph_puzzle.h"

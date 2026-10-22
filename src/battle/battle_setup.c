@@ -62,7 +62,7 @@ BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleTypeFlags) {
     setup->bag = Save_Bag_New(heapID);
     setup->pokedex = Pokedex_New(heapID);
     setup->options = Options_New(heapID);
-    setup->unk_134 = sub_02067A60(heapID);
+    setup->captureAttempt = CaptureAttempt_New(heapID);
     setup->bagCursor = NULL;
     setup->unk1B8 = NULL;
     setup->safariBalls = 0;
@@ -71,13 +71,13 @@ BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleTypeFlags) {
     setup->fixedDamaageMovesBanned = FALSE;
     setup->bugContestMon = AllocMonZeroed(heapID);
 
-    setup->unk_19C = RngSeedFromRTC();
+    setup->rand = RngSeedFromRTC();
 
-    if (sub_02037474() == TRUE) {
-        for (i = 0; i < sub_02037454(); ++i) {
+    if (CommSystem_IsInitialized() == TRUE) {
+        for (i = 0; i < CommSystem_GetConnectedCount(); ++i) {
             setup->unk_1A0[i] = sub_020378AC(i);
         }
-        setup->unk1B0 = sub_0203769C();
+        setup->unk1B0 = CommSystem_GetCurNetId();
     }
     MI_CpuClear8(&setup->unk138, sizeof(setup->unk138));
     return setup;
@@ -161,7 +161,7 @@ void BattleSetup_Delete(BattleSetup *setup) {
     Heap_Free(setup->bag);
     Heap_Free(setup->pokedex);
     Heap_Free(setup->options);
-    sub_02067A78(setup->unk_134);
+    CaptureAttempt_Free(setup->captureAttempt);
     Heap_Free(setup->bugContestMon);
     Heap_Free(setup);
 }
@@ -307,7 +307,7 @@ void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup, FieldSystem *fiel
     BattleSetup_SetAllySideBattlersToPlayer(setup);
 }
 
-void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots) {
+void BattleSetup_InitWithPartyOrder(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots) {
     PlayerProfile *profile;
     Bag *bag;
     Pokedex *pokedex;
@@ -349,7 +349,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
         Party_InitWithMaxSize(setup->party[BATTLER_PLAYER], cnt);
         for (i = 0; i < cnt; ++i) {
             CopyPokemonToPokemon(Party_GetMonByIndex(party, partySlots_cpy[i] - 1), pokemon);
-            if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (sub_0203993C() == 37 || sub_0203993C() == 38)) {
+            if (GetMonData(pokemon, MON_DATA_LEVEL, NULL) > 50 && (CommManager_GetCommType() == 37 || CommManager_GetCommType() == 38)) {
                 u32 exp = GetMonExpBySpeciesAndLevel(GetMonData(pokemon, MON_DATA_SPECIES, NULL), 50);
                 SetMonData(pokemon, MON_DATA_EXPERIENCE, &exp);
                 CalcMonLevelAndStats(pokemon);
@@ -376,7 +376,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
     setup->palPad = Save_PalPad_Get(fieldSystem->saveData);
     setup->saveData = fieldSystem->saveData;
 
-    if (sub_0203401C(sub_0203993C())) {
+    if (sub_0203401C(CommManager_GetCommType())) {
         int avatar = PlayerProfile_GetAvatar(profile);
         int gender = PlayerProfile_GetTrainerGender(profile);
         setup->trainer[BATTLER_PLAYER].data.trainerClass = GetUnionRoomAvatarAttrBySprite(gender, avatar, 1);
@@ -388,7 +388,7 @@ void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8
 }
 
 void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots) {
-    sub_020520B0(setup, fieldSystem, SaveArray_Party_Get(fieldSystem->saveData), partySlots);
+    BattleSetup_InitWithPartyOrder(setup, fieldSystem, SaveArray_Party_Get(fieldSystem->saveData), partySlots);
 }
 
 static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, PlayerProfile *profile2) {
@@ -415,18 +415,11 @@ static void sub_0205230C(FieldSystem *fieldSystem, PlayerProfile *profile1, Play
     }
 }
 
-void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
-    PlayerProfile *profile;
-    Party *party;
-    Bag *bag;
-    Pokedex *pokedex;
-    SaveVarsFlags *vars_flags;
-    u16 *balls_ptr;
-
-    profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
-    party = SaveArray_Party_Get(fieldSystem->saveData);
-    bag = Save_Bag_Get(fieldSystem->saveData);
-    pokedex = Save_Pokedex_Get(fieldSystem->saveData);
+void BattleSetup_UpdateFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem) {
+    PlayerProfile *profile = Save_PlayerData_GetProfile(fieldSystem->saveData);
+    Party *party = SaveArray_Party_Get(fieldSystem->saveData);
+    Bag *bag = Save_Bag_Get(fieldSystem->saveData);
+    Pokedex *pokedex = Save_Pokedex_Get(fieldSystem->saveData);
 
     sub_0205230C(fieldSystem, profile, setup->profile[BATTLER_PLAYER]);
     PlayerProfile_Copy(setup->profile[BATTLER_PLAYER], profile);
@@ -434,8 +427,8 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     Save_Bag_Copy(setup->bag, bag);
     Pokedex_Copy(setup->pokedex, pokedex);
 
-    balls_ptr = NULL;
-    vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
+    u16 *balls_ptr = NULL;
+    SaveVarsFlags *vars_flags = Save_VarsFlags_Get(fieldSystem->saveData);
     if (Save_VarsFlags_CheckSafariSysFlag(vars_flags)) {
         balls_ptr = LocalFieldData_GetSafariBallsCounter(Save_LocalFieldData_Get(fieldSystem->saveData));
     } else if (Save_VarsFlags_CheckBugContestFlag(vars_flags)) {
@@ -446,7 +439,7 @@ void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem) {
     }
 }
 
-void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem) {
+void BattleSetup_UpdatePokedex(BattleSetup *setup, FieldSystem *fieldSystem) {
     PlayerProfile *profile;
     Party *party;
     Bag *bag;
@@ -529,9 +522,9 @@ static void sub_02052504(BattleSetup *setup, FieldSystem *fieldSystem) {
     setup->terrain = FieldSystem_GetTerrainFromStandingTile(fieldSystem, setup->battleBg);
 }
 
-void sub_02052544(BattleSetup *setup) {
+void BattleSetup_SetWaterTerrain(BattleSetup *setup) {
     setup->terrain = TERRAIN_WATER;
-    setup->unk_1D0 = TRUE;
+    setup->isFishing = TRUE;
 }
 
 BOOL IsBattleResultWin(u32 result) {

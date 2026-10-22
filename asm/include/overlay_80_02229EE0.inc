@@ -24,7 +24,7 @@
 .public PlayerProfile_GetVersion
 .public Save_WiFiHistory_Get
 .public sub_02034818
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02039F68
 .public MapHeader_GetMapSec
 .public ZeroMonData

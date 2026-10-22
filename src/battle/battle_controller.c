@@ -131,7 +131,7 @@ static void SendMessage(BattleSystem *battleSystem, int recipient, int battler, 
 
     if (battleSystem->battleType & BATTLE_TYPE_LINK && (battleSystem->battleSpecial & BATTLE_TYPE_TAG) == FALSE) {
         if (recipient == 1) {
-            for (int i = 0; i < sub_02037454(); i++) {
+            for (int i = 0; i < CommSystem_GetConnectedCount(); i++) {
                 ov12_0224ECC4(battleSystem->ctx, i, battler, *data);
             }
         }
@@ -164,7 +164,7 @@ void BattleController_EmitSetEncounter(BattleSystem *battleSystem, int battler) 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -186,7 +186,7 @@ void BattleController_EmitShowEncounter(BattleSystem *battleSystem, int battler)
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
     message.capturedBall = battleSystem->ctx->battleMons[battler].ball;
@@ -220,7 +220,7 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battler, i
 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 0);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 0);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
@@ -1366,7 +1366,7 @@ void BattleController_EmitClearCommand(BattleSystem *battleSystem, int battler, 
     CommandClearMsg message;
 
     message.command = command;
-    message.netID = sub_0203769C();
+    message.netID = CommSystem_GetCurNetId();
 
     SendMessage(battleSystem, 2, battler, &message, sizeof(CommandClearMsg));
 }
@@ -1518,8 +1518,8 @@ static void PartyGaugeData_New(BattleSystem *battleSystem, BattleContext *ctx, P
         || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetFieldSide(battleSystem, battler))                                                                   // either of the two opponents on the enemy side
         || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) && BattleSystem_GetFieldSide(battleSystem, battler)) // either of the two opponents on the enemy side
         || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                               // frontier, AI partner
-        if (ov12_0223AB0C(battleSystem, battler) == BATTLER_PLAYER2
-            || ov12_0223AB0C(battleSystem, battler) == BATTLER_ENEMY2) {
+        if (BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_PLAYER2
+            || BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_ENEMY2) {
             battler1 = battler;
             battler2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
         } else {
