@@ -17,6 +17,7 @@ cmake-build-debug/
 
 # VSCode folder
 .vscode/
+!.vscode/launch.json
 
 # "cmake.buildDirectory": "${workspaceFolder}/build-cmake-${buildType}"
 build-cmake-*
@@ -85,8 +86,6 @@ cmake-build-*
 *.d
 
 diff.txt
-
-.vscode/
 
 # Save files
 *.dsv
