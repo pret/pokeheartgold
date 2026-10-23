@@ -7,6 +7,7 @@
 #include "screen_fade.h"
 #include "unk_02005D10.h"
 #include "unk_02091054.h"
+#include "yes_no_prompt.h"
 
 #define CAPSULE_INIT_STATE_ID              0
 #define CAPSULE_FADE_IN_STATE_ID           1
@@ -21,20 +22,22 @@
 #define CAPSULE_WAIT_EXIT_STATE_ID         10
 #define CAPSULE_UNK_11_STATE_ID            11
 
+int ov57_0223A6B8(CapsuleAppManager *appMan);
+BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
+int ov57_0223A8FC(CapsuleAppManager *appMan);
+int ov57_0223AB58(CapsuleAppManager *appMan);
 void ov57_0223B75C(CapsuleAppManager *appMan);
 void ov57_0223B78C(CapsuleAppManager *appMan);
 void ov57_0223B948(CapsuleAppManager *appMan, int a1);
 int ov57_0223B180(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
-int ov57_0223A6B8(CapsuleAppManager *appMan);
-int ov57_0223B620(CapsuleAppManager *appMan);
-int ov57_0223AB58(CapsuleAppManager *appMan);
-int ov57_0223A8FC(CapsuleAppManager *appMan);
-BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 void ov57_0223B12C(CapsuleAppManager *appMan);
+int ov57_0223B620(CapsuleAppManager *appMan);
 void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
 int ov57_0223B308(CapsuleAppManager *appMan);
 BOOL ov57_0223B940(CapsuleAppManager *appMan);
+void ov57_0223B774(CapsuleAppManager *appMan);
+void ov57_0223B7A8(CapsuleAppManager *appMan);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -447,4 +450,96 @@ BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
     }
 
     return FALSE;
+}
+
+int ov57_0223A8FC(CapsuleAppManager *appMan) {
+    switch (appMan->unk_404) {
+    case 0:
+        if (!ov57_022384C0(appMan)) {
+            return CAPSULE_UNK_11_STATE_ID;
+        }
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80b, 0, 0, 10, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
+        ov57_0223B948(appMan, 0);
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
+        ++appMan->unk_404;
+        break;
+    case 1:
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+            break;
+        }
+        PaletteData_SetAutoTransparent(appMan->unk_0D4.unk_014, FALSE);
+        ov57_022397B0(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[4], GF_BG_LYR_SUB_0, 2, 1, 27, 4, 0x03A);
+
+        YesNoPromptTemplate yesNoPromptTemplate;
+        MI_CpuClear8(&yesNoPromptTemplate, sizeof(YesNoPromptTemplate));
+        yesNoPromptTemplate.bgConfig = appMan->unk_0D4.unk_010;
+        yesNoPromptTemplate.bgId = GF_BG_LYR_SUB_0;
+        yesNoPromptTemplate.tileStart = 0x0E6;
+        yesNoPromptTemplate.plttSlot = 5;
+        yesNoPromptTemplate.x = 25;
+        yesNoPromptTemplate.y = 6;
+        yesNoPromptTemplate.ignoreTouchFlag = appMan->unk_40C;
+        appMan->unk_0D4.unk_170 = YesNoPrompt_Create(HEAP_ID_52);
+        YesNoPrompt_InitFromTemplate(appMan->unk_0D4.unk_170, &yesNoPromptTemplate);
+        ov57_02239728(&appMan->unk_0D4.unk_018[4], 4, msg_0011_00014, FALSE);
+        ++appMan->unk_404;
+        break;
+    case 2:
+        GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
+        ++appMan->unk_404;
+        // fallthrough
+    case 3:
+        YesNoResponse response = YesNoPrompt_HandleInput(appMan->unk_0D4.unk_170);
+        switch (response) {
+        case YESNORESPONSE_WAIT:
+            break;
+        case YESNORESPONSE_YES:
+        case YESNORESPONSE_NO:
+            appMan->unk_40C = YesNoPrompt_IsInTouchMode(appMan->unk_0D4.unk_170);
+            appMan->unk_408 = response;
+            PaletteData_SetAutoTransparent(appMan->unk_0D4.unk_014, TRUE);
+            YesNoPrompt_Reset(appMan->unk_0D4.unk_170);
+            YesNoPrompt_Destroy(appMan->unk_0D4.unk_170);
+            ClearFrameAndWindow2(&appMan->unk_0D4.unk_018[4], FALSE);
+            RemoveWindow(&appMan->unk_0D4.unk_018[4]);
+            ++appMan->unk_404;
+            break;
+        }
+        break;
+    case 4:
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80B, 0, 10, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
+        ++appMan->unk_404;
+        break;
+    case 5:
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+            break;
+        }
+        int result;
+        switch (appMan->unk_408) {
+        case YESNORESPONSE_YES:
+            ov57_0223B774(appMan);
+            ov57_0223B7A8(appMan);
+            ov57_022399F8(appMan);
+            ov57_022383AC(appMan);
+            ov57_02237F3C(appMan);
+            ov57_022383D0(appMan, TRUE);
+            result = 6;
+            appMan->unk_410 = 20;
+            break;
+        case YESNORESPONSE_NO:
+            result = 4;
+            break;
+        case YESNORESPONSE_WAIT:
+        default:
+            result = CAPSULE_CANCEL_PRESSED_STATE_ID;
+            break;
+        }
+        ov57_0223B948(appMan, 1);
+        appMan->unk_404 = 0;
+        return result;
+    }
+
+    return CAPSULE_CANCEL_PRESSED_STATE_ID;
 }

@@ -13,6 +13,7 @@
 #include "touchscreen_list_menu.h"
 #include "unk_02013534.h"
 #include "unk_02016EDC.h"
+#include "yes_no_prompt.h"
 
 #define SEALS_PER_PAGE                8
 #define CAPSULE_TOUCH_RECTS           21
@@ -54,7 +55,7 @@ typedef struct CapsuleGraphicsManager {
     u8 filler_0F4[0x24];
     TouchHitboxController *unk_118;
     TouchscreenHitbox unk_11C[21];
-    u8 filler_170[4];
+    YesNoPrompt *unk_170;
     TouchscreenListMenuSpawner *unk_174;
     TouchscreenListMenu *unk_178;
     u8 filler_17C[8];
@@ -97,7 +98,7 @@ typedef struct CapsuleAppManager {
     int unk_3FC;
     u8 filler_400[4];
     int unk_404;
-    u8 filler_408[4];
+    YesNoResponse unk_408;
     MenuInputState unk_40C;
     int unk_410;
     ManagedSprite *unk_414[13];
