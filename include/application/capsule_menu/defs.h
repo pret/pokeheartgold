@@ -1,10 +1,13 @@
 #ifndef GUARD_APPLICATION_CAPSULE_MENU_DEFS_H
 #define GUARD_APPLICATION_CAPSULE_MENU_DEFS_H
 
+#include "battle/battle.h"
+
 #include "bg_window.h"
 #include "gf_3d_vramman.h"
 #include "menu_input_state.h"
 #include "obj_char_transfer.h"
+#include "overlay_07.h"
 #include "overlay_57.h"
 #include "pokepic.h"
 #include "seal_case.h"
@@ -52,13 +55,15 @@ typedef struct CapsuleGraphicsManager {
     ListMenuItem *unk_0E8;
     u8 filler_0EC[0x4];
     PokepicManager *unk_0F0;
-    u8 filler_0F4[0x24];
+    Pokepic *unk_0F4;
+    u8 filler_0F8[0x20];
     TouchHitboxController *unk_118;
     TouchscreenHitbox unk_11C[21];
     YesNoPrompt *unk_170;
     TouchscreenListMenuSpawner *unk_174;
     TouchscreenListMenu *unk_178;
-    u8 filler_17C[8];
+    BallCapsuleSealEffect *unk_17C;
+    UnkBallData *unk_180;
     GF3DVramMan *unk_184;
     UnkStruct_02013534 *unk_188;
     TextOBJ *unk_18C[2];

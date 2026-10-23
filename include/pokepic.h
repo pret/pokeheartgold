@@ -194,7 +194,7 @@ void Pokepic_StartAnim(Pokepic *pokepic);
 void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
 
 // Returns TRUE if the Pokepic animation is finished
-BOOL Pokepic_IsAnimFinished(Pokepic *pokepic);
+BOOL Pokepic_IsAnimActive(Pokepic *pokepic);
 
 // Finds an empty Pokepic slot and creates a Pokepic there
 Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);

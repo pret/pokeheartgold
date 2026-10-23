@@ -470,7 +470,7 @@ void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript) {
     MI_CpuCopy8(animScript, pokepic->animScript, sizeof(PokepicAnimScript) * 10);
 }
 
-BOOL Pokepic_IsAnimFinished(Pokepic *pokepic) {
+BOOL Pokepic_IsAnimActive(Pokepic *pokepic) {
     return !!pokepic->animActive;
 }
 

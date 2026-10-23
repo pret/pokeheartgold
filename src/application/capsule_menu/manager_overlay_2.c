@@ -1,7 +1,9 @@
 #include "application/capsule_menu/defs.h"
+#include "battle/battle.h"
 #include "msgdata/msg/msg_0011.h"
 
 #include "game_stats.h"
+#include "overlay_07.h"
 #include "pokemon.h"
 #include "render_window.h"
 #include "screen_fade.h"
@@ -22,22 +24,40 @@
 #define CAPSULE_WAIT_EXIT_STATE_ID         10
 #define CAPSULE_UNK_11_STATE_ID            11
 
+#define THROW_INIT_GFX_STATE_ID              0
+#define THROW_WAIT_INIT_THROW_STATE_ID       1
+#define THROW_SET_CAPSULE_STATE_ID           2
+#define THROW_WAIT_FOR_END_STATE_ID          3
+#define THROW_WAIT_FOR_ROTATION_END_STATE_ID 4
+#define THROW_WAIT_FOR_ANIMS_END_STATE_ID    5
+#define THROW_WAIT_AFTER_ANIMS_END_STATE_ID  6
+#define THROW_WAIT_FREE_STATE_ID             7
+
 int ov57_0223A6B8(CapsuleAppManager *appMan);
 BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 int ov57_0223A8FC(CapsuleAppManager *appMan);
 int ov57_0223AB58(CapsuleAppManager *appMan);
-void ov57_0223B75C(CapsuleAppManager *appMan);
-void ov57_0223B78C(CapsuleAppManager *appMan);
-void ov57_0223B948(CapsuleAppManager *appMan, int a1);
-int ov57_0223B180(CapsuleAppManager *appMan);
-void ov57_0223B700(CapsuleAppManager *appMan);
 void ov57_0223B12C(CapsuleAppManager *appMan);
-int ov57_0223B620(CapsuleAppManager *appMan);
-void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
+int ov57_0223B180(CapsuleAppManager *appMan);
 int ov57_0223B308(CapsuleAppManager *appMan);
-BOOL ov57_0223B940(CapsuleAppManager *appMan);
+int ov57_0223B620(CapsuleAppManager *appMan);
+void ov57_0223B700(CapsuleAppManager *appMan);
+void ov57_0223B75C(CapsuleAppManager *appMan);
 void ov57_0223B774(CapsuleAppManager *appMan);
+void ov57_0223B78C(CapsuleAppManager *appMan);
 void ov57_0223B7A8(CapsuleAppManager *appMan);
+void ov57_0223B7C4(CapsuleAppManager *appMan);
+void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
+BOOL ov57_0223B940(CapsuleAppManager *appMan);
+void ov57_0223B948(CapsuleAppManager *appMan, int a1);
+void ov57_0223B950(CapsuleAppManager *appMan);
+void ov57_0223B9C8(CapsuleAppManager *appMan);
+void ov57_0223BA1C(CapsuleAppManager *appMan);
+BOOL ov57_0223BA40(CapsuleAppManager *appMan);
+BOOL ov57_0223BABC(CapsuleAppManager *appMan);
+void ov57_0223BB38(CapsuleAppManager *appMan, BOOL a1);
+void ov57_0223BB4C(CapsuleAppManager *appMan);
+void ov57_0223BB5C(void);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -542,4 +562,137 @@ int ov57_0223A8FC(CapsuleAppManager *appMan) {
     }
 
     return CAPSULE_CANCEL_PRESSED_STATE_ID;
+}
+
+int ov57_0223AB58(CapsuleAppManager *appMan) {
+    switch (appMan->unk_404) {
+    case THROW_INIT_GFX_STATE_ID:
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80B, 0, 0, 10, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
+        ov57_0223B948(appMan, 0);
+        appMan->unk_408 = 0;
+        ov57_0223B7C4(appMan);
+        ov57_0223B950(appMan);
+        ov57_0223BB38(appMan, 1);
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00013, FALSE);
+        ++appMan->unk_404;
+        break;
+    case THROW_WAIT_INIT_THROW_STATE_ID:
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+            break;
+        }
+        UnkStruct_134 sp5C;
+        sp5C.unk0 = 1;
+        sp5C.heapID = HEAP_ID_52;
+        sp5C.unk8 = 0;
+        sp5C.unkC = 0xFF;
+        sp5C.unk14 = 0;
+        sp5C.unk18 = 1;
+        sp5C.spriteSystem = appMan->unk_0D4.unk_008;
+        sp5C.paletteData = appMan->unk_0D4.unk_014;
+        sp5C.ball = GetMonData(appMan->unk_458, MON_DATA_POKEBALL, NULL);
+        appMan->unk_0D4.unk_180 = ov07_02233DB8(&sp5C);
+        ++appMan->unk_404;
+        break;
+    case THROW_SET_CAPSULE_STATE_ID: {
+        BallCapsule sp44;
+        BallCapsuleConfig sp38 = { };
+        sp38.battlerType = BATTLER_TYPE_SOLO_ENEMY;
+        sp38.mon = appMan->unk_458;
+        int spC = appMan->unk_3EC + 1;
+        ov57_0223857C(&sp44, appMan);
+        SetMonData(appMan->unk_458, MON_DATA_BALL_CAPSULE_ID, &spC);
+        SetMonData(appMan->unk_458, MON_DATA_BALL_CAPSULE, &sp44);
+        appMan->unk_0D4.unk_17C = ov07_02232694(HEAP_ID_52, &sp38);
+        ov07_022329B0(appMan->unk_0D4.unk_17C);
+        ++appMan->unk_404;
+        appMan->unk_408 = 0;
+    } break;
+    case THROW_WAIT_FOR_END_STATE_ID:
+        if (ov07_02232A04(appMan->unk_0D4.unk_17C) != TRUE) {
+            break;
+        }
+        if (ov07_02233EA0(appMan->unk_0D4.unk_180) != TRUE) {
+            break;
+        }
+        ov57_0223BA40(appMan);
+        ov07_02232A44(appMan->unk_0D4.unk_17C);
+        ov57_0223BB38(appMan, 0);
+        ov57_0223BA1C(appMan);
+        PlaySE(SEQ_SE_DP_CUSTOM05);
+        ++appMan->unk_404;
+        break;
+    case THROW_WAIT_FOR_ROTATION_END_STATE_ID: {
+        BOOL r5 = ov57_0223BA40(appMan);
+        BOOL r0 = ov07_02233E88(appMan->unk_0D4.unk_180);
+        if (r0 || r5) {
+            break;
+        }
+        ov07_02233ECC(appMan->unk_0D4.unk_180);
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+        ov57_0223B9C8(appMan);
+        appMan->unk_408 = 0;
+        ++appMan->unk_404;
+    } break;
+    case THROW_WAIT_FOR_ANIMS_END_STATE_ID:
+        if (ov07_02232A54(appMan->unk_0D4.unk_17C)) {
+            break;
+        }
+        if (sub_02017068(appMan->unk_0D4.unk_1B0, 0) != TRUE) {
+            break;
+        }
+        if (Pokepic_IsAnimActive(appMan->unk_0D4.unk_0F4)) {
+            break;
+        }
+        ov07_02232AB8(appMan->unk_0D4.unk_17C);
+        ++appMan->unk_404;
+        break;
+    case THROW_WAIT_AFTER_ANIMS_END_STATE_ID:
+        ++appMan->unk_408;
+        if (appMan->unk_408 < 30) {
+            break;
+        }
+        appMan->unk_408 = 0;
+        UnkStruct_134 sp10;
+        sp10.unk0 = 1;
+        sp10.heapID = HEAP_ID_52;
+        sp10.unk8 = 5;
+        sp10.unkC = 0xFF;
+        sp10.unk14 = 0;
+        sp10.unk18 = 1;
+        sp10.spriteSystem = appMan->unk_0D4.unk_008;
+        sp10.paletteData = appMan->unk_0D4.unk_014;
+        sp10.ball = GetMonData(appMan->unk_458, MON_DATA_POKEBALL, NULL);
+        appMan->unk_0D4.unk_180 = ov07_02233DB8(&sp10);
+        ov57_0223BB5C();
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+        ++appMan->unk_404;
+        break;
+    case THROW_WAIT_FREE_STATE_ID: {
+        BOOL r5 = ov57_0223BABC(appMan);
+        BOOL r0 = ov07_02233E88(appMan->unk_0D4.unk_180);
+        if (r0 || r5) {
+            break;
+        }
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80B, 0, 10, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
+        ov57_0223BB38(appMan, 1);
+        ov57_0223BB4C(appMan);
+        ov07_02233ECC(appMan->unk_0D4.unk_180);
+        ++appMan->unk_404;
+    } break;
+    default:
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+            break;
+        }
+        GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
+        ov57_0223B948(appMan, 1);
+        appMan->unk_404 = 0;
+        appMan->unk_3FC = CAPSULE_CAPSULE_MENU_STATE_ID;
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 0xFFFF, FALSE);
+        return CAPSULE_CAPSULE_MENU_STATE_ID;
+    }
+
+    return CAPSULE_FADE_OUT_STATE_ID;
 }

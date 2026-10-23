@@ -6127,7 +6127,7 @@ _0225B728:
 	cmp r0, #1
 	bne _0225B7B4
 	ldr r0, [r4, #8]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _0225B7B4
 	ldr r0, [r4, #0x28]
@@ -6332,7 +6332,7 @@ _0225B8D0:
 	cmp r0, #1
 	bne _0225B95C
 	ldr r0, [r4, #8]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _0225B95C
 	ldr r0, [r4, #0x28]
@@ -6887,7 +6887,7 @@ _0225BD50:
 	bne _0225BE20
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x20]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _0225BE20
 	ldr r0, [r4, #4]
@@ -7299,7 +7299,7 @@ _0225C0B0:
 	bne _0225C17A
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x20]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _0225C17A
 	ldr r0, [r4, #4]
@@ -7869,7 +7869,7 @@ _0225C566:
 	bne _0225C586
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x20]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	beq _0225C588
 _0225C586:
@@ -8235,7 +8235,7 @@ _0225C858:
 	bne _0225C878
 	ldr r0, [r4, #4]
 	ldr r0, [r0, #0x20]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	beq _0225C87A
 _0225C878:
