@@ -35,9 +35,19 @@ c_args = [
     '-nosyspath',
     '-stdinc',
     '-sym', 'on',
-    '-O4,p',
     '-D_MSL_RESTRICT=',
 ]
+
+if get_option('gdb_debugging')
+    c_args += [
+        '-O1,p',
+        '-DGDB_DEBUGGING',
+    ]
+else
+    c_args += [
+        '-O4,p'
+    ]
+endif
 
 asm_args = [
     '-proc', 'arm5TE',
@@ -382,6 +392,33 @@ elif game_version == 'SOULSILVER'
         depends : main_lz,
     )
 endif
+
+############################################################
+###                   GDB HELPERS                        ###
+############################################################
+nef_fixer = custom_target('debug.nef',
+    output: [
+        'debug.nef'
+    ],
+    input: [
+        main
+    ],
+    command : [
+        nef_fixer_py, '@INPUT@', '@OUTPUT@'
+    ]
+)
+
+ovly_mapper = custom_target('overlay.map',
+    output: [
+        'overlay.map'
+    ],
+    input: [
+        main_lsf
+    ],
+    command : [
+        overlay_mapper_py, '@INPUT@', '@OUTPUT@'
+    ]
+)
 
 ############################################################
 ###                        TESTS                         ###

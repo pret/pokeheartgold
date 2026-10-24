@@ -17,6 +17,7 @@ cmake-build-debug/
 
 # VSCode folder
 .vscode/
+!.vscode/launch.json
 
 # "cmake.buildDirectory": "${workspaceFolder}/build-cmake-${buildType}"
 build-cmake-*
@@ -86,8 +87,6 @@ cmake-build-*
 
 diff.txt
 
-.vscode/
-
 # Save files
 *.dsv
 *.sav
@@ -108,3 +107,4 @@ __pycache__
 .venv/
 *.pyc
 tmp*
+gdb
