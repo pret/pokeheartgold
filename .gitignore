@@ -107,3 +107,4 @@ __pycache__
 .venv/
 *.pyc
 tmp*
+gdb
