@@ -37,9 +37,12 @@ int ov57_0223A6B8(CapsuleAppManager *appMan);
 BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 int ov57_0223A8FC(CapsuleAppManager *appMan);
 int ov57_0223AB58(CapsuleAppManager *appMan);
-void ov57_0223B12C(CapsuleAppManager *appMan);
+BOOL ov57_0223B12C(CapsuleAppManager *appMan);
 int ov57_0223B180(CapsuleAppManager *appMan);
+int ov57_0223B288(CapsuleAppManager *appMan);
+int ov57_0223B2EC(CapsuleAppManager *appMan);
 int ov57_0223B308(CapsuleAppManager *appMan);
+void ov57_0223B504(CapsuleAppManager *appMan, int a1, int a2);
 int ov57_0223B620(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
 void ov57_0223B75C(CapsuleAppManager *appMan);
@@ -48,6 +51,7 @@ void ov57_0223B78C(CapsuleAppManager *appMan);
 void ov57_0223B7A8(CapsuleAppManager *appMan);
 void ov57_0223B7C4(CapsuleAppManager *appMan);
 void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
+void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj);
 BOOL ov57_0223B940(CapsuleAppManager *appMan);
 void ov57_0223B948(CapsuleAppManager *appMan, int a1);
 void ov57_0223B950(CapsuleAppManager *appMan);
@@ -59,7 +63,6 @@ void ov57_0223BB38(CapsuleAppManager *appMan, BOOL a1);
 void ov57_0223BB4C(CapsuleAppManager *appMan);
 void ov57_0223BB5C(void);
 void ov57_0223B858(ManagedSprite *sprite, u32 event);
-void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -813,4 +816,70 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
     default:
         GF_ASSERT(FALSE);
     }
+}
+
+BOOL ov57_0223B12C(CapsuleAppManager *appMan) {
+    if (appMan->unk_40C == MENU_INPUT_STATE_TOUCH) {
+        if (System_GetTouchHeld()) {
+            return FALSE;
+        }
+        if (gSystem.heldKeys) {
+            appMan->unk_40C = MENU_INPUT_STATE_BUTTONS;
+            return TRUE;
+        }
+    } else {
+        if (gSystem.heldKeys) {
+            return FALSE;
+        }
+        if (System_GetTouchHeld()) {
+            appMan->unk_40C = MENU_INPUT_STATE_TOUCH;
+            return FALSE;
+        }
+    }
+
+    return FALSE;
+}
+
+int ov57_0223B180(CapsuleAppManager *appMan) {
+    ov57_0223B12C(appMan);
+    if (appMan->unk_40C == MENU_INPUT_STATE_BUTTONS) {
+        return ov57_0223B288(appMan);
+    } else {
+        return ov57_0223B2EC(appMan);
+    }
+}
+
+int ov57_0223B1A4(CapsuleAppManager *appMan, int a1) {
+    switch (a1) {
+    case 12:
+        PlaySE(SEQ_SE_DP_DECIDE);
+        ov57_02237E88(appMan->unk_000, 0);
+        return 5;
+    case 13:
+        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
+        ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC);
+        PlaySE(SEQ_SE_DP_SELECT);
+        return 4;
+    default:
+        ov57_02238134(appMan);
+        ov57_0223853C(appMan);
+        ov57_022394AC(appMan);
+        appMan->unk_3EC = a1;
+        ov57_0223B504(appMan, 0, 1);
+        ov57_022383AC(appMan);
+        ov57_02237F3C(appMan);
+        ov57_022383D0(appMan, 1);
+        ov57_02237F14(appMan);
+        if (appMan->unk_40C == 0) {
+            PlaySE(SEQ_SE_DP_SELECT);
+        } else {
+            ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
+            ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC);
+            PlaySE(SEQ_SE_DP_SELECT);
+            return 4;
+        }
+        break;
+    }
+
+    return 3;
 }
