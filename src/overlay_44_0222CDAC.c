@@ -4064,7 +4064,7 @@ void ov44_0222F9A0(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
     GfGfx_EngineBTogglePlanes(2, 1);
     GfGfx_EngineBTogglePlanes(4, 1);
     GfGfx_EngineBTogglePlanes(8, 0);
-    arg0->unkB1C.unk4C = TouchHitboxController_Create(ov44_022354E8, 8, (TouchHitboxControllerCallback)ov44_0222FC84, arg0, arg2);
+    arg0->unkB1C.unk4C = TouchHitboxController_Create(ov44_022354E8, 8, ov44_0222FC84, arg0, arg2);
     arg0->unkB1C.unk0 = MessageFormat_New(arg2);
     ov44_0222FCBC(arg0, arg1, arg2);
     arg0->unkB1C.unk78 = 1;
@@ -4185,9 +4185,10 @@ void ov44_0222FC3C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
 }
 
-void ov44_0222FC84(s32 arg0, enum HeapID arg1, UnkStruct_ov44_022319EC *arg2) {
-    s32 temp_r0 = arg2->unkB1C.unk70 * 8 + arg0;
-    if ((arg2->unkB1C.unk50[temp_r0] == 2) && (arg2->unkB1C.unk71 == 0) && (arg1 == 0)) {
+void ov44_0222FC84(u32 index, u32 event, void *arg) {
+    UnkStruct_ov44_022319EC *arg2 = arg;
+    s32 temp_r0 = arg2->unkB1C.unk70 * 8 + index;
+    if ((arg2->unkB1C.unk50[temp_r0] == 2) && (arg2->unkB1C.unk71 == 0) && (event == TOUCH_BUTTON_PRESSED)) {
         arg2->unkB1C.unk71 = temp_r0 + 1;
         PlaySE(SEQ_SE_DP_DECIDE);
     }
@@ -4870,7 +4871,7 @@ void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
     sub_02013938(temp_r0_4);
     RemoveWindow(&window);
     FontID_Release(2);
-    arg0->unkB1C.unk244 = TouchHitboxController_Create(ov44_02235394, 3, (TouchHitboxControllerCallback)ov44_022317F0, arg0, arg2);
+    arg0->unkB1C.unk244 = TouchHitboxController_Create(ov44_02235394, 3, ov44_022317F0, arg0, arg2);
 }
 
 void ov44_022316B0(UnkStruct_ov44_022319EC *arg0) {
@@ -4916,16 +4917,17 @@ s32 ov44_02231788(UnkStruct_ov44_022319EC *arg0) {
     TouchHitboxController_IsTriggered(arg0->unkB1C.unk244);
 
     for (s32 i = 0; i < 3; i++) {
-        if ((arg0->unkB1C.unk238 != 2 || i != 1) && ov44_0223183C(&arg0->unkB1C, i, arg0->unkB1C.unk23C, arg0->unkB1C.unk240) == 1) {
+        if ((arg0->unkB1C.unk238 != 2 || i != 1) && ov44_0223183C(&arg0->unkB1C, i, arg0->unkB1C.unk23C, arg0->unkB1C.unk240) == TOUCH_BUTTON_RELEASED) {
             return i + 1;
         }
     }
     return 0;
 }
 
-void ov44_022317F0(u32 arg0, u32 arg1, UnkStruct_ov44_022319EC *arg2) {
-    arg2->unkB1C.unk23C = arg0;
-    arg2->unkB1C.unk240 = arg1;
+void ov44_022317F0(u32 index, u32 event, void *arg) {
+    UnkStruct_ov44_022319EC *arg2 = arg;
+    arg2->unkB1C.unk23C = index;
+    arg2->unkB1C.unk240 = event;
 }
 
 void ov44_02231800(UnkStruct_ov44_02231800 *arg0, s32 arg1) {

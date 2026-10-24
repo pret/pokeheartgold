@@ -58,6 +58,8 @@ BOOL ov57_0223BABC(CapsuleAppManager *appMan);
 void ov57_0223BB38(CapsuleAppManager *appMan, BOOL a1);
 void ov57_0223BB4C(CapsuleAppManager *appMan);
 void ov57_0223BB5C(void);
+void ov57_0223B858(ManagedSprite *sprite, u32 event);
+void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj);
 
 extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
 
@@ -597,7 +599,7 @@ int ov57_0223AB58(CapsuleAppManager *appMan) {
         break;
     case THROW_SET_CAPSULE_STATE_ID: {
         BallCapsule sp44;
-        BallCapsuleConfig sp38 = { };
+        BallCapsuleConfig sp38 = { 0 };
         sp38.battlerType = BATTLER_TYPE_SOLO_ENEMY;
         sp38.mon = appMan->unk_458;
         int spC = appMan->unk_3EC + 1;
@@ -695,4 +697,120 @@ int ov57_0223AB58(CapsuleAppManager *appMan) {
     }
 
     return CAPSULE_FADE_OUT_STATE_ID;
+}
+
+void ov57_0223AEA8(u32 index, u32 event, void *arg) {
+    CapsuleAppManager *appMan = arg;
+
+    if (!appMan->unk_0D4.unk_004) {
+        return;
+    }
+
+    switch (index) {
+    case 8:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            if (appMan->unk_448.page > 0) {
+                --appMan->unk_448.page;
+            } else {
+                appMan->unk_448.page = appMan->unk_448.maxPage - 1;
+            }
+            ov57_02238AC0(appMan);
+            ov57_022388E4(appMan, appMan->unk_448.page);
+            ov57_02238958(appMan);
+            ov57_02238A00(appMan);
+            ov57_022399F8(appMan);
+            PlaySE(SEQ_SE_DP_CUSTOM02);
+        }
+        ov57_0223B858(appMan->unk_414[8], event);
+        break;
+    case 9:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            ++appMan->unk_448.page;
+            appMan->unk_448.page %= appMan->unk_448.maxPage;
+            ov57_02238AC0(appMan);
+            ov57_022388E4(appMan, appMan->unk_448.page);
+            ov57_02238958(appMan);
+            ov57_02238A00(appMan);
+            ov57_022399F8(appMan);
+            PlaySE(SEQ_SE_DP_CUSTOM02);
+        }
+        ov57_0223B858(appMan->unk_414[9], event);
+        break;
+    case 10:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            if (appMan->unk_3FC != CAPSULE_FADE_OUT_STATE_ID) {
+                appMan->unk_3FC = CAPSULE_FADE_OUT_STATE_ID;
+                PlaySE(SEQ_SE_DP_DECIDE);
+            }
+            ov57_0223B90C(appMan->unk_414[10], NULL);
+        }
+        ov57_0223B858(appMan->unk_414[10], event);
+        break;
+    case 11:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            if (appMan->unk_3FC != CAPSULE_FADE_OUT_WAIT_STATE_ID) {
+                appMan->unk_3FC = CAPSULE_FADE_OUT_WAIT_STATE_ID;
+                ov57_0223B948(appMan, 0);
+                PlaySE(SEQ_SE_DP_PIRORIRO);
+            }
+            ov57_0223B90C(appMan->unk_414[11], appMan->unk_0D4.unk_18C[0]);
+        }
+        ov57_0223B858(appMan->unk_414[11], event);
+        break;
+    case 12:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            if (appMan->unk_3FC != CAPSULE_CANCEL_PRESSED_STATE_ID) {
+                appMan->unk_3FC = CAPSULE_CANCEL_PRESSED_STATE_ID;
+                ov57_0223B948(appMan, 0);
+                PlaySE(SEQ_SE_DP_DECIDE);
+            }
+            ov57_0223B90C(appMan->unk_414[12], appMan->unk_0D4.unk_18C[1]);
+        }
+        ov57_0223B858(appMan->unk_414[12], event);
+        break;
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            if (!ov57_02238028(appMan)) {
+                PlaySE(SEQ_SE_DP_CUSTOM06);
+                ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00015, FALSE);
+            } else {
+                u8 *sealIDs = appMan->unk_448.sealIDs;
+                if (sealIDs[index] != SEAL_NONE && SealCaseInventory_GetSealQuantity(appMan->unk_064, sealIDs[index] - 1) != 0) {
+                    appMan->unk_0D4.unk_000 = ov57_02237FAC(appMan, index);
+                    ov57_02239B2C(&appMan->unk_0D4.unk_018[0], CapsuleMenu_GetSealNameIndex(sealIDs[index]));
+                    GiveOrTakeSeal(appMan->unk_000->sealCase, sealIDs[index], -1);
+                    ov57_02239A8C(appMan, index);
+                    PlaySE(SEQ_SE_DP_BOX02);
+                } else if (sealIDs[index] != SEAL_NONE) {
+                    PlaySE(SEQ_SE_DP_CUSTOM06);
+                    ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00016, FALSE);
+                }
+            }
+        }
+        break;
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+        if (event == TOUCH_BUTTON_PRESSED) {
+            int r5 = index - 13;
+            ov57_022382F8(appMan, event, r5);
+            ov57_02239B2C(&appMan->unk_0D4.unk_018[0], CapsuleMenu_GetSealNameIndex(appMan->unk_34C[r5].type));
+            PlaySE(SEQ_SE_DP_BOX02);
+        }
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
 }
