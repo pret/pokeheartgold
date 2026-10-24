@@ -1,12 +1,14 @@
 .PHONY:     		\
 	all 			\
 	check			\
+	debug     \
 	heartgold		\
 	meson   		\
 	release 		\
 	rom 			\
 	setup_release 	\
-	setup_rom \
+	setup_rom  \
+	setup_debug \
 	skrew			\
 	soulsilver		\
 	skrewrm 		\
@@ -106,6 +108,10 @@ all: release check
 .NOTPARALLEL: release
 release: rom
 
+.NOTPARALLEL: debug
+debug: setup_debug rom
+	$(NINJA) -C $(BUILD) debug.nef overlay.map
+
 .NOTPARALLEL: heartgold
 heartgold:
 	make GAME_VERSION=HEARTGOLD
@@ -129,6 +135,9 @@ clean: $(BUILD)/build.ninja
 
 setup_rom: $(BUILD)/build.ninja
 	$(MESON) configure $(BUILD) -Dgame_version=$(GAME_VERSION)
+
+setup_debug: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgdb_debugging=true -Dgame_version=$(GAME_VERSION)
 
 $(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson
 	$(MESON) setup \
@@ -158,7 +167,6 @@ skrewrm:
 	rm -rf $(SKREW_DIR)
 
 skrewup: skrewrm skrew
-
 
 $(SKREW_EXE):
 	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)

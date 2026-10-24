@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug in melonDS",
+            "type": "cppdbg",
+            "request": "launch",
+            // point this to soul silver if you're building that
+            "program": "${workspaceFolder}/build/heartgold.us/debug.nef",
+            "MIMode": "gdb",
+            "cwd": "${workspaceFolder}",
+            "externalConsole": true,
+            "miDebuggerServerAddress": "localhost:3333",
+            // point this to your own gdb path...
+            "miDebuggerPath": "/path/to/binutils-gdb/gdb/gdb",
+            //"miDebuggerPath": "gdb-multiarch",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set architecture",
+                    "text": "set architecture armv5te"
+                },
+                {
+                    "description": "Enable overlays",
+                    "text": "overlay auto"
+                },
+                {
+                    "description": "Enable overlay map",
+                    "text": "overlay map build/overlay.map"
+                }
+            ],
+            "stopAtConnect": false,
+            "stopAtEntry": false
+        }
+    ]
+}
