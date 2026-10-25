@@ -44,11 +44,6 @@
 #define CAPSULE_WINDOW_HEIGHT       2
 #define CAPSULE_WINDOW_WIDTH        4
 
-extern const struct {
-    s32 index;
-    BOOL (*func)(CapsuleAppManager *appMan);
-} ov57_0223BECC[];
-
 const int ov57_0223BDF4[] = {
     0x00000018,
     0x00000019,

@@ -19,102 +19,6 @@
 	.extern ov57_0223AEA8
 	.extern ov57_0223B12C
 
-	thumb_func_start ov57_0223B620
-ov57_0223B620: ; 0x0223B620
-	push {r4, lr}
-	add r4, r0, #0
-	bl ov57_0223B12C
-	ldr r0, _0223B6D8 ; =gSystem
-	ldr r1, [r0, #0x48]
-	mov r0, #1
-	tst r0, r1
-	beq _0223B668
-	add r0, r4, #0
-	add r0, #0xd4
-	ldr r0, [r0]
-	cmp r0, #0xff
-	beq _0223B646
-	ldr r0, _0223B6DC ; =0x000005F2
-	bl PlaySE
-	mov r0, #4
-	pop {r4, pc}
-_0223B646:
-	add r0, r4, #0
-	mov r1, #0
-	bl ov57_0223B948
-	ldr r0, _0223B6E0 ; =0x000005E2
-	bl PlaySE
-	mov r0, #0x11
-	mov r1, #0x26
-	lsl r0, r0, #6
-	lsl r1, r1, #4
-	ldr r0, [r4, r0]
-	ldr r1, [r4, r1]
-	bl ov57_0223B90C
-	mov r0, #6
-	pop {r4, pc}
-_0223B668:
-	mov r0, #2
-	tst r0, r1
-	beq _0223B6A2
-	add r0, r4, #0
-	add r0, #0xd4
-	ldr r0, [r0]
-	cmp r0, #0xff
-	beq _0223B682
-	ldr r0, _0223B6DC ; =0x000005F2
-	bl PlaySE
-	mov r0, #4
-	pop {r4, pc}
-_0223B682:
-	add r0, r4, #0
-	mov r1, #0
-	bl ov57_0223B948
-	ldr r0, _0223B6E4 ; =0x000005DD
-	bl PlaySE
-	ldr r0, _0223B6E8 ; =0x00000444
-	mov r1, #0x99
-	lsl r1, r1, #2
-	ldr r0, [r4, r0]
-	ldr r1, [r4, r1]
-	bl ov57_0223B90C
-	mov r0, #7
-	pop {r4, pc}
-_0223B6A2:
-	mov r0, #3
-	lsl r0, r0, #0xa
-	tst r0, r1
-	beq _0223B6D2
-	add r0, r4, #0
-	add r0, #0xd4
-	ldr r0, [r0]
-	cmp r0, #0xff
-	beq _0223B6BE
-	ldr r0, _0223B6DC ; =0x000005F2
-	bl PlaySE
-	mov r0, #4
-	pop {r4, pc}
-_0223B6BE:
-	ldr r0, _0223B6E4 ; =0x000005DD
-	bl PlaySE
-	ldr r0, _0223B6EC ; =0x0000043C
-	mov r1, #0
-	ldr r0, [r4, r0]
-	bl ov57_0223B90C
-	mov r0, #5
-	pop {r4, pc}
-_0223B6D2:
-	mov r0, #4
-	pop {r4, pc}
-	nop
-_0223B6D8: .word gSystem
-_0223B6DC: .word 0x000005F2
-_0223B6E0: .word 0x000005E2
-_0223B6E4: .word 0x000005DD
-_0223B6E8: .word 0x00000444
-_0223B6EC: .word 0x0000043C
-	thumb_func_end ov57_0223B620
-
 	thumb_func_start ov57_0223B6F0
 ov57_0223B6F0: ; 0x0223B6F0
 	push {r3, lr}
@@ -894,19 +798,19 @@ _0223BC70:
 
 	.rodata
 
-	.global ov57_0223BECC
-ov57_0223BECC: ; 0x0223BECC
-	.word 0x00000000, ov57_0223B6F0
-	.word 0x00000001, ov57_0223B700
-	.word 0x00000002, ov57_0223B714
-	.word 0x00000003, ov57_0223B73C
-	.word 0x00000004, ov57_0223B74C
-	.size ov57_0223BECC,.-ov57_0223BECC
-
 	.global ov57_0223BEF4
 ov57_0223BEF4: ; 0x0223BEF4
-	.byte 0x10, 0x20, 0x08, 0x18, 0x10, 0x20, 0x40, 0x50, 0x28, 0x38, 0x08, 0x18
-	.byte 0x28, 0x38, 0x40, 0x50, 0x40, 0x50, 0x08, 0x18, 0x40, 0x50, 0x40, 0x50, 0x58, 0x68, 0x08, 0x18
-	.byte 0x58, 0x68, 0x40, 0x50, 0x68, 0x80, 0x08, 0x30, 0x68, 0x80, 0x38, 0x60, 0xA8, 0xBC, 0x12, 0x4D
-	.byte 0xA8, 0xBC, 0x61, 0x9C, 0xA8, 0xBC, 0xB2, 0xED
+	.byte 0x10, 0x20, 0x08, 0x18
+	.byte 0x10, 0x20, 0x40, 0x50
+	.byte 0x28, 0x38, 0x08, 0x18
+	.byte 0x28, 0x38, 0x40, 0x50
+	.byte 0x40, 0x50, 0x08, 0x18
+	.byte 0x40, 0x50, 0x40, 0x50
+	.byte 0x58, 0x68, 0x08, 0x18
+	.byte 0x58, 0x68, 0x40, 0x50
+	.byte 0x68, 0x80, 0x08, 0x30
+	.byte 0x68, 0x80, 0x38, 0x60
+	.byte 0xA8, 0xBC, 0x12, 0x4D
+	.byte 0xA8, 0xBC, 0x61, 0x9C
+	.byte 0xA8, 0xBC, 0xB2, 0xED
 	.size ov57_0223BEF4,.-ov57_0223BEF4

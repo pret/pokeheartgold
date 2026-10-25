@@ -55,7 +55,11 @@ BOOL ov57_0223B478(int *a0);
 void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2);
 int ov57_0223B578(CapsuleAppManager *appMan);
 int ov57_0223B620(CapsuleAppManager *appMan);
+void ov57_0223B6F0(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
+void ov57_0223B714(CapsuleAppManager *appMan);
+void ov57_0223B73C(CapsuleAppManager *appMan);
+void ov57_0223B74C(CapsuleAppManager *appMan);
 void ov57_0223B75C(CapsuleAppManager *appMan);
 void ov57_0223B774(CapsuleAppManager *appMan);
 void ov57_0223B78C(CapsuleAppManager *appMan);
@@ -80,6 +84,14 @@ static BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan) = {
     ov57_0223A504,
     ov57_0223A5AC,
     ov57_0223A6B4,
+};
+
+const UnkStruct_ov57_0223BECC ov57_0223BECC[] = {
+    { 0, ov57_0223B6F0 },
+    { 1, ov57_0223B700 },
+    { 2, ov57_0223B714 },
+    { 3, ov57_0223B73C },
+    { 4, ov57_0223B74C },
 };
 
 int ov57_0223A07C(BallCapsule *capsule) {
@@ -1087,4 +1099,39 @@ int ov57_0223B578(CapsuleAppManager *appMan) {
         return r4;
     }
     return -1;
+}
+
+int ov57_0223B620(CapsuleAppManager *appMan) {
+    ov57_0223B12C(appMan);
+    if (gSystem.newKeys & PAD_BUTTON_A) {
+        if (appMan->unk_0D4.unk_000 != 0xFF) {
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return CAPSULE_CAPSULE_MENU_STATE_ID;
+        }
+        ov57_0223B948(appMan, 0);
+        PlaySE(SEQ_SE_DP_PIRORIRO);
+        ov57_0223B90C(appMan->unk_414[11], appMan->unk_0D4.unk_18C[0]);
+        return CAPSULE_FADE_OUT_WAIT_STATE_ID;
+    }
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        if (appMan->unk_0D4.unk_000 != 0xFF) {
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return CAPSULE_CAPSULE_MENU_STATE_ID;
+        }
+        ov57_0223B948(appMan, 0);
+        PlaySE(SEQ_SE_DP_DECIDE);
+        ov57_0223B90C(appMan->unk_414[12], appMan->unk_0D4.unk_18C[1]);
+        return CAPSULE_CANCEL_PRESSED_STATE_ID;
+    }
+    if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y)) {
+        if (appMan->unk_0D4.unk_000 != 0xFF) {
+            PlaySE(SEQ_SE_DP_CUSTOM06);
+            return CAPSULE_CAPSULE_MENU_STATE_ID;
+        }
+        PlaySE(SEQ_SE_DP_DECIDE);
+        ov57_0223B90C(appMan->unk_414[10], NULL);
+        return CAPSULE_FADE_OUT_STATE_ID;
+    }
+
+    return CAPSULE_CAPSULE_MENU_STATE_ID;
 }

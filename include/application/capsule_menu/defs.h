@@ -111,6 +111,13 @@ typedef struct CapsuleAppManager {
     NARC *unk_45C;
 } CapsuleAppManager; // size: 0x460
 
+typedef struct UnkStruct_ov57_0223BECC {
+    s32 index;
+    void (*func)(CapsuleAppManager *appMan);
+} UnkStruct_ov57_0223BECC;
+
+extern const UnkStruct_ov57_0223BECC ov57_0223BECC[];
+
 void ov57_02237CA8(enum HeapID heapId);
 void ov57_02237CDC(enum HeapID heapId);
 void ov57_02237CEC(BgConfig *bgConfig);
