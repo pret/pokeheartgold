@@ -43,7 +43,7 @@ int ov57_0223B288(CapsuleAppManager *appMan);
 int ov57_0223B2EC(CapsuleAppManager *appMan);
 int ov57_0223B308(CapsuleAppManager *appMan);
 int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1);
-int ov57_0223B3A4(CapsuleAppManager *appMan, int a1);
+int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1);
 int ov57_0223B3F8(CapsuleAppManager *appMan);
 int ov57_0223B45C(CapsuleAppManager *appMan);
 BOOL ov57_0223B478(int *a0);
@@ -893,6 +893,7 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
 int ov57_0223B288(CapsuleAppManager *appMan) {
     int result;
     int sp0;
+
     if (gSystem.newKeys & PAD_BUTTON_B) {
         result = ov57_0223B1A4(appMan, 12);
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
@@ -947,7 +948,7 @@ int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1) {
     }
 }
 
-int ov57_0223B3A4(CapsuleAppManager *appMan, int a1) {
+int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1) {
     switch (a1) {
     case 12:
         return ov57_0223B32C(appMan, FALSE);
@@ -965,4 +966,34 @@ int ov57_0223B3A4(CapsuleAppManager *appMan, int a1) {
     }
 
     return CAPSULE_FADE_IN_STATE_ID;
+}
+
+int ov57_0223B3F8(CapsuleAppManager *appMan) {
+    int result;
+    int sp0;
+
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        result = ov57_0223B3A4(appMan, 12);
+    } else if (gSystem.newKeys & PAD_BUTTON_A) {
+        result = ov57_0223B3A4(appMan, 13);
+    } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
+        result = CAPSULE_FADE_IN_STATE_ID;
+    } else {
+        sp0 = appMan->unk_3F0;
+        if (!ov57_0223B478(&sp0)) {
+            result = CAPSULE_FADE_IN_STATE_ID;
+        } else {
+            result = ov57_0223B3A4(appMan, sp0);
+        }
+    }
+    return result;
+}
+
+int ov57_0223B45C(CapsuleAppManager *appMan) {
+    int result = ov57_0223B578(appMan);
+    if (result < 0) {
+        return CAPSULE_FADE_IN_STATE_ID;
+    } else {
+        return ov57_0223B3A4(appMan, result);
+    }
 }
