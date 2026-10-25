@@ -50,7 +50,7 @@ void ov57_02237F14(CapsuleAppManager *appManager) {
 }
 
 void ov57_02237F3C(CapsuleAppManager *appManager) {
-    BallCapsule *capsule = appManager->unk_004[appManager->unk_3EC].capsule;
+    BallCapsule *capsule = appManager->unk_004[appManager->unk_3EC[0]].capsule;
 
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         if (capsule->seals[i].kind != SEAL_NONE) {
@@ -370,7 +370,7 @@ BOOL ov57_022384C0(CapsuleAppManager *appMan) {
     int index;
     BallCapsule *capsule;
 
-    index = appMan->unk_3EC;
+    index = appMan->unk_3EC[0];
     capsule = appMan->unk_004[index].capsule;
 
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
@@ -402,7 +402,7 @@ void ov57_0223853C(CapsuleAppManager *appMan) {
         capsule.seals[i].y = appMan->unk_34C[i].y;
     }
 
-    SealCase_SetCapsuleI(appMan->unk_000->sealCase, &capsule, appMan->unk_3EC);
+    SealCase_SetCapsuleI(appMan->unk_000->sealCase, &capsule, appMan->unk_3EC[0]);
 }
 
 void ov57_0223857C(BallCapsule *capsule, CapsuleAppManager *appMan) {

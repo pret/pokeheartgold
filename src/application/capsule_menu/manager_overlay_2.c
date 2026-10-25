@@ -33,6 +33,11 @@
 #define THROW_WAIT_AFTER_ANIMS_END_STATE_ID  6
 #define THROW_WAIT_FREE_STATE_ID             7
 
+BOOL ov57_0223A104(CapsuleAppManager *appMan);
+BOOL ov57_0223A31C(CapsuleAppManager *appMan);
+BOOL ov57_0223A504(CapsuleAppManager *appMan);
+BOOL ov57_0223A5AC(CapsuleAppManager *appMan);
+BOOL ov57_0223A6B4(CapsuleAppManager *appMan);
 int ov57_0223A6B8(CapsuleAppManager *appMan);
 BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
 int ov57_0223A8FC(CapsuleAppManager *appMan);
@@ -47,7 +52,7 @@ int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1);
 int ov57_0223B3F8(CapsuleAppManager *appMan);
 int ov57_0223B45C(CapsuleAppManager *appMan);
 BOOL ov57_0223B478(int *a0);
-void ov57_0223B504(CapsuleAppManager *appMan, int a1, int a2);
+void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2);
 int ov57_0223B578(CapsuleAppManager *appMan);
 int ov57_0223B620(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
@@ -67,10 +72,15 @@ BOOL ov57_0223BA40(CapsuleAppManager *appMan);
 BOOL ov57_0223BABC(CapsuleAppManager *appMan);
 void ov57_0223BB38(CapsuleAppManager *appMan, BOOL a1);
 void ov57_0223BB4C(CapsuleAppManager *appMan);
-void ov57_0223BB5C(void);
 void ov57_0223B858(ManagedSprite *sprite, u32 event);
 
-extern BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan);
+static BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan) = {
+    ov57_0223A104,
+    ov57_0223A31C,
+    ov57_0223A504,
+    ov57_0223A5AC,
+    ov57_0223A6B4,
+};
 
 int ov57_0223A07C(BallCapsule *capsule) {
     int i;
@@ -253,9 +263,9 @@ BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
         ov57_0223853C(appMan);
         ov57_022394AC(appMan);
         GameStats_AddScore(Save_GameStats_Get(appMan->unk_000->saveData), SCORE_EVENT_BALL_CAPSULE_MODIFIED);
-        if (appMan->unk_28C[appMan->unk_3EC].pokemonIndex != 0xFF) {
-            Pokemon *mon = appMan->unk_000->mons[appMan->unk_28C[appMan->unk_3EC].pokemonIndex];
-            SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(appMan->unk_000->sealCase, appMan->unk_3EC));
+        if (appMan->unk_28C[appMan->unk_3EC[0]].pokemonIndex != 0xFF) {
+            Pokemon *mon = appMan->unk_000->mons[appMan->unk_28C[appMan->unk_3EC[0]].pokemonIndex];
+            SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(appMan->unk_000->sealCase, appMan->unk_3EC[0]));
         }
         appMan->unk_3FC = 11;
         break;
@@ -321,7 +331,7 @@ BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
 BOOL ov57_0223A504(CapsuleAppManager *appMan) {
     switch (appMan->unk_3FC) {
     case CAPSULE_INIT_STATE_ID:
-        ov57_0223BC4C(appMan, appMan->unk_3EC);
+        ov57_0223BC4C(appMan, appMan->unk_3EC[0]);
         ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00009, TRUE);
         appMan->unk_3FC++;
         break;
@@ -611,7 +621,7 @@ int ov57_0223AB58(CapsuleAppManager *appMan) {
         BallCapsuleConfig sp38 = { 0 };
         sp38.battlerType = BATTLER_TYPE_SOLO_ENEMY;
         sp38.mon = appMan->unk_458;
-        int spC = appMan->unk_3EC + 1;
+        int spC = appMan->unk_3EC[0] + 1;
         ov57_0223857C(&sp44, appMan);
         SetMonData(appMan->unk_458, MON_DATA_BALL_CAPSULE_ID, &spC);
         SetMonData(appMan->unk_458, MON_DATA_BALL_CAPSULE, &sp44);
@@ -863,15 +873,15 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
         return CAPSULE_FADE_OUT_STATE_ID;
     case 13:
         ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
-        ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC);
+        ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC[0]);
         PlaySE(SEQ_SE_DP_SELECT);
         return CAPSULE_CAPSULE_MENU_STATE_ID;
     default:
         ov57_02238134(appMan);
         ov57_0223853C(appMan);
         ov57_022394AC(appMan);
-        appMan->unk_3EC = a1;
-        ov57_0223B504(appMan, 0, 1);
+        appMan->unk_3EC[0] = a1;
+        ov57_0223B504(appMan, 0, TRUE);
         ov57_022383AC(appMan);
         ov57_02237F3C(appMan);
         ov57_022383D0(appMan, 1);
@@ -880,7 +890,7 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
             PlaySE(SEQ_SE_DP_SELECT);
         } else {
             ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
-            ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC);
+            ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC[0]);
             PlaySE(SEQ_SE_DP_SELECT);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
@@ -901,7 +911,7 @@ int ov57_0223B288(CapsuleAppManager *appMan) {
     } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
         result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
     } else {
-        sp0 = appMan->unk_3EC;
+        sp0 = appMan->unk_3EC[0];
         if (!ov57_0223B478(&sp0)) {
             result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
         } else {
@@ -930,19 +940,19 @@ int ov57_0223B308(CapsuleAppManager *appMan) {
 }
 
 int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1) {
-    if (appMan->unk_3EC == appMan->unk_3F0) {
+    if (appMan->unk_3EC[0] == appMan->unk_3EC[1]) {
         a1 = FALSE;
     }
     if (a1) {
-        ov57_022394D8(appMan, appMan->unk_3EC, appMan->unk_3F0);
-        ov57_0223B504(appMan, 1, 1);
+        ov57_022394D8(appMan, appMan->unk_3EC[0], appMan->unk_3EC[1]);
+        ov57_0223B504(appMan, 1, TRUE);
         ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00011, TRUE);
         PlaySE(SEQ_SE_DP_SELECT);
         return CAPSULE_FADE_IN_WAIT_STATE_ID;
     } else {
         ManagedSprite_SetDrawFlag(appMan->unk_31C[1], FALSE);
         ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
-        ov57_0223B504(appMan, 0, 0);
+        ov57_0223B504(appMan, 0, FALSE);
         PlaySE(SEQ_SE_DP_DECIDE);
         return CAPSULE_CAPSULE_SELECTION_STATE_ID;
     }
@@ -955,8 +965,8 @@ int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1) {
     case 13:
         return ov57_0223B32C(appMan, TRUE);
     default:
-        appMan->unk_3F0 = a1;
-        ov57_0223B504(appMan, 1, 0);
+        appMan->unk_3EC[1] = a1;
+        ov57_0223B504(appMan, 1, FALSE);
         if (appMan->unk_40C == 0) {
             PlaySE(SEQ_SE_DP_SELECT);
         } else {
@@ -979,7 +989,7 @@ int ov57_0223B3F8(CapsuleAppManager *appMan) {
     } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
         result = CAPSULE_FADE_IN_STATE_ID;
     } else {
-        sp0 = appMan->unk_3F0;
+        sp0 = appMan->unk_3EC[1];
         if (!ov57_0223B478(&sp0)) {
             result = CAPSULE_FADE_IN_STATE_ID;
         } else {
@@ -1027,4 +1037,54 @@ BOOL ov57_0223B478(int *a0) {
     }
 
     return TRUE;
+}
+
+void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2) {
+    s16 x, y;
+    int r4 = 0;
+    if (a1 == 0) {
+        r4 = 1;
+    }
+    ov57_02238DAC(appMan->unk_3EC[a1], &x, &y);
+    ManagedSprite_SetPositionXY(appMan->unk_31C[a1], x, y);
+    if (a2 == TRUE) {
+        appMan->unk_3EC[r4] = appMan->unk_3EC[a1];
+        ov57_02238DAC(appMan->unk_3EC[r4], &x, &y);
+        ManagedSprite_SetPositionXY(appMan->unk_31C[r4], x, y);
+    }
+}
+
+static const TouchscreenHitbox ov57_0223BEB0[2] = {
+    { .rect = { 168, 192, 192, 256 } },
+    { TOUCHSCREEN_RECTLIST_END },
+};
+
+int ov57_0223B578(CapsuleAppManager *appMan) {
+    if (!System_GetTouchNew()) {
+        return -1;
+    }
+    TouchscreenHitbox sp12;
+    sp12.circle.sentinel = TOUCHSCREEN_CIRCLE_SENTINEL;
+    sp12.circle.r = 24;
+    for (int i = 0; i < 3; ++i) {
+        sp12.circle.y = 56 * i + 24;
+        for (int j = 0; j < 4; ++j) {
+            sp12.circle.x = 56 * j + 40;
+            if (TouchscreenHitbox_TouchNewIsIn(&sp12)) {
+                return 4 * i + j;
+            }
+        }
+    }
+
+    int r4 = TouchscreenHitbox_FindRectAtTouchNew(ov57_0223BEB0);
+    if (r4 != -1) {
+        u16 sp10 = 0x3FF;
+        if (!DoesPixelAtScreenXYMatchPtrVal(appMan->unk_0D4.unk_010, GF_BG_LYR_MAIN_3, gSystem.touchX, gSystem.touchY, &sp10)) {
+            r4 = -1;
+        } else {
+            r4 += 12;
+        }
+        return r4;
+    }
+    return -1;
 }

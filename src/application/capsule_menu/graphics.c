@@ -702,7 +702,7 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
 
     s16 x, y;
 
-    ov57_02238DAC(appMan->unk_3EC, &x, &y);
+    ov57_02238DAC(appMan->unk_3EC[0], &x, &y);
     ManagedSprite_SetPositionXY(appMan->unk_31C[0], x, y);
     ManagedSprite_SetPositionXY(appMan->unk_31C[1], x, y);
     ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 25);

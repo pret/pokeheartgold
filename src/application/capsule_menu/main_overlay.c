@@ -41,8 +41,8 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     if (appManager->unk_448.maxPage > 10) {
         appManager->unk_448.maxPage = 10;
     }
-    appManager->unk_3EC = ov57_02237E78(appManager->unk_000);
-    appManager->unk_3F0 = ov57_02237E78(appManager->unk_000);
+    appManager->unk_3EC[0] = ov57_02237E78(appManager->unk_000);
+    appManager->unk_3EC[1] = ov57_02237E78(appManager->unk_000);
     appManager->unk_064 = SealCase_inventory_Get(appManager->unk_000->sealCase);
     for (i = 0; i < MAX_CAPSULES; ++i) {
         BallCapsule *capsule = SealCase_GetCapsuleI(appManager->unk_000->sealCase, i);
@@ -118,7 +118,7 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     PaletteData_FreeBuffers(appManager->unk_0D4.unk_014, PLTTBUF_MAIN_OBJ);
     PaletteData_FreeBuffers(appManager->unk_0D4.unk_014, PLTTBUF_SUB_OBJ);
     PaletteData_Free(appManager->unk_0D4.unk_014);
-    ov57_02237E80(appManager->unk_000, appManager->unk_3EC);
+    ov57_02237E80(appManager->unk_000, appManager->unk_3EC[0]);
     Heap_Free(appManager->unk_458);
     ov57_022383AC(appManager);
     TouchHitboxController_Destroy(appManager->unk_0D4.unk_118);

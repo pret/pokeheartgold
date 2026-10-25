@@ -96,8 +96,7 @@ typedef struct CapsuleAppManager {
     ManagedSprite *unk_33C[CAPSULE_SELECTION_ARROWS];
     SealRenderInfo unk_34C[MAX_SEALS_ON_CAPSULE];
     u8 filler_3CC[0x20];
-    int unk_3EC;
-    int unk_3F0;
+    int unk_3EC[2];
     int unk_3F4;
     int unk_3F8;
     int unk_3FC;
@@ -211,6 +210,9 @@ void ov57_0223A058(CapsuleAppManager *appMan);
 void ov57_0223A05C(CapsuleAppManager *appMan);
 int ov57_0223A07C(BallCapsule *capsule);
 int ov57_0223A0A8(CapsuleAppManager *appMan, int capsuleIndex);
+BOOL ov57_0223A0E0(CapsuleAppManager *appMan);
+void ov57_0223BB84(CapsuleAppManager *appMan);
+void ov57_0223BB5C(void);
 void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex);
 
 #endif // GUARD_APPLICATION_CAPSULE_MENU_DEFS_H
