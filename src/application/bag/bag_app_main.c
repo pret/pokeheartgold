@@ -3156,13 +3156,11 @@ static void BagApp3DState_BeginMoveCamera(BagApp3DState *threeDimState, int came
     }
 }
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
-
 static void BagApp3DState_UpdateCameraPosition(BagApp3DState *threeDimState, int gender) {
     const BagAppCameraAnchor *anchorData = sCameraAnchors[gender];
     if (threeDimState->frame != threeDimState->duration) {
         ++threeDimState->frame;
-        fx32 dxMag = ABS(anchorData[threeDimState->cameraAnchorsQueue[1]].cameraAngle.x - anchorData[threeDimState->cameraAnchorsQueue[0]].cameraAngle.x);
+        fx32 dxMag = MATH_ABS(anchorData[threeDimState->cameraAnchorsQueue[1]].cameraAngle.x - anchorData[threeDimState->cameraAnchorsQueue[0]].cameraAngle.x);
         int dxSign;
         if (anchorData[threeDimState->cameraAnchorsQueue[1]].cameraAngle.x < anchorData[threeDimState->cameraAnchorsQueue[0]].cameraAngle.x) {
             dxSign = -1;

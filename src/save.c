@@ -737,7 +737,7 @@ static u32 GetSaveChunkSizePlusCRC(int idx) {
     hdr = gSaveChunkHeaders;
     GF_ASSERT(idx < gNumSaveChunkHeaders);
     size = hdr[idx].sizeFunc();
-    size = ((size + 3) & ~3) + 4;
+    size = MATH_ROUNDUP(size, 4) + 4;
     return size;
 }
 

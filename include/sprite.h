@@ -55,8 +55,7 @@ typedef struct SpriteMultiAnimationData {
 
 // UB: this is too small
 #ifdef BUGFIX_SPRITE_ANIM_SIZE
-#define max(a, b)                        ((a) > (b) ? (a) : (b))
-#define SPRITE_ANIMATION_DATA_WORD_COUNT (max(sizeof(SpriteAnimationData), sizeof(SpriteMultiAnimationData)) / 4)
+#define SPRITE_ANIMATION_DATA_WORD_COUNT (MATH_MAX(sizeof(SpriteAnimationData), sizeof(SpriteMultiAnimationData)) / 4)
 #else
 #define SPRITE_ANIMATION_DATA_WORD_COUNT 29
 #endif // BUGFIX_SPRITE_ANIM_SIZE
