@@ -219,6 +219,7 @@ void ov57_0223A05C(CapsuleAppManager *appMan);
 int ov57_0223A07C(BallCapsule *capsule);
 int ov57_0223A0A8(CapsuleAppManager *appMan, int capsuleIndex);
 BOOL ov57_0223A0E0(CapsuleAppManager *appMan);
+void ov57_0223AEA8(u32 index, u32 event, void *arg);
 void ov57_0223BB84(CapsuleAppManager *appMan);
 void ov57_0223BB5C(void);
 void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex);

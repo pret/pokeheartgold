@@ -846,7 +846,7 @@ Overlay OVY_57
     Object main.nef.p/src_application_capsule_menu_placement.c.o
     Object main.nef.p/src_application_capsule_menu_graphics.c.o
     Object main.nef.p/src_application_capsule_menu_manager_overlay_2.c.o
-    Object main.nef.p/asm_overlay_57.s.o
+    Object main.nef.p/src_application_capsule_menu_touchscreen_hitboxes.c.o
 }
 Overlay OVY_58
 {
