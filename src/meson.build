@@ -98,7 +98,6 @@ pokeheartgold_c = files(
     'obj_pltt_transfer.c',
     'options.c',
     'options_app.c',
-    'overlay_01_021EA824.c',
     'overlay_02_02251E74.c',
     'overlay_06.c',
     'overlay_13_thumb_1.c',
@@ -403,6 +402,7 @@ pokeheartgold_c = files(
     'field/field_control.c',
     'field/field_sprite_manager.c',
     'field/fieldmap.c',
+    'field/fog.c',
     'field/headbutt.c',
     'field/legend_cutscene_camera.c',
     'field/map_prop_animation.c',
@@ -416,6 +416,7 @@ pokeheartgold_c = files(
     'field/scrcmd_move_tutor.c',
     'field/scrcmd_pokemon_misc.c',
     'field/signpost.c',
+    'field/weather_manager.c',
         ##############################
         ###        GYMMICK         ###
         ##############################

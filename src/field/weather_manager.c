@@ -14,7 +14,6 @@
 #include "sprite_transfer.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_02020B8C.h"
 #include "unk_02025C44.h"
 
 static void WeatherTask_ChangeWeather(SysTask *task, void *data);
@@ -1254,7 +1253,7 @@ static void ov01_021EC31C(fx32 *x, fx32 *z, WeatherSystem_Sub0_Sub8 *a0) {
 
     aspect = FX_Div(FX32_CONST(4), FX32_CONST(3));
 
-    sub_02020E10(Camera_GetPerspectiveAngle(a0->weatherSystem->fieldSystem->camera), Camera_GetDistance(a0->weatherSystem->fieldSystem->camera), aspect, &dx, &dz);
+    FX_CalcLinearFov(Camera_GetPerspectiveAngle(a0->weatherSystem->fieldSystem->camera), Camera_GetDistance(a0->weatherSystem->fieldSystem->camera), aspect, &dx, &dz);
 
     dx = FX_Div(dx, 256 * FX32_ONE);
 
