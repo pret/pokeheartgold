@@ -241,3 +241,5 @@
 .public ov12_0223C1C4
 .public ov12_0223C1F4
 .public BattleSystem_SetDefaultBlend
+.public ov07_0223475C
+.public ov07_0223474C
