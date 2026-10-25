@@ -29,7 +29,7 @@ typedef struct UnkStruct_02016EDC UnkStruct_02016EDC;
 
 UnkStruct_02016EDC *sub_02016EDC(enum HeapID heapId, int a1, int a2);
 void sub_02016F2C(UnkStruct_02016EDC *a0);
-void sub_02016F40(void *, void *, struct UnkStruct_0207294C *, u8);
+void sub_02016F40(UnkStruct_02016EDC *, Pokepic *, struct UnkStruct_0207294C *, u8);
 BOOL sub_02017068(UnkStruct_02016EDC *a0, int a1);
 
 #endif // POKEHEARTGOLD_UNK_02016EDC_H

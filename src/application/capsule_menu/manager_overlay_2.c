@@ -1291,3 +1291,80 @@ BOOL ov57_0223B940(CapsuleAppManager *appMan) {
 void ov57_0223B948(CapsuleAppManager *appMan, int a1) {
     appMan->unk_0D4.unk_004 = a1;
 }
+
+void ov57_0223B950(CapsuleAppManager *appMan) {
+    PokepicTemplate pokemonSpriteTemplate;
+    PokepicAnimScript spriteAnimFrame[10];
+    int species;
+    int yOffset;
+
+    GetPokemonSpriteCharAndPlttNarcIds(&pokemonSpriteTemplate, appMan->unk_458, 2);
+
+    species = GetMonData(appMan->unk_458, MON_DATA_SPECIES, NULL);
+    yOffset = sub_0207083C(appMan->unk_458, 2);
+
+    appMan->unk_0D4.unk_0F8 = yOffset;
+    NARC_ReadPokepicAnimScript(appMan->unk_45C, spriteAnimFrame, species, 1);
+    appMan->unk_0D4.unk_0F4 = PokepicManager_CreatePokepic(appMan->unk_0D4.unk_0F0, &pokemonSpriteTemplate, 192, 48 + yOffset, -640, 0, spriteAnimFrame, NULL);
+}
+
+void ov57_0223B9C8(CapsuleAppManager *appMan) {
+    int species;
+    int dummy;
+
+    species = GetMonData(appMan->unk_458, MON_DATA_SPECIES, NULL);
+    dummy = GetMonNature(appMan->unk_458);
+
+    Pokepic_StartAnim(appMan->unk_0D4.unk_0F4, 1);
+    sub_0207294C(appMan->unk_45C, appMan->unk_0D4.unk_1B0, appMan->unk_0D4.unk_0F4, species, 2, 0, 0);
+}
+
+void ov57_0223BA1C(CapsuleAppManager *appMan) {
+    Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0);
+    Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0);
+}
+
+BOOL ov57_0223BA40(CapsuleAppManager *appMan) {
+    if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) == 0x100) {
+        return FALSE;
+    } else if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) >= 0x100) {
+        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0x100);
+        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0x100);
+        return 0;
+    } else {
+        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0x20);
+        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0x20);
+        sub_0200914C(appMan->unk_0D4.unk_0F4, appMan->unk_0D4.unk_0F8);
+    }
+
+    return TRUE;
+}
+
+BOOL ov57_0223BABC(CapsuleAppManager *appMan) {
+    if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) == 0x0) {
+        return 0;
+    } else if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) <= 0x0) {
+        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0x0);
+        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0x0);
+        return 0;
+    } else {
+        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, -0x20);
+        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, -0x20);
+        sub_0200914C(appMan->unk_0D4.unk_0F4, appMan->unk_0D4.unk_0F8);
+    }
+
+    return 1;
+}
+
+void ov57_0223BB38(CapsuleAppManager *appMan, int value) {
+    Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_VANISHED, value);
+}
+
+void ov57_0223BB4C(CapsuleAppManager *appMan) {
+    Pokepic_Delete(appMan->unk_0D4.unk_0F4);
+}
+
+void ov57_0223BB5C(void) {
+    G2_SetBlendAlpha(GX_BLEND_PLANEMASK_NONE, GX_BLEND_PLANEMASK_NONE, 31, 31);
+    G2S_SetBlendAlpha(GX_BLEND_PLANEMASK_NONE, GX_BLEND_PLANEMASK_NONE, 31, 31);
+}

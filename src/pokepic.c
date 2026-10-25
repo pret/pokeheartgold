@@ -451,7 +451,7 @@ void PokepicManager_Delete(PokepicManager *pokepicManager) {
     Heap_Free(pokepicManager);
 }
 
-void Pokepic_StartAnim(Pokepic *pokepic) {
+void Pokepic_StartAnim(Pokepic *pokepic, int unused) {
     pokepic->whichAnim = 0;
     for (int i = 0; i < 10; ++i) {
         pokepic->animLoopTimers[i] = 0;

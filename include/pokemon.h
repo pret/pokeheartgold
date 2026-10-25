@@ -145,7 +145,7 @@ void GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 spec
 u8 sub_02070438(u16 species, u8 form);
 void sub_02070560(PokepicTemplate *pokepicTemplate, u16 species, u8 whichFacing, u8 gender, u32 shiny);
 void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 species, u8 gender, u8 whichFacing, u8 shiny, u8 form, u32 personality);
-u8 sub_0207083C(BoxPokemon *boxMon, u8 whichFacing);
+u8 sub_0207083C(Pokemon *mon, u8 whichFacing);
 u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing);
 u8 sub_02070854(BoxPokemon *boxMon, u8 whichFacing, BOOL a2);
 u8 GetMonPicHeightBySpeciesGenderForm(u16 species, u8 gender, u8 whichFacing, u8 form, u32 pid);
@@ -195,7 +195,7 @@ BOOL MonCheckFrontierIneligibility(Pokemon *mon);
 BOOL BoxmonBelongsToPlayer(BoxPokemon *boxMon, PlayerProfile *profile, enum HeapID heapID);
 int TrainerClassToBackpicID(int trainerClass, BOOL a1);
 void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species, u16 a3);
-void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6);
+void sub_0207294C(NARC *narc, UnkStruct_02016EDC *pokepicAnimManager, Pokepic *pokepic, u16 species, int a4, int a5, int a6);
 void sub_020729A4(NARC *narc, u8 *ret, u16 a2, u16 a3);
 void sub_020729D8(NARC *narc, s8 *ret, u16 a2, u16 a3);
 void sub_020729FC(NARC *narc, s8 *ret, u16 a2, u16 a3);

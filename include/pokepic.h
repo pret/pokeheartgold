@@ -188,7 +188,7 @@ void PokepicManager_DrawAll(PokepicManager *pokepicManager);
 void PokepicManager_Delete(PokepicManager *pokepicManager);
 
 // Sets Pokepic animation active
-void Pokepic_StartAnim(Pokepic *pokepic);
+void Pokepic_StartAnim(Pokepic *pokepic, int unused);
 
 // Copies the PokepicAnimScript to the Pokepic
 void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
