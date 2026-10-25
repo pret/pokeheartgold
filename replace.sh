@@ -97,4 +97,4 @@ if [ $dryrun = yes ]; then
     exit 0
 fi
 # shellcheck disable=SC2046
-$dryrun "${SED}" -i -r "$sed_cmd" $(git grep -IlwrP "${args[0]}")
+"${SED}" -i -r "$sed_cmd" $(git grep -IlwrP "${args[0]}")
