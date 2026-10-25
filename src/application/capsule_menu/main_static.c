@@ -1,9 +1,8 @@
-#include "unk_02091054.h"
-
 #include "global.h"
 
 #include "constants/seals.h"
 
+#include "application/capsule_menu/capsule_menu.h"
 #include "msgdata/msg/msg_0015.h" // seal names
 #include "msgdata/msg/msg_0434.h" // seal descriptions; stripped
 

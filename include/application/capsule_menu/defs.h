@@ -1,6 +1,7 @@
 #ifndef GUARD_APPLICATION_CAPSULE_MENU_DEFS_H
 #define GUARD_APPLICATION_CAPSULE_MENU_DEFS_H
 
+#include "application/capsule_menu/capsule_menu.h"
 #include "battle/battle.h"
 
 #include "bg_window.h"
@@ -8,7 +9,6 @@
 #include "menu_input_state.h"
 #include "obj_char_transfer.h"
 #include "overlay_07.h"
-#include "overlay_57.h"
 #include "pokepic.h"
 #include "seal_case.h"
 #include "sprite_system.h"
@@ -45,33 +45,33 @@ typedef struct SealPages {
 } SealPages;
 
 typedef struct CapsuleGraphicsManager {
-    int unk_000;
-    int unk_004;
-    SpriteSystem *unk_008;
-    SpriteManager *unk_00C;
-    BgConfig *unk_010;
-    PaletteData *unk_014;
-    Window unk_018[CAPSULE_MENU_WINDOW_NUM];
-    ListMenuItem *unk_0E8;
-    u8 filler_0EC[0x4];
-    PokepicManager *unk_0F0;
-    Pokepic *unk_0F4;
-    int unk_0F8;
-    u8 filler_0FC[0x1C];
-    TouchHitboxController *unk_118;
-    TouchscreenHitbox unk_11C[21];
-    YesNoPrompt *unk_170;
-    TouchscreenListMenuSpawner *unk_174;
-    TouchscreenListMenu *unk_178;
-    BallCapsuleSealEffect *unk_17C;
-    UnkBallData *unk_180;
-    GF3DVramMan *unk_184;
-    UnkStruct_02013534 *unk_188;
-    TextOBJ *unk_18C[2];
-    UnkStruct_02021AC8 unk_194[2];
-    BOOL unk_1AC;
-    UnkStruct_02016EDC *unk_1B0;
-    BOOL unk_1B4;
+    int index;
+    int selectedCapsule;
+    SpriteSystem *spriteSystem;
+    SpriteManager *spriteManager;
+    BgConfig *bgConfig;
+    PaletteData *paletteData;
+    Window windows[CAPSULE_MENU_WINDOW_NUM];
+    ListMenuItem *listMenuItems;
+    u8 filler_0EC[4];
+    PokepicManager *pokepicManager;
+    Pokepic *pokepic;
+    int pokepicYOffset;
+    u8 filler_0FC[28];
+    TouchHitboxController *touchHitboxController;
+    TouchscreenHitbox touchscreenHitboxes[21];
+    YesNoPrompt *yesNoPrompt;
+    TouchscreenListMenuSpawner *touchscreenListMenuSpawner;
+    TouchscreenListMenu *touchScreenListMenu;
+    BallCapsuleSealEffect *sealEffect;
+    UnkBallData *ballRotation;
+    GF3DVramMan *gf3dVramMan;
+    UnkStruct_02013534 *fontOAMManager;
+    TextOBJ *fontOAM[2];
+    UnkStruct_02021AC8 charTransfer[2];
+    BOOL graphicsTaskResult;
+    UnkStruct_02016EDC *pokepicAnimManager;
+    BOOL sealsChanged;
 } CapsuleGraphicsManager;
 
 typedef struct SealRenderInfo {
@@ -85,31 +85,31 @@ typedef struct SealRenderInfo {
 } SealRenderInfo;
 
 typedef struct CapsuleAppManager {
-    CapsuleAppData *unk_000;
-    IndexedCapsule unk_004[MAX_CAPSULES];
-    SealCounts *unk_064;
-    BallCapsule unk_068;
-    u8 unk_080[SEAL_MAX + 1];
-    CapsuleGraphicsManager unk_0D4;
-    CapsuleSprites unk_28C[MAX_CAPSULES];
-    ManagedSprite *unk_31C[2];
-    ManagedSprite *unk_324[PARTY_SIZE];
-    ManagedSprite *unk_33C[CAPSULE_SELECTION_ARROWS];
-    SealRenderInfo unk_34C[MAX_SEALS_ON_CAPSULE];
+    CapsuleAppData *appData;
+    IndexedCapsule capsules[MAX_CAPSULES];
+    SealCounts *sealCount;
+    BallCapsule activeCapsule;
+    u8 sealCounts[SEAL_MAX + 1];
+    CapsuleGraphicsManager graphicsMan;
+    CapsuleSprites capsuleSprites[MAX_CAPSULES];
+    ManagedSprite *cursor[2];
+    ManagedSprite *pokemonSprites[PARTY_SIZE];
+    ManagedSprite *selectionIndicator[CAPSULE_SELECTION_ARROWS];
+    SealRenderInfo sealRenderInfo[MAX_SEALS_ON_CAPSULE];
     u8 filler_3CC[0x20];
-    int unk_3EC[2];
-    int unk_3F4;
+    int capsuleIndex[2];
+    int funcIndex;
     int unk_3F8;
-    int unk_3FC;
-    int unk_400;
-    int unk_404;
-    YesNoResponse unk_408;
-    MenuInputState unk_40C;
-    int unk_410;
-    ManagedSprite *unk_414[13];
-    SealPages unk_448;
-    Pokemon *unk_458;
-    NARC *unk_45C;
+    int stateID;
+    int alternateState;
+    int throwStateID;
+    YesNoResponse yesNoResult;
+    MenuInputState menuInputState;
+    int frameCounter;
+    ManagedSprite *pageSprites[13];
+    SealPages sealPages;
+    Pokemon *pokemon;
+    NARC *narc;
 } CapsuleAppManager; // size: 0x460
 
 typedef struct UnkStruct_ov57_0223BECC {

@@ -23,21 +23,21 @@ void ov57_0223BB84(CapsuleAppManager *appMan) {
     const TouchscreenHitbox emptyRect = { 0 };
 
     for (i = 0; i < 13; ++i) {
-        appMan->unk_0D4.unk_11C[i] = ov57_0223BEF4[i];
+        appMan->graphicsMan.touchscreenHitboxes[i] = ov57_0223BEF4[i];
     }
     for (; i < 21; ++i) {
-        appMan->unk_0D4.unk_11C[i] = emptyRect;
-        appMan->unk_34C[i - 13].touchscreenHitbox = &appMan->unk_0D4.unk_11C[i];
+        appMan->graphicsMan.touchscreenHitboxes[i] = emptyRect;
+        appMan->sealRenderInfo[i - 13].touchscreenHitbox = &appMan->graphicsMan.touchscreenHitboxes[i];
     }
-    appMan->unk_0D4.unk_118 = TouchHitboxController_Create(appMan->unk_0D4.unk_11C, 21, ov57_0223AEA8, appMan, HEAP_ID_52);
+    appMan->graphicsMan.touchHitboxController = TouchHitboxController_Create(appMan->graphicsMan.touchscreenHitboxes, 21, ov57_0223AEA8, appMan, HEAP_ID_52);
 }
 
 void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex) {
     u32 sp0 = 0;
 
-    if (appMan->unk_004[capsuleIndex].partyIdx != 0xFF) {
-        SetMonData(appMan->unk_000->mons[appMan->unk_004[capsuleIndex].partyIdx], MON_DATA_BALL_CAPSULE_ID, &sp0);
+    if (appMan->capsules[capsuleIndex].partyIdx != 0xFF) {
+        SetMonData(appMan->appData->mons[appMan->capsules[capsuleIndex].partyIdx], MON_DATA_BALL_CAPSULE_ID, &sp0);
     }
-    appMan->unk_004[capsuleIndex].partyIdx = 0xFF;
+    appMan->capsules[capsuleIndex].partyIdx = 0xFF;
     ov57_022394AC(appMan);
 }

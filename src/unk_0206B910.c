@@ -2,13 +2,14 @@
 
 #include "global.h"
 
+#include "application/capsule_menu/capsule_menu.h"
+
 #include "assert.h"
 #include "bag.h"
 #include "heap.h"
 #include "launch_application.h"
 #include "mail.h"
 #include "map_header.h"
-#include "overlay_57.h"
 #include "party.h"
 #include "party_menu.h"
 #include "player_avatar.h"
@@ -24,7 +25,6 @@
 #include "unk_020379A0.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
-#include "unk_02091054.h"
 
 FS_EXTERN_OVERLAY(OVY_57);
 

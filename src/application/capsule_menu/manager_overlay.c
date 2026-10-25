@@ -171,10 +171,10 @@ void ov57_02237CEC(BgConfig *bgConfig) {
 
 void ov57_02237E38(void *cbArg) {
     CapsuleAppManager *appManager = cbArg;
-    PokepicManager_HandleLoadImgAndOrPltt(appManager->unk_0D4.unk_0F0);
+    PokepicManager_HandleLoadImgAndOrPltt(appManager->graphicsMan.pokepicManager);
     SpriteSystem_TransferOam();
-    PaletteData_PushTransparentBuffers(appManager->unk_0D4.unk_014);
-    DoScheduledBgGpuUpdates(appManager->unk_0D4.unk_010);
+    PaletteData_PushTransparentBuffers(appManager->graphicsMan.paletteData);
+    DoScheduledBgGpuUpdates(appManager->graphicsMan.bgConfig);
     GF_RunVramTransferTasks();
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }

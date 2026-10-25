@@ -1,3 +1,4 @@
+#include "application/capsule_menu/capsule_menu.h"
 #include "application/capsule_menu/defs.h"
 #include "battle/battle.h"
 #include "msgdata/msg/msg_0011.h"
@@ -8,7 +9,6 @@
 #include "render_window.h"
 #include "screen_fade.h"
 #include "unk_02005D10.h"
-#include "unk_02091054.h"
 #include "yes_no_prompt.h"
 
 #define CAPSULE_INIT_STATE_ID              0
@@ -128,8 +128,8 @@ int ov57_0223A0A8(CapsuleAppManager *appMan, int index) {
     int animIdx;
     int result;
 
-    pokemonIndex = appMan->unk_28C[index].pokemonIndex;
-    animIdx = appMan->unk_28C[index].animIdx;
+    pokemonIndex = appMan->capsuleSprites[index].pokemonIndex;
+    animIdx = appMan->capsuleSprites[index].animIdx;
 
     if ((pokemonIndex == 0xFF) && (animIdx == 0)) {
         result = CAPSULE_MENU_EMPTY_CAPSULE;
@@ -145,14 +145,14 @@ int ov57_0223A0A8(CapsuleAppManager *appMan, int index) {
 }
 
 BOOL ov57_0223A0E0(CapsuleAppManager *appMan) {
-    BOOL result = ov57_0223BEB8[appMan->unk_3F4](appMan);
-    SpriteSystem_DrawSprites(appMan->unk_0D4.unk_00C);
+    BOOL result = ov57_0223BEB8[appMan->funcIndex](appMan);
+    SpriteSystem_DrawSprites(appMan->graphicsMan.spriteManager);
 
     return result;
 }
 
 BOOL ov57_0223A104(CapsuleAppManager *appMan) {
-    switch (appMan->unk_3FC) {
+    switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID: {
         NARC *narc;
 
@@ -176,14 +176,14 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         ov57_02239184(appMan);
         ov57_0223B75C(appMan);
         ov57_0223B78C(appMan);
-        ov57_022388E4(appMan, appMan->unk_448.page);
+        ov57_022388E4(appMan, appMan->sealPages.page);
         ov57_02238958(appMan);
         ov57_02238A00(appMan);
         ov57_0223A034(appMan, 0);
         ov57_02239240(appMan, 0);
         ov57_02238794(appMan);
         ov57_022387C0(appMan, 0);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
+        ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
         ov57_02239B94();
         ov57_0223B948(appMan, 0);
         ov57_0223866C(appMan, TRUE);
@@ -191,12 +191,12 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
 
         NARC_Delete(narc);
     }
-        appMan->unk_3FC++;
+        appMan->stateID++;
         break;
 
     case CAPSULE_FADE_IN_STATE_ID:
         ov57_02239BAC();
-        appMan->unk_3FC++;
+        appMan->stateID++;
         break;
 
     case CAPSULE_FADE_IN_WAIT_STATE_ID:
@@ -204,20 +204,20 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
             break;
         }
 
-        appMan->unk_3FC++;
+        appMan->stateID++;
 
     case CAPSULE_CAPSULE_SELECTION_STATE_ID:
-        appMan->unk_3FC = ov57_0223B180(appMan);
+        appMan->stateID = ov57_0223B180(appMan);
         break;
     case CAPSULE_CAPSULE_MENU_STATE_ID: {
         int (*callback)(CapsuleAppManager *);
-        u32 result = TouchscreenListMenu_HandleInput(appMan->unk_0D4.unk_178);
+        u32 result = TouchscreenListMenu_HandleInput(appMan->graphicsMan.touchScreenListMenu);
 
         switch (result) {
         case LIST_CANCEL:
             ov57_0223B700(appMan);
-            ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
-            appMan->unk_3FC = CAPSULE_CAPSULE_SELECTION_STATE_ID;
+            ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
+            appMan->stateID = CAPSULE_CAPSULE_SELECTION_STATE_ID;
             break;
         case LIST_NOTHING_CHOSEN:
             break;
@@ -232,15 +232,15 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
                     break;
                 }
 
-                ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
-                appMan->unk_3FC = CAPSULE_CAPSULE_SELECTION_STATE_ID;
+                ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
+                appMan->stateID = CAPSULE_CAPSULE_SELECTION_STATE_ID;
             }
             break;
         }
     } break;
     case CAPSULE_FADE_OUT_STATE_ID:
         ov57_02239BCC();
-        appMan->unk_3FC++;
+        appMan->stateID++;
         break;
     case CAPSULE_FADE_OUT_WAIT_STATE_ID:
         if (IsPaletteFadeFinished() != TRUE) {
@@ -262,33 +262,33 @@ BOOL ov57_0223A104(CapsuleAppManager *appMan) {
 }
 
 BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
-    switch (appMan->unk_3FC) {
+    switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID:
-        appMan->unk_3FC = ov57_0223A6B8(appMan);
+        appMan->stateID = ov57_0223A6B8(appMan);
         break;
     case CAPSULE_CAPSULE_MENU_STATE_ID:
-        appMan->unk_3FC = ov57_0223B620(appMan);
+        appMan->stateID = ov57_0223B620(appMan);
         break;
     case CAPSULE_FADE_OUT_STATE_ID:
-        appMan->unk_3FC = ov57_0223AB58(appMan);
+        appMan->stateID = ov57_0223AB58(appMan);
         break;
     case CAPSULE_FADE_OUT_WAIT_STATE_ID:
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00012, FALSE);
-        appMan->unk_410 = 20;
+        ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00012, FALSE);
+        appMan->frameCounter = 20;
         if (ov57_022384C0(appMan) == TRUE) {
-            appMan->unk_0D4.unk_1B4 = TRUE;
+            appMan->graphicsMan.sealsChanged = TRUE;
         }
         ov57_0223853C(appMan);
         ov57_022394AC(appMan);
-        GameStats_AddScore(Save_GameStats_Get(appMan->unk_000->saveData), SCORE_EVENT_BALL_CAPSULE_MODIFIED);
-        if (appMan->unk_28C[appMan->unk_3EC[0]].pokemonIndex != 0xFF) {
-            Pokemon *mon = appMan->unk_000->mons[appMan->unk_28C[appMan->unk_3EC[0]].pokemonIndex];
-            SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(appMan->unk_000->sealCase, appMan->unk_3EC[0]));
+        GameStats_AddScore(Save_GameStats_Get(appMan->appData->saveData), SCORE_EVENT_BALL_CAPSULE_MODIFIED);
+        if (appMan->capsuleSprites[appMan->capsuleIndex[0]].pokemonIndex != 0xFF) {
+            Pokemon *mon = appMan->appData->mons[appMan->capsuleSprites[appMan->capsuleIndex[0]].pokemonIndex];
+            SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(appMan->appData->sealCase, appMan->capsuleIndex[0]));
         }
-        appMan->unk_3FC = 11;
+        appMan->stateID = 11;
         break;
     case CAPSULE_CANCEL_PRESSED_STATE_ID:
-        appMan->unk_3FC = ov57_0223A8FC(appMan);
+        appMan->stateID = ov57_0223A8FC(appMan);
         break;
     case CAPSULE_UNK_11_STATE_ID:
         if (ov57_0223A7DC(appMan)) {
@@ -297,44 +297,44 @@ BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
         break;
     }
 
-    if (appMan->unk_3FC == CAPSULE_CAPSULE_MENU_STATE_ID || appMan->unk_3FC == CAPSULE_INIT_STATE_ID) {
+    if (appMan->stateID == CAPSULE_CAPSULE_MENU_STATE_ID || appMan->stateID == CAPSULE_INIT_STATE_ID) {
 
-        if (appMan->unk_0D4.unk_000 == 0xFF) {
-            TouchHitboxController_IsTriggered(appMan->unk_0D4.unk_118);
+        if (appMan->graphicsMan.index == 0xFF) {
+            TouchHitboxController_IsTriggered(appMan->graphicsMan.touchHitboxController);
         } else {
             u32 x, y;
             int index;
             BOOL isScreenHeld;
 
-            index = appMan->unk_0D4.unk_000;
+            index = appMan->graphicsMan.index;
             isScreenHeld = System_GetTouchHeldCoords(&x, &y);
-            if (appMan->unk_3FC != CAPSULE_CAPSULE_MENU_STATE_ID) {
+            if (appMan->stateID != CAPSULE_CAPSULE_MENU_STATE_ID) {
                 isScreenHeld = FALSE;
             }
 
             if (isScreenHeld) {
                 int sealIndex;
 
-                sealIndex = CapsuleMenu_GetSealNameIndex(appMan->unk_34C[index].type);
-                ov57_02239B2C(&appMan->unk_0D4.unk_018[0], sealIndex);
-                ManagedSprite_SetPositionXY(appMan->unk_34C[index].sprite, x, y);
+                sealIndex = CapsuleMenu_GetSealNameIndex(appMan->sealRenderInfo[index].type);
+                ov57_02239B2C(&appMan->graphicsMan.windows[0], sealIndex);
+                ManagedSprite_SetPositionXY(appMan->sealRenderInfo[index].sprite, x, y);
                 ov57_0223848C(appMan, index);
                 ov57_02238508(appMan, index);
             } else {
                 BOOL valid;
 
                 valid = ov57_022383F8(appMan, index);
-                ov57_02237EB8(appMan->unk_34C[index].touchscreenHitbox, appMan->unk_34C[index].sprite, 0);
+                ov57_02237EB8(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, 0);
 
                 if (valid == 0) {
-                    GiveOrTakeSeal2(appMan->unk_000->sealCase, appMan->unk_34C[index].type, 1);
+                    GiveOrTakeSeal2(appMan->appData->sealCase, appMan->sealRenderInfo[index].type, 1);
                     ov57_022399F8(appMan);
                     ov57_02238438(appMan, index);
                 }
 
                 PlaySE(SEQ_SE_DP_BOX01);
-                appMan->unk_0D4.unk_000 = 0xFF;
-                ov57_02239B2C(appMan->unk_0D4.unk_018, 0xFFFF);
+                appMan->graphicsMan.index = 0xFF;
+                ov57_02239B2C(appMan->graphicsMan.windows, 0xFFFF);
             }
         }
     }
@@ -347,24 +347,24 @@ BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
 }
 
 BOOL ov57_0223A504(CapsuleAppManager *appMan) {
-    switch (appMan->unk_3FC) {
+    switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID:
-        ov57_0223BC4C(appMan, appMan->unk_3EC[0]);
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00009, TRUE);
-        appMan->unk_3FC++;
+        ov57_0223BC4C(appMan, appMan->capsuleIndex[0]);
+        ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00009, TRUE);
+        appMan->stateID++;
         break;
     case CAPSULE_FADE_IN_STATE_ID:
         ov57_0223B12C(appMan);
         if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN | PAD_BUTTON_X | PAD_BUTTON_Y) || System_GetTouchNew()) {
-            appMan->unk_3FC++;
+            appMan->stateID++;
         }
         break;
     case CAPSULE_FADE_IN_WAIT_STATE_ID:
         ov57_0223B828(appMan, 0, 0xFF, 0);
-        ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
-        ClearWindowTilemapAndScheduleTransfer(&appMan->unk_0D4.unk_018[0]);
+        ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
+        ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[0]);
         ov57_0223866C(appMan, TRUE);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
+        ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
     }
 
     ov57_02238FC4(appMan);
@@ -374,32 +374,32 @@ BOOL ov57_0223A504(CapsuleAppManager *appMan) {
 }
 
 BOOL ov57_0223A5AC(CapsuleAppManager *appMan) {
-    switch (appMan->unk_3FC) {
+    switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID:
-        ManagedSprite_SetDrawPriority(appMan->unk_31C[0], 25);
-        ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 20);
-        ManagedSprite_SetAnim(appMan->unk_31C[0], 1);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00010, 0);
-        ManagedSprite_SetDrawFlag(appMan->unk_31C[1], 1);
-        appMan->unk_3FC++;
+        ManagedSprite_SetDrawPriority(appMan->cursor[0], 25);
+        ManagedSprite_SetDrawPriority(appMan->cursor[1], 20);
+        ManagedSprite_SetAnim(appMan->cursor[0], 1);
+        ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00010, 0);
+        ManagedSprite_SetDrawFlag(appMan->cursor[1], 1);
+        appMan->stateID++;
     case CAPSULE_FADE_IN_STATE_ID:
-        appMan->unk_3FC = ov57_0223B308(appMan);
+        appMan->stateID = ov57_0223B308(appMan);
         break;
     case CAPSULE_FADE_IN_WAIT_STATE_ID:
         ov57_0223B12C(appMan);
         if (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_RIGHT | PAD_KEY_LEFT | PAD_KEY_UP | PAD_KEY_DOWN | PAD_BUTTON_X | PAD_BUTTON_Y) || System_GetTouchNew()) {
-            appMan->unk_3FC = CAPSULE_CAPSULE_SELECTION_STATE_ID;
+            appMan->stateID = CAPSULE_CAPSULE_SELECTION_STATE_ID;
         }
         break;
     case CAPSULE_CAPSULE_SELECTION_STATE_ID:
-        ManagedSprite_SetDrawPriority(appMan->unk_31C[0], 20);
-        ManagedSprite_SetDrawPriority(appMan->unk_31C[1], 25);
+        ManagedSprite_SetDrawPriority(appMan->cursor[0], 20);
+        ManagedSprite_SetDrawPriority(appMan->cursor[1], 25);
         ov57_0223B828(appMan, 0, 0xFF, 0);
-        ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
-        ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
-        ClearWindowTilemapAndScheduleTransfer(&appMan->unk_0D4.unk_018[0]);
+        ManagedSprite_SetAnim(appMan->cursor[0], 0);
+        ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
+        ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[0]);
         ov57_0223866C(appMan, TRUE);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, 0);
+        ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, 0);
         break;
     }
 
@@ -414,17 +414,17 @@ BOOL ov57_0223A6B4(CapsuleAppManager *appMan) {
 }
 
 int ov57_0223A6B8(CapsuleAppManager *appMan) {
-    switch (appMan->unk_404) {
+    switch (appMan->throwStateID) {
     case 0:
         ov57_0223B948(appMan, 0);
         ov57_022398C4(appMan);
         ov57_022399F8(appMan);
         ov57_0223B75C(appMan);
         ov57_0223B78C(appMan);
-        appMan->unk_0D4.unk_1B4 = 0;
-        appMan->unk_410 = 0;
+        appMan->graphicsMan.sealsChanged = 0;
+        appMan->frameCounter = 0;
         ov57_02239BCC();
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case 1:
         if (ov57_0223B940(appMan) == TRUE) {
@@ -440,22 +440,22 @@ int ov57_0223A6B8(CapsuleAppManager *appMan) {
         ov57_02239240(appMan, TRUE);
         ov57_022387C0(appMan, TRUE);
         ov57_02238AF0(appMan, TRUE);
-        ManagedSprite_SetAnimationFrame(appMan->unk_414[8], 0);
-        ManagedSprite_SetAnimationFrame(appMan->unk_414[9], 0);
-        ManagedSprite_SetAnimationFrame(appMan->unk_414[10], 0);
+        ManagedSprite_SetAnimationFrame(appMan->pageSprites[8], 0);
+        ManagedSprite_SetAnimationFrame(appMan->pageSprites[9], 0);
+        ManagedSprite_SetAnimationFrame(appMan->pageSprites[10], 0);
         SetBgPriority(GF_BG_LYR_MAIN_3, 1);
-        ClearWindowTilemapAndCopyToVram(&appMan->unk_0D4.unk_018[3]);
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 0xFFFF, TRUE);
+        ClearWindowTilemapAndCopyToVram(&appMan->graphicsMan.windows[3]);
+        ov57_02239728(&appMan->graphicsMan.windows[0], 0, 0xFFFF, TRUE);
         GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
         ov57_02239BAC();
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case 2:
         if (IsPaletteFadeFinished() != TRUE) {
             break;
         }
         ov57_0223B948(appMan, 1);
-        appMan->unk_404 = 0;
+        appMan->throwStateID = 0;
         return 4;
     }
 
@@ -463,15 +463,15 @@ int ov57_0223A6B8(CapsuleAppManager *appMan) {
 }
 
 BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
-    switch (appMan->unk_404) {
+    switch (appMan->throwStateID) {
     case 0:
-        if (appMan->unk_410 > 0) {
-            --appMan->unk_410;
+        if (appMan->frameCounter > 0) {
+            --appMan->frameCounter;
             return FALSE;
         }
-        appMan->unk_410 = 0;
+        appMan->frameCounter = 0;
         ov57_02239BCC();
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case 1:
         if (IsPaletteFadeFinished() != TRUE) {
@@ -484,15 +484,15 @@ BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
         ov57_0223A034(appMan, FALSE);
         ov57_02239240(appMan, FALSE);
         ov57_022387C0(appMan, FALSE);
-        ClearWindowPixelBuffer(&appMan->unk_0D4.unk_018[0], TRUE);
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00007, FALSE);
-        CopyWindowToVram(&appMan->unk_0D4.unk_018[3]);
+        ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
+        ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
+        CopyWindowToVram(&appMan->graphicsMan.windows[3]);
         ov57_0223866C(appMan, TRUE);
         GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
         ov57_02238AF0(appMan, -1);
         ov57_0223B948(appMan, 0);
         ov57_02239BAC();
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case 2:
         if (ov57_0223B940(appMan) == TRUE) {
@@ -501,10 +501,10 @@ BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
         if (IsPaletteFadeFinished() != TRUE) {
             break;
         }
-        ManagedSprite_SetDrawFlag(appMan->unk_31C[1], FALSE);
+        ManagedSprite_SetDrawFlag(appMan->cursor[1], FALSE);
         ov57_0223B828(appMan, 0, 0xFF, 0);
         ov57_02239B0C(appMan);
-        appMan->unk_404 = 0;
+        appMan->throwStateID = 0;
         return TRUE;
     }
 
@@ -512,71 +512,71 @@ BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
 }
 
 int ov57_0223A8FC(CapsuleAppManager *appMan) {
-    switch (appMan->unk_404) {
+    switch (appMan->throwStateID) {
     case 0:
         if (!ov57_022384C0(appMan)) {
             return CAPSULE_UNK_11_STATE_ID;
         }
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80b, 0, 0, 10, RGB_BLACK);
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80b, 0, 0, 10, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
         ov57_0223B948(appMan, 0);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case 1:
-        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->graphicsMan.paletteData) != 0) {
             break;
         }
-        PaletteData_SetAutoTransparent(appMan->unk_0D4.unk_014, FALSE);
-        ov57_022397B0(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[4], GF_BG_LYR_SUB_0, 2, 1, 27, 4, 0x03A);
+        PaletteData_SetAutoTransparent(appMan->graphicsMan.paletteData, FALSE);
+        ov57_022397B0(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[4], GF_BG_LYR_SUB_0, 2, 1, 27, 4, 0x03A);
 
         YesNoPromptTemplate yesNoPromptTemplate;
         MI_CpuClear8(&yesNoPromptTemplate, sizeof(YesNoPromptTemplate));
-        yesNoPromptTemplate.bgConfig = appMan->unk_0D4.unk_010;
+        yesNoPromptTemplate.bgConfig = appMan->graphicsMan.bgConfig;
         yesNoPromptTemplate.bgId = GF_BG_LYR_SUB_0;
         yesNoPromptTemplate.tileStart = 0x0E6;
         yesNoPromptTemplate.plttSlot = 5;
         yesNoPromptTemplate.x = 25;
         yesNoPromptTemplate.y = 6;
-        yesNoPromptTemplate.ignoreTouchFlag = appMan->unk_40C;
-        appMan->unk_0D4.unk_170 = YesNoPrompt_Create(HEAP_ID_52);
-        YesNoPrompt_InitFromTemplate(appMan->unk_0D4.unk_170, &yesNoPromptTemplate);
-        ov57_02239728(&appMan->unk_0D4.unk_018[4], 4, msg_0011_00014, FALSE);
-        ++appMan->unk_404;
+        yesNoPromptTemplate.ignoreTouchFlag = appMan->menuInputState;
+        appMan->graphicsMan.yesNoPrompt = YesNoPrompt_Create(HEAP_ID_52);
+        YesNoPrompt_InitFromTemplate(appMan->graphicsMan.yesNoPrompt, &yesNoPromptTemplate);
+        ov57_02239728(&appMan->graphicsMan.windows[4], 4, msg_0011_00014, FALSE);
+        ++appMan->throwStateID;
         break;
     case 2:
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         // fallthrough
     case 3:
-        YesNoResponse response = YesNoPrompt_HandleInput(appMan->unk_0D4.unk_170);
+        YesNoResponse response = YesNoPrompt_HandleInput(appMan->graphicsMan.yesNoPrompt);
         switch (response) {
         case YESNORESPONSE_WAIT:
             break;
         case YESNORESPONSE_YES:
         case YESNORESPONSE_NO:
-            appMan->unk_40C = YesNoPrompt_IsInTouchMode(appMan->unk_0D4.unk_170);
-            appMan->unk_408 = response;
-            PaletteData_SetAutoTransparent(appMan->unk_0D4.unk_014, TRUE);
-            YesNoPrompt_Reset(appMan->unk_0D4.unk_170);
-            YesNoPrompt_Destroy(appMan->unk_0D4.unk_170);
-            ClearFrameAndWindow2(&appMan->unk_0D4.unk_018[4], FALSE);
-            RemoveWindow(&appMan->unk_0D4.unk_018[4]);
-            ++appMan->unk_404;
+            appMan->menuInputState = YesNoPrompt_IsInTouchMode(appMan->graphicsMan.yesNoPrompt);
+            appMan->yesNoResult = response;
+            PaletteData_SetAutoTransparent(appMan->graphicsMan.paletteData, TRUE);
+            YesNoPrompt_Reset(appMan->graphicsMan.yesNoPrompt);
+            YesNoPrompt_Destroy(appMan->graphicsMan.yesNoPrompt);
+            ClearFrameAndWindow2(&appMan->graphicsMan.windows[4], FALSE);
+            RemoveWindow(&appMan->graphicsMan.windows[4]);
+            ++appMan->throwStateID;
             break;
         }
         break;
     case 4:
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80B, 0, 10, 0, RGB_BLACK);
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
-        ++appMan->unk_404;
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80B, 0, 10, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
+        ++appMan->throwStateID;
         break;
     case 5:
-        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->graphicsMan.paletteData) != 0) {
             break;
         }
         int result;
-        switch (appMan->unk_408) {
+        switch (appMan->yesNoResult) {
         case YESNORESPONSE_YES:
             ov57_0223B774(appMan);
             ov57_0223B7A8(appMan);
@@ -585,7 +585,7 @@ int ov57_0223A8FC(CapsuleAppManager *appMan) {
             ov57_02237F3C(appMan);
             ov57_022383D0(appMan, TRUE);
             result = 6;
-            appMan->unk_410 = 20;
+            appMan->frameCounter = 20;
             break;
         case YESNORESPONSE_NO:
             result = 4;
@@ -596,7 +596,7 @@ int ov57_0223A8FC(CapsuleAppManager *appMan) {
             break;
         }
         ov57_0223B948(appMan, 1);
-        appMan->unk_404 = 0;
+        appMan->throwStateID = 0;
         return result;
     }
 
@@ -604,21 +604,21 @@ int ov57_0223A8FC(CapsuleAppManager *appMan) {
 }
 
 int ov57_0223AB58(CapsuleAppManager *appMan) {
-    switch (appMan->unk_404) {
+    switch (appMan->throwStateID) {
     case THROW_INIT_GFX_STATE_ID:
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80B, 0, 0, 10, RGB_BLACK);
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80B, 0, 0, 10, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
         ov57_0223B948(appMan, 0);
-        appMan->unk_408 = 0;
+        appMan->yesNoResult = 0;
         ov57_0223B7C4(appMan);
         ov57_0223B950(appMan);
         ov57_0223BB38(appMan, 1);
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00013, FALSE);
-        ++appMan->unk_404;
+        ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00013, FALSE);
+        ++appMan->throwStateID;
         break;
     case THROW_WAIT_INIT_THROW_STATE_ID:
-        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->graphicsMan.paletteData) != 0) {
             break;
         }
         UnkStruct_134 sp5C;
@@ -628,71 +628,71 @@ int ov57_0223AB58(CapsuleAppManager *appMan) {
         sp5C.unkC = 0xFF;
         sp5C.unk14 = 0;
         sp5C.unk18 = 1;
-        sp5C.spriteSystem = appMan->unk_0D4.unk_008;
-        sp5C.paletteData = appMan->unk_0D4.unk_014;
-        sp5C.ball = GetMonData(appMan->unk_458, MON_DATA_POKEBALL, NULL);
-        appMan->unk_0D4.unk_180 = ov07_02233DB8(&sp5C);
-        ++appMan->unk_404;
+        sp5C.spriteSystem = appMan->graphicsMan.spriteSystem;
+        sp5C.paletteData = appMan->graphicsMan.paletteData;
+        sp5C.ball = GetMonData(appMan->pokemon, MON_DATA_POKEBALL, NULL);
+        appMan->graphicsMan.ballRotation = ov07_02233DB8(&sp5C);
+        ++appMan->throwStateID;
         break;
     case THROW_SET_CAPSULE_STATE_ID: {
         BallCapsule sp44;
         BallCapsuleConfig sp38 = { 0 };
         sp38.battlerType = BATTLER_TYPE_SOLO_ENEMY;
-        sp38.mon = appMan->unk_458;
-        int spC = appMan->unk_3EC[0] + 1;
+        sp38.mon = appMan->pokemon;
+        int spC = appMan->capsuleIndex[0] + 1;
         ov57_0223857C(&sp44, appMan);
-        SetMonData(appMan->unk_458, MON_DATA_BALL_CAPSULE_ID, &spC);
-        SetMonData(appMan->unk_458, MON_DATA_BALL_CAPSULE, &sp44);
-        appMan->unk_0D4.unk_17C = ov07_02232694(HEAP_ID_52, &sp38);
-        ov07_022329B0(appMan->unk_0D4.unk_17C);
-        ++appMan->unk_404;
-        appMan->unk_408 = 0;
+        SetMonData(appMan->pokemon, MON_DATA_BALL_CAPSULE_ID, &spC);
+        SetMonData(appMan->pokemon, MON_DATA_BALL_CAPSULE, &sp44);
+        appMan->graphicsMan.sealEffect = ov07_02232694(HEAP_ID_52, &sp38);
+        ov07_022329B0(appMan->graphicsMan.sealEffect);
+        ++appMan->throwStateID;
+        appMan->yesNoResult = 0;
     } break;
     case THROW_WAIT_FOR_END_STATE_ID:
-        if (ov07_02232A04(appMan->unk_0D4.unk_17C) != TRUE) {
+        if (ov07_02232A04(appMan->graphicsMan.sealEffect) != TRUE) {
             break;
         }
-        if (ov07_02233EA0(appMan->unk_0D4.unk_180) != TRUE) {
+        if (ov07_02233EA0(appMan->graphicsMan.ballRotation) != TRUE) {
             break;
         }
         ov57_0223BA40(appMan);
-        ov07_02232A44(appMan->unk_0D4.unk_17C);
+        ov07_02232A44(appMan->graphicsMan.sealEffect);
         ov57_0223BB38(appMan, 0);
         ov57_0223BA1C(appMan);
         PlaySE(SEQ_SE_DP_CUSTOM05);
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case THROW_WAIT_FOR_ROTATION_END_STATE_ID: {
         BOOL r5 = ov57_0223BA40(appMan);
-        BOOL r0 = ov07_02233E88(appMan->unk_0D4.unk_180);
+        BOOL r0 = ov07_02233E88(appMan->graphicsMan.ballRotation);
         if (r0 || r5) {
             break;
         }
-        ov07_02233ECC(appMan->unk_0D4.unk_180);
+        ov07_02233ECC(appMan->graphicsMan.ballRotation);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
         ov57_0223B9C8(appMan);
-        appMan->unk_408 = 0;
-        ++appMan->unk_404;
+        appMan->yesNoResult = 0;
+        ++appMan->throwStateID;
     } break;
     case THROW_WAIT_FOR_ANIMS_END_STATE_ID:
-        if (ov07_02232A54(appMan->unk_0D4.unk_17C)) {
+        if (ov07_02232A54(appMan->graphicsMan.sealEffect)) {
             break;
         }
-        if (sub_02017068(appMan->unk_0D4.unk_1B0, 0) != TRUE) {
+        if (sub_02017068(appMan->graphicsMan.pokepicAnimManager, 0) != TRUE) {
             break;
         }
-        if (Pokepic_IsAnimActive(appMan->unk_0D4.unk_0F4)) {
+        if (Pokepic_IsAnimActive(appMan->graphicsMan.pokepic)) {
             break;
         }
-        ov07_02232AB8(appMan->unk_0D4.unk_17C);
-        ++appMan->unk_404;
+        ov07_02232AB8(appMan->graphicsMan.sealEffect);
+        ++appMan->throwStateID;
         break;
     case THROW_WAIT_AFTER_ANIMS_END_STATE_ID:
-        ++appMan->unk_408;
-        if (appMan->unk_408 < 30) {
+        ++appMan->yesNoResult;
+        if (appMan->yesNoResult < 30) {
             break;
         }
-        appMan->unk_408 = 0;
+        appMan->yesNoResult = 0;
         UnkStruct_134 sp10;
         sp10.unk0 = 1;
         sp10.heapID = HEAP_ID_52;
@@ -700,36 +700,36 @@ int ov57_0223AB58(CapsuleAppManager *appMan) {
         sp10.unkC = 0xFF;
         sp10.unk14 = 0;
         sp10.unk18 = 1;
-        sp10.spriteSystem = appMan->unk_0D4.unk_008;
-        sp10.paletteData = appMan->unk_0D4.unk_014;
-        sp10.ball = GetMonData(appMan->unk_458, MON_DATA_POKEBALL, NULL);
-        appMan->unk_0D4.unk_180 = ov07_02233DB8(&sp10);
+        sp10.spriteSystem = appMan->graphicsMan.spriteSystem;
+        sp10.paletteData = appMan->graphicsMan.paletteData;
+        sp10.ball = GetMonData(appMan->pokemon, MON_DATA_POKEBALL, NULL);
+        appMan->graphicsMan.ballRotation = ov07_02233DB8(&sp10);
         ov57_0223BB5C();
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
-        ++appMan->unk_404;
+        ++appMan->throwStateID;
         break;
     case THROW_WAIT_FREE_STATE_ID: {
         BOOL r5 = ov57_0223BABC(appMan);
-        BOOL r0 = ov07_02233E88(appMan->unk_0D4.unk_180);
+        BOOL r0 = ov07_02233E88(appMan->graphicsMan.ballRotation);
         if (r0 || r5) {
             break;
         }
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 2, 0x80B, 0, 10, 0, RGB_BLACK);
-        PaletteData_BeginPaletteFade(appMan->unk_0D4.unk_014, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80B, 0, 10, 0, RGB_BLACK);
+        PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
         ov57_0223BB38(appMan, 1);
         ov57_0223BB4C(appMan);
-        ov07_02233ECC(appMan->unk_0D4.unk_180);
-        ++appMan->unk_404;
+        ov07_02233ECC(appMan->graphicsMan.ballRotation);
+        ++appMan->throwStateID;
     } break;
     default:
-        if (PaletteData_GetSelectedBuffersBitmask(appMan->unk_0D4.unk_014) != 0) {
+        if (PaletteData_GetSelectedBuffersBitmask(appMan->graphicsMan.paletteData) != 0) {
             break;
         }
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
         ov57_0223B948(appMan, 1);
-        appMan->unk_404 = 0;
-        appMan->unk_3FC = CAPSULE_CAPSULE_MENU_STATE_ID;
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, 0xFFFF, FALSE);
+        appMan->throwStateID = 0;
+        appMan->stateID = CAPSULE_CAPSULE_MENU_STATE_ID;
+        ov57_02239728(&appMan->graphicsMan.windows[0], 0, 0xFFFF, FALSE);
         return CAPSULE_CAPSULE_MENU_STATE_ID;
     }
 
@@ -739,71 +739,71 @@ int ov57_0223AB58(CapsuleAppManager *appMan) {
 void ov57_0223AEA8(u32 index, u32 event, void *arg) {
     CapsuleAppManager *appMan = arg;
 
-    if (!appMan->unk_0D4.unk_004) {
+    if (!appMan->graphicsMan.selectedCapsule) {
         return;
     }
 
     switch (index) {
     case 8:
         if (event == TOUCH_BUTTON_PRESSED) {
-            if (appMan->unk_448.page > 0) {
-                --appMan->unk_448.page;
+            if (appMan->sealPages.page > 0) {
+                --appMan->sealPages.page;
             } else {
-                appMan->unk_448.page = appMan->unk_448.maxPage - 1;
+                appMan->sealPages.page = appMan->sealPages.maxPage - 1;
             }
             ov57_02238AC0(appMan);
-            ov57_022388E4(appMan, appMan->unk_448.page);
+            ov57_022388E4(appMan, appMan->sealPages.page);
             ov57_02238958(appMan);
             ov57_02238A00(appMan);
             ov57_022399F8(appMan);
             PlaySE(SEQ_SE_DP_CUSTOM02);
         }
-        ov57_0223B858(appMan->unk_414[8], event);
+        ov57_0223B858(appMan->pageSprites[8], event);
         break;
     case 9:
         if (event == TOUCH_BUTTON_PRESSED) {
-            ++appMan->unk_448.page;
-            appMan->unk_448.page %= appMan->unk_448.maxPage;
+            ++appMan->sealPages.page;
+            appMan->sealPages.page %= appMan->sealPages.maxPage;
             ov57_02238AC0(appMan);
-            ov57_022388E4(appMan, appMan->unk_448.page);
+            ov57_022388E4(appMan, appMan->sealPages.page);
             ov57_02238958(appMan);
             ov57_02238A00(appMan);
             ov57_022399F8(appMan);
             PlaySE(SEQ_SE_DP_CUSTOM02);
         }
-        ov57_0223B858(appMan->unk_414[9], event);
+        ov57_0223B858(appMan->pageSprites[9], event);
         break;
     case 10:
         if (event == TOUCH_BUTTON_PRESSED) {
-            if (appMan->unk_3FC != CAPSULE_FADE_OUT_STATE_ID) {
-                appMan->unk_3FC = CAPSULE_FADE_OUT_STATE_ID;
+            if (appMan->stateID != CAPSULE_FADE_OUT_STATE_ID) {
+                appMan->stateID = CAPSULE_FADE_OUT_STATE_ID;
                 PlaySE(SEQ_SE_DP_DECIDE);
             }
-            ov57_0223B90C(appMan->unk_414[10], NULL);
+            ov57_0223B90C(appMan->pageSprites[10], NULL);
         }
-        ov57_0223B858(appMan->unk_414[10], event);
+        ov57_0223B858(appMan->pageSprites[10], event);
         break;
     case 11:
         if (event == TOUCH_BUTTON_PRESSED) {
-            if (appMan->unk_3FC != CAPSULE_FADE_OUT_WAIT_STATE_ID) {
-                appMan->unk_3FC = CAPSULE_FADE_OUT_WAIT_STATE_ID;
+            if (appMan->stateID != CAPSULE_FADE_OUT_WAIT_STATE_ID) {
+                appMan->stateID = CAPSULE_FADE_OUT_WAIT_STATE_ID;
                 ov57_0223B948(appMan, 0);
                 PlaySE(SEQ_SE_DP_PIRORIRO);
             }
-            ov57_0223B90C(appMan->unk_414[11], appMan->unk_0D4.unk_18C[0]);
+            ov57_0223B90C(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
         }
-        ov57_0223B858(appMan->unk_414[11], event);
+        ov57_0223B858(appMan->pageSprites[11], event);
         break;
     case 12:
         if (event == TOUCH_BUTTON_PRESSED) {
-            if (appMan->unk_3FC != CAPSULE_CANCEL_PRESSED_STATE_ID) {
-                appMan->unk_3FC = CAPSULE_CANCEL_PRESSED_STATE_ID;
+            if (appMan->stateID != CAPSULE_CANCEL_PRESSED_STATE_ID) {
+                appMan->stateID = CAPSULE_CANCEL_PRESSED_STATE_ID;
                 ov57_0223B948(appMan, 0);
                 PlaySE(SEQ_SE_DP_DECIDE);
             }
-            ov57_0223B90C(appMan->unk_414[12], appMan->unk_0D4.unk_18C[1]);
+            ov57_0223B90C(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
         }
-        ov57_0223B858(appMan->unk_414[12], event);
+        ov57_0223B858(appMan->pageSprites[12], event);
         break;
     case 0:
     case 1:
@@ -816,18 +816,18 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
         if (event == TOUCH_BUTTON_PRESSED) {
             if (!ov57_02238028(appMan)) {
                 PlaySE(SEQ_SE_DP_CUSTOM06);
-                ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00015, FALSE);
+                ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00015, FALSE);
             } else {
-                u8 *sealIDs = appMan->unk_448.sealIDs;
-                if (sealIDs[index] != SEAL_NONE && SealCaseInventory_GetSealQuantity(appMan->unk_064, sealIDs[index] - 1) != 0) {
-                    appMan->unk_0D4.unk_000 = ov57_02237FAC(appMan, index);
-                    ov57_02239B2C(&appMan->unk_0D4.unk_018[0], CapsuleMenu_GetSealNameIndex(sealIDs[index]));
-                    GiveOrTakeSeal(appMan->unk_000->sealCase, sealIDs[index], -1);
+                u8 *sealIDs = appMan->sealPages.sealIDs;
+                if (sealIDs[index] != SEAL_NONE && SealCaseInventory_GetSealQuantity(appMan->sealCount, sealIDs[index] - 1) != 0) {
+                    appMan->graphicsMan.index = ov57_02237FAC(appMan, index);
+                    ov57_02239B2C(&appMan->graphicsMan.windows[0], CapsuleMenu_GetSealNameIndex(sealIDs[index]));
+                    GiveOrTakeSeal(appMan->appData->sealCase, sealIDs[index], -1);
                     ov57_02239A8C(appMan, index);
                     PlaySE(SEQ_SE_DP_BOX02);
                 } else if (sealIDs[index] != SEAL_NONE) {
                     PlaySE(SEQ_SE_DP_CUSTOM06);
-                    ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00016, FALSE);
+                    ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00016, FALSE);
                 }
             }
         }
@@ -843,7 +843,7 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
         if (event == TOUCH_BUTTON_PRESSED) {
             int r5 = index - 13;
             ov57_022382F8(appMan, event, r5);
-            ov57_02239B2C(&appMan->unk_0D4.unk_018[0], CapsuleMenu_GetSealNameIndex(appMan->unk_34C[r5].type));
+            ov57_02239B2C(&appMan->graphicsMan.windows[0], CapsuleMenu_GetSealNameIndex(appMan->sealRenderInfo[r5].type));
             PlaySE(SEQ_SE_DP_BOX02);
         }
         break;
@@ -853,12 +853,12 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
 }
 
 BOOL ov57_0223B12C(CapsuleAppManager *appMan) {
-    if (appMan->unk_40C == MENU_INPUT_STATE_TOUCH) {
+    if (appMan->menuInputState == MENU_INPUT_STATE_TOUCH) {
         if (System_GetTouchHeld()) {
             return FALSE;
         }
         if (gSystem.heldKeys) {
-            appMan->unk_40C = MENU_INPUT_STATE_BUTTONS;
+            appMan->menuInputState = MENU_INPUT_STATE_BUTTONS;
             return TRUE;
         }
     } else {
@@ -866,7 +866,7 @@ BOOL ov57_0223B12C(CapsuleAppManager *appMan) {
             return FALSE;
         }
         if (System_GetTouchHeld()) {
-            appMan->unk_40C = MENU_INPUT_STATE_TOUCH;
+            appMan->menuInputState = MENU_INPUT_STATE_TOUCH;
             return FALSE;
         }
     }
@@ -876,7 +876,7 @@ BOOL ov57_0223B12C(CapsuleAppManager *appMan) {
 
 int ov57_0223B180(CapsuleAppManager *appMan) {
     ov57_0223B12C(appMan);
-    if (appMan->unk_40C == MENU_INPUT_STATE_BUTTONS) {
+    if (appMan->menuInputState == MENU_INPUT_STATE_BUTTONS) {
         return ov57_0223B288(appMan);
     } else {
         return ov57_0223B2EC(appMan);
@@ -887,28 +887,28 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
     switch (a1) {
     case 12:
         PlaySE(SEQ_SE_DP_DECIDE);
-        ov57_02237E88(appMan->unk_000, 0);
+        ov57_02237E88(appMan->appData, 0);
         return CAPSULE_FADE_OUT_STATE_ID;
     case 13:
-        ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
-        ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC[0]);
+        ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00008, FALSE);
+        ov57_02238C30(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[1], GF_BG_LYR_MAIN_1, appMan, appMan->capsuleIndex[0]);
         PlaySE(SEQ_SE_DP_SELECT);
         return CAPSULE_CAPSULE_MENU_STATE_ID;
     default:
         ov57_02238134(appMan);
         ov57_0223853C(appMan);
         ov57_022394AC(appMan);
-        appMan->unk_3EC[0] = a1;
+        appMan->capsuleIndex[0] = a1;
         ov57_0223B504(appMan, 0, TRUE);
         ov57_022383AC(appMan);
         ov57_02237F3C(appMan);
         ov57_022383D0(appMan, 1);
         ov57_02237F14(appMan);
-        if (appMan->unk_40C == 0) {
+        if (appMan->menuInputState == 0) {
             PlaySE(SEQ_SE_DP_SELECT);
         } else {
-            ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
-            ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC[0]);
+            ov57_02239728(&appMan->graphicsMan.windows[3], 3, msg_0011_00008, FALSE);
+            ov57_02238C30(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[1], GF_BG_LYR_MAIN_1, appMan, appMan->capsuleIndex[0]);
             PlaySE(SEQ_SE_DP_SELECT);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
@@ -929,7 +929,7 @@ int ov57_0223B288(CapsuleAppManager *appMan) {
     } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
         result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
     } else {
-        sp0 = appMan->unk_3EC[0];
+        sp0 = appMan->capsuleIndex[0];
         if (!ov57_0223B478(&sp0)) {
             result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
         } else {
@@ -950,7 +950,7 @@ int ov57_0223B2EC(CapsuleAppManager *appMan) {
 
 int ov57_0223B308(CapsuleAppManager *appMan) {
     ov57_0223B12C(appMan);
-    if (appMan->unk_40C == 0) {
+    if (appMan->menuInputState == 0) {
         return ov57_0223B3F8(appMan);
     } else {
         return ov57_0223B45C(appMan);
@@ -958,18 +958,18 @@ int ov57_0223B308(CapsuleAppManager *appMan) {
 }
 
 int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1) {
-    if (appMan->unk_3EC[0] == appMan->unk_3EC[1]) {
+    if (appMan->capsuleIndex[0] == appMan->capsuleIndex[1]) {
         a1 = FALSE;
     }
     if (a1) {
-        ov57_022394D8(appMan, appMan->unk_3EC[0], appMan->unk_3EC[1]);
+        ov57_022394D8(appMan, appMan->capsuleIndex[0], appMan->capsuleIndex[1]);
         ov57_0223B504(appMan, 1, TRUE);
-        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00011, TRUE);
+        ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00011, TRUE);
         PlaySE(SEQ_SE_DP_SELECT);
         return CAPSULE_FADE_IN_WAIT_STATE_ID;
     } else {
-        ManagedSprite_SetDrawFlag(appMan->unk_31C[1], FALSE);
-        ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
+        ManagedSprite_SetDrawFlag(appMan->cursor[1], FALSE);
+        ManagedSprite_SetAnim(appMan->cursor[0], 0);
         ov57_0223B504(appMan, 0, FALSE);
         PlaySE(SEQ_SE_DP_DECIDE);
         return CAPSULE_CAPSULE_SELECTION_STATE_ID;
@@ -983,9 +983,9 @@ int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1) {
     case 13:
         return ov57_0223B32C(appMan, TRUE);
     default:
-        appMan->unk_3EC[1] = a1;
+        appMan->capsuleIndex[1] = a1;
         ov57_0223B504(appMan, 1, FALSE);
-        if (appMan->unk_40C == 0) {
+        if (appMan->menuInputState == 0) {
             PlaySE(SEQ_SE_DP_SELECT);
         } else {
             return ov57_0223B32C(appMan, TRUE);
@@ -1007,7 +1007,7 @@ int ov57_0223B3F8(CapsuleAppManager *appMan) {
     } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
         result = CAPSULE_FADE_IN_STATE_ID;
     } else {
-        sp0 = appMan->unk_3EC[1];
+        sp0 = appMan->capsuleIndex[1];
         if (!ov57_0223B478(&sp0)) {
             result = CAPSULE_FADE_IN_STATE_ID;
         } else {
@@ -1063,12 +1063,12 @@ void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2) {
     if (a1 == 0) {
         r4 = 1;
     }
-    ov57_02238DAC(appMan->unk_3EC[a1], &x, &y);
-    ManagedSprite_SetPositionXY(appMan->unk_31C[a1], x, y);
+    ov57_02238DAC(appMan->capsuleIndex[a1], &x, &y);
+    ManagedSprite_SetPositionXY(appMan->cursor[a1], x, y);
     if (a2 == TRUE) {
-        appMan->unk_3EC[r4] = appMan->unk_3EC[a1];
-        ov57_02238DAC(appMan->unk_3EC[r4], &x, &y);
-        ManagedSprite_SetPositionXY(appMan->unk_31C[r4], x, y);
+        appMan->capsuleIndex[r4] = appMan->capsuleIndex[a1];
+        ov57_02238DAC(appMan->capsuleIndex[r4], &x, &y);
+        ManagedSprite_SetPositionXY(appMan->cursor[r4], x, y);
     }
 }
 
@@ -1097,7 +1097,7 @@ int ov57_0223B578(CapsuleAppManager *appMan) {
     int r4 = TouchscreenHitbox_FindRectAtTouchNew(ov57_0223BEB0);
     if (r4 != -1) {
         u16 sp10 = 0x3FF;
-        if (!DoesPixelAtScreenXYMatchPtrVal(appMan->unk_0D4.unk_010, GF_BG_LYR_MAIN_3, gSystem.touchX, gSystem.touchY, &sp10)) {
+        if (!DoesPixelAtScreenXYMatchPtrVal(appMan->graphicsMan.bgConfig, GF_BG_LYR_MAIN_3, gSystem.touchX, gSystem.touchY, &sp10)) {
             r4 = -1;
         } else {
             r4 += 12;
@@ -1110,32 +1110,32 @@ int ov57_0223B578(CapsuleAppManager *appMan) {
 int ov57_0223B620(CapsuleAppManager *appMan) {
     ov57_0223B12C(appMan);
     if (gSystem.newKeys & PAD_BUTTON_A) {
-        if (appMan->unk_0D4.unk_000 != 0xFF) {
+        if (appMan->graphicsMan.index != 0xFF) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
         ov57_0223B948(appMan, 0);
         PlaySE(SEQ_SE_DP_PIRORIRO);
-        ov57_0223B90C(appMan->unk_414[11], appMan->unk_0D4.unk_18C[0]);
+        ov57_0223B90C(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
         return CAPSULE_FADE_OUT_WAIT_STATE_ID;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
-        if (appMan->unk_0D4.unk_000 != 0xFF) {
+        if (appMan->graphicsMan.index != 0xFF) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
         ov57_0223B948(appMan, 0);
         PlaySE(SEQ_SE_DP_DECIDE);
-        ov57_0223B90C(appMan->unk_414[12], appMan->unk_0D4.unk_18C[1]);
+        ov57_0223B90C(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
         return CAPSULE_CANCEL_PRESSED_STATE_ID;
     }
     if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y)) {
-        if (appMan->unk_0D4.unk_000 != 0xFF) {
+        if (appMan->graphicsMan.index != 0xFF) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
         PlaySE(SEQ_SE_DP_DECIDE);
-        ov57_0223B90C(appMan->unk_414[10], NULL);
+        ov57_0223B90C(appMan->pageSprites[10], NULL);
         return CAPSULE_FADE_OUT_STATE_ID;
     }
 
@@ -1157,8 +1157,8 @@ BOOL ov57_0223B714(CapsuleAppManager *appMan) {
     ov57_02238134(appMan);
     ov57_0223853C(appMan);
     ov57_022394AC(appMan);
-    ov57_02237E88(appMan->unk_000, 1);
-    appMan->unk_3FC = 5;
+    ov57_02237E88(appMan->appData, 1);
+    appMan->stateID = 5;
     return FALSE;
 }
 
@@ -1173,22 +1173,22 @@ BOOL ov57_0223B74C(CapsuleAppManager *appMan) {
 }
 
 void ov57_0223B75C(CapsuleAppManager *appMan) {
-    CopyCapsule(appMan->unk_004[appMan->unk_3EC[0]].capsule, &appMan->unk_068);
+    CopyCapsule(appMan->capsules[appMan->capsuleIndex[0]].capsule, &appMan->activeCapsule);
 }
 
 void ov57_0223B774(CapsuleAppManager *appMan) {
-    CopyCapsule(&appMan->unk_068, appMan->unk_004[appMan->unk_3EC[0]].capsule);
+    CopyCapsule(&appMan->activeCapsule, appMan->capsules[appMan->capsuleIndex[0]].capsule);
 }
 
 void ov57_0223B78C(CapsuleAppManager *appMan) {
     for (int i = 0; i < SEAL_MAX + 1; ++i) {
-        appMan->unk_080[i] = SealCaseInventory_GetSealQuantity(appMan->unk_064, i);
+        appMan->sealCounts[i] = SealCaseInventory_GetSealQuantity(appMan->sealCount, i);
     }
 }
 
 void ov57_0223B7A8(CapsuleAppManager *appMan) {
     for (int i = 0; i < SEAL_MAX + 1; ++i) {
-        SealCaseInventory_SetSealQuantity(appMan->unk_064, i, appMan->unk_080[i]);
+        SealCaseInventory_SetSealQuantity(appMan->sealCount, i, appMan->sealCounts[i]);
     }
 }
 
@@ -1196,35 +1196,35 @@ void ov57_0223B7C4(CapsuleAppManager *appMan) {
     int isEgg;
     Pokemon *pokemon;
 
-    if (appMan->unk_004[appMan->unk_3EC[0]].partyIdx != 0xFF) {
-        pokemon = appMan->unk_000->mons[appMan->unk_004[appMan->unk_3EC[0]].partyIdx];
-        CopyPokemonToPokemon(pokemon, appMan->unk_458);
+    if (appMan->capsules[appMan->capsuleIndex[0]].partyIdx != 0xFF) {
+        pokemon = appMan->appData->mons[appMan->capsules[appMan->capsuleIndex[0]].partyIdx];
+        CopyPokemonToPokemon(pokemon, appMan->pokemon);
 
         return;
     }
 
-    for (int i = 0; i < appMan->unk_000->partyCount; i++) {
-        pokemon = appMan->unk_000->mons[i];
+    for (int i = 0; i < appMan->appData->partyCount; i++) {
+        pokemon = appMan->appData->mons[i];
         isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
 
         if (isEgg != 0) {
             continue;
         }
 
-        CopyPokemonToPokemon(pokemon, appMan->unk_458);
+        CopyPokemonToPokemon(pokemon, appMan->pokemon);
         break;
     }
 }
 
 void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3) {
     if (a2 == 0xFF) {
-        appMan->unk_3FC = appMan->unk_400;
+        appMan->stateID = appMan->alternateState;
     } else {
-        appMan->unk_3FC = a2;
+        appMan->stateID = a2;
     }
-    appMan->unk_3F4 = a1;
-    appMan->unk_400 = a3;
-    appMan->unk_404 = 0;
+    appMan->funcIndex = a1;
+    appMan->alternateState = a3;
+    appMan->throwStateID = 0;
 }
 
 void ov57_0223B858(ManagedSprite *sprite, u32 event) {
@@ -1285,11 +1285,11 @@ void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj) {
 }
 
 BOOL ov57_0223B940(CapsuleAppManager *appMan) {
-    return appMan->unk_0D4.unk_1AC;
+    return appMan->graphicsMan.graphicsTaskResult;
 }
 
 void ov57_0223B948(CapsuleAppManager *appMan, int a1) {
-    appMan->unk_0D4.unk_004 = a1;
+    appMan->graphicsMan.selectedCapsule = a1;
 }
 
 void ov57_0223B950(CapsuleAppManager *appMan) {
@@ -1298,70 +1298,70 @@ void ov57_0223B950(CapsuleAppManager *appMan) {
     int species;
     int yOffset;
 
-    GetPokemonSpriteCharAndPlttNarcIds(&pokemonSpriteTemplate, appMan->unk_458, 2);
+    GetPokemonSpriteCharAndPlttNarcIds(&pokemonSpriteTemplate, appMan->pokemon, 2);
 
-    species = GetMonData(appMan->unk_458, MON_DATA_SPECIES, NULL);
-    yOffset = sub_0207083C(appMan->unk_458, 2);
+    species = GetMonData(appMan->pokemon, MON_DATA_SPECIES, NULL);
+    yOffset = sub_0207083C(appMan->pokemon, 2);
 
-    appMan->unk_0D4.unk_0F8 = yOffset;
-    NARC_ReadPokepicAnimScript(appMan->unk_45C, spriteAnimFrame, species, 1);
-    appMan->unk_0D4.unk_0F4 = PokepicManager_CreatePokepic(appMan->unk_0D4.unk_0F0, &pokemonSpriteTemplate, 192, 48 + yOffset, -640, 0, spriteAnimFrame, NULL);
+    appMan->graphicsMan.pokepicYOffset = yOffset;
+    NARC_ReadPokepicAnimScript(appMan->narc, spriteAnimFrame, species, 1);
+    appMan->graphicsMan.pokepic = PokepicManager_CreatePokepic(appMan->graphicsMan.pokepicManager, &pokemonSpriteTemplate, 192, 48 + yOffset, -640, 0, spriteAnimFrame, NULL);
 }
 
 void ov57_0223B9C8(CapsuleAppManager *appMan) {
     int species;
     int dummy;
 
-    species = GetMonData(appMan->unk_458, MON_DATA_SPECIES, NULL);
-    dummy = GetMonNature(appMan->unk_458);
+    species = GetMonData(appMan->pokemon, MON_DATA_SPECIES, NULL);
+    dummy = GetMonNature(appMan->pokemon);
 
-    Pokepic_StartAnim(appMan->unk_0D4.unk_0F4, 1);
-    sub_0207294C(appMan->unk_45C, appMan->unk_0D4.unk_1B0, appMan->unk_0D4.unk_0F4, species, 2, 0, 0);
+    Pokepic_StartAnim(appMan->graphicsMan.pokepic, 1);
+    sub_0207294C(appMan->narc, appMan->graphicsMan.pokepicAnimManager, appMan->graphicsMan.pokepic, species, 2, 0, 0);
 }
 
 void ov57_0223BA1C(CapsuleAppManager *appMan) {
-    Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0);
-    Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0);
+    Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW, 0);
+    Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEH, 0);
 }
 
 BOOL ov57_0223BA40(CapsuleAppManager *appMan) {
-    if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) == 0x100) {
+    if (Pokepic_GetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW) == 0x100) {
         return FALSE;
-    } else if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) >= 0x100) {
-        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0x100);
-        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0x100);
+    } else if (Pokepic_GetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW) >= 0x100) {
+        Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW, 0x100);
+        Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEH, 0x100);
         return 0;
     } else {
-        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0x20);
-        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0x20);
-        sub_0200914C(appMan->unk_0D4.unk_0F4, appMan->unk_0D4.unk_0F8);
+        Pokepic_AddAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW, 0x20);
+        Pokepic_AddAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEH, 0x20);
+        sub_0200914C(appMan->graphicsMan.pokepic, appMan->graphicsMan.pokepicYOffset);
     }
 
     return TRUE;
 }
 
 BOOL ov57_0223BABC(CapsuleAppManager *appMan) {
-    if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) == 0x0) {
+    if (Pokepic_GetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW) == 0x0) {
         return 0;
-    } else if (Pokepic_GetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW) <= 0x0) {
-        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, 0x0);
-        Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, 0x0);
+    } else if (Pokepic_GetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW) <= 0x0) {
+        Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW, 0x0);
+        Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEH, 0x0);
         return 0;
     } else {
-        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEW, -0x20);
-        Pokepic_AddAttr(appMan->unk_0D4.unk_0F4, POKEPIC_AFFINEH, -0x20);
-        sub_0200914C(appMan->unk_0D4.unk_0F4, appMan->unk_0D4.unk_0F8);
+        Pokepic_AddAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW, -0x20);
+        Pokepic_AddAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEH, -0x20);
+        sub_0200914C(appMan->graphicsMan.pokepic, appMan->graphicsMan.pokepicYOffset);
     }
 
     return 1;
 }
 
 void ov57_0223BB38(CapsuleAppManager *appMan, int value) {
-    Pokepic_SetAttr(appMan->unk_0D4.unk_0F4, POKEPIC_VANISHED, value);
+    Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_VANISHED, value);
 }
 
 void ov57_0223BB4C(CapsuleAppManager *appMan) {
-    Pokepic_Delete(appMan->unk_0D4.unk_0F4);
+    Pokepic_Delete(appMan->graphicsMan.pokepic);
 }
 
 void ov57_0223BB5C(void) {

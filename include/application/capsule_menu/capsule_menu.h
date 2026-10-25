@@ -1,7 +1,5 @@
-#ifndef POKEHEARTGOLD_OVERLAY_57_H
-#define POKEHEARTGOLD_OVERLAY_57_H
-
-#include "global.h"
+#ifndef POKEHEARTGOLD_APPLICATION_CAPSULE_MENU_CAPSULE_MENU_H
+#define POKEHEARTGOLD_APPLICATION_CAPSULE_MENU_CAPSULE_MENU_H
 
 #include "options.h"
 #include "overlay_manager.h"
@@ -23,4 +21,10 @@ int ov57_022378DC(OverlayManager *manager, int *state);
 int ov57_02237AF8(OverlayManager *manager, int *state);
 int ov57_02237B20(OverlayManager *manager, int *state);
 
-#endif // POKEHEARTGOLD_OVERLAY_57_H
+u8 CapsuleMenu_GetSealMemberIdx(u32 idx);
+u8 CapsuleMenu_GetSealNameIndex(u8 idx);
+u8 CapsuleMenu_GetSealParticleIndex(u32 idx);
+BOOL CapsuleMenu_IsAlphabetSeal(u32 idx);
+u32 CapsuleMenu_GetSealNonAlphabetIndex(u8 idx);
+
+#endif

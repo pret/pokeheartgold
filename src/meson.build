@@ -254,7 +254,7 @@ pokeheartgold_c = files(
     'unk_02025534.c',
     'unk_02055418.c',
     'unk_02069528.c',
-    'unk_02091054.c',
+    'application/capsule_menu/main_static.c',
     'unk_02091278.c',
     'unk_02092B04.c',
     'unk_02097720.c',
