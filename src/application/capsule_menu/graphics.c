@@ -45,8 +45,8 @@
 #define CAPSULE_WINDOW_WIDTH        4
 
 static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
-static void ov57_02238B48(void);
-static void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile);
+static void CapsuleGraphics_G3DSetupCB(void);
+static void CapsuleGraphics_InitWindow_NoPushToVRAM(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile);
 
 // clang-format off
 static const int ov57_0223BDF4[] = {
@@ -56,7 +56,7 @@ static const int ov57_0223BDF4[] = {
 };
 // clang-format on
 
-static void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
+static void CapsuleGraphics_OffsetSprite(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
     s16 x, y;
 
     ManagedSprite_GetPositionXY(sprite, &x, &y);
@@ -68,9 +68,9 @@ static void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xO
 }
 
 void ov57_022385DC(CapsuleAppManager *appManager) {
-    ov57_02239814(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[0], GF_BG_LYR_MAIN_1, 1, 21, 30, 2, 0x03A);
-    ov57_02239814(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[3], GF_BG_LYR_MAIN_1, 1, 21, 20, 2, 0x03A);
-    ov57_02239814(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[2], GF_BG_LYR_MAIN_1, 23, 21, 8, 2, 0x076);
+    CapsuleGraphics_InitWindow_NoPushToVRAM(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[0], GF_BG_LYR_MAIN_1, 1, 21, 30, 2, 0x03A);
+    CapsuleGraphics_InitWindow_NoPushToVRAM(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[3], GF_BG_LYR_MAIN_1, 1, 21, 20, 2, 0x03A);
+    CapsuleGraphics_InitWindow_NoPushToVRAM(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[2], GF_BG_LYR_MAIN_1, 23, 21, 8, 2, 0x076);
 }
 
 void ov57_0223864C(CapsuleAppManager *appManager) {
@@ -95,13 +95,13 @@ void ov57_0223866C(CapsuleAppManager *appManager, BOOL show) {
     }
 }
 
-void ov57_022386F0(CapsuleAppManager *appMan) {
+void CapsuleGraphics_InitFontOAMManager(CapsuleAppManager *appMan) {
     appMan->graphicsMan.fontOAMManager = FontSystem_NewInit(2, HEAP_ID_52);
     FontID_Alloc(FONT_SUBSCREEN, HEAP_ID_52);
     FontID_Alloc(FONT_UNK_4, HEAP_ID_52);
 }
 
-void ov57_02238714(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreeFonts(CapsuleAppManager *appMan) {
     FontID_Release(FONT_UNK_4);
     FontID_Release(FONT_SUBSCREEN);
     FontOAM_Delete(appMan->graphicsMan.fontOAM[0]);
@@ -111,17 +111,17 @@ void ov57_02238714(CapsuleAppManager *appMan) {
     sub_020135AC(appMan->graphicsMan.fontOAMManager);
 }
 
-static void ov57_02238758(CapsuleAppManager *appMan) {
+static void CapsuleGraphics_LoadPaletteBuffer(CapsuleAppManager *appMan) {
     SpriteSystem_LoadPaletteBuffer(appMan->graphicsMan.paletteData, PLTTBUF_SUB_OBJ, appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, NARC_graphic_font, 8, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 30000);
 }
 
 void ov57_02238794(CapsuleAppManager *appMan) {
-    ov57_02238758(appMan);
+    CapsuleGraphics_LoadPaletteBuffer(appMan);
     ov57_022387E0(appMan, 0, 104, 165, 0);
     ov57_022387E0(appMan, 1, 192, 165, 0);
 }
 
-void ov57_022387C0(CapsuleAppManager *appMan, BOOL flag) {
+void ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(CapsuleAppManager *appMan, BOOL flag) {
     TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.fontOAM[0], flag);
     TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.fontOAM[1], flag);
 }
@@ -165,7 +165,7 @@ static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, in
     RemoveWindow(&window);
 }
 
-void ov57_022388E4(CapsuleAppManager *appMan, int pageCutoff) {
+void CapsuleGraphics_PopulateSealPage(CapsuleAppManager *appMan, int pageCutoff) {
     int i;
     int sealIndex;
     int uniqueSeals;
@@ -210,7 +210,7 @@ void ov57_022388E4(CapsuleAppManager *appMan, int pageCutoff) {
     }
 }
 
-void ov57_02238958(CapsuleAppManager *appMan) {
+void CapsuleGraphics_LoadPageSprites(CapsuleAppManager *appMan) {
     int i;
     int memberIdx;
     SpriteSystem *spriteSystem = appMan->graphicsMan.spriteSystem;
@@ -227,7 +227,7 @@ void ov57_02238958(CapsuleAppManager *appMan) {
     SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 35, TRUE, 28035);
 }
 
-void ov57_02238A00(CapsuleAppManager *appMan) {
+void CapsuleGraphics_InitPageSprites(CapsuleAppManager *appMan) {
     int i;
     ManagedSprite **pageSprites;
     ManagedSpriteTemplate spriteTemplate;
@@ -274,7 +274,7 @@ void ov57_02238A00(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_02238AC0(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreePageSprites(CapsuleAppManager *appMan) {
     for (int i = 0; i < SEALS_PER_PAGE; i++) {
         SpriteManager_UnloadCharObjById(appMan->graphicsMan.spriteManager, i + 25000);
         Sprite_DeleteAndFreeResources(appMan->pageSprites[i]);
@@ -291,11 +291,11 @@ void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1) {
     }
 }
 
-GF3DVramMan *ov57_02238B28(void) {
-    return GF_3DVramMan_Create(HEAP_ID_52, 0, 2, 0, 2, ov57_02238B48);
+GF3DVramMan *CapsuleGraphics_PipelineInit(void) {
+    return GF_3DVramMan_Create(HEAP_ID_52, 0, 2, 0, 2, CapsuleGraphics_G3DSetupCB);
 }
 
-static void ov57_02238B48(void) {
+static void CapsuleGraphics_G3DSetupCB(void) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
 
     G2_SetBG0Priority(1);
@@ -309,7 +309,7 @@ static void ov57_02238B48(void) {
     G3_ViewPort(0, 0, 255, 191);
 }
 
-void ov57_02238BCC(void) {
+void CapsuleGraphics_AllocTexPlttVram(void) {
     NNSGfdTexKey texKey;
     NNSGfdPlttKey plttKey;
     u32 texKeyAddr, plttKeyAddr;
@@ -326,7 +326,7 @@ void ov57_02238BCC(void) {
     sub_02014DA0();
 }
 
-void ov57_02238C0C(void) {
+void CapsuleGraphics_SwapBuffers(void) {
     int result;
 
     Thunk_G3X_Reset();
@@ -342,7 +342,7 @@ void ov57_02238C0C(void) {
     RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
 }
 
-void ov57_02238C30(BgConfig *bgConfig, Window *window, int bgLayer, CapsuleAppManager *appMan, int capsuleIndex) {
+void CapsuleGraphics_OpenCapsuleSelectionMenu(BgConfig *bgConfig, Window *window, int bgLayer, CapsuleAppManager *appMan, int capsuleIndex) {
     TouchscreenListMenuHeader menuTemplate;
     int field;
     int tilemapLeft, tilemapTop, width, height, baseTile, ySize;
@@ -428,14 +428,14 @@ void ov57_02238D80(CapsuleAppManager *appMan) {
     ListMenuItems_Delete(appMan->graphicsMan.listMenuItems);
 }
 
-void ov57_02238DAC(int index, s16 *x, s16 *y) {
+void CapsuleGraphics_GetCapsuleGridLocation(int index, s16 *x, s16 *y) {
     int tile = (index % 4);
     *x = 32 + 8 + (tile * 56);
     tile = (index >> 2);
     *y = 27 + (tile * 53);
 }
 
-void ov57_02238DD0(CapsuleAppManager *appMan) {
+void CapsuleGraphics_LoadPokemonIcons(CapsuleAppManager *appMan) {
     SpriteSystem *spriteSystem = appMan->graphicsMan.spriteSystem;
     SpriteManager *spriteManager = appMan->graphicsMan.spriteManager;
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
@@ -449,7 +449,7 @@ void ov57_02238DD0(CapsuleAppManager *appMan) {
     SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, iconIndex, 0, 18000);
 }
 
-void ov57_02238E48(CapsuleAppManager *appMan) {
+void CapsuleGraphics_InitPokemonIcons(CapsuleAppManager *appMan) {
     int isEgg;
     int species;
     u8 paletteIndex;
@@ -490,7 +490,7 @@ void ov57_02238E48(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_02238F48(CapsuleAppManager *appMan) {
+void CapsuleGraphics_SetPokemonSpritesPosition(CapsuleAppManager *appMan) {
     int i;
     int index;
     s16 x, y;
@@ -503,26 +503,26 @@ void ov57_02238F48(CapsuleAppManager *appMan) {
         index = appMan->capsules[i].partyIdx;
 
         if (index != 0xFF) {
-            ov57_02238DAC(i, &x, &y);
+            CapsuleGraphics_GetCapsuleGridLocation(i, &x, &y);
             ManagedSprite_SetPositionXY(appMan->pokemonSprites[index], x + CAPSULE_MON_X_OFFSET, y + CAPSULE_MON_Y_OFFSET);
             ManagedSprite_SetDrawFlag(appMan->pokemonSprites[index], 1);
         }
     }
 }
 
-void ov57_02238FC4(CapsuleAppManager *appMan) {
+void CapsuleGraphics_TickPokemonSprites(CapsuleAppManager *appMan) {
     for (int i = 0; i < appMan->appData->partyCount; i++) {
         ManagedSprite_TickFrame(appMan->pokemonSprites[i]);
     }
 }
 
-void ov57_02238FEC(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreePokemonSprites(CapsuleAppManager *appMan) {
     for (int i = 0; i < appMan->appData->partyCount; i++) {
         Sprite_DeleteAndFreeResources(appMan->pokemonSprites[i]);
     }
 }
 
-void ov57_02239014(CapsuleAppManager *appMan) {
+void CapsuleGraphics_AssignCapsules(CapsuleAppManager *appMan) {
     int dummy = 0;
     BallCapsule *capsule;
 
@@ -537,7 +537,7 @@ void ov57_02239014(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_02239058(CapsuleGraphicsManager *unk_0D4) {
+void CapsuleGraphics_InitSpriteManager(CapsuleGraphicsManager *unk_0D4) {
     unk_0D4->spriteSystem = SpriteSystem_Alloc(HEAP_ID_52);
     const OamManagerParam renderOAMTemplate = {
         0,
@@ -557,12 +557,12 @@ void ov57_02239058(CapsuleGraphicsManager *unk_0D4) {
 
     BOOL result;
     const SpriteResourceCountsListUnion spriteResourceCapacities = {
-        48 + 48,
-        16 + 16,
-        64,
-        64,
-        16,
-        16,
+        .numChar = 48 + 48,
+        .numPltt = 16 + 16,
+        .numCell = 64,
+        .numAnim = 64,
+        .numMcel = 16,
+        .numManm = 16,
     };
 
     unk_0D4->spriteManager = SpriteManager_New(unk_0D4->spriteSystem);
@@ -575,19 +575,19 @@ void ov57_02239058(CapsuleGraphicsManager *unk_0D4) {
     unk_0D4->touchscreenListMenuSpawner = TouchscreenListMenuSpawner_Create(HEAP_ID_52, unk_0D4->paletteData);
 }
 
-void ov57_022390F4(CapsuleGraphicsManager *unk_0D4) {
+void CapsuleGraphics_FreeSpriteSystem(CapsuleGraphicsManager *unk_0D4) {
     TouchscreenListMenuSpawner_Destroy(unk_0D4->touchscreenListMenuSpawner);
     SpriteSystem_FreeResourcesAndManager(unk_0D4->spriteSystem, unk_0D4->spriteManager);
     SpriteSystem_Free(unk_0D4->spriteSystem);
 }
 
-void ov57_02239114(CapsuleAppManager *appMan, NARC *narc) {
+void CapsuleGraphics_LoadSelectionResources(CapsuleAppManager *appMan, NARC *narc) {
     SpriteSystem_LoadCharResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, 14, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 45000);
     SpriteSystem_LoadCellResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, 16, TRUE, 47000);
     SpriteSystem_LoadAnimResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, 15, TRUE, 48000);
 }
 
-void ov57_02239184(CapsuleAppManager *appMan) {
+void CapsuleGraphics_InitSelectionIndicator(CapsuleAppManager *appMan) {
     ManagedSpriteTemplate spriteTemplate;
     int startingStates[4][3] = {
         { 136, 16,  1 },
@@ -618,7 +618,7 @@ void ov57_02239184(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_0223921C(CapsuleAppManager *appMan) {
+void CapsuleGraphics_TickSelectionIndicator(CapsuleAppManager *appMan) {
     if (appMan->graphicsMan.selectedCapsule == 0) {
         return;
     }
@@ -628,28 +628,28 @@ void ov57_0223921C(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_02239240(CapsuleAppManager *appMan, int flag) {
+void CapsuleGraphics_SetSelectionIndicatorDrawFlags(CapsuleAppManager *appMan, int flag) {
     for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
         ManagedSprite_SetDrawFlag(appMan->selectionIndicator[i], flag);
     }
 }
 
-void ov57_02239260(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreeSelectionIndicator(CapsuleAppManager *appMan) {
     for (int i = 0; i < CAPSULE_SELECTION_ARROWS; i++) {
         Sprite_DeleteAndFreeResources(appMan->selectionIndicator[i]);
     }
 }
 
-static void ov57_0223927C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, int bufferId, int paletteIdx, NARC *narc) {
+static void CapsuleGraphics_LoadCapsuleSprites(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, int bufferId, int paletteIdx, NARC *narc) {
     SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, charFileId, TRUE, vramType, charFileId + 11000);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(paletteData, bufferId, spriteSystem, spriteManager, narc, plttFileId, FALSE, paletteIdx, vramType, plttFileId + 11000);
     SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, cellFileId, TRUE, cellFileId + 11000);
     SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, animFileId, TRUE, animFileId + 11000);
 }
 
-void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
-    ov57_0223927C(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 17, 3, 19, 18, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
-    ov57_0223927C(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 32, 5, 34, 33, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
+void CapsuleGraphics_InitCapsuleSprites(CapsuleAppManager *appMan, NARC *narc) {
+    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 17, 3, 19, 18, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
+    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 32, 5, 34, 33, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
     ManagedSpriteTemplate spriteTemplate;
 
     for (int i = 0; i < MAX_CAPSULES; i++) {
@@ -672,7 +672,7 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
         appMan->capsuleSprites[i].sprite = SpriteSystem_NewSprite(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, &spriteTemplate);
         s16 x, y;
 
-        ov57_02238DAC(i, &x, &y);
+        CapsuleGraphics_GetCapsuleGridLocation(i, &x, &y);
         ManagedSprite_SetPositionXY(appMan->capsuleSprites[i].sprite, x, y);
     }
 
@@ -697,7 +697,7 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
 
     s16 x, y;
 
-    ov57_02238DAC(appMan->capsuleIndex[0], &x, &y);
+    CapsuleGraphics_GetCapsuleGridLocation(appMan->capsuleIndex[0], &x, &y);
     ManagedSprite_SetPositionXY(appMan->cursor[0], x, y);
     ManagedSprite_SetPositionXY(appMan->cursor[1], x, y);
     ManagedSprite_SetDrawPriority(appMan->cursor[1], 25);
@@ -705,9 +705,9 @@ void ov57_022392F4(CapsuleAppManager *appMan, NARC *narc) {
     ManagedSprite_SetAnim(appMan->cursor[1], 0);
 }
 
-void ov57_022394AC(CapsuleAppManager *appMan) {
-    ov57_02239014(appMan);
-    ov57_02238F48(appMan);
+void CapsuleGraphics_SetCapsuleSpriteAnim(CapsuleAppManager *appMan) {
+    CapsuleGraphics_AssignCapsules(appMan);
+    CapsuleGraphics_SetPokemonSpritesPosition(appMan);
 
     for (int i = 0; i < MAX_CAPSULES; i++) {
         if (appMan->capsuleSprites[i].sprite == NULL) {
@@ -718,7 +718,7 @@ void ov57_022394AC(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_022394D8(CapsuleAppManager *appMan, int capsuleIdx1, int capsuleIdx2) {
+void CapsuleGraphics_SwapCapsules(CapsuleAppManager *appMan, int capsuleIdx1, int capsuleIdx2) {
     int tmp;
     int index1;
     int index2;
@@ -746,10 +746,10 @@ void ov57_022394D8(CapsuleAppManager *appMan, int capsuleIdx1, int capsuleIdx2) 
     CopyCapsule(appMan->capsules[capsuleIdx1].capsule, &tmpCapsule);
     CopyCapsule(appMan->capsules[capsuleIdx2].capsule, appMan->capsules[capsuleIdx1].capsule);
     CopyCapsule(&tmpCapsule, appMan->capsules[capsuleIdx2].capsule);
-    ov57_022394AC(appMan);
+    CapsuleGraphics_SetCapsuleSpriteAnim(appMan);
 }
 
-void ov57_02239558(CapsuleAppManager *appMan) {
+void CapsuleGraphics_TickCursor(CapsuleAppManager *appMan) {
     for (int i = 0; i < MAX_CAPSULES; i++) {
         ManagedSprite_TickFrame(appMan->capsuleSprites[i].sprite);
     }
@@ -758,7 +758,7 @@ void ov57_02239558(CapsuleAppManager *appMan) {
     ManagedSprite_TickFrame(appMan->cursor[1]);
 }
 
-void ov57_02239588(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreeCapsuleSprites(CapsuleAppManager *appMan) {
     for (int i = 0; i < MAX_CAPSULES; i++) {
         Sprite_DeleteAndFreeResources(appMan->capsuleSprites[i].sprite);
     }
@@ -767,7 +767,7 @@ void ov57_02239588(CapsuleAppManager *appMan) {
     Sprite_DeleteAndFreeResources(appMan->cursor[1]);
 }
 
-void ov57_022395B8(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
+void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     {
         NNSG2dCharacterData *sp18;
         void *sp14 = GfGfxLoader_GetCharData(NARC_a_0_8_7, 8, TRUE, &sp18, HEAP_ID_52);
@@ -784,7 +784,7 @@ void ov57_022395B8(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxF
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xE0);
 }
 
-void ov57_02239670(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
+void CapsuleGraphics_LoadSubWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     LoadUserFrameGfx2(bgConfig, GF_BG_LYR_SUB_0, MESSAGE_BOX_TILE_OFFSET, MESSAGE_BOX_PLTT_OFFSET, messageBoxFrame, HEAP_ID_52);
     PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E640(messageBoxFrame), HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xC0);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_SUB_0, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_52);
@@ -794,7 +794,7 @@ void ov57_02239670(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxF
     PaletteData_LoadNarc(paletteData, NARC_a_0_8_7, 0, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xB0);
 }
 
-void ov57_02239728(Window *window, int frame, int entryID, BOOL drawFrame) {
+void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL drawFrame) {
     MsgData *messageLoader;
     String *string;
 
@@ -822,7 +822,7 @@ void ov57_02239728(Window *window, int frame, int entryID, BOOL drawFrame) {
     DestroyMsgData(messageLoader);
 }
 
-void ov57_022397B0(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile) {
+void CapsuleGraphics_InitMessageWindow(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, 14, baseTile);
     DrawFrameAndWindow2(window, 1, 1, 12);
@@ -830,31 +830,31 @@ void ov57_022397B0(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapL
     ScheduleWindowCopyToVram(window);
 }
 
-static void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile) {
+static void CapsuleGraphics_InitWindow_NoPushToVRAM(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, left, top, width, height, 14, baseTile);
     FillWindowPixelBuffer(window, 15);
 }
 
-static void ov57_02239868(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile, int palette) {
+static void CapsuleGraphics_InitWindow(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile, int palette) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, palette, baseTile);
     FillWindowPixelBuffer(window, 15);
     ScheduleWindowCopyToVram(window);
 }
 
-void ov57_022398C4(CapsuleAppManager *appMan) {
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[5], WINDOW_BGLAYER, 3, 2, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_1, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[6], WINDOW_BGLAYER, 10, 2, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_2, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[7], WINDOW_BGLAYER, 3, 5, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_3, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[8], WINDOW_BGLAYER, 10, 5, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_4, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[9], WINDOW_BGLAYER, 3, 8, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_5, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[10], WINDOW_BGLAYER, 10, 8, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_6, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[11], WINDOW_BGLAYER, 3, 11, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_7, WINDOW_PALETTE);
-    ov57_02239868(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[12], WINDOW_BGLAYER, 10, 11, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_8, WINDOW_PALETTE);
+void CapsuleGraphics_InitWindows(CapsuleAppManager *appMan) {
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[5], WINDOW_BGLAYER, 3, 2, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_1, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[6], WINDOW_BGLAYER, 10, 2, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_2, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[7], WINDOW_BGLAYER, 3, 5, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_3, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[8], WINDOW_BGLAYER, 10, 5, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_4, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[9], WINDOW_BGLAYER, 3, 8, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_5, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[10], WINDOW_BGLAYER, 10, 8, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_6, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[11], WINDOW_BGLAYER, 3, 11, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_7, WINDOW_PALETTE);
+    CapsuleGraphics_InitWindow(appMan->graphicsMan.bgConfig, &appMan->graphicsMan.windows[12], WINDOW_BGLAYER, 10, 11, CAPSULE_WINDOW_WIDTH, CAPSULE_WINDOW_HEIGHT, CAPSULE_BASE_TILE_8, WINDOW_PALETTE);
 }
 
-void ov57_022399F8(CapsuleAppManager *appMan) {
+void CapsuleGraphics_UpdateAllSealCountText(CapsuleAppManager *appMan) {
     int index;
     int sealID;
     int sealCount;
@@ -884,7 +884,7 @@ void ov57_022399F8(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_02239A8C(CapsuleAppManager *appMan, int index) {
+void CapsuleGraphics_UpdateSealCountText(CapsuleAppManager *appMan, int index) {
     int index_dupe;
     int sealID;
     int sealCount;
@@ -910,14 +910,14 @@ void ov57_02239A8C(CapsuleAppManager *appMan, int index) {
     String_Delete(string);
 }
 
-void ov57_02239B0C(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreeSealCountWindows(CapsuleAppManager *appMan) {
     for (int i = 5; i < CAPSULE_MENU_WINDOW_NUM; i++) {
         ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[i]);
         RemoveWindow(&appMan->graphicsMan.windows[i]);
     }
 }
 
-void ov57_02239B2C(Window *window, int entryID) {
+void CapsuleGraphics_UpdateSealNameText(Window *window, int entryID) {
     MsgData *messageLoader;
     String *string;
 
@@ -937,21 +937,21 @@ void ov57_02239B2C(Window *window, int entryID) {
     DestroyMsgData(messageLoader);
 }
 
-void ov57_02239B94(void) {
+void CapsuleGraphics_StartDisplay(void) {
     GfGfx_BothDispOn();
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, TRUE);
 }
 
-void ov57_02239BAC(void) {
+void CapsuleGraphics_FadeIn(void) {
     BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_52);
 }
 
-void ov57_02239BCC(void) {
+void CapsuleGraphics_FadeOut(void) {
     BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_52);
 }
 
-void ov57_02239BEC(CapsuleAppManager *appMan, NARC *narc) {
+void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) {
     NarcId narcID = NARC_a_0_8_7;
     int narcTileIdx = 8;
     int narcTilemapIdx = 12;
@@ -970,7 +970,7 @@ void ov57_02239BEC(CapsuleAppManager *appMan, NARC *narc) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
 }
 
-void ov57_02239C88(CapsuleAppManager *appMan, NARC *narc) {
+void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) {
     NarcId narcID = NARC_a_0_8_7;
     int narcTileIdx = 7;
     int narcTilemapIdx = 11;
@@ -982,7 +982,7 @@ void ov57_02239C88(CapsuleAppManager *appMan, NARC *narc) {
     PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20 * 2, 0);
 }
 
-void ov57_02239CE8(CapsuleAppManager *appMan, NARC *narc) {
+void CapsuleGraphics_LoadBgLayer7Tilemap(CapsuleAppManager *appMan, NARC *narc) {
     NarcId narcID = NARC_a_0_8_7;
     int narcTileIdx = 7;
     int narcTilemapIdx = 10;
@@ -994,7 +994,7 @@ void ov57_02239CE8(CapsuleAppManager *appMan, NARC *narc) {
     PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_SUB_BG, 0x40, 0);
 }
 
-void ov57_02239D48(CapsuleAppManager *appMan, NARC *narc) {
+void CapsuleGraphics_LoadCapsuleUI(CapsuleAppManager *appMan, NARC *narc) {
     SpriteSystem *spriteSystem = appMan->graphicsMan.spriteSystem;
     SpriteManager *spriteManager = appMan->graphicsMan.spriteManager;
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
@@ -1014,7 +1014,7 @@ void ov57_02239D48(CapsuleAppManager *appMan, NARC *narc) {
     SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, 24, TRUE, 28024);
 }
 
-void ov57_02239EB4(CapsuleAppManager *appMan) {
+void CapsuleGraphics_InitCapsuleUI(CapsuleAppManager *appMan) {
     int i;
     ManagedSprite **pageSprites;
     ManagedSpriteTemplate spriteTemplate;
@@ -1101,11 +1101,11 @@ void ov57_02239EB4(CapsuleAppManager *appMan) {
         ManagedSprite_SetPositionXY(appMan->pageSprites[i], xyPos[i][0], xyPos[i][1]);
         ManagedSprite_TickFrame(appMan->pageSprites[i]);
         ManagedSprite_SetAnimationFrame(appMan->pageSprites[i], 0);
-        ov57_022385A4(&appMan->graphicsMan.touchscreenHitboxes[i], appMan->pageSprites[i], xyOffset[i][0], xyOffset[i][1]);
+        CapsuleGraphics_OffsetSprite(&appMan->graphicsMan.touchscreenHitboxes[i], appMan->pageSprites[i], xyOffset[i][0], xyOffset[i][1]);
     }
 }
 
-void ov57_0223A034(CapsuleAppManager *appMan, int flag) {
+void CapsuleGraphics_SetPageSpritesDrawFlag(CapsuleAppManager *appMan, int flag) {
     for (int i = 0; i < 13; i++) {
         if (appMan->pageSprites[i] == NULL) {
             continue;
@@ -1115,10 +1115,10 @@ void ov57_0223A034(CapsuleAppManager *appMan, int flag) {
     }
 }
 
-void ov57_0223A058(CapsuleAppManager *appMan) {
+void CapsuleGraphics_Dummy(CapsuleAppManager *appMan) {
 }
 
-void ov57_0223A05C(CapsuleAppManager *appMan) {
+void CapsuleGraphics_FreeUISprites(CapsuleAppManager *appMan) {
     for (int i = 8; i < 13; i++) {
         Sprite_DeleteAndFreeResources(appMan->pageSprites[i]);
     }

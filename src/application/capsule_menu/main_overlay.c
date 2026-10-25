@@ -60,7 +60,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     }
     ov57_02237CA8(HEAP_ID_52);
     ov57_0223BB5C();
-    appManager->graphicsMan.gf3dVramMan = ov57_02238B28();
+    appManager->graphicsMan.gf3dVramMan = CapsuleGraphics_PipelineInit();
     appManager->graphicsMan.bgConfig = BgConfig_Alloc(HEAP_ID_52);
     GF_CreateVramTransferManager(0x40, HEAP_ID_52);
     appManager->graphicsMan.paletteData = PaletteData_Init(HEAP_ID_52);
@@ -70,18 +70,18 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_MAIN_OBJ, 0x200, HEAP_ID_52);
     PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_SUB_OBJ, 0x200, HEAP_ID_52);
     ov57_02237CEC(appManager->graphicsMan.bgConfig);
-    ov57_02238BCC();
+    CapsuleGraphics_AllocTexPlttVram();
     appManager->graphicsMan.pokepicManager = PokepicManager_Create(HEAP_ID_52);
     appManager->graphicsMan.pokepicAnimManager = sub_02016EDC(HEAP_ID_52, 1, 0);
     u32 frame = Options_GetFrame(appManager->appData->options);
-    ov57_022395B8(appManager->graphicsMan.bgConfig, appManager->graphicsMan.paletteData, frame);
-    ov57_02239670(appManager->graphicsMan.bgConfig, appManager->graphicsMan.paletteData, frame);
-    ov57_02239058(&appManager->graphicsMan);
+    CapsuleGraphics_LoadMainWindow(appManager->graphicsMan.bgConfig, appManager->graphicsMan.paletteData, frame);
+    CapsuleGraphics_LoadSubWindow(appManager->graphicsMan.bgConfig, appManager->graphicsMan.paletteData, frame);
+    CapsuleGraphics_InitSpriteManager(&appManager->graphicsMan);
     EnableTouchPad();
     InitializeTouchPad(4);
     ov57_0223BB84(appManager);
     Main_SetVBlankIntrCB(ov57_02237E38, appManager);
-    ov57_022386F0(appManager);
+    CapsuleGraphics_InitFontOAMManager(appManager);
     return TRUE;
 }
 
@@ -91,7 +91,7 @@ int ov57_02237AF8(OverlayManager *manager, int *state) {
         return TRUE;
     }
     PokepicManager_DrawAll(appManager->graphicsMan.pokepicManager);
-    ov57_02238C0C();
+    CapsuleGraphics_SwapBuffers();
     return FALSE;
 }
 
@@ -124,8 +124,8 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     TouchHitboxController_Destroy(appManager->graphicsMan.touchHitboxController);
     PokepicManager_Delete(appManager->graphicsMan.pokepicManager);
     sub_02016F2C(appManager->graphicsMan.pokepicAnimManager);
-    ov57_02238714(appManager);
-    ov57_022390F4(&appManager->graphicsMan);
+    CapsuleGraphics_FreeFonts(appManager);
+    CapsuleGraphics_FreeSpriteSystem(&appManager->graphicsMan);
     GF_DestroyVramTransferManager();
     GF_3DVramMan_Delete(appManager->graphicsMan.gf3dVramMan);
     ov57_02237CDC(HEAP_ID_52);

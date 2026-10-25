@@ -39,5 +39,5 @@ void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex) {
         SetMonData(appMan->appData->mons[appMan->capsules[capsuleIndex].partyIdx], MON_DATA_BALL_CAPSULE_ID, &sp0);
     }
     appMan->capsules[capsuleIndex].partyIdx = 0xFF;
-    ov57_022394AC(appMan);
+    CapsuleGraphics_SetCapsuleSpriteAnim(appMan);
 }
