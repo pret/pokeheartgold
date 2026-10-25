@@ -44,19 +44,19 @@
 #define CAPSULE_WINDOW_HEIGHT       2
 #define CAPSULE_WINDOW_WIDTH        4
 
-const int ov57_0223BDF4[] = {
-    0x00000018,
-    0x00000019,
-    0x0000001B,
-    0x00000028,
-    0x00000029,
-    0x0000002B,
-    0x00000048,
-    0x00000049,
-    0x0000004B,
-};
+static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette);
+static void ov57_02238B48(void);
+static void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile);
 
-void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
+// clang-format off
+static const int ov57_0223BDF4[] = {
+    24, 25, 27,
+    40, 41, 43,
+    72, 73, 75,
+};
+// clang-format on
+
+static void ov57_022385A4(TouchscreenHitbox *rect, ManagedSprite *sprite, int xOffset, int yOffset) {
     s16 x, y;
 
     ManagedSprite_GetPositionXY(sprite, &x, &y);
@@ -111,7 +111,7 @@ void ov57_02238714(CapsuleAppManager *appMan) {
     sub_020135AC(appMan->graphicsMan.fontOAMManager);
 }
 
-void ov57_02238758(CapsuleAppManager *appMan) {
+static void ov57_02238758(CapsuleAppManager *appMan) {
     SpriteSystem_LoadPaletteBuffer(appMan->graphicsMan.paletteData, PLTTBUF_SUB_OBJ, appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, NARC_graphic_font, 8, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 30000);
 }
 
@@ -126,7 +126,7 @@ void ov57_022387C0(CapsuleAppManager *appMan, BOOL flag) {
     TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.fontOAM[1], flag);
 }
 
-void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette) {
+static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette) {
     TextOBJTemplate fontOAMManager;
     String *string;
     int unk_448;
@@ -295,7 +295,7 @@ GF3DVramMan *ov57_02238B28(void) {
     return GF_3DVramMan_Create(HEAP_ID_52, 0, 2, 0, 2, ov57_02238B48);
 }
 
-void ov57_02238B48(void) {
+static void ov57_02238B48(void) {
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
 
     G2_SetBG0Priority(1);
@@ -640,7 +640,7 @@ void ov57_02239260(CapsuleAppManager *appMan) {
     }
 }
 
-void ov57_0223927C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, int bufferId, int paletteIdx, NARC *narc) {
+static void ov57_0223927C(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, int bufferId, int paletteIdx, NARC *narc) {
     SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, charFileId, TRUE, vramType, charFileId + 11000);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(paletteData, bufferId, spriteSystem, spriteManager, narc, plttFileId, FALSE, paletteIdx, vramType, plttFileId + 11000);
     SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, cellFileId, TRUE, cellFileId + 11000);
@@ -830,13 +830,13 @@ void ov57_022397B0(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapL
     ScheduleWindowCopyToVram(window);
 }
 
-void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile) {
+static void ov57_02239814(BgConfig *bgConfig, Window *window, int bgLayer, int left, int top, int width, int height, int baseTile) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, left, top, width, height, 14, baseTile);
     FillWindowPixelBuffer(window, 15);
 }
 
-void ov57_02239868(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile, int palette) {
+static void ov57_02239868(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile, int palette) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, palette, baseTile);
     FillWindowPixelBuffer(window, 15);
