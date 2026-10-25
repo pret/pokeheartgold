@@ -42,8 +42,13 @@ int ov57_0223B180(CapsuleAppManager *appMan);
 int ov57_0223B288(CapsuleAppManager *appMan);
 int ov57_0223B2EC(CapsuleAppManager *appMan);
 int ov57_0223B308(CapsuleAppManager *appMan);
+int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1);
+int ov57_0223B3A4(CapsuleAppManager *appMan, int a1);
+int ov57_0223B3F8(CapsuleAppManager *appMan);
+int ov57_0223B45C(CapsuleAppManager *appMan);
 BOOL ov57_0223B478(int *a0);
 void ov57_0223B504(CapsuleAppManager *appMan, int a1, int a2);
+int ov57_0223B578(CapsuleAppManager *appMan);
 int ov57_0223B620(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
 void ov57_0223B75C(CapsuleAppManager *appMan);
@@ -855,12 +860,12 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
     case 12:
         PlaySE(SEQ_SE_DP_DECIDE);
         ov57_02237E88(appMan->unk_000, 0);
-        return 5;
+        return CAPSULE_FADE_OUT_STATE_ID;
     case 13:
         ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
         ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC);
         PlaySE(SEQ_SE_DP_SELECT);
-        return 4;
+        return CAPSULE_CAPSULE_MENU_STATE_ID;
     default:
         ov57_02238134(appMan);
         ov57_0223853C(appMan);
@@ -877,12 +882,12 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
             ov57_02239728(&appMan->unk_0D4.unk_018[3], 3, msg_0011_00008, FALSE);
             ov57_02238C30(appMan->unk_0D4.unk_010, &appMan->unk_0D4.unk_018[1], GF_BG_LYR_MAIN_1, appMan, appMan->unk_3EC);
             PlaySE(SEQ_SE_DP_SELECT);
-            return 4;
+            return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
         break;
     }
 
-    return 3;
+    return CAPSULE_CAPSULE_SELECTION_STATE_ID;
 }
 
 int ov57_0223B288(CapsuleAppManager *appMan) {
@@ -893,14 +898,71 @@ int ov57_0223B288(CapsuleAppManager *appMan) {
     } else if (gSystem.newKeys & PAD_BUTTON_A) {
         result = ov57_0223B1A4(appMan, 13);
     } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
-        result = 3;
+        result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
     } else {
         sp0 = appMan->unk_3EC;
         if (!ov57_0223B478(&sp0)) {
-            result = 3;
+            result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
         } else {
             result = ov57_0223B1A4(appMan, sp0);
         }
     }
     return result;
+}
+
+int ov57_0223B2EC(CapsuleAppManager *appMan) {
+    int result = ov57_0223B578(appMan);
+    if (result < 0) {
+        return CAPSULE_CAPSULE_SELECTION_STATE_ID;
+    } else {
+        return ov57_0223B1A4(appMan, result);
+    }
+}
+
+int ov57_0223B308(CapsuleAppManager *appMan) {
+    ov57_0223B12C(appMan);
+    if (appMan->unk_40C == 0) {
+        return ov57_0223B3F8(appMan);
+    } else {
+        return ov57_0223B45C(appMan);
+    }
+}
+
+int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1) {
+    if (appMan->unk_3EC == appMan->unk_3F0) {
+        a1 = FALSE;
+    }
+    if (a1) {
+        ov57_022394D8(appMan, appMan->unk_3EC, appMan->unk_3F0);
+        ov57_0223B504(appMan, 1, 1);
+        ov57_02239728(&appMan->unk_0D4.unk_018[0], 0, msg_0011_00011, TRUE);
+        PlaySE(SEQ_SE_DP_SELECT);
+        return CAPSULE_FADE_IN_WAIT_STATE_ID;
+    } else {
+        ManagedSprite_SetDrawFlag(appMan->unk_31C[1], FALSE);
+        ManagedSprite_SetAnim(appMan->unk_31C[0], 0);
+        ov57_0223B504(appMan, 0, 0);
+        PlaySE(SEQ_SE_DP_DECIDE);
+        return CAPSULE_CAPSULE_SELECTION_STATE_ID;
+    }
+}
+
+int ov57_0223B3A4(CapsuleAppManager *appMan, int a1) {
+    switch (a1) {
+    case 12:
+        return ov57_0223B32C(appMan, FALSE);
+    case 13:
+        return ov57_0223B32C(appMan, TRUE);
+    default:
+        appMan->unk_3F0 = a1;
+        ov57_0223B504(appMan, 1, 0);
+        if (appMan->unk_40C == 0) {
+            PlaySE(SEQ_SE_DP_SELECT);
+        } else {
+            return ov57_0223B32C(appMan, TRUE);
+        }
+        break;
+    }
+
+    return CAPSULE_FADE_IN_STATE_ID;
 }
