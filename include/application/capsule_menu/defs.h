@@ -127,17 +127,12 @@ u8 ov57_02237E78(CapsuleAppData *appData);
 void ov57_02237E80(CapsuleAppData *appData, u8 a1);
 void ov57_02237E88(CapsuleAppData *appData, u8 a1);
 
-void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y);
-void ov57_02237EA8(TouchscreenHitbox *rect);
 void ov57_02237EB8(TouchscreenHitbox *rect, ManagedSprite *sprite, BOOL touchingSprite);
 void ov57_02237F14(CapsuleAppManager *appManager);
 void ov57_02237F3C(CapsuleAppManager *appManager);
 int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex);
 BOOL ov57_02238028(CapsuleAppManager *appMan);
-void ov57_02238044(CapsuleAppManager *appMan, u8 index);
-void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex);
 void ov57_02238134(CapsuleAppManager *appMan);
-BOOL ov57_02238260(CapsuleAppManager *appMan, u8 index);
 BOOL ov57_022382F8(CapsuleAppManager *appMan, u32 touchscreenState, u8 index);
 void ov57_022383AC(CapsuleAppManager *appMan);
 void ov57_022383D0(CapsuleAppManager *appMan, int flag);

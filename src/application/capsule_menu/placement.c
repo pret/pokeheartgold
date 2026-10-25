@@ -3,14 +3,17 @@
 
 #include "overlay_07.h"
 
-void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
+static void ov57_02238044(CapsuleAppManager *appMan, u8 index);
+static BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex);
+
+static void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
     rect->rect.top = y - 10;
     rect->rect.left = x - 10;
     rect->rect.bottom = y + 10;
     rect->rect.right = x + 10;
 }
 
-void ov57_02237EA8(TouchscreenHitbox *rect) {
+static void ov57_02237EA8(TouchscreenHitbox *rect) {
     rect->rect.top = 0;
     rect->rect.left = 0;
     rect->rect.bottom = 192;
@@ -103,7 +106,7 @@ BOOL ov57_02238028(CapsuleAppManager *appMan) {
     return FALSE;
 }
 
-void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
+static void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         if (appMan->sealRenderInfo[i].shouldRender != TRUE) {
             continue;
@@ -125,7 +128,7 @@ void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
 
 #define MAKE_OBJECT_TAG(type, fileIdx) (20000 + (type) * 1000 + (fileIdx))
 
-void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
+static void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
     SpriteSystem *spriteSystem = appMan->graphicsMan.spriteSystem;
     SpriteManager *spriteManager = appMan->graphicsMan.spriteManager;
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
@@ -212,7 +215,7 @@ void ov57_02238134(CapsuleAppManager *appMan) {
     }
 }
 
-BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
+static BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
     int dummy;
     SealRenderInfo *sealInfo;
     ManagedSpriteTemplate spriteTemplate;
