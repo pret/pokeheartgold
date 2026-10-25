@@ -259,13 +259,13 @@ static int PokedexApp_MainSeq_00(PokedexAppData *pokedexApp) {
     GfGfx_EngineBSetPlanes(GX_PLANEMASK_NONE);
     G2_BlendNone();
     G2S_BlendNone();
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
     SetKeyRepeatTimers(4, 8);
     ov18_021E62A8(pokedexApp);
     ov18_021E8410(pokedexApp);
-    sub_020880CC(0, HEAP_ID_POKEDEX_APP);
+    App_StartScreenFade(0, HEAP_ID_POKEDEX_APP);
     FontID_Alloc(4, HEAP_ID_POKEDEX_APP);
     pokedexApp->gfxNarc = NARC_New(NARC_graphic_zukan_gra, HEAP_ID_POKEDEX_APP);
     ov18_021E6FFC(pokedexApp);
@@ -296,7 +296,7 @@ static int PokedexApp_MainSeq_01(PokedexAppData *pokedexApp) {
     FontID_Release(4);
     ov18_021E84EC(pokedexApp);
     ov18_021E62E8(pokedexApp);
-    sub_02021238();
+    DisableTouchPad();
     G2_BlendNone();
     G2S_BlendNone();
     GfGfx_EngineASetPlanes(GX_PLANEMASK_NONE);

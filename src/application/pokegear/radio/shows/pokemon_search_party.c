@@ -114,7 +114,7 @@ void RadioShow_PokemonSearchParty_Init(RadioShow *radioShow) {
     SaveVarsFlags *varsFlags;
     PlayerProfile *profile;
 
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0419_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0419, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0419_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0419_00001, radioShow->showHost);
     MI_CpuClear8(data->episodeUnlockFlags, sizeof(data->episodeUnlockFlags));

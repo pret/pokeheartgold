@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanTouchSpeedUpPrint
 .public FontID_Alloc
@@ -115,9 +115,9 @@
 .public ScheduleBgTilemapBufferTransfer
 .public TextPrinterCheckActive
 .public AddTextPrinterParameterizedWithColor
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_EngineATogglePlanes
 .public GfGfx_EngineASetPlanes

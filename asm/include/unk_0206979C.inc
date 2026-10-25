@@ -1,10 +1,10 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public GfGfxLoader_LoadFromOpenNarc
 .public Heap_Free
 .public HeapExp_FndInitAllocator
 .public GF3dRender_DrawModel
-.public sub_02020DA4
+.public MTX_Rot33Angles
 .public GF_AssertFail
 .public sub_020697DC
 .public sub_02069818

@@ -1,9 +1,9 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_D49R0101.h"
 #include "msgdata/msg/msg_0138_D49R0101.h"
-	.include "asm/macros/script.inc"
+#include "msgdata/msg/msg_0191.h"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_D49R0101_000
 	ScrDef scr_seq_D49R0101_001
@@ -280,9 +280,9 @@ scr_seq_D49R0101_001:
 _0377:
 	TouchscreenMenuHide
 	MenuInitStdGmm 1, 1, 0, 1, VAR_SPECIAL_RESULT
-	MenuItemAdd 325, 255, 0
-	MenuItemAdd 324, 255, 1
-	MenuItemAdd 323, 255, 2
+	MenuItemAdd msg_0191_00325, 255, 0
+	MenuItemAdd msg_0191_00324, 255, 1
+	MenuItemAdd msg_0191_00323, 255, 2
 	MenuExec
 	Switch VAR_SPECIAL_RESULT
 	Case 0, _03C7

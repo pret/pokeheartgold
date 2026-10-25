@@ -1,0 +1,37 @@
+{
+  "key": 7517,
+  "messages": [
+    {
+      "id": "msg_0795_00000",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0795_00001",
+      "en_US": "Central Federal District"
+    },
+    {
+      "id": "msg_0795_00002",
+      "en_US": "Far Eastern Federal District "
+    },
+    {
+      "id": "msg_0795_00003",
+      "en_US": "Northwestern Federal District"
+    },
+    {
+      "id": "msg_0795_00004",
+      "en_US": "Volga Federal District "
+    },
+    {
+      "id": "msg_0795_00005",
+      "en_US": "Siberian Federal District"
+    },
+    {
+      "id": "msg_0795_00006",
+      "en_US": "Southern Federal District"
+    },
+    {
+      "id": "msg_0795_00007",
+      "en_US": "Urals Federal District "
+    }
+  ]
+}

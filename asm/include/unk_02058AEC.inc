@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PlaySE
 .public NewMsgDataFromNarc
@@ -13,7 +13,7 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
 .public ListMenuCursorNew

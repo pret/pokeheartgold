@@ -1,0 +1,22 @@
+{
+  "key": 17514,
+  "messages": [
+    {
+      "id": "msg_0118_D37R0103_00000",
+      "en_US": "MACHOKE, help us move the container!\r"
+    },
+    {
+      "id": "msg_0118_D37R0103_00001",
+      "en_US": [
+        "This warehouse gets cleaned in a matter\n",
+        "of seconds thanks to MACHOKE.\r",
+        "The stuff on the ground is junk.\n",
+        "Take it if you want it!"
+      ]
+    },
+    {
+      "id": "msg_0118_D37R0103_00002",
+      "en_US": "MACHOKE: Maaacho!"
+    }
+  ]
+}

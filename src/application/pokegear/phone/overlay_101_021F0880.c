@@ -224,10 +224,10 @@ void PokegearPhone_ContactList_FlushAndDestroyLinkedList(PokegearPhoneAppData *p
     u8 i = 0;
     PhoneContactListNode *ptr;
 
-    phoneApp->saveContacts[i++].id = phoneApp->contactListHead->contact.id;
+    phoneApp->saveContacts[i++] = phoneApp->contactListHead->contact;
     ptr = phoneApp->contactListHead->next;
     while (ptr != phoneApp->contactListHead) {
-        phoneApp->saveContacts[i++].id = ptr->contact.id;
+        phoneApp->saveContacts[i++] = ptr->contact;
         ptr = ptr->next;
     }
     SavePokegear_SetPhonebookFromBuffer(phoneApp->pokegear->savePokegear, phoneApp->saveContacts, phoneApp->numContacts);
@@ -276,10 +276,10 @@ void PokegearPhone_SortList(PokegearPhoneAppData *phoneApp, u8 sortParam) {
     PhoneBookEntry *phoneBook = phoneApp->callContext->phoneEntries;
     for (int i = 0; i < phoneApp->numContacts - 1; ++i) {
         for (int j = phoneApp->numContacts - 1; j > i; --j) {
-            if (phoneBook[phoneApp->saveContacts[j].id].sortParam[sortParam] < phoneBook[phoneApp->saveContacts[i].id].sortParam[sortParam]) {
-                u8 tmp = phoneApp->saveContacts[i].id;
-                phoneApp->saveContacts[i].id = phoneApp->saveContacts[j].id;
-                phoneApp->saveContacts[j].id = tmp;
+            if (phoneBook[phoneApp->saveContacts[j]].sortParam[sortParam] < phoneBook[phoneApp->saveContacts[i]].sortParam[sortParam]) {
+                u8 tmp = phoneApp->saveContacts[i];
+                phoneApp->saveContacts[i] = phoneApp->saveContacts[j];
+                phoneApp->saveContacts[j] = tmp;
             }
         }
     }

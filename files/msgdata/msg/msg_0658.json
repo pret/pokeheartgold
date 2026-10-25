@@ -1,0 +1,143 @@
+{
+  "key": 52094,
+  "messages": [
+    {
+      "id": "msg_0658_00000",
+      "en_US": "Bugsy"
+    },
+    {
+      "id": "msg_0658_00001",
+      "en_US": [
+        "Huh? I can’t hear you very well!\n",
+        "I think we’ve got a bad connection.\r",
+        "Call me back from somewhere else!"
+      ]
+    },
+    {
+      "id": "msg_0658_00002",
+      "en_US": [
+        "Hello? How are you?\n",
+        "I’m doing great as usual!\r"
+      ]
+    },
+    {
+      "id": "msg_0658_00003",
+      "en_US": [
+        "There are so many stronger Gym\n",
+        "Leaders than me out there.\r",
+        "You’re trying to visit every Gym around\n",
+        "the region, aren’t you?\f",
+        "That’s great! Keep up the good work!"
+      ]
+    },
+    {
+      "id": "msg_0658_00004",
+      "en_US": [
+        "On Thursdays around noon, I’m\n",
+        "usually free.\f",
+        "If you want to see my Bug-type Pokémon\f",
+        "again, you should call me then!"
+      ]
+    },
+    {
+      "id": "msg_0658_00005",
+      "en_US": [
+        "Oh, you called at just the right time!\n",
+        "I’m not doing anything right now.\f",
+        "Wanna battle again? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0658_00006",
+      "en_US": [
+        "All right!\r",
+        "See you at the Fighting Dojo in\n",
+        "Saffron City!"
+      ]
+    },
+    {
+      "id": "msg_0658_00007",
+      "en_US": [
+        "I see...\n",
+        "Well, there’s no helping that..."
+      ]
+    },
+    {
+      "id": "msg_0658_00008",
+      "en_US": [
+        "Huh?\n",
+        "It’s great that you want to battle,\f",
+        "but don’t you have other plans?\r",
+        "You should take care of those plans\n",
+        "first, and then give me a call."
+      ]
+    },
+    {
+      "id": "msg_0658_00009",
+      "en_US": [
+        "All right, I’ll be waiting for you at the\n",
+        "Fighting Dojo in Saffron City!\f",
+        "Race you there!"
+      ]
+    },
+    {
+      "id": "msg_0658_00010",
+      "en_US": [
+        "Yeah, this is Bugsy...\n",
+        "What’s up?\r"
+      ]
+    },
+    {
+      "id": "msg_0658_00011",
+      "en_US": [
+        "Hey, didn’t we make plans to meet at\n",
+        "the Fighting Dojo in Saffron City for a\f",
+        "battle? Did you forget or something?"
+      ]
+    },
+    {
+      "id": "msg_0658_00012",
+      "en_US": [
+        "You know, everyone’s really into\n",
+        "Bug-type Pokémon when they’re kids.\r",
+        "But then for some reason, as people\n",
+        "grow up, at some point they all start\f",
+        "to like Bug-type Pokémon less and less.\r",
+        "How about you?\n",
+        "Do you still like Bug-type Pokémon?\r",
+        "Even if I grow up I’ll never stop liking\n",
+        "Bug-type Pokémon, no way!"
+      ]
+    },
+    {
+      "id": "msg_0658_00013",
+      "en_US": [
+        "My Gym has such a different trick to it,\n",
+        "doesn’t it?\r",
+        "It may seem like it was really difficult\n",
+        "to get a trick like that set up...\f",
+        "But the truth is, it was actually\f",
+        "pretty easy.\r",
+        "First we ran the ropes through the\n",
+        "Gym, then all the Pokémon helped us\f",
+        "finish everything else up!"
+      ]
+    },
+    {
+      "id": "msg_0658_00014",
+      "en_US": [
+        "I think I’ve already mentioned this to\n",
+        "you, but did you know I’m doing\f",
+        "research on Bug-type Pokémon?\r",
+        "There’s so many different kinds, it’s a\n",
+        "bit difficult, you know?\r",
+        "I’m just studying Bug-type Pokémon,\n",
+        "and yet it’s still this difficult.\r",
+        "People like Professor Elm and\n",
+        "Professor Oak who study all the\f",
+        "different types of Pokémon are really\f",
+        "something else, you know?"
+      ]
+    }
+  ]
+}

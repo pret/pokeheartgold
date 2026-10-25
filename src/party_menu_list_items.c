@@ -129,7 +129,7 @@ static void PartyMonContextMenuAction_Take(PartyMenu *partyMenu, int *pState) {
     Pokemon *mon;
     BOOL griseousOrbResult;
 
-    sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+    ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
@@ -227,7 +227,7 @@ static void PartyMonContextMenuAction_ReadMail(PartyMenu *partyMenu, int *pState
 }
 
 static void PartyMonContextMenuAction_TakeMail(PartyMenu *partyMenu, int *pState) {
-    sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+    ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00044, TRUE);

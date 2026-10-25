@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanABSpeedUpPrint
 .public TextFlags_SetAutoScrollParam
@@ -73,9 +73,9 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_EngineATogglePlanes

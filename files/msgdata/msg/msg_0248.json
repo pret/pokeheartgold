@@ -1,0 +1,157 @@
+{
+  "key": 42953,
+  "messages": [
+    {
+      "id": "msg_0248_00000",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0248_00001",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0248_00002",
+      "en_US": "WATER"
+    },
+    {
+      "id": "msg_0248_00003",
+      "en_US": "PLANT BERRY"
+    },
+    {
+      "id": "msg_0248_00004",
+      "en_US": "FERTILIZE"
+    },
+    {
+      "id": "msg_0248_00005",
+      "en_US": "TAKE BERRIES"
+    },
+    {
+      "id": "msg_0248_00006",
+      "en_US": [
+        "Touch one of the\n",
+        "Berry Pots.\n"
+      ]
+    },
+    {
+      "id": "msg_0248_00007",
+      "en_US": "You don’t have any Berries!"
+    },
+    {
+      "id": "msg_0248_00008",
+      "en_US": "You don’t have any fertilizer!"
+    },
+    {
+      "id": "msg_0248_00009",
+      "en_US": [
+        "Press the left and right buttons or\n",
+        "touch to move."
+      ]
+    },
+    {
+      "id": "msg_0248_00010",
+      "en_US": "It’s soft, earthy soil."
+    },
+    {
+      "id": "msg_0248_00011",
+      "en_US": "{STRVAR_1 8, 2, 0} has been laid down."
+    },
+    {
+      "id": "msg_0248_00012",
+      "en_US": "The {STRVAR_1 8, 0, 0} Berry is planted!"
+    },
+    {
+      "id": "msg_0248_00013",
+      "en_US": [
+        "The {STRVAR_1 8, 0, 0} Berry Plant\n",
+        "has sprouted."
+      ]
+    },
+    {
+      "id": "msg_0248_00014",
+      "en_US": [
+        "The {STRVAR_1 8, 0, 0} Berry Plant is\n",
+        "growing bigger."
+      ]
+    },
+    {
+      "id": "msg_0248_00015",
+      "en_US": [
+        "This {STRVAR_1 8, 0, 0} Berry Plant\n",
+        "is in bloom!"
+      ]
+    },
+    {
+      "id": "msg_0248_00016",
+      "en_US": "There are {STRVAR_1 51, 1, 0} {STRVAR_1 8, 0, 0} Berries!"
+    },
+    {
+      "id": "msg_0248_00017",
+      "en_US": [
+        "The {STRVAR_1 8, 2, 0} was scattered\n",
+        "on the soil."
+      ]
+    },
+    {
+      "id": "msg_0248_00018",
+      "en_US": [
+        "The {STRVAR_1 8, 0, 0} Berry was planted\n",
+        "in the soft, earthy soil."
+      ]
+    },
+    {
+      "id": "msg_0248_00019",
+      "en_US": "There! All happy!"
+    },
+    {
+      "id": "msg_0248_00020",
+      "en_US": [
+        "You picked the\n",
+        "{STRVAR_1 51, 1, 0} {STRVAR_1 8, 0, 0} Berries."
+      ]
+    },
+    {
+      "id": "msg_0248_00021",
+      "en_US": [
+        "Put away the {STRVAR_1 8, 0, 0} Berries!\n",
+        "The soil is in a soft, earthy state."
+      ]
+    },
+    {
+      "id": "msg_0248_00022",
+      "en_US": [
+        "The Bag is full. Gave up on\n",
+        "the {STRVAR_1 8, 0, 0} Berries."
+      ]
+    },
+    {
+      "id": "msg_0248_00023",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0248_00024",
+      "en_US": [
+        "N {STRVAR_1 51, 0, 0}/{STRVAR_1 51, 1, 0}/{STRVAR_1 51, 2, 0} {STRVAR_1 51, 3, 0}:{STRVAR_1 51, 4, 0}:{STRVAR_1 51, 5, 0}\n",
+        "S {STRVAR_1 51, 6, 0}/{STRVAR_1 51, 7, 0}/{STRVAR_1 51, 8, 0} {STRVAR_1 51, 9, 0}:{STRVAR_1 51, 10, 0}:{STRVAR_1 51, 11, 0}"
+      ]
+    },
+    {
+      "id": "msg_0248_00025",
+      "en_US": "D {STRVAR_1 55, 0, 0}:{STRVAR_1 51, 1, 0}:{STRVAR_1 51, 2, 0} TIME-RATE {STRVAR_1 52, 3, 0} times"
+    },
+    {
+      "id": "msg_0248_00026",
+      "en_US": "{STRVAR_1 8, 0, 0}:{STRVAR_1 8, 1, 0}"
+    },
+    {
+      "id": "msg_0248_00027",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0}:{STRVAR_1 8, 1, 0} ST{STRVAR_1 50, 2, 0} CT{STRVAR_1 51, 3, 0}\n",
+        "N:{STRVAR_1 53, 4, 0} D:{STRVAR_1 53, 5, 0} SH:{STRVAR_1 51, 6, 0} GH:{STRVAR_1 52, 7, 0}"
+      ]
+    },
+    {
+      "id": "msg_0248_00028",
+      "en_US": "NONE"
+    }
+  ]
+}

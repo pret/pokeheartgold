@@ -1,0 +1,238 @@
+{
+  "key": 60946,
+  "messages": [
+    {
+      "id": "msg_0559_T22PC0101_00000",
+      "garbage": 84
+    },
+    {
+      "id": "msg_0559_T22PC0101_00001",
+      "garbage": 84
+    },
+    {
+      "id": "msg_0559_T22PC0101_00002",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0559_T22PC0101_00003",
+      "garbage": 144
+    },
+    {
+      "id": "msg_0559_T22PC0101_00004",
+      "garbage": 144
+    },
+    {
+      "id": "msg_0559_T22PC0101_00005",
+      "garbage": 47
+    },
+    {
+      "id": "msg_0559_T22PC0101_00006",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0559_T22PC0101_00007",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0559_T22PC0101_00008",
+      "garbage": 30
+    },
+    {
+      "id": "msg_0559_T22PC0101_00009",
+      "en_US": [
+        "A guy named Bill made the Pokémon\n",
+        "PC storage system.\r",
+        "You can access the Pokémon storage\n",
+        "system using the PC at the reception\f",
+        "there. Why don’t you try it once?"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00010",
+      "en_US": [
+        "It was about three years ago.\n",
+        "This group of thugs called Team Rocket\f",
+        "was involved in wrongdoing. They were\f",
+        "abusing Pokémon.\r",
+        "But!\n",
+        "Bad things never last!\r",
+        "A boy did a wonderful job and\n",
+        "Team Rocket was disbanded!\n",
+        "\n"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00011",
+      "en_US": [
+        "Pokémon are really smart.\n",
+        "Traded Pokémon might not listen to you\f",
+        "right away. For example, high-level\f",
+        "Pokémon sometimes refuse to obey\f",
+        "when you don’t have enough Gym Badges."
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00012",
+      "en_US": [
+        "Primo: Hello!\n",
+        "I should be a familiar face to every\f",
+        "Pokémon fan. I’m from the TV show,\f",
+        "“The Show Me Show!”\r",
+        "I am Primo, the big brother!\r",
+        "Today, would you, one of my fans,\n",
+        "tell me what you think of me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00013",
+      "en_US": [
+        "Primo: Oh my...!\n",
+        "Is that how you feel about me?!\r",
+        "I never thought of it that way before.\n",
+        "By the way, how do you like the\f",
+        "way I am so exciting and fun?\r"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00014",
+      "en_US": [
+        "Primo: Truly?\r",
+        "That gives me all-new energy so\n",
+        "I can work even harder!\r",
+        "Great feedback! It’ll help me a lot.\n",
+        "Thank you for your continued support!"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00015",
+      "en_US": [
+        "You cannot possibly mean that you are\n",
+        "not interested in the big brother...?\r",
+        "Arrgh, that cannot be true!\n",
+        "You are just busy right now,\f",
+        "aren’t you? That must be it!\r",
+        "Why don’t you answer my questions\n",
+        "when you’ve got time for me?\r",
+        "See you!"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00016",
+      "en_US": [
+        "Primo: ...!\r",
+        "You are no ordinary fan, knowing such\n",
+        "a thing!\r",
+        "You’re a Trainer, right?\n",
+        "I’ll pull some strings for you.\r",
+        "I think I can swing a deal to get you\n",
+        "a new wallpaper for your PC Boxes.\r",
+        "Make sure you keep your channel\n",
+        "tuned to “The Show Me Show!”\r",
+        "And don’t forget about me, the\n",
+        "big brother!"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00017",
+      "en_US": [
+        "Primo: ...!\r",
+        "You are no ordinary fan, knowing such\n",
+        "a thing!\r",
+        "You are a Trainer, right?\n",
+        "I’ll pull some strings for you.\r",
+        "I think I can swing a deal so you\n",
+        "can receive a Mystery Gift.\r",
+        "Make sure you keep your channel\n",
+        "tuned to “The Show Me Show!”\r",
+        "And don’t forget about me, the\n",
+        "big brother!"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00018",
+      "en_US": [
+        "Primo: ...!\r",
+        "You are no ordinary fan, knowing such\n",
+        "a thing!\r",
+        "You are a Trainer, right?\n",
+        "I’ll pull some strings for you.\r",
+        "I think I can swing a deal and\n",
+        "give you this Egg.\f",
+        "You take good care of it!\r"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received the\n",
+        "{STRVAR_1 0, 1, 0} Egg from Primo!"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00020",
+      "en_US": [
+        "Primo: ...!\r",
+        "You are no ordinary fan, knowing such\n",
+        "a thing!\r",
+        "You are a Trainer, right?\n",
+        "I’ll pull some strings for you.\r",
+        "I think I can swing a deal and\n",
+        "give you this Egg.\f",
+        "You take good care of it!\r",
+        "...\r",
+        "Your party is full, and I can’t\n",
+        "give it to you!"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00021",
+      "en_US": [
+        "Hmm...\r",
+        "Can you tell me what kind of Trainer\n",
+        "you like best?\r"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00022",
+      "en_US": [
+        "Which kind of Trainer would you like\n",
+        "to be? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00023",
+      "en_US": [
+        "{STRVAR_1 14, 0, 0} is the kind of Trainer\n",
+        "you want to be? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00024",
+      "en_US": [
+        "I see! So {STRVAR_1 14, 0, 0} is the kind\n",
+        "of Trainer you like.\r",
+        "If that’s the case, others may\n",
+        "come to see you in the same way.\r"
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00025",
+      "en_US": [
+        "Talk to me again if you want to\n",
+        "let me know what kind of Trainer\f",
+        "you like best."
+      ]
+    },
+    {
+      "id": "msg_0559_T22PC0101_00026",
+      "en_US": [
+        "Hello! You’ve been mistaken for\n",
+        "{STRVAR_1 14, 0, 0}, haven’t you?\r",
+        "But I think you can also pass for\n",
+        "a different kind of Trainer.\r",
+        "So, how about telling me what kind of\n",
+        "Trainer you like?\r"
+      ]
+    }
+  ]
+}

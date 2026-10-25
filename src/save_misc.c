@@ -38,7 +38,7 @@ void Save_Misc_Init(SAVE_MISC_DATA *saveMiscData) {
     MI_CpuFill8(saveMiscData->unk_0280, 0xFF, 8);
     MailMsg_Init_WithBank(&saveMiscData->battleGreetingEC, MAILMSG_BANK_0295_GMM);
     saveMiscData->battleGreetingEC.msg_no = msg_0295_00000;
-    saveMiscData->battleGreetingEC.fields[0] = GetECWordIndexByPair(NARC_msg_msg_0287_bin, msg_0287_regards);
+    saveMiscData->battleGreetingEC.fields[0] = GetECWordIndexByPair(msg_0287, msg_0287_regards);
     saveMiscData->battleGreetingEC.fields[1] = EC_WORD_NULL;
     for (i = 0; i < 5; i++) {
         saveMiscData->unk_02A8[0][i] = -1;
@@ -112,7 +112,7 @@ static const u8 _020F677C[3][2] = {
     { 6, 2 },
 };
 
-BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, int a1, int a2) {
+BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, u8 a1, int a2) {
     int i;
     if (a1 > NELEMS(_020F677C) - 1) {
         return FALSE;
@@ -128,7 +128,7 @@ BOOL sub_0202AA44(SAVE_MISC_DATA *saveMiscData, int a1, int a2) {
     return FALSE;
 }
 
-void sub_0202AA9C(SAVE_MISC_DATA *saveMiscData, int a1) {
+void sub_0202AA9C(SAVE_MISC_DATA *saveMiscData, u8 a1) {
     int i;
     if (a1 > NELEMS(_020F677C) - 1) {
         return;
@@ -138,7 +138,7 @@ void sub_0202AA9C(SAVE_MISC_DATA *saveMiscData, int a1) {
     }
 }
 
-u8 sub_0202AAD4(SAVE_MISC_DATA *saveMiscData, int a1) {
+u8 sub_0202AAD4(SAVE_MISC_DATA *saveMiscData, u8 a1) {
     int n = 0;
     int i, min, max;
     if (a1 > NELEMS(_020F677C) - 1) {

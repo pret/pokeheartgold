@@ -54,8 +54,8 @@ PokegearPhoneCallContext *PhoneCall_CreateContext(const PokegearPhoneCallContext
     ret->playerMapID = template->playerMapID;
     ret->textSpeed = template->textSpeed;
     ret->playerGender = PlayerProfile_GetTrainerGender(ret->playerProfile);
-    ret->msgData_0271 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, ret->heapID);
-    ret->msgData_0640 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0640_bin, ret->heapID);
+    ret->msgData_0271 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0271, ret->heapID);
+    ret->msgData_0640 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0640, ret->heapID);
     ret->msgFormat = MessageFormat_New_Custom(16, 37, ret->heapID);
     ret->msgExpansionBuff = String_New(1081, ret->heapID);
     ret->phoneCallMsgReadBuff = String_New(1081, ret->heapID);

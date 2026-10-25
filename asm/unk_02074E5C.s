@@ -1,6 +1,6 @@
 #include "constants/items.h"
 #include "constants/moves.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_02074E5C.inc"
 	.include "global.inc"
 
@@ -276,13 +276,13 @@ sub_02074F9C: ; 0x02074F9C
 	bl Heap_Alloc
 	add r6, r0, #0
 	ldr r0, [sp]
-	bl BattleSystem_GetSendBufferPtr
+	bl BattleSystem_GetServerMessage
 	add r5, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A960
+	bl BattleSystem_GetServerWriteIndex
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A96C
+	bl BattleSystem_GetServerEndIndex
 	mov ip, r0
 	add r0, sp, #0x10
 	ldrh r3, [r4]
@@ -343,13 +343,13 @@ sub_02075028: ; 0x02075028
 	add r0, r3, #0
 	add r5, r1, #0
 	add r6, r2, #0
-	bl BattleSystem_GetRecvBufferPtr
+	bl BattleSystem_GetClientMessage
 	add r7, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A984
+	bl BattleSystem_GetClientWriteIndex
 	add r4, r0, #0
 	ldr r0, [sp]
-	bl ov12_0223A990
+	bl BattleSystem_GetClientEndIndex
 	ldrh r1, [r4]
 	add r2, r1, r5
 	add r3, r2, #1
@@ -930,16 +930,16 @@ sub_02075434: ; 0x02075434
 	add r5, r1, #0
 	str r0, [sp]
 	ldr r0, [r5]
-	bl BattleSystem_GetSendBufferPtr
+	bl BattleSystem_GetServerMessage
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A954
+	bl BattleSystem_GetServerReadIndex
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A960
+	bl BattleSystem_GetServerWriteIndex
 	str r0, [sp, #4]
 	ldr r0, [r5]
-	bl ov12_0223A96C
+	bl BattleSystem_GetServerEndIndex
 	add r7, r0, #0
 	ldrb r0, [r5, #4]
 	cmp r0, #0
@@ -999,16 +999,16 @@ sub_020754C0: ; 0x020754C0
 	add r5, r1, #0
 	str r0, [sp]
 	ldr r0, [r5]
-	bl BattleSystem_GetRecvBufferPtr
+	bl BattleSystem_GetClientMessage
 	add r6, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A978
+	bl BattleSystem_GetClientReadIndex
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A984
+	bl BattleSystem_GetClientWriteIndex
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl ov12_0223A990
+	bl BattleSystem_GetClientEndIndex
 	ldrb r1, [r5, #4]
 	cmp r1, #0
 	beq _020754EE
@@ -1029,7 +1029,7 @@ _02075502:
 	ldrh r1, [r4]
 	ldr r0, [r5]
 	add r1, r6, r1
-	bl ov12_02264334
+	bl BattleController_RecvCommMessage
 	cmp r0, #1
 	bne _02075532
 	ldrh r0, [r4]

@@ -8,7 +8,7 @@
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_01_021EB1E8.inc"
 	.include "global.inc"
 
@@ -2396,7 +2396,7 @@ ov01_021EC31C: ; 0x021EC31C
 	ldr r0, [sp, #0xc]
 	add r2, r7, #0
 	add r3, sp, #0x14
-	bl sub_02020E10
+	bl FX_CalcLinearFov
 	mov r1, #1
 	ldr r0, [sp, #0x14]
 	lsl r1, r1, #0x14

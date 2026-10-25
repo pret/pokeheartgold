@@ -1,0 +1,142 @@
+{
+  "key": 56070,
+  "messages": [
+    {
+      "id": "msg_0292_00000",
+      "en_US": [
+        "You win...\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0292_00001",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0} was the one\n",
+        "thing I wanted to avoid..."
+      ]
+    },
+    {
+      "id": "msg_0292_00002",
+      "en_US": [
+        "Waaah!\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0292_00003",
+      "en_US": [
+        "I want to go home with\n",
+        "{STRVAR_1 28, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0292_00004",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}!\n",
+        "{STRVAR_1 28, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0292_00005",
+      "en_US": [
+        "Could it be...?\n",
+        "{STRVAR_1 28, 0, 0}...?"
+      ]
+    },
+    {
+      "id": "msg_0292_00006",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}!\n",
+        "How awful!"
+      ]
+    },
+    {
+      "id": "msg_0292_00007",
+      "en_US": [
+        "I was confident about\n",
+        "{STRVAR_1 28, 0, 0}, too."
+      ]
+    },
+    {
+      "id": "msg_0292_00008",
+      "en_US": [
+        "You’re {STRVAR_1 28, 0, 0},\n",
+        "aren’t you?"
+      ]
+    },
+    {
+      "id": "msg_0292_00009",
+      "en_US": [
+        "{STRVAR_1 28, 0, 0}!\n",
+        "Can’t be anything else but."
+      ]
+    },
+    {
+      "id": "msg_0292_00010",
+      "en_US": [
+        "I feel so helplessly angry...\n",
+        "It’s {STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0292_00011",
+      "en_US": "{STRVAR_1 28, 0, 0} makes me sad..."
+    },
+    {
+      "id": "msg_0292_00012",
+      "en_US": [
+        "I feel sorry for\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0292_00013",
+      "en_US": [
+        "The way I feel now is\n",
+        "{STRVAR_1 28, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0292_00014",
+      "en_US": [
+        "I lost, but I won at\n",
+        "{STRVAR_1 28, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0292_00015",
+      "en_US": [
+        "I would’ve won if this\n",
+        "were {STRVAR_1 28, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0292_00016",
+      "en_US": [
+        "My head’s filled with only\n",
+        "{STRVAR_1 28, 0, 0} now!"
+      ]
+    },
+    {
+      "id": "msg_0292_00017",
+      "en_US": [
+        "The way I lost...\n",
+        "It’s like {STRVAR_1 28, 0, 0}..."
+      ]
+    },
+    {
+      "id": "msg_0292_00018",
+      "en_US": [
+        "Isn’t {STRVAR_1 28, 0, 0}\n",
+        "{STRVAR_1 28, 1, 0}?"
+      ]
+    },
+    {
+      "id": "msg_0292_00019",
+      "en_US": [
+        "Aww... That’s really\n",
+        "{STRVAR_1 28, 0, 0}..."
+      ]
+    }
+  ]
+}

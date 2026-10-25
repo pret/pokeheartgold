@@ -1,0 +1,292 @@
+{
+  "key": 37890,
+  "messages": [
+    {
+      "id": "msg_0680_00000",
+      "en_US": "Liz"
+    },
+    {
+      "id": "msg_0680_00001",
+      "en_US": [
+        "Oh? You’re on a big journey to see the\n",
+        "sights? Neat!\r",
+        "Let’s be friends!\n",
+        "Can I have your phone number?\r",
+        "I want to hear about everything\n",
+        "you’ve seen! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0680_00002",
+      "en_US": [
+        "I’ll telephone you if I hear anything\n",
+        "interesting."
+      ]
+    },
+    {
+      "id": "msg_0680_00003",
+      "en_US": "Aww... You won’t be my friend?"
+    },
+    {
+      "id": "msg_0680_00004",
+      "en_US": [
+        "Let’s be friends!\n",
+        "Can I have your phone number?\r",
+        "I want to hear about everything\n",
+        "you’ve seen! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0680_00005",
+      "en_US": [
+        "If you’re nearby, just come talk\n",
+        "in person!"
+      ]
+    },
+    {
+      "id": "msg_0680_00006",
+      "en_US": [
+        "Oh, you have to hear this.\r",
+        "My {STRVAR_1 0, 10, 0} is so adorable!\n",
+        "It always wants to nuzzle me!\r",
+        "And, and! Um...\r",
+        "We beat a wild {STRVAR_1 0, 11, 0} with just\n",
+        "one hit a little while ago.\f",
+        "We felt sorry for it, though.\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00007",
+      "en_US": [
+        "Oh, you have to hear this.\r",
+        "My {STRVAR_1 0, 10, 0} is so adorable!\n",
+        "It’s always giving me cute looks!\r",
+        "And, and! Uh...\r",
+        "We just saw a really gorgeous\n",
+        "{STRVAR_1 0, 11, 0}.\r",
+        "But I was on the phone, so it got away.\n",
+        "It made us really angry!\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00008",
+      "en_US": [
+        "Listen, listen!\r",
+        "I was listening to the radio in the Ruins\n",
+        "of Alph when an odd broadcast suddenly\f",
+        "cut in on the regular show.\f",
+        "I wonder what it was. So strange!\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00009",
+      "en_US": [
+        "Listen, listen!\r",
+        "Don’t you think Falkner of Violet Gym is\n",
+        "cool and handsome?\r",
+        "But they say his dad, who’s out training\n",
+        "on the road, is even more cool and\f",
+        "handsome than Falkner.\r",
+        "I wish I could meet him!\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00010",
+      "en_US": [
+        "Listen, listen!\r",
+        "Do you know Earl, the teacher who runs\n",
+        "the Pokémon School in Violet?\r",
+        "I saw him doing pirouettes while he was\n",
+        "running. It was wildly funny!\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00011",
+      "en_US": [
+        "Listen, listen!\r",
+        "The Kimono Girls in Ecruteak City don’t\n",
+        "just study dancing!\r",
+        "They’re also working to bring back\n",
+        "legendary Pokémon that haven’t\f",
+        "appeared in front of humans since long,\f",
+        "long ago.\r",
+        "That’s amazing isn’t it?\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00012",
+      "en_US": [
+        "Listen, listen!\r",
+        "Do you know about Moomoo Milk?\r",
+        "You can buy it at Moomoo Farm.\n",
+        "It’s supposed to be good for health\f",
+        "and beauty.\r",
+        "I really want to try some. I bet it’s\n",
+        "delicious!\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00013",
+      "en_US": [
+        "Listen, listen!\r",
+        "There’s a Pokémon Salon in Goldenrod\n",
+        "that’s run by two brothers.\r",
+        "The older brother is good, but the\n",
+        "younger one really isn’t.\r",
+        "But the younger one charges less, and\n",
+        "sometimes does a better job than\f",
+        "his brother.\r",
+        "Every time I go, I have a hard time\n",
+        "trying to decide whom I should use...\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00014",
+      "en_US": [
+        "Listen, listen!\r",
+        "Goldenrod Gym’s Whitney began battling\n",
+        "only a little while ago!\r",
+        "But the Pokémon League chose her as a\n",
+        "Gym Leader!\f",
+        "I bet she must be totally talented.\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00015",
+      "en_US": [
+        "Listen, listen!\r",
+        "Have you ever taken part in a\n",
+        "Bug-Catching Contest at the\f",
+        "National Park?\r",
+        "I did once, but all I could catch was a\n",
+        "CATERPIE.\r",
+        "But guess what! I won with that\n",
+        "CATERPIE. Isn’t that great?\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00016",
+      "en_US": [
+        "Listen, listen!\r",
+        "I saw a beautiful {STRVAR_1 14, 4, 0}!\r",
+        "I wish I could become a beautiful\n",
+        "{STRVAR_1 14, 4, 0}, too.\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00017",
+      "en_US": [
+        "Listen, listen!\r",
+        "Uh... Um... Whoops! I forgot what I was\n",
+        "going to say!\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00018",
+      "en_US": [
+        "Listen, listen!\r",
+        "I entered the drawing on the sixth\n",
+        "floor of the Goldenrod Department\f",
+        "Store.\r",
+        "For $300, you have a chance to\n",
+        "receive a TM. It’s a great deal!\r",
+        "But I tried ten times and all I got was\n",
+        "Berries! I don’t think I’m lucky\f",
+        "enough to win a top prize.\r",
+        "OK, I’ll call you later!"
+      ]
+    },
+    {
+      "id": "msg_0680_00019",
+      "en_US": [
+        "Hi! Do you have some free time?\r",
+        "I’ve got all sorts of time. If you’re\n",
+        "free, would you like to battle?\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}.\n",
+        "Let me know when you get here!"
+      ]
+    },
+    {
+      "id": "msg_0680_00020",
+      "en_US": [
+        "I’ve got too much time on my hands!\n",
+        "Let’s battle right away!\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0680_00021",
+      "en_US": [
+        "Hi, Tania. How are you? This is Liz.\n",
+        "I’m fine, but I’m bored silly!\r",
+        "Huh... Wrong number?\n",
+        "Oops! Sorry!"
+      ]
+    },
+    {
+      "id": "msg_0680_00022",
+      "en_US": [
+        "Listen, listen!\r",
+        "My {STRVAR_1 0, 10, 0}...it’s...so pretty...\n",
+        "and...giggle...so awesome...yes...\f",
+        "but...very much...eeek!\f",
+        "And...lovely...just ravishing...\f",
+        "Oh, too much! Hug it... Sleeping...\f",
+        "That’s right...pretty... Sigh...\f",
+        "So nice...cute...\r",
+        "...Oops! Look at the time! I chatted\n",
+        "too long!\r",
+        "I’m sorry I took so much of your time!\n",
+        "I love chatting!"
+      ]
+    },
+    {
+      "id": "msg_0680_00023",
+      "en_US": "Ace Trainer"
+    },
+    {
+      "id": "msg_0680_00024",
+      "en_US": "Beauty"
+    },
+    {
+      "id": "msg_0680_00025",
+      "en_US": "Team Rocket"
+    },
+    {
+      "id": "msg_0680_00026",
+      "en_US": "Teacher"
+    },
+    {
+      "id": "msg_0680_00027",
+      "en_US": "Swimmer♀"
+    },
+    {
+      "id": "msg_0680_00028",
+      "en_US": "Kimono Girl"
+    },
+    {
+      "id": "msg_0680_00029",
+      "en_US": "Skier"
+    },
+    {
+      "id": "msg_0680_00030",
+      "en_US": "Medium"
+    },
+    {
+      "id": "msg_0680_00031",
+      "en_US": "Pokéfan"
+    }
+  ]
+}

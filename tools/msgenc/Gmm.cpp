@@ -1,6 +1,7 @@
 #include "Gmm.h"
 #include "pugixml.hpp"
 #include <regex>
+#include <string>
 
 static const char WINCTXNAME[] = "window_context_name";
 static const char LANGUAGE[] = "English";
@@ -69,7 +70,7 @@ void GMM::WriteGmmHeader(const string &_filename) {
 }
 
 // Reads messages from GMM into memory to be converted
-void GMM::FromFile(MessagesConverter &converter) {
+int GMM::FromFile(MessagesConverter &converter) {
     pugi::xml_parse_result result = doc.load(stream);
     if (!result) {
         throw runtime_error(result.description());
@@ -77,7 +78,7 @@ void GMM::FromFile(MessagesConverter &converter) {
     const auto &node = doc.find_child([](const auto &n) {
         return strcmp(n.name(), "body") == 0;
     });
-    int i = 0;
+    int key = GMM_KEY_NOT_DEFINED;
     string rowname_pref = filename.substr(filename.find_last_of('/') + 1).substr(0, filename.find_first_of('.'));
     for (const auto &subnode : node.children()) {
         if (strcmp(subnode.name(), "row") == 0) {
@@ -103,13 +104,18 @@ void GMM::FromFile(MessagesConverter &converter) {
             }
             id_strings.emplace_back(row_id);
             messages.emplace_back(message);
-            i++;
             IncRowNoBuf();
+        }
+        if (strcmp(subnode.name(), "key") == 0) {
+            key = stoi(subnode.attribute("value").value(), nullptr, 0);
+            key &= 0xFFFF;
+            key |= 0x10000;
         }
     }
     if (!converter.GetHeaderFilename().empty()) {
         WriteGmmHeader(converter.GetHeaderFilename());
     }
+    return key;
 }
 
 // Writes decoded messages to a new GMM file
@@ -125,6 +131,10 @@ void GMM::ToFile(MessagesConverter &converter) {
     }
     string rowname_pref = filename.substr(filename.find_last_of('/') + 1);
     rowname_pref = rowname_pref.substr(0, rowname_pref.find_first_of('.'));
+
+    auto key = body.append_child("key");
+    key.append_attribute("value").set_value(std::to_string(converter.GetKey()).c_str());
+
     int i = 0;
     for (const auto &message : converter.GetDecodedMessages()) {
         string rowname;

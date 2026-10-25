@@ -956,7 +956,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
     switch (input) {
     case LIST_CANCEL:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
+        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00033, TRUE);
@@ -964,7 +964,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
         return PARTY_MENU_STATE_USE_ITEM_SELECT_MON;
     default:
         ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        sub_0200E5D4(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
+        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         if (UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, input, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU) == TRUE) {

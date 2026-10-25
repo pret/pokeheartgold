@@ -13,7 +13,7 @@ typedef struct MapPropAnimation {
     int loopCount;
     BOOL paused;
     BOOL reversed;
-    u32 unk14;
+    u32 active;
     int unk18;
     BOOL looping;
 } MapPropAnimation;
@@ -25,21 +25,23 @@ typedef struct FieldSystemUnkSubCC {
     MapPropAnimation *mapPropAnimation;
 } FieldSystemUnkSubCC;
 
+typedef void(FieldSystemUnkSubCC_Sub0_AllocFunc)(NNSFndAllocator *, NNSG3dAnmObj **, void *, int);
+
 struct FieldSystemUnkSubCC_Sub0 {
-    NNSFndAllocator unk0;
-    MapPropAnimation *unk10;
-    MapPropAnimation **unk14;
+    NNSFndAllocator allocator;
+    MapPropAnimation *animHeap;
+    MapPropAnimation **anims;
     FieldSystemUnkSubCC_Sub0 *next;
-    void *unk1C;
-    u16 unk20;
-    u16 unk22;
+    FieldSystemUnkSubCC_Sub0_AllocFunc *allocFunc;
+    u16 count;
+    u16 numInUse;
 };
 
 typedef struct FieldSystemUnkSubC8 {
     FieldSystemUnkSubCC_Sub0 *unk0;
-    FieldSystemUnkSubCC_Sub0 *unk4;
-    FieldSystemUnkSubCC_Sub0 *unk8;
-    int unkC;
+    FieldSystemUnkSubCC_Sub0 *head;
+    FieldSystemUnkSubCC_Sub0 *tail;
+    int numAllocated;
 } FieldSystemUnkSubC8;
 
 typedef struct Field3dRenderObj {
@@ -87,6 +89,7 @@ Field3dRenderObj *Field3dObjectList_GetRenderObjectByID(Field3dRenderObjManager 
 Field3dRenderObj *Field3dRenderObjManager_GetOrAllocRenderObjByID(Field3dRenderObjManager *unkC0, int index);
 BOOL Field3dRenderObjManager_FreeRenderObj(Field3dRenderObjManager *unkC0, Field3dRenderObj *object);
 BOOL Field3dRenderObjManager_IsResFileHeaderLoadedByIndex(Field3dRenderObjManager *unkC0, int index);
+
 FieldSystemUnkSubC8 *ov01_022041C4(enum HeapID heapID);
 FieldSystemUnkSubCC_Sub0 *ov01_022041D8(FieldSystemUnkSubC8 *unkC8, enum HeapID heapID, u16 count);
 void ov01_02204278(FieldSystemUnkSubC8 *unkSubC8); // UnkSubC8_Free
@@ -117,13 +120,5 @@ void ov01_02204764(FieldSystemUnkSub104 *unk104);
 void ov01_0220476C(FieldSystemUnkSub104 *unk104, NNSG3dRenderObj *renderObj, MapPropAnimation **animation, int count);
 void ov01_022047DC(FieldSystemUnkSub104 *unk104);
 u8 ov01_02204834(FieldSystemUnkSub104 *unk104);
-
-// These are nnsys things that do not seem to be in the project right now or are not decompiled in this project.
-void *NNS_FndAllocFromAllocator(NNSFndAllocator *pAllocator, u32 size);
-
-typedef struct NNSG3dMatAnmResult NNSG3dMatAnmResult;
-typedef void (*NNSG3dFuncAnmMat)(NNSG3dMatAnmResult *, const NNSG3dAnmObj *, u32);
-// void NNSi_G3dAnmCalcNsBta(NNSG3dMatAnmResult *pResult, const NNSG3dAnmObj *pAnmObj, u32 dataIdx);
-extern NNSG3dFuncAnmMat _02110A0C; // NNS_G3dFuncAnmMatNsBtaDefault = &NNSi_G3dAnmCalcNsBta
 
 #endif // POKEHEARTGOLD_FIELD_OVERLAY_01_02204004_H

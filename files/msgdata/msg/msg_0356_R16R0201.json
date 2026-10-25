@@ -1,0 +1,25 @@
+{
+  "key": 5183,
+  "messages": [
+    {
+      "id": "msg_0356_R16R0201_00000",
+      "en_US": [
+        "Cycling Road starts here.\n",
+        "It’s all downhill, so it’s totally\f",
+        "exhilarating.\r",
+        "Some people prefer convenient and cool\n",
+        "transportation such as the Fast Ship\f",
+        "and the Magnet Train.\f",
+        "You prefer the Bicycle, don’t you?"
+      ]
+    },
+    {
+      "id": "msg_0356_R16R0201_00001",
+      "en_US": [
+        "You! Stop right there!\r",
+        "You have to be on a Bicycle to go on\n",
+        "the Cycling Road!\r"
+      ]
+    }
+  ]
+}

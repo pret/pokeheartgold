@@ -1,0 +1,280 @@
+{
+  "key": 24515,
+  "messages": [
+    {
+      "id": "msg_0603_T25SP0101_00000",
+      "en_US": [
+        "We exchange your Coins for\n",
+        "fabulous prizes! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00001",
+      "en_US": [
+        "Please save your Coins and\n",
+        "come again!"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00002",
+      "en_US": "Sorry! You need more Coins. {YESNO 0}"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00003",
+      "en_US": [
+        "{STRVAR_1 8, 0, 0}.\n",
+        "Is that right? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00004",
+      "en_US": "Here you go!\r"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00005",
+      "en_US": "Sorry. You can’t carry any more.\r"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00006",
+      "en_US": [
+        "Your party’s full!\n",
+        "Please make some room before you\f",
+        "come back."
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00007",
+      "en_US": "Would you like {STRVAR_1 0, 1, 0}? {YESNO 0}"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00008",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the {STRVAR_1 0, 1, 0}! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00009",
+      "en_US": [
+        "Welcome!\r",
+        "We exchange your Coins for\n",
+        "fabulous prizes! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00010",
+      "en_US": [
+        "You put away the {STRVAR_1 8, 0, 0}\n",
+        "in the {STRVAR_1 18, 1, 0} Pocket. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00011",
+      "en_US": "CANCEL"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00012",
+      "en_US": "TECHNICAL MACHINE"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00013",
+      "en_US": "HELD ITEMS"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00014",
+      "en_US": [
+        "SUBSTITUTE\n",
+        "2,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00015",
+      "en_US": [
+        "SWORDS DANCE\n",
+        "4,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00016",
+      "en_US": [
+        "REST\n",
+        "6,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00017",
+      "en_US": [
+        "FLAMETHROWER\n",
+        "10,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00018",
+      "en_US": [
+        "ICE BEAM\n",
+        "10,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00019",
+      "en_US": [
+        "THUNDERBOLT\n",
+        "10,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00020",
+      "en_US": [
+        "SILK SCARF\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00021",
+      "en_US": [
+        "WIDE LENS\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00022",
+      "en_US": [
+        "ZOOM LENS\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00023",
+      "en_US": [
+        "METRONOME\n",
+        "1,000 Coins"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00024",
+      "en_US": "ABRA{CURSOR_X 103}200 Coins"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00025",
+      "en_US": "EKANS{CURSOR_X 103}700 Coins"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00026",
+      "en_US": "DRATINI{CURSOR_X 90}2,100 Coins"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00027",
+      "en_US": "SANDSHREW{CURSOR_X 103}700 Coins"
+    },
+    {
+      "id": "msg_0603_T25SP0101_00028",
+      "en_US": [
+        "My name is Mr. Game!\r",
+        "My heart pounds with excitement when\n",
+        "people enjoy my Coin game!\r",
+        "In fact, that’s what I live for!\n",
+        "You look like quite a challenger!\r",
+        "Why don’t you play my Coin game?\r",
+        "You can get fabulous prizes if\n",
+        "you manage to collect a lot\f",
+        "of Coins. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00029",
+      "garbage": 2
+    },
+    {
+      "id": "msg_0603_T25SP0101_00030",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0603_T25SP0101_00031",
+      "en_US": [
+        "All right!\n",
+        "Here is your Coin Case!\r"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00032",
+      "en_US": [
+        "Show me how you play, and my heart\n",
+        "will pound with excitement!\r"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00033",
+      "en_US": [
+        "Playing my Coin game will make your\n",
+        "heart and my heart both pound with\f",
+        "excitement, you know?"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00034",
+      "en_US": [
+        "My name is Mr. Game!\r",
+        "My heart pounds with excitement when\n",
+        "people enjoy my Coin game!\r",
+        "In fact, that’s what I live for!\n",
+        "Go ahead and play it!\r",
+        "Make my heart pound with excitement!"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00035",
+      "en_US": [
+        "Go ahead and play my Coin game!\f",
+        "Make my heart pound with excitement!"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00036",
+      "en_US": [
+        "What a feeling!\r",
+        "Nothing beats Coin-game spectatorship!\n",
+        "Oh! I almost forgot!\r",
+        "You can exchange your Coins for prizes\n",
+        "with the two gentlemen at the table\f",
+        "over there."
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00037",
+      "en_US": [
+        "Did you come back to play\n",
+        "my Coin game?"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00038",
+      "en_US": [
+        "It seems you need a Coin Case\n",
+        "to play...\r"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00039",
+      "en_US": [
+        "Mr. Game: Aha!\r",
+        "You must be here to play my Coin game!\n",
+        "Come here and I’ll give you a Coin Case!"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00040",
+      "en_US": [
+        "Mr. Game: Show me how you play and\n",
+        "make my heart pound with excitement!\r"
+      ]
+    },
+    {
+      "id": "msg_0603_T25SP0101_00041",
+      "en_US": [
+        "Mr. Game: Huh?\r",
+        "Why don’t you sit across from me\n",
+        "and show me how you play?"
+      ]
+    }
+  ]
+}

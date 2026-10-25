@@ -1,0 +1,245 @@
+{
+  "key": 47375,
+  "messages": [
+    {
+      "id": "msg_0045_00000",
+      "en_US": "OPTIONS"
+    },
+    {
+      "id": "msg_0045_00001",
+      "en_US": "TEXT SPEED"
+    },
+    {
+      "id": "msg_0045_00002",
+      "en_US": "BATTLE SCENE"
+    },
+    {
+      "id": "msg_0045_00003",
+      "en_US": "BATTLE STYLE"
+    },
+    {
+      "id": "msg_0045_00004",
+      "en_US": "SOUND"
+    },
+    {
+      "id": "msg_0045_00005",
+      "en_US": "BUTTON MODE"
+    },
+    {
+      "id": "msg_0045_00006",
+      "en_US": "FRAME"
+    },
+    {
+      "id": "msg_0045_00007",
+      "en_US": "{ALN_CENTER}CONFIRM"
+    },
+    {
+      "id": "msg_0045_00008",
+      "en_US": "{ALN_CENTER}QUIT"
+    },
+    {
+      "id": "msg_0045_00009",
+      "en_US": "SLOW"
+    },
+    {
+      "id": "msg_0045_00010",
+      "en_US": "MID"
+    },
+    {
+      "id": "msg_0045_00011",
+      "en_US": "FAST"
+    },
+    {
+      "id": "msg_0045_00012",
+      "en_US": "ON"
+    },
+    {
+      "id": "msg_0045_00013",
+      "en_US": "OFF"
+    },
+    {
+      "id": "msg_0045_00014",
+      "en_US": "SHIFT"
+    },
+    {
+      "id": "msg_0045_00015",
+      "en_US": "SET"
+    },
+    {
+      "id": "msg_0045_00016",
+      "en_US": "STEREO"
+    },
+    {
+      "id": "msg_0045_00017",
+      "en_US": "MONO"
+    },
+    {
+      "id": "msg_0045_00018",
+      "en_US": "NORMAL"
+    },
+    {
+      "id": "msg_0045_00019",
+      "en_US": "L=A"
+    },
+    {
+      "id": "msg_0045_00020",
+      "en_US": "TYPE 1"
+    },
+    {
+      "id": "msg_0045_00021",
+      "en_US": "TYPE 2"
+    },
+    {
+      "id": "msg_0045_00022",
+      "en_US": "TYPE 3"
+    },
+    {
+      "id": "msg_0045_00023",
+      "en_US": "TYPE 4"
+    },
+    {
+      "id": "msg_0045_00024",
+      "en_US": "TYPE 5"
+    },
+    {
+      "id": "msg_0045_00025",
+      "en_US": "TYPE 6"
+    },
+    {
+      "id": "msg_0045_00026",
+      "en_US": "TYPE 7"
+    },
+    {
+      "id": "msg_0045_00027",
+      "en_US": "TYPE 8"
+    },
+    {
+      "id": "msg_0045_00028",
+      "en_US": "TYPE 9"
+    },
+    {
+      "id": "msg_0045_00029",
+      "en_US": "TYPE 10"
+    },
+    {
+      "id": "msg_0045_00030",
+      "en_US": "TYPE 11"
+    },
+    {
+      "id": "msg_0045_00031",
+      "en_US": "TYPE 12"
+    },
+    {
+      "id": "msg_0045_00032",
+      "en_US": "TYPE 13"
+    },
+    {
+      "id": "msg_0045_00033",
+      "en_US": "TYPE 14"
+    },
+    {
+      "id": "msg_0045_00034",
+      "en_US": "TYPE 15"
+    },
+    {
+      "id": "msg_0045_00035",
+      "en_US": "TYPE 16"
+    },
+    {
+      "id": "msg_0045_00036",
+      "en_US": "TYPE 17"
+    },
+    {
+      "id": "msg_0045_00037",
+      "en_US": "TYPE 18"
+    },
+    {
+      "id": "msg_0045_00038",
+      "en_US": "TYPE 19"
+    },
+    {
+      "id": "msg_0045_00039",
+      "en_US": "TYPE 20"
+    },
+    {
+      "id": "msg_0045_00040",
+      "en_US": "WINDOW TYPE 1"
+    },
+    {
+      "id": "msg_0045_00041",
+      "en_US": "WINDOW TYPE 2"
+    },
+    {
+      "id": "msg_0045_00042",
+      "en_US": "WINDOW TYPE 3"
+    },
+    {
+      "id": "msg_0045_00043",
+      "en_US": "WINDOW TYPE 4"
+    },
+    {
+      "id": "msg_0045_00044",
+      "en_US": "WINDOW TYPE 5"
+    },
+    {
+      "id": "msg_0045_00045",
+      "en_US": "WINDOW TYPE 6"
+    },
+    {
+      "id": "msg_0045_00046",
+      "en_US": "WINDOW TYPE 7"
+    },
+    {
+      "id": "msg_0045_00047",
+      "en_US": "WINDOW TYPE 8"
+    },
+    {
+      "id": "msg_0045_00048",
+      "en_US": "WINDOW TYPE 9"
+    },
+    {
+      "id": "msg_0045_00049",
+      "en_US": "WINDOW TYPE 10"
+    },
+    {
+      "id": "msg_0045_00050",
+      "en_US": "WINDOW TYPE 11"
+    },
+    {
+      "id": "msg_0045_00051",
+      "en_US": "WINDOW TYPE 12"
+    },
+    {
+      "id": "msg_0045_00052",
+      "en_US": "WINDOW TYPE 13"
+    },
+    {
+      "id": "msg_0045_00053",
+      "en_US": "WINDOW TYPE 14"
+    },
+    {
+      "id": "msg_0045_00054",
+      "en_US": "WINDOW TYPE 15"
+    },
+    {
+      "id": "msg_0045_00055",
+      "en_US": "WINDOW TYPE 16"
+    },
+    {
+      "id": "msg_0045_00056",
+      "en_US": "WINDOW TYPE 17"
+    },
+    {
+      "id": "msg_0045_00057",
+      "en_US": "WINDOW TYPE 18"
+    },
+    {
+      "id": "msg_0045_00058",
+      "en_US": "WINDOW TYPE 19"
+    },
+    {
+      "id": "msg_0045_00059",
+      "en_US": "WINDOW TYPE 20"
+    }
+  ]
+}

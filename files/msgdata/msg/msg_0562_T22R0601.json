@@ -1,0 +1,44 @@
+{
+  "key": 5246,
+  "messages": [
+    {
+      "id": "msg_0562_T22R0601_00000",
+      "en_US": [
+        "A Pokémon you get in a trade\n",
+        "grows quickly.\r",
+        "But if you don’t have the right Gym\n",
+        "Badge, they may disobey you."
+      ]
+    },
+    {
+      "id": "msg_0562_T22R0601_00001",
+      "en_US": [
+        "I collect Pokémon.\n",
+        "Do you have BELLSPROUT?\r",
+        "Want to trade it for my ONIX? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0562_T22R0601_00002",
+      "en_US": [
+        "Yay! I got myself BELLSPROUT!\n",
+        "Thanks!"
+      ]
+    },
+    {
+      "id": "msg_0562_T22R0601_00003",
+      "en_US": [
+        "Huh? That’s not BELLSPROUT.\f",
+        "What a letdown..."
+      ]
+    },
+    {
+      "id": "msg_0562_T22R0601_00004",
+      "en_US": "You don’t want to trade? Aww..."
+    },
+    {
+      "id": "msg_0562_T22R0601_00005",
+      "en_US": "Hi, how’s my old ONIX doing?"
+    }
+  ]
+}

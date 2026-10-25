@@ -1,0 +1,56 @@
+{
+  "key": 46198,
+  "messages": [
+    {
+      "id": "msg_0121_D38R0104_00000",
+      "en_US": [
+        "Hey!\r",
+        "I am the Karate King!\n",
+        "I train alone here in the cave!\r",
+        "You!\n",
+        "Battle with me! Hwaaarggh!\r"
+      ]
+    },
+    {
+      "id": "msg_0121_D38R0104_00001",
+      "en_US": [
+        "I... I’m crushed...\r",
+        "My training is still not enough...\n",
+        "But a loss is a loss. I admit it.\r",
+        "As proof that you defeated me, I’ll give\n",
+        "you a rare Fighting-type Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0121_D38R0104_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received TYROGUE from\n",
+        "the Karate King!"
+      ]
+    },
+    {
+      "id": "msg_0121_D38R0104_00003",
+      "en_US": [
+        "TYROGUE is a Fighting type.\n",
+        "It evolves into a tougher Pokémon.\r",
+        "Keep up the hard work. I’ll keep\n",
+        "training too. Farewell!"
+      ]
+    },
+    {
+      "id": "msg_0121_D38R0104_00004",
+      "en_US": "You have no room in your party!"
+    },
+    {
+      "id": "msg_0121_D38R0104_00005",
+      "en_US": [
+        "Give a nickname to the TYROGUE you\n",
+        "received? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0121_D38R0104_00006",
+      "garbage": 25
+    }
+  ]
+}

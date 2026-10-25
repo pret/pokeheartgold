@@ -1,0 +1,238 @@
+{
+  "key": 22770,
+  "messages": [
+    {
+      "id": "msg_0685_00000",
+      "en_US": "Chad"
+    },
+    {
+      "id": "msg_0685_00001",
+      "en_US": [
+        "Huh? Is that thing a Pokédex? Have you\n",
+        "met Professor Oak?\r",
+        "Huh? You have?\n",
+        "That’s way cool!\r",
+        "I have a dream of becoming a Pokémon\n",
+        "researcher like Professor Oak.\r",
+        "May I please have your phone number?\r",
+        "We should chat about Professor Oak.\r",
+        "I’m sure it will be loads of fun! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0685_00002",
+      "en_US": [
+        "You must listen to Professor Oak’s\n",
+        "Pokémon Talk, right?"
+      ]
+    },
+    {
+      "id": "msg_0685_00003",
+      "en_US": [
+        "Oh... I wish I had a chance to meet\n",
+        "Professor Oak..."
+      ]
+    },
+    {
+      "id": "msg_0685_00004",
+      "en_US": [
+        "May I please have your phone number?\r",
+        "We should chat about Professor\n",
+        "Oak. It will be loads of fun! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0685_00005",
+      "en_US": [
+        "Huh?\n",
+        "Wait, aren’t you nearby?\f",
+        "Do you like the phone that much?"
+      ]
+    },
+    {
+      "id": "msg_0685_00006",
+      "en_US": [
+        "I recently began observing wild\n",
+        "{STRVAR_1 0, 10, 0}.\r",
+        "I’ve been learning all sorts of new\n",
+        "things through my observations.\r",
+        "I wish I could become a Pokémon\n",
+        "researcher like Professor Oak soon.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00007",
+      "en_US": [
+        "Oh yes, I managed to knock out a wild\n",
+        "{STRVAR_1 0, 11, 0} a while back.\r",
+        "Well, considering all the Pokémon\n",
+        "studying I do every day,\f",
+        "it was inevitable.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00008",
+      "en_US": [
+        "Oh yes, I came close to catching\n",
+        "a wild {STRVAR_1 0, 11, 0}, but it got away.\r",
+        "For the longest time, I’ve been wanting\n",
+        "to observe {STRVAR_1 0, 11, 0}. Man...\r",
+        "See you later!\n"
+      ]
+    },
+    {
+      "id": "msg_0685_00009",
+      "en_US": [
+        "Do you know Blue?\r",
+        "He’s Professor Oak’s grandson and a\n",
+        "former Pokémon League Champion!\f",
+        "He’s one super Pokémon Trainer!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00010",
+      "en_US": [
+        "Professor Oak has a granddaughter\n",
+        "named Daisy.\r",
+        "When she’s around, even the most\n",
+        "ferocious Pokémon calm right down.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00011",
+      "en_US": [
+        "Everyone’s talking about\n",
+        "Professor Elm.\r",
+        "He used to be an assistant to the great\n",
+        "Professor Oak!\r",
+        "That is so cool! I envy him!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00012",
+      "en_US": [
+        "Professor Oak’s dream is to compile a\n",
+        "comprehensive Pokédex.\r",
+        "I envy you for taking part in that\n",
+        "project...\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00013",
+      "en_US": [
+        "Do you know Kurt, the Poké Ball\n",
+        "creator?\r",
+        "He and Professor Oak go back a long\n",
+        "way. I guess great people attract\f",
+        "one another!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00014",
+      "en_US": [
+        "The Pokémon League is the great\n",
+        "gathering place for all Trainers who\f",
+        "wish to become the Champion.\r",
+        "Professor Oak acts as an advisor to\n",
+        "the Pokémon League’s headquarters.\r",
+        "He really is a great man.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00015",
+      "en_US": [
+        "Professor Oak’s Pokémon Talk is a\n",
+        "popular radio show, right?\r",
+        "Did you know that he was going to turn\n",
+        "down the show at first?\r",
+        "But Mary’s energy and persistence wore\n",
+        "him down.\f",
+        "So we have Mary to thank for it!\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00016",
+      "en_US": [
+        "Professor Oak used to be a Trainer a\n",
+        "long time ago.\r",
+        "But rather than battling, he found\n",
+        "Pokémon themselves to be interesting.\r",
+        "So he abandoned his training to focus\n",
+        "on becoming a researcher.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00017",
+      "en_US": [
+        "Professor Oak has a granddaughter\n",
+        "named Daisy.\r",
+        "She has tea every day for an hour from\n",
+        "three in the afternoon.\r",
+        "I wish I could join her for tea and chat\n",
+        "about Professor Oak.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00018",
+      "en_US": [
+        "Did you know?\n",
+        "Professor Oak traveled all over the\f",
+        "world when he was young.\r",
+        "While traveling, he must’ve learned\n",
+        "about Pokémon naturally.\r",
+        "I envy him... I’d like to travel and\n",
+        "learn about things, too...\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00019",
+      "en_US": [
+        "Did you know?\n",
+        "Professor Oak traveled all over the\f",
+        "world when he was young.\r",
+        "While traveling, he must’ve learned\n",
+        "about Pokémon naturally.\r",
+        "I envy him... I’d like to travel and\n",
+        "learn about things, too...\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0685_00020",
+      "en_US": [
+        "Want to battle?\r",
+        "I have to battle every so often to\n",
+        "avoid getting rusty.\r",
+        "I’ll be on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0685_00021",
+      "en_US": [
+        "Do you remember about our battle?\r",
+        "The place is {STRVAR_1 4, 3, 0}.\n",
+        "Hurry over--I’m waiting."
+      ]
+    },
+    {
+      "id": "msg_0685_00022",
+      "en_US": [
+        "I’m going to study all about Pokémon so\n",
+        "that Professor Oak will make me his\f",
+        "assistant!"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_48.inc"
 	.include "global.inc"
 
@@ -2960,7 +2960,7 @@ ov48_02259E78: ; 0x02259E78
 	add r4, r0, #0
 	add r0, #0x1c
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r4, #0x1c
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

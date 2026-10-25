@@ -236,9 +236,7 @@ static MoveTutorLearnset *GetMoveTutorLearnset(enum HeapID heapID, u32 index) {
     }
     // subtract 2 because SPECIES_EGG and SPECIES_BAD_EGG are missing
     u32 filesize = (NUM_SPECIES - 2) * sizeof(MoveTutorLearnset);
-    if (file.prop.file.bottom - file.prop.file.top != filesize) {
-        GF_ASSERT(FALSE);
-    }
+    GF_ASSERT(file.prop.file.bottom - file.prop.file.top == filesize);
     MoveTutorLearnset *learnset = Heap_AllocAtEnd(heapID, sizeof(MoveTutorLearnset));
     FS_SeekFile(&file, index * sizeof(MoveTutorLearnset), FS_SEEK_SET);
     FS_ReadFile(&file, learnset, sizeof(MoveTutorLearnset));
@@ -286,7 +284,7 @@ BOOL ScrCmd_MoveTutorChooseMove(ScriptContext *ctx) {
     u16 *result = GetVarPointer(fieldSystem, resultVarId);
     Window *window = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WINDOW);
     *unk = ov01_021EDF78(fieldSystem, 1, 1, 0, 1, result, *messageFormat, window, ctx->msgdata);
-    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0750_bin, HEAP_ID_FIELD3);
+    messageData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0750, HEAP_ID_FIELD3);
     String *string = String_New(0x10, HEAP_ID_FIELD3);
     showAsTwoColumns = (numLearnableMoves + showNextButton >= 4) ? 1 : 0;
     for (i = 0; i < numLearnableMoves; i++) {

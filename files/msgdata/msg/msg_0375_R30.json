@@ -1,0 +1,127 @@
+{
+  "key": 19231,
+  "messages": [
+    {
+      "id": "msg_0375_R30_00000",
+      "en_US": [
+        "Go, RATTATA!\r",
+        "Tackle!\r"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00001",
+      "en_US": [
+        "What? This is a big battle!\f",
+        "Leave me alone!\r"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00002",
+      "en_US": [
+        "A Pokémon can use its moves as long\n",
+        "as the moves still have PP.\r",
+        "When a move has no PP remaining, that\n",
+        "Pokémon cannot use that move.\r",
+        "Then you should take your Pokémon to\n",
+        "the Pokémon Center."
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00003",
+      "en_US": [
+        "A Pokémon can use its moves as long\n",
+        "as the moves still have PP.\r",
+        "When a move has no PP remaining, that\n",
+        "Pokémon cannot use that move.\r",
+        "Then you should take your Pokémon to\n",
+        "the Pokémon Center."
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00004",
+      "en_US": [
+        "I’m not a Trainer.\r",
+        "But if you look one in the eyes,\n",
+        "prepare to battle."
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00005",
+      "en_US": [
+        "Hey, kiddo!\r",
+        "How in the world can you be so\n",
+        "oblivious to my eye-catching house?\f",
+        "Hold it right there!\r"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00006",
+      "en_US": [
+        "When you follow that path up north,\n",
+        "you will see Mr. Pokémon’s house.\r",
+        "But before you go, let me finish what\n",
+        "I have to say.\r",
+        "Do you...have any Apricorns?\f",
+        "Apricorn trees bear fruit once a day.\f",
+        "I have one of those trees, too!\r",
+        "Apricorns are really something.\n",
+        "You can make Poké Balls and\f",
+        "other things.\r",
+        "They are quite useful.\r",
+        "I have a feeling this is meant to be,\n",
+        "because I have something for you!\r"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00007",
+      "garbage": 21
+    },
+    {
+      "id": "msg_0375_R30_00008",
+      "en_US": [
+        "With that Apricorn Box, you can carry\n",
+        "so many Apricorns.\r",
+        "You’ll be a decent Apricorn collector!\r"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00009",
+      "en_US": [
+        "Rt. 30\n",
+        "South to Cherrygrove City"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00010",
+      "en_US": [
+        "Mr. Pokémon’s House\n",
+        "Straight Ahead!"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00011",
+      "en_US": "Mr. Pokémon’s House"
+    },
+    {
+      "id": "msg_0375_R30_00012",
+      "en_US": [
+        "Trainer Tips\r",
+        "No stealing other people’s Pokémon!\r",
+        "Poké Balls are to be thrown only at\n",
+        "wild Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0375_R30_00013",
+      "en_US": [
+        "Oh! You’re wearing the Running Shoes.\r",
+        "They make you feel like you are flying,\n",
+        "don’t they?\r",
+        "But beware of wild Pokémon and\n",
+        "Trainers!\r",
+        "When you run, the noise will\n",
+        "attract them."
+      ]
+    }
+  ]
+}

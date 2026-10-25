@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public ListMenuInit
 .public ListMenu_ProcessInput
@@ -25,7 +25,7 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public IsPaletteFadeFinished
 .public Heap_Alloc
 .public Heap_Free

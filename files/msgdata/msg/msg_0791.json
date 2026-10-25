@@ -1,0 +1,89 @@
+{
+  "key": 6605,
+  "messages": [
+    {
+      "id": "msg_0791_00000",
+      "en_US": "None"
+    },
+    {
+      "id": "msg_0791_00001",
+      "en_US": "Abruzzo"
+    },
+    {
+      "id": "msg_0791_00002",
+      "en_US": "Basilicata"
+    },
+    {
+      "id": "msg_0791_00003",
+      "en_US": "Calabria"
+    },
+    {
+      "id": "msg_0791_00004",
+      "en_US": "Campania"
+    },
+    {
+      "id": "msg_0791_00005",
+      "en_US": "Emilia-Romagna"
+    },
+    {
+      "id": "msg_0791_00006",
+      "en_US": "Friuli-Venezia Giulia"
+    },
+    {
+      "id": "msg_0791_00007",
+      "en_US": "Lazio"
+    },
+    {
+      "id": "msg_0791_00008",
+      "en_US": "Liguria"
+    },
+    {
+      "id": "msg_0791_00009",
+      "en_US": "Lombardia"
+    },
+    {
+      "id": "msg_0791_00010",
+      "en_US": "Marche"
+    },
+    {
+      "id": "msg_0791_00011",
+      "en_US": "Molise"
+    },
+    {
+      "id": "msg_0791_00012",
+      "en_US": "Piemonte"
+    },
+    {
+      "id": "msg_0791_00013",
+      "en_US": "Puglia"
+    },
+    {
+      "id": "msg_0791_00014",
+      "en_US": "Sardegna"
+    },
+    {
+      "id": "msg_0791_00015",
+      "en_US": "Sicilia"
+    },
+    {
+      "id": "msg_0791_00016",
+      "en_US": "Toscana"
+    },
+    {
+      "id": "msg_0791_00017",
+      "en_US": "Trentino-Alto Adige"
+    },
+    {
+      "id": "msg_0791_00018",
+      "en_US": "Umbria"
+    },
+    {
+      "id": "msg_0791_00019",
+      "en_US": "Valle d’Aosta"
+    },
+    {
+      "id": "msg_0791_00020",
+      "en_US": "Veneto"
+    }
+  ]
+}

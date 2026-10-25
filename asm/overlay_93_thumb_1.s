@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_93_thumb_1.inc"
 	.include "global.inc"
 
@@ -405,9 +405,9 @@ ov93_0225C768: ; 0x0225C768
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #0x2c]
 	bl ov93_0225D1D8
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r5, #0
 	bl ov93_0225CFC0
 	mov r0, #0x75
@@ -1069,7 +1069,7 @@ _0225CD72:
 	str r0, [r2]
 	ldr r0, [r4]
 	bl ov93_0225CFB8
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r7, #0
 	bl OverlayManager_FreeData
 	mov r0, #0

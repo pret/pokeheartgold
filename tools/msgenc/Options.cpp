@@ -1,5 +1,7 @@
 #include "Options.h"
 
+static string POSARGS[] = {"TEXTFILE", "BINFILE"};
+
 Options::Options(int argc, char **argv) {
     for (int i = 1; i < argc; i++) {
         string arg(argv[i]);
@@ -24,8 +26,10 @@ Options::Options(int argc, char **argv) {
             charmap = argv[++i];
         } else if (arg == "-D") {
             dumpBinary = argv[++i];
+        } else if (arg == "--json") {
+            textFormat = FMT_JSON;
         } else if (arg == "--gmm") {
-            textFormat = GamefreakGMM;
+            textFormat = FMT_GAMEFREAK_GMM;
         } else if (arg[0] != '-') {
             posargs.push_back(arg);
         } else {
@@ -34,7 +38,7 @@ Options::Options(int argc, char **argv) {
         }
     }
     if (posargs.size() < 2) {
-        failReason = "missing required positional argument: " + (string[]){"INFILE", "OUTFILE"}[posargs.size()];
+        failReason = "missing required positional argument: " + POSARGS[posargs.size()];
     }
     if (mode == CONV_INVALID) {
         failReason = "missing mode flag: -d or -e is required";

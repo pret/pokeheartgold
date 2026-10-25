@@ -1,0 +1,454 @@
+{
+  "key": 46110,
+  "messages": [
+    {
+      "id": "msg_0516_T08R0201_00000",
+      "en_US": [
+        "Welcome to the Pal Park!\r",
+        "This is where top-notch Trainers who\n",
+        "aren’t satisfied with the Safari Zone\f",
+        "come to show their Pokémon-catching\f",
+        "techniques to their peers.\r",
+        "...Oh?\r",
+        "Are you maybe...\n",
+        "Ah, you are {STRVAR_1 3, 0, 0}!\r",
+        "My dad told me about you!\n",
+        "Word is, you’re a hotshot Trainer!\r",
+        "We’d be honored if you would\n",
+        "participate in our Catching Shows. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00001",
+      "en_US": [
+        "Welcome to the Pal Park!\r",
+        "This is where top-notch Trainers who\n",
+        "aren’t satisfied with the Safari Zone\f",
+        "come to show their Pokémon-catching\f",
+        "techniques to their peers.\r",
+        "...Oh?\r",
+        "Are you maybe...\n",
+        "Ah, you are {STRVAR_1 3, 0, 0}!\r",
+        "My dad told me about you!\n",
+        "Word is, you’re a hotshot Trainer!\r",
+        "We’d be honored if you would\n",
+        "participate in our Catching Shows. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00002",
+      "en_US": [
+        "Yes! You agreed to participate!\n",
+        "Let’s not waste any time!\r",
+        "Let me explain how Pal Park works.\n",
+        "What should I explain? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00003",
+      "en_US": [
+        "Pal Park is a place where you are\n",
+        "timed on the catching of six Pokémon.\r",
+        "You are provided with six special\n",
+        "Poké Balls for the challenge.\r",
+        "Participating Trainers are required to\n",
+        "supply the six Pokémon that are to\f",
+        "be caught.\r",
+        "If you do not supply the stock of six\n",
+        "Pokémon, you may not participate in\f",
+        "the Catching Show.\r",
+        "...Would you like to know\n",
+        "anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00004",
+      "en_US": [
+        "At the start of the Catching Show,\n",
+        "you will be given six Park Balls.\r",
+        "Use the Park Balls to catch the\n",
+        "six Pokémon you provide.\r",
+        "...Would you like to know\n",
+        "anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00005",
+      "en_US": [
+        "Insert a Game Boy Advance Pokémon\n",
+        "Ruby, Sapphire, Emerald, FireRed,\f",
+        "or LeafGreen in the Game Pak slot.\r",
+        "Six of the currently caught Pokémon\n",
+        "can migrate from the Game Pak to the\f",
+        "DS Game Card when your DS is turned on\f",
+        "and you select “MIGRATE FROM...”\r",
+        "Please note that you cannot insert a\n",
+        "GBA Game Pak into a Nintendo DSi\f",
+        "to migrate.\r",
+        "...Would you like to know\n",
+        "anything else? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00006",
+      "en_US": [
+        "Would you like to take part in\n",
+        "a Catching Show now? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00007",
+      "en_US": [
+        "Aww, that’s too bad.\r",
+        "Well, just give me a shout again\n",
+        "if you’d like to participate."
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00008",
+      "en_US": [
+        "Hi there, {STRVAR_1 3, 0, 0}!\r",
+        "Did you come to participate in\n",
+        "a Catching Show? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00009",
+      "en_US": [
+        "Hi there, {STRVAR_1 3, 0, 0}!\r",
+        "Did you come to participate in\n",
+        "a Catching Show? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00010",
+      "en_US": [
+        "OK, here are your Park Balls!\r",
+        "{STRVAR_1 3, 0, 0} received\n",
+        "six Park Balls.\r",
+        "The current record holder is\n",
+        "{STRVAR_1 3, 1, 0} with {STRVAR_1 53, 2, 0} points.\r",
+        "OK, off you go, {STRVAR_1 3, 0, 0}.\r",
+        "Dazzle us with a masterful display\n",
+        "of Pokémon catching!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00011",
+      "en_US": [
+        "OK, here are your Park Balls!\r",
+        "{STRVAR_1 3, 0, 0} received\n",
+        "six Park Balls.\r",
+        "The current record holder is\n",
+        "{STRVAR_1 3, 1, 0} with {STRVAR_1 53, 2, 0} points.\r",
+        "OK, off you go, {STRVAR_1 3, 0, 0}.\r",
+        "Dazzle us with a masterful display\n",
+        "of Pokémon catching!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00012",
+      "en_US": [
+        "Oh, hold on. You don’t have enough\n",
+        "Pokémon for a Catching Show.\r",
+        "You’ll need to stock us with six\n",
+        "Pokémon to participate.\r",
+        "You should make some Pokémon migrate\n",
+        "from Hoenn or another region!"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00013",
+      "en_US": [
+        "Yes! You agreed to participate!\n",
+        "Let’s not waste any time!\r",
+        "Let me explain how Pal Park works.\n",
+        "What should I explain? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00014",
+      "en_US": [
+        "I’m sorry you had to retire.\n",
+        "I’ll take what Park Balls you\f",
+        "have left.\r",
+        "Next time, please do stay to catch\n",
+        "all six Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00015",
+      "en_US": [
+        "Oh, your PC Boxes are filled. You\n",
+        "have no room for six more Pokémon.\r",
+        "You won’t be able to accept them,\n",
+        "even if you do catch them.\r",
+        "Make enough room in a PC Box and\n",
+        "come back for your Catching Show."
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00016",
+      "en_US": [
+        "Congratulations!\n",
+        "That’s all six Pokémon caught!\r",
+        "The audience sure enjoyed watching\n",
+        "your Catching Show.\r",
+        "All right, let’s see your all-important\n",
+        "score from this show!\r",
+        "...\n",
+        "...\r",
+        "Catching Points: {STRVAR_1 53, 0, 0}!\r",
+        "Time Points: {STRVAR_1 53, 1, 0}!\r",
+        "Type Points: {STRVAR_1 53, 2, 0}!\r",
+        "The total is...\r",
+        "...\n",
+        "...\r",
+        "{STRVAR_1 53, 3, 0} points!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00017",
+      "en_US": [
+        "Wow! That’s an outstanding record!\n",
+        "Kudos to you!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00018",
+      "en_US": [
+        "Good! That’s a decent record.\n",
+        "Props to you!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00019",
+      "en_US": [
+        "Would you like to put all caught\n",
+        "Pokémon in PC Boxes? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00020",
+      "en_US": [
+        "Done!\n",
+        "Your Pokémon have been boxed away.\r",
+        "You’ll now have to save the game.\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00021",
+      "en_US": [
+        "Oh, then it might be fun for you to\n",
+        "go for an even better score by\f",
+        "trying to catch these six again.\r",
+        "If you want to do another Catching\n",
+        "Show, just come see us!"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00022",
+      "en_US": [
+        "If you want to do another Catching\n",
+        "Show, come see us again, please!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00023",
+      "en_US": [
+        "It’s time for your prize!\n",
+        "Here you are!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00024",
+      "en_US": [
+        "Do another Catching Show\n",
+        "with the same Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00025",
+      "en_US": [
+        "The current record holder is\n",
+        "{STRVAR_1 3, 1, 0} with {STRVAR_1 53, 2, 0} points.\f",
+        "Can you top that?"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00026",
+      "en_US": [
+        "Oh! You’ve topped 2,000 points!\n",
+        "You’ve earned this, then!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00027",
+      "en_US": [
+        "Keep working on getting a higher\n",
+        "score!"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00028",
+      "en_US": [
+        "Oh! You’ve topped 2,500 points!\n",
+        "You’ve earned this, then!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00029",
+      "en_US": [
+        "Oh! You’ve topped 3,000 points!\n",
+        "You’ve earned this, then!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00030",
+      "en_US": [
+        "Oh! You’ve earned 3,500 points!\n",
+        "You’ve earned this, then!\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00031",
+      "en_US": [
+        "You’ve set an incredible record!\n",
+        "There’s nothing left to say!"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00032",
+      "en_US": [
+        "Your Bag is full.\n",
+        "You should come back later."
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00033",
+      "en_US": [
+        "I’ve heard Trainers complain that\n",
+        "rare Pokémon take longer to appear.\r",
+        "Is it easier to start with common\n",
+        "Pokémon?"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00034",
+      "en_US": [
+        "Oh, me?\n",
+        "No, I never catch Pokémon myself.\f",
+        "But I enjoy Catching Shows a lot.\r",
+        "I love to see Johto and Hoenn Pokémon,\n",
+        "especially.\r",
+        "The regions I’ve never been to\n",
+        "are so mysterious."
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00035",
+      "en_US": [
+        "I feel so happy that I’d like to share\n",
+        "my happiness with you today.\r",
+        "I must crown you with this...\n",
+        "Crown.\r",
+        "Oh, before you get the wrong idea,\n",
+        "it’s an Accessory for Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00036",
+      "en_US": [
+        "I feel so happy that I’d like to share\n",
+        "my happiness with you today.\r",
+        "I feel compelled to give you this\n",
+        "Tiara.\r",
+        "Oh, before you get the wrong idea,\n",
+        "it’s an Accessory for Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00037",
+      "en_US": [
+        "I feel so happy that I’d like to share\n",
+        "my happiness with you today.\r",
+        "I wish you would take this\n",
+        "“Seafloor” Backdrop.\r",
+        "Please try using it when dressing up\n",
+        "your Pokémon with Accessories.\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00038",
+      "en_US": [
+        "I feel so happy that I’d like to share\n",
+        "my happiness with you today.\r",
+        "I wish you would take this\n",
+        "“Underground” Backdrop.\r",
+        "Please try using it when dressing up\n",
+        "your Pokémon with Accessories.\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00039",
+      "en_US": [
+        "I feel so happy that I’d like to share\n",
+        "my happiness with you today.\r",
+        "I wish you would take this\n",
+        "“Sky” Backdrop.\r",
+        "Please try using it when dressing up\n",
+        "your Pokémon with Accessories.\r"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00040",
+      "en_US": [
+        "Not only is there the Pokéathlon and\n",
+        "the Safari Zone, but also the\f",
+        "Battle Frontier and the Pal Park...\r",
+        "People other than me are working\n",
+        "so hard... How dreamy...\f",
+        "This region sets my heart aflutter."
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00041",
+      "en_US": [
+        "I came to see {STRVAR_1 3, 0, 0}’s\n",
+        "Catching Show...\r",
+        "Wow, {STRVAR_1 3, 0, 0}! Are you for real?"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00042",
+      "en_US": [
+        "Hi, {STRVAR_1 3, 0, 0}!\n",
+        "Your Catching Show was awesome!\f",
+        "I’ll become a Trainer like you!"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00043",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0},\n",
+        "there’s always a next time!"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00044",
+      "en_US": [
+        "My son is a big fan of yours,\n",
+        "{STRVAR_1 3, 0, 0}.\f",
+        "Are you...that famous?"
+      ]
+    },
+    {
+      "id": "msg_0516_T08R0201_00045",
+      "en_US": [
+        "If you want to see rare Pokémon,\n",
+        "Catching Shows at the Pal Park are\f",
+        "the best!"
+      ]
+    }
+  ]
+}

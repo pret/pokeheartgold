@@ -1,0 +1,271 @@
+{
+  "key": 20235,
+  "messages": [
+    {
+      "id": "msg_0626_T29_00000",
+      "en_US": "GYARADOS: Gyashaa!"
+    },
+    {
+      "id": "msg_0626_T29_00001",
+      "en_US": "DRAGONITE: Gyafooha!"
+    },
+    {
+      "id": "msg_0626_T29_00002",
+      "en_US": [
+        "That red GYARADOS wasn’t acting right.\n",
+        "As I feared, somebody must have forced\f",
+        "it to evolve...\r"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00003",
+      "en_US": [
+        "Did you come here because of the\n",
+        "wild tales?\r",
+        "You’re {STRVAR_1 3, 0, 0}?\n",
+        "I’m Lance, a Trainer like you.\r",
+        "I heard some rumblings, so I came to\n",
+        "investigate...\r",
+        "I saw the way you battled earlier,\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "I can tell that you’re a Trainer\n",
+        "with considerable skill.\r",
+        "If you don’t mind, could you help me\n",
+        "investigate? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00004",
+      "en_US": [
+        "Did you come here because of the\n",
+        "wild tales?\r",
+        "You’re {STRVAR_1 3, 0, 0}?\n",
+        "I’m Lance, a Trainer like you.\r",
+        "I heard some rumblings, so I came to\n",
+        "investigate...\r",
+        "I saw the way you battled earlier,\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "I can tell that you’re a Trainer\n",
+        "with considerable skill.\r",
+        "If you don’t mind, could you help me\n",
+        "investigate? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00005",
+      "en_US": [
+        "Lance: Excellent!\r",
+        "It seems that the Lake of Rage’s\n",
+        "MAGIKARP are being forced to evolve.\r",
+        "A mysterious radio broadcast coming\n",
+        "from Mahogany is probably the cause.\r",
+        "And that suspicious souvenir shop...\r",
+        "I’ll be waiting for you in Mahogany,\n",
+        "{STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00006",
+      "en_US": [
+        "Lance: Excellent!\r",
+        "It seems that the Lake of Rage’s\n",
+        "MAGIKARP are being forced\f",
+        "to evolve.\r",
+        "A mysterious radio broadcast coming\n",
+        "from Mahogany is the cause.\r",
+        "I’ll be waiting for you, {STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00007",
+      "en_US": [
+        "Oh... Well, if you change your mind,\n",
+        "please help me."
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00008",
+      "en_US": [
+        "Lance: What do you think?\n",
+        "Are you going to help me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00009",
+      "en_US": [
+        "The GYARADOS are angry!\n",
+        "It’s a bad omen!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00010",
+      "en_US": "Hahah! The MAGIKARP are biting!"
+    },
+    {
+      "id": "msg_0626_T29_00011",
+      "en_US": [
+        "I heard this lake was made by rampaging\n",
+        "GYARADOS.\r",
+        "I wonder if there is any connection\n",
+        "to their mass outbreak now?"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00012",
+      "en_US": [
+        "Did my eyes deceive me? I saw a \n",
+        "red GYARADOS in the Lake of Rage...\r",
+        "But I thought GYARADOS were\n",
+        "usually blue?"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00013",
+      "en_US": [
+        "Pryce: The strong rain falling on the\n",
+        "surface seems to be agitating the\f",
+        "raging lake.\r",
+        "This must have some purpose that we\n",
+        "meet again.\r",
+        "Why don’t we exchange our phone\n",
+        "numbers? {YESNO 0}\n"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00014",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} registered Pryce\n",
+        "in the Pokégear!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00015",
+      "en_US": [
+        "Pryce: I make it a habit to train myself\n",
+        "on Monday mornings to give this lazy\f",
+        "body a spine.\r",
+        "You could be a good training partner.\n",
+        "I’ll be waiting for your call!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00016",
+      "en_US": [
+        "Pryce: That’s OK, too.\n",
+        "People ought to have their own ideas.\f",
+        "That’s the way it is."
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00017",
+      "en_US": [
+        "Pryce: So? Will you exchange\n",
+        "numbers with me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00018",
+      "en_US": [
+        "Battle with the great catch\n",
+        "I just got!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00019",
+      "garbage": 29
+    },
+    {
+      "id": "msg_0626_T29_00020",
+      "garbage": 45
+    },
+    {
+      "id": "msg_0626_T29_00021",
+      "en_US": [
+        "I can only land the same kind of\n",
+        "Pokémon. No matter how long I fish!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00022",
+      "garbage": 14
+    },
+    {
+      "id": "msg_0626_T29_00023",
+      "garbage": 23
+    },
+    {
+      "id": "msg_0626_T29_00024",
+      "en_US": [
+        "When you spot a Trainer, it’s time for\n",
+        "a challenge!\f",
+        "That’s the way of Trainers!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00025",
+      "garbage": 16
+    },
+    {
+      "id": "msg_0626_T29_00026",
+      "garbage": 40
+    },
+    {
+      "id": "msg_0626_T29_00027",
+      "en_US": [
+        "What happened to the red GYARADOS?\r",
+        "It’s gone?\n",
+        "I came all the way for it...\r",
+        "OK, I challenge you!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00028",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0626_T29_00029",
+      "garbage": 28
+    },
+    {
+      "id": "msg_0626_T29_00030",
+      "en_US": [
+        "Lake of Rage\n",
+        "Also Known As GYARADOS Lake"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00031",
+      "en_US": "Fishing Guru’s House"
+    },
+    {
+      "id": "msg_0626_T29_00032",
+      "en_US": [
+        "Fishing Guru’s House\r",
+        "Current Record\n",
+        "{STRVAR_1 52, 0, 0}.{STRVAR_1 50, 1, 0} in. {STRVAR_1 3, 2, 0}"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00033",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} found\n",
+        "{STRVAR_1 8, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00034",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} put the {STRVAR_1 8, 1, 0}\n",
+        "in the {COLOR 2}{STRVAR_1 31, 2, 0}{COLOR 0} Pocket."
+      ]
+    },
+    {
+      "id": "msg_0626_T29_00035",
+      "en_US": [
+        "Obtained the {STRVAR_1 8, 0, 0}!\r",
+        "Too bad!\n",
+        "The Bag is full..."
+      ]
+    }
+  ]
+}

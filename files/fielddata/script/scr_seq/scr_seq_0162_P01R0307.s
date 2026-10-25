@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_P01R0307.h"
 #include "msgdata/msg/msg_0263_P01R0307.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_P01R0307_000
 	ScrDef scr_seq_P01R0307_001
@@ -12,7 +11,7 @@
 	ScrDefEnd
 
 scr_seq_P01R0307_002:
-	Compare VAR_UNK_40CB, 4
+	Compare VAR_SCENE_SS_AQUA, 4
 	GoToIfNe _0029
 	ClearFlag FLAG_UNK_219
 	GoTo _002D
@@ -105,7 +104,7 @@ scr_seq_P01R0307_000:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	FacePlayer
-	Compare VAR_UNK_40CB, 3
+	Compare VAR_SCENE_SS_AQUA, 3
 	GoToIfGe _0148
 	NPCMsg msg_0263_P01R0307_00001
 	WaitButton
@@ -156,7 +155,7 @@ _01D0:
 	CloseMsg
 	PlaySE SEQ_SE_DP_KAIDAN2
 	WaitSE SEQ_SE_DP_KAIDAN2
-	SetVar VAR_UNK_40CB, 5
+	SetVar VAR_SCENE_SS_AQUA, 5
 	FadeScreen 6, 1, 0, RGB_BLACK
 	WaitFade
 	Warp MAP_SS_AQUA_1F_NORTHWEST_ROOMS, 0, 9, 10, DIR_NORTH

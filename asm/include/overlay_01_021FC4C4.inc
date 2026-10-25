@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public NARC_ReadWholeMember
 .public NARC_GetMemberSize

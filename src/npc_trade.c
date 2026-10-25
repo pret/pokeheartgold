@@ -182,7 +182,7 @@ static String *_GetNpcTradeName(enum HeapID heapID, s32 msgno) {
     String *ret;
     MsgData *msgData;
 
-    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0200_bin, heapID);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0200, heapID);
     ret = NewString_ReadMsgData(msgData, msgno);
     DestroyMsgData(msgData);
     return ret;

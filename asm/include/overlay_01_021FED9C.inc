@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public MapObject_GetPriorityPlusValue
 .public MapObject_GetPreviousYCoord

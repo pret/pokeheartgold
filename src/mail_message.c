@@ -17,11 +17,11 @@
 #include "string_control_code.h"
 
 static const u16 sMessageBanks[] = {
-    NARC_msg_msg_0294_bin,
-    NARC_msg_msg_0296_bin,
-    NARC_msg_msg_0292_bin,
-    NARC_msg_msg_0293_bin,
-    NARC_msg_msg_0295_bin,
+    msg_0294,
+    msg_0296,
+    msg_0292,
+    msg_0293,
+    msg_0295,
 };
 
 u32 MailMsg_NumFields(u16 msg_bank, u16 msg_no);

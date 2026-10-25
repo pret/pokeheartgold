@@ -9,6 +9,6 @@ struct PhoneBook *AllocAndReadPhoneBook(enum HeapID heapID);
 void FreePhoneBook(struct PhoneBook *phoneBook);
 u8 LoadPhoneBookEntryI(u16 idx, struct PhoneBookEntry *dest, enum HeapID heapID);
 int GetPhoneMessageGmm(int idx);
-BOOL sub_02095FF8(int x);
+BOOL sub_02095FF8(u8 x);
 
 #endif // POKEHEARTGOLD_PHONEBOOK_DAT_H

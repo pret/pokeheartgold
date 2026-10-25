@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanABSpeedUpPrint
 .public TextFlags_SetAutoScrollParam
@@ -16,7 +16,7 @@
 .public BufferLandmarkName
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public Heap_Alloc
 .public Heap_Free
 .public AddWindowParameterized

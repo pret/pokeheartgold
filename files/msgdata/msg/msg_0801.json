@@ -1,0 +1,32 @@
+{
+  "key": 41388,
+  "messages": [
+    {
+      "id": "msg_0801_00000",
+      "en_US": [
+        "Press the X Button over a dot\n",
+        "to display the player’s location."
+      ]
+    },
+    {
+      "id": "msg_0801_00001",
+      "en_US": "EXIT"
+    },
+    {
+      "id": "msg_0801_00002",
+      "en_US": "PLACE NAME"
+    },
+    {
+      "id": "msg_0801_00003",
+      "en_US": "{STRVAR_1 36, 0, 0}"
+    },
+    {
+      "id": "msg_0801_00004",
+      "en_US": "{STRVAR_1 37, 0, 0}"
+    },
+    {
+      "id": "msg_0801_00005",
+      "en_US": "Exit the Visitor Profiles?"
+    }
+  ]
+}

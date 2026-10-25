@@ -71,6 +71,7 @@ static const MailMessageTemplate TrainerHouse_DefaultIntroMessage = {
                      },                         \
 }
 
+// clang-format off
 static const TrainerHouseSet ov25_02259D9C = {
     .trainer = {
                 .id = 0,
@@ -91,52 +92,101 @@ static const TrainerHouseSet ov25_02259D9C = {
     },
     .party = {
                 {
-            .species = SPECIES_MEGANIUM, .item = ITEM_SITRUS_BERRY, .moves = { MOVE_LEECH_SEED, MOVE_PROTECT, MOVE_ENERGY_BALL, MOVE_TOXIC }, .otid = 0x11111111, .pid = 0x00000101, .hpIv = 20, .atkIv = 20, .defIv = 20, .spdIv = 20, .spAtkIv = 20, .spDefIv = 20, .hpEv = 255, .spDefEv = 255, .language = GAME_LANGUAGE, .ability = ABILITY_OVERGROW, .level = 50, .nickname = {
-                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_KATA_ME,
-                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_KATA_GA,
-                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_KATA_NI,
-                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_KATA_U,
-                                                                                                                                                                                                                                                                                                                                                                            CHAR_JP_KATA_MU,
-                                                                                                                                                                                                                                                                                                                                                                            EOS,
-                                                                                                                                                                                                                                                                                                                                                                            EOS,
-                                                                                                                                                                                                                                                                                                                                                                            EOS,
-                                                                                                                                                                                                                                                                                                                                                                            EOS,
-                                                                                                                                                                                                                                                                                                                                                                            EOS,
-                                                                                                                                                                                                                                                                                                                                                                        }, // "メガニウム"
+            .species = SPECIES_MEGANIUM,
+            .item = ITEM_SITRUS_BERRY,
+            .moves = { MOVE_LEECH_SEED, MOVE_PROTECT, MOVE_ENERGY_BALL, MOVE_TOXIC },
+            .otid = 0x11111111,
+            .pid = 0x00000101,
+            .hpIv = 20,
+            .atkIv = 20,
+            .defIv = 20,
+            .spdIv = 20,
+            .spAtkIv = 20,
+            .spDefIv = 20,
+            .hpEv = 255,
+            .spDefEv = 255,
+            .language = GAME_LANGUAGE,
+            .ability = ABILITY_OVERGROW,
+            .level = 50,
+            .nickname = {
+                CHAR_JP_KATA_ME,
+                CHAR_JP_KATA_GA,
+                CHAR_JP_KATA_NI,
+                CHAR_JP_KATA_U,
+                CHAR_JP_KATA_MU,
+                EOS,
+                EOS,
+                EOS,
+                EOS,
+                EOS,
+            }, // "メガニウム"
         },
                 {
-            .species = SPECIES_TYPHLOSION, .item = ITEM_SALAC_BERRY, .moves = { MOVE_ERUPTION, MOVE_SUBSTITUTE, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST }, .otid = 0x11111111, .pid = 0x00001010, .hpIv = 20, .atkIv = 20, .defIv = 20, .spdIv = 20, .spAtkIv = 20, .spDefIv = 20, .spdEv = 255, .spAtkEv = 255, .language = GAME_LANGUAGE, .ability = ABILITY_BLAZE, .level = 50, .nickname = {
-                                                                                                                                                                                                                                                                                                                                                                                   CHAR_JP_KATA_BA,
-                                                                                                                                                                                                                                                                                                                                                                                   CHAR_JP_KATA_KU,
-                                                                                                                                                                                                                                                                                                                                                                                   CHAR_JP_KATA_HU,
-                                                                                                                                                                                                                                                                                                                                                                                   CHAR_JP_HYPHEN,
-                                                                                                                                                                                                                                                                                                                                                                                   CHAR_JP_KATA_N_,
-                                                                                                                                                                                                                                                                                                                                                                                   EOS,
-                                                                                                                                                                                                                                                                                                                                                                                   EOS,
-                                                                                                                                                                                                                                                                                                                                                                                   EOS,
-                                                                                                                                                                                                                                                                                                                                                                                   EOS,
-                                                                                                                                                                                                                                                                                                                                                                                   EOS,
-                                                                                                                                                                                                                                                                                                                                                                               }, // "バクフーン"
+            .species = SPECIES_TYPHLOSION,
+            .item = ITEM_SALAC_BERRY,
+            .moves = { MOVE_ERUPTION, MOVE_SUBSTITUTE, MOVE_FLAMETHROWER, MOVE_FOCUS_BLAST },
+            .otid = 0x11111111,
+            .pid = 0x00001010,
+            .hpIv = 20,
+            .atkIv = 20,
+            .defIv = 20,
+            .spdIv = 20,
+            .spAtkIv = 20,
+            .spDefIv = 20,
+            .spdEv = 255,
+            .spAtkEv = 255,
+            .language = GAME_LANGUAGE,
+            .ability = ABILITY_BLAZE,
+            .level = 50,
+            .nickname = {
+                CHAR_JP_KATA_BA,
+                CHAR_JP_KATA_KU,
+                CHAR_JP_KATA_HU,
+                CHAR_JP_HYPHEN,
+                CHAR_JP_KATA_N_,
+                EOS,
+                EOS,
+                EOS,
+                EOS,
+                EOS,
+            }, // "バクフーン"
         },
                 {
-            .species = SPECIES_FERALIGATR, .item = ITEM_LUM_BERRY, .moves = { MOVE_DRAGON_DANCE, MOVE_WATERFALL, MOVE_ICE_PUNCH, MOVE_CRUNCH }, .otid = 0x11111111, .pid = 0x00000011, .hpIv = 20, .atkIv = 20, .defIv = 20, .spdIv = 20, .spAtkIv = 20, .spDefIv = 20, .hpEv = 255, .atkEv = 255, .language = GAME_LANGUAGE, .ability = ABILITY_TORRENT, .level = 50, .nickname = {
-                                                                                                                                                                                                                                                                                                                                                                           CHAR_JP_KATA_O,
-                                                                                                                                                                                                                                                                                                                                                                           CHAR_JP_HYPHEN,
-                                                                                                                                                                                                                                                                                                                                                                           CHAR_JP_KATA_DA,
-                                                                                                                                                                                                                                                                                                                                                                           CHAR_JP_KATA_I,
-                                                                                                                                                                                                                                                                                                                                                                           CHAR_JP_KATA_RU,
-                                                                                                                                                                                                                                                                                                                                                                           EOS,
-                                                                                                                                                                                                                                                                                                                                                                           EOS,
-                                                                                                                                                                                                                                                                                                                                                                           EOS,
-                                                                                                                                                                                                                                                                                                                                                                           EOS,
-                                                                                                                                                                                                                                                                                                                                                                           EOS,
-                                                                                                                                                                                                                                                                                                                                                                       }, // "オーダイル"
+            .species = SPECIES_FERALIGATR,
+            .item = ITEM_LUM_BERRY,
+            .moves = { MOVE_DRAGON_DANCE, MOVE_WATERFALL, MOVE_ICE_PUNCH, MOVE_CRUNCH },
+            .otid = 0x11111111,
+            .pid = 0x00000011,
+            .hpIv = 20,
+            .atkIv = 20,
+            .defIv = 20,
+            .spdIv = 20,
+            .spAtkIv = 20,
+            .spDefIv = 20,
+            .hpEv = 255,
+            .atkEv = 255,
+            .language = GAME_LANGUAGE,
+            .ability = ABILITY_TORRENT,
+            .level = 50,
+            .nickname = {
+                CHAR_JP_KATA_O,
+                CHAR_JP_HYPHEN,
+                CHAR_JP_KATA_DA,
+                CHAR_JP_KATA_I,
+                CHAR_JP_KATA_RU,
+                EOS,
+                EOS,
+                EOS,
+                EOS,
+                EOS,
+            }, // "オーダイル"
         },
                 DUMMY_TRAINER_HOUSE_MON,
                 DUMMY_TRAINER_HOUSE_MON,
                 DUMMY_TRAINER_HOUSE_MON,
                 },
 };
+// clang-format on
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set);
 static BattleSetup *TrainerHouse_NewBattleSetup(FieldSystem *fieldSystem, TrainerHouseSet *set);
@@ -166,7 +216,7 @@ void TrainerHouse_StartBattle(FieldSystem *fieldSystem, u32 trainerNum) {
 
 static void TrainerHouse_SetNames(TrainerHouseSet *set) {
     MI_CpuCopy16(&ov25_02259D9C, set, sizeof(TrainerHouseSet));
-    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0726_bin, HEAP_ID_FIELD2);
+    MsgData *messageData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0726, HEAP_ID_FIELD2);
     GF_ASSERT(messageData);
     if (messageData) {
         String *otName = NewString_ReadMsgData(messageData, msg_0726_00003);

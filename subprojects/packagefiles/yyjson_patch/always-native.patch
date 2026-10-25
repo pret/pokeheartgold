@@ -1,0 +1,12 @@
+diff --git a/meson.build b/meson.build
+index c16d925..e67cbaf 100644
+--- a/meson.build
++++ b/meson.build
+@@ -32,6 +32,7 @@
+   c_args: [c_args],
+   include_directories: yyjson_inc,
+   version: meson.project_version(),
++  native: true,
+ )
+ 
+ yyjson_dep = declare_dependency(

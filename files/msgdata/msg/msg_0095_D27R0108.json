@@ -1,0 +1,27 @@
+{
+  "key": 50279,
+  "messages": [
+    {
+      "id": "msg_0095_D27R0108_00000",
+      "en_US": [
+        "Lighthouse elevator.\n",
+        "Going up to the light room.\r"
+      ]
+    },
+    {
+      "id": "msg_0095_D27R0108_00001",
+      "en_US": [
+        "Lighthouse elevator.\n",
+        "Going down to the first floor.\r"
+      ]
+    },
+    {
+      "id": "msg_0095_D27R0108_00002",
+      "en_US": "You’ve arrived at the light room."
+    },
+    {
+      "id": "msg_0095_D27R0108_00003",
+      "en_US": "You’ve arrived at the first floor."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_80_022324C4.inc"
 	.include "global.inc"
 
@@ -1881,7 +1881,7 @@ _0223340C:
 	ldr r4, [r0]
 	mov r1, #0
 	add r0, r4, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -1920,13 +1920,13 @@ _0223345E:
 	ldr r6, [r0]
 	add r0, r4, #0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r6, #0
 	mov r1, #1
 	bl WindowArray_Delete

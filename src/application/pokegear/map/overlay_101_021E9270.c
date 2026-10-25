@@ -21,7 +21,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, BOOL a2);
 static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 a1, u16 a2);
 static void PokegearMap_GetLandmarkNameFromMapID(u16 mapno, enum HeapID heapID, String *dest);
 
-const TouchscreenListMenuTemplate sListMenuTemplate = {
+static const TouchscreenListMenuTemplate sListMenuTemplate = {
     .wrapAround = TRUE,
     .centered = TRUE,
     .xOffset = 0,
@@ -785,17 +785,17 @@ static BOOL PokegearMap_MapHasPhoneRematchOrGift(PokegearMapAppData *mapApp, int
 
     timeOfDay = GF_RTC_GetTimeOfDayWildParam();
     for (i = 0; i < mapApp->numPhonebookSlots; ++i) {
-        phonebookEntry = &mapApp->phoneBook->entries[mapApp->phoneContact[i].id];
+        phonebookEntry = &mapApp->phoneBook->entries[mapApp->phoneContact[i]];
         if (phonebookEntry->mapId != mapID) {
             continue;
         }
         if (phonebookEntry->type != 0) {
             continue;
         }
-        if (PhoneBookTrainerGetRematchInfo(mapApp->phoneContact[i].id, mapApp->pokegear->saveData, mapApp->phoneBook, timeOfDay) != 0) {
+        if (PhoneBookTrainerGetRematchInfo(mapApp->phoneContact[i], mapApp->pokegear->saveData, mapApp->phoneBook, timeOfDay) != 0) {
             return TRUE;
         }
-        if (PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(mapApp->phoneCallSave, mapApp->phoneContact[i].id) != ITEM_NONE) {
+        if (PhoneCallPersistentState_PhoneRematches_GiftItemIdGet(mapApp->phoneCallSave, mapApp->phoneContact[i]) != ITEM_NONE) {
             return TRUE;
         }
     }

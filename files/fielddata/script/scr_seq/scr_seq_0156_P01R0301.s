@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_P01R0301.h"
 #include "msgdata/msg/msg_0259_P01R0301.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_P01R0301_000
 	ScrDef scr_seq_P01R0301_001
@@ -100,7 +99,7 @@ _0101:
 	CloseMsg
 	ApplyMovement obj_P01R0301_seaman_2_2, _0180
 	WaitMovement
-	SetVar VAR_UNK_40CB, 7
+	SetVar VAR_SCENE_SS_AQUA, 7
 	SetVar VAR_TEMP_x4000, 1
 	ReleaseAll
 	End
@@ -192,7 +191,7 @@ _023C:
 	WaitMovement
 	HidePerson obj_P01R0301_gsgentleman
 	SetFlag FLAG_UNK_215
-	SetVar VAR_UNK_40CB, 2
+	SetVar VAR_SCENE_SS_AQUA, 2
 	StopSE SEQ_SE_GS_N_UMIBE
 	ReleaseAll
 	End
@@ -238,8 +237,8 @@ scr_seq_P01R0301_001:
 	PlaySE SEQ_SE_DP_SELECT
 	LockAll
 	FacePlayer
-	NopVar490 VAR_UNK_40CB
-	Compare VAR_UNK_40CB, 7
+	NopVar490 VAR_SCENE_SS_AQUA
+	Compare VAR_SCENE_SS_AQUA, 7
 	GoToIfLt _02FA
 	NPCMsg msg_0259_P01R0301_00009
 	GoTo _02FD

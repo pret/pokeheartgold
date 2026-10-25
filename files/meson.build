@@ -1,0 +1,103 @@
+nitrofs_files = []
+naix_headers = []
+
+# Generators
+ncgr_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@BASENAME@.NCGR',
+)
+
+ncgr_cell_gen = generator(nitrogfx_exe,
+    arguments: [
+        '@INPUT@',
+        '@OUTPUT@',
+        '-cell', '-preservepath',
+        '@EXTRA_ARGS@',
+    ],
+    output: '@BASENAME@.NCGR',
+)
+
+ncgr_lz_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', '-nopad', ],
+    output: '@BASENAME@.NCGR.lz',
+)
+
+ncgr_cell_lz_gen = generator(nitrogfx_exe,
+    arguments: [
+        '@INPUT@',
+        '@OUTPUT@',
+        '-cell', '@CURRENT_SOURCE_DIR@/@BASENAME@_cell.json',
+        '@EXTRA_ARGS@',
+    ],
+    output: '@BASENAME@.NCGR.lz',
+)
+
+nclr_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@BASENAME@.NCLR',
+)
+
+ncer_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@BASENAME@.NCER'
+)
+
+ncer_lz_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@BASENAME@.NCER.lz',
+)
+
+nanr_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@BASENAME@.NANR'
+)
+
+nanr_lz_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@BASENAME@.NANR.lz',
+)
+
+lz_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '-nopad', '@EXTRA_ARGS@', ],
+    output: '@PLAINNAME@.lz',
+)
+
+copy_gen = generator(find_program('cp'),
+    arguments: [ '@INPUT@', '@OUTPUT@', ],
+    output: '@PLAINNAME@'
+)
+
+# Predefined graphics flags
+CLOBBER_SIZE_VERSION101_NCGR_FLAGS = ['-clobbersize', '-version101']
+CLOBBER_SIZE_VERSION101_64K_NCGR_FLAGS = ['-clobbersize', '-version101', '-mappingtype', '64']
+VERSION101_SOPC_NCGR_FLAGS = ['-version101', '-sopc']
+VERSION101_SOPC_8BPP_NCGR_FLAGS = ['-version101', '-sopc', '-bitdepth', '8']
+CLOBBER_SIZE_VERSION101_128K_NCGR_FLAGS = ['-clobbersize', '-version101', '-mappingtype', '128']
+
+BPP4_NOPAD_PCMP_NCLR_FLAGS = ['-bitdepth', '4', '-nopad', '-pcmp']
+BPP8_NOPAD_NCLR_PNG_FLAGS = ['-bitdepth', '8', '-nopad']
+
+EXTFMT_LZ_FLAGS = ['-nopad', '-extfmt']
+
+# Subdirectories
+subdir('a')
+subdir('application')
+subdir('arc')
+subdir('data')
+subdir('demo')
+subdir('dwc')
+subdir('graphic')
+subdir('itemtool')
+subdir('pbr')
+subdir('poketool')
+subdir('resource')
+subdir('system')
+subdir('tel')
+
+#Msgdata must come after poketool for trainer name file
+subdir('msgdata')
+
+#Scripts must come after msgdata
+subdir('fielddata')
+subdir('battledata')
+

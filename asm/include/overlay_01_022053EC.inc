@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public BlendPalette
 .public TintPalette_GrayScale
@@ -21,7 +21,7 @@
 .public sub_02023FA0
 .public sub_02023FB0
 .public GF_AssertFail
-.public sub_02026E18
+.public BillboardGfxSequence_SetData
 .public ScriptReadHalfword
 .public FieldSystem_VarGet
 .public TaskManager_Call

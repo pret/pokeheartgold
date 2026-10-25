@@ -39,7 +39,7 @@ BOOL RadioShow_Unown_Print(RadioShow *radioShow) {
 }
 
 void RadioShow_Unown_Init(RadioShow *radioShow) {
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0410_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0410, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0410_00000, radioShow->showTitle);
     String_SetEmpty(radioShow->showHost);
 }

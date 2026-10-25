@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Save_Frontier_GetStatic
 .public FrontierSave_GetStat

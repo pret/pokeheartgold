@@ -1,0 +1,289 @@
+{
+  "key": 9402,
+  "messages": [
+    {
+      "id": "msg_0146_D51R0201_00000",
+      "en_US": [
+        "Cynthia: This is the {COLOR 1}Mystri Stage{COLOR 0}. The\n",
+        "mythical stage built to show respect\f",
+        "for ARCEUS.\r",
+        "It is said that people used to\n",
+        "celebrate its magnificent might with\f",
+        "music and dance.\r",
+        "Some people in Johto still pass down\n",
+        "this tradition.\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00001",
+      "en_US": [
+        "Cynthia: This is the {COLOR 1}Mystri Stage{COLOR 0}. The\n",
+        "mythical stage built to show respect\f",
+        "for ARCEUS.\r",
+        "It is said that people used to\n",
+        "celebrate its magnificent might with\f",
+        "music and dance.\r",
+        "Some people in Johto still pass down\n",
+        "this tradition."
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00002",
+      "en_US": [
+        "Cynthia: The {COLOR 1}Mystri Stage{COLOR 0} allows a\n",
+        "single ARCEUS and nothing else to\f",
+        "get on the stage...\r",
+        "If you wish to go up there, you have\n",
+        "to deposit your other Pokémon in\f",
+        "a PC Box at the cabin."
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00003",
+      "en_US": [
+        "Cynthia: Bring your ARCEUS instead.\r",
+        "Any other Pokémon may get blown away\n",
+        "by the strong power lingering\f",
+        "at the ruins.\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00004",
+      "en_US": [
+        "Cynthia: This is where one might say,\n",
+        "“The lead enters the {COLOR 1}Mystri Stage{COLOR 0}\f",
+        "at last.”\r",
+        "All my study of ruins and Pokémon\n",
+        "mythology in Sinnoh may have been\f",
+        "to bring you up on this stage\f",
+        "here today...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00005",
+      "en_US": [
+        "Cynthia: Depicted on the {COLOR 1}Mystri Stage{COLOR 0}\n",
+        "are the Pokémon that shaped\f",
+        "this world.\r",
+        "The circle in the middle is ARCEUS,\n",
+        "the origin of it all...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00006",
+      "en_US": [
+        "Cynthia: According to an ancient\n",
+        "document, time, space, and antimatter,\f",
+        "or what combined we call the world,\f",
+        "shall be born when ARCEUS stands\f",
+        "on the {COLOR 1}Mystri Stage{COLOR 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00007",
+      "en_US": [
+        "Cynthia: This is the pattern that\n",
+        "represents PALKIA, the master of\f",
+        "space and dimensions...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00008",
+      "en_US": [
+        "Cynthia: This is the pattern that\n",
+        "represents DIALGA, the guardian\f",
+        "of time...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00009",
+      "en_US": [
+        "Cynthia: This is the pattern that\n",
+        "represents GIRATINA, the ruler of\f",
+        "the world that is on the opposite side\f",
+        "of ours, the world of antimatter...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00010",
+      "en_US": [
+        "Cynthia: ARCEUS has accepted you as\n",
+        "a Trainer.\r",
+        "ARCEUS, having shaped the world,\n",
+        "is said to show you a glimpse of\f",
+        "its true power.\r",
+        "The power of possibly making life\n",
+        "appear out of nothing...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00011",
+      "en_US": [
+        "Cynthia: It seems that something\n",
+        "will happen when you choose one\f",
+        "of the circles...\r",
+        "You’ll want to be well prepared."
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00012",
+      "en_US": [
+        "Cynthia: Once you are ready, choose a\n",
+        "circle and stand in the middle of it."
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00013",
+      "en_US": [
+        "Cynthia: So you choose DIALGA,\n",
+        "the guardian of time? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00014",
+      "en_US": [
+        "Cynthia: So you choose PALKIA, the\n",
+        "master of space and dimensions? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00015",
+      "en_US": [
+        "Cynthia: So you choose GIRATINA,\n",
+        "the ruler of the Distortion World? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00016",
+      "en_US": [
+        "Cynthia: That shining sphere...\n",
+        "Could it be...an Egg?\r",
+        "Did we just witness the very moment\n",
+        "an Egg was brought to this world?\f",
+        "A moment no one has ever seen?\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00017",
+      "en_US": [
+        "Cynthia: An Egg is the cradle of every\n",
+        "being. This planet itself is an Egg\f",
+        "in a sense...\r",
+        "Life that comes from an Egg will\n",
+        "come to an end in due course...\f",
+        "to begin anew...\r",
+        "That may be what ARCEUS\n",
+        "wanted to show us.\r",
+        "\n"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00018",
+      "en_US": "Cynthia: That was...?\r"
+    },
+    {
+      "id": "msg_0146_D51R0201_00019",
+      "en_US": [
+        "Cynthia: We seem to be surrounded by\n",
+        "that strong power again...!\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00020",
+      "en_US": [
+        "Cynthia: Of course... ARCEUS!\r",
+        "So the source of the power I’ve felt\n",
+        "was ARCEUS!\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00021",
+      "en_US": [
+        "Cynthia: What is now the {COLOR 1}Sinjoh Ruins\n",
+        "{COLOR 0}was built to honor ARCEUS by the\f",
+        "Sinnoh people...\r",
+        "It’s an icebound temple that has been\n",
+        "waiting for ARCEUS for hundreds\f",
+        "of years...\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00022",
+      "en_US": [
+        "Cynthia: This is the {COLOR 1}Mystri Stage{COLOR 0}.\r",
+        "It is designed to bring out the power\n",
+        "ARCEUS possesses.\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00023",
+      "en_US": [
+        "Cynthia: ARCEUS is described in\n",
+        "mythology as being the origin of\f",
+        "everything and the source of\f",
+        "all beings.\r",
+        "It is said that the power of ARCEUS\n",
+        "is released on the {COLOR 1}Mystri Stage{COLOR 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00024",
+      "en_US": [
+        "Cynthia: The {COLOR 1}Sinjoh Ruins{COLOR 0} are what\n",
+        "remains of a temple built to show\f",
+        "respect for ARCEUS."
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00025",
+      "en_US": [
+        "The mysterious round object\n",
+        "took the shape of a Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00026",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} obtained\n",
+        "the {STRVAR_1 0, 1, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00027",
+      "en_US": "Will you choose DIALGA? {YESNO 0}"
+    },
+    {
+      "id": "msg_0146_D51R0201_00028",
+      "en_US": "Will you choose PALKIA? {YESNO 0}"
+    },
+    {
+      "id": "msg_0146_D51R0201_00029",
+      "en_US": "Will you choose GIRATINA? {YESNO 0}"
+    },
+    {
+      "id": "msg_0146_D51R0201_00030",
+      "en_US": "This place does not seem to respond..."
+    },
+    {
+      "id": "msg_0146_D51R0201_00031",
+      "en_US": [
+        "It seems that only a single ARCEUS\n",
+        "can stand here..."
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00032",
+      "en_US": [
+        "Would you like to give a nickname\n",
+        "to the {STRVAR_1 0, 1, 0}? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0146_D51R0201_00033",
+      "en_US": [
+        "It seems it no longer responds\n",
+        "to this ARCEUS..."
+      ]
+    }
+  ]
+}

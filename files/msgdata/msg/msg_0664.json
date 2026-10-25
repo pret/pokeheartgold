@@ -1,0 +1,281 @@
+{
+  "key": 59348,
+  "messages": [
+    {
+      "id": "msg_0664_00000",
+      "en_US": "Mother"
+    },
+    {
+      "id": "msg_0664_00001",
+      "en_US": [
+        "Hello? {STRVAR_1 3, 0, 0}?\r",
+        "I’ve gotten so used to hearing your\n",
+        "voice, but you almost sound like\f",
+        "a different person on the phone.\f",
+        "It’s so strange..."
+      ]
+    },
+    {
+      "id": "msg_0664_00002",
+      "en_US": [
+        "Hello? {STRVAR_1 3, 0, 0}?\r",
+        "I’ve gotten so used to hearing your\n",
+        "voice, but you almost sound like\f",
+        "a different person on the phone.\f",
+        "It’s so strange..."
+      ]
+    },
+    {
+      "id": "msg_0664_00003",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "That sounds really tough.\r",
+        "But, {STRVAR_1 3, 0, 0}, I know you’re really\n",
+        "determined. You’ll be OK, right?"
+      ]
+    },
+    {
+      "id": "msg_0664_00004",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}!\n",
+        "Wasn’t Professor Elm waiting for you?"
+      ]
+    },
+    {
+      "id": "msg_0664_00005",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}!\n",
+        "So, how goes the errand you’re\f",
+        "helping Professor Elm with?\r",
+        "I know you’re determined. You’ll be OK!"
+      ]
+    },
+    {
+      "id": "msg_0664_00006",
+      "en_US": [
+        "Hello?\r",
+        "Hi, {STRVAR_1 3, 0, 0}! If you’re done with\n",
+        "your errand, come on home, dear."
+      ]
+    },
+    {
+      "id": "msg_0664_00007",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}!\n",
+        "What’s going on? How are you getting\f",
+        "along with your Pokémon?\r",
+        "You know, I’ve found that if you’re\n",
+        "affectionate to your Pokémon, they\f",
+        "respond in kind.\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00008",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "You’re visiting Cherrygrove City?\r",
+        "You know, you’re pretty close...\n",
+        "How about coming home for a bit?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00009",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Oh, so you’re in Violet City...\r",
+        "Isn’t that where Sprout Tower\n",
+        "is? Did you go take a look?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00010",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Oh, so you’re in Azalea Town...\r",
+        "Isn’t that where the SLOWPOKE Well\n",
+        "is? Did you go take a look?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00011",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Oh, so you’re in Cianwood City...\r",
+        "Isn’t that where they’re building that\n",
+        "Safari Zone? Is it open yet?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00012",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Oh, so you’re in Goldenrod City...\r",
+        "Isn’t that where the Radio Tower\n",
+        "is? Did you go take a look?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00013",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Oh, so you’re in Olivine City...\r",
+        "Isn’t that where that big Lighthouse\n",
+        "is? Did you go take a look?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00014",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Oh, so you’re in Ecruteak City...\r",
+        "Isn’t that where the Bell Tower\n",
+        "is? Did you go take a look?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00015",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "Wow, you’re in {STRVAR_1 4, 2, 0}?\r",
+        "Good luck on your Pokémon quest!\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00016",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\r",
+        "Wow, you’re in {STRVAR_1 4, 2, 0}?\r",
+        "Well, as your mom, I know you’re doing\n",
+        "your best wherever you go!\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00017",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! You sound happy!\n",
+        "I feel so much better!\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00018",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\n",
+        "That sounds really tough.\r",
+        "But, {STRVAR_1 3, 0, 0}, I know you’re really\n",
+        "determined. You’ll be OK, right?\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00019",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! Working hard?\r",
+        "You’re in Kanto?! Wow, that’s\n",
+        "wonderful, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00020",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! You’re trying out\n",
+        "the Pokéathlon? Do your best!\f",
+        "As your mom, I’m cheering you on!\r"
+      ]
+    },
+    {
+      "id": "msg_0664_00021",
+      "en_US": [
+        "You haven’t gone to pick up those items\n",
+        "I bought for you yet, have you?\r",
+        "Don’t forget to head to the Poké Mart\n",
+        "and talk to the deliveryman."
+      ]
+    },
+    {
+      "id": "msg_0664_00022",
+      "en_US": [
+        "Hello?\r",
+        "...{STRVAR_1 3, 0, 0}?\r",
+        "I heard from Professor Elm that you\n",
+        "went on a long trip.\r",
+        "I wish you would have told me...\n",
+        "What about your money? Should I\f",
+        "save it?"
+      ]
+    },
+    {
+      "id": "msg_0664_00023",
+      "en_US": [
+        "By the way, you’ve saved up ${STRVAR_1 55, 10, 0}.\n",
+        "Do you want to keep on saving?"
+      ]
+    },
+    {
+      "id": "msg_0664_00024",
+      "en_US": [
+        "By the way, {STRVAR_1 3, 0, 0}, you’ve saved\n",
+        "up ${STRVAR_1 55, 10, 0}.\f",
+        "Want to start saving again?"
+      ]
+    },
+    {
+      "id": "msg_0664_00025",
+      "en_US": [
+        "OK. I’ll save your money.\r",
+        "{STRVAR_1 3, 0, 0}, keep it up! I’m rooting\n",
+        "for you, baby!"
+      ]
+    },
+    {
+      "id": "msg_0664_00026",
+      "en_US": [
+        "OK. I won’t save your money.\r",
+        "{STRVAR_1 3, 0, 0}, keep it up! I’m rooting\n",
+        "for you, baby!"
+      ]
+    },
+    {
+      "id": "msg_0664_00027",
+      "en_US": [
+        "It’s important to\n",
+        "save your money."
+      ]
+    },
+    {
+      "id": "msg_0664_00028",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}, you’re not saving\n",
+        "any money. Would you like to save? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0664_00029",
+      "en_US": [
+        "Hello?\r",
+        "Oh, hi, {STRVAR_1 3, 0, 0}! How are you?\r",
+        "I found a useful item while shopping, so\n",
+        "I bought it with your money. Sorry!\r",
+        "But I asked the deliveryman to take it\n",
+        "to you, so you should stop by the\f",
+        "nearest Poké Mart or Department Store\f",
+        "and pick it up! I know it’ll be useful!"
+      ]
+    }
+  ]
+}

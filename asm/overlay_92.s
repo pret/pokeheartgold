@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_92.inc"
 	.include "global.inc"
 
@@ -185,9 +185,9 @@ _0225C64E:
 	ldr r2, [r5, #4]
 	sub r0, r1, #4
 	str r3, [r2, r0]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r5, #0
 	bl ov92_0225E9B4
 	add r0, r5, #0
@@ -1567,7 +1567,7 @@ ov92_0225D1FC: ; 0x0225D1FC
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	bl GF_DestroyVramTransferManager
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]
@@ -3381,7 +3381,7 @@ ov92_0225E100: ; 0x0225E100
 	ldr r0, _0225E12C ; =0x00001FE0
 	mov r1, #1
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	ldr r0, _0225E12C ; =0x00001FE0
 	add r0, r4, r0
 	bl ClearWindowTilemapAndCopyToVram
@@ -3700,7 +3700,7 @@ _0225E374:
 	bne _0225E398
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r5, #0
 	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0

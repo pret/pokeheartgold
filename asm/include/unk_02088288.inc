@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FontID_Alloc
 .public FontID_SetAccessDirect
@@ -71,9 +71,9 @@
 .public ScheduleSetBgPosText
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public GfGfx_SetBanks
 .public GfGfx_DisableEngineAPlanes
 .public GfGfx_DisableEngineBPlanes
@@ -119,7 +119,7 @@
 .public MoveIsHM
 .public CalculateHpBarPixelsLength
 .public CalculateHpBarColor
-.public sub_020880CC
+.public App_StartScreenFade
 .public sub_02088288
 .public sub_0208828C
 .public sub_02089D40

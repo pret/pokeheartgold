@@ -1,0 +1,23 @@
+{
+  "key": 9302,
+  "messages": [
+    {
+      "id": "msg_0553_T21R0301_00000",
+      "en_US": [
+        "You’re trying to see how good you\n",
+        "are as a Pokémon Trainer?\r",
+        "You better visit the Pokémon Gyms\n",
+        "all over Johto and collect Badges."
+      ]
+    },
+    {
+      "id": "msg_0553_T21R0301_00001",
+      "en_US": [
+        "When I get older, I’m going to be a\n",
+        "Gym Leader!\r",
+        "I make my Pokémon battle with my\n",
+        "friends’ to make them tougher!"
+      ]
+    }
+  ]
+}

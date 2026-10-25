@@ -1,9 +1,9 @@
 #include "global.h"
 
-#include "application/pokegear/map/pgmap_gra.naix"
 #include "application/pokegear/map/pokegear_map_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0273.h"
+#include "files/application/pokegear/map/pgmap_gra.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0273.h"
 
 #include "gf_gfx_loader.h"
 #include "screen_fade.h"
@@ -413,7 +413,7 @@ static void PokegearMap_RemoveWindows(PokegearMapAppData *mapApp) {
 }
 
 static void PokegearMap_InitMsg(PokegearMapAppData *mapApp) {
-    mapApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0273_bin, mapApp->heapID);
+    mapApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0273, mapApp->heapID);
     mapApp->msgFormat = MessageFormat_New_Custom(2, 91, mapApp->heapID);
     mapApp->flavorTextString = String_New(91, mapApp->heapID);
     mapApp->regionNameStrings[0] = NewString_ReadMsgData(mapApp->msgData, msg_0273_00001);

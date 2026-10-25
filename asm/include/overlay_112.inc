@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public RegisterMainOverlay
 .public CopyU16StringArrayN
@@ -162,9 +162,9 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public ObjCharTransfer_Init
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers

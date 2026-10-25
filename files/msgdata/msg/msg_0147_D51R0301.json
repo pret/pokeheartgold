@@ -1,0 +1,160 @@
+{
+  "key": 42163,
+  "messages": [
+    {
+      "id": "msg_0147_D51R0301_00000",
+      "en_US": [
+        "Cynthia: My name is Cynthia.\n",
+        "I am a Pokémon Trainer.\r",
+        "The {COLOR 1}Sinjoh Ruins{COLOR 0} remind me of Sinnoh,\n",
+        "where I come from.\r",
+        "Initially, I thought it was because\n",
+        "it snows a lot here as well.\r",
+        "But that was not it.\r",
+        "A long time ago...people came from\n",
+        "Sinnoh to live here.\r",
+        "They must have built a temple here\n",
+        "while longing for home.\r",
+        "That’s why we call these the\n",
+        "{COLOR 1}Sinjoh Ruins{COLOR 0}...\r"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00001",
+      "en_US": [
+        "Cynthia: You are...\f",
+        "a Pokémon Trainer?\r",
+        "I can sense strong power coming\n",
+        "from your Poké Ball...\r"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00002",
+      "en_US": [
+        "Cynthia: I wouldn’t assume you managed\n",
+        "to get here by yourself.\r",
+        "This is a heavy-snowfall area where\n",
+        "the snowbound land freezes you\f",
+        "to the core...\r",
+        "Talk to the old man if you wish to go\n",
+        "back. ABRA should be able to take you\f",
+        "where you come from."
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00003",
+      "en_US": [
+        "Cynthia: I feel a familiar presence...\n",
+        "The power of DIALGA...\f",
+        "PALKIA...\f",
+        "or could it be GIRATINA?\r",
+        "It’s similar, but not quite the same...\r"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00004",
+      "en_US": [
+        "Cynthia: Have you got time?\r",
+        "Can you come to the {COLOR 1}Sinjoh Ruins{COLOR 0}\n",
+        "with me?\r",
+        "Call it a Trainer’s intuition.\r",
+        "When you and your Pokémon step onto\n",
+        "that stage, something will happen.\r"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00005",
+      "garbage": 5
+    },
+    {
+      "id": "msg_0147_D51R0301_00006",
+      "en_US": [
+        "Cynthia: The snowbound ruins make\n",
+        "me wonder...\r",
+        "Time and space change, and we with\n",
+        "them. We leave some things behind\f",
+        "and give each other company...\r",
+        "Sinnoh, Johto...\n",
+        "When you feel you’re close to\f",
+        "understanding the whole world,\f",
+        "you are merely drowning in your\f",
+        "own miniscule perception.\r"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00007",
+      "en_US": [
+        "A long time ago, people used to draw\n",
+        "life from Pokémon and also give their\f",
+        "lives to those Pokémon...\r",
+        "That shows that people and Pokémon\n",
+        "used to be more closely bonded with\f",
+        "each other.\r",
+        "When people moved from place to place,\n",
+        "the myths and legends of Pokémon\f",
+        "and their power would also be carried\f",
+        "with those people.\r",
+        "That’s how myths and legends from each\n",
+        "region are blended with each other.\r",
+        "The ancient ruins here have inherited\n",
+        "the legends from both the {COLOR 1}Ruins of Alph{COLOR 0}\f",
+        "in Johto and the {COLOR 1}Spear Pillar{COLOR 0} in Sinnoh.\r",
+        "That is proof that people from Johto\n",
+        "and Sinnoh blended together\f",
+        "as a group."
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00008",
+      "en_US": [
+        "ARCEUS is said to have come out of\n",
+        "an Egg.\r",
+        "Johto people believe that Pokémon Eggs\n",
+        "are the vessels of life, and thus\f",
+        "something astounding.\r",
+        "Places far from each other can share\n",
+        "similar myths and legends...\r",
+        "That’s quite interesting, isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00009",
+      "en_US": [
+        "Well, hello!\n",
+        "We meet again!\r",
+        "Cynthia has gone back to Sinnoh.\f",
+        "She is the Sinnoh League Champion.\r",
+        "She studies various ruins despite her\n",
+        "tight schedule.\r",
+        "How wonderful she is!"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00010",
+      "en_US": [
+        "You seem so out of place, not even\n",
+        "knowing why you are here.\r",
+        "Do you want my ABRA to use a\n",
+        "special power to take you home? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00011",
+      "en_US": [
+        "OK. OK.\n",
+        "Picture your house in your mind...\r"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00012",
+      "en_US": [
+        "OK... OK...\n",
+        "The best of luck to you!"
+      ]
+    },
+    {
+      "id": "msg_0147_D51R0301_00013",
+      "en_US": "ABRA: Aabra..."
+    }
+  ]
+}

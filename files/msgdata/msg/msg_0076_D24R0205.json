@@ -1,0 +1,103 @@
+{
+  "key": 62539,
+  "messages": [
+    {
+      "id": "msg_0076_D24R0205_00000",
+      "en_US": [
+        "Did you just come down from above...?\r",
+        "So! You must have solved the\n",
+        "stone-panel puzzle!\r",
+        "That is wonderful!\r",
+        "You seem to have some talent with\n",
+        "archaeology.\f",
+        "I will give you this UNOWN Report.\r",
+        "It records UNOWN as you capture them.\n",
+        "I am sure it’ll come in handy!\r"
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00001",
+      "en_US": "There is a strange presence here..."
+    },
+    {
+      "id": "msg_0076_D24R0205_00002",
+      "en_US": [
+        "This is a big room, but there’s\n",
+        "nothing here."
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00003",
+      "en_US": [
+        "This place has a mystical quality to it.\r",
+        "...Or a historic quality...\f",
+        "...Or an eerie quality...\f",
+        "...Or an ancient quality...\f",
+        "...Or a solemn quality...\f",
+        "...Or a frosty quality...\f",
+        "In essence, it feels sort of ethereal."
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00004",
+      "en_US": [
+        "The ruins have not been robbed, nor\n",
+        "tampered with. No graffiti, either.\r",
+        "Things are well preserved.\n",
+        "Something here must make people\f",
+        "feel they should preserve it."
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00005",
+      "en_US": "It’s a replica of an ancient Pokémon."
+    },
+    {
+      "id": "msg_0076_D24R0205_00006",
+      "en_US": [
+        "Hmm.\r",
+        "I have been studying the ruins for many\n",
+        "years, but something feels...\f",
+        "different.\r"
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00007",
+      "en_US": [
+        "Wow!\r",
+        "The UNOWN pictures on the wall...\r",
+        "It feels like they’re staring at me!\r"
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00008",
+      "en_US": [
+        "What is this?\n",
+        "There is something eerie that is making\f",
+        "my legs shiver.\f",
+        "I can’t stop them!\r"
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00009",
+      "en_US": [
+        "Oh, are you all right?\n",
+        "You disappeared right in front of me.\f",
+        "I was so surprised!\r"
+      ]
+    },
+    {
+      "id": "msg_0076_D24R0205_00010",
+      "en_US": [
+        "I see.\r",
+        "The power of ARCEUS and UNOWN affected\n",
+        "each other to create a huge energy,\f",
+        "which sent you to the Sinjoh Ruins...?\r",
+        "UNOWN, the Ruins of Alph, and ARCEUS...\f",
+        "The mystery deepens...\r",
+        "It has made me even more inquisitive!\r",
+        "I will one day solve all the mysteries!\r"
+      ]
+    }
+  ]
+}

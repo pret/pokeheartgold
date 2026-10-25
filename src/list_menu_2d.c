@@ -207,7 +207,7 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
 
 struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *windowTemplate, u16 tileNum, u8 paletteNum, u8 initialSelection, enum HeapID heapID) {
     struct ListMenu2DTemplate menuTemplate;
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0191_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0191, heapID);
     ListMenuItem *items = ListMenuItems_New(2, heapID);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00042, 0);
     ListMenuItems_AppendFromMsgData(items, msgData, msg_0191_00043, LIST_CANCEL);
@@ -238,7 +238,7 @@ int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, enum HeapID heapID
 }
 
 void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, enum HeapID heapID) {
-    sub_0200E5D4(menu->template.window, FALSE);
+    ClearWindowPixelBuffer(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
     Heap_FreeExplicit(heapID, menu->template.window);
     ListMenuItems_Delete(menu->template.items);

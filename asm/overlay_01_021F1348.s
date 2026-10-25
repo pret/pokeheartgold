@@ -8,7 +8,7 @@
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_01_021F1348.inc"
 	.include "global.inc"
 
@@ -659,7 +659,7 @@ ov01_021F1758: ; 0x021F1758
 	add r1, r4, #0
 	bl ov01_021FC5A4
 	add r1, sp, #0xc
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldr r0, [r5, #0x18]
 	ldr r1, [sp, #0x30]
 	bl GF3dGfxRawResMan_GetObjById

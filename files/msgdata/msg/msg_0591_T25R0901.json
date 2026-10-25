@@ -1,0 +1,83 @@
+{
+  "key": 25606,
+  "messages": [
+    {
+      "id": "msg_0591_T25R0901_00000",
+      "en_US": [
+        "Hello, hello!\n",
+        "I am the official Name Rater!\r",
+        "Want me to rate the nicknames of\n",
+        "your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00001",
+      "en_US": [
+        "Which Pokémon’s nickname should\n",
+        "I critique?"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00002",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, is it? Hmm...\n",
+        "That is a decent nickname!\r",
+        "But, I can give it a nicer name?\n",
+        "How about it? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00003",
+      "en_US": [
+        "OK, then. What shall the new\n",
+        "nickname be?\r"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00004",
+      "en_US": [
+        "Done!\n",
+        "How about that?\r",
+        "From now on, this Pokémon\n",
+        "shall be known as {STRVAR_1 1, 0, 0}!\r",
+        "It is a better name than before,\n",
+        "isn’t it?\f",
+        "Good for you!"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00005",
+      "en_US": [
+        "Ah, good. I see.\n",
+        "Do come visit again if you change\f",
+        "your mind."
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00006",
+      "en_US": [
+        "Done! From now on, this Pokémon\n",
+        "shall be known as {STRVAR_1 1, 0, 0}!\r",
+        "It looks no different from before?\n",
+        "That’s just you!\f",
+        "This is vastly superior!\f",
+        "How fortunate for you!"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00007",
+      "en_US": [
+        "{STRVAR_1 1, 0, 0}, is it?\n",
+        "That is a truly impeccable nickname!\r",
+        "Take good care of {STRVAR_1 1, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0591_T25R0901_00008",
+      "en_US": [
+        "Now, now.\n",
+        "That is merely an Egg!"
+      ]
+    }
+  ]
+}

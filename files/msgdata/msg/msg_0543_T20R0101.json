@@ -1,0 +1,1118 @@
+{
+  "key": 46151,
+  "messages": [
+    {
+      "id": "msg_0543_T20R0101_00000",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "I’ve been waiting for you!\r",
+        "Do you know anything about\n",
+        "my research?\r",
+        "As you know, Pokémon are carried\n",
+        "in Poké Balls these days.\r",
+        "But before the Poké Ball was invented,\n",
+        "people used to walk with Pokémon.\f",
+        "Just like your friend Lyra does!\r",
+        "Poké Balls are great because you can\n",
+        "carry many Pokémon.\r",
+        "But walking with Pokémon must have\n",
+        "some advantages.\r",
+        "It could have something to do with how\n",
+        "Pokémon grow or evolve...\r",
+        "So I’m going to give you a Pokémon!\r",
+        "Can you walk beside this Pokémon,\n",
+        "outside of its Poké Ball, to see if this\f",
+        "brings any special feelings or bonds\f",
+        "between Pokémon and people?\r",
+        "The device over there has some Pokémon\n",
+        "you could choose from...\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00001",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "I’ve been waiting for you!\r",
+        "Do you know anything about\n",
+        "my research?\r",
+        "As you know, Pokémon are carried\n",
+        "in Poké Balls these days.\r",
+        "But before the Poké Ball was invented,\n",
+        "people used to walk with Pokémon.\f",
+        "Just like your friend Ethan does!\r",
+        "Poké Balls are great because you can\n",
+        "carry many Pokémon.\r",
+        "But walking with Pokémon must have\n",
+        "some advantages.\r",
+        "It could have something to do with how\n",
+        "Pokémon grow or evolve...\r",
+        "So I’m going to give you a Pokémon!\r",
+        "Can you walk beside this Pokémon,\n",
+        "outside of its Poké Ball, to see if this\f",
+        "brings any special feelings or bonds\f",
+        "between Pokémon and people?\r",
+        "The device over there has some Pokémon\n",
+        "you could choose from...\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00002",
+      "en_US": "Professor Elm: Oh, hey! I got an email!\r"
+    },
+    {
+      "id": "msg_0543_T20R0101_00003",
+      "en_US": [
+        "Professor Elm: ...\n",
+        "Hm... Uh-huh... OK...\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00004",
+      "en_US": [
+        "Professor Elm: Hey, listen.\n",
+        "I have this acquaintance that people\f",
+        "call Mr. Pokémon.\r",
+        "He keeps finding weird things and\n",
+        "raving about his discoveries.\r",
+        "Anyway, I just got an email from him\n",
+        "saying that this time it’s real.\r",
+        "It’s probably another Pokémon Egg,\n",
+        "but we’re still so busy with our\f",
+        "Pokémon research...\r",
+        "Wait!\n",
+        "I know!\r",
+        "You can go in our place, right?\n",
+        "Can we count on you?\r",
+        "You can choose one of the Pokémon\n",
+        "over there.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00005",
+      "en_US": [
+        "Professor Elm: If a wild Pokémon\n",
+        "appears, let your Pokémon battle it!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00006",
+      "en_US": [
+        "Professor Elm: Where are you going?\n",
+        "The Poké Balls are in that device.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00007",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received {STRVAR_1 0, 1, 0}\n",
+        "from Professor Elm!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00008",
+      "en_US": [
+        "Give a nickname to the {STRVAR_1 0, 1, 0}\n",
+        "you received? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00009",
+      "en_US": [
+        "Is {STRVAR_1 1, 1, 0} the nickname\n",
+        "you want to give? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00010",
+      "en_US": [
+        "Professor Elm: How do you like walking\n",
+        "with your Pokémon? It’s not bad, is it?\r",
+        "You can take it all the way to\n",
+        "Mr. Pokémon’s house.\r",
+        "If your Pokémon gets hurt...\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00011",
+      "en_US": [
+        "You should heal it with this machine.\r",
+        "It’s so easy to use.\n",
+        "Just check the PC on my desk!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00012",
+      "en_US": [
+        "Professor Elm: Mr. Pokémon goes\n",
+        "everywhere and finds rarities.\f",
+        "His house is past Cherrygrove City.\r",
+        "Go north a little past Cherrygrove.\f",
+        "I’m counting on you, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00013",
+      "en_US": [
+        "Professor Elm: Mr. Pokémon goes\n",
+        "everywhere and finds rarities.\f",
+        "His house is past Cherrygrove City.\r",
+        "Go north a little past Cherrygrove.\f",
+        "I’m counting on you, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00014",
+      "en_US": [
+        "This PC is connected to the\n",
+        "healing machine!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00015",
+      "en_US": [
+        "There are two valuable Pokémon left!\n",
+        "...But they belong to Professor Elm."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00016",
+      "en_US": [
+        "There is one valuable Pokémon left!\n",
+        "You didn’t notice before, but it is\f",
+        "behind thick glass walls now so\f",
+        "nothing bad can happen to it!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00017",
+      "en_US": [
+        "There are no valuable Pokémon left...\r",
+        "You wonder who Professor Elm gave the\n",
+        "last Pokémon to?"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00018",
+      "en_US": [
+        "Huh? Me?\n",
+        "I’m not the professor.\r",
+        "He’s at the back of the room.\n"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00019",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, I want you to have these\n",
+        "to help you with your task.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00020",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}, I want you to have these\n",
+        "to help you with your task.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00021",
+      "en_US": [
+        "Pokémon are weak in the beginning.\r",
+        "Don’t hesitate to use a Potion if you\n",
+        "think yours is in danger.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00022",
+      "en_US": [
+        "Pokémon are weak in the beginning.\r",
+        "Don’t hesitate to use a Potion if you\n",
+        "think yours is in danger."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00023",
+      "en_US": [
+        "Who are you?\n",
+        "We are investigating the case of the\f",
+        "missing Pokémon here...\r",
+        "Rule number one!\n",
+        "“Whoever did it will come\f",
+        "back to the site.”\r",
+        "Oh my... So you must be...\n",
+        "the one who did it?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00024",
+      "en_US": [
+        "Lyra: Hold on a second!\n",
+        "He has nothing to do with it!\r",
+        "I saw it.\n",
+        "There was a red-haired boy\f",
+        "looking into the building!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00025",
+      "en_US": [
+        "Ethan: Hold on a second!\n",
+        "She has nothing to do with it!\r",
+        "I saw it.\n",
+        "There was a red-haired boy\f",
+        "looking into the building!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00026",
+      "en_US": [
+        "What?\n",
+        "You battled a boy like that?\r",
+        "He must be the one who did it...\n",
+        "Did you happen to get his name?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00027",
+      "en_US": [
+        "I see! So {STRVAR_1 3, 1, 0} was\n",
+        "his name. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00028",
+      "en_US": [
+        "Thanks for helping my investigation!\r",
+        "My next assignment is to search for\n",
+        "this red-haired individual.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00029",
+      "en_US": [
+        "That’s not it?\r",
+        "Then can you tell me\n",
+        "what the name was?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00030",
+      "en_US": [
+        "Lyra: {STRVAR_1 3, 0, 0}!\n",
+        "I’m glad they understand you are\f",
+        "innocent.\r",
+        "See you later!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00031",
+      "en_US": [
+        "Ethan: {STRVAR_1 3, 0, 0}!\n",
+        "I’m glad they understand you are\f",
+        "innocent.\r",
+        "See you later!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00032",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}, this\n",
+        "is terrible...\r",
+        "Oh, yes, what was Mr. Pokémon’s\n",
+        "big discovery?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00033",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}, this\n",
+        "is terrible...\r",
+        "Oh, yes, what was Mr. Pokémon’s\n",
+        "big discovery?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00034",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} handed the Mystery Egg\n",
+        "to Professor Elm."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00035",
+      "en_US": [
+        "Professor Elm: Huh?\n",
+        "This is an...Egg, isn’t it?\r",
+        "This Egg may be something I’ve never\n",
+        "seen...still it’s just an Egg.\r",
+        "Mr. Pokémon is always fascinated\n",
+        "by Eggs.\r",
+        "Well, since he gave it to us, we might\n",
+        "as well find out what secret it holds.\r",
+        "I’ll keep it for a while to find out\n",
+        "about the Egg.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00036",
+      "en_US": [
+        "Professor Elm: What?!\r",
+        "Professor Oak gave you a Pokédex?\r",
+        "{STRVAR_1 3, 0, 0}, is that true? Th-that’s\n",
+        "incredible!\r",
+        "He is superb at seeing the potential\n",
+        "of people as Trainers.\r",
+        "Wow, {STRVAR_1 3, 0, 0}.\n",
+        "I knew you were a little different.\f",
+        "Things are going to be fun!\r",
+        "Your Pokémon seem to really like you,\n",
+        "so why don’t you...take the\f",
+        "Pokémon Gym challenge?\r",
+        "If you manage to defeat all the\n",
+        "Gym Leaders, you’ll eventually\f",
+        "challenge the Pokémon League\f",
+        "Champion!\r",
+        "...Or not! Ha ha!\r",
+        "Becoming the Champion is not at all\n",
+        "easy, but you can certainly\f",
+        "challenge Violet City’s Gym.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00037",
+      "en_US": [
+        "Professor Elm: What?!\r",
+        "Professor Oak gave you a Pokédex?\r",
+        "{STRVAR_1 3, 0, 0}, is that true? Th-that’s\n",
+        "incredible!\r",
+        "He is superb at seeing the potential\n",
+        "of people as Trainers.\r",
+        "Wow, {STRVAR_1 3, 0, 0}.\n",
+        "I knew you were a little different.\f",
+        "Things are going to be fun!\r",
+        "Your Pokémon seem to really like you,\n",
+        "so why don’t you...take the\f",
+        "Pokémon Gym challenge?\r",
+        "If you manage to defeat all the\n",
+        "Gym Leaders, you’ll eventually\f",
+        "challenge the Pokémon League\f",
+        "Champion!\r",
+        "...Or not! Ha ha!\r",
+        "Becoming the Champion is not at all\n",
+        "easy, but you can certainly\f",
+        "challenge Violet City’s Gym.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00038",
+      "en_US": [
+        "...{STRVAR_1 3, 0, 0}. Challenging the\n",
+        "Gyms scattered around will be\f",
+        "a long journey.\r",
+        "Before you leave, make sure\n",
+        "that you talk to your mom.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00039",
+      "en_US": [
+        "...{STRVAR_1 3, 0, 0}. Challenging the\n",
+        "Gyms scattered around will be\f",
+        "a long journey.\r",
+        "Before you leave, make sure\n",
+        "that you talk to your mom.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00040",
+      "en_US": [
+        "Professor Elm: Don’t give up! I’ll call\n",
+        "if I learn anything about that Egg!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00041",
+      "en_US": [
+        "There was a loud noise outside...\n",
+        "When we went to look, someone\f",
+        "stole a Pokémon.\r",
+        "Sigh... \n",
+        "That stolen Pokémon.\r",
+        "I wonder how it’s doing.\n",
+        "They say a Pokémon raised by a bad\f",
+        "person turns bad itself."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00042",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}?\n",
+        "Didn’t you meet my assistant?\r",
+        "He should have met you with the Egg\n",
+        "at Violet City’s Poké Mart."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00043",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}?\n",
+        "Didn’t you meet my assistant?\r",
+        "He should have met you with the Egg\n",
+        "at Violet City’s Poké Mart."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00044",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How are you?\r",
+        "How is the Egg doing?\n",
+        "Are you taking it everywhere you go?\r",
+        "Time and care will make it hatch\n",
+        "and give you a healthy\f",
+        "Pokémon eventually!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00045",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How are you?\r",
+        "How is the Egg doing?\n",
+        "Are you taking it everywhere you go?\r",
+        "Time and care will make it hatch\n",
+        "and give you a healthy\f",
+        "Pokémon eventually!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00046",
+      "en_US": [
+        "Professor Elm: What?\n",
+        "That Pokémon!?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00047",
+      "en_US": [
+        "Hmm...\n",
+        "As far as I know, there is not a\f",
+        "Pokémon like this in Johto...\r",
+        "Just like Mr. Pokémon was saying\n",
+        "over the phone...\r",
+        "The legendary Pokémon could be...\n",
+        "Oh, never mind.\r",
+        "Anyway, I’m sure things will be\n",
+        "happening around you, {STRVAR_1 3, 0, 0}!\r",
+        "You are making me all excited!\n",
+        "I’ll give you a present for that.\f",
+        "Please take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00048",
+      "en_US": [
+        "Hmm...\n",
+        "As far as I know, there is not a\f",
+        "Pokémon like this in Johto...\r",
+        "Just like Mr. Pokémon was saying\n",
+        "over the phone...\r",
+        "The legendary Pokémon could be...\n",
+        "Oh, never mind.\r",
+        "Anyway, I’m sure things will be\n",
+        "happening around you, {STRVAR_1 3, 0, 0}!\r",
+        "You are making me all excited!\n",
+        "I’ll give you a present for that.\f",
+        "Please take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00049",
+      "en_US": [
+        "Professor Elm: That’s an Everstone.\r",
+        "A Pokémon changes its shape as\n",
+        "it evolves.\r",
+        "But if it’s holding an Everstone,\n",
+        "you can prevent it from evolving.\r",
+        "If you like the way a Pokémon is now,\n",
+        "have it hold an Everstone!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00050",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}, good luck\n",
+        "with your journey!\r",
+        "Oh, one more thing...\n",
+        "Don’t forget about my research!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00051",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}, good luck\n",
+        "with your journey!\r",
+        "Oh, one more thing...\n",
+        "Don’t forget about my research!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00052",
+      "en_US": "Uh-oh, your Bag is chock-full."
+    },
+    {
+      "id": "msg_0543_T20R0101_00053",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}?\n",
+        "I thought the Egg hatched.\f",
+        "Where is the Pokémon?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00054",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}?\n",
+        "I thought the Egg hatched.\f",
+        "Where is the Pokémon?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00055",
+      "en_US": [
+        "Sigh... \n",
+        "That stolen Pokémon.\r",
+        "I wonder how it’s doing.\n",
+        "They say a Pokémon raised by a bad\f",
+        "person turns bad itself."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00056",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}!\n",
+        "Guess what!\r",
+        "The person who took the Professor’s\n",
+        "Pokémon has...come back to return it!\r",
+        "That’s the last thing I expected!\n",
+        "Guess what Professor Elm said to him.\r",
+        "...\n",
+        "“It seems that your Pokémon already\f",
+        "likes you so much.\r",
+        "For a Pokémon, the best happiness is\n",
+        "to be with someone it loves.\f",
+        "I think it should stay with you.”\r",
+        "...\n",
+        "Isn’t it moving? It made me cry!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00057",
+      "en_US": [
+        "The one who took it...\n",
+        "I mean the red-haired boy\f",
+        "came up with the Pokémon.\r",
+        "But I saw his face as he passed\n",
+        "me here. He looked so happy!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00058",
+      "en_US": [
+        "Lyra: {STRVAR_1 3, 0, 0}!\n",
+        "Did you already collect eight Badges?\f",
+        "That’s so cool!\r",
+        "The professor is waiting\n",
+        "for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00059",
+      "en_US": [
+        "Ethan: {STRVAR_1 3, 0, 0}!\n",
+        "Did you already collect eight Badges?\f",
+        "That’s so cool!\r",
+        "The professor is waiting\n",
+        "for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00060",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "You never cease to amaze me!\r",
+        "Thanks to you, my research is\n",
+        "going great!\r",
+        "Take this as a token of my\n",
+        "appreciation.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00061",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "You never cease to amaze me!\r",
+        "Thanks to you, my research is\n",
+        "going great!\r",
+        "Take this as a token of my\n",
+        "appreciation.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00062",
+      "en_US": [
+        "The Master Ball is the best!\r",
+        "It’s the ultimate Poké Ball! It’ll catch\n",
+        "any Pokémon without fail.\r",
+        "It’s given only to noted\n",
+        "Pokémon researchers.\r",
+        "I think you can make much better\n",
+        "use of it than I can, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00063",
+      "en_US": [
+        "The Master Ball is the best!\r",
+        "It’s the ultimate Poké Ball! It’ll catch\n",
+        "any Pokémon without fail.\r",
+        "It’s given only to noted\n",
+        "Pokémon researchers.\r",
+        "I think you can make much better\n",
+        "use of it than I can, {STRVAR_1 3, 0, 0}!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00064",
+      "en_US": [
+        "By the way...\r",
+        "We just had a group of beautiful\n",
+        "Kimono Girls looking for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00065",
+      "en_US": [
+        "By the way...\r",
+        "We just had a group of beautiful\n",
+        "Kimono Girls looking for you.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00066",
+      "en_US": [
+        "The Kimono Girls told me they are\n",
+        "waiting for you at the Ecruteak\f",
+        "Dance Theater.\r",
+        "I know you’ve gone through many things\n",
+        "since that Egg got you involved in\f",
+        "all this...\r",
+        "I hope you’ll carry through it.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00067",
+      "en_US": [
+        "Lyra: {STRVAR_1 3, 0, 0}, people are talking\n",
+        "about you!\r",
+        "I heard you helped Kimono Girls?\r",
+        "You’ve been helping all these people!\n",
+        "You make me proud to be your friend.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00068",
+      "en_US": [
+        "Ethan: {STRVAR_1 3, 0, 0}, people are talking\n",
+        "about you!\r",
+        "I heard you helped Kimono Girls?\r",
+        "You’ve been helping all these people!\n",
+        "You make me proud to be your friend.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00069",
+      "en_US": [
+        "Professor Elm: The Kimono Girls are\n",
+        "waiting for you at the\f",
+        "Ecruteak Dance Theater."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00070",
+      "en_US": [
+        "Professor Elm: Hahaha... Good job!\r",
+        "That Egg that appeared to be rare has\n",
+        "brought you so much trouble, I guess.\r",
+        "The Kimono Girls said something\n",
+        "about me?\f",
+        "I don’t have anything to do with it.\r",
+        "You made up your mind yourself\n",
+        "and went through with your decision.\r",
+        "Having achieved such a thing,\n",
+        "you should be able to take on\f",
+        "the Pokémon League now!\r",
+        "You should head for the\n",
+        "Indigo Plateau!\r",
+        "Do you know how to get there?\n",
+        "Follow Route 27 to reach Route 26.\f",
+        "Once you get there, go straight north!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00071",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}!\n",
+        "There you are!\r",
+        "I called because I have something\n",
+        "for you.\r",
+        "See? It’s an S.S. Ticket.\n",
+        "Now you can catch Pokémon in Kanto.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00072",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}!\n",
+        "There you are!\r",
+        "I called because I have something\n",
+        "for you.\r",
+        "See? It’s an S.S. Ticket.\n",
+        "Now you can catch Pokémon in Kanto.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00073",
+      "en_US": [
+        "Professor Elm: The Ticket will let you\n",
+        "take the Fast Ship that departs\f",
+        "from Olivine City.\r",
+        "But you knew that already,\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "After all, you’ve adventured all over\n",
+        "with your Pokémon.\r",
+        "Give my regards to Professor Oak\n",
+        "in Kanto!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00074",
+      "en_US": [
+        "Professor Elm: The Ticket will let you\n",
+        "take the Fast Ship that departs\f",
+        "from Olivine City.\r",
+        "But you knew that already,\n",
+        "{STRVAR_1 3, 0, 0}.\r",
+        "After all, you’ve adventured all over\n",
+        "with your Pokémon.\r",
+        "Give my regards to Professor Oak\n",
+        "in Kanto!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00075",
+      "en_US": [
+        "Professor Elm: That is quite a\n",
+        "rare PICHU!\f",
+        "Can I take a look at it closely?\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00076",
+      "en_US": [
+        "Hmm...\n",
+        "One of the ears is spiky...\f",
+        "That’s strange.\f",
+        "There seems to be something more to it.\r",
+        "It really is a rare sight.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00077",
+      "en_US": [
+        "You met it at the Ilex Forest?\r",
+        "A mysterious Pokémon called CELEBI\n",
+        "has been sighted there, or so I heard.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00078",
+      "en_US": "Speaking of that...\r"
+    },
+    {
+      "id": "msg_0543_T20R0101_00079",
+      "en_US": [
+        "Professor Oak once wrote about\n",
+        "CELEBI and {COLOR 1}Time Travel{COLOR 0} in a research\f",
+        "paper he presented at a conference!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00080",
+      "en_US": [
+        "Professor Elm: CELEBI can use its\n",
+        "mystic power called {COLOR 1}Time Travel{COLOR 0}...to\f",
+        "travel to the past and future.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00081",
+      "en_US": [
+        "If this PICHU has traveled through\n",
+        "time, perhaps you should take\f",
+        "extra care of it, {STRVAR_1 3, 0, 0}.\r",
+        "It seems that this PICHU has been\n",
+        "affected by traveling so far through\f",
+        "time with CELEBI.\r",
+        "I’ll inform the Pokémon Center of it.\r",
+        "The lady at the reception should be\n",
+        "able to tell you if anything may affect\f",
+        "that PICHU."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00082",
+      "en_US": [
+        "If this PICHU has traveled through\n",
+        "time, perhaps you should take\f",
+        "extra care of it, {STRVAR_1 3, 0, 0}.\r",
+        "It seems that this PICHU has been\n",
+        "affected by traveling so far through\f",
+        "time with CELEBI.\r",
+        "I’ll inform the Pokémon Center of it.\r",
+        "The lady at the reception should be\n",
+        "able to tell you if anything may affect\f",
+        "that PICHU."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00083",
+      "en_US": [
+        "Professor Elm: This PICHU doesn’t\n",
+        "seem like a regular PICHU.\f",
+        "I’ll find out more about it."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00084",
+      "en_US": "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0543_T20R0101_00085",
+      "en_US": "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\r"
+    },
+    {
+      "id": "msg_0543_T20R0101_00086",
+      "en_US": [
+        "Oh, wow, your Spiky-eared PICHU seems\n",
+        "to like you a lot already, {STRVAR_1 3, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00087",
+      "en_US": [
+        "Oh, wow, your Spiky-eared PICHU seems\n",
+        "to like you a lot already, {STRVAR_1 3, 0, 0}.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00088",
+      "en_US": [
+        "Something’s funny...\n",
+        "I would expect it to evolve into\f",
+        "PIKACHU since it likes its Trainer\f",
+        "this much...\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00089",
+      "en_US": [
+        "Let me see...\r",
+        "Hmm...\r",
+        "Could it be...\r",
+        "Just as I thought!\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00090",
+      "en_US": [
+        "It seems that this PICHU will never\n",
+        "evolve. It’s so strange!\r",
+        "Its structure and the traveling\n",
+        "through time must have affected\f",
+        "its DNA.\r",
+        "I’ve never heard of a Pokémon that\n",
+        "doesn’t evolve when it’s\f",
+        "supposed to...!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00091",
+      "en_US": [
+        "Professor Elm: Your Spiky-eared PICHU\n",
+        "looks just fine!\r",
+        "I’ve never heard of a Pokémon that\n",
+        "doesn’t evolve when it’s\f",
+        "supposed to.\f",
+        "Please take good care of it."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00092",
+      "en_US": [
+        "Would you like to heal\n",
+        "your Pokémon? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00093",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} opened a book.\r",
+        "Travel Tip 1: Touch the A Button\n",
+        "icon on the Touch Screen.\r",
+        "You can check things, talk to people,\n",
+        "and so on."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00094",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} opened a book.\r",
+        "Travel Tip 2: The Trainer Card is the\n",
+        "identification card for you as a Trainer\f",
+        "to travel with your Pokémon.\r",
+        "Record your adventure with SAVE!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00095",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} opened a book.\r",
+        "Travel Tip 3: Items in your Bag are\n",
+        "sorted by their categories."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00096",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} opened a book.\r",
+        "Travel Tip 4: The Pokégear is a\n",
+        "useful tool.\r",
+        "You can make a phone call,\n",
+        "listen to the radio, check the map,\f",
+        "and so on."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00097",
+      "en_US": [
+        "You found a memo...\n",
+        "If a Pokémon is trying to evolve,\f",
+        "you can stop it.\r",
+        "Press the B Button during evolution."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00098",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How are you?\r",
+        "I’m sure you can be the next\n",
+        "Champion having taken care of\f",
+        "that Egg!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00099",
+      "en_US": [
+        "Professor Elm: Hi, {STRVAR_1 3, 0, 0}!\n",
+        "How are you?\r",
+        "I’m sure you can be the next\n",
+        "Champion having taken care of\f",
+        "that Egg!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00100",
+      "en_US": [
+        "I’d love to take a look at the\n",
+        "Pokémon that hatched from\f",
+        "that Egg, {STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00101",
+      "en_US": [
+        "I’d love to take a look at the\n",
+        "Pokémon that hatched from\f",
+        "that Egg, {STRVAR_1 3, 0, 0}."
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00102",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}!\n",
+        "I’m truly surprised!\r",
+        "I can’t believe that such a great\n",
+        "Trainer has been so close by\f",
+        "all this time!\r",
+        "{STRVAR_1 3, 0, 0}, you have been helping\n",
+        "me understand what it means to\f",
+        "walk with Pokémon.\r",
+        "It is that...\f",
+        "there is no end to the relationship\f",
+        "between people and Pokémon!\r",
+        "Let me thank you once again for\n",
+        "your support!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00103",
+      "en_US": [
+        "Professor Elm: {STRVAR_1 3, 0, 0}!\n",
+        "I’m truly surprised!\r",
+        "I can’t believe that such a great\n",
+        "Trainer has been so close by\f",
+        "all this time!\r",
+        "{STRVAR_1 3, 0, 0}, you have been helping\n",
+        "me understand what it means to\f",
+        "walk with Pokémon.\r",
+        "It is that...\f",
+        "there is no end to the relationship\f",
+        "between people and Pokémon!\r",
+        "Let me thank you once again for\n",
+        "your support!"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00104",
+      "en_US": [
+        "Hmm...\n",
+        "As far as I know, there are no\f",
+        "Pokémon like this at Johto...\r",
+        "Just like Mr. Pokémon was saying\n",
+        "over the phone.\r",
+        "You seem to be there when\n",
+        "something exciting happens,\f",
+        "{STRVAR_1 3, 0, 0}!\r",
+        "You are making me all excited!\n",
+        "I’ll give you a present for that.\f",
+        "Please take it.\r"
+      ]
+    },
+    {
+      "id": "msg_0543_T20R0101_00105",
+      "en_US": [
+        "Hmm...\n",
+        "As far as I know, there are no\f",
+        "Pokémon like this at Johto...\r",
+        "Just like Mr. Pokémon was saying\n",
+        "over the phone.\r",
+        "You seem to be there when\n",
+        "something exciting happens,\f",
+        "{STRVAR_1 3, 0, 0}!\r",
+        "You are making me all excited!\n",
+        "I’ll give you a present for that.\f",
+        "Please take it.\r"
+      ]
+    }
+  ]
+}

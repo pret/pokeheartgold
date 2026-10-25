@@ -1,0 +1,137 @@
+{
+  "key": 20891,
+  "messages": [
+    {
+      "id": "msg_0277_00000",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0277_00001",
+      "garbage": 0
+    },
+    {
+      "id": "msg_0277_00002",
+      "en_US": "{STRVAR_1 52, 0, 0}:{STRVAR_1 51, 1, 0}"
+    },
+    {
+      "id": "msg_0277_00003",
+      "en_US": "???"
+    },
+    {
+      "id": "msg_0277_00004",
+      "en_US": "Times Joined Pokéathlon"
+    },
+    {
+      "id": "msg_0277_00005",
+      "en_US": "Pokéathlon 1st Places"
+    },
+    {
+      "id": "msg_0277_00006",
+      "en_US": "Pokéathlon Last Places"
+    },
+    {
+      "id": "msg_0277_00007",
+      "en_US": "Bonuses Earned"
+    },
+    {
+      "id": "msg_0277_00008",
+      "en_US": "Event 1st Place"
+    },
+    {
+      "id": "msg_0277_00009",
+      "en_US": "Event Last Place"
+    },
+    {
+      "id": "msg_0277_00010",
+      "en_US": "Connection Participation"
+    },
+    {
+      "id": "msg_0277_00011",
+      "en_US": "Connection 1st Places"
+    },
+    {
+      "id": "msg_0277_00012",
+      "en_US": "Connection Last Places"
+    },
+    {
+      "id": "msg_0277_00013",
+      "en_US": "Time Spent in Pokéathlon"
+    },
+    {
+      "id": "msg_0277_00014",
+      "en_US": "Hurdle Dash 1st Places"
+    },
+    {
+      "id": "msg_0277_00015",
+      "en_US": "Pennant Capture 1st Places"
+    },
+    {
+      "id": "msg_0277_00016",
+      "en_US": "Circle Push 1st Places"
+    },
+    {
+      "id": "msg_0277_00017",
+      "en_US": "Block Smash 1st Places"
+    },
+    {
+      "id": "msg_0277_00018",
+      "en_US": "Disc Catch 1st Places"
+    },
+    {
+      "id": "msg_0277_00019",
+      "en_US": "Lamp Jump 1st Places"
+    },
+    {
+      "id": "msg_0277_00020",
+      "en_US": "Relay Run 1st Places"
+    },
+    {
+      "id": "msg_0277_00021",
+      "en_US": "Ring Drop 1st Places"
+    },
+    {
+      "id": "msg_0277_00022",
+      "en_US": "Snow Throw 1st Places"
+    },
+    {
+      "id": "msg_0277_00023",
+      "en_US": "Goal Roll 1st Places"
+    },
+    {
+      "id": "msg_0277_00024",
+      "en_US": "Pokémon Instructions"
+    },
+    {
+      "id": "msg_0277_00025",
+      "en_US": "Times Pokémon Dashed"
+    },
+    {
+      "id": "msg_0277_00026",
+      "en_US": "Times Pokémon Jumped"
+    },
+    {
+      "id": "msg_0277_00027",
+      "en_US": "Times Pokémon Tackled"
+    },
+    {
+      "id": "msg_0277_00028",
+      "en_US": "Times Pokémon Switched"
+    },
+    {
+      "id": "msg_0277_00029",
+      "en_US": "Times Pokémon Self-Impeded"
+    },
+    {
+      "id": "msg_0277_00030",
+      "en_US": "Pokémon Acquired Points"
+    },
+    {
+      "id": "msg_0277_00031",
+      "en_US": "Pokémon Failed"
+    },
+    {
+      "id": "msg_0277_00032",
+      "en_US": "Pokémon Fell Down"
+    }
+  ]
+}

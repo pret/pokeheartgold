@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_96.inc"
 	.include "global.inc"
 
@@ -15146,7 +15146,7 @@ _021ED1FC:
 	mov r1, #0x87
 	lsl r2, r2, #0x10
 	bl Heap_Create
-	ldr r0, _021ED46C ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021ED46C ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	mov r0, #0
@@ -15407,7 +15407,7 @@ _021ED466:
 	add sp, #0x118
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021ED46C: .word FS_OVERLAY_ID(OVY_98)
+_021ED46C: .word SDK_OVERLAY_OVY_98_ID
 _021ED470: .word 0xFFFFE0FF
 _021ED474: .word 0x04001000
 _021ED478: .word gSystem + 0x60
@@ -15472,7 +15472,7 @@ ov96_021ED48C: ; 0x021ED48C
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
-	ldr r0, _021ED520 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021ED520 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #0x87
 	bl Heap_Destroy
@@ -15480,7 +15480,7 @@ ov96_021ED48C: ; 0x021ED48C
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _021ED51C: .word gSystem + 0x60
-_021ED520: .word FS_OVERLAY_ID(OVY_98)
+_021ED520: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov96_021ED48C
 
 	thumb_func_start ov96_021ED524
@@ -19321,7 +19321,7 @@ _021EF1EA:
 	mov r1, #0
 	strb r1, [r0, #9]
 	bl GfGfx_SwapDisplay
-	ldr r0, _021EF238 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021EF238 ; =SDK_OVERLAY_OVY_98_ID
 	bl UnloadOverlayByID
 	mov r0, #0x88
 	bl Heap_Destroy
@@ -19330,7 +19330,7 @@ _021EF1EA:
 	.balign 4, 0
 _021EF230: .word ov96_0221BA18
 _021EF234: .word gSystem + 0x60
-_021EF238: .word FS_OVERLAY_ID(OVY_98)
+_021EF238: .word SDK_OVERLAY_OVY_98_ID
 	thumb_func_end ov96_021EF19C
 
 	thumb_func_start ov96_021EF23C
@@ -19421,7 +19421,7 @@ ov96_021EF2C0: ; 0x021EF2C0
 	mov r1, #0x88
 	lsl r2, r2, #0x12
 	bl Heap_Create
-	ldr r0, _021EF390 ; =FS_OVERLAY_ID(OVY_98)
+	ldr r0, _021EF390 ; =SDK_OVERLAY_OVY_98_ID
 	mov r1, #2
 	mov r6, #0x88
 	bl HandleLoadOverlay
@@ -19502,7 +19502,7 @@ _021EF386:
 	str r0, [r4, #0x28]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_021EF390: .word FS_OVERLAY_ID(OVY_98)
+_021EF390: .word SDK_OVERLAY_OVY_98_ID
 _021EF394: .word 0xFFFFE0FF
 _021EF398: .word 0x04001000
 _021EF39C: .word ov96_021EF23C
@@ -24802,7 +24802,7 @@ _021F1F30:
 	mov r0, #0
 	str r0, [sp, #0x3c]
 	add r0, r2, #0
-	bl CalcAngleBetweenVecs
+	bl VEC_AngleBetween
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1
@@ -68382,7 +68382,7 @@ ov96_022079B8: ; 0x022079B8
 	mov r0, #0
 	str r0, [sp, #4]
 	add r0, r2, #0
-	bl CalcAngleBetweenVecs
+	bl VEC_AngleBetween
 	mov r2, #2
 	lsl r2, r2, #0xc
 	cmp r0, r2
@@ -80387,7 +80387,7 @@ ov96_0220D6CC: ; 0x0220D6CC
 	str r0, [sp, #8]
 	add r0, r2, #0
 	str r4, [sp, #4]
-	bl CalcAngleBetweenVecs
+	bl VEC_AngleBetween
 	mov r2, #2
 	lsl r2, r2, #0xc
 	cmp r0, r2
@@ -90419,7 +90419,7 @@ _022126BA:
 	mov r0, #0
 	str r0, [sp, #0x2c]
 	add r0, r2, #0
-	bl CalcAngleBetweenVecs
+	bl VEC_AngleBetween
 	mov r1, #2
 	lsl r1, r1, #0xc
 	cmp r0, r1
@@ -103004,7 +103004,7 @@ ov96_022186CC: ; 0x022186CC
 	str r0, [sp, #8]
 	add r0, r2, #0
 	str r4, [sp, #4]
-	bl CalcAngleBetweenVecs
+	bl VEC_AngleBetween
 	mov r2, #2
 	lsl r2, r2, #0xc
 	cmp r0, r2
@@ -107334,7 +107334,7 @@ subOverlayTemplate: ; 0x0221A7E4
 	.word ov97_0221E5C0
 	.word ov97_0221E5D4
 	.word ov97_0221E69C
-	.word FS_OVERLAY_ID(OVY_97)
+	.word SDK_OVERLAY_OVY_97_ID
 
 ov96_0221A7F4:
 	.word ov96_021F010C

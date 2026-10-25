@@ -1,0 +1,127 @@
+{
+  "key": 33887,
+  "messages": [
+    {
+      "id": "msg_0070_D23R0106_00000",
+      "en_US": [
+        "Archer: Oh? You managed to get\n",
+        "this far...?\f",
+        "You must be quite the Trainer.\r",
+        "We intend to take over this\n",
+        "Radio Tower and officially announce\f",
+        "our comeback.\r",
+        "That should bring our boss Giovanni\n",
+        "back from his solitary training.\r",
+        "We are going to regain our\n",
+        "former glory...\r",
+        "I will not allow you to interfere with\n",
+        "our meticulous plans!\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00001",
+      "en_US": [
+        "Archer: How could this be...?\r",
+        "Our dreams have come to naught.\n",
+        "I was not up to the task after all.\r",
+        "Like Giovanni has done before me, I will\n",
+        "disband Team Rocket here today.\r",
+        "Farewell...\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00002",
+      "en_US": [
+        "Director: Oh...!\r",
+        "You have already defeated them?\n",
+        "Thank you!\r",
+        "Your courageous actions have saved\n",
+        "Pokémon nationwide.\r",
+        "You are well worth this.\n",
+        "Please take it!\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Rainbow Wing!"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00004",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} received\n",
+        "the Silver Wing!"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00005",
+      "en_US": [
+        "There used to be a tower right here.\r",
+        "When the tower was replaced with the\n",
+        "Radio Tower, that Rainbow Wing was\f",
+        "found at the top of the tower.\r",
+        "I heard from a friend from Cianwood City\n",
+        "that you can climb the Bell Tower in \f",
+        "Ecruteak City when you have a\f",
+        "Rainbow Wing.\r",
+        "I have to get back to my office.\n",
+        "See you!\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00006",
+      "en_US": [
+        "There used to be a tower right here.\r",
+        "When the tower was replaced with the\n",
+        "Radio Tower, that Silver Wing was found\f",
+        "at the top of the tower.\r",
+        "I heard from a friend from Cianwood City\n",
+        "that you can go down the cave at Whirl\f",
+        "Islands when you have a Silver Wing.\r",
+        "I have to get back to my office.\n",
+        "See you!\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00007",
+      "en_US": [
+        "Oh, I almost forgot!\r",
+        "According to my friend from Cianwood\n",
+        "City, the legendary Pokémon will not\f",
+        "appear if you just go up to the top of\f",
+        "the Bell Tower with only that\f",
+        "Rainbow Wing.\r",
+        "Apparently there is something else\n",
+        "you need... Or something like that.\r",
+        "I wonder what it was...\r",
+        "I can’t remember.\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00008",
+      "en_US": [
+        "Oh, I almost forgot!\r",
+        "According to my friend from Cianwood\n",
+        "City, the legendary Pokémon will not\f",
+        "appear if you just go down the cave at\f",
+        "Whirl Islands with only that\f",
+        "Silver Wing.\r",
+        "Apparently there is something else\n",
+        "you need... Or something like that.\r",
+        "I wonder what it was...\r",
+        "I can’t remember.\r"
+      ]
+    },
+    {
+      "id": "msg_0070_D23R0106_00009",
+      "en_US": [
+        "Are you expecting something?\n",
+        "This is what they call Fake Out.\r",
+        "I really must go back to my office this\n",
+        "time. See ya!\r"
+      ]
+    }
+  ]
+}

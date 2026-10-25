@@ -1,382 +1,382 @@
 {
-  "header": "fielddata/script/scr_seq/event_D24R0101.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_D24R0101_002 + 1",
-      "type": 1,
-      "x": 429,
-      "z": 266,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_D24R0101_000 + 1",
-      "type": 1,
-      "x": 429,
-      "z": 286,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_D24R0101_001 + 1",
-      "type": 1,
-      "x": 440,
-      "z": 287,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_D24R0101_003 + 1",
-      "type": 1,
-      "x": 443,
-      "z": 292,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d24r0101_great_ball",
-      "type": 2,
-      "x": 442,
-      "z": 296,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d24r0101_rare_candy",
-      "type": 2,
-      "x": 422,
-      "z": 263,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d24r0101_tinymushroom",
-      "type": 2,
-      "x": 424,
-      "z": 278,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d24r0101_big_mushroom",
-      "type": 2,
-      "x": 418,
-      "z": 314,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d24r0101_nugget",
-      "type": 2,
-      "x": 423,
-      "z": 311,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D24R0101_mystery_2",
-      "spriteId": "SPRITE_MYSTERY_2",
-      "movement": 17,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_PSYCHIC_M_NATHAN)",
-      "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 422,
-      "z": 290,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0101_POTION",
-      "scriptId": "std_itemball_d24r0101_potion",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 435,
-      "z": 274,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_breakrock",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_010",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 424,
-      "z": 262,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_breakrock_2",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_011",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 423,
-      "z": 263,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_breakrock_3",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_013",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 426,
-      "z": 264,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_breakrock_4",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_015",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 417,
-      "z": 272,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_breakrock_5",
-      "spriteId": "SPRITE_BREAKROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_MAPTEMP_016",
-      "scriptId": "std_field_rock_smash",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 416,
-      "z": 273,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0101_HYPER_POTION",
-      "scriptId": "std_itemball_d24r0101_hyper_potion",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 418,
-      "z": 273,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_CAMERON",
-      "scriptId": "_EV_scr_seq_D24R0101_004 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 435,
-      "z": 284,
-      "y": 0
-    },
-    {
-      "id": "obj_D24R0101_suit",
-      "spriteId": "SPRITE_SUIT",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 441,
-      "z": 285,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 430,
-      "z": 261,
-      "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 431,
-      "z": 261,
-      "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 447,
-      "z": 293,
-      "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 447,
-      "z": 294,
-      "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 436,
-      "z": 266,
-      "header": "MAP_RUINS_OF_ALPH_NORTHEAST_ENTRANCE_FIRST_ROOM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 436,
-      "z": 309,
-      "header": "MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 425,
-      "z": 309,
-      "header": "MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_FIRST_ROOM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 425,
-      "z": 289,
-      "header": "MAP_RUINS_OF_ALPH_NORTHWEST_ENTRANCE_FIRST_ROOM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 430,
-      "z": 284,
-      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 431,
-      "z": 284,
-      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 441,
-      "z": 285,
-      "header": "MAP_RUINS_OF_ALPH_RESEARCH_CENTER",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 430,
-      "z": 284,
-      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 431,
-      "z": 284,
-      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 430,
-      "z": 284,
-      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 431,
-      "z": 284,
-      "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 419,
-      "z": 308,
-      "header": "MAP_UNION_CAVE_1F",
-      "anchor": 6,
-      "y": 0
-    },
-    {
-      "x": 419,
-      "z": 289,
-      "header": "MAP_UNION_CAVE_1F",
-      "anchor": 7,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_D24R0101_007 + 1",
-      "x": 441,
-      "z": 286,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 1,
-      "var": "VAR_SCENE_SINJOH_MYSTRI_ROOM"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D24R0101.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_D24R0101_002 + 1",
+            "type": 1,
+            "x": 429,
+            "z": 266,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_D24R0101_000 + 1",
+            "type": 1,
+            "x": 429,
+            "z": 286,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_D24R0101_001 + 1",
+            "type": 1,
+            "x": 440,
+            "z": 287,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_D24R0101_003 + 1",
+            "type": 1,
+            "x": 443,
+            "z": 292,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d24r0101_great_ball",
+            "type": 2,
+            "x": 442,
+            "z": 296,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d24r0101_rare_candy",
+            "type": 2,
+            "x": 422,
+            "z": 263,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d24r0101_tinymushroom",
+            "type": 2,
+            "x": 424,
+            "z": 278,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d24r0101_big_mushroom",
+            "type": 2,
+            "x": 418,
+            "z": 314,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d24r0101_nugget",
+            "type": 2,
+            "x": 423,
+            "z": 311,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D24R0101_mystery_2",
+            "spriteId": "SPRITE_MYSTERY_2",
+            "movement": 17,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_PSYCHIC_M_NATHAN)",
+            "facingDirection": 3,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 422,
+            "z": 290,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0101_POTION",
+            "scriptId": "std_itemball_d24r0101_potion",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 435,
+            "z": 274,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_breakrock",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_010",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 424,
+            "z": 262,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_breakrock_2",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_011",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 423,
+            "z": 263,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_breakrock_3",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_013",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 426,
+            "z": 264,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_breakrock_4",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_015",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 417,
+            "z": 272,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_breakrock_5",
+            "spriteId": "SPRITE_BREAKROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_MAPTEMP_016",
+            "scriptId": "std_field_rock_smash",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 416,
+            "z": 273,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D24R0101_HYPER_POTION",
+            "scriptId": "std_itemball_d24r0101_hyper_potion",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 418,
+            "z": 273,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_CAMERON",
+            "scriptId": "_EV_scr_seq_D24R0101_004 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 435,
+            "z": 284,
+            "y": 0
+        },
+        {
+            "id": "obj_D24R0101_suit",
+            "spriteId": "SPRITE_SUIT",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ALPH_OUTSIDE_ARCEUS_EVENT_SUIT",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 441,
+            "z": 285,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 430,
+            "z": 261,
+            "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 431,
+            "z": 261,
+            "header": "MAP_ROUTE_36_RUINS_OF_ALPH_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 447,
+            "z": 293,
+            "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 447,
+            "z": 294,
+            "header": "MAP_ROUTE_32_RUINS_OF_ALPH_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 436,
+            "z": 266,
+            "header": "MAP_RUINS_OF_ALPH_NORTHEAST_ENTRANCE_FIRST_ROOM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 436,
+            "z": 309,
+            "header": "MAP_RUINS_OF_ALPH_SOUTHEAST_ENTRANCE_FIRST_ROOM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 425,
+            "z": 309,
+            "header": "MAP_RUINS_OF_ALPH_SOUTHWEST_ENTRANCE_FIRST_ROOM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 425,
+            "z": 289,
+            "header": "MAP_RUINS_OF_ALPH_NORTHWEST_ENTRANCE_FIRST_ROOM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 430,
+            "z": 284,
+            "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 431,
+            "z": 284,
+            "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 441,
+            "z": 285,
+            "header": "MAP_RUINS_OF_ALPH_RESEARCH_CENTER",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 430,
+            "z": 284,
+            "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 431,
+            "z": 284,
+            "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 430,
+            "z": 284,
+            "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 431,
+            "z": 284,
+            "header": "MAP_RUINS_OF_ALPH_HALL_ENTRANCE_SINJOH_EVENT",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 419,
+            "z": 308,
+            "header": "MAP_UNION_CAVE_1F",
+            "anchor": 6,
+            "y": 0
+        },
+        {
+            "x": 419,
+            "z": 289,
+            "header": "MAP_UNION_CAVE_1F",
+            "anchor": 7,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_D24R0101_007 + 1",
+            "x": 441,
+            "z": 286,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 1,
+            "var": "VAR_SCENE_SINJOH_MYSTRI_ROOM"
+        }
+    ]
 }

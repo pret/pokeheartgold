@@ -1,0 +1,119 @@
+{
+  "key": 1875,
+  "messages": [
+    {
+      "id": "msg_0694_00000",
+      "en_US": "Tully"
+    },
+    {
+      "id": "msg_0694_00001",
+      "en_US": [
+        "Hey, you’re trying to be the ultimate\n",
+        "Trainer, too? That makes us comrades!\r",
+        "If I find any more items by the water,\n",
+        "I’ll give you some.\r",
+        "Just give me your phone number. {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0694_00002",
+      "en_US": [
+        "You’ll be hearing from me if I find\n",
+        "something good."
+      ]
+    },
+    {
+      "id": "msg_0694_00003",
+      "en_US": [
+        "Is that so? Then I’ll just have to use\n",
+        "them myself."
+      ]
+    },
+    {
+      "id": "msg_0694_00004",
+      "en_US": [
+        "If I find any more items by the water,\n",
+        "I’ll give you some.\r",
+        "Just give me your phone number.{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0694_00005",
+      "en_US": [
+        "Hey, there you are!\n",
+        "Here’s a gift, as promised!\r"
+      ]
+    },
+    {
+      "id": "msg_0694_00006",
+      "en_US": [
+        "Hey, if you’re nearby, come and chat\n",
+        "with me in person!"
+      ]
+    },
+    {
+      "id": "msg_0694_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} has grown again.\r",
+        "It was only about so big when I caught\n",
+        "it, but now it’s way bigger.\r",
+        "Oh yeah, I KO’d a wild {STRVAR_1 0, 11, 0}.\n",
+        "It was huge--like THIS big, even.\r",
+        "Heh, I guess you can’t tell over\n",
+        "the phone...\r",
+        "Well, I’ll be seeing you."
+      ]
+    },
+    {
+      "id": "msg_0694_00008",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} has grown again.\r",
+        "It was only about so big when I caught\n",
+        "it, but now it’s way bigger.\r",
+        "Oh yeah, I lost a wild {STRVAR_1 0, 11, 0}.\n",
+        "It was huge--like THIS big, even.\r",
+        "Heh, I guess you can’t tell over\n",
+        "the phone...\r",
+        "Well, I’ll be seeing you."
+      ]
+    },
+    {
+      "id": "msg_0694_00009",
+      "en_US": [
+        "We should get a battle going!\r",
+        "I’ll be fishing on {STRVAR_1 4, 3, 0}.\n",
+        "Swing by if you have time."
+      ]
+    },
+    {
+      "id": "msg_0694_00010",
+      "en_US": [
+        "What? Are you lost or something?\n",
+        "Our battle will be on {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0694_00011",
+      "en_US": [
+        "Have I found anything good?\n",
+        "Nope, not yet.\r",
+        "It’s like fishing--you need patience."
+      ]
+    },
+    {
+      "id": "msg_0694_00012",
+      "en_US": [
+        "I picked up a cool little thing at the\n",
+        "water’s edge. As promised, it’s yours.\f",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0694_00013",
+      "en_US": [
+        "I’ve got something good for you.\n",
+        "Hurry over to {STRVAR_1 4, 3, 0}."
+      ]
+    }
+  ]
+}

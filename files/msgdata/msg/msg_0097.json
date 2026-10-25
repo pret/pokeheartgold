@@ -1,0 +1,199 @@
+{
+  "key": 9322,
+  "messages": [
+    {
+      "id": "msg_0097_00000",
+      "en_US": [
+        "Your Pokémon will be restored to\n",
+        "full health."
+      ]
+    },
+    {
+      "id": "msg_0097_00001",
+      "en_US": [
+        "You will be facing opponent no. {STRVAR_1 50, 0, 0}.\n",
+        "Are you ready?"
+      ]
+    },
+    {
+      "id": "msg_0097_00002",
+      "en_US": [
+        "Would you like to save and\n",
+        "quit the game?"
+      ]
+    },
+    {
+      "id": "msg_0097_00003",
+      "en_US": [
+        "Would you like to cancel your\n",
+        "Battle Room challenge?"
+      ]
+    },
+    {
+      "id": "msg_0097_00004",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0097_00005",
+      "garbage": 26
+    },
+    {
+      "id": "msg_0097_00006",
+      "en_US": [
+        "You will be facing opponent no. {STRVAR_1 50, 0, 0}.\n",
+        "Are you ready?"
+      ]
+    },
+    {
+      "id": "msg_0097_00007",
+      "en_US": [
+        "Would you like to save and\n",
+        "quit the game?"
+      ]
+    },
+    {
+      "id": "msg_0097_00008",
+      "en_US": [
+        "Would you like to cancel your\n",
+        "Battle Room challenge?"
+      ]
+    },
+    {
+      "id": "msg_0097_00009",
+      "en_US": [
+        "Would you like to save the last battle\n",
+        "as your Battle Video?"
+      ]
+    },
+    {
+      "id": "msg_0097_00010",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}’s battle has been saved\n",
+        "as a Battle Video.\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00011",
+      "en_US": [
+        "There was an error.\n",
+        "The Battle Video couldn’t be saved.\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00012",
+      "en_US": [
+        "Delete your existing Battle Video and\n",
+        "save the last battle?"
+      ]
+    },
+    {
+      "id": "msg_0097_00013",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    },
+    {
+      "id": "msg_0097_00014",
+      "en_US": [
+        "Congratulations on your winning\n",
+        "streak, challenger!\r",
+        "The Frontier Brain has sent word\n",
+        "that he is impressed with you.\r",
+        "He sees your skill, and he’d\n",
+        "like to challenge you to a battle!\r",
+        "Are you ready to battle the Tower\n",
+        "Tycoon?"
+      ]
+    },
+    {
+      "id": "msg_0097_00015",
+      "en_US": [
+        "Hi!\n",
+        "My name’s Palmer.\r",
+        "I heard a lot about you.\n",
+        "You are {STRVAR_1 3, 0, 0} from\f",
+        "New Bark Town, right?\r",
+        "You are much younger than I thought.\n",
+        "So, I’d like you to show me.\r",
+        "Show me the bond you’ve built with\n",
+        "your Pokémon.\r",
+        "Show me what you’ve learned\n",
+        "through battles with Trainers!\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00016",
+      "en_US": [
+        "Palmer: So, you’ve come this far!\r",
+        "As the Tower Tycoon, I’ll have to\n",
+        "give you my best effort.\r",
+        "That’s how the best Trainers show\n",
+        "respect to each other.\r",
+        "By battling all out as dedicated\n",
+        "students of Pokémon!\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00017",
+      "en_US": [
+        "Bravo!\r",
+        "I imagine many great Trainers will come\n",
+        "to challenge me as you have just done.\r",
+        "That’s something I look forward\n",
+        "to a great deal.\r",
+        "You will become even more skilled.\n",
+        "Keep battling Trainers from around\f",
+        "the world and keep growing greater\f",
+        "in stature!\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00018",
+      "en_US": [
+        "Bravo!\n",
+        "I feel inspired in my heart!\r",
+        "My young friend, the world and your\n",
+        "future hold infinite promise.\r",
+        "The spirits of people and Pokémon\n",
+        "call for each other in resonance.\r",
+        "The resulting bond is infinitely strong!\n",
+        "Go on, you can be all that you desire!\r",
+        "There is no limit to where you can go!\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00019",
+      "en_US": [
+        "You have cleared your seventh match!\n",
+        "Congratulations!\r",
+        "To pay tribute to your talent,\n",
+        "we present you BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00020",
+      "en_US": [
+        "Congratulations!\r",
+        "Your victory over the Tower Tycoon\n",
+        "was an inspiration!\r",
+        "To pay tribute to your talent,\n",
+        "we present you BP!\r"
+      ]
+    },
+    {
+      "id": "msg_0097_00021",
+      "en_US": "{STRVAR_1 3, 0, 0} received {STRVAR_1 51, 1, 0} BP!\r"
+    },
+    {
+      "id": "msg_0097_00022",
+      "en_US": [
+        "Saving...\n",
+        "Don’t turn off the power."
+      ]
+    }
+  ]
+}

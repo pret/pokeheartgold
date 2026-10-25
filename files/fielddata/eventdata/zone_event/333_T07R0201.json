@@ -1,106 +1,106 @@
 {
-  "header": "fielddata/script/scr_seq/event_T07R0201.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T07R0201_004 + 1",
-      "type": 0,
-      "x": 5,
-      "z": 2,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T07R0201_gsoldwoman1",
-      "spriteId": "SPRITE_GSOLDWOMAN1",
-      "movement": 8,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0201_000 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 13,
-      "z": 4,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0201_tsure_poke_static_meowth",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MEOWTH",
-      "movement": 2,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0201_001 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 11,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0201_tsure_poke_static_clefairy",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_CLEFAIRY",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0201_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 12,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_T07R0201_tsure_poke_static_nidoran_f",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_NIDORAN_F",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T07R0201_003 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 7,
-      "z": 4,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 7,
-      "z": 13,
-      "header": "MAP_CELADON",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 13,
-      "z": 10,
-      "header": "MAP_CELADON_CONDOMINIUMS_2F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 3,
-      "z": 2,
-      "header": "MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T07R0201.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T07R0201_004 + 1",
+            "type": 0,
+            "x": 5,
+            "z": 2,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T07R0201_gsoldwoman1",
+            "spriteId": "SPRITE_GSOLDWOMAN1",
+            "movement": 8,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0201_000 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 13,
+            "z": 4,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0201_tsure_poke_static_meowth",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_MEOWTH",
+            "movement": 2,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0201_001 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 11,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0201_tsure_poke_static_clefairy",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_CLEFAIRY",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0201_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 12,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_T07R0201_tsure_poke_static_nidoran_f",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_NIDORAN_F",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T07R0201_003 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 7,
+            "z": 4,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 7,
+            "z": 13,
+            "header": "MAP_CELADON",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 13,
+            "z": 10,
+            "header": "MAP_CELADON_CONDOMINIUMS_2F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 3,
+            "z": 2,
+            "header": "MAP_CELADON_CONDOMINIUMS_LEFT_ELEVATOR",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

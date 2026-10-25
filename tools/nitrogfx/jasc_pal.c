@@ -64,7 +64,7 @@ void ReadJascPaletteLine(FILE *fp, char *line)
     }
 }
 
-void ReadJascPalette(char *path, struct Palette *palette)
+void ReadJascPalette(char *path, struct Palette *palette, int index)
 {
     char line[MAX_LINE_LENGTH + 1];
 
@@ -81,7 +81,7 @@ void ReadJascPalette(char *path, struct Palette *palette)
     ReadJascPaletteLine(fp, line);
 
     if (strcmp(line, "0100") != 0)
-        FATAL_ERROR("Unsuported JASC-PAL version.\n");
+        FATAL_ERROR("Unsupported JASC-PAL version.\n");
 
     ReadJascPaletteLine(fp, line);
 
@@ -145,9 +145,18 @@ void ReadJascPalette(char *path, struct Palette *palette)
         if (blue < 0 || blue > 255)
             FATAL_ERROR("Blue color component (%d) is outside the range [0, 255].\n", blue);
 
-        palette->colors[i].red = red;
-        palette->colors[i].green = green;
-        palette->colors[i].blue = blue;
+        if (index == 0)
+        {
+            palette->colors[i].red = red;
+            palette->colors[i].green = green;
+            palette->colors[i].blue = blue;
+        }
+        else
+        {
+            palette->extendedColors[index - 1][i].red = red;
+            palette->extendedColors[index - 1][i].green = green;
+            palette->extendedColors[index - 1][i].blue = blue;
+        }
         if (i >= 16)
         {
             if (red || green || blue)
@@ -161,18 +170,30 @@ void ReadJascPalette(char *path, struct Palette *palette)
     fclose(fp);
 }
 
-void WriteJascPalette(char *path, struct Palette *palette)
+void WriteJascPalette(char *path, struct Palette *palette, int index)
 {
     FILE *fp = fopen(path, "wb");
+    int numColors = palette->extendedLength ? 256 : palette->numColors;
 
     fputs("JASC-PAL\r\n", fp);
     fputs("0100\r\n", fp);
-    fprintf(fp, "%d\r\n", palette->numColors);
+    fprintf(fp, "%d\r\n", numColors);
 
-    for (int i = 0; i < palette->numColors; i++)
+    if (index == 0)
     {
-        struct Color *color = &palette->colors[i];
-        fprintf(fp, "%d %d %d\r\n", color->red, color->green, color->blue);
+        for (int i = 0; i < numColors; i++)
+        {
+            struct Color *color = &palette->colors[i];
+            fprintf(fp, "%d %d %d\r\n", color->red, color->green, color->blue);
+        }
+    }
+    else
+    {
+        for (int i = 0; i < numColors; i++)
+        {
+            struct Color *color = &palette->extendedColors[index - 1][i];
+            fprintf(fp, "%d %d %d\r\n", color->red, color->green, color->blue);
+        }
     }
 
     fclose(fp);

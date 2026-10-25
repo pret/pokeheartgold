@@ -1,0 +1,36 @@
+{
+  "key": 41228,
+  "messages": [
+    {
+      "id": "msg_0642_00000",
+      "en_US": "Bike Shop"
+    },
+    {
+      "id": "msg_0642_00001",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}...is that you?\r",
+        "You’re something else, aren’t you?"
+      ]
+    },
+    {
+      "id": "msg_0642_00002",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}...is that you?\r",
+        "You’re something else, aren’t you?"
+      ]
+    },
+    {
+      "id": "msg_0642_00003",
+      "en_US": [
+        "Oh, hey, this is the Bike Shop! I’ve\n",
+        "been selling a lot of Bikes lately!\r",
+        "It’s because you’ve been riding around\n",
+        "on that Bike advertising for me!\r",
+        "I was wondering how best to thank you,\n",
+        "and I thought I’d just give you\f",
+        "that Bicycle you’re riding around.\r",
+        "It’s yours! Thanks so much!"
+      ]
+    }
+  ]
+}

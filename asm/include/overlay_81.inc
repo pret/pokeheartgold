@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Delete2dMenu
 .public TextFlags_SetCanTouchSpeedUpPrint
@@ -69,7 +69,7 @@
 .public BufferBoxMonSpeciesName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

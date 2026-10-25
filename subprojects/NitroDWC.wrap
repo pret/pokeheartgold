@@ -1,0 +1,9 @@
+[wrap-git]
+url = https://github.com/ntrtwl/NitroDWC.git
+revision = 9136bfa0bf3a5123ce560e6cd47017456e4c130b
+depth = 1
+directory = NitroDWC-2.2.30008
+
+[provide]
+dependency_names = NitroDWC
+

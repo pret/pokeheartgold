@@ -14,6 +14,7 @@
 #include "brightness.h"
 #include "camera.h"
 #include "font.h"
+#include "fx_util.h"
 #include "gf_3d_render.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
@@ -29,7 +30,6 @@
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_02020B8C.h"
 #include "unk_02026E30.h"
 
 #ifdef HEARTGOLD
@@ -403,7 +403,7 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
     case TITLESCREEN_MODEL_RUN:
         Thunk_G3X_Reset();
         Camera_PushLookAtToNNSGlb();
-        sub_02020D2C(&mtx, &animObj->rotationVec);
+        MTX_Rot33Vec(&mtx, &animObj->rotationVec);
         GF3dRender_DrawModel(&animObj->renderObj, &animObj->translation, &mtx, &animObj->scale);
         switch (animObj->subState) {
         case TITLESCREEN_MODELSUB_STOP:
@@ -631,7 +631,7 @@ static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, 
     BG_SetMaskColor(GF_BG_LYR_SUB_1, RGB_BLACK);
     BG_ClearCharDataRange(GF_BG_LYR_MAIN_3, 0x20, 0, heapID);
 
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0719_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0719, heapID);
     String *string = String_New(64, heapID);
     AddWindow(bgConfig, &animData->window, &sTouchToStartWindow);
     FillWindowPixelRect(&animData->window, 0, 0, 0, 0x100, 0x10);

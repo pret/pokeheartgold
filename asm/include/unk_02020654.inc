@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Heap_Alloc
 .public Heap_Free
@@ -21,7 +21,7 @@
 .public DpadMenuBox_GetDimensions
 .public DpadMenuBox_GetNeighborInDirection
 .public sub_02020B3C
-.public sub_02026DE0
+.public BillboardGfxSequence_GetTexPlttIndexAt
 .public NNS_G2dInitCellTransferStateManager
 .public NNS_G2dUpdateCellTransferStateManager
 .public NNS_G3dGetResDataByName

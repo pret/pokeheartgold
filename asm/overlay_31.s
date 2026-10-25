@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_31.inc"
 	.include "global.inc"
 
@@ -1046,7 +1046,7 @@ _0225DD60:
 	lsl r1, r7, #0x10
 	str r0, [sp, #8]
 	lsr r1, r1, #0x10
-	bl ov03_02258120
+	bl ShopMenu_GetItemPrice
 	add r3, r0, #0
 	ldr r1, [sp, #8]
 	ldr r0, _0225DDFC ; =0x00000283
@@ -1489,7 +1489,7 @@ ov31_0225E12C: ; 0x0225E12C
 	bne _0225E14E
 	sub r0, #0x2f
 	ldr r0, [r5, r0]
-	bl PokeathlonSave_GetUnkB7C_AtIndex
+	bl PokeathlonSave_CheckReceivedDailyItemSlot
 	cmp r0, #0
 	bne _0225E14A
 	mov r0, #1
@@ -1511,7 +1511,7 @@ _0225E14E:
 	mul r1, r2
 	ldr r0, [r5, r0]
 	add r1, r4, r1
-	bl PokeathlonSave_GetUnkB78_AtIndex
+	bl PokeathlonSave_CheckReceivedDataCard
 	cmp r0, #0
 	bne _0225E176
 	mov r0, #1
@@ -1570,7 +1570,7 @@ ov31_0225E184: ; 0x0225E184
 	ldr r1, [r6, r1]
 	add r0, r6, #0
 	ldrh r1, [r1, r4]
-	bl ov03_02258120
+	bl ShopMenu_GetItemPrice
 	add r3, r0, #0
 	ldr r0, _0225E208 ; =0x00000283
 	mov r1, #0x55
@@ -2516,7 +2516,7 @@ _0225E97A:
 _0225E982:
 	add r1, r0, #0
 	add r0, r5, #0
-	bl ov03_02257814
+	bl MartData_BuyMenu_CheckCanPurchaseItem
 	cmp r0, #2
 	bne _0225E998
 	add r0, r4, #0

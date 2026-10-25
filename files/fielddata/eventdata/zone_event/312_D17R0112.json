@@ -1,26 +1,26 @@
 {
-  "header": "fielddata/script/scr_seq/event_D17R0112.h",
-  "warps": [
-    {
-      "x": 11,
-      "z": 17,
-      "header": "MAP_BELL_TOWER_9F",
-      "anchor": 6,
-      "y": 0
-    },
-    {
-      "x": 15,
-      "z": 25,
-      "header": "MAP_BELL_TOWER_ROOF",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 15,
-      "z": 24,
-      "header": "MAP_BELL_TOWER_ROOF",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D17R0112.h",
+    "warps": [
+        {
+            "x": 11,
+            "z": 17,
+            "header": "MAP_BELL_TOWER_9F",
+            "anchor": 6,
+            "y": 0
+        },
+        {
+            "x": 15,
+            "z": 25,
+            "header": "MAP_BELL_TOWER_ROOF",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 15,
+            "z": 24,
+            "header": "MAP_BELL_TOWER_ROOF",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

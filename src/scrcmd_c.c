@@ -11,9 +11,9 @@
 #include "field/rock_smash_item.h"
 #include "field/signpost.h"
 #include "field/weather_manager.h"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0202.h"
 #include "frontier/frontier.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0202.h"
 #include "overlay_2/event_cutscene.h"
 #include "overlay_2/overlay_02_02251E74.h"
 #include "overlay_2/overlay_02_gear_phone.h"
@@ -2070,6 +2070,7 @@ BOOL ScrCmd_ChooseStarter(ScriptContext *ctx) {
     return TRUE;
 }
 
+// unused debug commands?
 BOOL ScrCmd_333(ScriptContext *ctx) { // todo: bag select screen
     void **p_work;
     u8 pocketType = ScriptReadByte(ctx) != 0 ? POCKET_TYPE_BERRIES : POCKET_TYPE_ITEMS;
@@ -4052,7 +4053,7 @@ BOOL ScrCmd_571(ScriptContext *ctx) {
     String *r7_str;
     String *sp0_str;
     MessageFormat *msgFmt = MessageFormat_New(HEAP_ID_FIELD3);
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0202_bin, HEAP_ID_FIELD3);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0202, HEAP_ID_FIELD3);
     BufferECWord(msgFmt, 0, sp4);
     BufferECWord(msgFmt, 1, sp8);
     BufferECWord(msgFmt, 2, spC);

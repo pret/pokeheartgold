@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public TextFlags_SetCanTouchSpeedUpPrint
 .public TextFlags_SetFastForwardTouchButtonHitbox
@@ -67,17 +67,17 @@
 .public Options_GetFrame
 .public Save_Pokeathlon_Get
 .public PokeathlonSave_GetAthletePoints
-.public PokeathlonSave_GetUnkB78_AtIndex
-.public PokeathlonSave_GetUnkB7C_AtIndex
+.public PokeathlonSave_CheckReceivedDataCard
+.public PokeathlonSave_CheckReceivedDailyItemSlot
 .public GetItemAttr
 .public GXS_SetGraphicsMode
 .public GX_SetBankForSubBG
 .public GX_SetBankForSubOBJ
 .public MI_CpuFill8
 .public _s32_div_f
-.public ov03_02257814
+.public MartData_BuyMenu_CheckCanPurchaseItem
 .public ov03_02257978
-.public ov03_02258120
+.public ShopMenu_GetItemPrice
 .public ov03_022581BC
 .public ov31_0225D520
 .public ov31_0225D710

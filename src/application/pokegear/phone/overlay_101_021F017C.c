@@ -1,9 +1,9 @@
 #include "global.h"
 
-#include "application/pokegear/phone/pgphone_gra.naix"
 #include "application/pokegear/phone/phone_internal.h"
-#include "msgdata/msg.naix"
-#include "msgdata/msg/msg_0271.h"
+#include "files/application/pokegear/phone/pgphone_gra.naix"
+#include "files/msgdata/msg.naix"
+#include "files/msgdata/msg/msg_0271.h"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -411,7 +411,7 @@ void ov101_021F05CC(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F05EC(PokegearPhoneAppData *phoneApp) {
-    phoneApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0271_bin, phoneApp->heapID);
+    phoneApp->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0271, phoneApp->heapID);
     phoneApp->msgFormat = MessageFormat_New_Custom(2, 32, phoneApp->heapID);
     phoneApp->msgFormatBuf = String_New(640, phoneApp->heapID);
     phoneApp->msgReadBuf = String_New(640, phoneApp->heapID);

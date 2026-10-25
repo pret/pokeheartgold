@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public FontID_Alloc
 .public FontID_Release
@@ -71,7 +71,7 @@
 .public MessagePrinter_Delete
 .public sub_0200CDAC
 .public PrintUIntOnWindow
-.public sub_0200CE7C
+.public FontSpecialChars_DrawPartyScreenText
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2

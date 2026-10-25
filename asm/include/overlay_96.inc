@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public CopyU16StringArrayN
 .public TextFlags_SetCanABSpeedUpPrint
@@ -214,7 +214,7 @@
 .public sub_02020654
 .public thunk_UpdateCellTransferStateManager
 .public sub_0202067C
-.public CalcAngleBetweenVecs
+.public VEC_AngleBetween
 .public sub_02020E80
 .public sub_02020EB0
 .public sub_02020F4C

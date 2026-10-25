@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_113.inc"
 	.include "global.inc"
 
@@ -337,9 +337,9 @@ _021E5B80:
 	b _021E5BAC
 _021E5B8C:
 	bl ov113_021E5D4C
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #1
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r1, #0
 	mov r0, #0x45
 	add r2, r1, #0
@@ -357,7 +357,7 @@ _021E5BAC:
 ov113_021E5BB0: ; 0x021E5BB0
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r4, #0
 	bl ov113_021E5D28
 	mov r0, #1

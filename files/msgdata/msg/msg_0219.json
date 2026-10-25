@@ -1,0 +1,430 @@
+{
+  "key": 62160,
+  "messages": [
+    {
+      "id": "msg_0219_00000",
+      "garbage": 80
+    },
+    {
+      "id": "msg_0219_00001",
+      "en_US": [
+        "...\n",
+        "...\r",
+        "Yaaaaaaawn...\n",
+        "...\r",
+        "Huh? It’s already become so\n",
+        "bright outside!\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00002",
+      "en_US": [
+        "...\n",
+        "...\r",
+        "Yaaaaawn...\n",
+        "...\r",
+        "Huh? What?! Is it already that late?!\n",
+        "Oh no! I overslept!\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00003",
+      "en_US": [
+        "...\n",
+        "...\r",
+        "Hmm. Looks like the sun is descending\n",
+        "in the sky...\r",
+        "...So this would be what is called\n",
+        "“twilight,” wouldn’t it?\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00004",
+      "en_US": [
+        "...\n",
+        "...\r",
+        "Hmm... Interesting...\n",
+        "...\r",
+        "Huh? Oh! Excuse me, sorry!\n",
+        "I was just reading this book here.\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00005",
+      "en_US": [
+        "...\n",
+        "...\r",
+        "Yaaaaaaawn...\n",
+        "...\r",
+        "Huh? A guest?\n",
+        "At this hour?\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00006",
+      "en_US": [
+        "Sorry to keep you waiting!\r",
+        "Welcome to the world of Pokémon!\r",
+        "My name is Professor Oak.\r",
+        "But everyone calls me the\n",
+        "Pokémon Professor.\r",
+        "Before we go any further, I’d like to\n",
+        "tell you a few things you should\f",
+        "know about this world!\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00007",
+      "en_US": [
+        "I will first tell you important\n",
+        "things about this game.\n",
+        "\n",
+        "Please touch any topic you’d like\n",
+        "to know more about on the\n",
+        "lower screen."
+      ]
+    },
+    {
+      "id": "msg_0219_00008",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0219_00009",
+      "en_US": [
+        "I’ll explain this game’s controls.\n",
+        "\n",
+        "You can control this game by\n",
+        "touching the lower screen, also\n",
+        "called the Touch Screen.\n",
+        "\n",
+        "Please touch the panel in the\n",
+        "bottom right of the Touch Screen."
+      ]
+    },
+    {
+      "id": "msg_0219_00010",
+      "en_US": [
+        "By touching the Touch Screen\n",
+        "like this, you can confirm\n",
+        "selections and advance\n",
+        "conversations."
+      ]
+    },
+    {
+      "id": "msg_0219_00011",
+      "en_US": [
+        "You can also advance by pressing\n",
+        "the A Button when you see the\n",
+        "A Button icon on the Touch Screen."
+      ]
+    },
+    {
+      "id": "msg_0219_00012",
+      "en_US": [
+        "Different touch buttons will appear\n",
+        "on the Touch Screen depending on\n",
+        "the situation."
+      ]
+    },
+    {
+      "id": "msg_0219_00013",
+      "en_US": [
+        "Next, I’ll explain the button\n",
+        "operations.\n",
+        "\n",
+        "You can move the main character\n",
+        "around on the screen using the\n",
+        "+Control Pad."
+      ]
+    },
+    {
+      "id": "msg_0219_00014",
+      "en_US": [
+        "Next, I’ll explain about buttons.\n",
+        "\n",
+        "Use the +Control Pad to move\n",
+        "the main character.\n",
+        "\n",
+        "You can also use the +Control\n",
+        "Pad to select entries."
+      ]
+    },
+    {
+      "id": "msg_0219_00015",
+      "en_US": [
+        "You can operate the screens using\n",
+        "buttons instead of touching the\n",
+        "Touch Screen."
+      ]
+    },
+    {
+      "id": "msg_0219_00016",
+      "en_US": [
+        "Used to confirm a choice, check\n",
+        "things, chat, and scroll text.\n",
+        "\n",
+        "Used to exit, cancel a choice,\n",
+        "and cancel a mode."
+      ]
+    },
+    {
+      "id": "msg_0219_00017",
+      "en_US": [
+        "Use this to move within menus.\n",
+        "\n",
+        "Press to use a Key Item, such\n",
+        "as a Bicycle, that has been\n",
+        "registered in advance."
+      ]
+    },
+    {
+      "id": "msg_0219_00018",
+      "garbage": 20
+    },
+    {
+      "id": "msg_0219_00019",
+      "garbage": 34
+    },
+    {
+      "id": "msg_0219_00020",
+      "garbage": 107
+    },
+    {
+      "id": "msg_0219_00021",
+      "garbage": 56
+    },
+    {
+      "id": "msg_0219_00022",
+      "garbage": 69
+    },
+    {
+      "id": "msg_0219_00023",
+      "en_US": [
+        "If this mark is shown in the\n",
+        "message window, there are active\n",
+        "buttons you can touch on the\n",
+        "Touch Screen below."
+      ]
+    },
+    {
+      "id": "msg_0219_00024",
+      "garbage": 25
+    },
+    {
+      "id": "msg_0219_00025",
+      "en_US": "{YESNO 0}"
+    },
+    {
+      "id": "msg_0219_00026",
+      "en_US": [
+        "Do you understand everything\n",
+        "so far? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0219_00027",
+      "garbage": 33
+    },
+    {
+      "id": "msg_0219_00028",
+      "en_US": [
+        "You are about to enter a world\n",
+        "where you will embark on a grand\n",
+        "adventure of your very own."
+      ]
+    },
+    {
+      "id": "msg_0219_00029",
+      "en_US": [
+        "Speak to people and check things\n",
+        "wherever you go, be it in towns,\n",
+        "roads, or caves.\n",
+        "Gather information and hints from\n",
+        "every possible source."
+      ]
+    },
+    {
+      "id": "msg_0219_00030",
+      "en_US": [
+        "New paths will open to you when\n",
+        "you help people in need, overcome\n",
+        "challenges, and solve mysteries."
+      ]
+    },
+    {
+      "id": "msg_0219_00031",
+      "en_US": [
+        "At times, you will be challenged\n",
+        "by others to a battle.\n",
+        "At other times, wild creatures\n",
+        "may stand in your way.\n",
+        "\n",
+        "By overcoming such hurdles,\n",
+        "you will gain great power."
+      ]
+    },
+    {
+      "id": "msg_0219_00032",
+      "en_US": [
+        "However, your adventure is not\n",
+        "solely about becoming powerful."
+      ]
+    },
+    {
+      "id": "msg_0219_00033",
+      "en_US": [
+        "On your travels, we hope that\n",
+        "you will meet countless people\n",
+        "and, through them, achieve\n",
+        "personal growth.\n",
+        "\n",
+        "This is the most important\n",
+        "objective of this adventure."
+      ]
+    },
+    {
+      "id": "msg_0219_00034",
+      "en_US": [
+        "This world is widely inhabited by\n",
+        "creatures known as Pokémon.\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00035",
+      "en_US": [
+        "We humans live alongside Pokémon\n",
+        "as friends.\r",
+        "At times we play together, and at\n",
+        "other times we work together.\r",
+        "Some people use their Pokémon to\n",
+        "battle and develop closer bonds\f",
+        "with them.\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00036",
+      "en_US": [
+        "Now, why don’t you tell me a little bit\n",
+        "about yourself?\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00037",
+      "en_US": [
+        "Are you a boy?\n",
+        "Or are you a girl?\f",
+        "Won’t you please tell me? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0219_00038",
+      "en_US": "So, you’re a boy then? {YESNO 0}"
+    },
+    {
+      "id": "msg_0219_00039",
+      "en_US": "So, you’re a girl then? {YESNO 0}"
+    },
+    {
+      "id": "msg_0219_00040",
+      "en_US": "Please tell me your name."
+    },
+    {
+      "id": "msg_0219_00041",
+      "en_US": "Your name is {STRVAR_1 3, 0, 0}? {YESNO 0}"
+    },
+    {
+      "id": "msg_0219_00042",
+      "en_US": "Your name is {STRVAR_1 3, 0, 0}? {YESNO 0}"
+    },
+    {
+      "id": "msg_0219_00043",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}!\n",
+        "Are you ready?\r",
+        "Your very own tale of grand adventure\n",
+        "is about to unfold.\r",
+        "Fun experiences, difficult experiences,\n",
+        "there’s so much waiting for you!\r",
+        "Dreams! Adventure!\n",
+        "Let’s go to the world of Pokémon!\r",
+        "I’ll see you later!\r"
+      ]
+    },
+    {
+      "id": "msg_0219_00044",
+      "en_US": "CONTROL INFO"
+    },
+    {
+      "id": "msg_0219_00045",
+      "en_US": "ADVENTURE INFO"
+    },
+    {
+      "id": "msg_0219_00046",
+      "en_US": "NO INFO NEEDED"
+    },
+    {
+      "id": "msg_0219_00047",
+      "en_US": "YES"
+    },
+    {
+      "id": "msg_0219_00048",
+      "en_US": "NO"
+    },
+    {
+      "id": "msg_0219_00049",
+      "garbage": 8
+    },
+    {
+      "id": "msg_0219_00050",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00051",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00052",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00053",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0219_00054",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00055",
+      "garbage": 4
+    },
+    {
+      "id": "msg_0219_00056",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00057",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00058",
+      "garbage": 7
+    },
+    {
+      "id": "msg_0219_00059",
+      "garbage": 3
+    },
+    {
+      "id": "msg_0219_00060",
+      "en_US": "Touch"
+    },
+    {
+      "id": "msg_0219_00061",
+      "en_US": "{ALN_CENTER}Yes"
+    },
+    {
+      "id": "msg_0219_00062",
+      "en_US": "{ALN_CENTER}No"
+    }
+  ]
+}

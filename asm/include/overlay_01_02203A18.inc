@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public PlaySE
 .public Heap_AllocAtEnd
@@ -13,7 +13,7 @@
 .public sub_02023EA4
 .public sub_02023F90
 .public GF_AssertFail
-.public sub_02026E18
+.public BillboardGfxSequence_SetData
 .public TaskManager_Call
 .public TaskManager_GetEnvironment
 .public TaskManager_GetStatePtr

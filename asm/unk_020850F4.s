@@ -4,7 +4,7 @@
 #include "constants/ribbon.h"
 #include "constants/field_move_response.h"
 #include "msgdata/msg/msg_0300.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020850F4.inc"
 	.include "global.inc"
 
@@ -117,9 +117,9 @@ _0208512C:
 	bl sub_020863F4
 	add r0, r4, #0
 	bl sub_02085688
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r4, #0
 	bl sub_020860B8
 	mov r0, #0xfa
@@ -171,7 +171,7 @@ sub_0208524C: ; 0x0208524C
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02085270
-	bl ov00_021EC9D4
+	bl DWC_GetLinkLevel
 	mov r1, #3
 	sub r0, r1, r0
 	bl sub_0203A930
@@ -291,7 +291,7 @@ _02085294:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl NARC_Delete
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r1, #0x2f
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]

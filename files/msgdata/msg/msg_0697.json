@@ -1,0 +1,125 @@
+{
+  "key": 64293,
+  "messages": [
+    {
+      "id": "msg_0697_00000",
+      "en_US": "Kyle"
+    },
+    {
+      "id": "msg_0697_00001",
+      "en_US": [
+        "So I don’t forget just how great\n",
+        "it is to battle with you, how about\f",
+        "we exchange phone numbers? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0697_00002",
+      "en_US": [
+        "Awesome! I definitely won’t forget\n",
+        "about you now!"
+      ]
+    },
+    {
+      "id": "msg_0697_00003",
+      "en_US": [
+        "I see...\n",
+        "Too bad..."
+      ]
+    },
+    {
+      "id": "msg_0697_00004",
+      "en_US": [
+        "Oh! I see you’ve changed your mind\n",
+        "about exchanging phone numbers\f",
+        "with me!{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0697_00005",
+      "en_US": [
+        "Hm? Wait, let me guess. You’re nearby,\n",
+        "aren’t you?\r",
+        "If you want to talk to me, why don’t\n",
+        "you do it in person?"
+      ]
+    },
+    {
+      "id": "msg_0697_00006",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} works really hard!\r",
+        "End of report!"
+      ]
+    },
+    {
+      "id": "msg_0697_00007",
+      "en_US": [
+        "You know... Yesterday, we beat a\n",
+        "{STRVAR_1 0, 11, 0}!\r",
+        "End of report!"
+      ]
+    },
+    {
+      "id": "msg_0697_00008",
+      "en_US": [
+        "Oh no... Just a little while ago, a\n",
+        "{STRVAR_1 0, 11, 0} got away...\r",
+        "End of report!"
+      ]
+    },
+    {
+      "id": "msg_0697_00009",
+      "en_US": [
+        "Do you remember?\r",
+        "The moment we first battled!\r",
+        "I want to battle with you again, to\n",
+        "relive that tense moment!\r",
+        "I’m waiting on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0697_00010",
+      "en_US": [
+        "Do you remember?\n",
+        "We had plans to battle!\r",
+        "I’m waiting for you on\n",
+        "{STRVAR_1 4, 3, 0}, so hurry up!"
+      ]
+    },
+    {
+      "id": "msg_0697_00011",
+      "en_US": [
+        "So, at last...\n",
+        "You’ve finally decided you want to learn\f",
+        "from the best fisherman.\r",
+        "That’s great.\n",
+        "I’ll teach you.\r",
+        "To start...\n",
+        "Look out at the surface of the water.\f",
+        "Breathe in deeply.\f",
+        "Hold your fishing rod and stand still.\f",
+        "Aim at a point quietly.\f",
+        "And, SHOO-OOOP! Cast out your line!\r",
+        "When you cast your line, keep a good\n",
+        "grip, or your Fishing Rod will go with it.\f",
+        "Make sure to hold on tight!\r",
+        "The hook and line will sink down into\n",
+        "the water, and you wait, just like that,\f",
+        "without moving.\r",
+        "Well, if your nose itches or something,\n",
+        "I suppose it’s OK to move a little bit.\r",
+        "And then, YOINK--you get a bite!\n",
+        "YANK on the line and pull it out of\f",
+        "the water!\r",
+        "Got it? YOINK and YANK!\n",
+        "If you YANK without a YOINK,\f",
+        "you’ll look like a fool, pulling up\f",
+        "nothing! Well, it might not be a YOINK,\f",
+        "might be it’s a BLOOP or a PLOOSH or a\f",
+        "BLOOSH, or even a SPLOOSH-SPLOOSH...\f",
+        "...Huh? I think we’re losing conn...\f",
+        "ction... Can...hear... Hello...? He..."
+      ]
+    }
+  ]
+}

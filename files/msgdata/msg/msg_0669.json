@@ -1,0 +1,171 @@
+{
+  "key": 42589,
+  "messages": [
+    {
+      "id": "msg_0669_00000",
+      "en_US": "Tiffany"
+    },
+    {
+      "id": "msg_0669_00001",
+      "en_US": [
+        "Hi! You like CLEFAIRY, too?\n",
+        "They’re so very cute, aren’t they?\r",
+        "I think we can be good friends!\n",
+        "I want to know your phone number!\r",
+        "Let’s talk about CLEFAIRY! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0669_00002",
+      "en_US": "Isn’t my CLEFAIRY super adorable?"
+    },
+    {
+      "id": "msg_0669_00003",
+      "en_US": [
+        "Aww... Oh well. Look for me if you want\n",
+        "to talk about CLEFAIRY."
+      ]
+    },
+    {
+      "id": "msg_0669_00004",
+      "en_US": [
+        "Won’t you give me your number?\n",
+        "Let’s talk about CLEFAIRY! {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0669_00005",
+      "en_US": [
+        "Oh, there you are!\n",
+        "I’ll give this to you then.\f",
+        "It’s a CLEFAIRY Poké Doll!\r"
+      ]
+    },
+    {
+      "id": "msg_0669_00006",
+      "en_US": [
+        "Um... Well...\n",
+        "Is it that difficult to talk to me?\r",
+        "I mean, by phone is all right, but if\n",
+        "we’re this close, you don’t have to\f",
+        "stay away.\f",
+        "You can just come talk to me."
+      ]
+    },
+    {
+      "id": "msg_0669_00007",
+      "en_US": [
+        "{STRVAR_1 14, 4, 0}!\n",
+        "It’s awful. My CLEFAIRY...\r",
+        "Huh? This is {STRVAR_1 3, 0, 0}?\r",
+        "Oh, sorry! I was in a hurry, and I...\n",
+        "I have to go! Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0669_00008",
+      "en_US": [
+        "{STRVAR_1 14, 4, 0}!\n",
+        "It’s awful. My CLEFAIRY...\r",
+        "Huh? This is {STRVAR_1 3, 0, 0}?\r",
+        "Oh, sorry! I was in a hurry, and I...\n",
+        "I have to go! Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0669_00009",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s adorable, don’t you\n",
+        "think so?\r",
+        "I always sleep next to it--it’s so\n",
+        "fluffy and warm!\r",
+        "Oh, and we had to battle a wild\n",
+        "{STRVAR_1 0, 11, 0} a while ago...\r",
+        "My CLEFAIRY came close to fainting!\n",
+        "Isn’t that awful?\r",
+        "I hate those nasty {STRVAR_1 0, 11, 0}!\n",
+        "Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0669_00010",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0}’s adorable, don’t you\n",
+        "think so?\r",
+        "I always sleep next to it--it’s so\n",
+        "fluffy and warm!\r",
+        "Oh, and we had to battle a wild\n",
+        "{STRVAR_1 0, 11, 0} a while ago...\r",
+        "My CLEFAIRY got frightened, so we ran\n",
+        "away as fast as we could!\r",
+        "I just can’t help feeling protective of\n",
+        "my CLEFAIRY.\r",
+        "Bye-bye!"
+      ]
+    },
+    {
+      "id": "msg_0669_00011",
+      "en_US": [
+        "I know this might surprise you, but\n",
+        "would you like to battle?\r",
+        "I’ll be waiting with CLEFAIRY on\n",
+        "{STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0669_00012",
+      "en_US": [
+        "What’s wrong? Can’t you visit?\r",
+        "CLEFAIRY got tired and fell asleep.\n",
+        "I’m not sure if I can wake it up...\r",
+        "Please hurry to {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0669_00013",
+      "en_US": "I love dressing up my CLEFAIRY!"
+    },
+    {
+      "id": "msg_0669_00014",
+      "en_US": [
+        "While I was at the Goldenrod Dept.\n",
+        "Store recently, I found these\f",
+        "super-cute Poké Dolls!\f",
+        "I’ll give you one!\r",
+        "Come collect it on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0669_00015",
+      "en_US": [
+        "What’s wrong? Can’t you visit?\r",
+        "This Poké Doll is so cute, too!\n",
+        "Please hurry to {STRVAR_1 4, 3, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0669_00016",
+      "en_US": "Grandpa"
+    },
+    {
+      "id": "msg_0669_00017",
+      "en_US": "Grandma"
+    },
+    {
+      "id": "msg_0669_00018",
+      "en_US": "Mom"
+    },
+    {
+      "id": "msg_0669_00019",
+      "en_US": "Dad"
+    },
+    {
+      "id": "msg_0669_00020",
+      "en_US": "Sis"
+    },
+    {
+      "id": "msg_0669_00021",
+      "en_US": "Bro"
+    }
+  ]
+}

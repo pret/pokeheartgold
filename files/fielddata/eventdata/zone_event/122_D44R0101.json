@@ -1,19 +1,19 @@
 {
-  "header": "fielddata/script/scr_seq/event_D44R0101.h",
-  "warps": [
-    {
-      "x": 6,
-      "z": 9,
-      "header": "MAP_BLACKTHORN",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 5,
-      "header": "MAP_DRAGONS_DEN",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D44R0101.h",
+    "warps": [
+        {
+            "x": 6,
+            "z": 9,
+            "header": "MAP_BLACKTHORN",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 5,
+            "header": "MAP_DRAGONS_DEN",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

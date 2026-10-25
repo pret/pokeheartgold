@@ -1,0 +1,22 @@
+{
+  "key": 21550,
+  "messages": [
+    {
+      "id": "msg_0489_T06R0401_00000",
+      "en_US": [
+        "Do you know about the Magnet Train?\r",
+        "It’s a railway that connects\n",
+        "Kanto and Johto."
+      ]
+    },
+    {
+      "id": "msg_0489_T06R0401_00001",
+      "en_US": [
+        "Saffron! Saffron!\n",
+        "I want to go to Saffron City to see\f",
+        "the Magnet Train.\r",
+        "Magnet Train!"
+      ]
+    }
+  ]
+}

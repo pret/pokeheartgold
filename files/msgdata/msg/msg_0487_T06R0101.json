@@ -1,0 +1,29 @@
+{
+  "key": 21510,
+  "messages": [
+    {
+      "id": "msg_0487_T06R0101_00000",
+      "en_US": [
+        "I am the Fishing Dude, the elder of\n",
+        "the Fishing Bros.\r",
+        "Have you met the Fishing Guru at\n",
+        "Lake of Rage?\r",
+        "He dreams about seeing the world’s\n",
+        "greatest MAGIKARP.\r",
+        "If you don’t mind, could you show him\n",
+        "any MAGIKARP you catch?\r",
+        "Who knows, you may catch the\n",
+        "MAGIKARP of his dreams."
+      ]
+    },
+    {
+      "id": "msg_0487_T06R0101_00001",
+      "en_US": [
+        "You found something in between\n",
+        "the pages...\r",
+        "It’s a photo of people fishing...\n",
+        "They look identical!"
+      ]
+    }
+  ]
+}

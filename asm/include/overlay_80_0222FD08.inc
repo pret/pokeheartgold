@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Heap_Alloc
 .public Heap_Free
@@ -34,7 +34,6 @@
 .public Party_SafeCopyMonToSlot_ResetAprijuiceModifiers
 .public MI_CpuFill8
 .public _s32_div_f
-.public _0223DD40
 .public ov80_02229F04
 .public ov80_0222A140
 .public ov80_0222A30C

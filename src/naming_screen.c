@@ -181,7 +181,7 @@ static void NamingScreen_GetPlayerInput(NamingScreenAppData *data);
 static void NamingScreen_UpdateCursorSpritePosition(NamingScreenAppData *data, int dpadMovement);
 static void NamingScreen_PaletteGlowEffect(u16 *pSinArg);
 static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *rawChars, int x, int y, int spacing, int textSpeed, u32 color, u8 *buttonPixels);
-static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color);
+static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, enum Font fontId, u32 color);
 static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16 *tmpBuf, void *charBuf, String *string);
 static void NamingScreen_PrintLastCharacterOfEntryBuf(Window *window, u16 *entryBuf, u16 cursorPos, u16 *tmpBuf, void *charBuf, String *string);
 static void NamingScreen_LoadKeyboardLayout(u16 (*keyboard)[13], const int pageNum);
@@ -490,9 +490,9 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
         data->bgConfig = BgConfig_Alloc(HEAP_ID_NAMING_SCREEN);
         narc = NARC_New(NARC_data_namein, HEAP_ID_NAMING_SCREEN);
         data->msgFormat = MessageFormat_New(HEAP_ID_NAMING_SCREEN);
-        data->msgData_249 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0249_bin, HEAP_ID_NAMING_SCREEN);
-        data->msgData_254 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0254_bin, HEAP_ID_NAMING_SCREEN);
-        data->msgData_197 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0197_bin, HEAP_ID_NAMING_SCREEN);
+        data->msgData_249 = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0249, HEAP_ID_NAMING_SCREEN);
+        data->msgData_254 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0254, HEAP_ID_NAMING_SCREEN);
+        data->msgData_197 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0197, HEAP_ID_NAMING_SCREEN);
         SetKeyRepeatTimers(4, 8);
         NamingScreen_SetGraphicsBanks();
         NamingScreen_SetBgModesAndInitBuffers(data->bgConfig);
@@ -1541,7 +1541,7 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
 
 static const u8 _02101D3C[] = { 0x60, 0x68, 0x50, 0x58 };
 
-static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, FontID fontId, u32 color) {
+static void *NamingScreen_PrintStringOnWindow_GetPixelBuffer(Window *window, String *string, enum Font fontId, u32 color) {
     AddTextPrinterParameterizedWithColor(window, fontId, string, 0, 0, TEXT_SPEED_NOTRANSFER, color, NULL);
     return window->pixelBuffer;
 }

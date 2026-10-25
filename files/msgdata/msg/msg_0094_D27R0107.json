@@ -1,0 +1,97 @@
+{
+  "key": 50267,
+  "messages": [
+    {
+      "id": "msg_0094_D27R0107_00000",
+      "en_US": [
+        "Jasmine: ...This Pokémon always kept\n",
+        "the sea lit at night.\r",
+        "...But it suddenly got sick...\n",
+        "It’s gasping for air...\r",
+        "...I understand that there is a\n",
+        "wonderful Pharmacy in Cianwood...\r",
+        "But that’s across the sea...\n",
+        "And I can’t leave Amphy unattended...\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00001",
+      "en_US": [
+        "...May I ask you to get some medicine\n",
+        "for me? Please?\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00002",
+      "en_US": [
+        "Jasmine: ...Will that medicine cure\n",
+        "Amphy? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00003",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0} handed the SecretPotion\n",
+        "to Jasmine."
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00004",
+      "en_US": [
+        "Jasmine: ...Um, please don’t be\n",
+        "offended...\r",
+        "Amphy will not take anything from\n",
+        "anyone but me...\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00005",
+      "en_US": [
+        "Jasmine: ...\r",
+        "Amphy, how are you feeling?\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00006",
+      "en_US": [
+        "Amphy: Palu!\n",
+        "Palulu!\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00007",
+      "en_US": [
+        "Jasmine: ...Oh, I’m so relieved...\n",
+        "This is just so wonderful...\r",
+        "Thank you so very, very much.\n",
+        "...I will return to the Gym...\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00008",
+      "en_US": "Jasmine: ...I see...\r"
+    },
+    {
+      "id": "msg_0094_D27R0107_00009",
+      "en_US": "...Amphy, hang on!\r"
+    },
+    {
+      "id": "msg_0094_D27R0107_00010",
+      "en_US": [
+        "Amphy: ...\n",
+        "...Pa...paloo...\r"
+      ]
+    },
+    {
+      "id": "msg_0094_D27R0107_00011",
+      "en_US": "Its breathing is slight..."
+    },
+    {
+      "id": "msg_0094_D27R0107_00012",
+      "en_US": [
+        "Amphy: Palu!\n",
+        "Palulu!"
+      ]
+    }
+  ]
+}

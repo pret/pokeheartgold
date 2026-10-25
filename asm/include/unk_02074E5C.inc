@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public CopyU16StringArray
 .public SysTask_CreateOnMainQueue
@@ -42,18 +42,18 @@
 .public sub_02075350
 .public sub_020753A8
 .public sub_020753D4
-.public BattleSystem_GetSendBufferPtr
-.public BattleSystem_GetRecvBufferPtr
-.public ov12_0223A954
-.public ov12_0223A960
-.public ov12_0223A96C
-.public ov12_0223A978
-.public ov12_0223A984
-.public ov12_0223A990
+.public BattleSystem_GetServerMessage
+.public BattleSystem_GetClientMessage
+.public BattleSystem_GetServerReadIndex
+.public BattleSystem_GetServerWriteIndex
+.public BattleSystem_GetServerEndIndex
+.public BattleSystem_GetClientReadIndex
+.public BattleSystem_GetClientWriteIndex
+.public BattleSystem_GetClientEndIndex
 .public BattleSystem_GetBattleSpecial
 .public ov12_0223BBFC
 .public ov12_0223BC08
 .public ov12_0223BC14
 .public ov12_0223BC20
 .public ov12_0223BC2C
-.public ov12_02264334
+.public BattleController_RecvCommMessage

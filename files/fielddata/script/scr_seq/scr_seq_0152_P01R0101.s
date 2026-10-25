@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_P01R0101.h"
 #include "msgdata/msg/msg_0255_P01R0101.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_P01R0101_000
 	ScrDef scr_seq_P01R0101_001
@@ -122,7 +121,7 @@ scr_seq_P01R0101_000:
 	GetPlayerFacing VAR_TEMP_x4001
 	Compare VAR_TEMP_x4001, 0
 	GoToIfEq _0320
-	Compare VAR_UNK_40CB, 7
+	Compare VAR_SCENE_SS_AQUA, 7
 	GoToIfGe _01FB
 	NPCMsg msg_0255_P01R0101_00001
 	CloseMsg

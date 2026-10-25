@@ -1,0 +1,63 @@
+{
+  "key": 17434,
+  "messages": [
+    {
+      "id": "msg_0499_T07R0106_00000",
+      "en_US": [
+        "A vending machine with a \n",
+        "prize roulette...\r",
+        "It makes you happy when you get\n",
+        "something for free even if it’s worth\f",
+        "only $200.\r",
+        "Happiness does not come from how much\n",
+        "things are worth.\r",
+        "It is up to the heart of the one to\n",
+        "receive it..."
+      ]
+    },
+    {
+      "id": "msg_0499_T07R0106_00001",
+      "en_US": [
+        "Aww! There are no games here!\n",
+        "I wanted to play..."
+      ]
+    },
+    {
+      "id": "msg_0499_T07R0106_00002",
+      "en_US": [
+        "Have a Break at the Vending Machines\n",
+        "6F: Rooftop Atrium"
+      ]
+    },
+    {
+      "id": "msg_0499_T07R0106_00003",
+      "en_US": [
+        "It’s a vending machine.\n",
+        "Which drink would you like? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0499_T07R0106_00004",
+      "en_US": [
+        "Clang!\r",
+        "A can of {STRVAR_1 8, 0, 0} dropped down.\r"
+      ]
+    },
+    {
+      "id": "msg_0499_T07R0106_00005",
+      "en_US": [
+        "Clang!\r",
+        "Bonus! Another can of {STRVAR_1 8, 0, 0}\n",
+        "dropped down.\r"
+      ]
+    },
+    {
+      "id": "msg_0499_T07R0106_00006",
+      "en_US": "Not enough money..."
+    },
+    {
+      "id": "msg_0499_T07R0106_00007",
+      "en_US": "Decided not to buy a drink."
+    }
+  ]
+}

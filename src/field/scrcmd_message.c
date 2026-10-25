@@ -32,14 +32,14 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageF
 static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox);
 static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MsgData *messageData, u32 messageNum);
 static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
-static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
-static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
+static void ov01_021EF758(MessageBox *messageBox, enum Font fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
+static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, enum Font fontId);
 
 const u16 ov01_022067C8[] = {
-    NARC_msg_msg_0752_bin, // day of the week siblings
-    NARC_msg_msg_0211_bin, // field moves
-    NARC_msg_msg_0030_bin, // cameron the photographer
-    NARC_msg_msg_0435_bin, // pokemart and various shops
+    msg_0752, // day of the week siblings
+    msg_0211, // field moves
+    msg_0030, // cameron the photographer
+    msg_0435, // pokemart and various shops
 };
 
 BOOL ScrCmd_NonNPCMsg(ScriptContext *ctx) {
@@ -300,10 +300,10 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     String_Delete(string);
 }
 
-static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
+static void ov01_021EF758(MessageBox *messageBox, enum Font fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
     *(messageBox->textPrinterNumPtr) = DialogBox_PrintMessageEx(messageBox->window, messageBox->message, fontId, textFrameDelay, canABSpeedUp, a4);
 }
 
-static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {
+static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, enum Font fontId) {
     *(messageBox->textPrinterNumPtr) = AddTextPrinterParameterized(messageBox->window, fontId, messageBox->message, 0, 0, 0, NULL);
 }

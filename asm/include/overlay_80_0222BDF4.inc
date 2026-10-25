@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public ListMenuInit
 .public ListMenu_ProcessInput
@@ -63,7 +63,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public WaitingIcon_New
@@ -183,7 +183,6 @@
 .public gOverlayTemplate_NamingScreen
 .public gSystem
 .public ov00_021E6EBC
-.public _0223DC20
 .public ov42_02228110
 .public ov42_02228188
 .public ov42_022282DC

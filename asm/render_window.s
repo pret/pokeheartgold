@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "render_window.inc"
 	.include "global.inc"
 
@@ -311,8 +311,8 @@ _0200E5D0:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end DrawFrameAndWindow1
 
-	thumb_func_start sub_0200E5D4
-sub_0200E5D4: ; 0x0200E5D4
+	thumb_func_start ClearWindowPixelBuffer
+ClearWindowPixelBuffer: ; 0x0200E5D4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x18
 	add r5, r0, #0
@@ -359,7 +359,7 @@ _0200E636:
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0200E5D4
+	thumb_func_end ClearWindowPixelBuffer
 
 	thumb_func_start sub_0200E63C
 sub_0200E63C: ; 0x0200E63C

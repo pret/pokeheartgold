@@ -8,7 +8,7 @@
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_01_021FE780.inc"
 	.include "global.inc"
 
@@ -328,7 +328,7 @@ _021FE9C4:
 	add r0, sp, #0x18
 	lsr r2, r2, #0x10
 	add r3, r1, #0
-	bl sub_02020DA4
+	bl MTX_Rot33Angles
 	add r0, r6, #0
 	add r1, sp, #0xc
 	bl sub_02068DB8

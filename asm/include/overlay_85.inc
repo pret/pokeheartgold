@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public Std_CreateYesNoMenu
 .public Handle2dMenuInput_DeleteOnFinish
@@ -134,9 +134,9 @@
 .public GF_CreateVramTransferManager
 .public GF_DestroyVramTransferManager
 .public GF_RunVramTransferTasks
-.public sub_020210BC
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPad
+.public DisableTouchPad
 .public sub_02021280
 .public ObjCharTransfer_Init
 .public ObjCharTransfer_Destroy

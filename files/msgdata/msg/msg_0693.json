@@ -1,0 +1,141 @@
+{
+  "key": 63284,
+  "messages": [
+    {
+      "id": "msg_0693_00000",
+      "en_US": "Derek"
+    },
+    {
+      "id": "msg_0693_00001",
+      "en_US": [
+        "Hey, let’s be friends!\n",
+        "I figure nobody who likes Pokémon\f",
+        "could be a bad person.\r",
+        "Let’s chat about PIKACHU and SLOWPOKE\n",
+        "and TENTACRUEL and all kinds of\f",
+        "other Pokémon. It’ll be fun!\f",
+        "What do you think?\r",
+        "Can I get your phone number?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0693_00002",
+      "en_US": [
+        "Sure thing! If anything\n",
+        "Pokémon-related comes up, I’ll call!"
+      ]
+    },
+    {
+      "id": "msg_0693_00003",
+      "en_US": [
+        "You...\n",
+        "I bet you don’t even like Pokémon..."
+      ]
+    },
+    {
+      "id": "msg_0693_00004",
+      "en_US": [
+        "Let’s chat about Pokémon!\n",
+        "Can I get your phone number?{YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0693_00005",
+      "en_US": [
+        "I’ve been looking for you!\n",
+        "Here, see this? This is it!\r",
+        "I’m certain your Pokémon will love my\n",
+        "gift, too!\r"
+      ]
+    },
+    {
+      "id": "msg_0693_00006",
+      "en_US": [
+        "What’s that?\n",
+        "Wait, you’re near me, aren’t you?\r",
+        "I can tell.\r",
+        "How? Because you give off this aura of\n",
+        "affection for Pokémon!\r",
+        "If you’re nearby, come on and talk to\n",
+        "me in person about Pokémon stuff!"
+      ]
+    },
+    {
+      "id": "msg_0693_00007",
+      "en_US": [
+        "Hey, listen to this.\n",
+        "My {STRVAR_1 0, 10, 0} totally grins when\f",
+        "I pinch its cheek.\r",
+        "But it never grins like that for\n",
+        "anyone else. I must be special.\r",
+        "Oh, and just now, my PIKACHU beat a\n",
+        "wild {STRVAR_1 0, 11, 0}!\f",
+        "A wild {STRVAR_1 0, 11, 0}, I’m sayin’!\r",
+        "Yeah, amazing, isn’t it?\r",
+        "My PIKACHU is awesome!\r",
+        "My PIKACHU is the greatest!\n",
+        "Talk to you later."
+      ]
+    },
+    {
+      "id": "msg_0693_00008",
+      "en_US": [
+        "Hey, listen to this.\n",
+        "My {STRVAR_1 0, 10, 0} totally grins when\f",
+        "I pinch its cheek.\r",
+        "But it never grins like that for\n",
+        "anyone else. I must be special.\r",
+        "Oh, and I saw a wild {STRVAR_1 0, 11, 0} a\n",
+        "little while ago. But it wasn’t very\f",
+        "cute, so I left it...\r",
+        "Pokémon have to be cute. They’re no\n",
+        "good otherwise.\r",
+        "Talk to you later."
+      ]
+    },
+    {
+      "id": "msg_0693_00009",
+      "en_US": [
+        "How are your Pokémon doing?\r",
+        "Let’s get together and brag about our\n",
+        "Pokémon!"
+      ]
+    },
+    {
+      "id": "msg_0693_00010",
+      "en_US": [
+        "I’d like you to have a Nugget.\r",
+        "My PIKACHU just loves it.\r",
+        "I’m certain your Pokémon will love\n",
+        "it, too!"
+      ]
+    },
+    {
+      "id": "msg_0693_00011",
+      "en_US": [
+        "What’s wrong?\n",
+        "I’m waiting on {STRVAR_1 4, 3, 0}.\f",
+        "Come and pick this up anytime."
+      ]
+    },
+    {
+      "id": "msg_0693_00012",
+      "en_US": [
+        "Did you remember?\n",
+        "The Bug-Catching Contest is today.\r",
+        "You’re going to go, aren’t you?\r",
+        "I think I’ll participate with PIKACHU to\n",
+        "show off its cuteness."
+      ]
+    },
+    {
+      "id": "msg_0693_00013",
+      "en_US": [
+        "The Bug-Catching Contest is at the\n",
+        "National Park today.\r",
+        "Are you going, {STRVAR_1 3, 0, 0}?\n",
+        "I’m trying to make up my mind."
+      ]
+    }
+  ]
+}

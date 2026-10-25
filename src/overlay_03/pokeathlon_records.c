@@ -86,7 +86,7 @@ static void ov03_02258DE8(UnkStruct_02258CFC *data) {
     LoadUserFrameGfx1(data->bgConfig, GF_BG_LYR_MAIN_3, 985, HEAP_ID_FIELD2, 0, HEAP_ID_FIELD1);
     DrawFrameAndWindow1(&data->window, TRUE, 985, HEAP_ID_FIELD2);
     FillWindowPixelBuffer(&data->window, 15);
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0277_bin, HEAP_ID_FIELD1);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0277, HEAP_ID_FIELD1);
     data->messageFormat = MessageFormat_New_Custom(3, 16, HEAP_ID_FIELD1);
     data->strings[0] = String_New(128, HEAP_ID_FIELD1);
     data->strings[1] = String_New(128, HEAP_ID_FIELD1);
@@ -101,7 +101,7 @@ static void ov03_02258E88(UnkStruct_02258CFC *data) {
     String_Delete(data->strings[0]);
     MessageFormat_Delete(data->messageFormat);
     DestroyMsgData(data->msgData);
-    sub_0200E5D4(&data->window, TRUE);
+    ClearWindowPixelBuffer(&data->window, TRUE);
     RemoveWindow(&data->window);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 3);
 }
@@ -146,7 +146,7 @@ static BOOL ov03_02258ECC(UnkStruct_02258CFC *data, int index_02259880) {
     if (index == 0) {
         return TRUE;
     }
-    return PokeathlonSave_GetUnkB78_AtIndex(data->pokeathlonSave, index - 1);
+    return PokeathlonSave_CheckReceivedDataCard(data->pokeathlonSave, index - 1);
 }
 
 static const int ov03_0225980C[3] = {

@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_103.inc"
 	.include "global.inc"
 
@@ -1289,9 +1289,9 @@ ov103_021ED314: ; 0x021ED314
 	strh r1, [r0]
 	ldr r0, _021ED3D8 ; =0x04001050
 	strh r1, [r0]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r2, _021ED3DC ; =0x04000304
 	ldr r0, _021ED3E0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -1377,7 +1377,7 @@ ov103_021ED3E8: ; 0x021ED3E8
 	bl ov103_021ECBBC
 	add r0, r4, #0
 	bl ov103_021ED0A0
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r1, _021ED458 ; =0x04000050
 	mov r0, #0
 	strh r0, [r1]
@@ -4475,7 +4475,7 @@ ov103_021EEC30: ; 0x021EEC30
 	.byte 0x01, 0x00, 0x00, 0x00, 0x60, 0x00, 0x00, 0x00
 
 ov103_021EEC58: ; 0x021EEC58
-	.word ov55_UnkApp_Init, ov55_UnkApp_Main, ov55_UnkApp_Exit, FS_OVERLAY_ID(OVY_55)
+	.word ov55_UnkApp_Init, ov55_UnkApp_Main, ov55_UnkApp_Exit, SDK_OVERLAY_OVY_55_ID
 
 ov103_021EEC68: ; 0x021EEC68
 	.word ov103_021EDDE4, ov103_021ED9D8

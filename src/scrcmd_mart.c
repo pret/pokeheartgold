@@ -6,6 +6,7 @@
 
 #include "field_system.h"
 #include "mart.h"
+#include "overlay_03.h"
 #include "pokedex.h"
 #include "save_vars_flags.h"
 #include "scrcmd.h"
@@ -87,7 +88,7 @@ BOOL ScrCmd_MartBuy(ScriptContext *ctx) {
         }
     }
     items[nitems] = 0xFFFF;
-    Mart_Init(ctx->taskman, ctx->fieldSystem, items, 0, 0, 0, 0);
+    Mart_Init(ctx->taskman, ctx->fieldSystem, items, MART_TYPE_NORMAL, MART_BUY, 0, 0);
     return TRUE;
 }
 
@@ -95,7 +96,7 @@ BOOL ScrCmd_MartSell(ScriptContext *ctx) {
     u16 dummy[1];
 
     dummy[0] = 0xFFFF;
-    Mart_Init(ctx->taskman, ctx->fieldSystem, dummy, 0, 1, 0, 0);
+    Mart_Init(ctx->taskman, ctx->fieldSystem, dummy, MART_TYPE_NORMAL, MART_SELL, 0, 0);
     return TRUE;
 }
 
@@ -167,7 +168,7 @@ BOOL ScrCmd_SpecialMartBuy(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
-    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210FA3C[which], 0, 0, 0, NULL);
+    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210FA3C[which], MART_TYPE_NORMAL, MART_BUY, 0, NULL);
     return TRUE;
 }
 
@@ -188,7 +189,7 @@ BOOL ScrCmd_DecorationMart(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
-    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[which], 1, 0, which <= 1 ? 1 : 0, NULL);
+    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[which], MART_TYPE_SEALS, MART_TYPE_NORMAL, which <= 1 ? 1 : 0, NULL);
     return TRUE;
 }
 
@@ -214,11 +215,11 @@ BOOL ScrCmd_SealMart(ScriptContext *ctx) {
     u16 which;
 
     which = ScriptGetVar(ctx);
-    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9E8[which], 2, 0, 0, NULL);
+    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9E8[which], MART_TYPE_SEAL, MART_BUY, 0, NULL);
     return TRUE;
 }
 
-const struct MartItem _020FBCD6[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Monday[] = {
     { ITEM_RED_APRICORN, 200  },
     { ITEM_BLU_APRICORN, 200  },
     { ITEM_GRN_APRICORN, 200  },
@@ -227,7 +228,7 @@ const struct MartItem _020FBCD6[] = {
     { ITEM_RARE_CANDY,   2000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBCF2[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Tuesday[] = {
     { ITEM_YLW_APRICORN, 200  },
     { ITEM_PNK_APRICORN, 200  },
     { ITEM_WHT_APRICORN, 200  },
@@ -236,7 +237,7 @@ const struct MartItem _020FBCF2[] = {
     { ITEM_PP_UP,        1000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBD2A[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Wednesday[] = {
     { ITEM_BLU_APRICORN, 200  },
     { ITEM_PNK_APRICORN, 200  },
     { ITEM_BLK_APRICORN, 200  },
@@ -245,7 +246,7 @@ const struct MartItem _020FBD2A[] = {
     { ITEM_HEART_SCALE,  1000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBD46[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Thursday[] = {
     { ITEM_YLW_APRICORN, 200  },
     { ITEM_PNK_APRICORN, 200  },
     { ITEM_WHT_APRICORN, 200  },
@@ -254,7 +255,7 @@ const struct MartItem _020FBD46[] = {
     { ITEM_PP_UP,        1000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBD62[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Friday[] = {
     { ITEM_RED_APRICORN, 200  },
     { ITEM_YLW_APRICORN, 200  },
     { ITEM_GRN_APRICORN, 200  },
@@ -263,7 +264,7 @@ const struct MartItem _020FBD62[] = {
     { ITEM_NUGGET,       500  },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBD7E[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Saturday[] = {
     { ITEM_GRN_APRICORN, 200  },
     { ITEM_WHT_APRICORN, 200  },
     { ITEM_BLK_APRICORN, 200  },
@@ -272,7 +273,7 @@ const struct MartItem _020FBD7E[] = {
     { ITEM_RARE_CANDY,   2000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBC82[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Sunday[] = {
     { ITEM_RED_APRICORN, 200  },
     { ITEM_BLU_APRICORN, 200  },
     { ITEM_BLK_APRICORN, 200  },
@@ -281,7 +282,7 @@ const struct MartItem _020FBC82[] = {
     { ITEM_HEART_SCALE,  1000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBDB6[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Sunday_NatDex[] = {
     { ITEM_RED_APRICORN, 200  },
     { ITEM_BLU_APRICORN, 200  },
     { ITEM_BLK_APRICORN, 200  },
@@ -296,7 +297,7 @@ const struct MartItem _020FBDB6[] = {
     { ITEM_DAWN_STONE,   3000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBDEA[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Monday_NatDex[] = {
     { ITEM_RED_APRICORN, 200  },
     { ITEM_BLU_APRICORN, 200  },
     { ITEM_GRN_APRICORN, 200  },
@@ -311,7 +312,7 @@ const struct MartItem _020FBDEA[] = {
     { ITEM_DUSK_STONE,   3000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBE1E[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Tuesday_NatDex[] = {
     { ITEM_YLW_APRICORN, 200  },
     { ITEM_PNK_APRICORN, 200  },
     { ITEM_WHT_APRICORN, 200  },
@@ -326,7 +327,7 @@ const struct MartItem _020FBE1E[] = {
     { ITEM_DAWN_STONE,   3000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBE52[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Wednesday_NatDex[] = {
     { ITEM_BLU_APRICORN, 200  },
     { ITEM_PNK_APRICORN, 200  },
     { ITEM_BLK_APRICORN, 200  },
@@ -341,7 +342,7 @@ const struct MartItem _020FBE52[] = {
     { ITEM_DAWN_STONE,   3000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBE86[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Thursday_NatDex[] = {
     { ITEM_YLW_APRICORN, 200  },
     { ITEM_PNK_APRICORN, 200  },
     { ITEM_WHT_APRICORN, 200  },
@@ -356,7 +357,7 @@ const struct MartItem _020FBE86[] = {
     { ITEM_DUSK_STONE,   3000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBEBA[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Friday_NatDex[] = {
     { ITEM_RED_APRICORN, 200  },
     { ITEM_YLW_APRICORN, 200  },
     { ITEM_GRN_APRICORN, 200  },
@@ -371,7 +372,7 @@ const struct MartItem _020FBEBA[] = {
     { ITEM_DAWN_STONE,   3000 },
     { 0xFFFF,            0    },
 };
-const struct MartItem _020FBEEE[] = {
+const struct MartItem sPokeathlonPrizeExchangePriceOverrides_Saturday_NatDex[] = {
     { ITEM_GRN_APRICORN, 200  },
     { ITEM_WHT_APRICORN, 200  },
     { ITEM_BLK_APRICORN, 200  },
@@ -387,21 +388,23 @@ const struct MartItem _020FBEEE[] = {
     { 0xFFFF,            0    },
 };
 
-const struct MartItem *_0210FA04[] = {
-    _020FBC82,
-    _020FBCD6,
-    _020FBCF2,
-    _020FBD2A,
-    _020FBD46,
-    _020FBD62,
-    _020FBD7E,
-    _020FBDB6,
-    _020FBDEA,
-    _020FBE1E,
-    _020FBE52,
-    _020FBE86,
-    _020FBEBA,
-    _020FBEEE,
+const struct MartItem *sPokeathlonPrizeExchangePriceOverrides[] = {
+    // Johto dex
+    sPokeathlonPrizeExchangePriceOverrides_Sunday,
+    sPokeathlonPrizeExchangePriceOverrides_Monday,
+    sPokeathlonPrizeExchangePriceOverrides_Tuesday,
+    sPokeathlonPrizeExchangePriceOverrides_Wednesday,
+    sPokeathlonPrizeExchangePriceOverrides_Thursday,
+    sPokeathlonPrizeExchangePriceOverrides_Friday,
+    sPokeathlonPrizeExchangePriceOverrides_Saturday,
+    // National dex
+    sPokeathlonPrizeExchangePriceOverrides_Sunday_NatDex,
+    sPokeathlonPrizeExchangePriceOverrides_Monday_NatDex,
+    sPokeathlonPrizeExchangePriceOverrides_Tuesday_NatDex,
+    sPokeathlonPrizeExchangePriceOverrides_Wednesday_NatDex,
+    sPokeathlonPrizeExchangePriceOverrides_Thursday_NatDex,
+    sPokeathlonPrizeExchangePriceOverrides_Friday_NatDex,
+    sPokeathlonPrizeExchangePriceOverrides_Saturday_NatDex,
 };
 
 BOOL ScrCmd_771(ScriptContext *ctx) {
@@ -413,9 +416,9 @@ BOOL ScrCmd_771(ScriptContext *ctx) {
 
     // UB: Possibly illegal access to _0210F9CC between Tuesday and Saturday, inclusive
     if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData))) {
-        Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week + 7]);
+        Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], MART_TYPE_POKEATHLON_DAILY, MART_BUY, 0, sPokeathlonPrizeExchangePriceOverrides[date.week + 7]);
     } else {
-        Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], 3, 0, 0, _0210FA04[date.week]);
+        Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[date.week], MART_TYPE_POKEATHLON_DAILY, MART_BUY, 0, sPokeathlonPrizeExchangePriceOverrides[date.week]);
     }
     return TRUE;
 }
@@ -477,11 +480,11 @@ BOOL ScrCmd_772(ScriptContext *ctx) {
 
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
-        if (!PokeathlonSave_GetUnkB78_AtIndex(pokeathlon, i)) {
+        if (!PokeathlonSave_CheckReceivedDataCard(pokeathlon, i)) {
             break;
         }
     }
-    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[0], 4, 0, 0, _0210F9D4[i / 6]);
+    Mart_Init(ctx->taskman, ctx->fieldSystem, _0210F9CC[0], MART_TYPE_DATA_CARDS, 0, 0, _0210F9D4[i / 6]);
     return TRUE;
 }
 
@@ -502,9 +505,9 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
     varsFlags = Save_VarsFlags_Get(ctx->fieldSystem->saveData);
     GF_RTC_CopyDate(&date);
     if (Pokedex_GetNatDexFlag(Save_Pokedex_Get(ctx->fieldSystem->saveData))) {
-        r3 = _0210FA04[date.week + 7];
+        r3 = sPokeathlonPrizeExchangePriceOverrides[date.week + 7];
     } else {
-        r3 = _0210FA04[date.week];
+        r3 = sPokeathlonPrizeExchangePriceOverrides[date.week];
     }
     for (i = 0; i < 12; i++) {
         if (r3[i].item_id == 0xFFFF) {
@@ -513,7 +516,7 @@ BOOL ScrCmd_834(ScriptContext *ctx) {
         r6++;
     }
     for (i = 0; i < 12; i++) {
-        if (PokeathlonSave_GetUnkB7C_AtIndex(pokeathlon, i)) {
+        if (PokeathlonSave_CheckReceivedDailyItemSlot(pokeathlon, i)) {
             r4++;
         }
     }
@@ -533,7 +536,7 @@ BOOL ScrCmd_835(ScriptContext *ctx) {
     ret_ptr = ScriptGetVarPointer(ctx);
     pokeathlon = Save_Pokeathlon_Get(ctx->fieldSystem->saveData);
     for (i = 0; i < 27; i++) {
-        if (!PokeathlonSave_GetUnkB78_AtIndex(pokeathlon, i)) {
+        if (!PokeathlonSave_CheckReceivedDataCard(pokeathlon, i)) {
             break;
         }
     }

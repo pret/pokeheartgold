@@ -1,0 +1,86 @@
+{
+  "key": 28307,
+  "messages": [
+    {
+      "id": "msg_0607_T26PC0101_00000",
+      "en_US": [
+        "Pokémon get more friendly if you\n",
+        "spend time with them."
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00001",
+      "en_US": [
+        "They can shine like a bright light--\n",
+        "like a beacon at night to guide us...\r",
+        "They can take us across the water on\n",
+        "their backs when we are without\f",
+        "a boat...\r",
+        "Pokémon are helping us everywhere.\f",
+        "I can’t imagine a life without them!"
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00002",
+      "en_US": [
+        "There’s a person in Cianwood City\n",
+        "across the sea.\r",
+        "I heard him bragging about his\n",
+        "rare Pokémon."
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00003",
+      "en_US": [
+        "...There!\n",
+        "All done!\f",
+        "It’s sure to surprise anyone!\r"
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00004",
+      "en_US": [
+        "Oh, are you a Trainer?\r",
+        "You came at just the right time!\n",
+        "I just finished putting my Ball Capsule\f",
+        "on my Poké Ball.\r",
+        "Do you want to battle and be\n",
+        "amazed by my decoration? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00005",
+      "en_US": [
+        "All right!\n",
+        "Here I come!\r"
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00006",
+      "en_US": [
+        "You can turn your Poké Balls into your\n",
+        "own special creations by adding Seals.\r",
+        "How cool is it to have a Poké Ball that\n",
+        "only you have in the entire world?\f",
+        "Give it a whirl!\r",
+        "Oh, remember to put the Ball Capsule\n",
+        "on a Poké Ball once it’s ready!"
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00007",
+      "en_US": [
+        "Oh, really?\r",
+        "Talk to me if you want to see my\n",
+        "Ball Capsule sometime!"
+      ]
+    },
+    {
+      "id": "msg_0607_T26PC0101_00008",
+      "en_US": [
+        "Now you want to see my Ball Capsule?\r",
+        "Battle me so I can show it to you! {YESNO 0}"
+      ]
+    }
+  ]
+}

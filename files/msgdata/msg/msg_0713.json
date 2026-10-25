@@ -1,0 +1,97 @@
+{
+  "key": 62676,
+  "messages": [
+    {
+      "id": "msg_0713_00000",
+      "en_US": "Todd"
+    },
+    {
+      "id": "msg_0713_00001",
+      "en_US": [
+        "We should both train our Pokémon some\n",
+        "more and have another battle!\r",
+        "So we should really exchange phone\n",
+        "numbers. Don’t you agree? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0713_00002",
+      "en_US": [
+        "OK!\n",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0713_00003",
+      "en_US": [
+        "Oh, don’t you have any confidence that\n",
+        "you can beat me again?"
+      ]
+    },
+    {
+      "id": "msg_0713_00004",
+      "en_US": [
+        "Hmm? Did you decide that you want\n",
+        "my phone number after all? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0713_00005",
+      "en_US": [
+        "Huh? Is it just me, or does your voice\n",
+        "seem unusually loud?\f",
+        "Don’t tell me...you’re nearby?"
+      ]
+    },
+    {
+      "id": "msg_0713_00006",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} is looking more and\n",
+        "more like me. It’s getting cuter!\r",
+        "And, you know?\n",
+        "Now we can KO {STRVAR_1 0, 11, 0} easily.\r",
+        "I should challenge the Goldenrod Gym.\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0713_00007",
+      "en_US": [
+        "My {STRVAR_1 0, 10, 0} is looking more and\n",
+        "more like me. It’s getting cuter!\r",
+        "And, you know?\n",
+        "We just failed to beat {STRVAR_1 0, 11, 0} by\f",
+        "a tiny margin.\r",
+        "I’m guessing my Pokémon’s levels\n",
+        "aren’t high enough yet...\r",
+        "See you later!"
+      ]
+    },
+    {
+      "id": "msg_0713_00008",
+      "en_US": [
+        "You must be a lot better now, huh?\r",
+        "How about showing me your technique\n",
+        "in a real battle with me?\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0713_00009",
+      "en_US": [
+        "Where are you?\n",
+        "Let’s have our battle soon!\r",
+        "I’ll be waiting on {STRVAR_1 4, 3, 0}."
+      ]
+    },
+    {
+      "id": "msg_0713_00010",
+      "en_US": [
+        "Hello!\r",
+        "You know, I was on the sixth floor of\n",
+        "the Goldenrod Department Store trying\f",
+        "out the drawing. It’s so exciting!"
+      ]
+    }
+  ]
+}

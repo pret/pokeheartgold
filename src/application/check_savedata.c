@@ -225,7 +225,7 @@ static void CheckSavedataApp_FreeBgConfig(CheckSavedataApp_Data *data) {
 }
 
 static void CheckSavedataApp_SetupTextAndWindow(CheckSavedataApp_Data *data) {
-    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0229_bin, data->heapID);
+    data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0229, data->heapID);
     ResetAllTextPrinters();
 
     data->printState = PRINTSTATE_PRINT_TEXT;

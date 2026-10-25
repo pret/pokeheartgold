@@ -1,0 +1,43 @@
+{
+  "key": 39397,
+  "messages": [
+    {
+      "id": "msg_0566_T23GYM0101_00000",
+      "en_US": [
+        "Yo, challenger!\n",
+        "Bugsy made this Gym. It’s a huge nest\f",
+        "of Bug-type Pokémon.\r",
+        "Bugsy’s young, but he’s a master of\n",
+        "Bug-type Pokémon!\r",
+        "It’s going to be tough without\n",
+        "my advice.\r",
+        "Let’s see... Bug-type Pokémon don’t\n",
+        "like fire.\r",
+        "Flying-type moves are\n",
+        "super effective, too."
+      ]
+    },
+    {
+      "id": "msg_0566_T23GYM0101_00001",
+      "en_US": [
+        "Well done! That was a great clash\n",
+        "of talented young Trainers.\r",
+        "With people like you, the future of\n",
+        "Pokémon is bright!"
+      ]
+    },
+    {
+      "id": "msg_0566_T23GYM0101_00002",
+      "en_US": "Azalea Town Pokémon Gym"
+    },
+    {
+      "id": "msg_0566_T23GYM0101_00003",
+      "en_US": [
+        "Azalea Town Pokémon Gym\r",
+        "Leader: Bugsy\n",
+        "Certified Trainer!\f",
+        "{STRVAR_1 3, 0, 0}"
+      ]
+    }
+  ]
+}

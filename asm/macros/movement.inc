@@ -3,8 +3,6 @@
 #pragma once
 #include "constants/movements.h"
 
-	.option alignment off
-
 	.macro FaceNorth length=1
 	.short MOVEMENT_FACE_UP
 	.short \length

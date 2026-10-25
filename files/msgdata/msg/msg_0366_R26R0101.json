@@ -1,0 +1,28 @@
+{
+  "key": 5191,
+  "messages": [
+    {
+      "id": "msg_0366_R26R0101_00000",
+      "en_US": [
+        "Did you think you were lucky to find\n",
+        "a place to rest right where you\f",
+        "needed it?\r",
+        "Don’t be reserved!\n",
+        "I look forward to people’s smiles.\f",
+        "Let your Pokémon rest here!\r"
+      ]
+    },
+    {
+      "id": "msg_0366_R26R0101_00001",
+      "en_US": [
+        "There!\n",
+        "Your Pokémon are looking good!\f",
+        "Keep at it!"
+      ]
+    },
+    {
+      "id": "msg_0366_R26R0101_00002",
+      "en_US": "CHANSEY: Ch-Chansey!"
+    }
+  ]
+}

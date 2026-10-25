@@ -1,0 +1,1571 @@
+{
+  "key": 35849,
+  "messages": [
+    {
+      "id": "msg_0662_00000",
+      "en_US": "Ethan"
+    },
+    {
+      "id": "msg_0662_00001",
+      "en_US": [
+        "Ethan: I completely forgot!\n",
+        "We should trade phone numbers!"
+      ]
+    },
+    {
+      "id": "msg_0662_00002",
+      "en_US": [
+        "Ethan: Call me anytime! We can trade\n",
+        "Pokémon information!"
+      ]
+    },
+    {
+      "id": "msg_0662_00003",
+      "en_US": [
+        "What’s up, {STRVAR_1 3, 0, 0}?\r",
+        "Even though you’re nearby, the phone\n",
+        "makes you seem far away. Maybe if you\f",
+        "shout, then you’ll seem closer!"
+      ]
+    },
+    {
+      "id": "msg_0662_00004",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}?\n",
+        "Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0662_00005",
+      "en_US": [
+        "Oh, {STRVAR_1 3, 0, 0}!\n",
+        "How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0662_00006",
+      "en_US": [
+        "{STRVAR_1 3, 0, 0}?\n",
+        "Good evening!\r"
+      ]
+    },
+    {
+      "id": "msg_0662_00007",
+      "en_US": [
+        "Hello? This is Ethan...\n",
+        "Good morning!\r"
+      ]
+    },
+    {
+      "id": "msg_0662_00008",
+      "en_US": [
+        "Hello? This is Ethan...\n",
+        "How are you?\r"
+      ]
+    },
+    {
+      "id": "msg_0662_00009",
+      "en_US": [
+        "Hello? This is Ethan...\n",
+        "Good evening!\r"
+      ]
+    },
+    {
+      "id": "msg_0662_00010",
+      "en_US": [
+        "You know, my dad was tackled by a\n",
+        "Pokémon and now his lower back hurts.\r",
+        "It seems that it thought they were only\n",
+        "playing around...\r",
+        "Well, it wasn’t anything big, so that’s\n",
+        "good to hear.\r",
+        "Well, I’ll talk to you later!"
+      ]
+    },
+    {
+      "id": "msg_0662_00011",
+      "en_US": [
+        "Whenever MARILL gets annoyed, it hops\n",
+        "in the water.\r",
+        "Recently it jumped into the bath, and\n",
+        "there was water all over the place!\r",
+        "Well, I’ll talk to you more about\n",
+        "Pokémon later!"
+      ]
+    },
+    {
+      "id": "msg_0662_00012",
+      "en_US": [
+        "It’s so helpful the Pokémon Center\n",
+        "will heal your Pokémon for you for free.\r",
+        "The first thing I do every time I arrive\n",
+        "in a town is look for the nearest\f",
+        "Pokémon Center.\r",
+        "Keep up the great work, {STRVAR_1 3, 0, 0}!"
+      ]
+    },
+    {
+      "id": "msg_0662_00013",
+      "en_US": [
+        "I took a BULBASAUR for a walk on\n",
+        "Route 1 the other day!\r",
+        "It really seemed like it was enjoying it!"
+      ]
+    },
+    {
+      "id": "msg_0662_00014",
+      "en_US": [
+        "You know, I wonder what it’d be like\n",
+        "taking a CHARMANDER for a stroll along\f",
+        "Route 2...\r",
+        "I heard that CHARMANDER really like\n",
+        "that area."
+      ]
+    },
+    {
+      "id": "msg_0662_00015",
+      "en_US": [
+        "You know, I’ve heard that people who\n",
+        "take a SQUIRTLE for a walk on Route 3\f",
+        "tend to fall down!"
+      ]
+    },
+    {
+      "id": "msg_0662_00016",
+      "en_US": [
+        "Speaking of... Mt. Moon is on Route 4,\n",
+        "isn’t it?\r",
+        "If I recall correctly, CLEFAIRY really\n",
+        "like Mt. Moon!"
+      ]
+    },
+    {
+      "id": "msg_0662_00017",
+      "en_US": [
+        "You know there’s a Fighting Dojo in\n",
+        "Saffron City? The Pokémon I had with me\f",
+        "were all really surprised!"
+      ]
+    },
+    {
+      "id": "msg_0662_00018",
+      "en_US": [
+        "You know, I went to the port in\n",
+        "Vermilion City.\f",
+        "All of my Pokémon had so much fun riding\f",
+        "on the S.S. Aqua!"
+      ]
+    },
+    {
+      "id": "msg_0662_00019",
+      "en_US": [
+        "You know, I took a PORYGON for a walk in\n",
+        "Celadon City...and I heard this weird,\f",
+        "“Jijiji...” sound.\f",
+        "It was like it was trying to speak!"
+      ]
+    },
+    {
+      "id": "msg_0662_00020",
+      "en_US": [
+        "You know how there’s a guy named\n",
+        "Mr. Psychic in Saffron City?\r",
+        "I wonder what would happen if you took\n",
+        "Psychic-type Pokémon there?"
+      ]
+    },
+    {
+      "id": "msg_0662_00021",
+      "en_US": [
+        "Hey, have you been to the Rock Tunnel\n",
+        "yet?\r",
+        "If you take an ONIX with you there,\n",
+        "it becomes so happy!"
+      ]
+    },
+    {
+      "id": "msg_0662_00022",
+      "en_US": [
+        "Hey, you know if you ever get the\n",
+        "chance to go to the Power Plant, you\f",
+        "should take a PIKACHU with you.\r",
+        "It’s really fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00023",
+      "en_US": [
+        "Hey, you know that DIGLETT’s Cave near\n",
+        "Route 11?\r",
+        "Speaking of the Pokémon that you\n",
+        "should take with you there...\f",
+        "Well, I probably don’t need to tell you!"
+      ]
+    },
+    {
+      "id": "msg_0662_00024",
+      "en_US": [
+        "Where are you right now?\n",
+        "Route 12?\r",
+        "I see... Oh!\n",
+        "You should visit the Pokémon House in\f",
+        "Lavender Town!"
+      ]
+    },
+    {
+      "id": "msg_0662_00025",
+      "en_US": [
+        "Where are you now?\n",
+        "Route 13?\r",
+        "Isn’t that where the road becomes a\n",
+        "bit of a maze?\r",
+        "That might be why the Pokémon in that\n",
+        "area always seem a bit perplexed."
+      ]
+    },
+    {
+      "id": "msg_0662_00026",
+      "en_US": [
+        "So, you’re around Route 14 right now,\n",
+        "aren’t you?\r",
+        "There’s a huge windmill over in that\n",
+        "area, so it’s very beautiful, isn’t it?"
+      ]
+    },
+    {
+      "id": "msg_0662_00027",
+      "en_US": [
+        "Where are you now? Route 15?\r",
+        "How about stopping by the Warden of\n",
+        "the Pal Park’s house in Fuchsia?\r",
+        "There’re so many AIPOM there.\n",
+        "It’s fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00028",
+      "en_US": [
+        "You’re at Route 16 right now?\n",
+        "So, you’re pretty close to Cycling Road\f",
+        "then, aren’t you?\r",
+        "It’s so much fun running with your\n",
+        "Pokémon...but of course that’d be\f",
+        "a little dangerous there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00029",
+      "en_US": [
+        "You’re at Route 17 right now?\n",
+        "So that means...\f",
+        "you’re on the Cycling Road!\r",
+        "It’s so much fun running with your\n",
+        "Pokémon...but of course, that’d be\f",
+        "a little dangerous there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00030",
+      "en_US": [
+        "You’re at Route 18 right now?\n",
+        "So, you’re pretty close to Cycling Road\f",
+        "then, aren’t you?\r",
+        "It’s so much fun running with your\n",
+        "Pokémon...but of course, that’d be\f",
+        "a little dangerous there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00031",
+      "en_US": [
+        "You know, whenever I get over by\n",
+        "Route 19, I always want to go play in\f",
+        "the water with my Pokémon, don’t you?\f",
+        "I think it’d be so much fun..."
+      ]
+    },
+    {
+      "id": "msg_0662_00032",
+      "en_US": [
+        "Come to think of it...when you’re near\n",
+        "water with Fire-type Pokémon, they\f",
+        "seem to really not enjoy it...\f",
+        "I understand how they feel!"
+      ]
+    },
+    {
+      "id": "msg_0662_00033",
+      "en_US": [
+        "Sitting on Route 21 with your Pokémon,\n",
+        "watching the sunset over the beach...\f",
+        "What do you think about that?\f",
+        "It seems weird to me, ’cause that’s\f",
+        "more of a romantic couple thing to do!"
+      ]
+    },
+    {
+      "id": "msg_0662_00034",
+      "en_US": [
+        "You know, Route 22 is the road to the\n",
+        "Pokémon League, so I bet it makes your\f",
+        "Pokémon feel pretty nervous, huh?"
+      ]
+    },
+    {
+      "id": "msg_0662_00035",
+      "en_US": [
+        "You know, the bridge on Route 24 is\n",
+        "called the “Nugget Bridge.”\r",
+        "It’s not an official name, but it seems\n",
+        "like a lot of people call it that.\r",
+        "The sun’s light reflects off the water\n",
+        "there, so it’s kind of dazzling..."
+      ]
+    },
+    {
+      "id": "msg_0662_00036",
+      "en_US": [
+        "You know, I think most Pokémon have\n",
+        "never seen their own face.\r",
+        "So if you take them to a puddle on\n",
+        "Route 25 and let them see their\f",
+        "reflection, I wonder what\f",
+        "they’ll think..."
+      ]
+    },
+    {
+      "id": "msg_0662_00037",
+      "en_US": [
+        "You know, Route 26 is so full of natural\n",
+        "beauty, I bet it’s a really wonderful\f",
+        "place for Pokémon.\r",
+        "But it’s also a road leading to the\n",
+        "Pokémon League, so it probably makes\f",
+        "them anxious, too."
+      ]
+    },
+    {
+      "id": "msg_0662_00038",
+      "en_US": [
+        "You know, I’ve heard that sometimes\n",
+        "Pokémon will find things along Route 27.\r",
+        "It’s probably a good idea to take along\n",
+        "the Pokémon you have the closest\f",
+        "friendship with."
+      ]
+    },
+    {
+      "id": "msg_0662_00039",
+      "en_US": [
+        "Route 28, that’s the one going to\n",
+        "Mt. Silver, isn’t it?\r",
+        "I’m sure that must make your Pokémon\n",
+        "worry a little bit, too."
+      ]
+    },
+    {
+      "id": "msg_0662_00040",
+      "en_US": [
+        "Oh, that’s right. How is it to take\n",
+        "CHIKORITA with you to Route 29?\r",
+        "I bet it will look like it’s having\n",
+        "great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00041",
+      "en_US": [
+        "Oh, that’s right. How is it to take\n",
+        "TOTODILE with you to Route 30?\r",
+        "I bet it will look like it’s having\n",
+        "great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00042",
+      "en_US": [
+        "You know, I bet it would be really\n",
+        "interesting to take CYNDAQUIL with you\f",
+        "to Route 31!\r",
+        "I heard that CYNDAQUIL really like\n",
+        "that area!"
+      ]
+    },
+    {
+      "id": "msg_0662_00043",
+      "en_US": [
+        "Hey, you can find UNOWN in the\n",
+        "Ruins of Alph, right? I wonder what\f",
+        "would happen if you already had one and\f",
+        "took it for a walk through the ruins?"
+      ]
+    },
+    {
+      "id": "msg_0662_00044",
+      "en_US": [
+        "You know, it’s always raining on\n",
+        "Route 33. It never stops!\r",
+        "I get kind of down on rainy days, but I\n",
+        "know there’s Pokémon out there that\f",
+        "love the rain!\r",
+        "...Like TOTODILE!"
+      ]
+    },
+    {
+      "id": "msg_0662_00045",
+      "en_US": [
+        "You know, FARFETCH’D are known to have\n",
+        "a strange fascination with Ilex Forest.\f",
+        "When they’re there, it’s like they\f",
+        "don’t even hear you.\r",
+        "I think I might take a FARFETCH’D there\n",
+        "to see for myself sometime."
+      ]
+    },
+    {
+      "id": "msg_0662_00046",
+      "en_US": [
+        "Hey, did you know?\n",
+        "When Pokémon go to the Pokéathlon,\f",
+        "they get really excited and fired up!\r",
+        "I think I’ll take my Pokémon over there\n",
+        "soon, too!"
+      ]
+    },
+    {
+      "id": "msg_0662_00047",
+      "en_US": [
+        "Did you know that something really\n",
+        "interesting happens if you take a\f",
+        "SUDOWOODO to Route 36?\r",
+        "What kind of interesting?\n",
+        "Well, you’ll just have to try it\f",
+        "and see!"
+      ]
+    },
+    {
+      "id": "msg_0662_00048",
+      "en_US": [
+        "Hey, did you meet the twins over on\n",
+        "Route 37?\r",
+        "They’re so cute, and their Pokémon are\n",
+        "very popular."
+      ]
+    },
+    {
+      "id": "msg_0662_00049",
+      "en_US": [
+        "I took a TAUROS over to Moomoo Farm\n",
+        "recently. There was such an uproar,\f",
+        "I didn’t know what to do!"
+      ]
+    },
+    {
+      "id": "msg_0662_00050",
+      "en_US": [
+        "You know, you should take a MILTANK\n",
+        "with you over to Route 39.\r",
+        "It will find so many friends over there.\n",
+        "It’ll be great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00051",
+      "en_US": [
+        "You should take a POLIWAG over to\n",
+        "Route 40 sometime and see what\f",
+        "happens!\r",
+        "You’ll see something interesting.\n",
+        "That’s for sure!"
+      ]
+    },
+    {
+      "id": "msg_0662_00052",
+      "en_US": [
+        "You know, Water-type Pokémon really\n",
+        "love the sea...\r",
+        "Watching your Pokémon having fun and\n",
+        "being really happy is enough to make\f",
+        "you feel happy, too!"
+      ]
+    },
+    {
+      "id": "msg_0662_00053",
+      "en_US": [
+        "Is everything all right?\n",
+        "You know, Route 42 is a mountain road.\f",
+        "If you take a Rock-type Pokémon\f",
+        "through there, I bet they’d enjoy it."
+      ]
+    },
+    {
+      "id": "msg_0662_00054",
+      "en_US": [
+        "You know, if you’d like to see MAGIKARP\n",
+        "get really excited, you should take it\f",
+        "over to the Lake of Rage and see\f",
+        "what happens!"
+      ]
+    },
+    {
+      "id": "msg_0662_00055",
+      "en_US": [
+        "Right now you’re...on Route 44!\r",
+        "Was I right? All right!\r",
+        "It’s pretty cold around there, right?\n",
+        "I feel bad for the Pokémon that are\f",
+        "sensitive to cold...\r",
+        "But I bet Ice-type Pokémon feel\n",
+        "right at home!"
+      ]
+    },
+    {
+      "id": "msg_0662_00056",
+      "en_US": [
+        "You know, there’s that river that\n",
+        "meanders around near Route 45.\f",
+        "It’s a fun route to take.\r",
+        "I went there recently, and my Pokémon\n",
+        "were really interested in the river.\f",
+        "They kept looking out at it."
+      ]
+    },
+    {
+      "id": "msg_0662_00057",
+      "en_US": [
+        "Hey, you know how there’s so much tall\n",
+        "grass on Route 46?\f",
+        "Well, the Pokémon you have with you\f",
+        "also become worried about when a wild\f",
+        "Pokémon will come leaping out!"
+      ]
+    },
+    {
+      "id": "msg_0662_00058",
+      "en_US": [
+        "You know, Route 47 has such a\n",
+        "beautiful, natural view!\r",
+        "...That said, have you heard of DITTO?\r",
+        "DITTO get really energetic around\n",
+        "Route 47. It’s kind of strange..."
+      ]
+    },
+    {
+      "id": "msg_0662_00059",
+      "en_US": [
+        "Hey...\n",
+        "You know how there’s that really tall\f",
+        "cliff near Route 48?\r",
+        "When you’re walking around there, the\n",
+        "Pokémon with you all get pretty\f",
+        "scared, too...\r",
+        "Me?\n",
+        "Me, I’m...always shaking with fear!"
+      ]
+    },
+    {
+      "id": "msg_0662_00060",
+      "en_US": [
+        "Where are you now?\n",
+        "Pallet Town... That means you’re over\f",
+        "by Professor Oak’s place!\r",
+        "The professor really likes Pokémon.\r",
+        "You should take a Pokémon over to\n",
+        "Professor Oak’s Laboratory sometime!"
+      ]
+    },
+    {
+      "id": "msg_0662_00061",
+      "en_US": [
+        "Where are you now? Viridian City? That’s\n",
+        "where the Trainer House is, right?\r",
+        "When Pokémon go over there, they get\n",
+        "really fired up, you know!"
+      ]
+    },
+    {
+      "id": "msg_0662_00062",
+      "en_US": [
+        "So, where are you now? Viridian City?\n",
+        "Oh, you’re in Pewter City!\r",
+        "In Pewter there’s a museum, right?\r",
+        "You can take Pokémon over to the\n",
+        "museum with you for a fun field trip!"
+      ]
+    },
+    {
+      "id": "msg_0662_00063",
+      "en_US": [
+        "So, where are you now?\n",
+        "Cerulean City, you say?\r",
+        "So...did you meet the Cerulean Gym\n",
+        "Leader, Misty?\r",
+        "Oh, nothing. Just wondering."
+      ]
+    },
+    {
+      "id": "msg_0662_00064",
+      "en_US": [
+        "Where are you now?\n",
+        "Lavender Town?\f",
+        "You’ve gone pretty far, huh?\r",
+        "In that town, there’s a place called\n",
+        "the House of Memories where they have\f",
+        "Pokémon graves, you know.\r",
+        "As a Trainer, you should visit at least\n",
+        "once out of respect."
+      ]
+    },
+    {
+      "id": "msg_0662_00065",
+      "en_US": [
+        "Where are you now? Vermilion City?\r",
+        "That’s where the Pokémon Fan Club is if\n",
+        "I recall correctly!\r",
+        "If you’ve got a BAYLEEF, you should\n",
+        "take it over there to them and say hi!"
+      ]
+    },
+    {
+      "id": "msg_0662_00066",
+      "en_US": [
+        "So, where are you now?\n",
+        "Celadon City? I see...\r",
+        "That reminds me. I once took a TANGELA\n",
+        "with me to Celadon. It was so happy...\f",
+        "and something happened!\r",
+        "You should try it, too, and see what\n",
+        "happens!"
+      ]
+    },
+    {
+      "id": "msg_0662_00067",
+      "en_US": [
+        "So, where are you now? Fuchsia City?\n",
+        "You just pop up in the strangest\f",
+        "places, don’t you?\r",
+        "That reminds me. I heard that if you\n",
+        "take a TAUROS to Fuchsia, they get\f",
+        "really agitated!\r",
+        "I wonder why... I don’t really get it.\n",
+        "But I bet it would be interesting to try\f",
+        "it and see what happens!"
+      ]
+    },
+    {
+      "id": "msg_0662_00068",
+      "en_US": [
+        "So, where’re you now? Cinnabar?\n",
+        "You’ve gone pretty far, haven’t you?\r",
+        "Standing with your Pokémon, looking\n",
+        "out to sea while standing in a town\f",
+        "that was buried in lava...\r",
+        "That seems almost like the final scene\n",
+        "from a movie or something!"
+      ]
+    },
+    {
+      "id": "msg_0662_00069",
+      "en_US": [
+        "You know, when a friend of mine went to\n",
+        "the Indigo Plateau, the Pokémon with\f",
+        "my friend got so excited that they were\f",
+        "making loud snorting noises!"
+      ]
+    },
+    {
+      "id": "msg_0662_00070",
+      "en_US": [
+        "So, where are you now?\n",
+        "Oh, you’re in Saffron City?\r",
+        "That’s where the Copycat’s house\n",
+        "is, right?\r",
+        "You should take a MIME JR. over there\n",
+        "and see what happens.\r",
+        "I bet it’s something interesting!"
+      ]
+    },
+    {
+      "id": "msg_0662_00071",
+      "en_US": [
+        "Where are you now?\n",
+        "What are you doing in New Bark Town?\r",
+        "Did you go back home?\n",
+        "You should show off your Pokémon to\f",
+        "your mom. I bet she’d be happy!"
+      ]
+    },
+    {
+      "id": "msg_0662_00072",
+      "en_US": [
+        "Where are you? Cherrygrove City?\n",
+        "Doesn’t Cherrygrove have that\f",
+        "wonderful winding path?\r",
+        "It’s so much fun to run with your\n",
+        "Pokémon along the beach and listen to\f",
+        "the sound of the waves!"
+      ]
+    },
+    {
+      "id": "msg_0662_00073",
+      "en_US": [
+        "Where are you? Violet City?\n",
+        "If you’re in Violet, that means...\f",
+        "You’re near Sprout Tower!\r",
+        "You should take a BELLSPROUT with you\n",
+        "when you go there! I heard they dance!\r",
+        "I wonder if it’s true...\n",
+        "Will you try it, and find out for me?"
+      ]
+    },
+    {
+      "id": "msg_0662_00074",
+      "en_US": [
+        "So, whereabouts are you now?\r",
+        "You’re in...Cianwood!\r",
+        "No? You’re in Azalea Town?\r",
+        "Azalea’s Gym is really awesome,\n",
+        "isn’t it?\f",
+        "Did you try riding on the SPINARAK yet?\r",
+        "I wonder what would happen if you took\n",
+        "a real SPINARAK to that Gym?\r",
+        "I think that would be interesting!"
+      ]
+    },
+    {
+      "id": "msg_0662_00075",
+      "en_US": [
+        "So, where are you now?\r",
+        "Let me guess...Cianwood!\r",
+        "Yes! I’m right!\n",
+        "If you’re in Cianwood, you should try\f",
+        "taking a KRABBY around with you.\r",
+        "What’s it like? Well, you should try it\n",
+        "and see for yourself!"
+      ]
+    },
+    {
+      "id": "msg_0662_00076",
+      "en_US": [
+        "So, where are you now?\n",
+        "Goldenrod City?\r",
+        "You know, if you look carefully at that\n",
+        "Gym, it’s in the shape of a CLEFAIRY.\r",
+        "It’s true!\n",
+        "You should take a CLEFAIRY there!\r",
+        "I bet that whatever happens, it will be\n",
+        "incredibly cute!"
+      ]
+    },
+    {
+      "id": "msg_0662_00077",
+      "en_US": [
+        "You know, when you mention Olivine City,\n",
+        "all I think of is the Port Lighthouse!\r",
+        "You should take an AMPHAROS there\n",
+        "and see what happens!\f",
+        "I bet it will be bright..."
+      ]
+    },
+    {
+      "id": "msg_0662_00078",
+      "en_US": [
+        "So, where are you now?\n",
+        "You’re in Ecruteak City?\r",
+        "You should take a PICHU with you over\n",
+        "to the Ecruteak Dance Theater!\r",
+        "It’s such a wonderful place. Whenever\n",
+        "I’m there, I feel like dancing!"
+      ]
+    },
+    {
+      "id": "msg_0662_00079",
+      "en_US": [
+        "That reminds me...have you caught any\n",
+        "Ice-type Pokémon yet?\r",
+        "Ice-type Pokémon really love playing on\n",
+        "the ice. They look like they’re having\f",
+        "so much fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00080",
+      "en_US": [
+        "You know, if you go to the Lake of Rage,\n",
+        "you can see just how energetic\f",
+        "MAGIKARP can be!\r",
+        "If you’ve got a MAGIKARP, you should\n",
+        "take it there and see for yourself!"
+      ]
+    },
+    {
+      "id": "msg_0662_00081",
+      "en_US": [
+        "You know, there’s someone in\n",
+        "Blackthorn City who can make Pokémon\f",
+        "forget moves they’ve learned. If you\f",
+        "do that, they don’t just forget their\f",
+        "moves, they almost forget they’re\f",
+        "holding an item, too.\r",
+        "Well, they don’t actually forget\n",
+        "they’re holding an item, so you\f",
+        "shouldn’t worry about it!"
+      ]
+    },
+    {
+      "id": "msg_0662_00082",
+      "en_US": [
+        "You know, I haven’t been to Mt. Silver.\r",
+        "I bet it’s a place that makes even\n",
+        "Pokémon pretty nervous."
+      ]
+    },
+    {
+      "id": "msg_0662_00083",
+      "en_US": [
+        "So, where are you now?\n",
+        "Oh, you’re at the National Park!\f",
+        "I really like that Park, too.\r",
+        "It might just be my imagination, but I\n",
+        "think the Bug-type Pokémon do, too!"
+      ]
+    },
+    {
+      "id": "msg_0662_00084",
+      "en_US": [
+        "So, you’re at the Ruins of Alph now?\r",
+        "That’s where you can find UNOWN, right?\n",
+        "Did you catch any yet?\r",
+        "You know, if you have an UNOWN, you\n",
+        "should take it there."
+      ]
+    },
+    {
+      "id": "msg_0662_00085",
+      "en_US": [
+        "So, where are you now?\n",
+        "The Safari Zone?\r",
+        "It’s a bit far to walk to get there, but\n",
+        "it’s definitely worth it. There’re so\f",
+        "many different Pokémon there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00086",
+      "en_US": [
+        "You know, if you ever get the chance to\n",
+        "go to Route 1, take a BULBASAUR\f",
+        "along with you!\r",
+        "It will have such a fun time!"
+      ]
+    },
+    {
+      "id": "msg_0662_00087",
+      "en_US": [
+        "You know, if you’re headed to Route 2,\n",
+        "you should take a CHARMANDER along\f",
+        "with you...\r",
+        "I heard that CHARMANDER really like\n",
+        "that area."
+      ]
+    },
+    {
+      "id": "msg_0662_00088",
+      "en_US": [
+        "Hey, have you been to Route 3 yet?\r",
+        "I heard that people who take a\n",
+        "SQUIRTLE there tend to fall!"
+      ]
+    },
+    {
+      "id": "msg_0662_00089",
+      "en_US": [
+        "You know, Mt. Moon is on Route 4.\r",
+        "I heard that CLEFAIRY really like\n",
+        "Mt. Moon!"
+      ]
+    },
+    {
+      "id": "msg_0662_00090",
+      "en_US": [
+        "You know, there’s a Fighting Dojo in\n",
+        "Saffron City?\r",
+        "It’s a place just for battles. All the\n",
+        "Pokémon I had with me were surprised!"
+      ]
+    },
+    {
+      "id": "msg_0662_00091",
+      "en_US": [
+        "You know, I went to the port in\n",
+        "Vermilion City.\f",
+        "All of my Pokémon had so much fun riding\f",
+        "on the S.S. Aqua!"
+      ]
+    },
+    {
+      "id": "msg_0662_00092",
+      "en_US": [
+        "Have you been to Celadon City?\r",
+        "You know, I took a PORYGON for a walk in\n",
+        "Celadon City...and I heard this weird,\f",
+        "“Jijiji...” sound.\f",
+        "It was like it was trying to speak!"
+      ]
+    },
+    {
+      "id": "msg_0662_00093",
+      "en_US": [
+        "You know how there’s a guy named\n",
+        "Mr. Psychic in Saffron City?\r",
+        "I wonder what would happen if you took\n",
+        "Psychic-type Pokémon there?"
+      ]
+    },
+    {
+      "id": "msg_0662_00094",
+      "en_US": [
+        "Hey, if you ever get the chance to go\n",
+        "to Rock Tunnel, you should take an\f",
+        "ONIX with you.\r",
+        "If you take an ONIX with you there,\n",
+        "it becomes so happy!"
+      ]
+    },
+    {
+      "id": "msg_0662_00095",
+      "en_US": [
+        "Hey, did you go to the Power Plant yet?\r",
+        "You should take a PIKACHU with you to\n",
+        "the Power Plant. It’s so much fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00096",
+      "en_US": [
+        "Have you been to DIGLETT’s Cave yet?\r",
+        "Speaking of the Pokémon that you\n",
+        "should take with you there...\f",
+        "Well, I probably don’t need to\f",
+        "tell you!"
+      ]
+    },
+    {
+      "id": "msg_0662_00097",
+      "en_US": [
+        "There’s a Pokémon House in\n",
+        "Lavender Town. You should take your\f",
+        "Pokémon there. I think it would\f",
+        "enjoy it."
+      ]
+    },
+    {
+      "id": "msg_0662_00098",
+      "en_US": [
+        "Hey, Route 13 is the one that’s a bit\n",
+        "of a maze, isn’t it?\r",
+        "That may be why the Pokémon in that\n",
+        "area always seem a bit perplexed."
+      ]
+    },
+    {
+      "id": "msg_0662_00099",
+      "en_US": [
+        "Hey, if you haven’t been to Route 14\n",
+        "yet, you absolutely have to go over\f",
+        "there and see it!\r",
+        "There’s a huge windmill over in that\n",
+        "area. It’s just so very astonishing..."
+      ]
+    },
+    {
+      "id": "msg_0662_00100",
+      "en_US": [
+        "Have you been to the Pal Park Warden’s\n",
+        "house in Fuchsia yet?\r",
+        "There’re so many AIPOM there.\n",
+        "It’s amazing!"
+      ]
+    },
+    {
+      "id": "msg_0662_00101",
+      "en_US": [
+        "Have you had the chance to take\n",
+        "the Cycling Road yet?\r",
+        "It’s so much fun running with your\n",
+        "Pokémon...but of course that’d be a\f",
+        "little dangerous there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00102",
+      "en_US": [
+        "Have you had the chance to take\n",
+        "the Cycling Road yet?\r",
+        "It’s so much fun running with your\n",
+        "Pokémon...but of course that’d be a\f",
+        "little dangerous there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00103",
+      "en_US": [
+        "Have you had the chance to take\n",
+        "the Cycling Road yet?\r",
+        "It’s so much fun running with your\n",
+        "Pokémon...but of course that’d be a\f",
+        "little dangerous there!"
+      ]
+    },
+    {
+      "id": "msg_0662_00104",
+      "en_US": [
+        "It’s so much fun to play with Pokémon\n",
+        "along the water’s edge!\r",
+        "If I recall correctly, you can see the\n",
+        "sea from Route 19..."
+      ]
+    },
+    {
+      "id": "msg_0662_00105",
+      "en_US": [
+        "Come to think of it...when you’re near\n",
+        "water with Fire-type Pokémon, they\f",
+        "seem to really not enjoy it...\f",
+        "I understand how they feel!"
+      ]
+    },
+    {
+      "id": "msg_0662_00106",
+      "en_US": [
+        "You know, if you’re headed to Route 21,\n",
+        "I’ve got a suggestion for you.\r",
+        "You could sit with your Pokémon,\n",
+        "watching the sunset over the beach...\r",
+        "What do you think...? It’s more of a\n",
+        "romantic couple’s thing isn’t it!"
+      ]
+    },
+    {
+      "id": "msg_0662_00107",
+      "en_US": [
+        "Route 22 is the road to the Pokémon\n",
+        "League, isn’t it?\r",
+        "I bet it makes your Pokémon feel pretty\n",
+        "nervous, huh?"
+      ]
+    },
+    {
+      "id": "msg_0662_00108",
+      "en_US": [
+        "You know, there’s a really big bridge\n",
+        "on Route 24 called the\f",
+        "“Nugget Bridge.”\r",
+        "It’s not an official name, but it seems\n",
+        "like a lot of people call it that.\r",
+        "The sun’s light reflects off the water\n",
+        "there, so it’s kind of dazzling..."
+      ]
+    },
+    {
+      "id": "msg_0662_00109",
+      "en_US": [
+        "Hey, you know how there’s that big\n",
+        "puddle on Route 25? I think most\f",
+        "Pokémon have never seen their\f",
+        "own face.\r",
+        "I wonder what they would think if they\n",
+        "saw their reflection in that puddle..."
+      ]
+    },
+    {
+      "id": "msg_0662_00110",
+      "en_US": [
+        "You know, Route 26 is so full of natural\n",
+        "beauty. I bet that it’s a really\f",
+        "wonderful place for Pokémon.\r",
+        "But it’s also a road leading to the\n",
+        "Pokémon League, so it probably makes\f",
+        "them nervous, too."
+      ]
+    },
+    {
+      "id": "msg_0662_00111",
+      "en_US": [
+        "You know, I’ve heard that sometimes\n",
+        "Pokémon will find things along Route 27.\r",
+        "It’s probably a good idea to take along\n",
+        "the Pokémon you have the closest\f",
+        "friendship with."
+      ]
+    },
+    {
+      "id": "msg_0662_00112",
+      "en_US": [
+        "Route 28, that’s the one going to\n",
+        "Mt. Silver, right?\r",
+        "Your Pokémon probably put on a good\n",
+        "show of being brave, but I bet they\f",
+        "worry a little bit, too..."
+      ]
+    },
+    {
+      "id": "msg_0662_00113",
+      "en_US": [
+        "What do you think about taking\n",
+        "CHIKORITA with you to Route 29?\r",
+        "I bet it will look like it’s having\n",
+        "great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00114",
+      "en_US": [
+        "What do you think about taking\n",
+        "TOTODILE with you to Route 30?\r",
+        "I bet it will look like it’s having\n",
+        "great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00115",
+      "en_US": [
+        "What do you think about taking\n",
+        "CYNDAQUIL with you to Route 31?\r",
+        "I bet it will look like it’s having\n",
+        "great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00116",
+      "en_US": [
+        "I heard from someone that you can find\n",
+        "a Pokémon called UNOWN in the\f",
+        "Ruins of Alph.\r",
+        "So, if that’s true...I wonder if that\n",
+        "would change if you already had an\f",
+        "UNOWN and you took them with you to\f",
+        "the Ruins of Alph..."
+      ]
+    },
+    {
+      "id": "msg_0662_00117",
+      "en_US": [
+        "You know, it’s always raining on\n",
+        "Route 33. It never stops!\r",
+        "I get kind of down on rainy days, but I\n",
+        "know there’s Pokémon out there that\f",
+        "love the rain!\r",
+        "...Like TOTODILE!"
+      ]
+    },
+    {
+      "id": "msg_0662_00118",
+      "en_US": [
+        "You know, FARFETCH’D are known to have\n",
+        "a strange fascination with Ilex Forest.\f",
+        "When they’re there, it’s like they\f",
+        "don’t even hear you.\r",
+        "I think I might take a FARFETCH’D there\n",
+        "to see for myself sometime."
+      ]
+    },
+    {
+      "id": "msg_0662_00119",
+      "en_US": [
+        "Hey, have you heard of the Pokéathlon?\n",
+        "When Pokémon go to the Pokéathlon,\f",
+        "they get so excited!\r",
+        "I think I’ll take my Pokémon there\n",
+        "sometime, too!"
+      ]
+    },
+    {
+      "id": "msg_0662_00120",
+      "en_US": [
+        "Did you know that something really\n",
+        "interesting happens if you take a\f",
+        "SUDOWOODO to Route 36?\r",
+        "What kind of interesting?\n",
+        "Well, you’ll just have to try it\f",
+        "and see!"
+      ]
+    },
+    {
+      "id": "msg_0662_00121",
+      "en_US": [
+        "Hey, did you meet the twins over on\n",
+        "Route 37?\r",
+        "They’re so cute, and their Pokémon are\n",
+        "very popular."
+      ]
+    },
+    {
+      "id": "msg_0662_00122",
+      "en_US": [
+        "I took a TAUROS over to Moomoo Farm\n",
+        "on Route 39 recently. There was such\f",
+        "an uproar, I didn’t know what to do!"
+      ]
+    },
+    {
+      "id": "msg_0662_00123",
+      "en_US": [
+        "You know, if you’re going over to\n",
+        "Route 39, you should take a MILTANK\f",
+        "along with you.\r",
+        "It will find so many friends over there,\n",
+        "it’ll be great fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00124",
+      "en_US": [
+        "You know, if you’re headed over to\n",
+        "Route 40, you should take a POLIWAG\f",
+        "with you and see what happens!\r",
+        "You’ll see something interesting.\n",
+        "That’s for sure!"
+      ]
+    },
+    {
+      "id": "msg_0662_00125",
+      "en_US": [
+        "I recently went over to Route 41 to\n",
+        "have fun. You know, Water-type Pokémon\f",
+        "really love the sea...\r",
+        "Watching your Pokémon have fun and\n",
+        "be happy is enough to make\f",
+        "you happy, too!"
+      ]
+    },
+    {
+      "id": "msg_0662_00126",
+      "en_US": [
+        "You know, Route 42 is a mountain road.\n",
+        "If you take a Rock-type Pokémon\f",
+        "through there, I bet they’d enjoy it."
+      ]
+    },
+    {
+      "id": "msg_0662_00127",
+      "en_US": [
+        "You know, if you’d like to see MAGIKARP\n",
+        "get really excited, you should take it\f",
+        "over to the Lake of Rage and see\f",
+        "what happens!"
+      ]
+    },
+    {
+      "id": "msg_0662_00128",
+      "en_US": [
+        "Speaking of Route 44, it’s such a cold\n",
+        "place. I feel bad for the Pokémon that\f",
+        "are sensitive to cold...\r",
+        "But I bet that Ice-type Pokémon feel\n",
+        "right at home!"
+      ]
+    },
+    {
+      "id": "msg_0662_00129",
+      "en_US": [
+        "You know, there’s that river that\n",
+        "meanders around near Route 45.\f",
+        "It’s a fun route to take.\r",
+        "I went there recently, and my Pokémon\n",
+        "were really interested in the river.\f",
+        "They kept looking out at it."
+      ]
+    },
+    {
+      "id": "msg_0662_00130",
+      "en_US": [
+        "Hey, you know how there’s so much tall\n",
+        "grass on Route 46?\f",
+        "Well, the Pokémon you have with you\f",
+        "also become worried about when a wild\f",
+        "Pokémon will come leaping out!"
+      ]
+    },
+    {
+      "id": "msg_0662_00131",
+      "en_US": [
+        "Have you been to Route 47?\n",
+        "It has such a beautiful, natural view!\r",
+        "...That said, have you heard of DITTO?\r",
+        "DITTO get really energetic around\n",
+        "Route 47. It’s kind of strange..."
+      ]
+    },
+    {
+      "id": "msg_0662_00132",
+      "en_US": [
+        "You know how there’s that really tall\n",
+        "cliff near Route 47?\r",
+        "When you’re walking around there, the\n",
+        "Pokémon with you all get pretty\f",
+        "scared, too...\r",
+        "Me?\n",
+        "Me, I’m...always shaking with fear!"
+      ]
+    },
+    {
+      "id": "msg_0662_00133",
+      "en_US": [
+        "Pallet Town’s Professor Oak really\n",
+        "likes Pokémon.\r",
+        "You should take a Pokémon over to\n",
+        "Professor Oak’s Laboratory sometime!"
+      ]
+    },
+    {
+      "id": "msg_0662_00134",
+      "en_US": [
+        "There’s a Trainer House in Viridian City.\n",
+        "Did you know?\r",
+        "When Pokémon go over there, they get\n",
+        "really fired up, you know!"
+      ]
+    },
+    {
+      "id": "msg_0662_00135",
+      "en_US": [
+        "In Pewter City there’s a museum, right?\r",
+        "You can take Pokémon over to the\n",
+        "museum with you for a fun field trip!"
+      ]
+    },
+    {
+      "id": "msg_0662_00136",
+      "en_US": [
+        "So...did you meet the Cerulean City Gym\n",
+        "Leader, Misty?\r",
+        "Oh, nothing. Just wondering."
+      ]
+    },
+    {
+      "id": "msg_0662_00137",
+      "en_US": [
+        "In Lavender Town, there’s a place\n",
+        "called the House of Memories where\f",
+        "they have Pokémon graves, you know.\r",
+        "As a Trainer, you should visit at least\n",
+        "once out of respect."
+      ]
+    },
+    {
+      "id": "msg_0662_00138",
+      "en_US": [
+        "Vermilion City’s where the Pokémon Fan\n",
+        "Club is if I recall correctly!\r",
+        "If you’ve got a BAYLEEF, you should\n",
+        "take it over there to them and say hi!"
+      ]
+    },
+    {
+      "id": "msg_0662_00139",
+      "en_US": [
+        "You know, I once took a TANGELA with me\n",
+        "to Celadon City Gym. It was so happy,\f",
+        "and something happened!\r",
+        "You should try it, too, and see what\n",
+        "happens!\n"
+      ]
+    },
+    {
+      "id": "msg_0662_00140",
+      "en_US": [
+        "You know, I heard that if you take a\n",
+        "TAUROS to Fuchsia, they get\f",
+        "really agitated!\r",
+        "I wonder why... I don’t really get it.\n",
+        "But I bet it would be interesting to try\f",
+        "it and see what happens!"
+      ]
+    },
+    {
+      "id": "msg_0662_00141",
+      "en_US": [
+        "If you’re in Cinnabar with your\n",
+        "Pokémon, looking out to sea while\f",
+        "standing in a town that was buried\f",
+        "in lava...\r",
+        "That seems almost like the final scene\n",
+        "from a movie or something!"
+      ]
+    },
+    {
+      "id": "msg_0662_00142",
+      "en_US": [
+        "You know, the Indigo Plateau is pretty\n",
+        "close to the Pokémon League. Your\f",
+        "Pokémon will likely yell out to psych\f",
+        "themselves up!"
+      ]
+    },
+    {
+      "id": "msg_0662_00143",
+      "en_US": [
+        "Saffron City is where the Copycat’s\n",
+        "house is, right?\r",
+        "You should take a MIME JR. over there\n",
+        "and see what happens.\r",
+        "I bet it’s something interesting!"
+      ]
+    },
+    {
+      "id": "msg_0662_00144",
+      "en_US": [
+        "If you go back home to New Bark Town,\n",
+        "you should show off your Pokémon to\f",
+        "your mom. I bet she’d be happy!"
+      ]
+    },
+    {
+      "id": "msg_0662_00145",
+      "en_US": [
+        "I really like that wonderful winding\n",
+        "path in Cherrygrove City.\r",
+        "It’s so much fun to run with your\n",
+        "Pokémon along the beach and listen to\f",
+        "the sound of the waves!"
+      ]
+    },
+    {
+      "id": "msg_0662_00146",
+      "en_US": [
+        "If you’re in Violet City, that means\n",
+        "you’re near Sprout Tower!\r",
+        "You should take a BELLSPROUT with you\n",
+        "when you go there! I heard they dance!\r",
+        "I wonder if it’s true...\n",
+        "Will you try it and find out for me?"
+      ]
+    },
+    {
+      "id": "msg_0662_00147",
+      "en_US": [
+        "Azalea Town’s Gym is really awesome,\n",
+        "don’t you think?\r",
+        "Did you try riding the SPINARAK yet?\r",
+        "I wonder what would happen if you took\n",
+        "a real SPINARAK to that Gym?\r",
+        "I think it’d be interesting!"
+      ]
+    },
+    {
+      "id": "msg_0662_00148",
+      "en_US": [
+        "If you’re going to Cianwood, you should\n",
+        "try taking a KRABBY with you.\r",
+        "What’s it like? Well, you should try it\n",
+        "and see for yourself!"
+      ]
+    },
+    {
+      "id": "msg_0662_00149",
+      "en_US": [
+        "You know, if you look carefully at the\n",
+        "Goldenrod City Gym, it’s in the shape of\f",
+        "a CLEFAIRY?\r",
+        "It’s true!\n",
+        "You should take a CLEFAIRY there!\r",
+        "I bet that whatever happens, it will be\n",
+        "incredibly cute!"
+      ]
+    },
+    {
+      "id": "msg_0662_00150",
+      "en_US": [
+        "When you mention Olivine City, all I\n",
+        "think of is the Port Lighthouse!\r",
+        "You should take an AMPHAROS there\n",
+        "and see what happens!\f",
+        "I bet it will be bright..."
+      ]
+    },
+    {
+      "id": "msg_0662_00151",
+      "en_US": [
+        "If you have a PICHU, you should take\n",
+        "it with you over to the Ecruteak Dance\f",
+        "Theater!\r",
+        "It’s such a wonderful place. Whenever\n",
+        "I’m there, I feel like dancing!"
+      ]
+    },
+    {
+      "id": "msg_0662_00152",
+      "en_US": [
+        "That reminds me...have you caught any\n",
+        "Ice-type Pokémon yet?\r",
+        "Ice-type Pokémon really love playing on\n",
+        "the ice. They look like they’re having\f",
+        "so much fun!"
+      ]
+    },
+    {
+      "id": "msg_0662_00153",
+      "en_US": [
+        "You know, if you go to the Lake of Rage,\n",
+        "you can see just how energetic\f",
+        "MAGIKARP can be!"
+      ]
+    },
+    {
+      "id": "msg_0662_00154",
+      "en_US": [
+        "There’s someone in Blackthorn City who\n",
+        "can make Pokémon forget moves they’ve\f",
+        "learned. But if you do that, they don’t\f",
+        "just forget their moves, they forget\f",
+        "they were holding an item, too.\r",
+        "Well, that all sounds pretty unlikely,\n",
+        "so you shouldn’t worry about it!"
+      ]
+    },
+    {
+      "id": "msg_0662_00155",
+      "en_US": [
+        "Have you heard of a place called\n",
+        "Mt. Silver?\r",
+        "I haven’t been there yet.\r",
+        "I bet it’s a place that makes even\n",
+        "Pokémon pretty nervous."
+      ]
+    },
+    {
+      "id": "msg_0662_00156",
+      "en_US": [
+        "Did you know that there’s a huge\n",
+        "Bug-Catching Contest in the\f",
+        "National Park?\r",
+        "That’s why there’re so many Bug-type\n",
+        "Pokémon there. If you took your\f",
+        "Bug-type Pokémon there too, I bet\f",
+        "they’d really enjoy it!"
+      ]
+    },
+    {
+      "id": "msg_0662_00157",
+      "en_US": [
+        "I heard from someone that you can find\n",
+        "a Pokémon called UNOWN in the\f",
+        "Ruins of Alph.\r",
+        "So, if that’s true...I wonder if that\n",
+        "would change if you already had an\f",
+        "UNOWN and you took it with you to\f",
+        "the Ruins of Alph..."
+      ]
+    },
+    {
+      "id": "msg_0662_00158",
+      "en_US": [
+        "It’s a bit far to walk to get to the\n",
+        "Safari Zone, but it’s definitely worth\f",
+        "it. There’re so many different\f",
+        "Pokémon there!"
+      ]
+    }
+  ]
+}

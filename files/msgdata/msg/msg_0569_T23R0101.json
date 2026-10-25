@@ -1,0 +1,20 @@
+{
+  "key": 33863,
+  "messages": [
+    {
+      "id": "msg_0569_T23R0101_00000",
+      "en_US": [
+        "Ilex Forest is big. Be careful!\n",
+        "Don’t get lost."
+      ]
+    },
+    {
+      "id": "msg_0569_T23R0101_00001",
+      "en_US": [
+        "The forest is watched over by\n",
+        "its protector.\r",
+        "Stay out of mischief!"
+      ]
+    }
+  ]
+}

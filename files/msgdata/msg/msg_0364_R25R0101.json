@@ -1,0 +1,174 @@
+{
+  "key": 9287,
+  "messages": [
+    {
+      "id": "msg_0364_R25R0101_00000",
+      "en_US": [
+        "Hmm? You are here for my grandson?\n",
+        "His name is Bill.\r",
+        "He’s in Johto.\n",
+        "He does something with PCs,\f",
+        "so I’m house-sitting.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00001",
+      "en_US": [
+        "Ah, my grandson mentioned a round,\n",
+        "blue Pokémon that has leaves\f",
+        "growing on its head.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00002",
+      "en_US": [
+        "Bill told me about a Pokémon that is\n",
+        "very loyal to its Trainer.\f",
+        "It’s a Fire-type Pokémon that’s\f",
+        "supposed to Roar well.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00003",
+      "en_US": [
+        "Do you know that Pokémon with large,\n",
+        "round eyes.\r",
+        "The one that sings a lullaby with\n",
+        "its cute voice!\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00004",
+      "en_US": [
+        "Do you know that hugely popular\n",
+        "Pokémon?\r",
+        "The Pokémon that has a yellow body\n",
+        "and bright red cheeks...\r",
+        "I would love to see what it looks\n",
+        "like before it evolves.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00005",
+      "en_US": [
+        "I heard that there is a blue and round\n",
+        "Pokémon in Johto.\r",
+        "Bill told me that the end of its tail\n",
+        "works like a float.\r",
+        "Its belly is white. Just the belly.\n",
+        "I would love to see what it looks like.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00006",
+      "en_US": [
+        "My grandson Bill told me about a\n",
+        "Pokémon that has a long tongue.\r",
+        "It has ringlike marks on the front\n",
+        "of its legs, he said!\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00007",
+      "en_US": [
+        "Ah, my grandson mentioned a round,\n",
+        "blue Pokémon that has leaves\f",
+        "growing on its head.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00008",
+      "en_US": [
+        "Do you know of a sea Pokémon that\n",
+        "has a red sphere in its body?\f",
+        "You know, the one that’s shaped like\f",
+        "a star?\r",
+        "I heard that it appears at night.\n",
+        "I would surely like to see it.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00009",
+      "en_US": [
+        "I heard about a cute Pokémon that\n",
+        "has six tails.\r",
+        "I would love to hug a cute Pokémon\n",
+        "like that.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00010",
+      "en_US": [
+        "Do you know that hugely popular\n",
+        "Pokémon?\r",
+        "The Pokémon that has a yellow body\n",
+        "and bright red cheeks...\r",
+        "I would love to see what it looks\n",
+        "like before it evolves.\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00011",
+      "en_US": [
+        "If you have that Pokémon,\n",
+        "may I see it, please? {YESNO 0}"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00012",
+      "en_US": [
+        "You will show me?\n",
+        "How good of you!\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00013",
+      "en_US": [
+        "You don’t have it?\n",
+        "That’s too bad..."
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00014",
+      "en_US": [
+        "Hm?\r",
+        "That’s not the Pokémon that I was\n",
+        "told about..."
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00015",
+      "en_US": [
+        "Wow!\n",
+        "That Pokémon is called {STRVAR_1 0, 0, 0}!\r",
+        "It’s a wonderful Pokémon!\n",
+        "As a token of my appreciation,\f",
+        "I would like to give this to you!\r"
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00016",
+      "en_US": [
+        "Come visit again\n",
+        "sometime."
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00017",
+      "en_US": [
+        "Thanks for showing me so many\n",
+        "cute Pokémon.\f",
+        "I really enjoyed myself.\r",
+        "I’m glad I’ve lived such a long life."
+      ]
+    },
+    {
+      "id": "msg_0364_R25R0101_00018",
+      "en_US": [
+        "There is a dusty machine under\n",
+        "the cloth cover...\f",
+        "It has not been used for some time."
+      ]
+    }
+  ]
+}

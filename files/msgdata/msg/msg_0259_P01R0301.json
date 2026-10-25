@@ -1,0 +1,94 @@
+{
+  "key": 42006,
+  "messages": [
+    {
+      "id": "msg_0259_P01R0301_00000",
+      "en_US": [
+        "Fast Ship S.S. Aqua is en route to\n",
+        "Vermilion City.\r",
+        "We will make an announcement when\n",
+        "we arrive."
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00001",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "is en route to Olivine City.\r",
+        "We will make an announcement when\n",
+        "we arrive."
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00002",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Vermilion City.\r"
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00003",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Vermilion City."
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00004",
+      "en_US": [
+        "Huh?\n",
+        "It’s already arrived in Vermilion City.\r"
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00005",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Olivine City.\r"
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00006",
+      "en_US": [
+        "Fast Ship S.S. Aqua\n",
+        "has arrived in Olivine City."
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00007",
+      "en_US": [
+        "Whoa! Excuse me. I was in a hurry!\r",
+        "My granddaughter is missing!\r",
+        "She’s just a wee girl. If you see\n",
+        "her, please let me know!\r"
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00008",
+      "en_US": [
+        "Here’s your cabin.\r",
+        "If your Pokémon are hurt, take a\n",
+        "nap in the bed.\f",
+        "That will heal them."
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00009",
+      "en_US": [
+        "Here’s your cabin.\r",
+        "You can heal your Pokémon\n",
+        "by taking a nap in the bed.\r",
+        "The ship will arrive while\n",
+        "you’re sleeping."
+      ]
+    },
+    {
+      "id": "msg_0259_P01R0301_00010",
+      "en_US": [
+        "Most passengers are Trainers.\r",
+        "They’re all itching to battle in\n",
+        "their cabins."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "key": 54472,
+  "messages": [
+    {
+      "id": "msg_0665_00000",
+      "en_US": "Bill"
+    },
+    {
+      "id": "msg_0665_00001",
+      "en_US": [
+        "Hello, is this {STRVAR_1 3, 0, 0}?\r",
+        "That reminds me... Telephones, they\n",
+        "change your voice into electricity to\f",
+        "carry it over a long distance,\f",
+        "don’t they?\r",
+        "So, if you consider that technology,\n",
+        "you could change Pokémon into\f",
+        "electricity and send them over large\f",
+        "distances as well, no?\r",
+        "So, based on that theory, I was able to\n",
+        "come up with and create the Pokémon\f",
+        "Storage system!\r",
+        "Well, it’s not quite as simple as a\n",
+        "telephone, but you get the idea, right?"
+      ]
+    },
+    {
+      "id": "msg_0665_00002",
+      "en_US": [
+        "Hello, is this {STRVAR_1 3, 0, 0}?\r",
+        "That reminds me... Telephones, they\n",
+        "change your voice into electricity to\f",
+        "carry it over a long distance,\f",
+        "don’t they?\r",
+        "So, if you consider that technology,\n",
+        "you could change Pokémon into\f",
+        "electricity and send them over large\f",
+        "distances as well, no?\r",
+        "So, based on that theory, I was able to\n",
+        "come up with and create the Pokémon\f",
+        "Storage system!\r",
+        "Well, it’s not quite as simple as a\n",
+        "telephone, but you get the idea, right?"
+      ]
+    },
+    {
+      "id": "msg_0665_00003",
+      "en_US": [
+        "Who’s calling?\r",
+        "{STRVAR_1 3, 0, 0}, is it? Hang on a sec...\r",
+        "...\n",
+        "...\r"
+      ]
+    },
+    {
+      "id": "msg_0665_00004",
+      "en_US": [
+        "Who’s calling?\r",
+        "{STRVAR_1 3, 0, 0}, is it? Hang on a sec...\r",
+        "...\n",
+        "...\r"
+      ]
+    },
+    {
+      "id": "msg_0665_00005",
+      "en_US": [
+        "Well, you’re starting on the PC Box\n",
+        "named {STRVAR_1 11, 10, 0} right now.\r",
+        "That’s an easy-to-remember name. \n",
+        "Easy to remember is the best way to go.\r",
+        "OK, including the space left in\n",
+        "{STRVAR_1 11, 10, 0}, you can still hold\f",
+        "{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r"
+      ]
+    },
+    {
+      "id": "msg_0665_00006",
+      "en_US": [
+        "Right now you’re using the PC Box\n",
+        "named {STRVAR_1 11, 10, 0}, right?\r",
+        "That is a great name--I really like it.\r",
+        "OK, including the space left in\n",
+        "{STRVAR_1 11, 10, 0}, you can still hold\f",
+        "{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r"
+      ]
+    },
+    {
+      "id": "msg_0665_00007",
+      "en_US": [
+        "So your PC Box is called\n",
+        "{STRVAR_1 11, 10, 0}, right?\r",
+        "That’s not an ordinary name. I have a\n",
+        "feeling you know a good name when\f",
+        "you see it...\r",
+        "OK, including the space left in\n",
+        "{STRVAR_1 11, 10, 0}, you can still hold\f",
+        "{STRVAR_1 52, 11, 0} more Pokémon in the PC.\r"
+      ]
+    },
+    {
+      "id": "msg_0665_00008",
+      "en_US": "Call again sometime..."
+    },
+    {
+      "id": "msg_0665_00009",
+      "en_US": [
+        "Your PC Boxes are full!\r",
+        "You’ll have to release some Pokémon\n",
+        "if you want to catch more.\r"
+      ]
+    },
+    {
+      "id": "msg_0665_00010",
+      "en_US": [
+        "Hey, this is Bill here.\r",
+        "You know your PC Boxes are full, right?\r",
+        "You’ve done a great job of catching\n",
+        "Pokémon, haven’t you!\r",
+        "Seriously, it’s wonderful, I tip my hat!\r",
+        "That said, you do understand that with\n",
+        "your PC Boxes full like that, you can’t\f",
+        "catch any more Pokémon?\f",
+        "Just so you know."
+      ]
+    },
+    {
+      "id": "msg_0665_00011",
+      "en_US": [
+        "Hey, this is Bill here.\r",
+        "You know your PC Boxes are full, right?\r",
+        "You’ve done a great job of catching\n",
+        "Pokémon, haven’t you!\r",
+        "Seriously, it’s wonderful, I tip my hat!\r",
+        "That said, you do understand that with\n",
+        "your PC Boxes full like that, you can’t\f",
+        "catch any more Pokémon?\f",
+        "Just so you know."
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-#include <nitro/fs/overlay.h>
+
 #pragma once
 .public SavePalPad_Merge
 .public Save_SpecialRibbons_Get

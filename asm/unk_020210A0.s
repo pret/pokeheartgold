@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "unk_020210A0.inc"
 	.include "global.inc"
 
@@ -27,8 +27,8 @@ _020210A8:
 _020210B8: .word _021D2198
 	thumb_func_end GF_TouchpadInit
 
-	thumb_func_start sub_020210BC
-sub_020210BC: ; 0x020210BC
+	thumb_func_start EnableTouchPad
+EnableTouchPad: ; 0x020210BC
 	push {r3, lr}
 	ldr r0, _020210D4 ; =_021D2198 + 0x40
 	ldrh r0, [r0, #0x18]
@@ -42,10 +42,10 @@ _020210CA:
 	pop {r3, pc}
 	nop
 _020210D4: .word _021D2198 + 0x40
-	thumb_func_end sub_020210BC
+	thumb_func_end EnableTouchPad
 
-	thumb_func_start sub_020210D8
-sub_020210D8: ; 0x020210D8
+	thumb_func_start InitializeTouchPadWithExternalBuffer
+InitializeTouchPadWithExternalBuffer: ; 0x020210D8
 	push {r4, r5, r6, lr}
 	sub sp, #8
 	add r5, r0, #0
@@ -103,10 +103,10 @@ _0202113E:
 	pop {r4, r5, r6, pc}
 	nop
 _02021144: .word _021D2198 + 0x40
-	thumb_func_end sub_020210D8
+	thumb_func_end InitializeTouchPadWithExternalBuffer
 
-	thumb_func_start sub_02021148
-sub_02021148: ; 0x02021148
+	thumb_func_start InitializeTouchPad
+InitializeTouchPad: ; 0x02021148
 	push {r4, lr}
 	sub sp, #8
 	ldr r1, _020211A8 ; =_021D2198 + 0x40
@@ -159,7 +159,7 @@ _020211A4:
 	pop {r4, pc}
 	.balign 4, 0
 _020211A8: .word _021D2198 + 0x40
-	thumb_func_end sub_02021148
+	thumb_func_end InitializeTouchPad
 
 	thumb_func_start sub_020211AC
 sub_020211AC: ; 0x020211AC
@@ -220,7 +220,7 @@ _02021208:
 	add r0, r4, #0
 	bl TP_WaitBusy
 	add r0, r6, #0
-	bl TP_CheckBusy
+	bl TP_CheckError
 	cmp r0, #0
 	beq _0202121E
 	add r5, r5, #1
@@ -241,8 +241,8 @@ _0202122E:
 _02021234: .word _021D2198 + 0x40
 	thumb_func_end GF_TouchpadStopAutoSampling
 
-	thumb_func_start sub_02021238
-sub_02021238: ; 0x02021238
+	thumb_func_start DisableTouchPad
+DisableTouchPad: ; 0x02021238
 	push {r4, lr}
 	sub sp, #8
 	ldr r0, _0202127C ; =_021D2198 + 0x40
@@ -277,7 +277,7 @@ _02021274:
 	pop {r4, pc}
 	nop
 _0202127C: .word _021D2198 + 0x40
-	thumb_func_end sub_02021238
+	thumb_func_end DisableTouchPad
 
 	thumb_func_start sub_02021280
 sub_02021280: ; 0x02021280
@@ -440,7 +440,7 @@ _02021390:
 	mov r0, #2
 	bl TP_WaitBusy
 	mov r0, #2
-	bl TP_CheckBusy
+	bl TP_CheckError
 	cmp r0, #0
 	beq _020213AE
 	add r5, r5, #1

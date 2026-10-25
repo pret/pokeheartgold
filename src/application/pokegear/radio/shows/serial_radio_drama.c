@@ -78,7 +78,7 @@ BOOL RadioShow_SerialRadioDrama_Print(RadioShow *radioShow) {
 
 void RadioShow_SerialRadioDrama_Init(RadioShow *radioShow) {
     SerialRadioDramaShowData *data = radioShow->showData;
-    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0413_bin, radioShow->heapID);
+    radioShow->showMsgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0413, radioShow->heapID);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0413_00000, radioShow->showTitle);
     ReadMsgDataIntoString(radioShow->showMsgData, msg_0413_00001, radioShow->showHost);
     data->episodeID = LCRandom() % 22;

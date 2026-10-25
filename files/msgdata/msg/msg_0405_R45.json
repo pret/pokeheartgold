@@ -1,0 +1,30 @@
+{
+  "key": 22283,
+  "messages": [
+    {
+      "id": "msg_0405_R45_00000",
+      "en_US": [
+        "Have you heard of a place called\n",
+        "the Battle Frontier?\r",
+        "It’s a huge place with many battle\n",
+        "facilities, and it’s located west of\f",
+        "Olivine City!\r",
+        "Let’s see...\r",
+        "If you manage to win all the way up\n",
+        "through the Pokémon League,\f",
+        "you might want to try it."
+      ]
+    },
+    {
+      "id": "msg_0405_R45_00001",
+      "en_US": [
+        "Rt. 45\n",
+        "Mountain Road ahead"
+      ]
+    },
+    {
+      "id": "msg_0405_R45_00002",
+      "en_US": "Dark Cave"
+    }
+  ]
+}

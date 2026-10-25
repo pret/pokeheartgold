@@ -51,7 +51,7 @@ u8 DialogBox_PrintMessage(Window *window, String *string, Options *options, BOOL
     return AddTextPrinterParameterized(window, 1, string, 0, 0, Options_GetTextFrameDelay(options), NULL);
 }
 
-u32 DialogBox_PrintMessageEx(Window *window, String *message, FontID fontId, u32 textSpeed, u8 speedUpEnabled, u32 autoScrollParam) {
+u32 DialogBox_PrintMessageEx(Window *window, String *message, enum Font fontId, u32 textSpeed, u8 speedUpEnabled, u32 autoScrollParam) {
     TextFlags_SetCanABSpeedUpPrint(speedUpEnabled);
     TextFlags_SetAutoScrollParam(autoScrollParam);
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);

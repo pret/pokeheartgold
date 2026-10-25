@@ -1,0 +1,28 @@
+{
+  "key": 54374,
+  "messages": [
+    {
+      "id": "msg_0382_R32R0101_00000",
+      "en_US": [
+        "The Ruins of Alph.\n",
+        "A look-and-touch tourist site.\f",
+        "Try the sliding stone panels!"
+      ]
+    },
+    {
+      "id": "msg_0382_R32R0101_00001",
+      "en_US": [
+        "You’re studying the ruins?\n",
+        "I see a scientist in the making."
+      ]
+    },
+    {
+      "id": "msg_0382_R32R0101_00002",
+      "en_US": [
+        "There are drawings on stone panels.\n",
+        "I tried moving them.\f",
+        "I wonder what they are."
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 #include "constants/items.h"
 #include "msgdata/msg/msg_0096_D31R0201.h"
 #include "msgdata/msg/msg_0066_D23R0102.h"
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_01_02203A18.inc"
 	.include "global.inc"
 
@@ -264,7 +264,7 @@ ov01_02203BB4: ; 0x02203BB4
 	add r1, r4, #0
 	str r0, [r4, #0x54]
 	add r1, #0x40
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldr r0, [r4, #0x58]
 	bl NNS_G3dGetTex
 	str r0, [r4, #0x50]

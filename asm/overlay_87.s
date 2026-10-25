@@ -1,4 +1,4 @@
-	.include "asm/macros.inc"
+	.include "macros.inc"
 	.include "overlay_87.inc"
 	.include "global.inc"
 
@@ -221,7 +221,7 @@ ScratchOffCards_Exit: ; 0x021E5AC0
 	add r5, r0, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0xdd
 	lsl r0, r0, #2
 	ldrb r1, [r4, #0xc]
@@ -1385,7 +1385,7 @@ _021E6414:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1406,7 +1406,7 @@ _021E6450:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1430,7 +1430,7 @@ _021E647E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1451,7 +1451,7 @@ _021E64BA:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -2190,9 +2190,9 @@ _021E6A2E:
 	ldrh r1, [r2]
 	and r0, r1
 	strh r0, [r2]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #1
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r0, _021E6ADC ; =ov87_021E6C04
 	add r1, r5, #0
 	bl Main_SetVBlankIntrCB

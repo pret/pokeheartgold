@@ -35,12 +35,12 @@ u32 BagView_sizeof(void) {
     return sizeof(BagView);
 }
 
-void sub_02077894(BagView *bagView, u8 a1) {
-    bagView->unk65 = a1;
+void BagView_SetContext(BagView *bagView, u8 context) {
+    bagView->context = context;
 }
 
-void sub_0207789C(BagView *bagView, SaveData *save, u8 a2, BagCursor *cursor, MenuInputStateMgr *menuInputStateMgr) {
-    sub_02077894(bagView, a2);
+void BagView_Init(BagView *bagView, SaveData *save, u8 context, BagCursor *cursor, MenuInputStateMgr *menuInputStateMgr) {
+    BagView_SetContext(bagView, context);
     bagView->saveData = save;
     bagView->menuInputStateMgr = menuInputStateMgr;
     bagView->cursor = cursor;
@@ -57,36 +57,36 @@ void BagView_SetItem(BagView *bagView, ItemSlot *slots, u8 pocketId, u8 position
     bagView->pockets[pocketId].pocketId = pocketId;
 }
 
-void sub_020778C8(BagView *bagView) {
-    bagView->unk76_0 = TRUE;
+void BagView_SetOnBike(BagView *bagView) {
+    bagView->onBike = TRUE;
 }
 
-void sub_020778DC(BagView *bagView, ItemCheckUseData *checkUseData) {
+void BagView_SetCheckUseData(BagView *bagView, ItemCheckUseData *checkUseData) {
     bagView->checkUseData = checkUseData;
 }
 
-void sub_020778E0(BagView *bagView, u8 a1) {
-    bagView->unk74 = a1;
+void BagView_SetPartySlot(BagView *bagView, u8 partySlot) {
+    bagView->partySlot = partySlot;
 }
 
-void sub_020778E8(BagView *bagView, u16 a1) {
-    bagView->unk76_1 = a1;
+void BagView_SetMapLoadType(BagView *bagView, u16 mapLoadType) {
+    bagView->mapLoadType = mapLoadType;
 }
 
 u16 BagView_GetItemId(BagView *bagView) {
     return bagView->itemId;
 }
 
-u16 sub_0207790C(BagView *bagView) {
-    return bagView->unk68;
+u16 BagView_GetReturnCode(BagView *bagView) {
+    return bagView->returnCode;
 }
 
-u8 sub_02077914(BagView *bagView) {
-    return bagView->unk74;
+u8 BagView_GetPartySlot(BagView *bagView) {
+    return bagView->partySlot;
 }
 
 u8 sub_0207791C(BagView *bagView) {
-    return bagView->unk75;
+    return bagView->soldAmount;
 }
 
 static u16 GetCoinCount(SaveData *saveData) {
@@ -118,7 +118,7 @@ static u32 GetNumBattlePoints(SaveData *saveData) {
 }
 
 BOOL TryFormatRegisteredKeyItemUseMessage(SaveData *saveData, String *dest, u16 itemId, enum HeapID heapID) {
-    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0010, heapID);
     MessageFormat *messageFormat = MessageFormat_New(heapID);
     String *string;
 
@@ -156,25 +156,25 @@ void GetItemUseErrorMessage(PlayerProfile *playerProfile, String *dest, u16 item
     switch (code) {
     case ITEMUSEERROR_NODISMOUNT:
         // You can't dismount your Bike here.
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0010, heapID);
         ReadMsgDataIntoString(msgData, msg_0010_00057, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOFOLLOWER:
         // Can't be used when you have someone with you!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0010, heapID);
         ReadMsgDataIntoString(msgData, msg_0010_00118, dest);
         DestroyMsgData(msgData);
         break;
     case ITEMUSEERROR_NOTNOW:
         // You can't be doing that now!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0010_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0010, heapID);
         ReadMsgDataIntoString(msgData, msg_0010_00119, dest);
         DestroyMsgData(msgData);
         break;
     default:
         // {PLAYER}! This isn't the time to use that!
-        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, NARC_msg_msg_0040_bin, heapID);
+        msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0040, heapID);
         MessageFormat *messageFormat = MessageFormat_New(heapID);
         String *src = NewString_ReadMsgData(msgData, msg_0040_00037);
         BufferPlayersName(messageFormat, 0, playerProfile);

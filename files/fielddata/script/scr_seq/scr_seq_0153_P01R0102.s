@@ -1,9 +1,8 @@
 #include "constants/scrcmd.h"
 #include "fielddata/script/scr_seq/event_P01R0102.h"
 #include "msgdata/msg/msg_0256_P01R0102.h"
-	.include "asm/macros/script.inc"
+#include "macros/script.inc"
 
-	.rodata
 
 	ScrDef scr_seq_P01R0102_000
 	ScrDef scr_seq_P01R0102_001
@@ -73,7 +72,7 @@ scr_seq_P01R0102_002:
 	ToggleFollowingPokemonMovement 1
 	FollowingPokemonMovement 48
 	SetVar VAR_BOAT_DIRECTION, 0
-	ClearFlag FLAG_UNK_092
+	ClearFlag FLAG_RECEIVED_PLATE_FROM_AQUA_CAPTAIN_THIS_TRIP
 	ReleaseAll
 	End
 

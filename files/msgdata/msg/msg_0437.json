@@ -1,0 +1,5493 @@
+{
+  "key": 12973,
+  "messages": [
+    {
+      "id": "msg_0437_00000",
+      "en_US": "PV001"
+    },
+    {
+      "id": "msg_0437_00001",
+      "en_US": "PV"
+    },
+    {
+      "id": "msg_0437_00002",
+      "en_US": "PV-END"
+    },
+    {
+      "id": "msg_0437_00003",
+      "en_US": "DUMMY"
+    },
+    {
+      "id": "msg_0437_00004",
+      "en_US": "SILENCE-FIELD"
+    },
+    {
+      "id": "msg_0437_00005",
+      "en_US": "SILENCE-DUNGEON"
+    },
+    {
+      "id": "msg_0437_00006",
+      "en_US": "TEST-TITLE"
+    },
+    {
+      "id": "msg_0437_00007",
+      "en_US": "GS-TITLE"
+    },
+    {
+      "id": "msg_0437_00008",
+      "en_US": "GS-TITLE01"
+    },
+    {
+      "id": "msg_0437_00009",
+      "en_US": "GS-OPENING-TITLE-G"
+    },
+    {
+      "id": "msg_0437_00010",
+      "en_US": "GS-OPENING-TITLE-S"
+    },
+    {
+      "id": "msg_0437_00011",
+      "en_US": "GS-POKEMON-THEME"
+    },
+    {
+      "id": "msg_0437_00012",
+      "en_US": "GS-STARTING"
+    },
+    {
+      "id": "msg_0437_00013",
+      "en_US": "GS-STARTING2"
+    },
+    {
+      "id": "msg_0437_00014",
+      "en_US": "GS-SHINKA"
+    },
+    {
+      "id": "msg_0437_00015",
+      "en_US": "GS-KOUKAN"
+    },
+    {
+      "id": "msg_0437_00016",
+      "en_US": "GS-BICYCLE"
+    },
+    {
+      "id": "msg_0437_00017",
+      "en_US": "GS-NAMINORI"
+    },
+    {
+      "id": "msg_0437_00018",
+      "en_US": "GS-E-DENDOUIRI"
+    },
+    {
+      "id": "msg_0437_00019",
+      "en_US": "GS-ENDING"
+    },
+    {
+      "id": "msg_0437_00020",
+      "en_US": "GS-ENDING2"
+    },
+    {
+      "id": "msg_0437_00021",
+      "en_US": "GS-T-WAKABA"
+    },
+    {
+      "id": "msg_0437_00022",
+      "en_US": "GS-C-YOSHINO"
+    },
+    {
+      "id": "msg_0437_00023",
+      "en_US": "GS-C-KIKYOU"
+    },
+    {
+      "id": "msg_0437_00024",
+      "en_US": "GS-T-HIWADA"
+    },
+    {
+      "id": "msg_0437_00025",
+      "en_US": "GS-C-KOGANE"
+    },
+    {
+      "id": "msg_0437_00026",
+      "en_US": "GS-C-ENJU"
+    },
+    {
+      "id": "msg_0437_00027",
+      "en_US": "GS-C-ASAGI"
+    },
+    {
+      "id": "msg_0437_00028",
+      "en_US": "GS-C-TANBA"
+    },
+    {
+      "id": "msg_0437_00029",
+      "en_US": "GS-T-CHOUJI"
+    },
+    {
+      "id": "msg_0437_00030",
+      "en_US": "GS-C-FUSUBE"
+    },
+    {
+      "id": "msg_0437_00031",
+      "en_US": "GS-R-1-29"
+    },
+    {
+      "id": "msg_0437_00032",
+      "en_US": "GS-R-1-30"
+    },
+    {
+      "id": "msg_0437_00033",
+      "en_US": "GS-R-2-30"
+    },
+    {
+      "id": "msg_0437_00034",
+      "en_US": "GS-R-3-30"
+    },
+    {
+      "id": "msg_0437_00035",
+      "en_US": "GS-R-4-34"
+    },
+    {
+      "id": "msg_0437_00036",
+      "en_US": "GS-R-5-34"
+    },
+    {
+      "id": "msg_0437_00037",
+      "en_US": "GS-R-6-34"
+    },
+    {
+      "id": "msg_0437_00038",
+      "en_US": "GS-R-8-34"
+    },
+    {
+      "id": "msg_0437_00039",
+      "en_US": "GS-R-6-38"
+    },
+    {
+      "id": "msg_0437_00040",
+      "en_US": "GS-R-7-42"
+    },
+    {
+      "id": "msg_0437_00041",
+      "en_US": "GS-C-KUCHIBA"
+    },
+    {
+      "id": "msg_0437_00042",
+      "en_US": "GS-C-YAMABUKI"
+    },
+    {
+      "id": "msg_0437_00043",
+      "en_US": "GS-C-HANADA"
+    },
+    {
+      "id": "msg_0437_00044",
+      "en_US": "GS-T-CHION"
+    },
+    {
+      "id": "msg_0437_00045",
+      "en_US": "GS-C-TAMAMUSHI"
+    },
+    {
+      "id": "msg_0437_00046",
+      "en_US": "GS-C-SEKICHIKU"
+    },
+    {
+      "id": "msg_0437_00047",
+      "en_US": "GS-C-NIBI"
+    },
+    {
+      "id": "msg_0437_00048",
+      "en_US": "GS-C-TOKIWA"
+    },
+    {
+      "id": "msg_0437_00049",
+      "en_US": "GS-T-MASARA"
+    },
+    {
+      "id": "msg_0437_00050",
+      "en_US": "GS-T-GUREN"
+    },
+    {
+      "id": "msg_0437_00051",
+      "en_US": "GS-R-9-01"
+    },
+    {
+      "id": "msg_0437_00052",
+      "en_US": "GS-R-16-01"
+    },
+    {
+      "id": "msg_0437_00053",
+      "en_US": "GS-R-17-01"
+    },
+    {
+      "id": "msg_0437_00054",
+      "en_US": "GS-R-9-03"
+    },
+    {
+      "id": "msg_0437_00055",
+      "en_US": "GS-R-10-03"
+    },
+    {
+      "id": "msg_0437_00056",
+      "en_US": "GS-R-12-03"
+    },
+    {
+      "id": "msg_0437_00057",
+      "en_US": "GS-R-13-03"
+    },
+    {
+      "id": "msg_0437_00058",
+      "en_US": "GS-R-14-03"
+    },
+    {
+      "id": "msg_0437_00059",
+      "en_US": "GS-R-15-03"
+    },
+    {
+      "id": "msg_0437_00060",
+      "en_US": "GS-R-16-03"
+    },
+    {
+      "id": "msg_0437_00061",
+      "en_US": "GS-R-17-03"
+    },
+    {
+      "id": "msg_0437_00062",
+      "en_US": "GS-R-10-11"
+    },
+    {
+      "id": "msg_0437_00063",
+      "en_US": "GS-R-13-11"
+    },
+    {
+      "id": "msg_0437_00064",
+      "en_US": "GS-R-12-24"
+    },
+    {
+      "id": "msg_0437_00065",
+      "en_US": "GS-R-1-26"
+    },
+    {
+      "id": "msg_0437_00066",
+      "en_US": "GS-POKESEN"
+    },
+    {
+      "id": "msg_0437_00067",
+      "en_US": "GS-FS"
+    },
+    {
+      "id": "msg_0437_00068",
+      "en_US": "GS-GYM"
+    },
+    {
+      "id": "msg_0437_00069",
+      "en_US": "GS-UTSUGI-RABO"
+    },
+    {
+      "id": "msg_0437_00070",
+      "en_US": "GS-OHKIDO"
+    },
+    {
+      "id": "msg_0437_00071",
+      "en_US": "GS-KABURENJOU"
+    },
+    {
+      "id": "msg_0437_00072",
+      "en_US": "GS-GAME"
+    },
+    {
+      "id": "msg_0437_00073",
+      "en_US": "GS-BATTLETOWER"
+    },
+    {
+      "id": "msg_0437_00074",
+      "en_US": "GS-BATTLETOWER2"
+    },
+    {
+      "id": "msg_0437_00075",
+      "en_US": "GS-TO-MADATSUBOMI1"
+    },
+    {
+      "id": "msg_0437_00076",
+      "en_US": "GS-D-CHIKATSUURO"
+    },
+    {
+      "id": "msg_0437_00077",
+      "en_US": "GS-D-UNKNOWN-ISEKI"
+    },
+    {
+      "id": "msg_0437_00078",
+      "en_US": "GS-D-KOUEN"
+    },
+    {
+      "id": "msg_0437_00079",
+      "en_US": "GS-TO-YAKETA"
+    },
+    {
+      "id": "msg_0437_00080",
+      "en_US": "GS-TO-SUZU"
+    },
+    {
+      "id": "msg_0437_00081",
+      "en_US": "GS-TO-TOUDAI"
+    },
+    {
+      "id": "msg_0437_00082",
+      "en_US": "GS-D-AJITO"
+    },
+    {
+      "id": "msg_0437_00083",
+      "en_US": "GS-D-KOORINONUKE"
+    },
+    {
+      "id": "msg_0437_00084",
+      "en_US": "GS-RYUUNOANA"
+    },
+    {
+      "id": "msg_0437_00085",
+      "en_US": "GS-D-IWAYAMA"
+    },
+    {
+      "id": "msg_0437_00086",
+      "en_US": "GS-D-TOKIWANOMORI3"
+    },
+    {
+      "id": "msg_0437_00087",
+      "en_US": "GS-D-CHAMPROAD"
+    },
+    {
+      "id": "msg_0437_00088",
+      "en_US": "GS-CHAMPROAD"
+    },
+    {
+      "id": "msg_0437_00089",
+      "en_US": "GS-E-TSURETEKE1"
+    },
+    {
+      "id": "msg_0437_00090",
+      "en_US": "GS-E-TSURETEKE2"
+    },
+    {
+      "id": "msg_0437_00091",
+      "en_US": "GS-E-RIVAL1"
+    },
+    {
+      "id": "msg_0437_00092",
+      "en_US": "GS-E-RIVAL2"
+    },
+    {
+      "id": "msg_0437_00093",
+      "en_US": "GS-TAIKAIMAE"
+    },
+    {
+      "id": "msg_0437_00094",
+      "en_US": "GS-TAIKAIMAE-D5"
+    },
+    {
+      "id": "msg_0437_00095",
+      "en_US": "GS-TAIKAI"
+    },
+    {
+      "id": "msg_0437_00096",
+      "en_US": "GS-KAIDENPA"
+    },
+    {
+      "id": "msg_0437_00097",
+      "en_US": "GS-SENKYO"
+    },
+    {
+      "id": "msg_0437_00098",
+      "en_US": "GS-E-LINEAR"
+    },
+    {
+      "id": "msg_0437_00099",
+      "en_US": "GS-KOUSOKUSEN"
+    },
+    {
+      "id": "msg_0437_00100",
+      "en_US": "GS-OTSUKIMI-EVENT"
+    },
+    {
+      "id": "msg_0437_00101",
+      "en_US": "GS-RADIO-JINGLE"
+    },
+    {
+      "id": "msg_0437_00102",
+      "en_US": "GS-RADIO-KOMORIUTA"
+    },
+    {
+      "id": "msg_0437_00103",
+      "en_US": "GS-RADIO-MARCH"
+    },
+    {
+      "id": "msg_0437_00104",
+      "en_US": "GS-RADIO-UNKNOWN"
+    },
+    {
+      "id": "msg_0437_00105",
+      "en_US": "GS-HUE"
+    },
+    {
+      "id": "msg_0437_00106",
+      "en_US": "GS-OHKIDO-RABO"
+    },
+    {
+      "id": "msg_0437_00107",
+      "en_US": "GS-AIKOTOBA"
+    },
+    {
+      "id": "msg_0437_00108",
+      "en_US": "GS-E-MINAKI"
+    },
+    {
+      "id": "msg_0437_00109",
+      "en_US": "GS-IBUKI"
+    },
+    {
+      "id": "msg_0437_00110",
+      "en_US": "GS-EYE-J-SHOUJO"
+    },
+    {
+      "id": "msg_0437_00111",
+      "en_US": "GS-EYE-J-SHOUNEN"
+    },
+    {
+      "id": "msg_0437_00112",
+      "en_US": "GS-EYE-J-AYASHII"
+    },
+    {
+      "id": "msg_0437_00113",
+      "en_US": "GS-EYE-BOUZU"
+    },
+    {
+      "id": "msg_0437_00114",
+      "en_US": "GS-EYE-MAIKO"
+    },
+    {
+      "id": "msg_0437_00115",
+      "en_US": "GS-EYE-ROCKET"
+    },
+    {
+      "id": "msg_0437_00116",
+      "en_US": "GS-EYE-K-SHOUJO"
+    },
+    {
+      "id": "msg_0437_00117",
+      "en_US": "GS-EYE-K-SHOUNEN"
+    },
+    {
+      "id": "msg_0437_00118",
+      "en_US": "GS-EYE-K-AYASHII"
+    },
+    {
+      "id": "msg_0437_00119",
+      "en_US": "GS-VS-NORAPOKE"
+    },
+    {
+      "id": "msg_0437_00120",
+      "en_US": "GS-VS-TRAINER"
+    },
+    {
+      "id": "msg_0437_00121",
+      "en_US": "GS-VS-GYMREADER"
+    },
+    {
+      "id": "msg_0437_00122",
+      "en_US": "GS-VS-RIVAL"
+    },
+    {
+      "id": "msg_0437_00123",
+      "en_US": "GS-VS-ROCKET"
+    },
+    {
+      "id": "msg_0437_00124",
+      "en_US": "GS-VS-SUICUNE"
+    },
+    {
+      "id": "msg_0437_00125",
+      "en_US": "GS-VS-ENTEI"
+    },
+    {
+      "id": "msg_0437_00126",
+      "en_US": "GS-VS-RAIKOU"
+    },
+    {
+      "id": "msg_0437_00127",
+      "en_US": "GS-VS-CHAMP"
+    },
+    {
+      "id": "msg_0437_00128",
+      "en_US": "GS-VS-NORAPOKE-KANTO"
+    },
+    {
+      "id": "msg_0437_00129",
+      "en_US": "GS-VS-TRAINER-KANTO"
+    },
+    {
+      "id": "msg_0437_00130",
+      "en_US": "GS-VS-GYMREADER-KANTO"
+    },
+    {
+      "id": "msg_0437_00131",
+      "en_US": "GS-WIN1"
+    },
+    {
+      "id": "msg_0437_00132",
+      "en_US": "GS-WIN2"
+    },
+    {
+      "id": "msg_0437_00133",
+      "en_US": "GS-WIN2-NOT-FAN"
+    },
+    {
+      "id": "msg_0437_00134",
+      "en_US": "GS-WIN3"
+    },
+    {
+      "id": "msg_0437_00135",
+      "en_US": "GS-VS-HOUOU"
+    },
+    {
+      "id": "msg_0437_00136",
+      "en_US": "GS-VS-LUGIA"
+    },
+    {
+      "id": "msg_0437_00137",
+      "en_US": "GS-PT-ENTR"
+    },
+    {
+      "id": "msg_0437_00138",
+      "en_US": "GS-PT-OPEN"
+    },
+    {
+      "id": "msg_0437_00139",
+      "en_US": "GS-PT-TITLE"
+    },
+    {
+      "id": "msg_0437_00140",
+      "en_US": "GS-PT-GAME"
+    },
+    {
+      "id": "msg_0437_00141",
+      "en_US": "GS-PT-GAMEF"
+    },
+    {
+      "id": "msg_0437_00142",
+      "en_US": "GS-PT-RESULT"
+    },
+    {
+      "id": "msg_0437_00143",
+      "en_US": "GS-PT-END"
+    },
+    {
+      "id": "msg_0437_00144",
+      "en_US": "GS-PT-END-FIELD"
+    },
+    {
+      "id": "msg_0437_00145",
+      "en_US": "GS-PT-VICTORY"
+    },
+    {
+      "id": "msg_0437_00146",
+      "en_US": "GS-BF-FACTORY"
+    },
+    {
+      "id": "msg_0437_00147",
+      "en_US": "GS-BF-STAGE"
+    },
+    {
+      "id": "msg_0437_00148",
+      "en_US": "GS-BF-ROULETTE"
+    },
+    {
+      "id": "msg_0437_00149",
+      "en_US": "GS-BF-CASTLE"
+    },
+    {
+      "id": "msg_0437_00150",
+      "en_US": "GS-BA-BRAIN"
+    },
+    {
+      "id": "msg_0437_00151",
+      "en_US": "GS-WINBRAIN"
+    },
+    {
+      "id": "msg_0437_00152",
+      "en_US": "GS-WIFI-ACCESS"
+    },
+    {
+      "id": "msg_0437_00153",
+      "en_US": "GS-WIFI-PRESENT"
+    },
+    {
+      "id": "msg_0437_00154",
+      "en_US": "GS-WIFIUNION"
+    },
+    {
+      "id": "msg_0437_00155",
+      "en_US": "GS-WIFIGAME"
+    },
+    {
+      "id": "msg_0437_00156",
+      "en_US": "GS-WIFIPARADE"
+    },
+    {
+      "id": "msg_0437_00157",
+      "en_US": "GS-WIFITOWER"
+    },
+    {
+      "id": "msg_0437_00158",
+      "en_US": "GS-GURUGURU"
+    },
+    {
+      "id": "msg_0437_00159",
+      "en_US": "GS-BLD-GTC"
+    },
+    {
+      "id": "msg_0437_00160",
+      "en_US": "GS-SAFARI-ROAD"
+    },
+    {
+      "id": "msg_0437_00161",
+      "en_US": "GS-SAFARI-HOUSE"
+    },
+    {
+      "id": "msg_0437_00162",
+      "en_US": "GS-SAFARI-FIELD"
+    },
+    {
+      "id": "msg_0437_00163",
+      "en_US": "GS-E-SUPPORT-M"
+    },
+    {
+      "id": "msg_0437_00164",
+      "en_US": "GS-E-SUPPORT-F"
+    },
+    {
+      "id": "msg_0437_00165",
+      "en_US": "GS-GAMEATARI"
+    },
+    {
+      "id": "msg_0437_00166",
+      "en_US": "GS-E-MAIKO-MAI"
+    },
+    {
+      "id": "msg_0437_00167",
+      "en_US": "GS-E-MAIKO-THEME"
+    },
+    {
+      "id": "msg_0437_00168",
+      "en_US": "GS-E-HOUOU"
+    },
+    {
+      "id": "msg_0437_00169",
+      "en_US": "GS-E-LUGIA"
+    },
+    {
+      "id": "msg_0437_00170",
+      "en_US": "GS-E-G-PICHU"
+    },
+    {
+      "id": "msg_0437_00171",
+      "en_US": "GS-D-SHINTO"
+    },
+    {
+      "id": "msg_0437_00172",
+      "en_US": "GS-RADIO-R-101"
+    },
+    {
+      "id": "msg_0437_00173",
+      "en_US": "GS-RADIO-R-201"
+    },
+    {
+      "id": "msg_0437_00174",
+      "en_US": "GS-RADIO-TRAINER"
+    },
+    {
+      "id": "msg_0437_00175",
+      "en_US": "GS-RADIO-PT"
+    },
+    {
+      "id": "msg_0437_00176",
+      "en_US": "GS-RADIO-VARIETY"
+    },
+    {
+      "id": "msg_0437_00177",
+      "en_US": "GS-VS-KODAI"
+    },
+    {
+      "id": "msg_0437_00178",
+      "en_US": "GS-PHC"
+    },
+    {
+      "id": "msg_0437_00179",
+      "en_US": "GS-E-ARCEUS"
+    },
+    {
+      "id": "msg_0437_00180",
+      "en_US": "GS-R-1-29-PHC"
+    },
+    {
+      "id": "msg_0437_00181",
+      "en_US": "GS-R-6-38-PHC"
+    },
+    {
+      "id": "msg_0437_00182",
+      "en_US": "GS-R-7-42-PHC"
+    },
+    {
+      "id": "msg_0437_00183",
+      "en_US": "GS-NAMINORI-PHC"
+    },
+    {
+      "id": "msg_0437_00184",
+      "en_US": "GS-D-CHIKATSUURO-PHC"
+    },
+    {
+      "id": "msg_0437_00185",
+      "en_US": "GS-SENKYO-R"
+    },
+    {
+      "id": "msg_0437_00186",
+      "en_US": "ME-ASA"
+    },
+    {
+      "id": "msg_0437_00187",
+      "en_US": "ME-LVUP"
+    },
+    {
+      "id": "msg_0437_00188",
+      "en_US": "ME-ITEM"
+    },
+    {
+      "id": "msg_0437_00189",
+      "en_US": "ME-KEYITEM"
+    },
+    {
+      "id": "msg_0437_00190",
+      "en_US": "ME-POKEGET"
+    },
+    {
+      "id": "msg_0437_00191",
+      "en_US": "ME-SHINKAOME"
+    },
+    {
+      "id": "msg_0437_00192",
+      "en_US": "ME-BADGE"
+    },
+    {
+      "id": "msg_0437_00193",
+      "en_US": "ME-WAZA"
+    },
+    {
+      "id": "msg_0437_00194",
+      "en_US": "ME-ACCE"
+    },
+    {
+      "id": "msg_0437_00195",
+      "en_US": "ME-WASURE"
+    },
+    {
+      "id": "msg_0437_00196",
+      "en_US": "ME-KINOMI"
+    },
+    {
+      "id": "msg_0437_00197",
+      "en_US": "ME-HYOUKA1"
+    },
+    {
+      "id": "msg_0437_00198",
+      "en_US": "ME-HYOUKA2"
+    },
+    {
+      "id": "msg_0437_00199",
+      "en_US": "ME-HYOUKA3"
+    },
+    {
+      "id": "msg_0437_00200",
+      "en_US": "ME-HYOUKA4"
+    },
+    {
+      "id": "msg_0437_00201",
+      "en_US": "ME-HYOUKA5"
+    },
+    {
+      "id": "msg_0437_00202",
+      "en_US": "ME-HYOUKA6"
+    },
+    {
+      "id": "msg_0437_00203",
+      "en_US": "ME-TAMAGO-GET"
+    },
+    {
+      "id": "msg_0437_00204",
+      "en_US": "ME-MUSHITORI1"
+    },
+    {
+      "id": "msg_0437_00205",
+      "en_US": "ME-MUSHITORI2"
+    },
+    {
+      "id": "msg_0437_00206",
+      "en_US": "ME-MUSHITORI3"
+    },
+    {
+      "id": "msg_0437_00207",
+      "en_US": "ME-CARDGAME1"
+    },
+    {
+      "id": "msg_0437_00208",
+      "en_US": "ME-CARDGAME2"
+    },
+    {
+      "id": "msg_0437_00209",
+      "en_US": "ME-POKEGEAR-REGIST"
+    },
+    {
+      "id": "msg_0437_00210",
+      "en_US": "ME-GONIN"
+    },
+    {
+      "id": "msg_0437_00211",
+      "en_US": "ME-PT-NEW"
+    },
+    {
+      "id": "msg_0437_00212",
+      "en_US": "ME-PT-RESULTG"
+    },
+    {
+      "id": "msg_0437_00213",
+      "en_US": "ME-PT-SPECIAL"
+    },
+    {
+      "id": "msg_0437_00214",
+      "en_US": "ME-PT-VICTORY"
+    },
+    {
+      "id": "msg_0437_00215",
+      "en_US": "ME-ROULETTE"
+    },
+    {
+      "id": "msg_0437_00216",
+      "en_US": "ME-CASTLE"
+    },
+    {
+      "id": "msg_0437_00217",
+      "en_US": "ME-BPGET"
+    },
+    {
+      "id": "msg_0437_00218",
+      "en_US": "ME-MINIGAME"
+    },
+    {
+      "id": "msg_0437_00219",
+      "en_US": "PL-BICYCLE"
+    },
+    {
+      "id": "msg_0437_00220",
+      "en_US": "GS-P-START"
+    },
+    {
+      "id": "msg_0437_00221",
+      "en_US": "GS-P-TITLE"
+    },
+    {
+      "id": "msg_0437_00222",
+      "en_US": "GS-P-TITLE01"
+    },
+    {
+      "id": "msg_0437_00223",
+      "en_US": "GS-P-OPENING-TITLE-G"
+    },
+    {
+      "id": "msg_0437_00224",
+      "en_US": "GS-P-OPENING-TITLE-S"
+    },
+    {
+      "id": "msg_0437_00225",
+      "en_US": "GS-P-POKEMON-THEME"
+    },
+    {
+      "id": "msg_0437_00226",
+      "en_US": "GS-P-SHINKA"
+    },
+    {
+      "id": "msg_0437_00227",
+      "en_US": "GS-P-KOUKAN"
+    },
+    {
+      "id": "msg_0437_00228",
+      "en_US": "GS-P-BICYCLE"
+    },
+    {
+      "id": "msg_0437_00229",
+      "en_US": "GS-P-NAMINORI"
+    },
+    {
+      "id": "msg_0437_00230",
+      "en_US": "GS-P-E-DENDOUIRI"
+    },
+    {
+      "id": "msg_0437_00231",
+      "en_US": "GS-P-ENDING"
+    },
+    {
+      "id": "msg_0437_00232",
+      "en_US": "GS-P-ENDING2"
+    },
+    {
+      "id": "msg_0437_00233",
+      "en_US": "GS-P-T-WAKABA"
+    },
+    {
+      "id": "msg_0437_00234",
+      "en_US": "GS-P-C-YOSHINO"
+    },
+    {
+      "id": "msg_0437_00235",
+      "en_US": "GS-P-C-KIKYOU"
+    },
+    {
+      "id": "msg_0437_00236",
+      "en_US": "GS-P-T-HIWADA"
+    },
+    {
+      "id": "msg_0437_00237",
+      "en_US": "GS-P-C-KOGANE"
+    },
+    {
+      "id": "msg_0437_00238",
+      "en_US": "GS-P-C-ENJU"
+    },
+    {
+      "id": "msg_0437_00239",
+      "en_US": "GS-P-C-ASAGI"
+    },
+    {
+      "id": "msg_0437_00240",
+      "en_US": "GS-P-C-TANBA"
+    },
+    {
+      "id": "msg_0437_00241",
+      "en_US": "GS-P-T-CHOUJI"
+    },
+    {
+      "id": "msg_0437_00242",
+      "en_US": "GS-P-C-FUSUBE"
+    },
+    {
+      "id": "msg_0437_00243",
+      "en_US": "GS-P-R-1-29"
+    },
+    {
+      "id": "msg_0437_00244",
+      "en_US": "GS-P-R-1-30"
+    },
+    {
+      "id": "msg_0437_00245",
+      "en_US": "GS-P-R-2-30"
+    },
+    {
+      "id": "msg_0437_00246",
+      "en_US": "GS-P-R-3-30"
+    },
+    {
+      "id": "msg_0437_00247",
+      "en_US": "GS-P-R-4-34"
+    },
+    {
+      "id": "msg_0437_00248",
+      "en_US": "GS-P-R-5-34"
+    },
+    {
+      "id": "msg_0437_00249",
+      "en_US": "GS-P-R-6-34"
+    },
+    {
+      "id": "msg_0437_00250",
+      "en_US": "GS-P-R-8-34"
+    },
+    {
+      "id": "msg_0437_00251",
+      "en_US": "GS-P-R-6-38"
+    },
+    {
+      "id": "msg_0437_00252",
+      "en_US": "GS-P-R-7-42"
+    },
+    {
+      "id": "msg_0437_00253",
+      "en_US": "GS-P-C-KUCHIBA"
+    },
+    {
+      "id": "msg_0437_00254",
+      "en_US": "GS-P-C-YAMABUKI"
+    },
+    {
+      "id": "msg_0437_00255",
+      "en_US": "GS-P-C-HANADA"
+    },
+    {
+      "id": "msg_0437_00256",
+      "en_US": "GS-P-T-CHION"
+    },
+    {
+      "id": "msg_0437_00257",
+      "en_US": "GS-P-C-TAMAMUSHI"
+    },
+    {
+      "id": "msg_0437_00258",
+      "en_US": "GS-P-C-SEKICHIKU"
+    },
+    {
+      "id": "msg_0437_00259",
+      "en_US": "GS-P-C-NIBI"
+    },
+    {
+      "id": "msg_0437_00260",
+      "en_US": "GS-P-C-TOKIWA"
+    },
+    {
+      "id": "msg_0437_00261",
+      "en_US": "GS-P-T-MASARA"
+    },
+    {
+      "id": "msg_0437_00262",
+      "en_US": "GS-P-T-GUREN"
+    },
+    {
+      "id": "msg_0437_00263",
+      "en_US": "GS-P-R-9-01"
+    },
+    {
+      "id": "msg_0437_00264",
+      "en_US": "GS-P-R-16-01"
+    },
+    {
+      "id": "msg_0437_00265",
+      "en_US": "GS-P-R-17-01"
+    },
+    {
+      "id": "msg_0437_00266",
+      "en_US": "GS-P-R-9-03"
+    },
+    {
+      "id": "msg_0437_00267",
+      "en_US": "GS-P-R-10-03"
+    },
+    {
+      "id": "msg_0437_00268",
+      "en_US": "GS-P-R-12-03"
+    },
+    {
+      "id": "msg_0437_00269",
+      "en_US": "GS-P-R-13-03"
+    },
+    {
+      "id": "msg_0437_00270",
+      "en_US": "GS-P-R-14-03"
+    },
+    {
+      "id": "msg_0437_00271",
+      "en_US": "GS-P-R-15-03"
+    },
+    {
+      "id": "msg_0437_00272",
+      "en_US": "GS-P-R-16-03"
+    },
+    {
+      "id": "msg_0437_00273",
+      "en_US": "GS-P-R-17-03"
+    },
+    {
+      "id": "msg_0437_00274",
+      "en_US": "GS-P-R-10-11"
+    },
+    {
+      "id": "msg_0437_00275",
+      "en_US": "GS-P-R-13-11"
+    },
+    {
+      "id": "msg_0437_00276",
+      "en_US": "GS-P-R-12-24"
+    },
+    {
+      "id": "msg_0437_00277",
+      "en_US": "GS-P-R-1-26"
+    },
+    {
+      "id": "msg_0437_00278",
+      "en_US": "GS-P-POKESEN"
+    },
+    {
+      "id": "msg_0437_00279",
+      "en_US": "GS-P-FS"
+    },
+    {
+      "id": "msg_0437_00280",
+      "en_US": "GS-P-GYM"
+    },
+    {
+      "id": "msg_0437_00281",
+      "en_US": "GS-P-UTSUGI-RABO"
+    },
+    {
+      "id": "msg_0437_00282",
+      "en_US": "GS-P-OHKIDO"
+    },
+    {
+      "id": "msg_0437_00283",
+      "en_US": "GS-P-KABURENJOU"
+    },
+    {
+      "id": "msg_0437_00284",
+      "en_US": "GS-P-GAME"
+    },
+    {
+      "id": "msg_0437_00285",
+      "en_US": "GS-P-BATTLETOWER"
+    },
+    {
+      "id": "msg_0437_00286",
+      "en_US": "GS-P-BATTLETOWER2"
+    },
+    {
+      "id": "msg_0437_00287",
+      "en_US": "GS-P-TO-MADATSUBOMI1"
+    },
+    {
+      "id": "msg_0437_00288",
+      "en_US": "GS-P-D-CHIKATSUURO"
+    },
+    {
+      "id": "msg_0437_00289",
+      "en_US": "GS-P-D-UNKNOWN-ISEKI"
+    },
+    {
+      "id": "msg_0437_00290",
+      "en_US": "GS-P-D-KOUEN"
+    },
+    {
+      "id": "msg_0437_00291",
+      "en_US": "GS-P-TO-YAKETA"
+    },
+    {
+      "id": "msg_0437_00292",
+      "en_US": "GS-P-TO-SUZU"
+    },
+    {
+      "id": "msg_0437_00293",
+      "en_US": "GS-P-TO-TOUDAI"
+    },
+    {
+      "id": "msg_0437_00294",
+      "en_US": "GS-P-D-AJITO"
+    },
+    {
+      "id": "msg_0437_00295",
+      "en_US": "GS-P-D-KOORINONUKE"
+    },
+    {
+      "id": "msg_0437_00296",
+      "en_US": "GS-P-RYUUNOANA"
+    },
+    {
+      "id": "msg_0437_00297",
+      "en_US": "GS-P-D-IWAYAMA"
+    },
+    {
+      "id": "msg_0437_00298",
+      "en_US": "GS-P-D-TOKIWANOMORI3"
+    },
+    {
+      "id": "msg_0437_00299",
+      "en_US": "GS-P-D-CHAMPROAD"
+    },
+    {
+      "id": "msg_0437_00300",
+      "en_US": "GS-P-CHAMPROAD"
+    },
+    {
+      "id": "msg_0437_00301",
+      "en_US": "GS-P-E-TSURETEKE1"
+    },
+    {
+      "id": "msg_0437_00302",
+      "en_US": "GS-P-E-TSURETEKE2"
+    },
+    {
+      "id": "msg_0437_00303",
+      "en_US": "GS-P-E-RIVAL1"
+    },
+    {
+      "id": "msg_0437_00304",
+      "en_US": "GS-P-E-RIVAL2"
+    },
+    {
+      "id": "msg_0437_00305",
+      "en_US": "GS-P-TAIKAIMAE"
+    },
+    {
+      "id": "msg_0437_00306",
+      "en_US": "GS-P-TAIKAIMA-D5"
+    },
+    {
+      "id": "msg_0437_00307",
+      "en_US": "GS-P-TAIKAI"
+    },
+    {
+      "id": "msg_0437_00308",
+      "en_US": "GS-P-KAIDENPA"
+    },
+    {
+      "id": "msg_0437_00309",
+      "en_US": "GS-P-SENKYO"
+    },
+    {
+      "id": "msg_0437_00310",
+      "en_US": "GS-P-E-LINEAR"
+    },
+    {
+      "id": "msg_0437_00311",
+      "en_US": "GS-P-KOUSOKUSEN"
+    },
+    {
+      "id": "msg_0437_00312",
+      "en_US": "GS-P-OTSUKIMI-EVENT"
+    },
+    {
+      "id": "msg_0437_00313",
+      "en_US": "GS-P-RADIO-JINGLE"
+    },
+    {
+      "id": "msg_0437_00314",
+      "en_US": "GS-P-RADIO-KOMORIUTA"
+    },
+    {
+      "id": "msg_0437_00315",
+      "en_US": "GS-P-RADIO-MARCH"
+    },
+    {
+      "id": "msg_0437_00316",
+      "en_US": "GS-P-RADIO-UNKNOWN"
+    },
+    {
+      "id": "msg_0437_00317",
+      "en_US": "GS-P-HUE"
+    },
+    {
+      "id": "msg_0437_00318",
+      "en_US": "GS-P-OHKIDO-RABO"
+    },
+    {
+      "id": "msg_0437_00319",
+      "en_US": "GS-P-AIKOTOBA"
+    },
+    {
+      "id": "msg_0437_00320",
+      "en_US": "GS-P-E-MINAKI"
+    },
+    {
+      "id": "msg_0437_00321",
+      "en_US": "GS-P-IBUKI"
+    },
+    {
+      "id": "msg_0437_00322",
+      "en_US": "GS-P-EYE-J-SHOUJO"
+    },
+    {
+      "id": "msg_0437_00323",
+      "en_US": "GS-P-EYE-J-SHOUNEN"
+    },
+    {
+      "id": "msg_0437_00324",
+      "en_US": "GS-P-EYE-J-AYASHII"
+    },
+    {
+      "id": "msg_0437_00325",
+      "en_US": "GS-P-EYE-BOUZU"
+    },
+    {
+      "id": "msg_0437_00326",
+      "en_US": "GS-P-EYE-MAIKO"
+    },
+    {
+      "id": "msg_0437_00327",
+      "en_US": "GS-P-EYE-ROCKET"
+    },
+    {
+      "id": "msg_0437_00328",
+      "en_US": "GS-P-EYE-K-SHOUJO"
+    },
+    {
+      "id": "msg_0437_00329",
+      "en_US": "GS-P-EYE-K-SHOUNEN"
+    },
+    {
+      "id": "msg_0437_00330",
+      "en_US": "GS-P-EYE-K-AYASHII"
+    },
+    {
+      "id": "msg_0437_00331",
+      "en_US": "GS-P-VS-NORAPOKE"
+    },
+    {
+      "id": "msg_0437_00332",
+      "en_US": "GS-P-VS-TRAINER"
+    },
+    {
+      "id": "msg_0437_00333",
+      "en_US": "GS-P-VS-GYMREADER"
+    },
+    {
+      "id": "msg_0437_00334",
+      "en_US": "GS-P-VS-RIVAL"
+    },
+    {
+      "id": "msg_0437_00335",
+      "en_US": "GS-P-VS-ROCKET"
+    },
+    {
+      "id": "msg_0437_00336",
+      "en_US": "GS-P-VS-SUICUNE"
+    },
+    {
+      "id": "msg_0437_00337",
+      "en_US": "GS-P-VS-ENTEI"
+    },
+    {
+      "id": "msg_0437_00338",
+      "en_US": "GS-P-VS-RAIKOU"
+    },
+    {
+      "id": "msg_0437_00339",
+      "en_US": "GS-P-VS-CHAMP"
+    },
+    {
+      "id": "msg_0437_00340",
+      "en_US": "GS-P-VS-NORAPOKE-KANTO"
+    },
+    {
+      "id": "msg_0437_00341",
+      "en_US": "GS-P-VS-TRAINER-KANTO"
+    },
+    {
+      "id": "msg_0437_00342",
+      "en_US": "GS-P-VS-GYMREADER-KANTO"
+    },
+    {
+      "id": "msg_0437_00343",
+      "en_US": "GS-P-WIN1"
+    },
+    {
+      "id": "msg_0437_00344",
+      "en_US": "GS-P-WIN2"
+    },
+    {
+      "id": "msg_0437_00345",
+      "en_US": "GS-P-WIN2-NOT-FAN"
+    },
+    {
+      "id": "msg_0437_00346",
+      "en_US": "GS-P-WIN3"
+    },
+    {
+      "id": "msg_0437_00347",
+      "en_US": "GS-P-PT-ENTR"
+    },
+    {
+      "id": "msg_0437_00348",
+      "en_US": "GS-P-PT-OPEN"
+    },
+    {
+      "id": "msg_0437_00349",
+      "en_US": "GS-P-PT-TITLE"
+    },
+    {
+      "id": "msg_0437_00350",
+      "en_US": "GS-P-PT-GAME"
+    },
+    {
+      "id": "msg_0437_00351",
+      "en_US": "GS-P-PT-GAMEF"
+    },
+    {
+      "id": "msg_0437_00352",
+      "en_US": "GS-P-PT-RESULT"
+    },
+    {
+      "id": "msg_0437_00353",
+      "en_US": "GS-P-PT-END"
+    },
+    {
+      "id": "msg_0437_00354",
+      "en_US": "GS-P-PT-END-FIELD"
+    },
+    {
+      "id": "msg_0437_00355",
+      "en_US": "GS-P-WIFITOWER"
+    },
+    {
+      "id": "msg_0437_00356",
+      "en_US": "GS-P-SAFARI-ROAD"
+    },
+    {
+      "id": "msg_0437_00357",
+      "en_US": "GS-P-SAFARI-HOUSE"
+    },
+    {
+      "id": "msg_0437_00358",
+      "en_US": "GS-P-SAFARI-FIELD"
+    },
+    {
+      "id": "msg_0437_00359",
+      "en_US": "PL-P-BICYCLE"
+    },
+    {
+      "id": "msg_0437_00360",
+      "en_US": "GS-P-END"
+    },
+    {
+      "id": "msg_0437_00361",
+      "en_US": "AIF-FIELD"
+    },
+    {
+      "id": "msg_0437_00362",
+      "en_US": "AIF-DUNGEON"
+    },
+    {
+      "id": "msg_0437_00363",
+      "en_US": "AIF-BATTLE"
+    },
+    {
+      "id": "msg_0437_00364",
+      "en_US": "BGM-END"
+    },
+    {
+      "id": "msg_0437_00365",
+      "en_US": "PL-W012"
+    },
+    {
+      "id": "msg_0437_00366",
+      "en_US": "PL-W097"
+    },
+    {
+      "id": "msg_0437_00367",
+      "en_US": "PL-W460B"
+    },
+    {
+      "id": "msg_0437_00368",
+      "en_US": "PL-KEZURI"
+    },
+    {
+      "id": "msg_0437_00369",
+      "en_US": "PL-SYU03"
+    },
+    {
+      "id": "msg_0437_00370",
+      "en_US": "PL-CALL"
+    },
+    {
+      "id": "msg_0437_00371",
+      "en_US": "PL-UG-020"
+    },
+    {
+      "id": "msg_0437_00372",
+      "en_US": "PL-W100"
+    },
+    {
+      "id": "msg_0437_00373",
+      "en_US": "PL-W467109"
+    },
+    {
+      "id": "msg_0437_00374",
+      "en_US": "PL-W363"
+    },
+    {
+      "id": "msg_0437_00375",
+      "en_US": "PL-BAG3"
+    },
+    {
+      "id": "msg_0437_00376",
+      "en_US": "PL-FW089"
+    },
+    {
+      "id": "msg_0437_00377",
+      "en_US": "PL-COIN"
+    },
+    {
+      "id": "msg_0437_00378",
+      "en_US": "PL-EFF05"
+    },
+    {
+      "id": "msg_0437_00379",
+      "en_US": "PL-W436"
+    },
+    {
+      "id": "msg_0437_00380",
+      "en_US": "PL-BOWABOWA"
+    },
+    {
+      "id": "msg_0437_00381",
+      "en_US": "PL-LO-ON"
+    },
+    {
+      "id": "msg_0437_00382",
+      "en_US": "PL-ALERT"
+    },
+    {
+      "id": "msg_0437_00383",
+      "en_US": "PL-WARP"
+    },
+    {
+      "id": "msg_0437_00384",
+      "en_US": "PL-SUTYA2"
+    },
+    {
+      "id": "msg_0437_00385",
+      "en_US": "DUMMY2989"
+    },
+    {
+      "id": "msg_0437_00386",
+      "en_US": "PL-fire01"
+    },
+    {
+      "id": "msg_0437_00387",
+      "en_US": "PL-BUTTON"
+    },
+    {
+      "id": "msg_0437_00388",
+      "en_US": "PL-BREC03"
+    },
+    {
+      "id": "msg_0437_00389",
+      "en_US": "PL-BREC10"
+    },
+    {
+      "id": "msg_0437_00390",
+      "en_US": "DUMMY-9987"
+    },
+    {
+      "id": "msg_0437_00391",
+      "en_US": "PL-BREC11-2"
+    },
+    {
+      "id": "msg_0437_00392",
+      "en_US": "PL-BREC12"
+    },
+    {
+      "id": "msg_0437_00393",
+      "en_US": "PL-BREC13"
+    },
+    {
+      "id": "msg_0437_00394",
+      "en_US": "PL-BREC20"
+    },
+    {
+      "id": "msg_0437_00395",
+      "en_US": "PL-BREC21"
+    },
+    {
+      "id": "msg_0437_00396",
+      "en_US": "PL-BREC57"
+    },
+    {
+      "id": "msg_0437_00397",
+      "en_US": "PL-BREC58"
+    },
+    {
+      "id": "msg_0437_00398",
+      "en_US": "PL-BREC80"
+    },
+    {
+      "id": "msg_0437_00399",
+      "en_US": "PL-MNGM-IN"
+    },
+    {
+      "id": "msg_0437_00400",
+      "en_US": "PL-MNGM-OUT"
+    },
+    {
+      "id": "msg_0437_00401",
+      "en_US": "DUMMY01"
+    },
+    {
+      "id": "msg_0437_00402",
+      "en_US": "PL-FCALL"
+    },
+    {
+      "id": "msg_0437_00403",
+      "en_US": "PL-NOMI02"
+    },
+    {
+      "id": "msg_0437_00404",
+      "en_US": "PL-POINT1"
+    },
+    {
+      "id": "msg_0437_00405",
+      "en_US": "PL-POINT2"
+    },
+    {
+      "id": "msg_0437_00406",
+      "en_US": "PL-POINT3"
+    },
+    {
+      "id": "msg_0437_00407",
+      "en_US": "PL-PINPON"
+    },
+    {
+      "id": "msg_0437_00408",
+      "en_US": "PL-BALLOON05-2"
+    },
+    {
+      "id": "msg_0437_00409",
+      "en_US": "PL-FW120"
+    },
+    {
+      "id": "msg_0437_00410",
+      "en_US": "PL-HAND"
+    },
+    {
+      "id": "msg_0437_00411",
+      "en_US": "PL-KIRAKIRA"
+    },
+    {
+      "id": "msg_0437_00412",
+      "en_US": "PL-140-2-2"
+    },
+    {
+      "id": "msg_0437_00413",
+      "en_US": "PL-LV-UP"
+    },
+    {
+      "id": "msg_0437_00414",
+      "en_US": "PL-KIN"
+    },
+    {
+      "id": "msg_0437_00415",
+      "en_US": "PL-BALLOON01"
+    },
+    {
+      "id": "msg_0437_00416",
+      "en_US": "PL-BALLOON02"
+    },
+    {
+      "id": "msg_0437_00417",
+      "en_US": "PL-BALLOON03"
+    },
+    {
+      "id": "msg_0437_00418",
+      "en_US": "PL-BALLOON03-2"
+    },
+    {
+      "id": "msg_0437_00419",
+      "en_US": "PL-BALLOON04"
+    },
+    {
+      "id": "msg_0437_00420",
+      "en_US": "PL-BALLOON05"
+    },
+    {
+      "id": "msg_0437_00421",
+      "en_US": "PL-BALLOON07"
+    },
+    {
+      "id": "msg_0437_00422",
+      "en_US": "PL-ALERT3"
+    },
+    {
+      "id": "msg_0437_00423",
+      "en_US": "PL-ALERT4"
+    },
+    {
+      "id": "msg_0437_00424",
+      "en_US": "PL-FR02"
+    },
+    {
+      "id": "msg_0437_00425",
+      "en_US": "PL-FR03"
+    },
+    {
+      "id": "msg_0437_00426",
+      "en_US": "PL-FR04"
+    },
+    {
+      "id": "msg_0437_00427",
+      "en_US": "PL-FR05"
+    },
+    {
+      "id": "msg_0437_00428",
+      "en_US": "PL-FAC01"
+    },
+    {
+      "id": "msg_0437_00429",
+      "en_US": "PL-HIROBA01-4"
+    },
+    {
+      "id": "msg_0437_00430",
+      "en_US": "PL-HIROBA01-5"
+    },
+    {
+      "id": "msg_0437_00431",
+      "en_US": "PL-HIROBA01-6"
+    },
+    {
+      "id": "msg_0437_00432",
+      "en_US": "PL-HIROBA02-4"
+    },
+    {
+      "id": "msg_0437_00433",
+      "en_US": "PL-HIROBA02-5"
+    },
+    {
+      "id": "msg_0437_00434",
+      "en_US": "PL-HIROBA02-6"
+    },
+    {
+      "id": "msg_0437_00435",
+      "en_US": "PL-HIROBA03"
+    },
+    {
+      "id": "msg_0437_00436",
+      "en_US": "PL-HIROBA03-2"
+    },
+    {
+      "id": "msg_0437_00437",
+      "en_US": "PL-HIROBA03-3"
+    },
+    {
+      "id": "msg_0437_00438",
+      "en_US": "PL-HIROBA05"
+    },
+    {
+      "id": "msg_0437_00439",
+      "en_US": "PL-HIROBA05-2"
+    },
+    {
+      "id": "msg_0437_00440",
+      "en_US": "PL-HIROBA05-3"
+    },
+    {
+      "id": "msg_0437_00441",
+      "en_US": "PL-HIROBA20"
+    },
+    {
+      "id": "msg_0437_00442",
+      "en_US": "PL-HIROBA30"
+    },
+    {
+      "id": "msg_0437_00443",
+      "en_US": "PL-HIROBA70"
+    },
+    {
+      "id": "msg_0437_00444",
+      "en_US": "PL-HIROBA70-2"
+    },
+    {
+      "id": "msg_0437_00445",
+      "en_US": "PL-HIROBA70-3"
+    },
+    {
+      "id": "msg_0437_00446",
+      "en_US": "PL-DUMMY200"
+    },
+    {
+      "id": "msg_0437_00447",
+      "en_US": "PL-DUMMY300"
+    },
+    {
+      "id": "msg_0437_00448",
+      "en_US": "PL-DUMMY400"
+    },
+    {
+      "id": "msg_0437_00449",
+      "en_US": "PL-HIROBA100"
+    },
+    {
+      "id": "msg_0437_00450",
+      "en_US": "PL-HIROBA100-2"
+    },
+    {
+      "id": "msg_0437_00451",
+      "en_US": "PL-HIROBA100-3"
+    },
+    {
+      "id": "msg_0437_00452",
+      "en_US": "PL-DUMMY500"
+    },
+    {
+      "id": "msg_0437_00453",
+      "en_US": "PL-140-2"
+    },
+    {
+      "id": "msg_0437_00454",
+      "en_US": "PL-140-3"
+    },
+    {
+      "id": "msg_0437_00455",
+      "en_US": "PL-W030"
+    },
+    {
+      "id": "msg_0437_00456",
+      "en_US": "PL-W030-2"
+    },
+    {
+      "id": "msg_0437_00457",
+      "en_US": "PL-W030-3"
+    },
+    {
+      "id": "msg_0437_00458",
+      "en_US": "PL-W019"
+    },
+    {
+      "id": "msg_0437_00459",
+      "en_US": "PL-W019-2"
+    },
+    {
+      "id": "msg_0437_00460",
+      "en_US": "PL-W019-3"
+    },
+    {
+      "id": "msg_0437_00461",
+      "en_US": "PL-EFF02"
+    },
+    {
+      "id": "msg_0437_00462",
+      "en_US": "PL-DUMMY122"
+    },
+    {
+      "id": "msg_0437_00463",
+      "en_US": "PL-DUMMY123"
+    },
+    {
+      "id": "msg_0437_00464",
+      "en_US": "PL-EFF03-4"
+    },
+    {
+      "id": "msg_0437_00465",
+      "en_US": "PL-EFF04"
+    },
+    {
+      "id": "msg_0437_00466",
+      "en_US": "PL-DANSA5"
+    },
+    {
+      "id": "msg_0437_00467",
+      "en_US": "PL-SUTYA"
+    },
+    {
+      "id": "msg_0437_00468",
+      "en_US": "PL-FLOAT01"
+    },
+    {
+      "id": "msg_0437_00469",
+      "en_US": "PL-FLOAT02"
+    },
+    {
+      "id": "msg_0437_00470",
+      "en_US": "PL-FLOAT03"
+    },
+    {
+      "id": "msg_0437_00471",
+      "en_US": "PL-FLOAT13"
+    },
+    {
+      "id": "msg_0437_00472",
+      "en_US": "PL-FLOAT04"
+    },
+    {
+      "id": "msg_0437_00473",
+      "en_US": "PL-FLOAT05"
+    },
+    {
+      "id": "msg_0437_00474",
+      "en_US": "PL-FLOAT06"
+    },
+    {
+      "id": "msg_0437_00475",
+      "en_US": "PL-FLOAT07"
+    },
+    {
+      "id": "msg_0437_00476",
+      "en_US": "PL-FLOAT10"
+    },
+    {
+      "id": "msg_0437_00477",
+      "en_US": "PL-FLOAT11"
+    },
+    {
+      "id": "msg_0437_00478",
+      "en_US": "PL-FLOAT12"
+    },
+    {
+      "id": "msg_0437_00479",
+      "en_US": "PL-FIRE"
+    },
+    {
+      "id": "msg_0437_00480",
+      "en_US": "PL-WATER"
+    },
+    {
+      "id": "msg_0437_00481",
+      "en_US": "PL-ELECTRO"
+    },
+    {
+      "id": "msg_0437_00482",
+      "en_US": "PL-WHIP"
+    },
+    {
+      "id": "msg_0437_00483",
+      "en_US": "PL-KIRAKIRA4"
+    },
+    {
+      "id": "msg_0437_00484",
+      "en_US": "PL-TIMER01"
+    },
+    {
+      "id": "msg_0437_00485",
+      "en_US": "PL-TIMER02"
+    },
+    {
+      "id": "msg_0437_00486",
+      "en_US": "PL-TIMER03"
+    },
+    {
+      "id": "msg_0437_00487",
+      "en_US": "PL-TIMER04"
+    },
+    {
+      "id": "msg_0437_00488",
+      "en_US": "PL-PINPON2"
+    },
+    {
+      "id": "msg_0437_00489",
+      "en_US": "PL-TOKEI3"
+    },
+    {
+      "id": "msg_0437_00490",
+      "en_US": "PL-FTIMER03"
+    },
+    {
+      "id": "msg_0437_00491",
+      "en_US": "PL-STAMP"
+    },
+    {
+      "id": "msg_0437_00492",
+      "en_US": "PL-DOOR-OPEN5"
+    },
+    {
+      "id": "msg_0437_00493",
+      "en_US": "DP-SELECT"
+    },
+    {
+      "id": "msg_0437_00494",
+      "en_US": "DP-DECIDE"
+    },
+    {
+      "id": "msg_0437_00495",
+      "en_US": "DP-DUMMY1"
+    },
+    {
+      "id": "msg_0437_00496",
+      "en_US": "DP-DUMMY2"
+    },
+    {
+      "id": "msg_0437_00497",
+      "en_US": "DP-SELECT78"
+    },
+    {
+      "id": "msg_0437_00498",
+      "en_US": "DP-SELECT5"
+    },
+    {
+      "id": "msg_0437_00499",
+      "en_US": "DP-PIRORIRO"
+    },
+    {
+      "id": "msg_0437_00500",
+      "en_US": "DP-PIRORIRO2"
+    },
+    {
+      "id": "msg_0437_00501",
+      "en_US": "DP-BUTTON9"
+    },
+    {
+      "id": "msg_0437_00502",
+      "en_US": "DP-BUTTON3"
+    },
+    {
+      "id": "msg_0437_00503",
+      "en_US": "DP-KON"
+    },
+    {
+      "id": "msg_0437_00504",
+      "en_US": "DP-KON2"
+    },
+    {
+      "id": "msg_0437_00505",
+      "en_US": "DP-KON3"
+    },
+    {
+      "id": "msg_0437_00506",
+      "en_US": "DP-KON4"
+    },
+    {
+      "id": "msg_0437_00507",
+      "en_US": "DP-BOX01"
+    },
+    {
+      "id": "msg_0437_00508",
+      "en_US": "DP-BOX02"
+    },
+    {
+      "id": "msg_0437_00509",
+      "en_US": "DP-KAIFUKU"
+    },
+    {
+      "id": "msg_0437_00510",
+      "en_US": "DP-ZUKAN02"
+    },
+    {
+      "id": "msg_0437_00511",
+      "en_US": "DP-OPEN2"
+    },
+    {
+      "id": "msg_0437_00512",
+      "en_US": "DP-CLOSE2"
+    },
+    {
+      "id": "msg_0437_00513",
+      "en_US": "DP-025"
+    },
+    {
+      "id": "msg_0437_00514",
+      "en_US": "DP-PINPON"
+    },
+    {
+      "id": "msg_0437_00515",
+      "en_US": "DP-CUSTOM06"
+    },
+    {
+      "id": "msg_0437_00516",
+      "en_US": "DP-BOX03"
+    },
+    {
+      "id": "msg_0437_00517",
+      "en_US": "DP-SELECT-SLOT"
+    },
+    {
+      "id": "msg_0437_00518",
+      "en_US": "DP-CARD10"
+    },
+    {
+      "id": "msg_0437_00519",
+      "en_US": "DP-KATI"
+    },
+    {
+      "id": "msg_0437_00520",
+      "en_US": "DUMMY-9378"
+    },
+    {
+      "id": "msg_0437_00521",
+      "en_US": "DP-W025"
+    },
+    {
+      "id": "msg_0437_00522",
+      "en_US": "DP-W060C"
+    },
+    {
+      "id": "msg_0437_00523",
+      "en_US": "DP-W062"
+    },
+    {
+      "id": "msg_0437_00524",
+      "en_US": "DP-W080"
+    },
+    {
+      "id": "msg_0437_00525",
+      "en_US": "DP-WIN-OPEN"
+    },
+    {
+      "id": "msg_0437_00526",
+      "en_US": "DP-BOWA"
+    },
+    {
+      "id": "msg_0437_00527",
+      "en_US": "DP-Z-SEARCH"
+    },
+    {
+      "id": "msg_0437_00528",
+      "en_US": "DP-CARD2"
+    },
+    {
+      "id": "msg_0437_00529",
+      "en_US": "DP-WALL-HIT"
+    },
+    {
+      "id": "msg_0437_00530",
+      "en_US": "DP-WALL-HIT2"
+    },
+    {
+      "id": "msg_0437_00531",
+      "en_US": "DP-KAIDAN2"
+    },
+    {
+      "id": "msg_0437_00532",
+      "en_US": "DP-DOOR"
+    },
+    {
+      "id": "msg_0437_00533",
+      "en_US": "DP-DOOR-OPEN"
+    },
+    {
+      "id": "msg_0437_00534",
+      "en_US": "DP-DOOR-CLOSE"
+    },
+    {
+      "id": "msg_0437_00535",
+      "en_US": "DP-DOOR-CLOSE2"
+    },
+    {
+      "id": "msg_0437_00536",
+      "en_US": "DP-DOOR10"
+    },
+    {
+      "id": "msg_0437_00537",
+      "en_US": "DP-WIN-OPEN2"
+    },
+    {
+      "id": "msg_0437_00538",
+      "en_US": "DP-DUMMY3"
+    },
+    {
+      "id": "msg_0437_00539",
+      "en_US": "DP-DANSA"
+    },
+    {
+      "id": "msg_0437_00540",
+      "en_US": "DP-PC-ON"
+    },
+    {
+      "id": "msg_0437_00541",
+      "en_US": "DP-PC-LOGIN"
+    },
+    {
+      "id": "msg_0437_00542",
+      "en_US": "DP-PC-LOGOFF"
+    },
+    {
+      "id": "msg_0437_00543",
+      "en_US": "DP-DENDOU"
+    },
+    {
+      "id": "msg_0437_00544",
+      "en_US": "DP-DOKU2"
+    },
+    {
+      "id": "msg_0437_00545",
+      "en_US": "DP-ELEBETA"
+    },
+    {
+      "id": "msg_0437_00546",
+      "en_US": "DP-ELEBETA2"
+    },
+    {
+      "id": "msg_0437_00547",
+      "en_US": "DP-DUMMY4"
+    },
+    {
+      "id": "msg_0437_00548",
+      "en_US": "DP-ELEBETA4"
+    },
+    {
+      "id": "msg_0437_00549",
+      "en_US": "DP-ESUKA"
+    },
+    {
+      "id": "msg_0437_00550",
+      "en_US": "DP-TV-NOISE"
+    },
+    {
+      "id": "msg_0437_00551",
+      "en_US": "DP-JIHANKI"
+    },
+    {
+      "id": "msg_0437_00552",
+      "en_US": "DP-JITENSYA"
+    },
+    {
+      "id": "msg_0437_00553",
+      "en_US": "DP-GEAR"
+    },
+    {
+      "id": "msg_0437_00554",
+      "en_US": "DP-KI-GASYAN"
+    },
+    {
+      "id": "msg_0437_00555",
+      "en_US": "DP-SAVE"
+    },
+    {
+      "id": "msg_0437_00556",
+      "en_US": "DP-GEAR2"
+    },
+    {
+      "id": "msg_0437_00557",
+      "en_US": "DP-SELECT8"
+    },
+    {
+      "id": "msg_0437_00558",
+      "en_US": "DP-DORIRU"
+    },
+    {
+      "id": "msg_0437_00559",
+      "en_US": "DP-YUKIASHI"
+    },
+    {
+      "id": "msg_0437_00560",
+      "en_US": "DP-UG-005"
+    },
+    {
+      "id": "msg_0437_00561",
+      "en_US": "DP-UG-006"
+    },
+    {
+      "id": "msg_0437_00562",
+      "en_US": "DP-UG-007"
+    },
+    {
+      "id": "msg_0437_00563",
+      "en_US": "DP-UG-008"
+    },
+    {
+      "id": "msg_0437_00564",
+      "en_US": "DP-UG-020"
+    },
+    {
+      "id": "msg_0437_00565",
+      "en_US": "DP-UG-021"
+    },
+    {
+      "id": "msg_0437_00566",
+      "en_US": "DP-UG-022"
+    },
+    {
+      "id": "msg_0437_00567",
+      "en_US": "DP-UG-023"
+    },
+    {
+      "id": "msg_0437_00568",
+      "en_US": "DP-UG-024"
+    },
+    {
+      "id": "msg_0437_00569",
+      "en_US": "DP-UG-025"
+    },
+    {
+      "id": "msg_0437_00570",
+      "en_US": "DP-UG-026"
+    },
+    {
+      "id": "msg_0437_00571",
+      "en_US": "DP-UG-027"
+    },
+    {
+      "id": "msg_0437_00572",
+      "en_US": "DP-DENSI15"
+    },
+    {
+      "id": "msg_0437_00573",
+      "en_US": "DP-DENSI16"
+    },
+    {
+      "id": "msg_0437_00574",
+      "en_US": "DP-DUMMY5"
+    },
+    {
+      "id": "msg_0437_00575",
+      "en_US": "DP-PYUU"
+    },
+    {
+      "id": "msg_0437_00576",
+      "en_US": "DP-PYUU2"
+    },
+    {
+      "id": "msg_0437_00577",
+      "en_US": "DP-SUTYA"
+    },
+    {
+      "id": "msg_0437_00578",
+      "en_US": "DP-GYURU"
+    },
+    {
+      "id": "msg_0437_00579",
+      "en_US": "DP-OPEN7"
+    },
+    {
+      "id": "msg_0437_00580",
+      "en_US": "DP-CLOSE7"
+    },
+    {
+      "id": "msg_0437_00581",
+      "en_US": "DP-ZIZIZI"
+    },
+    {
+      "id": "msg_0437_00582",
+      "en_US": "DP-MAZYO2"
+    },
+    {
+      "id": "msg_0437_00583",
+      "en_US": "DP-MAZYO4"
+    },
+    {
+      "id": "msg_0437_00584",
+      "en_US": "DP-BAG-004"
+    },
+    {
+      "id": "msg_0437_00585",
+      "en_US": "DP-T-AME"
+    },
+    {
+      "id": "msg_0437_00586",
+      "en_US": "DP-T-KOAME"
+    },
+    {
+      "id": "msg_0437_00587",
+      "en_US": "DP-T-OOAME"
+    },
+    {
+      "id": "msg_0437_00588",
+      "en_US": "DP-T-KAMI"
+    },
+    {
+      "id": "msg_0437_00589",
+      "en_US": "DP-T-KAMI2"
+    },
+    {
+      "id": "msg_0437_00590",
+      "en_US": "DP-HAMARU"
+    },
+    {
+      "id": "msg_0437_00591",
+      "en_US": "DP-GAGAGA"
+    },
+    {
+      "id": "msg_0437_00592",
+      "en_US": "DP-F017"
+    },
+    {
+      "id": "msg_0437_00593",
+      "en_US": "DP-FOOT3-0"
+    },
+    {
+      "id": "msg_0437_00594",
+      "en_US": "DP-FOOT3-1"
+    },
+    {
+      "id": "msg_0437_00595",
+      "en_US": "DP-CON-016"
+    },
+    {
+      "id": "msg_0437_00596",
+      "en_US": "DP-REGI"
+    },
+    {
+      "id": "msg_0437_00597",
+      "en_US": "DP-CON-F007"
+    },
+    {
+      "id": "msg_0437_00598",
+      "en_US": "DP-CON-015"
+    },
+    {
+      "id": "msg_0437_00599",
+      "en_US": "DP-SUTYA2"
+    },
+    {
+      "id": "msg_0437_00600",
+      "en_US": "DP-FW230"
+    },
+    {
+      "id": "msg_0437_00601",
+      "en_US": "DP-FW019"
+    },
+    {
+      "id": "msg_0437_00602",
+      "en_US": "DP-FW088"
+    },
+    {
+      "id": "msg_0437_00603",
+      "en_US": "DP-FW015"
+    },
+    {
+      "id": "msg_0437_00604",
+      "en_US": "DP-FBRADE"
+    },
+    {
+      "id": "msg_0437_00605",
+      "en_US": "DP-FW463"
+    },
+    {
+      "id": "msg_0437_00606",
+      "en_US": "DP-TELE"
+    },
+    {
+      "id": "msg_0437_00607",
+      "en_US": "DP-TELE2"
+    },
+    {
+      "id": "msg_0437_00608",
+      "en_US": "DP-FW104"
+    },
+    {
+      "id": "msg_0437_00609",
+      "en_US": "DP-ZUPO"
+    },
+    {
+      "id": "msg_0437_00610",
+      "en_US": "DP-ZUPO2"
+    },
+    {
+      "id": "msg_0437_00611",
+      "en_US": "DP-KUSA"
+    },
+    {
+      "id": "msg_0437_00612",
+      "en_US": "DP-SUNA"
+    },
+    {
+      "id": "msg_0437_00613",
+      "en_US": "DP-MARSH-WALK"
+    },
+    {
+      "id": "msg_0437_00614",
+      "en_US": "DP-DANSA4"
+    },
+    {
+      "id": "msg_0437_00615",
+      "en_US": "DP-DANSA5"
+    },
+    {
+      "id": "msg_0437_00616",
+      "en_US": "DP-F209"
+    },
+    {
+      "id": "msg_0437_00617",
+      "en_US": "DP-SUBERU"
+    },
+    {
+      "id": "msg_0437_00618",
+      "en_US": "DP-FW056"
+    },
+    {
+      "id": "msg_0437_00619",
+      "en_US": "DP-FW291"
+    },
+    {
+      "id": "msg_0437_00620",
+      "en_US": "DP-FW089"
+    },
+    {
+      "id": "msg_0437_00621",
+      "en_US": "DP-FW452"
+    },
+    {
+      "id": "msg_0437_00622",
+      "en_US": "DP-FW466"
+    },
+    {
+      "id": "msg_0437_00623",
+      "en_US": "DP-F007"
+    },
+    {
+      "id": "msg_0437_00624",
+      "en_US": "DP-FAWA"
+    },
+    {
+      "id": "msg_0437_00625",
+      "en_US": "DP-FPASA2"
+    },
+    {
+      "id": "msg_0437_00626",
+      "en_US": "DP-FW367"
+    },
+    {
+      "id": "msg_0437_00627",
+      "en_US": "DP-POKETCH-003"
+    },
+    {
+      "id": "msg_0437_00628",
+      "en_US": "DP-DUMMY6"
+    },
+    {
+      "id": "msg_0437_00629",
+      "en_US": "DP-DUMMY7"
+    },
+    {
+      "id": "msg_0437_00630",
+      "en_US": "DP-POKETCH-006"
+    },
+    {
+      "id": "msg_0437_00631",
+      "en_US": "DP-POKETCH-007"
+    },
+    {
+      "id": "msg_0437_00632",
+      "en_US": "DP-POKETCH-009"
+    },
+    {
+      "id": "msg_0437_00633",
+      "en_US": "DP-POKETCH-010"
+    },
+    {
+      "id": "msg_0437_00634",
+      "en_US": "DP-POKETCH-011"
+    },
+    {
+      "id": "msg_0437_00635",
+      "en_US": "DP-POKETCH-012"
+    },
+    {
+      "id": "msg_0437_00636",
+      "en_US": "DP-POKETCH-013"
+    },
+    {
+      "id": "msg_0437_00637",
+      "en_US": "DP-POKETCH-014"
+    },
+    {
+      "id": "msg_0437_00638",
+      "en_US": "DP-BEEP"
+    },
+    {
+      "id": "msg_0437_00639",
+      "en_US": "DP-DENSI01"
+    },
+    {
+      "id": "msg_0437_00640",
+      "en_US": "DP-DENSI02"
+    },
+    {
+      "id": "msg_0437_00641",
+      "en_US": "DP-DENSI04"
+    },
+    {
+      "id": "msg_0437_00642",
+      "en_US": "DP-DENSI05"
+    },
+    {
+      "id": "msg_0437_00643",
+      "en_US": "DP-DENSI07"
+    },
+    {
+      "id": "msg_0437_00644",
+      "en_US": "DP-DENSI08"
+    },
+    {
+      "id": "msg_0437_00645",
+      "en_US": "DP-DENSI09"
+    },
+    {
+      "id": "msg_0437_00646",
+      "en_US": "DP-DENSI10"
+    },
+    {
+      "id": "msg_0437_00647",
+      "en_US": "DP-DENSI11"
+    },
+    {
+      "id": "msg_0437_00648",
+      "en_US": "DP-DENSI12"
+    },
+    {
+      "id": "msg_0437_00649",
+      "en_US": "DP-KASYA"
+    },
+    {
+      "id": "msg_0437_00650",
+      "en_US": "DP-PASO2"
+    },
+    {
+      "id": "msg_0437_00651",
+      "en_US": "DP-TATA"
+    },
+    {
+      "id": "msg_0437_00652",
+      "en_US": "DP-UP"
+    },
+    {
+      "id": "msg_0437_00653",
+      "en_US": "DP-PASO"
+    },
+    {
+      "id": "msg_0437_00654",
+      "en_US": "DP-SYARAAN"
+    },
+    {
+      "id": "msg_0437_00655",
+      "en_US": "DP-TARARARAN"
+    },
+    {
+      "id": "msg_0437_00656",
+      "en_US": "DP-MAZYO"
+    },
+    {
+      "id": "msg_0437_00657",
+      "en_US": "DP-MAZYO3"
+    },
+    {
+      "id": "msg_0437_00658",
+      "en_US": "DP-HYUN"
+    },
+    {
+      "id": "msg_0437_00659",
+      "en_US": "DP-HYUN2"
+    },
+    {
+      "id": "msg_0437_00660",
+      "en_US": "DP-CON-017"
+    },
+    {
+      "id": "msg_0437_00661",
+      "en_US": "DP-BUTTON01"
+    },
+    {
+      "id": "msg_0437_00662",
+      "en_US": "DP-DUMMY8"
+    },
+    {
+      "id": "msg_0437_00663",
+      "en_US": "DP-DUMMY9"
+    },
+    {
+      "id": "msg_0437_00664",
+      "en_US": "DP-DUMMY10"
+    },
+    {
+      "id": "msg_0437_00665",
+      "en_US": "DP-PIKO2"
+    },
+    {
+      "id": "msg_0437_00666",
+      "en_US": "DP-ZUKAN01"
+    },
+    {
+      "id": "msg_0437_00667",
+      "en_US": "DP-DENSI06"
+    },
+    {
+      "id": "msg_0437_00668",
+      "en_US": "DP-DUMMY11"
+    },
+    {
+      "id": "msg_0437_00669",
+      "en_US": "DP-DUMMY12"
+    },
+    {
+      "id": "msg_0437_00670",
+      "en_US": "DP-DUMMY13"
+    },
+    {
+      "id": "msg_0437_00671",
+      "en_US": "DP-MEKURU"
+    },
+    {
+      "id": "msg_0437_00672",
+      "en_US": "DP-MEKURU2"
+    },
+    {
+      "id": "msg_0437_00673",
+      "en_US": "DP-MEKURU3"
+    },
+    {
+      "id": "msg_0437_00674",
+      "en_US": "DP-MIGAKU01"
+    },
+    {
+      "id": "msg_0437_00675",
+      "en_US": "DP-MIGAKU02"
+    },
+    {
+      "id": "msg_0437_00676",
+      "en_US": "DP-BADGE-C"
+    },
+    {
+      "id": "msg_0437_00677",
+      "en_US": "DP-CARD3"
+    },
+    {
+      "id": "msg_0437_00678",
+      "en_US": "DP-CARD5"
+    },
+    {
+      "id": "msg_0437_00679",
+      "en_US": "DP-DUMMY14"
+    },
+    {
+      "id": "msg_0437_00680",
+      "en_US": "DP-DUMMY15"
+    },
+    {
+      "id": "msg_0437_00681",
+      "en_US": "DP-CARD11"
+    },
+    {
+      "id": "msg_0437_00682",
+      "en_US": "DP-KYU01"
+    },
+    {
+      "id": "msg_0437_00683",
+      "en_US": "DP-NAMEIN-01"
+    },
+    {
+      "id": "msg_0437_00684",
+      "en_US": "DP-SYU01"
+    },
+    {
+      "id": "msg_0437_00685",
+      "en_US": "DP-SYU02"
+    },
+    {
+      "id": "msg_0437_00686",
+      "en_US": "DP-SYU03"
+    },
+    {
+      "id": "msg_0437_00687",
+      "en_US": "DP-DECIDE2"
+    },
+    {
+      "id": "msg_0437_00688",
+      "en_US": "DP-POKELIST-001"
+    },
+    {
+      "id": "msg_0437_00689",
+      "en_US": "DP-UG-001"
+    },
+    {
+      "id": "msg_0437_00690",
+      "en_US": "DP-UG-002"
+    },
+    {
+      "id": "msg_0437_00691",
+      "en_US": "DP-UG-003"
+    },
+    {
+      "id": "msg_0437_00692",
+      "en_US": "DP-UG-004"
+    },
+    {
+      "id": "msg_0437_00693",
+      "en_US": "DP-KIRAKIRA3"
+    },
+    {
+      "id": "msg_0437_00694",
+      "en_US": "DP-KIRAKIRA"
+    },
+    {
+      "id": "msg_0437_00695",
+      "en_US": "DP-KIRAKIRA4"
+    },
+    {
+      "id": "msg_0437_00696",
+      "en_US": "DP-KOUKAN01"
+    },
+    {
+      "id": "msg_0437_00697",
+      "en_US": "DP-KOUKAN03"
+    },
+    {
+      "id": "msg_0437_00698",
+      "en_US": "DP-KOUKAN04"
+    },
+    {
+      "id": "msg_0437_00699",
+      "en_US": "DP-KOUKAN05"
+    },
+    {
+      "id": "msg_0437_00700",
+      "en_US": "DP-KOUKAN06"
+    },
+    {
+      "id": "msg_0437_00701",
+      "en_US": "DP-KOUKAN07"
+    },
+    {
+      "id": "msg_0437_00702",
+      "en_US": "DP-KOUKAN08"
+    },
+    {
+      "id": "msg_0437_00703",
+      "en_US": "DP-KOUKAN09"
+    },
+    {
+      "id": "msg_0437_00704",
+      "en_US": "DP-KOUKAN10"
+    },
+    {
+      "id": "msg_0437_00705",
+      "en_US": "DP-NM01"
+    },
+    {
+      "id": "msg_0437_00706",
+      "en_US": "DP-NM02"
+    },
+    {
+      "id": "msg_0437_00707",
+      "en_US": "DP-NM03"
+    },
+    {
+      "id": "msg_0437_00708",
+      "en_US": "DP-NM03-2"
+    },
+    {
+      "id": "msg_0437_00709",
+      "en_US": "DP-NM04"
+    },
+    {
+      "id": "msg_0437_00710",
+      "en_US": "DP-NM04-2"
+    },
+    {
+      "id": "msg_0437_00711",
+      "en_US": "DP-NM04-3"
+    },
+    {
+      "id": "msg_0437_00712",
+      "en_US": "DP-NM05"
+    },
+    {
+      "id": "msg_0437_00713",
+      "en_US": "DP-NM07"
+    },
+    {
+      "id": "msg_0437_00714",
+      "en_US": "DP-NM07-2"
+    },
+    {
+      "id": "msg_0437_00715",
+      "en_US": "DP-NM08"
+    },
+    {
+      "id": "msg_0437_00716",
+      "en_US": "DP-NM09"
+    },
+    {
+      "id": "msg_0437_00717",
+      "en_US": "DP-NM10"
+    },
+    {
+      "id": "msg_0437_00718",
+      "en_US": "DP-NM10-2"
+    },
+    {
+      "id": "msg_0437_00719",
+      "en_US": "DP-NM11"
+    },
+    {
+      "id": "msg_0437_00720",
+      "en_US": "DP-NM12"
+    },
+    {
+      "id": "msg_0437_00721",
+      "en_US": "DP-NM12-2"
+    },
+    {
+      "id": "msg_0437_00722",
+      "en_US": "DP-NM13"
+    },
+    {
+      "id": "msg_0437_00723",
+      "en_US": "DP-NM14"
+    },
+    {
+      "id": "msg_0437_00724",
+      "en_US": "DP-CUSTOM01"
+    },
+    {
+      "id": "msg_0437_00725",
+      "en_US": "DP-CUSTOM02"
+    },
+    {
+      "id": "msg_0437_00726",
+      "en_US": "DP-CUSTOM05"
+    },
+    {
+      "id": "msg_0437_00727",
+      "en_US": "DP-BAG-006"
+    },
+    {
+      "id": "msg_0437_00728",
+      "en_US": "DP-BAG-011"
+    },
+    {
+      "id": "msg_0437_00729",
+      "en_US": "DP-BAG-020"
+    },
+    {
+      "id": "msg_0437_00730",
+      "en_US": "DP-BAG-030"
+    },
+    {
+      "id": "msg_0437_00731",
+      "en_US": "DP-BAG-031"
+    },
+    {
+      "id": "msg_0437_00732",
+      "en_US": "DP-GASA01"
+    },
+    {
+      "id": "msg_0437_00733",
+      "en_US": "DP-GASA02"
+    },
+    {
+      "id": "msg_0437_00734",
+      "en_US": "DP-GASA03"
+    },
+    {
+      "id": "msg_0437_00735",
+      "en_US": "DP-CARD7"
+    },
+    {
+      "id": "msg_0437_00736",
+      "en_US": "DP-SLOT01"
+    },
+    {
+      "id": "msg_0437_00737",
+      "en_US": "DP-SLOT02"
+    },
+    {
+      "id": "msg_0437_00738",
+      "en_US": "DP-CLIMAX01"
+    },
+    {
+      "id": "msg_0437_00739",
+      "en_US": "DP-CLIMAX06"
+    },
+    {
+      "id": "msg_0437_00740",
+      "en_US": "DP-CLIMAX10"
+    },
+    {
+      "id": "msg_0437_00741",
+      "en_US": "DP-CLIMAX15"
+    },
+    {
+      "id": "msg_0437_00742",
+      "en_US": "GS-LINEAR"
+    },
+    {
+      "id": "msg_0437_00743",
+      "en_US": "GS-LINEAR-LR"
+    },
+    {
+      "id": "msg_0437_00744",
+      "en_US": "DP-TRAIN04"
+    },
+    {
+      "id": "msg_0437_00745",
+      "en_US": "DP-SHIP01"
+    },
+    {
+      "id": "msg_0437_00746",
+      "en_US": "DP-SHIP02"
+    },
+    {
+      "id": "msg_0437_00747",
+      "en_US": "DP-SHIP03"
+    },
+    {
+      "id": "msg_0437_00748",
+      "en_US": "DP-CON-001"
+    },
+    {
+      "id": "msg_0437_00749",
+      "en_US": "DP-CON-002"
+    },
+    {
+      "id": "msg_0437_00750",
+      "en_US": "DP-CON-003"
+    },
+    {
+      "id": "msg_0437_00751",
+      "en_US": "DP-CON-004"
+    },
+    {
+      "id": "msg_0437_00752",
+      "en_US": "DP-CON-005"
+    },
+    {
+      "id": "msg_0437_00753",
+      "en_US": "DP-CON-007"
+    },
+    {
+      "id": "msg_0437_00754",
+      "en_US": "DP-CON-019"
+    },
+    {
+      "id": "msg_0437_00755",
+      "en_US": "DP-CON-021"
+    },
+    {
+      "id": "msg_0437_00756",
+      "en_US": "DP-CON-022"
+    },
+    {
+      "id": "msg_0437_00757",
+      "en_US": "DP-CON-023"
+    },
+    {
+      "id": "msg_0437_00758",
+      "en_US": "DP-CON-024"
+    },
+    {
+      "id": "msg_0437_00759",
+      "en_US": "DP-CON-026"
+    },
+    {
+      "id": "msg_0437_00760",
+      "en_US": "DP-CON-027-2"
+    },
+    {
+      "id": "msg_0437_00761",
+      "en_US": "DP-CON-027-3"
+    },
+    {
+      "id": "msg_0437_00762",
+      "en_US": "DP-CON-028"
+    },
+    {
+      "id": "msg_0437_00763",
+      "en_US": "DP-CON-029"
+    },
+    {
+      "id": "msg_0437_00764",
+      "en_US": "DP-CON-030"
+    },
+    {
+      "id": "msg_0437_00765",
+      "en_US": "DP-CON-031"
+    },
+    {
+      "id": "msg_0437_00766",
+      "en_US": "DP-CON-032"
+    },
+    {
+      "id": "msg_0437_00767",
+      "en_US": "DP-CON-033"
+    },
+    {
+      "id": "msg_0437_00768",
+      "en_US": "DP-CON-034"
+    },
+    {
+      "id": "msg_0437_00769",
+      "en_US": "GS-LINEAR2"
+    },
+    {
+      "id": "msg_0437_00770",
+      "en_US": "GS-LINEAR-LR2"
+    },
+    {
+      "id": "msg_0437_00771",
+      "en_US": "GS-LINEAR3"
+    },
+    {
+      "id": "msg_0437_00772",
+      "en_US": "GS-LINEAR-LR3"
+    },
+    {
+      "id": "msg_0437_00773",
+      "en_US": "DUMMY-005"
+    },
+    {
+      "id": "msg_0437_00774",
+      "en_US": "DUMMY-006"
+    },
+    {
+      "id": "msg_0437_00775",
+      "en_US": "DUMMY-007"
+    },
+    {
+      "id": "msg_0437_00776",
+      "en_US": "DUMMY-008"
+    },
+    {
+      "id": "msg_0437_00777",
+      "en_US": "DUMMY-009"
+    },
+    {
+      "id": "msg_0437_00778",
+      "en_US": "DUMMY-010"
+    },
+    {
+      "id": "msg_0437_00779",
+      "en_US": "DUMMY-011"
+    },
+    {
+      "id": "msg_0437_00780",
+      "en_US": "DUMMY-012"
+    },
+    {
+      "id": "msg_0437_00781",
+      "en_US": "DP-KOUKA-H"
+    },
+    {
+      "id": "msg_0437_00782",
+      "en_US": "DP-KOUKA-L"
+    },
+    {
+      "id": "msg_0437_00783",
+      "en_US": "DP-KOUKA-M"
+    },
+    {
+      "id": "msg_0437_00784",
+      "en_US": "DP-NIGERU2"
+    },
+    {
+      "id": "msg_0437_00785",
+      "en_US": "DP-IREKAE"
+    },
+    {
+      "id": "msg_0437_00786",
+      "en_US": "DP-DUMMY16"
+    },
+    {
+      "id": "msg_0437_00787",
+      "en_US": "DP-DUMMY17"
+    },
+    {
+      "id": "msg_0437_00788",
+      "en_US": "DP-POKE-DEAD3"
+    },
+    {
+      "id": "msg_0437_00789",
+      "en_US": "DP-HINSI"
+    },
+    {
+      "id": "msg_0437_00790",
+      "en_US": "DP-SUIKOMU"
+    },
+    {
+      "id": "msg_0437_00791",
+      "en_US": "DP-BOWA2"
+    },
+    {
+      "id": "msg_0437_00792",
+      "en_US": "DP-BOWA3"
+    },
+    {
+      "id": "msg_0437_00793",
+      "en_US": "DP-BOWA4"
+    },
+    {
+      "id": "msg_0437_00794",
+      "en_US": "DP-GETTING"
+    },
+    {
+      "id": "msg_0437_00795",
+      "en_US": "DP-NAGERU"
+    },
+    {
+      "id": "msg_0437_00796",
+      "en_US": "DP-EXP"
+    },
+    {
+      "id": "msg_0437_00797",
+      "en_US": "DP-EXPMAX"
+    },
+    {
+      "id": "msg_0437_00798",
+      "en_US": "DP-EXPMAX2"
+    },
+    {
+      "id": "msg_0437_00799",
+      "en_US": "DP-SLIDEIN"
+    },
+    {
+      "id": "msg_0437_00800",
+      "en_US": "DP-BT-001"
+    },
+    {
+      "id": "msg_0437_00801",
+      "en_US": "DP-REAPOKE"
+    },
+    {
+      "id": "msg_0437_00802",
+      "en_US": "DP-TB-START"
+    },
+    {
+      "id": "msg_0437_00803",
+      "en_US": "DP-TB-KON"
+    },
+    {
+      "id": "msg_0437_00804",
+      "en_US": "DP-TB-KARA"
+    },
+    {
+      "id": "msg_0437_00805",
+      "en_US": "DP-EGG01"
+    },
+    {
+      "id": "msg_0437_00806",
+      "en_US": "DP-VSDEMO01"
+    },
+    {
+      "id": "msg_0437_00807",
+      "en_US": "DP-VSDEMO02"
+    },
+    {
+      "id": "msg_0437_00808",
+      "en_US": "DP-VSDEMO03"
+    },
+    {
+      "id": "msg_0437_00809",
+      "en_US": "DP-VSDEMO04"
+    },
+    {
+      "id": "msg_0437_00810",
+      "en_US": "DP-VSDEMO05"
+    },
+    {
+      "id": "msg_0437_00811",
+      "en_US": "DP-VSDEMO06"
+    },
+    {
+      "id": "msg_0437_00812",
+      "en_US": "DP-VSDEMO07"
+    },
+    {
+      "id": "msg_0437_00813",
+      "en_US": "DP-000"
+    },
+    {
+      "id": "msg_0437_00814",
+      "en_US": "DP-001"
+    },
+    {
+      "id": "msg_0437_00815",
+      "en_US": "DP-003"
+    },
+    {
+      "id": "msg_0437_00816",
+      "en_US": "DP-007"
+    },
+    {
+      "id": "msg_0437_00817",
+      "en_US": "DP-020"
+    },
+    {
+      "id": "msg_0437_00818",
+      "en_US": "DP-021"
+    },
+    {
+      "id": "msg_0437_00819",
+      "en_US": "DP-023"
+    },
+    {
+      "id": "msg_0437_00820",
+      "en_US": "DP-030"
+    },
+    {
+      "id": "msg_0437_00821",
+      "en_US": "DP-030C"
+    },
+    {
+      "id": "msg_0437_00822",
+      "en_US": "DP-031"
+    },
+    {
+      "id": "msg_0437_00823",
+      "en_US": "DP-032"
+    },
+    {
+      "id": "msg_0437_00824",
+      "en_US": "DP-040"
+    },
+    {
+      "id": "msg_0437_00825",
+      "en_US": "DP-041"
+    },
+    {
+      "id": "msg_0437_00826",
+      "en_US": "DP-050"
+    },
+    {
+      "id": "msg_0437_00827",
+      "en_US": "DP-051"
+    },
+    {
+      "id": "msg_0437_00828",
+      "en_US": "DP-052"
+    },
+    {
+      "id": "msg_0437_00829",
+      "en_US": "DP-053"
+    },
+    {
+      "id": "msg_0437_00830",
+      "en_US": "DP-060"
+    },
+    {
+      "id": "msg_0437_00831",
+      "en_US": "DP-061"
+    },
+    {
+      "id": "msg_0437_00832",
+      "en_US": "DP-080"
+    },
+    {
+      "id": "msg_0437_00833",
+      "en_US": "DP-081"
+    },
+    {
+      "id": "msg_0437_00834",
+      "en_US": "DP-100"
+    },
+    {
+      "id": "msg_0437_00835",
+      "en_US": "DP-110"
+    },
+    {
+      "id": "msg_0437_00836",
+      "en_US": "DP-111"
+    },
+    {
+      "id": "msg_0437_00837",
+      "en_US": "DP-112"
+    },
+    {
+      "id": "msg_0437_00838",
+      "en_US": "DP-130"
+    },
+    {
+      "id": "msg_0437_00839",
+      "en_US": "DP-131"
+    },
+    {
+      "id": "msg_0437_00840",
+      "en_US": "DP-140"
+    },
+    {
+      "id": "msg_0437_00841",
+      "en_US": "DP-141"
+    },
+    {
+      "id": "msg_0437_00842",
+      "en_US": "DP-143"
+    },
+    {
+      "id": "msg_0437_00843",
+      "en_US": "DP-145"
+    },
+    {
+      "id": "msg_0437_00844",
+      "en_US": "DP-146"
+    },
+    {
+      "id": "msg_0437_00845",
+      "en_US": "DP-150"
+    },
+    {
+      "id": "msg_0437_00846",
+      "en_US": "DP-151"
+    },
+    {
+      "id": "msg_0437_00847",
+      "en_US": "DP-152"
+    },
+    {
+      "id": "msg_0437_00848",
+      "en_US": "DP-153"
+    },
+    {
+      "id": "msg_0437_00849",
+      "en_US": "DP-154"
+    },
+    {
+      "id": "msg_0437_00850",
+      "en_US": "DP-155"
+    },
+    {
+      "id": "msg_0437_00851",
+      "en_US": "DP-160"
+    },
+    {
+      "id": "msg_0437_00852",
+      "en_US": "DP-161"
+    },
+    {
+      "id": "msg_0437_00853",
+      "en_US": "DP-162"
+    },
+    {
+      "id": "msg_0437_00854",
+      "en_US": "DP-163"
+    },
+    {
+      "id": "msg_0437_00855",
+      "en_US": "DP-164"
+    },
+    {
+      "id": "msg_0437_00856",
+      "en_US": "DP-165"
+    },
+    {
+      "id": "msg_0437_00857",
+      "en_US": "DP-166"
+    },
+    {
+      "id": "msg_0437_00858",
+      "en_US": "DP-170"
+    },
+    {
+      "id": "msg_0437_00859",
+      "en_US": "DP-171"
+    },
+    {
+      "id": "msg_0437_00860",
+      "en_US": "DP-172"
+    },
+    {
+      "id": "msg_0437_00861",
+      "en_US": "DP-180"
+    },
+    {
+      "id": "msg_0437_00862",
+      "en_US": "DP-181"
+    },
+    {
+      "id": "msg_0437_00863",
+      "en_US": "DP-182"
+    },
+    {
+      "id": "msg_0437_00864",
+      "en_US": "DP-183"
+    },
+    {
+      "id": "msg_0437_00865",
+      "en_US": "DP-184"
+    },
+    {
+      "id": "msg_0437_00866",
+      "en_US": "DP-185"
+    },
+    {
+      "id": "msg_0437_00867",
+      "en_US": "DP-186"
+    },
+    {
+      "id": "msg_0437_00868",
+      "en_US": "DP-187"
+    },
+    {
+      "id": "msg_0437_00869",
+      "en_US": "DP-200"
+    },
+    {
+      "id": "msg_0437_00870",
+      "en_US": "DP-201"
+    },
+    {
+      "id": "msg_0437_00871",
+      "en_US": "DP-202"
+    },
+    {
+      "id": "msg_0437_00872",
+      "en_US": "DP-203"
+    },
+    {
+      "id": "msg_0437_00873",
+      "en_US": "DP-204"
+    },
+    {
+      "id": "msg_0437_00874",
+      "en_US": "DP-205"
+    },
+    {
+      "id": "msg_0437_00875",
+      "en_US": "DP-206"
+    },
+    {
+      "id": "msg_0437_00876",
+      "en_US": "DP-207"
+    },
+    {
+      "id": "msg_0437_00877",
+      "en_US": "DP-208"
+    },
+    {
+      "id": "msg_0437_00878",
+      "en_US": "DP-209"
+    },
+    {
+      "id": "msg_0437_00879",
+      "en_US": "DP-210"
+    },
+    {
+      "id": "msg_0437_00880",
+      "en_US": "DP-211"
+    },
+    {
+      "id": "msg_0437_00881",
+      "en_US": "DP-212"
+    },
+    {
+      "id": "msg_0437_00882",
+      "en_US": "DP-213"
+    },
+    {
+      "id": "msg_0437_00883",
+      "en_US": "DP-214"
+    },
+    {
+      "id": "msg_0437_00884",
+      "en_US": "DP-280"
+    },
+    {
+      "id": "msg_0437_00885",
+      "en_US": "DP-281"
+    },
+    {
+      "id": "msg_0437_00886",
+      "en_US": "DP-282"
+    },
+    {
+      "id": "msg_0437_00887",
+      "en_US": "DP-290"
+    },
+    {
+      "id": "msg_0437_00888",
+      "en_US": "DP-291"
+    },
+    {
+      "id": "msg_0437_00889",
+      "en_US": "DP-293"
+    },
+    {
+      "id": "msg_0437_00890",
+      "en_US": "DP-300"
+    },
+    {
+      "id": "msg_0437_00891",
+      "en_US": "DP-350"
+    },
+    {
+      "id": "msg_0437_00892",
+      "en_US": "DP-351"
+    },
+    {
+      "id": "msg_0437_00893",
+      "en_US": "DP-400"
+    },
+    {
+      "id": "msg_0437_00894",
+      "en_US": "DP-401"
+    },
+    {
+      "id": "msg_0437_00895",
+      "en_US": "DP-402"
+    },
+    {
+      "id": "msg_0437_00896",
+      "en_US": "DP-480"
+    },
+    {
+      "id": "msg_0437_00897",
+      "en_US": "DP-W003"
+    },
+    {
+      "id": "msg_0437_00898",
+      "en_US": "DP-W004"
+    },
+    {
+      "id": "msg_0437_00899",
+      "en_US": "DP-W006"
+    },
+    {
+      "id": "msg_0437_00900",
+      "en_US": "DP-W007"
+    },
+    {
+      "id": "msg_0437_00901",
+      "en_US": "DP-W010"
+    },
+    {
+      "id": "msg_0437_00902",
+      "en_US": "DP-W011"
+    },
+    {
+      "id": "msg_0437_00903",
+      "en_US": "DP-W013"
+    },
+    {
+      "id": "msg_0437_00904",
+      "en_US": "DP-W013B"
+    },
+    {
+      "id": "msg_0437_00905",
+      "en_US": "DP-W014"
+    },
+    {
+      "id": "msg_0437_00906",
+      "en_US": "DP-W015"
+    },
+    {
+      "id": "msg_0437_00907",
+      "en_US": "DP-W016"
+    },
+    {
+      "id": "msg_0437_00908",
+      "en_US": "DP-W016B"
+    },
+    {
+      "id": "msg_0437_00909",
+      "en_US": "DP-W017"
+    },
+    {
+      "id": "msg_0437_00910",
+      "en_US": "DP-W019"
+    },
+    {
+      "id": "msg_0437_00911",
+      "en_US": "DP-W020"
+    },
+    {
+      "id": "msg_0437_00912",
+      "en_US": "DP-W020B"
+    },
+    {
+      "id": "msg_0437_00913",
+      "en_US": "DP-W025B"
+    },
+    {
+      "id": "msg_0437_00914",
+      "en_US": "DP-W025C"
+    },
+    {
+      "id": "msg_0437_00915",
+      "en_US": "DP-W026"
+    },
+    {
+      "id": "msg_0437_00916",
+      "en_US": "DP-W028"
+    },
+    {
+      "id": "msg_0437_00917",
+      "en_US": "DP-W028B"
+    },
+    {
+      "id": "msg_0437_00918",
+      "en_US": "DP-W029"
+    },
+    {
+      "id": "msg_0437_00919",
+      "en_US": "DP-W030"
+    },
+    {
+      "id": "msg_0437_00920",
+      "en_US": "DP-W036"
+    },
+    {
+      "id": "msg_0437_00921",
+      "en_US": "DP-W039"
+    },
+    {
+      "id": "msg_0437_00922",
+      "en_US": "DP-W040"
+    },
+    {
+      "id": "msg_0437_00923",
+      "en_US": "DP-W043"
+    },
+    {
+      "id": "msg_0437_00924",
+      "en_US": "DP-W043B"
+    },
+    {
+      "id": "msg_0437_00925",
+      "en_US": "DP-W043C"
+    },
+    {
+      "id": "msg_0437_00926",
+      "en_US": "DP-W043D"
+    },
+    {
+      "id": "msg_0437_00927",
+      "en_US": "DP-W044"
+    },
+    {
+      "id": "msg_0437_00928",
+      "en_US": "DP-W047"
+    },
+    {
+      "id": "msg_0437_00929",
+      "en_US": "DP-W048"
+    },
+    {
+      "id": "msg_0437_00930",
+      "en_US": "DP-W052"
+    },
+    {
+      "id": "msg_0437_00931",
+      "en_US": "DP-W053"
+    },
+    {
+      "id": "msg_0437_00932",
+      "en_US": "DP-W053B"
+    },
+    {
+      "id": "msg_0437_00933",
+      "en_US": "DP-W054"
+    },
+    {
+      "id": "msg_0437_00934",
+      "en_US": "DP-W055"
+    },
+    {
+      "id": "msg_0437_00935",
+      "en_US": "DP-W056"
+    },
+    {
+      "id": "msg_0437_00936",
+      "en_US": "DP-W056B"
+    },
+    {
+      "id": "msg_0437_00937",
+      "en_US": "DP-W057"
+    },
+    {
+      "id": "msg_0437_00938",
+      "en_US": "DP-W057B"
+    },
+    {
+      "id": "msg_0437_00939",
+      "en_US": "DP-W059"
+    },
+    {
+      "id": "msg_0437_00940",
+      "en_US": "DP-W059B"
+    },
+    {
+      "id": "msg_0437_00941",
+      "en_US": "DP-W060"
+    },
+    {
+      "id": "msg_0437_00942",
+      "en_US": "DP-W062D"
+    },
+    {
+      "id": "msg_0437_00943",
+      "en_US": "DP-W060B"
+    },
+    {
+      "id": "msg_0437_00944",
+      "en_US": "DP-W063"
+    },
+    {
+      "id": "msg_0437_00945",
+      "en_US": "DP-W063B"
+    },
+    {
+      "id": "msg_0437_00946",
+      "en_US": "DP-W063C"
+    },
+    {
+      "id": "msg_0437_00947",
+      "en_US": "DP-W070"
+    },
+    {
+      "id": "msg_0437_00948",
+      "en_US": "DP-W071"
+    },
+    {
+      "id": "msg_0437_00949",
+      "en_US": "DP-W071B"
+    },
+    {
+      "id": "msg_0437_00950",
+      "en_US": "DP-W076"
+    },
+    {
+      "id": "msg_0437_00951",
+      "en_US": "DP-W076B"
+    },
+    {
+      "id": "msg_0437_00952",
+      "en_US": "DP-W077"
+    },
+    {
+      "id": "msg_0437_00953",
+      "en_US": "DP-W077B"
+    },
+    {
+      "id": "msg_0437_00954",
+      "en_US": "DP-W080B"
+    },
+    {
+      "id": "msg_0437_00955",
+      "en_US": "DP-W080C"
+    },
+    {
+      "id": "msg_0437_00956",
+      "en_US": "DP-W081"
+    },
+    {
+      "id": "msg_0437_00957",
+      "en_US": "DP-W081B"
+    },
+    {
+      "id": "msg_0437_00958",
+      "en_US": "DP-W082"
+    },
+    {
+      "id": "msg_0437_00959",
+      "en_US": "DP-W082B"
+    },
+    {
+      "id": "msg_0437_00960",
+      "en_US": "DP-W082C"
+    },
+    {
+      "id": "msg_0437_00961",
+      "en_US": "DP-W085"
+    },
+    {
+      "id": "msg_0437_00962",
+      "en_US": "DP-W085B"
+    },
+    {
+      "id": "msg_0437_00963",
+      "en_US": "DP-W085C"
+    },
+    {
+      "id": "msg_0437_00964",
+      "en_US": "DP-W086"
+    },
+    {
+      "id": "msg_0437_00965",
+      "en_US": "DP-W088"
+    },
+    {
+      "id": "msg_0437_00966",
+      "en_US": "DP-W089"
+    },
+    {
+      "id": "msg_0437_00967",
+      "en_US": "DP-W089B"
+    },
+    {
+      "id": "msg_0437_00968",
+      "en_US": "DP-W090"
+    },
+    {
+      "id": "msg_0437_00969",
+      "en_US": "DP-W091"
+    },
+    {
+      "id": "msg_0437_00970",
+      "en_US": "DP-W092"
+    },
+    {
+      "id": "msg_0437_00971",
+      "en_US": "DP-W092B"
+    },
+    {
+      "id": "msg_0437_00972",
+      "en_US": "DP-W092D"
+    },
+    {
+      "id": "msg_0437_00973",
+      "en_US": "DP-W100"
+    },
+    {
+      "id": "msg_0437_00974",
+      "en_US": "DP-W100B"
+    },
+    {
+      "id": "msg_0437_00975",
+      "en_US": "DP-W103"
+    },
+    {
+      "id": "msg_0437_00976",
+      "en_US": "DP-W104"
+    },
+    {
+      "id": "msg_0437_00977",
+      "en_US": "DP-W107"
+    },
+    {
+      "id": "msg_0437_00978",
+      "en_US": "DP-W109"
+    },
+    {
+      "id": "msg_0437_00979",
+      "en_US": "DP-W109B"
+    },
+    {
+      "id": "msg_0437_00980",
+      "en_US": "DP-W112"
+    },
+    {
+      "id": "msg_0437_00981",
+      "en_US": "DP-W112B"
+    },
+    {
+      "id": "msg_0437_00982",
+      "en_US": "DP-W114"
+    },
+    {
+      "id": "msg_0437_00983",
+      "en_US": "DP-W115"
+    },
+    {
+      "id": "msg_0437_00984",
+      "en_US": "DP-W118"
+    },
+    {
+      "id": "msg_0437_00985",
+      "en_US": "DP-W118B"
+    },
+    {
+      "id": "msg_0437_00986",
+      "en_US": "DP-W120"
+    },
+    {
+      "id": "msg_0437_00987",
+      "en_US": "DP-W122"
+    },
+    {
+      "id": "msg_0437_00988",
+      "en_US": "DP-W127"
+    },
+    {
+      "id": "msg_0437_00989",
+      "en_US": "DP-W129"
+    },
+    {
+      "id": "msg_0437_00990",
+      "en_US": "DP-W145"
+    },
+    {
+      "id": "msg_0437_00991",
+      "en_US": "DP-W145B"
+    },
+    {
+      "id": "msg_0437_00992",
+      "en_US": "DP-W145C"
+    },
+    {
+      "id": "msg_0437_00993",
+      "en_US": "DP-W145D"
+    },
+    {
+      "id": "msg_0437_00994",
+      "en_US": "DP-W146"
+    },
+    {
+      "id": "msg_0437_00995",
+      "en_US": "DP-W151"
+    },
+    {
+      "id": "msg_0437_00996",
+      "en_US": "DP-W152"
+    },
+    {
+      "id": "msg_0437_00997",
+      "en_US": "DP-W153"
+    },
+    {
+      "id": "msg_0437_00998",
+      "en_US": "DP-W155"
+    },
+    {
+      "id": "msg_0437_00999",
+      "en_US": "DP-W161"
+    },
+    {
+      "id": "msg_0437_01000",
+      "en_US": "DP-W161B"
+    },
+    {
+      "id": "msg_0437_01001",
+      "en_US": "DP-W166"
+    },
+    {
+      "id": "msg_0437_01002",
+      "en_US": "DP-W171"
+    },
+    {
+      "id": "msg_0437_01003",
+      "en_US": "DP-W172"
+    },
+    {
+      "id": "msg_0437_01004",
+      "en_US": "DP-W172B"
+    },
+    {
+      "id": "msg_0437_01005",
+      "en_US": "DP-W173"
+    },
+    {
+      "id": "msg_0437_01006",
+      "en_US": "DP-W173B"
+    },
+    {
+      "id": "msg_0437_01007",
+      "en_US": "DP-W173C"
+    },
+    {
+      "id": "msg_0437_01008",
+      "en_US": "DP-W179"
+    },
+    {
+      "id": "msg_0437_01009",
+      "en_US": "DP-W185"
+    },
+    {
+      "id": "msg_0437_01010",
+      "en_US": "DP-W187"
+    },
+    {
+      "id": "msg_0437_01011",
+      "en_US": "DP-W195"
+    },
+    {
+      "id": "msg_0437_01012",
+      "en_US": "DP-W196"
+    },
+    {
+      "id": "msg_0437_01013",
+      "en_US": "DP-W197"
+    },
+    {
+      "id": "msg_0437_01014",
+      "en_US": "DP-W199"
+    },
+    {
+      "id": "msg_0437_01015",
+      "en_US": "DP-W201"
+    },
+    {
+      "id": "msg_0437_01016",
+      "en_US": "DP-W202"
+    },
+    {
+      "id": "msg_0437_01017",
+      "en_US": "DP-W202B"
+    },
+    {
+      "id": "msg_0437_01018",
+      "en_US": "DP-W204"
+    },
+    {
+      "id": "msg_0437_01019",
+      "en_US": "DP-W207"
+    },
+    {
+      "id": "msg_0437_01020",
+      "en_US": "DP-W207B"
+    },
+    {
+      "id": "msg_0437_01021",
+      "en_US": "DP-W207C"
+    },
+    {
+      "id": "msg_0437_01022",
+      "en_US": "DP-W207D"
+    },
+    {
+      "id": "msg_0437_01023",
+      "en_US": "DP-W208"
+    },
+    {
+      "id": "msg_0437_01024",
+      "en_US": "DP-W209"
+    },
+    {
+      "id": "msg_0437_01025",
+      "en_US": "DP-W213"
+    },
+    {
+      "id": "msg_0437_01026",
+      "en_US": "DP-W215"
+    },
+    {
+      "id": "msg_0437_01027",
+      "en_US": "DP-W221B"
+    },
+    {
+      "id": "msg_0437_01028",
+      "en_US": "DP-W227"
+    },
+    {
+      "id": "msg_0437_01029",
+      "en_US": "DP-W227B"
+    },
+    {
+      "id": "msg_0437_01030",
+      "en_US": "DP-W230"
+    },
+    {
+      "id": "msg_0437_01031",
+      "en_US": "DP-W231"
+    },
+    {
+      "id": "msg_0437_01032",
+      "en_US": "DP-W233"
+    },
+    {
+      "id": "msg_0437_01033",
+      "en_US": "DP-W233B"
+    },
+    {
+      "id": "msg_0437_01034",
+      "en_US": "DP-W234"
+    },
+    {
+      "id": "msg_0437_01035",
+      "en_US": "DP-W236"
+    },
+    {
+      "id": "msg_0437_01036",
+      "en_US": "DP-W239"
+    },
+    {
+      "id": "msg_0437_01037",
+      "en_US": "DP-W240"
+    },
+    {
+      "id": "msg_0437_01038",
+      "en_US": "DP-W250"
+    },
+    {
+      "id": "msg_0437_01039",
+      "en_US": "DP-W253"
+    },
+    {
+      "id": "msg_0437_01040",
+      "en_US": "DP-W255"
+    },
+    {
+      "id": "msg_0437_01041",
+      "en_US": "DP-W255B"
+    },
+    {
+      "id": "msg_0437_01042",
+      "en_US": "DP-W255E"
+    },
+    {
+      "id": "msg_0437_01043",
+      "en_US": "DP-W255F"
+    },
+    {
+      "id": "msg_0437_01044",
+      "en_US": "DP-W257"
+    },
+    {
+      "id": "msg_0437_01045",
+      "en_US": "DP-W258"
+    },
+    {
+      "id": "msg_0437_01046",
+      "en_US": "DP-W260"
+    },
+    {
+      "id": "msg_0437_01047",
+      "en_US": "DP-W278"
+    },
+    {
+      "id": "msg_0437_01048",
+      "en_US": "DP-W280"
+    },
+    {
+      "id": "msg_0437_01049",
+      "en_US": "DP-W280B"
+    },
+    {
+      "id": "msg_0437_01050",
+      "en_US": "DP-W281"
+    },
+    {
+      "id": "msg_0437_01051",
+      "en_US": "DP-W287B"
+    },
+    {
+      "id": "msg_0437_01052",
+      "en_US": "DP-W287"
+    },
+    {
+      "id": "msg_0437_01053",
+      "en_US": "DP-W291"
+    },
+    {
+      "id": "msg_0437_01054",
+      "en_US": "DP-W298"
+    },
+    {
+      "id": "msg_0437_01055",
+      "en_US": "DP-W320"
+    },
+    {
+      "id": "msg_0437_01056",
+      "en_US": "DP-W322"
+    },
+    {
+      "id": "msg_0437_01057",
+      "en_US": "DP-W327"
+    },
+    {
+      "id": "msg_0437_01058",
+      "en_US": "DP-W356"
+    },
+    {
+      "id": "msg_0437_01059",
+      "en_US": "DP-W360"
+    },
+    {
+      "id": "msg_0437_01060",
+      "en_US": "DP-W360B"
+    },
+    {
+      "id": "msg_0437_01061",
+      "en_US": "DP-W360C"
+    },
+    {
+      "id": "msg_0437_01062",
+      "en_US": "DP-W361"
+    },
+    {
+      "id": "msg_0437_01063",
+      "en_US": "DP-W362"
+    },
+    {
+      "id": "msg_0437_01064",
+      "en_US": "DP-W363"
+    },
+    {
+      "id": "msg_0437_01065",
+      "en_US": "DP-W367"
+    },
+    {
+      "id": "msg_0437_01066",
+      "en_US": "DP-W368"
+    },
+    {
+      "id": "msg_0437_01067",
+      "en_US": "DP-W373"
+    },
+    {
+      "id": "msg_0437_01068",
+      "en_US": "DP-W374"
+    },
+    {
+      "id": "msg_0437_01069",
+      "en_US": "DP-W375"
+    },
+    {
+      "id": "msg_0437_01070",
+      "en_US": "DP-W376"
+    },
+    {
+      "id": "msg_0437_01071",
+      "en_US": "DP-W376B"
+    },
+    {
+      "id": "msg_0437_01072",
+      "en_US": "DP-W377"
+    },
+    {
+      "id": "msg_0437_01073",
+      "en_US": "DP-W379"
+    },
+    {
+      "id": "msg_0437_01074",
+      "en_US": "DP-W380"
+    },
+    {
+      "id": "msg_0437_01075",
+      "en_US": "DP-W381"
+    },
+    {
+      "id": "msg_0437_01076",
+      "en_US": "DP-W383"
+    },
+    {
+      "id": "msg_0437_01077",
+      "en_US": "DP-W387"
+    },
+    {
+      "id": "msg_0437_01078",
+      "en_US": "DP-W392"
+    },
+    {
+      "id": "msg_0437_01079",
+      "en_US": "DP-W399"
+    },
+    {
+      "id": "msg_0437_01080",
+      "en_US": "DP-W405"
+    },
+    {
+      "id": "msg_0437_01081",
+      "en_US": "DP-W408"
+    },
+    {
+      "id": "msg_0437_01082",
+      "en_US": "DP-W411"
+    },
+    {
+      "id": "msg_0437_01083",
+      "en_US": "DP-W412"
+    },
+    {
+      "id": "msg_0437_01084",
+      "en_US": "DP-W413"
+    },
+    {
+      "id": "msg_0437_01085",
+      "en_US": "DP-W419"
+    },
+    {
+      "id": "msg_0437_01086",
+      "en_US": "DP-W426"
+    },
+    {
+      "id": "msg_0437_01087",
+      "en_US": "DP-W428"
+    },
+    {
+      "id": "msg_0437_01088",
+      "en_US": "DP-W434"
+    },
+    {
+      "id": "msg_0437_01089",
+      "en_US": "DP-W436"
+    },
+    {
+      "id": "msg_0437_01090",
+      "en_US": "DP-W443B"
+    },
+    {
+      "id": "msg_0437_01091",
+      "en_US": "DP-W452"
+    },
+    {
+      "id": "msg_0437_01092",
+      "en_US": "DP-W456"
+    },
+    {
+      "id": "msg_0437_01093",
+      "en_US": "DP-W459"
+    },
+    {
+      "id": "msg_0437_01094",
+      "en_US": "DP-W460"
+    },
+    {
+      "id": "msg_0437_01095",
+      "en_US": "DP-W461"
+    },
+    {
+      "id": "msg_0437_01096",
+      "en_US": "DP-W462"
+    },
+    {
+      "id": "msg_0437_01097",
+      "en_US": "DP-W463"
+    },
+    {
+      "id": "msg_0437_01098",
+      "en_US": "DP-W464"
+    },
+    {
+      "id": "msg_0437_01099",
+      "en_US": "DP-W465"
+    },
+    {
+      "id": "msg_0437_01100",
+      "en_US": "DP-W466"
+    },
+    {
+      "id": "msg_0437_01101",
+      "en_US": "DP-W467"
+    },
+    {
+      "id": "msg_0437_01102",
+      "en_US": "DP-SUIRYU"
+    },
+    {
+      "id": "msg_0437_01103",
+      "en_US": "DP-KIRAKIRA2"
+    },
+    {
+      "id": "msg_0437_01104",
+      "en_US": "DP-BAN"
+    },
+    {
+      "id": "msg_0437_01105",
+      "en_US": "DP-BASABASA"
+    },
+    {
+      "id": "msg_0437_01106",
+      "en_US": "DP-SHUSHU"
+    },
+    {
+      "id": "msg_0437_01107",
+      "en_US": "DP-KAMI"
+    },
+    {
+      "id": "msg_0437_01108",
+      "en_US": "DP-KAMI2"
+    },
+    {
+      "id": "msg_0437_01109",
+      "en_US": "DP-BASI"
+    },
+    {
+      "id": "msg_0437_01110",
+      "en_US": "DP-AWA"
+    },
+    {
+      "id": "msg_0437_01111",
+      "en_US": "DP-NAMI"
+    },
+    {
+      "id": "msg_0437_01112",
+      "en_US": "DP-HURU"
+    },
+    {
+      "id": "msg_0437_01113",
+      "en_US": "DP-HURU2"
+    },
+    {
+      "id": "msg_0437_01114",
+      "en_US": "DP-KAZE"
+    },
+    {
+      "id": "msg_0437_01115",
+      "en_US": "DP-KAZE2"
+    },
+    {
+      "id": "msg_0437_01116",
+      "en_US": "DP-MUCHI"
+    },
+    {
+      "id": "msg_0437_01117",
+      "en_US": "DP-BRADE"
+    },
+    {
+      "id": "msg_0437_01118",
+      "en_US": "DP-BFBRADE"
+    },
+    {
+      "id": "msg_0437_01119",
+      "en_US": "DP-PASA"
+    },
+    {
+      "id": "msg_0437_01120",
+      "en_US": "DP-PASA2"
+    },
+    {
+      "id": "msg_0437_01121",
+      "en_US": "DP-PASA3"
+    },
+    {
+      "id": "msg_0437_01122",
+      "en_US": "DP-KIRAN"
+    },
+    {
+      "id": "msg_0437_01123",
+      "en_US": "DP-GASHIN"
+    },
+    {
+      "id": "msg_0437_01124",
+      "en_US": "DP-DODON"
+    },
+    {
+      "id": "msg_0437_01125",
+      "en_US": "GS-N-SESERAGI"
+    },
+    {
+      "id": "msg_0437_01126",
+      "en_US": "GS-N-UMIBE"
+    },
+    {
+      "id": "msg_0437_01127",
+      "en_US": "GS-N-HUUSHA"
+    },
+    {
+      "id": "msg_0437_01128",
+      "en_US": "GS-N-HASHIRA"
+    },
+    {
+      "id": "msg_0437_01129",
+      "en_US": "GS-N-ENGINE"
+    },
+    {
+      "id": "msg_0437_01130",
+      "en_US": "GS-N-KABIGON"
+    },
+    {
+      "id": "msg_0437_01131",
+      "en_US": "GS-N-KANE"
+    },
+    {
+      "id": "msg_0437_01132",
+      "en_US": "GS-N-KAZE"
+    },
+    {
+      "id": "msg_0437_01133",
+      "en_US": "GS-N-KITEKI"
+    },
+    {
+      "id": "msg_0437_01134",
+      "en_US": "GS-N-MOTER"
+    },
+    {
+      "id": "msg_0437_01135",
+      "en_US": "GS-N-LINEAR"
+    },
+    {
+      "id": "msg_0437_01136",
+      "en_US": "GS-N-TAKI"
+    },
+    {
+      "id": "msg_0437_01137",
+      "en_US": "GS-N-UZUSIO"
+    },
+    {
+      "id": "msg_0437_01138",
+      "en_US": "GS-N-YOUGAN"
+    },
+    {
+      "id": "msg_0437_01139",
+      "en_US": "GS-N-HUNSUI"
+    },
+    {
+      "id": "msg_0437_01140",
+      "en_US": "GS-N-KANSEI"
+    },
+    {
+      "id": "msg_0437_01141",
+      "en_US": "GS-N-DENKI"
+    },
+    {
+      "id": "msg_0437_01142",
+      "en_US": "GS-KABIGON-IBIKI"
+    },
+    {
+      "id": "msg_0437_01143",
+      "en_US": "GS-DENGEKIBARIA"
+    },
+    {
+      "id": "msg_0437_01144",
+      "en_US": "GS-STADIUM-KANSEI"
+    },
+    {
+      "id": "msg_0437_01145",
+      "en_US": "GS-TAKI-RUGIADEMO"
+    },
+    {
+      "id": "msg_0437_01146",
+      "en_US": "GS-KYOUHUU"
+    },
+    {
+      "id": "msg_0437_01147",
+      "en_US": "GS-OCHIBA"
+    },
+    {
+      "id": "msg_0437_01148",
+      "en_US": "GS-ASHIOTO"
+    },
+    {
+      "id": "msg_0437_01149",
+      "en_US": "GS-ASHIOTO-A-WALK"
+    },
+    {
+      "id": "msg_0437_01150",
+      "en_US": "GS-ASHIOTO-A"
+    },
+    {
+      "id": "msg_0437_01151",
+      "en_US": "GS-ASHIOTO-B"
+    },
+    {
+      "id": "msg_0437_01152",
+      "en_US": "GS-ASHIOTO-C"
+    },
+    {
+      "id": "msg_0437_01153",
+      "en_US": "GS-ASHIOTO-D"
+    },
+    {
+      "id": "msg_0437_01154",
+      "en_US": "GS-ASHIOTO-D-2"
+    },
+    {
+      "id": "msg_0437_01155",
+      "en_US": "GS-ASHIOTO-E"
+    },
+    {
+      "id": "msg_0437_01156",
+      "en_US": "GS-ASHIOTO-F"
+    },
+    {
+      "id": "msg_0437_01157",
+      "en_US": "GS-ASHIOTO-G"
+    },
+    {
+      "id": "msg_0437_01158",
+      "en_US": "GS-ASHIOTO-H"
+    },
+    {
+      "id": "msg_0437_01159",
+      "en_US": "GS-EDAPAKI"
+    },
+    {
+      "id": "msg_0437_01160",
+      "en_US": "GS-KUSA2"
+    },
+    {
+      "id": "msg_0437_01161",
+      "en_US": "GS-PHONE0"
+    },
+    {
+      "id": "msg_0437_01162",
+      "en_US": "GS-PHONE1"
+    },
+    {
+      "id": "msg_0437_01163",
+      "en_US": "GS-PHONE-OFF"
+    },
+    {
+      "id": "msg_0437_01164",
+      "en_US": "GS-ITOMARU-ROBO"
+    },
+    {
+      "id": "msg_0437_01165",
+      "en_US": "GS-TAKI2"
+    },
+    {
+      "id": "msg_0437_01166",
+      "en_US": "GS-AJITO-SIREN"
+    },
+    {
+      "id": "msg_0437_01167",
+      "en_US": "GS-DENKI-TRAP"
+    },
+    {
+      "id": "msg_0437_01168",
+      "en_US": "GS-DOKU-TRAP"
+    },
+    {
+      "id": "msg_0437_01169",
+      "en_US": "GS-SUNA-TRAP"
+    },
+    {
+      "id": "msg_0437_01170",
+      "en_US": "GS-IWA-TRAP"
+    },
+    {
+      "id": "msg_0437_01171",
+      "en_US": "GS-ICE-SLIP"
+    },
+    {
+      "id": "msg_0437_01172",
+      "en_US": "GS-RAKKA"
+    },
+    {
+      "id": "msg_0437_01173",
+      "en_US": "GS-RAKKA01"
+    },
+    {
+      "id": "msg_0437_01174",
+      "en_US": "GS-IWAOTOSHI"
+    },
+    {
+      "id": "msg_0437_01175",
+      "en_US": "GS-IWAOTOSHI01"
+    },
+    {
+      "id": "msg_0437_01176",
+      "en_US": "GS-IWAOTOSHI02"
+    },
+    {
+      "id": "msg_0437_01177",
+      "en_US": "GS-KP01"
+    },
+    {
+      "id": "msg_0437_01178",
+      "en_US": "GS-MIZU"
+    },
+    {
+      "id": "msg_0437_01179",
+      "en_US": "GS-GII"
+    },
+    {
+      "id": "msg_0437_01180",
+      "en_US": "DP-FW411"
+    },
+    {
+      "id": "msg_0437_01181",
+      "en_US": "DP-F207"
+    },
+    {
+      "id": "msg_0437_01182",
+      "en_US": "GS-POINT1"
+    },
+    {
+      "id": "msg_0437_01183",
+      "en_US": "GS-POINT2"
+    },
+    {
+      "id": "msg_0437_01184",
+      "en_US": "GS-POINT3"
+    },
+    {
+      "id": "msg_0437_01185",
+      "en_US": "GS-W146"
+    },
+    {
+      "id": "msg_0437_01186",
+      "en_US": "GS-DODON"
+    },
+    {
+      "id": "msg_0437_01187",
+      "en_US": "GS-CON-016"
+    },
+    {
+      "id": "msg_0437_01188",
+      "en_US": "GS-TERERE2"
+    },
+    {
+      "id": "msg_0437_01189",
+      "en_US": "GS-TERERE3"
+    },
+    {
+      "id": "msg_0437_01190",
+      "en_US": "GS-TERERE4"
+    },
+    {
+      "id": "msg_0437_01191",
+      "en_US": "GS-KYU"
+    },
+    {
+      "id": "msg_0437_01192",
+      "en_US": "GS-ENDCOUNT"
+    },
+    {
+      "id": "msg_0437_01193",
+      "en_US": "GS-NEWRECORD"
+    },
+    {
+      "id": "msg_0437_01194",
+      "en_US": "GS-FINISH"
+    },
+    {
+      "id": "msg_0437_01195",
+      "en_US": "GS-TOUCHPEN"
+    },
+    {
+      "id": "msg_0437_01196",
+      "en_US": "GS-CHANGE1"
+    },
+    {
+      "id": "msg_0437_01197",
+      "en_US": "GS-CHANGE2"
+    },
+    {
+      "id": "msg_0437_01198",
+      "en_US": "GS-STARTCOUNT"
+    },
+    {
+      "id": "msg_0437_01199",
+      "en_US": "GS-PUSH02"
+    },
+    {
+      "id": "msg_0437_01200",
+      "en_US": "GS-PUSH03"
+    },
+    {
+      "id": "msg_0437_01201",
+      "en_US": "GS-W255E"
+    },
+    {
+      "id": "msg_0437_01202",
+      "en_US": "GS-NM12"
+    },
+    {
+      "id": "msg_0437_01203",
+      "en_US": "GS-THLON05"
+    },
+    {
+      "id": "msg_0437_01204",
+      "en_US": "GS-THLON06"
+    },
+    {
+      "id": "msg_0437_01205",
+      "en_US": "GS-THLON07"
+    },
+    {
+      "id": "msg_0437_01206",
+      "en_US": "GS-W436"
+    },
+    {
+      "id": "msg_0437_01207",
+      "en_US": "GS-FW015-1"
+    },
+    {
+      "id": "msg_0437_01208",
+      "en_US": "GS-FW015-2"
+    },
+    {
+      "id": "msg_0437_01209",
+      "en_US": "GS-SUTYA"
+    },
+    {
+      "id": "msg_0437_01210",
+      "en_US": "GS-186"
+    },
+    {
+      "id": "msg_0437_01211",
+      "en_US": "GS-MOGURU"
+    },
+    {
+      "id": "msg_0437_01212",
+      "en_US": "GS-MYGOAL"
+    },
+    {
+      "id": "msg_0437_01213",
+      "en_US": "GS-FW104"
+    },
+    {
+      "id": "msg_0437_01214",
+      "en_US": "GS-BAN"
+    },
+    {
+      "id": "msg_0437_01215",
+      "en_US": "GS-W091"
+    },
+    {
+      "id": "msg_0437_01216",
+      "en_US": "GS-NIGI"
+    },
+    {
+      "id": "msg_0437_01217",
+      "en_US": "GS-TAMA"
+    },
+    {
+      "id": "msg_0437_01218",
+      "en_US": "GS-166"
+    },
+    {
+      "id": "msg_0437_01219",
+      "en_US": "GS-TAMA2"
+    },
+    {
+      "id": "msg_0437_01220",
+      "en_US": "GS-TAMA3"
+    },
+    {
+      "id": "msg_0437_01221",
+      "en_US": "GS-W100"
+    },
+    {
+      "id": "msg_0437_01222",
+      "en_US": "GS-NAGERU"
+    },
+    {
+      "id": "msg_0437_01223",
+      "en_US": "GS-BOWA2"
+    },
+    {
+      "id": "msg_0437_01224",
+      "en_US": "GS-THLON-HIT"
+    },
+    {
+      "id": "msg_0437_01225",
+      "en_US": "GS-W260"
+    },
+    {
+      "id": "msg_0437_01226",
+      "en_US": "GS-W085"
+    },
+    {
+      "id": "msg_0437_01227",
+      "en_US": "GS-W280B"
+    },
+    {
+      "id": "msg_0437_01228",
+      "en_US": "GS-KOUKA-H"
+    },
+    {
+      "id": "msg_0437_01229",
+      "en_US": "GS-HAMARU"
+    },
+    {
+      "id": "msg_0437_01230",
+      "en_US": "GS-KI-GASYAN"
+    },
+    {
+      "id": "msg_0437_01231",
+      "en_US": "GS-W052"
+    },
+    {
+      "id": "msg_0437_01232",
+      "en_US": "GS-186-2"
+    },
+    {
+      "id": "msg_0437_01233",
+      "en_US": "GS-W082"
+    },
+    {
+      "id": "msg_0437_01234",
+      "en_US": "GS-KAWARATUMU"
+    },
+    {
+      "id": "msg_0437_01235",
+      "en_US": "GS-GUGU"
+    },
+    {
+      "id": "msg_0437_01236",
+      "en_US": "GS-W030"
+    },
+    {
+      "id": "msg_0437_01237",
+      "en_US": "GS-W280"
+    },
+    {
+      "id": "msg_0437_01238",
+      "en_US": "GS-UFO-JUMP"
+    },
+    {
+      "id": "msg_0437_01239",
+      "en_US": "GS-WH01"
+    },
+    {
+      "id": "msg_0437_01240",
+      "en_US": "GS-SHOT"
+    },
+    {
+      "id": "msg_0437_01241",
+      "en_US": "GS-W452"
+    },
+    {
+      "id": "msg_0437_01242",
+      "en_US": "GS-THLON09"
+    },
+    {
+      "id": "msg_0437_01243",
+      "en_US": "GS-APPEAR"
+    },
+    {
+      "id": "msg_0437_01244",
+      "en_US": "GS-WH02"
+    },
+    {
+      "id": "msg_0437_01245",
+      "en_US": "GS-DASH"
+    },
+    {
+      "id": "msg_0437_01246",
+      "en_US": "GS-SAA"
+    },
+    {
+      "id": "msg_0437_01247",
+      "en_US": "GS-HATAMOTENAI"
+    },
+    {
+      "id": "msg_0437_01248",
+      "en_US": "GS-TIMERZERO"
+    },
+    {
+      "id": "msg_0437_01249",
+      "en_US": "GS-TACKLEHIT"
+    },
+    {
+      "id": "msg_0437_01250",
+      "en_US": "GS-TACKLEHATUDOU"
+    },
+    {
+      "id": "msg_0437_01251",
+      "en_US": "GS-PRESSHIT"
+    },
+    {
+      "id": "msg_0437_01252",
+      "en_US": "GS-PRESSCHAKUCHI"
+    },
+    {
+      "id": "msg_0437_01253",
+      "en_US": "GS-IDOUHIT"
+    },
+    {
+      "id": "msg_0437_01254",
+      "en_US": "GS-TACKLEHATUDOU2"
+    },
+    {
+      "id": "msg_0437_01255",
+      "en_US": "GS-GAMENFADE"
+    },
+    {
+      "id": "msg_0437_01256",
+      "en_US": "GS-KEKKA"
+    },
+    {
+      "id": "msg_0437_01257",
+      "en_US": "GS-FW015"
+    },
+    {
+      "id": "msg_0437_01258",
+      "en_US": "GS-FW019"
+    },
+    {
+      "id": "msg_0437_01259",
+      "en_US": "GS-W208"
+    },
+    {
+      "id": "msg_0437_01260",
+      "en_US": "GS-DENSI01"
+    },
+    {
+      "id": "msg_0437_01261",
+      "en_US": "GS-VOICE01"
+    },
+    {
+      "id": "msg_0437_01262",
+      "en_US": "GS-VOICE02"
+    },
+    {
+      "id": "msg_0437_01263",
+      "en_US": "GS-VOICE03"
+    },
+    {
+      "id": "msg_0437_01264",
+      "en_US": "GS-VOICE06"
+    },
+    {
+      "id": "msg_0437_01265",
+      "en_US": "GS-VOICE07"
+    },
+    {
+      "id": "msg_0437_01266",
+      "en_US": "GS-VOICE09"
+    },
+    {
+      "id": "msg_0437_01267",
+      "en_US": "GS-VOICE10"
+    },
+    {
+      "id": "msg_0437_01268",
+      "en_US": "GS-THLON02"
+    },
+    {
+      "id": "msg_0437_01269",
+      "en_US": "GS-GAMENFADEOPED"
+    },
+    {
+      "id": "msg_0437_01270",
+      "en_US": "GS-FW255E"
+    },
+    {
+      "id": "msg_0437_01271",
+      "en_US": "GS-BON01"
+    },
+    {
+      "id": "msg_0437_01272",
+      "en_US": "GS-ZKN02"
+    },
+    {
+      "id": "msg_0437_01273",
+      "en_US": "GS-ZKN03"
+    },
+    {
+      "id": "msg_0437_01274",
+      "en_US": "GS-ZKN04"
+    },
+    {
+      "id": "msg_0437_01275",
+      "en_US": "GS-ZKN05"
+    },
+    {
+      "id": "msg_0437_01276",
+      "en_US": "GS-ZUKAN01"
+    },
+    {
+      "id": "msg_0437_01277",
+      "en_US": "GS-ZUKAN02"
+    },
+    {
+      "id": "msg_0437_01278",
+      "en_US": "GS-ZUKAN03"
+    },
+    {
+      "id": "msg_0437_01279",
+      "en_US": "GS-ZUKAN04"
+    },
+    {
+      "id": "msg_0437_01280",
+      "en_US": "GS-ZUKAN05"
+    },
+    {
+      "id": "msg_0437_01281",
+      "en_US": "GS-ZUKAN06"
+    },
+    {
+      "id": "msg_0437_01282",
+      "en_US": "GS-ZKN-BUTTON8"
+    },
+    {
+      "id": "msg_0437_01283",
+      "en_US": "GS-BUTTON01"
+    },
+    {
+      "id": "msg_0437_01284",
+      "en_US": "GS-HYUN2"
+    },
+    {
+      "id": "msg_0437_01285",
+      "en_US": "GS-DECIDE2"
+    },
+    {
+      "id": "msg_0437_01286",
+      "en_US": "GS-SYU02"
+    },
+    {
+      "id": "msg_0437_01287",
+      "en_US": "GS-KAZE02"
+    },
+    {
+      "id": "msg_0437_01288",
+      "en_US": "GS-CAMERA"
+    },
+    {
+      "id": "msg_0437_01289",
+      "en_US": "GS-W012"
+    },
+    {
+      "id": "msg_0437_01290",
+      "en_US": "GS-HASHIGO"
+    },
+    {
+      "id": "msg_0437_01291",
+      "en_US": "GS-FW015-4"
+    },
+    {
+      "id": "msg_0437_01292",
+      "en_US": "GS-FW043"
+    },
+    {
+      "id": "msg_0437_01293",
+      "en_US": "GS-FW463"
+    },
+    {
+      "id": "msg_0437_01294",
+      "en_US": "GS-KUJI-OOATARI"
+    },
+    {
+      "id": "msg_0437_01295",
+      "en_US": "GS-ZUTUKI"
+    },
+    {
+      "id": "msg_0437_01296",
+      "en_US": "GS-KI-YURERU"
+    },
+    {
+      "id": "msg_0437_01297",
+      "en_US": "GS-KI-UGOKU"
+    },
+    {
+      "id": "msg_0437_01298",
+      "en_US": "GS-ZENIGAME-JOURO"
+    },
+    {
+      "id": "msg_0437_01299",
+      "en_US": "GS-GONDORA-IDOU"
+    },
+    {
+      "id": "msg_0437_01300",
+      "en_US": "GS-TOUMEINAKABEHIT"
+    },
+    {
+      "id": "msg_0437_01301",
+      "en_US": "GS-ROUSOKU-KIERU"
+    },
+    {
+      "id": "msg_0437_01302",
+      "en_US": "GS-HYOUKAI-HIT"
+    },
+    {
+      "id": "msg_0437_01303",
+      "en_US": "GS-HYOUKAI-SUBERU"
+    },
+    {
+      "id": "msg_0437_01304",
+      "en_US": "GS-HYOUKAI-KETUGOU"
+    },
+    {
+      "id": "msg_0437_01305",
+      "en_US": "GS-SUZUSYUTUGEN-HO"
+    },
+    {
+      "id": "msg_0437_01306",
+      "en_US": "GS-SUZUNOONPA-HO"
+    },
+    {
+      "id": "msg_0437_01307",
+      "en_US": "GS-HOUOU-HABATAKI"
+    },
+    {
+      "id": "msg_0437_01308",
+      "en_US": "GS-SUZUSYUTUGEN-RU"
+    },
+    {
+      "id": "msg_0437_01309",
+      "en_US": "GS-SUZUNOONPA-RU"
+    },
+    {
+      "id": "msg_0437_01310",
+      "en_US": "GS-RUGIA-MENOHIKARI"
+    },
+    {
+      "id": "msg_0437_01311",
+      "en_US": "GS-RUGIA-HABATAKI"
+    },
+    {
+      "id": "msg_0437_01312",
+      "en_US": "GS-STOPPERKAIJO"
+    },
+    {
+      "id": "msg_0437_01313",
+      "en_US": "GS-TUREARUKI"
+    },
+    {
+      "id": "msg_0437_01314",
+      "en_US": "GS-TIMESLIP"
+    },
+    {
+      "id": "msg_0437_01315",
+      "en_US": "GS-TAMASYUTUGEN"
+    },
+    {
+      "id": "msg_0437_01316",
+      "en_US": "GS-KUJI-ATARI"
+    },
+    {
+      "id": "msg_0437_01317",
+      "en_US": "GS-GONDORA-KABEHIT"
+    },
+    {
+      "id": "msg_0437_01318",
+      "en_US": "GS-HIKIDO-OPEN"
+    },
+    {
+      "id": "msg_0437_01319",
+      "en_US": "GS-HIKIDO-CLOSE"
+    },
+    {
+      "id": "msg_0437_01320",
+      "en_US": "GS-SUZUNOONPA2"
+    },
+    {
+      "id": "msg_0437_01321",
+      "en_US": "GS-HERO-SHUKUSHOU"
+    },
+    {
+      "id": "msg_0437_01322",
+      "en_US": "GS-DENDOUIRI-FLASH"
+    },
+    {
+      "id": "msg_0437_01323",
+      "en_US": "GS-DENDOUIRI-KANSEI"
+    },
+    {
+      "id": "msg_0437_01324",
+      "en_US": "GS-SEKIBAN-SENTAKU"
+    },
+    {
+      "id": "msg_0437_01325",
+      "en_US": "GS-SEKIBAN-KAITEN"
+    },
+    {
+      "id": "msg_0437_01326",
+      "en_US": "GS-PUZZLETOKU"
+    },
+    {
+      "id": "msg_0437_01327",
+      "en_US": "GS-OKOZUKAI"
+    },
+    {
+      "id": "msg_0437_01328",
+      "en_US": "GS-SHUTTER"
+    },
+    {
+      "id": "msg_0437_01329",
+      "en_US": "GS-ALBUMMEKURU"
+    },
+    {
+      "id": "msg_0437_01330",
+      "en_US": "GS-POT-HYOUJI"
+    },
+    {
+      "id": "msg_0437_01331",
+      "en_US": "GS-JUICE-SIYOU"
+    },
+    {
+      "id": "msg_0437_01332",
+      "en_US": "GS-KOUKAEFFECT"
+    },
+    {
+      "id": "msg_0437_01333",
+      "en_US": "GS-KIRAKIRA"
+    },
+    {
+      "id": "msg_0437_01334",
+      "en_US": "GS-PARAMETER-UP"
+    },
+    {
+      "id": "msg_0437_01335",
+      "en_US": "GS-PARAMETER-DOWN"
+    },
+    {
+      "id": "msg_0437_01336",
+      "en_US": "GS-PANERU-MEKURUMAE"
+    },
+    {
+      "id": "msg_0437_01337",
+      "en_US": "GS-COIN-ATARI"
+    },
+    {
+      "id": "msg_0437_01338",
+      "en_US": "GS-COIN-HAZURE"
+    },
+    {
+      "id": "msg_0437_01339",
+      "en_US": "GS-COIN-PAYOUT-ONE"
+    },
+    {
+      "id": "msg_0437_01340",
+      "en_US": "GS-COIN-PAYOUT-LAST"
+    },
+    {
+      "id": "msg_0437_01341",
+      "en_US": "GS-PANERU-MEKURU"
+    },
+    {
+      "id": "msg_0437_01342",
+      "en_US": "GS-HOUOUHABATAKI-APRI"
+    },
+    {
+      "id": "msg_0437_01343",
+      "en_US": "GS-HAKKOUTAI-SYUTUGEN"
+    },
+    {
+      "id": "msg_0437_01344",
+      "en_US": "GS-HAKKOUTAI-HIROGARI"
+    },
+    {
+      "id": "msg_0437_01345",
+      "en_US": "GS-SUZUNOONPA-APRI"
+    },
+    {
+      "id": "msg_0437_01346",
+      "en_US": "GS-RUGIA-TAKISHUTUGEN"
+    },
+    {
+      "id": "msg_0437_01347",
+      "en_US": "GS-HAKKOUTAI-HIROGARI2"
+    },
+    {
+      "id": "msg_0437_01348",
+      "en_US": "GS-PHC-KEMURI"
+    },
+    {
+      "id": "msg_0437_01349",
+      "en_US": "GS-PHC-POKEMONIDOU"
+    },
+    {
+      "id": "msg_0437_01350",
+      "en_US": "GS-PHC-NYUUSYUTU"
+    },
+    {
+      "id": "msg_0437_01351",
+      "en_US": "GS-PHC-TUUSINFAIL"
+    },
+    {
+      "id": "msg_0437_01352",
+      "en_US": "GS-W092"
+    },
+    {
+      "id": "msg_0437_01353",
+      "en_US": "GS-SLOT01"
+    },
+    {
+      "id": "msg_0437_01354",
+      "en_US": "GS-SLOT02"
+    },
+    {
+      "id": "msg_0437_01355",
+      "en_US": "GS-SLOT03"
+    },
+    {
+      "id": "msg_0437_01356",
+      "en_US": "GS-SLOT04"
+    },
+    {
+      "id": "msg_0437_01357",
+      "en_US": "GS-SLOT05"
+    },
+    {
+      "id": "msg_0437_01358",
+      "en_US": "GS-DOWSING-SINGLE"
+    },
+    {
+      "id": "msg_0437_01359",
+      "en_US": "GS-DOWSING-LOOP"
+    },
+    {
+      "id": "msg_0437_01360",
+      "en_US": "GS-GEARCURSOR"
+    },
+    {
+      "id": "msg_0437_01361",
+      "en_US": "GS-GEARCANCEL"
+    },
+    {
+      "id": "msg_0437_01362",
+      "en_US": "GS-GEARDECIDE"
+    },
+    {
+      "id": "msg_0437_01363",
+      "en_US": "GS-GEARAPPLICHANGE"
+    },
+    {
+      "id": "msg_0437_01364",
+      "en_US": "GS-GEARXBUTTON"
+    },
+    {
+      "id": "msg_0437_01365",
+      "en_US": "GS-GEARYBUTTON"
+    },
+    {
+      "id": "msg_0437_01366",
+      "en_US": "GS-GEARMAPTOUCH"
+    },
+    {
+      "id": "msg_0437_01367",
+      "en_US": "GS-GEARGOMIBAKO"
+    },
+    {
+      "id": "msg_0437_01368",
+      "en_US": "GS-GEARSEALGRAB"
+    },
+    {
+      "id": "msg_0437_01369",
+      "en_US": "GS-GEARSEALHAMERU"
+    },
+    {
+      "id": "msg_0437_01370",
+      "en_US": "GS-XBUTTON-SYUKUSHOU"
+    },
+    {
+      "id": "msg_0437_01371",
+      "en_US": "END"
+    }
+  ]
+}
