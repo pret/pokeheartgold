@@ -55,11 +55,11 @@ BOOL ov57_0223B478(int *a0);
 void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2);
 int ov57_0223B578(CapsuleAppManager *appMan);
 int ov57_0223B620(CapsuleAppManager *appMan);
-void ov57_0223B6F0(CapsuleAppManager *appMan);
-void ov57_0223B700(CapsuleAppManager *appMan);
-void ov57_0223B714(CapsuleAppManager *appMan);
-void ov57_0223B73C(CapsuleAppManager *appMan);
-void ov57_0223B74C(CapsuleAppManager *appMan);
+BOOL ov57_0223B6F0(CapsuleAppManager *appMan);
+BOOL ov57_0223B700(CapsuleAppManager *appMan);
+BOOL ov57_0223B714(CapsuleAppManager *appMan);
+BOOL ov57_0223B73C(CapsuleAppManager *appMan);
+BOOL ov57_0223B74C(CapsuleAppManager *appMan);
 void ov57_0223B75C(CapsuleAppManager *appMan);
 void ov57_0223B774(CapsuleAppManager *appMan);
 void ov57_0223B78C(CapsuleAppManager *appMan);
@@ -1134,4 +1134,34 @@ int ov57_0223B620(CapsuleAppManager *appMan) {
     }
 
     return CAPSULE_CAPSULE_MENU_STATE_ID;
+}
+
+BOOL ov57_0223B6F0(CapsuleAppManager *appMan) {
+    ov57_0223B828(appMan, 1, 0, 3);
+    return FALSE;
+}
+
+BOOL ov57_0223B700(CapsuleAppManager *appMan) {
+    ov57_02238D80(appMan);
+    ov57_0223866C(appMan, TRUE);
+    return TRUE;
+}
+
+BOOL ov57_0223B714(CapsuleAppManager *appMan) {
+    ov57_02238134(appMan);
+    ov57_0223853C(appMan);
+    ov57_022394AC(appMan);
+    ov57_02237E88(appMan->unk_000, 1);
+    appMan->unk_3FC = 5;
+    return FALSE;
+}
+
+BOOL ov57_0223B73C(CapsuleAppManager *appMan) {
+    ov57_0223B828(appMan, 2, 0, 3);
+    return FALSE;
+}
+
+BOOL ov57_0223B74C(CapsuleAppManager *appMan) {
+    ov57_0223B828(appMan, 3, 0, 3);
+    return FALSE;
 }

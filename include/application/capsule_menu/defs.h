@@ -113,7 +113,7 @@ typedef struct CapsuleAppManager {
 
 typedef struct UnkStruct_ov57_0223BECC {
     s32 index;
-    void (*func)(CapsuleAppManager *appMan);
+    BOOL (*func)(CapsuleAppManager *appMan);
 } UnkStruct_ov57_0223BECC;
 
 extern const UnkStruct_ov57_0223BECC ov57_0223BECC[];
