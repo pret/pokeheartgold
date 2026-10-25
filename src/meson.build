@@ -382,6 +382,7 @@ pokeheartgold_c = files(
     'battle/battle_io_command.c',
     'battle/battle_setup.c',
     'battle/battle_system.c',
+    'battle/overlay_07_0223251C.c',
     'battle/overlay_12_0224E4FC.c',
     'battle/overlay_12_0226BEC4.c',
     'battle/party_gauge.c',
