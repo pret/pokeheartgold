@@ -919,8 +919,8 @@ void ov17_02202850(BerryPotsAppData *data, u32 seqNo) {
     Sprite_ResetAnimCtrlState(data->sprites[0]);
     FillWindowPixelBuffer(&data->windows[0], 0);
 
-    u32 stringWidth = FontID_String_GetWidth(4, data->cancelString, 0);
-    AddTextPrinterParameterizedWithColor(&data->windows[0], 4, data->cancelString, (48 - stringWidth) / 2, 0, 0xFF, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    u32 stringWidth = FontID_String_GetWidth(FONT_UNK_4, data->cancelString, 0);
+    AddTextPrinterParameterizedWithColor(&data->windows[0], FONT_UNK_4, data->cancelString, (48 - stringWidth) / 2, 0, 0xFF, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     ScheduleWindowCopyToVram(&data->windows[0]);
 }
@@ -957,7 +957,7 @@ static void ov17_02202944(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Act
         DrawFrameAndWindow2(window, TRUE, 1, 13);
     }
     ov17_022036FC(data, action, a2);
-    AddTextPrinterParameterized(window, 1, data->currentStatusString, 0, 0, 0xFF, NULL);
+    AddTextPrinterParameterized(window, FONT_MESSAGE, data->currentStatusString, 0, 0, 0xFF, NULL);
     ScheduleWindowCopyToVram(window);
     data->unk7A = 60;
 }
@@ -1128,7 +1128,7 @@ void BerryPotsApp_FreeNarc(BerryPotsAppData *data) {
 }
 
 static void BerryPotsApp_SetupText(BerryPotsAppData *data) {
-    FontID_Alloc(4, data->heapID);
+    FontID_Alloc(FONT_UNK_4, data->heapID);
 
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0248, data->heapID);
     data->msgFmt = MessageFormat_New_Custom(16, 16, data->heapID);
@@ -1150,7 +1150,7 @@ static void BerryPotsApp_FreeText(BerryPotsAppData *data) {
     MessageFormat_Delete(data->msgFmt);
     DestroyMsgData(data->msgData);
 
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 static void BerryPotsApp_SetupWindows(BerryPotsAppData *data) {

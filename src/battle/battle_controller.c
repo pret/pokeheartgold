@@ -4,6 +4,11 @@
 
 #include "battle/battle_message_structs.h"
 #include "battle/party_gauge.h"
+#include "battle/battle_system.h"
+#include "battle/overlay_12_0224E4FC.h"
+#include "unk_02035900.h"
+#include "unk_02074E5C.h"
+#include "unk_0202FBCC.h"
 
 #include "pokemon.h"
 
