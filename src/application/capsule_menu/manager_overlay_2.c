@@ -42,6 +42,7 @@ int ov57_0223B180(CapsuleAppManager *appMan);
 int ov57_0223B288(CapsuleAppManager *appMan);
 int ov57_0223B2EC(CapsuleAppManager *appMan);
 int ov57_0223B308(CapsuleAppManager *appMan);
+BOOL ov57_0223B478(int *a0);
 void ov57_0223B504(CapsuleAppManager *appMan, int a1, int a2);
 int ov57_0223B620(CapsuleAppManager *appMan);
 void ov57_0223B700(CapsuleAppManager *appMan);
@@ -849,7 +850,7 @@ int ov57_0223B180(CapsuleAppManager *appMan) {
     }
 }
 
-int ov57_0223B1A4(CapsuleAppManager *appMan, int a1) {
+int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
     switch (a1) {
     case 12:
         PlaySE(SEQ_SE_DP_DECIDE);
@@ -882,4 +883,24 @@ int ov57_0223B1A4(CapsuleAppManager *appMan, int a1) {
     }
 
     return 3;
+}
+
+int ov57_0223B288(CapsuleAppManager *appMan) {
+    int result;
+    int sp0;
+    if (gSystem.newKeys & PAD_BUTTON_B) {
+        result = ov57_0223B1A4(appMan, 12);
+    } else if (gSystem.newKeys & PAD_BUTTON_A) {
+        result = ov57_0223B1A4(appMan, 13);
+    } else if (!(gSystem.newAndRepeatedKeys & PAD_PLUS_KEY_MASK)) {
+        result = 3;
+    } else {
+        sp0 = appMan->unk_3EC;
+        if (!ov57_0223B478(&sp0)) {
+            result = 3;
+        } else {
+            result = ov57_0223B1A4(appMan, sp0);
+        }
+    }
+    return result;
 }

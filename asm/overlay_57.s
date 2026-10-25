@@ -27,60 +27,6 @@
 	.extern ov57_0223B12C
 	.extern ov57_0223B1A4
 
-	thumb_func_start ov57_0223B288
-ov57_0223B288: ; 0x0223B288
-	push {r3, r4, lr}
-	sub sp, #4
-	ldr r2, _0223B2E8 ; =gSystem
-	mov r1, #2
-	ldr r3, [r2, #0x48]
-	add r4, r0, #0
-	tst r1, r3
-	beq _0223B2A2
-	mov r1, #0xc
-	bl ov57_0223B1A4
-	add sp, #4
-	pop {r3, r4, pc}
-_0223B2A2:
-	mov r1, #1
-	tst r1, r3
-	beq _0223B2B2
-	mov r1, #0xd
-	bl ov57_0223B1A4
-	add sp, #4
-	pop {r3, r4, pc}
-_0223B2B2:
-	ldr r1, [r2, #0x4c]
-	mov r0, #0xf0
-	tst r0, r1
-	bne _0223B2C0
-	add sp, #4
-	mov r0, #3
-	pop {r3, r4, pc}
-_0223B2C0:
-	mov r0, #0xfb
-	lsl r0, r0, #2
-	ldr r0, [r4, r0]
-	str r0, [sp]
-	add r0, sp, #0
-	bl ov57_0223B478
-	cmp r0, #0
-	bne _0223B2D8
-	add sp, #4
-	mov r0, #3
-	pop {r3, r4, pc}
-_0223B2D8:
-	ldr r1, [sp]
-	add r0, r4, #0
-	lsl r1, r1, #0x18
-	lsr r1, r1, #0x18
-	bl ov57_0223B1A4
-	add sp, #4
-	pop {r3, r4, pc}
-	.balign 4, 0
-_0223B2E8: .word gSystem
-	thumb_func_end ov57_0223B288
-
 	thumb_func_start ov57_0223B2EC
 ov57_0223B2EC: ; 0x0223B2EC
 	push {r4, lr}
