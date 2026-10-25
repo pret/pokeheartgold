@@ -120,7 +120,7 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     PaletteData_Free(appManager->graphicsMan.paletteData);
     ov57_02237E80(appManager->appData, appManager->capsuleIndex[0]);
     Heap_Free(appManager->pokemon);
-    ov57_022383AC(appManager);
+    SealPlacement_FreeInactiveSeals(appManager);
     TouchHitboxController_Destroy(appManager->graphicsMan.touchHitboxController);
     PokepicManager_Delete(appManager->graphicsMan.pokepicManager);
     sub_02016F2C(appManager->graphicsMan.pokepicAnimManager);

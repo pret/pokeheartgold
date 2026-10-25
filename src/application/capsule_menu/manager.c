@@ -167,9 +167,9 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         ov57_02239014(appMan);
         ov57_022392F4(appMan, narc);
         ov57_022385DC(appMan);
-        ov57_02237F3C(appMan);
-        ov57_022383D0(appMan, 1);
-        ov57_02237F14(appMan);
+        SealPlacement_UpdateSealsFromCapsule(appMan);
+        SealPlacement_DrawActiveSeals(appMan, 1);
+        SealPlacement_OffsetSeals(appMan);
         ov57_02239D48(appMan, narc);
         ov57_02239EB4(appMan);
         ov57_02239114(appMan, narc);
@@ -275,10 +275,10 @@ static BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
     case CAPSULE_FADE_OUT_WAIT_STATE_ID:
         ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00012, FALSE);
         appMan->frameCounter = 20;
-        if (ov57_022384C0(appMan) == TRUE) {
+        if (SealPlacement_AnySealsChanged(appMan) == TRUE) {
             appMan->graphicsMan.sealsChanged = TRUE;
         }
-        ov57_0223853C(appMan);
+        SealPlacement_LoadCapsuleSeals(appMan);
         ov57_022394AC(appMan);
         GameStats_AddScore(Save_GameStats_Get(appMan->appData->saveData), SCORE_EVENT_BALL_CAPSULE_MODIFIED);
         if (appMan->capsuleSprites[appMan->capsuleIndex[0]].pokemonIndex != 0xFF) {
@@ -318,18 +318,18 @@ static BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
                 sealIndex = CapsuleMenu_GetSealNameIndex(appMan->sealRenderInfo[index].type);
                 ov57_02239B2C(&appMan->graphicsMan.windows[0], sealIndex);
                 ManagedSprite_SetPositionXY(appMan->sealRenderInfo[index].sprite, x, y);
-                ov57_0223848C(appMan, index);
-                ov57_02238508(appMan, index);
+                SealPlacement_UpdateSealOamMode(appMan, index);
+                SealPlacement_UpdateSealXY(appMan, index);
             } else {
                 BOOL valid;
 
-                valid = ov57_022383F8(appMan, index);
-                ov57_02237EB8(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, 0);
+                valid = SealPlacement_SealIsValid(appMan, index);
+                SealPlacement_UpdateSealTouchRect(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, 0);
 
                 if (valid == 0) {
                     GiveOrTakeSeal2(appMan->appData->sealCase, appMan->sealRenderInfo[index].type, 1);
                     ov57_022399F8(appMan);
-                    ov57_02238438(appMan, index);
+                    SealPlacement_FreeSeal(appMan, index);
                 }
 
                 PlaySE(SEQ_SE_DP_BOX01);
@@ -514,7 +514,7 @@ static BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
 static int ov57_0223A8FC(CapsuleAppManager *appMan) {
     switch (appMan->throwStateID) {
     case 0:
-        if (!ov57_022384C0(appMan)) {
+        if (!SealPlacement_AnySealsChanged(appMan)) {
             return CAPSULE_UNK_11_STATE_ID;
         }
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80b, 0, 0, 10, RGB_BLACK);
@@ -581,9 +581,9 @@ static int ov57_0223A8FC(CapsuleAppManager *appMan) {
             ov57_0223B774(appMan);
             ov57_0223B7A8(appMan);
             ov57_022399F8(appMan);
-            ov57_022383AC(appMan);
-            ov57_02237F3C(appMan);
-            ov57_022383D0(appMan, TRUE);
+            SealPlacement_FreeInactiveSeals(appMan);
+            SealPlacement_UpdateSealsFromCapsule(appMan);
+            SealPlacement_DrawActiveSeals(appMan, TRUE);
             result = 6;
             appMan->frameCounter = 20;
             break;
@@ -640,7 +640,7 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
         sp38.battlerType = BATTLER_TYPE_SOLO_ENEMY;
         sp38.mon = appMan->pokemon;
         int spC = appMan->capsuleIndex[0] + 1;
-        ov57_0223857C(&sp44, appMan);
+        SealPlacement_GetCapsuleSeals(&sp44, appMan);
         SetMonData(appMan->pokemon, MON_DATA_BALL_CAPSULE_ID, &spC);
         SetMonData(appMan->pokemon, MON_DATA_BALL_CAPSULE, &sp44);
         appMan->graphicsMan.sealEffect = ov07_02232694(HEAP_ID_52, &sp38);
@@ -814,13 +814,13 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
     case 6:
     case 7:
         if (event == TOUCH_BUTTON_PRESSED) {
-            if (!ov57_02238028(appMan)) {
+            if (!SealPlacement_NotMaxSeals(appMan)) {
                 PlaySE(SEQ_SE_DP_CUSTOM06);
                 ov57_02239728(&appMan->graphicsMan.windows[0], 0, msg_0011_00015, FALSE);
             } else {
                 u8 *sealIDs = appMan->sealPages.sealIDs;
                 if (sealIDs[index] != SEAL_NONE && SealCaseInventory_GetSealQuantity(appMan->sealCount, sealIDs[index] - 1) != 0) {
-                    appMan->graphicsMan.index = ov57_02237FAC(appMan, index);
+                    appMan->graphicsMan.index = SealPlacement_GetTouchedSeal(appMan, index);
                     ov57_02239B2C(&appMan->graphicsMan.windows[0], CapsuleMenu_GetSealNameIndex(sealIDs[index]));
                     GiveOrTakeSeal(appMan->appData->sealCase, sealIDs[index], -1);
                     ov57_02239A8C(appMan, index);
@@ -842,7 +842,7 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
     case 20:
         if (event == TOUCH_BUTTON_PRESSED) {
             int r5 = index - 13;
-            ov57_022382F8(appMan, event, r5);
+            SealPlacement_HandleTouchscreen(appMan, event, r5);
             ov57_02239B2C(&appMan->graphicsMan.windows[0], CapsuleMenu_GetSealNameIndex(appMan->sealRenderInfo[r5].type));
             PlaySE(SEQ_SE_DP_BOX02);
         }
@@ -895,15 +895,15 @@ static int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
         PlaySE(SEQ_SE_DP_SELECT);
         return CAPSULE_CAPSULE_MENU_STATE_ID;
     default:
-        ov57_02238134(appMan);
-        ov57_0223853C(appMan);
+        SealPlacement_UpdateSeals(appMan);
+        SealPlacement_LoadCapsuleSeals(appMan);
         ov57_022394AC(appMan);
         appMan->capsuleIndex[0] = a1;
         ov57_0223B504(appMan, 0, TRUE);
-        ov57_022383AC(appMan);
-        ov57_02237F3C(appMan);
-        ov57_022383D0(appMan, 1);
-        ov57_02237F14(appMan);
+        SealPlacement_FreeInactiveSeals(appMan);
+        SealPlacement_UpdateSealsFromCapsule(appMan);
+        SealPlacement_DrawActiveSeals(appMan, 1);
+        SealPlacement_OffsetSeals(appMan);
         if (appMan->menuInputState == 0) {
             PlaySE(SEQ_SE_DP_SELECT);
         } else {
@@ -1154,8 +1154,8 @@ static BOOL ov57_0223B700(CapsuleAppManager *appMan) {
 }
 
 static BOOL ov57_0223B714(CapsuleAppManager *appMan) {
-    ov57_02238134(appMan);
-    ov57_0223853C(appMan);
+    SealPlacement_UpdateSeals(appMan);
+    SealPlacement_LoadCapsuleSeals(appMan);
     ov57_022394AC(appMan);
     ov57_02237E88(appMan->appData, 1);
     appMan->stateID = 5;

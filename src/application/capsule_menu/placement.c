@@ -3,24 +3,24 @@
 
 #include "overlay_07.h"
 
-static void ov57_02238044(CapsuleAppManager *appMan, u8 index);
-static BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex);
+static void SealPlacement_SetSealRenderPriorities(CapsuleAppManager *appMan, u8 index);
+static BOOL SealPlacement_InitSeal(CapsuleAppManager *appMan, u8 sealIndex);
 
-static void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
+static void SealPlacement_SealTouchRange(TouchscreenHitbox *rect, u8 x, u8 y) {
     rect->rect.top = y - 10;
     rect->rect.left = x - 10;
     rect->rect.bottom = y + 10;
     rect->rect.right = x + 10;
 }
 
-static void ov57_02237EA8(TouchscreenHitbox *rect) {
+static void SealPlacement_ScreenRect(TouchscreenHitbox *rect) {
     rect->rect.top = 0;
     rect->rect.left = 0;
     rect->rect.bottom = 192;
     rect->rect.right = 255;
 }
 
-void ov57_02237EB8(TouchscreenHitbox *rect, ManagedSprite *sprite, BOOL touchingSprite) {
+void SealPlacement_UpdateSealTouchRect(TouchscreenHitbox *rect, ManagedSprite *sprite, BOOL touchingSprite) {
     s16 x, y;
 
     if (sprite == NULL) {
@@ -30,14 +30,14 @@ void ov57_02237EB8(TouchscreenHitbox *rect, ManagedSprite *sprite, BOOL touching
     if (touchingSprite == TRUE) {
         ManagedSprite_SetPositionXY(sprite, gSystem.touchX, gSystem.touchY);
         ManagedSprite_GetPositionXY(sprite, &x, &y);
-        ov57_02237EA8(rect);
+        SealPlacement_ScreenRect(rect);
     } else {
         ManagedSprite_GetPositionXY(sprite, &x, &y);
-        ov57_02237E90(rect, x, y);
+        SealPlacement_SealTouchRange(rect, x, y);
     }
 }
 
-void ov57_02237F14(CapsuleAppManager *appManager) {
+void SealPlacement_OffsetSeals(CapsuleAppManager *appManager) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; ++i) {
         if (appManager->sealRenderInfo[i].sprite == NULL) {
             continue;
@@ -46,7 +46,7 @@ void ov57_02237F14(CapsuleAppManager *appManager) {
     }
 }
 
-void ov57_02237F3C(CapsuleAppManager *appManager) {
+void SealPlacement_UpdateSealsFromCapsule(CapsuleAppManager *appManager) {
     BallCapsule *capsule = appManager->capsules[appManager->capsuleIndex[0]].capsule;
 
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
@@ -55,8 +55,8 @@ void ov57_02237F3C(CapsuleAppManager *appManager) {
             appManager->sealRenderInfo[i].x = capsule->seals[i].x;
             appManager->sealRenderInfo[i].y = capsule->seals[i].y;
 
-            ov57_02238260(appManager, i);
-            ov57_02237EB8(appManager->sealRenderInfo[i].touchscreenHitbox, appManager->sealRenderInfo[i].sprite, FALSE);
+            SealPlacement_InitSeal(appManager, i);
+            SealPlacement_UpdateSealTouchRect(appManager->sealRenderInfo[i].touchscreenHitbox, appManager->sealRenderInfo[i].sprite, FALSE);
 
             appManager->sealRenderInfo[i].shouldRender = TRUE;
         } else {
@@ -66,7 +66,7 @@ void ov57_02237F3C(CapsuleAppManager *appManager) {
     }
 }
 
-int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex) {
+int SealPlacement_GetTouchedSeal(CapsuleAppManager *appMan, u8 sealIndex) {
     u32 touchX, touchY;
 
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
@@ -83,8 +83,8 @@ int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex) {
         appMan->sealRenderInfo[i].x = touchX;
         appMan->sealRenderInfo[i].y = touchY;
 
-        ov57_02238260(appMan, i);
-        ov57_02238044(appMan, i);
+        SealPlacement_InitSeal(appMan, i);
+        SealPlacement_SetSealRenderPriorities(appMan, i);
 
         appMan->sealRenderInfo[i].shouldRender = TRUE;
 
@@ -94,7 +94,7 @@ int ov57_02237FAC(CapsuleAppManager *appMan, u8 sealIndex) {
     return 0xFF;
 }
 
-BOOL ov57_02238028(CapsuleAppManager *appMan) {
+BOOL SealPlacement_NotMaxSeals(CapsuleAppManager *appMan) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         if (appMan->sealRenderInfo[i].shouldRender == TRUE) {
             continue;
@@ -106,7 +106,7 @@ BOOL ov57_02238028(CapsuleAppManager *appMan) {
     return FALSE;
 }
 
-static void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
+static void SealPlacement_SetSealRenderPriorities(CapsuleAppManager *appMan, u8 index) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         if (appMan->sealRenderInfo[i].shouldRender != TRUE) {
             continue;
@@ -128,7 +128,7 @@ static void ov57_02238044(CapsuleAppManager *appMan, u8 index) {
 
 #define MAKE_OBJECT_TAG(type, fileIdx) (20000 + (type) * 1000 + (fileIdx))
 
-static void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
+static void SealPlacement_LoadSeal(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
     SpriteSystem *spriteSystem = appMan->graphicsMan.spriteSystem;
     SpriteManager *spriteManager = appMan->graphicsMan.spriteManager;
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
@@ -143,7 +143,7 @@ static void ov57_0223809C(CapsuleAppManager *appMan, u8 type, u8 sealIndex) {
     SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 36, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, 36));
 }
 
-void ov57_02238134(CapsuleAppManager *appMan) {
+void SealPlacement_UpdateSeals(CapsuleAppManager *appMan) {
     int i;
     int dummy;
     int priorities[MAX_SEALS_ON_CAPSULE];
@@ -215,7 +215,7 @@ void ov57_02238134(CapsuleAppManager *appMan) {
     }
 }
 
-static BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
+static BOOL SealPlacement_InitSeal(CapsuleAppManager *appMan, u8 sealIndex) {
     int dummy;
     SealRenderInfo *sealInfo;
     ManagedSpriteTemplate spriteTemplate;
@@ -229,7 +229,7 @@ static BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
         return FALSE;
     }
 
-    ov57_0223809C(appMan, sealInfo->type, sealIndex);
+    SealPlacement_LoadSeal(appMan, sealInfo->type, sealIndex);
 
     spriteTemplate.x = sealInfo->x;
     spriteTemplate.y = sealInfo->y;
@@ -256,35 +256,35 @@ static BOOL ov57_02238260(CapsuleAppManager *appMan, u8 sealIndex) {
     return TRUE;
 }
 
-BOOL ov57_022382F8(CapsuleAppManager *appMan, u32 touchscreenState, u8 index) {
+BOOL SealPlacement_HandleTouchscreen(CapsuleAppManager *appMan, u32 touchscreenState, u8 index) {
     if (appMan->sealRenderInfo[index].shouldRender == 0) {
         return 1;
     }
 
     switch (touchscreenState) {
-    case 0:
+    case TOUCH_BUTTON_PRESSED:
         if (appMan->graphicsMan.index == 0xFF) {
             appMan->graphicsMan.index = index;
-            ov57_02238044(appMan, index);
+            SealPlacement_SetSealRenderPriorities(appMan, index);
         }
         break;
-    case 2: {
+    case TOUCH_BUTTON_HELD: {
         if (appMan->graphicsMan.index == index) {
-            ov57_02237EB8(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, TRUE);
-            ov57_0223848C(appMan, index);
-            ov57_02238508(appMan, index);
+            SealPlacement_UpdateSealTouchRect(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, TRUE);
+            SealPlacement_UpdateSealOamMode(appMan, index);
+            SealPlacement_UpdateSealXY(appMan, index);
         }
     } break;
-    case 1:
-    case 3: {
-        BOOL shouldFree;
+    case TOUCH_BUTTON_HELD_OUT_OF_BOUNDS:
+    case TOUCH_BUTTON_RELEASED: {
+        BOOL isValid;
 
         if (appMan->graphicsMan.index == 0xFF) {
-            shouldFree = ov57_022383F8(appMan, index);
-            ov57_02237EB8(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, FALSE);
+            isValid = SealPlacement_SealIsValid(appMan, index);
+            SealPlacement_UpdateSealTouchRect(appMan->sealRenderInfo[index].touchscreenHitbox, appMan->sealRenderInfo[index].sprite, FALSE);
 
-            if (!shouldFree) {
-                ov57_02238438(appMan, index);
+            if (!isValid) {
+                SealPlacement_FreeSeal(appMan, index);
             }
 
             appMan->graphicsMan.index = 0xFF;
@@ -298,17 +298,17 @@ BOOL ov57_022382F8(CapsuleAppManager *appMan, u32 touchscreenState, u8 index) {
     return 1;
 }
 
-void ov57_022383AC(CapsuleAppManager *appMan) {
+void SealPlacement_FreeInactiveSeals(CapsuleAppManager *appMan) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         if (appMan->sealRenderInfo[i].shouldRender != TRUE) {
             continue;
         }
 
-        ov57_02238438(appMan, i);
+        SealPlacement_FreeSeal(appMan, i);
     }
 }
 
-void ov57_022383D0(CapsuleAppManager *appMan, int flag) {
+void SealPlacement_DrawActiveSeals(CapsuleAppManager *appMan, int flag) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         if (appMan->sealRenderInfo[i].shouldRender != TRUE) {
             continue;
@@ -318,7 +318,7 @@ void ov57_022383D0(CapsuleAppManager *appMan, int flag) {
     }
 }
 
-BOOL ov57_022383F8(CapsuleAppManager *appMan, int index) {
+BOOL SealPlacement_SealIsValid(CapsuleAppManager *appMan, int index) {
     int distance;
     s16 x, y;
 
@@ -336,7 +336,7 @@ BOOL ov57_022383F8(CapsuleAppManager *appMan, int index) {
     return TRUE;
 }
 
-void ov57_02238438(CapsuleAppManager *appMan, int sealIndex) {
+void SealPlacement_FreeSeal(CapsuleAppManager *appMan, int sealIndex) {
     int dummy;
 
     dummy = CapsuleMenu_GetSealMemberIdx(appMan->sealRenderInfo[sealIndex].type);
@@ -350,11 +350,11 @@ void ov57_02238438(CapsuleAppManager *appMan, int sealIndex) {
     appMan->sealRenderInfo[sealIndex].x = 0;
     appMan->sealRenderInfo[sealIndex].y = 0;
 
-    ov57_02237E90(appMan->sealRenderInfo[sealIndex].touchscreenHitbox, 0, 0);
+    SealPlacement_SealTouchRange(appMan->sealRenderInfo[sealIndex].touchscreenHitbox, 0, 0);
 }
 
-void ov57_0223848C(CapsuleAppManager *appMan, int index) {
-    BOOL isValid = ov57_022383F8(appMan, index);
+void SealPlacement_UpdateSealOamMode(CapsuleAppManager *appMan, int index) {
+    BOOL isValid = SealPlacement_SealIsValid(appMan, index);
 
     if (!isValid) {
         ManagedSprite_SetOamMode(appMan->sealRenderInfo[index].sprite, GX_OAM_MODE_XLU);
@@ -363,7 +363,7 @@ void ov57_0223848C(CapsuleAppManager *appMan, int index) {
     }
 }
 
-BOOL ov57_022384C0(CapsuleAppManager *appMan) {
+BOOL SealPlacement_AnySealsChanged(CapsuleAppManager *appMan) {
     int index;
     BallCapsule *capsule;
 
@@ -381,7 +381,7 @@ BOOL ov57_022384C0(CapsuleAppManager *appMan) {
     return FALSE;
 }
 
-void ov57_02238508(CapsuleAppManager *appMan, int sealIndex) {
+void SealPlacement_UpdateSealXY(CapsuleAppManager *appMan, int sealIndex) {
     s16 x, y;
 
     ManagedSprite_GetPositionXY(appMan->sealRenderInfo[sealIndex].sprite, &x, &y);
@@ -390,7 +390,7 @@ void ov57_02238508(CapsuleAppManager *appMan, int sealIndex) {
     appMan->sealRenderInfo[sealIndex].y = (u8)y;
 }
 
-void ov57_0223853C(CapsuleAppManager *appMan) {
+void SealPlacement_LoadCapsuleSeals(CapsuleAppManager *appMan) {
     BallCapsule capsule;
 
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
@@ -402,7 +402,7 @@ void ov57_0223853C(CapsuleAppManager *appMan) {
     SealCase_SetCapsuleI(appMan->appData->sealCase, &capsule, appMan->capsuleIndex[0]);
 }
 
-void ov57_0223857C(BallCapsule *capsule, CapsuleAppManager *appMan) {
+void SealPlacement_GetCapsuleSeals(BallCapsule *capsule, CapsuleAppManager *appMan) {
     for (int i = 0; i < MAX_SEALS_ON_CAPSULE; i++) {
         capsule->seals[i].kind = appMan->sealRenderInfo[i].type;
         capsule->seals[i].x = appMan->sealRenderInfo[i].x;
