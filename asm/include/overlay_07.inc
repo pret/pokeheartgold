@@ -248,3 +248,16 @@
 .public ov07_0221FE88
 .public ov07_0221FF2C
 .public ov07_02234530
+.public ov07_0221FEE4
+.public ov07_0221FEB0
+.public ov07_02231DE0
+.public ov07_02222268
+.public ov07_022222F0
+.public ov07_02222338
+.public ov07_02222F10
+.public ov07_022223CC
+.public ov07_02222EE8
+.public ov07_02222EF8
+.public ov07_022223F0
+.public ov07_02222440
+.public ov07_02221F04

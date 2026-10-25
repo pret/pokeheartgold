@@ -68,6 +68,7 @@ pokeheartgold_asm = files(
     'overlay_02_02248728.s',
     'overlay_05.s',
     'overlay_07.s',
+    'overlay_07_0223251C.s',
     'overlay_07_022344E4.s',
     'overlay_07_0223474C.s',
     'overlay_07_0223458C.s',
