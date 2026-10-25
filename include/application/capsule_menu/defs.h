@@ -87,7 +87,7 @@ typedef struct CapsuleAppManager {
     CapsuleAppData *unk_000;
     IndexedCapsule unk_004[MAX_CAPSULES];
     SealCounts *unk_064;
-    u8 filler_068[0x18];
+    BallCapsule unk_068;
     u8 unk_080[SEAL_MAX + 1];
     CapsuleGraphicsManager unk_0D4;
     CapsuleSprites unk_28C[MAX_CAPSULES];

@@ -1165,3 +1165,23 @@ BOOL ov57_0223B74C(CapsuleAppManager *appMan) {
     ov57_0223B828(appMan, 3, 0, 3);
     return FALSE;
 }
+
+void ov57_0223B75C(CapsuleAppManager *appMan) {
+    CopyCapsule(appMan->unk_004[appMan->unk_3EC[0]].capsule, &appMan->unk_068);
+}
+
+void ov57_0223B774(CapsuleAppManager *appMan) {
+    CopyCapsule(&appMan->unk_068, appMan->unk_004[appMan->unk_3EC[0]].capsule);
+}
+
+void ov57_0223B78C(CapsuleAppManager *appMan) {
+    for (int i = 0; i < SEAL_MAX + 1; ++i) {
+        appMan->unk_080[i] = SealCaseInventory_GetSealQuantity(appMan->unk_064, i);
+    }
+}
+
+void ov57_0223B7A8(CapsuleAppManager *appMan) {
+    for (int i = 0; i < SEAL_MAX + 1; ++i) {
+        SealCaseInventory_SetSealQuantity(appMan->unk_064, i, appMan->unk_080[i]);
+    }
+}
