@@ -997,3 +997,34 @@ int ov57_0223B45C(CapsuleAppManager *appMan) {
         return ov57_0223B3A4(appMan, result);
     }
 }
+
+BOOL ov57_0223B478(int *a0) {
+    if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
+        *a0 += 1;
+        *a0 %= MAX_CAPSULES;
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
+        if (*a0 > 0) {
+            *a0 -= 1;
+        } else {
+            *a0 = MAX_CAPSULES - 1;
+        }
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
+        if (*a0 / 4 != 0) {
+            *a0 -= 4;
+            *a0 %= MAX_CAPSULES;
+        } else {
+            return FALSE;
+        }
+    } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
+        if (*a0 / 4 != 2) {
+            *a0 += 4;
+            *a0 %= MAX_CAPSULES;
+        } else {
+            return FALSE;
+        }
+    } else {
+        return FALSE;
+    }
+
+    return TRUE;
+}
