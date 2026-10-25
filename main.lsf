@@ -551,6 +551,7 @@ Overlay OVY_7
 {
     After OVY_6
     Object main.nef.p/asm_overlay_07.s.o
+    Object main.nef.p/asm_overlay_07_022344E4.s.o
     Object main.nef.p/asm_overlay_07_0223458C.s.o
     Object main.nef.p/asm_overlay_07_0223474C.s.o
 }
