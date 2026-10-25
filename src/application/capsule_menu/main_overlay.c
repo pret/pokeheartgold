@@ -59,7 +59,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
         }
     }
     ov57_02237CA8(HEAP_ID_52);
-    ov57_0223BB5C();
+    CapsuleManager_SetNormalAlpha();
     appManager->graphicsMan.gf3dVramMan = CapsuleGraphics_PipelineInit();
     appManager->graphicsMan.bgConfig = BgConfig_Alloc(HEAP_ID_52);
     GF_CreateVramTransferManager(0x40, HEAP_ID_52);
@@ -87,7 +87,7 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
 
 int ov57_02237AF8(OverlayManager *manager, int *state) {
     CapsuleAppManager *appManager = OverlayManager_GetData(manager);
-    if (!ov57_0223A0E0(appManager)) {
+    if (!CapsuleManager_CallFunction(appManager)) {
         return TRUE;
     }
     PokepicManager_DrawAll(appManager->graphicsMan.pokepicManager);

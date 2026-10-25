@@ -39,17 +39,17 @@ typedef struct {
     TextOBJ *fontOAM;
 } CapsuleUIPressTask;
 
-static BOOL ov57_0223A104(CapsuleAppManager *appMan);
-static BOOL ov57_0223A31C(CapsuleAppManager *appMan);
+static BOOL CapsuleManager_SelectionActions(CapsuleAppManager *appMan);
+static BOOL CapsuleManager_HandleCancelUpdateSeals(CapsuleAppManager *appMan);
 static BOOL ov57_0223A504(CapsuleAppManager *appMan);
-static BOOL ov57_0223A5AC(CapsuleAppManager *appMan);
-static BOOL ov57_0223A6B4(CapsuleAppManager *appMan);
-static int ov57_0223A6B8(CapsuleAppManager *appMan);
-static BOOL ov57_0223A7DC(CapsuleAppManager *appMan);
-static int ov57_0223A8FC(CapsuleAppManager *appMan);
-static int ov57_0223AB58(CapsuleAppManager *appMan);
+static BOOL CapsuleManager_HandleSpritesAndInputs(CapsuleAppManager *appMan);
+static BOOL CapsuleManager_Dummy(CapsuleAppManager *appMan);
+static int CapsuleManager_HandleCancelUpdateSeals_Init(CapsuleAppManager *appMan);
+static BOOL CapsuleManager_HandleFades(CapsuleAppManager *appMan);
+static int CapsuleManager_HandleCancelUpdateSeals_CancelPressed(CapsuleAppManager *appMan);
+static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *appMan);
 static BOOL ov57_0223B12C(CapsuleAppManager *appMan);
-static int ov57_0223B180(CapsuleAppManager *appMan);
+static int CapsuleManager_SelectionActions_HandleInput(CapsuleAppManager *appMan);
 static int ov57_0223B288(CapsuleAppManager *appMan);
 static int ov57_0223B2EC(CapsuleAppManager *appMan);
 static int ov57_0223B308(CapsuleAppManager *appMan);
@@ -57,50 +57,50 @@ static int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1);
 static int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1);
 static int ov57_0223B3F8(CapsuleAppManager *appMan);
 static int ov57_0223B45C(CapsuleAppManager *appMan);
-static BOOL ov57_0223B478(int *a0);
-static void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2);
+static BOOL CapsuleManager_HandleCapsulePadMovement(int *a0);
+static void CapsuleManager_MoveCursorToCapsule(CapsuleAppManager *appMan, int a1, BOOL a2);
 static int ov57_0223B578(CapsuleAppManager *appMan);
-static int ov57_0223B620(CapsuleAppManager *appMan);
+static int CapsuleManager_HandleCancelUpdateSeals_CapsuleMenu(CapsuleAppManager *appMan);
 static BOOL ov57_0223B6F0(CapsuleAppManager *appMan);
-static BOOL ov57_0223B700(CapsuleAppManager *appMan);
+static BOOL CapsuleManager_FreeMenuWindow(CapsuleAppManager *appMan);
 static BOOL ov57_0223B714(CapsuleAppManager *appMan);
 static BOOL ov57_0223B73C(CapsuleAppManager *appMan);
 static BOOL ov57_0223B74C(CapsuleAppManager *appMan);
-static void ov57_0223B75C(CapsuleAppManager *appMan);
-static void ov57_0223B774(CapsuleAppManager *appMan);
-static void ov57_0223B78C(CapsuleAppManager *appMan);
-static void ov57_0223B7A8(CapsuleAppManager *appMan);
-static void ov57_0223B7C4(CapsuleAppManager *appMan);
-static void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3);
-static void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj);
-static BOOL ov57_0223B940(CapsuleAppManager *appMan);
-static void ov57_0223B948(CapsuleAppManager *appMan, int a1);
-static void ov57_0223B950(CapsuleAppManager *appMan);
-static void ov57_0223B9C8(CapsuleAppManager *appMan);
-static void ov57_0223BA1C(CapsuleAppManager *appMan);
+static void CapsuleManager_CopyToActiveCapsule(CapsuleAppManager *appMan);
+static void CapsuleManager_CopyFromActiveCapsule(CapsuleAppManager *appMan);
+static void CapsuleManager_GetSealCounts(CapsuleAppManager *appMan);
+static void CapsuleManager_SetSealCounts(CapsuleAppManager *appMan);
+static void CapsuleManager_LoadLeadingPokemon(CapsuleAppManager *appMan);
+static void CapsuleManager_UpdateStates(CapsuleAppManager *appMan, int a1, int a2, int a3);
+static void CapsuleManager_PressCapsuleUI(ManagedSprite *sprite, TextOBJ *textObj);
+static BOOL CapsuleManager_GetGraphicsTaskResult(CapsuleAppManager *appMan);
+static void CapsuleManager_SetSelectedCapsule(CapsuleAppManager *appMan, int a1);
+static void CapsuleManager_LoadThrownMonSprite(CapsuleAppManager *appMan);
+static void CapsuleManager_LoadThrownMonAnim(CapsuleAppManager *appMan);
+static void CapsuleManager_ZeroThrownMonScale(CapsuleAppManager *appMan);
 static BOOL ov57_0223BA40(CapsuleAppManager *appMan);
 static BOOL ov57_0223BABC(CapsuleAppManager *appMan);
-static void ov57_0223BB38(CapsuleAppManager *appMan, BOOL a1);
-static void ov57_0223BB4C(CapsuleAppManager *appMan);
-static void ov57_0223B858(ManagedSprite *sprite, u32 event);
+static void CapsuleManager_SetThrownMonSpriteHidden(CapsuleAppManager *appMan, BOOL a1);
+static void CapsuleManager_FreeThrownMonSprite(CapsuleAppManager *appMan);
+static void CapsuleManager_SetUIAnimationFromTouch(ManagedSprite *sprite, u32 event);
 
-static BOOL (*const ov57_0223BEB8[])(CapsuleAppManager *appMan) = {
-    ov57_0223A104,
-    ov57_0223A31C,
+static BOOL (*const sCapsuleFunctions[])(CapsuleAppManager *appMan) = {
+    CapsuleManager_SelectionActions,
+    CapsuleManager_HandleCancelUpdateSeals,
     ov57_0223A504,
-    ov57_0223A5AC,
-    ov57_0223A6B4,
+    CapsuleManager_HandleSpritesAndInputs,
+    CapsuleManager_Dummy,
 };
 
 const UnkStruct_ov57_0223BECC ov57_0223BECC[] = {
-    { 0, ov57_0223B6F0 },
-    { 1, ov57_0223B700 },
-    { 2, ov57_0223B714 },
-    { 3, ov57_0223B73C },
-    { 4, ov57_0223B74C },
+    { 0, ov57_0223B6F0                 },
+    { 1, CapsuleManager_FreeMenuWindow },
+    { 2, ov57_0223B714                 },
+    { 3, ov57_0223B73C                 },
+    { 4, ov57_0223B74C                 },
 };
 
-int ov57_0223A07C(BallCapsule *capsule) {
+int CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule) {
     int i;
     int result = 0;
     int sealCount;
@@ -123,7 +123,7 @@ int ov57_0223A07C(BallCapsule *capsule) {
     return result;
 }
 
-int ov57_0223A0A8(CapsuleAppManager *appMan, int index) {
+int CapsuleManager_CapsuleSelectionField(CapsuleAppManager *appMan, int index) {
     int pokemonIndex;
     int animIdx;
     int result;
@@ -144,14 +144,14 @@ int ov57_0223A0A8(CapsuleAppManager *appMan, int index) {
     return result;
 }
 
-BOOL ov57_0223A0E0(CapsuleAppManager *appMan) {
-    BOOL result = ov57_0223BEB8[appMan->funcIndex](appMan);
+BOOL CapsuleManager_CallFunction(CapsuleAppManager *appMan) {
+    BOOL result = sCapsuleFunctions[appMan->funcIndex](appMan);
     SpriteSystem_DrawSprites(appMan->graphicsMan.spriteManager);
 
     return result;
 }
 
-static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_SelectionActions(CapsuleAppManager *appMan) {
     switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID: {
         NARC *narc;
@@ -166,7 +166,7 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         CapsuleGraphics_LoadBgLayer7Tilemap(appMan, narc);
         CapsuleGraphics_AssignCapsules(appMan);
         CapsuleGraphics_InitCapsuleSprites(appMan, narc);
-        ov57_022385DC(appMan);
+        CapsuleGraphics_InitUIWindows(appMan);
         SealPlacement_UpdateSealsFromCapsule(appMan);
         SealPlacement_DrawActiveSeals(appMan, 1);
         SealPlacement_OffsetSeals(appMan);
@@ -174,8 +174,8 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         CapsuleGraphics_InitCapsuleUI(appMan);
         CapsuleGraphics_LoadSelectionResources(appMan, narc);
         CapsuleGraphics_InitSelectionIndicator(appMan);
-        ov57_0223B75C(appMan);
-        ov57_0223B78C(appMan);
+        CapsuleManager_CopyToActiveCapsule(appMan);
+        CapsuleManager_GetSealCounts(appMan);
         CapsuleGraphics_PopulateSealPage(appMan, appMan->sealPages.page);
         CapsuleGraphics_LoadPageSprites(appMan);
         CapsuleGraphics_InitPageSprites(appMan);
@@ -185,7 +185,7 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(appMan, 0);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
         CapsuleGraphics_StartDisplay();
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         ov57_0223866C(appMan, TRUE);
         GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
 
@@ -207,7 +207,7 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         appMan->stateID++;
 
     case CAPSULE_CAPSULE_SELECTION_STATE_ID:
-        appMan->stateID = ov57_0223B180(appMan);
+        appMan->stateID = CapsuleManager_SelectionActions_HandleInput(appMan);
         break;
     case CAPSULE_CAPSULE_MENU_STATE_ID: {
         int (*callback)(CapsuleAppManager *);
@@ -215,7 +215,7 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
 
         switch (result) {
         case LIST_CANCEL:
-            ov57_0223B700(appMan);
+            CapsuleManager_FreeMenuWindow(appMan);
             CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
             appMan->stateID = CAPSULE_CAPSULE_SELECTION_STATE_ID;
             break;
@@ -228,7 +228,7 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
                 int result = callback(appMan);
 
                 if (result != 1) {
-                    ov57_0223B700(appMan);
+                    CapsuleManager_FreeMenuWindow(appMan);
                     break;
                 }
 
@@ -246,7 +246,7 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
         if (IsPaletteFadeFinished() != TRUE) {
             break;
         }
-        ov57_0223864C(appMan);
+        CapsuleGraphics_RemoveUIWindows(appMan);
         CapsuleGraphics_FreeCapsuleSprites(appMan);
         CapsuleGraphics_FreePokemonSprites(appMan);
         CapsuleGraphics_FreeUISprites(appMan);
@@ -261,16 +261,16 @@ static BOOL ov57_0223A104(CapsuleAppManager *appMan) {
     return TRUE;
 }
 
-static BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_HandleCancelUpdateSeals(CapsuleAppManager *appMan) {
     switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID:
-        appMan->stateID = ov57_0223A6B8(appMan);
+        appMan->stateID = CapsuleManager_HandleCancelUpdateSeals_Init(appMan);
         break;
     case CAPSULE_CAPSULE_MENU_STATE_ID:
-        appMan->stateID = ov57_0223B620(appMan);
+        appMan->stateID = CapsuleManager_HandleCancelUpdateSeals_CapsuleMenu(appMan);
         break;
     case CAPSULE_FADE_OUT_STATE_ID:
-        appMan->stateID = ov57_0223AB58(appMan);
+        appMan->stateID = CapsuleManager_HandleCancelUpdateSeals_FadeOut(appMan);
         break;
     case CAPSULE_FADE_OUT_WAIT_STATE_ID:
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[0], 0, msg_0011_00012, FALSE);
@@ -288,10 +288,10 @@ static BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
         appMan->stateID = 11;
         break;
     case CAPSULE_CANCEL_PRESSED_STATE_ID:
-        appMan->stateID = ov57_0223A8FC(appMan);
+        appMan->stateID = CapsuleManager_HandleCancelUpdateSeals_CancelPressed(appMan);
         break;
     case CAPSULE_UNK_11_STATE_ID:
-        if (ov57_0223A7DC(appMan)) {
+        if (CapsuleManager_HandleFades(appMan)) {
             return TRUE;
         }
         break;
@@ -349,7 +349,7 @@ static BOOL ov57_0223A31C(CapsuleAppManager *appMan) {
 static BOOL ov57_0223A504(CapsuleAppManager *appMan) {
     switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID:
-        ov57_0223BC4C(appMan, appMan->capsuleIndex[0]);
+        CapsuleManager_AssignCapsuleMon(appMan, appMan->capsuleIndex[0]);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[0], 0, msg_0011_00009, TRUE);
         appMan->stateID++;
         break;
@@ -360,7 +360,7 @@ static BOOL ov57_0223A504(CapsuleAppManager *appMan) {
         }
         break;
     case CAPSULE_FADE_IN_WAIT_STATE_ID:
-        ov57_0223B828(appMan, 0, 0xFF, 0);
+        CapsuleManager_UpdateStates(appMan, 0, 0xFF, 0);
         ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[0]);
         ov57_0223866C(appMan, TRUE);
@@ -373,7 +373,7 @@ static BOOL ov57_0223A504(CapsuleAppManager *appMan) {
     return TRUE;
 }
 
-static BOOL ov57_0223A5AC(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_HandleSpritesAndInputs(CapsuleAppManager *appMan) {
     switch (appMan->stateID) {
     case CAPSULE_INIT_STATE_ID:
         ManagedSprite_SetDrawPriority(appMan->cursor[0], 25);
@@ -394,7 +394,7 @@ static BOOL ov57_0223A5AC(CapsuleAppManager *appMan) {
     case CAPSULE_CAPSULE_SELECTION_STATE_ID:
         ManagedSprite_SetDrawPriority(appMan->cursor[0], 20);
         ManagedSprite_SetDrawPriority(appMan->cursor[1], 25);
-        ov57_0223B828(appMan, 0, 0xFF, 0);
+        CapsuleManager_UpdateStates(appMan, 0, 0xFF, 0);
         ManagedSprite_SetAnim(appMan->cursor[0], 0);
         ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[0]);
@@ -409,25 +409,25 @@ static BOOL ov57_0223A5AC(CapsuleAppManager *appMan) {
     return TRUE;
 }
 
-static BOOL ov57_0223A6B4(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_Dummy(CapsuleAppManager *appMan) {
     return FALSE;
 }
 
-static int ov57_0223A6B8(CapsuleAppManager *appMan) {
+static int CapsuleManager_HandleCancelUpdateSeals_Init(CapsuleAppManager *appMan) {
     switch (appMan->throwStateID) {
     case 0:
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         CapsuleGraphics_InitWindows(appMan);
         CapsuleGraphics_UpdateAllSealCountText(appMan);
-        ov57_0223B75C(appMan);
-        ov57_0223B78C(appMan);
+        CapsuleManager_CopyToActiveCapsule(appMan);
+        CapsuleManager_GetSealCounts(appMan);
         appMan->graphicsMan.sealsChanged = 0;
         appMan->frameCounter = 0;
         CapsuleGraphics_FadeOut();
         ++appMan->throwStateID;
         break;
     case 1:
-        if (ov57_0223B940(appMan) == TRUE) {
+        if (CapsuleManager_GetGraphicsTaskResult(appMan) == TRUE) {
             break;
         }
         if (IsPaletteFadeFinished() != TRUE) {
@@ -454,7 +454,7 @@ static int ov57_0223A6B8(CapsuleAppManager *appMan) {
         if (IsPaletteFadeFinished() != TRUE) {
             break;
         }
-        ov57_0223B948(appMan, 1);
+        CapsuleManager_SetSelectedCapsule(appMan, 1);
         appMan->throwStateID = 0;
         return 4;
     }
@@ -462,7 +462,7 @@ static int ov57_0223A6B8(CapsuleAppManager *appMan) {
     return 0;
 }
 
-static BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_HandleFades(CapsuleAppManager *appMan) {
     switch (appMan->throwStateID) {
     case 0:
         if (appMan->frameCounter > 0) {
@@ -490,19 +490,19 @@ static BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
         ov57_0223866C(appMan, TRUE);
         GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
         ov57_02238AF0(appMan, -1);
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         CapsuleGraphics_FadeIn();
         ++appMan->throwStateID;
         break;
     case 2:
-        if (ov57_0223B940(appMan) == TRUE) {
+        if (CapsuleManager_GetGraphicsTaskResult(appMan) == TRUE) {
             break;
         }
         if (IsPaletteFadeFinished() != TRUE) {
             break;
         }
         ManagedSprite_SetDrawFlag(appMan->cursor[1], FALSE);
-        ov57_0223B828(appMan, 0, 0xFF, 0);
+        CapsuleManager_UpdateStates(appMan, 0, 0xFF, 0);
         CapsuleGraphics_FreeSealCountWindows(appMan);
         appMan->throwStateID = 0;
         return TRUE;
@@ -511,7 +511,7 @@ static BOOL ov57_0223A7DC(CapsuleAppManager *appMan) {
     return FALSE;
 }
 
-static int ov57_0223A8FC(CapsuleAppManager *appMan) {
+static int CapsuleManager_HandleCancelUpdateSeals_CancelPressed(CapsuleAppManager *appMan) {
     switch (appMan->throwStateID) {
     case 0:
         if (!SealPlacement_AnySealsChanged(appMan)) {
@@ -519,7 +519,7 @@ static int ov57_0223A8FC(CapsuleAppManager *appMan) {
         }
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80b, 0, 0, 10, RGB_BLACK);
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
         ++appMan->throwStateID;
         break;
@@ -578,8 +578,8 @@ static int ov57_0223A8FC(CapsuleAppManager *appMan) {
         int result;
         switch (appMan->yesNoResult) {
         case YESNORESPONSE_YES:
-            ov57_0223B774(appMan);
-            ov57_0223B7A8(appMan);
+            CapsuleManager_CopyFromActiveCapsule(appMan);
+            CapsuleManager_SetSealCounts(appMan);
             CapsuleGraphics_UpdateAllSealCountText(appMan);
             SealPlacement_FreeInactiveSeals(appMan);
             SealPlacement_UpdateSealsFromCapsule(appMan);
@@ -595,7 +595,7 @@ static int ov57_0223A8FC(CapsuleAppManager *appMan) {
             result = CAPSULE_CANCEL_PRESSED_STATE_ID;
             break;
         }
-        ov57_0223B948(appMan, 1);
+        CapsuleManager_SetSelectedCapsule(appMan, 1);
         appMan->throwStateID = 0;
         return result;
     }
@@ -603,17 +603,17 @@ static int ov57_0223A8FC(CapsuleAppManager *appMan) {
     return CAPSULE_CANCEL_PRESSED_STATE_ID;
 }
 
-static int ov57_0223AB58(CapsuleAppManager *appMan) {
+static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *appMan) {
     switch (appMan->throwStateID) {
     case THROW_INIT_GFX_STATE_ID:
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80B, 0, 0, 10, RGB_BLACK);
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         appMan->yesNoResult = 0;
-        ov57_0223B7C4(appMan);
-        ov57_0223B950(appMan);
-        ov57_0223BB38(appMan, 1);
+        CapsuleManager_LoadLeadingPokemon(appMan);
+        CapsuleManager_LoadThrownMonSprite(appMan);
+        CapsuleManager_SetThrownMonSpriteHidden(appMan, 1);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[0], 0, msg_0011_00013, FALSE);
         ++appMan->throwStateID;
         break;
@@ -657,8 +657,8 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
         }
         ov57_0223BA40(appMan);
         ov07_02232A44(appMan->graphicsMan.sealEffect);
-        ov57_0223BB38(appMan, 0);
-        ov57_0223BA1C(appMan);
+        CapsuleManager_SetThrownMonSpriteHidden(appMan, 0);
+        CapsuleManager_ZeroThrownMonScale(appMan);
         PlaySE(SEQ_SE_DP_CUSTOM05);
         ++appMan->throwStateID;
         break;
@@ -670,7 +670,7 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
         }
         ov07_02233ECC(appMan->graphicsMan.ballRotation);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
-        ov57_0223B9C8(appMan);
+        CapsuleManager_LoadThrownMonAnim(appMan);
         appMan->yesNoResult = 0;
         ++appMan->throwStateID;
     } break;
@@ -704,7 +704,7 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
         sp10.paletteData = appMan->graphicsMan.paletteData;
         sp10.ball = GetMonData(appMan->pokemon, MON_DATA_POKEBALL, NULL);
         appMan->graphicsMan.ballRotation = ov07_02233DB8(&sp10);
-        ov57_0223BB5C();
+        CapsuleManager_SetNormalAlpha();
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
         ++appMan->throwStateID;
         break;
@@ -716,8 +716,8 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
         }
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80B, 0, 10, 0, RGB_BLACK);
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 10, 0, RGB_BLACK);
-        ov57_0223BB38(appMan, 1);
-        ov57_0223BB4C(appMan);
+        CapsuleManager_SetThrownMonSpriteHidden(appMan, 1);
+        CapsuleManager_FreeThrownMonSprite(appMan);
         ov07_02233ECC(appMan->graphicsMan.ballRotation);
         ++appMan->throwStateID;
     } break;
@@ -726,7 +726,7 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
             break;
         }
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
-        ov57_0223B948(appMan, 1);
+        CapsuleManager_SetSelectedCapsule(appMan, 1);
         appMan->throwStateID = 0;
         appMan->stateID = CAPSULE_CAPSULE_MENU_STATE_ID;
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[0], 0, 0xFFFF, FALSE);
@@ -736,7 +736,7 @@ static int ov57_0223AB58(CapsuleAppManager *appMan) {
     return CAPSULE_FADE_OUT_STATE_ID;
 }
 
-void ov57_0223AEA8(u32 index, u32 event, void *arg) {
+void CapsuleManager_HandleSpritePress(u32 index, u32 event, void *arg) {
     CapsuleAppManager *appMan = arg;
 
     if (!appMan->graphicsMan.selectedCapsule) {
@@ -758,7 +758,7 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
             CapsuleGraphics_UpdateAllSealCountText(appMan);
             PlaySE(SEQ_SE_DP_CUSTOM02);
         }
-        ov57_0223B858(appMan->pageSprites[8], event);
+        CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[8], event);
         break;
     case 9:
         if (event == TOUCH_BUTTON_PRESSED) {
@@ -771,7 +771,7 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
             CapsuleGraphics_UpdateAllSealCountText(appMan);
             PlaySE(SEQ_SE_DP_CUSTOM02);
         }
-        ov57_0223B858(appMan->pageSprites[9], event);
+        CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[9], event);
         break;
     case 10:
         if (event == TOUCH_BUTTON_PRESSED) {
@@ -779,31 +779,31 @@ void ov57_0223AEA8(u32 index, u32 event, void *arg) {
                 appMan->stateID = CAPSULE_FADE_OUT_STATE_ID;
                 PlaySE(SEQ_SE_DP_DECIDE);
             }
-            ov57_0223B90C(appMan->pageSprites[10], NULL);
+            CapsuleManager_PressCapsuleUI(appMan->pageSprites[10], NULL);
         }
-        ov57_0223B858(appMan->pageSprites[10], event);
+        CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[10], event);
         break;
     case 11:
         if (event == TOUCH_BUTTON_PRESSED) {
             if (appMan->stateID != CAPSULE_FADE_OUT_WAIT_STATE_ID) {
                 appMan->stateID = CAPSULE_FADE_OUT_WAIT_STATE_ID;
-                ov57_0223B948(appMan, 0);
+                CapsuleManager_SetSelectedCapsule(appMan, 0);
                 PlaySE(SEQ_SE_DP_PIRORIRO);
             }
-            ov57_0223B90C(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
+            CapsuleManager_PressCapsuleUI(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
         }
-        ov57_0223B858(appMan->pageSprites[11], event);
+        CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[11], event);
         break;
     case 12:
         if (event == TOUCH_BUTTON_PRESSED) {
             if (appMan->stateID != CAPSULE_CANCEL_PRESSED_STATE_ID) {
                 appMan->stateID = CAPSULE_CANCEL_PRESSED_STATE_ID;
-                ov57_0223B948(appMan, 0);
+                CapsuleManager_SetSelectedCapsule(appMan, 0);
                 PlaySE(SEQ_SE_DP_DECIDE);
             }
-            ov57_0223B90C(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
+            CapsuleManager_PressCapsuleUI(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
         }
-        ov57_0223B858(appMan->pageSprites[12], event);
+        CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[12], event);
         break;
     case 0:
     case 1:
@@ -874,7 +874,7 @@ static BOOL ov57_0223B12C(CapsuleAppManager *appMan) {
     return FALSE;
 }
 
-static int ov57_0223B180(CapsuleAppManager *appMan) {
+static int CapsuleManager_SelectionActions_HandleInput(CapsuleAppManager *appMan) {
     ov57_0223B12C(appMan);
     if (appMan->menuInputState == MENU_INPUT_STATE_BUTTONS) {
         return ov57_0223B288(appMan);
@@ -899,7 +899,7 @@ static int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
         SealPlacement_LoadCapsuleSeals(appMan);
         CapsuleGraphics_SetCapsuleSpriteAnim(appMan);
         appMan->capsuleIndex[0] = a1;
-        ov57_0223B504(appMan, 0, TRUE);
+        CapsuleManager_MoveCursorToCapsule(appMan, 0, TRUE);
         SealPlacement_FreeInactiveSeals(appMan);
         SealPlacement_UpdateSealsFromCapsule(appMan);
         SealPlacement_DrawActiveSeals(appMan, 1);
@@ -930,7 +930,7 @@ static int ov57_0223B288(CapsuleAppManager *appMan) {
         result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
     } else {
         sp0 = appMan->capsuleIndex[0];
-        if (!ov57_0223B478(&sp0)) {
+        if (!CapsuleManager_HandleCapsulePadMovement(&sp0)) {
             result = CAPSULE_CAPSULE_SELECTION_STATE_ID;
         } else {
             result = ov57_0223B1A4(appMan, sp0);
@@ -963,14 +963,14 @@ static int ov57_0223B32C(CapsuleAppManager *appMan, BOOL a1) {
     }
     if (a1) {
         CapsuleGraphics_SwapCapsules(appMan, appMan->capsuleIndex[0], appMan->capsuleIndex[1]);
-        ov57_0223B504(appMan, 1, TRUE);
+        CapsuleManager_MoveCursorToCapsule(appMan, 1, TRUE);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[0], 0, msg_0011_00011, TRUE);
         PlaySE(SEQ_SE_DP_SELECT);
         return CAPSULE_FADE_IN_WAIT_STATE_ID;
     } else {
         ManagedSprite_SetDrawFlag(appMan->cursor[1], FALSE);
         ManagedSprite_SetAnim(appMan->cursor[0], 0);
-        ov57_0223B504(appMan, 0, FALSE);
+        CapsuleManager_MoveCursorToCapsule(appMan, 0, FALSE);
         PlaySE(SEQ_SE_DP_DECIDE);
         return CAPSULE_CAPSULE_SELECTION_STATE_ID;
     }
@@ -984,7 +984,7 @@ static int ov57_0223B3A4(CapsuleAppManager *appMan, u8 a1) {
         return ov57_0223B32C(appMan, TRUE);
     default:
         appMan->capsuleIndex[1] = a1;
-        ov57_0223B504(appMan, 1, FALSE);
+        CapsuleManager_MoveCursorToCapsule(appMan, 1, FALSE);
         if (appMan->menuInputState == 0) {
             PlaySE(SEQ_SE_DP_SELECT);
         } else {
@@ -1008,7 +1008,7 @@ static int ov57_0223B3F8(CapsuleAppManager *appMan) {
         result = CAPSULE_FADE_IN_STATE_ID;
     } else {
         sp0 = appMan->capsuleIndex[1];
-        if (!ov57_0223B478(&sp0)) {
+        if (!CapsuleManager_HandleCapsulePadMovement(&sp0)) {
             result = CAPSULE_FADE_IN_STATE_ID;
         } else {
             result = ov57_0223B3A4(appMan, sp0);
@@ -1026,27 +1026,27 @@ static int ov57_0223B45C(CapsuleAppManager *appMan) {
     }
 }
 
-static BOOL ov57_0223B478(int *a0) {
+static BOOL CapsuleManager_HandleCapsulePadMovement(int *capsuleIndex) {
     if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        *a0 += 1;
-        *a0 %= MAX_CAPSULES;
+        *capsuleIndex += 1;
+        *capsuleIndex %= MAX_CAPSULES;
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        if (*a0 > 0) {
-            *a0 -= 1;
+        if (*capsuleIndex > 0) {
+            *capsuleIndex -= 1;
         } else {
-            *a0 = MAX_CAPSULES - 1;
+            *capsuleIndex = MAX_CAPSULES - 1;
         }
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
-        if (*a0 / 4 != 0) {
-            *a0 -= 4;
-            *a0 %= MAX_CAPSULES;
+        if (*capsuleIndex / 4 != 0) {
+            *capsuleIndex -= 4;
+            *capsuleIndex %= MAX_CAPSULES;
         } else {
             return FALSE;
         }
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
-        if (*a0 / 4 != 2) {
-            *a0 += 4;
-            *a0 %= MAX_CAPSULES;
+        if (*capsuleIndex / 4 != 2) {
+            *capsuleIndex += 4;
+            *capsuleIndex %= MAX_CAPSULES;
         } else {
             return FALSE;
         }
@@ -1057,24 +1057,26 @@ static BOOL ov57_0223B478(int *a0) {
     return TRUE;
 }
 
-static void ov57_0223B504(CapsuleAppManager *appMan, int a1, BOOL a2) {
+static void CapsuleManager_MoveCursorToCapsule(CapsuleAppManager *appMan, int index, BOOL moveBoth) {
     s16 x, y;
-    int r4 = 0;
-    if (a1 == 0) {
-        r4 = 1;
+    int cursorIndex = 0;
+
+    if (index == 0) {
+        cursorIndex = 1;
     }
-    CapsuleGraphics_GetCapsuleGridLocation(appMan->capsuleIndex[a1], &x, &y);
-    ManagedSprite_SetPositionXY(appMan->cursor[a1], x, y);
-    if (a2 == TRUE) {
-        appMan->capsuleIndex[r4] = appMan->capsuleIndex[a1];
-        CapsuleGraphics_GetCapsuleGridLocation(appMan->capsuleIndex[r4], &x, &y);
-        ManagedSprite_SetPositionXY(appMan->cursor[r4], x, y);
+    CapsuleGraphics_GetCapsuleGridLocation(appMan->capsuleIndex[index], &x, &y);
+    ManagedSprite_SetPositionXY(appMan->cursor[index], x, y);
+
+    if (moveBoth == TRUE) {
+        appMan->capsuleIndex[cursorIndex] = appMan->capsuleIndex[index];
+        CapsuleGraphics_GetCapsuleGridLocation(appMan->capsuleIndex[cursorIndex], &x, &y);
+        ManagedSprite_SetPositionXY(appMan->cursor[cursorIndex], x, y);
     }
 }
 
 static const TouchscreenHitbox ov57_0223BEB0[2] = {
     { .rect = { 168, 192, 192, 256 } },
-    { TOUCHSCREEN_RECTLIST_END },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
 static int ov57_0223B578(CapsuleAppManager *appMan) {
@@ -1107,16 +1109,16 @@ static int ov57_0223B578(CapsuleAppManager *appMan) {
     return -1;
 }
 
-static int ov57_0223B620(CapsuleAppManager *appMan) {
+static int CapsuleManager_HandleCancelUpdateSeals_CapsuleMenu(CapsuleAppManager *appMan) {
     ov57_0223B12C(appMan);
     if (gSystem.newKeys & PAD_BUTTON_A) {
         if (appMan->graphicsMan.index != 0xFF) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         PlaySE(SEQ_SE_DP_PIRORIRO);
-        ov57_0223B90C(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
+        CapsuleManager_PressCapsuleUI(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
         return CAPSULE_FADE_OUT_WAIT_STATE_ID;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
@@ -1124,9 +1126,9 @@ static int ov57_0223B620(CapsuleAppManager *appMan) {
             PlaySE(SEQ_SE_DP_CUSTOM06);
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
-        ov57_0223B948(appMan, 0);
+        CapsuleManager_SetSelectedCapsule(appMan, 0);
         PlaySE(SEQ_SE_DP_DECIDE);
-        ov57_0223B90C(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
+        CapsuleManager_PressCapsuleUI(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
         return CAPSULE_CANCEL_PRESSED_STATE_ID;
     }
     if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y)) {
@@ -1135,7 +1137,7 @@ static int ov57_0223B620(CapsuleAppManager *appMan) {
             return CAPSULE_CAPSULE_MENU_STATE_ID;
         }
         PlaySE(SEQ_SE_DP_DECIDE);
-        ov57_0223B90C(appMan->pageSprites[10], NULL);
+        CapsuleManager_PressCapsuleUI(appMan->pageSprites[10], NULL);
         return CAPSULE_FADE_OUT_STATE_ID;
     }
 
@@ -1143,11 +1145,11 @@ static int ov57_0223B620(CapsuleAppManager *appMan) {
 }
 
 static BOOL ov57_0223B6F0(CapsuleAppManager *appMan) {
-    ov57_0223B828(appMan, 1, 0, 3);
+    CapsuleManager_UpdateStates(appMan, 1, 0, 3);
     return FALSE;
 }
 
-static BOOL ov57_0223B700(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_FreeMenuWindow(CapsuleAppManager *appMan) {
     ov57_02238D80(appMan);
     ov57_0223866C(appMan, TRUE);
     return TRUE;
@@ -1163,36 +1165,36 @@ static BOOL ov57_0223B714(CapsuleAppManager *appMan) {
 }
 
 static BOOL ov57_0223B73C(CapsuleAppManager *appMan) {
-    ov57_0223B828(appMan, 2, 0, 3);
+    CapsuleManager_UpdateStates(appMan, 2, 0, 3);
     return FALSE;
 }
 
 static BOOL ov57_0223B74C(CapsuleAppManager *appMan) {
-    ov57_0223B828(appMan, 3, 0, 3);
+    CapsuleManager_UpdateStates(appMan, 3, 0, 3);
     return FALSE;
 }
 
-static void ov57_0223B75C(CapsuleAppManager *appMan) {
+static void CapsuleManager_CopyToActiveCapsule(CapsuleAppManager *appMan) {
     CopyCapsule(appMan->capsules[appMan->capsuleIndex[0]].capsule, &appMan->activeCapsule);
 }
 
-static void ov57_0223B774(CapsuleAppManager *appMan) {
+static void CapsuleManager_CopyFromActiveCapsule(CapsuleAppManager *appMan) {
     CopyCapsule(&appMan->activeCapsule, appMan->capsules[appMan->capsuleIndex[0]].capsule);
 }
 
-static void ov57_0223B78C(CapsuleAppManager *appMan) {
+static void CapsuleManager_GetSealCounts(CapsuleAppManager *appMan) {
     for (int i = 0; i < SEAL_MAX + 1; ++i) {
         appMan->sealCounts[i] = SealCaseInventory_GetSealQuantity(appMan->sealCount, i);
     }
 }
 
-static void ov57_0223B7A8(CapsuleAppManager *appMan) {
+static void CapsuleManager_SetSealCounts(CapsuleAppManager *appMan) {
     for (int i = 0; i < SEAL_MAX + 1; ++i) {
         SealCaseInventory_SetSealQuantity(appMan->sealCount, i, appMan->sealCounts[i]);
     }
 }
 
-static void ov57_0223B7C4(CapsuleAppManager *appMan) {
+static void CapsuleManager_LoadLeadingPokemon(CapsuleAppManager *appMan) {
     int isEgg;
     Pokemon *pokemon;
 
@@ -1216,7 +1218,7 @@ static void ov57_0223B7C4(CapsuleAppManager *appMan) {
     }
 }
 
-static void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3) {
+static void CapsuleManager_UpdateStates(CapsuleAppManager *appMan, int a1, int a2, int a3) {
     if (a2 == 0xFF) {
         appMan->stateID = appMan->alternateState;
     } else {
@@ -1227,7 +1229,7 @@ static void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3) {
     appMan->throwStateID = 0;
 }
 
-static void ov57_0223B858(ManagedSprite *sprite, u32 event) {
+static void CapsuleManager_SetUIAnimationFromTouch(ManagedSprite *sprite, u32 event) {
     switch (event) {
     case TOUCH_BUTTON_PRESSED:
         ManagedSprite_SetAnimationFrame(sprite, 1);
@@ -1244,7 +1246,7 @@ static void ov57_0223B858(ManagedSprite *sprite, u32 event) {
     }
 }
 
-static void ov57_0223B890(TextOBJ *fontOAM, int xOffset, int yOffset) {
+static void CapsuleManager_OffsetFontOAM(TextOBJ *fontOAM, int xOffset, int yOffset) {
     int x;
     int y;
 
@@ -1254,17 +1256,17 @@ static void ov57_0223B890(TextOBJ *fontOAM, int xOffset, int yOffset) {
     }
 }
 
-static void ov57_0223B8B8(SysTask *sysTask, void *taskData) {
+static void CapsuleManager_CapsuleUIPressTask(SysTask *sysTask, void *taskData) {
     CapsuleUIPressTask *capsuleUIPressTask = taskData;
 
     switch (capsuleUIPressTask->frame) {
     case 3:
-        ov57_0223B890(capsuleUIPressTask->fontOAM, 0, -1);
+        CapsuleManager_OffsetFontOAM(capsuleUIPressTask->fontOAM, 0, -1);
         ManagedSprite_SetAnimationFrame(capsuleUIPressTask->sprite, 2);
         capsuleUIPressTask->frame++;
         break;
     case 6:
-        ov57_0223B890(capsuleUIPressTask->fontOAM, 0, 2);
+        CapsuleManager_OffsetFontOAM(capsuleUIPressTask->fontOAM, 0, 2);
         ManagedSprite_SetAnimationFrame(capsuleUIPressTask->sprite, 0);
         SysTask_Destroy(sysTask);
         Heap_Free(capsuleUIPressTask);
@@ -1275,24 +1277,24 @@ static void ov57_0223B8B8(SysTask *sysTask, void *taskData) {
     }
 }
 
-static void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj) {
+static void CapsuleManager_PressCapsuleUI(ManagedSprite *sprite, TextOBJ *textObj) {
     CapsuleUIPressTask *taskData = Heap_Alloc(HEAP_ID_52, sizeof(CapsuleUIPressTask));
     taskData->frame = 1;
     taskData->sprite = sprite;
     taskData->fontOAM = textObj;
-    ov57_0223B890(taskData->fontOAM, 0, -1);
-    SysTask_CreateOnMainQueue(ov57_0223B8B8, taskData, 1000);
+    CapsuleManager_OffsetFontOAM(taskData->fontOAM, 0, -1);
+    SysTask_CreateOnMainQueue(CapsuleManager_CapsuleUIPressTask, taskData, 1000);
 }
 
-static BOOL ov57_0223B940(CapsuleAppManager *appMan) {
+static BOOL CapsuleManager_GetGraphicsTaskResult(CapsuleAppManager *appMan) {
     return appMan->graphicsMan.graphicsTaskResult;
 }
 
-static void ov57_0223B948(CapsuleAppManager *appMan, int a1) {
+static void CapsuleManager_SetSelectedCapsule(CapsuleAppManager *appMan, int a1) {
     appMan->graphicsMan.selectedCapsule = a1;
 }
 
-static void ov57_0223B950(CapsuleAppManager *appMan) {
+static void CapsuleManager_LoadThrownMonSprite(CapsuleAppManager *appMan) {
     PokepicTemplate pokemonSpriteTemplate;
     PokepicAnimScript spriteAnimFrame[10];
     int species;
@@ -1308,7 +1310,7 @@ static void ov57_0223B950(CapsuleAppManager *appMan) {
     appMan->graphicsMan.pokepic = PokepicManager_CreatePokepic(appMan->graphicsMan.pokepicManager, &pokemonSpriteTemplate, 192, 48 + yOffset, -640, 0, spriteAnimFrame, NULL);
 }
 
-static void ov57_0223B9C8(CapsuleAppManager *appMan) {
+static void CapsuleManager_LoadThrownMonAnim(CapsuleAppManager *appMan) {
     int species;
     int dummy;
 
@@ -1319,7 +1321,7 @@ static void ov57_0223B9C8(CapsuleAppManager *appMan) {
     sub_0207294C(appMan->narc, appMan->graphicsMan.pokepicAnimManager, appMan->graphicsMan.pokepic, species, 2, 0, 0);
 }
 
-static void ov57_0223BA1C(CapsuleAppManager *appMan) {
+static void CapsuleManager_ZeroThrownMonScale(CapsuleAppManager *appMan) {
     Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEW, 0);
     Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_AFFINEH, 0);
 }
@@ -1356,15 +1358,15 @@ static BOOL ov57_0223BABC(CapsuleAppManager *appMan) {
     return 1;
 }
 
-static void ov57_0223BB38(CapsuleAppManager *appMan, int value) {
+static void CapsuleManager_SetThrownMonSpriteHidden(CapsuleAppManager *appMan, int value) {
     Pokepic_SetAttr(appMan->graphicsMan.pokepic, POKEPIC_VANISHED, value);
 }
 
-static void ov57_0223BB4C(CapsuleAppManager *appMan) {
+static void CapsuleManager_FreeThrownMonSprite(CapsuleAppManager *appMan) {
     Pokepic_Delete(appMan->graphicsMan.pokepic);
 }
 
-void ov57_0223BB5C(void) {
+void CapsuleManager_SetNormalAlpha(void) {
     G2_SetBlendAlpha(GX_BLEND_PLANEMASK_NONE, GX_BLEND_PLANEMASK_NONE, 31, 31);
     G2S_SetBlendAlpha(GX_BLEND_PLANEMASK_NONE, GX_BLEND_PLANEMASK_NONE, 31, 31);
 }

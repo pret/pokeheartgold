@@ -145,8 +145,8 @@ void SealPlacement_LoadCapsuleSeals(CapsuleAppManager *appMan);
 void SealPlacement_GetCapsuleSeals(BallCapsule *capsule, CapsuleAppManager *appMan);
 
 GF3DVramMan *CapsuleGraphics_PipelineInit(void);
-void ov57_022385DC(CapsuleAppManager *appManager);
-void ov57_0223864C(CapsuleAppManager *appManager);
+void CapsuleGraphics_InitUIWindows(CapsuleAppManager *appManager);
+void CapsuleGraphics_RemoveUIWindows(CapsuleAppManager *appManager);
 void ov57_0223866C(CapsuleAppManager *appManager, BOOL show);
 void CapsuleGraphics_InitFontOAMManager(CapsuleAppManager *appMan);
 void CapsuleGraphics_FreeFonts(CapsuleAppManager *appMan);
@@ -201,12 +201,12 @@ void CapsuleGraphics_SetPageSpritesDrawFlag(CapsuleAppManager *appMan, int flag)
 void CapsuleGraphics_Dummy(CapsuleAppManager *appMan);
 void CapsuleGraphics_FreeUISprites(CapsuleAppManager *appMan);
 
-int ov57_0223A07C(BallCapsule *capsule);
-int ov57_0223A0A8(CapsuleAppManager *appMan, int capsuleIndex);
-BOOL ov57_0223A0E0(CapsuleAppManager *appMan);
-void ov57_0223AEA8(u32 index, u32 event, void *arg);
+int CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule);
+int CapsuleManager_CapsuleSelectionField(CapsuleAppManager *appMan, int capsuleIndex);
+BOOL CapsuleManager_CallFunction(CapsuleAppManager *appMan);
+void CapsuleManager_HandleSpritePress(u32 index, u32 event, void *arg);
 void ov57_0223BB84(CapsuleAppManager *appMan);
-void ov57_0223BB5C(void);
-void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex);
+void CapsuleManager_SetNormalAlpha(void);
+void CapsuleManager_AssignCapsuleMon(CapsuleAppManager *appMan, int capsuleIndex);
 
 #endif // GUARD_APPLICATION_CAPSULE_MENU_DEFS_H

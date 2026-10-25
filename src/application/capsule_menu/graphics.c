@@ -67,13 +67,13 @@ static void CapsuleGraphics_OffsetSprite(TouchscreenHitbox *rect, ManagedSprite 
     rect->rect.right = x + xOffset;
 }
 
-void ov57_022385DC(CapsuleAppManager *appManager) {
+void CapsuleGraphics_InitUIWindows(CapsuleAppManager *appManager) {
     CapsuleGraphics_InitWindow_NoPushToVRAM(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[0], GF_BG_LYR_MAIN_1, 1, 21, 30, 2, 0x03A);
     CapsuleGraphics_InitWindow_NoPushToVRAM(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[3], GF_BG_LYR_MAIN_1, 1, 21, 20, 2, 0x03A);
     CapsuleGraphics_InitWindow_NoPushToVRAM(appManager->graphicsMan.bgConfig, &appManager->graphicsMan.windows[2], GF_BG_LYR_MAIN_1, 23, 21, 8, 2, 0x076);
 }
 
-void ov57_0223864C(CapsuleAppManager *appManager) {
+void CapsuleGraphics_RemoveUIWindows(CapsuleAppManager *appManager) {
     RemoveWindow(&appManager->graphicsMan.windows[0]);
     RemoveWindow(&appManager->graphicsMan.windows[3]);
     RemoveWindow(&appManager->graphicsMan.windows[2]);
@@ -348,7 +348,7 @@ void CapsuleGraphics_OpenCapsuleSelectionMenu(BgConfig *bgConfig, Window *window
     int tilemapLeft, tilemapTop, width, height, baseTile, ySize;
     int stringIDs[4];
 
-    field = ov57_0223A0A8(appMan, capsuleIndex);
+    field = CapsuleManager_CapsuleSelectionField(appMan, capsuleIndex);
     baseTile = ((9 * 8) + ((27 * 2) + (0 + ((1 + (18 + 12)) + 9))));
     tilemapLeft = 21;
     width = 9;
@@ -528,11 +528,11 @@ void CapsuleGraphics_AssignCapsules(CapsuleAppManager *appMan) {
 
     for (int i = 0; i < MAX_CAPSULES; i++) {
         capsule = appMan->capsules[i].capsule;
-        appMan->capsuleSprites[i].animIdx = ov57_0223A07C(capsule);
+        appMan->capsuleSprites[i].animIdx = CapsuleManager_AnySealsOnCapsule(capsule);
         appMan->capsuleSprites[i].pokemonIndex = appMan->capsules[i].partyIdx;
 
         if ((appMan->capsuleSprites[i].animIdx == 0) && (appMan->capsuleSprites[i].pokemonIndex != 0xFF)) {
-            ov57_0223BC4C(appMan, i);
+            CapsuleManager_AssignCapsuleMon(appMan, i);
         }
     }
 }

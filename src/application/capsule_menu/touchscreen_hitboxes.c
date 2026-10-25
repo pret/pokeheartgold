@@ -2,20 +2,20 @@
 
 #include "pokemon.h"
 
-const TouchscreenHitbox ov57_0223BEF4[] = {
-    { .rect = { 0x10, 0x20, 0x08, 0x18 } },
-    { .rect = { 0x10, 0x20, 0x40, 0x50 } },
-    { .rect = { 0x28, 0x38, 0x08, 0x18 } },
-    { .rect = { 0x28, 0x38, 0x40, 0x50 } },
-    { .rect = { 0x40, 0x50, 0x08, 0x18 } },
-    { .rect = { 0x40, 0x50, 0x40, 0x50 } },
-    { .rect = { 0x58, 0x68, 0x08, 0x18 } },
-    { .rect = { 0x58, 0x68, 0x40, 0x50 } },
-    { .rect = { 0x68, 0x80, 0x08, 0x30 } },
-    { .rect = { 0x68, 0x80, 0x38, 0x60 } },
-    { .rect = { 0xA8, 0xBC, 0x12, 0x4D } },
-    { .rect = { 0xA8, 0xBC, 0x61, 0x9C } },
-    { .rect = { 0xA8, 0xBC, 0xB2, 0xED } },
+static const TouchscreenHitbox CapsuleUIRects[] = {
+    { .rect = { .top = 16, .bottom = 32, .left = 8, .right = 24 } },
+    { .rect = { .top = 16, .bottom = 32, .left = 64, .right = 80 } },
+    { .rect = { .top = 40, .bottom = 56, .left = 8, .right = 24 } },
+    { .rect = { .top = 40, .bottom = 56, .left = 64, .right = 80 } },
+    { .rect = { .top = 64, .bottom = 80, .left = 8, .right = 24 } },
+    { .rect = { .top = 64, .bottom = 80, .left = 64, .right = 80 } },
+    { .rect = { .top = 88, .bottom = 104, .left = 8, .right = 24 } },
+    { .rect = { .top = 88, .bottom = 104, .left = 64, .right = 80 } },
+    { .rect = { .top = 104, .bottom = 128, .left = 8, .right = 48 } },
+    { .rect = { .top = 104, .bottom = 128, .left = 56, .right = 96 } },
+    { .rect = { .top = 168, .bottom = 188, .left = 18, .right = 77 } },
+    { .rect = { .top = 168, .bottom = 188, .left = 97, .right = 156 } },
+    { .rect = { .top = 168, .bottom = 188, .left = 178, .right = 237 } },
 };
 
 void ov57_0223BB84(CapsuleAppManager *appMan) {
@@ -23,16 +23,16 @@ void ov57_0223BB84(CapsuleAppManager *appMan) {
     const TouchscreenHitbox emptyRect = { 0 };
 
     for (i = 0; i < 13; ++i) {
-        appMan->graphicsMan.touchscreenHitboxes[i] = ov57_0223BEF4[i];
+        appMan->graphicsMan.touchscreenHitboxes[i] = CapsuleUIRects[i];
     }
     for (; i < 21; ++i) {
         appMan->graphicsMan.touchscreenHitboxes[i] = emptyRect;
         appMan->sealRenderInfo[i - 13].touchscreenHitbox = &appMan->graphicsMan.touchscreenHitboxes[i];
     }
-    appMan->graphicsMan.touchHitboxController = TouchHitboxController_Create(appMan->graphicsMan.touchscreenHitboxes, 21, ov57_0223AEA8, appMan, HEAP_ID_52);
+    appMan->graphicsMan.touchHitboxController = TouchHitboxController_Create(appMan->graphicsMan.touchscreenHitboxes, 21, CapsuleManager_HandleSpritePress, appMan, HEAP_ID_52);
 }
 
-void ov57_0223BC4C(CapsuleAppManager *appMan, int capsuleIndex) {
+void CapsuleManager_AssignCapsuleMon(CapsuleAppManager *appMan, int capsuleIndex) {
     u32 sp0 = 0;
 
     if (appMan->capsules[capsuleIndex].partyIdx != 0xFF) {
