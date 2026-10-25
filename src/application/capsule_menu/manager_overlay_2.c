@@ -33,6 +33,12 @@
 #define THROW_WAIT_AFTER_ANIMS_END_STATE_ID  6
 #define THROW_WAIT_FREE_STATE_ID             7
 
+typedef struct {
+    int frame;
+    ManagedSprite *sprite;
+    TextOBJ *fontOAM;
+} CapsuleUIPressTask;
+
 BOOL ov57_0223A104(CapsuleAppManager *appMan);
 BOOL ov57_0223A31C(CapsuleAppManager *appMan);
 BOOL ov57_0223A504(CapsuleAppManager *appMan);
@@ -1184,4 +1190,104 @@ void ov57_0223B7A8(CapsuleAppManager *appMan) {
     for (int i = 0; i < SEAL_MAX + 1; ++i) {
         SealCaseInventory_SetSealQuantity(appMan->unk_064, i, appMan->unk_080[i]);
     }
+}
+
+void ov57_0223B7C4(CapsuleAppManager *appMan) {
+    int isEgg;
+    Pokemon *pokemon;
+
+    if (appMan->unk_004[appMan->unk_3EC[0]].partyIdx != 0xFF) {
+        pokemon = appMan->unk_000->mons[appMan->unk_004[appMan->unk_3EC[0]].partyIdx];
+        CopyPokemonToPokemon(pokemon, appMan->unk_458);
+
+        return;
+    }
+
+    for (int i = 0; i < appMan->unk_000->partyCount; i++) {
+        pokemon = appMan->unk_000->mons[i];
+        isEgg = GetMonData(pokemon, MON_DATA_IS_EGG, NULL);
+
+        if (isEgg != 0) {
+            continue;
+        }
+
+        CopyPokemonToPokemon(pokemon, appMan->unk_458);
+        break;
+    }
+}
+
+void ov57_0223B828(CapsuleAppManager *appMan, int a1, int a2, int a3) {
+    if (a2 == 0xFF) {
+        appMan->unk_3FC = appMan->unk_400;
+    } else {
+        appMan->unk_3FC = a2;
+    }
+    appMan->unk_3F4 = a1;
+    appMan->unk_400 = a3;
+    appMan->unk_404 = 0;
+}
+
+void ov57_0223B858(ManagedSprite *sprite, u32 event) {
+    switch (event) {
+    case TOUCH_BUTTON_PRESSED:
+        ManagedSprite_SetAnimationFrame(sprite, 1);
+        break;
+    case TOUCH_BUTTON_HELD:
+        ManagedSprite_SetAnimationFrame(sprite, 2);
+        break;
+    case TOUCH_BUTTON_HELD_OUT_OF_BOUNDS:
+    case TOUCH_BUTTON_RELEASED:
+        ManagedSprite_SetAnimationFrame(sprite, 0);
+        break;
+    default:
+        GF_ASSERT(FALSE);
+    }
+}
+
+void ov57_0223B890(TextOBJ *fontOAM, int xOffset, int yOffset) {
+    int x;
+    int y;
+
+    if (fontOAM != NULL) {
+        sub_02013794(fontOAM, &x, &y);
+        sub_020136B4(fontOAM, x + xOffset, y + yOffset);
+    }
+}
+
+void ov57_0223B8B8(SysTask *sysTask, void *taskData) {
+    CapsuleUIPressTask *capsuleUIPressTask = taskData;
+
+    switch (capsuleUIPressTask->frame) {
+    case 3:
+        ov57_0223B890(capsuleUIPressTask->fontOAM, 0, -1);
+        ManagedSprite_SetAnimationFrame(capsuleUIPressTask->sprite, 2);
+        capsuleUIPressTask->frame++;
+        break;
+    case 6:
+        ov57_0223B890(capsuleUIPressTask->fontOAM, 0, 2);
+        ManagedSprite_SetAnimationFrame(capsuleUIPressTask->sprite, 0);
+        SysTask_Destroy(sysTask);
+        Heap_Free(capsuleUIPressTask);
+        break;
+    default:
+        capsuleUIPressTask->frame++;
+        break;
+    }
+}
+
+void ov57_0223B90C(ManagedSprite *sprite, TextOBJ *textObj) {
+    CapsuleUIPressTask *taskData = Heap_Alloc(HEAP_ID_52, sizeof(CapsuleUIPressTask));
+    taskData->frame = 1;
+    taskData->sprite = sprite;
+    taskData->fontOAM = textObj;
+    ov57_0223B890(taskData->fontOAM, 0, -1);
+    SysTask_CreateOnMainQueue(ov57_0223B8B8, taskData, 1000);
+}
+
+BOOL ov57_0223B940(CapsuleAppManager *appMan) {
+    return appMan->unk_0D4.unk_1AC;
+}
+
+void ov57_0223B948(CapsuleAppManager *appMan, int a1) {
+    appMan->unk_0D4.unk_004 = a1;
 }

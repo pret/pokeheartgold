@@ -100,7 +100,7 @@ typedef struct CapsuleAppManager {
     int unk_3F4;
     int unk_3F8;
     int unk_3FC;
-    u8 filler_400[4];
+    int unk_400;
     int unk_404;
     YesNoResponse unk_408;
     MenuInputState unk_40C;
