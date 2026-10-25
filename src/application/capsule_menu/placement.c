@@ -3,12 +3,6 @@
 
 #include "overlay_07.h"
 
-void ov57_02238044(CapsuleAppManager *appManager, u8 index);
-void ov57_0223848C(CapsuleAppManager *appManager, int index);
-void ov57_02238508(CapsuleAppManager *appManager, int index);
-BOOL ov57_022383F8(CapsuleAppManager *appManager, int index);
-void ov57_02238438(CapsuleAppManager *appManager, int index);
-
 void ov57_02237E90(TouchscreenHitbox *rect, u8 x, u8 y) {
     rect->rect.top = y - 10;
     rect->rect.left = x - 10;

@@ -463,10 +463,8 @@ pokeheartgold_c = files(
     ###      CAPSULE MENU      ###
     ##############################
     'application/capsule_menu/main_overlay.c',
-    'application/capsule_menu/manager_overlay.c',
-    'application/capsule_menu/main_overlay_2.c',
     'application/capsule_menu/placement.c',
     'application/capsule_menu/graphics.c',
-    'application/capsule_menu/manager_overlay_2.c',
+    'application/capsule_menu/manager.c',
     'application/capsule_menu/touchscreen_hitboxes.c',
 )
