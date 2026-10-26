@@ -335,7 +335,7 @@ static BOOL TouchSaveApp_AskForSave(TouchSaveAppData *data) {
     if (!Save_FileDoesNotBelongToPlayer(data->fieldSystem->saveData)) {
         DrawFrameAndWindow2(&data->window, TRUE, 0xEC, 5);
         data->string = NewString_ReadMsgData(data->msgData, msg_0040_00081);
-        data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+        data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
         TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_GET_SAVE_CONFIRMATION);
     } else {
         data->state = TOUCHSAVEAPP_STATE_PRINT_NOT_MY_SAVE_MESSAGE;
@@ -385,7 +385,7 @@ static BOOL TouchSaveApp_HandleSaveConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_PrintOverwriteMessage(TouchSaveAppData *data) {
     FillWindowPixelBuffer(&data->window, 0xFF);
     data->string = NewString_ReadMsgData(data->msgData, msg_0040_00082);
-    data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+    data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
     TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_GET_OVERWRITE_CONFIRMATION);
 
     return FALSE;
@@ -419,7 +419,7 @@ static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_PrintNotMySaveError(TouchSaveAppData *data) {
     DrawFrameAndWindow2(&data->window, TRUE, 0xEC, 5);
     data->string = NewString_ReadMsgData(data->msgData, msg_0040_00020);
-    data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+    data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
     TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_SAVE_FAILED);
 
     return FALSE;
@@ -444,7 +444,7 @@ static BOOL TouchSaveApp_PrintSavingMessage(TouchSaveAppData *data) {
         string = NewString_ReadMsgData(data->msgData, msg_0040_00021);
     }
     data->string = string;
-    data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+    data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
     TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_SETUP_WAITING_ICON);
 
     return FALSE;
@@ -471,7 +471,7 @@ static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data) {
 
     FillWindowPixelBuffer(&data->window, 0xFF);
     data->string = ReadMsgData_ExpandPlaceholders(data->messageFormat, data->msgData, msg_0040_00016, HEAP_ID_8);
-    data->textPrinter = AddTextPrinterParameterized(&data->window, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+    data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
     TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_SAVE_SUCCEEDED);
 
     return FALSE;

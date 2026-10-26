@@ -498,10 +498,10 @@ BOOL NamingScreenApp_Init(OverlayManager *ovyMan, int *pState) {
         NamingScreen_SetBgModesAndInitBuffers(data->bgConfig);
         NamingScreen_InitFromArgs(data, OverlayManager_GetArgs(ovyMan));
         NamingScreen_CreateBgConfigAndLoadGfx(data, narc);
-        FontID_Alloc(2, HEAP_ID_NAMING_SCREEN);
+        FontID_Alloc(FONT_SUBSCREEN, HEAP_ID_NAMING_SCREEN);
         Main_SetVBlankIntrCB(NamingScreen_VBlankCB, NULL);
         NamingScreen_InitKeyboardAndEntryCursors(data, ovyMan);
-        FontID_SetAccessDirect(0, HEAP_ID_NAMING_SCREEN);
+        FontID_SetAccessDirect(FONT_SYSTEM, HEAP_ID_NAMING_SCREEN);
         NamingScreen_InitObjCharPlttTransfer();
         NamingScreen_LoadObjGfx(data, narc);
         NamingScreen_CreateSprites(data);
@@ -571,7 +571,7 @@ BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState) {
             NamingScreen_PrepareBattleMessage(data, ovyMan);
             FillWindowPixelBuffer(&data->windows[9], 15);
             DrawFrameAndWindow2(&data->windows[9], FALSE, 256, 10);
-            data->battleMessageTextPrinterId = AddTextPrinterParameterized(&data->windows[9], 1, data->battleMsgString, 0, 0, 1, NULL);
+            data->battleMessageTextPrinterId = AddTextPrinterParameterized(&data->windows[9], FONT_MESSAGE, data->battleMsgString, 0, 0, 1, NULL);
             CopyWindowToVram(&data->windows[9]);
             data->pageSwitchState = NS_PAGESWITCH_STATE_WAIT_BATTLE_MESSAGE;
             break;
@@ -733,9 +733,9 @@ BOOL NamingScreenApp_Exit(OverlayManager *ovyMan, int *pState) {
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
     NamingScreen_UnloadBgGfx(data->bgConfig, data->windows);
-    FontID_SetAccessLazy(0);
+    FontID_SetAccessLazy(FONT_SYSTEM);
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
-    FontID_Release(2);
+    FontID_Release(FONT_SUBSCREEN);
     if (data->battleMsgString != NULL) {
         String_Delete(data->battleMsgString);
     }
@@ -1296,19 +1296,19 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
 
 static void NamingScreen_PrintMessageOnWindowLeftAlign(Window *window, NameScreenType unused, String *msg) {
     DrawFrameAndWindow2(window, FALSE, 0x100, 10);
-    AddTextPrinterParameterized(window, 1, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
+    AddTextPrinterParameterized(window, FONT_MESSAGE, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
     CopyWindowToVram(window);
 }
 
 static void NamingScreen_PrintMessageOnWindowWithMargin(Window *window, NameScreenType unused, String *msg) {
     int x = 16;
-    int width = FontID_String_GetWidth(0, msg, 0);
+    int width = FontID_String_GetWidth(FONT_SYSTEM, msg, 0);
     int windowWidth = GetWindowWidth(window) * 8;
     if (width + 16 > windowWidth) {
         x = windowWidth - width;
     }
     FillWindowPixelBuffer(window, 1);
-    AddTextPrinterParameterizedWithColor(window, 0, msg, x, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, msg, x, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(14, 15, 1), NULL);
     CopyWindowToVram(window);
 }
 
@@ -1529,10 +1529,10 @@ static void NamingScreen_BlitRawCharactersToWindow(Window *window, const u16 *ra
         } else {
             pmCharBuf[0] = rawChars[i];
             pmCharBuf[1] = EOS;
-            width = FontID_FlatArray_GetWidth(0, pmCharBuf, 0);
+            width = FontID_FlatArray_GetWidth(FONT_SYSTEM, pmCharBuf, 0);
             CopyU16ArrayToString(string, pmCharBuf);
             centerX = x + i * spacing + ((spacing - width) / 2);
-            AddTextPrinterParameterizedWithColor(window, 0, string, centerX, y, textSpeed, color, NULL);
+            AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, centerX, y, textSpeed, color, NULL);
         }
         ++i;
     }
@@ -1553,7 +1553,7 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
     String *string2;
 
     FillWindowPixelBuffer(&windows[3], 0);
-    ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[3], string, 2, MAKE_TEXT_COLOR(13, 14, 15));
+    ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[3], string, FONT_SUBSCREEN, MAKE_TEXT_COLOR(13, 14, 15));
     DC_FlushRange(ptr, 0x800);
 
     for (i = 0; i < 4; ++i) {
@@ -1569,7 +1569,7 @@ static void NamingScreen_PrintCharacterOnWindowAndOBJ(Window *windows, const u16
 
         FillWindowPixelBuffer(&windows[i], 0);
         CopyU16ArrayToString(string2, curCharBuf);
-        ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[i], string2, 2, MAKE_TEXT_COLOR(13, 14, 15));
+        ptr = NamingScreen_PrintStringOnWindow_GetPixelBuffer(&windows[i], string2, FONT_SUBSCREEN, MAKE_TEXT_COLOR(13, 14, 15));
         DC_FlushRange(ptr, 0x80);
         GXS_LoadOBJ(ptr, sSpriteGfxOffsets[i] * 32, 0x80);
     }

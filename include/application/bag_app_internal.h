@@ -273,7 +273,7 @@ struct BagAppData {
     u8 pocketSelectorIconsSpacing;
     BagAppData_UnusedPocketSelector pocketSelector;
     u8 filler_624[32];
-    int cursorPos;
+    BagAppCursorPos cursorPos;
     u8 pressedButtonAnimState_DPPt;
     u8 filler_649[2];
     u8 pressedButtonAnimStep_DPPt;
