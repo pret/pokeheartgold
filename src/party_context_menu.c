@@ -526,19 +526,19 @@ void PartyMenu_BufferMonNickname(PartyMenu *partyMenu, Pokemon *mon, u32 partySl
 static void PartyMenu_PrintMonNicknameOnWindow(PartyMenu *partyMenu, u8 partySlot) {
     Window *window = &partyMenu->windows[partySlot * PARTY_MENU_WINDOWS_PER_MON + PARTY_MENU_WINDOW_ID_MON1_NICKNAME];
 
-    AddTextPrinterParameterizedWithColor(window, 0, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, partyMenu->monsDrawState[partySlot].nickname, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     if (partyMenu->monsDrawState[partySlot].isEgg == TRUE) {
         ScheduleWindowCopyToVram(window);
     } else {
         FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0);
-        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], 0, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_38], FONT_SYSTEM, partyMenu->contextMenuStrings[PARTY_MON_CONTEXT_MENU_ITEM], 2, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         if (!partyMenu->monsDrawState[partySlot].dontPrintGenderSymbol) {
             if (partyMenu->monsDrawState[partySlot].gender == MON_MALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00027, partyMenu->unformattedStrBuf);
-                AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
+                AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
             } else if (partyMenu->monsDrawState[partySlot].gender == MON_FEMALE) {
                 ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00028, partyMenu->unformattedStrBuf);
-                AddTextPrinterParameterizedWithColor(window, 0, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(5, 6, 0), NULL);
+                AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, partyMenu->unformattedStrBuf, 64, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(5, 6, 0), NULL);
             }
         }
         ScheduleWindowCopyToVram(window);
@@ -729,12 +729,12 @@ void sub_0207D998(PartyMenu *partyMenu, u8 flag) {
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0);
     if (flag & 1) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00000, partyMenu->unformattedStrBuf);
-        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], 0, partyMenu->unformattedStrBuf, getStringCenterXPos(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30], FONT_SYSTEM, partyMenu->unformattedStrBuf, getStringCenterXPos(FONT_SYSTEM, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_30].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_30]);
     }
     if (flag & 2) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00001, partyMenu->unformattedStrBuf);
-        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], 0, partyMenu->unformattedStrBuf, getStringCenterXPos(0, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31], FONT_SYSTEM, partyMenu->unformattedStrBuf, getStringCenterXPos(FONT_SYSTEM, partyMenu->unformattedStrBuf, partyMenu->windows[PARTY_MENU_WINDOW_ID_31].width * 8), 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
         ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_31]);
     }
 }
@@ -747,7 +747,7 @@ static void PartyMenu_PrintMessageOnWindowEx(PartyMenu *partyMenu, Window *windo
     if (msgId != -1) {
         ReadMsgDataIntoString(partyMenu->msgData, msgId, partyMenu->formattedStrBuf);
     }
-    AddTextPrinterParameterized(window, 1, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
+    AddTextPrinterParameterized(window, FONT_MESSAGE, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
     ScheduleWindowCopyToVram(window);
 }
 
@@ -774,7 +774,7 @@ void PartyMenu_PrintMessageOnWindow34(PartyMenu *partyMenu, int msgId, BOOL draw
 void PartyMenu_PrintBufferedMessageOnWindow34(PartyMenu *partyMenu) {
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);
-    partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 1, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), TextPrinterCB_PartyMenuWin34Msg);
+    partyMenu->textPrinterId = AddTextPrinterParameterized(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], FONT_MESSAGE, partyMenu->formattedStrBuf, 0, 0, Options_GetTextFrameDelay(partyMenu->args->options), TextPrinterCB_PartyMenuWin34Msg);
 }
 
 static BOOL TextPrinterCB_PartyMenuWin34Msg(TextPrinterTemplate *template, u16 glyphId) {
@@ -830,7 +830,7 @@ static void PartyMenu_PrintEvoStoneCompatString(PartyMenu *partyMenu, u8 partySl
         break;
     }
     // potential UB: in default case, string is uninitialized
-    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
     ScheduleWindowCopyToVram(window);
 }
@@ -852,7 +852,7 @@ static void PartyMenu_PrintTMHMCompatString(PartyMenu *partyMenu, u8 partySlot, 
         break;
     }
     // potential UB: in default case, string is uninitialized
-    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
     ScheduleWindowCopyToVram(window);
 }
@@ -869,7 +869,7 @@ static void PartyMenu_PrintSuperContestCompatString(PartyMenu *partyMenu, u8 par
         // ABLE
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00163);
     }
-    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
     ScheduleWindowCopyToVram(window);
 }
@@ -886,7 +886,7 @@ static void sub_0207DD7C(PartyMenu *partyMenu, u8 partySlot, u8 a2) {
     } else {
         string = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00151);
     }
-    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
     ScheduleWindowCopyToVram(window);
 }
@@ -912,16 +912,16 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenu *partyMenu) {
     str_plusSign = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00175);
     for (i = 0; i < NUM_STATS; ++i) {
         str_statName = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00169 + i);
-        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, str_statName, 0, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], FONT_SYSTEM, str_statName, 0, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
         String_Delete(str_statName);
 
-        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, str_plusSign, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], FONT_SYSTEM, str_plusSign, 80, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
         str_formatInt = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00176);
         BufferIntegerAsString(partyMenu->msgFormat, 0, stats[i] - partyMenu->levelUpStatsTmp[i], 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, str_formatInt);
         String_Delete(str_formatInt);
-        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], FONT_SYSTEM, partyMenu->formattedStrBuf, 94, i * 16, TEXT_SPEED_NOTRANSFER, NULL);
 
         partyMenu->levelUpStatsTmp[i] = stats[i];
     }
@@ -938,7 +938,7 @@ void sub_0207DF98(PartyMenu *partyMenu) {
     for (i = 0; i < NUM_STATS; ++i) {
         BufferIntegerAsString(partyMenu->msgFormat, 0, partyMenu->levelUpStatsTmp[i], 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, spC);
-        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], 0, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(0, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&partyMenu->levelUpStatsWindow[0], FONT_SYSTEM, partyMenu->formattedStrBuf, 104 - FontID_String_GetWidth(FONT_SYSTEM, partyMenu->formattedStrBuf, 0), i * 16, TEXT_SPEED_NOTRANSFER, NULL);
     }
     String_Delete(spC);
     ScheduleWindowCopyToVram(&partyMenu->levelUpStatsWindow[0]);
@@ -960,14 +960,14 @@ void sub_0207E068(PartyMenu *partyMenu) {
     msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00008);
     BufferBoxMonNickname(partyMenu->msgFormat, 0, Mon_GetBoxMon(mon));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
-    AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37], 0, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37], FONT_SYSTEM, partyMenu->formattedStrBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(msg);
 
     mon = Party_GetMonByIndex(partyMenu->args->party, partyMenu->partyMonIndex);
     msg = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00182);
     BufferItemName(partyMenu->msgFormat, 1, GetMonData(mon, MON_DATA_HELD_ITEM, NULL));
     StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, msg);
-    AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39], 0, partyMenu->formattedStrBuf, 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_39], FONT_SYSTEM, partyMenu->formattedStrBuf, 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(msg);
 
     ScheduleWindowCopyToVram(&partyMenu->windows[PARTY_MENU_WINDOW_ID_37]);
@@ -1025,7 +1025,7 @@ static void PartyMenu_PrintContextMenuItemText(PartyMenu *partyMenu, PartyMenuCo
             color = MAKE_TEXT_COLOR(14, 15, 11);
         }
         y = 4;
-        x = FontID_String_GetCenterAlignmentX(4, contextMenu->items[selection].text, 0, GetWindowWidth(&partyMenu->contextMenuButtonWindows[windowId]) * 8);
+        x = FontID_String_GetCenterAlignmentX(FONT_UNK_4, contextMenu->items[selection].text, 0, GetWindowWidth(&partyMenu->contextMenuButtonWindows[windowId]) * 8);
     } else {
         if (depressed == FALSE) {
             fillValue = 4;
@@ -1037,7 +1037,7 @@ static void PartyMenu_PrintContextMenuItemText(PartyMenu *partyMenu, PartyMenuCo
         y = 0;
     }
     FillWindowPixelBuffer(&partyMenu->contextMenuButtonWindows[windowId], fillValue);
-    AddTextPrinterParameterizedWithColor(&partyMenu->contextMenuButtonWindows[windowId], 4, contextMenu->items[selection].text, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
+    AddTextPrinterParameterizedWithColor(&partyMenu->contextMenuButtonWindows[windowId], FONT_UNK_4, contextMenu->items[selection].text, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
     ScheduleWindowCopyToVram(&partyMenu->contextMenuButtonWindows[windowId]);
 }
 

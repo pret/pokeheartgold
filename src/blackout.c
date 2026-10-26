@@ -165,12 +165,12 @@ static void Blackout_PrintMessage(BlackoutScreenEnvironment *environment, s32 ms
     ReadMsgDataIntoString(environment->msgData, msgNo, tmpStr);
     StringExpandPlaceholders(environment->msgFmt, finStr, tmpStr);
 
-    u32 width = FontID_String_GetWidthMultiline(0, finStr, 0);
+    u32 width = FontID_String_GetWidthMultiline(FONT_SYSTEM, finStr, 0);
     x = (environment->window.width * 8 - width);
     x /= 2;
     x -= 4;
 
-    AddTextPrinterParameterizedWithColor(&environment->window, 0, finStr, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&environment->window, FONT_SYSTEM, finStr, x, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
     String_Delete(tmpStr);
     String_Delete(finStr);

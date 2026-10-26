@@ -150,6 +150,13 @@ main = executable('main',
     c_args : [
         '-DPM_KEEP_ASSERTS',
         '-D' + game_version,
+        '-W', 'all',
+        '-W', 'nopedantic',
+        '-W', 'noimpl_signedunsigned',
+        '-W', 'noimplicitconv',
+        '-W', 'nounusedarg',
+        '-W', 'nomissingreturn',
+        '-W', 'error',
     ],
     nasm_args : [
         '-DPM_ASM',
