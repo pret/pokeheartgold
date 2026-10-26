@@ -9327,7 +9327,7 @@
           9](CalcMoneyLoss,func) found in global src_battle_battle_system.c.o
            10](Party_GetMaxLevel,func) found in global src_pokemon.c.o
            10](PlayerProfile_GetMoney,func) found in global src_player_data.c.o
-           10](sBadgePenalty$18066,object) found in local src_battle_battle_system.c.o
+           10](sBadgePenalty$18090,object) found in local src_battle_battle_system.c.o
           9](PlayerProfile_SubMoney,func) found in global src_player_data.c.o
          8](BtlCmd_PrintTrainerMessage,func) found in global src_battle_battle_command.c.o
          8](BtlCmd_SetHealthbarStatus,func) found in global src_battle_battle_command.c.o
@@ -94400,7 +94400,7 @@
   0226BF04 000000D4 .text   ov12_0226BF04	(src_battle_overlay_12_0226BEC4.c.o)
   0226BFD4 00000000 .text   $d	(src_battle_overlay_12_0226BEC4.c.o)
   0226BFD8 00000308 .rodata .rodata	(asm_overlay_12_022378C0.s.o)
-  0226C2E0 00000009 .rodata sBadgePenalty$18066	(src_battle_battle_system.c.o)
+  0226C2E0 00000009 .rodata sBadgePenalty$18090	(src_battle_battle_system.c.o)
   0226C2EC 00000788 .rodata .rodata	(asm_overlay_12_battle_command.s.o)
   0226C2EC 00000000 .rodata sStandardBallCatchRates	(asm_overlay_12_battle_command.s.o)
   0226C2F0 00000000 .rodata sTrumpCardPowerTable	(asm_overlay_12_battle_command.s.o)
