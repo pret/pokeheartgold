@@ -128,7 +128,7 @@
 .public Options_GetFrame
 .public GetIGTHours
 .public GetIGTMinutes
-.public sub_02037474
+.public CommSystem_IsInitialized
 .public sub_0203A964
 .public NNS_G2dGetUnpackedBGCharacterData
 .public NNS_G2dGetUnpackedPaletteData

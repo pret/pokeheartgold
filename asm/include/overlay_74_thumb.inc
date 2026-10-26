@@ -243,8 +243,8 @@
 .public sub_020358D0
 .public sub_02037088
 .public sub_020373B4
-.public sub_02037474
-.public sub_0203769C
+.public CommSystem_IsInitialized
+.public CommSystem_GetCurNetId
 .public sub_0203778C
 .public sub_02037AC0
 .public sub_02037B38

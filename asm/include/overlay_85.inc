@@ -180,8 +180,8 @@
 .public sub_02033250
 .public sub_02034818
 .public sub_02036FD8
-.public sub_02037454
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_GetCurNetId
 .public sub_02037AC0
 .public sub_02037B38
 .public sub_02037FF0

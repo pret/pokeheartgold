@@ -12,7 +12,7 @@
 .public sub_02031228
 .public sub_02031248
 .public sub_02034818
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public BattleSetup_New
 .public BattleSetup_AddMonToParty
 .public sub_02051D18

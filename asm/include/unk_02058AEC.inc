@@ -51,9 +51,9 @@
 .public sub_02037030
 .public sub_02037088
 .public sub_02037108
-.public sub_02037454
-.public sub_02037474
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
+.public CommSystem_GetCurNetId
 .public sub_020376F8
 .public sub_0203778C
 .public sub_02037AC0
@@ -72,7 +72,7 @@
 .public sub_02038C1C
 .public sub_020398D4
 .public sub_02039918
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_0203996C
 .public FieldSystem_LaunchApplication
 .public sub_0203E2F4

@@ -421,4 +421,15 @@ typedef struct Message_022645C8 {
     u8 filler[2];
 } Message_022645C8;
 
+typedef struct UISetupMessage {
+    int command;
+    u32 seed;
+} UISetupMessage;
+
+typedef struct RecallMsgMessage {
+    u8 command;
+    u8 partySlot;
+    u16 hpPercent;
+} RecallMsgMessage;
+
 #endif

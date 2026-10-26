@@ -219,7 +219,7 @@ static void sub_02000FD8(u32 a0, int a1) {
     int r5;
 
     r4 = 0;
-    sp4 = sub_0203993C();
+    sp4 = CommManager_GetCommType();
     r7 = sub_02039998();
     gSystem.touchpadReadAuto = FALSE;
     if (a1 == 3) {

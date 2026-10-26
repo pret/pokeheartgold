@@ -848,10 +848,10 @@ _0203A960: .word _021D4154
 	thumb_func_start sub_0203A964
 sub_0203A964: ; 0x0203A964
 	push {r3, lr}
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	beq _0203A984
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #1
 	bgt _0203A97E
 	bl sub_02039998
@@ -874,10 +874,10 @@ _0203A990:
 sub_0203A994: ; 0x0203A994
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	beq _0203A9B8
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #1
 	bgt _0203A9B0
 	bl sub_02039998

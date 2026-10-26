@@ -617,13 +617,13 @@ _022320AE:
 	ldrb r0, [r4, r0]
 	cmp r0, #6
 	blo _022320C4
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _022320CE
 	mov r5, #1
 	b _022320CE
 _022320C4:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _022320CE
 	mov r5, #1
@@ -653,14 +653,14 @@ _022320EC:
 	ldrb r0, [r4, r0]
 	cmp r0, #6
 	blo _02232110
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02232118
 	mov r0, #1
 	strh r0, [r5]
 	b _0223228E
 _02232110:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0223211A
 _02232118:

@@ -82,7 +82,7 @@ ov01_021F6D78: ; 0x021F6D78
 	add r0, #0x88
 	str r1, [r0]
 	mov r4, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #0
 	ble _021F6DB4
 	add r5, r6, #0
@@ -101,7 +101,7 @@ _021F6D92:
 _021F6DA8:
 	add r5, r5, #4
 	add r4, r4, #1
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r4, r0
 	blt _021F6D92
 _021F6DB4:

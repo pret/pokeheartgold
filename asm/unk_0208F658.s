@@ -48,7 +48,7 @@ sub_0208F680: ; 0x0208F680
 	add r5, r0, #0
 	add r6, r2, #0
 	ldr r4, [r3]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0208F6EA
 	ldr r0, _0208F6EC ; =0x00002228
@@ -66,7 +66,7 @@ sub_0208F680: ; 0x0208F680
 	str r2, [r4, #0x64]
 	cmp r1, r0
 	blt _0208F6D6
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #1
 	bne _0208F6C6
 	add r0, r4, #0
@@ -75,14 +75,14 @@ sub_0208F680: ; 0x0208F680
 	bl ov65_0221DE24
 	b _0208F6E4
 _0208F6C6:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, _0208F6F0 ; =0x00002224
 	ldr r2, [r4, #0x5c]
 	ldr r1, [r4, r1]
 	bl ov65_0221DE64
 	b _0208F6E4
 _0208F6D6:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, _0208F6F0 ; =0x00002224
 	ldr r2, [r4, #0x5c]
 	ldr r1, [r4, r1]
@@ -105,7 +105,7 @@ sub_0208F6F4: ; 0x0208F6F4
 	add r5, r0, #0
 	add r6, r2, #0
 	ldr r4, [r3]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0208F710
 	ldrb r0, [r6]
@@ -177,7 +177,7 @@ sub_0208F74C: ; 0x0208F74C
 	add r5, r2, #0
 	bl Save_SpecialRibbons_Get
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0208F778
 	mov r2, #0
@@ -205,7 +205,7 @@ sub_0208F77C: ; 0x0208F77C
 	add r5, r0, #0
 	add r6, r2, #0
 	ldr r4, [r3]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0208F7A0
 	ldr r0, _0208F7A4 ; =0x00002230
@@ -229,7 +229,7 @@ sub_0208F7A8: ; 0x0208F7A8
 	add r5, r0, #0
 	add r6, r2, #0
 	ldr r4, [r3]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0208F7DA
 	ldr r1, _0208F7DC ; =0x00002E20

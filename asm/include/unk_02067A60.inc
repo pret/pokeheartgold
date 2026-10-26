@@ -40,8 +40,8 @@
 .public Save_RandomizeRoamersLocation
 .public Save_UpdateRoamersLocation
 .public UpdatePlayerLocationHistoryIfAnyRoamersActive
-.public sub_02067A60
-.public sub_02067A78
+.public CaptureAttempt_New
+.public CaptureAttempt_Free
 .public sub_02067A80
 .public sub_02067A88
 .public sub_02067AE4

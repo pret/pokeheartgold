@@ -240,7 +240,7 @@ BOOL ScrCmd_416(ScriptContext *ctx) {
         break;
     }
     if (sub_0205C298(ctx->fieldSystem->saveData) == 1) {
-        if (sub_02037C0C(sub_0203769C(), frontierFsys->unk83e) == 1) {
+        if (sub_02037C0C(CommSystem_GetCurNetId(), frontierFsys->unk83e) == 1) {
             *unkPtr = TRUE;
         } else {
             return TRUE;

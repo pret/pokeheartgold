@@ -33,7 +33,7 @@ sub_02096924: ; 0x02096924
 	mov r4, #0
 	add r1, r1, #1
 	strb r1, [r5, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r7, r0
 	beq _0209698E
 	ldrh r0, [r6]
@@ -122,10 +122,10 @@ sub_020969C4: ; 0x020969C4
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _020969F0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _020969F0
 	add r4, #0x3e
@@ -153,7 +153,7 @@ sub_020969F8: ; 0x020969F8
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _02096A2C
 	ldrb r0, [r4, #0x10]
@@ -222,7 +222,7 @@ sub_02096A7C: ; 0x02096A7C
 	add r0, r4, #0
 	add r0, #0x6f
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _02096AA8
 	ldrh r1, [r5]
@@ -270,7 +270,7 @@ sub_02096ACC: ; 0x02096ACC
 	add r0, r4, #0
 	add r0, #0x6f
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _02096AF0
 	ldrh r0, [r6]
@@ -391,7 +391,7 @@ sub_02096BB8: ; 0x02096BB8
 	add r0, r4, #0
 	add r0, #0x6f
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _02096BF4
 	ldrh r1, [r5]
@@ -447,7 +447,7 @@ sub_02096C18: ; 0x02096C18
 	add r0, r4, #0
 	add r0, #0x6f
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _02096C3C
 	ldrh r0, [r6]
@@ -491,7 +491,7 @@ sub_02096C60: ; 0x02096C60
 	add r0, r4, #0
 	add r0, #0x6f
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _02096C84
 	ldrh r0, [r6]

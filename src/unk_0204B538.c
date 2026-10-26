@@ -181,7 +181,7 @@ u16 sub_0204B610(FieldSystem *fieldSystem, u16 *linkAllyData) { // SetLinkAllyDa
 
 BOOL sub_0204B66C(FieldSystem *fieldSystem, u16 *a1) {
     FrontierFieldSystem *frontierFsys = fieldSystem->frontierFsys;
-    if (sub_0203769C() == 0) {
+    if (CommSystem_GetCurNetId() == 0) {
         return FALSE;
     }
     MI_CpuCopy8(a1, frontierFsys->trainersInCurrentRound, sizeof(frontierFsys->trainersInCurrentRound));
