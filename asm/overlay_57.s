@@ -6585,7 +6585,7 @@ _0223AD38:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl ov07_02232A54
+	bl BallCapsuleSealEffect_IsActive
 	cmp r0, #0
 	bne _0223AD64
 	mov r0, #0xa1
@@ -6607,7 +6607,7 @@ _0223AD66:
 	mov r0, #0x25
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
-	bl ov07_02232AB8
+	bl BallCapsuleSealEffect_Free
 	ldr r0, _0223AE90 ; =0x00000404
 	ldr r1, [r4, r0]
 	add r1, r1, #1

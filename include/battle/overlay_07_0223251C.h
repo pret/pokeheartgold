@@ -4,22 +4,12 @@
 #include "battle.h"
 #include "library/spl_emitter.h"
 
-typedef struct BallSeal {
-    u8 type;
-    u8 x;
-    u8 y;
-} BallSeal;
-
-typedef struct BallCapsule {
-    BallSeal seals[8];
-} BallCapsule;
-
 typedef struct BallCapsuleSealEffect {
     enum HeapID heapID;
     BallCapsuleConfig ballCapCfg;
     int sealCount;
     void *sealParticleSystems[9];
-    BallSeal *seals[9];
+    SEAL *seals[9];
     BOOL sealActiveFlags[9];
     SPLEmitter *emitter;
     SysTask *task;
@@ -29,7 +19,7 @@ typedef struct BallCapsuleSealEffect {
     int hasCapsule;
     int ballType;
     int capsuleID;
-    BallCapsule capsule;
+    CAPSULE capsule;
 } BallCapsuleSealEffect;
 
 BallCapsuleSealEffect *ov07_02232694(enum HeapID heapID, const BallCapsuleConfig *ballCapCfg);

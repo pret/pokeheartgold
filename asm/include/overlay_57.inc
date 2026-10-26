@@ -221,8 +221,8 @@
 .public ov07_022329B0
 .public ov07_02232A04
 .public ov07_02232A44
-.public ov07_02232A54
-.public ov07_02232AB8
+.public BallCapsuleSealEffect_IsActive
+.public BallCapsuleSealEffect_Free
 .public ov07_02233DB8
 .public ov07_02233E88
 .public ov07_02233EA0

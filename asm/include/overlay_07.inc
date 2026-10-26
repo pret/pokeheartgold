@@ -206,8 +206,8 @@
 .public ov07_022329B0
 .public ov07_02232A04
 .public ov07_02232A44
-.public ov07_02232A54
-.public ov07_02232AB8
+.public BallCapsuleSealEffect_IsActive
+.public BallCapsuleSealEffect_Free
 .public UnkBallData_SetBallAnimation
 .public ov07_02232F60
 .public ov07_02233DB8

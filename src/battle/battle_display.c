@@ -1980,7 +1980,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
             monShowData->state++;
         }
     case 4:
-        if (Pokepic_GetAttr(monShowData->opponentData->pokepic, 12) == 0x100 && ov07_02232A54(monShowData->ballCapsuleSealEffect) == 0) {
+        if (Pokepic_GetAttr(monShowData->opponentData->pokepic, 12) == 0x100 && BallCapsuleSealEffect_IsActive(monShowData->ballCapsuleSealEffect) == 0) {
             if (monShowData->face == 2) {
                 Pokepic_SetAttr(monShowData->opponentData->pokepic, 0x2D, FALSE);
             }
@@ -2010,7 +2010,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
         }
         break;
     case 5:
-        if (ov07_02232A54(monShowData->ballCapsuleSealEffect) == 0) {
+        if (BallCapsuleSealEffect_IsActive(monShowData->ballCapsuleSealEffect) == 0) {
             monShowData->state = 6;
         }
         break;
@@ -2019,7 +2019,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
             && Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
             ov07_02233ECC(monShowData->opponentData->ballData);
             monShowData->opponentData->ballData = NULL;
-            ov07_02232AB8(monShowData->ballCapsuleSealEffect);
+            BallCapsuleSealEffect_Free(monShowData->ballCapsuleSealEffect);
 
             if (monShowData->isShiny) {
                 MoveAnimation moveAnim;
@@ -2273,7 +2273,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
             monShowData->state++;
         }
     case 4:
-        if (Pokepic_GetAttr(monShowData->opponentData->pokepic, 12) == 0x100 && ov07_02232A54(monShowData->ballCapsuleSealEffect) == 0) {
+        if (Pokepic_GetAttr(monShowData->opponentData->pokepic, 12) == 0x100 && BallCapsuleSealEffect_IsActive(monShowData->ballCapsuleSealEffect) == 0) {
             if (monShowData->face == 2) {
                 Pokepic_SetAttr(monShowData->opponentData->pokepic, 0x2D, FALSE);
             }
@@ -2301,7 +2301,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         }
         break;
     case 5:
-        if (ov07_02232A54(monShowData->ballCapsuleSealEffect) == 0) {
+        if (BallCapsuleSealEffect_IsActive(monShowData->ballCapsuleSealEffect) == 0) {
             monShowData->state = 6;
         }
         break;
@@ -2309,7 +2309,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         if (sub_02017068(ov12_0223B750(monShowData->battleSys), monShowData->battler) == TRUE
             && Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
             ov07_02233ECC(monShowData->ballRotation);
-            ov07_02232AB8(monShowData->ballCapsuleSealEffect);
+            BallCapsuleSealEffect_Free(monShowData->ballCapsuleSealEffect);
 
             if (monShowData->isShiny) {
                 MoveAnimation moveAnim;
