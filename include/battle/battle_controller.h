@@ -71,9 +71,13 @@ void BattleController_EmitSetCommandSelectionMenu(BattleSystem *battleSystem, Ba
 void BattleController_EmitOpenCaptureBall(BattleSystem *battleSystem, int battler, int ball);
 void BattleController_EmitSetAlertMessage(BattleSystem *battleSystem, int battlerId, BattleMessage msg);
 void BattleController_EmitStopGaugeAnimation(BattleSystem *battleSystem, int battlerId);
+void BattleController_EmitSelectedCommand(BattleSystem *battleSystem, int battler, int command);
 void BattleController_EmitShowMoveSelectMenu(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
+void BattleController_EmitSelectedMove(BattleSystem *battleSystem, int battler, int command);
 void BattleCommand_EmitShowTargetSelectMenu(BattleSystem *battleSystem, BattleContext *ctx, int a2, int battlerId);
+void BattleController_EmitSelectedTarget(BattleSystem *battleSystem, int battler, int command);
 void BattleController_EmitShowBagMenu(BattleSystem *battleSystem, BattleContext *ctx, int battlerId);
+void BattleController_EmitSelectedBagItem(BattleSystem *battleSystem, int battler, BattleItemUse message);
 void BattleController_EmitClearTouchScreen(BattleSystem *battleSystem, int battlerId);
 void BattleController_EmitUpdateExpGauge(BattleSystem *battleSystem, BattleContext *ctx, int battlerId, int a3);
 void BattleController_EmitPlayLevelUpAnimation(BattleSystem *battleSystem, int battlerId);
@@ -81,5 +85,10 @@ void BattleController_EmitRefreshHPGauge(BattleSystem *battleSystem, BattleConte
 void BattleController_EmitForgetMove(BattleSystem *battleSystem, int battlerId, int a2, int slot);
 void BattleController_EmitClearMessageBox(BattleSystem *battleSystem);
 void BattleController_SetMoveAnimation(BattleSystem *battleSystem, BattleContext *ctx, MoveAnimation *animation, int animMode, int secondaryAnimID, int attacker, int defender, u16 move);
+void BattleController_EmitPartyMenuResult(BattleSystem *battleSystem, int battler, int command);
+void BattleController_EmitAlertMessageAck(BattleSystem *battleSystem, int battler);
+void BattleController_EmitAlertMessageAck(BattleSystem *battleSystem, int battler);
+void BattleController_EmitClearCommand(BattleSystem *battleSystem, int battler, int command);
+BOOL BattleController_RecvCommMessage(BattleSystem *battleSystem, void *data);
 
 #endif
