@@ -207,7 +207,7 @@ RenderResult RenderText(TextPrinter *printer) {
                 break;
             case 0x205: {
                 int x = GetWindowWidth(printer->template.window) * 8;
-                int width = FontID_FlatArray_GetWidthFirstLine(printer->template.fontId, printer->template.currentChar.raw, printer->template.letterSpacing);
+                int width = FontID_FlatArray_GetWidthFirstLine((enum Font)printer->template.fontId, printer->template.currentChar.raw, printer->template.letterSpacing);
                 if (width < x) {
                     printer->template.currentX = printer->template.x + (x - width) / 2;
                 } else {
@@ -216,7 +216,7 @@ RenderResult RenderText(TextPrinter *printer) {
             } break;
             case 0x206: {
                 int x = GetWindowWidth(printer->template.window) * 8;
-                int width = FontID_FlatArray_GetWidthFirstLine(printer->template.fontId, printer->template.currentChar.raw, printer->template.letterSpacing);
+                int width = FontID_FlatArray_GetWidthFirstLine((enum Font)printer->template.fontId, printer->template.currentChar.raw, printer->template.letterSpacing);
                 if (width < x) {
                     printer->template.currentX = x - width;
                 } else {
@@ -278,7 +278,7 @@ RenderResult RenderText(TextPrinter *printer) {
             return RENDER_UPDATE;
         }
 
-        GlyphInfo *glyphInfo = FontID_TryLoadGlyph(subStruct->fontId, currentChar);
+        GlyphInfo *glyphInfo = FontID_TryLoadGlyph((enum Font)subStruct->fontId, currentChar);
         CopyGlyphToWindow(printer->template.window,
             glyphInfo->data,
             glyphInfo->width,

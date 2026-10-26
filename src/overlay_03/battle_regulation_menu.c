@@ -292,11 +292,11 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
 
     ReadMsgDataIntoString(msgData, CommunicationClub_Text_Cup, fmtString); // {STRVAR_1 26, 0, 0} Cup
     StringExpandPlaceholders(messageFormat, destString, fmtString);
-    AddTextPrinterParameterized(window, 0, destString, xOffset + xOffsetCupName, 0, TEXT_SPEED_NOTRANSFER, NULL);
+    AddTextPrinterParameterized(window, FONT_SYSTEM, destString, xOffset + xOffsetCupName, 0, TEXT_SPEED_NOTRANSFER, NULL);
 
     for (i = 0; i < RULES_COUNT; i++) {
         ReadMsgDataIntoString(msgData, i + CommunicationClub_Text_RuleNoOfPokemon, fmtString); // Prints rule names.
-        AddTextPrinterParameterized(window, 0, fmtString, xOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(window, FONT_SYSTEM, fmtString, xOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
     };
 
     for (i = 0; i < RULES_COUNT; i++) {
@@ -357,10 +357,10 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
         ReadMsgDataIntoString(msgData, valueMessage, fmtString);
         StringExpandPlaceholders(messageFormat, destString, fmtString);
 
-        int valueWidth = FontID_String_GetWidth(0, destString, 0);
+        int valueWidth = FontID_String_GetWidth(FONT_SYSTEM, destString, 0);
         int valueXOffset = xRightSide - valueWidth;
 
-        AddTextPrinterParameterized(window, 0, destString, valueXOffset, yOffset + lineHeight * i, 0xFF, NULL);
+        AddTextPrinterParameterized(window, FONT_SYSTEM, destString, valueXOffset, yOffset + lineHeight * i, 0xFF, NULL);
     }
     String_Delete(fmtString);
     String_Delete(destString);
@@ -559,11 +559,11 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
     ov03_022566D0(fieldSystem, messageFormat, ruleset);
     ReadMsgDataIntoString(msgData, CommunicationClub_Text_Cup, fmtString); // {STRVAR_1 26, 0, 0} Cup
     StringExpandPlaceholders(messageFormat, destString, fmtString);
-    AddTextPrinterParameterized(window, 0, destString, xOffset + xOffsetCupName, 0, TEXT_SPEED_NOTRANSFER, 0);
+    AddTextPrinterParameterized(window, FONT_SYSTEM, destString, xOffset + xOffsetCupName, 0, TEXT_SPEED_NOTRANSFER, NULL);
 
     for (int i = 0; i < RULES_COUNT; i++) {
         ReadMsgDataIntoString(msgData, i + CommunicationClub_Text_RuleNoOfPokemon, fmtString); // // Prints rule names.
-        AddTextPrinterParameterized(window, 0, fmtString, xOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(window, FONT_SYSTEM, fmtString, xOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
         ruleValue = LinkBattleRuleset_GetRuleValue(&fieldSystem->linkBattleRuleset[0], (LinkBattleRule)sLinkBattleRules[i]);
         valueMessage = sLinkBattleRuleValueMessages[i];
         switch (sLinkBattleRules[i]) {
@@ -617,9 +617,9 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
         ReadMsgDataIntoString(msgData, valueMessage, fmtString);
         StringExpandPlaceholders(messageFormat, destString, fmtString);
 
-        int valueWidth = FontID_String_GetWidth(0, destString, 0);
+        int valueWidth = FontID_String_GetWidth(FONT_SYSTEM, destString, 0);
         int valueXOffset = xRightSide - valueWidth;
-        AddTextPrinterParameterized(window, 0, destString, valueXOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(window, FONT_SYSTEM, destString, valueXOffset, yOffset + lineHeight * i, TEXT_SPEED_NOTRANSFER, NULL);
     }
     String_Delete(destString);
     String_Delete(fmtString);

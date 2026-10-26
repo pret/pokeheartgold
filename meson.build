@@ -151,7 +151,7 @@ main = executable('main',
         '-DPM_KEEP_ASSERTS',
         '-D' + game_version,
         '-W', 'all',
-        '-W', 'nopedantic',
+        '-W', 'pedantic',
         '-W', 'noimpl_signedunsigned',
         '-W', 'noimplicitconv',
         '-W', 'nounusedarg',
@@ -325,7 +325,7 @@ main_sbins_lz = [
 ]
 
 main_lz = custom_target('main.lz',
-    command : [ 
+    command : [
         compstatic_exe,
         '-9',
         '-c',

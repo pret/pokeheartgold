@@ -168,7 +168,7 @@ static u8 Get2dMenuMaxItemWidth(struct ListMenu2D *listMenu) {
     u8 ret = 0, cur;
 
     for (i = 0; i < listMenu->template.itemsWide * listMenu->template.itemsHigh; i++) {
-        cur = FontID_String_GetWidth(listMenu->template.fontId, listMenu->template.items[i].text, 0);
+        cur = FontID_String_GetWidth((enum Font)listMenu->template.fontId, listMenu->template.items[i].text, 0);
         if (ret < cur) {
             ret = cur;
         }
@@ -186,7 +186,7 @@ static void Print2dMenuItemTexts(struct ListMenu2D *listMenu) {
     for (i = 0; i < listMenu->template.itemsWide; i++) {
         for (j = 0; j < listMenu->template.itemsHigh; j++) {
             u8 y = listMenu->y + (listMenu->maxGlyphHeight + listMenu->template.yTop) * j;
-            AddTextPrinterParameterized(listMenu->template.window, listMenu->template.fontId, listMenu->template.items[j + i * listMenu->template.itemsHigh].text, x, y, TEXT_SPEED_NOTRANSFER, NULL);
+            AddTextPrinterParameterized(listMenu->template.window, (enum Font)listMenu->template.fontId, listMenu->template.items[j + i * listMenu->template.itemsHigh].text, x, y, TEXT_SPEED_NOTRANSFER, NULL);
         }
         x += dx;
     }
