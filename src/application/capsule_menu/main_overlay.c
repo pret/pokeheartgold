@@ -22,27 +22,27 @@ static void NitroStaticInit(void) {
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), OVY_LOAD_ASYNC);
 }
 
-int ov57_022378DC(OverlayManager *manager, int *state) {
+int CapsuleMenu_Init(OverlayManager *manager, int *state) {
     int i;
-    Heap_Create(HEAP_ID_3, HEAP_ID_52, 0x80000);
-    CapsuleAppManager *appManager = OverlayManager_CreateAndGetData(manager, sizeof(CapsuleAppManager), HEAP_ID_52);
+    Heap_Create(HEAP_ID_3, HEAP_ID_CAPSULE_MENU, 0x80000);
+    CapsuleAppManager *appManager = OverlayManager_CreateAndGetData(manager, sizeof(CapsuleAppManager), HEAP_ID_CAPSULE_MENU);
     memset(appManager, 0, sizeof(CapsuleAppManager));
     appManager->appData = OverlayManager_GetArgs(manager);
-    appManager->narc = NARC_New(NARC_a_1_8_0, HEAP_ID_52);
+    appManager->narc = NARC_New(NARC_a_1_8_0, HEAP_ID_CAPSULE_MENU);
     appManager->menuInputState = MenuInputStateMgr_GetState(appManager->appData->menuInputStatePtr);
-    appManager->pokemon = AllocMonZeroed(HEAP_ID_52);
+    appManager->pokemon = AllocMonZeroed(HEAP_ID_CAPSULE_MENU);
     appManager->graphicsMan.index = 0xFF;
     appManager->sealPages.page = 0;
-    BOOL r5 = FALSE;
+    BOOL hasPartialPage = FALSE;
     if (SealCase_CountUniqueSeals(appManager->appData->sealCase) % 8 != 0) {
-        r5 = TRUE;
+        hasPartialPage = TRUE;
     }
-    appManager->sealPages.maxPage = SealCase_CountUniqueSeals(appManager->appData->sealCase) / 8 + r5;
+    appManager->sealPages.maxPage = SealCase_CountUniqueSeals(appManager->appData->sealCase) / 8 + hasPartialPage;
     if (appManager->sealPages.maxPage > 10) {
         appManager->sealPages.maxPage = 10;
     }
-    appManager->capsuleIndex[0] = ov57_02237E78(appManager->appData);
-    appManager->capsuleIndex[1] = ov57_02237E78(appManager->appData);
+    appManager->capsuleIndex[0] = CapsuleMenu_GetCapsuleIndex(appManager->appData);
+    appManager->capsuleIndex[1] = CapsuleMenu_GetCapsuleIndex(appManager->appData);
     appManager->sealCount = SealCase_inventory_Get(appManager->appData->sealCase);
     for (i = 0; i < MAX_CAPSULES; ++i) {
         BallCapsule *capsule = SealCase_GetCapsuleI(appManager->appData->sealCase, i);
@@ -58,21 +58,21 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
             appManager->capsules[capsule - 1].partyIdx = i;
         }
     }
-    ov57_02237CA8(HEAP_ID_52);
+    CapsuleManager_InitGraphicsPlane(HEAP_ID_CAPSULE_MENU);
     CapsuleManager_SetNormalAlpha();
     appManager->graphicsMan.gf3dVramMan = CapsuleGraphics_PipelineInit();
-    appManager->graphicsMan.bgConfig = BgConfig_Alloc(HEAP_ID_52);
-    GF_CreateVramTransferManager(0x40, HEAP_ID_52);
-    appManager->graphicsMan.paletteData = PaletteData_Init(HEAP_ID_52);
+    appManager->graphicsMan.bgConfig = BgConfig_Alloc(HEAP_ID_CAPSULE_MENU);
+    GF_CreateVramTransferManager(0x40, HEAP_ID_CAPSULE_MENU);
+    appManager->graphicsMan.paletteData = PaletteData_Init(HEAP_ID_CAPSULE_MENU);
     PaletteData_SetAutoTransparent(appManager->graphicsMan.paletteData, TRUE);
-    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_MAIN_BG, 0x200, HEAP_ID_52);
-    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_SUB_BG, 0x200, HEAP_ID_52);
-    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_MAIN_OBJ, 0x200, HEAP_ID_52);
-    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_SUB_OBJ, 0x200, HEAP_ID_52);
-    ov57_02237CEC(appManager->graphicsMan.bgConfig);
+    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_MAIN_BG, 0x200, HEAP_ID_CAPSULE_MENU);
+    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_SUB_BG, 0x200, HEAP_ID_CAPSULE_MENU);
+    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_MAIN_OBJ, 0x200, HEAP_ID_CAPSULE_MENU);
+    PaletteData_AllocBuffers(appManager->graphicsMan.paletteData, PLTTBUF_SUB_OBJ, 0x200, HEAP_ID_CAPSULE_MENU);
+    CapsuleManager_InitBgConfig(appManager->graphicsMan.bgConfig);
     CapsuleGraphics_AllocTexPlttVram();
-    appManager->graphicsMan.pokepicManager = PokepicManager_Create(HEAP_ID_52);
-    appManager->graphicsMan.pokepicAnimManager = sub_02016EDC(HEAP_ID_52, 1, 0);
+    appManager->graphicsMan.pokepicManager = PokepicManager_Create(HEAP_ID_CAPSULE_MENU);
+    appManager->graphicsMan.pokepicAnimManager = sub_02016EDC(HEAP_ID_CAPSULE_MENU, 1, 0);
     u32 frame = Options_GetFrame(appManager->appData->options);
     CapsuleGraphics_LoadMainWindow(appManager->graphicsMan.bgConfig, appManager->graphicsMan.paletteData, frame);
     CapsuleGraphics_LoadSubWindow(appManager->graphicsMan.bgConfig, appManager->graphicsMan.paletteData, frame);
@@ -80,12 +80,12 @@ int ov57_022378DC(OverlayManager *manager, int *state) {
     EnableTouchPad();
     InitializeTouchPad(4);
     ov57_0223BB84(appManager);
-    Main_SetVBlankIntrCB(ov57_02237E38, appManager);
+    Main_SetVBlankIntrCB(CapsuleManager_VBlankCallback, appManager);
     CapsuleGraphics_InitFontOAMManager(appManager);
     return TRUE;
 }
 
-int ov57_02237AF8(OverlayManager *manager, int *state) {
+int CapsuleMenu_Main(OverlayManager *manager, int *state) {
     CapsuleAppManager *appManager = OverlayManager_GetData(manager);
     if (!CapsuleManager_CallFunction(appManager)) {
         return TRUE;
@@ -95,7 +95,7 @@ int ov57_02237AF8(OverlayManager *manager, int *state) {
     return FALSE;
 }
 
-int ov57_02237B20(OverlayManager *manager, int *state) {
+int CapsuleMenu_Exit(OverlayManager *manager, int *state) {
     CapsuleAppManager *appManager = OverlayManager_GetData(manager);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_OFF);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG1, GF_PLANE_TOGGLE_OFF);
@@ -118,7 +118,7 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     PaletteData_FreeBuffers(appManager->graphicsMan.paletteData, PLTTBUF_MAIN_OBJ);
     PaletteData_FreeBuffers(appManager->graphicsMan.paletteData, PLTTBUF_SUB_OBJ);
     PaletteData_Free(appManager->graphicsMan.paletteData);
-    ov57_02237E80(appManager->appData, appManager->capsuleIndex[0]);
+    CapsuleMenu_SetCapsuleIndex(appManager->appData, appManager->capsuleIndex[0]);
     Heap_Free(appManager->pokemon);
     SealPlacement_FreeInactiveSeals(appManager);
     TouchHitboxController_Destroy(appManager->graphicsMan.touchHitboxController);
@@ -128,18 +128,18 @@ int ov57_02237B20(OverlayManager *manager, int *state) {
     CapsuleGraphics_FreeSpriteSystem(&appManager->graphicsMan);
     GF_DestroyVramTransferManager();
     GF_3DVramMan_Delete(appManager->graphicsMan.gf3dVramMan);
-    ov57_02237CDC(HEAP_ID_52);
+    CapsuleManager_Deinit(HEAP_ID_CAPSULE_MENU);
     NARC_Delete(appManager->narc);
     MenuInputStateMgr_SetState(appManager->appData->menuInputStatePtr, appManager->menuInputState);
     OverlayManager_FreeData(manager);
     DisableTouchPad();
-    Heap_Destroy(HEAP_ID_52);
+    Heap_Destroy(HEAP_ID_CAPSULE_MENU);
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_6));
     UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
     return TRUE;
 }
 
-void ov57_02237CA8(enum HeapID heapId) {
+void CapsuleManager_InitGraphicsPlane(enum HeapID heapId) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
     GfGfx_DisableEngineAPlanes();
@@ -148,15 +148,15 @@ void ov57_02237CA8(enum HeapID heapId) {
     GXS_SetVisiblePlane(GX_PLANEMASK_NONE);
 }
 
-void ov57_02237CDC(enum HeapID heapId) {
+void CapsuleManager_Deinit(enum HeapID heapId) {
     Main_SetVBlankIntrCB(NULL, NULL);
     HBlankInterruptDisable();
 }
 
-void ov57_02237CEC(BgConfig *bgConfig) {
+void CapsuleManager_InitBgConfig(BgConfig *bgConfig) {
     GfGfx_DisableEngineAPlanes();
 
-    GraphicsBanks sp10 = {
+    GraphicsBanks gxBanks = {
         GX_VRAM_BG_128_A,
         GX_VRAM_BGEXTPLTT_NONE,
         GX_VRAM_SUB_BG_32_H,
@@ -168,22 +168,22 @@ void ov57_02237CEC(BgConfig *bgConfig) {
         GX_VRAM_TEX_01_BC,
         GX_VRAM_TEXPLTT_01_FG,
     };
-    GfGfx_SetBanks(&sp10);
+    GfGfx_SetBanks(&gxBanks);
 
     MI_CpuClear32((void *)HW_BG_VRAM, HW_BG_VRAM_SIZE);
     MI_CpuClear32((void *)HW_DB_BG_VRAM, HW_DB_BG_VRAM_SIZE);
     MI_CpuClear32((void *)HW_OBJ_VRAM, HW_OBJ_VRAM_SIZE);
     MI_CpuClear32((void *)HW_DB_OBJ_VRAM, HW_DB_OBJ_VRAM_SIZE);
 
-    GraphicsModes sp00 = {
+    GraphicsModes graphicsModes = {
         GX_DISPMODE_GRAPHICS,
         GX_BGMODE_0,
         GX_BGMODE_0,
         GX_BG0_AS_3D,
     };
-    SetBothScreensModesAndDisable(&sp00);
+    SetBothScreensModesAndDisable(&graphicsModes);
 
-    BgTemplate spA8[3] = {
+    BgTemplate bgMainTemplates[3] = {
         {
          .x = 0,
          .y = 0,
@@ -227,16 +227,16 @@ void ov57_02237CEC(BgConfig *bgConfig) {
          .mosaic = FALSE,
          },
     };
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &spA8[0], GF_BG_TYPE_TEXT);
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &spA8[1], GF_BG_TYPE_TEXT);
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &spA8[2], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_1, &bgMainTemplates[0], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_2, &bgMainTemplates[1], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_MAIN_3, &bgMainTemplates[2], GF_BG_TYPE_TEXT);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_1);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_2);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_MAIN_3);
     G2_SetBG0Priority(1);
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_BG0, GF_PLANE_TOGGLE_ON);
 
-    BgTemplate sp38[4] = {
+    BgTemplate bgSubTemplates[4] = {
         {
          .x = 0,
          .y = 0,
@@ -294,10 +294,10 @@ void ov57_02237CEC(BgConfig *bgConfig) {
          .mosaic = FALSE,
          },
     };
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &sp38[0], GF_BG_TYPE_TEXT);
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &sp38[1], GF_BG_TYPE_TEXT);
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &sp38[2], GF_BG_TYPE_TEXT);
-    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &sp38[3], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_0, &bgSubTemplates[0], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_1, &bgSubTemplates[1], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_2, &bgSubTemplates[2], GF_BG_TYPE_TEXT);
+    InitBgFromTemplate(bgConfig, GF_BG_LYR_SUB_3, &bgSubTemplates[3], GF_BG_TYPE_TEXT);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_0);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_1);
     BgClearTilemapBufferAndCommit(bgConfig, GF_BG_LYR_SUB_2);
@@ -305,7 +305,7 @@ void ov57_02237CEC(BgConfig *bgConfig) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
 }
 
-void ov57_02237E38(void *cbArg) {
+void CapsuleManager_VBlankCallback(void *cbArg) {
     CapsuleAppManager *appManager = cbArg;
     PokepicManager_HandleLoadImgAndOrPltt(appManager->graphicsMan.pokepicManager);
     SpriteSystem_TransferOam();
@@ -315,14 +315,14 @@ void ov57_02237E38(void *cbArg) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-u8 ov57_02237E78(CapsuleAppData *appData) {
-    return appData->unk30;
+u8 CapsuleMenu_GetCapsuleIndex(CapsuleAppData *appData) {
+    return appData->capsuleIndex;
 }
 
-void ov57_02237E80(CapsuleAppData *appData, u8 a1) {
-    appData->unk30 = a1;
+void CapsuleMenu_SetCapsuleIndex(CapsuleAppData *appData, u8 capsuleIndex) {
+    appData->capsuleIndex = capsuleIndex;
 }
 
-void ov57_02237E88(CapsuleAppData *appData, u8 a1) {
-    appData->unk31 = a1;
+void CapsuleMenu_SetAction(CapsuleAppData *appData, u8 action) {
+    appData->action = action;
 }

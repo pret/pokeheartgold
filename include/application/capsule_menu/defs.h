@@ -112,20 +112,20 @@ typedef struct CapsuleAppManager {
     NARC *narc;
 } CapsuleAppManager; // size: 0x460
 
-typedef struct UnkStruct_ov57_0223BECC {
+typedef struct SealListMenuEntry {
     s32 index;
     BOOL (*func)(CapsuleAppManager *appMan);
-} UnkStruct_ov57_0223BECC;
+} SealListMenuEntry;
 
-extern const UnkStruct_ov57_0223BECC ov57_0223BECC[];
+extern const SealListMenuEntry gSealListMenuEntries[];
 
-void ov57_02237CA8(enum HeapID heapId);
-void ov57_02237CDC(enum HeapID heapId);
-void ov57_02237CEC(BgConfig *bgConfig);
-void ov57_02237E38(void *cbArg);
-u8 ov57_02237E78(CapsuleAppData *appData);
-void ov57_02237E80(CapsuleAppData *appData, u8 a1);
-void ov57_02237E88(CapsuleAppData *appData, u8 a1);
+void CapsuleManager_InitGraphicsPlane(enum HeapID heapId);
+void CapsuleManager_Deinit(enum HeapID heapId);
+void CapsuleManager_InitBgConfig(BgConfig *bgConfig);
+void CapsuleManager_VBlankCallback(void *cbArg);
+u8 CapsuleMenu_GetCapsuleIndex(CapsuleAppData *appData);
+void CapsuleMenu_SetCapsuleIndex(CapsuleAppData *appData, u8 a1);
+void CapsuleMenu_SetAction(CapsuleAppData *appData, u8 a1);
 
 void SealPlacement_UpdateSealTouchRect(TouchscreenHitbox *rect, ManagedSprite *sprite, BOOL touchingSprite);
 void SealPlacement_OffsetSeals(CapsuleAppManager *appManager);

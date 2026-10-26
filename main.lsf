@@ -837,7 +837,7 @@ Overlay OVY_56
     After OVY_55
     Object main.nef.p/asm_overlay_56.s.o
 }
-Overlay OVY_57
+Overlay capsule_menu
 {
     After OVY_7
     Object main.nef.p/src_application_capsule_menu_main_overlay.c.o

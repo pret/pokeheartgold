@@ -13,13 +13,13 @@ typedef struct CapsuleAppData {
     Options *options;
     SaveData *saveData;
     void *menuInputStatePtr;
-    u8 unk30;
-    u8 unk31;
+    u8 capsuleIndex;
+    u8 action;
 } CapsuleAppData;
 
-int ov57_022378DC(OverlayManager *manager, int *state);
-int ov57_02237AF8(OverlayManager *manager, int *state);
-int ov57_02237B20(OverlayManager *manager, int *state);
+int CapsuleMenu_Init(OverlayManager *manager, int *state);
+int CapsuleMenu_Main(OverlayManager *manager, int *state);
+int CapsuleMenu_Exit(OverlayManager *manager, int *state);
 
 u8 CapsuleMenu_GetSealMemberIdx(u32 idx);
 u8 CapsuleMenu_GetSealNameIndex(u8 idx);

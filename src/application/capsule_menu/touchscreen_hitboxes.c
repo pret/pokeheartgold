@@ -29,7 +29,7 @@ void ov57_0223BB84(CapsuleAppManager *appMan) {
         appMan->graphicsMan.touchscreenHitboxes[i] = emptyRect;
         appMan->sealRenderInfo[i - 13].touchscreenHitbox = &appMan->graphicsMan.touchscreenHitboxes[i];
     }
-    appMan->graphicsMan.touchHitboxController = TouchHitboxController_Create(appMan->graphicsMan.touchscreenHitboxes, 21, CapsuleManager_HandleSpritePress, appMan, HEAP_ID_52);
+    appMan->graphicsMan.touchHitboxController = TouchHitboxController_Create(appMan->graphicsMan.touchscreenHitboxes, 21, CapsuleManager_HandleSpritePress, appMan, HEAP_ID_CAPSULE_MENU);
 }
 
 void CapsuleManager_AssignCapsuleMon(CapsuleAppManager *appMan, int capsuleIndex) {

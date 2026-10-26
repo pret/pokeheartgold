@@ -81,7 +81,7 @@ void CapsuleGraphics_RemoveUIWindows(CapsuleAppManager *appManager) {
 
 void ov57_0223866C(CapsuleAppManager *appManager, BOOL show) {
     if (show) {
-        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+        MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
         String *string = NewString_ReadMsgData(msgData, msg_0011_00017);
         FillWindowPixelBuffer(&appManager->graphicsMan.windows[2], 0);
         u32 x = (64 - FontID_String_GetWidth(FONT_UNK_4, string, 0));
@@ -96,9 +96,9 @@ void ov57_0223866C(CapsuleAppManager *appManager, BOOL show) {
 }
 
 void CapsuleGraphics_InitFontOAMManager(CapsuleAppManager *appMan) {
-    appMan->graphicsMan.fontOAMManager = FontSystem_NewInit(2, HEAP_ID_52);
-    FontID_Alloc(FONT_SUBSCREEN, HEAP_ID_52);
-    FontID_Alloc(FONT_UNK_4, HEAP_ID_52);
+    appMan->graphicsMan.fontOAMManager = FontSystem_NewInit(2, HEAP_ID_CAPSULE_MENU);
+    FontID_Alloc(FONT_SUBSCREEN, HEAP_ID_CAPSULE_MENU);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_CAPSULE_MENU);
 }
 
 void CapsuleGraphics_FreeFonts(CapsuleAppManager *appMan) {
@@ -134,7 +134,7 @@ static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, in
     MsgData *messageLoader;
     Window window;
 
-    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
     string = NewString_ReadMsgData(messageLoader, msg_0011_00005 + index);
 
     InitWindow(&window);
@@ -142,7 +142,7 @@ static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, in
     AddTextPrinterParameterizedWithColor(&window, FONT_SUBSCREEN, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 13, 2), NULL);
 
     unk_448 = 30000;
-    v3 = sub_02013688(&window, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_52);
+    v3 = sub_02013688(&window, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_CAPSULE_MENU);
     sub_02021AC8(v3, 1, NNS_G2D_VRAM_TYPE_2DSUB, &appMan->graphicsMan.charTransfer[index]);
 
     fontOAMManager.fontSystem = appMan->graphicsMan.fontOAMManager;
@@ -156,7 +156,7 @@ static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, in
     fontOAMManager.unk_20 = 1;
     fontOAMManager.unk_24 = 40;
     fontOAMManager.vram = NNS_G2D_VRAM_TYPE_2DSUB;
-    fontOAMManager.heapID = HEAP_ID_52;
+    fontOAMManager.heapID = HEAP_ID_CAPSULE_MENU;
     appMan->graphicsMan.fontOAM[index] = sub_020135D8(&fontOAMManager);
 
     sub_020138E0(appMan->graphicsMan.fontOAM[index], palette);
@@ -292,7 +292,7 @@ void ov57_02238AF0(CapsuleAppManager *appMan, s16 a1) {
 }
 
 GF3DVramMan *CapsuleGraphics_PipelineInit(void) {
-    return GF_3DVramMan_Create(HEAP_ID_52, 0, 2, 0, 2, CapsuleGraphics_G3DSetupCB);
+    return GF_3DVramMan_Create(HEAP_ID_CAPSULE_MENU, 0, 2, 0, 2, CapsuleGraphics_G3DSetupCB);
 }
 
 static void CapsuleGraphics_G3DSetupCB(void) {
@@ -389,15 +389,15 @@ void CapsuleGraphics_OpenCapsuleSelectionMenu(BgConfig *bgConfig, Window *window
 
     ySize = (height / 2);
 
-    appMan->graphicsMan.listMenuItems = ListMenuItems_New(ySize, HEAP_ID_52);
+    appMan->graphicsMan.listMenuItems = ListMenuItems_New(ySize, HEAP_ID_CAPSULE_MENU);
 
     String *string;
-    MsgData *messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+    MsgData *messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
 
     for (int i = 0; i < ySize; i++) {
-        string = NewString_ReadMsgData(messageLoader, ov57_0223BECC[stringIDs[i]].index);
+        string = NewString_ReadMsgData(messageLoader, gSealListMenuEntries[stringIDs[i]].index);
 
-        ListMenuItems_AddItem(appMan->graphicsMan.listMenuItems, string, (int)ov57_0223BECC[stringIDs[i]].func);
+        ListMenuItems_AddItem(appMan->graphicsMan.listMenuItems, string, (int)gSealListMenuEntries[stringIDs[i]].func);
         String_Delete(string);
     }
 
@@ -538,7 +538,7 @@ void CapsuleGraphics_AssignCapsules(CapsuleAppManager *appMan) {
 }
 
 void CapsuleGraphics_InitSpriteManager(CapsuleGraphicsManager *unk_0D4) {
-    unk_0D4->spriteSystem = SpriteSystem_Alloc(HEAP_ID_52);
+    unk_0D4->spriteSystem = SpriteSystem_Alloc(HEAP_ID_CAPSULE_MENU);
     const OamManagerParam renderOAMTemplate = {
         0,
         128,
@@ -572,7 +572,7 @@ void CapsuleGraphics_InitSpriteManager(CapsuleGraphicsManager *unk_0D4) {
     result = SpriteSystem_InitManagerWithCapacities(unk_0D4->spriteSystem, unk_0D4->spriteManager, &spriteResourceCapacities);
     GF_ASSERT(result);
 
-    unk_0D4->touchscreenListMenuSpawner = TouchscreenListMenuSpawner_Create(HEAP_ID_52, unk_0D4->paletteData);
+    unk_0D4->touchscreenListMenuSpawner = TouchscreenListMenuSpawner_Create(HEAP_ID_CAPSULE_MENU, unk_0D4->paletteData);
 }
 
 void CapsuleGraphics_FreeSpriteSystem(CapsuleGraphicsManager *unk_0D4) {
@@ -770,7 +770,7 @@ void CapsuleGraphics_FreeCapsuleSprites(CapsuleAppManager *appMan) {
 void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     {
         NNSG2dCharacterData *sp18;
-        void *sp14 = GfGfxLoader_GetCharData(NARC_a_0_8_7, 8, TRUE, &sp18, HEAP_ID_52);
+        void *sp14 = GfGfxLoader_GetCharData(NARC_a_0_8_7, 8, TRUE, &sp18, HEAP_ID_CAPSULE_MENU);
         u8 *r7 = sp18->pRawData;
         DC_FlushRange(r7, sp18->szByte);
         for (int i = 0; i < NELEMS(ov57_0223BDF4); ++i) {
@@ -778,20 +778,20 @@ void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData
         }
         Heap_Free(sp14);
     }
-    PaletteData_LoadFromNarc(paletteData, NARC_a_0_8_7, 2, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
-    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_1, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_52);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xD0);
-    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x20, 0xE0);
+    PaletteData_LoadFromNarc(paletteData, NARC_a_0_8_7, 2, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
+    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_1, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xE0);
 }
 
 void CapsuleGraphics_LoadSubWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
-    LoadUserFrameGfx2(bgConfig, GF_BG_LYR_SUB_0, MESSAGE_BOX_TILE_OFFSET, MESSAGE_BOX_PLTT_OFFSET, messageBoxFrame, HEAP_ID_52);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E640(messageBoxFrame), HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xC0);
-    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_SUB_0, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_52);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xD0);
-    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xE0);
-    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0x30);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_8_7, 0, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20, 0xB0);
+    LoadUserFrameGfx2(bgConfig, GF_BG_LYR_SUB_0, MESSAGE_BOX_TILE_OFFSET, MESSAGE_BOX_PLTT_OFFSET, messageBoxFrame, HEAP_ID_CAPSULE_MENU);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E640(messageBoxFrame), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xC0);
+    LoadUserFrameGfx1(bgConfig, GF_BG_LYR_SUB_0, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xE0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0x30);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_8_7, 0, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xB0);
 }
 
 void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL drawFrame) {
@@ -812,7 +812,7 @@ void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL d
         return;
     }
 
-    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_52);
+    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
     string = NewString_ReadMsgData(messageLoader, entryID);
 
     FillWindowPixelBuffer(window, 15);
@@ -874,7 +874,7 @@ void CapsuleGraphics_UpdateAllSealCountText(CapsuleAppManager *appMan) {
 
         FillWindowPixelBuffer(window, 0);
 
-        string = String_New(100, HEAP_ID_52);
+        string = String_New(100, HEAP_ID_CAPSULE_MENU);
         sealCount = SealCaseInventory_GetSealQuantity(appMan->sealCount, sealID - 1);
 
         String16_FormatInteger(string, sealCount, 3, PRINTING_MODE_RIGHT_ALIGN, 1);
@@ -901,7 +901,7 @@ void CapsuleGraphics_UpdateSealCountText(CapsuleAppManager *appMan, int index) {
 
     FillWindowPixelBuffer(window, 0);
 
-    string = String_New(100, HEAP_ID_52);
+    string = String_New(100, HEAP_ID_CAPSULE_MENU);
     sealCount = SealCaseInventory_GetSealQuantity(appMan->sealCount, sealID - 1);
 
     String16_FormatInteger(string, sealCount, 3, PRINTING_MODE_RIGHT_ALIGN, 1);
@@ -927,7 +927,7 @@ void CapsuleGraphics_UpdateSealNameText(Window *window, int entryID) {
         return;
     }
 
-    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0015, HEAP_ID_52);
+    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0015, HEAP_ID_CAPSULE_MENU);
     string = NewString_ReadMsgData(messageLoader, entryID);
 
     FillWindowPixelBuffer(window, 15);
@@ -944,11 +944,11 @@ void CapsuleGraphics_StartDisplay(void) {
 }
 
 void CapsuleGraphics_FadeIn(void) {
-    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_52);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_IN, FADE_TYPE_BRIGHTNESS_IN, RGB_BLACK, 6, 1, HEAP_ID_CAPSULE_MENU);
 }
 
 void CapsuleGraphics_FadeOut(void) {
-    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_52);
+    BeginNormalPaletteFade(FADE_BOTH_SCREENS, FADE_TYPE_BRIGHTNESS_OUT, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_CAPSULE_MENU);
 }
 
 void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) {
@@ -958,16 +958,16 @@ void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     int narcMemberIdx = 2;
     int bgLayer = GF_BG_LYR_MAIN_2;
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_MAIN_BG, 0x60, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x60, 0);
 
     narcTileIdx = 9;
     narcTilemapIdx = 13;
     bgLayer = GF_BG_LYR_MAIN_3;
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
 }
 
 void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) {
@@ -977,9 +977,9 @@ void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     int narcMemberIdx = 1;
     int bgLayer = GF_BG_LYR_SUB_1;
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_SUB_BG, 0x20 * 2, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20 * 2, 0);
 }
 
 void CapsuleGraphics_LoadBgLayer7Tilemap(CapsuleAppManager *appMan, NARC *narc) {
@@ -989,9 +989,9 @@ void CapsuleGraphics_LoadBgLayer7Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     int narcMemberIdx = 1;
     int bgLayer = GF_BG_LYR_SUB_3;
 
-    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_52);
-    PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_52, PLTTBUF_SUB_BG, 0x40, 0);
+    GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
+    PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x40, 0);
 }
 
 void CapsuleGraphics_LoadCapsuleUI(CapsuleAppManager *appMan, NARC *narc) {

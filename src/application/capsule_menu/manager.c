@@ -92,7 +92,7 @@ static BOOL (*const sCapsuleFunctions[])(CapsuleAppManager *appMan) = {
     CapsuleManager_Dummy,
 };
 
-const UnkStruct_ov57_0223BECC ov57_0223BECC[] = {
+const SealListMenuEntry gSealListMenuEntries[] = {
     { 0, ov57_0223B6F0                 },
     { 1, CapsuleManager_FreeMenuWindow },
     { 2, ov57_0223B714                 },
@@ -156,7 +156,7 @@ static BOOL CapsuleManager_SelectionActions(CapsuleAppManager *appMan) {
     case CAPSULE_INIT_STATE_ID: {
         NARC *narc;
 
-        narc = NARC_New(NARC_a_0_8_7, HEAP_ID_52);
+        narc = NARC_New(NARC_a_0_8_7, HEAP_ID_CAPSULE_MENU);
 
         CapsuleGraphics_LoadPokemonIcons(appMan);
         CapsuleGraphics_InitPokemonIcons(appMan);
@@ -539,7 +539,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_CancelPressed(CapsuleAppManage
         yesNoPromptTemplate.x = 25;
         yesNoPromptTemplate.y = 6;
         yesNoPromptTemplate.ignoreTouchFlag = appMan->menuInputState;
-        appMan->graphicsMan.yesNoPrompt = YesNoPrompt_Create(HEAP_ID_52);
+        appMan->graphicsMan.yesNoPrompt = YesNoPrompt_Create(HEAP_ID_CAPSULE_MENU);
         YesNoPrompt_InitFromTemplate(appMan->graphicsMan.yesNoPrompt, &yesNoPromptTemplate);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[4], 4, msg_0011_00014, FALSE);
         ++appMan->throwStateID;
@@ -623,7 +623,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         }
         UnkStruct_134 sp5C;
         sp5C.unk0 = 1;
-        sp5C.heapID = HEAP_ID_52;
+        sp5C.heapID = HEAP_ID_CAPSULE_MENU;
         sp5C.unk8 = 0;
         sp5C.unkC = 0xFF;
         sp5C.unk14 = 0;
@@ -643,7 +643,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         SealPlacement_GetCapsuleSeals(&sp44, appMan);
         SetMonData(appMan->pokemon, MON_DATA_BALL_CAPSULE_ID, &spC);
         SetMonData(appMan->pokemon, MON_DATA_BALL_CAPSULE, &sp44);
-        appMan->graphicsMan.sealEffect = ov07_02232694(HEAP_ID_52, &sp38);
+        appMan->graphicsMan.sealEffect = ov07_02232694(HEAP_ID_CAPSULE_MENU, &sp38);
         ov07_022329B0(appMan->graphicsMan.sealEffect);
         ++appMan->throwStateID;
         appMan->yesNoResult = 0;
@@ -695,7 +695,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         appMan->yesNoResult = 0;
         UnkStruct_134 sp10;
         sp10.unk0 = 1;
-        sp10.heapID = HEAP_ID_52;
+        sp10.heapID = HEAP_ID_CAPSULE_MENU;
         sp10.unk8 = 5;
         sp10.unkC = 0xFF;
         sp10.unk14 = 0;
@@ -887,7 +887,7 @@ static int ov57_0223B1A4(CapsuleAppManager *appMan, u8 a1) {
     switch (a1) {
     case 12:
         PlaySE(SEQ_SE_DP_DECIDE);
-        ov57_02237E88(appMan->appData, 0);
+        CapsuleMenu_SetAction(appMan->appData, 0);
         return CAPSULE_FADE_OUT_STATE_ID;
     case 13:
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00008, FALSE);
@@ -1159,7 +1159,7 @@ static BOOL ov57_0223B714(CapsuleAppManager *appMan) {
     SealPlacement_UpdateSeals(appMan);
     SealPlacement_LoadCapsuleSeals(appMan);
     CapsuleGraphics_SetCapsuleSpriteAnim(appMan);
-    ov57_02237E88(appMan->appData, 1);
+    CapsuleMenu_SetAction(appMan->appData, 1);
     appMan->stateID = 5;
     return FALSE;
 }
@@ -1278,7 +1278,7 @@ static void CapsuleManager_CapsuleUIPressTask(SysTask *sysTask, void *taskData) 
 }
 
 static void CapsuleManager_PressCapsuleUI(ManagedSprite *sprite, TextOBJ *textObj) {
-    CapsuleUIPressTask *taskData = Heap_Alloc(HEAP_ID_52, sizeof(CapsuleUIPressTask));
+    CapsuleUIPressTask *taskData = Heap_Alloc(HEAP_ID_CAPSULE_MENU, sizeof(CapsuleUIPressTask));
     taskData->frame = 1;
     taskData->sprite = sprite;
     taskData->fontOAM = textObj;
