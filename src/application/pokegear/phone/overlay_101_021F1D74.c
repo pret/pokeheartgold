@@ -228,7 +228,7 @@ void PhoneCallMessagePrint(PokegearPhoneCallContext *ctx, MsgData *msgData, cons
     ReadMsgDataIntoString(msgData, msgIDs[ctx->playerGender], ctx->phoneCallMsgReadBuff);
     StringExpandPlaceholders(ctx->msgFormat, ctx->msgExpansionBuff, ctx->phoneCallMsgReadBuff);
     FillWindowPixelBuffer(ctx->phoneCallMsgWindow, 0);
-    ctx->textPrinter = AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->msgExpansionBuff, 0, 0, ctx->textSpeed, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    ctx->textPrinter = AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, FONT_SYSTEM, ctx->msgExpansionBuff, 0, 0, ctx->textSpeed, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 }
 
 void PhoneCallMessagePrint_Gendered(PokegearPhoneCallContext *ctx, MsgData *msgData, u8 msgIDifEthan, u8 msgIDifLyra) {
@@ -342,9 +342,9 @@ void PhoneCall_NoSignalMessage(PokegearPhoneCallContext *ctx, u8 kind, u8 stage)
         FillWindowPixelBuffer(ctx->phoneCallMsgWindow, 0);
     }
     if (kind == 0) {
-        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->noSignalMsgs[stage], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, FONT_SYSTEM, ctx->noSignalMsgs[stage], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, 0, ctx->hangUpMsgs[stage], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(ctx->phoneCallMsgWindow, FONT_SYSTEM, ctx->hangUpMsgs[stage], 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     }
 }
 

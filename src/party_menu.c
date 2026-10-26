@@ -280,7 +280,7 @@ static BOOL PartyMenuApp_Init(OverlayManager *manager, int *pState) {
     TextFlags_SetCanTouchSpeedUpPrint(TRUE);
     Main_SetVBlankIntrCB(sub_020796B8, partyMenu);
     sub_0203A994(2);
-    FontID_Alloc(4, HEAP_ID_PARTY_MENU);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_PARTY_MENU);
     NARC_Delete(narc);
     return TRUE;
 }
@@ -633,7 +633,7 @@ static BOOL PartyMenuApp_Exit(OverlayManager *manager, int *pState) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_FIELD) {
         Sound_LoadHeapStateBGMAndResetSubScene();
     }
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     OverlayManager_FreeData(manager);
     Heap_Destroy(HEAP_ID_PARTY_MENU);
     sub_0203A964();

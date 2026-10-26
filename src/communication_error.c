@@ -175,7 +175,7 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
     BufferIntegerAsString(messageFormat, 0, errorCode, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
     ReadMsgDataIntoString(errorMessageData, msgNo, tmpStr);
     StringExpandPlaceholders(messageFormat, errorMessageStr, tmpStr);
-    AddTextPrinterParameterized(&window, 0, errorMessageStr, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(&window, FONT_SYSTEM, errorMessageStr, 0, 0, 0, NULL);
     String_Delete(errorMessageStr);
     // BUG: tmp_str is never destroyed.
 
