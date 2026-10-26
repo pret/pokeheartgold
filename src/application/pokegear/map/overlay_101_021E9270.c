@@ -820,7 +820,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, int regionNo) {
     for (i = 0; i < 3; ++i) {
         FillWindowPixelBuffer(&mapApp->windows[i], 0);
     }
-    AddTextPrinterParameterizedWithColor(&mapApp->windows[0], 0, mapApp->regionNameStrings[regionNo], 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&mapApp->windows[0], FONT_SYSTEM, mapApp->regionNameStrings[regionNo], 2, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     if (mapApp->type == PGMAP_TYPE_GEAR) {
         if (!ov101_021EA6C4(mapApp, selectedLoc)) {
             ov101_021EB38C(mapApp, 0, 2);
@@ -835,7 +835,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, int regionNo) {
         } else {
             mapNameY = 0;
         }
-        AddTextPrinterParameterizedWithColor(&mapApp->windows[1], 0, mapApp->mapNameString, 0, mapNameY, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&mapApp->windows[1], FONT_SYSTEM, mapApp->mapNameString, 0, mapNameY, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         if (a1) {
             for (i = 0; i <= 1; ++i) {
                 CopyWindowToVram(&mapApp->windows[i]);
@@ -856,7 +856,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, int regionNo) {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_3, 24, 11, 7, 7, mapApp->unk_174->rawData, (tilemap174blockId % 4) * 7, (tilemap174blockId / 4) * 7, mapApp->unk_174->screenWidth / 8, mapApp->unk_174->screenHeight / 8);
         String_SetEmpty(mapApp->flavorTextString);
         ReadMsgDataIntoString(mapApp->msgData, locationSpec->flavorText, mapApp->flavorTextString);
-        AddTextPrinterParameterizedWithColor(&mapApp->windows[2], 0, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&mapApp->windows[2], FONT_SYSTEM, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         Sprite_SetDrawFlag(objects[PGMAP_SPRITE_GEAR_BATTLE].sprite, PokegearMap_MapHasPhoneRematchOrGift(mapApp, locationSpec->mapId));
     } else {
         CopyToBgTilemapRect(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_2, 23, 11, 8, 7, mapApp->unk_16C->rawData, 0, 0, mapApp->unk_16C->screenWidth / 8, mapApp->unk_16C->screenHeight / 8);
@@ -875,7 +875,7 @@ static void ov101_021EAA0C(PokegearMapAppData *mapApp, BOOL a1, int regionNo) {
             if (markersHeap->mapMarkings.words[i] != EC_WORD_NULL) {
                 BufferECWord(mapApp->msgFormat, 0, markersHeap->mapMarkings.words[i]);
                 StringExpandPlaceholders(mapApp->msgFormat, mapApp->flavorTextString, mapApp->formatFlavorTextString);
-                AddTextPrinterParameterizedWithColor(&mapApp->windows[(i % 2) + 3], 0, mapApp->flavorTextString, 4, (i / 2) * 21 + 2, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
+                AddTextPrinterParameterizedWithColor(&mapApp->windows[(i % 2) + 3], FONT_SYSTEM, mapApp->flavorTextString, 4, (i / 2) * 21 + 2, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
             }
         }
     } else {
@@ -904,7 +904,7 @@ static void PokegearMap_PrintMarkingECWord(PokegearMapAppData *mapApp, u8 index,
         BufferECWord(mapApp->msgFormat, 0, word);
         StringExpandPlaceholders(mapApp->msgFormat, mapApp->flavorTextString, mapApp->formatFlavorTextString);
         FillWindowPixelBufferText_AssumeTileSize32(&mapApp->windows[8], 0);
-        AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 0, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&mapApp->windows[8], FONT_SYSTEM, mapApp->flavorTextString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 4, 0), NULL);
         TextOBJ_CopyFromBGWindow(mapApp->unk_044[index].textOBJ, mapApp->unk_040, &mapApp->windows[8], mapApp->heapID);
         TextOBJ_SetSpritesDrawFlag(mapApp->unk_044[index].textOBJ, TRUE);
     }
@@ -925,7 +925,7 @@ void PokegearMap_PrintSelectedMapDetail(PokegearMapAppData *mapApp, BOOL forceUp
         String_SetEmpty(mapApp->mapNameString);
         FillWindowPixelBuffer(&mapApp->windows[7], 0);
         PokegearMap_GetLandmarkNameFromMapID(locationSpec->mapId, mapApp->heapID, mapApp->mapNameString);
-        AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->mapNameString, 0, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&mapApp->windows[7], FONT_SYSTEM, mapApp->mapNameString, 0, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     }
 
@@ -1099,12 +1099,12 @@ void PokegearMap_SpawnFlyContextMenu(PokegearMapAppData *mapApp, u32 a1) {
 void PokegearMap_PrintLandmarkNameAndFlavorText(PokegearMapAppData *mapApp, int mapID) {
     FillWindowPixelBuffer(&mapApp->windows[7], 0);
     if (mapID < 0) {
-        AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->chooseDestinationString, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&mapApp->windows[7], FONT_SYSTEM, mapApp->chooseDestinationString, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
     } else {
         PokegearMap_GetLandmarkNameFromMapID(mapID, mapApp->heapID, mapApp->mapNameString);
         BufferString(mapApp->msgFormat, 0, mapApp->mapNameString, 0, 0, 2);
         StringExpandPlaceholders(mapApp->msgFormat, mapApp->flavorTextString, mapApp->flyToLocationString);
-        AddTextPrinterParameterizedWithColor(&mapApp->windows[7], 0, mapApp->flavorTextString, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&mapApp->windows[7], FONT_SYSTEM, mapApp->flavorTextString, 8, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 0), NULL);
     }
 }
 
