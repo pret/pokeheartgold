@@ -100,7 +100,7 @@
 #define COUNTRY_IRAN                               96
 #define COUNTRY_IRAQ                               97
 #define COUNTRY_IRELAND                            98
-#define COUNTRY_ISLE_OF_MAN_                       99
+#define COUNTRY_ISLE_OF_MAN                        99
 #define COUNTRY_ISRAEL                             100
 #define COUNTRY_ITALY                              101
 #define COUNTRY_JAMAICA                            102
@@ -124,7 +124,7 @@
 #define COUNTRY_LITHUANIA                          120
 #define COUNTRY_LUXEMBOURG                         121
 #define COUNTRY_MACAU                              122
-#define COUNTRY_MACEDONIA__FYROM_                  123
+#define COUNTRY_MACEDONIA__FYROM                   123
 #define COUNTRY_MADAGASCAR                         124
 #define COUNTRY_MALAWI                             125
 #define COUNTRY_MALAYSIA                           126
@@ -239,7 +239,7 @@
 
 #define STATE_ARGENTINA_NONE                             0
 #define STATE_ARGENTINA_BUENOS_AIRES                     1
-#define STATE_ARGENTINA_CIUDAD_AUTONOMA_DE_BUENOS_AIRES_ 2
+#define STATE_ARGENTINA_CIUDAD_AUTONOMA_DE_BUENOS_AIRES  2
 #define STATE_ARGENTINA_CATAMARCA                        3
 #define STATE_ARGENTINA_CHACO                            4
 #define STATE_ARGENTINA_CHUBUT                           5
@@ -376,7 +376,7 @@
 #define STATE_SPAIN_NONE                  0
 #define STATE_SPAIN_ANDALUCIA             1
 #define STATE_SPAIN_ARAGON                2
-#define STATE_SPAIN_ASTURIAS_             3
+#define STATE_SPAIN_ASTURIAS              3
 #define STATE_SPAIN_ISLAS_BALEARES        4
 #define STATE_SPAIN_PAIS_VASCO            5
 #define STATE_SPAIN_ISLAS_CANARIAS        6
@@ -390,7 +390,7 @@
 #define STATE_SPAIN_MURCIA                14
 #define STATE_SPAIN_NAVARRA               15
 #define STATE_SPAIN_LA_RIOJA              16
-#define STATE_SPAIN_COMUNIDAD_VALENCIANA_ 17
+#define STATE_SPAIN_COMUNIDAD_VALENCIANA  17
 #define STATE_SPAIN_COUNT                 18
 
 #define STATE_FINLAND_NONE          0
@@ -444,7 +444,7 @@
 
 #define STATE_INDIA_NONE                        0
 #define STATE_INDIA_ANDAMAN_AND_NICOBAR_ISLANDS 1
-#define STATE_INDIA_ANDHRA_PRADESH_             2
+#define STATE_INDIA_ANDHRA_PRADESH              2
 #define STATE_INDIA_ARUNACHAL_PRADESH           3
 #define STATE_INDIA_ASSAM                       4
 #define STATE_INDIA_BIHAR                       5
@@ -459,8 +459,8 @@
 #define STATE_INDIA_HIMACHAL_PRADESH            14
 #define STATE_INDIA_JAMMU_AND_KASHMIR           15
 #define STATE_INDIA_JHARKHAND                   16
-#define STATE_INDIA_KARNATAKA_                  17
-#define STATE_INDIA_KERALA_                     18
+#define STATE_INDIA_KARNATAKA                   17
+#define STATE_INDIA_KERALA                      18
 #define STATE_INDIA_LAKSHADWEEP                 19
 #define STATE_INDIA_MADHYA_PRADESH              20
 #define STATE_INDIA_MAHARASHTRA                 21
@@ -473,7 +473,7 @@
 #define STATE_INDIA_PUNJAB                      28
 #define STATE_INDIA_RAJASTHAN                   29
 #define STATE_INDIA_SIKKIM                      30
-#define STATE_INDIA_TAMIL_NADU_                 31
+#define STATE_INDIA_TAMIL_NADU                  31
 #define STATE_INDIA_TRIPURA                     32
 #define STATE_INDIA_UTTAR_PRADESH               33
 #define STATE_INDIA_UTTARANCHAL                 34
@@ -504,10 +504,10 @@
 #define STATE_ITALY_COUNT                 21
 
 #define STATE_JAPAN_NONE                0
-#define STATE_JAPAN_HOKKAIDO__SAPPORO_  1
-#define STATE_JAPAN_HOKKAIDO__HAKODATE_ 2
-#define STATE_JAPAN_HOKKAIDO__WAKKANAI_ 3
-#define STATE_JAPAN_HOKKAIDO__KUSHIRO_  4
+#define STATE_JAPAN_HOKKAIDO_SAPPORO    1
+#define STATE_JAPAN_HOKKAIDO_HAKODATE   2
+#define STATE_JAPAN_HOKKAIDO_WAKKANAI   3
+#define STATE_JAPAN_HOKKAIDO_KUSHIRO    4
 #define STATE_JAPAN_AOMORI              5
 #define STATE_JAPAN_IWATE               6
 #define STATE_JAPAN_MIYAGI              7
@@ -600,12 +600,12 @@
 
 #define STATE_RUSSIAN_FEDERATION_NONE                          0
 #define STATE_RUSSIAN_FEDERATION_CENTRAL_FEDERAL_DISTRICT      1
-#define STATE_RUSSIAN_FEDERATION_FAR_EASTERN_FEDERAL_DISTRICT_ 2
+#define STATE_RUSSIAN_FEDERATION_FAR_EASTERN_FEDERAL_DISTRICT  2
 #define STATE_RUSSIAN_FEDERATION_NORTHWESTERN_FEDERAL_DISTRICT 3
-#define STATE_RUSSIAN_FEDERATION_VOLGA_FEDERAL_DISTRICT_       4
+#define STATE_RUSSIAN_FEDERATION_VOLGA_FEDERAL_DISTRICT        4
 #define STATE_RUSSIAN_FEDERATION_SIBERIAN_FEDERAL_DISTRICT     5
 #define STATE_RUSSIAN_FEDERATION_SOUTHERN_FEDERAL_DISTRICT     6
-#define STATE_RUSSIAN_FEDERATION_URALS_FEDERAL_DISTRICT_       7
+#define STATE_RUSSIAN_FEDERATION_URALS_FEDERAL_DISTRICT        7
 #define STATE_RUSSIAN_FEDERATION_COUNT                         8
 
 #define STATE_SWEDEN_NONE                         0
@@ -625,7 +625,7 @@
 #define STATE_SWEDEN_NARKE                        14
 #define STATE_SWEDEN_NORRBOTTEN                   15
 #define STATE_SWEDEN_OLAND                        16
-#define STATE_SWEDEN_OSTERGOTLAND___VASTERGOTLAND 17
+#define STATE_SWEDEN_OSTERGOTLAND_VASTERGOTLAND   17
 #define STATE_SWEDEN_SKANE                        18
 #define STATE_SWEDEN_SMALAND                      19
 #define STATE_SWEDEN_SODERMANLAND                 20
@@ -683,7 +683,7 @@
 #define STATE_UNITED_STATES_OF_AMERICA_VERMONT         45
 #define STATE_UNITED_STATES_OF_AMERICA_VIRGINIA        46
 #define STATE_UNITED_STATES_OF_AMERICA_WASHINGTON      47
-#define STATE_UNITED_STATES_OF_AMERICA_WASHINGTON__DC_ 48
+#define STATE_UNITED_STATES_OF_AMERICA_WASHINGTON_DC   48
 #define STATE_UNITED_STATES_OF_AMERICA_WEST_VIRGINIA   49
 #define STATE_UNITED_STATES_OF_AMERICA_WISCONSIN       50
 #define STATE_UNITED_STATES_OF_AMERICA_WYOMING         51

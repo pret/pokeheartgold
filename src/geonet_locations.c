@@ -1,4 +1,4 @@
-#include "location_gmm_dat.h"
+#include "geonet_locations.h"
 
 #include "global.h"
 
@@ -6,20 +6,22 @@
 
 #include "msgdata/msg.naix"
 
-typedef struct LocationGmmDat {
-    u8 country;
-    u8 placeDatId;
-    u16 gmm;
-    const u8 *msgIds;
-    u32 numMsgIds;
-} LocationGmmDat;
+#define NUM_SELECTABLE_COUNTRIES 130
 
-static const u8 sLocationGmmDat_Argentina[24] = {
+typedef struct GeonetLocationData {
+    u8 country;
+    u8 narcMemberID;
+    u16 bankID;
+    const u8 *locationList;
+    u32 locationCount;
+} GeonetLocationData;
+
+static const u8 sSelectableArgentinaStates[] = {
     STATE_ARGENTINA_BUENOS_AIRES,
     STATE_ARGENTINA_CATAMARCA,
     STATE_ARGENTINA_CHACO,
     STATE_ARGENTINA_CHUBUT,
-    STATE_ARGENTINA_CIUDAD_AUTONOMA_DE_BUENOS_AIRES_,
+    STATE_ARGENTINA_CIUDAD_AUTONOMA_DE_BUENOS_AIRES,
     STATE_ARGENTINA_CORDOBA,
     STATE_ARGENTINA_CORRIENTES,
     STATE_ARGENTINA_ENTRE_RIOS,
@@ -41,7 +43,7 @@ static const u8 sLocationGmmDat_Argentina[24] = {
     STATE_ARGENTINA_TUCMAN,
 };
 
-static const u8 sLocationGmmDat_Australia[7] = {
+static const u8 sSelectableAustraliaStates[] = {
     STATE_AUSTRALIA_NEW_SOUTH_WALES,
     STATE_AUSTRALIA_NORTH,
     STATE_AUSTRALIA_QUEENSLAND,
@@ -51,7 +53,7 @@ static const u8 sLocationGmmDat_Australia[7] = {
     STATE_AUSTRALIA_WESTERN_AUSTRALIA,
 };
 
-static const u8 sLocationGmmDat_Brazil[27] = {
+static const u8 sSelectableBrazilStates[] = {
     STATE_BRAZIL_ACRE,
     STATE_BRAZIL_ALAGOAS,
     STATE_BRAZIL_AMAPA,
@@ -81,7 +83,7 @@ static const u8 sLocationGmmDat_Brazil[27] = {
     STATE_BRAZIL_TOCANTINS,
 };
 
-static const u8 sLocationGmmDat_Canada[13] = {
+static const u8 sSelectableCanadaStates[] = {
     STATE_CANADA_ALBERTA,
     STATE_CANADA_BRITISH_COLUMBIA,
     STATE_CANADA_MANITOBA,
@@ -97,7 +99,7 @@ static const u8 sLocationGmmDat_Canada[13] = {
     STATE_CANADA_YUKON_TERRITORY,
 };
 
-static const u8 sLocationGmmDat_China[31] = {
+static const u8 sSelectableChinaStates[] = {
     STATE_CHINA_ANHUI,
     STATE_CHINA_BEIJING,
     STATE_CHINA_CHONGQING,
@@ -131,7 +133,7 @@ static const u8 sLocationGmmDat_China[31] = {
     STATE_CHINA_ZHEJIANG,
 };
 
-static const u8 sLocationGmmDat_Germany[16] = {
+static const u8 sSelectableGermanyStates[] = {
     STATE_GERMANY_BADEN_WURTTEMBERG,
     STATE_GERMANY_BAYERN,
     STATE_GERMANY_BERLIN,
@@ -150,15 +152,15 @@ static const u8 sLocationGmmDat_Germany[16] = {
     STATE_GERMANY_SCHLESWIG_HOLSTEIN,
 };
 
-static const u8 sLocationGmmDat_Spain[17] = {
+static const u8 sSelectableSpainStates[] = {
     STATE_SPAIN_ANDALUCIA,
     STATE_SPAIN_ARAGON,
-    STATE_SPAIN_ASTURIAS_,
+    STATE_SPAIN_ASTURIAS,
     STATE_SPAIN_CANTABRIA,
     STATE_SPAIN_CASTILLA_LEON,
     STATE_SPAIN_CASTILLA_LA_MANCHA,
     STATE_SPAIN_CATALUNA,
-    STATE_SPAIN_COMUNIDAD_VALENCIANA_,
+    STATE_SPAIN_COMUNIDAD_VALENCIANA,
     STATE_SPAIN_EXTREMADURA,
     STATE_SPAIN_GALICIA,
     STATE_SPAIN_ISLAS_BALEARES,
@@ -170,7 +172,7 @@ static const u8 sLocationGmmDat_Spain[17] = {
     STATE_SPAIN_PAIS_VASCO,
 };
 
-static const u8 sLocationGmmDat_Finland[6] = {
+static const u8 sSelectableFinlandStates[] = {
     STATE_FINLAND_ALAND_ISLANDS,
     STATE_FINLAND_EAST_FINLAND,
     STATE_FINLAND_LAPLAND,
@@ -179,7 +181,7 @@ static const u8 sLocationGmmDat_Finland[6] = {
     STATE_FINLAND_WEST_FINLAND,
 };
 
-static const u8 sLocationGmmDat_France[22] = {
+static const u8 sSelectableFranceStates[] = {
     STATE_FRANCE_ALSACE,
     STATE_FRANCE_AQUITAINE,
     STATE_FRANCE_AUVERGNE,
@@ -204,7 +206,7 @@ static const u8 sLocationGmmDat_France[22] = {
     STATE_FRANCE_RHONE_ALPES,
 };
 
-static const u8 sLocationGmmDat_GreatBritain[12] = {
+static const u8 sSelectableGreatBritainStates[] = {
     STATE_UNITED_KINGDOM_EAST_MIDLANDS,
     STATE_UNITED_KINGDOM_EAST_OF_ENGLAND,
     STATE_UNITED_KINGDOM_GREATER_LONDON,
@@ -219,9 +221,9 @@ static const u8 sLocationGmmDat_GreatBritain[12] = {
     STATE_UNITED_KINGDOM_YORKSHIRE_AND_THE_HUMBER,
 };
 
-static const u8 sLocationGmmDat_India[35] = {
+static const u8 sSelectableIndiaStates[] = {
     STATE_INDIA_ANDAMAN_AND_NICOBAR_ISLANDS,
-    STATE_INDIA_ANDHRA_PRADESH_,
+    STATE_INDIA_ANDHRA_PRADESH,
     STATE_INDIA_ARUNACHAL_PRADESH,
     STATE_INDIA_ASSAM,
     STATE_INDIA_BIHAR,
@@ -236,8 +238,8 @@ static const u8 sLocationGmmDat_India[35] = {
     STATE_INDIA_HIMACHAL_PRADESH,
     STATE_INDIA_JAMMU_AND_KASHMIR,
     STATE_INDIA_JHARKHAND,
-    STATE_INDIA_KARNATAKA_,
-    STATE_INDIA_KERALA_,
+    STATE_INDIA_KARNATAKA,
+    STATE_INDIA_KERALA,
     STATE_INDIA_LAKSHADWEEP,
     STATE_INDIA_MADHYA_PRADESH,
     STATE_INDIA_MAHARASHTRA,
@@ -250,14 +252,14 @@ static const u8 sLocationGmmDat_India[35] = {
     STATE_INDIA_PUNJAB,
     STATE_INDIA_RAJASTHAN,
     STATE_INDIA_SIKKIM,
-    STATE_INDIA_TAMIL_NADU_,
+    STATE_INDIA_TAMIL_NADU,
     STATE_INDIA_TRIPURA,
     STATE_INDIA_UTTAR_PRADESH,
     STATE_INDIA_UTTARANCHAL,
     STATE_INDIA_WEST_BENGAL,
 };
 
-static const u8 sLocationGmmDat_Italy[20] = {
+static const u8 sSelectableItalyStates[] = {
     STATE_ITALY_ABRUZZO,
     STATE_ITALY_BASILICATA,
     STATE_ITALY_CALABRIA,
@@ -280,7 +282,7 @@ static const u8 sLocationGmmDat_Italy[20] = {
     STATE_ITALY_VENETO,
 };
 
-static const u8 sLocationGmmDat_Japan[50] = {
+static const u8 sSelectableJapanStates[] = {
     STATE_JAPAN_AICHI,
     STATE_JAPAN_AKITA,
     STATE_JAPAN_AOMORI,
@@ -292,10 +294,10 @@ static const u8 sLocationGmmDat_Japan[50] = {
     STATE_JAPAN_GIFU,
     STATE_JAPAN_GUNMA,
     STATE_JAPAN_HIROSHIMA,
-    STATE_JAPAN_HOKKAIDO__HAKODATE_,
-    STATE_JAPAN_HOKKAIDO__KUSHIRO_,
-    STATE_JAPAN_HOKKAIDO__SAPPORO_,
-    STATE_JAPAN_HOKKAIDO__WAKKANAI_,
+    STATE_JAPAN_HOKKAIDO_HAKODATE,
+    STATE_JAPAN_HOKKAIDO_KUSHIRO,
+    STATE_JAPAN_HOKKAIDO_SAPPORO,
+    STATE_JAPAN_HOKKAIDO_WAKKANAI,
     STATE_JAPAN_HYOGO,
     STATE_JAPAN_IBARAKI,
     STATE_JAPAN_ISHIKAWA,
@@ -333,7 +335,7 @@ static const u8 sLocationGmmDat_Japan[50] = {
     STATE_JAPAN_YAMANASHI,
 };
 
-static const u8 sLocationGmmDat_Norway[20] = {
+static const u8 sSelectableNorwayStates[] = {
     STATE_NORWAY_AKERSHUS,
     STATE_NORWAY_AUST_AGDER,
     STATE_NORWAY_BUSKERUD,
@@ -356,7 +358,7 @@ static const u8 sLocationGmmDat_Norway[20] = {
     STATE_NORWAY_VEST_AGDER,
 };
 
-static const u8 sLocationGmmDat_Poland[16] = {
+static const u8 sSelectablePolandStates[] = {
     STATE_POLAND_DOLNOSLASKIE,
     STATE_POLAND_KUJAWSKO_POMORSKIE,
     STATE_POLAND_LODZKIE,
@@ -375,17 +377,17 @@ static const u8 sLocationGmmDat_Poland[16] = {
     STATE_POLAND_ZACHODNIOPOMORSKIE,
 };
 
-static const u8 sLocationGmmDat_Russia[7] = {
+static const u8 sSelectableRussiaStates[] = {
     STATE_RUSSIAN_FEDERATION_CENTRAL_FEDERAL_DISTRICT,
-    STATE_RUSSIAN_FEDERATION_FAR_EASTERN_FEDERAL_DISTRICT_,
+    STATE_RUSSIAN_FEDERATION_FAR_EASTERN_FEDERAL_DISTRICT,
     STATE_RUSSIAN_FEDERATION_NORTHWESTERN_FEDERAL_DISTRICT,
     STATE_RUSSIAN_FEDERATION_SIBERIAN_FEDERAL_DISTRICT,
     STATE_RUSSIAN_FEDERATION_SOUTHERN_FEDERAL_DISTRICT,
-    STATE_RUSSIAN_FEDERATION_URALS_FEDERAL_DISTRICT_,
-    STATE_RUSSIAN_FEDERATION_VOLGA_FEDERAL_DISTRICT_,
+    STATE_RUSSIAN_FEDERATION_URALS_FEDERAL_DISTRICT,
+    STATE_RUSSIAN_FEDERATION_VOLGA_FEDERAL_DISTRICT,
 };
 
-static const u8 sLocationGmmDat_Sweden[24] = {
+static const u8 sSelectableSwedenStates[] = {
     STATE_SWEDEN_ANGERMANLAND,
     STATE_SWEDEN_BLEKINGE,
     STATE_SWEDEN_BOHUSLAN,
@@ -401,7 +403,7 @@ static const u8 sLocationGmmDat_Sweden[24] = {
     STATE_SWEDEN_NORRBOTTEN,
     STATE_SWEDEN_NORTH_LAPLAND,
     STATE_SWEDEN_OLAND,
-    STATE_SWEDEN_OSTERGOTLAND___VASTERGOTLAND,
+    STATE_SWEDEN_OSTERGOTLAND_VASTERGOTLAND,
     STATE_SWEDEN_SKANE,
     STATE_SWEDEN_SMALAND,
     STATE_SWEDEN_SODERMANLAND,
@@ -412,7 +414,7 @@ static const u8 sLocationGmmDat_Sweden[24] = {
     STATE_SWEDEN_VASTMANLAND,
 };
 
-static const u8 sLocationGmmDat_UnitedStates[51] = {
+static const u8 sSelectableUnitedStatesStates[] = {
     STATE_UNITED_STATES_OF_AMERICA_ALABAMA,
     STATE_UNITED_STATES_OF_AMERICA_ALASKA,
     STATE_UNITED_STATES_OF_AMERICA_ARIZONA,
@@ -460,13 +462,13 @@ static const u8 sLocationGmmDat_UnitedStates[51] = {
     STATE_UNITED_STATES_OF_AMERICA_VERMONT,
     STATE_UNITED_STATES_OF_AMERICA_VIRGINIA,
     STATE_UNITED_STATES_OF_AMERICA_WASHINGTON,
-    STATE_UNITED_STATES_OF_AMERICA_WASHINGTON__DC_,
+    STATE_UNITED_STATES_OF_AMERICA_WASHINGTON_DC,
     STATE_UNITED_STATES_OF_AMERICA_WEST_VIRGINIA,
     STATE_UNITED_STATES_OF_AMERICA_WISCONSIN,
     STATE_UNITED_STATES_OF_AMERICA_WYOMING,
 };
 
-static const u8 sLocationGmmDat_World[233] = {
+static const u8 sSelectableCountries[COUNTRY_COUNT - 1] = {
     COUNTRY_AFGHANISTAN,
     COUNTRY_ALBANIA,
     COUNTRY_ALGERIA,
@@ -599,192 +601,192 @@ static const u8 sLocationGmmDat_World[233] = {
     COUNTRY_VIETNAM,
 };
 
-static const LocationGmmDat sLocationGmmDat[19] = {
+static const GeonetLocationData sCountryStateData[] = {
     {
-     .country = COUNTRY_NONE,
-     .placeDatId = 18,
-     .gmm = msg_0798,
-     .msgIds = sLocationGmmDat_World,
-     .numMsgIds = 130,
-     },
+        .country = COUNTRY_NONE,
+        .narcMemberID = 18,
+        .bankID = msg_0798,
+        .locationList = sSelectableCountries,
+        .locationCount = NUM_SELECTABLE_COUNTRIES,
+    },
     {
-     .country = COUNTRY_ARGENTINA,
-     .placeDatId = 0,
-     .gmm = msg_0780,
-     .msgIds = sLocationGmmDat_Argentina,
-     .numMsgIds = NELEMS(sLocationGmmDat_Argentina),
-     },
+        .country = COUNTRY_ARGENTINA,
+        .narcMemberID = 0,
+        .bankID = msg_0780,
+        .locationList = sSelectableArgentinaStates,
+        .locationCount = NELEMS(sSelectableArgentinaStates),
+    },
     {
-     .country = COUNTRY_AUSTRALIA,
-     .placeDatId = 1,
-     .gmm = msg_0781,
-     .msgIds = sLocationGmmDat_Australia,
-     .numMsgIds = NELEMS(sLocationGmmDat_Australia),
-     },
+        .country = COUNTRY_AUSTRALIA,
+        .narcMemberID = 1,
+        .bankID = msg_0781,
+        .locationList = sSelectableAustraliaStates,
+        .locationCount = NELEMS(sSelectableAustraliaStates),
+    },
     {
-     .country = COUNTRY_BRAZIL,
-     .placeDatId = 2,
-     .gmm = msg_0782,
-     .msgIds = sLocationGmmDat_Brazil,
-     .numMsgIds = NELEMS(sLocationGmmDat_Brazil),
-     },
+        .country = COUNTRY_BRAZIL,
+        .narcMemberID = 2,
+        .bankID = msg_0782,
+        .locationList = sSelectableBrazilStates,
+        .locationCount = NELEMS(sSelectableBrazilStates),
+    },
     {
-     .country = COUNTRY_CANADA,
-     .placeDatId = 3,
-     .gmm = msg_0783,
-     .msgIds = sLocationGmmDat_Canada,
-     .numMsgIds = NELEMS(sLocationGmmDat_Canada),
-     },
+        .country = COUNTRY_CANADA,
+        .narcMemberID = 3,
+        .bankID = msg_0783,
+        .locationList = sSelectableCanadaStates,
+        .locationCount = NELEMS(sSelectableCanadaStates),
+    },
     {
-     .country = COUNTRY_CHINA,
-     .placeDatId = 4,
-     .gmm = msg_0784,
-     .msgIds = sLocationGmmDat_China,
-     .numMsgIds = NELEMS(sLocationGmmDat_China),
-     },
+        .country = COUNTRY_CHINA,
+        .narcMemberID = 4,
+        .bankID = msg_0784,
+        .locationList = sSelectableChinaStates,
+        .locationCount = NELEMS(sSelectableChinaStates),
+    },
     {
-     .country = COUNTRY_GERMANY,
-     .placeDatId = 5,
-     .gmm = msg_0785,
-     .msgIds = sLocationGmmDat_Germany,
-     .numMsgIds = NELEMS(sLocationGmmDat_Germany),
-     },
+        .country = COUNTRY_GERMANY,
+        .narcMemberID = 5,
+        .bankID = msg_0785,
+        .locationList = sSelectableGermanyStates,
+        .locationCount = NELEMS(sSelectableGermanyStates),
+    },
     {
-     .country = COUNTRY_SPAIN,
-     .placeDatId = 6,
-     .gmm = msg_0786,
-     .msgIds = sLocationGmmDat_Spain,
-     .numMsgIds = NELEMS(sLocationGmmDat_Spain),
-     },
+        .country = COUNTRY_SPAIN,
+        .narcMemberID = 6,
+        .bankID = msg_0786,
+        .locationList = sSelectableSpainStates,
+        .locationCount = NELEMS(sSelectableSpainStates),
+    },
     {
-     .country = COUNTRY_FINLAND,
-     .placeDatId = 7,
-     .gmm = msg_0787,
-     .msgIds = sLocationGmmDat_Finland,
-     .numMsgIds = NELEMS(sLocationGmmDat_Finland),
-     },
+        .country = COUNTRY_FINLAND,
+        .narcMemberID = 7,
+        .bankID = msg_0787,
+        .locationList = sSelectableFinlandStates,
+        .locationCount = NELEMS(sSelectableFinlandStates),
+    },
     {
-     .country = COUNTRY_FRANCE,
-     .placeDatId = 8,
-     .gmm = msg_0788,
-     .msgIds = sLocationGmmDat_France,
-     .numMsgIds = NELEMS(sLocationGmmDat_France),
-     },
+        .country = COUNTRY_FRANCE,
+        .narcMemberID = 8,
+        .bankID = msg_0788,
+        .locationList = sSelectableFranceStates,
+        .locationCount = NELEMS(sSelectableFranceStates),
+    },
     {
-     .country = COUNTRY_UNITED_KINGDOM,
-     .placeDatId = 9,
-     .gmm = msg_0789,
-     .msgIds = sLocationGmmDat_GreatBritain,
-     .numMsgIds = NELEMS(sLocationGmmDat_GreatBritain),
-     },
+        .country = COUNTRY_UNITED_KINGDOM,
+        .narcMemberID = 9,
+        .bankID = msg_0789,
+        .locationList = sSelectableGreatBritainStates,
+        .locationCount = NELEMS(sSelectableGreatBritainStates),
+    },
     {
-     .country = COUNTRY_INDIA,
-     .placeDatId = 10,
-     .gmm = msg_0790,
-     .msgIds = sLocationGmmDat_India,
-     .numMsgIds = NELEMS(sLocationGmmDat_India),
-     },
+        .country = COUNTRY_INDIA,
+        .narcMemberID = 10,
+        .bankID = msg_0790,
+        .locationList = sSelectableIndiaStates,
+        .locationCount = NELEMS(sSelectableIndiaStates),
+    },
     {
-     .country = COUNTRY_ITALY,
-     .placeDatId = 11,
-     .gmm = msg_0791,
-     .msgIds = sLocationGmmDat_Italy,
-     .numMsgIds = NELEMS(sLocationGmmDat_Italy),
-     },
+        .country = COUNTRY_ITALY,
+        .narcMemberID = 11,
+        .bankID = msg_0791,
+        .locationList = sSelectableItalyStates,
+        .locationCount = NELEMS(sSelectableItalyStates),
+    },
     {
-     .country = COUNTRY_JAPAN,
-     .placeDatId = 12,
-     .gmm = msg_0792,
-     .msgIds = sLocationGmmDat_Japan,
-     .numMsgIds = NELEMS(sLocationGmmDat_Japan),
-     },
+        .country = COUNTRY_JAPAN,
+        .narcMemberID = 12,
+        .bankID = msg_0792,
+        .locationList = sSelectableJapanStates,
+        .locationCount = NELEMS(sSelectableJapanStates),
+    },
     {
-     .country = COUNTRY_NORWAY,
-     .placeDatId = 13,
-     .gmm = msg_0793,
-     .msgIds = sLocationGmmDat_Norway,
-     .numMsgIds = NELEMS(sLocationGmmDat_Norway),
-     },
+        .country = COUNTRY_NORWAY,
+        .narcMemberID = 13,
+        .bankID = msg_0793,
+        .locationList = sSelectableNorwayStates,
+        .locationCount = NELEMS(sSelectableNorwayStates),
+    },
     {
-     .country = COUNTRY_POLAND,
-     .placeDatId = 14,
-     .gmm = msg_0794,
-     .msgIds = sLocationGmmDat_Poland,
-     .numMsgIds = NELEMS(sLocationGmmDat_Poland),
-     },
+        .country = COUNTRY_POLAND,
+        .narcMemberID = 14,
+        .bankID = msg_0794,
+        .locationList = sSelectablePolandStates,
+        .locationCount = NELEMS(sSelectablePolandStates),
+    },
     {
-     .country = COUNTRY_RUSSIAN_FEDERATION,
-     .placeDatId = 15,
-     .gmm = msg_0795,
-     .msgIds = sLocationGmmDat_Russia,
-     .numMsgIds = NELEMS(sLocationGmmDat_Russia),
-     },
+        .country = COUNTRY_RUSSIAN_FEDERATION,
+        .narcMemberID = 15,
+        .bankID = msg_0795,
+        .locationList = sSelectableRussiaStates,
+        .locationCount = NELEMS(sSelectableRussiaStates),
+    },
     {
-     .country = COUNTRY_SWEDEN,
-     .placeDatId = 16,
-     .gmm = msg_0796,
-     .msgIds = sLocationGmmDat_Sweden,
-     .numMsgIds = NELEMS(sLocationGmmDat_Sweden),
-     },
+        .country = COUNTRY_SWEDEN,
+        .narcMemberID = 16,
+        .bankID = msg_0796,
+        .locationList = sSelectableSwedenStates,
+        .locationCount = NELEMS(sSelectableSwedenStates),
+    },
     {
-     .country = COUNTRY_UNITED_STATES_OF_AMERICA,
-     .placeDatId = 17,
-     .gmm = msg_0797,
-     .msgIds = sLocationGmmDat_UnitedStates,
-     .numMsgIds = NELEMS(sLocationGmmDat_UnitedStates),
+        .country = COUNTRY_UNITED_STATES_OF_AMERICA,
+        .narcMemberID = 17,
+        .bankID = msg_0797,
+        .locationList = sSelectableUnitedStatesStates,
+        .locationCount = NELEMS(sSelectableUnitedStatesStates),
      },
 };
 
-int LocationGmmDatCountGet(void) {
-    return NELEMS(sLocationGmmDat);
+u32 GeonetLocations_GetLocationListCount(void) {
+    return NELEMS(sCountryStateData);
 }
 
-int LocationGmmDatIndexGetByCountryMsgNo(int country) {
-    for (int i = 0; i < NELEMS(sLocationGmmDat); ++i) {
-        if (sLocationGmmDat[i].country == country) {
+u32 GeonetLocations_GetIndexFromCountry(u32 country) {
+    for (int i = 0; i < NELEMS(sCountryStateData); i++) {
+        if (sCountryStateData[i].country == country) {
             return i;
         }
     }
 
-    return 0;
+    return COUNTRY_NONE;
 }
 
-int LocationGmmDatRegionCountGetByCountryMsgNo(int country) {
-    for (int i = 0; i < NELEMS(sLocationGmmDat); ++i) {
-        if (sLocationGmmDat[i].country == country) {
-            return sLocationGmmDat[i].numMsgIds;
+u32 GeonetLocations_GetLocationCountFromCountry(u32 country) {
+    for (u32 i = 0; i < NELEMS(sCountryStateData); i++) {
+        if (sCountryStateData[i].country == country) {
+            return sCountryStateData[i].locationCount;
         }
     }
 
     return 0;
 }
 
-int GetCityNamesMsgdataIdByCountry(int country) {
-    int index = LocationGmmDatIndexGetByCountryMsgNo(country);
-    return LocationGmmDatGetGmmNo(index);
+u32 GeonetLocations_GetBankIDFromCountry(u32 country) {
+    u32 index = GeonetLocations_GetIndexFromCountry(country);
+    return GeonetLocations_GetBankID(index);
 }
 
-int LocationGmmDatGetGmmNo(int index) {
-    GF_ASSERT(index < NELEMS(sLocationGmmDat));
-    return sLocationGmmDat[index].gmm;
+u32 GeonetLocations_GetBankID(u32 index) {
+    GF_ASSERT(index < NELEMS(sCountryStateData));
+    return sCountryStateData[index].bankID;
 }
 
-int LocationGmmDatGetCountryMsgNo(int index) {
-    GF_ASSERT(index < NELEMS(sLocationGmmDat));
-    return sLocationGmmDat[index].country;
+u32 GeonetLocations_GetCountry(u32 index) {
+    GF_ASSERT(index < NELEMS(sCountryStateData));
+    return sCountryStateData[index].country;
 }
 
-int LocationGmmDatGetEarthPlaceDatId(int index) {
-    GF_ASSERT(index < NELEMS(sLocationGmmDat));
-    return sLocationGmmDat[index].placeDatId;
+u32 GeonetLocations_GetNarcMemberIndex(u32 index) {
+    GF_ASSERT(index < NELEMS(sCountryStateData));
+    return sCountryStateData[index].narcMemberID;
 }
 
-const u8 *LocationGmmDatGetDistrictNameMsgIdsPtr(int index) {
-    GF_ASSERT(index < NELEMS(sLocationGmmDat));
-    return sLocationGmmDat[index].msgIds;
+const u8 *GeonetLocations_GetLocationList(u32 index) {
+    GF_ASSERT(index < NELEMS(sCountryStateData));
+    return sCountryStateData[index].locationList;
 }
 
-int LocationGmmDatGetDistrictCount(int index) {
-    GF_ASSERT(index < NELEMS(sLocationGmmDat));
-    return sLocationGmmDat[index].numMsgIds;
+u32 GeonetLocations_GetLocationCount(u32 index) {
+    GF_ASSERT(index < NELEMS(sCountryStateData));
+    return sCountryStateData[index].locationCount;
 }

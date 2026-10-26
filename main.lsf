@@ -314,7 +314,7 @@ Static main
     Object main.nef.p/src_dex_mon_measures.c.o
     Object main.nef.p/src_unk_02091564.c.o
     Object main.nef.p/asm_unk_020915B0.s.o
-    Object main.nef.p/src_location_gmm_dat.c.o
+    Object main.nef.p/src_geonet_locations.c.o
     Object main.nef.p/src_move_relearner.c.o
     Object main.nef.p/asm_unk_02091880.s.o
     Object main.nef.p/src_application_delete_savedata.c.o
