@@ -1,8 +1,9 @@
 #ifndef POKEHEARTGOLD_BATTLE_OVERLAY_07_0223251C_H
 #define POKEHEARTGOLD_BATTLE_OVERLAY_07_0223251C_H
 
-#include "battle.h"
 #include "library/spl_emitter.h"
+
+#include "battle.h"
 
 typedef struct BallCapsuleSealEffect {
     enum HeapID heapID;
