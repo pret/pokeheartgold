@@ -201,7 +201,7 @@ void CapsuleGraphics_SetPageSpritesDrawFlag(CapsuleAppManager *appMan, int flag)
 void CapsuleGraphics_Dummy(CapsuleAppManager *appMan);
 void CapsuleGraphics_FreeUISprites(CapsuleAppManager *appMan);
 
-int CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule);
+BOOL CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule);
 int CapsuleManager_CapsuleSelectionField(CapsuleAppManager *appMan, int capsuleIndex);
 BOOL CapsuleManager_CallFunction(CapsuleAppManager *appMan);
 void CapsuleManager_HandleSpritePress(u32 index, u32 event, void *arg);

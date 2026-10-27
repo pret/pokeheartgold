@@ -219,12 +219,12 @@ void CapsuleGraphics_LoadPageSprites(CapsuleAppManager *appMan) {
 
     for (i = 0; i < SEALS_PER_PAGE; i++) {
         memberIdx = CapsuleMenu_GetSealMemberIdx(appMan->sealPages.sealIDs[i]);
-        SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_a_0_8_7, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, i + 25000);
+        SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, i + 25000);
     }
 
-    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_a_0_8_7, 6, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 26007);
-    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 37, TRUE, 27037);
-    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 35, TRUE, 28035);
+    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, 6, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 26007);
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, 37, TRUE, 27037);
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, 35, TRUE, 28035);
 }
 
 void CapsuleGraphics_InitPageSprites(CapsuleAppManager *appMan) {
@@ -770,7 +770,7 @@ void CapsuleGraphics_FreeCapsuleSprites(CapsuleAppManager *appMan) {
 void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     {
         NNSG2dCharacterData *sp18;
-        void *sp14 = GfGfxLoader_GetCharData(NARC_a_0_8_7, 8, TRUE, &sp18, HEAP_ID_CAPSULE_MENU);
+        void *sp14 = GfGfxLoader_GetCharData(NARC_application_custom_ball_data_cb_data, 8, TRUE, &sp18, HEAP_ID_CAPSULE_MENU);
         u8 *r7 = sp18->pRawData;
         DC_FlushRange(r7, sp18->szByte);
         for (int i = 0; i < NELEMS(ov57_0223BDF4); ++i) {
@@ -778,7 +778,7 @@ void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData
         }
         Heap_Free(sp14);
     }
-    PaletteData_LoadFromNarc(paletteData, NARC_a_0_8_7, 2, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
+    PaletteData_LoadFromNarc(paletteData, NARC_application_custom_ball_data_cb_data, 2, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_1, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
     PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xD0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xE0);
@@ -791,7 +791,7 @@ void CapsuleGraphics_LoadSubWindow(BgConfig *bgConfig, PaletteData *paletteData,
     PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xD0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xE0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0x30);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_8_7, 0, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xB0);
+    PaletteData_LoadNarc(paletteData, NARC_application_custom_ball_data_cb_data, 0, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xB0);
 }
 
 void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL drawFrame) {
@@ -952,7 +952,7 @@ void CapsuleGraphics_FadeOut(void) {
 }
 
 void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) {
-    NarcId narcID = NARC_a_0_8_7;
+    NarcId narcID = NARC_application_custom_ball_data_cb_data;
     int narcTileIdx = 8;
     int narcTilemapIdx = 12;
     int narcMemberIdx = 2;
@@ -971,7 +971,7 @@ void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) 
 }
 
 void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) {
-    NarcId narcID = NARC_a_0_8_7;
+    NarcId narcID = NARC_application_custom_ball_data_cb_data;
     int narcTileIdx = 7;
     int narcTilemapIdx = 11;
     int narcMemberIdx = 1;
@@ -983,7 +983,7 @@ void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) 
 }
 
 void CapsuleGraphics_LoadBgLayer7Tilemap(CapsuleAppManager *appMan, NARC *narc) {
-    NarcId narcID = NARC_a_0_8_7;
+    NarcId narcID = NARC_application_custom_ball_data_cb_data;
     int narcTileIdx = 7;
     int narcTilemapIdx = 10;
     int narcMemberIdx = 1;

@@ -100,9 +100,9 @@ const SealListMenuEntry gSealListMenuEntries[] = {
     { 4, ov57_0223B74C                 },
 };
 
-int CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule) {
+BOOL CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule) {
     int i;
-    int result = 0;
+    int result = FALSE;
     int sealCount;
     SEAL *seal;
 
@@ -117,7 +117,7 @@ int CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule) {
     }
 
     if (sealCount != 0) {
-        result = 1;
+        result = TRUE;
     }
 
     return result;
@@ -156,7 +156,7 @@ static BOOL CapsuleManager_SelectionActions(CapsuleAppManager *appMan) {
     case CAPSULE_INIT_STATE_ID: {
         NARC *narc;
 
-        narc = NARC_New(NARC_a_0_8_7, HEAP_ID_CAPSULE_MENU);
+        narc = NARC_New(NARC_application_custom_ball_data_cb_data, HEAP_ID_CAPSULE_MENU);
 
         CapsuleGraphics_LoadPokemonIcons(appMan);
         CapsuleGraphics_InitPokemonIcons(appMan);

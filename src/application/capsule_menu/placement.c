@@ -133,14 +133,14 @@ static void SealPlacement_LoadSeal(CapsuleAppManager *appMan, u8 type, u8 sealIn
     SpriteManager *spriteManager = appMan->graphicsMan.spriteManager;
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
 
-    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_a_0_8_7, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_PLTT, 6));
+    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, 6, 0, 1, NNS_G2D_VRAM_TYPE_2DSUB, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_PLTT, 6));
 
     int memberIdx = CapsuleMenu_GetSealMemberIdx(type);
     int objID = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CHAR, sealIndex);
 
-    SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_a_0_8_7, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, objID);
-    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 38, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, 38));
-    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_a_0_8_7, 36, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, 36));
+    SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, objID);
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, 38, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, 38));
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, 36, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, 36));
 }
 
 void SealPlacement_UpdateSeals(CapsuleAppManager *appMan) {
