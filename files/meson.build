@@ -18,7 +18,7 @@ ncgr_cell_gen = generator(nitrogfx_exe,
 )
 
 ncgr_lz_gen = generator(nitrogfx_exe,
-    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', '-nopad', ],
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
     output: '@BASENAME@.NCGR.lz',
 )
 

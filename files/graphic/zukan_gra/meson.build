@@ -33,7 +33,7 @@ zukan_gra_png_clobber = files(
 )
 
 zukan_gra_ncgr_lz_clobber = ncgr_lz_gen.process(zukan_gra_png_clobber,
-    extra_args : CLOBBER_SIZE_VERSION101_64K_NCGR_FLAGS
+    extra_args : CLOBBER_SIZE_VERSION101_64K_NCGR_FLAGS + ['-nopad']
 )
 
 zukan_gra_png_sopc = files(
@@ -55,7 +55,7 @@ zukan_gra_png_sopc = files(
 )
 
 zukan_gra_ncgr_lz_sopc = ncgr_lz_gen.process(zukan_gra_png_sopc,
-    extra_args : VERSION101_SOPC_NCGR_FLAGS
+    extra_args : VERSION101_SOPC_NCGR_FLAGS + ['-nopad']
 )
 
 zukan_gra_nclr = copy_gen.process(files(

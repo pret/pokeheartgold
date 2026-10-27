@@ -506,5 +506,5 @@ pokefoot_ncgr_lz = ncgr_lz_gen.process(files(
     'pokefoot_00000495.png',
     'pokefoot_00000496.png',
     ),
-    extra_args : CLOBBER_SIZE_VERSION101_128K_NCGR_FLAGS
+    extra_args : CLOBBER_SIZE_VERSION101_128K_NCGR_FLAGS + ['-nopad']
 )
