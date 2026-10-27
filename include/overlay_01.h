@@ -82,7 +82,6 @@ void CallFieldTask_RockClimb(TaskManager *taskManager, int playerDirection, int 
 void CallFieldTask_Surf(TaskManager *taskManager, int playerDirection, int partySlot);
 void CallFieldTask_Waterfall(TaskManager *taskManager, int playerDirection, int partySlot);
 void CallFieldTask_Whirlpool(TaskManager *taskManager, int playerDirection, int partySlot);
-void WeatherManager_ChangeWeather(void *unkWeatherRelated, int weatherType);
 u32 ov01_021F149C(FieldEffectManager *fieldEffectManager, int);
 void ov01_021F14A8(FieldEffectManager *fieldEffectManager, int, void *);
 int MapNumToFloorNo(u32 mapId);

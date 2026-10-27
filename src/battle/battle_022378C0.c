@@ -172,7 +172,7 @@ void ov12_02237B0C(BattleSystem *battleSystem) {
     BattleInput_Free(battleSystem->battleInput);
     BgConfig_CleanupBattleMenuBackgrounds(battleSystem->bgConfig);
     battleSystem->unk240E_F = 1;
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     ov12_0223BBF0(battleSystem, 3);
 
     if (battleSystem->unk2445 == 0) {
@@ -192,7 +192,7 @@ void ov12_02237B6C(BattleSystem *battleSystem) {
     SpriteSystem_FreeResourcesAndManager(battleSystem->spriteRenderer, battleSystem->gfxHandler);
     SpriteSystem_Free(battleSystem->spriteRenderer);
     GF_DestroyVramTransferManager();
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 void ov12_02237BB8(BattleSystem *battleSystem) {
@@ -215,7 +215,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
 
     battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
 
-    FontID_Alloc(4, HEAP_ID_BATTLE);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_BATTLE);
 
     battleSystem->unk240F_1 = 1;
 
