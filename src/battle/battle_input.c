@@ -1337,7 +1337,7 @@ void *BattleInput_NewInit(NARC *unused, NARC *unused2, BattleSystem *battleSyste
     MI_CpuCopy16(unfadedBuffer, battleInput->paletteBuffer, 0x200);
 
     for (int i = 0; i < MAX_MON_MOVES; i++) {
-        MI_CpuFill8(&battleInput->moveMemory[i].move, 0xFF, sizeof(BattleInputMove));
+        MI_CpuFill8(&battleInput->moveMemory[i].move, 0xFF, sizeof(MoveDisplayInfo));
     }
 
     for (int i = 0; i < 4; i++) {
@@ -1452,7 +1452,7 @@ static void BattleInput_FreeDefaultResources(BattleInput *battleInput) {
     }
 }
 
-void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5) {
+void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, void *a5) {
     const BattleMenuTemplate *menuTemplate, *prevMenuTemplate;
 
     if (a5 != NULL) {
@@ -2885,7 +2885,7 @@ static void BattleInput_FreeMoveMemory(BattleInput *battleInput) {
     }
 }
 
-void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, const BattleInputMove *moveMemory) {
+void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, const MoveDisplayInfo *moveMemory) {
     BattleInputMoveMemory *moveDisplayObj;
     void *charData;
     NNSG2dCharacterData *charDataNNS;
@@ -2905,31 +2905,31 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     strSlash = NewString_ReadMsgData(msgLoader, msg_0197_00937); // '/'
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
-        if ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0)) {
-            moveType = GetMoveAttr(moveMemory->moveNo[i], MOVEATTR_TYPE);
+        if ((moveMemory->move[i] != moveDisplayObj->move.move[i]) && (moveMemory->move[i] != 0)) {
+            moveType = GetMoveAttr(moveMemory->move[i], MOVEATTR_TYPE);
             charData = GfGfxLoader_GetCharData(TypeIconGfx_GetNarcId(), TypeIconGfx_GetCharFileId(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
             MI_CpuCopy32(charDataNNS->pRawData, moveDisplayObj->typeIcon[i], size);
             Heap_Free(charData);
         }
 
-        if ((moveDisplayObj->moveDisplay[i].window.pixelBuffer == NULL) || ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0))) {
-            strMoveName = GetMoveName(moveMemory->moveNo[i], HEAP_ID_BATTLE);
+        if ((moveDisplayObj->moveDisplay[i].window.pixelBuffer == NULL) || ((moveMemory->move[i] != moveDisplayObj->move.move[i]) && (moveMemory->move[i] != 0))) {
+            strMoveName = GetMoveName(moveMemory->move[i], HEAP_ID_BATTLE);
             BattleInput_SetMoveDisplayObjectTextFont(battleInput, strMoveName, FONT_UNK_4, &moveDisplayObj->moveDisplay[i], MAKE_TEXT_COLOR(7, 8, 9));
             String_Delete(strMoveName);
         }
 
-        if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != 0) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i]) || (moveMemory->ppMax[i] != moveDisplayObj->move.ppMax[i])) {
-            BufferIntegerAsString(messageFormat, 0, moveMemory->pp[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
-            BufferIntegerAsString(messageFormat, 1, moveMemory->ppMax[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
+        if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->move[i] != 0) || (moveMemory->move[i] != moveDisplayObj->move.move[i]) || (moveMemory->curPP[i] != moveDisplayObj->move.curPP[i]) || (moveMemory->maxPP[i] != moveDisplayObj->move.maxPP[i])) {
+            BufferIntegerAsString(messageFormat, 0, moveMemory->curPP[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
+            BufferIntegerAsString(messageFormat, 1, moveMemory->maxPP[i], 2, PRINTING_MODE_RIGHT_ALIGN, 0);
             StringExpandPlaceholders(messageFormat, strSlashFormatted, strSlash);
 
-            ppColor = GetPPTextColor(moveMemory->pp[i], moveMemory->ppMax[i]);
+            ppColor = GetPPTextColor(moveMemory->curPP[i], moveMemory->maxPP[i]);
 
-            if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i])) {
+            if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveMemory->move[i] != moveDisplayObj->move.move[i]) || (moveMemory->curPP[i] != moveDisplayObj->move.curPP[i])) {
                 BattleInput_SetMoveDisplayObjectTextFont(battleInput, strSlashFormatted, FONT_SYSTEM, &moveDisplayObj->ppDisplay[i], ppColor);
             }
 
-            if ((moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i])) {
+            if ((moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->move[i] != moveDisplayObj->move.move[i]) || (moveMemory->curPP[i] != moveDisplayObj->move.curPP[i])) {
                 BattleInput_SetMoveDisplayObjectTextFont(battleInput, strPP, FONT_SYSTEM, &moveDisplayObj->ppMaxDisplay[i], ppColor);
             }
         }

@@ -4,15 +4,16 @@
 
 #include "constants/abilities.h"
 
+#include "battle/battle_02261FD4.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_display.h"
 #include "battle/battle_hp_bar.h"
 #include "battle/battle_input.h"
 #include "battle/battle_message_structs.h"
 #include "battle/battle_system.h"
+#include "battle/overlay_07.h"
 #include "battle/party_gauge.h"
 
-#include "overlay_07.h"
 #include "pokemon.h"
 #include "unk_02013FDC.h"
 
@@ -401,7 +402,7 @@ static void BattleIOCmd_PrintTrainerMessage(BattleSystem *battleSystem, Opponent
 }
 
 static void BattleIOCmd_PrintReturnMessage(BattleSystem *battleSystem, OpponentData *opponentData) {
-    ReturnMsgMessage *message = (ReturnMsgMessage *)&opponentData->unk94[0];
+    RecallMsgMessage *message = (RecallMsgMessage *)&opponentData->unk94[0];
 
     BattleDisplay_PrintRecallMessage(battleSystem, opponentData, message);
     ov12_02259928(opponentData);

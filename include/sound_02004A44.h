@@ -54,5 +54,6 @@ u16 GF_GetVolumeBySeqNo();
 void sub_02005448(void);
 void Sound_SetScene(int a0);
 void sub_02005BEC(BOOL);
+void sub_02005B58(BOOL);
 
 #endif // POKEHEARTGOLD_SOUND_02004A44_H

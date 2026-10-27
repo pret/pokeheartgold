@@ -4,8 +4,25 @@
 #include "constants/message_tags.h"
 #include "constants/sndseq.h"
 
+#include "battle/battle_022378C0.h"
+#include "battle/battle_02261FD4.h"
+#include "battle/battle_controller.h"
+#include "battle/battle_hp_bar.h"
+#include "battle/battle_input.h"
 #include "battle/overlay_07.h"
+#include "battle/overlay_08.h"
+#include "battle/overlay_10.h"
+#include "battle/overlay_12_0224E4FC.h"
+#include "battle/overlay_12_02258800.h"
 #include "msgdata/msg/msg_0197.h"
+
+#include "brightness.h"
+#include "sound.h"
+#include "sound_02004A44.h"
+#include "unk_02005D10.h"
+#include "unk_02013FDC.h"
+#include "unk_020163E0.h"
+#include "unk_02016EDC.h"
 
 typedef struct TrainerEncounterData {
     BattleSystem *battleSys;
@@ -1505,7 +1522,7 @@ void BattleDisplay_PrintLinkWaitMessage(BattleSystem *battleSys, OpponentData *o
         battleMsg.id = msg_0197_stand_by;
         battleMsg.tag = TAG_NONE;
 
-        BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, NULL);
+        BattleSystem_PrintBattleMessage(battleSys, msgLoader, &battleMsg, 0);
         ov12_0223BB80(battleSys, WaitingIcon_New(BattleSystem_GetWindow(battleSys, 0), 1));
     }
 
@@ -1781,7 +1798,7 @@ static void BattleDisplayTask_SetEncounter(SysTask *task, void *data) {
             if (monEncounterData->isShiny) {
                 MoveAnimation moveAnim;
 
-                BattleController_SetMoveAnimation(monEncounterData->battleSys, NULL, &moveAnim, 1, 11, monEncounterData->battler, monEncounterData->battler, NULL);
+                BattleController_SetMoveAnimation(monEncounterData->battleSys, NULL, &moveAnim, 1, 11, monEncounterData->battler, monEncounterData->battler, 0);
                 BattleDisplay_PlayMoveAnimation(monEncounterData->battleSys, monEncounterData->opponentData, battleAnimSys, &moveAnim);
                 monEncounterData->state = 4;
             } else {
@@ -1854,7 +1871,7 @@ static void BattleDisplayTask_SetGiratinaEncounter(SysTask *task, void *data) {
             if (monEncounterData->isShiny) {
                 MoveAnimation moveAnim;
 
-                BattleController_SetMoveAnimation(monEncounterData->battleSys, NULL, &moveAnim, 1, 11, monEncounterData->battler, monEncounterData->battler, NULL);
+                BattleController_SetMoveAnimation(monEncounterData->battleSys, NULL, &moveAnim, 1, 11, monEncounterData->battler, monEncounterData->battler, 0);
                 BattleDisplay_PlayMoveAnimation(monEncounterData->battleSys, monEncounterData->opponentData, battleAnimSys, &moveAnim);
                 monEncounterData->state = 4;
             } else {
@@ -2025,7 +2042,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
                 MoveAnimation moveAnim;
 
                 monShowData->battleAnimSys = ov07_0221BEDC(HEAP_ID_BATTLE);
-                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, NULL);
+                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, 0);
                 BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, monShowData->battleAnimSys, &moveAnim);
                 monShowData->state = 7;
             } else {
@@ -2120,7 +2137,7 @@ static void ov12_0225BE38(SysTask *task, void *data) {
         MoveAnimation moveAnim;
 
         monShowData->battleAnimSys = ov07_0221BEDC(HEAP_ID_BATTLE);
-        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 41, monShowData->battler, monShowData->battler, NULL);
+        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 41, monShowData->battler, monShowData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, monShowData->battleAnimSys, &moveAnim);
 
         monShowData->state++;
@@ -2151,7 +2168,7 @@ static void ov12_0225BE38(SysTask *task, void *data) {
                 MoveAnimation moveAnim2;
 
                 monShowData->battleAnimSys = ov07_0221BEDC(HEAP_ID_BATTLE);
-                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim2, 1, 11, monShowData->battler, monShowData->battler, NULL);
+                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim2, 1, 11, monShowData->battler, monShowData->battler, 0);
                 BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, monShowData->battleAnimSys, &moveAnim2);
                 monShowData->state = 6;
                 break;
@@ -2314,7 +2331,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
             if (monShowData->isShiny) {
                 MoveAnimation moveAnim;
 
-                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, NULL);
+                BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, 0);
                 BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
                 monShowData->state = 7;
             } else {
@@ -2336,7 +2353,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         if (monShowData->isSubstitute) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 15, monShowData->battler, monShowData->battler, NULL);
+            BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 15, monShowData->battler, monShowData->battler, 0);
             BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
             monShowData->state++;
         } else {
@@ -2349,7 +2366,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
 
         BattleDisplay_PopulateBattlerContext(monShowData->battleSys, &monShowData->moveAnim, &battlerSpriteCtx, monShowData->battler);
         ov07_02234A20(&battlerSpriteCtx, HEAP_ID_BATTLE);
-        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 16, monShowData->battler, monShowData->battler, NULL);
+        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 16, monShowData->battler, monShowData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
 
         monShowData->opponentData->unk1A0 = 1;
@@ -2399,7 +2416,7 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
     case 1: {
         MoveAnimation moveAnim;
 
-        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 41, monShowData->battler, monShowData->battler, NULL);
+        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 41, monShowData->battler, monShowData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
 
         monShowData->state++;
@@ -2420,7 +2437,7 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
                 if (monShowData->isShiny) {
                     MoveAnimation moveAnim;
 
-                    BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, NULL);
+                    BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 11, monShowData->battler, monShowData->battler, 0);
                     BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
                     monShowData->state = 5;
                 } else {
@@ -2443,7 +2460,7 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
         if (monShowData->isSubstitute) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 15, monShowData->battler, monShowData->battler, NULL);
+            BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 15, monShowData->battler, monShowData->battler, 0);
             BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
             monShowData->state++;
             break;
@@ -2456,7 +2473,7 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
 
         BattleDisplay_PopulateBattlerContext(monShowData->battleSys, &monShowData->moveAnim, &battlerSpriteCtx, monShowData->battler);
         ov07_02234A20(&battlerSpriteCtx, HEAP_ID_BATTLE);
-        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 16, monShowData->battler, monShowData->battler, NULL);
+        BattleController_SetMoveAnimation(monShowData->battleSys, NULL, &moveAnim, 1, 16, monShowData->battler, monShowData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monShowData->battleSys, monShowData->opponentData, battleAnimSys, &moveAnim);
 
         monShowData->opponentData->unk1A0 = 1;
@@ -2481,7 +2498,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
         if (monReturnData->isSubstitute) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 15, monReturnData->battler, monReturnData->battler, NULL);
+            BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 15, monReturnData->battler, monReturnData->battler, 0);
             BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
             monReturnData->state++;
         } else {
@@ -2494,7 +2511,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
 
         BattleDisplay_PopulateBattlerContext(monReturnData->battleSys, &monReturnData->moveAnim, &battlerSpriteCtx, monReturnData->battler);
         ov07_0223494C(&battlerSpriteCtx, HEAP_ID_BATTLE);
-        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 16, monReturnData->battler, monReturnData->battler, NULL);
+        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 16, monReturnData->battler, monReturnData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
         monReturnData->opponentData->unk1A0 = 0;
         monReturnData->state++;
@@ -2599,7 +2616,7 @@ static void ov12_0225CC58(SysTask *task, void *data) {
         if (monReturnData->isSubstitute) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 15, monReturnData->battler, monReturnData->battler, NULL);
+            BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 15, monReturnData->battler, monReturnData->battler, 0);
             BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
             monReturnData->state++;
         } else {
@@ -2612,7 +2629,7 @@ static void ov12_0225CC58(SysTask *task, void *data) {
 
         BattleDisplay_PopulateBattlerContext(monReturnData->battleSys, &monReturnData->moveAnim, &battlerSpriteCtx, monReturnData->battler);
         ov07_0223494C(&battlerSpriteCtx, HEAP_ID_BATTLE);
-        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 16, monReturnData->battler, monReturnData->battler, NULL);
+        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 16, monReturnData->battler, monReturnData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
         monReturnData->opponentData->unk1A0 = 0;
         monReturnData->state++;
@@ -2630,7 +2647,7 @@ static void ov12_0225CC58(SysTask *task, void *data) {
     case 4: {
         MoveAnimation moveAnim;
 
-        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 42, monReturnData->battler, monReturnData->battler, NULL);
+        BattleController_SetMoveAnimation(monReturnData->battleSys, NULL, &moveAnim, 1, 42, monReturnData->battler, monReturnData->battler, 0);
         BattleDisplay_PlayMoveAnimation(monReturnData->battleSys, monReturnData->opponentData, battleAnimSys, &moveAnim);
         monReturnData->state++;
     } break;
@@ -2677,7 +2694,7 @@ static void BattleDisplayTask_SetTrainerEncounter(SysTask *task, void *data) {
 
     if (trainerEncounterData->enterFrameCount < 33 && trainerEncounterData->state >= 2
         && (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER || trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1)) {
-        BgSetPosTextAndCommit(BattleSystem_GetBgConfig(trainerEncounterData->battleSys), 3, 1, 4);
+        BgSetPosTextAndCommit(BattleSystem_GetBgConfig(trainerEncounterData->battleSys), 3, BG_POS_OP_ADD_X, 4);
         trainerEncounterData->enterFrameCount++;
     }
 
@@ -3632,7 +3649,7 @@ static void BattleDisplayTask_TrainerShowMoveSelectMenu(SysTask *task, void *dat
 
         action = validMoves[BattleSystem_Random(moveSelectMenuData->battleSys) % validMovesCount];
 
-        ov12_022582B8(moveSelectMenuData->battleSys, battleCtx, 11, moveSelectMenuData->battler, ov12_022506D4(moveSelectMenuData->battleSys, battleCtx, moveSelectMenuData->battler, moveSelectMenuData->moves[action - 1], 1, NULL));
+        ov12_022582B8(moveSelectMenuData->battleSys, battleCtx, 11, moveSelectMenuData->battler, ov12_022506D4(moveSelectMenuData->battleSys, battleCtx, moveSelectMenuData->battler, moveSelectMenuData->moves[action - 1], 1, 0));
     }
 
     BattleController_EmitSelectedMove(moveSelectMenuData->battleSys, moveSelectMenuData->battler, action);
@@ -4079,7 +4096,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
     case 11: {
         MoveAnimation moveAnim;
 
-        BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 9, bagMenuData->battler, bagMenuData->battler, NULL);
+        BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 9, bagMenuData->battler, bagMenuData->battler, 0);
         BattleDisplay_PlayMoveAnimation(bagMenuData->battleSys, BattleSystem_GetOpponentData(bagMenuData->battleSys, bagMenuData->battler), BattleSystem_GetAnimationSystem(bagMenuData->battleSys), &moveAnim);
     }
         bagMenuData->state++;
@@ -4088,7 +4105,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
     case 25: {
         MoveAnimation moveAnim;
         int battler = bagMenuData->partyMenuData->battlePartyCtx->selectedPartyIndex * 2;
-        BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 9, battler, battler, NULL);
+        BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 9, battler, battler, 0);
         BattleDisplay_PlayMoveAnimation(bagMenuData->battleSys, BattleSystem_GetOpponentData(bagMenuData->battleSys, battler), BattleSystem_GetAnimationSystem(bagMenuData->battleSys), &moveAnim);
     }
         bagMenuData->state++;
@@ -4097,13 +4114,13 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
         MoveAnimation moveAnim;
 
         if (bagMenuData->battleBagCtx->selectedBattleBagItem == 0x37) {
-            BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 0, NULL, bagMenuData->battler, bagMenuData->battler, 54);
+            BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 0, 0, bagMenuData->battler, bagMenuData->battler, 54);
             BattleDisplay_PlayMoveAnimation(bagMenuData->battleSys, BattleSystem_GetOpponentData(bagMenuData->battleSys, bagMenuData->battler), BattleSystem_GetAnimationSystem(bagMenuData->battleSys), &moveAnim);
         } else if (bagMenuData->battleBagCtx->selectedBattleBagItem == 0x38) {
-            BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 0, NULL, bagMenuData->battler, bagMenuData->battler, 116);
+            BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 0, 0, bagMenuData->battler, bagMenuData->battler, 116);
             BattleDisplay_PlayMoveAnimation(bagMenuData->battleSys, BattleSystem_GetOpponentData(bagMenuData->battleSys, bagMenuData->battler), BattleSystem_GetAnimationSystem(bagMenuData->battleSys), &moveAnim);
         } else {
-            BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 12, bagMenuData->battler, bagMenuData->battler, NULL);
+            BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 12, bagMenuData->battler, bagMenuData->battler, 0);
             BattleDisplay_PlayMoveAnimation(bagMenuData->battleSys, BattleSystem_GetOpponentData(bagMenuData->battleSys, bagMenuData->battler), BattleSystem_GetAnimationSystem(bagMenuData->battleSys), &moveAnim);
         }
 
@@ -4156,7 +4173,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
     case 27: {
         MoveAnimation moveAnim;
         int battler = bagMenuData->partyMenuData->battlePartyCtx->selectedPartyIndex * 2;
-        BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 14, battler, battler, NULL);
+        BattleController_SetMoveAnimation(bagMenuData->battleSys, NULL, &moveAnim, 1, 14, battler, battler, 0);
         BattleDisplay_PlayMoveAnimation(bagMenuData->battleSys, BattleSystem_GetOpponentData(bagMenuData->battleSys, battler), BattleSystem_GetAnimationSystem(bagMenuData->battleSys), &moveAnim);
     }
         bagMenuData->state++;
@@ -4188,7 +4205,7 @@ static void BattleDisplayTask_PlayerShowBagMenu(SysTask *task, void *data) {
         BattleHpBar *hpBar = BattleSystem_GetHpBar(bagMenuData->battleSys, battler);
 
         if (ov12_02264E00(hpBar) == -1) {
-            ov12_0226498C(hpBar, NULL, 1 << 8);
+            ov12_0226498C(hpBar, 0, 1 << 8);
             bagMenuData->state++;
         }
     } break;
@@ -4796,7 +4813,7 @@ static void BattleDisplayTask_SetMoveAnimation(SysTask *task, void *data) {
         if (setMoveAnimationData->moveAnim.isSubstitute && setMoveAnimationData->moveAnim.animMode == 0 && Pokepic_GetAttr(setMoveAnimationData->pokepic, 6) == FALSE) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 15, setMoveAnimationData->battler, setMoveAnimationData->battler, NULL);
+            BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 15, setMoveAnimationData->battler, setMoveAnimationData->battler, 0);
             BattleDisplay_PlayMoveAnimation(setMoveAnimationData->battleSys, setMoveAnimationData->opponentData, setMoveAnimationData->battleAnimSys, &moveAnim);
             setMoveAnimationData->state = 1;
         } else {
@@ -4810,7 +4827,7 @@ static void BattleDisplayTask_SetMoveAnimation(SysTask *task, void *data) {
         BattleDisplay_PopulateBattlerContext(setMoveAnimationData->battleSys, &setMoveAnimationData->moveAnim, &battlerSpriteCtx, setMoveAnimationData->battler);
         ov07_0223494C(&battlerSpriteCtx, HEAP_ID_BATTLE);
 
-        BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 16, setMoveAnimationData->battler, setMoveAnimationData->battler, NULL);
+        BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 16, setMoveAnimationData->battler, setMoveAnimationData->battler, 0);
         BattleDisplay_PlayMoveAnimation(setMoveAnimationData->battleSys, setMoveAnimationData->opponentData, setMoveAnimationData->battleAnimSys, &moveAnim);
         setMoveAnimationData->opponentData->unk1A0 = 0;
         setMoveAnimationData->state++;
@@ -4843,7 +4860,7 @@ static void BattleDisplayTask_SetMoveAnimation(SysTask *task, void *data) {
         if (setMoveAnimationData->moveAnim.isSubstitute && setMoveAnimationData->moveAnim.animMode == 0 && Pokepic_GetAttr(setMoveAnimationData->pokepic, 6) == FALSE) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 15, setMoveAnimationData->battler, setMoveAnimationData->battler, NULL);
+            BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 15, setMoveAnimationData->battler, setMoveAnimationData->battler, 0);
             BattleDisplay_PlayMoveAnimation(setMoveAnimationData->battleSys, setMoveAnimationData->opponentData, setMoveAnimationData->battleAnimSys, &moveAnim);
             setMoveAnimationData->state = 7;
         } else {
@@ -4857,7 +4874,7 @@ static void BattleDisplayTask_SetMoveAnimation(SysTask *task, void *data) {
         BattleDisplay_PopulateBattlerContext(setMoveAnimationData->battleSys, &setMoveAnimationData->moveAnim, &battlerSpriteCtx, setMoveAnimationData->battler);
         ov07_02234A20(&battlerSpriteCtx, HEAP_ID_BATTLE);
 
-        BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 16, setMoveAnimationData->battler, setMoveAnimationData->battler, NULL);
+        BattleController_SetMoveAnimation(setMoveAnimationData->battleSys, NULL, &moveAnim, 1, 16, setMoveAnimationData->battler, setMoveAnimationData->battler, 0);
         BattleDisplay_PlayMoveAnimation(setMoveAnimationData->battleSys, setMoveAnimationData->opponentData, setMoveAnimationData->battleAnimSys, &moveAnim);
         setMoveAnimationData->opponentData->unk1A0 = 1;
     }
@@ -4982,7 +4999,7 @@ static void BattleDisplayTask_PlayFaintingSequence(SysTask *task, void *data) {
         if (faintingSequenceData->isSubstitute) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(faintingSequenceData->battleSys, NULL, &moveAnim, 1, 15, faintingSequenceData->battler, faintingSequenceData->battler, NULL);
+            BattleController_SetMoveAnimation(faintingSequenceData->battleSys, NULL, &moveAnim, 1, 15, faintingSequenceData->battler, faintingSequenceData->battler, 0);
             BattleDisplay_PlayMoveAnimation(faintingSequenceData->battleSys, faintingSequenceData->opponentData, battleAnimSys, &moveAnim);
             faintingSequenceData->state++;
         } else {
@@ -4996,7 +5013,7 @@ static void BattleDisplayTask_PlayFaintingSequence(SysTask *task, void *data) {
         BattleDisplay_PopulateBattlerContext(faintingSequenceData->battleSys, &faintingSequenceData->moveAnim, &battlerSpriteCtx, faintingSequenceData->battler);
         ov07_0223494C(&battlerSpriteCtx, HEAP_ID_BATTLE);
 
-        BattleController_SetMoveAnimation(faintingSequenceData->battleSys, NULL, &moveAnim, 1, 16, faintingSequenceData->battler, faintingSequenceData->battler, NULL);
+        BattleController_SetMoveAnimation(faintingSequenceData->battleSys, NULL, &moveAnim, 1, 16, faintingSequenceData->battler, faintingSequenceData->battler, 0);
         BattleDisplay_PlayMoveAnimation(faintingSequenceData->battleSys, faintingSequenceData->opponentData, battleAnimSys, &moveAnim);
         faintingSequenceData->opponentData->unk1A0 = 0;
         faintingSequenceData->state++;
@@ -5142,7 +5159,7 @@ static void BattleDisplayTask_ToggleVanish(SysTask *task, void *data) {
         if (toggleVanishData->isSubstitute && toggleVanishData->opponentData->unk1A0 == 0) {
             MoveAnimation moveAnim;
 
-            BattleController_SetMoveAnimation(toggleVanishData->battleSys, NULL, &moveAnim, 1, 15, toggleVanishData->battler, toggleVanishData->battler, NULL);
+            BattleController_SetMoveAnimation(toggleVanishData->battleSys, NULL, &moveAnim, 1, 15, toggleVanishData->battler, toggleVanishData->battler, 0);
             BattleDisplay_PlayMoveAnimation(toggleVanishData->battleSys, toggleVanishData->opponentData, battleAnimSys, &moveAnim);
             toggleVanishData->state++;
         } else {
@@ -5156,7 +5173,7 @@ static void BattleDisplayTask_ToggleVanish(SysTask *task, void *data) {
         BattleDisplay_PopulateBattlerContext(toggleVanishData->battleSys, &toggleVanishData->moveAnim, &battlerSpriteCtx, toggleVanishData->battler);
         ov07_02234A20(&battlerSpriteCtx, HEAP_ID_BATTLE);
 
-        BattleController_SetMoveAnimation(toggleVanishData->battleSys, NULL, &moveAnim, 1, 16, toggleVanishData->battler, toggleVanishData->battler, NULL);
+        BattleController_SetMoveAnimation(toggleVanishData->battleSys, NULL, &moveAnim, 1, 16, toggleVanishData->battler, toggleVanishData->battler, 0);
         BattleDisplay_PlayMoveAnimation(toggleVanishData->battleSys, toggleVanishData->opponentData, battleAnimSys, &moveAnim);
         toggleVanishData->opponentData->unk1A0 = 1;
         toggleVanishData->state++;
@@ -5281,7 +5298,7 @@ static void ov12_02260668(SysTask *task, void *data) {
                 uiSetupTaskData->fadeStep = 16;
             }
 
-            buffer = PaletteData_GetFadedBuf(paletteData, 1);
+            buffer = PaletteData_GetFadedBuf(paletteData, PLTTBUF_SUB_BG);
 
             for (i = 0; i < 256; i++) {
                 v7 = (0 + ((0x1F - 0) * uiSetupTaskData->fadeStep >> 4));
@@ -5298,16 +5315,16 @@ static void ov12_02260668(SysTask *task, void *data) {
         }
 
         if (uiSetupTaskData->frameCount == 28) {
-            MI_CpuCopy16(ov12_0223BAE0(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 0), 32 * 7);
+            MI_CpuCopy16(ov12_0223BAE0(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_BG), 32 * 7);
 
             if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
-                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 5);
+                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 5);
             } else if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) & BATTLE_TYPE_DOUBLES) {
-                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 7);
+                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 7);
             } else if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) & BATTLE_TYPE_TRAINER) {
-                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 5);
+                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 5);
             } else {
-                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 4);
+                MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 4);
             }
 
             PaletteData_BeginPaletteFade(paletteData, PLTTBUF_MAIN_BG_F, 0xF3FF, 0, 16, 0, fadeTarget);
@@ -5336,16 +5353,16 @@ static void ov12_02260668(SysTask *task, void *data) {
         ov07_02234604(uiSetupTaskData->animContext);
         uiSetupTaskData->step++;
     case 5:
-        MI_CpuCopy16(ov12_0223BAE0(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 0), 32 * 7);
+        MI_CpuCopy16(ov12_0223BAE0(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_BG), 32 * 7);
 
         if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
-            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 5);
+            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 5);
         } else if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) & BATTLE_TYPE_DOUBLES) {
-            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 7);
+            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 7);
         } else if (BattleSystem_GetBattleType(uiSetupTaskData->battleSys) & BATTLE_TYPE_TRAINER) {
-            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 5);
+            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 5);
         } else {
-            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, 2), 32 * 4);
+            MI_CpuCopy16(ov12_0223BAEC(uiSetupTaskData->battleSys), PaletteData_GetUnfadedBuf(paletteData, PLTTBUF_MAIN_OBJ), 32 * 4);
         }
 
         PaletteData_BeginPaletteFade(paletteData, PLTTBUF_MAIN_BG_F, 0xFFFF, 0, 0, 0, 0x7FFF);
@@ -5457,9 +5474,9 @@ static void BattleDisplayTask_ShowPartyGauge(SysTask *task, void *data) {
     enum PartyGaugeSide side;
 
     if (BattleSystem_GetFieldSide(gaugeTask->battleSys, gaugeTask->battler) == 0) {
-        side = 0;
+        side = PARTY_GAUGE_OURS;
     } else {
-        side = 1;
+        side = PARTY_GAUGE_THEIRS;
     }
 
     switch (gaugeTask->state) {
@@ -5597,13 +5614,13 @@ static void ov12_02260D84(SysTask *sysTask, void *data) {
         unkData->unk6++;
     case 1:
         if (unkData->unk7 == 0) {
-            PaletteData_BlendPalette(paletteData, 0, 0, 0xA0, unkData->unk8, 0xFFFF);
-            PaletteData_BlendPalette(paletteData, 0, 0xC0, 0x40, unkData->unk8, 0xFFFF);
-            PaletteData_BlendPalette(paletteData, 2, 0, 0xE0, unkData->unk8, 0xFFFF);
+            PaletteData_BlendPalette(paletteData, PLTTBUF_MAIN_BG, 0, 0xA0, unkData->unk8, 0xFFFF);
+            PaletteData_BlendPalette(paletteData, PLTTBUF_MAIN_BG, 0xC0, 0x40, unkData->unk8, 0xFFFF);
+            PaletteData_BlendPalette(paletteData, PLTTBUF_MAIN_OBJ, 0, 0xE0, unkData->unk8, 0xFFFF);
         } else {
-            PaletteData_BlendPalette(paletteData, 0, 0xA0, 0x20, unkData->unk8, 0xFFFF);
-            PaletteData_BlendPalette(paletteData, 1, 0, 0x100, unkData->unk8, 0xFFFF);
-            PaletteData_BlendPalette(paletteData, 3, 0, 0x100, unkData->unk8, 0xFFFF);
+            PaletteData_BlendPalette(paletteData, PLTTBUF_MAIN_BG, 0xA0, 0x20, unkData->unk8, 0xFFFF);
+            PaletteData_BlendPalette(paletteData, PLTTBUF_SUB_BG, 0, 0x100, unkData->unk8, 0xFFFF);
+            PaletteData_BlendPalette(paletteData, PLTTBUF_SUB_OBJ, 0, 0x100, unkData->unk8, 0xFFFF);
         }
 
         if (unkData->unk8++ == 16) {
@@ -5861,7 +5878,7 @@ static Pokepic *BattleDisplay_NewPokepic(BattleSystem *battleSys, PokepicManager
         face = 0;
     }
 
-    sub_02014540(spriteTemplate->narcID, spriteTemplate->charDataID, HEAP_ID_BATTLE, tiles, spriteTemplate->personality, FALSE, face, spriteTemplate->species);
+    sub_02014540((NarcId)spriteTemplate->narcID, spriteTemplate->charDataID, HEAP_ID_BATTLE, tiles, spriteTemplate->personality, FALSE, face, spriteTemplate->species);
     ov12_0223BBA8(ov12_0223A99C(battleSys), battler, spriteTemplate->narcID);
     ov12_0223BBC0(ov12_0223A99C(battleSys), battler, spriteTemplate->palDataID);
     ov12_0223BBD8(ov12_0223A99C(battleSys), battler, yOffset);
@@ -6365,7 +6382,7 @@ static void BattleDisplay_PlayMoveAnimation(BattleSystem *battleSys, OpponentDat
     battlerContext.battleBgRef.paletteDestStart = 0;
     battlerContext.battleBgRef.paletteSrcSize = 8;
 
-    ov07_0221C01C(battleAnimSystem, animation, (u16)move, &battlerContext);
+    ov07_0221C01C(battleAnimSystem, animation, move, &battlerContext);
 }
 
 static void BattleDisplay_PopulateBattlerContext(BattleSystem *battleSys, MoveAnimation *animation, BattlerSpriteContext *battlerSpriteCtx, int battler) {
@@ -6387,13 +6404,13 @@ static void BattleDisplay_PopulateBattlerContext(BattleSystem *battleSys, MoveAn
 
 static void BattleDisplay_GetAnimHideFlags(u8 *hideHealthboxes, u8 *hideShadows, int animMode, int secondaryAnimID, u16 move) {
     if (animMode == 0) {
-        if ((GetMoveAttr(move, 9) & 0x40) == 0) {
+        if ((GetMoveAttr(move, MOVEATTR_UNK9) & 0x40) == 0) {
             hideHealthboxes[0] = 1;
         } else {
             hideHealthboxes[0] = 0;
         }
 
-        if (GetMoveAttr(move, 9) & 0x80) {
+        if (GetMoveAttr(move, MOVEATTR_UNK9) & 0x80) {
             hideShadows[0] = 1;
         } else {
             hideShadows[0] = 0;
@@ -6469,12 +6486,12 @@ static void BattleDisplayTask_ScreenFlashForThrow(SysTask *task, void *data) {
             ballThrowFlashData->state = 2;
             break;
         }
-        StartBrightnessTransition(4, 16, 0, (GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD) & (GX_BLEND_PLANEMASK_BG1 ^ 0xFFFF), 1);
+        StartBrightnessTransition(4, 16, 0, (GXBlendPlaneMask)((GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD) & (GX_BLEND_PLANEMASK_BG1 ^ 0xFFFF)), 1);
         ballThrowFlashData->state++;
         break;
     case 1:
         if (IsBrightnessTransitionActive(1) == TRUE) {
-            StartBrightnessTransition(4, 0, 16, (GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD) & (GX_BLEND_PLANEMASK_BG1 ^ 0xFFFF), 1);
+            StartBrightnessTransition(4, 0, 16, (GXBlendPlaneMask)((GX_BLEND_PLANEMASK_BG0 | GX_BLEND_PLANEMASK_BG1 | GX_BLEND_PLANEMASK_BG2 | GX_BLEND_PLANEMASK_BG3 | GX_BLEND_PLANEMASK_OBJ | GX_BLEND_PLANEMASK_BD) & (GX_BLEND_PLANEMASK_BG1 ^ 0xFFFF)), 1);
             ballThrowFlashData->state++;
         }
         break;
