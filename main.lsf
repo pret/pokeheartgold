@@ -430,12 +430,12 @@ Overlay field
     Object main.nef.p/src_field_map_prop_animation.c.o
     Object main.nef.p/asm_overlay_01_021E90C0.s.o
     Object main.nef.p/asm_overlay_01_021EA6C4.s.o
-    Object main.nef.p/src_overlay_01_021EA824.c.o
+    Object main.nef.p/src_field_fog.c.o
     Object main.nef.p/asm_model_attributes.s.o
     Object main.nef.p/asm_overlay_01_021EABA8.s.o
     Object main.nef.p/asm_overlay_01_021EAF00.s.o
     Object main.nef.p/asm_overlay_01_021EAFD4.s.o
-    Object main.nef.p/asm_overlay_01_021EB1E8.s.o
+    Object main.nef.p/src_field_weather_manager.c.o
     Object main.nef.p/asm_overlay_01_021EDAFC.s.o
     Object main.nef.p/src_field_scrcmd_message.c.o
     Object main.nef.p/src_field_draw_map_name.c.o
@@ -581,6 +581,8 @@ Overlay OVY_12
     Object main.nef.p/asm_overlay_12_battle_command.s.o
     Object main.nef.p/src_battle_battle_controller_player.c.o
     Object main.nef.p/src_battle_overlay_12_0224E4FC.c.o
+    Object main.nef.p/asm_overlay_12_02258800.s.o
+    Object main.nef.p/src_battle_battle_io_command.c.o
     Object main.nef.p/asm_overlay_12_battle_controller_opponent.s.o
     Object main.nef.p/src_battle_battle_02261FD4.c.o
     Object main.nef.p/src_battle_battle_controller.c.o

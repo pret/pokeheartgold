@@ -25,5 +25,6 @@ BOOL ov07_02233EA0(UnkBallData *data);
 BOOL ov07_02233E88(UnkBallData *data);
 void ov07_02232AB8(BallCapsuleSealEffect *sealEffect);
 BOOL ov07_02232A54(BallCapsuleSealEffect *sealEffect);
+int ov07_02234B5C(int battlerType, int a1);
 
 #endif // POKEHEARTGOLD_OVERLAY_07_H
