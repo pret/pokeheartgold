@@ -559,7 +559,7 @@ static void BattleIOCmd_ChangeForm(BattleSystem *battleSystem, OpponentData *opp
     *monSpriteTemplatePtr = monSpriteTemplate;
 
     Pokepic_ScheduleReloadFromNarc(opponentData->pokepic);
-    sub_02014540(monSpriteTemplatePtr->narcID, monSpriteTemplatePtr->charDataID, HEAP_ID_BATTLE, ov12_0223BB94(ov12_0223A99C(battleSystem), opponentData->battlerId), message->personality, FALSE, face, monSpriteTemplatePtr->species);
+    sub_02014540((NarcId)monSpriteTemplatePtr->narcID, monSpriteTemplatePtr->charDataID, HEAP_ID_BATTLE, ov12_0223BB94(ov12_0223A99C(battleSystem), opponentData->battlerId), message->personality, FALSE, face, monSpriteTemplatePtr->species);
 
     ov12_0223BBA8(ov12_0223A99C(battleSystem), opponentData->battlerId, monSpriteTemplatePtr->narcID);
     ov12_0223BBC0(ov12_0223A99C(battleSystem), opponentData->battlerId, monSpriteTemplatePtr->palDataID);
