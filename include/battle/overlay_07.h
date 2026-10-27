@@ -9,5 +9,6 @@ BOOL ov07_02232F60(UnkBallData *data, s32 ballAnim_Unused); // IsBallAnimationPl
 UnkBallData *ov07_02233DB8(BallThrow *ballThrow);           // unkBallData_Init?
 void ov07_02233ECC(UnkBallData *data);                      // unkBallData_Destroy?
 s32 ov07_02233F20(UnkBallData *data);
+int ov07_02234B5C(int battlerType, int a1);
 
 #endif
