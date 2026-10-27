@@ -7,6 +7,7 @@
 #include "field_system.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
+#include "fx_util.h"
 #include "heap.h"
 #include "math_util.h"
 #include "overlay_01_02203E40.h"
