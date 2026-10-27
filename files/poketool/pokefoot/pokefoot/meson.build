@@ -2,13 +2,19 @@ pokefoot_nclr = copy_gen.process(files(
     'pokefoot_00000000.NCLR',
 ))
 
-pokefoot_nanr_lz = lz_gen.process(files(
-    'pokefoot_00000001.NANR'
-))
+pokefoot_nanr_lz = lz_gen.process(
+    files(
+        'pokefoot_00000001.NANR'
+    ), 
+    extra_args: ['-nopad']
+)
 
-pokefoot_ncer_lz = lz_gen.process(files(
-    'pokefoot_00000002.NCER'
-))
+pokefoot_ncer_lz = lz_gen.process(
+    files(
+        'pokefoot_00000002.NCER'
+    ), 
+    extra_args: ['-nopad']
+)
 
 pokefoot_ncgr_lz = ncgr_lz_gen.process(files(
     'pokefoot_00000003.png',

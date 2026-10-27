@@ -58,7 +58,7 @@ nanr_lz_gen = generator(nitrogfx_exe,
 )
 
 lz_gen = generator(nitrogfx_exe,
-    arguments: [ '@INPUT@', '@OUTPUT@', '-nopad', '@EXTRA_ARGS@', ],
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
     output: '@PLAINNAME@.lz',
 )
 
