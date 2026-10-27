@@ -82,7 +82,7 @@ static BagAppState BagAppMainTask_TurnPocketPage(BagAppData *appData, int direct
 static void BagApp_CalcPocketSelectorIconsPos(BagAppData *appData);
 static BOOL BagApp_ProcessInput_Gardening(BagAppData *appData);
 static int BagApp_PocketIdToBagViewPosition(BagAppData *appData, u32 pocketId);
-static int BagApp_GetPocketNeighbor(BagAppData *appData, int pocketId, int addend);
+static BagAppCursorPos BagApp_GetPocketNeighbor(BagAppData *appData, int pocketId, int addend);
 static void BagApp_DrawPocketPage_NormalMode(BagAppData *appData, BagViewPocket *pocket);
 static BagAppState BagApp_HandleCursorAction(BagAppData *appData, BagAppCursorPos input, u8 *pSelectedItemOut, int a3, int a4, MenuInputState inputState);
 static BOOL BagAppMainTask_SwitchPocket_DPPt(BagAppData *appData);
@@ -389,7 +389,7 @@ BOOL Bag_Init(OverlayManager *man, int *state) {
     BagApp_LoadBgPaletteByPocket(appData, 1, appData->bagView->curPocket);
     BagApp_PrintPageCounter(appData, appData->bagView->pockets[appData->bagView->curPocket].count, appData->bagView->pockets[appData->bagView->curPocket].scroll, 0);
     BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 1);
-    appData->cursorPos = appData->bagView->pockets[appData->bagView->curPocket].position + 8;
+    appData->cursorPos = (BagAppCursorPos)(appData->bagView->pockets[appData->bagView->curPocket].position + BAG_APP_CURSOR_POS_ITEM_1);
     BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
     BagApp_UpdateDescriptionOnTopScreen(appData);
     if (appData->bagView->context == BAG_VIEW_CONTEXT_POFFIN_SINGLEPLAYER || appData->bagView->context == BAG_VIEW_CONTEXT_POFFIN_MULTIPLAYER) {
@@ -1027,18 +1027,18 @@ static BagAppState BagAppMainTask_HandleInput_Normal(BagAppData *appData) {
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         ++moved;
-        appData->cursorPos = sMainListDPadDestinations[appData->cursorPos][0];
+        appData->cursorPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][0];
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
         ++moved;
-        appData->cursorPos = sMainListDPadDestinations[appData->cursorPos][1];
+        appData->cursorPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][1];
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        int movement = sMainListDPadDestinations[appData->cursorPos][2];
+        BagAppCursorPos movement = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][2];
         if (movement == BAG_APP_CURSOR_POS_PAGE_LEFT) {
             u8 selectedItemFlag;
             return BagApp_HandleCursorAction(appData, BAG_APP_CURSOR_POS_PAGE_LEFT, &selectedItemFlag, 1, 2, MENU_INPUT_STATE_BUTTONS);
         } else if (appData->cursorPos == BAG_APP_CURSOR_POS_CANCEL) {
         } else if (appData->cursorPos >= BAG_APP_CURSOR_POS_POCKET_1 && appData->cursorPos < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
-            int new_dest = BagApp_GetPocketNeighbor(appData, appData->cursorPos, -1);
+            BagAppCursorPos new_dest = BagApp_GetPocketNeighbor(appData, appData->cursorPos, -1);
             if (appData->cursorPos != new_dest) {
                 appData->cursorPos = new_dest;
                 ++moved;
@@ -1048,13 +1048,13 @@ static BagAppState BagAppMainTask_HandleInput_Normal(BagAppData *appData) {
             ++moved;
         }
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        int movement = sMainListDPadDestinations[appData->cursorPos][3];
+        BagAppCursorPos movement = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][3];
         if (movement == BAG_APP_CURSOR_POS_PAGE_RIGHT) {
             u8 selectedItemFlag;
             return BagApp_HandleCursorAction(appData, BAG_APP_CURSOR_POS_PAGE_RIGHT, &selectedItemFlag, 1, 2, MENU_INPUT_STATE_BUTTONS);
         } else if (appData->cursorPos == BAG_APP_CURSOR_POS_CANCEL) {
         } else if (appData->cursorPos >= BAG_APP_CURSOR_POS_POCKET_1 && appData->cursorPos < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
-            int new_dest = BagApp_GetPocketNeighbor(appData, appData->cursorPos, 1);
+            BagAppCursorPos new_dest = BagApp_GetPocketNeighbor(appData, appData->cursorPos, 1);
             if (appData->cursorPos != new_dest) {
                 appData->cursorPos = new_dest;
                 ++moved;
@@ -1084,7 +1084,7 @@ static BagAppState BagAppMainTask_HandleInput_Normal(BagAppData *appData) {
     }
 
     if (appData->cursorPos == BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET) {
-        appData->cursorPos = appData->bagView->curPocket;
+        appData->cursorPos = (BagAppCursorPos)(appData->bagView->curPocket + BAG_APP_CURSOR_POS_POCKET_1);
     }
 
     if (moved) {
@@ -1100,18 +1100,18 @@ static BagAppState BagAppMainTask_HandleInput_Normal(BagAppData *appData) {
         if (BagApp_TouchTargetIsNotTransitioningFromItemsToPocketButtons(appData, touchInput)) {
             if (touchInput < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
                 if (BagApp_PocketIdToBagViewPosition(appData, touchInput) != -1) {
-                    appData->cursorPos = touchInput;
+                    appData->cursorPos = (BagAppCursorPos)touchInput;
                     BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
                 }
             } else {
-                appData->cursorPos = touchInput;
+                appData->cursorPos = (BagAppCursorPos)touchInput;
                 BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
                 if (appData->cursorPos >= BAG_APP_CURSOR_POS_ITEM_1 && appData->cursorPos <= BAG_APP_CURSOR_POS_ITEM_6) {
                     BagApp_UpdateBagViewPocketCursorPos(appData, appData->cursorPos);
                 }
             }
         }
-        BagAppState returnState = BagApp_HandleCursorAction(appData, touchInput, &selectedItemFlag, 1, 2, MENU_INPUT_STATE_TOUCH);
+        BagAppState returnState = BagApp_HandleCursorAction(appData, (BagAppCursorPos)touchInput, &selectedItemFlag, 1, 2, MENU_INPUT_STATE_TOUCH);
         if (returnState != BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE) {
             return returnState;
         }
@@ -1220,7 +1220,7 @@ static int BagApp_PocketIdToBagViewPosition(BagAppData *appData, u32 pocketId) {
     return -1;
 }
 
-static int BagApp_GetPocketNeighbor(BagAppData *appData, int pocketId, int addend) {
+static BagAppCursorPos BagApp_GetPocketNeighbor(BagAppData *appData, int pocketId, int addend) {
     for (int i = 0; i < 8; ++i) {
         pocketId += addend;
         if (pocketId < 0) {
@@ -1233,7 +1233,7 @@ static int BagApp_GetPocketNeighbor(BagAppData *appData, int pocketId, int adden
         }
     }
 
-    return pocketId;
+    return (BagAppCursorPos)pocketId;
 }
 
 static void BagApp_DrawPocketPage_NormalMode(BagAppData *appData, BagViewPocket *pocket) {
@@ -1620,7 +1620,7 @@ static BagAppState BagAppMainTask_ApplyMoveItem(BagAppData *appData) {
     if (appData->moveItemOriginalSlot != itemPos) {
         MoveItemSlotInList(pocket->slots, appData->moveItemOriginalSlot, itemPos, appData->bagView->curPocket, HEAP_ID_BAG);
         BagApp_SetItemNameStringsFromCurPocket(appData);
-        appData->cursorPos = appData->moveItemCursorPos + 8;
+        appData->cursorPos = (BagAppCursorPos)(appData->moveItemCursorPos + BAG_APP_CURSOR_POS_ITEM_1);
         BagApp_UpdateBagViewPocketCursorPos(appData, appData->cursorPos);
     }
     return BagAppMainTask_FinishMoveItem(appData);
@@ -1714,7 +1714,7 @@ static void BagApp_PrepareContextMenu(BagAppData *appData) {
 
 static void BagApp_PrintContextMenuStrings(BagAppData *appData, u8 *indices) {
     appData->moveItemCursorPos = 0;
-    BagApp_SetCursorSpritePos_PocketsItemsContext(appData, sCursorPos_ContextMenu[appData->moveItemCursorPos]);
+    BagApp_SetCursorSpritePos_PocketsItemsContext(appData, (BagAppCursorPos)sCursorPos_ContextMenu[appData->moveItemCursorPos]);
     BagApp_DrawContextMenuButtonSprites(appData, indices);
     BagApp_PrintContextMenuStringOnWindowCentered(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_1], appData->contextMenuStrings, indices[0]);
     BagApp_PrintContextMenuStringOnWindowCentered(&appData->windows_sub[BAG_APP_WINDOW_SUB_CONTEXT_OPTION_2], appData->contextMenuStrings, indices[1]);
@@ -1735,7 +1735,7 @@ static int BagApp_ContextMenu_HandleInput(BagAppData *appData) {
     }
     if (input != appData->moveItemCursorPos) {
         appData->moveItemCursorPos = input;
-        BagApp_SetCursorSpritePos_PocketsItemsContext(appData, sCursorPos_ContextMenu[input]);
+        BagApp_SetCursorSpritePos_PocketsItemsContext(appData, (BagAppCursorPos)sCursorPos_ContextMenu[input]);
         PlaySE(SEQ_SE_DP_SELECT);
         return LIST_NOTHING_CHOSEN;
     }
@@ -1743,7 +1743,7 @@ static int BagApp_ContextMenu_HandleInput(BagAppData *appData) {
     if (touchInput != TOUCH_MENU_NO_INPUT) {
         BagApp_SaveMenuInputStateToBagView(appData, MENU_INPUT_STATE_TOUCH);
         appData->moveItemCursorPos = touchInput;
-        BagApp_SetCursorSpritePos_PocketsItemsContext(appData, sCursorPos_ContextMenu[touchInput]);
+        BagApp_SetCursorSpritePos_PocketsItemsContext(appData, (BagAppCursorPos)sCursorPos_ContextMenu[touchInput]);
         if (touchInput == 4) {
             PlaySE(SEQ_SE_GS_GEARCANCEL);
             return LIST_CANCEL;
@@ -2306,12 +2306,12 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         ++moved;
-        appData->cursorPos = sMainListDPadDestinations[appData->cursorPos][0];
+        appData->cursorPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][0];
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
         ++moved;
-        appData->cursorPos = sMainListDPadDestinations[appData->cursorPos][1];
+        appData->cursorPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][1];
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        u8 input = sMainListDPadDestinations[appData->cursorPos][2];
+        BagAppCursorPos input = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][2];
         if (input == BAG_APP_CURSOR_POS_PAGE_LEFT) {
             u8 selectedItemFlag;
             BagAppState returnState = BagApp_HandleCursorAction(appData, BAG_APP_CURSOR_POS_PAGE_LEFT, &selectedItemFlag, 0, 2, MENU_INPUT_STATE_BUTTONS);
@@ -2321,7 +2321,7 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
             return BAG_APP_STATE_HANDLE_INPUT_GIVE_ITEM;
         } else if (appData->cursorPos == BAG_APP_CURSOR_POS_CANCEL) {
         } else if (appData->cursorPos >= BAG_APP_CURSOR_POS_POCKET_1 && appData->cursorPos < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
-            int pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, -1);
+            BagAppCursorPos pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, -1);
             if (appData->cursorPos != pocketNeighbor) {
                 appData->cursorPos = pocketNeighbor;
                 ++moved;
@@ -2331,7 +2331,7 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
             ++moved;
         }
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        u8 input = sMainListDPadDestinations[appData->cursorPos][3];
+        BagAppCursorPos input = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][3];
         if (input == BAG_APP_CURSOR_POS_PAGE_RIGHT) {
             u8 selectedItemFlag;
             BagAppState returnState = BagApp_HandleCursorAction(appData, BAG_APP_CURSOR_POS_PAGE_RIGHT, &selectedItemFlag, 0, 2, MENU_INPUT_STATE_BUTTONS);
@@ -2341,7 +2341,7 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
             return BAG_APP_STATE_HANDLE_INPUT_GIVE_ITEM;
         } else if (appData->cursorPos == BAG_APP_CURSOR_POS_CANCEL) {
         } else if (appData->cursorPos >= BAG_APP_CURSOR_POS_POCKET_1 && appData->cursorPos < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
-            int pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, 1);
+            BagAppCursorPos pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, 1);
             if (appData->cursorPos != pocketNeighbor) {
                 appData->cursorPos = pocketNeighbor;
                 ++moved;
@@ -2360,7 +2360,7 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
         return BAG_APP_STATE_HANDLE_INPUT_GIVE_ITEM;
     }
     if (appData->cursorPos == BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET) {
-        appData->cursorPos = appData->bagView->curPocket;
+        appData->cursorPos = (BagAppCursorPos)(appData->bagView->curPocket + BAG_APP_CURSOR_POS_POCKET_1);
     }
     if (moved) {
         PlaySE(SEQ_SE_DP_SELECT);
@@ -2374,18 +2374,18 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
         if (BagApp_TouchTargetIsNotTransitioningFromItemsToPocketButtons(appData, touchInput)) {
             if (touchInput < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
                 if (BagApp_PocketIdToBagViewPosition(appData, touchInput) != -1) {
-                    appData->cursorPos = touchInput;
+                    appData->cursorPos = (BagAppCursorPos)touchInput;
                     BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
                 }
             } else {
-                appData->cursorPos = touchInput;
+                appData->cursorPos = (BagAppCursorPos)touchInput;
                 BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
                 if (appData->cursorPos >= BAG_APP_CURSOR_POS_ITEM_1 && appData->cursorPos <= BAG_APP_CURSOR_POS_ITEM_6) {
                     BagApp_UpdateBagViewPocketCursorPos(appData, appData->cursorPos);
                 }
             }
         }
-        BagAppState returnState = BagApp_HandleCursorAction(appData, touchInput, &selectedItemFlag, 0, 2, MENU_INPUT_STATE_TOUCH);
+        BagAppState returnState = BagApp_HandleCursorAction(appData, (BagAppCursorPos)touchInput, &selectedItemFlag, 0, 2, MENU_INPUT_STATE_TOUCH);
         if (returnState != BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE) {
             appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_GIVE_FROM_MON_MENU;
             return returnState;
@@ -2441,12 +2441,12 @@ static BagAppState BagAppMainTask_HandleInput_Sell(BagAppData *appData) {
 
     if (gSystem.newAndRepeatedKeys & PAD_KEY_UP) {
         ++dpadMoved;
-        appData->cursorPos = sMainListDPadDestinations[appData->cursorPos][0];
+        appData->cursorPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][0];
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_DOWN) {
         ++dpadMoved;
-        appData->cursorPos = sMainListDPadDestinations[appData->cursorPos][1];
+        appData->cursorPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][1];
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_LEFT) {
-        u8 newPos = sMainListDPadDestinations[appData->cursorPos][2];
+        BagAppCursorPos newPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][2];
         if (newPos == BAG_APP_CURSOR_POS_PAGE_LEFT) {
             u8 selectedItemFlag;
             BagAppState returnState = BagApp_HandleCursorAction(appData, BAG_APP_CURSOR_POS_PAGE_LEFT, &selectedItemFlag, 1, 4, MENU_INPUT_STATE_BUTTONS);
@@ -2456,7 +2456,7 @@ static BagAppState BagAppMainTask_HandleInput_Sell(BagAppData *appData) {
             return BAG_APP_STATE_SELL_HANDLE_INPUT;
         } else if (appData->cursorPos == BAG_APP_CURSOR_POS_CANCEL) {
         } else if (appData->cursorPos >= BAG_APP_CURSOR_POS_POCKET_1 && appData->cursorPos < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
-            int pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, -1);
+            BagAppCursorPos pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, -1);
             if (appData->cursorPos != pocketNeighbor) {
                 appData->cursorPos = pocketNeighbor;
                 ++dpadMoved;
@@ -2466,7 +2466,7 @@ static BagAppState BagAppMainTask_HandleInput_Sell(BagAppData *appData) {
             ++dpadMoved;
         }
     } else if (gSystem.newAndRepeatedKeys & PAD_KEY_RIGHT) {
-        u8 newPos = sMainListDPadDestinations[appData->cursorPos][3];
+        BagAppCursorPos newPos = (BagAppCursorPos)sMainListDPadDestinations[appData->cursorPos][3];
         if (newPos == BAG_APP_CURSOR_POS_PAGE_RIGHT) {
             u8 selectedItemFlag;
             BagAppState returnState = BagApp_HandleCursorAction(appData, BAG_APP_CURSOR_POS_PAGE_RIGHT, &selectedItemFlag, 1, 4, MENU_INPUT_STATE_BUTTONS);
@@ -2476,7 +2476,7 @@ static BagAppState BagAppMainTask_HandleInput_Sell(BagAppData *appData) {
             return BAG_APP_STATE_SELL_HANDLE_INPUT;
         } else if (appData->cursorPos == BAG_APP_CURSOR_POS_CANCEL) {
         } else if (appData->cursorPos >= BAG_APP_CURSOR_POS_POCKET_1 && appData->cursorPos < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
-            int pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, 1);
+            BagAppCursorPos pocketNeighbor = BagApp_GetPocketNeighbor(appData, appData->cursorPos, 1);
             if (appData->cursorPos != pocketNeighbor) {
                 appData->cursorPos = pocketNeighbor;
                 ++dpadMoved;
@@ -2507,7 +2507,7 @@ static BagAppState BagAppMainTask_HandleInput_Sell(BagAppData *appData) {
         return BAG_APP_STATE_SELL_HANDLE_INPUT;
     }
     if (appData->cursorPos == BAG_APP_CURSOR_POS_RESET_TO_CURR_POCKET) {
-        appData->cursorPos = appData->bagView->curPocket;
+        appData->cursorPos = (BagAppCursorPos)(appData->bagView->curPocket + BAG_APP_CURSOR_POS_POCKET_1);
     }
     if (dpadMoved) {
         PlaySE(SEQ_SE_DP_SELECT);
@@ -2521,18 +2521,18 @@ static BagAppState BagAppMainTask_HandleInput_Sell(BagAppData *appData) {
         if (BagApp_TouchTargetIsNotTransitioningFromItemsToPocketButtons(appData, touchInput)) {
             if (touchInput < BAG_APP_CURSOR_POS_POCKET_8 + 1) {
                 if (BagApp_PocketIdToBagViewPosition(appData, touchInput) != -1) {
-                    appData->cursorPos = touchInput;
+                    appData->cursorPos = (BagAppCursorPos)touchInput;
                     BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
                 }
             } else {
-                appData->cursorPos = touchInput;
+                appData->cursorPos = (BagAppCursorPos)touchInput;
                 BagApp_SetCursorSpritePos_PocketsItemsContext(appData, appData->cursorPos);
                 if (appData->cursorPos >= BAG_APP_CURSOR_POS_ITEM_1 && appData->cursorPos <= BAG_APP_CURSOR_POS_ITEM_6) {
                     BagApp_UpdateBagViewPocketCursorPos(appData, appData->cursorPos);
                 }
             }
         }
-        BagAppState returnState = BagApp_HandleCursorAction(appData, touchInput, &selectedItemFlag, 1, 4, MENU_INPUT_STATE_TOUCH);
+        BagAppState returnState = BagApp_HandleCursorAction(appData, (BagAppCursorPos)touchInput, &selectedItemFlag, 1, 4, MENU_INPUT_STATE_TOUCH);
         if (returnState != BAG_APP_STATE_HANDLE_INPUT_NORMAL_MODE) {
             appData->bagView->returnCode = BAG_VIEW_RETURN_CODE_DONE;
             return returnState;

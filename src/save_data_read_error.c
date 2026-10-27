@@ -111,7 +111,7 @@ void ShowSaveDataReadError(enum HeapID heapID) {
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(error_msgdata, msg_0008_00000, error_str);
-    AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(&window, FONT_SYSTEM, error_str, 0, 0, 0, NULL);
     String_Delete(error_str);
 
     GfGfx_BothDispOn();
@@ -170,7 +170,7 @@ void ShowGBACartRemovedError(enum HeapID heapID) {
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(error_msgdata, msg_0008_00001, error_str);
-    AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(&window, FONT_SYSTEM, error_str, 0, 0, 0, NULL);
     String_Delete(error_str);
 
     GfGfx_BothDispOn();

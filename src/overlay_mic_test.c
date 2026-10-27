@@ -407,7 +407,7 @@ static BOOL MicTest_Init(OverlayManager *overlayMan, int *state) {
     ov62_021E5C34(micTest->heapID);
     MicTest_SetBanks();
     Main_SetVBlankIntrCB(MicTest_VBlankIntrCB, micTest);
-    FontID_Alloc(4, HEAP_ID_MIC_TEST);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_MIC_TEST);
     ov62_021E5FD4(&micTest->unkB8, micTest->heapID);
     MicTest_LoadTextResources(&micTest->unkB8, micTest->heapID);
     ov62_021E60E4(&micTest->unkB8, micTest->heapID);
@@ -430,7 +430,7 @@ static BOOL MicTest_Exit(OverlayManager *overlayMan, int *state) {
     ov62_021E6178(&micTest->unkB8);
     ov62_021E6024(&micTest->unkB8);
     ov62_021E5C80();
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     OverlayManager_FreeData(overlayMan);
     Heap_Destroy(micTest->heapID);
     RegisterMainOverlay(FS_OVERLAY_ID(intro_title), &gApplication_TitleScreen);
@@ -741,7 +741,7 @@ static void ov62_021E60E4(MicTestSub_B8 *a0, enum HeapID heapID) {
         FillWindowPixelBuffer(&a0->window[i], 0);
         ClearWindowTilemap(&a0->window[i]);
         String *str = NewString_ReadMsgData(a0->msgData, i);
-        AddTextPrinterParameterizedWithColor(&a0->window[i], sMicTestTextBoxes[i].fontId, str, 0, 0, 0xFF, sMicTestTextBoxes[i].color, 0);
+        AddTextPrinterParameterizedWithColor(&a0->window[i], (enum Font)sMicTestTextBoxes[i].fontId, str, 0, 0, 0xFF, sMicTestTextBoxes[i].color, 0);
         String_Delete(str);
         CopyWindowToVram(&a0->window[i]);
     }

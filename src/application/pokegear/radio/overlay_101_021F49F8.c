@@ -300,7 +300,7 @@ void Radio_UnloadBGs(PokegearRadioAppData *radioApp) {
 }
 
 void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
-    FontID_Alloc(4, radioApp->heapID);
+    FontID_Alloc(FONT_UNK_4, radioApp->heapID);
     NARC *narc = NARC_New(NARC_application_pokegear_radio_pgradio_gra, radioApp->heapID);
     BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000016_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(radioApp->pokegear->bgConfig, radioApp->heapID, narc, NARC_application_pokegear_radio_pgradio_gra, radioApp->skin + NARC_pgradio_gra_pgradio_gra_00000034_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
@@ -315,7 +315,7 @@ void Radio_LoadGraphics(PokegearRadioAppData *radioApp) {
 
 void Radio_UnloadGraphics(PokegearRadioAppData *radioApp) {
     Heap_Free(radioApp->pNSCR);
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 void Radio_LoadPalettes(PokegearRadioAppData *radioApp) {

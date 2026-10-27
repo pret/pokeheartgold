@@ -122,7 +122,7 @@ static void Task_MapNameAndIcon(SysTask *task, FieldDrawMapNameInfo *info) {
 }
 
 static void PrintMapNameOnIcon(FieldDrawMapNameInfo *info, String *name) {
-    AddTextPrinterParameterizedWithColor(&info->window, 0, name, info->nameX, 8, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&info->window, FONT_SYSTEM, name, info->nameX, 8, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 }
 
 static void FieldDrawMapName_StartAscending(FieldDrawMapNameInfo *info) {

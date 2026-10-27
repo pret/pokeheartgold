@@ -10,6 +10,7 @@
 #include "field/map_prop.h"
 #include "field/rock_smash_item.h"
 #include "field/signpost.h"
+#include "field/weather_manager.h"
 #include "files/msgdata/msg.naix"
 #include "files/msgdata/msg/msg_0202.h"
 #include "frontier/frontier.h"
