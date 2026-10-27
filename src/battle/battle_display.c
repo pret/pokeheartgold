@@ -1979,9 +1979,9 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
             ov07_02232A44(monShowData->ballCapsuleSealEffect);
 
             if (monShowData->face == 2) {
-                Sound_PlayPannedEffect(0x706, 0x75);
+                Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, 0x75);
             } else {
-                Sound_PlayPannedEffect(0x706, -0x75);
+                Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, -0x75);
             }
 
             if (monShowData->btlMonObjData) {
@@ -2277,9 +2277,9 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
             ov07_02232A44(monShowData->ballCapsuleSealEffect);
 
             if (monShowData->face == 2) {
-                Sound_PlayPannedEffect(0x706, 0x75);
+                Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, 0x75);
             } else {
-                Sound_PlayPannedEffect(0x706, -0x75);
+                Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, -0x75);
             }
 
             monShowData->state++;
