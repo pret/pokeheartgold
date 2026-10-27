@@ -6,6 +6,9 @@ cb_data_files = copy_gen.process(files(
     '00004.NCLR',
     '00005.NCLR',
     '00006.NCLR',
+))
+
+cb_data_lz_files = lz_padded_gen.process(files(
     '00007.NCGR',
     '00008.NCGR',
     '00009.NCGR',

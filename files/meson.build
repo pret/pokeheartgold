@@ -62,6 +62,11 @@ lz_gen = generator(nitrogfx_exe,
     output: '@PLAINNAME@.lz',
 )
 
+lz_padded_gen = generator(nitrogfx_exe,
+    arguments: [ '@INPUT@', '@OUTPUT@', '@EXTRA_ARGS@', ],
+    output: '@PLAINNAME@.lz',
+)
+
 copy_gen = generator(find_program('cp'),
     arguments: [ '@INPUT@', '@OUTPUT@', ],
     output: '@PLAINNAME@'

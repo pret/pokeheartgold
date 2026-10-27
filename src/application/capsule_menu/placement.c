@@ -140,8 +140,8 @@ static void SealPlacement_LoadSeal(CapsuleAppManager *appMan, u8 type, u8 sealIn
     int objID = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CHAR, sealIndex);
 
     SpriteSystem_LoadCharResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, memberIdx, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, objID);
-    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00038_NCER, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, NARC_cb_data_00038_NCER));
-    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00036_NANR, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, NARC_cb_data_00036_NANR));
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00038_NCER_lz, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, NARC_cb_data_00038_NCER_lz));
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00036_NANR_lz, TRUE, MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, NARC_cb_data_00036_NANR_lz));
 }
 
 void SealPlacement_UpdateSeals(CapsuleAppManager *appMan) {
@@ -248,8 +248,8 @@ static BOOL SealPlacement_InitSeal(CapsuleAppManager *appMan, u8 sealIndex) {
 
     spriteTemplate.resIdList[GF_GFX_RES_TYPE_CHAR] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CHAR, sealIndex);
     spriteTemplate.resIdList[GF_GFX_RES_TYPE_PLTT] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_PLTT, NARC_cb_data_00006_NCLR);
-    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, NARC_cb_data_00038_NCER);
-    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, NARC_cb_data_00036_NANR);
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_CELL] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_CELL, NARC_cb_data_00038_NCER_lz);
+    spriteTemplate.resIdList[GF_GFX_RES_TYPE_ANIM] = MAKE_OBJECT_TAG(GF_GFX_RES_TYPE_ANIM, NARC_cb_data_00036_NANR_lz);
     sealInfo->sprite = SpriteSystem_NewSprite(spriteSystem, spriteManager, &spriteTemplate);
 
     ManagedSprite_TickFrame(sealInfo->sprite);

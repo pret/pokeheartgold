@@ -224,8 +224,8 @@ void CapsuleGraphics_LoadPageSprites(CapsuleAppManager *appMan) {
     }
 
     SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00006_NCLR, FALSE, 1, NNS_G2D_VRAM_TYPE_2DSUB, 26007);
-    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00037_NCER, TRUE, 27037);
-    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00035_NANR, TRUE, 28035);
+    SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00037_NCER_lz, TRUE, 27037);
+    SpriteSystem_LoadAnimResObj(spriteSystem, spriteManager, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00035_NANR_lz, TRUE, 28035);
 }
 
 void CapsuleGraphics_InitPageSprites(CapsuleAppManager *appMan) {
@@ -583,9 +583,9 @@ void CapsuleGraphics_FreeSpriteSystem(CapsuleGraphicsManager *unk_0D4) {
 }
 
 void CapsuleGraphics_LoadSelectionResources(CapsuleAppManager *appMan, NARC *narc) {
-    SpriteSystem_LoadCharResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, NARC_cb_data_00014_NCGR, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 45000);
-    SpriteSystem_LoadCellResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, NARC_cb_data_00016_NCER, TRUE, 47000);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, NARC_cb_data_00015_NANR, TRUE, 48000);
+    SpriteSystem_LoadCharResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, NARC_cb_data_00014_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 45000);
+    SpriteSystem_LoadCellResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, NARC_cb_data_00016_NCER_lz, TRUE, 47000);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, narc, NARC_cb_data_00015_NANR_lz, TRUE, 48000);
 }
 
 void CapsuleGraphics_InitSelectionIndicator(CapsuleAppManager *appMan) {
@@ -649,8 +649,8 @@ static void CapsuleGraphics_LoadCapsuleSprites(SpriteSystem *spriteSystem, Sprit
 }
 
 void CapsuleGraphics_InitCapsuleSprites(CapsuleAppManager *appMan, NARC *narc) {
-    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, NARC_cb_data_00017_NCGR, NARC_cb_data_00003_NCLR, NARC_cb_data_00019_NCER, NARC_cb_data_00018_NANR, NNS_G2D_VRAM_TYPE_2DMAIN, PLTTBUF_MAIN_OBJ, 1, narc);
-    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, NARC_cb_data_00032_NCGR, NARC_cb_data_00005_NCLR, NARC_cb_data_00034_NCER, NARC_cb_data_00033_NANR, NNS_G2D_VRAM_TYPE_2DMAIN, PLTTBUF_MAIN_OBJ, 1, narc);
+    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, NARC_cb_data_00017_NCGR_lz, NARC_cb_data_00003_NCLR, NARC_cb_data_00019_NCER_lz, NARC_cb_data_00018_NANR_lz, NNS_G2D_VRAM_TYPE_2DMAIN, PLTTBUF_MAIN_OBJ, 1, narc);
+    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, NARC_cb_data_00032_NCGR_lz, NARC_cb_data_00005_NCLR, NARC_cb_data_00034_NCER_lz, NARC_cb_data_00033_NANR_lz, NNS_G2D_VRAM_TYPE_2DMAIN, PLTTBUF_MAIN_OBJ, 1, narc);
     ManagedSpriteTemplate spriteTemplate;
 
     for (int i = 0; i < MAX_CAPSULES; i++) {
@@ -771,7 +771,7 @@ void CapsuleGraphics_FreeCapsuleSprites(CapsuleAppManager *appMan) {
 void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     {
         NNSG2dCharacterData *sp18;
-        void *sp14 = GfGfxLoader_GetCharData(NARC_application_custom_ball_data_cb_data, NARC_cb_data_00008_NCGR, TRUE, &sp18, HEAP_ID_CAPSULE_MENU);
+        void *sp14 = GfGfxLoader_GetCharData(NARC_application_custom_ball_data_cb_data, NARC_cb_data_00008_NCGR_lz, TRUE, &sp18, HEAP_ID_CAPSULE_MENU);
         u8 *r7 = sp18->pRawData;
         DC_FlushRange(r7, sp18->szByte);
         for (int i = 0; i < NELEMS(ov57_0223BDF4); ++i) {
@@ -954,8 +954,8 @@ void CapsuleGraphics_FadeOut(void) {
 
 void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) {
     NarcId narcID = NARC_application_custom_ball_data_cb_data;
-    int narcTileIdx = NARC_cb_data_00008_NCGR;
-    int narcTilemapIdx = NARC_cb_data_00012_NSCR;
+    int narcTileIdx = NARC_cb_data_00008_NCGR_lz;
+    int narcTilemapIdx = NARC_cb_data_00012_NSCR_lz;
     int narcMemberIdx = NARC_cb_data_00002_NCLR;
     GFBgLayer bgLayer = GF_BG_LYR_MAIN_2;
 
@@ -963,8 +963,8 @@ void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
     PaletteData_LoadNarc(appMan->graphicsMan.paletteData, narcID, narcMemberIdx, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x60, 0);
 
-    narcTileIdx = NARC_cb_data_00009_NCGR;
-    narcTilemapIdx = NARC_cb_data_00013_NSCR;
+    narcTileIdx = NARC_cb_data_00009_NCGR_lz;
+    narcTilemapIdx = NARC_cb_data_00013_NSCR_lz;
     bgLayer = GF_BG_LYR_MAIN_3;
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
@@ -973,8 +973,8 @@ void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) 
 
 void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) {
     NarcId narcID = NARC_application_custom_ball_data_cb_data;
-    int narcTileIdx = NARC_cb_data_00007_NCGR;
-    int narcTilemapIdx = NARC_cb_data_00011_NSCR;
+    int narcTileIdx = NARC_cb_data_00007_NCGR_lz;
+    int narcTilemapIdx = NARC_cb_data_00011_NSCR_lz;
     int narcMemberIdx = NARC_cb_data_00001_NCLR;
     GFBgLayer bgLayer = GF_BG_LYR_SUB_1;
 
@@ -985,8 +985,8 @@ void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) 
 
 void CapsuleGraphics_LoadBgLayer7Tilemap(CapsuleAppManager *appMan, NARC *narc) {
     NarcId narcID = NARC_application_custom_ball_data_cb_data;
-    int narcTileIdx = NARC_cb_data_00007_NCGR;
-    int narcTilemapIdx = NARC_cb_data_00010_NSCR;
+    int narcTileIdx = NARC_cb_data_00007_NCGR_lz;
+    int narcTilemapIdx = NARC_cb_data_00010_NSCR_lz;
     int narcMemberIdx = NARC_cb_data_00001_NCLR;
     GFBgLayer bgLayer = GF_BG_LYR_SUB_3;
 
@@ -1001,18 +1001,18 @@ void CapsuleGraphics_LoadCapsuleUI(CapsuleAppManager *appMan, NARC *narc) {
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
 
     SpriteSystem_LoadPaletteBufferFromOpenNarc(paletteData, PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, narc, 4, FALSE, 3, NNS_G2D_VRAM_TYPE_2DSUB, 26004);
-    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00026_NCGR, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25026);
-    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00028_NCER, TRUE, 27028);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00027_NANR, TRUE, 28027);
-    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00029_NCGR, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25029);
-    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00031_NCER, TRUE, 27031);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00030_NANR, TRUE, 28030);
-    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00020_NCGR, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25020);
-    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00022_NCER, TRUE, 27022);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00021_NANR, TRUE, 28021);
-    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00023_NCGR, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 35023);
-    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00025_NCER, TRUE, 27025);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00024_NANR, TRUE, 28024);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00026_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25026);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00028_NCER_lz, TRUE, 27028);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00027_NANR_lz, TRUE, 28027);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00029_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25029);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00031_NCER_lz, TRUE, 27031);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00030_NANR_lz, TRUE, 28030);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00020_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 25020);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00022_NCER_lz, TRUE, 27022);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00021_NANR_lz, TRUE, 28021);
+    SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00023_NCGR_lz, TRUE, NNS_G2D_VRAM_TYPE_2DSUB, 35023);
+    SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00025_NCER_lz, TRUE, 27025);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(spriteSystem, spriteManager, narc, NARC_cb_data_00024_NANR_lz, TRUE, 28024);
 }
 
 void CapsuleGraphics_InitCapsuleUI(CapsuleAppManager *appMan) {

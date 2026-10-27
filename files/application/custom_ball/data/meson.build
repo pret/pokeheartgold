@@ -10,6 +10,7 @@ cb_data_narc = custom_target('cb_data.narc',
     ],
     input: [
         cb_data_files,
+        cb_data_lz_files,
     ],
     output: [
         'cb_data.narc',
