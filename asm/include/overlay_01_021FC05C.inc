@@ -24,7 +24,7 @@
 .public Field3dObjectTaskManager_CreateTask
 .public Field3dObjectTask_Delete
 .public Field3dObjectTask_GetData
-.public ov01_021EB31C
+.public WeatherManager_GetWeather
 .public GetHoneySweetScentWorkSize
 .public Task_HoneyOrSweetScent
 .public FieldSystem_PerformSweetScentEncounterCheck
