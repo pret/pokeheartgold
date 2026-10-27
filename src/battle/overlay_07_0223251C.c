@@ -1,97 +1,11 @@
 #include "battle/overlay_07_0223251C.h"
 
-typedef struct {
-    int unk_00;
-    int unk_04;
-    int unk_08;
-    BOOL *unk_0C;
-    void *unk_10;
-    SEAL *unk_14;
-    void *unk_18;
-} UnkStruct_02236430;
-
-typedef struct {
-    s16 unk_00;
-    s16 unk_02;
-    int unk_04;
-    enum HeapID heapID;
-    int unk_0C;
-    int unk_10;
-} UnkStruct_ov12_02236690;
-
-typedef struct UnkStruct_ov12_02236648 {
-    UnkStruct_ov12_02236690 unk_00;
-    SPLEmitter *unk_14;
-    void *unk_18;
-    int unk_1C;
-    int unk_20;
-} UnkStruct_ov12_02236648;
-
-typedef struct ValueLerpContext {
-    s32 value;
-    s32 data[4];
-} ValueLerpContext;
-
-typedef struct XYTransformContext {
-    s16 x;
-    s16 y;
-    s32 data[8];
-} XYTransformContext;
-
-typedef struct {
-    s16 unk_00;
-    s16 unk_02;
-    s16 unk_04;
-    s16 unk_06;
-    int unk_08;
-    int unk_0C;
-    int unk_10;
-} UnkStruct_ov12_02237C54_sub1;
-
-typedef struct PaletteFadeContext {
-    BOOL active;
-    SysTask *task;
-    u32 bufferID;
-    u16 index;
-    u16 count;
-    u16 color;
-    u8 startFrac;
-    u8 endFrac;
-    u8 fraction;
-    s8 step;
-    s8 stepFrames;
-    s8 timer;
-    PaletteData *paletteData;
-} PaletteFadeContext;
-
-typedef struct BallRotation {
-    int unk_00;
-    int unk_04;
-    int unk_08;
-    int unk_0C;
-    int unk_10;
-    int unk_14;
-    int unk_18;
-    BOOL unk_1C;
-    u8 unk_20;
-    u8 unk_21;
-    s8 unk_22;
-    BOOL unk_24;
-    BOOL unk_28;
-    SpriteManager *unk_2C;
-    ManagedSprite *unk_30;
-    ValueLerpContext unk_34;
-    XYTransformContext unk_48[2];
-    BallThrow unk_90;
-    UnkStruct_ov12_02237C54_sub1 unk_B8;
-    SysTask *unk_CC;
-    UnkStruct_ov12_02236648 *unk_D0;
-    PaletteFadeContext *unk_D4;
-    void *unk_D8;
-    int unk_DC;
-} BallRotation;
-
 void ov07_02232AFC(BallCapsuleSealEffect *ballCapSealEff, void *param1);
+void ov07_02233F30(BallRotation *param0);
+void ov07_022341A4(BallRotation *param0, s16 *param1, s16 *param2);
+void ov07_022342E4(BallRotation *param0);
+void ov07_0223441C(BallRotation *param0);
+void ov07_0223441C(BallRotation *param0);
 
 //static 
 int ov07_0223251C(int a0) {
@@ -1820,4 +1734,370 @@ void ov07_02233D60(SysTask *param0, void *param1)
     }
 
     SpriteSystem_DrawSprites(v1->unk_2C);
+}
+
+BallRotation *ov07_02233DB8(BallThrow *param0)
+{
+    BallRotation *v0 = NULL;
+
+    v0 = Heap_Alloc(param0->heapID, sizeof(BallRotation));
+    MI_CpuClear8(v0, sizeof(BallRotation));
+
+    GF_ASSERT(v0 != NULL);
+
+    v0->unk_90 = (*param0);
+    v0->unk_08 = 0;
+    v0->unk_10 = 0;
+    v0->unk_0C = 0;
+    v0->unk_14 = 0;
+    v0->unk_18 = 0;
+    v0->unk_00 = 0;
+    v0->unk_04 = 0;
+    v0->unk_2C = SpriteManager_New(v0->unk_90.spriteSystem);
+    v0->unk_DC = 0;
+    v0->unk_24 = ov07_022325BC(v0->unk_90.type);
+    v0->unk_B8.unk_0C = 0;
+    v0->unk_20 = 16;
+    v0->unk_21 = 0;
+
+    ov07_0221C69C();
+
+    {
+        int v1;
+
+        v1 = LCRandom() % 2;
+
+        if (v1) {
+            v0->unk_22 = +1;
+        } else {
+            v0->unk_22 = -1;
+        }
+    }
+
+    ov07_022342E4(v0);
+    ov07_0223441C(v0);
+    ov07_02233F30(v0);
+
+    v0->unk_1C = 1;
+    v0->unk_28 = 0;
+    v0->unk_CC = SysTask_CreateOnMainQueue(ov07_02233D60, v0, 1000);
+
+    return v0;
+}
+
+BOOL ov07_02233E88(BallRotation *param0)
+{
+    GF_ASSERT(param0 != NULL);
+    return param0->unk_1C ? 1 : 0;
+}
+
+BOOL ov07_02233EA0(BallRotation *param0)
+{
+    GF_ASSERT(param0 != NULL);
+    return param0->unk_28 ? 1 : 0;
+}
+
+void ov07_02233EB8(BallRotation *param0, int param1)
+{
+    param0->unk_14 = param1;
+}
+
+BOOL ov07_02233EBC(BallRotation *param0, int param1)
+{
+    return (param0->unk_14 == param1) ? 1 : 0;
+}
+
+void ov07_02233ECC(BallRotation *param0)
+{
+    int v0 = param0->unk_90.heapID;
+
+    GF_ASSERT(param0 != NULL);
+
+    SpriteSystem_FreeResourcesAndManager(param0->unk_90.spriteSystem, param0->unk_2C);
+    Sprite_DeleteAndFreeResources(param0->unk_30);
+    SysTask_Destroy(param0->unk_CC);
+    Heap_Free(param0);
+}
+
+void ov07_02233EFC(BallRotation *param0, int param1)
+{
+    param0->unk_90.mode = param1;
+    param0->unk_08 = 0;
+    param0->unk_0C = 0;
+    param0->unk_10 = 0;
+    param0->unk_1C = 1;
+
+    ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+}
+
+int ov07_02233F20(BallRotation *param0)
+{
+    GF_ASSERT(param0 != NULL);
+
+    return param0->unk_90.mode;
+}
+
+//static 
+void ov07_02233F30(BallRotation *param0)
+{
+    ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+
+    switch (param0->unk_90.type) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 0;
+        param0->unk_B8.unk_08 = 12;
+        return;
+    case 6:
+        ov07_02221F04(0, 0, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 48;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 7:
+        ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+        ov07_02221F04(1, 4, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 48;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 8:
+        ov07_02221F04(1, 2, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 48;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 9:
+        ov07_02221F04(0, 1, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 48;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 10:
+        ov07_02221F04(1, 3, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 48;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 11:
+        ov07_02221F04(1, 5, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 48;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 12:
+        ov07_02221F04(0, 1, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 16;
+        param0->unk_B8.unk_06 += 16;
+        param0->unk_B8.unk_08 = 12;
+        return;
+    case 13:
+        ov07_02221F04(0, 1, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 32;
+        param0->unk_B8.unk_04 -= 20;
+        param0->unk_B8.unk_06 += 38;
+        param0->unk_B8.unk_08 = 16;
+        return;
+    case 14:
+        param0->unk_B8.unk_04 = 128;
+        param0->unk_B8.unk_06 = (96 - 32);
+        param0->unk_B8.unk_10 = 32;
+        param0->unk_B8.unk_06 += 32;
+        break;
+    case 15:
+        ov07_02221F04(0, 1, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 64;
+        param0->unk_B8.unk_06 += 8;
+        param0->unk_B8.unk_08 = 16;
+        return;
+    case 16:
+        ov07_02221F04(1, 3, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 64;
+        param0->unk_B8.unk_06 += 8;
+        param0->unk_B8.unk_08 = 16;
+        return;
+    case 17:
+        ov07_02221F04(1, 5, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        param0->unk_B8.unk_10 = 64;
+        param0->unk_B8.unk_06 += 8;
+        param0->unk_B8.unk_08 = 16;
+        return;
+    default:
+        break;
+    }
+
+    param0->unk_B8.unk_08 = 20;
+}
+
+//static 
+void ov07_022341A4(BallRotation *param0, s16 *param1, s16 *param2)
+{
+    switch (param0->unk_90.type) {
+    case 0:
+        ov07_02221F04(0, 0, param1, param2);
+        (*param2) += (32 + 8);
+        break;
+    case 1:
+        ov07_02221F04(0, 1, param1, param2);
+        (*param2) += 38;
+        break;
+    case 2:
+        ov07_02221F04(1, 2, param1, param2);
+        (*param2) += (32 + 8);
+        break;
+    case 4:
+        ov07_02221F04(1, 4, param1, param2);
+        (*param2) += (32 + 8);
+        break;
+    case 3:
+        ov07_02221F04(1, 3, param1, param2);
+        (*param2) += 38;
+        break;
+    case 5:
+        ov07_02221F04(1, 5, param1, param2);
+        (*param2) += 38;
+        break;
+    case 6:
+        *param1 = 10;
+        *param2 = 100;
+        break;
+    case 7:
+        *param1 = 10;
+        *param2 = 100;
+        break;
+    case 8:
+        *param1 = 10;
+        *param2 = 100;
+        break;
+    case 9:
+        ov07_02221F04(0, 0, param1, param2);
+        break;
+    case 10:
+        ov07_02221F04(0, 0, param1, param2);
+        break;
+    case 11:
+        ov07_02221F04(0, 0, param1, param2);
+        break;
+    case 12:
+        ov07_02221F04(0, 0, param1, param2);
+        break;
+    case 13:
+        ov07_02221F04(0, 0, param1, param2);
+        break;
+    case 14:
+        *param1 = 230;
+        *param2 = 32;
+        break;
+    case 15:
+    case 16:
+    case 17:
+        *param1 = -30;
+        *param2 = 160;
+        break;
+    default:
+        break;
+    }
+}
+
+//static 
+void ov07_022342E4(BallRotation *param0)
+{
+    SpriteSystem_InitSprites(param0->unk_90.spriteSystem, param0->unk_2C, 10);
+
+    if (param0->unk_90.surface == 0) {
+        G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(param0->unk_90.spriteSystem), 0, (192 + 80) << FX32_SHIFT);
+    }
+
+    SpriteResourceCountsListUnion v5;
+
+    for (int v4 = 0; v4 < 6; v4++) {
+        v5.asArray[v4] = 10;
+    }
+
+    v5.asArray[4] = 0;
+    v5.asArray[5] = 0;
+
+    SpriteSystem_InitManagerWithCapacities(param0->unk_90.spriteSystem, param0->unk_2C, &v5);
+
+
+    int v0 = ov07_02232658(param0->unk_90.ballID, 0);
+    int v1 = ov07_02232658(param0->unk_90.ballID, 1);
+    int v2 = ov07_02232658(param0->unk_90.ballID, 2);
+    int v3 = ov07_02232658(param0->unk_90.ballID, 3);
+
+    
+    NARC *v6 = NARC_New(8, param0->unk_90.heapID);
+
+    SpriteSystem_LoadCharResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->unk_2C, v6, v0, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, param0->unk_90.target + 6000);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(param0->unk_90.paletteData, 2, param0->unk_90.spriteSystem, param0->unk_2C, v6, v1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, param0->unk_90.target + 6000);
+    SpriteSystem_LoadCellResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->unk_2C, v6, v2, TRUE, param0->unk_90.target + 6000);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->unk_2C, v6, v3, TRUE, param0->unk_90.target + 6000);
+    NARC_Delete(v6);
+    
+}
+
+//static 
+void ov07_0223441C(BallRotation *param0)
+{
+    int v0;
+    ManagedSpriteTemplate v1;
+    int v2;
+
+    ov07_022341A4(param0, &v1.x, &v1.y);
+
+    v1.z = 0;
+    v1.animation = 0;
+    v1.drawPriority = 0;
+    v1.pal = 0;
+    v1.vram = NNS_G2D_VRAM_TYPE_2DMAIN;
+    v1.bgPriority = param0->unk_90.bgPrio;
+    v1.vramTransfer = FALSE;
+
+    for (v0 = 0; v0 < 6; v0++) {
+        v1.resIdList[v0] = param0->unk_90.target + 6000;
+    }
+
+    param0->unk_30 = SpriteSystem_NewSprite(param0->unk_90.spriteSystem, param0->unk_2C, &v1);
+
+    ManagedSprite_SetDrawFlag(param0->unk_30, TRUE);
+    ManagedSprite_SetAffineOverwriteMode(param0->unk_30, 2);
+    ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
+    ManagedSprite_SetAnim(param0->unk_30, 0);
+    ManagedSprite_TickFrame(param0->unk_30);
+
+    ov07_0221C69C();
+}
+
+void ov07_0223449C(BallRotation *param0, int param1)
+{
+    ManagedSprite_SetDrawFlag(param0->unk_30, param1);
+}
+
+void ov07_022344A8(BallRotation *param0, s16 param1, s16 param2)
+{
+    ManagedSprite_SetPositionXY(param0->unk_30, param1, param2);
+}
+
+void ov07_022344B4(BallRotation *param0, u16 param1)
+{
+    ManagedSprite_SetAffineZRotation(param0->unk_30, param1);
+}
+
+void ov07_022344C0(BallRotation *param0, BOOL param1)
+{
+    param0->unk_24 = param1;
+}
+
+void ov07_022344C4(BallRotation *param0, u16 param1)
+{
+    ManagedSprite_SetDrawPriority(param0->unk_30, param1);
+}
+
+void ov07_022344D0(BallRotation *param0, int param1)
+{
+    ManagedSprite_SetPriority(param0->unk_30, param1);
+}
+
+void ov07_022344DC(BallRotation *param0, int param1)
+{
+    param0->unk_DC = param1;
 }
