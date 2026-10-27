@@ -499,13 +499,13 @@ static void VoltorbFlip_RenderHowToPlayScreen(VoltorbFlipAppData *work) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000008_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     // "Quit" (on blue button)
-    VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wTutorialQuit, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_UNK_4, msg_0039_00008, &work->wTutorialQuit, 0, 0);
     // "If you flip all the cards in this order..."
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00011, &work->wTutorialIfYouFlipCards, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00011, &work->wTutorialIfYouFlipCards, 0, 0);
     // "If you select quit, you'll keep those..."
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00012, &work->wTutorialIfYouSelectQuit, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00012, &work->wTutorialIfYouSelectQuit, 0, 0);
     // "But if you find Voltorb, you'll lose all..."
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00013, &work->wTutorialIfYouFindVoltorb, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00013, &work->wTutorialIfYouFindVoltorb, 0, 0);
 }
 
 static void VoltorbFlip_RenderHintScreen(VoltorbFlipAppData *work) {
@@ -513,7 +513,7 @@ static void VoltorbFlip_RenderHintScreen(VoltorbFlipAppData *work) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000007_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     // {ALN_CENTER}By looking at the numbers on the sides of\n{ALN_CENTER}the cards, you can see the hidden number\n{ALN_CENTER}and VOLTORB totals.
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00009, &work->wHint, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00009, &work->wHint, 0, 0);
 }
 
 static void VoltorbFlip_RenderAboutMemoScreen(VoltorbFlipAppData *work) {
@@ -521,9 +521,9 @@ static void VoltorbFlip_RenderAboutMemoScreen(VoltorbFlipAppData *work) {
     GfGfxLoader_LoadScrnDataFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000009_NSCR_lz, work->bgConfig, GF_BG_LYR_SUB_0, 0, 0, TRUE, work->heapID);
 
     // {ALN_CENTER}Open\n{ALN_CENTER}Memo
-    VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wAboutMemoOpen, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_UNK_4, msg_0039_00006, &work->wAboutMemoOpen, 0, 0);
     // {ALN_CENTER}Touch "Open Memo" to open the Memo Window.\n{ALN_CENTER}Touch the cards to add and remove marks.
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00010, &work->wAboutMemoTouchOpen, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00010, &work->wAboutMemoTouchOpen, 0, 0);
 
     ManagedSprite_SetDrawFlag(work->sprites[VF_SPRITE_11], 1);
     ManagedSprite_SetDrawFlag(work->sprites[VF_SPRITE_12], 1);
@@ -623,7 +623,7 @@ BOOL VoltorbFlipTaskEngine_NewRound_Begin(VoltorbFlipTaskEngine *workflow, Volto
     int levelDiff = VoltorbFlipGameState_CalculateLevelsGained(work->game);
     VoltorbFlip_FormatGameLevel(work, 0);
     // {ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}
-    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
+    VoltorbFlip_PrintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
     BgCommitTilemapBufferToVram(work->bgConfig, 5);
     Sound_SetSceneAndPlayBGM(64, 0, 0);
 
@@ -1696,7 +1696,7 @@ static void VoltorbFlip_AnimateOpenMenu(VoltorbFlipAppData *work) {
     ManagedSprite_SetDrawFlag(work->sprites[VF_SPRITE_MEMO], TRUE);
     ManagedSprite_SetAnim(work->sprites[VF_SPRITE_MEMO], 20);
     // {ALN_CENTER}Close\n{ALN_CENTER}Memo
-    VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00007, &work->wMemo, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_UNK_4, msg_0039_00007, &work->wMemo, 0, 0);
     work->memoOpen = TRUE;
     PlaySE(SEQ_SE_DP_CARD2);
 }
@@ -1709,7 +1709,7 @@ static void VoltorbFlip_AnimateCloseMenu(VoltorbFlipAppData *work) {
     VoltorbFlip_SetMemoSpritesDrawFlag(work, FALSE);
     ManagedSprite_SetAnim(work->sprites[VF_SPRITE_MEMO], 21);
     // {ALN_CENTER}Open\n{ALN_CENTER}Memo
-    VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_UNK_4, msg_0039_00006, &work->wMemo, 0, 0);
     PlaySE(SEQ_SE_DP_CARD2);
 }
 
@@ -1829,27 +1829,27 @@ static int VoltorbFlip_HandleListMenuInput(VoltorbFlipAppData *work) {
 
 static void VoltorbFlip_RenderTopScreen(VoltorbFlipAppData *work) {
     // {ALN_CENTER}Open\n{ALN_CENTER}Memo
-    VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00006, &work->wMemo, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_UNK_4, msg_0039_00006, &work->wMemo, 0, 0);
     // {ALN_CENTER}Quit
-    VoltorbFlip_PaintMessageOnWindow(work, 4, msg_0039_00008, &work->wQuit, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_UNK_4, msg_0039_00008, &work->wQuit, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, GF_BG_LYR_MAIN_1);
 
     BufferIntegerAsString(work->msgFmt, 0, 1, 1, PRINTING_MODE_LEFT_ALIGN, 1);
 
     // {ALN_CENTER}VOLTORB Flip Lv. {STRVAR_1 50, 0, 0}
-    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
+    VoltorbFlip_PrintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00000, &work->wCurrentLevel, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
     // {ALN_CENTER}Flip the Cards and Collect Coins!
-    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00001, &work->wFlipCardsAndCollectCoins, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
+    VoltorbFlip_PrintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00001, &work->wFlipCardsAndCollectCoins, 0, 0, MAKE_TEXT_COLOR(15, 1, 0));
     BufferPlayersName(work->msgFmt, 0, work->profile);
 
     // ...x1! ...x2! ...x3!
-    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00002, &work->wx1x2x3, 0, 4, MAKE_TEXT_COLOR(15, 1, 0));
+    VoltorbFlip_PrintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00002, &work->wx1x2x3, 0, 4, MAKE_TEXT_COLOR(15, 1, 0));
     // Game Over! 0!
-    VoltorbFlip_PrintMessageOnWindow(work, 0, msg_0039_00003, &work->wGameOver, 0, 4, MAKE_TEXT_COLOR(15, 1, 0));
+    VoltorbFlip_PrintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00003, &work->wGameOver, 0, 4, MAKE_TEXT_COLOR(15, 1, 0));
     // {ALN_CENTER}{STRVAR_1 3, 0, 0}'\n{ALN_CENTER}Collected Coins
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00004, &work->wCollectedCoins, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00004, &work->wCollectedCoins, 0, 0);
     // {ALN_CENTER}Coins Collected in\n{ALN_CENTER}Current Game
-    VoltorbFlip_PaintMessageOnWindow(work, 0, msg_0039_00005, &work->wPayout, 0, 0);
+    VoltorbFlip_PaintMessageOnWindow(work, FONT_SYSTEM, msg_0039_00005, &work->wPayout, 0, 0);
     BgCommitTilemapBufferToVram(work->bgConfig, GF_BG_LYR_SUB_1);
 }
 
@@ -1893,7 +1893,7 @@ static void VoltorbFlip_PrintMessageToSmallWindow(VoltorbFlipAppData *work, int 
     FillBgTilemapRect(work->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 20, 32, 4, 0);
     DrawFrameAndWindow2(window, TRUE, 1, 13);
 
-    AddTextPrinterParameterized(window, 1, str, 0, 0, 0xff, NULL);
+    AddTextPrinterParameterized(window, FONT_MESSAGE, str, 0, 0, 0xff, NULL);
     ScheduleWindowCopyToVram(window);
     String_Delete(str);
     BgCommitTilemapBufferToVram(work->bgConfig, GF_BG_LYR_MAIN_3);
@@ -1918,7 +1918,7 @@ static void VoltorbFlip_PrintTextWindow(VoltorbFlipAppData *work, int msgNo, BOO
         DrawFrameAndWindow2(window, TRUE, 1, 13);
     }
 
-    work->printerId = AddTextPrinterParameterized(window, 1, str, 0, 0, work->unk22A, NULL);
+    work->printerId = AddTextPrinterParameterized(window, FONT_MESSAGE, str, 0, 0, work->unk22A, NULL);
     GF_ASSERT(work->printerId != 0xff);
 
     ScheduleWindowCopyToVram(window);
@@ -2082,13 +2082,13 @@ static void VoltorbFlip_UnloadBgs(VoltorbFlipAppData *work) {
         FreeBgTilemapBuffer(work->bgConfig, ov122_021E9270[i]);
     }
 
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     Heap_Free(work->bgConfig);
 }
 
 static void VoltorbFlip_LoadBgGfx(VoltorbFlipAppData *work) {
-    FontID_Alloc(4, work->heapID);
-    GF_ASSERT(work->narc != 0);
+    FontID_Alloc(FONT_UNK_4, work->heapID);
+    GF_ASSERT(work->narc != NULL);
 
     GfGfxLoader_GXLoadPalFromOpenNarc(work->narc, NARC_voltorb_flip_voltorb_flip_00000000_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_0_OFFSET, 0, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_graphic_font, 9, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_14_OFFSET, 32, work->heapID);
