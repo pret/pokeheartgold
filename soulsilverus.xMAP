@@ -10101,7 +10101,7 @@
                           25](NNS_G3dMdlSetMdlDiff,func) found in global libnnsg3d.a
                         23](DrawModelShapewise,func) found in local src_field_map_prop_manager.c.o
                          24](NNS_G3dDraw1Mat1Shp,func) found in global libnnsg3d.a
-                        23](@16920,object) found in local src_field_map_prop_manager.c.o
+                        23](@16921,object) found in local src_field_map_prop_manager.c.o
                        22](ov01_02204688,func) found in global src_field_overlay_01_02204004.c.o
                         23](MapPropAnimation_RemoveFromRenderObj,func) found in global src_field_overlay_01_02204004.c.o
                        22](MapPropManager_Reset,func) found in global src_field_map_prop_manager.c.o
@@ -10547,7 +10547,7 @@
                                                      52](Task_CelebiTimeTravelCutscene,func) found in local src_field_event_cutscene_celebi.c.o
                                                       53](CelebiCutscene_LoadResources,func) found in local src_field_event_cutscene_celebi.c.o
                                                        54](CelebiCutsceneAnimations_FrameSet,func) found in local src_field_event_cutscene_celebi.c.o
-                                                       54](@16828,object) found in local src_field_event_cutscene_celebi.c.o
+                                                       54](@16831,object) found in local src_field_event_cutscene_celebi.c.o
                                                       53](CelebiCutscene_StartSwirlTask,func) found in local src_field_event_cutscene_celebi.c.o
                                                        54](ov01_021F467C,func) found in global asm_overlay_01_021F467C.s.o
                                                         55](ov01_021F44B4,func) found in global asm_overlay_01_021F4464.s.o
@@ -10693,7 +10693,7 @@
                                                          56](sub_0203A040,func) found in global src_unk_02037C94.c.o
                                                          56](FieldSystem_LaunchApplication,func) found in global src_field_system.c.o
                                                           57](sub_0203DF34,func) found in global src_field_system.c.o
-                                                         56](sOverlayTemplate_NintendoWifiConnect$22692,object) found in local src_launch_application.c.o
+                                                         56](sOverlayTemplate_NintendoWifiConnect$22695,object) found in local src_launch_application.c.o
                                                           57](sub_02019490,func) found in global asm_unk_020192D0.s.o
                                                            58](sub_02087E10,func) found in global asm_unk_02087A78.s.o
                                                             59](.rodata,section) found in local asm_unk_02087A78.s.o
@@ -10770,7 +10770,7 @@
                                                                          72](GymmickInit_Sinjoh,func) found in global src_field_gymmick_sinjoh.c.o
                                                                           73](SinjohGymmick_Load3dGraphics,func) found in local src_field_gymmick_sinjoh.c.o
                                                                            74](SinjohGymmick_SetAnimsFrames,func) found in local src_field_gymmick_sinjoh.c.o
-                                                                           74](@16625,object) found in local src_field_gymmick_sinjoh.c.o
+                                                                           74](@16628,object) found in local src_field_gymmick_sinjoh.c.o
                                                                           73](SysTask_SinjohGymmick,func) found in local src_field_gymmick_sinjoh.c.o
                                                                            74](SinjohGymmick_AdvanceAnimAndSetAnimIdIfCurrentAnimFinished,func) found in local src_field_gymmick_sinjoh.c.o
                                                                          72](GymmickInit_Viridian,func) found in global src_field_gymmick_viridian.c.o
@@ -10785,7 +10785,7 @@
                                                                           73](BlackthornPlatform_Init,func) found in local src_field_gymmick_blackthorn.c.o
                                                                            74](BlackthornPlatform_ApplyRotation,func) found in local src_field_gymmick_blackthorn.c.o
                                                                             75](BlackthornGymmick_ApplyRotationToPoints,func) found in local src_field_gymmick_blackthorn.c.o
-                                                                          73](@16764,object) found in local src_field_gymmick_blackthorn.c.o
+                                                                          73](@16767,object) found in local src_field_gymmick_blackthorn.c.o
                                                                          72](GymmickInit_Azalea,func) found in global src_field_gymmick_azalea.c.o
                                                                           73](MapPropAnimationManager_AddAnimationToRenderObj,func) found in global src_field_map_prop_animation.c.o
                                                                           73](sSpinarakInitialPositions,object) found in local src_field_gymmick_azalea.c.o
@@ -10794,7 +10794,7 @@
                                                                           73](MapPropManager_FindMapPropByBuildModel,func) found in global src_field_map_prop_manager.c.o
                                                                           73](MapProp_GetTranslation,func) found in global src_field_map_prop_manager.c.o
                                                                           73](MapProp_SetTranslation,func) found in global src_field_map_prop_manager.c.o
-                                                                          73](@16803,object) found in local src_field_gymmick_violet.c.o
+                                                                          73](@16804,object) found in local src_field_gymmick_violet.c.o
                                                                          72](GymmickInit_Vermilion,func) found in global src_field_gymmick_vermilion.c.o
                                                                           73](MapPropAnimationManager_GetPropAnimationCount,func) found in global src_field_map_prop_animation.c.o
                                                                           73](MapPropAnimationManager_RemoveAnimationFromRenderObj,func) found in global src_field_map_prop_animation.c.o
@@ -10806,9 +10806,9 @@
                                                                           73](MapPropAnimationData_GoToLastAnimationFrame,func) found in global src_field_map_prop_animation.c.o
                                                                            74](MapPropAnimation_GoToLastFrame,func) found in global src_field_overlay_01_02204004.c.o
                                                                          72](GymmickInit_Ecruteak,func) found in global src_field_gymmick_ecruteak.c.o
-                                                                          73](ov01_021EA864,func) found in global src_overlay_01_021EA824.c.o
-                                                                          73](ov01_021EA89C,func) found in global src_overlay_01_021EA824.c.o
-                                                                          73](ov01_021EA8C4,func) found in global src_overlay_01_021EA824.c.o
+                                                                          73](Fog_Set,func) found in global src_field_fog.c.o
+                                                                          73](Fog_SetColor,func) found in global src_field_fog.c.o
+                                                                          73](Fog_SetFogTable,func) found in global src_field_fog.c.o
                                                                            74](G3X_SetFogTable,func) found in global libgx.a
                                                                             75](MI_Copy32B,func) found in global libmi.a
                                                                           73](ApplyFogToMapObjects,func) found in local src_field_gymmick_ecruteak.c.o
@@ -10843,26 +10843,22 @@
                                                                        70](AreaLightManager_Free,func) found in global asm_overlay_01_021E90C0.s.o
                                                                        70](Signpost_Free,func) found in global src_field_signpost.c.o
                                                                        70](FieldDrawMapNameInfo_Destroy,func) found in global src_field_draw_map_name.c.o
-                                                                       70](WeatherManager_Delete,func) found in global asm_overlay_01_021EB1E8.s.o
-                                                                        71](.rodata,section) found in local asm_overlay_01_021EB1E8.s.o
-                                                                        71](ov01_021EA860,func) found in global src_overlay_01_021EA824.c.o
-                                                                        71](ov01_021EA85C,func) found in global src_overlay_01_021EA824.c.o
-                                                                        71](ov01_021EA858,func) found in global src_overlay_01_021EA824.c.o
-                                                                        71](AddPlttResObjFromOpenNarcWithAtEndFlag,func) found in global src_unk_0200A090.c.o
-                                                                        71](AddCharResObjFromOpenNarcWithAtEndFlag,func) found in global src_unk_0200A090.c.o
-                                                                        71](GF2dGfxResHeader_GetObjIdByIndex,func) found in global src_unk_0200A090.c.o
-                                                                        71](GF2DGfxResHeader_GetExDat1ByIndex,func) found in global src_unk_0200A090.c.o
-                                                                        71](GF2DGfxResHeader_GetExDat0ByIndex,func) found in global src_unk_0200A090.c.o
-                                                                        71](GF2DGfxResHeader_GetCompressFlagByIndex,func) found in global src_unk_0200A090.c.o
-                                                                        71](GF2DGfxResHeader_GetNarcMemberIdByIndex,func) found in global src_unk_0200A090.c.o
-                                                                        71](ov01_021EA854,func) found in global src_overlay_01_021EA824.c.o
-                                                                        71](.data,section) found in local asm_overlay_01_021EB1E8.s.o
+                                                                       70](WeatherManager_Delete,func) found in global src_field_weather_manager.c.o
+                                                                        71](WeatherSystem_Delete,func) found in local src_field_weather_manager.c.o
+                                                                         72](ov01_021EBB90,func) found in local src_field_weather_manager.c.o
+                                                                          73](ov01_021EB968,func) found in local src_field_weather_manager.c.o
+                                                                          73](WeatherObject_DeleteAll,func) found in local src_field_weather_manager.c.o
+                                                                           74](WeatherObject_Delete,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC1E4,func) found in local src_field_weather_manager.c.o
+                                                                          73](ov01_021EC058,func) found in local src_field_weather_manager.c.o
+                                                                          73](ov01_021EDAE0,func) found in local src_field_weather_manager.c.o
+                                                                         72](WeatherDraw_Delete,func) found in local src_field_weather_manager.c.o
                                                                        70](ov01_021FB610,func) found in global asm_overlay_01_021FB5D4.s.o
                                                                         71](ov01_021FB554,func) found in global asm_overlay_01_021FB4C0.s.o
                                                                         71](G3X_SetHOffset,func) found in global libgx.a
                                                                        70](sub_020556A8,func) found in global src_unk_02055418.c.o
                                                                         71](sub_020556FC,func) found in global src_unk_02055418.c.o
-                                                                       70](Fog_Free,func) found in global src_overlay_01_021EA824.c.o
+                                                                       70](Fog_Free,func) found in global src_field_fog.c.o
                                                                        70](Thunk_OamManager_Free,func) found in local src_field_fieldmap.c.o
                                                                        70](ov02_0224F8F4,func) found in global asm_overlay_02_02248728.s.o
                                                                         71](.rodata,section) found in local asm_overlay_02_02248728.s.o
@@ -11144,7 +11140,7 @@
                                                                          72](SysTask_ViewPhoto,func) found in local src_application_view_photo.c.o
                                                                           73](ViewPhotoSysTask_Setup,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_InitBgLayers,func) found in local src_application_view_photo.c.o
-                                                                            75](@17001,object) found in local src_application_view_photo.c.o
+                                                                            75](@17004,object) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_LoadBgGraphics,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_InitMessages,func) found in local src_application_view_photo.c.o
                                                                            74](ViewPhotoSysTask_InitWindows,func) found in local src_application_view_photo.c.o
@@ -11185,6 +11181,42 @@
                                                                          72](sub_0205F1A0,func) found in global src_map_object.c.o
                                                                         71](FieldBGM_TryFadeOut,func) found in global src_field_bgm.c.o
                                                                          72](FieldBGM_GetFadeOutAndWaitFrames,func) found in local src_field_bgm.c.o
+                                                                        71](WeatherManager_ChangeWeather,func) found in global src_field_weather_manager.c.o
+                                                                         72](ov01_021EB4B4,func) found in local src_field_weather_manager.c.o
+                                                                         72](WeatherTask_ChangeWeather,func) found in local src_field_weather_manager.c.o
+                                                                          73](WeatherSystem_Process,func) found in local src_field_weather_manager.c.o
+                                                                           74](WeatherSystem_Init,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EBE4C,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EBD34,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EBEB8,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EB86C,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EBEF0,func) found in local src_field_weather_manager.c.o
+                                                                               78](Weather_AddResObjFromOpenNarc,func) found in local src_field_weather_manager.c.o
+                                                                                79](GF2DGfxResHeader_GetNarcMemberIdByIndex,func) found in global src_unk_0200A090.c.o
+                                                                                79](GF2DGfxResHeader_GetCompressFlagByIndex,func) found in global src_unk_0200A090.c.o
+                                                                                79](GF2DGfxResHeader_GetExDat0ByIndex,func) found in global src_unk_0200A090.c.o
+                                                                                79](GF2DGfxResHeader_GetExDat1ByIndex,func) found in global src_unk_0200A090.c.o
+                                                                                79](GF2dGfxResHeader_GetObjIdByIndex,func) found in global src_unk_0200A090.c.o
+                                                                                79](AddCharResObjFromOpenNarcWithAtEndFlag,func) found in global src_unk_0200A090.c.o
+                                                                                79](AddPlttResObjFromOpenNarcWithAtEndFlag,func) found in global src_unk_0200A090.c.o
+                                                                              77](ov01_021EBF24,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EBF58,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EBF94,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EBFD0,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC240,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC028,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EBD18,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC078,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC0C0,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC114,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021EBA08,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EBD70,func) found in local src_field_weather_manager.c.o
+                                                                           74](WeatherSystem_Start,func) found in local src_field_weather_manager.c.o
+                                                                           74](Fog_CheckActive,func) found in global src_field_fog.c.o
+                                                                           74](ov01_021EBB40,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021EBB68,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EB804,func) found in local src_field_weather_manager.c.o
+                                                                         72](ov01_021EB3F0,func) found in local src_field_weather_manager.c.o
                                                                        70](ov01_021E5FC0,func) found in local src_field_fieldmap.c.o
                                                                         71](ov01_022047DC,func) found in global src_field_overlay_01_02204004.c.o
                                                                         71](Signpost_DoCurrentCommand,func) found in global src_field_signpost.c.o
@@ -11207,7 +11239,7 @@
                                                                        70](FieldSystem_HasNoGymmick,func) found in local src_field_fieldmap.c.o
                                                                        70](Field3dObjectTaskManager_Create,func) found in global src_field_field_3d_object_task.c.o
                                                                        70](ov01_021E6028,func) found in local src_field_fieldmap.c.o
-                                                                        71](@17490,object) found in local src_field_fieldmap.c.o
+                                                                        71](@17491,object) found in local src_field_fieldmap.c.o
                                                                        70](GF3dRender_InitSimpleManager,func) found in global src_gf_3d_render.c.o
                                                                         71](initializeSimple3DVramManager,func) found in local src_gf_3d_render.c.o
                                                                        70](ov01_021E61E0,func) found in local src_field_fieldmap.c.o
@@ -11265,13 +11297,70 @@
                                                                         71](defaultFieldEffectRenderers,notype) found in global asm_overlay_01_data_02208BFC.s.o
                                                                        70](ov01_021E6580,func) found in local src_field_fieldmap.c.o
                                                                         71](FieldMap_InitModelAttributes,func) found in local src_field_fieldmap.c.o
-                                                                        71](Fog_New,func) found in global src_overlay_01_021EA824.c.o
+                                                                        71](Fog_New,func) found in global src_field_fog.c.o
                                                                         71](CheckFlag96A,func) found in global src_sys_flags.c.o
+                                                                        71](WeatherManager_New,func) found in global src_field_weather_manager.c.o
+                                                                         72](WeatherSystem_New,func) found in local src_field_weather_manager.c.o
+                                                                          73](WeatherDraw_Init,func) found in local src_field_weather_manager.c.o
+                                                                           74](Weather_Init2DGfxRes,func) found in local src_field_weather_manager.c.o
+                                                                           74](WeatherDrawTask_RendAndAnimateSprites,func) found in local src_field_weather_manager.c.o
+                                                                          73](ov01_022098B0,object) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021EDA50,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ED474,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC5FC,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC678,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC774,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC790,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC6A4,func) found in local src_field_weather_manager.c.o
+                                                                               78](Fog_GetSlope,func) found in global src_field_fog.c.o
+                                                                               78](Fog_GetOffset,func) found in global src_field_fog.c.o
+                                                                               78](Fog_GetColorRGB,func) found in global src_field_fog.c.o
+                                                                               78](ov01_021EB830,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC650,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC7AC,func) found in local src_field_weather_manager.c.o
+                                                                               78](ov01_021EC7E8,func) found in local src_field_weather_manager.c.o
+                                                                                79](ov01_021EC828,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC728,func) found in local src_field_weather_manager.c.o
+                                                                               78](ov01_021EB840,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC7C8,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EBCA4,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021ED924,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021ED710,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021ED584,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EB818,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021ED0F0,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC504,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC538,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC85C,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ED31C,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC1F4,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC8D8,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC1BC,func) found in local src_field_weather_manager.c.o
+                                                                             76](WeatherObject_GetSpriteMatrixPtr,func) found in local src_field_weather_manager.c.o
+                                                                             76](WeatherDraw_SetSpriteMatrix,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC52C,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC2E4,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC470,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EC4A8,func) found in local src_field_weather_manager.c.o
+                                                                              77](ov01_021EC31C,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EC300,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ED44C,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021EC8F8,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021ECD08,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ECF4C,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_0220673C,object) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ED070,func) found in local src_field_weather_manager.c.o
+                                                                           74](ov01_021EC94C,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ECBB4,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021EDA7C,func) found in local src_field_weather_manager.c.o
+                                                                             76](ov01_021EDAB4,func) found in local src_field_weather_manager.c.o
+                                                                            75](ov01_021ECC70,func) found in local src_field_weather_manager.c.o
                                                                         71](FieldDrawMapNameInfo_Create,func) found in global src_field_draw_map_name.c.o
                                                                          72](FieldDrawMapName_SetupWindow,func) found in local src_field_draw_map_name.c.o
                                                                         71](Signpost_Init,func) found in global src_field_signpost.c.o
                                                                         71](Gymmick_Init,func) found in global src_unk_020648EC.c.o
                                                                         71](FieldMap_VBlankCallback,func) found in local src_field_fieldmap.c.o
+                                                                       70](WeatherManager_SetWeather,func) found in global src_field_weather_manager.c.o
                                                                        70](FieldBGM_PlayEffectiveForMapHeader,func) found in global src_field_bgm.c.o
                                                                        70](ov01_021E662C,func) found in local src_field_fieldmap.c.o
                                                                         71](CARD_SpiWaitGetStatus,func) found in global libirc.a
@@ -11952,7 +12041,7 @@
                                                              60](initBallModelPositions,func) found in local src_choose_starter_app.c.o
                                                               61](rendererTranslVecSet,func) found in local src_choose_starter_app.c.o
                                                               61](rendererScaleVecSet,func) found in local src_choose_starter_app.c.o
-                                                              61](@18949,object) found in local src_choose_starter_app.c.o
+                                                              61](@18952,object) found in local src_choose_starter_app.c.o
                                                            58](yRotateSelectedBall,func) found in local src_choose_starter_app.c.o
                                                             59](calcBallTranslationArcStep,func) found in local src_choose_starter_app.c.o
                                                            58](selectedBallIsInSmallWobbleState,func) found in local src_choose_starter_app.c.o
@@ -12484,7 +12573,7 @@
                                                                   65](ov03_02253E20,func) found in local src_overlay_03_communication_club.c.o
                                                                   65](ov03_02254B4C,func) found in local src_overlay_03_communication_club.c.o
                                                                   65](ov03_02254D64,func) found in local src_overlay_03_communication_club.c.o
-                                                                  65](@20714,object) found in local src_overlay_03_communication_club.c.o
+                                                                  65](@20715,object) found in local src_overlay_03_communication_club.c.o
                                                                    66](ov03_02254120,func) found in local src_overlay_03_communication_club.c.o
                                                                     67](ov03_02254150,func) found in local src_overlay_03_communication_club.c.o
                                                                    66](ov03_02254100,func) found in local src_overlay_03_communication_club.c.o
@@ -12794,6 +12883,7 @@
                                                                              76](FieldSystem_CanGenerateStepEncounter,func) found in global src_field_encounter_check.c.o
                                                                              76](.rodata,section) found in local asm_overlay_01_021FC05C.s.o
                                                                               77](.text,section) found in local asm_overlay_01_021FC05C.s.o
+                                                                             76](WeatherManager_GetWeather,func) found in global src_field_weather_manager.c.o
                                                                           73](FieldMove_CheckDig,func) found in local src_field_move.c.o
                                                                            74](MapHeader_IsEscapeRopeAllowed,func) found in global src_map_header.c.o
                                                                            74](Save_VarsFlags_CheckRocketCostumeFlag,func) found in global src_sys_flags.c.o
@@ -13236,7 +13326,7 @@
                                                                62](PartyMenu_AddAllWindows,func) found in global src_party_context_menu.c.o
                                                                 63](addFiveWindows,func) found in local src_party_context_menu.c.o
                                                                62](sub_0207EB24,func) found in global src_party_menu_sprites.c.o
-                                                                63](@17026,object) found in local src_party_menu_sprites.c.o
+                                                                63](@17029,object) found in local src_party_menu_sprites.c.o
                                                                62](sub_0207EDD4,func) found in global src_party_menu_sprites.c.o
                                                                62](sub_02079D38,func) found in local src_party_menu.c.o
                                                                 63](sub_0207D998,func) found in global src_party_context_menu.c.o
@@ -13883,8 +13973,8 @@
                                                             59](FlyMap_LoadGFX,func) found in global src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_InitBGs,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                               61](PokegearApp_SetGraphicsBanks,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                               62](@17137,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                              61](@17445,object) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
+                                                               62](@17140,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
+                                                              61](@17448,object) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_LoadBGGraphics,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_CreateWindows,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
                                                              60](FlyMap_LoadStrings,func) found in local src_application_pokegear_map_overlay_101_021EDCE0.c.o
@@ -13949,7 +14039,7 @@
                                                            58](FlyMap_MainTask_HandleInput,func) found in local src_application_pokegear_map_fly_map.c.o
                                                             59](FlyMap_HandleTouchInput_NotDragging,func) found in global src_application_pokegear_map_overlay_101_021EB568.c.o
                                                              60](ov101_021EC980,func) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
-                                                              61](ov101_021F7E9C$17601,object) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
+                                                              61](ov101_021F7E9C$17604,object) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
                                                              60](PokegearMap_GetFlyDestinationAtCoord,func) found in global src_application_pokegear_map_overlay_101_021E9270.c.o
                                                              60](ov101_021EB784,func) found in local src_application_pokegear_map_overlay_101_021EB568.c.o
                                                               61](PokegearMap_SpawnFlyContextMenu,func) found in global src_application_pokegear_map_overlay_101_021E9270.c.o
@@ -14019,7 +14109,7 @@
                                                                62](PokegearUIManager_LoadInitialGfx,func) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
                                                                 63](PokegearUIManager_LoadInitialSkinGfx,func) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
                                                               61](PokegearUIManager_CreateSprite,func) found in global src_application_pokegear_main_overlay_100_021E6914.c.o
-                                                               62](sPlttOverrides$16996,object) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
+                                                               62](sPlttOverrides$16999,object) found in local src_application_pokegear_main_overlay_100_021E6914.c.o
                                                               61](MapHeader_CanPlacePhoneCalls,func) found in global src_map_header.c.o
                                                              60](Pokegear_AddAppSwitchButtons,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                               61](PokegearCursorManager_Alloc,func) found in global src_application_pokegear_main_pokegear_cursor.c.o
@@ -14028,8 +14118,8 @@
                                                               61](PokegearCursorManager_SetSpecIndexAndCursorPos,func) found in global src_application_pokegear_main_pokegear_cursor.c.o
                                                                62](PokegearCursorManager_UpdateCursorSpritePosition,func) found in local src_application_pokegear_main_pokegear_cursor.c.o
                                                               61](PokegearApp_AppIdToButtonIndex,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                              61](sAppSwitchButtonSpecs$17207,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
-                                                              61](sAppSwitchButtonCounts$17208,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
+                                                              61](sAppSwitchButtonSpecs$17210,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
+                                                              61](sAppSwitchButtonCounts$17211,object) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                            58](Pokegear_MainStep_Teardown,func) found in local src_application_pokegear_main_pokegear_main.c.o
                                                             59](PokegearApp_UnloadGFX,func) found in global src_application_pokegear_main_overlay_100_021E5900.c.o
                                                              60](Pokegear_RemoveAppSwitchButtons,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
@@ -14042,7 +14132,7 @@
                                                              60](PokegearApp_FreePaletteData,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                              60](PokegearApp_FreeBGs,func) found in local src_application_pokegear_main_overlay_100_021E5900.c.o
                                                            58](Pokegear_MainStep_LaunchConfigure,func) found in local src_application_pokegear_main_pokegear_main.c.o
-                                                            59](sOverlayTemplate_GearConfigure$17064,object) found in local src_application_pokegear_main_pokegear_main.c.o
+                                                            59](sOverlayTemplate_GearConfigure$17067,object) found in local src_application_pokegear_main_pokegear_main.c.o
                                                              60](PokegearPhone_Exit,func) found in global src_application_pokegear_phone_pokegear_phone.c.o
                                                               61](PokegearPhone_UnloadContactsAndDeregisterCallbacks,func) found in local src_application_pokegear_phone_pokegear_phone.c.o
                                                                62](PokegearPhone_ContactList_FlushAndDestroyLinkedList,func) found in global src_application_pokegear_phone_overlay_101_021F0880.c.o
@@ -14051,7 +14141,7 @@
                                                               61](PokegearPhone_MainTask_Setup,func) found in global src_application_pokegear_phone_pokegear_phone.c.o
                                                                62](PokegearPhone_SetUp,func) found in global src_application_pokegear_phone_overlay_101_021EFD20.c.o
                                                                 63](ov101_021F017C,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
-                                                                 64](@17396,object) found in local src_application_pokegear_phone_overlay_101_021F017C.c.o
+                                                                 64](@17399,object) found in local src_application_pokegear_phone_overlay_101_021F017C.c.o
                                                                 63](ov101_021F0284,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
                                                                 63](ov101_021F0578,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
                                                                 63](ov101_021F05EC,func) found in global src_application_pokegear_phone_overlay_101_021F017C.c.o
@@ -14180,7 +14270,7 @@
                                                                   65](IsBuenasPasswordOnAir,func) found in local src_application_pokegear_phone_scripts_phone_scripts_buena.c.o
                                                                    66](sub_02095FF8,func) found in global src_phonebook_dat.c.o
                                                                  64](PhoneCall_GetScriptId_EthanLyra,func) found in global src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
-                                                                  65](ov101_021F86C8$17223,object) found in local src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
+                                                                  65](ov101_021F86C8$17226,object) found in local src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o
                                                                  64](PhoneCall_GetScriptId_Kurt,func) found in global src_application_pokegear_phone_scripts_phone_scripts_kurt.c.o
                                                                  64](PhoneCall_GetScriptId_GymLeader,func) found in global src_application_pokegear_phone_scripts_phone_scripts_gym_leader.c.o
                                                                  64](PhoneCall_GetScriptId_Kenji,func) found in global src_application_pokegear_phone_scripts_phone_scripts_blackbelt_kenji.c.o
@@ -14273,7 +14363,7 @@
                                                               61](PokegearConfigure_MainTask_LoadGFX,func) found in local src_application_pokegear_configure_pokegear_configure.c.o
                                                                62](PokegearConfigure_LoadGFX,func) found in global src_application_pokegear_configure_overlay_101_021EED44.c.o
                                                                 63](PokegearConfigure_InitBGs,func) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
-                                                                 64](@17040,object) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
+                                                                 64](@17043,object) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
                                                                 63](PokegearConfigure_LoadGraphics,func) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
                                                                  64](PokegearConfigure_LoadGraphics_Internal,func) found in global src_application_pokegear_configure_overlay_101_021EF1D8.c.o
                                                                 63](PokegearConfigure_CreateSpriteManager,func) found in local src_application_pokegear_configure_overlay_101_021EED44.c.o
@@ -14333,7 +14423,7 @@
                                                               61](PokegearMap_MainTask_LoadGFX,func) found in local src_application_pokegear_map_pokegear_map.c.o
                                                                62](PokegearMap_LoadGFX,func) found in global src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitBGs,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
-                                                                 64](@17504,object) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
+                                                                 64](@17507,object) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_LoadGraphics,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitWindows,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
                                                                 63](PokegearMap_InitMsg,func) found in local src_application_pokegear_map_overlay_101_021E7FF4.c.o
@@ -14424,7 +14514,7 @@
                                                               61](PokegearRadio_MainTask_VideoInit,func) found in global src_application_pokegear_radio_pokegear_radio.c.o
                                                                62](Radio_VideoInit,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                 63](Radio_InitBGs,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
-                                                                 64](@17320,object) found in local src_application_pokegear_radio_overlay_101_021F49F8.c.o
+                                                                 64](@17323,object) found in local src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                 63](Radio_LoadGraphics,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                 63](Radio_InitWindows,func) found in global src_application_pokegear_radio_overlay_101_021F49F8.c.o
                                                                  64](RadioShow_Create,func) found in global src_application_pokegear_radio_overlay_101_021F57B8.c.o
@@ -14750,14 +14840,14 @@
                                                      52](BugContest_BackUpParty,func) found in global src_overlay_bug_contest.c.o
                                                      52](BugContest_InitOpponents,func) found in global src_overlay_bug_contest.c.o
                                                       53](BugContest_ContestantIsRegisteredN,func) found in global src_overlay_bug_contest.c.o
-                                                      53](@17171,object) found in local src_overlay_bug_contest.c.o
+                                                      53](@17174,object) found in local src_overlay_bug_contest.c.o
                                                      52](BugContest_InitEncounters,func) found in global src_overlay_bug_contest.c.o
-                                                      53](@17187,object) found in local src_overlay_bug_contest.c.o
+                                                      53](@17190,object) found in local src_overlay_bug_contest.c.o
                                                     51](BugContest_Delete,func) found in global src_overlay_bug_contest.c.o
                                                      52](BugContest_RestoreParty_RetrieveCaughtPokemon,func) found in global src_overlay_bug_contest.c.o
                                                       53](PCStorage_PlaceMonInFirstEmptySlotInAnyBox,func) found in global src_pokemon_storage_system.c.o
                                                    50](ScrCmd_ScriptOverlayCmd,func) found in global src_scrcmd_c.c.o
-                                                    51](_020FACB0$27678,object) found in local src_scrcmd_c.c.o
+                                                    51](_020FACB0$27679,object) found in local src_scrcmd_c.c.o
                                                    50](ScrCmd_SetFollowMonInhibitState,func) found in global src_scrcmd_c.c.o
                                                    50](ScrCmd_MartSell,func) found in global src_scrcmd_mart.c.o
                                                     51](Mart_Init,func) found in global src_overlay_03_shop_menu.c.o
@@ -15139,7 +15229,7 @@
                                                     51](GetLearnableTutorMoves,func) found in local src_field_scrcmd_move_tutor.c.o
                                                      52](GetMoveTutorLearnsetIndex,func) found in local src_field_scrcmd_move_tutor.c.o
                                                      52](GetMoveTutorLearnset,func) found in local src_field_scrcmd_move_tutor.c.o
-                                                      53](@19236,object) found in local src_field_scrcmd_move_tutor.c.o
+                                                      53](@19237,object) found in local src_field_scrcmd_move_tutor.c.o
                                                      52](sTutorMoves,object) found in local src_field_scrcmd_move_tutor.c.o
                                                    50](ScrCmd_TutorMoveGetPrice,func) found in global src_field_scrcmd_move_tutor.c.o
                                                    50](ScrCmd_TutorMoveTeachInSlot,func) found in global src_field_scrcmd_move_tutor.c.o
@@ -15151,7 +15241,7 @@
                                                    50](ScrCmd_ScratchOffCardEnd,func) found in global src_scrcmd_c.c.o
                                                    50](ScrCmd_ScratchOffCard,func) found in global src_scrcmd_c.c.o
                                                     51](ScratchOffCards_LaunchApp,func) found in global src_launch_application.c.o
-                                                     52](sOverlayTemplate_ScratchOffCards$22778,object) found in local src_launch_application.c.o
+                                                     52](sOverlayTemplate_ScratchOffCards$22781,object) found in local src_launch_application.c.o
                                                       53](ScratchOffCards_Exit,func) found in global asm_overlay_87.s.o
                                                        54](.rodata,section) found in local asm_overlay_87.s.o
                                                        54](.data,section) found in local asm_overlay_87.s.o
@@ -15261,7 +15351,7 @@
                                                        54](.data,section) found in local asm_overlay_85.s.o
                                                       53](.text,section) found in local asm_unk_02097024.s.o
                                                      52](PokemonSummary_CreateArgs,func) found in global src_launch_application.c.o
-                                                      53](_020FA1B0$22121,object) found in local src_launch_application.c.o
+                                                      53](_020FA1B0$22124,object) found in local src_launch_application.c.o
                                                     51](sub_020429D4,func) found in local src_scrcmd_c.c.o
                                                    50](ScrCmd_628,func) found in global src_scrcmd_20.c.o
                                                    50](ScrCmd_627,func) found in global src_scrcmd_c.c.o
@@ -15578,6 +15668,7 @@
                                                         55](MapObject_SetFacingVector,func) found in global src_map_object.c.o
                                                         55](ov01_022043D8,func) found in global src_field_overlay_01_02204004.c.o
                                                         55](ov01_02204424,func) found in global src_field_overlay_01_02204004.c.o
+                                                        55](ov01_021EB1E8,func) found in global src_field_weather_manager.c.o
                                                         55](createPartymonMapObject,func) found in local src_field_take_photo.c.o
                                                          56](createSpecialMapObject,func) found in local src_field_take_photo.c.o
                                                         55](sPhotoMonCoordOffsets,object) found in local src_field_take_photo.c.o
@@ -16080,7 +16171,7 @@
                                                     51](sub_0203E864,func) found in global src_launch_application.c.o
                                                    50](ScrCmd_394,func) found in global src_scrcmd_move_relearner.c.o
                                                     51](LearnForgetMove_LaunchApp,func) found in global src_launch_application.c.o
-                                                     52](_020FA1A8$22132,object) found in local src_launch_application.c.o
+                                                     52](_020FA1A8$22135,object) found in local src_launch_application.c.o
                                                    50](ScrCmd_BufferRecordSize,func) found in global src_scrcmd_size_record.c.o
                                                     51](Save_VarsFlags_GetFishingCompetitionLengthRecord,func) found in global src_sys_vars.c.o
                                                     51](FormatSizeRecord,func) found in local src_scrcmd_size_record.c.o
@@ -16133,8 +16224,8 @@
                                                      52](DaycareMon_BufferLevelGrowthAndNick,func) found in local src_get_egg.c.o
                                                    50](ScrCmd_370,func) found in global src_scrcmd_c.c.o
                                                     51](Bag_LaunchApp_WithPocket,func) found in global src_launch_application.c.o
-                                                     52](sItemPocket$22016,object) found in local src_launch_application.c.o
-                                                     52](sBerryPocket$22015,object) found in local src_launch_application.c.o
+                                                     52](sItemPocket$22019,object) found in local src_launch_application.c.o
+                                                     52](sBerryPocket$22018,object) found in local src_launch_application.c.o
                                                    50](ScrCmd_EggHatchAnim,func) found in global src_scrcmd_c.c.o
                                                     51](HatchEggInParty,func) found in global src_launch_application.c.o
                                                      52](Party_GetMonToHatch,func) found in global src_get_egg.c.o
@@ -16268,13 +16359,13 @@
                                                     51](CianwoodGymmick_ActivateWinch,func) found in global src_field_gymmick_cianwood.c.o
                                                      52](CianwoodGymmick_LaunchWinchTask,func) found in local src_field_gymmick_cianwood.c.o
                                                       53](Task_CianwoodGymmick_LiftWinchCutscene,func) found in local src_field_gymmick_cianwood.c.o
-                                                       54](@16623,object) found in local src_field_gymmick_cianwood.c.o
+                                                       54](@16626,object) found in local src_field_gymmick_cianwood.c.o
                                                    50](ScrCmd_CianwoodGymInit,func) found in global src_scrcmd_c.c.o
                                                     51](InitCianwoodGym,func) found in global src_gymmick_init.c.o
                                                    50](ScrCmd_ExtinguishEcruteakGymCandle,func) found in global src_scrcmd_c.c.o
                                                     51](EcruteakGymmick_ExtinguishCandle,func) found in global src_field_gymmick_ecruteak.c.o
                                                      52](MortyGymTrainerObjectToCandleIdx,func) found in local src_field_gymmick_ecruteak.c.o
-                                                      53](sMortyGymTrainerObjectIds$16663,object) found in local src_field_gymmick_ecruteak.c.o
+                                                      53](sMortyGymTrainerObjectIds$16666,object) found in local src_field_gymmick_ecruteak.c.o
                                                      52](Task_ExtinguishCandle,func) found in local src_field_gymmick_ecruteak.c.o
                                                       53](MapProp_GetScale,func) found in global src_field_map_prop_manager.c.o
                                                    50](ScrCmd_UnbindEcruteakGymCandleFromTrainerSprite,func) found in global src_scrcmd_c.c.o
@@ -16501,7 +16592,7 @@
                                                     51](LaunchStarterChoiceScene,func) found in global src_choose_starter.c.o
                                                      52](CreateStarter,func) found in local src_choose_starter.c.o
                                                       53](ChooseStarter_LaunchApp,func) found in global src_launch_application.c.o
-                                                      53](@18113,object) found in local src_choose_starter.c.o
+                                                      53](@18116,object) found in local src_choose_starter.c.o
                                                    50](ScrCmd_166,func) found in global src_scrcmd_c.c.o
                                                     51](sub_02078B78,func) found in global asm_unk_02078834.s.o
                                                      52](sub_020398C8,func) found in global src_unk_02037C94.c.o
@@ -17746,7 +17837,7 @@
                    18](ov53_021E67C4,func) found in local src_oaks_speech.c.o
                  16](OakSpeech_InitMsgPrinter,func) found in local src_oaks_speech.c.o
                  16](OakSpeech_InitSpriteEngine,func) found in global src_oaks_speech_obj.c.o
-                  17](@18127,object) found in local src_oaks_speech_obj.c.o
+                  17](@18130,object) found in local src_oaks_speech_obj.c.o
                  16](OakSpeech_CreateSprites,func) found in global src_oaks_speech_obj.c.o
                  16](OakSpeechYesNo_Create,func) found in global src_oaks_speech_yesnomenu.c.o
                   17](OakSpeechYesNo_CreateWindows,func) found in local src_oaks_speech_yesnomenu.c.o
@@ -56740,58 +56831,58 @@
   020FA17C 00000000 .rodata .rodata	(src_location_backup.c.o)
   020FA17C 00000014 .rodata sLocation_PlayerRoom	(src_location_backup.c.o)
   020FA190 00000014 .rodata sLocation_OutsidePlayerHome	(src_location_backup.c.o)
-  020FA1A4 00000002 .rodata sItemPocket$22016	(src_launch_application.c.o)
-  020FA1A8 00000002 .rodata _020FA1A8$22132	(src_launch_application.c.o)
-  020FA1AC 00000002 .rodata sBerryPocket$22015	(src_launch_application.c.o)
-  020FA1B0 00000005 .rodata _020FA1B0$22121	(src_launch_application.c.o)
+  020FA1A4 00000002 .rodata sItemPocket$22019	(src_launch_application.c.o)
+  020FA1A8 00000002 .rodata _020FA1A8$22135	(src_launch_application.c.o)
+  020FA1AC 00000002 .rodata sBerryPocket$22018	(src_launch_application.c.o)
+  020FA1B0 00000005 .rodata _020FA1B0$22124	(src_launch_application.c.o)
   020FA1B8 00000009 .rodata sAllPockets	(src_launch_application.c.o)
   020FA1C4 00000000 .rodata .rodata	(src_launch_application.c.o)
-  020FA1C4 00000010 .rodata _020FA1C4$22799	(src_launch_application.c.o)
-  020FA1D4 00000010 .rodata _020FA1D4$22820	(src_launch_application.c.o)
-  020FA1E4 00000010 .rodata @22731	(src_launch_application.c.o)
-  020FA1F4 00000010 .rodata sOverlayTemplate_Credits$22724	(src_launch_application.c.o)
-  020FA204 00000010 .rodata sOverlayTemplate_HallOfFameShowcase$22714	(src_launch_application.c.o)
-  020FA214 00000010 .rodata sOverlayTemplate_RegisterHallOfFame$22709	(src_launch_application.c.o)
+  020FA1C4 00000010 .rodata _020FA1C4$22802	(src_launch_application.c.o)
+  020FA1D4 00000010 .rodata _020FA1D4$22823	(src_launch_application.c.o)
+  020FA1E4 00000010 .rodata @22734	(src_launch_application.c.o)
+  020FA1F4 00000010 .rodata sOverlayTemplate_Credits$22727	(src_launch_application.c.o)
+  020FA204 00000010 .rodata sOverlayTemplate_HallOfFameShowcase$22717	(src_launch_application.c.o)
+  020FA214 00000010 .rodata sOverlayTemplate_RegisterHallOfFame$22712	(src_launch_application.c.o)
   020FA224 00000010 .rodata sOverlayTemplate_GeonetGlobe	(src_launch_application.c.o)
-  020FA234 00000010 .rodata sOverlayTemplate_VoltorbFlip$22743	(src_launch_application.c.o)
-  020FA244 00000010 .rodata sOverlayTemplate_PokeathlonCourse$22807	(src_launch_application.c.o)
-  020FA254 00000010 .rodata sOverlayTemplate_TrainerCardSignature$22676	(src_launch_application.c.o)
-  020FA264 00000010 .rodata _020FA264$22683	(src_launch_application.c.o)
-  020FA274 00000010 .rodata sOverlayTemplate_ChooseStarter$22671	(src_launch_application.c.o)
-  020FA284 00000010 .rodata sOverlayTemplate_Pokedex$22665	(src_launch_application.c.o)
-  020FA294 00000010 .rodata sOverlayTemplate_TrainerCard$22659	(src_launch_application.c.o)
+  020FA234 00000010 .rodata sOverlayTemplate_VoltorbFlip$22746	(src_launch_application.c.o)
+  020FA244 00000010 .rodata sOverlayTemplate_PokeathlonCourse$22810	(src_launch_application.c.o)
+  020FA254 00000010 .rodata sOverlayTemplate_TrainerCardSignature$22679	(src_launch_application.c.o)
+  020FA264 00000010 .rodata _020FA264$22686	(src_launch_application.c.o)
+  020FA274 00000010 .rodata sOverlayTemplate_ChooseStarter$22674	(src_launch_application.c.o)
+  020FA284 00000010 .rodata sOverlayTemplate_Pokedex$22668	(src_launch_application.c.o)
+  020FA294 00000010 .rodata sOverlayTemplate_TrainerCard$22662	(src_launch_application.c.o)
   020FA2A4 00000010 .rodata sOverlayTemplate_PalPad	(src_launch_application.c.o)
   020FA2B4 00000010 .rodata _020FA2B4	(src_launch_application.c.o)
   020FA2C4 00000010 .rodata _020FA2C4	(src_launch_application.c.o)
   020FA2D4 00000010 .rodata sOverlayTemplate_TradeSequence	(src_launch_application.c.o)
-  020FA2E4 00000010 .rodata _020FA2E4$22446	(src_launch_application.c.o)
-  020FA2F4 00000010 .rodata _020FA2F4$22439	(src_launch_application.c.o)
-  020FA304 00000010 .rodata sOverlayTemplate_Certificates$22752	(src_launch_application.c.o)
-  020FA314 00000010 .rodata sOverlayTemplate_PokeathlonMedals$22366	(src_launch_application.c.o)
-  020FA324 00000010 .rodata sOverlayTemplate_PokeathlonEventRecord$22380	(src_launch_application.c.o)
-  020FA334 00000010 .rodata sOverlayTemplate_NintendoWifiConnect$22692	(src_launch_application.c.o)
-  020FA344 00000010 .rodata sOverlayTemplate_PokeathlonCourseRecord$22353	(src_launch_application.c.o)
-  020FA354 00000010 .rodata sOverlayTemplate_OptionsMenu$22338	(src_launch_application.c.o)
-  020FA364 00000010 .rodata sOverlayTemplate_BugContestSwapMon$22324	(src_launch_application.c.o)
-  020FA374 00000010 .rodata sOverlayTemplate_ApricornBox$22300	(src_launch_application.c.o)
-  020FA384 00000010 .rodata sOverlayTemplate_BerryPots$22288	(src_launch_application.c.o)
-  020FA394 00000010 .rodata gOverlayTemplate_UnownReport$22276	(src_launch_application.c.o)
-  020FA3A4 00000010 .rodata sOverlayTemplate_AlphPuzzle$22263	(src_launch_application.c.o)
-  020FA3B4 00000010 .rodata sOverlayTemplate_PhotoAlbum$22249	(src_launch_application.c.o)
-  020FA3C4 00000010 .rodata sOverlayTemplate_SafariDecoration$22237	(src_launch_application.c.o)
-  020FA3D4 00000010 .rodata sOverlayTemplate_SafariAreaCustomizer$22225	(src_launch_application.c.o)
-  020FA3E4 00000010 .rodata sOverlayTemplate_TownMap$22207	(src_launch_application.c.o)
-  020FA3F4 00000010 .rodata sOverlayTemplate_Pokegear$22200	(src_launch_application.c.o)
-  020FA404 00000010 .rodata sOverlayTemplate_EasyChat$22194	(src_launch_application.c.o)
-  020FA414 00000010 .rodata sOverlayTemplate_PCBox$22143	(src_launch_application.c.o)
-  020FA424 00000010 .rodata sOverlayTemplate_PokeathlonUnkApp$22393	(src_launch_application.c.o)
-  020FA434 00000010 .rodata _020FA434$22406	(src_launch_application.c.o)
-  020FA444 00000010 .rodata _020FA444$22699	(src_launch_application.c.o)
-  020FA454 00000010 .rodata _020FA454$22813	(src_launch_application.c.o)
-  020FA464 00000010 .rodata sOverlayTemplate_Bag$22000	(src_launch_application.c.o)
-  020FA474 00000010 .rodata sOverlayTemplate_LegendaryCinematic$22830	(src_launch_application.c.o)
+  020FA2E4 00000010 .rodata _020FA2E4$22449	(src_launch_application.c.o)
+  020FA2F4 00000010 .rodata _020FA2F4$22442	(src_launch_application.c.o)
+  020FA304 00000010 .rodata sOverlayTemplate_Certificates$22755	(src_launch_application.c.o)
+  020FA314 00000010 .rodata sOverlayTemplate_PokeathlonMedals$22369	(src_launch_application.c.o)
+  020FA324 00000010 .rodata sOverlayTemplate_PokeathlonEventRecord$22383	(src_launch_application.c.o)
+  020FA334 00000010 .rodata sOverlayTemplate_NintendoWifiConnect$22695	(src_launch_application.c.o)
+  020FA344 00000010 .rodata sOverlayTemplate_PokeathlonCourseRecord$22356	(src_launch_application.c.o)
+  020FA354 00000010 .rodata sOverlayTemplate_OptionsMenu$22341	(src_launch_application.c.o)
+  020FA364 00000010 .rodata sOverlayTemplate_BugContestSwapMon$22327	(src_launch_application.c.o)
+  020FA374 00000010 .rodata sOverlayTemplate_ApricornBox$22303	(src_launch_application.c.o)
+  020FA384 00000010 .rodata sOverlayTemplate_BerryPots$22291	(src_launch_application.c.o)
+  020FA394 00000010 .rodata gOverlayTemplate_UnownReport$22279	(src_launch_application.c.o)
+  020FA3A4 00000010 .rodata sOverlayTemplate_AlphPuzzle$22266	(src_launch_application.c.o)
+  020FA3B4 00000010 .rodata sOverlayTemplate_PhotoAlbum$22252	(src_launch_application.c.o)
+  020FA3C4 00000010 .rodata sOverlayTemplate_SafariDecoration$22240	(src_launch_application.c.o)
+  020FA3D4 00000010 .rodata sOverlayTemplate_SafariAreaCustomizer$22228	(src_launch_application.c.o)
+  020FA3E4 00000010 .rodata sOverlayTemplate_TownMap$22210	(src_launch_application.c.o)
+  020FA3F4 00000010 .rodata sOverlayTemplate_Pokegear$22203	(src_launch_application.c.o)
+  020FA404 00000010 .rodata sOverlayTemplate_EasyChat$22197	(src_launch_application.c.o)
+  020FA414 00000010 .rodata sOverlayTemplate_PCBox$22146	(src_launch_application.c.o)
+  020FA424 00000010 .rodata sOverlayTemplate_PokeathlonUnkApp$22396	(src_launch_application.c.o)
+  020FA434 00000010 .rodata _020FA434$22409	(src_launch_application.c.o)
+  020FA444 00000010 .rodata _020FA444$22702	(src_launch_application.c.o)
+  020FA454 00000010 .rodata _020FA454$22816	(src_launch_application.c.o)
+  020FA464 00000010 .rodata sOverlayTemplate_Bag$22003	(src_launch_application.c.o)
+  020FA474 00000010 .rodata sOverlayTemplate_LegendaryCinematic$22833	(src_launch_application.c.o)
   020FA484 00000010 .rodata gOverlayTemplate_Battle	(src_launch_application.c.o)
-  020FA494 00000010 .rodata sViewRankingsAppTemplate$22837	(src_launch_application.c.o)
+  020FA494 00000010 .rodata sViewRankingsAppTemplate$22840	(src_launch_application.c.o)
   020FA4A4 00000000 .rodata .rodata	(src_script_manager.c.o)
   020FA4A4 000000B4 .rodata sScriptBankMapping	(src_script_manager.c.o)
   020FA558 00000738 .rodata sHiddenItemParam	(src_script_manager.c.o)
@@ -56799,9 +56890,9 @@
   020FAC94 00000000 .rodata .rodata	(src_scrcmd_c.c.o)
   020FAC94 00000008 .rodata _020FAC94	(src_scrcmd_c.c.o)
   020FAC9C 00000012 .rodata sConditionTable	(src_scrcmd_c.c.o)
-  020FACB0 00000014 .rodata _020FACB0$27678	(src_scrcmd_c.c.o)
-  020FACC4 00000018 .rodata @26480	(src_scrcmd_c.c.o)
-  020FACDC 00000024 .rodata @27300	(src_scrcmd_c.c.o)
+  020FACB0 00000014 .rodata _020FACB0$27679	(src_scrcmd_c.c.o)
+  020FACC4 00000018 .rodata @26481	(src_scrcmd_c.c.o)
+  020FACDC 00000024 .rodata @27301	(src_scrcmd_c.c.o)
   020FAD00 00000D54 .rodata gScriptCmdTable	(src_scrcmd_c.c.o)
   020FBA54 00000000 .rodata .rodata	(src_scrcmd_mart.c.o)
   020FBA54 00000006 .rodata _020FBA54	(src_scrcmd_mart.c.o)
@@ -57118,18 +57209,18 @@
   0210125C 00000054 .rodata .rodata	(asm_unk_02078834.s.o)
   021012B0 00000000 .rodata .rodata	(src_party_menu.c.o)
   021012B0 0000000C .rodata _021012B0	(src_party_menu.c.o)
-  021012BC 00000010 .rodata @17833	(src_party_menu.c.o)
+  021012BC 00000010 .rodata @17836	(src_party_menu.c.o)
   021012CC 00000018 .rodata _021012CC	(src_party_menu.c.o)
-  021012E4 0000001C .rodata @17841	(src_party_menu.c.o)
-  02101300 0000001C .rodata @17847	(src_party_menu.c.o)
-  0210131C 0000001C .rodata @17839	(src_party_menu.c.o)
-  02101338 0000001C .rodata @17843	(src_party_menu.c.o)
-  02101354 0000001C .rodata @17835	(src_party_menu.c.o)
-  02101370 0000001C .rodata @17827	(src_party_menu.c.o)
-  0210138C 0000001C .rodata @17845	(src_party_menu.c.o)
-  021013A8 0000001C .rodata @17837	(src_party_menu.c.o)
+  021012E4 0000001C .rodata @17844	(src_party_menu.c.o)
+  02101300 0000001C .rodata @17850	(src_party_menu.c.o)
+  0210131C 0000001C .rodata @17842	(src_party_menu.c.o)
+  02101338 0000001C .rodata @17846	(src_party_menu.c.o)
+  02101354 0000001C .rodata @17838	(src_party_menu.c.o)
+  02101370 0000001C .rodata @17830	(src_party_menu.c.o)
+  0210138C 0000001C .rodata @17848	(src_party_menu.c.o)
+  021013A8 0000001C .rodata @17840	(src_party_menu.c.o)
   021013C4 00000020 .rodata sFieldMoves	(src_party_menu.c.o)
-  021013E4 00000028 .rodata @17821	(src_party_menu.c.o)
+  021013E4 00000028 .rodata @17824	(src_party_menu.c.o)
   0210140C 00000040 .rodata _0210140C	(src_party_menu.c.o)
   0210144C 00000040 .rodata _0210144C	(src_party_menu.c.o)
   0210148C 00000040 .rodata _0210148C	(src_party_menu.c.o)
@@ -57145,9 +57236,9 @@
   021016B4 00000080 .rodata sButtonWindowIDs	(src_party_context_menu.c.o)
   02101734 00000180 .rodata sMainWindowTemplates	(src_party_context_menu.c.o)
   021018B4 00000000 .rodata .rodata	(src_party_menu_sprites.c.o)
-  021018B4 0000000E .rodata @17030	(src_party_menu_sprites.c.o)
-  021018C4 00000014 .rodata @17028	(src_party_menu_sprites.c.o)
-  021018D8 00000020 .rodata @17026	(src_party_menu_sprites.c.o)
+  021018B4 0000000E .rodata @17033	(src_party_menu_sprites.c.o)
+  021018C4 00000014 .rodata @17031	(src_party_menu_sprites.c.o)
+  021018D8 00000020 .rodata @17029	(src_party_menu_sprites.c.o)
   021018F8 000003C0 .rodata sSpriteTemplates	(src_party_menu_sprites.c.o)
   02101CB8 00000000 .rodata .rodata	(src_party_menu_list_items.c.o)
   02101CB8 00000084 .rodata _02101CB8	(src_party_menu_list_items.c.o)
@@ -57157,22 +57248,22 @@
   02101D4C 00000007 .rodata sHomeRowCursorAnimIDs	(src_naming_screen.c.o)
   02101D54 0000000C .rodata sSpriteGfxOffsets	(src_naming_screen.c.o)
   02101D54 00000000 .rodata .rodata	(src_naming_screen.c.o)
-  02101D60 00000010 .rodata @18767	(src_naming_screen.c.o)
-  02101D70 00000010 .rodata @18842	(src_naming_screen.c.o)
+  02101D60 00000010 .rodata @18770	(src_naming_screen.c.o)
+  02101D70 00000010 .rodata @18845	(src_naming_screen.c.o)
   02101D80 00000010 .rodata sHomeRowCursorXCoords	(src_naming_screen.c.o)
   02101D90 00000016 .rodata sPrompt_YourName	(src_naming_screen.c.o)
   02101DA6 00000018 .rodata sPrompt_BoxName	(src_naming_screen.c.o)
   02101DBE 0000001A .rodata sKeyboardHomeRow_All	(src_naming_screen.c.o)
   02101DD8 0000001A .rodata sKeyboardHomeRow_Numpad	(src_naming_screen.c.o)
   02101DF2 0000001C .rodata sKeyboardRow_JPMisc_2	(src_naming_screen.c.o)
-  02101E10 0000001C .rodata @18775	(src_naming_screen.c.o)
+  02101E10 0000001C .rodata @18778	(src_naming_screen.c.o)
   02101E2C 0000001C .rodata sKeyboardRow_Upper_4	(src_naming_screen.c.o)
   02101E48 0000001C .rodata sKeyboardRow_JPMisc_5	(src_naming_screen.c.o)
   02101E64 0000001C .rodata sKeyboardRow_Upper_5	(src_naming_screen.c.o)
   02101E80 0000001C .rodata sKeyboardRow_Upper_1	(src_naming_screen.c.o)
   02101E9C 0000001C .rodata sKeyboardRow_Upper_2	(src_naming_screen.c.o)
   02101EB8 0000001C .rodata sKeyboardRow_Upper_3	(src_naming_screen.c.o)
-  02101ED4 0000001C .rodata @18769	(src_naming_screen.c.o)
+  02101ED4 0000001C .rodata @18772	(src_naming_screen.c.o)
   02101EF0 0000001C .rodata sKeyboardRow_Lower_1	(src_naming_screen.c.o)
   02101F0C 0000001C .rodata sKeyboardRow_Lower_2	(src_naming_screen.c.o)
   02101F28 0000001C .rodata sKeyboardRow_JPMisc_4	(src_naming_screen.c.o)
@@ -57180,20 +57271,20 @@
   02101F60 0000001C .rodata sKeyboardRow_Lower_4	(src_naming_screen.c.o)
   02101F7C 0000001C .rodata sKeyboardRow_JPMisc_1	(src_naming_screen.c.o)
   02101F98 0000001C .rodata sKeyboardRow_Symbols_1	(src_naming_screen.c.o)
-  02101FB4 0000001C .rodata @18771	(src_naming_screen.c.o)
+  02101FB4 0000001C .rodata @18774	(src_naming_screen.c.o)
   02101FD0 0000001C .rodata sKeyboardRow_Symbols_2	(src_naming_screen.c.o)
   02101FEC 0000001C .rodata sKeyboardRow_Symbols_3	(src_naming_screen.c.o)
   02102008 0000001C .rodata sKeyboardRow_Symbols_4	(src_naming_screen.c.o)
   02102024 0000001C .rodata sKeyboardRow_Lower_5	(src_naming_screen.c.o)
   02102040 0000001C .rodata sKeyboardRow_Symbols_5	(src_naming_screen.c.o)
   0210205C 0000001C .rodata sKeyboardRow_Lower_3	(src_naming_screen.c.o)
-  02102078 0000001C .rodata @18773	(src_naming_screen.c.o)
+  02102078 0000001C .rodata @18776	(src_naming_screen.c.o)
   02102094 0000001E .rodata sPrompt_PokemonsNickname	(src_naming_screen.c.o)
   021020B4 00000020 .rodata _021020B4	(src_naming_screen.c.o)
   021020D4 00000024 .rodata sKeyboardRow_Numpad_1	(src_naming_screen.c.o)
   021020F8 00000024 .rodata sKeyboardRow_Numpad_2	(src_naming_screen.c.o)
   0210211C 00000024 .rodata sKeyboardRow_Numpad_345	(src_naming_screen.c.o)
-  02102140 00000028 .rodata @18761	(src_naming_screen.c.o)
+  02102140 00000028 .rodata @18764	(src_naming_screen.c.o)
   02102168 00000028 .rodata sDpadMovementCoordDeltas	(src_naming_screen.c.o)
   02102190 00000028 .rodata sHandakutenTable	(src_naming_screen.c.o)
   021021B8 00000030 .rodata sDakutenTable	(src_naming_screen.c.o)
@@ -57291,7 +57382,7 @@
   0210847C 00000000 .rodata .rodata	(src_phonebook_dat.c.o)
   0210847C 00000096 .rodata sPhoneMessageGmm	(src_phonebook_dat.c.o)
   02108514 00000000 .rodata .rodata	(src_choose_starter.c.o)
-  02108514 0000000C .rodata @18113	(src_choose_starter.c.o)
+  02108514 0000000C .rodata @18116	(src_choose_starter.c.o)
   02108520 00000000 .rodata .rodata	(src_error_message_reset.c.o)
   02108520 00000008 .rodata sErrorMessageWindowTemplate	(src_error_message_reset.c.o)
   02108528 00000008 .rodata sErrorMessageHeapParams	(src_error_message_reset.c.o)
@@ -57303,7 +57394,7 @@
   02108594 00000270 .rodata .rodata	(asm_unk_02096910.s.o)
   02108804 0000069C .rodata .rodata	(asm_unk_02096C88.s.o)
   02108EA0 00000038 .rodata .rodata	(asm_unk_02097024.s.o)
-  02108ED8 00000002 .rodata ffff$17029	(src_unk_02097268.c.o)
+  02108ED8 00000002 .rodata ffff$17030	(src_unk_02097268.c.o)
   02108ED8 00000000 .rodata .rodata	(src_unk_02097268.c.o)
   02108EDA 00000014 .rodata sObjectLevelBoosts	(src_unk_02097268.c.o)
   02108EEE 00000048 .rodata sObjects	(src_unk_02097268.c.o)
@@ -57734,12 +57825,12 @@
   0210F914 00000006 .data   _0210F914	(src_unk_02037C94.c.o)
   0210F91C 0000005C .data   .data	(asm_unk_0203A3B0.s.o)
   0210F978 00000000 .data   .data	(src_launch_application.c.o)
-  0210F978 00000004 .data   sPockets$22017	(src_launch_application.c.o)
-  0210F97C 00000010 .data   sOverlayTemplate_ScratchOffCards$22778	(src_launch_application.c.o)
+  0210F978 00000004 .data   sPockets$22020	(src_launch_application.c.o)
+  0210F97C 00000010 .data   sOverlayTemplate_ScratchOffCards$22781	(src_launch_application.c.o)
   0210F98C 00000010 .data   sOverlayTemplate_WirelessTradeSelectMon	(src_launch_application.c.o)
-  0210F99C 00000010 .data   sOverlayTemplate_AccessoryPortrait$22497	(src_launch_application.c.o)
-  0210F9AC 00000010 .data   _0210F9AC$22491	(src_launch_application.c.o)
-  0210F9BC 00000010 .data   _0210F9BC$22762	(src_launch_application.c.o)
+  0210F99C 00000010 .data   sOverlayTemplate_AccessoryPortrait$22500	(src_launch_application.c.o)
+  0210F9AC 00000010 .data   _0210F9AC$22494	(src_launch_application.c.o)
+  0210F9BC 00000010 .data   _0210F9BC$22765	(src_launch_application.c.o)
   0210F9CC 00000008 .data   _0210F9CC	(src_scrcmd_mart.c.o)
   0210F9CC 00000000 .data   .data	(src_scrcmd_mart.c.o)
   0210F9D4 00000014 .data   _0210F9D4	(src_scrcmd_mart.c.o)
@@ -58128,9 +58219,9 @@
   021D4158 00000004 .bss    sFieldSysPtr	(src_field_system.c.o)
   021D415C 00000000 .bss    .bss	(src_scrcmd_c.c.o)
   021D415C 00000001 .bss    _021D415C	(src_scrcmd_c.c.o)
-  021D4160 00000004 .bss    sHeap4Size$26951	(src_scrcmd_c.c.o)
-  021D4164 00000004 .bss    sHeap11Size$26953	(src_scrcmd_c.c.o)
-  021D4168 00000004 .bss    sHeap32Size$26952	(src_scrcmd_c.c.o)
+  021D4160 00000004 .bss    sHeap4Size$26952	(src_scrcmd_c.c.o)
+  021D4164 00000004 .bss    sHeap11Size$26954	(src_scrcmd_c.c.o)
+  021D4168 00000004 .bss    sHeap32Size$26953	(src_scrcmd_c.c.o)
   021D416C 00000000 .bss    .bss	(src_scrcmd_lottery.c.o)
   021D416C 00000002 .bss    sLotoId	(src_scrcmd_lottery.c.o)
   021D416E 00000002 .bss    sOtId	(src_scrcmd_lottery.c.o)
@@ -58141,7 +58232,7 @@
   021D41C8 00000004 .bss    .bss	(asm_unk_02058034.s.o)
   021D41CC 0000004C .bss    .bss	(asm_unk_02058AEC.s.o)
   021D4218 00000000 .bss    .bss	(src_get_egg.c.o)
-  021D4218 00000004 .bss    _021D4218$17252	(src_get_egg.c.o)
+  021D4218 00000004 .bss    _021D4218$17255	(src_get_egg.c.o)
   021D421C 00000000 .bss    .bss	(src_pokemon.c.o)
   021D421C 00000194 .bss    table$16996	(src_pokemon.c.o)
   021D43B0 00000000 .bss    .bss	(src_naming_screen.c.o)
@@ -63740,25 +63831,25 @@
   021EA81A 00000000 .text   $d	(asm_overlay_01_021EA6C4.s.o)
   021EA81C 00000000 .text   $t	(asm_overlay_01_021EA6C4.s.o)
   021EA81C 00000008 .text   ov01_021EA81C	(asm_overlay_01_021EA6C4.s.o)
-  021EA824 0000001A .text   Fog_New	(src_overlay_01_021EA824.c.o)
-  021EA824 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA840 00000012 .text   Fog_Free	(src_overlay_01_021EA824.c.o)
-  021EA840 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA854 00000004 .text   ov01_021EA854	(src_overlay_01_021EA824.c.o)
-  021EA854 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA858 00000004 .text   ov01_021EA858	(src_overlay_01_021EA824.c.o)
-  021EA858 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA85C 00000004 .text   ov01_021EA85C	(src_overlay_01_021EA824.c.o)
-  021EA85C 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA860 00000004 .text   ov01_021EA860	(src_overlay_01_021EA824.c.o)
-  021EA860 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA864 00000036 .text   ov01_021EA864	(src_overlay_01_021EA824.c.o)
-  021EA864 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA89C 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
-  021EA89C 00000028 .text   ov01_021EA89C	(src_overlay_01_021EA824.c.o)
-  021EA8C0 00000000 .text   $d	(src_overlay_01_021EA824.c.o)
-  021EA8C4 0000001A .text   ov01_021EA8C4	(src_overlay_01_021EA824.c.o)
-  021EA8C4 00000000 .text   $t	(src_overlay_01_021EA824.c.o)
+  021EA824 0000001A .text   Fog_New	(src_field_fog.c.o)
+  021EA824 00000000 .text   $t	(src_field_fog.c.o)
+  021EA840 00000012 .text   Fog_Free	(src_field_fog.c.o)
+  021EA840 00000000 .text   $t	(src_field_fog.c.o)
+  021EA854 00000004 .text   Fog_CheckActive	(src_field_fog.c.o)
+  021EA854 00000000 .text   $t	(src_field_fog.c.o)
+  021EA858 00000004 .text   Fog_GetSlope	(src_field_fog.c.o)
+  021EA858 00000000 .text   $t	(src_field_fog.c.o)
+  021EA85C 00000004 .text   Fog_GetOffset	(src_field_fog.c.o)
+  021EA85C 00000000 .text   $t	(src_field_fog.c.o)
+  021EA860 00000004 .text   Fog_GetColorRGB	(src_field_fog.c.o)
+  021EA860 00000000 .text   $t	(src_field_fog.c.o)
+  021EA864 00000036 .text   Fog_Set	(src_field_fog.c.o)
+  021EA864 00000000 .text   $t	(src_field_fog.c.o)
+  021EA89C 00000000 .text   $t	(src_field_fog.c.o)
+  021EA89C 00000028 .text   Fog_SetColor	(src_field_fog.c.o)
+  021EA8C0 00000000 .text   $d	(src_field_fog.c.o)
+  021EA8C4 0000001A .text   Fog_SetFogTable	(src_field_fog.c.o)
+  021EA8C4 00000000 .text   $t	(src_field_fog.c.o)
   021EA8E0 000002C8 .text   .text	(asm_model_attributes.s.o)
   021EA8E0 00000000 .text   $t	(asm_model_attributes.s.o)
   021EA8E0 0000001C .text   ModelAttributes_Init	(asm_model_attributes.s.o)
@@ -63947,682 +64038,235 @@
   021EB1DC 0000000C .text   FieldTextureManager_Destroy	(asm_overlay_01_021EAFD4.s.o)
   021EB1DC 00000000 .text   $t	(asm_overlay_01_021EAFD4.s.o)
   021EB1E2 00000000 .text   $b	(asm_overlay_01_021EAFD4.s.o)
-  021EB1E8 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB1E8 00002914 .text   .text	(asm_overlay_01_021EB1E8.s.o)
-  021EB1E8 0000000C .text   ov01_021EB1E8	(asm_overlay_01_021EB1E8.s.o)
-  021EB1F2 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB1F4 00000040 .text   WeatherManager_New	(asm_overlay_01_021EB1E8.s.o)
-  021EB1F4 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB1FC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB212 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB22C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB234 0000002C .text   WeatherManager_Delete	(asm_overlay_01_021EB1E8.s.o)
-  021EB23E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB244 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB258 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB25E 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB260 00000058 .text   WeatherManager_SetWeather	(asm_overlay_01_021EB1E8.s.o)
-  021EB260 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB26C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB274 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB282 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB28A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB294 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB29C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB2A6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB2AE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB2B6 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB2B8 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB2B8 00000064 .text   WeatherManager_ChangeWeather	(asm_overlay_01_021EB1E8.s.o)
-  021EB2C2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB2E2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB2EC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB2FC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB30A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB314 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB31C 00000004 .text   ov01_021EB31C	(asm_overlay_01_021EB1E8.s.o)
-  021EB31C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB320 000000D0 .text   ov01_021EB320	(asm_overlay_01_021EB1E8.s.o)
-  021EB336 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB342 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB348 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB350 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB360 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB36E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB376 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB388 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB390 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB3A0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB3B6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB3BE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB3DA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB3E6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB3F0 000000C4 .text   ov01_021EB3F0	(asm_overlay_01_021EB1E8.s.o)
-  021EB406 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB410 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB416 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB41E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB42E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB444 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB44C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB456 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB45E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB46E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB47C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB484 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB49E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB4AA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB4B4 00000004 .text   ov01_021EB4B4	(asm_overlay_01_021EB1E8.s.o)
-  021EB4B8 000000B4 .text   ov01_021EB4B8	(asm_overlay_01_021EB1E8.s.o)
-  021EB4C2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB4E4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB4F4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB500 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB50A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB514 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB51E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB528 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB532 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB546 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB556 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB564 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB56C 0000000C .text   ov01_021EB56C	(asm_overlay_01_021EB1E8.s.o)
-  021EB56C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB574 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB578 0000002C .text   ov01_021EB578	(asm_overlay_01_021EB1E8.s.o)
-  021EB578 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB57C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB58E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB598 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB59E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5A4 00000050 .text   ov01_021EB5A4	(asm_overlay_01_021EB1E8.s.o)
-  021EB5B0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5B4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5BA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5C8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5D6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5E8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB5F4 00000058 .text   ov01_021EB5F4	(asm_overlay_01_021EB1E8.s.o)
-  021EB602 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB63C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB644 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB64C 00000040 .text   ov01_021EB64C	(asm_overlay_01_021EB1E8.s.o)
-  021EB64C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB656 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB666 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB676 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB684 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB68C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB68C 00000074 .text   ov01_021EB68C	(asm_overlay_01_021EB1E8.s.o)
-  021EB69E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB6BC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB6D2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB6DA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB6E6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB6EE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB6FC 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB700 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB700 00000104 .text   ov01_021EB700	(asm_overlay_01_021EB1E8.s.o)
-  021EB720 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB736 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB738 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB742 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB750 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB75E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB76E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB77E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB78E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB79A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB7A2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB7AC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB7B4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB7D4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB7F6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB800 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB804 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB804 00000014 .text   ov01_021EB804	(asm_overlay_01_021EB1E8.s.o)
-  021EB818 00000018 .text   ov01_021EB818	(asm_overlay_01_021EB1E8.s.o)
-  021EB824 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB82C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB830 00000010 .text   ov01_021EB830	(asm_overlay_01_021EB1E8.s.o)
-  021EB830 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB840 0000002C .text   ov01_021EB840	(asm_overlay_01_021EB1E8.s.o)
-  021EB84C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB86C 0000002C .text   ov01_021EB86C	(asm_overlay_01_021EB1E8.s.o)
-  021EB874 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB87E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB888 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB892 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB898 000000D0 .text   ov01_021EB898	(asm_overlay_01_021EB1E8.s.o)
-  021EB8A4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB8AC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB8B6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB8C0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB8CA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB8D4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB8E8 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB8F0 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB906 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB928 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB942 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB95C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB968 00000040 .text   ov01_021EB968	(asm_overlay_01_021EB1E8.s.o)
-  021EB97A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB984 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB992 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB9A4 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EB9A8 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EB9A8 00000060 .text   ov01_021EB9A8	(asm_overlay_01_021EB1E8.s.o)
-  021EB9BC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB9CC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB9D6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB9F0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EB9F8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBA04 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBA08 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBA08 0000003C .text   ov01_021EBA08	(asm_overlay_01_021EB1E8.s.o)
-  021EBA1E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBA30 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBA40 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBA44 000000FC .text   ov01_021EBA44	(asm_overlay_01_021EB1E8.s.o)
-  021EBA44 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBA7C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBAE0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBAF2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBB0A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBB2C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBB40 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBB40 00000028 .text   ov01_021EBB40	(asm_overlay_01_021EB1E8.s.o)
-  021EBB64 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBB68 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBB68 00000028 .text   ov01_021EBB68	(asm_overlay_01_021EB1E8.s.o)
-  021EBB72 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBB8C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBB90 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBB90 00000114 .text   ov01_021EBB90	(asm_overlay_01_021EB1E8.s.o)
-  021EBBAA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBBD8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBBE0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBBEE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBBFE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC0C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC1A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC2A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC42 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC52 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC60 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC68 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC82 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBC8C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBCA4 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBCA4 00000074 .text   ov01_021EBCA4	(asm_overlay_01_021EB1E8.s.o)
-  021EBCB4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBCE0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBCEE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBCFE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD08 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBD18 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBD18 0000001C .text   ov01_021EBD18	(asm_overlay_01_021EB1E8.s.o)
-  021EBD1E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD26 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD2E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD34 0000003C .text   ov01_021EBD34	(asm_overlay_01_021EB1E8.s.o)
-  021EBD4A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD5C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD64 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBD6C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBD70 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBD70 000000DC .text   ov01_021EBD70	(asm_overlay_01_021EB1E8.s.o)
-  021EBD8C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBD9E 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBDA0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBDA8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBDB8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBDC6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBDD6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBDE4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBDF4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE02 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE12 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE1E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE32 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE42 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE48 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBE4C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBE4C 0000006C .text   ov01_021EBE4C	(asm_overlay_01_021EB1E8.s.o)
-  021EBE62 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBE76 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBEB4 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBEB8 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBEB8 00000038 .text   ov01_021EBEB8	(asm_overlay_01_021EB1E8.s.o)
-  021EBED2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBEE4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBEEC 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBEF0 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBEF0 00000034 .text   ov01_021EBEF0	(asm_overlay_01_021EB1E8.s.o)
-  021EBF14 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBF20 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBF24 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBF24 00000034 .text   ov01_021EBF24	(asm_overlay_01_021EB1E8.s.o)
-  021EBF48 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBF54 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBF58 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBF58 0000003C .text   ov01_021EBF58	(asm_overlay_01_021EB1E8.s.o)
-  021EBF7C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBF82 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBF88 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBF90 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBF94 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBF94 0000003C .text   ov01_021EBF94	(asm_overlay_01_021EB1E8.s.o)
-  021EBFB6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBFBC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBFC2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBFCC 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EBFD0 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EBFD0 00000058 .text   ov01_021EBFD0	(asm_overlay_01_021EB1E8.s.o)
-  021EBFEC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EBFF8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC024 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC028 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC028 00000030 .text   ov01_021EC028	(asm_overlay_01_021EB1E8.s.o)
-  021EC036 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC03E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC048 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC056 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC058 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC058 00000020 .text   ov01_021EC058	(asm_overlay_01_021EB1E8.s.o)
-  021EC066 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC076 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC078 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC078 00000048 .text   ov01_021EC078	(asm_overlay_01_021EB1E8.s.o)
-  021EC094 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC09C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC0AA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC0B0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC0BC 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC0C0 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC0C0 00000054 .text   ov01_021EC0C0	(asm_overlay_01_021EB1E8.s.o)
-  021EC0DE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC0E6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC0FE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC104 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC110 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC114 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC114 000000A8 .text   ov01_021EC114	(asm_overlay_01_021EB1E8.s.o)
-  021EC126 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC13C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC146 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC14E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC168 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC17E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC198 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC1A6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC1AC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC1B8 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC1BC 00000028 .text   ov01_021EC1BC	(asm_overlay_01_021EB1E8.s.o)
-  021EC1BC 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC1C8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC1D0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC1D8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC1E4 00000010 .text   ov01_021EC1E4	(asm_overlay_01_021EB1E8.s.o)
-  021EC1F0 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC1F4 0000004C .text   ov01_021EC1F4	(asm_overlay_01_021EB1E8.s.o)
-  021EC1F4 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC1FC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC21C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC230 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC238 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC240 0000005C .text   ov01_021EC240	(asm_overlay_01_021EB1E8.s.o)
-  021EC252 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC292 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC29A 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC29C 00000030 .text   ov01_021EC29C	(asm_overlay_01_021EB1E8.s.o)
-  021EC29C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC2B0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC2B6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC2C2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC2CA 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC2CC 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC2CC 00000018 .text   ov01_021EC2CC	(asm_overlay_01_021EB1E8.s.o)
-  021EC2D8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC2E4 0000001C .text   ov01_021EC2E4	(asm_overlay_01_021EB1E8.s.o)
-  021EC2FE 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC300 00000004 .text   ov01_021EC300	(asm_overlay_01_021EB1E8.s.o)
-  021EC300 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC302 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC304 00000018 .text   ov01_021EC304	(asm_overlay_01_021EB1E8.s.o)
-  021EC304 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC30A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC31A 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC31C 00000154 .text   ov01_021EC31C	(asm_overlay_01_021EB1E8.s.o)
-  021EC31C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC34A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC35A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC36A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC37A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC384 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC392 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC39C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC3B4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC3CC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC3DC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC402 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC41A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC42A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC45C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC470 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC470 00000038 .text   ov01_021EC470	(asm_overlay_01_021EB1E8.s.o)
-  021EC47C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC4A8 0000005C .text   ov01_021EC4A8	(asm_overlay_01_021EB1E8.s.o)
-  021EC4B8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC4CA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC4E2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC502 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC504 00000028 .text   ov01_021EC504	(asm_overlay_01_021EB1E8.s.o)
-  021EC504 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC52A 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC52C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC52C 0000000C .text   ov01_021EC52C	(asm_overlay_01_021EB1E8.s.o)
-  021EC538 000000C4 .text   ov01_021EC538	(asm_overlay_01_021EB1E8.s.o)
-  021EC5FC 00000054 .text   ov01_021EC5FC	(asm_overlay_01_021EB1E8.s.o)
-  021EC618 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC61E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC628 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC648 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC650 00000028 .text   ov01_021EC650	(asm_overlay_01_021EB1E8.s.o)
-  021EC65E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC66A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC678 0000002C .text   ov01_021EC678	(asm_overlay_01_021EB1E8.s.o)
-  021EC68C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC69A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC6A2 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC6A4 00000084 .text   ov01_021EC6A4	(asm_overlay_01_021EB1E8.s.o)
-  021EC6A4 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC6B4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC6BC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC6C4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC6D4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC6EA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC6FE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC712 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC720 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC728 0000004C .text   ov01_021EC728	(asm_overlay_01_021EB1E8.s.o)
-  021EC72E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC738 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC740 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC748 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC750 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC76C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC774 0000001C .text   ov01_021EC774	(asm_overlay_01_021EB1E8.s.o)
-  021EC78C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC790 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC790 0000001C .text   ov01_021EC790	(asm_overlay_01_021EB1E8.s.o)
-  021EC7AA 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC7AC 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC7AC 0000001C .text   ov01_021EC7AC	(asm_overlay_01_021EB1E8.s.o)
-  021EC7B0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC7C0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC7C8 00000020 .text   ov01_021EC7C8	(asm_overlay_01_021EB1E8.s.o)
-  021EC7D8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC7E0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC7E6 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC7E8 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC7E8 00000040 .text   ov01_021EC7E8	(asm_overlay_01_021EB1E8.s.o)
-  021EC814 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC828 00000034 .text   ov01_021EC828	(asm_overlay_01_021EB1E8.s.o)
-  021EC85A 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC85C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC85C 0000007C .text   ov01_021EC85C	(asm_overlay_01_021EB1E8.s.o)
-  021EC8BA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC8D6 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC8D8 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC8D8 00000020 .text   ov01_021EC8D8	(asm_overlay_01_021EB1E8.s.o)
-  021EC8F8 00000054 .text   ov01_021EC8F8	(asm_overlay_01_021EB1E8.s.o)
-  021EC90E 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC91A 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC942 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC948 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC94C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC94C 00000268 .text   ov01_021EC94C	(asm_overlay_01_021EB1E8.s.o)
-  021EC96C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EC978 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EC992 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC9BC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC9CC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EC9E4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECA0E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECA3C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECA5A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECA62 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECA76 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECA80 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECAA8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECAC8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECADC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECAEE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECAF6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB20 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB56 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB5C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB72 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB7C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB82 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECB8C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ECBB4 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ECBB4 000000BC .text   ov01_021ECBB4	(asm_overlay_01_021EB1E8.s.o)
-  021ECBCA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECBD4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECBE0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECBEC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECBF4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECC12 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECC38 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECC52 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECC68 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ECC70 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ECC70 00000098 .text   ov01_021ECC70	(asm_overlay_01_021EB1E8.s.o)
-  021ECC7C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECCB6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECCBC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECCD4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECCE2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECCFE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECD06 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ECD08 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ECD08 00000244 .text   ov01_021ECD08	(asm_overlay_01_021EB1E8.s.o)
-  021ECD28 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ECD34 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ECD50 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECD7A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECD96 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECDC0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECDF2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE10 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE18 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE32 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE50 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE70 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE84 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECE98 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECEC2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECEF8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECEFE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECF14 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECF1E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECF24 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECF2C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ECF4C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ECF4C 00000124 .text   ov01_021ECF4C	(asm_overlay_01_021EB1E8.s.o)
-  021ECF94 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECFC6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECFD8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECFDE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECFEA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ECFF6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED012 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED022 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED02A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED050 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED064 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED070 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED070 00000080 .text   ov01_021ED070	(asm_overlay_01_021EB1E8.s.o)
-  021ED07C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED0C2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED0DE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED0E8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED0F0 0000022C .text   ov01_021ED0F0	(asm_overlay_01_021EB1E8.s.o)
-  021ED110 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED11C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED136 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED160 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED174 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED19E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED1CC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED1EA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED1F2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED206 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED224 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED244 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED258 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED26C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED296 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED2C8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED2CE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED2E4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED2EE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED2F4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED2FC 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED31C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED31C 00000130 .text   ov01_021ED31C	(asm_overlay_01_021EB1E8.s.o)
-  021ED334 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED344 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED34A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED352 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED35A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED37A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED380 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED388 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED38E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED396 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED39C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3A6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3AA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3B2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3BA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3D8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3EA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3F8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED3FE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED406 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED40C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED424 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED436 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED44C 00000028 .text   ov01_021ED44C	(asm_overlay_01_021EB1E8.s.o)
-  021ED458 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED46A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED472 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED474 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED474 00000110 .text   ov01_021ED474	(asm_overlay_01_021EB1E8.s.o)
-  021ED492 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED49E 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED4C0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED4D6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED504 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED50A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED52E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED546 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED570 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED576 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED580 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED584 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED584 0000018C .text   ov01_021ED584	(asm_overlay_01_021EB1E8.s.o)
-  021ED5A6 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED5B2 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED5D8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED5E4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED5EC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED5F4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED606 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED60E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED61A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED64A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED652 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED65A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED662 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED68A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED696 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED6B0 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED6BC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED6C8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED6F2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED6F8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED700 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED710 00000214 .text   ov01_021ED710	(asm_overlay_01_021EB1E8.s.o)
-  021ED710 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED73A 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED746 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED748 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED74C 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED762 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED770 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED788 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED7AA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED7AE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED7C4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED7D2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED7EA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED82E 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED836 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED84A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED85A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED874 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED884 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8A6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8B2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8BA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8C6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8CA 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8D6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8DC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8E4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED8F6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED900 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED924 0000012C .text   ov01_021ED924	(asm_overlay_01_021EB1E8.s.o)
-  021ED924 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED94C 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021ED958 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021ED95A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED95E 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED974 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED982 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED99A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED9A4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED9BE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED9C2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED9D8 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED9E6 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021ED9FE 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDA08 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDA36 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDA40 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EDA50 0000002C .text   ov01_021EDA50	(asm_overlay_01_021EB1E8.s.o)
-  021EDA50 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EDA68 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDA70 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EDA7C 00000038 .text   ov01_021EDA7C	(asm_overlay_01_021EB1E8.s.o)
-  021EDA7C 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EDA94 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDA9A 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDAA8 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EDAB4 0000002C .text   ov01_021EDAB4	(asm_overlay_01_021EB1E8.s.o)
-  021EDAB4 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EDAC2 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDAD4 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDADC 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
-  021EDAE0 0000001C .text   ov01_021EDAE0	(asm_overlay_01_021EB1E8.s.o)
-  021EDAE0 00000000 .text   $t	(asm_overlay_01_021EB1E8.s.o)
-  021EDAEC 00000000 .text   $b	(asm_overlay_01_021EB1E8.s.o)
-  021EDAF8 00000000 .text   $d	(asm_overlay_01_021EB1E8.s.o)
+  021EB1E8 0000000A .text   ov01_021EB1E8	(src_field_weather_manager.c.o)
+  021EB1E8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB1F4 00000040 .text   WeatherManager_New	(src_field_weather_manager.c.o)
+  021EB1F4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB234 0000002A .text   WeatherManager_Delete	(src_field_weather_manager.c.o)
+  021EB234 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB260 00000056 .text   WeatherManager_SetWeather	(src_field_weather_manager.c.o)
+  021EB260 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB2B8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB2B8 00000064 .text   WeatherManager_ChangeWeather	(src_field_weather_manager.c.o)
+  021EB314 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB31C 00000004 .text   WeatherManager_GetWeather	(src_field_weather_manager.c.o)
+  021EB31C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB320 000000D0 .text   WeatherTask_ChangeWeather	(src_field_weather_manager.c.o)
+  021EB320 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB3F0 000000C4 .text   ov01_021EB3F0	(src_field_weather_manager.c.o)
+  021EB3F0 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB4B4 00000004 .text   ov01_021EB4B4	(src_field_weather_manager.c.o)
+  021EB4B4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB4B8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB4B8 000000B4 .text   WeatherDraw_Init	(src_field_weather_manager.c.o)
+  021EB564 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB56C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB56C 0000000C .text   WeatherDrawTask_RendAndAnimateSprites	(src_field_weather_manager.c.o)
+  021EB574 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB578 0000002C .text   Weather_Init2DGfxRes	(src_field_weather_manager.c.o)
+  021EB578 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB5A4 00000050 .text   WeatherDraw_Delete	(src_field_weather_manager.c.o)
+  021EB5A4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB5F4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB5F4 00000058 .text   WeatherDraw_SetSpriteMatrix	(src_field_weather_manager.c.o)
+  021EB644 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB64C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB64C 00000040 .text   WeatherSystem_New	(src_field_weather_manager.c.o)
+  021EB684 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB68C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB68C 00000074 .text   WeatherSystem_Delete	(src_field_weather_manager.c.o)
+  021EB6FC 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB700 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB700 00000104 .text   WeatherSystem_Process	(src_field_weather_manager.c.o)
+  021EB800 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB804 00000014 .text   ov01_021EB804	(src_field_weather_manager.c.o)
+  021EB804 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB818 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB818 00000018 .text   ov01_021EB818	(src_field_weather_manager.c.o)
+  021EB82C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB830 00000010 .text   ov01_021EB830	(src_field_weather_manager.c.o)
+  021EB830 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB840 0000002C .text   ov01_021EB840	(src_field_weather_manager.c.o)
+  021EB840 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB86C 0000002C .text   ov01_021EB86C	(src_field_weather_manager.c.o)
+  021EB86C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB898 000000D0 .text   Weather_AddResObjFromOpenNarc	(src_field_weather_manager.c.o)
+  021EB898 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB968 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB968 00000040 .text   ov01_021EB968	(src_field_weather_manager.c.o)
+  021EB9A4 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EB9A8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EB9A8 00000060 .text   WeatherSystem_Init	(src_field_weather_manager.c.o)
+  021EBA04 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBA08 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBA08 0000003C .text   ov01_021EBA08	(src_field_weather_manager.c.o)
+  021EBA40 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBA44 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBA44 000000FC .text   WeatherSystem_Start	(src_field_weather_manager.c.o)
+  021EBB2C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBB40 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBB40 00000028 .text   ov01_021EBB40	(src_field_weather_manager.c.o)
+  021EBB64 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBB68 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBB68 00000028 .text   ov01_021EBB68	(src_field_weather_manager.c.o)
+  021EBB8C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBB90 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBB90 00000114 .text   ov01_021EBB90	(src_field_weather_manager.c.o)
+  021EBC8C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBCA4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBCA4 00000074 .text   ov01_021EBCA4	(src_field_weather_manager.c.o)
+  021EBD08 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBD18 0000001C .text   ov01_021EBD18	(src_field_weather_manager.c.o)
+  021EBD18 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBD34 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBD34 0000003C .text   ov01_021EBD34	(src_field_weather_manager.c.o)
+  021EBD6C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBD70 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBD70 000000DC .text   ov01_021EBD70	(src_field_weather_manager.c.o)
+  021EBE48 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBE4C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBE4C 0000006C .text   ov01_021EBE4C	(src_field_weather_manager.c.o)
+  021EBEB4 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBEB8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBEB8 00000038 .text   ov01_021EBEB8	(src_field_weather_manager.c.o)
+  021EBEEC 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBEF0 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBEF0 00000034 .text   ov01_021EBEF0	(src_field_weather_manager.c.o)
+  021EBF20 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBF24 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBF24 00000034 .text   ov01_021EBF24	(src_field_weather_manager.c.o)
+  021EBF54 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBF58 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBF58 0000003C .text   ov01_021EBF58	(src_field_weather_manager.c.o)
+  021EBF90 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBF94 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBF94 0000003C .text   ov01_021EBF94	(src_field_weather_manager.c.o)
+  021EBFCC 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EBFD0 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EBFD0 00000058 .text   ov01_021EBFD0	(src_field_weather_manager.c.o)
+  021EC024 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC028 0000002E .text   ov01_021EC028	(src_field_weather_manager.c.o)
+  021EC028 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC058 0000001E .text   ov01_021EC058	(src_field_weather_manager.c.o)
+  021EC058 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC078 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC078 00000048 .text   ov01_021EC078	(src_field_weather_manager.c.o)
+  021EC0BC 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC0C0 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC0C0 00000054 .text   ov01_021EC0C0	(src_field_weather_manager.c.o)
+  021EC110 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC114 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC114 000000A8 .text   ov01_021EC114	(src_field_weather_manager.c.o)
+  021EC1B8 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC1BC 00000028 .text   ov01_021EC1BC	(src_field_weather_manager.c.o)
+  021EC1BC 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC1E4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC1E4 00000010 .text   ov01_021EC1E4	(src_field_weather_manager.c.o)
+  021EC1F0 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC1F4 0000004C .text   ov01_021EC1F4	(src_field_weather_manager.c.o)
+  021EC1F4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC240 0000005A .text   ov01_021EC240	(src_field_weather_manager.c.o)
+  021EC240 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC29C 0000002E .text   WeatherObject_Delete	(src_field_weather_manager.c.o)
+  021EC29C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC2CC 00000018 .text   WeatherObject_DeleteAll	(src_field_weather_manager.c.o)
+  021EC2CC 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC2E4 0000001A .text   ov01_021EC2E4	(src_field_weather_manager.c.o)
+  021EC2E4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC300 00000002 .text   ov01_021EC300	(src_field_weather_manager.c.o)
+  021EC300 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC304 00000016 .text   WeatherObject_GetSpriteMatrixPtr	(src_field_weather_manager.c.o)
+  021EC304 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC31C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC31C 00000154 .text   ov01_021EC31C	(src_field_weather_manager.c.o)
+  021EC45C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC470 00000038 .text   ov01_021EC470	(src_field_weather_manager.c.o)
+  021EC470 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC4A8 0000005A .text   ov01_021EC4A8	(src_field_weather_manager.c.o)
+  021EC4A8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC504 00000026 .text   ov01_021EC504	(src_field_weather_manager.c.o)
+  021EC504 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC52C 0000000C .text   ov01_021EC52C	(src_field_weather_manager.c.o)
+  021EC52C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC538 000000C4 .text   ov01_021EC538	(src_field_weather_manager.c.o)
+  021EC538 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC5FC 00000054 .text   ov01_021EC5FC	(src_field_weather_manager.c.o)
+  021EC5FC 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC650 00000028 .text   ov01_021EC650	(src_field_weather_manager.c.o)
+  021EC650 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC678 0000002A .text   ov01_021EC678	(src_field_weather_manager.c.o)
+  021EC678 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC6A4 00000084 .text   ov01_021EC6A4	(src_field_weather_manager.c.o)
+  021EC6A4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC728 0000004C .text   ov01_021EC728	(src_field_weather_manager.c.o)
+  021EC728 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC774 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC774 0000001C .text   ov01_021EC774	(src_field_weather_manager.c.o)
+  021EC78C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC790 0000001A .text   ov01_021EC790	(src_field_weather_manager.c.o)
+  021EC790 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC7AC 0000001C .text   ov01_021EC7AC	(src_field_weather_manager.c.o)
+  021EC7AC 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC7C8 0000001E .text   ov01_021EC7C8	(src_field_weather_manager.c.o)
+  021EC7C8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC7E8 00000040 .text   ov01_021EC7E8	(src_field_weather_manager.c.o)
+  021EC7E8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC828 00000032 .text   ov01_021EC828	(src_field_weather_manager.c.o)
+  021EC828 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC85C 0000007A .text   ov01_021EC85C	(src_field_weather_manager.c.o)
+  021EC85C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC8D8 00000020 .text   ov01_021EC8D8	(src_field_weather_manager.c.o)
+  021EC8D8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC8F8 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC8F8 00000054 .text   ov01_021EC8F8	(src_field_weather_manager.c.o)
+  021EC948 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EC94C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EC94C 00000268 .text   ov01_021EC94C	(src_field_weather_manager.c.o)
+  021ECB8C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ECBB4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ECBB4 000000BC .text   ov01_021ECBB4	(src_field_weather_manager.c.o)
+  021ECC68 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ECC70 00000096 .text   ov01_021ECC70	(src_field_weather_manager.c.o)
+  021ECC70 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ECD08 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ECD08 00000244 .text   ov01_021ECD08	(src_field_weather_manager.c.o)
+  021ECF2C 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ECF4C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ECF4C 00000124 .text   ov01_021ECF4C	(src_field_weather_manager.c.o)
+  021ED064 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ED070 00000080 .text   ov01_021ED070	(src_field_weather_manager.c.o)
+  021ED070 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED0F0 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED0F0 0000022C .text   ov01_021ED0F0	(src_field_weather_manager.c.o)
+  021ED2FC 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ED31C 00000130 .text   ov01_021ED31C	(src_field_weather_manager.c.o)
+  021ED31C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED44C 00000026 .text   ov01_021ED44C	(src_field_weather_manager.c.o)
+  021ED44C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED474 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED474 00000110 .text   ov01_021ED474	(src_field_weather_manager.c.o)
+  021ED580 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ED584 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED584 0000018C .text   ov01_021ED584	(src_field_weather_manager.c.o)
+  021ED700 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ED710 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED710 00000214 .text   ov01_021ED710	(src_field_weather_manager.c.o)
+  021ED900 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021ED924 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021ED924 0000012C .text   ov01_021ED924	(src_field_weather_manager.c.o)
+  021EDA40 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EDA50 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EDA50 0000002C .text   ov01_021EDA50	(src_field_weather_manager.c.o)
+  021EDA70 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EDA7C 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EDA7C 00000038 .text   ov01_021EDA7C	(src_field_weather_manager.c.o)
+  021EDAA8 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EDAB4 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EDAB4 0000002C .text   ov01_021EDAB4	(src_field_weather_manager.c.o)
+  021EDADC 00000000 .text   $d	(src_field_weather_manager.c.o)
+  021EDAE0 00000000 .text   $t	(src_field_weather_manager.c.o)
+  021EDAE0 0000001C .text   ov01_021EDAE0	(src_field_weather_manager.c.o)
+  021EDAF8 00000000 .text   $d	(src_field_weather_manager.c.o)
   021EDAFC 0000012C .text   ov01_021EDAFC	(asm_overlay_01_021EDAFC.s.o)
   021EDAFC 00001554 .text   .text	(asm_overlay_01_021EDAFC.s.o)
   021EDAFC 00000000 .text   $t	(asm_overlay_01_021EDAFC.s.o)
@@ -72572,12 +72216,12 @@
   022062D4 00000000 .text   $b	(asm_overlay_01_022053EC.s.o)
   022062DA 00000000 .text   $d	(asm_overlay_01_022053EC.s.o)
   022062DC 00000000 .rodata .rodata	(src_field_fieldmap.c.o)
-  022062DC 00000010 .rodata @17527	(src_field_fieldmap.c.o)
-  022062EC 00000010 .rodata @17504	(src_field_fieldmap.c.o)
+  022062DC 00000010 .rodata @17528	(src_field_fieldmap.c.o)
+  022062EC 00000010 .rodata @17505	(src_field_fieldmap.c.o)
   022062FC 0000001C .rodata sBgTemplate_2	(src_field_fieldmap.c.o)
   02206318 0000001C .rodata sBgTemplate_1	(src_field_fieldmap.c.o)
   02206334 0000001C .rodata sBgTemplate_3	(src_field_fieldmap.c.o)
-  02206350 00000028 .rodata @17490	(src_field_fieldmap.c.o)
+  02206350 00000028 .rodata @17491	(src_field_fieldmap.c.o)
   02206378 00000010 .rodata ov01_02206378	(src_field_field_3d_object_task.c.o)
   02206388 00000003 .rodata sBGMVolume	(src_field_field_control.c.o)
   0220638C 00000000 .rodata .rodata	(src_field_field_control.c.o)
@@ -72588,17 +72232,20 @@
   02206408 0000005C .rodata .rodata	(asm_overlay_01_021E90C0.s.o)
   02206464 00000278 .rodata .rodata	(asm_overlay_01_021EABA8.s.o)
   022066DC 00000060 .rodata .rodata	(asm_overlay_01_021EAF00.s.o)
-  0220673C 0000008C .rodata .rodata	(asm_overlay_01_021EB1E8.s.o)
+  0220673C 00000010 .rodata ov01_0220673C	(src_field_weather_manager.c.o)
+  0220673C 00000000 .rodata .rodata	(src_field_weather_manager.c.o)
+  0220674C 00000010 .rodata ov01_0220674C	(src_field_weather_manager.c.o)
+  0220675C 0000006C .rodata sWeatherGfxNarcData	(src_field_weather_manager.c.o)
   022067C8 00000008 .rodata ov01_022067C8	(src_field_scrcmd_message.c.o)
   022067C8 00000000 .rodata .rodata	(src_field_scrcmd_message.c.o)
   022067D0 000001B8 .rodata .rodata	(asm_overlay_01_021EFB38.s.o)
   02206988 0000000C .rodata .rodata	(asm_overlay_01_021F1348.s.o)
   02206994 000000E4 .rodata .rodata	(asm_overlay_01_021F1AFC.s.o)
   02206A78 00000000 .rodata .rodata	(src_field_map_prop_manager.c.o)
-  02206A78 0000000C .rodata @17036	(src_field_map_prop_manager.c.o)
-  02206A84 0000000C .rodata @16886	(src_field_map_prop_manager.c.o)
-  02206A90 00000024 .rodata @16920	(src_field_map_prop_manager.c.o)
-  02206AB4 00000024 .rodata @17055	(src_field_map_prop_manager.c.o)
+  02206A78 0000000C .rodata @17037	(src_field_map_prop_manager.c.o)
+  02206A84 0000000C .rodata @16887	(src_field_map_prop_manager.c.o)
+  02206A90 00000024 .rodata @16921	(src_field_map_prop_manager.c.o)
+  02206AB4 00000024 .rodata @17056	(src_field_map_prop_manager.c.o)
   02206AD8 000000BC .rodata .rodata	(asm_overlay_01_021F3F50.s.o)
   02206B94 0000002C .rodata .rodata	(asm_overlay_01_021F467C.s.o)
   02206BC0 00000048 .rodata .rodata	(asm_overlay_01_021F4704.s.o)
@@ -72711,13 +72358,14 @@
 #>02209820          SDK_OVERLAY.field.DATA_START (linker command file)
   02209820 00000078 .data   .data	(asm_overlay_01_021E90C0.s.o)
   02209898 00000018 .data   .data	(asm_overlay_01_021EAFD4.s.o)
-  022098B0 00000188 .data   .data	(asm_overlay_01_021EB1E8.s.o)
+  022098B0 00000000 .data   .data	(src_field_weather_manager.c.o)
+  022098B0 00000188 .data   ov01_022098B0	(src_field_weather_manager.c.o)
   02209A38 00000000 .data   ov01_02209A38	(asm_overlay_01_sprite_data.s.o)
   02209A38 00000050 .data   .data	(asm_overlay_01_sprite_data.s.o)
   02209A88 00000058 .data   .data	(asm_overlay_01_021FB878.s.o)
   02209AE0 00000000 .data   .data	(src_field_scrcmd_pokemon_misc.c.o)
   02209AE0 00000012 .data   ov01_02209AE0	(src_field_scrcmd_pokemon_misc.c.o)
-  02209AF4 00000023 .data   @19236	(src_field_scrcmd_move_tutor.c.o)
+  02209AF4 00000023 .data   @19237	(src_field_scrcmd_move_tutor.c.o)
   02209B18 00000040 .data   .data	(asm_overlay_01_022031C0.s.o)
 #>02209B60          SDK_OVERLAY.field.DATA_END (linker command file)
 #>02209B60          SDK_OVERLAY.field.END (linker command file)
@@ -75890,9 +75538,9 @@
   02253288 00000002 .rodata sUnlockedUnown_Sinjoh	(src_field_encounter_check.c.o)
   0225328C 00000004 .rodata sUnlockedUnown_HoOh	(src_field_encounter_check.c.o)
   02253290 00000000 .rodata .rodata	(src_field_encounter_check.c.o)
-  02253290 00000004 .rodata @18366	(src_field_encounter_check.c.o)
-  02253294 0000000C .rodata @18368	(src_field_encounter_check.c.o)
-  022532A0 00000014 .rodata @18370	(src_field_encounter_check.c.o)
+  02253290 00000004 .rodata @18367	(src_field_encounter_check.c.o)
+  02253294 0000000C .rodata @18369	(src_field_encounter_check.c.o)
+  022532A0 00000014 .rodata @18371	(src_field_encounter_check.c.o)
   022532B4 00000028 .rodata sUnlockedUnown	(src_field_encounter_check.c.o)
   022532DC 00000005 .rodata sUnlockedUnown_Aerodactyl	(src_field_encounter_check.c.o)
   022532E4 00000007 .rodata sUnlockedUnown_Omanyte	(src_field_encounter_check.c.o)
@@ -75908,10 +75556,10 @@
   02253C20 00000064 .rodata sCameraParam_SoulSilver	(src_field_legend_cutscene_camera.c.o)
   02253C84 00000000 .rodata .rodata	(src_field_overlay_2_gear_phone.c.o)
   02253C84 0000004E .rodata ov02_02253C84	(src_field_overlay_2_gear_phone.c.o)
-  02253CD4 0000000C .rodata @16805	(src_field_event_cutscene_celebi.c.o)
+  02253CD4 0000000C .rodata @16808	(src_field_event_cutscene_celebi.c.o)
   02253CD4 00000000 .rodata .rodata	(src_field_event_cutscene_celebi.c.o)
-  02253CE0 0000000C .rodata @16789	(src_field_event_cutscene_celebi.c.o)
-  02253CEC 0000000C .rodata @16828	(src_field_event_cutscene_celebi.c.o)
+  02253CE0 0000000C .rodata @16792	(src_field_event_cutscene_celebi.c.o)
+  02253CEC 0000000C .rodata @16831	(src_field_event_cutscene_celebi.c.o)
   02253CF8 00000000 .rodata .rodata	(src_field_event_cutscene_sinjoh.c.o)
   02253CF8 00000008 .rodata ov02_02253CF8_0	(src_field_event_cutscene_sinjoh.c.o)
   02253D00 00000008 .rodata sUnownModelFiles	(src_field_event_cutscene_sinjoh.c.o)
@@ -76430,25 +76078,25 @@
   0225913C 00000008 .rodata ov03_0225913C	(src_overlay_03_communication_club.c.o)
   02259144 00000020 .rodata ov03_02259144	(src_overlay_03_communication_club.c.o)
   02259164 00000020 .rodata ov03_02259164	(src_overlay_03_communication_club.c.o)
-  02259184 00000052 .rodata @21016	(src_overlay_03_communication_club.c.o)
-  022591D6 00000052 .rodata @21114	(src_overlay_03_communication_club.c.o)
-  02259228 00000052 .rodata @21294	(src_overlay_03_communication_club.c.o)
-  0225927A 00000052 .rodata @20714	(src_overlay_03_communication_club.c.o)
-  022592CC 00000052 .rodata @21162	(src_overlay_03_communication_club.c.o)
-  0225931E 00000052 .rodata @20901	(src_overlay_03_communication_club.c.o)
-  02259370 00000052 .rodata @20929	(src_overlay_03_communication_club.c.o)
-  022593C2 00000052 .rodata @21181	(src_overlay_03_communication_club.c.o)
+  02259184 00000052 .rodata @21017	(src_overlay_03_communication_club.c.o)
+  022591D6 00000052 .rodata @21115	(src_overlay_03_communication_club.c.o)
+  02259228 00000052 .rodata @21295	(src_overlay_03_communication_club.c.o)
+  0225927A 00000052 .rodata @20715	(src_overlay_03_communication_club.c.o)
+  022592CC 00000052 .rodata @21163	(src_overlay_03_communication_club.c.o)
+  0225931E 00000052 .rodata @20902	(src_overlay_03_communication_club.c.o)
+  02259370 00000052 .rodata @20930	(src_overlay_03_communication_club.c.o)
+  022593C2 00000052 .rodata @21182	(src_overlay_03_communication_club.c.o)
   02259414 00000000 .rodata .rodata	(src_overlay_03_battle_regulation_menu.c.o)
-  02259414 00000004 .rodata xRightSide$17109	(src_overlay_03_battle_regulation_menu.c.o)
-  02259418 00000004 .rodata xRightSide$16955	(src_overlay_03_battle_regulation_menu.c.o)
-  0225941C 00000004 .rodata xOffset$16949	(src_overlay_03_battle_regulation_menu.c.o)
-  02259420 00000004 .rodata xOffsetCupName$16953	(src_overlay_03_battle_regulation_menu.c.o)
-  02259424 00000004 .rodata lineHeight$17107	(src_overlay_03_battle_regulation_menu.c.o)
-  02259428 00000004 .rodata lineHeight$16951	(src_overlay_03_battle_regulation_menu.c.o)
-  0225942C 00000004 .rodata yOffset$17105	(src_overlay_03_battle_regulation_menu.c.o)
-  02259430 00000004 .rodata xOffsetCupName$17103	(src_overlay_03_battle_regulation_menu.c.o)
-  02259434 00000004 .rodata xOffset$17101	(src_overlay_03_battle_regulation_menu.c.o)
-  02259438 00000004 .rodata yOffset$16947	(src_overlay_03_battle_regulation_menu.c.o)
+  02259414 00000004 .rodata xRightSide$17112	(src_overlay_03_battle_regulation_menu.c.o)
+  02259418 00000004 .rodata xRightSide$16958	(src_overlay_03_battle_regulation_menu.c.o)
+  0225941C 00000004 .rodata xOffset$16952	(src_overlay_03_battle_regulation_menu.c.o)
+  02259420 00000004 .rodata xOffsetCupName$16956	(src_overlay_03_battle_regulation_menu.c.o)
+  02259424 00000004 .rodata lineHeight$17110	(src_overlay_03_battle_regulation_menu.c.o)
+  02259428 00000004 .rodata lineHeight$16954	(src_overlay_03_battle_regulation_menu.c.o)
+  0225942C 00000004 .rodata yOffset$17108	(src_overlay_03_battle_regulation_menu.c.o)
+  02259430 00000004 .rodata xOffsetCupName$17106	(src_overlay_03_battle_regulation_menu.c.o)
+  02259434 00000004 .rodata xOffset$17104	(src_overlay_03_battle_regulation_menu.c.o)
+  02259438 00000004 .rodata yOffset$16950	(src_overlay_03_battle_regulation_menu.c.o)
   0225943C 00000020 .rodata sListMenuTemplate	(src_overlay_03_battle_regulation_menu.c.o)
   0225945C 00000008 .rodata ov03_0225945C	(src_overlay_03_shop_menu.c.o)
   0225945C 00000000 .rodata .rodata	(src_overlay_03_shop_menu.c.o)
@@ -76462,7 +76110,7 @@
   022597FC 00000000 .rodata .rodata	(src_overlay_03_custom_safari_zone.c.o)
   022597FC 0000000C .rodata ov03_022597FC	(src_overlay_03_custom_safari_zone.c.o)
   02259808 00000000 .rodata .rodata	(src_overlay_03_overlay_03_scrcmds.c.o)
-  02259808 00000004 .rodata @19412	(src_overlay_03_overlay_03_scrcmds.c.o)
+  02259808 00000004 .rodata @19413	(src_overlay_03_overlay_03_scrcmds.c.o)
   0225980C 00000000 .rodata .rodata	(src_overlay_03_pokeathlon_records.c.o)
   0225980C 0000000C .rodata ov03_0225980C	(src_overlay_03_pokeathlon_records.c.o)
 #>02259818          SDK_OVERLAY.OVY_3.SINIT_START (linker command file)
@@ -76716,11 +76364,11 @@
   02257308 00000020 .text   Task_SinjohGymmick_WaitAnimFinished	(src_field_gymmick_sinjoh.c.o)
   02257308 00000000 .text   $t	(src_field_gymmick_sinjoh.c.o)
   02257328 00000000 .rodata .rodata	(src_field_gymmick_violet.c.o)
-  02257328 0000000C .rodata @16803	(src_field_gymmick_violet.c.o)
+  02257328 0000000C .rodata @16804	(src_field_gymmick_violet.c.o)
   02257334 00000010 .rodata sEdgeColorTable	(src_field_gymmick_violet.c.o)
   02257344 00000000 .rodata .rodata	(src_field_gymmick_azalea.c.o)
-  02257344 0000000C .rodata @16938	(src_field_gymmick_azalea.c.o)
-  02257350 0000000C .rodata @16909	(src_field_gymmick_azalea.c.o)
+  02257344 0000000C .rodata @16941	(src_field_gymmick_azalea.c.o)
+  02257350 0000000C .rodata @16912	(src_field_gymmick_azalea.c.o)
   0225735C 00000010 .rodata sSpinarakRoute_8to12	(src_field_gymmick_azalea.c.o)
   0225736C 00000010 .rodata sSpinarakRoute_7to11	(src_field_gymmick_azalea.c.o)
   0225737C 00000018 .rodata sSpinarakRoute_3to4	(src_field_gymmick_azalea.c.o)
@@ -76744,22 +76392,22 @@
   022575A4 00000030 .rodata sSpinarakRoutes_Froms	(src_field_gymmick_azalea.c.o)
   022575D4 00000030 .rodata sSpinarakInitialPositions	(src_field_gymmick_azalea.c.o)
   02257604 00000000 .rodata .rodata	(src_field_gymmick_ecruteak.c.o)
-  02257604 00000010 .rodata sMortyGymTrainerObjectIds$16663	(src_field_gymmick_ecruteak.c.o)
+  02257604 00000010 .rodata sMortyGymTrainerObjectIds$16666	(src_field_gymmick_ecruteak.c.o)
   02257614 00000004 .rodata sLeadingEdgeRotationExtents_Type1	(src_field_gymmick_blackthorn.c.o)
   02257618 00000005 .rodata sLeadingEdgeRotationExtents_Type0	(src_field_gymmick_blackthorn.c.o)
   02257620 00000000 .rodata .rodata	(src_field_gymmick_blackthorn.c.o)
-  02257620 0000000C .rodata @16773	(src_field_gymmick_blackthorn.c.o)
-  0225762C 0000000C .rodata @16764	(src_field_gymmick_blackthorn.c.o)
+  02257620 0000000C .rodata @16776	(src_field_gymmick_blackthorn.c.o)
+  0225762C 0000000C .rodata @16767	(src_field_gymmick_blackthorn.c.o)
   02257638 0000000E .rodata sMainAreaRotationExtents_Type0	(src_field_gymmick_blackthorn.c.o)
   02257648 00000018 .rodata sMainAreaRotationExtents_Type1	(src_field_gymmick_blackthorn.c.o)
   02257660 00000000 .rodata .rodata	(src_field_gymmick_cianwood.c.o)
-  02257660 0000000C .rodata @16623	(src_field_gymmick_cianwood.c.o)
+  02257660 0000000C .rodata @16626	(src_field_gymmick_cianwood.c.o)
   0225766C 00000000 .rodata .rodata	(src_field_gymmick_fuchsia.c.o)
   0225766C 000004B0 .rodata sWallData	(src_field_gymmick_fuchsia.c.o)
-  02257B1C 0000000C .rodata @16627	(src_field_gymmick_sinjoh.c.o)
+  02257B1C 0000000C .rodata @16630	(src_field_gymmick_sinjoh.c.o)
   02257B1C 00000000 .rodata .rodata	(src_field_gymmick_sinjoh.c.o)
-  02257B28 00000018 .rodata @16625	(src_field_gymmick_sinjoh.c.o)
-  02257B40 00000024 .rodata @16664	(src_field_gymmick_sinjoh.c.o)
+  02257B28 00000018 .rodata @16628	(src_field_gymmick_sinjoh.c.o)
+  02257B40 00000024 .rodata @16667	(src_field_gymmick_sinjoh.c.o)
 #>02257B64          SDK_OVERLAY.OVY_4.SINIT_START (linker command file)
 #>02257B68          SDK_OVERLAY.OVY_4.SINIT_END (linker command file)
 #>02257B80          SDK_OVERLAY.OVY_4.TEXT_END (linker command file)
@@ -109891,9 +109539,9 @@
   0225A040 00000000 .rodata .rodata	(src_application_view_photo.c.o)
   0225A04E 00000010 .rodata ov19_0225A04E	(src_application_view_photo.c.o)
   0225A05E 00000010 .rodata ov19_0225A05E	(src_application_view_photo.c.o)
-  0225A070 0000001C .rodata @17001	(src_application_view_photo.c.o)
-  0225A08C 0000001C .rodata @17003	(src_application_view_photo.c.o)
-  0225A0A8 0000001C .rodata @17005	(src_application_view_photo.c.o)
+  0225A070 0000001C .rodata @17004	(src_application_view_photo.c.o)
+  0225A08C 0000001C .rodata @17006	(src_application_view_photo.c.o)
+  0225A0A8 0000001C .rodata @17008	(src_application_view_photo.c.o)
   0225A0C4 00000078 .rodata sSpriteTemplates	(src_application_view_photo.c.o)
 #>0225A13C          SDK_OVERLAY.OVY_19.SINIT_START (linker command file)
 #>0225A140          SDK_OVERLAY.OVY_19.SINIT_END (linker command file)
@@ -110112,8 +109760,8 @@
 #>02259F40          SDK_OVERLAY.bug_contest.SINIT_END (linker command file)
 #>02259F40          SDK_OVERLAY.bug_contest.TEXT_END (linker command file)
 #>02259F40          SDK_OVERLAY.bug_contest.DATA_START (linker command file)
-  02259F40 0000001D .data   @17171	(src_overlay_bug_contest.c.o)
-  02259F60 0000001D .data   @17187	(src_overlay_bug_contest.c.o)
+  02259F40 0000001D .data   @17174	(src_overlay_bug_contest.c.o)
+  02259F60 0000001D .data   @17190	(src_overlay_bug_contest.c.o)
 #>02259F80          SDK_OVERLAY.bug_contest.DATA_END (linker command file)
 #>02259F80          SDK_OVERLAY.bug_contest.END (linker command file)
 #>00000680          SDK_OVERLAY.bug_contest.TEXT_SIZE (linker command file)
@@ -140435,9 +140083,9 @@
   021E86B0 00000040 .rodata sMultichoiceMenuParam	(src_oaks_speech.c.o)
   021E86F0 00000050 .rodata sBgPicNCGR_NCLR	(src_oaks_speech.c.o)
   021E8740 00000000 .rodata .rodata	(src_oaks_speech_obj.c.o)
-  021E8740 0000000E .rodata @18131	(src_oaks_speech_obj.c.o)
-  021E8750 00000014 .rodata @18129	(src_oaks_speech_obj.c.o)
-  021E8764 00000020 .rodata @18127	(src_oaks_speech_obj.c.o)
+  021E8740 0000000E .rodata @18134	(src_oaks_speech_obj.c.o)
+  021E8750 00000014 .rodata @18132	(src_oaks_speech_obj.c.o)
+  021E8764 00000020 .rodata @18130	(src_oaks_speech_obj.c.o)
   021E8784 000000F0 .rodata sSpriteTemplates	(src_oaks_speech_obj.c.o)
   021E8874 00000000 .rodata .rodata	(src_oaks_speech_yesnomenu.c.o)
   021E8874 00000008 .rodata sCoords	(src_oaks_speech_yesnomenu.c.o)
@@ -144302,24 +143950,24 @@
   021E7330 00000000 .text   $d	(src_choose_starter_app.c.o)
   021E7348 00000036 .text   calcBallTranslationArcStep	(src_choose_starter_app.c.o)
   021E7348 00000000 .text   $t	(src_choose_starter_app.c.o)
-  021E7380 0000000C .rodata @18706	(src_choose_starter_app.c.o)
+  021E7380 0000000C .rodata @18709	(src_choose_starter_app.c.o)
   021E7380 00000000 .rodata .rodata	(src_choose_starter_app.c.o)
-  021E738C 0000000C .rodata @19181	(src_choose_starter_app.c.o)
+  021E738C 0000000C .rodata @19184	(src_choose_starter_app.c.o)
   021E7398 0000000C .rodata sSpecies	(src_choose_starter_app.c.o)
-  021E73A4 0000000C .rodata @18703	(src_choose_starter_app.c.o)
-  021E73B0 0000000C .rodata @18949	(src_choose_starter_app.c.o)
-  021E73BC 0000000C .rodata @18709	(src_choose_starter_app.c.o)
-  021E73C8 0000000C .rodata @18812	(src_choose_starter_app.c.o)
-  021E73D4 0000000C .rodata @19179	(src_choose_starter_app.c.o)
-  021E73E0 0000000C .rodata @18782	(src_choose_starter_app.c.o)
-  021E73EC 0000000C .rodata @18766	(src_choose_starter_app.c.o)
-  021E73F8 00000010 .rodata @18741	(src_choose_starter_app.c.o)
-  021E7408 0000001C .rodata @18801	(src_choose_starter_app.c.o)
-  021E7424 0000001C .rodata @18803	(src_choose_starter_app.c.o)
-  021E7440 0000001C .rodata @18805	(src_choose_starter_app.c.o)
-  021E745C 0000001C .rodata @18797	(src_choose_starter_app.c.o)
-  021E7478 0000001C .rodata @18799	(src_choose_starter_app.c.o)
-  021E7494 00000028 .rodata @18735	(src_choose_starter_app.c.o)
+  021E73A4 0000000C .rodata @18706	(src_choose_starter_app.c.o)
+  021E73B0 0000000C .rodata @18952	(src_choose_starter_app.c.o)
+  021E73BC 0000000C .rodata @18712	(src_choose_starter_app.c.o)
+  021E73C8 0000000C .rodata @18815	(src_choose_starter_app.c.o)
+  021E73D4 0000000C .rodata @19182	(src_choose_starter_app.c.o)
+  021E73E0 0000000C .rodata @18785	(src_choose_starter_app.c.o)
+  021E73EC 0000000C .rodata @18769	(src_choose_starter_app.c.o)
+  021E73F8 00000010 .rodata @18744	(src_choose_starter_app.c.o)
+  021E7408 0000001C .rodata @18804	(src_choose_starter_app.c.o)
+  021E7424 0000001C .rodata @18806	(src_choose_starter_app.c.o)
+  021E7440 0000001C .rodata @18808	(src_choose_starter_app.c.o)
+  021E745C 0000001C .rodata @18800	(src_choose_starter_app.c.o)
+  021E7478 0000001C .rodata @18802	(src_choose_starter_app.c.o)
+  021E7494 00000028 .rodata @18738	(src_choose_starter_app.c.o)
 #>021E74BC          SDK_OVERLAY.OVY_61.SINIT_START (linker command file)
 #>021E74C0          SDK_OVERLAY.OVY_61.SINIT_END (linker command file)
 #>021E74C0          SDK_OVERLAY.OVY_61.TEXT_END (linker command file)
@@ -200780,24 +200428,24 @@
   021E7414 00000000 .text   $t	(src_application_pokegear_main_pokegear_cursor.c.o)
   021E7414 0000008C .text   PokegearCursorManager_SetCursorSpritesAnimateFlag	(src_application_pokegear_main_pokegear_cursor.c.o)
   021E749C 00000000 .text   $d	(src_application_pokegear_main_pokegear_cursor.c.o)
-  021E74A0 00000004 .rodata sAppSwitchButtonCounts$17208	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E74A0 00000004 .rodata sAppSwitchButtonCounts$17211	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E74A4 00000000 .rodata .rodata	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E74A4 00000010 .rodata @17143	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E74A4 00000010 .rodata @17146	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E74B4 00000010 .rodata sAppToButtonIndex	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E74C4 00000018 .rodata sTouchscreenButtonHitboxes	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E74DC 00000024 .rodata sAppButtonSpec_NoCards$17203	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7500 00000028 .rodata @17137	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7528 00000030 .rodata sAppButtonSpec_MapOnly$17204	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7558 00000030 .rodata sAppButtonSpec_RadioOnly$17205	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7588 00000038 .rodata @17145	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E75C0 0000003C .rodata sAppButtonSpec_BothCards$17206	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E74DC 00000024 .rodata sAppButtonSpec_NoCards$17206	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7500 00000028 .rodata @17140	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7528 00000030 .rodata sAppButtonSpec_MapOnly$17207	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7558 00000030 .rodata sAppButtonSpec_RadioOnly$17208	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7588 00000038 .rodata @17148	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E75C0 0000003C .rodata sAppButtonSpec_BothCards$17209	(src_application_pokegear_main_overlay_100_021E5900.c.o)
   021E75FC 00000000 .rodata .rodata	(src_application_pokegear_main_pokegear_main.c.o)
-  021E75FC 00000010 .rodata sOverlayTemplate_GearPhone$17081	(src_application_pokegear_main_pokegear_main.c.o)
-  021E760C 00000010 .rodata sOverlayTemplate_GearConfigure$17064	(src_application_pokegear_main_pokegear_main.c.o)
-  021E761C 00000010 .rodata sOverlayTemplate_EasyChat$17049	(src_application_pokegear_main_pokegear_main.c.o)
-  021E762C 00000010 .rodata sOverlayTemplate_GearMap$17030	(src_application_pokegear_main_pokegear_main.c.o)
-  021E763C 00000010 .rodata sOverlayTemplate_GearRadio$17098	(src_application_pokegear_main_pokegear_main.c.o)
-  021E764C 00000004 .rodata @17014	(src_application_pokegear_main_overlay_100_021E6914.c.o)
+  021E75FC 00000010 .rodata sOverlayTemplate_GearPhone$17084	(src_application_pokegear_main_pokegear_main.c.o)
+  021E760C 00000010 .rodata sOverlayTemplate_GearConfigure$17067	(src_application_pokegear_main_pokegear_main.c.o)
+  021E761C 00000010 .rodata sOverlayTemplate_EasyChat$17052	(src_application_pokegear_main_pokegear_main.c.o)
+  021E762C 00000010 .rodata sOverlayTemplate_GearMap$17033	(src_application_pokegear_main_pokegear_main.c.o)
+  021E763C 00000010 .rodata sOverlayTemplate_GearRadio$17101	(src_application_pokegear_main_pokegear_main.c.o)
+  021E764C 00000004 .rodata @17017	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E764C 00000000 .rodata .rodata	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E7650 0000000E .rodata sResList_Configure	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E765E 0000000E .rodata sResList_Phone	(src_application_pokegear_main_overlay_100_021E6914.c.o)
@@ -200806,13 +200454,13 @@
   021E7688 00000014 .rodata sOamCharTransferParam	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E769C 00000020 .rodata sOamManagerParam	(src_application_pokegear_main_overlay_100_021E6914.c.o)
   021E76BC 00000050 .rodata sPokegearObjResSpecs	(src_application_pokegear_main_overlay_100_021E6914.c.o)
-  021E770C 00000008 .rodata sPlttOverrides$16996	(src_application_pokegear_main_overlay_100_021E6914.c.o)
+  021E770C 00000008 .rodata sPlttOverrides$16999	(src_application_pokegear_main_overlay_100_021E6914.c.o)
 #>021E7714          SDK_OVERLAY.pokegear.SINIT_START (linker command file)
 #>021E7718          SDK_OVERLAY.pokegear.SINIT_END (linker command file)
 #>021E7720          SDK_OVERLAY.pokegear.TEXT_END (linker command file)
 #>021E7720          SDK_OVERLAY.pokegear.DATA_START (linker command file)
   021E7720 00000000 .data   .data	(src_application_pokegear_main_overlay_100_021E5900.c.o)
-  021E7720 00000010 .data   sAppSwitchButtonSpecs$17207	(src_application_pokegear_main_overlay_100_021E5900.c.o)
+  021E7720 00000010 .data   sAppSwitchButtonSpecs$17210	(src_application_pokegear_main_overlay_100_021E5900.c.o)
 #>021E7740          SDK_OVERLAY.pokegear.DATA_END (linker command file)
 #>021E7740          SDK_OVERLAY.pokegear.END (linker command file)
 #>00001E20          SDK_OVERLAY.pokegear.TEXT_SIZE (linker command file)
@@ -202075,41 +201723,41 @@
   021F7354 00000000 .text   $d	(src_application_pokegear_radio_shows_mahogany_signal.c.o)
   021F7358 00000000 .rodata .rodata	(src_application_pokegear_map_pokegear_map.c.o)
   021F7358 00000006 .rodata sMapXScrollLimits	(src_application_pokegear_map_pokegear_map.c.o)
-  021F735E 00000006 .rodata @17355	(src_application_pokegear_map_pokegear_map.c.o)
-  021F7364 0000000E .rodata @17369	(src_application_pokegear_map_pokegear_map.c.o)
+  021F735E 00000006 .rodata @17358	(src_application_pokegear_map_pokegear_map.c.o)
+  021F7364 0000000E .rodata @17372	(src_application_pokegear_map_pokegear_map.c.o)
   021F7372 00000640 .rodata sLocationSpecs	(src_application_pokegear_map_pokegear_map.c.o)
   021F79B4 0000017A .rodata gMapFlypointParams	(src_application_pokegear_map_overlay_101_021F79B4.c.o)
-  021F7B30 0000000C .rodata buttonSpecsTrashCan$17560	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B30 0000000C .rodata buttonSpecsTrashCan$17563	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
   021F7B30 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7B3C 00000028 .rodata spriteTemplates$17618	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7B64 00000040 .rodata sWindowTemplates$17529	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7BA4 00000060 .rodata buttonSpecsSelectIcon$17559	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7C04 0000006C .rodata buttonSpecsMarkingsMenu$17558	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7C70 000000A0 .rodata spriteTemplates$17652	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7D10 000000A8 .rodata @17504	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
-  021F7DB8 000000C8 .rodata spriteTemplates$17595	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B3C 00000028 .rodata spriteTemplates$17621	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7B64 00000040 .rodata sWindowTemplates$17532	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7BA4 00000060 .rodata buttonSpecsSelectIcon$17562	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7C04 0000006C .rodata buttonSpecsMarkingsMenu$17561	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7C70 000000A0 .rodata spriteTemplates$17655	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7D10 000000A8 .rodata @17507	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
+  021F7DB8 000000C8 .rodata spriteTemplates$17598	(src_application_pokegear_map_overlay_101_021E7FF4.c.o)
   021F7E80 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021E9270.c.o)
   021F7E80 0000000C .rodata sListMenuTemplate	(src_application_pokegear_map_overlay_101_021E9270.c.o)
   021F7E8C 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E8C 00000004 .rodata scrollLimits$17479	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E90 00000004 .rodata dummy$17673	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E94 00000008 .rodata sTouchscreenHitbox_CloseButton$17306	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7E9C 00000008 .rodata ov101_021F7E9C$17601	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E8C 00000004 .rodata scrollLimits$17482	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E90 00000004 .rodata dummy$17676	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E94 00000008 .rodata sTouchscreenHitbox_CloseButton$17309	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7E9C 00000008 .rodata ov101_021F7E9C$17604	(src_application_pokegear_map_overlay_101_021EB568.c.o)
   021F7EA4 00000008 .rodata ov101_021F7EA4	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7EAC 0000000C .rodata ov101_021F7EAC$17278	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7EB8 00000014 .rodata touchscreenHitboxes$17725	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7ECC 00000028 .rodata touchscreenHitboxes$17773	(src_application_pokegear_map_overlay_101_021EB568.c.o)
-  021F7EF4 00000048 .rodata hitboxes$17672	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7EAC 0000000C .rodata ov101_021F7EAC$17281	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7EB8 00000014 .rodata touchscreenHitboxes$17728	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7ECC 00000028 .rodata touchscreenHitboxes$17776	(src_application_pokegear_map_overlay_101_021EB568.c.o)
+  021F7EF4 00000048 .rodata hitboxes$17675	(src_application_pokegear_map_overlay_101_021EB568.c.o)
   021F7F3C 00000000 .rodata .rodata	(src_application_pokegear_map_fly_map.c.o)
   021F7F3C 00000006 .rodata sMapXScrollLimits	(src_application_pokegear_map_fly_map.c.o)
-  021F7F44 00000010 .rodata @17445	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
+  021F7F44 00000010 .rodata @17448	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F7F44 00000000 .rodata .rodata	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F7F54 00000048 .rodata sWindowTemplates	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
-  021F7F9C 000000E0 .rodata @17447	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
+  021F7F9C 000000E0 .rodata @17450	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F807C 00000190 .rodata sSpriteTemplates	(src_application_pokegear_map_overlay_101_021EDCE0.c.o)
   021F820C 00000048 .rodata sCursorButtons	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
   021F820C 00000000 .rodata .rodata	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
-  021F8254 000000A8 .rodata @17040	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
+  021F8254 000000A8 .rodata @17043	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
   021F82FC 000000C8 .rodata sSpriteTemplates	(src_application_pokegear_configure_overlay_101_021EED44.c.o)
   021F83C4 00000000 .rodata .rodata	(src_application_pokegear_configure_overlay_101_021EF1D8.c.o)
   021F83C4 0000000C .rodata sContextMenuTemplate	(src_application_pokegear_configure_overlay_101_021EF1D8.c.o)
@@ -202121,10 +201769,10 @@
   021F8404 0000001C .rodata sContextMenuParam	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F8420 00000020 .rodata sWindowTemplates	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F8420 00000000 .rodata .rodata	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
-  021F8440 000000A8 .rodata @17396	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
+  021F8440 000000A8 .rodata @17399	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F84E8 00000140 .rodata sSpriteTemplates	(src_application_pokegear_phone_overlay_101_021F017C.c.o)
   021F8628 00000000 .rodata .rodata	(src_application_pokegear_phone_overlay_101_021F0880.c.o)
-  021F8628 0000000C .rodata @17293	(src_application_pokegear_phone_overlay_101_021F0880.c.o)
+  021F8628 0000000C .rodata @17296	(src_application_pokegear_phone_overlay_101_021F0880.c.o)
   021F8634 00000000 .rodata .rodata	(src_application_pokegear_phone_overlay_101_021F0F48.c.o)
   021F8634 00000024 .rodata ov101_021F8634	(src_application_pokegear_phone_overlay_101_021F0F48.c.o)
   021F8658 00000024 .rodata ov101_021F8658	(src_application_pokegear_phone_overlay_101_021F0F48.c.o)
@@ -202133,8 +201781,8 @@
   021F86BC 00000000 .rodata .rodata	(src_application_pokegear_phone_scripts_phone_scripts_prof_elm.c.o)
   021F86BC 0000000A .rodata sPhoneCallData_ProfElm_MapScripts	(src_application_pokegear_phone_scripts_phone_scripts_prof_elm.c.o)
   021F86C8 00000000 .rodata .rodata	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
-  021F86C8 00000004 .rodata ov101_021F86C8$17223	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
-  021F86CC 00000092 .rodata ov101_021F86CC$17286	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
+  021F86C8 00000004 .rodata ov101_021F86C8$17226	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
+  021F86CC 00000092 .rodata ov101_021F86CC$17289	(src_application_pokegear_phone_scripts_phone_scripts_childhood_friend.c.o)
   021F8760 00000049 .rodata ov101_021F8760	(src_application_pokegear_phone_extra_ethan_lyra_data.c.o)
   021F87AC 00000002 .rodata sNumSpecialRadioMaps	(src_application_pokegear_radio_pokegear_radio.c.o)
   021F87B0 0000000A .rodata sAlphMaps	(src_application_pokegear_radio_pokegear_radio.c.o)
@@ -202142,7 +201790,7 @@
   021F87BA 00000022 .rodata sMahoganyMaps	(src_application_pokegear_radio_pokegear_radio.c.o)
   021F87DC 00000018 .rodata sWindowTemplates	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
   021F87DC 00000000 .rodata .rodata	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
-  021F87F4 000000A8 .rodata @17320	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
+  021F87F4 000000A8 .rodata @17323	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
   021F889C 000000C8 .rodata sSpriteTemplates	(src_application_pokegear_radio_overlay_101_021F49F8.c.o)
   021F8964 00000000 .rodata .rodata	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
   021F8964 00000004 .rodata sTuningHitboxes_NoSignal	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
@@ -202174,7 +201822,7 @@
   021FB2C0 00000000 .data   .data	(src_application_pokegear_radio_pokegear_radio.c.o)
   021FB2C0 00000008 .data   sSpecialRadioMapIDs	(src_application_pokegear_radio_pokegear_radio.c.o)
   021FB2C8 00000000 .data   .data	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
-  021FB2C8 00000008 .data   coords$17010	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
+  021FB2C8 00000008 .data   coords$17013	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
   021FB2D0 0000001C .data   sTuningHitboxes	(src_application_pokegear_radio_overlay_101_021F4F34.c.o)
 #>021FB300          SDK_OVERLAY.pokegear_app.DATA_END (linker command file)
 #>021FB300          SDK_OVERLAY.pokegear_app.END (linker command file)
