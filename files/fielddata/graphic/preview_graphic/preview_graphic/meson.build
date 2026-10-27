@@ -157,7 +157,7 @@ preview_graphic_nscr_lz = lz_gen.process(files(
 ))
 
 preview_graphic_ncgr_lz = ncgr_lz_gen.process(preview_graphic_png,
-        extra_args : VERSION101_SOPC_8BPP_NCGR_FLAGS
+        extra_args : VERSION101_SOPC_8BPP_NCGR_FLAGS + ['-nopad']
 )
 preview_graphic_nclr = nclr_gen.process(preview_graphic_png,
         extra_args : BPP8_NOPAD_NCLR_PNG_FLAGS

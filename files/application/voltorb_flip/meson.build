@@ -12,7 +12,7 @@ voltorb_flip_ncgr_lz_sopc = ncgr_lz_gen.process(
         'voltorb_flip_00000002.png',
         'voltorb_flip_00000003.png',
     ),
-    extra_args : VERSION101_SOPC_NCGR_FLAGS + EXTFMT_LZ_FLAGS
+    extra_args : VERSION101_SOPC_NCGR_FLAGS + EXTFMT_LZ_FLAGS + ['-nopad']
 )
 
 voltorb_flip_ncgr_lz_clobber = ncgr_lz_gen.process(
@@ -20,7 +20,7 @@ voltorb_flip_ncgr_lz_clobber = ncgr_lz_gen.process(
         'voltorb_flip_00000011.png',
         'voltorb_flip_00000015.png',
     ),
-    extra_args : CLOBBER_SIZE_VERSION101_NCGR_FLAGS + EXTFMT_LZ_FLAGS
+    extra_args : CLOBBER_SIZE_VERSION101_NCGR_FLAGS + EXTFMT_LZ_FLAGS + ['-nopad']
 )
 
 voltorb_flip_nscr_lz = lz_gen.process(
