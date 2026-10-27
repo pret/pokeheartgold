@@ -4,10 +4,17 @@
 
 #include "constants/abilities.h"
 
+#include "battle/battle_controller.h"
+#include "battle/battle_display.h"
+#include "battle/battle_hp_bar.h"
+#include "battle/battle_input.h"
 #include "battle/battle_message_structs.h"
 #include "battle/battle_system.h"
+#include "battle/party_gauge.h"
 
+#include "overlay_07.h"
 #include "pokemon.h"
+#include "unk_02013FDC.h"
 
 static void BattleIOCmd_None(BattleSystem *battleSystem, OpponentData *opponentData);
 static void BattleIOCmd_SetupUI(BattleSystem *battleSystem, OpponentData *opponentData);
