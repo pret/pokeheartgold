@@ -229,7 +229,7 @@ static void RunTextPrinter(SysTask *task, TextPrinter *printer) {
 static RenderResult RenderFont(TextPrinter *printer) {
     RenderResult result;
     do {
-        result = FontID_RenderText(printer->template.fontId, printer);
+        result = FontID_RenderText((enum Font)printer->template.fontId, printer);
     } while (result == RENDER_REPEAT);
     return result;
 }

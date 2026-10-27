@@ -500,13 +500,13 @@ void ov44_02233698(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44_args *arg1, enu
     // Seeking Poffin cooks! OR // Seeking {STRVAR_3 0, 0, 0} players!
     ReadMsgDataIntoString(arg0->msgData, ov44_0223689C[arg1->unk0], arg0->string2);
     StringExpandPlaceholders(arg0->msgFmt, arg0->string1, arg0->string2);
-    AddTextPrinterParameterizedWithColor(&arg0->windowList[1], 0, arg0->string1, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[1], FONT_SYSTEM, arg0->string1, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg0->windowList[1]);
     ScheduleWindowCopyToVram(&arg0->windowList[3]);
 
     // Voice Chat ON/OFF: X Button
     ReadMsgDataIntoString(arg0->msgData, msg_0778_00128, arg0->string1);
-    AddTextPrinterParameterizedWithColor(&arg0->windowList[2], 0, arg0->string1, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[2], FONT_SYSTEM, arg0->string1, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ScheduleWindowCopyToVram(&arg0->windowList[2]);
     ScheduleWindowCopyToVram(&arg0->windowList[0]);
 }
@@ -559,7 +559,7 @@ void Wifi_LoadAndPrintTextToWindow(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44
     String *string = String_New(256, heapID);
     ReadMsgDataIntoString(arg0->msgData, strno, string);
     StringExpandPlaceholders(arg0->msgFmt, arg0->string1, string);
-    arg0->printerId = AddTextPrinterParameterizedWithColor(&arg0->windowList[0], 1, arg0->string1, 0, 0, arg0->textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    arg0->printerId = AddTextPrinterParameterizedWithColor(&arg0->windowList[0], FONT_MESSAGE, arg0->string1, 0, 0, arg0->textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg0->windowList[0]);
     String_Delete(string);
     Options *options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
@@ -605,7 +605,7 @@ void ov44_0223398C(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44_args *arg1, s32
     ReadMsgDataIntoString(arg0->msgData, msg_0778_00131, string1);
     StringExpandPlaceholders(arg0->msgFmt, string2, string1);
     FillWindowPixelBuffer(&arg0->windowList[4], 15);
-    AddTextPrinterParameterizedWithColor(&arg0->windowList[4], 0, string2, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->windowList[4], FONT_SYSTEM, string2, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     DrawFrameAndWindow1(&arg0->windowList[4], 1, 31, 3);
     ScheduleWindowCopyToVram(&arg0->windowList[4]);
     String_Delete(string1);
@@ -645,13 +645,13 @@ void ov44_02233AB8(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_02232F64 *arg1,
 
     u32 temp_r6 = arg3 * 16;
     FillWindowPixelRect(&arg1->windowList[3], 15, 0, temp_r6, 160, 16);
-    AddTextPrinterParameterizedWithColor(&arg1->windowList[3], 0, string2, 0, temp_r6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    AddTextPrinterParameterizedWithColor(&arg1->windowList[3], FONT_SYSTEM, string2, 0, temp_r6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ov44_02233CA0(arg1, arg2, arg3, 0, heapID);
 
     // ID {STRVAR_1 54, 0, 0}
     ReadMsgDataIntoString(arg1->msgData, msg_0778_00130, string1);
     StringExpandPlaceholders(arg1->msgFmt, string2, string1);
-    AddTextPrinterParameterizedWithColor(&arg1->windowList[3], 0, string2, 72, temp_r6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
+    AddTextPrinterParameterizedWithColor(&arg1->windowList[3], FONT_SYSTEM, string2, 72, temp_r6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
     ScheduleWindowCopyToVram(&arg1->windowList[3]);
     s32 var_r2;
     if (arg3 == sub_0203769C()) {

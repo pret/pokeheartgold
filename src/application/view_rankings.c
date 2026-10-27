@@ -357,7 +357,7 @@ BOOL ViewRankingsApp_Exit(OverlayManager *man, int *pState) {
         Destroy2DGfxResObjMan(appData->gf2dGfxResManagers[i]);
     }
     SpriteList_Delete(appData->spriteList);
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     OamManager_Free();
     ObjCharTransfer_Destroy();
     ObjPlttTransfer_Destroy();
@@ -390,7 +390,7 @@ static void ViewRankingsApp_Init_Internal(OverlayManager *man, int *pState) {
     Main_SetVBlankIntrCB(VBlankCB_ViewRankings, data->bgConfig);
     data->mainState = 0;
     ResetAllTextPrinters();
-    FontID_Alloc(4, HEAP_ID_RANKINGS_APP);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_RANKINGS_APP);
     ViewRankings_LoadBgGraphics(data->bgConfig, HEAP_ID_RANKINGS_APP);
     LoadFontPal0(GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)0x1E0, HEAP_ID_RANKINGS_APP);
     ViewRankings_CreateWindows(data);
@@ -1017,15 +1017,15 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
             }
             BufferIntegerAsString(appData->msgFormat, 0, ranking, 1, PRINTING_MODE_RIGHT_ALIGN, TRUE);
             StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->rankingString);
-            AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RANKING], 0, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RANKING], FONT_SYSTEM, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
             BufferString(appData->msgFormat, 1, pRecord->entries[i].pageEntry->playerName, 2, 1, 2);
             StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->playerNameString);
-            AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], 0, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], FONT_SYSTEM, appData->formatedStrBuf, 0, 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
             BufferIntegerAsString(appData->msgFormat, 0, cur, pageParam->numDigits, PRINTING_MODE_RIGHT_ALIGN, TRUE);
             StringExpandPlaceholders(appData->msgFormat, appData->formatedStrBuf, appData->miscStrings[pageParam->msgId - msg_0421_00044]);
-            AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], 0, appData->formatedStrBuf, 160 - FontID_String_GetWidth(0, appData->formatedStrBuf, 0), 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RECORDS], FONT_SYSTEM, appData->formatedStrBuf, 160 - FontID_String_GetWidth(FONT_SYSTEM, appData->formatedStrBuf, 0), 16 * y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
 
             appData->recordEntryIdxs[y] = i;
             prev = cur;
@@ -1047,7 +1047,7 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
 static void ViewRankings_PrintDeleteRecordText(ViewRankingsAppData *appData) {
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00040);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD], FONT_UNK_4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     String_Delete(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_DELETE_RECORD]);
 }
@@ -1055,7 +1055,7 @@ static void ViewRankings_PrintDeleteRecordText(ViewRankingsAppData *appData) {
 static void ViewRankings_PrintReturnText(ViewRankingsAppData *appData) {
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], 0);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0421_00041);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], 4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN], FONT_UNK_4, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     String_Delete(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_RETURN]);
 }
@@ -1071,7 +1071,7 @@ static void ViewRankings_PrintDeleteXsRecordAreYouSure(ViewRankingsAppData *appD
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     BufferString(appData->msgFormat, 0, page->entries[entryIdx].pageEntry->playerName, 2, 1, 2);
     string = ReadMsgData_ExpandPlaceholders(appData->msgFormat, appData->msgData, msg_0421_00049, HEAP_ID_RANKINGS_APP);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
@@ -1082,7 +1082,7 @@ static void ViewRankings_PrintYourOwnRecordCantBeDeleted(ViewRankingsAppData *ap
     DrawFrameAndWindow2(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     string = NewString_ReadMsgData(appData->msgData, msg_0421_00052);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }
@@ -1096,8 +1096,8 @@ static void ViewRankings_PrintRecordStatHeaderText(ViewRankingsAppData *appData)
     msgNo = (appData->page == 0 ? msg_0421_00053 : msg_0421_00065) + appData->recordIdx * 2;
     string = NewString_ReadMsgData(appData->msgData, msgNo);
     string2 = NewString_ReadMsgData(appData->msgData, msgNo + 1);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], 0, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER], FONT_SYSTEM, string2, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     String_Delete(string2);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_HEADER]);
@@ -1109,7 +1109,7 @@ static void ViewRankings_PrintSelectRecordToDeleteText(ViewRankingsAppData *appD
     DrawFrameAndWindow2(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], TRUE, 0x1, 12);
     FillWindowPixelBuffer(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0xFF);
     string = NewString_ReadMsgData(appData->msgData, msg_0421_00048);
-    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
     CopyWindowToVram(&appData->windows[VIEW_RANKINGS_APP_WINDOW_SELECT_RECORD_TO_DELETE]);
 }

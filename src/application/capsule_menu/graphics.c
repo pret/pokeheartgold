@@ -423,7 +423,7 @@ void CapsuleGraphics_OpenCapsuleSelectionMenu(BgConfig *bgConfig, Window *window
 }
 
 void ov57_02238D80(CapsuleAppManager *appMan) {
-    appMan->menuInputState = appMan->graphicsMan.touchScreenListMenu->isTouch;
+    appMan->menuInputState = (MenuInputState)appMan->graphicsMan.touchScreenListMenu->isTouch;
     TouchscreenListMenu_Destroy(appMan->graphicsMan.touchScreenListMenu);
     ListMenuItems_Delete(appMan->graphicsMan.listMenuItems);
 }
@@ -440,7 +440,7 @@ void CapsuleGraphics_LoadPokemonIcons(CapsuleAppManager *appMan) {
     SpriteManager *spriteManager = appMan->graphicsMan.spriteManager;
     PaletteData *paletteData = appMan->graphicsMan.paletteData;
 
-    SpriteSystem_LoadPaletteBuffer(paletteData, 2, spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, sub_02074490(), 0, 3, NNS_G2D_VRAM_TYPE_2DMAIN, 16000);
+    SpriteSystem_LoadPaletteBuffer(paletteData, PLTTBUF_MAIN_OBJ, spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, sub_02074490(), 0, 3, NNS_G2D_VRAM_TYPE_2DMAIN, 16000);
 
     int iconIndex = sub_0207449C();
     SpriteSystem_LoadCellResObj(spriteSystem, spriteManager, NARC_poketool_icongra_poke_icon, iconIndex, 0, 17000);
@@ -640,7 +640,7 @@ void CapsuleGraphics_FreeSelectionIndicator(CapsuleAppManager *appMan) {
     }
 }
 
-static void CapsuleGraphics_LoadCapsuleSprites(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, int bufferId, int paletteIdx, NARC *narc) {
+static void CapsuleGraphics_LoadCapsuleSprites(SpriteSystem *spriteSystem, SpriteManager *spriteManager, PaletteData *paletteData, int charFileId, int plttFileId, int cellFileId, int animFileId, int vramType, PaletteBufferId bufferId, int paletteIdx, NARC *narc) {
     SpriteSystem_LoadCharResObjFromOpenNarc(spriteSystem, spriteManager, narc, charFileId, TRUE, vramType, charFileId + 11000);
     SpriteSystem_LoadPaletteBufferFromOpenNarc(paletteData, bufferId, spriteSystem, spriteManager, narc, plttFileId, FALSE, paletteIdx, vramType, plttFileId + 11000);
     SpriteSystem_LoadCellResObjFromOpenNarc(spriteSystem, spriteManager, narc, cellFileId, TRUE, cellFileId + 11000);
@@ -648,8 +648,8 @@ static void CapsuleGraphics_LoadCapsuleSprites(SpriteSystem *spriteSystem, Sprit
 }
 
 void CapsuleGraphics_InitCapsuleSprites(CapsuleAppManager *appMan, NARC *narc) {
-    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 17, 3, 19, 18, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
-    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 32, 5, 34, 33, NNS_G2D_VRAM_TYPE_2DMAIN, 2, 1, narc);
+    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 17, 3, 19, 18, NNS_G2D_VRAM_TYPE_2DMAIN, PLTTBUF_MAIN_OBJ, 1, narc);
+    CapsuleGraphics_LoadCapsuleSprites(appMan->graphicsMan.spriteSystem, appMan->graphicsMan.spriteManager, appMan->graphicsMan.paletteData, 32, 5, 34, 33, NNS_G2D_VRAM_TYPE_2DMAIN, PLTTBUF_MAIN_OBJ, 1, narc);
     ManagedSpriteTemplate spriteTemplate;
 
     for (int i = 0; i < MAX_CAPSULES; i++) {
@@ -956,7 +956,7 @@ void CapsuleGraphics_LoadBgLayer2Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     int narcTileIdx = 8;
     int narcTilemapIdx = 12;
     int narcMemberIdx = 2;
-    int bgLayer = GF_BG_LYR_MAIN_2;
+    GFBgLayer bgLayer = GF_BG_LYR_MAIN_2;
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
@@ -975,7 +975,7 @@ void CapsuleGraphics_LoadBgLayer5Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     int narcTileIdx = 7;
     int narcTilemapIdx = 11;
     int narcMemberIdx = 1;
-    int bgLayer = GF_BG_LYR_SUB_1;
+    GFBgLayer bgLayer = GF_BG_LYR_SUB_1;
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
@@ -987,7 +987,7 @@ void CapsuleGraphics_LoadBgLayer7Tilemap(CapsuleAppManager *appMan, NARC *narc) 
     int narcTileIdx = 7;
     int narcTilemapIdx = 10;
     int narcMemberIdx = 1;
-    int bgLayer = GF_BG_LYR_SUB_3;
+    GFBgLayer bgLayer = GF_BG_LYR_SUB_3;
 
     GfGfxLoader_LoadCharDataFromOpenNarc(narc, narcTileIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);
     GfGfxLoader_LoadScrnDataFromOpenNarc(narc, narcTilemapIdx, appMan->graphicsMan.bgConfig, bgLayer, 0, 0, TRUE, HEAP_ID_CAPSULE_MENU);

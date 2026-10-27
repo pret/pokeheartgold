@@ -610,7 +610,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 2, 0x80B, 0, 0, 10, RGB_BLACK);
         PaletteData_BeginPaletteFade(appMan->graphicsMan.paletteData, 8, 0xFFFF, 0, 0, 10, RGB_BLACK);
         CapsuleManager_SetSelectedCapsule(appMan, 0);
-        appMan->yesNoResult = 0;
+        appMan->yesNoResult = YESNORESPONSE_WAIT;
         CapsuleManager_LoadLeadingPokemon(appMan);
         CapsuleManager_LoadThrownMonSprite(appMan);
         CapsuleManager_SetThrownMonSpriteHidden(appMan, 1);
@@ -621,13 +621,13 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         if (PaletteData_GetSelectedBuffersBitmask(appMan->graphicsMan.paletteData) != 0) {
             break;
         }
-        UnkStruct_134 sp5C;
-        sp5C.unk0 = 1;
+        BallThrow sp5C;
+        sp5C.type = 1;
         sp5C.heapID = HEAP_ID_CAPSULE_MENU;
-        sp5C.unk8 = 0;
-        sp5C.unkC = 0xFF;
-        sp5C.unk14 = 0;
-        sp5C.unk18 = 1;
+        sp5C.mode = 0;
+        sp5C.target = 0xFF;
+        sp5C.bgPrio = 0;
+        sp5C.surface = 1;
         sp5C.spriteSystem = appMan->graphicsMan.spriteSystem;
         sp5C.paletteData = appMan->graphicsMan.paletteData;
         sp5C.ball = GetMonData(appMan->pokemon, MON_DATA_POKEBALL, NULL);
@@ -646,7 +646,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         appMan->graphicsMan.sealEffect = ov07_02232694(HEAP_ID_CAPSULE_MENU, &sp38);
         ov07_022329B0(appMan->graphicsMan.sealEffect);
         ++appMan->throwStateID;
-        appMan->yesNoResult = 0;
+        appMan->yesNoResult = YESNORESPONSE_WAIT;
     } break;
     case THROW_WAIT_FOR_END_STATE_ID:
         if (ov07_02232A04(appMan->graphicsMan.sealEffect) != TRUE) {
@@ -671,7 +671,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         ov07_02233ECC(appMan->graphicsMan.ballRotation);
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_OFF);
         CapsuleManager_LoadThrownMonAnim(appMan);
-        appMan->yesNoResult = 0;
+        appMan->yesNoResult = YESNORESPONSE_WAIT;
         ++appMan->throwStateID;
     } break;
     case THROW_WAIT_FOR_ANIMS_END_STATE_ID:
@@ -692,18 +692,18 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         if (appMan->yesNoResult < 30) {
             break;
         }
-        appMan->yesNoResult = 0;
-        UnkStruct_134 sp10;
-        sp10.unk0 = 1;
-        sp10.heapID = HEAP_ID_CAPSULE_MENU;
-        sp10.unk8 = 5;
-        sp10.unkC = 0xFF;
-        sp10.unk14 = 0;
-        sp10.unk18 = 1;
-        sp10.spriteSystem = appMan->graphicsMan.spriteSystem;
-        sp10.paletteData = appMan->graphicsMan.paletteData;
-        sp10.ball = GetMonData(appMan->pokemon, MON_DATA_POKEBALL, NULL);
-        appMan->graphicsMan.ballRotation = ov07_02233DB8(&sp10);
+        appMan->yesNoResult = YESNORESPONSE_WAIT;
+        BallThrow ballThrow;
+        ballThrow.type = 1;
+        ballThrow.heapID = HEAP_ID_CAPSULE_MENU;
+        ballThrow.mode = 5;
+        ballThrow.target = 0xFF;
+        ballThrow.bgPrio = 0;
+        ballThrow.surface = 1;
+        ballThrow.spriteSystem = appMan->graphicsMan.spriteSystem;
+        ballThrow.paletteData = appMan->graphicsMan.paletteData;
+        ballThrow.ball = GetMonData(appMan->pokemon, MON_DATA_POKEBALL, NULL);
+        appMan->graphicsMan.ballRotation = ov07_02233DB8(&ballThrow);
         CapsuleManager_SetNormalAlpha();
         GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
         ++appMan->throwStateID;

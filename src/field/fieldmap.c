@@ -771,6 +771,9 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     Main_SetVBlankIntrCB(FieldMap_VBlankCallback, fieldSystem);
 }
 
+// This will eventually be included in the NitroSDK subproject
+extern int CARD_SpiWaitGetStatus();
+
 static BOOL ov01_021E662C(void) {
     CARD_SpiWaitGetStatus();
     return CARD_SpiWaitGetStatus() == 170;
