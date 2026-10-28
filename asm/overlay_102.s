@@ -5914,7 +5914,7 @@ ov102_021EA314: ; 0x021EA314
 	bl NewMsgDataFromNarc
 	str r0, [r4, #0x78]
 	mov r0, #0x23
-	bl ListMenuCursorNew
+	bl MenuCursor_New
 	add r1, r4, #0
 	add r1, #0x80
 	str r0, [r1]
@@ -5938,7 +5938,7 @@ ov102_021EA380: ; 0x021EA380
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021EA390
-	bl DestroyListMenuCursorObj
+	bl MenuCursor_Free
 _021EA390:
 	ldr r0, [r4, #0x60]
 	cmp r0, #0
@@ -7750,7 +7750,7 @@ ov102_021EB170: ; 0x021EB170
 	add r1, r5, #0
 	mov r2, #0
 	lsl r3, r4, #4
-	bl ListMenuUpdateCursorObj
+	bl MenuCursor_Print
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov102_021EB170
