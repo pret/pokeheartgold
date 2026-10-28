@@ -82,7 +82,7 @@ void SPLBehavior_ApplyCollisionPlane(const void *obj, SPLParticle *ptcl, VecFx32
 
 void SPLBehavior_ApplyConvergence(const void *obj, SPLParticle *ptcl, VecFx32 *acc, SPLEmitter *emtr) {
     SPLConvergenceBehavior *conv = (SPLConvergenceBehavior *)obj;
-    ptcl->position.x += FX32_CAST(FX_MUL(conv->force, (conv->target.x - ptcl->position.x)));
-    ptcl->position.y += FX32_CAST(FX_MUL(conv->force, (conv->target.y - ptcl->position.y)));
-    ptcl->position.z += FX32_CAST(FX_MUL(conv->force, (conv->target.z - ptcl->position.z)));
+    ptcl->position.x += FX32_CAST(FX_MUL(conv->force, conv->target.x - ptcl->position.x));
+    ptcl->position.y += FX32_CAST(FX_MUL(conv->force, conv->target.y - ptcl->position.y));
+    ptcl->position.z += FX32_CAST(FX_MUL(conv->force, conv->target.z - ptcl->position.z));
 }
