@@ -288,7 +288,7 @@ void *ParticleSystem_LoadResourceFromNARC(NarcId narcID, int memberIndex, enum H
     return AllocAndReadWholeNarcMemberByIdPair(narcID, memberIndex, heapID);
 }
 
-void ParticleSystem_SetResource(ParticleSystem *particleSystem, void *resource, enum VRAMAutoRelease autoRelease, BOOL uploadImmediately) {
+void ParticleSystem_SetResource(ParticleSystem *particleSystem, void *resource, int autoRelease, BOOL uploadImmediately) {
     GF_ASSERT(particleSystem->manager != NULL);
     GF_ASSERT(particleSystem->resource == NULL);
 

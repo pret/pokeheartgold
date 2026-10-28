@@ -63,7 +63,7 @@ ParticleSystem *ParticleSystem_New(SPLTexVRAMAllocFunc texAllocFunc, SPLPalVRAMA
 void ParticleSystem_Free(ParticleSystem *particleSystem);
 void ParticleSystem_FreeAll(void);
 void *ParticleSystem_LoadResourceFromNARC(enum NarcId narcID, int memberIndex, enum HeapID heapID);
-void ParticleSystem_SetResource(ParticleSystem *particleSystem, void *resource, enum VRAMAutoRelease autoRelease, BOOL uploadImmediately);
+void ParticleSystem_SetResource(ParticleSystem *particleSystem, void *resource, int autoRelease, BOOL uploadImmediately);
 void ParticleSystem_RegisterTextureKey(NNSGfdTexKey key);
 void ParticleSystem_RegisterPaletteKey(NNSGfdPlttKey key);
 void ParticleSystem_Draw(ParticleSystem *particleSystem);
