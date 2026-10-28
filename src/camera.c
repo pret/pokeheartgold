@@ -170,7 +170,7 @@ void Camera_PushLookAtToNNSGlb(void) {
     NNS_G3dGlbLookAt(&sCameraPtr->lookAt.camPos, &sCameraPtr->lookAt.camUp, &sCameraPtr->lookAt.camTarget);
 }
 
-void Camera_SetLookAtCamUp(VecFx32 *camUp, Camera *camera) {
+void Camera_SetLookAtCamUp(const VecFx32 *camUp, Camera *camera) {
     camera->lookAt.camUp = *camUp;
 }
 

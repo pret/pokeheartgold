@@ -118,7 +118,7 @@ static void IntroMovie_Scene4_Init(IntroMovieOverlayData *data, IntroMovieScene4
     sceneData->particleHeap = Heap_Alloc(HEAP_ID_INTRO_MOVIE, 0x4800);
     sceneData->particleSystem = ParticleSystem_New(IntroMovie_Scene4_TexAlloc, IntroMovie_Scene4_PlttAlloc, sceneData->particleHeap, 0x4800, TRUE, HEAP_ID_INTRO_MOVIE);
     Camera_SetPerspectiveClippingPlane(FX32_CONST(1), FX32_CONST(900), ParticleSystem_GetCamera(sceneData->particleSystem));
-    ParticleSystem_SetResource(sceneData->particleSystem, ParticleSystem_LoadResourceFromNARC(NARC_a_0_5_9, 4, HEAP_ID_INTRO_MOVIE), 0x0A, TRUE);
+    ParticleSystem_SetResource(sceneData->particleSystem, ParticleSystem_LoadResourceFromNARC(NARC_a_0_5_9, 4, HEAP_ID_INTRO_MOVIE), VRAM_AUTO_RELEASE_TEXTURE_LNK | VRAM_AUTO_RELEASE_PALETTE_LNK, TRUE);
     IntroMovie_Scene4_EnableBgLayers(data, bgConfig);
     G2_SetBlendAlpha(0, 0x3E, 0, 0);
     sceneData->needFreeGfx = TRUE;
