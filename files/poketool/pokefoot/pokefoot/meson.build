@@ -2,13 +2,19 @@ pokefoot_nclr = copy_gen.process(files(
     'pokefoot_00000000.NCLR',
 ))
 
-pokefoot_nanr_lz = lz_gen.process(files(
-    'pokefoot_00000001.NANR'
-))
+pokefoot_nanr_lz = lz_gen.process(
+    files(
+        'pokefoot_00000001.NANR'
+    ), 
+    extra_args: ['-nopad']
+)
 
-pokefoot_ncer_lz = lz_gen.process(files(
-    'pokefoot_00000002.NCER'
-))
+pokefoot_ncer_lz = lz_gen.process(
+    files(
+        'pokefoot_00000002.NCER'
+    ), 
+    extra_args: ['-nopad']
+)
 
 pokefoot_ncgr_lz = ncgr_lz_gen.process(files(
     'pokefoot_00000003.png',
@@ -506,5 +512,5 @@ pokefoot_ncgr_lz = ncgr_lz_gen.process(files(
     'pokefoot_00000495.png',
     'pokefoot_00000496.png',
     ),
-    extra_args : CLOBBER_SIZE_VERSION101_128K_NCGR_FLAGS
+    extra_args : CLOBBER_SIZE_VERSION101_128K_NCGR_FLAGS + ['-nopad']
 )
