@@ -10,6 +10,7 @@
 #include "field/map_prop.h"
 #include "field/rock_smash_item.h"
 #include "field/signpost.h"
+#include "field/weather_manager.h"
 #include "files/msgdata/msg.naix"
 #include "files/msgdata/msg/msg_0202.h"
 #include "frontier/frontier.h"
@@ -802,7 +803,7 @@ BOOL ScrCmd_DirectionSignpost(ScriptContext *ctx) {
     ReadMsgDataIntoString(ctx->msgdata, msg_no, *tmp_str);
     StringExpandPlaceholders(*msg_fmt, *pStrBuf, *tmp_str);
     Window *window = Signpost_GetWindow(fieldSystem->signpost);
-    AddTextPrinterParameterizedWithColor(window, 1, *pStrBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_MESSAGE, *pStrBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     return TRUE;
 }
@@ -861,7 +862,7 @@ BOOL ScrCmd_TrainerTips(ScriptContext *ctx) {
 
     Window *window = Signpost_GetWindow(fieldSystem->signpost);
     u8 text_speed = Options_GetTextFrameDelay(Save_PlayerData_GetOptionsAddr(fieldSystem->saveData));
-    *printer_id_ptr = AddTextPrinterParameterizedWithColor(window, 1, *pFormattedString, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
+    *printer_id_ptr = AddTextPrinterParameterizedWithColor(window, FONT_MESSAGE, *pFormattedString, 0, 0, text_speed, MAKE_TEXT_COLOR(2, 10, 15), NULL);
 
     ctx->data[0] = result_var_id;
     SetupNativeScript(ctx, NativeScript_WaitTrainerTips);

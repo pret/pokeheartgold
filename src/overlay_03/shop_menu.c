@@ -520,7 +520,7 @@ static void ov03_022573D4(MartData *data, u32 arg1) {
                 string = NewString_ReadMsgData(msgData, CapsuleMenu_GetSealNonAlphabetIndex(itemID));
                 DestroyMsgData(msgData);
             }
-            AddTextPrinterParameterizedWithColor(&data->windows[1], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&data->windows[1], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
             String_Delete(string);
             ov03_022585A4(data, itemID);
         } else {

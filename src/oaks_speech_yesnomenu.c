@@ -120,7 +120,7 @@ static void OakSpeechYesNo_PrintMessageOnWindow(OakSpeechYesNo *yesnoMenu, Windo
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msgBank, yesnoMenu->heapID);
     String *string = ReadMsgData_ExpandPlaceholders(yesnoMenu->msgFormat, msgData, msgId, yesnoMenu->heapID);
     FillWindowPixelBuffer(window, 0);
-    AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_UNK_4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     CopyWindowToVram(window);
     DestroyMsgData(msgData);
     String_Delete(string);
