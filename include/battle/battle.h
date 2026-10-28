@@ -713,7 +713,7 @@ enum BallThrowMode {
 typedef struct BallThrow {
     int type;
     enum HeapID heapID;
-    int mode;
+    enum BallThrowMode mode;
     int target;
     int ballID;
     int bgPrio;
@@ -764,7 +764,7 @@ struct UnkBallData { // TODO: Give a better name.
 typedef struct BattlePartyContext {
     Party *party;
     void *unused1;
-    BattleSystem *battleSys;
+    BattleSystem *battleSystem;
     enum HeapID heapID;
     u8 unused2;
     u8 selectedPartyIndex;
@@ -798,7 +798,7 @@ typedef struct BattlerSpriteContext {
     u8 types[4];
 } BattlerSpriteContext;
 
-typedef struct {
+typedef struct BallCapsuleConfig {
     int battlerType;
     int ballTypeOverride;
     Pokemon *mon;
@@ -819,6 +819,7 @@ typedef struct ActionSelectData {
     u16 maxHp;
     u8 isWaitingForPartner;
 } ActionSelectData;
+
 typedef struct MoveSelectData {
     u16 moveIDs[4];
     u8 currPP[4];
@@ -833,7 +834,7 @@ typedef struct TargetSelectData {
 } TargetSelectData;
 
 typedef struct BattleBagContext {
-    BattleSystem *battleSys;
+    BattleSystem *battleSystem;
     PlayerProfile *trainerInfo;
     Bag *bag;
     enum HeapID heapID;
@@ -858,7 +859,7 @@ typedef struct GiveUpMoveData {
     u16 unused_02;
 } GiveUpMoveData;
 
-typedef struct {
+typedef struct ParticleEffectTemplate {
     int resourceID;
     int cameraProjection;
 } ParticleEffectTemplate;

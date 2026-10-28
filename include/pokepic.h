@@ -209,13 +209,13 @@ void Pokepic_Delete(Pokepic *pokepic);
 void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager);
 
 // Sets Pokepic attribute to value by index
-void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value);
+void Pokepic_SetAttr(Pokepic *pokepic, enum PokepicAttr attr, int value);
 
 // Returns the Pokepic attribute by index
-int Pokepic_GetAttr(Pokepic *pokepic, int attr);
+int Pokepic_GetAttr(Pokepic *pokepic, enum PokepicAttr attr);
 
 // Adds addend value to Pokepic attribute by index
-void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend);
+void Pokepic_AddAttr(Pokepic *pokepic, enum PokepicAttr attr, int addend);
 
 // Updates Pokepic dimensions and sets visible=TRUE
 void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height);

@@ -6657,7 +6657,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
     case STATE_GET_POKEMON_START:
         if (data->captureType == CAPTURE_NORMAL) {
             BallThrow ballThrow;
-            ballThrow.mode = 3;
+            ballThrow.mode = BALL_THROW_MODE_THROW;
             ballThrow.heapID = HEAP_ID_BATTLE;
             ballThrow.target = battlerId + 20000;
             ballThrow.ballID = data->ballID;

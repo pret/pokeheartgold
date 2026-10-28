@@ -528,7 +528,7 @@ void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager) {
     }
 }
 
-void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
+void Pokepic_SetAttr(Pokepic *pokepic, enum PokepicAttr attr, int value) {
     switch (attr) {
     case POKEPIC_X:
         pokepic->drawParam.xCenter = value;
@@ -679,7 +679,7 @@ void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value) {
     }
 }
 
-int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
+int Pokepic_GetAttr(Pokepic *pokepic, enum PokepicAttr attr) {
     switch (attr) {
     case POKEPIC_X:
         return pokepic->drawParam.xCenter;
@@ -779,7 +779,7 @@ int Pokepic_GetAttr(Pokepic *pokepic, int attr) {
     return 0;
 }
 
-void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend) {
+void Pokepic_AddAttr(Pokepic *pokepic, enum PokepicAttr attr, int addend) {
     switch (attr) {
     case POKEPIC_X:
         pokepic->drawParam.xCenter += addend;
