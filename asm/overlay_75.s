@@ -2451,7 +2451,7 @@ ov75_02247C70: ; 0x02247C70
 	ldr r0, [r0]
 	ldr r3, [r5, r3]
 	add r1, #0xd4
-	bl ListMenuUpdateCursorObj
+	bl MenuCursor_Print
 	add r4, #0xd4
 	add r0, r4, #0
 	bl CopyWindowToVram
@@ -3057,7 +3057,7 @@ _02248168:
 	add r0, #0xd4
 	bl CopyWindowToVram
 	mov r0, #0x74
-	bl ListMenuCursorNew
+	bl MenuCursor_New
 	add r1, r5, #0
 	add r1, #0xe4
 	str r0, [r1]
@@ -3285,7 +3285,7 @@ _0224837C:
 	add r0, r5, #0
 	add r0, #0xe4
 	ldr r0, [r0]
-	bl DestroyListMenuCursorObj
+	bl MenuCursor_Free
 	ldr r0, [r5, #4]
 	mov r1, #3
 	bl BgClearTilemapBufferAndCommit

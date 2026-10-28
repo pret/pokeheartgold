@@ -1,4 +1,4 @@
-#include "list_menu_cursor.h"
+#include "menu_cursor.h"
 
 #include <nitro.h>
 
@@ -11,14 +11,12 @@
 #include "pm_string.h"
 #include "text.h"
 
-// TODO: sync with plat's colored_arrow.c
-
-ListMenuCursor *ListMenuCursorNew(enum HeapID heapID) {
+MenuCursor *MenuCursor_New(enum HeapID heapID) {
     static const u16 chars[] = {
         CHAR_JP_CONTINUE_ARROW,
         EOS,
     };
-    ListMenuCursor *cursor = Heap_Alloc(heapID, sizeof(ListMenuCursor));
+    MenuCursor *cursor = Heap_Alloc(heapID, sizeof(MenuCursor));
 
     if (cursor != NULL) {
         cursor->color = MAKE_TEXT_COLOR(1, 2, 15);
@@ -29,7 +27,7 @@ ListMenuCursor *ListMenuCursorNew(enum HeapID heapID) {
     return cursor;
 }
 
-void DestroyListMenuCursorObj(ListMenuCursor *cursor) {
+void MenuCursor_Free(MenuCursor *cursor) {
     GF_ASSERT(cursor != NULL);
 
     if (cursor != NULL) {
@@ -41,7 +39,7 @@ void DestroyListMenuCursorObj(ListMenuCursor *cursor) {
     }
 }
 
-void ListMenuCursorSetColor(ListMenuCursor *cursor, u32 color) {
+void MenuCursor_SetColor(MenuCursor *cursor, u32 color) {
     GF_ASSERT(cursor != NULL);
 
     if (cursor != NULL) {
@@ -49,7 +47,7 @@ void ListMenuCursorSetColor(ListMenuCursor *cursor, u32 color) {
     }
 }
 
-void ListMenuUpdateCursorObj(const ListMenuCursor *cursor, Window *window, u32 xOffset, u32 yOffset) {
+void MenuCursor_Print(const MenuCursor *cursor, Window *window, u32 xOffset, u32 yOffset) {
     AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, cursor->string, xOffset, yOffset, TEXT_SPEED_NOTRANSFER, cursor->color, NULL);
     CopyWindowPixelsToVram_TextMode(window);
 }

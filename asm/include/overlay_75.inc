@@ -52,9 +52,9 @@
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AppendFromMsgData
-.public ListMenuCursorNew
-.public DestroyListMenuCursorObj
-.public ListMenuUpdateCursorObj
+.public MenuCursor_New
+.public MenuCursor_Free
+.public MenuCursor_Print
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate

@@ -25,7 +25,7 @@ static void Get2dMenuSelectionCoords(struct ListMenu2D *listMenu, u8 *x, u8 *y, 
 static struct ListMenu2D *Create2dMenuInternalEx(const struct ListMenu2DTemplate *template, u8 x, u8 y, u8 initialSelection, u8 heapID, int cancelKey) {
     struct ListMenu2D *ret = Heap_Alloc((enum HeapID)heapID, sizeof(struct ListMenu2D));
     ret->template = *template;
-    ret->cursor = ListMenuCursorNew((enum HeapID)heapID);
+    ret->cursor = MenuCursor_New((enum HeapID)heapID);
     ret->cancelKey = cancelKey;
     ret->selectedIndex = initialSelection;
     ret->maxItemWidth = Get2dMenuMaxItemWidth(ret);
@@ -53,7 +53,7 @@ void Delete2dMenu(struct ListMenu2D *menu, u8 *ret_p) {
     if (ret_p != NULL) {
         *ret_p = menu->selectedIndex;
     }
-    DestroyListMenuCursorObj(menu->cursor);
+    MenuCursor_Free(menu->cursor);
     Heap_FreeExplicit((enum HeapID)menu->heapID, menu);
 }
 
@@ -196,7 +196,7 @@ static void Draw2dMenuCursor(struct ListMenu2D *listMenu) {
     if (listMenu->template.cursorType != 1) {
         u8 x, y;
         Get2dMenuSelectionCoords(listMenu, &x, &y, listMenu->selectedIndex);
-        ListMenuUpdateCursorObj(listMenu->cursor, listMenu->template.window, x, y);
+        MenuCursor_Print(listMenu->cursor, listMenu->template.window, x, y);
     }
 }
 

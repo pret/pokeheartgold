@@ -67,7 +67,7 @@ pokeheartgold_c = files(
     'link_ruleset_data.c',
     'list_menu.c',
     'list_menu_2d.c',
-    'list_menu_cursor.c',
+    'menu_cursor.c',
     'list_menu_items.c',
     'location_backup.c',
     'location_gmm_dat.c',
