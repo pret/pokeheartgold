@@ -93,11 +93,11 @@ static BOOL (*const sCapsuleFunctions[])(CapsuleAppManager *appMan) = {
 };
 
 const SealListMenuEntry gSealListMenuEntries[] = {
-    { 0, ov57_0223B6F0                 },
-    { 1, CapsuleManager_FreeMenuWindow },
-    { 2, ov57_0223B714                 },
-    { 3, ov57_0223B73C                 },
-    { 4, ov57_0223B74C                 },
+    { msg_0011_00000, ov57_0223B6F0                 },
+    { msg_0011_00001, CapsuleManager_FreeMenuWindow },
+    { msg_0011_00002, ov57_0223B714                 },
+    { msg_0011_00003, ov57_0223B73C                 },
+    { msg_0011_00004, ov57_0223B74C                 },
 };
 
 BOOL CapsuleManager_AnySealsOnCapsule(BallCapsule *capsule) {
