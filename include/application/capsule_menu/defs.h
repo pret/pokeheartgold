@@ -66,11 +66,11 @@ typedef struct CapsuleGraphicsManager {
     BallCapsuleSealEffect *sealEffect;
     UnkBallData *ballRotation;
     GF3DVramMan *gf3dVramMan;
-    UnkStruct_02013534 *fontOAMManager;
-    TextOBJ *fontOAM[2];
+    UnkStruct_02013534 *textOBJtemplate;
+    TextOBJ *textOBJ[2];
     UnkStruct_02021AC8 charTransfer[2];
     BOOL graphicsTaskResult;
-    UnkStruct_02016EDC *pokepicAnimManager;
+    PokepicAnimManager *pokepicAnimManager;
     BOOL sealsChanged;
 } CapsuleGraphicsManager;
 
@@ -151,7 +151,7 @@ void ov57_0223866C(CapsuleAppManager *appManager, BOOL show);
 void CapsuleGraphics_InitFontOAMManager(CapsuleAppManager *appMan);
 void CapsuleGraphics_FreeFonts(CapsuleAppManager *appMan);
 void ov57_02238794(CapsuleAppManager *appMan);
-void ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(CapsuleAppManager *appMan, BOOL flag);
+void CapsuleGraphics_SetFontOAMDrawFlag(CapsuleAppManager *appMan, BOOL flag);
 void CapsuleGraphics_PopulateSealPage(CapsuleAppManager *appMan, int pageCutoff);
 void CapsuleGraphics_LoadPageSprites(CapsuleAppManager *appMan);
 void CapsuleGraphics_InitPageSprites(CapsuleAppManager *appMan);

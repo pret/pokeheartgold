@@ -3227,7 +3227,7 @@ BOOL MonHasMove(Pokemon *mon, u16 move) {
 
 void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     u32 sp0 = 0;
-    BallCapsule sp4;
+    BallCapsule ballCapsule;
     struct Mail *mail;
     dest->box = *src;
     if (dest->box.boxDecrypted) {
@@ -3240,8 +3240,8 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     SetMonData(dest, MON_DATA_MAIL, mail);
     Heap_Free(mail);
     SetMonData(dest, MON_DATA_BALL_CAPSULE_ID, &sp0);
-    MI_CpuClearFast(&sp4, sizeof(sp4));
-    SetMonData(dest, MON_DATA_BALL_CAPSULE, &sp4);
+    MI_CpuClearFast(&ballCapsule, sizeof(ballCapsule));
+    SetMonData(dest, MON_DATA_BALL_CAPSULE, &ballCapsule);
     CalcMonLevelAndStats(dest);
 }
 
@@ -4165,11 +4165,11 @@ int TrainerClassToBackpicID(int trainerClass, BOOL isLink) {
 }
 
 void Pokemon_RemoveCapsule(Pokemon *mon) {
-    u8 sp0 = 0;
-    BallCapsule sp1;
-    MI_CpuClearFast(&sp1, sizeof(sp1));
-    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &sp0);
-    SetMonData(mon, MON_DATA_BALL_CAPSULE, &sp1);
+    u8 capsuleId = 0;
+    BallCapsule ballCapsule;
+    MI_CpuClearFast(&ballCapsule, sizeof(ballCapsule));
+    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &capsuleId);
+    SetMonData(mon, MON_DATA_BALL_CAPSULE, &ballCapsule);
 }
 
 void RestoreBoxMonPP(BoxPokemon *boxMon) {
@@ -4192,7 +4192,7 @@ void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species
     MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
-void sub_0207294C(NARC *narc, UnkStruct_02016EDC *pokepicAnimManager, Pokepic *pokepic, u16 species, int a4, int a5, int a6) {
+void sub_0207294C(NARC *narc, PokepicAnimManager *pokepicAnimManager, Pokepic *pokepic, u16 species, int a4, int a5, int a6) {
     struct UnkStruct_02072914 spA;
     struct UnkStruct_0207294C sp4;
     int r4 = (a4 == 2 ? 0 : 1);

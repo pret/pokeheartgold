@@ -97,7 +97,7 @@ void ov57_0223866C(CapsuleAppManager *appManager, BOOL show) {
 }
 
 void CapsuleGraphics_InitFontOAMManager(CapsuleAppManager *appMan) {
-    appMan->graphicsMan.fontOAMManager = FontSystem_NewInit(2, HEAP_ID_CAPSULE_MENU);
+    appMan->graphicsMan.textOBJtemplate = FontSystem_NewInit(2, HEAP_ID_CAPSULE_MENU);
     FontID_Alloc(FONT_SUBSCREEN, HEAP_ID_CAPSULE_MENU);
     FontID_Alloc(FONT_UNK_4, HEAP_ID_CAPSULE_MENU);
 }
@@ -105,11 +105,11 @@ void CapsuleGraphics_InitFontOAMManager(CapsuleAppManager *appMan) {
 void CapsuleGraphics_FreeFonts(CapsuleAppManager *appMan) {
     FontID_Release(FONT_UNK_4);
     FontID_Release(FONT_SUBSCREEN);
-    FontOAM_Delete(appMan->graphicsMan.fontOAM[0]);
+    FontOAM_Delete(appMan->graphicsMan.textOBJ[0]);
     sub_02021B5C(&appMan->graphicsMan.charTransfer[0]);
-    FontOAM_Delete(appMan->graphicsMan.fontOAM[1]);
+    FontOAM_Delete(appMan->graphicsMan.textOBJ[1]);
     sub_02021B5C(&appMan->graphicsMan.charTransfer[1]);
-    sub_020135AC(appMan->graphicsMan.fontOAMManager);
+    sub_020135AC(appMan->graphicsMan.textOBJtemplate);
 }
 
 static void CapsuleGraphics_LoadPaletteBuffer(CapsuleAppManager *appMan) {
@@ -122,21 +122,21 @@ void ov57_02238794(CapsuleAppManager *appMan) {
     ov57_022387E0(appMan, 1, 192, 165, 0);
 }
 
-void ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(CapsuleAppManager *appMan, BOOL flag) {
-    TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.fontOAM[0], flag);
-    TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.fontOAM[1], flag);
+void CapsuleGraphics_SetFontOAMDrawFlag(CapsuleAppManager *appMan, BOOL flag) {
+    TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.textOBJ[0], flag);
+    TextOBJ_SetSpritesDrawFlag(appMan->graphicsMan.textOBJ[1], flag);
 }
 
 static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, int palette) {
-    TextOBJTemplate fontOAMManager;
+    TextOBJTemplate textOBJtemplate;
     String *string;
     int unk_448;
     int v3;
-    MsgData *messageLoader;
+    MsgData *msgData;
     Window window;
 
-    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
-    string = NewString_ReadMsgData(messageLoader, msg_0011_00005 + index);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
+    string = NewString_ReadMsgData(msgData, msg_0011_00005 + index);
 
     InitWindow(&window);
     AddTextWindowTopLeftCorner(appMan->graphicsMan.bgConfig, &window, 10, 2, 0, 0);
@@ -146,23 +146,23 @@ static void ov57_022387E0(CapsuleAppManager *appMan, int index, int x, int y, in
     v3 = sub_02013688(&window, NNS_G2D_VRAM_TYPE_2DSUB, HEAP_ID_CAPSULE_MENU);
     sub_02021AC8(v3, 1, NNS_G2D_VRAM_TYPE_2DSUB, &appMan->graphicsMan.charTransfer[index]);
 
-    fontOAMManager.fontSystem = appMan->graphicsMan.fontOAMManager;
-    fontOAMManager.window = &window;
-    fontOAMManager.spriteList = SpriteManager_GetSpriteList(appMan->graphicsMan.spriteManager);
-    fontOAMManager.plttResourceProxy = SpriteManager_FindPlttResourceProxy(appMan->graphicsMan.spriteManager, unk_448);
-    fontOAMManager.sprite = NULL;
-    fontOAMManager.offset = appMan->graphicsMan.charTransfer[index].offset;
-    fontOAMManager.x = x - FontID_String_GetWidth(FONT_SUBSCREEN, string, 0) / 2;
-    fontOAMManager.y = y + 192;
-    fontOAMManager.unk_20 = 1;
-    fontOAMManager.unk_24 = 40;
-    fontOAMManager.vram = NNS_G2D_VRAM_TYPE_2DSUB;
-    fontOAMManager.heapID = HEAP_ID_CAPSULE_MENU;
-    appMan->graphicsMan.fontOAM[index] = sub_020135D8(&fontOAMManager);
+    textOBJtemplate.fontSystem = appMan->graphicsMan.textOBJtemplate;
+    textOBJtemplate.window = &window;
+    textOBJtemplate.spriteList = SpriteManager_GetSpriteList(appMan->graphicsMan.spriteManager);
+    textOBJtemplate.plttResourceProxy = SpriteManager_FindPlttResourceProxy(appMan->graphicsMan.spriteManager, unk_448);
+    textOBJtemplate.sprite = NULL;
+    textOBJtemplate.offset = appMan->graphicsMan.charTransfer[index].offset;
+    textOBJtemplate.x = x - FontID_String_GetWidth(FONT_SUBSCREEN, string, 0) / 2;
+    textOBJtemplate.y = y + 192;
+    textOBJtemplate.unk_20 = 1;
+    textOBJtemplate.unk_24 = 40;
+    textOBJtemplate.vram = NNS_G2D_VRAM_TYPE_2DSUB;
+    textOBJtemplate.heapID = HEAP_ID_CAPSULE_MENU;
+    appMan->graphicsMan.textOBJ[index] = sub_020135D8(&textOBJtemplate);
 
-    sub_020138E0(appMan->graphicsMan.fontOAM[index], palette);
+    sub_020138E0(appMan->graphicsMan.textOBJ[index], palette);
     String_Delete(string);
-    DestroyMsgData(messageLoader);
+    DestroyMsgData(msgData);
     RemoveWindow(&window);
 }
 
@@ -393,16 +393,16 @@ void CapsuleGraphics_OpenCapsuleSelectionMenu(BgConfig *bgConfig, Window *window
     appMan->graphicsMan.listMenuItems = ListMenuItems_New(ySize, HEAP_ID_CAPSULE_MENU);
 
     String *string;
-    MsgData *messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
+    MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
 
     for (int i = 0; i < ySize; i++) {
-        string = NewString_ReadMsgData(messageLoader, gSealListMenuEntries[stringIDs[i]].index);
+        string = NewString_ReadMsgData(msgData, gSealListMenuEntries[stringIDs[i]].index);
 
         ListMenuItems_AddItem(appMan->graphicsMan.listMenuItems, string, (int)gSealListMenuEntries[stringIDs[i]].func);
         String_Delete(string);
     }
 
-    DestroyMsgData(messageLoader);
+    DestroyMsgData(msgData);
 
     MI_CpuClear8(&menuTemplate, sizeof(TouchscreenListMenuHeader));
     menuTemplate.template = (TouchscreenListMenuTemplate) {
@@ -551,15 +551,15 @@ void CapsuleGraphics_InitSpriteManager(CapsuleGraphicsManager *unk_0D4) {
         32,
     };
     const OamCharTransferParam transferTemplate = {
-        48 + 48, 1024 * 0x40, 512 * 0x20, GX_OBJVRAMMODE_CHAR_1D_64K, GX_OBJVRAMMODE_CHAR_1D_32K
+        96, 0x10000, 0x4000, GX_OBJVRAMMODE_CHAR_1D_64K, GX_OBJVRAMMODE_CHAR_1D_32K
     };
 
     SpriteSystem_Init(unk_0D4->spriteSystem, &renderOAMTemplate, &transferTemplate, SPRITE_SYSTEM_PLTT_CAPACITY);
 
     BOOL result;
     const SpriteResourceCountsListUnion spriteResourceCapacities = {
-        .numChar = 48 + 48,
-        .numPltt = 16 + 16,
+        .numChar = 96,
+        .numPltt = 32,
         .numCell = 64,
         .numAnim = 64,
         .numMcel = 16,
@@ -796,7 +796,7 @@ void CapsuleGraphics_LoadSubWindow(BgConfig *bgConfig, PaletteData *paletteData,
 }
 
 void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL drawFrame) {
-    MsgData *messageLoader;
+    MsgData *msgData;
     String *string;
 
     if (drawFrame) {
@@ -813,14 +813,14 @@ void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL d
         return;
     }
 
-    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
-    string = NewString_ReadMsgData(messageLoader, entryID);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0011, HEAP_ID_CAPSULE_MENU);
+    string = NewString_ReadMsgData(msgData, entryID);
 
     FillWindowPixelBuffer(window, 15);
     AddTextPrinterParameterized(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_INSTANT, NULL);
     ScheduleWindowCopyToVram(window);
     String_Delete(string);
-    DestroyMsgData(messageLoader);
+    DestroyMsgData(msgData);
 }
 
 void CapsuleGraphics_InitMessageWindow(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile) {
@@ -919,7 +919,7 @@ void CapsuleGraphics_FreeSealCountWindows(CapsuleAppManager *appMan) {
 }
 
 void CapsuleGraphics_UpdateSealNameText(Window *window, int entryID) {
-    MsgData *messageLoader;
+    MsgData *msgData;
     String *string;
 
     if (entryID == 0xFFFF) {
@@ -928,14 +928,14 @@ void CapsuleGraphics_UpdateSealNameText(Window *window, int entryID) {
         return;
     }
 
-    messageLoader = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0015, HEAP_ID_CAPSULE_MENU);
-    string = NewString_ReadMsgData(messageLoader, entryID);
+    msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0015, HEAP_ID_CAPSULE_MENU);
+    string = NewString_ReadMsgData(msgData, entryID);
 
     FillWindowPixelBuffer(window, 15);
     AddTextPrinterParameterized(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_INSTANT, NULL);
     ScheduleWindowCopyToVram(window);
     String_Delete(string);
-    DestroyMsgData(messageLoader);
+    DestroyMsgData(msgData);
 }
 
 void CapsuleGraphics_StartDisplay(void) {

@@ -36,7 +36,7 @@
 typedef struct {
     int frame;
     ManagedSprite *sprite;
-    TextOBJ *fontOAM;
+    TextOBJ *textOBJ;
 } CapsuleUIPressTask;
 
 static BOOL CapsuleManager_SelectionActions(CapsuleAppManager *appMan);
@@ -182,7 +182,7 @@ static BOOL CapsuleManager_SelectionActions(CapsuleAppManager *appMan) {
         CapsuleGraphics_SetPageSpritesDrawFlag(appMan, 0);
         CapsuleGraphics_SetSelectionIndicatorDrawFlags(appMan, 0);
         ov57_02238794(appMan);
-        ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(appMan, 0);
+        CapsuleGraphics_SetFontOAMDrawFlag(appMan, 0);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
         CapsuleGraphics_StartDisplay();
         CapsuleManager_SetSelectedCapsule(appMan, 0);
@@ -438,7 +438,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_Init(CapsuleAppManager *appMan
         SetBgPriority(GF_BG_LYR_SUB_3, 1);
         CapsuleGraphics_SetPageSpritesDrawFlag(appMan, TRUE);
         CapsuleGraphics_SetSelectionIndicatorDrawFlags(appMan, TRUE);
-        ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(appMan, TRUE);
+        CapsuleGraphics_SetFontOAMDrawFlag(appMan, TRUE);
         ov57_02238AF0(appMan, TRUE);
         ManagedSprite_SetAnimationFrame(appMan->pageSprites[8], 0);
         ManagedSprite_SetAnimationFrame(appMan->pageSprites[9], 0);
@@ -483,7 +483,7 @@ static BOOL CapsuleManager_HandleFades(CapsuleAppManager *appMan) {
         GfGfx_EngineBTogglePlanes(GX_PLANEMASK_BG2, GF_PLANE_TOGGLE_OFF);
         CapsuleGraphics_SetPageSpritesDrawFlag(appMan, FALSE);
         CapsuleGraphics_SetSelectionIndicatorDrawFlags(appMan, FALSE);
-        ov57CapsuleGraphics_SetFontOAMDrawFlag022387C0(appMan, FALSE);
+        CapsuleGraphics_SetFontOAMDrawFlag(appMan, FALSE);
         ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
         CopyWindowToVram(&appMan->graphicsMan.windows[3]);
@@ -790,7 +790,7 @@ void CapsuleManager_HandleSpritePress(u32 index, u32 event, void *arg) {
                 CapsuleManager_SetSelectedCapsule(appMan, 0);
                 PlaySE(SEQ_SE_DP_PIRORIRO);
             }
-            CapsuleManager_PressCapsuleUI(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
+            CapsuleManager_PressCapsuleUI(appMan->pageSprites[11], appMan->graphicsMan.textOBJ[0]);
         }
         CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[11], event);
         break;
@@ -801,7 +801,7 @@ void CapsuleManager_HandleSpritePress(u32 index, u32 event, void *arg) {
                 CapsuleManager_SetSelectedCapsule(appMan, 0);
                 PlaySE(SEQ_SE_DP_DECIDE);
             }
-            CapsuleManager_PressCapsuleUI(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
+            CapsuleManager_PressCapsuleUI(appMan->pageSprites[12], appMan->graphicsMan.textOBJ[1]);
         }
         CapsuleManager_SetUIAnimationFromTouch(appMan->pageSprites[12], event);
         break;
@@ -1118,7 +1118,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_CapsuleMenu(CapsuleAppManager 
         }
         CapsuleManager_SetSelectedCapsule(appMan, 0);
         PlaySE(SEQ_SE_DP_PIRORIRO);
-        CapsuleManager_PressCapsuleUI(appMan->pageSprites[11], appMan->graphicsMan.fontOAM[0]);
+        CapsuleManager_PressCapsuleUI(appMan->pageSprites[11], appMan->graphicsMan.textOBJ[0]);
         return CAPSULE_FADE_OUT_WAIT_STATE_ID;
     }
     if (gSystem.newKeys & PAD_BUTTON_B) {
@@ -1128,7 +1128,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_CapsuleMenu(CapsuleAppManager 
         }
         CapsuleManager_SetSelectedCapsule(appMan, 0);
         PlaySE(SEQ_SE_DP_DECIDE);
-        CapsuleManager_PressCapsuleUI(appMan->pageSprites[12], appMan->graphicsMan.fontOAM[1]);
+        CapsuleManager_PressCapsuleUI(appMan->pageSprites[12], appMan->graphicsMan.textOBJ[1]);
         return CAPSULE_CANCEL_PRESSED_STATE_ID;
     }
     if (gSystem.newKeys & (PAD_BUTTON_X | PAD_BUTTON_Y)) {
@@ -1246,13 +1246,13 @@ static void CapsuleManager_SetUIAnimationFromTouch(ManagedSprite *sprite, u32 ev
     }
 }
 
-static void CapsuleManager_OffsetFontOAM(TextOBJ *fontOAM, int xOffset, int yOffset) {
+static void CapsuleManager_OffsetFontOAM(TextOBJ *textOBJ, int xOffset, int yOffset) {
     int x;
     int y;
 
-    if (fontOAM != NULL) {
-        sub_02013794(fontOAM, &x, &y);
-        sub_020136B4(fontOAM, x + xOffset, y + yOffset);
+    if (textOBJ != NULL) {
+        sub_02013794(textOBJ, &x, &y);
+        sub_020136B4(textOBJ, x + xOffset, y + yOffset);
     }
 }
 
@@ -1261,12 +1261,12 @@ static void CapsuleManager_CapsuleUIPressTask(SysTask *sysTask, void *taskData) 
 
     switch (capsuleUIPressTask->frame) {
     case 3:
-        CapsuleManager_OffsetFontOAM(capsuleUIPressTask->fontOAM, 0, -1);
+        CapsuleManager_OffsetFontOAM(capsuleUIPressTask->textOBJ, 0, -1);
         ManagedSprite_SetAnimationFrame(capsuleUIPressTask->sprite, 2);
         capsuleUIPressTask->frame++;
         break;
     case 6:
-        CapsuleManager_OffsetFontOAM(capsuleUIPressTask->fontOAM, 0, 2);
+        CapsuleManager_OffsetFontOAM(capsuleUIPressTask->textOBJ, 0, 2);
         ManagedSprite_SetAnimationFrame(capsuleUIPressTask->sprite, 0);
         SysTask_Destroy(sysTask);
         Heap_Free(capsuleUIPressTask);
@@ -1281,8 +1281,8 @@ static void CapsuleManager_PressCapsuleUI(ManagedSprite *sprite, TextOBJ *textOb
     CapsuleUIPressTask *taskData = Heap_Alloc(HEAP_ID_CAPSULE_MENU, sizeof(CapsuleUIPressTask));
     taskData->frame = 1;
     taskData->sprite = sprite;
-    taskData->fontOAM = textObj;
-    CapsuleManager_OffsetFontOAM(taskData->fontOAM, 0, -1);
+    taskData->textOBJ = textObj;
+    CapsuleManager_OffsetFontOAM(taskData->textOBJ, 0, -1);
     SysTask_CreateOnMainQueue(CapsuleManager_CapsuleUIPressTask, taskData, 1000);
 }
 
