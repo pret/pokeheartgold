@@ -59,7 +59,7 @@ target_include_directories(PokeHeartGold PUBLIC
     include/library
     lib/dsprot/include)
 target_compile_definitions(PokeHeartGold PUBLIC __CLION_IDE__ SDK_ARM9 SDK_CW SDK_CODE_ARM SDK_TS _NITRO __arm PLATFORM_INTRINSIC_FUNCTION_BIT_CLZ32=__builtin_clz wchar_t=__WCHAR_TYPE__ PM_KEEP_ASSERTS)
-target_compile_options(PokeHeartGold PRIVATE -Wall -Wextra -pedantic -Wimplicit -Wno-endif-labels -fms-extensions -nostdinc -Wno-builtin-declaration-mismatch -Wno-implicit-int -Wno-multichar -Wno-address-of-packed-member -mcpu=arm946e-s -include "global.h")
+target_compile_options(PokeHeartGold PRIVATE -Wall -Wextra -pedantic -Wimplicit -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable -Wno-unused-but-set-variable -Wno-endif-labels -fms-extensions -nostdinc -Wno-builtin-declaration-mismatch -Wno-implicit-int -Wno-multichar -Wno-address-of-packed-member -mcpu=arm946e-s -include "global.h")
 target_compile_features(PokeHeartGold PRIVATE c_std_99 cxx_std_98)
 
 # add_subdirectory(tools)
