@@ -13,47 +13,47 @@ typedef enum PokepicAttr {
     POKEPIC_Z,
     POKEPIC_XOFFSET,
     POKEPIC_YOFFSET,
-    POKEPIC_ZOFFSET,
+    POKEPIC_ZOFFSET, // 5
     POKEPIC_VANISHED,
     POKEPIC_XROT,
     POKEPIC_YROT,
     POKEPIC_ZROT,
-    POKEPIC_XPIVOT,
+    POKEPIC_XPIVOT, // 10
     POKEPIC_YPIVOT,
     POKEPIC_AFFINEW,
     POKEPIC_AFFINEH,
     POKEPIC_VISIBLE,
-    POKEPIC_XOFF2,
+    POKEPIC_XOFF2, // 15
     POKEPIC_YOFF2,
     POKEPIC_W,
     POKEPIC_H,
     POKEPIC_SHADOW_X,
-    POKEPIC_SHADOW_Y,
+    POKEPIC_SHADOW_Y, // 20
     POKEPIC_SHADOW_XOFFSET,
     POKEPIC_SHADOW_YOFFSET,
     POKEPIC_ALPHA,
     POKEPIC_DIFFUSE_R,
-    POKEPIC_DIFFUSE_G,
+    POKEPIC_DIFFUSE_G, // 25
     POKEPIC_DIFFUSE_B,
     POKEPIC_AMBIENT_R,
     POKEPIC_AMBIENT_G,
     POKEPIC_AMBIENT_B,
-    POKEPIC_FADE,
+    POKEPIC_FADE, // 30
     POKEPIC_FADE_COLOR,
     POKEPIC_FADE_BLDY,
     POKEPIC_FADE_BLDY_TARGET,
     POKEPIC_FADE_SPEED,
-    POKEPIC_HFLIP,
+    POKEPIC_HFLIP, // 35
     POKEPIC_VFLIP,
     POKEPIC_NODRAW,
     POKEPIC_ANIM_STEP,
     POKEPIC_39,
-    POKEPIC_MOSAIC,
+    POKEPIC_MOSAIC, // 40
     POKEPIC_SHADOW_H,
     POKEPIC_SHADOW_PLTT,
     POKEPIC_SHADOW_XADJ_REQ,
     POKEPIC_SHADOW_YADJ_REQ,
-    POKEPIC_SHADOW_AFFINE,
+    POKEPIC_SHADOW_AFFINE, // 45
     POKEPIC_SHADOW_SIZE,
 } PokepicAttr;
 
@@ -188,7 +188,7 @@ void PokepicManager_DrawAll(PokepicManager *pokepicManager);
 void PokepicManager_Delete(PokepicManager *pokepicManager);
 
 // Sets Pokepic animation active
-void Pokepic_StartAnim(Pokepic *pokepic);
+void Pokepic_StartAnim(Pokepic *pokepic, u32 unused);
 
 // Copies the PokepicAnimScript to the Pokepic
 void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
@@ -197,7 +197,7 @@ void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
 BOOL Pokepic_IsAnimFinished(Pokepic *pokepic);
 
 // Finds an empty Pokepic slot and creates a Pokepic there
-Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
+Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, s32 x, s32 y, s32 z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
 
 // Initializes the Pokepic from arguments at the given position
 Pokepic *PokepicManager_CreatePokepicAt(PokepicManager *pokepicManager, PokepicTemplate *template, int x, int y, int z, int polygonId, int picIndex, PokepicAnimScript *animScript, PokepicCallback callback);
@@ -209,13 +209,13 @@ void Pokepic_Delete(Pokepic *pokepic);
 void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager);
 
 // Sets Pokepic attribute to value by index
-void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value);
+void Pokepic_SetAttr(Pokepic *pokepic, enum PokepicAttr attr, int value);
 
 // Returns the Pokepic attribute by index
-int Pokepic_GetAttr(Pokepic *pokepic, int attr);
+int Pokepic_GetAttr(Pokepic *pokepic, enum PokepicAttr attr);
 
 // Adds addend value to Pokepic attribute by index
-void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend);
+void Pokepic_AddAttr(Pokepic *pokepic, enum PokepicAttr attr, int addend);
 
 // Updates Pokepic dimensions and sets visible=TRUE
 void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height);

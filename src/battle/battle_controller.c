@@ -169,7 +169,7 @@ void BattleController_EmitSetEncounter(BattleSystem *battleSystem, int battler) 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -191,7 +191,7 @@ void BattleController_EmitShowEncounter(BattleSystem *battleSystem, int battler)
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
     message.capturedBall = battleSystem->ctx->battleMons[battler].ball;
@@ -225,7 +225,7 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battler, i
 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 0);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 0);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
@@ -789,14 +789,14 @@ void BattleController_EmitPrintMessage(BattleSystem *battleSystem, BattleContext
 void BattleController_EmitPlayMoveAnimation(BattleSystem *battleSystem, BattleContext *ctx, u16 move) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, NULL, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, 0, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
     SendMessage(battleSystem, 1, ctx->battlerIdAttacker, &animation, sizeof(MoveAnimation));
 }
 
 void BattleController_SetMoveAnimationAttackerToDefender(BattleSystem *battleSystem, BattleContext *ctx, u16 move, int attacker, int defender) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, NULL, attacker, defender, move);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, 0, attacker, defender, move);
     SendMessage(battleSystem, 1, attacker, &animation, sizeof(MoveAnimation));
 }
 
@@ -940,14 +940,14 @@ void BattleController_EmitPrintTrainerMessage(BattleSystem *battleSystem, int ba
 void BattleController_EmitPlayStatusEffect(BattleSystem *battleSystem, BattleContext *ctx, int battler, int secondaryAnimID) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, battler, battler, NULL);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, battler, battler, 0);
     SendMessage(battleSystem, 1, battler, &animation, sizeof(MoveAnimation));
 }
 
 void BattleController_EmitPlayStatusEffectAttackerToDefender(BattleSystem *battleSystem, BattleContext *ctx, int attacker, int defender, int secondaryAnimID) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, attacker, defender, NULL);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, attacker, defender, 0);
     SendMessage(battleSystem, 1, attacker, &animation, sizeof(MoveAnimation));
 }
 
@@ -1190,12 +1190,12 @@ void BattleController_EmitHidePartyGauge(BattleSystem *battleSystem, int battler
 
 void BattleController_EmitLoadPartyGaugeGraphics(BattleSystem *battleSystem) {
     int command = BATTLE_COMMAND_LOAD_PARTY_GAUGE_GRAPHICS;
-    SendMessage(battleSystem, 1, NULL, &command, sizeof(int));
+    SendMessage(battleSystem, 1, 0, &command, sizeof(int));
 }
 
 void BattleController_EmitFreePartyGaugeGraphics(BattleSystem *battleSystem) {
     int command = BATTLE_COMMAND_FREE_PARTY_GAUGE_GRAPHICS;
-    SendMessage(battleSystem, 1, NULL, &command, sizeof(int));
+    SendMessage(battleSystem, 1, 0, &command, sizeof(int));
 }
 
 void BattleController_EmitIncrementGameStat(BattleSystem *battleSystem, int battler, int battlerType, int record) {
@@ -1523,8 +1523,8 @@ static void PartyGaugeData_New(BattleSystem *battleSystem, BattleContext *ctx, P
         || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetFieldSide(battleSystem, battler))                                                                   // either of the two opponents on the enemy side
         || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) && BattleSystem_GetFieldSide(battleSystem, battler)) // either of the two opponents on the enemy side
         || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                               // frontier, AI partner
-        if (ov12_0223AB0C(battleSystem, battler) == BATTLER_PLAYER2
-            || ov12_0223AB0C(battleSystem, battler) == BATTLER_ENEMY2) {
+        if (BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_PLAYER2
+            || BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_ENEMY2) {
             battler1 = battler;
             battler2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
         } else {

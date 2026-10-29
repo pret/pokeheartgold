@@ -426,4 +426,10 @@ typedef struct UISetupMessage {
     u32 seed;
 } UISetupMessage;
 
+typedef struct RecallMsgMessage {
+    u8 command;
+    u8 partySlot;
+    u16 hpPercent;
+} RecallMsgMessage;
+
 #endif

@@ -236,7 +236,7 @@
 .public ov12_02258DB0
 .public BattleSystem_ExecuteBattlerCommand
 .public OpponentData_Delete
-.public ov12_02260EA4
+.public OpponentData_SetTaskFuncs
 .public ov12_02261264
 .public OpponentData_GetHpBar
 .public BattleSystem_TryRecvMessage
