@@ -98,7 +98,7 @@ else
   endif
 endif
 
-export NINJA_STATUS := [%p %f/%t]
+export NINJA_STATUS := [%p %f/%t] 
 
 # Modders can delete the `check` dependency here after their first build.
 all: release check
