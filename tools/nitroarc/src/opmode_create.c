@@ -54,7 +54,7 @@ static int prepare_exclusions(const char *fdata, const char *pat, strvec_t *out_
 static int collect_explicit_files(const char *fdata, packcfg_t *out_cfg);
 static int collect_implicit_files(strvec_t *files, const strvec_t *excls, size_t *out_nexpls);
 static int pack_archive(packcfg_t *cfg, void **out_data, size_t *out_size);
-static int write_index(const char *fname, bool index, bool namespace, const strvec_t *files);
+static int write_index(const char *fname, bool index, bool namespace, const strvec_t *files, const char *indir);
 
 #define HIT_DOTORDER  (1 << 0)
 #define HIT_DOTIGNORE (1 << 1)
@@ -94,7 +94,7 @@ extern int tool_create(const options_t *opts) {
     int       dots   = peek_dotfiles((options_t *)opts);
     strvec_t  excls  = { 0 };
     char     *ogcwd  = getcwd(NULL, 0);
-    char     *f_incl = NULL;
+    char     *f_incl = (char *)opts->single_file;
     char     *f_excl = NULL;
     char     *data   = NULL;
     size_t    size   = 0;
@@ -110,14 +110,14 @@ extern int tool_create(const options_t *opts) {
             || pack_archive(&cfg, (void **)&data, &size)
             || set_workdir(ogcwd)
             || write_file(opts->file, data, size)
-            || write_index(opts->file, opts->index, opts->index_ns, &cfg.files)
+            || write_index(opts->file, opts->index, opts->index_ns, &cfg.files, opts->argv[0])
             || EXIT_SUCCESS;
 
     for (size_t i = nexpls; i < cfg.files.size; i++) free(cfg.files.data[i]);
     free(cfg.files.data);
     free(excls.data); // none are internally-owned
     free(ogcwd);
-    free(f_incl);
+    if (opts->files_from) free(f_incl);
     free(f_excl);
     free(data);
 
@@ -538,7 +538,16 @@ static char* guardify_nhits(const char *name, size_t size, size_t nhits) {
     return suffixed;
 }
 
-static int write_index(const char *fname, bool index, bool namespace, const strvec_t *files) {
+#define ASCII_SEP_RECORD 0x1E
+#define ASCII_SEP_UNIT   0x1F
+
+static int write_index(
+    const char *fname,
+    bool index,
+    bool namespace,
+    const strvec_t *files,
+    const char *indir
+) {
     assert(fname);
     assert(files);
     assert(files->data);
@@ -547,15 +556,18 @@ static int write_index(const char *fname, bool index, bool namespace, const strv
 
     char  *guard = NULL;
     FILE  *fnaix = NULL;
-    char  *pdot  = strrstem(fname, '.');
+    FILE  *frecs = NULL;
     char  *psep  = strrstem(fname, '/');
-    psep        += *psep == '/';
+    psep         = psep ? psep + 1 : (char *)fname; // basename follows last '/'
+    char  *pdot  = strrstem(psep, '.');             // extension is within base
 
     size_t size  = pdot - fname;
     char  *bname = malloc(pdot - psep + 2);
     char  *iname = malloc(size + 6);
+    char  *rname = malloc(size + 6);
     if (bname == NULL) goto erralloc;
     if (iname == NULL) goto erralloc;
+    if (rname == NULL) goto erralloc;
 
     memcpy(bname, psep, pdot - psep);
     bname[pdot - psep]     = '_';
@@ -566,7 +578,13 @@ static int write_index(const char *fname, bool index, bool namespace, const strv
     guard = guardify(iname, size + 5);
     if (guard == NULL) goto erralloc;
 
+    memcpy(rname, fname, size);
+    memcpy(rname + size, ".recs", 6);
+
     int errc = open_file(iname, "wb", &fnaix);
+    if (errc) goto cleanup;
+
+    errc = open_file(rname, "wb", &frecs);
     if (errc) goto cleanup;
 
     fprintf(fnaix, "/*\n");
@@ -578,6 +596,8 @@ static int write_index(const char *fname, bool index, bool namespace, const strv
     fprintf(fnaix, "#define %s\n", guard);
     fprintf(fnaix, "\n");
 
+    fprintf(frecs, "%s%c", indir, ASCII_SEP_RECORD);
+
     for (size_t i = 0; i < files->size; i++) {
         size_t nhits = strvec_nhits(files, files->data[i], i);
         char  *defn  = guardify_nhits(files->data[i], strlen(files->data[i]), nhits);
@@ -588,6 +608,13 @@ static int write_index(const char *fname, bool index, bool namespace, const strv
                 namespace ? bname : "", // TODO: add the name of the NARC, minus the extension
                 defn,
                 i);
+        fprintf(frecs, "%s%c%s%s%s%c",
+                files->data[i],
+                ASCII_SEP_UNIT,
+                namespace ? "NARC_" : "",
+                namespace ? bname : "", // TODO: add the name of the NARC, minus the extension
+                defn,
+                ASCII_SEP_RECORD);
         free(defn);
     }
 
@@ -604,6 +631,10 @@ erralloc:
     errc = PROGRAM_EALLOC;
 
 cleanup:
+    if (fnaix) fclose(fnaix);
+    if (frecs) fclose(frecs);
+
+    free(rname);
     free(bname);
     free(iname);
     free(guard);
