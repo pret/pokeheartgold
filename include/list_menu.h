@@ -2,8 +2,8 @@
 #define POKEHEARTGOLD_LIST_MENU_H
 
 #include "bg_window.h"
-#include "list_menu_cursor.h"
 #include "list_menu_items.h"
+#include "menu_cursor.h"
 
 struct ListMenu;
 
@@ -66,7 +66,7 @@ typedef struct ListMenu {
     /*0x23*/ u8 unk_23;
     /*0x24*/ u8 fontId : 7;
     u8 overrideEnabled : 1;
-    /*0x28*/ struct ListMenuCursor *cursor;
+    /*0x28*/ struct MenuCursor *cursor;
     /*0x2c*/ u16 cursorPos;
     /*0x2e*/ u16 itemsAbove;
     /*0x30*/ u8 unk_30;

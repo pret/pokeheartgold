@@ -98,9 +98,9 @@
 .public ListMenuItems_New
 .public ListMenuItems_Delete
 .public ListMenuItems_AddItem
-.public sub_02014DA0
-.public sub_0201543C
-.public sub_02015460
+.public ParticleSystem_ZeroAll
+.public ParticleSystem_DrawAll
+.public ParticleSystem_UpdateAll
 .public YesNoPrompt_Create
 .public YesNoPrompt_Destroy
 .public YesNoPrompt_InitFromTemplate

@@ -1356,7 +1356,7 @@ _02059546:
 	add r0, #0x64
 	bl InitWindow
 	mov r0, #0xb
-	bl ListMenuCursorNew
+	bl MenuCursor_New
 	str r0, [r4, #0x78]
 	bl sub_0203993C
 	add r1, r4, #0
@@ -1466,7 +1466,7 @@ _02059672:
 	ldr r0, [r4, #0x10]
 	bl String_Delete
 	ldr r0, [r4, #0x78]
-	bl DestroyListMenuCursorObj
+	bl MenuCursor_Free
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_020594C8
@@ -1810,7 +1810,7 @@ _020598EC:
 	add r1, #0x54
 	mov r2, #0
 	lsl r3, r3, #4
-	bl ListMenuUpdateCursorObj
+	bl MenuCursor_Print
 	add r0, r5, #0
 	add r0, #0x54
 	mov r1, #0
@@ -1919,7 +1919,7 @@ _020599BE:
 	ldr r1, [r5, #0x7c]
 	mov r2, #0
 	lsl r3, r3, #4
-	bl ListMenuUpdateCursorObj
+	bl MenuCursor_Print
 	ldr r0, [r5, #0x7c]
 	mov r1, #0
 	mov r2, #1
@@ -2028,7 +2028,7 @@ _02059A94:
 	ldr r1, [r4, #0x7c]
 	mov r2, #0
 	lsl r3, r3, #4
-	bl ListMenuUpdateCursorObj
+	bl MenuCursor_Print
 	ldr r0, [r4, #0x7c]
 	bl CopyWindowPixelsToVram_TextMode
 	mov r0, #0

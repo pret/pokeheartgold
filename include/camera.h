@@ -11,8 +11,11 @@
 #define CAMERA_UPDATE_ENABLE_Y 2
 #define CAMERA_UPDATE_ENABLE_Z 4
 
-#define CAMERA_PERSPECTIVE_TYPE_PERSPECTIVE  0
-#define CAMERA_PERSPECTIVE_TYPE_ORTHOGRAPHIC 1
+enum CameraPerspectiveType {
+    CAMERA_PERSPECTIVE_TYPE_PERSPECTIVE = 0,
+    CAMERA_PERSPECTIVE_TYPE_ORTHOGRAPHIC,
+    CAMERA_PERSPECTIVE_TYPE_COUNT,
+};
 
 typedef struct CameraHistory {
     s32 count;
@@ -81,7 +84,7 @@ void Camera_Copy(Camera *src, Camera *dest);
 void Camera_SetStaticPtr(Camera *camera);
 void Camera_UnsetStaticPtr(void);
 void Camera_PushLookAtToNNSGlb(void);
-void Camera_SetLookAtCamUp(VecFx32 *camUp, Camera *camera);
+void Camera_SetLookAtCamUp(const VecFx32 *camUp, Camera *camera);
 void Camera_SetFixedTarget(VecFx32 *target, Camera *camera);
 void Camera_ClearFixedTarget(Camera *camera);
 void Camera_SetPerspectiveClippingPlane(fx32 near, fx32 far, Camera *camera);

@@ -12,7 +12,7 @@ static void ListMenuCallSelectionChangedCallback(struct ListMenu *list, u8 onIni
 struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 cursorPos, u16 itemsAbove, enum HeapID heapID) {
     struct ListMenu *list = Heap_Alloc(heapID, sizeof(struct ListMenu));
     list->template = *template;
-    list->cursor = ListMenuCursorNew(heapID);
+    list->cursor = MenuCursor_New(heapID);
     list->cursorPos = cursorPos;
     list->itemsAbove = itemsAbove;
     list->unk_30 = 0;
@@ -29,7 +29,7 @@ struct ListMenu *ListMenuInit(const struct ListMenuTemplate *template, u16 curso
     if (list->template.totalItems < list->template.maxShowed) {
         list->template.maxShowed = list->template.totalItems;
     }
-    ListMenuCursorSetColor(
+    MenuCursor_SetColor(
         list->cursor,
         MAKE_TEXT_COLOR(list->template.cursorPal, list->template.cursorShadowPal, list->template.fillValue));
     FillWindowPixelBuffer(list->template.window, list->template.fillValue);
@@ -97,7 +97,7 @@ void DestroyListMenu(struct ListMenu *list, u16 *cursorPos, u16 *itemsAbove) {
     if (itemsAbove != NULL) {
         *itemsAbove = list->itemsAbove;
     }
-    DestroyListMenuCursorObj(list->cursor);
+    MenuCursor_Free(list->cursor);
     Heap_FreeExplicit((enum HeapID)list->heapID, list);
 }
 
@@ -215,7 +215,7 @@ static void ListMenuDrawCursor(struct ListMenu *list) {
     u8 y = (u8)(list->itemsAbove * yMultiplier + list->template.upText_Y);
     switch (list->template.cursorKind) {
     case 0:
-        ListMenuUpdateCursorObj(list->cursor, list->template.window, x, y);
+        MenuCursor_Print(list->cursor, list->template.window, x, y);
         break;
     case 1:
     case 2: // leftover
