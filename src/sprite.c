@@ -255,7 +255,7 @@ void Sprite_SetAffineOverwriteMode(Sprite *sprite, u8 affine) {
     sprite->affine = affine;
 }
 
-void Sprite_SetFlipMode(Sprite *sprite, u8 flip) {
+void Sprite_SetFlipMode(Sprite *sprite, BOOL flip) {
     GF_ASSERT(sprite != NULL);
     sprite->flip = flip;
     sprite->affine = 0;

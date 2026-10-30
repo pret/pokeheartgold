@@ -250,7 +250,7 @@ main_sbins_lz = [
     'options_app.sbin_LZ',
     'OVY_55.sbin_LZ',
     'OVY_56.sbin_LZ',
-    'OVY_57.sbin_LZ',
+    'capsule_menu.sbin_LZ',
     'OVY_58.sbin_LZ',
     'OVY_59.sbin_LZ',
     'intro_title.sbin_LZ',

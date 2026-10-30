@@ -6656,24 +6656,24 @@ static void Task_GetPokemon(SysTask *task, void *inData) {
     switch (data->state) {
     case STATE_GET_POKEMON_START:
         if (data->captureType == CAPTURE_NORMAL) {
-            UnkStruct_134 unkStruct;
-            unkStruct.unk8 = 3;
+            BallThrow unkStruct;
+            unkStruct.mode = 3;
             unkStruct.heapID = HEAP_ID_BATTLE;
-            unkStruct.unkC = battlerId + 20000;
+            unkStruct.target = battlerId + 20000;
             unkStruct.ball = data->ballID;
             unkStruct.spriteSystem = BattleSystem_GetSpriteSystem(data->battleSystem);
             unkStruct.paletteData = BattleSystem_GetPaletteData(data->battleSystem);
-            unkStruct.unk14 = 1;
-            unkStruct.unk18 = 0;
+            unkStruct.bgPrio = 1;
+            unkStruct.surface = 0;
             unkStruct.battleSystem = data->battleSystem;
             if (BattleSystem_GetBattleType(data->battleSystem) & BATTLE_TYPE_DOUBLES) {
                 if (battlerId == BATTLER_ENEMY) {
-                    unkStruct.unk0 = 16;
+                    unkStruct.type = 16;
                 } else { // BATTLER_ENEMY2, assumedly.
-                    unkStruct.unk0 = 17;
+                    unkStruct.type = 17;
                 }
             } else { // This is a single battle.
-                unkStruct.unk0 = 15;
+                unkStruct.type = 15;
             }
             data->ballData = ov07_02233DB8(&unkStruct); // Initializes whatever this is and gets it all ready to go.
             data->state = STATE_GET_POKEMON_CHECK_IF_TRAINER;

@@ -168,7 +168,7 @@ BOOL ReleaseBoxMonLock(BoxPokemon *boxMon, BOOL locked) {
 void CreateMon(Pokemon *mon, int species, int level, int fixedIV, int hasFixedPersonality, int fixedPersonality, int otIdType, int fixedOtId) {
     Mail *mail;
     u32 capsule;
-    CAPSULE seal_coords;
+    BallCapsule seal_coords;
     ZeroMonData(mon);
     CreateBoxMon(&mon->box, species, level, fixedIV, hasFixedPersonality, fixedPersonality, otIdType, fixedOtId);
     // Not your average encryption call
@@ -941,7 +941,7 @@ static void SetMonDataInternal(Pokemon *mon, int attr, const void *value) {
         Mail_Copy((const Mail *)value, &mon->party.mail);
         break;
     case MON_DATA_BALL_CAPSULE:
-        CopyCapsule((const CAPSULE *)value, &mon->party.sealCoords);
+        CopyCapsule((const BallCapsule *)value, &mon->party.sealCoords);
         break;
     default:
         SetBoxMonDataInternal(&mon->box, attr, value);
@@ -2467,8 +2467,8 @@ void DP_GetMonSpriteCharAndPlttNarcIdsEx(PokepicTemplate *pokepicTemplate, u16 s
     }
 }
 
-u8 sub_0207083C(BoxPokemon *boxMon, u8 whichFacing) {
-    return sub_02070854(boxMon, whichFacing, FALSE);
+u8 sub_0207083C(Pokemon *mon, u8 whichFacing) {
+    return sub_02070854(&mon->box, whichFacing, FALSE);
 }
 
 u8 sub_02070848(BoxPokemon *boxMon, u8 whichFacing) {
@@ -3227,7 +3227,7 @@ BOOL MonHasMove(Pokemon *mon, u16 move) {
 
 void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     u32 sp0 = 0;
-    CAPSULE sp4;
+    BallCapsule ballCapsule;
     struct Mail *mail;
     dest->box = *src;
     if (dest->box.boxDecrypted) {
@@ -3240,8 +3240,8 @@ void CopyBoxPokemonToPokemon(const BoxPokemon *src, Pokemon *dest) {
     SetMonData(dest, MON_DATA_MAIL, mail);
     Heap_Free(mail);
     SetMonData(dest, MON_DATA_BALL_CAPSULE_ID, &sp0);
-    MI_CpuClearFast(&sp4, sizeof(sp4));
-    SetMonData(dest, MON_DATA_BALL_CAPSULE, &sp4);
+    MI_CpuClearFast(&ballCapsule, sizeof(ballCapsule));
+    SetMonData(dest, MON_DATA_BALL_CAPSULE, &ballCapsule);
     CalcMonLevelAndStats(dest);
 }
 
@@ -4165,11 +4165,11 @@ int TrainerClassToBackpicID(int trainerClass, BOOL isLink) {
 }
 
 void Pokemon_RemoveCapsule(Pokemon *mon) {
-    u8 sp0 = 0;
-    CAPSULE sp1;
-    MI_CpuClearFast(&sp1, sizeof(sp1));
-    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &sp0);
-    SetMonData(mon, MON_DATA_BALL_CAPSULE, &sp1);
+    u8 capsuleId = 0;
+    BallCapsule ballCapsule;
+    MI_CpuClearFast(&ballCapsule, sizeof(ballCapsule));
+    SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &capsuleId);
+    SetMonData(mon, MON_DATA_BALL_CAPSULE, &ballCapsule);
 }
 
 void RestoreBoxMonPP(BoxPokemon *boxMon) {
@@ -4192,15 +4192,15 @@ void NARC_ReadPokepicAnimScript(NARC *narc, PokepicAnimScript *dest, u16 species
     MI_CpuCopy8(&sp4.unk0[r5].unk_3[0], dest, sizeof(PokepicAnimScript) * 10);
 }
 
-void sub_0207294C(NARC *narc, void *a1, void *a2, u16 a3, int a4, int a5, int a6) {
+void sub_0207294C(NARC *narc, PokepicAnimManager *pokepicAnimManager, Pokepic *pokepic, u16 species, int a4, int a5, int a6) {
     struct UnkStruct_02072914 spA;
     struct UnkStruct_0207294C sp4;
     int r4 = (a4 == 2 ? 0 : 1);
-    NARC_ReadFromMember(narc, 0, a3 * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &spA);
+    NARC_ReadFromMember(narc, 0, species * sizeof(struct UnkStruct_02072914), sizeof(struct UnkStruct_02072914), &spA);
     sp4.unk_0 = spA.unk0[r4].unk_1;
     sp4.unk_2 = spA.unk0[r4].unk_2;
     sp4.unk_4 = a5;
-    sub_02016F40(a1, a2, &sp4, a6);
+    sub_02016F40(pokepicAnimManager, pokepic, &sp4, a6);
 }
 
 void sub_020729A4(NARC *narc, u8 *ret, u16 species, u16 isFrontpic) {
@@ -4229,7 +4229,7 @@ void sub_02072A20(NARC *narc, u8 *ret, u16 a2, u16 a3) {
 }
 
 BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID) {
-    CAPSULE capsule;
+    BallCapsule capsule;
     int data;
     NARC *narc;
     if (a0 == 0) {
@@ -4237,7 +4237,7 @@ BOOL SetTrMonCapsule(int a0, Pokemon *mon, enum HeapID heapID) {
     }
     narc = NARC_New(NARC_application_custom_ball_edit_gs_cb_data, heapID);
     data = 1;
-    NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(CAPSULE), sizeof(CAPSULE), &capsule);
+    NARC_ReadFromMember(narc, 0, (a0 - 1) * sizeof(BallCapsule), sizeof(BallCapsule), &capsule);
     SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &data);
     SetMonData(mon, MON_DATA_BALL_CAPSULE, &capsule);
     NARC_Delete(narc);

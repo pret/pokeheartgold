@@ -1775,7 +1775,7 @@ void sub_02039FB8(SaveWiFiHistory *arg0, s32 arg1, s32 arg2, u8 arg3) {
 
 s32 sub_02039FD8(enum HeapID heapID) {
     void *temp_r0 = Heap_Alloc(heapID, 1824);
-    s32 temp_r5 = DWC_Init((void *)(((u32)temp_r0 + 31) & ~31)); // TODO
+    s32 temp_r5 = DWC_Init((void *)MATH_ROUNDUP32((u32)temp_r0)); // TODO
     Heap_Free(temp_r0);
     return temp_r5;
 }
