@@ -307,7 +307,7 @@ Static main
     Object main.nef.p/asm_unk_0208FB64.s.o
     Object main.nef.p/src_use_item_on_mon.c.o
     Object main.nef.p/src_mail_misc.c.o
-    Object main.nef.p/src_unk_02091054.c.o
+    Object main.nef.p/src_application_capsule_menu_main_static.c.o
     Object main.nef.p/src_hatch_egg_task.c.o
     Object main.nef.p/src_unk_02091278.c.o
     Object main.nef.p/src_unk_020912AC.c.o
@@ -839,10 +839,14 @@ Overlay OVY_56
     After OVY_55
     Object main.nef.p/asm_overlay_56.s.o
 }
-Overlay OVY_57
+Overlay capsule_menu
 {
     After OVY_7
-    Object main.nef.p/asm_overlay_57.s.o
+    Object main.nef.p/src_application_capsule_menu_main_overlay.c.o
+    Object main.nef.p/src_application_capsule_menu_placement.c.o
+    Object main.nef.p/src_application_capsule_menu_graphics.c.o
+    Object main.nef.p/src_application_capsule_menu_manager.c.o
+    Object main.nef.p/src_application_capsule_menu_touchscreen_hitboxes.c.o
 }
 Overlay OVY_58
 {

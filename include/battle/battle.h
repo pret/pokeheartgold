@@ -688,18 +688,18 @@ typedef struct BattleItem {
 
 typedef struct BattleCursorPosition BattleCursorPosition;
 
-typedef struct UnkStruct_134 {
-    s32 unk0;
+typedef struct BallThrow {
+    s32 type;
     enum HeapID heapID;
-    s32 unk8;
-    s32 unkC;
+    s32 mode;
+    s32 target;
     int ball;
-    s32 unk14;
-    s32 unk18;
+    s32 bgPrio;
+    s32 surface;
     SpriteSystem *spriteSystem;
     PaletteData *paletteData;
     BattleSystem *battleSystem;
-} UnkStruct_134;
+} BallThrow;
 
 typedef struct UnkStruct_50C {
     BgConfig *bgConfig;
@@ -728,7 +728,7 @@ struct UnkBallData { // TODO: Give a better name.
     SpriteManager *spriteManager;
     ManagedSprite *managedSprite;
     u8 unk34[0x5C];
-    UnkStruct_134 unk90;
+    BallThrow unk90;
     u8 unkB8[0xC];
     int unkC4;
     int unkC8;

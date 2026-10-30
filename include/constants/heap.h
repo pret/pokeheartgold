@@ -54,7 +54,7 @@ enum HeapID {
     HEAP_ID_49,
     HEAP_ID_50,
     HEAP_ID_51,
-    HEAP_ID_52,
+    HEAP_ID_CAPSULE_MENU,
     HEAP_ID_53,
     HEAP_ID_54,
     HEAP_ID_55,
