@@ -65,6 +65,7 @@ void sub_0200F600(PokemonPreview *preview, enum HeapID heapID);
 void sub_0200F62C(PokemonPreview *preview);
 void sub_0200F684(PokemonPreview *preview, int x, int y);
 void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender);
+void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon);
 void sub_0200F82C(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
@@ -586,6 +587,18 @@ u8 *DrawPokemonPicFromSpecies(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 palet
     sub_0200F62C(preview);
     sub_0200F684(preview, x, y);
     sub_0200F6D4(&preview->spriteManager, species, gender);
+    sub_0200F82C(preview, paletteNum, baseTile);
+    BgCommitTilemapBufferToVram(bgConfig, layer);
+    return &preview->state;
+}
+
+u8 *DrawPokemonPicFromMon(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, Pokemon *mon, u32 heapID) {
+
+    PokemonPreview *preview = sub_0200F5C4(bgConfig, layer, x, y, (enum HeapID)heapID);
+    sub_0200F600(preview, (enum HeapID)heapID);
+    sub_0200F62C(preview);
+    sub_0200F684(preview, x, y);
+    sub_0200F714(&preview->spriteManager, mon);
     sub_0200F82C(preview, paletteNum, baseTile);
     BgCommitTilemapBufferToVram(bgConfig, layer);
     return &preview->state;

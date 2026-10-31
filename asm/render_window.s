@@ -18,45 +18,6 @@ _020F5C78:
 
 	.text
 
-	thumb_func_start DrawPokemonPicFromMon
-DrawPokemonPicFromMon: ; 0x0200F4F8
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	str r2, [sp, #4]
-	ldr r5, [sp, #0x2c]
-	str r3, [sp, #8]
-	add r6, r0, #0
-	add r7, r1, #0
-	str r5, [sp]
-	bl sub_0200F5C4
-	add r4, r0, #0
-	add r1, r5, #0
-	bl sub_0200F600
-	add r0, r4, #0
-	bl sub_0200F62C
-	ldr r1, [sp, #4]
-	ldr r2, [sp, #8]
-	add r0, r4, #0
-	bl sub_0200F684
-	ldr r1, [sp, #0x28]
-	add r0, r4, #0
-	bl sub_0200F714
-	add r2, sp, #0x10
-	ldrb r1, [r2, #0x10]
-	ldrh r2, [r2, #0x14]
-	add r0, r4, #0
-	bl sub_0200F82C
-	add r0, r6, #0
-	add r1, r7, #0
-	bl BgCommitTilemapBufferToVram
-	ldr r0, _0200F548 ; =0x0000016F
-	add r0, r4, r0
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0200F548: .word 0x0000016F
-	thumb_func_end DrawPokemonPicFromMon
-
 	thumb_func_start sub_0200F54C
 sub_0200F54C: ; 0x0200F54C
 	push {r3, r4, r5, lr}
