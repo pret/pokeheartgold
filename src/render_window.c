@@ -8,6 +8,8 @@ void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeig
 void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
 void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID);
 void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID);
+void sub_0200ECBC(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
+void sub_0200EF84(Window *window, u16 tile, u8 palette);
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
@@ -322,4 +324,72 @@ void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u
         24 * TILE_SIZE_4BPP,
         FALSE,
         heapID);
+}
+
+void sub_0200ECBC(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
+    // clang-format off
+    FillBgTilemapRect(bgConfig, bgLayer, tile,      x - 9,         y - 1,      1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 1,  x - 8,         y - 1,      1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 2,  x - 7,         y - 1,      width + 7, 1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 3,  x + width,     y - 1,      1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 4,  x + width + 1, y - 1,      1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 5,  x + width + 2, y - 1,      1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 6,  x - 9,         y,          1,         height, palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 7,  x - 8,         y,          1,         height, palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 8,  x - 1,         y,          1,         height, palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 9,  x + width,     y,          1,         height, palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 10, x + width + 1, y,          1,         height, palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 11, x + width + 2, y,          1,         height, palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 12, x - 9,         y + height, 1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 13, x - 8,         y + height, 1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 14, x - 7,         y + height, width + 7, 1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 15, x + width,     y + height, 1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 16, x + width + 1, y + height, 1,         1,      palette);
+    FillBgTilemapRect(bgConfig, bgLayer, tile + 17, x + width + 2, y + height, 1,         1,      palette);
+    // clang-format on
+}
+
+void sub_0200EF84(Window *window, u16 tile, u8 palette) {
+    u16 dy, dx; // must forward-declare to match
+
+    u8 bgLayer = GetWindowBgId(window);
+    u16 x = GetWindowX(window) - 7;
+    u16 y = GetWindowY(window);
+
+    for (dy = 0; dy < 4; dy++) {
+        for (dx = 0; dx < 6; dx++) {
+            FillBgTilemapRect(window->bgConfig, bgLayer, tile + dy * 6 + dx, x + dx, y + dy, 1, 1, palette);
+        }
+    }
+}
+
+void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 palette, u8 signpostType) {
+    u8 bgLayer = GetWindowBgId(window);
+
+    if (signpostType == 0 || signpostType == 1) {
+        sub_0200ECBC(window->bgConfig,
+            bgLayer,
+            GetWindowX(window),
+            GetWindowY(window),
+            GetWindowWidth(window),
+            GetWindowHeight(window),
+            palette,
+            baseTile);
+        sub_0200EF84(window, baseTile + 30, palette);
+    } else {
+        sub_0200E6B4(window->bgConfig,
+            bgLayer,
+            GetWindowX(window),
+            GetWindowY(window),
+            GetWindowWidth(window),
+            GetWindowHeight(window),
+            palette,
+            baseTile);
+    }
+
+    if (skipTransfer == FALSE) {
+        CopyWindowToVram(window);
+    }
+
+    TextPrinter_SetDownArrowBaseTile(baseTile);
 }
