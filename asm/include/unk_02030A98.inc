@@ -96,7 +96,7 @@
 .public sub_02031700
 .public GetUnionRoomAvatarAttrBySprite
 .public sub_02070438
-.public LocationGmmDatRegionCountGetByCountryMsgNo
+.public GeonetLocations_GetLocationCountFromCountry
 .public OS_GetOwnerInfo
 .public MI_CpuFill8
 .public MI_CpuCopy8
