@@ -33,25 +33,10 @@ jobs:
           sudo apt-get install -y --no-install-recommends gcc-arm-none-eabi
 
       - name: Checkout Repo
-        uses: actions/checkout@v4
-
-      - name: Setup Repo
-        run: |
-          mkdir -p ~/download
-          cd ~/download
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/mwccarm.zip
-          wget https://github.com/pret/pokeheartgold/raw/workflows/assets/NitroSDK-3_2-060901.7z
-          unzip mwccarm.zip
-          mv mwccarm $GITHUB_WORKSPACE/tools
-          7z x NitroSDK-3_2-060901.7z
-          mv NitroSDK-3_2-060901/tools/bin $GITHUB_WORKSPACE/tools
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM7-TS.lcf.template $GITHUB_WORKSPACE/sub/
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/ARM9-TS.lcf.template $GITHUB_WORKSPACE/
-          mv NitroSDK-3_2-060901/include/nitro/specfiles/mwldarm.response.template $GITHUB_WORKSPACE/
-        working-directory: ~
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set Swap Space
-        uses: pierotofy/set-swap-space@master
+        uses: pierotofy/set-swap-space@fc79b3f67fa8a838184ce84a674ca12238d2c761 # master 2025 May 08
         with:
           swap-size-gb: 19
 
@@ -60,14 +45,14 @@ jobs:
           GAME_VERSION: HEARTGOLD
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4 2> >(sed -r 's/^/::error::/')
+        run: make -j4 2> >(sed -r 's/^/::notice::/')
 
       - name: Build SoulSilver
         env:
           GAME_VERSION: SOULSILVER
           GAME_LANGUAGE: ENGLISH
           GAME_REVISION: 0
-        run: make -j4 2> >(sed -r 's/^/::error::/')
+        run: make -j4 2> >(sed -r 's/^/::notice::/')
 
       - name: Calcrom
         id: calcrom
@@ -90,22 +75,17 @@ jobs:
           avatar-url: https://i.imgur.com/38BQHdd.png
         continue-on-error: true
 
-      - name: Post error archive
-        if: failure()
-        continue-on-error: true
-        run: find . -maxdepth 2 -type d \( -name build -or -name files \) -exec tar -czvhf failure.tar.gz {} +
-
       - name: Post error upload
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: pokeheartgold-failure-${{ github.run_id }}
-          path: failure.tar.gz
+          path: build/
           retention-days: 1
 
       - name: Checkout xMAP
         if: ${{ github.event_name == 'push' && github.repository == 'pret/pokeheartgold' }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           path: "xmap"
           ref: "xmap"
