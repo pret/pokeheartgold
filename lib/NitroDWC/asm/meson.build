@@ -1,7 +1,3 @@
-nitrodwc_asm = files(
-    'overlay_39_arm.s',
-)
-
 libcrypto_static_srcs = files(
     'crypto_static.s'
 )
