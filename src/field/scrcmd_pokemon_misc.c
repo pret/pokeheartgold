@@ -206,7 +206,7 @@ static void ov01_02200CBC(FieldSystem *fieldSystem, SCR_648_STRUCT *unkPtr, u8 x
     *unkPtr->input = 0;
     unkPtr->cursorPos = cursorPos;
     unkPtr->itemsAbove = itemsAbove;
-    unkPtr->unk_207 = unkPtr->unk_207 & ~1 | a5 & 1;
+    unkPtr->unk_207 = (unkPtr->unk_207 & ~1) | (a5 & 1);
     unkPtr->unk_206 = a4;
     unkPtr->x = x;
     unkPtr->y = y;
@@ -620,7 +620,7 @@ BOOL ScrCmd_GetPartyMonForm(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_699(ScriptContext *ctx) {
-    int unkVar;
+    s32 unkVar;
     FieldSystem *fieldSystem;
     MapObjectManager *mapObjectManager;
     LocalMapObject *playerObj;
@@ -660,7 +660,7 @@ BOOL ScrCmd_699(ScriptContext *ctx) {
 }
 
 BOOL ScrCmd_700(ScriptContext *ctx) {
-    int index = 0;
+    s32 index = 0;
     FieldSystem *fieldSystem;
     MapObjectManager *mapObjectManager;
     LocalMapObject *playerObj;

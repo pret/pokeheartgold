@@ -25,6 +25,11 @@ struct UnkStruct_0207294C {
     u8 unk_4;
 };
 
-void sub_02016F40(void *, void *, struct UnkStruct_0207294C *, u8);
+typedef struct PokepicAnimManager PokepicAnimManager;
+
+PokepicAnimManager *sub_02016EDC(enum HeapID heapId, int a1, int a2);
+void sub_02016F2C(PokepicAnimManager *pokepicAnimManager);
+void sub_02016F40(PokepicAnimManager *pokepicAnimManager, Pokepic *pokepic, struct UnkStruct_0207294C *a2, u8 a3);
+BOOL sub_02017068(PokepicAnimManager *a0, int a1);
 
 #endif // POKEHEARTGOLD_UNK_02016EDC_H

@@ -31,8 +31,6 @@
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
 
-#define min(a, b) ((a) <= (b) ? (a) : (b))
-
 typedef enum ViewRankingsWindowId {
     VIEW_RANKINGS_APP_WINDOW_RANKING,
     VIEW_RANKINGS_APP_WINDOW_RECORDS,
@@ -1013,7 +1011,7 @@ static void ViewRankings_PrintRecords(ViewRankingsAppData *appData) {
     appData->numRecords = 0;
     for (; i < pRecord->count; ++i) {
         if (pRecord->entries[i].active != 0) {
-            cur = min(pRecord->entries[i].pageEntry->stat, pageParam->max);
+            cur = MATH_MIN(pRecord->entries[i].pageEntry->stat, pageParam->max);
             if (cur < prev) {
                 ++ranking;
             }

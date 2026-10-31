@@ -1522,7 +1522,7 @@ _021E64D4:
 	cmp r0, #1
 	bne _021E6586
 	ldr r0, [r4, #0x70]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _021E6586
 	add r0, r4, #0
@@ -1803,7 +1803,7 @@ _021E6726:
 	cmp r0, #1
 	bne _021E67D8
 	ldr r0, [r4, #0x70]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _021E67D8
 	add r0, r4, #0

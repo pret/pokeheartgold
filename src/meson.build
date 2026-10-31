@@ -253,7 +253,7 @@ pokeheartgold_c = files(
     'unk_02025534.c',
     'unk_02055418.c',
     'unk_02069528.c',
-    'unk_02091054.c',
+    'application/capsule_menu/main_static.c',
     'unk_02091278.c',
     'unk_02092B04.c',
     'unk_02097720.c',
@@ -461,4 +461,12 @@ pokeheartgold_c = files(
     'voltorb_flip/voltorb_flip_game.c',
     'voltorb_flip/voltorb_flip_input.c',
     'voltorb_flip/voltorb_flip_tasks.c',
+    ##############################
+    ###      CAPSULE MENU      ###
+    ##############################
+    'application/capsule_menu/main_overlay.c',
+    'application/capsule_menu/placement.c',
+    'application/capsule_menu/graphics.c',
+    'application/capsule_menu/manager.c',
+    'application/capsule_menu/touchscreen_hitboxes.c',
 )

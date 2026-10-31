@@ -17,23 +17,23 @@ typedef struct SEAL {
 /*
  * Capsule that you put on your ball
  */
-typedef struct CAPSULE {
+typedef struct BallCapsule {
     SEAL seals[MAX_SEALS_ON_CAPSULE]; // The seals on the capsule
-} CAPSULE;
+} BallCapsule;
 
 /*
  * Seals available to put on capsule. Typedeffed for safety
  */
-typedef struct SEALBAG {
+typedef struct SealCounts {
     u8 seals[SEAL_MAX];
-} SEALBAG;
+} SealCounts;
 
 /*
  * Seal case and capsules from the save file
  */
 typedef struct SealCase {
-    CAPSULE capsules[MAX_CAPSULES]; // Available capsules
-    SEALBAG inventory;              // Available seals to put on capsules
+    BallCapsule capsules[MAX_CAPSULES]; // Available capsules
+    SealCounts inventory;               // Available seals to put on capsules
 } SealCase;
 
 /*
@@ -55,14 +55,14 @@ u32 Save_SealCase_sizeof(void);
 void Save_SealCase_Init(SealCase *sealCase);
 
 /*
- * void CopyCapsule(const CAPSULE *src, CAPSULE *dest)
+ * void CopyCapsule(const BallCapsule *src, BallCapsule *dest)
  *
  * Copies capsule from src to dest
  *
- * @param src:         Origin CAPSULE
- * @param dest:        Destination CAPSULE
+ * @param src:         Origin BallCapsule
+ * @param dest:        Destination BallCapsule
  */
-void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
+void CopyCapsule(const BallCapsule *src, BallCapsule *dest);
 
 /*
  * SealCase *Save_SealCase_Get(SaveData *saveData)
@@ -76,7 +76,7 @@ void CopyCapsule(const CAPSULE *src, CAPSULE *dest);
 SealCase *Save_SealCase_Get(SaveData *saveData);
 
 /*
- * CAPSULE *SealCase_GetCapsuleI(SealCase *sealCase, int i)
+ * BallCapsule *SealCase_GetCapsuleI(SealCase *sealCase, int i)
  *
  * Returns a pointer to the i-th capsule in storage.
  * Maximum value of i is MAX_CAPSULES - 1
@@ -84,12 +84,12 @@ SealCase *Save_SealCase_Get(SaveData *saveData);
  * @param sealCase:    Pointer to SealCase
  * @param i:           Index of capsule
  *
- * @returns: Pointer to requested CAPSULE.
+ * @returns: Pointer to requested BallCapsule.
  */
-CAPSULE *SealCase_GetCapsuleI(SealCase *sealCase, int i);
+BallCapsule *SealCase_GetCapsuleI(SealCase *sealCase, int i);
 
 /*
- * void SealCase_SetCapsuleI(SealCase *sealCase, const CAPSULE *src, int i)
+ * void SealCase_SetCapsuleI(SealCase *sealCase, const BallCapsule *src, int i)
  *
  * Copies the capsule to slot i in the seal case storage.
  * Maximum value of i is MAX_CAPSULES - 1
@@ -98,19 +98,19 @@ CAPSULE *SealCase_GetCapsuleI(SealCase *sealCase, int i);
  * @param src:         Value to set
  * @param i:           Index of capsule
  */
-void SealCase_SetCapsuleI(SealCase *sealCase, const CAPSULE *src, int i);
+void SealCase_SetCapsuleI(SealCase *sealCase, const BallCapsule *src, int i);
 
 /*
- * SEAL *CapsuleGetSealI(CAPSULE *capsule, int i)
+ * SEAL *CapsuleGetSealI(BallCapsule *capsule, int i)
  *
  * Returns pointer to the i-th seal on the capsule.
  *
- * @param capsule:     Pointer to CAPSULE
+ * @param capsule:     Pointer to BallCapsule
  * @param i:           Index of seal
  *
  * @returns: Pointer to the requested SEAL
  */
-SEAL *CapsuleGetSealI(CAPSULE *capsule, int i);
+SEAL *CapsuleGetSealI(BallCapsule *capsule, int i);
 
 /*
  * u32 SealOnCapsuleGetID(const SEAL *seal)
@@ -128,50 +128,50 @@ u8 SealOnCapsuleGetX(const SEAL *seal);
 u8 SealOnCapsuleGetY(const SEAL *seal);
 
 /*
- * SEALBAG *SealCase_inventory_Get(SealCase *sealCase)
+ * SealCounts *SealCase_inventory_Get(SealCase *sealCase)
  *
  * Returns a pointer to the player's loose seals inventory.
  *
  * @param sealCase:    Pointer to SealCase
  *
- * @returns: Pointer to SEALBAG
+ * @returns: Pointer to SealCounts
  */
-SEALBAG *SealCase_inventory_Get(SealCase *sealCase);
+SealCounts *SealCase_inventory_Get(SealCase *sealCase);
 
 /*
- * u8 SealCaseInventory_GetSealQuantity(const SEALBAG *inventory, int sealId)
+ * u8 SealCaseInventory_GetSealQuantity(const SealCounts *inventory, int sealId)
  *
  * Gets the quantity of the given seal ID in the player's loose seals inventory.
  *
- * @param inventory:   Pointer to SEALBAG
+ * @param inventory:   Pointer to SealCounts
  * @param sealId:      ID of the seal to look up
  *
  * @returns: Owned quantity of that seal.
  */
-u8 SealCaseInventory_GetSealQuantity(const SEALBAG *inventory, int sealId);
+u8 SealCaseInventory_GetSealQuantity(const SealCounts *inventory, int sealId);
 
 /*
- * BOOL SealIsOnCapsule(const CAPSULE *capsule, int sealId)
+ * BOOL SealIsOnCapsule(const BallCapsule *capsule, int sealId)
  *
  * Checks whether any seal on the capsule has the given ID.
  *
- * @param capsule:     Pointer to CAPSULE
+ * @param capsule:     Pointer to BallCapsule
  * @param sealId:      ID of the seal to look up
  *
  * @returns: TRUE if that seal is on the capsule, otherwise FALSE
  */
-BOOL SealIsOnCapsule(const CAPSULE *capsule, int sealId);
+BOOL SealIsOnCapsule(const BallCapsule *capsule, int sealId);
 
 /*
- * void SealCaseInventory_SetSealQuantity(SEALBAG *inventory, int sealId, s16 quantity)
+ * void SealCaseInventory_SetSealQuantity(SealCounts *inventory, int sealId, s16 quantity)
  *
  * Sets the owned number of seals of that type to the exact quantity.
  *
- * @param inventory:   Pointer to SEALBAG
+ * @param inventory:   Pointer to SealCounts
  * @param sealId:      ID of the seal to set quantity
  * @param quantity:    Quantity to set it to
  */
-void SealCaseInventory_SetSealQuantity(SEALBAG *inventory, int sealId, s16 quantity);
+void SealCaseInventory_SetSealQuantity(SealCounts *inventory, int sealId, s16 quantity);
 
 /*
  * BOOL GiveOrTakeSeal(SealCase *sealCase, int sealId, s16 quantity)
@@ -189,7 +189,7 @@ void SealCaseInventory_SetSealQuantity(SEALBAG *inventory, int sealId, s16 quant
  * SealCase_CheckSealQuantity follows the logic of GiveOrTakeSeal, but does not
  *   actually perform the action, instead only reports success or failure.
  *
- * @param inventory:   Pointer to SEALBAG
+ * @param inventory:   Pointer to SealCounts
  * @param sealId:      ID of the seal to adjust quantity
  * @param quantity:    Quantity to adjust by
  *
@@ -215,7 +215,7 @@ int SealCase_CountUniqueSeals(const SealCase *sealCase);
  *
  * Counts the number of lose and capsule-bound seals of the given type.
  *
- * @param capsule:     Pointer to CAPSULE
+ * @param capsule:     Pointer to BallCapsule
  * @param sealId:      ID of the seal to look up
  *
  * @returns: Total count of that seal anywhere on capsules or loose in the bag.
