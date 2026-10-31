@@ -6,7 +6,9 @@
 #include "pokemon.h"
 #include "render_text.h"
 #include "sprite.h"
+#include "sprite_transfer.h"
 #include "systask_environment.h"
+#include "unk_02013FDC.h"
 
 #define WAIT_DIAL_FRAME_WIDTH_TILES  2
 #define WAIT_DIAL_FRAME_HEIGHT_TILES 2
@@ -79,6 +81,26 @@ void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon);
 void sub_0200F748(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate);
 void sub_0200F82C(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
 void sub_0200F9DC(PokemonPreview *preview);
+
+static const ManagedSpriteTemplate _020F5C78 = {
+    .x = 0,
+    .y = 0,
+    .z = 0,
+    .animation = 0,
+    .drawPriority = 0,
+    .pal = 0,
+    .vram = NNS_G2D_VRAM_TYPE_2DMAIN,
+    .resIdList = {
+                  POKEMON_PREVIEW_RESOURCE_ID,
+                  POKEMON_PREVIEW_RESOURCE_ID,
+                  POKEMON_PREVIEW_RESOURCE_ID,
+                  POKEMON_PREVIEW_RESOURCE_ID,
+                  0,
+                  0,
+                  },
+    .bgPriority = 0,
+    .vramTransfer = 0,
+};
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
@@ -657,7 +679,7 @@ PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum Heap
 
 void sub_0200F600(PokemonPreview *preview, enum HeapID heapID) {
     extern const SpriteResourceCountsListUnion _020F5C60;
-    SpriteResourceCountsListUnion sp0 = _020F5C60;
+    SpriteResourceCountsListUnion sp0 = { .numChar = 1, .numPltt = 1, .numCell = 1, .numAnim = 1 };
     FieldSpriteManager_InitEmptyResLists(&preview->spriteManager, &sp0, 1, heapID);
 }
 
@@ -688,7 +710,6 @@ void sub_0200F62C(PokemonPreview *preview) {
 }
 
 void sub_0200F684(PokemonPreview *preview, u8 x, u8 y) {
-    extern const ManagedSpriteTemplate _020F5C78;
     ManagedSpriteTemplate sp0 = _020F5C78;
     sp0.x = (x + 5) * 8;
     sp0.y = (y + 5) * 8;
@@ -698,7 +719,7 @@ void sub_0200F684(PokemonPreview *preview, u8 x, u8 y) {
 }
 
 void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
-    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
+    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)(enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetMonSpriteCharAndPlttNarcIdsEx(&tmplate, species, gender, 2, 0, 0, 0);
     sub_0200F748(spriteManager, &tmplate);
@@ -706,9 +727,141 @@ void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
 }
 
 void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon) {
-    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
+    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)(enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetPokemonSpriteCharAndPlttNarcIds(&tmplate, mon, 2);
     sub_0200F748(spriteManager, &tmplate);
     PokepicManager_Delete(mgr);
+}
+
+#define POKEMON_SPRITE_FRAME_WIDTH_TILES  10
+#define POKEMON_SPRITE_FRAME_HEIGHT_TILES 10
+#define POKEMON_SPRITE_FRAME_SIZE_TILES   (POKEMON_SPRITE_FRAME_WIDTH_TILES * POKEMON_SPRITE_FRAME_HEIGHT_TILES)
+#define POKEMON_SPRITE_FRAME_SIZE_BYTES   (TILE_SIZE_4BPP * POKEMON_SPRITE_FRAME_SIZE_TILES)
+#define POKEMON_SPRITE_WHOLE_SIZE_BYTES   (POKEMON_SPRITE_FRAME_SIZE_BYTES * 2)
+
+void sub_0200F748(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate) {
+    u8 *buf;
+    u32 offset;
+    SpriteResource *charResource, *plttResource;
+    NNSG2dImageProxy *imageProxy;
+    const NNSG2dImagePaletteProxy *paletteProxy;
+
+    buf = Heap_Alloc((enum HeapID)(enum HeapID)spriteManager->heapID, POKEMON_SPRITE_WHOLE_SIZE_BYTES);
+
+    // frame 0
+    UnkStruct_02014E30 frame0Region = { 0, 0, 10, 10 };
+    sub_020143E0((NarcId)tmplate->narcID, tmplate->charDataID, (enum HeapID)spriteManager->heapID, &frame0Region, buf);
+
+    // frame 1
+    UnkStruct_02014E30 frame1Region = { 10, 0, 10, 10 };
+    sub_020143E0((NarcId)tmplate->narcID, tmplate->charDataID, (enum HeapID)spriteManager->heapID, &frame1Region, buf + POKEMON_SPRITE_FRAME_SIZE_BYTES);
+
+    charResource = SpriteResourceCollection_Find(spriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], POKEMON_PREVIEW_RESOURCE_ID);
+    imageProxy = SpriteTransfer_GetCharProxy(charResource);
+    offset = NNS_G2dGetImageLocation(imageProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
+
+    DC_FlushRange(buf, POKEMON_SPRITE_WHOLE_SIZE_BYTES);
+    GX_LoadOBJ(buf, offset, POKEMON_SPRITE_WHOLE_SIZE_BYTES);
+
+    Heap_Free(buf);
+
+    buf = sub_02014450((NarcId)tmplate->narcID, tmplate->palDataID, (enum HeapID)spriteManager->heapID);
+    plttResource = SpriteResourceCollection_Find(spriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], POKEMON_PREVIEW_RESOURCE_ID);
+    paletteProxy = SpriteTransfer_GetPaletteProxy(plttResource, imageProxy);
+    offset = NNS_G2dGetImagePaletteLocation(paletteProxy, NNS_G2D_VRAM_TYPE_2DMAIN);
+
+    DC_FlushRange(buf, 32);
+    GX_LoadOBJPltt(buf, offset, 32);
+
+    Heap_Free(buf);
+}
+
+void sub_0200F82C(PokemonPreview *preview, u8 palette, u16 tile) {
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile,
+        preview->x - 1,
+        preview->y - 1,
+        1,
+        1,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 1,
+        preview->x,
+        preview->y - 1,
+        POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        1,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 2,
+        preview->x + POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        preview->y - 1,
+        1,
+        1,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 4,
+        preview->x,
+        preview->y,
+        POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 3,
+        preview->x - 1,
+        preview->y,
+        1,
+        POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 5,
+        preview->x + POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        preview->y,
+        1,
+        POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 6,
+        preview->x - 1,
+        preview->y + POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+        1,
+        1,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 7,
+        preview->x,
+        preview->y + POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+        POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        1,
+        palette);
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        tile + 8,
+        preview->x + POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        preview->y + POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+        1,
+        1,
+        palette);
+
+    ScheduleBgTilemapBufferTransfer(preview->bgConfig, preview->bgLayer);
+}
+
+void sub_0200F9DC(PokemonPreview *preview) {
+    FillBgTilemapRect(preview->bgConfig,
+        preview->bgLayer,
+        0,
+        preview->x - 1,
+        preview->y - 1,
+        POKEMON_SPRITE_FRAME_WIDTH_TILES + 2,
+        POKEMON_SPRITE_FRAME_HEIGHT_TILES + 2,
+        0);
+    ScheduleBgTilemapBufferTransfer(preview->bgConfig, preview->bgLayer);
 }

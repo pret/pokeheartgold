@@ -176,7 +176,6 @@ pokeheartgold_asm = files(
     'overlay_120.s',
     'overlay_trainer_card_main.s',
     'overlay_trainer_card_signature.s',
-    'render_window.s',
     'unk_0200B150.s',
     'unk_0200FA24.s',
     'unk_0201F990.s',
