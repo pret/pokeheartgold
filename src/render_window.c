@@ -6,6 +6,8 @@
 void sub_0200E6B4(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
 void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight);
 void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
+void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID);
+void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID);
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
@@ -232,4 +234,92 @@ void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y
     BG_LoadCharTilesData(window->bgConfig, bgLayer, cursorBlit, size, baseTile + 18);
     Heap_Free(cursorCharPtr);
     Heap_Free(cursorBlit);
+}
+
+void sub_0200EB68(Window *window, u16 baseTile) {
+    sub_0200EA68(window, 22, baseTile, 3, 3, 0);
+}
+
+void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID) {
+    void *tiles;
+    NNSG2dCharacterData *chars;
+    u8 *src;
+    u32 i;
+    u8 srcTop, srcBot;
+
+    tiles = GfGfxLoader_GetCharData(NARC_a_0_3_8,
+        sub_0200E63C(messageBoxFrame),
+        FALSE,
+        &chars,
+        heapID);
+    src = Heap_Alloc(heapID, TILE_SIZE_4BPP * 18);
+    memcpy(src, chars->pRawData, TILE_SIZE_4BPP * 18);
+
+    for (i = 0; i < TILE_SIZE_4BPP * 18; i++) {
+        srcTop = src[i] >> 4;
+        srcBot = src[i] & 0xF;
+
+        if (srcTop == 0) {
+            srcTop = withTile;
+        }
+
+        if (srcBot == 0) {
+            srcBot = withTile;
+        }
+
+        src[i] = (srcTop << 4) | srcBot;
+    }
+
+    BG_LoadCharTilesData(bgConfig, bgLayer, src, TILE_SIZE_4BPP * 18, bgBaseTile);
+    Heap_Free(tiles);
+    Heap_Free(src);
+}
+
+void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile, u8 palette, u8 signpostType, u16 signpostNARCMemberIdx, enum HeapID heapID) {
+    GfGfxLoader_LoadCharData(NARC_a_0_3_6,
+        0,
+        bgConfig,
+        (GFBgLayer)bgLayer,
+        baseTile,
+        30 * TILE_SIZE_4BPP,
+        FALSE,
+        heapID);
+
+    void *signpostNclr = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_3_6, 1, heapID);
+
+    NNSG2dPaletteData *paletteData;
+    NNS_G2dGetUnpackedPaletteData(signpostNclr, &paletteData);
+    u16 *paletteBuf = paletteData->pRawData;
+
+    BG_LoadPlttData(bgLayer,
+        paletteBuf + (signpostType * 16),
+        32,
+        palette * 32);
+    Heap_FreeExplicit(heapID, signpostNclr);
+
+    if (signpostType == 0 || signpostType == 1) {
+        sub_0200EC84(bgConfig,
+            bgLayer,
+            baseTile + 30,
+            signpostType,
+            signpostNARCMemberIdx,
+            heapID);
+    }
+}
+
+void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID) {
+    if (signpostType == 0) {
+        narcMemberIdx += 33;
+    } else {
+        narcMemberIdx += 2;
+    }
+
+    GfGfxLoader_LoadCharData(NARC_a_0_3_6,
+        narcMemberIdx,
+        bgConfig,
+        (enum GFBgLayer)bgLayer,
+        offset,
+        24 * TILE_SIZE_4BPP,
+        FALSE,
+        heapID);
 }
