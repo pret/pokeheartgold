@@ -3,8 +3,10 @@
 #include "field/field_sprite_manager.h"
 
 #include "gf_gfx_loader.h"
+#include "pokemon.h"
 #include "render_text.h"
 #include "sprite.h"
+#include "systask_environment.h"
 
 #define WAIT_DIAL_FRAME_WIDTH_TILES  2
 #define WAIT_DIAL_FRAME_HEIGHT_TILES 2
@@ -26,6 +28,13 @@ enum WaitingIconDeleteMode {
     DIAL_DELETE_MODE_NONE = 0,
     DIAL_DELETE_MODE_CLEAR,
     DIAL_DELETE_MODE_DESTROY,
+};
+
+enum PokemonPreviewState {
+    PREVIEW_STATE_WAIT = 0,
+    PREVIEW_STATE_REMOVE,
+    PREVIEW_STATE_SET_ANIM,
+    PREVIEW_STATE_WAIT_ANIM,
 };
 
 struct WaitingIcon {
@@ -60,13 +69,16 @@ void sub_0200EF84(Window *window, u16 tile, u8 palette);
 void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode);
 void sub_0200F3D0(SysTask *sysTask, void *arg);
 void sub_0200F43C(SysTask *sysTask, void *arg);
-PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, int x, int y, enum HeapID heapID);
+void sub_0200F54C(SysTask *sysTask, void *arg);
+PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
 void sub_0200F600(PokemonPreview *preview, enum HeapID heapID);
 void sub_0200F62C(PokemonPreview *preview);
-void sub_0200F684(PokemonPreview *preview, int x, int y);
+void sub_0200F684(PokemonPreview *preview, u8 x, u8 y);
 void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender);
 void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon);
+void sub_0200F748(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate);
 void sub_0200F82C(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
+void sub_0200F9DC(PokemonPreview *preview);
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
@@ -602,4 +614,101 @@ u8 *DrawPokemonPicFromMon(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNu
     sub_0200F82C(preview, paletteNum, baseTile);
     BgCommitTilemapBufferToVram(bgConfig, layer);
     return &preview->state;
+}
+
+void sub_0200F54C(SysTask *sysTask, void *arg) {
+    PokemonPreview *preview = arg;
+
+    switch (preview->state) {
+    case PREVIEW_STATE_REMOVE:
+        sub_0200F9DC(preview);
+        Sprite_DeleteAndFreeResources(preview->managedSprite);
+        FieldSpriteManager_ReleaseWithoutResDat(&preview->spriteManager);
+        DestroySysTaskAndEnvironment(sysTask);
+        return;
+
+    case PREVIEW_STATE_SET_ANIM:
+        preview->state = 3;
+        Sprite_SetAnimCtrlSeq(preview->managedSprite->sprite, 1);
+        break;
+
+    case PREVIEW_STATE_WAIT_ANIM:
+        if (Sprite_GetAnimationFrame(preview->managedSprite->sprite) == 6) {
+            preview->state = PREVIEW_STATE_WAIT;
+        }
+        break;
+    }
+
+    Sprite_UpdateAnim(preview->managedSprite->sprite, FX32_ONE);
+    SpriteList_RenderAndAnimateSprites(preview->spriteManager.spriteList);
+}
+
+PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
+    PokemonPreview *preview = SysTask_GetData(CreateSysTaskAndEnvironment(sub_0200F54C, sizeof(PokemonPreview), 0, heapID));
+
+    preview->state = 0;
+    preview->bgConfig = bgConfig;
+    preview->bgLayer = layer;
+    preview->x = x;
+    preview->y = y;
+
+    return preview;
+}
+
+void sub_0200F600(PokemonPreview *preview, enum HeapID heapID) {
+    extern const SpriteResourceCountsListUnion _020F5C60;
+    SpriteResourceCountsListUnion sp0 = _020F5C60;
+    FieldSpriteManager_InitEmptyResLists(&preview->spriteManager, &sp0, 1, heapID);
+}
+
+void sub_0200F62C(PokemonPreview *preview) {
+    FieldSpriteManager_AddPlttRes(&preview->spriteManager,
+        NARC_a_0_3_8,
+        50,
+        FALSE,
+        1,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        POKEMON_PREVIEW_RESOURCE_ID);
+    FieldSpriteManager_AddCellRes(&preview->spriteManager,
+        NARC_a_0_3_8,
+        48,
+        FALSE,
+        POKEMON_PREVIEW_RESOURCE_ID);
+    FieldSpriteManager_AddAnimRes(&preview->spriteManager,
+        NARC_a_0_3_8,
+        47,
+        FALSE,
+        POKEMON_PREVIEW_RESOURCE_ID);
+    FieldSpriteManager_AddCharRes(&preview->spriteManager,
+        NARC_a_0_3_8,
+        49,
+        FALSE,
+        NNS_G2D_VRAM_TYPE_2DMAIN,
+        POKEMON_PREVIEW_RESOURCE_ID);
+}
+
+void sub_0200F684(PokemonPreview *preview, u8 x, u8 y) {
+    extern const ManagedSpriteTemplate _020F5C78;
+    ManagedSpriteTemplate sp0 = _020F5C78;
+    sp0.x = (x + 5) * 8;
+    sp0.y = (y + 5) * 8;
+    preview->managedSprite = FieldSpriteManager_CreateManagedSprite(&preview->spriteManager, &sp0);
+    SpriteList_RenderAndAnimateSprites(preview->spriteManager.spriteList);
+    GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
+}
+
+void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
+    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
+    PokepicTemplate tmplate;
+    GetMonSpriteCharAndPlttNarcIdsEx(&tmplate, species, gender, 2, 0, 0, 0);
+    sub_0200F748(spriteManager, &tmplate);
+    PokepicManager_Delete(mgr);
+}
+
+void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon) {
+    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
+    PokepicTemplate tmplate;
+    GetPokemonSpriteCharAndPlttNarcIds(&tmplate, mon, 2);
+    sub_0200F748(spriteManager, &tmplate);
+    PokepicManager_Delete(mgr);
 }
