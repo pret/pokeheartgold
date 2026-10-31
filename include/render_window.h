@@ -46,10 +46,10 @@ void ClearFrameAndWindow2(Window *window, BOOL dont_copy_to_vram);
 void sub_0200EB68(Window *window, u16 baseTile);
 void DrawFrameAndWindow3(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num, u8 type);
 void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 plttNum, u8 type, u16 map, enum HeapID heapId);
-WaitingIcon *WaitingIcon_New(Window *window, u16 tileNum);
+WaitingIcon *WaitingIcon_New(Window *window, u32 tileNum);
 void sub_0200F450(WaitingIcon *waitingIcon);
+void sub_0200F478(WaitingIcon *waitingIcon);
 struct PokepicManager *DrawPokemonPicFromSpecies(BgConfig *bgConfig, GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, enum HeapID heapID);
 struct PokepicManager *DrawPokemonPicFromMon(BgConfig *bgConfig, GFBgLayer layer, int x, int y, u8 paletteNum, u16 baseTile, Pokemon *mon, enum HeapID heapID);
-void sub_0200F478(void);
 
 #endif // POKEHEARTGOLD_RENDER_WINDOW_H

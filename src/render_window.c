@@ -3,6 +3,40 @@
 #include "gf_gfx_loader.h"
 #include "render_text.h"
 
+#define WAIT_DIAL_FRAME_WIDTH_TILES  2
+#define WAIT_DIAL_FRAME_HEIGHT_TILES 2
+#define WAIT_DIAL_TILES_PER_FRAME    (WAIT_DIAL_FRAME_WIDTH_TILES * WAIT_DIAL_FRAME_HEIGHT_TILES)
+#define WAIT_DIAL_FRAME_SIZE         (TILE_SIZE_4BPP * WAIT_DIAL_TILES_PER_FRAME)
+#define WAIT_DIAL_FRAME_OFFSET(i)    (WAIT_DIAL_FRAME_SIZE * i)
+#define WAIT_DIAL_FRAME_COUNT        8
+#define WAIT_DIAL_WHOLE_SIZE         (WAIT_DIAL_FRAME_SIZE * WAIT_DIAL_FRAME_COUNT)
+
+#define POKEMON_PREVIEW_RESOURCE_ID 89301
+
+enum WaitingIconDrawMode {
+    DIAL_DRAW_MODE_LOAD_ONLY = 0,
+    DIAL_DRAW_MODE_LOAD_AND_DRAW,
+    DIAL_DRAW_MODE_CLEAR,
+};
+
+enum WaitingIconDeleteMode {
+    DIAL_DELETE_MODE_NONE = 0,
+    DIAL_DELETE_MODE_CLEAR,
+    DIAL_DELETE_MODE_DESTROY,
+};
+
+struct WaitingIcon {
+    Window *window;
+    u8 pixels[WAIT_DIAL_WHOLE_SIZE];
+    u8 messageBoxPixels[WAIT_DIAL_FRAME_SIZE];
+    u16 messageBoxTile;
+    u8 counter;
+    u8 curFrame : 7;
+    u8 : 1;
+    u8 deleteMode : 2;
+    u8 : 6;
+};
+
 void sub_0200E6B4(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
 void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight);
 void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
@@ -10,6 +44,9 @@ void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u
 void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID);
 void sub_0200ECBC(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
 void sub_0200EF84(Window *window, u16 tile, u8 palette);
+void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode);
+void sub_0200F3D0(SysTask *sysTask, void *arg);
+void sub_0200F43C(SysTask *sysTask, void *arg);
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
@@ -392,4 +429,134 @@ void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 pal
     }
 
     TextPrinter_SetDownArrowBaseTile(baseTile);
+}
+
+WaitingIcon *WaitingIcon_New(Window *window, u32 baseTile) {
+    WaitingIcon *waitingIcon;
+    enum HeapID heapID;
+    u8 *bgCharPtr;
+    u8 *dialTiles;
+    u8 *tmp;
+    void *dialTilesRaw;
+    u8 bgLayer;
+    u8 i;
+    NNSG2dCharacterData *dialCharData;
+
+    heapID = BgConfig_GetHeapId(window->bgConfig);
+    bgLayer = GetWindowBgId(window);
+    bgCharPtr = BgGetCharPtr(bgLayer);
+    waitingIcon = Heap_Alloc(heapID, sizeof(WaitingIcon));
+
+    memcpy(waitingIcon->messageBoxPixels, &bgCharPtr[(baseTile + 18) * TILE_SIZE_4BPP], WAIT_DIAL_FRAME_SIZE);
+
+    tmp = Heap_Alloc(heapID, WAIT_DIAL_FRAME_SIZE);
+
+    memcpy(&tmp[TILE_SIZE_4BPP * 0], &bgCharPtr[(baseTile + 10) * TILE_SIZE_4BPP], TILE_SIZE_4BPP);
+    memcpy(&tmp[TILE_SIZE_4BPP * 1], &bgCharPtr[(baseTile + 11) * TILE_SIZE_4BPP], TILE_SIZE_4BPP);
+    memcpy(&tmp[TILE_SIZE_4BPP * 2], &bgCharPtr[(baseTile + 10) * TILE_SIZE_4BPP], TILE_SIZE_4BPP);
+    memcpy(&tmp[TILE_SIZE_4BPP * 3], &bgCharPtr[(baseTile + 11) * TILE_SIZE_4BPP], TILE_SIZE_4BPP);
+
+    for (i = 0; i < WAIT_DIAL_FRAME_COUNT; i++) {
+        memcpy(waitingIcon->pixels + WAIT_DIAL_FRAME_OFFSET(i), tmp, WAIT_DIAL_FRAME_SIZE);
+    }
+
+    Heap_Free(tmp);
+
+    dialTilesRaw = GfGfxLoader_GetCharData(NARC_a_0_3_8,
+        23,
+        FALSE,
+        &dialCharData,
+        heapID);
+    dialTiles = dialCharData->pRawData;
+
+    sub_0200EA24(dialTiles,
+        0,
+        0,
+        WAIT_DIAL_FRAME_WIDTH_TILES * 8,
+        (WAIT_DIAL_FRAME_HEIGHT_TILES * 8) * WAIT_DIAL_FRAME_COUNT,
+        waitingIcon->pixels,
+        WAIT_DIAL_FRAME_WIDTH_TILES * 8,
+        (WAIT_DIAL_FRAME_HEIGHT_TILES * 8) * WAIT_DIAL_FRAME_COUNT,
+        0,
+        0,
+        WAIT_DIAL_FRAME_WIDTH_TILES * 8,
+        (WAIT_DIAL_FRAME_HEIGHT_TILES * 8) * WAIT_DIAL_FRAME_COUNT);
+    Heap_Free(dialTilesRaw);
+
+    waitingIcon->window = window;
+    waitingIcon->messageBoxTile = baseTile;
+    waitingIcon->counter = 0;
+    waitingIcon->curFrame = 0;
+    waitingIcon->deleteMode = 0;
+
+    SysTask_CreateOnVBlankQueue(sub_0200F3D0, waitingIcon, 0);
+    sub_0200F1D4(waitingIcon, DIAL_DRAW_MODE_LOAD_AND_DRAW);
+
+    return waitingIcon;
+}
+
+void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode) {
+    u8 bgLayer = GetWindowBgId(waitingIcon->window);
+    u8 x = GetWindowX(waitingIcon->window);
+    u8 y = GetWindowY(waitingIcon->window);
+    u8 width = GetWindowWidth(waitingIcon->window);
+
+    if (drawMode == DIAL_DRAW_MODE_CLEAR) {
+        BG_LoadCharTilesData(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxPixels, WAIT_DIAL_FRAME_SIZE, waitingIcon->messageBoxTile + 18);
+        FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 10, x + width + 1, y + 2, 1, 1, TILEMAP_FILL_KEEP_PAL);
+        FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 11, x + width + 2, y + 2, 1, 1, TILEMAP_FILL_KEEP_PAL);
+        FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 10, x + width + 1, y + 3, 1, 1, TILEMAP_FILL_KEEP_PAL);
+        FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 11, x + width + 2, y + 3, 1, 1, TILEMAP_FILL_KEEP_PAL);
+        BgCommitTilemapBufferToVram(waitingIcon->window->bgConfig, bgLayer);
+
+        return;
+    }
+
+    BG_LoadCharTilesData(waitingIcon->window->bgConfig, bgLayer, &waitingIcon->pixels[WAIT_DIAL_FRAME_SIZE * waitingIcon->curFrame], WAIT_DIAL_FRAME_SIZE, waitingIcon->messageBoxTile + 18);
+
+    if (drawMode == DIAL_DRAW_MODE_LOAD_ONLY) {
+        return;
+    }
+
+    FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 18, x + width + 1, y + 2, 1, 1, TILEMAP_FILL_KEEP_PAL);
+    FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 19, x + width + 2, y + 2, 1, 1, TILEMAP_FILL_KEEP_PAL);
+    FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 20, x + width + 1, y + 3, 1, 1, TILEMAP_FILL_KEEP_PAL);
+    FillBgTilemapRect(waitingIcon->window->bgConfig, bgLayer, waitingIcon->messageBoxTile + 21, x + width + 2, y + 3, 1, 1, TILEMAP_FILL_KEEP_PAL);
+    BgCommitTilemapBufferToVram(waitingIcon->window->bgConfig, bgLayer);
+}
+
+void sub_0200F3D0(SysTask *sysTask, void *arg) {
+    WaitingIcon *waitingIcon = arg;
+
+    if (waitingIcon->deleteMode != DIAL_DELETE_MODE_NONE) {
+        if (waitingIcon->deleteMode == DIAL_DELETE_MODE_CLEAR) {
+            sub_0200F1D4(waitingIcon, DIAL_DRAW_MODE_CLEAR);
+        }
+
+        SysTask_Destroy(sysTask);
+        return;
+    }
+
+    waitingIcon->counter++;
+
+    if (waitingIcon->counter == 16) {
+        waitingIcon->counter = 0;
+        waitingIcon->curFrame = (waitingIcon->curFrame + 1) & 7;
+        sub_0200F1D4(waitingIcon, DIAL_DRAW_MODE_LOAD_ONLY);
+    }
+}
+
+void sub_0200F43C(SysTask *sysTask, void *arg) {
+    Heap_Free(arg);
+    SysTask_Destroy(sysTask);
+}
+
+void sub_0200F450(WaitingIcon *waitingIcon) {
+    SysTask_CreateOnVWaitQueue(sub_0200F43C, waitingIcon, 0);
+    waitingIcon->deleteMode = DIAL_DELETE_MODE_CLEAR;
+}
+
+void sub_0200F478(WaitingIcon *waitingIcon) {
+    SysTask_CreateOnVWaitQueue(sub_0200F43C, waitingIcon, 0);
+    waitingIcon->deleteMode = DIAL_DELETE_MODE_DESTROY;
 }

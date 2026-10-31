@@ -4029,9 +4029,9 @@ u8 ov44_0222F8F0(UnkStruct_ov44_022319EC *arg0) {
 }
 
 void ov44_0222F910(UnkStruct_ov44_022319EC *arg0) {
-    if (arg0->unk18C != 0) {
-        sub_0200F478();
-        arg0->unk18C = 0;
+    if (arg0->unk18C != NULL) {
+        sub_0200F478(arg0->unk18C);
+        arg0->unk18C = NULL;
         if (WindowIsInUse(&arg0->unk2D0) != 0) {
             ClearFrameAndWindow2(&arg0->unk2D0, 0);
             RemoveWindow(&arg0->unk2D0);
