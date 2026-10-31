@@ -1,7 +1,10 @@
 #include "render_window.h"
 
+#include "field/field_sprite_manager.h"
+
 #include "gf_gfx_loader.h"
 #include "render_text.h"
+#include "sprite.h"
 
 #define WAIT_DIAL_FRAME_WIDTH_TILES  2
 #define WAIT_DIAL_FRAME_HEIGHT_TILES 2
@@ -37,6 +40,16 @@ struct WaitingIcon {
     u8 : 6;
 };
 
+typedef struct PokemonPreview {
+    FieldSpriteManager spriteManager;
+    ManagedSprite *managedSprite;
+    BgConfig *bgConfig;
+    u8 bgLayer;
+    u8 x;
+    u8 y;
+    u8 state;
+} PokemonPreview;
+
 void sub_0200E6B4(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
 void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight);
 void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
@@ -47,6 +60,12 @@ void sub_0200EF84(Window *window, u16 tile, u8 palette);
 void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode);
 void sub_0200F3D0(SysTask *sysTask, void *arg);
 void sub_0200F43C(SysTask *sysTask, void *arg);
+PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, int x, int y, enum HeapID heapID);
+void sub_0200F600(PokemonPreview *preview, enum HeapID heapID);
+void sub_0200F62C(PokemonPreview *preview);
+void sub_0200F684(PokemonPreview *preview, int x, int y);
+void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender);
+void sub_0200F82C(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
 
 void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
@@ -559,4 +578,15 @@ void sub_0200F450(WaitingIcon *waitingIcon) {
 void sub_0200F478(WaitingIcon *waitingIcon) {
     SysTask_CreateOnVWaitQueue(sub_0200F43C, waitingIcon, 0);
     waitingIcon->deleteMode = DIAL_DELETE_MODE_DESTROY;
+}
+
+u8 *DrawPokemonPicFromSpecies(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, u32 heapID) {
+    PokemonPreview *preview = sub_0200F5C4(bgConfig, layer, x, y, (enum HeapID)heapID);
+    sub_0200F600(preview, (enum HeapID)heapID);
+    sub_0200F62C(preview);
+    sub_0200F684(preview, x, y);
+    sub_0200F6D4(&preview->spriteManager, species, gender);
+    sub_0200F82C(preview, paletteNum, baseTile);
+    BgCommitTilemapBufferToVram(bgConfig, layer);
+    return &preview->state;
 }
