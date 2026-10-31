@@ -98,7 +98,7 @@ else
   endif
 endif
 
-export NINJA_STATUS := [%p %f/%t]
+export NINJA_STATUS := [%p %f/%t] 
 
 # Modders can delete the `check` dependency here after their first build.
 all: release check
@@ -115,7 +115,7 @@ soulsilver:
 	make GAME_VERSION=SOULSILVER
 
 check: rom
-	$(MESON) test -C $(BUILD) --verbose
+	$(MESON) test -C $(BUILD) --print-errorlogs
 
 rom: setup_rom
 	$(NINJA) -C $(BUILD) poke$(target_name).$(target_region).nds
