@@ -46,6 +46,7 @@ Static main
     Object main.nef.p/src_unk_0200CE7C.c.o
     Object main.nef.p/src_sprite_system.c.o
     Object main.nef.p/src_sys_task_api.c.o
+    Object main.nef.p/src_render_window.c.o
     Object main.nef.p/asm_render_window.s.o
     Object main.nef.p/asm_unk_0200FA24.s.o
     Object main.nef.p/asm_unk_0201010C.s.o

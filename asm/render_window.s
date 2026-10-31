@@ -18,41 +18,6 @@ _020F5C78:
 
 	.text
 
-	thumb_func_start sub_0200E398
-sub_0200E398: ; 0x0200E398
-	push {r3, r4, r5, lr}
-	sub sp, #0x10
-	add r5, r0, #0
-	add r4, r1, #0
-	cmp r3, #0
-	str r2, [sp]
-	bne _0200E3BE
-	mov r1, #0
-	str r1, [sp, #4]
-	ldr r0, [sp, #0x20]
-	str r1, [sp, #8]
-	str r0, [sp, #0xc]
-	mov r0, #0x26
-	add r2, r5, #0
-	add r3, r4, #0
-	bl GfGfxLoader_LoadCharData
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-_0200E3BE:
-	mov r0, #0
-	str r0, [sp, #4]
-	str r0, [sp, #8]
-	ldr r0, [sp, #0x20]
-	mov r1, #1
-	str r0, [sp, #0xc]
-	mov r0, #0x26
-	add r2, r5, #0
-	add r3, r4, #0
-	bl GfGfxLoader_LoadCharData
-	add sp, #0x10
-	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0200E398
-
 	thumb_func_start sub_0200E3D8
 sub_0200E3D8: ; 0x0200E3D8
 	mov r0, #0x19

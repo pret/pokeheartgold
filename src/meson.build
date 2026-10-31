@@ -148,6 +148,7 @@ pokeheartgold_c = files(
     'pokewalker.c',
     'register_hall_of_fame.c',
     'render_text.c',
+    'render_window.c',
     'ribbon.c',
     'roamer.c',
     'safari_zone.c',
