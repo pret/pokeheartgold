@@ -1802,28 +1802,28 @@
                                   33](GfGfxLoader_LoadFromOpenNarc_GetSizeOut,func) found in global src_gf_gfx_loader.c.o
                                    34](NARC_GetMemberSize,func) found in global src_filesystem.c.o
                                    34](NARC_ReadWholeMember,func) found in global src_filesystem.c.o
-                                  33](LocationGmmDatGetEarthPlaceDatId,func) found in global src_location_gmm_dat.c.o
-                                   34](sLocationGmmDat,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_UnitedStates,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Sweden,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Russia,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Poland,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Norway,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Japan,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Italy,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_India,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_GreatBritain,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_France,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Finland,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Spain,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Germany,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_China,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Canada,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Brazil,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Australia,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_Argentina,object) found in local src_location_gmm_dat.c.o
-                                    35](sLocationGmmDat_World,object) found in local src_location_gmm_dat.c.o
-                                  33](LocationGmmDatIndexGetByCountryMsgNo,func) found in global src_location_gmm_dat.c.o
+                                  33](GeonetLocations_GetNarcMemberIndex,func) found in global src_geonet_locations.c.o
+                                   34](sCountryStateData,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableUnitedStatesStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableSwedenStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableRussiaStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectablePolandStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableNorwayStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableJapanStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableItalyStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableIndiaStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableGreatBritainStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableFranceStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableFinlandStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableSpainStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableGermanyStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableChinaStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableCanadaStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableBrazilStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableAustraliaStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableArgentinaStates,object) found in local src_geonet_locations.c.o
+                                    35](sSelectableCountries,object) found in local src_geonet_locations.c.o
+                                  33](GeonetLocations_GetIndexFromCountry,func) found in global src_geonet_locations.c.o
                                   33](NNS_G3dGlb,object) found in global libnnsg3d.a
                                   33](sub_0201FA34,func) found in global asm_unk_0201F990.s.o
                                    34](G3X_GetBoxTestResult,func) found in global libgx.a
@@ -2374,8 +2374,8 @@
                                       37](String16_FormatInteger,func) found in global src_pm_string.c.o
                                        38](sCharset_JP$13087,object) found in local src_pm_string.c.o
                                      36](BufferCityName,func) found in global src_message_format.c.o
-                                      37](GetCityNamesMsgdataIdByCountry,func) found in global src_location_gmm_dat.c.o
-                                       38](LocationGmmDatGetGmmNo,func) found in global src_location_gmm_dat.c.o
+                                      37](GeonetLocations_GetBankIDFromCountry,func) found in global src_geonet_locations.c.o
+                                       38](GeonetLocations_GetBankID,func) found in global src_geonet_locations.c.o
                                      36](BufferCountryName,func) found in global src_message_format.c.o
                                      36](BufferPlayersName,func) found in global src_message_format.c.o
                                       37](PlayerProfile_GetNamePtr,func) found in global src_player_data.c.o
@@ -2812,8 +2812,8 @@
                                     35](FontID_String_GetCenterAlignmentX,func) found in global src_font.c.o
                                     35](Camera_SetDistance,func) found in global src_camera.c.o
                                     35](gGameLanguage,object) found in global src_pm_version.c.o
-                                    35](LocationGmmDatGetCountryMsgNo,func) found in global src_location_gmm_dat.c.o
-                                    35](LocationGmmDatCountGet,func) found in global src_location_gmm_dat.c.o
+                                    35](GeonetLocations_GetCountry,func) found in global src_geonet_locations.c.o
+                                    35](GeonetLocations_GetLocationListCount,func) found in global src_geonet_locations.c.o
                                     35](WiFiHistory_GetPlayerRegion,func) found in global src_save_wifi_history.c.o
                                     35](WifiHistory_GetPlayerCountry,func) found in global src_save_wifi_history.c.o
                                     35](Save_WiFiHistory_Get,func) found in global src_save_wifi_history.c.o
@@ -2896,7 +2896,7 @@
                                         39](Save_Frontier_Init,func) found in global asm_unk_02030A98.s.o
                                          40](GetECWordIndexByPair,func) found in global src_easy_chat.c.o
                                          40](MailMsg_Init_WithBank,func) found in global src_mail_message.c.o
-                                         40](LocationGmmDatRegionCountGetByCountryMsgNo,func) found in global src_location_gmm_dat.c.o
+                                         40](GeonetLocations_GetLocationCountFromCountry,func) found in global src_geonet_locations.c.o
                                          40](SaveArray_CalcCRC16,func) found in global src_save.c.o
                                          40](GetUnionRoomAvatarAttrBySprite,func) found in global src_unk_0205B3DC.c.o
                                           41](SpriteToUnionRoomAvatarIdx_Internal,func) found in local src_unk_0205B3DC.c.o
@@ -11688,8 +11688,8 @@
                                                            58](WiFiHistory_SetPlayerGlobeInfo,func) found in global src_save_wifi_history.c.o
                                                             59](WiFiHistory_SetLocationSeenState,func) found in global src_save_wifi_history.c.o
                                                              60](WiFiHistory_SetNonJapaneseFlag,func) found in global src_save_wifi_history.c.o
-                                                           58](LocationGmmDatGetDistrictNameMsgIdsPtr,func) found in global src_location_gmm_dat.c.o
-                                                           58](LocationGmmDatGetDistrictCount,func) found in global src_location_gmm_dat.c.o
+                                                           58](GeonetLocations_GetLocationList,func) found in global src_geonet_locations.c.o
+                                                           58](GeonetLocations_GetLocationCount,func) found in global src_geonet_locations.c.o
                                                            58](WiFiHistory_GetNonJapaneseFlag,func) found in global src_save_wifi_history.c.o
                                                           57](VoltorbFlip_Exit,func) found in global src_voltorb_flip_voltorb_flip.c.o
                                                            58](FreeOverlayData,func) found in local src_voltorb_flip_voltorb_flip.c.o
@@ -49006,31 +49006,31 @@
   02091654 00000000 .text   $b	(asm_unk_020915B0.s.o)
   0209165A 00000000 .text   $b	(asm_unk_020915B0.s.o)
   02091662 00000000 .text   $d	(asm_unk_020915B0.s.o)
-  02091664 00000004 .text   LocationGmmDatCountGet	(src_location_gmm_dat.c.o)
-  02091664 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  02091668 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  02091668 00000020 .text   LocationGmmDatIndexGetByCountryMsgNo	(src_location_gmm_dat.c.o)
-  02091684 00000000 .text   $d	(src_location_gmm_dat.c.o)
-  02091688 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  02091688 0000002C .text   LocationGmmDatRegionCountGetByCountryMsgNo	(src_location_gmm_dat.c.o)
-  020916AC 00000000 .text   $d	(src_location_gmm_dat.c.o)
-  020916B4 0000000C .text   GetCityNamesMsgdataIdByCountry	(src_location_gmm_dat.c.o)
-  020916B4 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  020916C0 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  020916C0 0000001C .text   LocationGmmDatGetGmmNo	(src_location_gmm_dat.c.o)
-  020916D8 00000000 .text   $d	(src_location_gmm_dat.c.o)
-  020916DC 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  020916DC 0000001C .text   LocationGmmDatGetCountryMsgNo	(src_location_gmm_dat.c.o)
-  020916F4 00000000 .text   $d	(src_location_gmm_dat.c.o)
-  020916F8 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  020916F8 0000001C .text   LocationGmmDatGetEarthPlaceDatId	(src_location_gmm_dat.c.o)
-  02091710 00000000 .text   $d	(src_location_gmm_dat.c.o)
-  02091714 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  02091714 0000001C .text   LocationGmmDatGetDistrictNameMsgIdsPtr	(src_location_gmm_dat.c.o)
-  0209172C 00000000 .text   $d	(src_location_gmm_dat.c.o)
-  02091730 00000000 .text   $t	(src_location_gmm_dat.c.o)
-  02091730 0000001C .text   LocationGmmDatGetDistrictCount	(src_location_gmm_dat.c.o)
-  02091748 00000000 .text   $d	(src_location_gmm_dat.c.o)
+  02091664 00000004 .text   GeonetLocations_GetLocationListCount	(src_geonet_locations.c.o)
+  02091664 00000000 .text   $t	(src_geonet_locations.c.o)
+  02091668 00000000 .text   $t	(src_geonet_locations.c.o)
+  02091668 00000020 .text   GeonetLocations_GetIndexFromCountry	(src_geonet_locations.c.o)
+  02091684 00000000 .text   $d	(src_geonet_locations.c.o)
+  02091688 00000000 .text   $t	(src_geonet_locations.c.o)
+  02091688 0000002C .text   GeonetLocations_GetLocationCountFromCountry	(src_geonet_locations.c.o)
+  020916AC 00000000 .text   $d	(src_geonet_locations.c.o)
+  020916B4 0000000C .text   GeonetLocations_GetBankIDFromCountry	(src_geonet_locations.c.o)
+  020916B4 00000000 .text   $t	(src_geonet_locations.c.o)
+  020916C0 00000000 .text   $t	(src_geonet_locations.c.o)
+  020916C0 0000001C .text   GeonetLocations_GetBankID	(src_geonet_locations.c.o)
+  020916D8 00000000 .text   $d	(src_geonet_locations.c.o)
+  020916DC 00000000 .text   $t	(src_geonet_locations.c.o)
+  020916DC 0000001C .text   GeonetLocations_GetCountry	(src_geonet_locations.c.o)
+  020916F4 00000000 .text   $d	(src_geonet_locations.c.o)
+  020916F8 00000000 .text   $t	(src_geonet_locations.c.o)
+  020916F8 0000001C .text   GeonetLocations_GetNarcMemberIndex	(src_geonet_locations.c.o)
+  02091710 00000000 .text   $d	(src_geonet_locations.c.o)
+  02091714 00000000 .text   $t	(src_geonet_locations.c.o)
+  02091714 0000001C .text   GeonetLocations_GetLocationList	(src_geonet_locations.c.o)
+  0209172C 00000000 .text   $d	(src_geonet_locations.c.o)
+  02091730 00000000 .text   $t	(src_geonet_locations.c.o)
+  02091730 0000001C .text   GeonetLocations_GetLocationCount	(src_geonet_locations.c.o)
+  02091748 00000000 .text   $d	(src_geonet_locations.c.o)
   0209174C 00000018 .text   MoveRelearner_New	(src_move_relearner.c.o)
   0209174C 00000000 .text   $t	(src_move_relearner.c.o)
   02091764 00000000 .text   $t	(src_move_relearner.c.o)
@@ -57556,27 +57556,27 @@
   02106078 0000054C .rodata sUnkTable_02106078	(src_unk_02091564.c.o)
   021065C4 00000000 .rodata gApp_MainMenu_SelectOption_NintendoWFCSetup	(asm_unk_020915B0.s.o)
   021065C4 00000010 .rodata .rodata	(asm_unk_020915B0.s.o)
-  021065D4 00000006 .rodata sLocationGmmDat_Finland	(src_location_gmm_dat.c.o)
-  021065DC 00000007 .rodata sLocationGmmDat_Australia	(src_location_gmm_dat.c.o)
-  021065E4 00000007 .rodata sLocationGmmDat_Russia	(src_location_gmm_dat.c.o)
-  021065EC 0000000C .rodata sLocationGmmDat_GreatBritain	(src_location_gmm_dat.c.o)
-  021065F8 0000000D .rodata sLocationGmmDat_Canada	(src_location_gmm_dat.c.o)
-  02106608 00000010 .rodata sLocationGmmDat_Poland	(src_location_gmm_dat.c.o)
-  02106618 00000010 .rodata sLocationGmmDat_Germany	(src_location_gmm_dat.c.o)
-  02106628 00000011 .rodata sLocationGmmDat_Spain	(src_location_gmm_dat.c.o)
-  0210663C 00000014 .rodata sLocationGmmDat_Norway	(src_location_gmm_dat.c.o)
-  02106650 00000014 .rodata sLocationGmmDat_Italy	(src_location_gmm_dat.c.o)
-  02106664 00000016 .rodata sLocationGmmDat_France	(src_location_gmm_dat.c.o)
-  0210667C 00000018 .rodata sLocationGmmDat_Argentina	(src_location_gmm_dat.c.o)
-  02106694 00000018 .rodata sLocationGmmDat_Sweden	(src_location_gmm_dat.c.o)
-  021066AC 0000001B .rodata sLocationGmmDat_Brazil	(src_location_gmm_dat.c.o)
-  021066C8 0000001F .rodata sLocationGmmDat_China	(src_location_gmm_dat.c.o)
-  021066E8 00000023 .rodata sLocationGmmDat_India	(src_location_gmm_dat.c.o)
-  0210670C 00000032 .rodata sLocationGmmDat_Japan	(src_location_gmm_dat.c.o)
-  02106740 00000033 .rodata sLocationGmmDat_UnitedStates	(src_location_gmm_dat.c.o)
-  02106774 00000000 .rodata .rodata	(src_location_gmm_dat.c.o)
-  02106774 000000E4 .rodata sLocationGmmDat	(src_location_gmm_dat.c.o)
-  02106858 000000E9 .rodata sLocationGmmDat_World	(src_location_gmm_dat.c.o)
+  021065D4 00000006 .rodata sSelectableFinlandStates	(src_geonet_locations.c.o)
+  021065DC 00000007 .rodata sSelectableAustraliaStates	(src_geonet_locations.c.o)
+  021065E4 00000007 .rodata sSelectableRussiaStates	(src_geonet_locations.c.o)
+  021065EC 0000000C .rodata sSelectableGreatBritainStates	(src_geonet_locations.c.o)
+  021065F8 0000000D .rodata sSelectableCanadaStates	(src_geonet_locations.c.o)
+  02106608 00000010 .rodata sSelectablePolandStates	(src_geonet_locations.c.o)
+  02106618 00000010 .rodata sSelectableGermanyStates	(src_geonet_locations.c.o)
+  02106628 00000011 .rodata sSelectableSpainStates	(src_geonet_locations.c.o)
+  0210663C 00000014 .rodata sSelectableNorwayStates	(src_geonet_locations.c.o)
+  02106650 00000014 .rodata sSelectableItalyStates	(src_geonet_locations.c.o)
+  02106664 00000016 .rodata sSelectableFranceStates	(src_geonet_locations.c.o)
+  0210667C 00000018 .rodata sSelectableArgentinaStates	(src_geonet_locations.c.o)
+  02106694 00000018 .rodata sSelectableSwedenStates	(src_geonet_locations.c.o)
+  021066AC 0000001B .rodata sSelectableBrazilStates	(src_geonet_locations.c.o)
+  021066C8 0000001F .rodata sSelectableChinaStates	(src_geonet_locations.c.o)
+  021066E8 00000023 .rodata sSelectableIndiaStates	(src_geonet_locations.c.o)
+  0210670C 00000032 .rodata sSelectableJapanStates	(src_geonet_locations.c.o)
+  02106740 00000033 .rodata sSelectableUnitedStatesStates	(src_geonet_locations.c.o)
+  02106774 00000000 .rodata .rodata	(src_geonet_locations.c.o)
+  02106774 000000E4 .rodata sCountryStateData	(src_geonet_locations.c.o)
+  02106858 000000E9 .rodata sSelectableCountries	(src_geonet_locations.c.o)
   02106944 00001864 .rodata .rodata	(asm_unk_02091880.s.o)
   021081A8 00000000 .rodata .rodata	(src_application_delete_savedata.c.o)
   021081A8 00000008 .rodata sDeleteSave_WindowTemplate1	(src_application_delete_savedata.c.o)
