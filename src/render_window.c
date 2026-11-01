@@ -107,7 +107,7 @@ void LoadStandardWindowTiles(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart,
 }
 
 u32 GetStandardWindowPaletteNARCMember(void) {
-    return 25;
+    return NARC_gs_winframe_00025_NCLR;
 }
 
 void LoadUserFrameGfx1(BgConfig *bg_config, GFBgLayer layer, u16 baseTile, u8 palette_num, u8 frame, enum HeapID heapID) {

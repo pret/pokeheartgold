@@ -1,29 +1,4 @@
 files_graphic_gs_winframe = copy_gen.process(files(
-    '00000.NCGR',
-    '00001.NCGR',
-    '00002.NCGR',
-    '00003.NCGR',
-    '00004.NCGR',
-    '00005.NCGR',
-    '00006.NCGR',
-    '00007.NCGR',
-    '00008.NCGR',
-    '00009.NCGR',
-    '00010.NCGR',
-    '00011.NCGR',
-    '00012.NCGR',
-    '00013.NCGR',
-    '00014.NCGR',
-    '00015.NCGR',
-    '00016.NCGR',
-    '00017.NCGR',
-    '00018.NCGR',
-    '00019.NCGR',
-    '00020.NCGR',
-    '00021.NCGR',
-    '00022.NCGR',
-    '00023.NCGR',
-    '00024.NCGR',
     '00025.NCLR',
     '00026.NCLR',
     '00027.NCLR',
@@ -48,6 +23,43 @@ files_graphic_gs_winframe = copy_gen.process(files(
     '00046.NCLR',
     '00047.NANR',
     '00048.NCER',
-    '00049.NCGR',
     '00050.NCLR'
 ))
+
+files_graphic_gs_winframe_NCGR_sopc_version101 = ncgr_gen.process(
+    files(
+        '00000.png',
+        '00001.png',
+        '00002.png',
+        '00003.png',
+        '00004.png',
+        '00005.png',
+        '00006.png',
+        '00007.png',
+        '00008.png',
+        '00009.png',
+        '00010.png',
+        '00011.png',
+        '00012.png',
+        '00013.png',
+        '00014.png',
+        '00015.png',
+        '00016.png',
+        '00017.png',
+        '00018.png',
+        '00019.png',
+        '00020.png',
+        '00021.png',
+        '00022.png',
+        '00023.png',
+        '00024.png',
+    ),
+    extra_args: VERSION101_SOPC_NCGR_FLAGS
+)
+
+files_graphic_gs_winframe_NCGR_clobbersize_version101 = ncgr_gen.process(
+    files(
+        '00049.png'
+    ),
+    extra_args: CLOBBER_SIZE_VERSION101_NCGR_FLAGS
+)

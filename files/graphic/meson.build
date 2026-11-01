@@ -139,7 +139,9 @@ gs_winframe_narc = custom_target('gs_winframe.narc',
         '@PRIVATE_DIR@',
     ],
     input : [
-        files_graphic_gs_winframe
+        files_graphic_gs_winframe,
+        files_graphic_gs_winframe_NCGR_sopc_version101,
+        files_graphic_gs_winframe_NCGR_clobbersize_version101,
     ],
     output : [
         'gs_winframe.narc',
