@@ -314,7 +314,7 @@ Static main
     Object src/dex_mon_measures.c
     Object src/unk_02091564.c
     Object asm/unk_020915B0.s
-    Object src/location_gmm_dat.c
+    Object src/geonet_locations.c
     Object src/move_relearner.c
     Object asm/unk_02091880.s
     Object src/application/delete_savedata.c
