@@ -1,6 +1,7 @@
 #include "render_window.h"
 
 #include "field/field_sprite_manager.h"
+#include "graphic/field_board.naix"
 #include "graphic/gs_winframe.naix"
 
 #include "gf_gfx_loader.h"
@@ -362,8 +363,8 @@ void ReplaceTransparentTiles(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 
 }
 
 void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile, u8 palette, u8 signpostType, u16 signpostNARCMemberIdx, enum HeapID heapID) {
-    GfGfxLoader_LoadCharData(NARC_a_0_3_6,
-        0,
+    GfGfxLoader_LoadCharData(NARC_graphic_field_board,
+        NARC_field_board_00000_NCGR,
         bgConfig,
         (GFBgLayer)bgLayer,
         baseTile,
@@ -371,7 +372,7 @@ void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile
         FALSE,
         heapID);
 
-    void *signpostNclr = AllocAndReadWholeNarcMemberByIdPair(NARC_a_0_3_6, 1, heapID);
+    void *signpostNclr = AllocAndReadWholeNarcMemberByIdPair(NARC_graphic_field_board, NARC_field_board_00001_NCLR, heapID);
 
     NNSG2dPaletteData *paletteData;
     NNS_G2dGetUnpackedPaletteData(signpostNclr, &paletteData);
@@ -395,12 +396,12 @@ void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile
 
 static void LoadSignpostContentTiles(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID) {
     if (signpostType == 0) {
-        narcMemberIdx += 33;
+        narcMemberIdx += NARC_field_board_00033_NCGR;
     } else {
-        narcMemberIdx += 2;
+        narcMemberIdx += NARC_field_board_00002_NCGR;
     }
 
-    GfGfxLoader_LoadCharData(NARC_a_0_3_6,
+    GfGfxLoader_LoadCharData(NARC_graphic_field_board,
         narcMemberIdx,
         bgConfig,
         (enum GFBgLayer)bgLayer,

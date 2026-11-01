@@ -1,6 +1,5 @@
 prebuilt_files = [
     '5',
-    '6',
     '9',
 ]
 
