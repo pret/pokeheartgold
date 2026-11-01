@@ -1,6 +1,7 @@
 #include "render_window.h"
 
 #include "field/field_sprite_manager.h"
+#include "graphic/gs_winframe.naix"
 
 #include "gf_gfx_loader.h"
 #include "pokemon.h"
@@ -96,9 +97,9 @@ static const ManagedSpriteTemplate sPokemonPreviewSpriteTemplate = {
 
 void LoadStandardWindowTiles(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
-        GfGfxLoader_LoadCharData(NARC_a_0_3_8, 0, bgConfig, layer, tileStart, 0, FALSE, heapID);
+        GfGfxLoader_LoadCharData(NARC_graphic_gs_winframe, NARC_gs_winframe_00000_NCGR, bgConfig, layer, tileStart, 0, FALSE, heapID);
     } else {
-        GfGfxLoader_LoadCharData(NARC_a_0_3_8, 1, bgConfig, layer, tileStart, 0, FALSE, heapID);
+        GfGfxLoader_LoadCharData(NARC_graphic_gs_winframe, NARC_gs_winframe_00001_NCGR, bgConfig, layer, tileStart, 0, FALSE, heapID);
     }
 }
 
@@ -107,12 +108,12 @@ u32 GetStandardWindowPaletteNARCMember(void) {
 }
 
 void LoadUserFrameGfx1(BgConfig *bg_config, GFBgLayer layer, u16 baseTile, u8 palette_num, u8 frame, enum HeapID heapID) {
-    GfGfxLoader_LoadCharData(NARC_a_0_3_8, frame != 0 ? 1 : 0, bg_config, layer, baseTile, 0, FALSE, heapID);
+    GfGfxLoader_LoadCharData(NARC_graphic_gs_winframe, frame != 0 ? NARC_gs_winframe_00001_NCGR : NARC_gs_winframe_00000_NCGR, bg_config, layer, baseTile, 0, FALSE, heapID);
     int pltt = frame == 2 ? 46 : 25;
     if ((u32)layer < GF_BG_LYR_SUB_0) {
-        GfGfxLoader_GXLoadPal(NARC_a_0_3_8, pltt, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)(palette_num * 32), 32, heapID);
+        GfGfxLoader_GXLoadPal(NARC_graphic_gs_winframe, pltt, GF_PAL_LOCATION_MAIN_BG, (enum GFPalSlotOffset)(palette_num * 32), 32, heapID);
     } else {
-        GfGfxLoader_GXLoadPal(NARC_a_0_3_8, pltt, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)(palette_num * 32), 32, heapID);
+        GfGfxLoader_GXLoadPal(NARC_graphic_gs_winframe, pltt, GF_PAL_LOCATION_SUB_BG, (enum GFPalSlotOffset)(palette_num * 32), 32, heapID);
     }
 }
 
@@ -160,15 +161,15 @@ void ClearWindowPixelBuffer(Window *window, BOOL skipTransfer) {
 }
 
 u32 GetMessageBoxTilesNARCMember(int frame) {
-    return 2 + frame;
+    return NARC_gs_winframe_00002_NCGR + frame;
 }
 
 u32 GetMessageBoxPaletteNARCMember(int frame) {
-    return 26 + frame;
+    return NARC_gs_winframe_00026_NCLR + frame;
 }
 
 void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID heapID) {
-    GfGfxLoader_LoadCharData(NARC_a_0_3_8,
+    GfGfxLoader_LoadCharData(NARC_graphic_gs_winframe,
         GetMessageBoxTilesNARCMember(frame),
         bgConfig,
         layer,
@@ -178,14 +179,14 @@ void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 pal
         heapID);
 
     if ((u32)layer < GF_BG_LYR_SUB_0) {
-        GfGfxLoader_GXLoadPal(NARC_a_0_3_8,
+        GfGfxLoader_GXLoadPal(NARC_graphic_gs_winframe,
             GetMessageBoxPaletteNARCMember(frame),
             GF_PAL_LOCATION_MAIN_BG,
             (enum GFPalSlotOffset)(paletteNum * 32),
             32,
             heapID);
     } else {
-        GfGfxLoader_GXLoadPal(NARC_a_0_3_8,
+        GfGfxLoader_GXLoadPal(NARC_graphic_gs_winframe,
             GetMessageBoxPaletteNARCMember(frame),
             GF_PAL_LOCATION_SUB_BG,
             (enum GFPalSlotOffset)(paletteNum * 32),
@@ -283,7 +284,7 @@ static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile,
     u8 *bgGfx = BgGetCharPtr(bgLayer);
 
     NNSG2dCharacterData *cursorCharData;
-    cursorCharPtr = GfGfxLoader_GetCharData(NARC_a_0_3_8,
+    cursorCharPtr = GfGfxLoader_GetCharData(NARC_graphic_gs_winframe,
         fileId,
         FALSE,
         &cursorCharData,
@@ -322,7 +323,7 @@ static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile,
 }
 
 void Window_DrawMessageBoxScrollCursor(Window *window, u16 baseTile) {
-    DrawMessageBoxScrollCursor(window, 22, baseTile, 3, 3, 0);
+    DrawMessageBoxScrollCursor(window, NARC_gs_winframe_00022_NCGR, baseTile, 3, 3, 0);
 }
 
 void ReplaceTransparentTiles(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID) {
@@ -332,7 +333,7 @@ void ReplaceTransparentTiles(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 
     u32 i;
     u8 srcTop, srcBot;
 
-    tiles = GfGfxLoader_GetCharData(NARC_a_0_3_8,
+    tiles = GfGfxLoader_GetCharData(NARC_graphic_gs_winframe,
         GetMessageBoxTilesNARCMember(messageBoxFrame),
         FALSE,
         &chars,
@@ -508,8 +509,8 @@ WaitingIcon *WaitingIcon_New(Window *window, u32 baseTile) {
 
     Heap_Free(tmp);
 
-    dialTilesRaw = GfGfxLoader_GetCharData(NARC_a_0_3_8,
-        23,
+    dialTilesRaw = GfGfxLoader_GetCharData(NARC_graphic_gs_winframe,
+        NARC_gs_winframe_00023_NCGR,
         FALSE,
         &dialCharData,
         heapID);
@@ -681,25 +682,25 @@ static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heap
 
 static void Pokepic_LoadObjectGraphics(PokemonPreview *preview) {
     FieldSpriteManager_AddPlttRes(&preview->spriteManager,
-        NARC_a_0_3_8,
-        50,
+        NARC_graphic_gs_winframe,
+        NARC_gs_winframe_00050_NCLR,
         FALSE,
         1,
         NNS_G2D_VRAM_TYPE_2DMAIN,
         POKEMON_PREVIEW_RESOURCE_ID);
     FieldSpriteManager_AddCellRes(&preview->spriteManager,
-        NARC_a_0_3_8,
-        48,
+        NARC_graphic_gs_winframe,
+        NARC_gs_winframe_00048_NCER,
         FALSE,
         POKEMON_PREVIEW_RESOURCE_ID);
     FieldSpriteManager_AddAnimRes(&preview->spriteManager,
-        NARC_a_0_3_8,
-        47,
+        NARC_graphic_gs_winframe,
+        NARC_gs_winframe_00047_NANR,
         FALSE,
         POKEMON_PREVIEW_RESOURCE_ID);
     FieldSpriteManager_AddCharRes(&preview->spriteManager,
-        NARC_a_0_3_8,
-        49,
+        NARC_graphic_gs_winframe,
+        NARC_gs_winframe_00049_NCGR,
         FALSE,
         NNS_G2D_VRAM_TYPE_2DMAIN,
         POKEMON_PREVIEW_RESOURCE_ID);

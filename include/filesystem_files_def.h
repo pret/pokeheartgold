@@ -42,7 +42,7 @@ typedef enum NarcId {
     NARC_a_0_3_5 = 35,
     NARC_a_0_3_6 = 36,
     NARC_fielddata_encountdata_g_enc_data = 37,
-    NARC_a_0_3_8 = 38,
+    NARC_graphic_gs_winframe = 38,
     NARC_a_0_3_9 = 39,
     NARC_a_0_4_0 = 40,
     NARC_fielddata_mapmatrix_map_matrix = 41,

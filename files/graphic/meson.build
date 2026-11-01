@@ -125,3 +125,28 @@ shop_gra_narc = custom_target('shop_gra.narc',
 
 nitrofs_files += shop_gra_narc
 naix_headers += shop_gra_narc[1]
+
+############################################################
+###                    WINDOW FRAMES                     ###
+############################################################
+subdir('gs_winframe')
+gs_winframe_narc = custom_target('gs_winframe.narc',
+    command : [
+        nitroarc_exe,
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
+    ],
+    input : [
+        files_graphic_gs_winframe
+    ],
+    output : [
+        'gs_winframe.narc',
+        'gs_winframe.naix'
+    ],
+    build_by_default : true
+)
+
+nitrofs_files += gs_winframe_narc
+naix_headers += gs_winframe_narc[1]
