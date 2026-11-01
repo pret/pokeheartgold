@@ -569,19 +569,19 @@ scr_seq_T06_004:
 	End
 
 scr_seq_T06_005:
-	DirectionSignpostEx 0, 6, msg_0483_T06_00010
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 6, msg_0483_T06_00010
 	End
 
 scr_seq_T06_006:
-	TrainerTipsEx 2, msg_0483_T06_00011
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0483_T06_00011
 	End
 
 scr_seq_T06_007:
-	TrainerTipsEx 2, msg_0483_T06_00012
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0483_T06_00012
 	End
 
 scr_seq_T06_008:
-	TrainerTipsEx 2, msg_0483_T06_00013
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0483_T06_00013
 	End
 
 scr_seq_T06_010:

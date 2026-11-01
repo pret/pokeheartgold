@@ -28,10 +28,10 @@ _002C:
 	End
 
 scr_seq_R46_001:
-	DirectionSignpostEx 1, 3, msg_0406_R46_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 3, msg_0406_R46_00000
 	End
 
 scr_seq_R46_002:
-	TrainerTipsEx 2, msg_0406_R46_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0406_R46_00001
 	End
 	.balign 4, 0

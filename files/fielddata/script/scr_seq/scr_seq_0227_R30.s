@@ -189,19 +189,19 @@ scr_seq_R30_004:
 	End
 
 scr_seq_R30_005:
-	DirectionSignpostEx 1, 6, msg_0375_R30_00009
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 6, msg_0375_R30_00009
 	End
 
 scr_seq_R30_006:
-	DirectionSignpostEx 1, 3, msg_0375_R30_00010
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 3, msg_0375_R30_00010
 	End
 
 scr_seq_R30_007:
-	TrainerTipsEx 3, msg_0375_R30_00012
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0375_R30_00012
 	End
 
 scr_seq_R30_008:
-	TrainerTipsEx 2, msg_0375_R30_00011
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0375_R30_00011
 	End
 
 scr_seq_R30_009:

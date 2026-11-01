@@ -228,11 +228,11 @@ _02D4:
 	EndMovement
 
 scr_seq_R31_002:
-	DirectionSignpostEx 1, 2, msg_0378_R31_00013
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0378_R31_00013
 	End
 
 scr_seq_R31_003:
-	TrainerTipsEx 2, msg_0378_R31_00014
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0378_R31_00014
 	End
 
 scr_seq_R31_004:

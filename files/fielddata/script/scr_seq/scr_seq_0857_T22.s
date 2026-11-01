@@ -732,19 +732,19 @@ scr_seq_T22_006:
 	End
 
 scr_seq_T22_007:
-	TrainerTipsEx 2, msg_0556_T22_00012
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0556_T22_00012
 	End
 
 scr_seq_T22_008:
-	DirectionSignpostEx 0, 13, msg_0556_T22_00009
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 13, msg_0556_T22_00009
 	End
 
 scr_seq_T22_009:
-	TrainerTipsEx 2, msg_0556_T22_00010
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0556_T22_00010
 	End
 
 scr_seq_T22_010:
-	TrainerTipsEx 2, msg_0556_T22_00011
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0556_T22_00011
 	End
 
 scr_seq_T22_011:

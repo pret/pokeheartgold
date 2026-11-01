@@ -1,5 +1,7 @@
 #include "render_window.h"
 
+#include "constants/signpost_type.h"
+
 #include "field/field_sprite_manager.h"
 #include "graphic/field_board.naix"
 #include "graphic/gs_winframe.naix"
@@ -384,7 +386,7 @@ void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile
         palette * 32);
     Heap_FreeExplicit(heapID, signpostNclr);
 
-    if (signpostType == 0 || signpostType == 1) {
+    if (signpostType == SIGNPOST_TYPE_MAP || signpostType == SIGNPOST_TYPE_ARROW) {
         LoadSignpostContentTiles(bgConfig,
             bgLayer,
             baseTile + 30,
@@ -395,7 +397,7 @@ void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile
 }
 
 static void LoadSignpostContentTiles(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID) {
-    if (signpostType == 0) {
+    if (signpostType == SIGNPOST_TYPE_MAP) {
         narcMemberIdx += NARC_field_board_00033_NCGR;
     } else {
         narcMemberIdx += NARC_field_board_00002_NCGR;
@@ -451,7 +453,7 @@ static void DrawSignpostTiles(Window *window, u16 tile, u8 palette) {
 void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 palette, u8 signpostType) {
     u8 bgLayer = GetWindowBgId(window);
 
-    if (signpostType == 0 || signpostType == 1) {
+    if (signpostType == SIGNPOST_TYPE_MAP || signpostType == SIGNPOST_TYPE_ARROW) {
         DrawSignpostFrame(window->bgConfig,
             bgLayer,
             GetWindowX(window),

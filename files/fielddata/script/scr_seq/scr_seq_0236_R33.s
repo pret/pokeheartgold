@@ -13,6 +13,6 @@ scr_seq_R33_000:
 	End
 
 scr_seq_R33_001:
-	DirectionSignpostEx 1, 2, msg_0383_R33_00001
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0383_R33_00001
 	End
 	.balign 4, 0

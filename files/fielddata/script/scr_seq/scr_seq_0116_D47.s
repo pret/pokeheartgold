@@ -147,7 +147,7 @@ scr_seq_D47_010:
 	End
 
 scr_seq_D47_011:
-	TrainerTipsEx 2, msg_0133_D47_00017
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0133_D47_00017
 	End
 
 scr_seq_D47_012:
