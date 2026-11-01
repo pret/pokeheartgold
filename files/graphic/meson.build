@@ -166,7 +166,8 @@ field_board_narc = custom_target('field_board.narc',
         '@PRIVATE_DIR@',
     ],
     input : [
-        files_graphic_field_board
+        files_graphic_field_board,
+        files_graphic_field_board_NCGR_sopc_version101,
     ],
     output : [
         'field_board.narc',
