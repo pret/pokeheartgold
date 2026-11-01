@@ -719,7 +719,7 @@ static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y) {
 }
 
 static void Pokepic_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
-    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)(enum HeapID)spriteManager->heapID);
+    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetMonSpriteCharAndPlttNarcIdsEx(&tmplate, species, gender, 2, FALSE, 0, 0);
     Pokepic_LoadAndDrawFromTemplate(spriteManager, &tmplate);
@@ -727,7 +727,7 @@ static void Pokepic_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, 
 }
 
 static void Pokepic_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon) {
-    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)(enum HeapID)spriteManager->heapID);
+    struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetPokemonSpriteCharAndPlttNarcIds(&tmplate, mon, 2);
     Pokepic_LoadAndDrawFromTemplate(spriteManager, &tmplate);
@@ -747,7 +747,7 @@ static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, P
     NNSG2dImageProxy *imageProxy;
     const NNSG2dImagePaletteProxy *paletteProxy;
 
-    buf = Heap_Alloc((enum HeapID)(enum HeapID)spriteManager->heapID, POKEMON_SPRITE_WHOLE_SIZE_BYTES);
+    buf = Heap_Alloc((enum HeapID)spriteManager->heapID, POKEMON_SPRITE_WHOLE_SIZE_BYTES);
 
     // frame 0
     UnkStruct_02014E30 frame0Region = { 0, 0, 10, 10 };
