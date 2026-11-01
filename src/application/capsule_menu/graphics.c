@@ -781,15 +781,15 @@ void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData
     }
     PaletteData_LoadFromNarc(paletteData, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00002_NCLR, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_1, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, GetStandardWindowPaletteNARCMember(), HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xD0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xE0);
 }
 
 void CapsuleGraphics_LoadSubWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     LoadUserFrameGfx2(bgConfig, GF_BG_LYR_SUB_0, MESSAGE_BOX_TILE_OFFSET, MESSAGE_BOX_PLTT_OFFSET, messageBoxFrame, HEAP_ID_CAPSULE_MENU);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E640(messageBoxFrame), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xC0);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, GetMessageBoxPaletteNARCMember(messageBoxFrame), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xC0);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_SUB_0, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, GetStandardWindowPaletteNARCMember(), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xD0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xE0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0x30);
     PaletteData_LoadNarc(paletteData, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00000_NCLR, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xB0);

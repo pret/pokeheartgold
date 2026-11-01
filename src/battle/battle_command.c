@@ -6201,8 +6201,8 @@ static void Task_GetExp(SysTask *task, void *inData) {
 
         ov12_0223C224(data->battleSystem, 1);
 
-        sub_0200E398(bgConfig, GF_BG_LYR_MAIN_2, 1, 0, HEAP_ID_BATTLE);
-        PaletteData_LoadNarc(palette, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 8 * 0x10);
+        LoadStandardWindowTiles(bgConfig, GF_BG_LYR_MAIN_2, 1, 0, HEAP_ID_BATTLE);
+        PaletteData_LoadNarc(palette, NARC_a_0_3_8, GetStandardWindowPaletteNARCMember(), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 8 * 0x10);
         AddWindowParameterized(bgConfig, window, GF_BG_LYR_MAIN_2, 0x11, 0x7, 14, 12, 11, 9 + 1);
         FillWindowPixelBuffer(window, 0xFF);
         DrawFrameAndWindow1(window, FALSE, 1, 8);

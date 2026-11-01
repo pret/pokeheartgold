@@ -18273,7 +18273,7 @@ _021EE9C6:
 	bl GF_AssertFail
 _021EE9D0:
 	ldr r0, [r4, #0x30]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	pop {r4, pc}
 	thumb_func_end ov96_021EE9BC
 

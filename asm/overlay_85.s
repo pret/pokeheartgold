@@ -1814,7 +1814,7 @@ ov85_021E6610: ; 0x021E6610
 	strb r1, [r0, #0xc]
 	ldr r0, _021E6640 ; =0x00000DC8
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0x30
 	str r0, [r4]
 _021E6638:
@@ -3074,7 +3074,7 @@ ov85_021E705C: ; 0x021E705C
 	add r0, #0xcc
 	ldr r0, [r0]
 	ldr r0, [r0, #0x18]
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]

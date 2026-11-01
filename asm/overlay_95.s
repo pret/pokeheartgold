@@ -362,7 +362,7 @@ ov95_021E5BBC: ; 0x021E5BBC
 	add r5, r0, #0
 	bl LoadUserFrameGfx2
 	add r0, r6, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -383,7 +383,7 @@ ov95_021E5BBC: ; 0x021E5BBC
 	mov r2, #0x32
 	mov r3, #0xd
 	bl LoadUserFrameGfx1
-	bl sub_0200E3D8
+	bl GetStandardWindowPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]

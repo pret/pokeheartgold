@@ -61,25 +61,25 @@ typedef struct PokemonPreview {
     u8 state;
 } PokemonPreview;
 
-static void sub_0200E6B4(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
-static void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight);
-static void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
-static void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID);
-static void sub_0200ECBC(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
-static void sub_0200EF84(Window *window, u16 tile, u8 palette);
-static void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode);
-static void sub_0200F3D0(SysTask *sysTask, void *arg);
-static void sub_0200F43C(SysTask *sysTask, void *arg);
-static void sub_0200F54C(SysTask *sysTask, void *arg);
-PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
-static void sub_0200F600(PokemonPreview *preview, enum HeapID heapID);
-static void sub_0200F62C(PokemonPreview *preview);
-static void sub_0200F684(PokemonPreview *preview, u8 x, u8 y);
-static void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender);
-static void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon);
-static void sub_0200F748(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate);
-static void sub_0200F82C(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
-static void sub_0200F9DC(PokemonPreview *preview);
+static void DrawMessageBoxFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
+static void BlitRectToBitmap(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight);
+static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
+static void LoadSignpostContentTiles(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID);
+static void DrawSignpostFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
+static void DrawSignpostTiles(Window *window, u16 tile, u8 palette);
+static void WaitingIcon_Draw(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode);
+static void SysTask_TickWaitingIcon(SysTask *sysTask, void *arg);
+static void SysTask_CleanupWaitingIcon(SysTask *sysTask, void *arg);
+static void SysTask_HandlePokepic(SysTask *sysTask, void *arg);
+PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
+static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID);
+static void Pokepic_LoadObjectGraphics(PokemonPreview *preview);
+static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y);
+static void Pokepic_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender);
+static void Pokepic_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon);
+static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate);
+static void Pokepic_DrawFrame(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
+static void Pokepic_Clear(PokemonPreview *preview);
 
 static const ManagedSpriteTemplate sPokemonPreviewSpriteTemplate = {
     .x = 0,
@@ -101,7 +101,7 @@ static const ManagedSpriteTemplate sPokemonPreviewSpriteTemplate = {
     .vramTransfer = 0,
 };
 
-void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
+void LoadStandardWindowTiles(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID) {
     if (a3 == 0) {
         GfGfxLoader_LoadCharData(NARC_a_0_3_8, 0, bgConfig, layer, tileStart, 0, FALSE, heapID);
     } else {
@@ -109,7 +109,7 @@ void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, en
     }
 }
 
-u32 sub_0200E3D8(void) {
+u32 GetStandardWindowPaletteNARCMember(void) {
     return 25;
 }
 
@@ -123,7 +123,7 @@ void LoadUserFrameGfx1(BgConfig *bg_config, GFBgLayer layer, u16 baseTile, u8 pa
     }
 }
 
-static void sub_0200E448(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
+static void DrawStandardWindowFrame(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
     // clang-format off
     FillBgTilemapRect(bgConfig, layer, tile,     x - 1,     y - 1,      1,     1,      palette);
     FillBgTilemapRect(bgConfig, layer, tile + 1, x,         y - 1,      width, 1,      palette);
@@ -137,7 +137,7 @@ static void sub_0200E448(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 width, u8 
 }
 
 void DrawFrameAndWindow1(Window *window, BOOL skipTransfer, u16 tile, u8 palette) {
-    sub_0200E448(window->bgConfig,
+    DrawStandardWindowFrame(window->bgConfig,
         GetWindowBgId(window),
         GetWindowX(window),
         GetWindowY(window),
@@ -166,17 +166,17 @@ void ClearWindowPixelBuffer(Window *window, BOOL skipTransfer) {
     }
 }
 
-u32 sub_0200E63C(int frame) {
+u32 GetMessageBoxTilesNARCMember(int frame) {
     return 2 + frame;
 }
 
-u32 sub_0200E640(int frame) {
+u32 GetMessageBoxPaletteNARCMember(int frame) {
     return 26 + frame;
 }
 
 void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID heapID) {
     GfGfxLoader_LoadCharData(NARC_a_0_3_8,
-        sub_0200E63C(frame),
+        GetMessageBoxTilesNARCMember(frame),
         bgConfig,
         layer,
         baseTile,
@@ -186,14 +186,14 @@ void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 pal
 
     if ((u32)layer < GF_BG_LYR_SUB_0) {
         GfGfxLoader_GXLoadPal(NARC_a_0_3_8,
-            sub_0200E640(frame),
+            GetMessageBoxPaletteNARCMember(frame),
             GF_PAL_LOCATION_MAIN_BG,
             (enum GFPalSlotOffset)(paletteNum * 32),
             32,
             heapID);
     } else {
         GfGfxLoader_GXLoadPal(NARC_a_0_3_8,
-            sub_0200E640(frame),
+            GetMessageBoxPaletteNARCMember(frame),
             GF_PAL_LOCATION_SUB_BG,
             (enum GFPalSlotOffset)(paletteNum * 32),
             32,
@@ -201,7 +201,7 @@ void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 pal
     }
 }
 
-static void sub_0200E6B4(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
+static void DrawMessageBoxFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
     // clang-format off
     FillBgTilemapRect(bgConfig, bgLayer, tile,      x - 2,         y - 1,      1,     1,      palette);
     FillBgTilemapRect(bgConfig, bgLayer, tile + 1,  x - 1,         y - 1,      1,     1,      palette);
@@ -223,8 +223,8 @@ static void sub_0200E6B4(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u
     // clang-format on
 }
 
-void sub_0200E948(Window *window, u32 tile, u32 palette) {
-    sub_0200E6B4(window->bgConfig,
+void Window_DrawMessageBox(Window *window, u32 tile, u32 palette) {
+    DrawMessageBoxFrame(window->bgConfig,
         GetWindowBgId(window),
         GetWindowX(window),
         GetWindowY(window),
@@ -235,7 +235,7 @@ void sub_0200E948(Window *window, u32 tile, u32 palette) {
 }
 
 void DrawFrameAndWindow2(Window *window, BOOL skipTransfer, u16 tile, u8 palette) {
-    sub_0200E948(window, tile, palette);
+    Window_DrawMessageBox(window, tile, palette);
 
     if (skipTransfer == FALSE) {
         CopyWindowToVram(window);
@@ -259,7 +259,7 @@ void ClearFrameAndWindow2(Window *window, BOOL skipTransfer) {
     }
 }
 
-static void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight) {
+static void BlitRectToBitmap(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight) {
     Bitmap src, dest;
 
     src.pixels = (u8 *)srcPixels;
@@ -277,7 +277,7 @@ static void sub_0200EA24(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 
 #define SCROLL_CURSOR_TILE_OFFSET(i)  (TILE_SIZE_4BPP * (i))
 #define SCROLL_CURSOR_FRAME_SIZE      (SCROLL_CURSOR_TILE_OFFSET(SCROLL_CURSOR_TILES_PER_FRAME))
 
-static void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y) {
+static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y) {
     // must forward-declare these to match
     u8 *cursorTiles;
     void *cursorCharPtr;
@@ -310,7 +310,7 @@ static void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 
     u8 width = 16 - x;
     u8 height = (16 - y) * count;
 
-    sub_0200EA24(cursorTiles,
+    BlitRectToBitmap(cursorTiles,
         x,
         y,
         width,
@@ -328,11 +328,11 @@ static void sub_0200EA68(Window *window, int fileId, u16 baseTile, u8 count, u8 
     Heap_Free(cursorBlit);
 }
 
-void sub_0200EB68(Window *window, u16 baseTile) {
-    sub_0200EA68(window, 22, baseTile, 3, 3, 0);
+void Window_DrawMessageBoxScrollCursor(Window *window, u16 baseTile) {
+    DrawMessageBoxScrollCursor(window, 22, baseTile, 3, 3, 0);
 }
 
-void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID) {
+void ReplaceTransparentTiles(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID) {
     void *tiles;
     NNSG2dCharacterData *chars;
     u8 *src;
@@ -340,7 +340,7 @@ void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u
     u8 srcTop, srcBot;
 
     tiles = GfGfxLoader_GetCharData(NARC_a_0_3_8,
-        sub_0200E63C(messageBoxFrame),
+        GetMessageBoxTilesNARCMember(messageBoxFrame),
         FALSE,
         &chars,
         heapID);
@@ -390,7 +390,7 @@ void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile
     Heap_FreeExplicit(heapID, signpostNclr);
 
     if (signpostType == 0 || signpostType == 1) {
-        sub_0200EC84(bgConfig,
+        LoadSignpostContentTiles(bgConfig,
             bgLayer,
             baseTile + 30,
             signpostType,
@@ -399,7 +399,7 @@ void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgLayer, u16 baseTile
     }
 }
 
-static void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID) {
+static void LoadSignpostContentTiles(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID) {
     if (signpostType == 0) {
         narcMemberIdx += 33;
     } else {
@@ -416,7 +416,7 @@ static void sub_0200EC84(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpost
         heapID);
 }
 
-static void sub_0200ECBC(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
+static void DrawSignpostFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile) {
     // clang-format off
     FillBgTilemapRect(bgConfig, bgLayer, tile,      x - 9,         y - 1,      1,         1,      palette);
     FillBgTilemapRect(bgConfig, bgLayer, tile + 1,  x - 8,         y - 1,      1,         1,      palette);
@@ -439,7 +439,7 @@ static void sub_0200ECBC(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u
     // clang-format on
 }
 
-static void sub_0200EF84(Window *window, u16 tile, u8 palette) {
+static void DrawSignpostTiles(Window *window, u16 tile, u8 palette) {
     u16 dy, dx; // must forward-declare to match
 
     u8 bgLayer = GetWindowBgId(window);
@@ -457,7 +457,7 @@ void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 pal
     u8 bgLayer = GetWindowBgId(window);
 
     if (signpostType == 0 || signpostType == 1) {
-        sub_0200ECBC(window->bgConfig,
+        DrawSignpostFrame(window->bgConfig,
             bgLayer,
             GetWindowX(window),
             GetWindowY(window),
@@ -465,9 +465,9 @@ void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 pal
             GetWindowHeight(window),
             palette,
             baseTile);
-        sub_0200EF84(window, baseTile + 30, palette);
+        DrawSignpostTiles(window, baseTile + 30, palette);
     } else {
-        sub_0200E6B4(window->bgConfig,
+        DrawMessageBoxFrame(window->bgConfig,
             bgLayer,
             GetWindowX(window),
             GetWindowY(window),
@@ -522,7 +522,7 @@ WaitingIcon *WaitingIcon_New(Window *window, u32 baseTile) {
         heapID);
     dialTiles = dialCharData->pRawData;
 
-    sub_0200EA24(dialTiles,
+    BlitRectToBitmap(dialTiles,
         0,
         0,
         WAIT_DIAL_FRAME_WIDTH_TILES * 8,
@@ -542,13 +542,13 @@ WaitingIcon *WaitingIcon_New(Window *window, u32 baseTile) {
     waitingIcon->curFrame = 0;
     waitingIcon->deleteMode = 0;
 
-    SysTask_CreateOnVBlankQueue(sub_0200F3D0, waitingIcon, 0);
-    sub_0200F1D4(waitingIcon, DIAL_DRAW_MODE_LOAD_AND_DRAW);
+    SysTask_CreateOnVBlankQueue(SysTask_TickWaitingIcon, waitingIcon, 0);
+    WaitingIcon_Draw(waitingIcon, DIAL_DRAW_MODE_LOAD_AND_DRAW);
 
     return waitingIcon;
 }
 
-static void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode) {
+static void WaitingIcon_Draw(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode) {
     u8 bgLayer = GetWindowBgId(waitingIcon->window);
     u8 x = GetWindowX(waitingIcon->window);
     u8 y = GetWindowY(waitingIcon->window);
@@ -578,12 +578,12 @@ static void sub_0200F1D4(WaitingIcon *waitingIcon, enum WaitingIconDrawMode draw
     BgCommitTilemapBufferToVram(waitingIcon->window->bgConfig, bgLayer);
 }
 
-static void sub_0200F3D0(SysTask *sysTask, void *arg) {
+static void SysTask_TickWaitingIcon(SysTask *sysTask, void *arg) {
     WaitingIcon *waitingIcon = arg;
 
     if (waitingIcon->deleteMode != DIAL_DELETE_MODE_NONE) {
         if (waitingIcon->deleteMode == DIAL_DELETE_MODE_CLEAR) {
-            sub_0200F1D4(waitingIcon, DIAL_DRAW_MODE_CLEAR);
+            WaitingIcon_Draw(waitingIcon, DIAL_DRAW_MODE_CLEAR);
         }
 
         SysTask_Destroy(sysTask);
@@ -595,54 +595,54 @@ static void sub_0200F3D0(SysTask *sysTask, void *arg) {
     if (waitingIcon->counter == 16) {
         waitingIcon->counter = 0;
         waitingIcon->curFrame = (waitingIcon->curFrame + 1) & 7;
-        sub_0200F1D4(waitingIcon, DIAL_DRAW_MODE_LOAD_ONLY);
+        WaitingIcon_Draw(waitingIcon, DIAL_DRAW_MODE_LOAD_ONLY);
     }
 }
 
-static void sub_0200F43C(SysTask *sysTask, void *arg) {
+static void SysTask_CleanupWaitingIcon(SysTask *sysTask, void *arg) {
     Heap_Free(arg);
     SysTask_Destroy(sysTask);
 }
 
-void sub_0200F450(WaitingIcon *waitingIcon) {
-    SysTask_CreateOnVWaitQueue(sub_0200F43C, waitingIcon, 0);
+void WaitingIcon_Destroy(WaitingIcon *waitingIcon) {
+    SysTask_CreateOnVWaitQueue(SysTask_CleanupWaitingIcon, waitingIcon, 0);
     waitingIcon->deleteMode = DIAL_DELETE_MODE_CLEAR;
 }
 
-void sub_0200F478(WaitingIcon *waitingIcon) {
-    SysTask_CreateOnVWaitQueue(sub_0200F43C, waitingIcon, 0);
+void WaitingIcon_Halt(WaitingIcon *waitingIcon) {
+    SysTask_CreateOnVWaitQueue(SysTask_CleanupWaitingIcon, waitingIcon, 0);
     waitingIcon->deleteMode = DIAL_DELETE_MODE_DESTROY;
 }
 
 u8 *DrawPokemonPicFromSpecies(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, u32 heapID) {
-    PokemonPreview *preview = sub_0200F5C4(bgConfig, layer, x, y, (enum HeapID)heapID);
-    sub_0200F600(preview, (enum HeapID)heapID);
-    sub_0200F62C(preview);
-    sub_0200F684(preview, x, y);
-    sub_0200F6D4(&preview->spriteManager, species, gender);
-    sub_0200F82C(preview, paletteNum, baseTile);
+    PokemonPreview *preview = Pokepic_Create(bgConfig, layer, x, y, (enum HeapID)heapID);
+    Pokepic_InitObjectResLists(preview, (enum HeapID)heapID);
+    Pokepic_LoadObjectGraphics(preview);
+    Pokepic_CreateSprite(preview, x, y);
+    Pokepic_LoadAndDrawParameterized(&preview->spriteManager, species, gender);
+    Pokepic_DrawFrame(preview, paletteNum, baseTile);
     BgCommitTilemapBufferToVram(bgConfig, layer);
     return &preview->state;
 }
 
 u8 *DrawPokemonPicFromMon(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, Pokemon *mon, u32 heapID) {
 
-    PokemonPreview *preview = sub_0200F5C4(bgConfig, layer, x, y, (enum HeapID)heapID);
-    sub_0200F600(preview, (enum HeapID)heapID);
-    sub_0200F62C(preview);
-    sub_0200F684(preview, x, y);
-    sub_0200F714(&preview->spriteManager, mon);
-    sub_0200F82C(preview, paletteNum, baseTile);
+    PokemonPreview *preview = Pokepic_Create(bgConfig, layer, x, y, (enum HeapID)heapID);
+    Pokepic_InitObjectResLists(preview, (enum HeapID)heapID);
+    Pokepic_LoadObjectGraphics(preview);
+    Pokepic_CreateSprite(preview, x, y);
+    Pokepic_LoadAndDraw(&preview->spriteManager, mon);
+    Pokepic_DrawFrame(preview, paletteNum, baseTile);
     BgCommitTilemapBufferToVram(bgConfig, layer);
     return &preview->state;
 }
 
-static void sub_0200F54C(SysTask *sysTask, void *arg) {
+static void SysTask_HandlePokepic(SysTask *sysTask, void *arg) {
     PokemonPreview *preview = arg;
 
     switch (preview->state) {
     case PREVIEW_STATE_REMOVE:
-        sub_0200F9DC(preview);
+        Pokepic_Clear(preview);
         Sprite_DeleteAndFreeResources(preview->managedSprite);
         FieldSpriteManager_ReleaseWithoutResDat(&preview->spriteManager);
         DestroySysTaskAndEnvironment(sysTask);
@@ -664,8 +664,8 @@ static void sub_0200F54C(SysTask *sysTask, void *arg) {
     SpriteList_RenderAndAnimateSprites(preview->spriteManager.spriteList);
 }
 
-PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
-    PokemonPreview *preview = SysTask_GetData(CreateSysTaskAndEnvironment(sub_0200F54C, sizeof(PokemonPreview), 0, heapID));
+PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
+    PokemonPreview *preview = SysTask_GetData(CreateSysTaskAndEnvironment(SysTask_HandlePokepic, sizeof(PokemonPreview), 0, heapID));
 
     preview->state = 0;
     preview->bgConfig = bgConfig;
@@ -676,13 +676,17 @@ PokemonPreview *sub_0200F5C4(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum Heap
     return preview;
 }
 
-static void sub_0200F600(PokemonPreview *preview, enum HeapID heapID) {
-    extern const SpriteResourceCountsListUnion _020F5C60;
-    SpriteResourceCountsListUnion sp0 = { .numChar = 1, .numPltt = 1, .numCell = 1, .numAnim = 1 };
-    FieldSpriteManager_InitEmptyResLists(&preview->spriteManager, &sp0, 1, heapID);
+static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID) {
+    SpriteResourceCountsListUnion resIDs = {
+        .numChar = 1,
+        .numPltt = 1,
+        .numCell = 1,
+        .numAnim = 1,
+    };
+    FieldSpriteManager_InitEmptyResLists(&preview->spriteManager, &resIDs, 1, heapID);
 }
 
-static void sub_0200F62C(PokemonPreview *preview) {
+static void Pokepic_LoadObjectGraphics(PokemonPreview *preview) {
     FieldSpriteManager_AddPlttRes(&preview->spriteManager,
         NARC_a_0_3_8,
         50,
@@ -708,28 +712,28 @@ static void sub_0200F62C(PokemonPreview *preview) {
         POKEMON_PREVIEW_RESOURCE_ID);
 }
 
-static void sub_0200F684(PokemonPreview *preview, u8 x, u8 y) {
-    ManagedSpriteTemplate sp0 = sPokemonPreviewSpriteTemplate;
-    sp0.x = (x + 5) * 8;
-    sp0.y = (y + 5) * 8;
-    preview->managedSprite = FieldSpriteManager_CreateManagedSprite(&preview->spriteManager, &sp0);
+static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y) {
+    ManagedSpriteTemplate spriteTemplate = sPokemonPreviewSpriteTemplate;
+    spriteTemplate.x = (x + 5) * 8;
+    spriteTemplate.y = (y + 5) * 8;
+    preview->managedSprite = FieldSpriteManager_CreateManagedSprite(&preview->spriteManager, &spriteTemplate);
     SpriteList_RenderAndAnimateSprites(preview->spriteManager.spriteList);
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void sub_0200F6D4(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
+static void Pokepic_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
     struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)(enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
-    GetMonSpriteCharAndPlttNarcIdsEx(&tmplate, species, gender, 2, 0, 0, 0);
-    sub_0200F748(spriteManager, &tmplate);
+    GetMonSpriteCharAndPlttNarcIdsEx(&tmplate, species, gender, 2, FALSE, 0, 0);
+    Pokepic_LoadAndDrawFromTemplate(spriteManager, &tmplate);
     PokepicManager_Delete(mgr);
 }
 
-static void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon) {
+static void Pokepic_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon) {
     struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)(enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetPokemonSpriteCharAndPlttNarcIds(&tmplate, mon, 2);
-    sub_0200F748(spriteManager, &tmplate);
+    Pokepic_LoadAndDrawFromTemplate(spriteManager, &tmplate);
     PokepicManager_Delete(mgr);
 }
 
@@ -739,7 +743,7 @@ static void sub_0200F714(FieldSpriteManager *spriteManager, Pokemon *mon) {
 #define POKEMON_SPRITE_FRAME_SIZE_BYTES   (TILE_SIZE_4BPP * POKEMON_SPRITE_FRAME_SIZE_TILES)
 #define POKEMON_SPRITE_WHOLE_SIZE_BYTES   (POKEMON_SPRITE_FRAME_SIZE_BYTES * 2)
 
-static void sub_0200F748(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate) {
+static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate) {
     u8 *buf;
     u32 offset;
     SpriteResource *charResource, *plttResource;
@@ -776,7 +780,7 @@ static void sub_0200F748(FieldSpriteManager *spriteManager, PokepicTemplate *tmp
     Heap_Free(buf);
 }
 
-static void sub_0200F82C(PokemonPreview *preview, u8 palette, u16 tile) {
+static void Pokepic_DrawFrame(PokemonPreview *preview, u8 palette, u16 tile) {
     FillBgTilemapRect(preview->bgConfig,
         preview->bgLayer,
         tile,
@@ -853,7 +857,7 @@ static void sub_0200F82C(PokemonPreview *preview, u8 palette, u16 tile) {
     ScheduleBgTilemapBufferTransfer(preview->bgConfig, preview->bgLayer);
 }
 
-static void sub_0200F9DC(PokemonPreview *preview) {
+static void Pokepic_Clear(PokemonPreview *preview) {
     FillBgTilemapRect(preview->bgConfig,
         preview->bgLayer,
         0,

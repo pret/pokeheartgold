@@ -32,24 +32,24 @@
 typedef struct WaitingIcon WaitingIcon; // todo: copy from pokediamond
 struct PokepicManager;
 
-void sub_0200E398(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID);
-u32 sub_0200E3D8(void);
+void LoadStandardWindowTiles(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID);
+u32 GetStandardWindowPaletteNARCMember(void);
 void LoadUserFrameGfx1(BgConfig *bg_config, GFBgLayer layer, u16 baseTile, u8 palette_num, u8 frame, enum HeapID heapID);
 void DrawFrameAndWindow1(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
 void ClearWindowPixelBuffer(Window *window, BOOL dont_copy_to_vram);
-u32 sub_0200E63C(int frame);
-u32 sub_0200E640(int frame);
-void sub_0200E948(Window *window, u32 tile, u32 palette);
+u32 GetMessageBoxTilesNARCMember(int frame);
+u32 GetMessageBoxPaletteNARCMember(int frame);
+void Window_DrawMessageBox(Window *window, u32 tile, u32 palette);
 void LoadUserFrameGfx2(BgConfig *bgConfig, GFBgLayer layer, u16 baseTile, u8 paletteNum, u8 frame, enum HeapID heapID);
 void DrawFrameAndWindow2(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num);
 void ClearFrameAndWindow2(Window *window, BOOL dont_copy_to_vram);
-void sub_0200EB68(Window *window, u16 baseTile);
-void sub_0200EB80(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID);
+void Window_DrawMessageBoxScrollCursor(Window *window, u16 baseTile);
+void ReplaceTransparentTiles(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID);
 void DrawFrameAndWindow3(Window *window, BOOL dont_copy_to_vram, u16 baseTile, u8 palette_num, u8 type);
 void LoadMapSignpostFrameAndGraphic(BgConfig *bgConfig, u8 bgId, u16 baseTile, u8 plttNum, u8 type, u16 map, enum HeapID heapId);
 WaitingIcon *WaitingIcon_New(Window *window, u32 tileNum);
-void sub_0200F450(WaitingIcon *waitingIcon);
-void sub_0200F478(WaitingIcon *waitingIcon);
+void WaitingIcon_Destroy(WaitingIcon *waitingIcon);
+void WaitingIcon_Halt(WaitingIcon *waitingIcon);
 u8 *DrawPokemonPicFromSpecies(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, u32 heapID);
 u8 *DrawPokemonPicFromMon(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, Pokemon *mon, u32 heapID);
 

@@ -58,7 +58,7 @@
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public WaitingIcon_New
-.public sub_0200F478
+.public WaitingIcon_Halt
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014A08

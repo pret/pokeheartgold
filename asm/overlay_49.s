@@ -4946,7 +4946,7 @@ ov49_0225AC24: ; 0x0225AC24
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0225AC36
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0225AC36:
@@ -4960,7 +4960,7 @@ ov49_0225AC38: ; 0x0225AC38
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0225AC4A
-	bl sub_0200F478
+	bl WaitingIcon_Halt
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0225AC4A:
