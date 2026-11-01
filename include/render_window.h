@@ -30,7 +30,13 @@
 #define SCROLLING_MESSAGE_BOX_TILE_COUNT  (MESSAGE_BOX_TILE_COUNT + SCROLLING_CURSOR_TILE_COUNT)
 
 typedef struct WaitingIcon WaitingIcon; // todo: copy from pokediamond
-struct PokepicManager;
+
+enum PokemonPreviewState {
+    PREVIEW_STATE_WAIT = 0,
+    PREVIEW_STATE_REMOVE,
+    PREVIEW_STATE_SET_ANIM,
+    PREVIEW_STATE_WAIT_ANIM,
+};
 
 void LoadStandardWindowTiles(BgConfig *bgConfig, GFBgLayer layer, u32 tileStart, u32 a3, enum HeapID heapID);
 u32 GetStandardWindowPaletteNARCMember(void);

@@ -63,11 +63,11 @@ scr_seq_T06_013:
 	GetGameVersion VAR_TEMP_x4004
 	Compare VAR_TEMP_x4004, 8
 	GoToIfEq _0109
-	ScrCmd_452 SPECIES_LATIAS, 1
+	DrawPokemonPicFromSpecies SPECIES_LATIAS, 1
 	NPCMsg msg_0483_T06_00017
 	CloseMsg
 	CreateRoamer 2
-	ScrCmd_453
+	ErasePokemonPic
 	ApplyMovement obj_T06_daigo, _0180
 	WaitMovement
 	NPCMsg msg_0483_T06_00019
@@ -80,11 +80,11 @@ scr_seq_T06_013:
 	End
 
 _0109:
-	ScrCmd_452 SPECIES_LATIOS, 0
+	DrawPokemonPicFromSpecies SPECIES_LATIOS, 0
 	NPCMsg msg_0483_T06_00018
 	CloseMsg
 	CreateRoamer 3
-	ScrCmd_453
+	ErasePokemonPic
 	ApplyMovement obj_T06_daigo, _0180
 	WaitMovement
 	NPCMsg msg_0483_T06_00020

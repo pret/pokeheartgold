@@ -32,13 +32,6 @@ enum WaitingIconDeleteMode {
     DIAL_DELETE_MODE_DESTROY,
 };
 
-enum PokemonPreviewState {
-    PREVIEW_STATE_WAIT = 0,
-    PREVIEW_STATE_REMOVE,
-    PREVIEW_STATE_SET_ANIM,
-    PREVIEW_STATE_WAIT_ANIM,
-};
-
 struct WaitingIcon {
     Window *window;
     u8 pixels[WAIT_DIAL_WHOLE_SIZE];
@@ -649,7 +642,7 @@ static void SysTask_HandlePokepic(SysTask *sysTask, void *arg) {
         return;
 
     case PREVIEW_STATE_SET_ANIM:
-        preview->state = 3;
+        preview->state = PREVIEW_STATE_WAIT_ANIM;
         Sprite_SetAnimCtrlSeq(preview->managedSprite->sprite, 1);
         break;
 
