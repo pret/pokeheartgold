@@ -36,8 +36,8 @@
 .public WaitingIcon_Halt
 .public DrawPokemonPicFromSpecies
 .public DrawPokemonPicFromMon
-.public sub_020143E0
-.public sub_02014450
+.public CharacterSprite_LoadSpriteRegion
+.public CharacterSprite_LoadPalette
 .public Heap_Alloc
 .public Heap_Free
 .public Heap_FreeExplicit

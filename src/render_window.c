@@ -750,12 +750,22 @@ static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, P
     buf = Heap_Alloc((enum HeapID)spriteManager->heapID, POKEMON_SPRITE_WHOLE_SIZE_BYTES);
 
     // frame 0
-    UnkStruct_02014E30 frame0Region = { 0, 0, 10, 10 };
-    sub_020143E0((NarcId)tmplate->narcID, tmplate->charDataID, (enum HeapID)spriteManager->heapID, &frame0Region, buf);
+    TileRegion frame0Region = {
+        .x = 0,
+        .y = 0,
+        .w = POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        .h = POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+    };
+    CharacterSprite_LoadSpriteRegion((NarcId)tmplate->narcID, tmplate->charDataID, (enum HeapID)spriteManager->heapID, &frame0Region, buf);
 
     // frame 1
-    UnkStruct_02014E30 frame1Region = { 10, 0, 10, 10 };
-    sub_020143E0((NarcId)tmplate->narcID, tmplate->charDataID, (enum HeapID)spriteManager->heapID, &frame1Region, buf + POKEMON_SPRITE_FRAME_SIZE_BYTES);
+    TileRegion frame1Region = {
+        .x = POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        .y = 0,
+        .w = POKEMON_SPRITE_FRAME_WIDTH_TILES,
+        .h = POKEMON_SPRITE_FRAME_HEIGHT_TILES,
+    };
+    CharacterSprite_LoadSpriteRegion((NarcId)tmplate->narcID, tmplate->charDataID, (enum HeapID)spriteManager->heapID, &frame1Region, buf + POKEMON_SPRITE_FRAME_SIZE_BYTES);
 
     charResource = SpriteResourceCollection_Find(spriteManager->spriteResManagers[GF_GFX_RES_TYPE_CHAR], POKEMON_PREVIEW_RESOURCE_ID);
     imageProxy = SpriteTransfer_GetCharProxy(charResource);
@@ -766,7 +776,7 @@ static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, P
 
     Heap_Free(buf);
 
-    buf = sub_02014450((NarcId)tmplate->narcID, tmplate->palDataID, (enum HeapID)spriteManager->heapID);
+    buf = CharacterSprite_LoadPalette((NarcId)tmplate->narcID, tmplate->palDataID, (enum HeapID)spriteManager->heapID);
     plttResource = SpriteResourceCollection_Find(spriteManager->spriteResManagers[GF_GFX_RES_TYPE_PLTT], POKEMON_PREVIEW_RESOURCE_ID);
     paletteProxy = SpriteTransfer_GetPaletteProxy(plttResource, imageProxy);
     offset = NNS_G2dGetImagePaletteLocation(paletteProxy, NNS_G2D_VRAM_TYPE_2DMAIN);

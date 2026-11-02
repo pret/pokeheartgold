@@ -29776,7 +29776,7 @@ _021F4490:
 	ldrh r0, [r7, #0x10]
 	ldrh r1, [r7, #0x14]
 	ldr r2, [r6]
-	bl sub_02014450
+	bl CharacterSprite_LoadPalette
 	add r1, r5, #0
 	add r1, #0x9c
 	add r4, r4, #1
@@ -53743,7 +53743,7 @@ _022003F8:
 	ldrh r0, [r7]
 	ldrh r1, [r7, #4]
 	ldr r2, [r6]
-	bl sub_02014450
+	bl CharacterSprite_LoadPalette
 	mov r1, #0x4b
 	lsl r1, r1, #2
 	str r0, [r4, r1]
@@ -60941,7 +60941,7 @@ _02203DDC:
 	ldrh r0, [r7]
 	ldrh r1, [r7, #4]
 	ldr r2, [r6]
-	bl sub_02014450
+	bl CharacterSprite_LoadPalette
 	str r0, [r4, #0x28]
 	ldr r0, [sp, #0xc]
 	add r5, #0x10
@@ -69483,7 +69483,7 @@ _02208260:
 	ldrh r0, [r7]
 	ldrh r1, [r7, #4]
 	ldr r2, [r6]
-	bl sub_02014450
+	bl CharacterSprite_LoadPalette
 	mov r1, #0x43
 	lsl r1, r1, #2
 	str r0, [r4, r1]

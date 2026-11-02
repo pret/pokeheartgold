@@ -156,7 +156,7 @@
 .public sub_02013938
 .public sub_02013948
 .public TextOBJ_Destroy
-.public sub_02014450
+.public CharacterSprite_LoadPalette
 .public sub_02014510
 .public sub_0201457C
 .public sub_020145B4
