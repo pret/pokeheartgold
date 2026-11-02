@@ -534,14 +534,14 @@ _06E0:
 	EndMovement
 
 scr_seq_R32_006:
-	DirectionSignpostEx 1, 2, msg_0380_R32_00018
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0380_R32_00018
 	End
 
 scr_seq_R32_007:
-	DirectionSignpostEx 1, 4, msg_0380_R32_00017
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 4, msg_0380_R32_00017
 	End
 
 scr_seq_R32_008:
-	DirectionSignpostEx 1, 13, msg_0380_R32_00019
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 13, msg_0380_R32_00019
 	End
 	.balign 4, 0

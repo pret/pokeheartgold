@@ -122,23 +122,23 @@ scr_seq_T04_013:
 	End
 
 scr_seq_T04_006:
-	DirectionSignpostEx 0, 4, msg_0467_T04_00013
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 4, msg_0467_T04_00013
 	End
 
 scr_seq_T04_007:
-	TrainerTipsEx 2, msg_0467_T04_00014
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0467_T04_00014
 	End
 
 scr_seq_T04_008:
-	TrainerTipsEx 2, msg_0467_T04_00015
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0467_T04_00015
 	End
 
 scr_seq_T04_009:
-	TrainerTipsEx 3, msg_0467_T04_00016
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0467_T04_00016
 	End
 
 scr_seq_T04_010:
-	DirectionSignpostEx 1, 14, msg_0467_T04_00017
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 14, msg_0467_T04_00017
 	End
 
 scr_seq_T04_011:

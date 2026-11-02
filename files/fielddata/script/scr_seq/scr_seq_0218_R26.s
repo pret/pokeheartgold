@@ -143,10 +143,10 @@ _01C0:
 	EndMovement
 
 scr_seq_R26_002:
-	TrainerTipsEx 2, msg_0365_R26_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0365_R26_00000
 	End
 
 scr_seq_R26_003:
-	DirectionSignpostEx 1, 6, msg_0365_R26_00001
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 6, msg_0365_R26_00001
 	End
 	.balign 4, 0

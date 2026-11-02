@@ -63,8 +63,8 @@
 .public ManagedSprite_SetPositionXY
 .public ManagedSprite_OffsetPositionXY
 .public SpriteSystem_ReplaceCharResObj
-.public sub_0200E63C
-.public sub_0200E640
+.public GetMessageBoxTilesNARCMember
+.public GetMessageBoxPaletteNARCMember
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public Heap_Alloc

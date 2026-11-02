@@ -9,10 +9,10 @@
 	ScrDefEnd
 
 scr_seq_W20_000:
-	TrainerTipsEx 2, msg_0742_W20_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0742_W20_00000
 	End
 
 scr_seq_W20_001:
-	TrainerTipsEx 2, msg_0742_W20_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0742_W20_00001
 	End
 	.balign 4, 0

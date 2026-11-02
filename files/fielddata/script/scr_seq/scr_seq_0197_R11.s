@@ -68,10 +68,10 @@ _00BA:
 	Return
 
 scr_seq_R11_002:
-	DirectionSignpostEx 1, 2, msg_0346_R11_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0346_R11_00000
 	End
 
 scr_seq_R11_003:
-	TrainerTipsEx 2, msg_0346_R11_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0346_R11_00001
 	End
 	.balign 4, 0

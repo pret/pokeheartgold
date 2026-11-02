@@ -1162,6 +1162,6 @@ _0EC4:
 	EndMovement
 
 scr_seq_D49_023:
-	TrainerTipsEx 2, msg_0137_D49_00049
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0137_D49_00049
 	End
 	.balign 4, 0
