@@ -68,7 +68,7 @@ static void WaitingIcon_Draw(WaitingIcon *waitingIcon, enum WaitingIconDrawMode 
 static void SysTask_TickWaitingIcon(SysTask *sysTask, void *arg);
 static void SysTask_CleanupWaitingIcon(SysTask *sysTask, void *arg);
 static void SysTask_HandlePokepic(SysTask *sysTask, void *arg);
-PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
+static PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
 static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID);
 static void Pokepic_LoadObjectGraphics(PokemonPreview *preview);
 static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y);
@@ -661,7 +661,7 @@ static void SysTask_HandlePokepic(SysTask *sysTask, void *arg) {
     SpriteList_RenderAndAnimateSprites(preview->spriteManager.spriteList);
 }
 
-PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
+static PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
     PokemonPreview *preview = SysTask_GetData(CreateSysTaskAndEnvironment(SysTask_HandlePokepic, sizeof(PokemonPreview), 0, heapID));
 
     preview->state = 0;
