@@ -765,7 +765,7 @@ static void ov62_021E61AC(MicTestInput *input, enum HeapID heapID, MICCallback a
     input->unk1C = data;
 
     input->mic.type = MIC_SAMPLING_TYPE_8BIT;
-    input->mic.buffer = (void *)((((u32)data) + 0x1F) & ~0x1F); // alignment to 32-bit boundary
+    input->mic.buffer = (void *)(MATH_ROUNDUP32((u32)data));
     input->mic.size = 256;
     input->mic.rate = 0x1040;
     input->mic.loop_enable = TRUE;

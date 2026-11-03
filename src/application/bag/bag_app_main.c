@@ -252,65 +252,65 @@ const OverlayManagerTemplate gOverlayManagerTemplate_Bag = {
 };
 
 static const TouchscreenHitbox sTouchscreenHitboxes_NormalMenu[] = {
-    { 0, 31, 0, 31 },
-    { 0, 31, 32, 63 },
-    { 0, 31, 64, 95 },
-    { 0, 31, 96, 127 },
-    { 0, 31, 128, 159 },
-    { 0, 31, 160, 191 },
-    { 0, 31, 192, 223 },
-    { 0, 31, 224, 255 },
-    { 32, 73, 0, 127 },
-    { 32, 73, 128, 255 },
-    { 74, 117, 0, 127 },
-    { 74, 117, 128, 255 },
-    { 118, 153, 0, 127 },
-    { 118, 153, 128, 255 },
-    { 168, 191, 0, 39 },
-    { 168, 191, 40, 79 },
-    { 168, 191, 192, 255 },
-    { TOUCHSCREEN_RECTLIST_END },
+    { .rect = { 0, 31, 0, 31 } },
+    { .rect = { 0, 31, 32, 63 } },
+    { .rect = { 0, 31, 64, 95 } },
+    { .rect = { 0, 31, 96, 127 } },
+    { .rect = { 0, 31, 128, 159 } },
+    { .rect = { 0, 31, 160, 191 } },
+    { .rect = { 0, 31, 192, 223 } },
+    { .rect = { 0, 31, 224, 255 } },
+    { .rect = { 32, 73, 0, 127 } },
+    { .rect = { 32, 73, 128, 255 } },
+    { .rect = { 74, 117, 0, 127 } },
+    { .rect = { 74, 117, 128, 255 } },
+    { .rect = { 118, 153, 0, 127 } },
+    { .rect = { 118, 153, 128, 255 } },
+    { .rect = { 168, 191, 0, 39 } },
+    { .rect = { 168, 191, 40, 79 } },
+    { .rect = { 168, 191, 192, 255 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
 static const TouchscreenHitbox sTouchscreenHitboxes_ContextMenu[] = {
-    { 128, 159, 0, 93 },
-    { 128, 159, 96, 191 },
-    { 160, 191, 0, 93 },
-    { 160, 191, 96, 191 },
-    { 168, 191, 192, 255 },
-    { TOUCHSCREEN_RECTLIST_END },
+    { .rect = { 128, 159, 0, 93 } },
+    { .rect = { 128, 159, 96, 191 } },
+    { .rect = { 160, 191, 0, 93 } },
+    { .rect = { 160, 191, 96, 191 } },
+    { .rect = { 168, 191, 192, 255 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 static const TouchscreenHitbox sTouchscreenHitboxes_ItemsOnly[] = {
-    { 32, 73, 0, 127 },
-    { 32, 73, 128, 255 },
-    { 74, 117, 0, 127 },
-    { 74, 117, 128, 255 },
-    { 118, 153, 0, 127 },
-    { 118, 153, 128, 255 },
-    { 168, 191, 0, 39 },
-    { 168, 191, 40, 79 },
-    { 168, 191, 192, 255 },
-    { TOUCHSCREEN_RECTLIST_END },
+    { .rect = { 32, 73, 0, 127 } },
+    { .rect = { 32, 73, 128, 255 } },
+    { .rect = { 74, 117, 0, 127 } },
+    { .rect = { 74, 117, 128, 255 } },
+    { .rect = { 118, 153, 0, 127 } },
+    { .rect = { 118, 153, 128, 255 } },
+    { .rect = { 168, 191, 0, 39 } },
+    { .rect = { 168, 191, 40, 79 } },
+    { .rect = { 168, 191, 192, 255 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 static const TouchscreenHitbox sTouchscreenHitboxes_3DigitQuantitySelect[] = {
-    { 88, 111, 120, 151 },
-    { 88, 111, 152, 183 },
-    { 88, 111, 184, 215 },
-    { 136, 159, 120, 151 },
-    { 136, 159, 152, 183 },
-    { 136, 159, 184, 215 },
-    { 168, 191, 96, 173 },
-    { 168, 191, 178, 255 },
-    { TOUCHSCREEN_RECTLIST_END },
+    { .rect = { 88, 111, 120, 151 } },
+    { .rect = { 88, 111, 152, 183 } },
+    { .rect = { 88, 111, 184, 215 } },
+    { .rect = { 136, 159, 120, 151 } },
+    { .rect = { 136, 159, 152, 183 } },
+    { .rect = { 136, 159, 184, 215 } },
+    { .rect = { 168, 191, 96, 173 } },
+    { .rect = { 168, 191, 178, 255 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 static const TouchscreenHitbox sTouchscreenHitboxes_2DigitQuantitySelect[] = {
-    { 88, 111, 120, 151 },
-    { 88, 111, 152, 183 },
-    { 136, 159, 120, 151 },
-    { 136, 159, 152, 183 },
-    { 168, 191, 96, 173 },
-    { 168, 191, 178, 255 },
-    { TOUCHSCREEN_RECTLIST_END },
+    { .rect = { 88, 111, 120, 151 } },
+    { .rect = { 88, 111, 152, 183 } },
+    { .rect = { 136, 159, 120, 151 } },
+    { .rect = { 136, 159, 152, 183 } },
+    { .rect = { 168, 191, 96, 173 } },
+    { .rect = { 168, 191, 178, 255 } },
+    { .rect = { TOUCHSCREEN_RECTLIST_END } },
 };
 
 static const u8 sPocketCapacities[8] = {
@@ -3156,13 +3156,11 @@ static void BagApp3DState_BeginMoveCamera(BagApp3DState *threeDimState, int came
     }
 }
 
-#define ABS(x) ((x) < 0 ? -(x) : (x))
-
 static void BagApp3DState_UpdateCameraPosition(BagApp3DState *threeDimState, int gender) {
     const BagAppCameraAnchor *anchorData = sCameraAnchors[gender];
     if (threeDimState->frame != threeDimState->duration) {
         ++threeDimState->frame;
-        fx32 dxMag = ABS(anchorData[threeDimState->cameraAnchorsQueue[1]].cameraAngle.x - anchorData[threeDimState->cameraAnchorsQueue[0]].cameraAngle.x);
+        fx32 dxMag = MATH_ABS(anchorData[threeDimState->cameraAnchorsQueue[1]].cameraAngle.x - anchorData[threeDimState->cameraAnchorsQueue[0]].cameraAngle.x);
         int dxSign;
         if (anchorData[threeDimState->cameraAnchorsQueue[1]].cameraAngle.x < anchorData[threeDimState->cameraAnchorsQueue[0]].cameraAngle.x) {
             dxSign = -1;

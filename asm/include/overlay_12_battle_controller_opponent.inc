@@ -15,7 +15,7 @@
 .public NARC_New
 .public NARC_Delete
 .public Pokepic_StartAnim
-.public Pokepic_IsAnimFinished
+.public Pokepic_IsAnimActive
 .public PokepicManager_CreatePokepic
 .public PokepicManager_CreatePokepicAt
 .public Pokepic_Delete

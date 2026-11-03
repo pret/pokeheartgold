@@ -46,7 +46,7 @@ void TextOBJ_Destroy(TextOBJ *textOBJ);
 void TextOBJ_CopyFromBGWindow(TextOBJ *textOBJ, UnkStruct_02013910 *a1, Window *window, enum HeapID heapID);
 void sub_02013A50(Window *window, int a1, int a2, int a3, int a4, void *charBuf);
 TextOBJ *sub_020135D8(TextOBJTemplate *textObjTemplate);
-void sub_020138E0(TextOBJ *textObj, int a1);
+void sub_020138E0(TextOBJ *textObj, int palette);
 void FontOAM_Delete(TextOBJ *textObj);
 
 #endif // POKEHEARTGOLD_UNK_02013534_H

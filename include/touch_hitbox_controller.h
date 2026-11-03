@@ -4,6 +4,14 @@
 #include "heap.h"
 #include "touchscreen.h"
 
+enum TouchScreenButtonState {
+    TOUCH_BUTTON_NOT_PRESSED = -1,
+    TOUCH_BUTTON_PRESSED,
+    TOUCH_BUTTON_RELEASED,
+    TOUCH_BUTTON_HELD,
+    TOUCH_BUTTON_HELD_OUT_OF_BOUNDS,
+};
+
 typedef struct TouchHitboxControllerTemplate {
     u8 unkCallbackNum;
     u8 touchActive;      // FIXME: bool8

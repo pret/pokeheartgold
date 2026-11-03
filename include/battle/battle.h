@@ -711,13 +711,13 @@ enum BallThrowMode {
 };
 
 typedef struct BallThrow {
-    int type;
+    s32 type;
     enum HeapID heapID;
     enum BallThrowMode mode;
-    int target;
-    int ballID;
-    int bgPrio;
-    int surface;
+    s32 target;
+    int ball;
+    s32 bgPrio;
+    s32 surface;
     SpriteSystem *spriteSystem;
     PaletteData *paletteData;
     BattleSystem *battleSystem;
@@ -797,12 +797,6 @@ typedef struct BattlerSpriteContext {
     u32 personalities[4];
     u8 types[4];
 } BattlerSpriteContext;
-
-typedef struct BallCapsuleConfig {
-    int battlerType;
-    int ballTypeOverride;
-    Pokemon *mon;
-} BallCapsuleConfig;
 
 typedef struct MoveDisplayInfo {
     u16 move[4];

@@ -43,7 +43,7 @@ for fl in "$dir"/*.bin; do
     ch1=$(head -c1 "$fl")
     if [ $ch1 = $(echo -ne '\020') ] || [ $ch1 = $(echo -ne '\021') ]; then
         mv "$fl" "$fl.lz"
-        "$REPO_DIR/tools/nitrogfx/nitrogfx" "$fl.lz" "$fl"
+        "$REPO_DIR/build/heartgold.us/tools/nitrogfx/nitrogfx" "$fl.lz" "$fl"
         lz=.lz
     fi
     ext="$(head -c4 "$fl")"

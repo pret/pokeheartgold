@@ -14,8 +14,7 @@
 #include "yes_no_prompt.h"
 
 /** Make sure we have the correct capacity for our string buffer array */
-#define max(a, b)       ((a) > (b) ? (a) : (b))
-#define NUM_BAG_STRINGS (max(max(max(max(max(max(max(NUM_BAG_ITEMS, NUM_BAG_MEDICINE), NUM_BAG_BALLS), NUM_BAG_TMS_HMS), NUM_BAG_BERRIES), NUM_BAG_MAIL), NUM_BAG_BATTLE_ITEMS), NUM_BAG_KEY_ITEMS))
+#define NUM_BAG_STRINGS (MATH_MAX(MATH_MAX(MATH_MAX(MATH_MAX(MATH_MAX(MATH_MAX(MATH_MAX(NUM_BAG_ITEMS, NUM_BAG_MEDICINE), NUM_BAG_BALLS), NUM_BAG_TMS_HMS), NUM_BAG_BERRIES), NUM_BAG_MAIL), NUM_BAG_BATTLE_ITEMS), NUM_BAG_KEY_ITEMS))
 
 typedef enum BagAppState {
     BAG_APP_STATE_WAIT_FADE_AND_ENTER,

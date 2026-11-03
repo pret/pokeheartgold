@@ -6660,7 +6660,7 @@ static void Task_CatchPokemon(SysTask *task, void *inData) {
             ballThrow.mode = BALL_THROW_MODE_THROW;
             ballThrow.heapID = HEAP_ID_BATTLE;
             ballThrow.target = battlerId + 20000;
-            ballThrow.ballID = data->ballID;
+            ballThrow.ball = data->ballID;
             ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(data->battleSystem);
             ballThrow.paletteData = BattleSystem_GetPaletteData(data->battleSystem);
             ballThrow.bgPrio = 1;
