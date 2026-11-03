@@ -1,10 +1,10 @@
 #include "application/capsule_menu/capsule_menu.h"
 #include "application/capsule_menu/defs.h"
 #include "battle/battle.h"
+#include "battle/overlay_07.h"
 #include "msgdata/msg/msg_0011.h"
 
 #include "game_stats.h"
-#include "battle/overlay_07.h"
 #include "pokemon.h"
 #include "render_window.h"
 #include "screen_fade.h"

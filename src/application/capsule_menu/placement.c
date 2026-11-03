@@ -1,7 +1,6 @@
 #include "application/capsule_menu/capsule_menu.h"
 #include "application/capsule_menu/defs.h"
 #include "application/custom_ball/data/cb_data.naix"
-
 #include "battle/overlay_07.h"
 
 static void SealPlacement_SetSealRenderPriorities(CapsuleAppManager *appMan, u8 index);

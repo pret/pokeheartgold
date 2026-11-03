@@ -3,12 +3,12 @@
 
 #include "application/capsule_menu/capsule_menu.h"
 #include "battle/battle.h"
+#include "battle/overlay_07.h"
 
 #include "bg_window.h"
 #include "gf_3d_vramman.h"
 #include "menu_input_state.h"
 #include "obj_char_transfer.h"
-#include "battle/overlay_07.h"
 #include "pokepic.h"
 #include "seal_case.h"
 #include "sprite_system.h"
