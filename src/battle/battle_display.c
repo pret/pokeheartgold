@@ -1793,7 +1793,7 @@ static void BattleDisplayTask_SetEncounter(SysTask *task, void *data) {
         break;
     case 3:
         if (sub_02017068(ov12_0223B750(monEncounterData->battleSystem), monEncounterData->battler) == TRUE
-            && Pokepic_IsAnimFinished(monEncounterData->sprite) == FALSE) {
+            && Pokepic_IsAnimActive(monEncounterData->sprite) == FALSE) {
             if (monEncounterData->isShiny) {
                 MoveAnimation moveAnim;
 
@@ -1866,7 +1866,7 @@ static void BattleDisplayTask_SetGiratinaEncounter(SysTask *task, void *data) {
         break;
     case 3:
         if (sub_02017068(ov12_0223B750(monEncounterData->battleSystem), monEncounterData->battler) == TRUE
-            && Pokepic_IsAnimFinished(monEncounterData->sprite) == FALSE) {
+            && Pokepic_IsAnimActive(monEncounterData->sprite) == FALSE) {
             if (monEncounterData->isShiny) {
                 MoveAnimation moveAnim;
 
@@ -2032,7 +2032,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
         break;
     case 6:
         if (sub_02017068(ov12_0223B750(monShowData->battleSystem), monShowData->battler) == TRUE
-            && Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
+            && Pokepic_IsAnimActive(monShowData->opponentData->pokepic) == FALSE) {
             ov07_02233ECC(monShowData->opponentData->ballData);
             monShowData->opponentData->ballData = NULL;
             ov07_02232AB8(monShowData->ballCapsuleSealEffect);
@@ -2160,7 +2160,7 @@ static void ov12_0225BE38(SysTask *task, void *data) {
 
         break;
     case 5:
-        if (sub_02017068(ov12_0223B750(monShowData->battleSystem), monShowData->battler) == 1 && Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
+        if (sub_02017068(ov12_0223B750(monShowData->battleSystem), monShowData->battler) == 1 && Pokepic_IsAnimActive(monShowData->opponentData->pokepic) == FALSE) {
             ov07_02233ECC(monShowData->opponentData->ballData);
             monShowData->opponentData->ballData = NULL;
             if (monShowData->isShiny) {
@@ -2206,7 +2206,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         ballThrow.type = sBallThrowTypes[monShowData->battlerType];
         ballThrow.heapID = HEAP_ID_BATTLE;
         ballThrow.target = monShowData->battler;
-        ballThrow.ballID = monShowData->capturedBall;
+        ballThrow.ball = monShowData->capturedBall;
         ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(monShowData->battleSystem);
         ballThrow.paletteData = BattleSystem_GetPaletteData(monShowData->battleSystem);
         ballThrow.bgPrio = 1;
@@ -2323,7 +2323,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         break;
     case 6:
         if (sub_02017068(ov12_0223B750(monShowData->battleSystem), monShowData->battler) == TRUE
-            && Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
+            && Pokepic_IsAnimActive(monShowData->opponentData->pokepic) == FALSE) {
             ov07_02233ECC(monShowData->ballRotation);
             ov07_02232AB8(monShowData->ballCapsuleSealEffect);
 
@@ -2432,7 +2432,7 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
         break;
     case 4: {
         if (sub_02017068(ov12_0223B750(monShowData->battleSystem), monShowData->battler) == 1) {
-            if (Pokepic_IsAnimFinished(monShowData->opponentData->pokepic) == FALSE) {
+            if (Pokepic_IsAnimActive(monShowData->opponentData->pokepic) == FALSE) {
                 if (monShowData->isShiny) {
                     MoveAnimation moveAnim;
 
@@ -2532,7 +2532,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
             ballThrow.heapID = HEAP_ID_BATTLE;
             ballThrow.mode = BALL_THROW_MODE_RECALL;
             ballThrow.target = monReturnData->battler;
-            ballThrow.ballID = monReturnData->capturedBall;
+            ballThrow.ball = monReturnData->capturedBall;
             ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(monReturnData->battleSystem);
             ballThrow.paletteData = BattleSystem_GetPaletteData(monReturnData->battleSystem);
             ballThrow.bgPrio = 1;
@@ -2547,7 +2547,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
             ballThrow.heapID = HEAP_ID_BATTLE;
             ballThrow.mode = BALL_THROW_MODE_RECALL;
             ballThrow.target = monReturnData->battler;
-            ballThrow.ballID = monReturnData->capturedBall;
+            ballThrow.ball = monReturnData->capturedBall;
             ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(monReturnData->battleSystem);
             ballThrow.paletteData = BattleSystem_GetPaletteData(monReturnData->battleSystem);
             ballThrow.bgPrio = 1;
@@ -2846,22 +2846,22 @@ static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data) {
             case 1:
                 ballThrow.type = 15;
                 trainerThrowBallData->ballTargetState = 3;
-                ballThrow.ballID = 5;
+                ballThrow.ball = 5;
                 break;
             case 2:
                 ballThrow.type = 12;
                 trainerThrowBallData->ballTargetState = 0;
-                ballThrow.ballID = 0x401;
+                ballThrow.ball = 0x401;
                 break;
             case 3:
                 ballThrow.type = 13;
                 trainerThrowBallData->ballTargetState = 0;
-                ballThrow.ballID = 0x402;
+                ballThrow.ball = 0x402;
                 break;
             case 4:
                 ballThrow.type = 15;
                 trainerThrowBallData->ballTargetState = 3;
-                ballThrow.ballID = 0x400;
+                ballThrow.ball = 0x400;
                 break;
             }
 

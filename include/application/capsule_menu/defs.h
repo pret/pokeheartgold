@@ -8,7 +8,7 @@
 #include "gf_3d_vramman.h"
 #include "menu_input_state.h"
 #include "obj_char_transfer.h"
-#include "overlay_07.h"
+#include "battle/overlay_07.h"
 #include "pokepic.h"
 #include "seal_case.h"
 #include "sprite_system.h"

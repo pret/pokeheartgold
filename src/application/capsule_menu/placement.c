@@ -2,7 +2,7 @@
 #include "application/capsule_menu/defs.h"
 #include "application/custom_ball/data/cb_data.naix"
 
-#include "overlay_07.h"
+#include "battle/overlay_07.h"
 
 static void SealPlacement_SetSealRenderPriorities(CapsuleAppManager *appMan, u8 index);
 static BOOL SealPlacement_InitSeal(CapsuleAppManager *appMan, u8 sealIndex);
