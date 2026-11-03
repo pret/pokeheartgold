@@ -5,7 +5,7 @@
 .public PaletteData_GetSelectedBuffersBitmask
 .public PaletteData_SetAutoTransparent
 .public PlayBGM
-.public sub_0200602C
+.public Sound_PlayPannedEffect
 .public PlaySE
 .public OverlayManager_New
 .public OverlayManager_Delete
@@ -396,7 +396,7 @@
 .public ov12_022567D4
 .public BattleBuffer_GetNext
 .public ov12_022568B0
-.public ov12_02261294
+.public OpponentData_SetTrainerVisibility
 .public BattleController_EmitShowPokemon
 .public BattleController_EmitOpenCaptureBall
 .public BattleController_EmitShowYesNoMenu

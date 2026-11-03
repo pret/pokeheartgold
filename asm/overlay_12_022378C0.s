@@ -1902,7 +1902,7 @@ _02238D64:
 _02238D86:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
@@ -2010,7 +2010,7 @@ _02238E2C:
 _02238E68:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	ldr r0, [sp, #4]
 	ldr r1, [r5, #0x68]
 	ldr r0, [r0, #4]
@@ -2104,7 +2104,7 @@ _02238F18:
 	add r1, r0, #0
 	add r0, r4, #0
 	str r1, [r7, #0x34]
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	add r5, r5, #1
 	add r6, r6, #1
 	add r7, r7, #4
@@ -2233,7 +2233,7 @@ _02239024:
 	add r1, r0, #0
 	add r0, r4, #0
 	str r1, [r7, #0x34]
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	add r5, r5, #1
 	add r6, r6, #1
 	add r7, r7, #4
@@ -2329,7 +2329,7 @@ _022390F0:
 	add r1, r0, #0
 	add r0, r4, #0
 	str r1, [r7, #0x34]
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	add r5, r5, #1
 	add r6, r6, #1
 	add r7, r7, #4
@@ -2456,7 +2456,7 @@ _022391F6:
 	add r1, r0, #0
 	add r0, r4, #0
 	str r1, [r7, #0x34]
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	add r5, r5, #1
 	add r6, r6, #1
 	add r7, r7, #4
@@ -2559,7 +2559,7 @@ _022392C8:
 	add r1, r0, #0
 	add r0, r4, #0
 	str r1, [r7, #0x34]
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	add r5, r5, #1
 	add r6, r6, #1
 	add r7, r7, #4
@@ -2691,7 +2691,7 @@ _022393DC:
 	add r1, r0, #0
 	add r0, r4, #0
 	str r1, [r7, #0x34]
-	bl ov12_02260EA4
+	bl OpponentData_SetTaskFuncs
 	add r5, r5, #1
 	add r6, r6, #1
 	add r7, r7, #4
