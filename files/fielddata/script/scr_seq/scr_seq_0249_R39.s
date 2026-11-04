@@ -368,14 +368,14 @@ _0490:
 	End
 
 scr_seq_R39_003:
-	DirectionSignpostEx 1, 21, msg_0396_R39_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 21, msg_0396_R39_00000
 	End
 
 scr_seq_R39_004:
-	TrainerTipsEx 2, msg_0396_R39_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0396_R39_00001
 	End
 
 scr_seq_R39_005:
-	TrainerTipsEx 3, msg_0396_R39_00002
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0396_R39_00002
 	End
 	.balign 4, 0

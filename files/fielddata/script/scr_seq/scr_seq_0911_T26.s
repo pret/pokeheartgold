@@ -424,19 +424,19 @@ _059C:
 	EndMovement
 
 scr_seq_T26_004:
-	TrainerTipsEx 2, msg_0604_T26_00007
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0604_T26_00007
 	End
 
 scr_seq_T26_005:
-	DirectionSignpostEx 0, 17, msg_0604_T26_00005
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 17, msg_0604_T26_00005
 	End
 
 scr_seq_T26_006:
-	TrainerTipsEx 2, msg_0604_T26_00006
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0604_T26_00006
 	End
 
 scr_seq_T26_007:
-	TrainerTipsEx 2, msg_0604_T26_00008
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0604_T26_00008
 	End
 
 scr_seq_T26_008:

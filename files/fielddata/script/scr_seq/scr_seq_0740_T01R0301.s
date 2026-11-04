@@ -510,7 +510,7 @@ _0663:
 	ApplyMovement obj_T01R0301_ookido, _09BC
 _066B:
 	WaitMovement
-	ScrCmd_452 SPECIES_BULBASAUR, 0
+	DrawPokemonPicFromSpecies SPECIES_BULBASAUR, 0
 	PlayCry SPECIES_BULBASAUR, 0
 	NPCMsg msg_0451_T01R0301_00045
 	WaitCry
@@ -547,7 +547,7 @@ _0711:
 	ApplyMovement obj_T01R0301_ookido, _09BC
 _0719:
 	WaitMovement
-	ScrCmd_452 SPECIES_SQUIRTLE, 0
+	DrawPokemonPicFromSpecies SPECIES_SQUIRTLE, 0
 	PlayCry SPECIES_SQUIRTLE, 0
 	NPCMsg msg_0451_T01R0301_00044
 	WaitCry
@@ -584,7 +584,7 @@ _07BF:
 	ApplyMovement obj_T01R0301_ookido, _09BC
 _07C7:
 	WaitMovement
-	ScrCmd_452 SPECIES_CHARMANDER, 0
+	DrawPokemonPicFromSpecies SPECIES_CHARMANDER, 0
 	PlayCry SPECIES_CHARMANDER, 0
 	NPCMsg msg_0451_T01R0301_00043
 	WaitCry
@@ -598,7 +598,7 @@ _07C7:
 	End
 
 _0801:
-	ScrCmd_453
+	ErasePokemonPic
 	GetPartyCount VAR_SPECIAL_x8005
 	Compare VAR_SPECIAL_x8005, 6
 	GoToIfEq _098B
@@ -689,7 +689,7 @@ _0929:
 	Return
 
 _096C:
-	ScrCmd_453
+	ErasePokemonPic
 	NPCMsg msg_0451_T01R0301_00047
 	WaitButton
 	CloseMsg

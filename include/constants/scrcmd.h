@@ -19,6 +19,7 @@
 #include "constants/pokemon.h"
 #include "constants/ranking.h"
 #include "constants/ribbon.h"
+#include "constants/signpost_type.h"
 #include "constants/sndseq.h"
 #include "constants/spawns.h"
 #include "constants/species.h"

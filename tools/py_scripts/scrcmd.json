@@ -2821,14 +2821,14 @@
       ]
     },
     {
-      "name": "ScrCmd_452",
+      "name": "DrawPokemonPicFromSpecies",
       "args": [
         "species",
         2
       ]
     },
     {
-      "name": "ScrCmd_453",
+      "name": "ErasePokemonPic",
       "args": []
     },
     {
@@ -3470,17 +3470,17 @@
       ]
     },
     {
-      "name": "ScrCmd_547",
+      "name": "DrawPokemonPicFromPartyMon",
       "args": [
         "var"
       ]
     },
     {
-      "name": "ScrCmd_548",
+      "name": "AnimatePokemonPic",
       "args": []
     },
     {
-      "name": "ScrCmd_549",
+      "name": "WaitAnimatePokemonPic",
       "args": [
         "var"
       ]

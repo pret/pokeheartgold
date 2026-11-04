@@ -74,7 +74,7 @@ _02237D1A:
 	ldr r0, [r5, #4]
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0200EB80
+	bl ReplaceTransparentTiles
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -107,7 +107,7 @@ _02237D1A:
 	mov r3, #5
 	bl PaletteData_LoadNarc
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1312,7 +1312,7 @@ _02238838:
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0200EB80
+	bl ReplaceTransparentTiles
 	mov r0, #0
 	str r0, [sp]
 	str r0, [sp, #4]
@@ -1345,7 +1345,7 @@ _02238838:
 	mov r3, #5
 	bl PaletteData_LoadNarc
 	add r0, r7, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3560,7 +3560,7 @@ _02239A46:
 	ldr r0, [r5, #4]
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0200EB80
+	bl ReplaceTransparentTiles
 	mov r0, #0
 	str r0, [sp]
 	mov r0, #0x20
@@ -3573,7 +3573,7 @@ _02239A46:
 	mov r3, #5
 	bl PaletteData_LoadNarc
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -4215,7 +4215,7 @@ _0223A052:
 	ldr r0, _0223A084 ; =0x00001024
 	mov r7, #1
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	bl sub_02037930
 _0223A06C:

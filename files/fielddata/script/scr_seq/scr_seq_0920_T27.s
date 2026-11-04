@@ -289,23 +289,23 @@ _0380:
 	EndMovement
 
 scr_seq_T27_001:
-	DirectionSignpostEx 0, 18, msg_0612_T27_00011
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 18, msg_0612_T27_00011
 	End
 
 scr_seq_T27_002:
-	TrainerTipsEx 2, msg_0612_T27_00012
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0612_T27_00012
 	End
 
 scr_seq_T27_003:
-	TrainerTipsEx 2, msg_0612_T27_00013
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0612_T27_00013
 	End
 
 scr_seq_T27_004:
-	TrainerTipsEx 2, msg_0612_T27_00014
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0612_T27_00014
 	End
 
 scr_seq_T27_016:
-	TrainerTipsEx 2, msg_0612_T27_00015
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0612_T27_00015
 	End
 
 scr_seq_T27_008:
