@@ -86,7 +86,7 @@ Static main
     Object src/ascii_util.c
     Object src/fx_util.c
     Object src/unk_02020E80.c
-    Object asm/unk_020210A0.s
+    Object src/touch_pad.c
     Object src/obj_char_transfer.c
     Object src/obj_pltt_transfer.c
     Object src/gf_gfx_planes.c

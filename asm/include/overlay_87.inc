@@ -98,7 +98,7 @@
 .public EnableTouchPad
 .public InitializeTouchPad
 .public DisableTouchPad
-.public sub_02021280
+.public WriteAutoSamplingDataToBuffer
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers

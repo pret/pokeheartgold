@@ -3579,7 +3579,7 @@ ov85_021E74AC: ; 0x021E74AC
 	mov r1, #2
 	add r2, r6, #0
 	mov r4, #3
-	bl sub_02021280
+	bl WriteAutoSamplingDataToBuffer
 	add r2, r5, #0
 	add r2, #0x18
 	mov r0, #1

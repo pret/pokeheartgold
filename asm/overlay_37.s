@@ -1751,7 +1751,7 @@ _021E67A8:
 	add r0, sp, #0x10
 	mov r1, #4
 	mov r2, #0x40
-	bl sub_02021280
+	bl WriteAutoSamplingDataToBuffer
 	cmp r0, #1
 	bne _021E67E2
 	ldr r3, _021E6810 ; =0x00004378

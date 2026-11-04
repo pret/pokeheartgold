@@ -1073,7 +1073,7 @@ _021E6184:
 	add r0, r4, r0
 	mov r1, #4
 	mov r2, #2
-	bl sub_02021280
+	bl WriteAutoSamplingDataToBuffer
 	ldr r0, _021E63F8 ; =ov87_021E8308
 	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r5, r0, #0

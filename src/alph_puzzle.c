@@ -25,10 +25,10 @@
 #include "sys_flags.h"
 #include "system.h"
 #include "text.h"
+#include "touch_pad.h"
 #include "touchscreen.h"
 #include "unk_02005D10.h"
 #include "unk_0200B150.h"
-#include "unk_020210A0.h"
 #include "vram_transfer_manager.h"
 #include "yes_no_prompt.h"
 
