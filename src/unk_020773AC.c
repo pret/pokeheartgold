@@ -11,6 +11,7 @@ u32 sub_02077520(u32 size, BOOL is4pltt);
 SPLEmitter *sub_0207753C(enum HeapID heapId);
 SPLEmitter *sub_02077584(enum HeapID heapId, NarcId narcId, int fileId);
 void sub_020775AC(SPLEmitter *emitter);
+void sub_020775C4(SPLEmitter *emitter);
 
 void sub_020773AC(void) {
     GfGfx_DisableEngineAPlanes();
@@ -92,4 +93,35 @@ void sub_020775AC(SPLEmitter *emitter) {
     void *r4 = sub_020154D0(emitter);
     sub_02014EBC(emitter);
     Heap_Free(r4);
+}
+
+void sub_020775C4(SPLEmitter *emitter) {
+    VecFx32 sp0 = { 0 };
+
+    VEC_Set(&sp0, 0, FX32_CONST(0.3359375), 0);
+
+    SPL_SetEmitterPosition(emitter, &sp0);
+}
+
+UnkStruct_02077604 *sub_02077604(const UnkSplTemplate_02077604 *tmplate) {
+    UnkStruct_02077604 *ret = Heap_Alloc(tmplate->heapId, sizeof(UnkStruct_02077604));
+    GF_ASSERT(ret != NULL);
+    ret->tmplate = *tmplate;
+    ret->emitter = sub_02077584(ret->tmplate.heapId, NARC_a_1_1_9, ret->tmplate.fileId);
+    sub_02015528(ret->emitter, 1);
+    return ret;
+}
+
+void sub_02077634(UnkStruct_02077604 *a0, int res_no) {
+    sub_02015494(a0->emitter, res_no, sub_020775C4, a0);
+    sub_02015528(a0->emitter, 1);
+}
+
+BOOL sub_02077650(UnkStruct_02077604 *a0) {
+    return sub_020154B0(a0->emitter) != FALSE;
+}
+
+void sub_02077664(UnkStruct_02077604 *a0) {
+    sub_020775AC(a0->emitter);
+    Heap_Free(a0);
 }
