@@ -393,23 +393,23 @@ _04D0:
 	EndMovement
 
 scr_seq_T24_008:
-	DirectionSignpostEx 0, 15, msg_0572_T24_00018
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 15, msg_0572_T24_00018
 	End
 
 scr_seq_T24_009:
-	TrainerTipsEx 2, msg_0572_T24_00019
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0572_T24_00019
 	End
 
 scr_seq_T24_010:
-	TrainerTipsEx 2, msg_0572_T24_00020
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0572_T24_00020
 	End
 
 scr_seq_T24_011:
-	TrainerTipsEx 2, msg_0572_T24_00021
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0572_T24_00021
 	End
 
 scr_seq_T24_004:
-	TrainerTipsEx 2, msg_0572_T24_00022
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0572_T24_00022
 	End
 
 scr_seq_T24_012:

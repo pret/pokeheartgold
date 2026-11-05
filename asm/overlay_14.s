@@ -34001,7 +34001,7 @@ ov14_021F6638: ; 0x021F6638
 	ldr r1, _021F6650 ; =0x0000038E
 	add r0, r4, #0
 	mov r2, #0xa
-	bl sub_0200E948
+	bl Window_DrawMessageBox
 	pop {r4, pc}
 	nop
 _021F6650: .word 0x0000038E
@@ -34551,7 +34551,7 @@ ov14_021F69F0: ; 0x021F69F0
 	ldr r1, _021F6A10 ; =0x0000038E
 	add r0, r0, r4
 	mov r2, #0xa
-	bl sub_0200E948
+	bl Window_DrawMessageBox
 	ldr r0, [r5, #0x34]
 	add r0, #0x30
 	add r0, r0, r4

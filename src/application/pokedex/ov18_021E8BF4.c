@@ -9,8 +9,8 @@
 #include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "sound_chatot.h"
+#include "touch_pad.h"
 #include "unk_02005D10.h"
-#include "unk_020210A0.h"
 #include "unk_0208805C.h"
 
 #define PLTTBUF_EXCEPT_MAIN_BG_F (PLTTBUF_SUB_BG_F | PLTTBUF_MAIN_OBJ_F | PLTTBUF_SUB_OBJ_F)

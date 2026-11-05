@@ -53,7 +53,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public sub_02014540
 .public sub_0201649C
 .public sub_02017068

@@ -8,6 +8,6 @@
 	ScrDefEnd
 
 scr_seq_T10_000:
-	TrainerTipsEx 2, msg_0521_T10_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0521_T10_00000
 	End
 	.balign 4, 0

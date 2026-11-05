@@ -1,3 +1,4 @@
+#include "constants/signpost_type.h"
 	.include "macros.inc"
 	.include "overlay_49.inc"
 	.include "global.inc"
@@ -4291,7 +4292,7 @@ _0225A636:
 	add r2, r1, #0
 	add r3, r1, #0
 	bl LoadUserFrameGfx2
-	mov r0, #3
+	mov r0, #SIGNPOST_TYPE_SCROLLING
 	str r0, [sp]
 	mov r0, #0
 	str r0, [sp, #4]
@@ -4946,7 +4947,7 @@ ov49_0225AC24: ; 0x0225AC24
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0225AC36
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0225AC36:
@@ -4960,7 +4961,7 @@ ov49_0225AC38: ; 0x0225AC38
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0225AC4A
-	bl sub_0200F478
+	bl WaitingIcon_Halt
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0225AC4A:
@@ -5075,7 +5076,7 @@ _0225ACE4:
 	add r0, r5, #0
 	bl AddTextPrinterParameterized
 	str r0, [r5, #0x10]
-	mov r0, #3
+	mov r0, #SIGNPOST_TYPE_SCROLLING
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1

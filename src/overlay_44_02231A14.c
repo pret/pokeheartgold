@@ -409,7 +409,7 @@ void ov44_0223233C(BgConfig *bgConfig, enum HeapID heapID, NARC *narc) {
 }
 
 void ov44_0223237C(UnkStruct_ov44_02231A7C *arg0, enum HeapID heapID, NARC *narc) {
-    arg0->unk13C[0] = AddCharResObjFromOpenNarc(arg0->unk12C[0], narc, NARC_a_0_3_8, FALSE, 50, NNS_G2D_VRAM_TYPE_2DMAIN, heapID);
+    arg0->unk13C[0] = AddCharResObjFromOpenNarc(arg0->unk12C[0], narc, NARC_graphic_gs_winframe, FALSE, 50, NNS_G2D_VRAM_TYPE_2DMAIN, heapID);
     arg0->unk13C[1] = AddPlttResObjFromOpenNarc(arg0->unk12C[1], narc, NARC_fielddata_encountdata_g_enc_data, FALSE, 50, NNS_G2D_VRAM_TYPE_2DMAIN, 1, heapID);
     arg0->unk13C[2] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[2], narc, NARC_a_0_3_9, FALSE, 50, GF_GFX_RES_TYPE_CELL, heapID);
     arg0->unk13C[3] = AddCellOrAnimResObjFromOpenNarc(arg0->unk12C[3], narc, NARC_a_0_4_0, FALSE, 50, GF_GFX_RES_TYPE_ANIM, heapID);

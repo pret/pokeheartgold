@@ -599,6 +599,6 @@ _0780:
 	EndMovement
 
 scr_seq_D44R0102_005:
-	TrainerTipsEx 2, msg_0129_D44R0102_00006
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0129_D44R0102_00006
 	End
 	.balign 4, 0

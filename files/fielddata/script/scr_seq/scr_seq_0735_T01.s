@@ -178,18 +178,18 @@ scr_seq_T01_001:
 	End
 
 scr_seq_T01_002:
-	DirectionSignpostEx 0, 1, msg_0446_T01_00002
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 1, msg_0446_T01_00002
 	End
 
 scr_seq_T01_003:
-	TrainerTipsEx 2, msg_0446_T01_00003
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0446_T01_00003
 	End
 
 scr_seq_T01_004:
-	TrainerTipsEx 2, msg_0446_T01_00004
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0446_T01_00004
 	End
 
 scr_seq_T01_005:
-	TrainerTipsEx 2, msg_0446_T01_00005
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0446_T01_00005
 	End
 	.balign 4, 0

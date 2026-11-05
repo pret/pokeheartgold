@@ -467,7 +467,7 @@ static BOOL TouchSaveApp_SaveGame(TouchSaveAppData *data) {
 static BOOL TouchSaveApp_PrintSavedMessage(TouchSaveAppData *data) {
     Field_PlayerMovementSavingClear(data->savingMovementTask);
 
-    sub_0200F450(data->waitingIcon);
+    WaitingIcon_Destroy(data->waitingIcon);
 
     FillWindowPixelBuffer(&data->window, 0xFF);
     data->string = ReadMsgData_ExpandPlaceholders(data->messageFormat, data->msgData, msg_0040_00016, HEAP_ID_8);
