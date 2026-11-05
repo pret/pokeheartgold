@@ -2,8 +2,15 @@
 #include "unk_020773AC.h"
 
 #include "gf_gfx_planes.h"
+#include "unk_02014DA0.h"
+#include "unk_02026E30.h"
 
 void sub_0207741C(void);
+u32 sub_02077504(u32 size, BOOL is4x4comp);
+u32 sub_02077520(u32 size, BOOL is4pltt);
+SPLEmitter *sub_0207753C(enum HeapID heapId);
+SPLEmitter *sub_02077584(enum HeapID heapId, NarcId narcId, int fileId);
+void sub_020775AC(SPLEmitter *emitter);
 
 void sub_020773AC(void) {
     GfGfx_DisableEngineAPlanes();
@@ -32,4 +39,57 @@ void sub_0207741C(void) {
     G3X_SetFog(FALSE, GX_FOGBLEND_COLOR_ALPHA, GX_FOGSLOPE_0x8000, 0);
     G3X_SetClearColor(RGB_BLACK, 0, 0x7FFF, 0x3F, FALSE);
     G3_ViewPort(0, 0, 255, 191);
+}
+
+void sub_020774A0(void) {
+    NNSGfdTexKey texKey = NNS_GfdAllocTexVram(0x8000, FALSE, 0);
+    NNSGfdPlttKey plttKey = NNS_GfdAllocPlttVram(0xA0, 0, 0);
+
+    GF_ASSERT(texKey != 0);
+    GF_ASSERT(plttKey != 0);
+
+    sub_02014DA0();
+}
+
+void sub_020774E0(void) {
+    Thunk_G3X_Reset();
+    if (sub_0201543C() > 0) {
+        Thunk_G3X_Reset();
+        NNS_G2dSetupSoftwareSpriteCamera();
+    }
+    sub_02015460();
+    RequestSwap3DBuffers(GX_SORTMODE_MANUAL, GX_BUFFERMODE_Z);
+}
+
+u32 sub_02077504(u32 size, BOOL is4x4comp) {
+    NNSGfdTexKey texKey = NNS_GfdAllocTexVram(size, is4x4comp, 0);
+    sub_02015354(texKey);
+    return ((u16)texKey) * 8;
+}
+
+u32 sub_02077520(u32 size, BOOL is4pltt) {
+    NNSGfdPlttKey plttKey = NNS_GfdAllocPlttVram(size, is4pltt, 0);
+    sub_02015394(plttKey);
+    return ((u16)plttKey) * 8;
+}
+
+SPLEmitter *sub_0207753C(enum HeapID heapId) {
+    SPLEmitter *emitter = sub_02014DB4(sub_02077504, sub_02077520, Heap_Alloc(heapId, 0x4800), 0x4800, TRUE, heapId);
+    Camera *camera = sub_02015524(emitter);
+    if (camera != NULL) {
+        Camera_SetPerspectiveClippingPlane(FX32_CONST(1), FX32_CONST(900), camera);
+    }
+    return emitter;
+}
+
+SPLEmitter *sub_02077584(enum HeapID heapId, NarcId narcId, int fileId) {
+    SPLEmitter *emitter = sub_0207753C(heapId);
+    sub_0201526C(emitter, sub_02015264(narcId, fileId, heapId), 0xA, TRUE);
+    return emitter;
+}
+
+void sub_020775AC(SPLEmitter *emitter) {
+    void *r4 = sub_020154D0(emitter);
+    sub_02014EBC(emitter);
+    Heap_Free(r4);
 }
