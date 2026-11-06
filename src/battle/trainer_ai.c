@@ -849,19 +849,19 @@ void AICmd_LoadTypeFrom(BattleSystem *battleSystem, BattleContext *ctx) {
 
     switch (param) {
     case LOAD_ATTACKER_TYPE_1:
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_TYPE_1, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, ctx->trainerAIData.attacker, BMON_DATA_TYPE_1, NULL);
         break;
 
     case LOAD_DEFENDER_TYPE_1:
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, ctx->trainerAIData.defender, BMON_DATA_TYPE_1, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, ctx->trainerAIData.defender, BMON_DATA_TYPE_1, NULL);
         break;
 
     case LOAD_ATTACKER_TYPE_2:
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_TYPE_2, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, ctx->trainerAIData.attacker, BMON_DATA_TYPE_2, NULL);
         break;
 
     case LOAD_DEFENDER_TYPE_2:
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, ctx->trainerAIData.defender, BMON_DATA_TYPE_2, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, ctx->trainerAIData.defender, BMON_DATA_TYPE_2, NULL);
         break;
 
     case LOAD_MOVE_TYPE:
@@ -870,22 +870,22 @@ void AICmd_LoadTypeFrom(BattleSystem *battleSystem, BattleContext *ctx) {
 
     case LOAD_ATTACKER_PARTNER_TYPE_1:
         partner = BattleSystem_GetBattlerIdPartner(battleSystem, ctx->trainerAIData.attacker);
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, partner, BMON_DATA_TYPE_1, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, partner, BMON_DATA_TYPE_1, NULL);
         break;
 
     case LOAD_DEFENDER_PARTNER_TYPE_1:
         partner = BattleSystem_GetBattlerIdPartner(battleSystem, ctx->trainerAIData.defender);
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, partner, BMON_DATA_TYPE_1, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, partner, BMON_DATA_TYPE_1, NULL);
         break;
 
     case LOAD_ATTACKER_PARTNER_TYPE_2:
         partner = BattleSystem_GetBattlerIdPartner(battleSystem, ctx->trainerAIData.attacker);
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, partner, BMON_DATA_TYPE_2, NULL);
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, partner, BMON_DATA_TYPE_2, NULL);
         break;
 
     case LOAD_DEFENDER_PARTNER_TYPE_2:
         partner = BattleSystem_GetBattlerIdPartner(battleSystem, ctx->trainerAIData.defender);
-        ctx->trainerAIData.calcTemp = GetBattlerVar(ctx, partner, BMON_DATA_TYPE_1, NULL); // BUG: Checks type 1 again instead of type 2.
+        ctx->trainerAIData.calcTemp = BattleMon_Get(ctx, partner, BMON_DATA_TYPE_1, NULL); // BUG: Checks type 1 again instead of type 2.
         break;
 
     default:
@@ -901,7 +901,7 @@ void AICmd_FlagBattlerIsType(BattleSystem *battleSystem, BattleContext *ctx) {
     int type = AIScript_Read(ctx);
     u8 battler = AIScript_Battler(ctx, inBattler);
 
-    if (GetBattlerVar(ctx, battler, BMON_DATA_TYPE_1, NULL) == type || GetBattlerVar(ctx, battler, BMON_DATA_TYPE_2, NULL) == type) {
+    if (BattleMon_Get(ctx, battler, BMON_DATA_TYPE_1, NULL) == type || BattleMon_Get(ctx, battler, BMON_DATA_TYPE_2, NULL) == type) {
         ctx->trainerAIData.calcTemp = TRUE;
     } else {
         ctx->trainerAIData.calcTemp = FALSE;
@@ -942,7 +942,7 @@ void AICmd_FlagMoveDamageScore(BattleSystem *battleSystem, BattleContext *ctx) {
         || (ctx->trainerAIData.moveData[ctx->trainerAIData.move].power > 1 && sNoDamageCalcMoveEffects[noDamageCalcIndex] == 0xFFFF)) {
         int i;
         for (i = 0; i < NUM_STATS; i++) {
-            ivs[i] = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + i, NULL);
+            ivs[i] = BattleMon_Get(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + i, NULL);
         }
 
         TrainerAI_CalcAllDamage(battleSystem,
@@ -1443,7 +1443,7 @@ void AICmd_IfCurrentMoveKOs(BattleSystem *battleSystem, BattleContext *ctx) {
         || (ctx->trainerAIData.moveData[ctx->trainerAIData.move].power > 1 && sNoDamageCalcMoveEffects[noDamageCalcIndex] == 0xFFFF)) {
         u8 ivs[NUM_STATS];
         for (int stat = STAT_HP; stat < NUM_STATS; stat++) {
-            ivs[stat] = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + stat, NULL);
+            ivs[stat] = BattleMon_Get(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + stat, NULL);
         }
 
         u32 damage = TrainerAI_CalcDamage(battleSystem,
@@ -1495,7 +1495,7 @@ void AICmd_IfCurrentMoveDoesNotKO(BattleSystem *battleSystem, BattleContext *ctx
         || (ctx->trainerAIData.moveData[ctx->trainerAIData.move].power > 1 && sNoDamageCalcMoveEffects[noDamageCalcIndex] == 0xFFFF)) {
         u8 ivs[NUM_STATS];
         for (int stat = STAT_HP; stat < NUM_STATS; stat++) {
-            ivs[stat] = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + stat, NULL);
+            ivs[stat] = BattleMon_Get(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + stat, NULL);
         }
 
         u32 damage = TrainerAI_CalcDamage(battleSystem,
@@ -1992,7 +1992,7 @@ void AICmd_IfPartyMemberDealsMoreDamage(BattleSystem *battleSystem, BattleContex
     battler = ctx->trainerAIData.attacker;
 
     for (i = 0; i < NUM_STATS; i++) {
-        ivs[i] = GetBattlerVar(ctx, battler, BMON_DATA_HP_IV + i, NULL);
+        ivs[i] = BattleMon_Get(ctx, battler, BMON_DATA_HP_IV + i, NULL);
     }
 
     activeMonDamage = TrainerAI_CalcAllDamage(battleSystem,
@@ -2070,7 +2070,7 @@ void AICmd_IfBattlerDealsMoreDamage(BattleSystem *battleSystem, BattleContext *c
     jump = AIScript_Read(ctx);
 
     for (i = 0; i < NUM_STATS; i++) {
-        ivs[i] = GetBattlerVar(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + i, NULL);
+        ivs[i] = BattleMon_Get(ctx, ctx->trainerAIData.attacker, BMON_DATA_HP_IV + i, NULL);
     }
 
     aiDamage = TrainerAI_CalcAllDamage(battleSystem,
@@ -2259,7 +2259,7 @@ void AICmd_CheckIfHighestDamageWithPartner(BattleSystem *battleSystem, BattleCon
 
         for (j = 0; j < MAX_BATTLERS_PER_SIDE; j++) {
             for (i = STAT_HP; i < NUM_STATS; i++) {
-                ivs[i] = GetBattlerVar(ctx, battler, BMON_DATA_HP_IV + i, NULL);
+                ivs[i] = BattleMon_Get(ctx, battler, BMON_DATA_HP_IV + i, NULL);
             }
 
             TrainerAI_CalcAllDamage(battleSystem,
@@ -3175,8 +3175,8 @@ static BOOL AI_CannotDamageWonderGuard(BattleSystem *battleSystem, BattleContext
                             GetMonData(mon, MON_DATA_ABILITY, NULL),
                             GetBattlerAbility(ctx, battler ^ 1),
                             GetBattlerHeldItemEffect(ctx, battler ^ 1),
-                            GetBattlerVar(ctx, battler ^ 1, BMON_DATA_TYPE_1, NULL),
-                            GetBattlerVar(ctx, battler ^ 1, BMON_DATA_TYPE_2, NULL),
+                            BattleMon_Get(ctx, battler ^ 1, BMON_DATA_TYPE_1, NULL),
+                            BattleMon_Get(ctx, battler ^ 1, BMON_DATA_TYPE_2, NULL),
                             &effectiveness);
 
                         // If this party member has a super-effective move, switch 2/3 of the time.
@@ -3294,8 +3294,8 @@ static BOOL AI_OnlyIneffectiveMoves(BattleSystem *battleSystem, BattleContext *c
                             GetMonData(mon, MON_DATA_ABILITY, NULL),
                             GetBattlerAbility(ctx, defender1),
                             GetBattlerHeldItemEffect(ctx, defender1),
-                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_1, NULL),
-                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_2, NULL),
+                            BattleMon_Get(ctx, defender1, BMON_DATA_TYPE_1, NULL),
+                            BattleMon_Get(ctx, defender1, BMON_DATA_TYPE_2, NULL),
                             &effectiveness);
                     }
 
@@ -3312,8 +3312,8 @@ static BOOL AI_OnlyIneffectiveMoves(BattleSystem *battleSystem, BattleContext *c
                             GetMonData(mon, MON_DATA_ABILITY, NULL),
                             GetBattlerAbility(ctx, defender2),
                             GetBattlerHeldItemEffect(ctx, defender2),
-                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_1, NULL),
-                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_2, NULL),
+                            BattleMon_Get(ctx, defender2, BMON_DATA_TYPE_1, NULL),
+                            BattleMon_Get(ctx, defender2, BMON_DATA_TYPE_2, NULL),
                             &effectiveness);
                     }
 
@@ -3353,8 +3353,8 @@ static BOOL AI_OnlyIneffectiveMoves(BattleSystem *battleSystem, BattleContext *c
                             GetMonData(mon, MON_DATA_ABILITY, NULL),
                             GetBattlerAbility(ctx, defender1),
                             GetBattlerHeldItemEffect(ctx, defender1),
-                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_1, NULL),
-                            GetBattlerVar(ctx, defender1, BMON_DATA_TYPE_2, NULL),
+                            BattleMon_Get(ctx, defender1, BMON_DATA_TYPE_1, NULL),
+                            BattleMon_Get(ctx, defender1, BMON_DATA_TYPE_2, NULL),
                             &effectiveness);
                     }
 
@@ -3371,8 +3371,8 @@ static BOOL AI_OnlyIneffectiveMoves(BattleSystem *battleSystem, BattleContext *c
                             GetMonData(mon, MON_DATA_ABILITY, NULL),
                             GetBattlerAbility(ctx, defender2),
                             GetBattlerHeldItemEffect(ctx, defender2),
-                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_1, NULL),
-                            GetBattlerVar(ctx, defender2, BMON_DATA_TYPE_2, NULL),
+                            BattleMon_Get(ctx, defender2, BMON_DATA_TYPE_1, NULL),
+                            BattleMon_Get(ctx, defender2, BMON_DATA_TYPE_2, NULL),
                             &effectiveness);
                     }
 
@@ -3630,8 +3630,8 @@ static BOOL AI_HasPartyMemberWithSuperEffectiveMove(BattleSystem *battleSystem, 
                             GetMonData(mon, MON_DATA_ABILITY, NULL),
                             GetBattlerAbility(ctx, ctx->moveNoHitBattler[battler]),
                             GetBattlerHeldItemEffect(ctx, ctx->moveNoHitBattler[battler]),
-                            GetBattlerVar(ctx, ctx->moveNoHitBattler[battler], BMON_DATA_TYPE_1, NULL),
-                            GetBattlerVar(ctx, ctx->moveNoHitBattler[battler], BMON_DATA_TYPE_2, NULL),
+                            BattleMon_Get(ctx, ctx->moveNoHitBattler[battler], BMON_DATA_TYPE_1, NULL),
+                            BattleMon_Get(ctx, ctx->moveNoHitBattler[battler], BMON_DATA_TYPE_2, NULL),
                             &effectiveness);
 
                         if ((effectiveness & MOVE_STATUS_SUPER_EFFECTIVE) && BattleSystem_Random(battleSystem) % rand == 0) {
@@ -3746,7 +3746,7 @@ static BOOL TrainerAI_ShouldSwitch(BattleSystem *battleSystem, BattleContext *ct
         || CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE, battler, ABILITY_SHADOW_TAG)
         || CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE, battler, ABILITY_ARENA_TRAP)
         || (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_NOT_USER, battler, ABILITY_MAGNET_PULL)
-        && (GetBattlerVar(ctx, battler, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || GetBattlerVar(ctx, battler, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL))) {
+        && (BattleMon_Get(ctx, battler, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || BattleMon_Get(ctx, battler, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL))) {
         return FALSE;
     }
 

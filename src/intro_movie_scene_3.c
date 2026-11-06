@@ -1,6 +1,6 @@
 #include "global.h"
 
-#include "files/demo/opening/gs_opening.naix"
+#include "demo/opening/gs_opening.naix"
 
 #include "gf_3d_render.h"
 #include "gf_gfx_loader.h"

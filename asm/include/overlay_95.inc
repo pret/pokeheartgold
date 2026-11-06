@@ -33,7 +33,7 @@
 .public PokepicManager_DrawAll
 .public PokepicManager_Delete
 .public Pokepic_StartAnim
-.public Pokepic_IsAnimFinished
+.public Pokepic_IsAnimActive
 .public PokepicManager_CreatePokepic
 .public Pokepic_Delete
 .public Pokepic_SetAttr

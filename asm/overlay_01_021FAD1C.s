@@ -394,11 +394,11 @@ _021FAFB2:
 _021FAFBE:
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x54]
-	bl sub_02020B94
+	bl FX_Max
 	add r5, r0, #0
 	ldr r0, [sp, #4]
 	ldr r1, [sp, #0x54]
-	bl sub_02020B8C
+	bl FX_Min
 	sub r7, r5, r0
 	mov r5, #1
 	cmp r4, #1
@@ -411,13 +411,13 @@ _021FAFD8:
 	add r2, sp, #0x54
 	ldr r0, [sp, #4]
 	ldr r1, [r2, r1]
-	bl sub_02020B94
+	bl FX_Max
 	str r0, [sp, #0x24]
 	ldr r1, [sp, #0x20]
 	add r2, sp, #0x54
 	ldr r0, [sp, #4]
 	ldr r1, [r2, r1]
-	bl sub_02020B8C
+	bl FX_Min
 	ldr r1, [sp, #0x24]
 	sub r0, r1, r0
 	cmp r7, r0

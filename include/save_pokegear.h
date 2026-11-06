@@ -14,9 +14,7 @@
 
 #define MOMS_BALANCE_MAX 999999
 
-typedef struct PhoneContact {
-    u8 id;
-} PhoneContact;
+typedef u8 PhoneContact;
 
 typedef struct PhoneRematch {
     u16 seeking : 1;

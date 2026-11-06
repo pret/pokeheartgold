@@ -169,7 +169,7 @@ _021E5A52:
 	bl ov104_021E5BEC
 	add r0, r7, #0
 	mov r1, #0x95
-	bl sub_020880CC
+	bl App_StartScreenFade
 	add r0, r7, #0
 	str r0, [r6]
 _021E5A64:

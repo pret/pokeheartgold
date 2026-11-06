@@ -7900,7 +7900,7 @@ ov45_0222D638: ; 0x0222D638
 	cmp r5, #0
 	beq _0222D6AE
 	add r0, r5, #0
-	bl LocationGmmDatRegionCountGetByCountryMsgNo
+	bl GeonetLocations_GetLocationCountFromCountry
 	cmp r4, r0
 	bhi _0222D6AE
 	mov r1, #0
@@ -8099,7 +8099,7 @@ _0222D76C:
 ov45_0222D79C: ; 0x0222D79C
 	push {r4, lr}
 	add r4, r1, #0
-	bl LocationGmmDatRegionCountGetByCountryMsgNo
+	bl GeonetLocations_GetLocationCountFromCountry
 	cmp r0, #0
 	bne _0222D7B0
 	cmp r4, #0
@@ -14791,7 +14791,7 @@ _02230774:
 	bl GF2dGfxRawResMan_GetObjById
 	bl GF2dGfxRawResObj_GetData
 	add r1, sp, #0x40
-	bl sub_02026E18
+	bl BillboardGfxSequence_SetData
 	ldrh r0, [r6, #2]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x1f
@@ -16012,8 +16012,8 @@ _02231060:
 	cmp r7, #0
 	bne _022310AC
 	add r0, r5, #0
-	bl LocationGmmDatIndexGetByCountryMsgNo
-	bl LocationGmmDatGetEarthPlaceDatId
+	bl GeonetLocations_GetIndexFromCountry
+	bl GeonetLocations_GetNarcMemberIndex
 	mov r2, #0
 	add r1, r0, #0
 	str r2, [sp]

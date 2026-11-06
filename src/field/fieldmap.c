@@ -11,6 +11,7 @@
 #include "field/dynamic_terrain_height.h"
 #include "field/field_3d_object_task.h"
 #include "field/field_control.h"
+#include "field/fog.h"
 #include "field/hblank_system.h"
 #include "field/map_load_manager.h"
 #include "field/map_prop_animation.h"
@@ -21,6 +22,7 @@
 #include "field/overlay_01_021FD1B8.h"
 #include "field/overlay_01_02204004.h"
 #include "field/signpost.h"
+#include "field/weather_manager.h"
 #include "overlay_2/overlay_02_02248728.h"
 
 #include "bg_window.h"
@@ -41,8 +43,6 @@
 #include "obj_char_transfer.h"
 #include "obj_pltt_transfer.h"
 #include "overlay_01.h"
-#include "overlay_01_021EA824.h"
-#include "overlay_01_021EB1E8.h" // replace with field/weather_manager
 #include "overlay_01_021F1348.h"
 #include "overlay_01_021F6830.h"
 #include "overlay_01_021F8D80.h"
@@ -770,6 +770,9 @@ static void ov01_021E6580(FieldSystem *fieldSystem) {
     Gymmick_Init(fieldSystem);
     Main_SetVBlankIntrCB(FieldMap_VBlankCallback, fieldSystem);
 }
+
+// This will eventually be included in the NitroSDK subproject
+extern int CARD_SpiWaitGetStatus();
 
 static BOOL ov01_021E662C(void) {
     CARD_SpiWaitGetStatus();

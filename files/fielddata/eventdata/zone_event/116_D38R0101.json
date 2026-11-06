@@ -1,136 +1,136 @@
 {
-  "header": "fielddata/script/scr_seq/event_D38R0101.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d38r0101_hyper_potion",
-      "type": 2,
-      "x": 27,
-      "z": 42,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d38r0101_revive",
-      "type": 2,
-      "x": 58,
-      "z": 46,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_EVERYWHERE_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0101_ETHER",
-      "scriptId": "std_itemball_d38r0101_ether",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 34,
-      "z": 20,
-      "y": 0
-    },
-    {
-      "id": "obj_EVERYWHERE_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0101_REVIVE",
-      "scriptId": "std_itemball_d38r0101_revive",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 67,
-      "z": 30,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 20,
-      "z": 46,
-      "header": "MAP_ROUTE_42",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 45,
-      "z": 50,
-      "header": "MAP_ROUTE_42",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 59,
-      "z": 53,
-      "header": "MAP_ROUTE_42",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 70,
-      "z": 46,
-      "header": "MAP_ROUTE_42",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 34,
-      "z": 31,
-      "header": "MAP_MOUNT_MORTAR_1F_BACK",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 56,
-      "z": 31,
-      "header": "MAP_MOUNT_MORTAR_1F_BACK",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 81,
-      "z": 31,
-      "header": "MAP_MOUNT_MORTAR_1F_BACK",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 26,
-      "z": 14,
-      "header": "MAP_MOUNT_MORTAR_1F_BACK",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 69,
-      "z": 15,
-      "header": "MAP_MOUNT_MORTAR_1F_BACK",
-      "anchor": 5,
-      "y": 0
-    },
-    {
-      "x": 45,
-      "z": 2,
-      "header": "MAP_MOUNT_MORTAR_2F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 45,
-      "z": 44,
-      "header": "MAP_MOUNT_MORTAR_B1F",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D38R0101.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d38r0101_hyper_potion",
+            "type": 2,
+            "x": 27,
+            "z": 42,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d38r0101_revive",
+            "type": 2,
+            "x": 58,
+            "z": 46,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_EVERYWHERE_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0101_ETHER",
+            "scriptId": "std_itemball_d38r0101_ether",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 34,
+            "z": 20,
+            "y": 0
+        },
+        {
+            "id": "obj_EVERYWHERE_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D38R0101_REVIVE",
+            "scriptId": "std_itemball_d38r0101_revive",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 67,
+            "z": 30,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 20,
+            "z": 46,
+            "header": "MAP_ROUTE_42",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 45,
+            "z": 50,
+            "header": "MAP_ROUTE_42",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 59,
+            "z": 53,
+            "header": "MAP_ROUTE_42",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 70,
+            "z": 46,
+            "header": "MAP_ROUTE_42",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 34,
+            "z": 31,
+            "header": "MAP_MOUNT_MORTAR_1F_BACK",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 56,
+            "z": 31,
+            "header": "MAP_MOUNT_MORTAR_1F_BACK",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 81,
+            "z": 31,
+            "header": "MAP_MOUNT_MORTAR_1F_BACK",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 26,
+            "z": 14,
+            "header": "MAP_MOUNT_MORTAR_1F_BACK",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 69,
+            "z": 15,
+            "header": "MAP_MOUNT_MORTAR_1F_BACK",
+            "anchor": 5,
+            "y": 0
+        },
+        {
+            "x": 45,
+            "z": 2,
+            "header": "MAP_MOUNT_MORTAR_2F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 45,
+            "z": 44,
+            "header": "MAP_MOUNT_MORTAR_B1F",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

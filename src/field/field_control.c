@@ -715,7 +715,7 @@ static BOOL FieldSystem_CheckTransition(FieldSystem *fieldSystem, int x, int z, 
         } else if (facingDirection == DIR_EAST) {
             dir = DIR_WEST;
         } else {
-            GF_AssertFail();
+            GF_ASSERT(FALSE);
             return FALSE;
         }
         NewFieldTransitionEnvironment(fieldSystem, location.mapId, location.warpId, 0, 0, dir, 2);
@@ -723,7 +723,7 @@ static BOOL FieldSystem_CheckTransition(FieldSystem *fieldSystem, int x, int z, 
     } else if (MetatileBehavior_IsEscalator(metatileBehavior) == TRUE) {
         facingDirection = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         if (facingDirection != DIR_WEST && facingDirection != DIR_EAST) {
-            GF_AssertFail();
+            GF_ASSERT(FALSE);
             return FALSE;
         }
         NewFieldTransitionEnvironment(fieldSystem, location.mapId, location.warpId, 0, 0, facingDirection, 2);
@@ -917,9 +917,7 @@ static BOOL FieldSystem_MapConnection(FieldSystem *fieldSystem, int x, int z, Lo
     }
 
     if (warpEvent->anchor == 0x100) {
-        if (warpEvent->header != 0xFFF) {
-            GF_AssertFail();
-        }
+        GF_ASSERT(warpEvent->header == 0xFFF);
         *location = *LocalFieldData_GetDynamicWarp(Save_LocalFieldData_Get(fieldSystem->saveData));
     } else {
         SetLocation(location, warpEvent->header, warpEvent->anchor, warpEvent->x, warpEvent->z, 1);
@@ -1106,8 +1104,8 @@ static void FieldSystem_ProcessSoundplateAtCoords(FieldSystem *fieldSystem, int 
                     GF_SndHandleMoveVolume(0, sBGMVolume[volumeIndex], 15);
                     GF_SndHandleMoveVolume(5, sSoundplateVolume[soundplateStruct->soundplates[z].soundplateSoundID][soundplateStruct->soundplates[z].volumeIndex], 5);
                 }
-            } else if (z >= SOUNDPLATE_SOUND_MAX) {
-                GF_AssertFail();
+            } else {
+                GF_ASSERT(z < SOUNDPLATE_SOUND_MAX);
             }
         }
     } else {

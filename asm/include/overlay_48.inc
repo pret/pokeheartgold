@@ -50,7 +50,7 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E5D4
+.public ClearWindowPixelBuffer
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
@@ -139,9 +139,9 @@
 .public WifiHistory_GetPlayerCountry
 .public WiFiHistory_GetPlayerRegion
 .public sub_0203A880
-.public LocationGmmDatCountGet
-.public LocationGmmDatGetCountryMsgNo
-.public LocationGmmDatGetEarthPlaceDatId
+.public GeonetLocations_GetLocationListCount
+.public GeonetLocations_GetCountry
+.public GeonetLocations_GetNarcMemberIndex
 .public NNS_G2dInitOamManagerModule
 .public NNS_G3dGlbLightVector
 .public MTX_Identity33_

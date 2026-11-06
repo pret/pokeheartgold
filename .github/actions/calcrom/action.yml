@@ -14,11 +14,11 @@ inputs:
   arm9subdir:
     description: |
       Subdirectory containing ARM9 sources
-    default: ''
+    default: '""'
   arm7subdir:
     description: |
       Subdirectory containing ARM7 sources
-    default: subprojects/NitroSDK-4.2.30001/components
+    default: ''
   arm9stem:
     description: |
       Name of the ARM9 binary
@@ -40,7 +40,7 @@ runs:
     - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       with:
         repository: PikalaxALT/pokeheartgold-calcrom
-        ref: 12c8060ece68e3a1fe30c17bc05ca4477b0ef432 # v0.1.2
+        ref: 3579b8f68bba183c8a2b78a60d109dec352893a3 # v0.1.3
         path: calcrom
     - uses: actions-rust-lang/setup-rust-toolchain@166cdcfd11aee3cb47222f9ddb555ce30ddb9659 # v1.17.0
       with:
@@ -52,8 +52,8 @@ runs:
         echo 'calcrom_output<<EOF' >> "$GITHUB_OUTPUT"
         cargo run --manifest-path calcrom/Cargo.toml ${{ runner.debug || '--release' }} -- \
           -d "${{ inputs.repodir }}" \
-          -9 "${{ inputs.arm9subdir }}" \
-          -7 "${{ inputs.arm7subdir }}" \
+          ${{ inputs.arm9subdir && '-9' || '' }} ${{ inputs.arm9subdir }} \
+          ${{ inputs.arm7subdir && '-7' || '' }} ${{ inputs.arm7subdir }} \
           -m "${{ inputs.arm9stem }}" \
           -s "${{ inputs.arm7stem }}" \
           ${{ inputs.romnames }} | tee -a "$GITHUB_OUTPUT"

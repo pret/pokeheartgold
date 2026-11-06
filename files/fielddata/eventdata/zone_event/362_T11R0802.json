@@ -1,108 +1,108 @@
 {
-  "header": "fielddata/script/scr_seq/event_T11R0802.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T11R0802_001 + 1",
-      "type": 0,
-      "x": 9,
-      "z": 4,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T11R0802_002 + 1",
-      "type": 0,
-      "x": 10,
-      "z": 4,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T11R0802_006 + 1",
-      "type": 0,
-      "x": 4,
-      "z": 7,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T11R0802_gsgirl1",
-      "spriteId": "SPRITE_GSGIRL1",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T11R0802_000 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_T11R0802_mono_pip",
-      "spriteId": "SPRITE_MONO_PIP",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL",
-      "scriptId": 0,
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_T11R0802_jupetta",
-      "spriteId": "SPRITE_JUPETTA",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T11R0802_003 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T11R0802_var_1",
-      "spriteId": "SPRITE_VAR_1",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T11R0802_000 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 7,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 5,
-      "z": 3,
-      "header": "MAP_SAFFRON_COPYCAT_HOUSE_1F",
-      "anchor": 1,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T11R0802.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T11R0802_001 + 1",
+            "type": 0,
+            "x": 9,
+            "z": 4,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T11R0802_002 + 1",
+            "type": 0,
+            "x": 10,
+            "z": 4,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T11R0802_006 + 1",
+            "type": 0,
+            "x": 4,
+            "z": 7,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T11R0802_gsgirl1",
+            "spriteId": "SPRITE_GSGIRL1",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T11R0802_000 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_T11R0802_mono_pip",
+            "spriteId": "SPRITE_MONO_PIP",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_SAFFRON_CITY_COPYCAT_HOUSE_CLEFAIRY_DOLL",
+            "scriptId": 0,
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_T11R0802_jupetta",
+            "spriteId": "SPRITE_JUPETTA",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T11R0802_003 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T11R0802_var_1",
+            "spriteId": "SPRITE_VAR_1",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T11R0802_000 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 7,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 5,
+            "z": 3,
+            "header": "MAP_SAFFRON_COPYCAT_HOUSE_1F",
+            "anchor": 1,
+            "y": 0
+        }
+    ]
 }

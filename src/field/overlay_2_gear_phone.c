@@ -51,7 +51,7 @@ static const UnkStruct_02253C86 ov02_02253C84[] = {
     { PHONE_CONTACT_MOTHER,    0, PHONE_SCRIPT_027,  FALSE, 0 }
 };
 
-static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
+static u8 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static u8 ov02_02252218(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId);
 static void ov02_022522AC(GearPhoneRingManager *gearPhone, BOOL a1);
@@ -142,23 +142,32 @@ BOOL ov02_02251F20(GearPhoneRingManager *gearPhone) {
     return FALSE;
 }
 
-#ifdef NONMATCHING
-// FIXME: https://decomp.me/scratch/KW1m7 down to stack swaps between bugContestFlag and var -adrienn
-static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
+static inline u16 ov02_02251FDC_sub(u16 a0) {
+    u32 r4 = a0 * 100;
+    u32 r0 = MTRandom() % r4;
+    return r0 / 100;
+}
+
+static u8 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
+    u8 i;
+    u8 slot;
+    u8 index;
     u8 ret;
     u8 var;
-    u8 bugContestFlag;
+    PhoneContact *ptr;
     PhoneContact *contact;
-
     SaveVarsFlags *varsFlags = Save_VarsFlags_Get(gearPhone->saveData);
-    Save_PlayerData_GetProfile(gearPhone->saveData);
+    PlayerProfile *playerProfile = Save_PlayerData_GetProfile(gearPhone->saveData);
     SAVE_MISC_DATA *miscData = Save_Misc_Get(gearPhone->saveData);
-    u32 slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
-    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_FIELD1);
-    u8 *ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, slot);
-    MI_CpuFill8(ptr, 0xFF, slot);
-    u16 rand = LCRandom() % 1000;
 
+    slot = SavePokegear_FindEmptyPhonebookSlot(gearPhone->pokegearData);
+
+    contact = SavePokegear_AllocAndCopyPhonebook(gearPhone->pokegearData, HEAP_ID_FIELD1);
+
+    ptr = Heap_AllocAtEnd(HEAP_ID_FIELD1, slot);
+    MI_CpuFill8(ptr, 0xFF, slot);
+
+    u16 rand = LCRandom() % 1000;
     if (rand < 500) {
         var = 0;
     } else if (rand < 800) {
@@ -167,292 +176,67 @@ static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, 
         var = 2;
     }
 
-    u8 index = 0;
-    for (u8 i = 0; i < slot; i++) {
-        u8 id = contact[i].id;
-        if (phoneBook->entries[id].unkF == var) {
-            // doesn't match with a switch statement
-            if (phoneBook->entries[id].type == 0 || phoneBook->entries[id].type == 12 || phoneBook->entries[id].type == 11 || phoneBook->entries[id].type == 10 || phoneBook->entries[id].type == 14) {
-                ptr[index++] = id;
-            }
+    index = 0;
+    for (i = 0; i < slot; i++) {
+        if (phoneBook->entries[contact[i]].unkF != var) {
+            continue;
+        }
+
+        if (phoneBook->entries[contact[i]].type == 0 || phoneBook->entries[contact[i]].type == 12 || phoneBook->entries[contact[i]].type == 11 || phoneBook->entries[contact[i]].type == 10 || phoneBook->entries[contact[i]].type == 14) {
+            ptr[index++] = contact[i];
         }
     }
-
     if (index == 0) {
+
         Heap_Free(contact);
         Heap_Free(ptr);
-        return 0;
+        return FALSE;
     }
 
     MI_CpuFill8(contact, 0xFF, slot);
+
+    u8 r0 = 0, slot2;
     SysInfo_RTC *rtc = Save_SysInfo_RTC_Get(gearPhone->saveData);
     u8 hour = rtc->time.hour;
-    bugContestFlag = Save_VarsFlags_CheckBugContestFlag(varsFlags);
+    u8 bugContestFlag = Save_VarsFlags_CheckBugContestFlag(varsFlags);
     ret = 0;
 
-    if (sub_0202AAD4(miscData, var) == index) {
+    r0 = sub_0202AAD4(miscData, var);
+
+    if (r0 == index) {
         sub_0202AA9C(miscData, var);
     }
 
-    for (u8 j = 0; j < index; j++) {
-        if (mapId == phoneBook->entries[ptr[j]].mapId || sub_0202AA44(miscData, var, ptr[j]) || (ptr[j] == 8 && (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags)))) {
+    for (i = 0; i < index; i++) {
+        if (phoneBook->entries[ptr[i]].mapId == mapId) {
             continue;
         }
-        if (phoneBook->entries[ptr[j]].mapId != MAP_NATIONAL_PARK || !bugContestFlag) {
-            contact[ret++].id = ptr[j];
+        if (sub_0202AA44(miscData, var, ptr[i])) {
+            continue;
         }
-    }
+        if (ptr[i] == PHONE_CONTACT_BUENA) {
 
+            if (sub_02095FF8(hour) || Save_VarsFlags_IsInRocketTakeover(varsFlags)) {
+                continue;
+            }
+        }
+        if (phoneBook->entries[ptr[i]].mapId == MAP_NATIONAL_PARK && bugContestFlag) {
+            continue;
+        }
+        contact[ret++] = ptr[i];
+    }
     if (ret != 0) {
-        slot = (MTRandom() % (ret * 100));
-        rand = slot / 100;
-        GearPhoneRingManager_SetCallerParams(gearPhone, contact[(u8)rand].id, var, index, 0, 0);
-        GearPhoneRingManager_StartRinging(gearPhone);
-        ov02_022522AC(gearPhone, 1);
-    }
 
+        slot2 = ov02_02251FDC_sub(ret);
+        GearPhoneRingManager_SetCallerParams(gearPhone, contact[slot2], var, index, 0, 0);
+        GearPhoneRingManager_StartRinging(gearPhone);
+        ov02_022522AC(gearPhone, TRUE);
+    }
     Heap_Free(contact);
     Heap_Free(ptr);
 
     return ret;
 }
-#else
-// clang-format off
-extern u32 _u32_div_f(u32 a1, u32 a2);
-extern s32 _s32_div_f(s32 a1, s32 a2);
-asm static u32 ov02_02251FDC(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
-    push {r3, r4, r5, r6, r7, lr}
-	sub sp, #0x30
-	str r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	add r6, r1, #0
-	str r2, [sp, #0xc]
-	bl Save_VarsFlags_Get
-	str r0, [sp, #0x1c]
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	bl Save_PlayerData_GetProfile
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	bl Save_Misc_Get
-	str r0, [sp, #0x18]
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x30]
-	bl SavePokegear_FindEmptyPhonebookSlot
-	str r0, [sp, #0x2c]
-	ldr r0, [sp, #8]
-	mov r1, #4
-	ldr r0, [r0, #0x30]
-	bl SavePokegear_AllocAndCopyPhonebook
-	str r0, [sp, #0x20]
-	ldr r1, [sp, #0x2c]
-	mov r0, #4
-	bl Heap_AllocAtEnd
-	ldr r2, [sp, #0x2c]
-	mov r1, #0xff
-	add r4, r0, #0
-	bl MI_CpuFill8
-	bl LCRandom
-	mov r1, #0xfa
-	lsl r1, r1, #2
-	bl _s32_div_f
-	lsl r0, r1, #0x10
-	lsr r1, r0, #0x10
-	mov r0, #0x7d
-	lsl r0, r0, #2
-	cmp r1, r0
-	bhs _02252046
-	mov r0, #0
-	str r0, [sp, #0x24]
-	b _02252058
-_02252046:
-	mov r0, #0x32
-	lsl r0, r0, #4
-	cmp r1, r0
-	bhs _02252054
-	mov r0, #1
-	str r0, [sp, #0x24]
-	b _02252058
-_02252054:
-	mov r0, #2
-	str r0, [sp, #0x24]
-_02252058:
-	ldr r0, [sp, #0x2c]
-	mov r7, #0
-	add r2, r7, #0
-	cmp r0, #0
-	bls _022520A2
-_02252062:
-	ldr r0, [sp, #0x20]
-	mov r1, #0x14
-	ldrb r3, [r0, r2]
-	ldr r0, [r6, #4]
-	mul r1, r3
-	add r5, r0, r1
-	ldrb r1, [r5, #0xf]
-	ldr r0, [sp, #0x24]
-	cmp r0, r1
-	bne _02252096
-	ldrb r0, [r5, #1]
-	cmp r0, #0
-	beq _0225208C
-	cmp r0, #0xc
-	beq _0225208C
-	cmp r0, #0xb
-	beq _0225208C
-	cmp r0, #0xa
-	beq _0225208C
-	cmp r0, #0xe
-	bne _02252096
-_0225208C:
-	add r1, r7, #1
-	add r0, r7, #0
-	lsl r1, r1, #0x18
-	lsr r7, r1, #0x18
-	strb r3, [r4, r0]
-_02252096:
-	add r0, r2, #1
-	lsl r0, r0, #0x18
-	lsr r2, r0, #0x18
-	ldr r0, [sp, #0x2c]
-	cmp r2, r0
-	blo _02252062
-_022520A2:
-	cmp r7, #0
-	bne _022520B8
-	ldr r0, [sp, #0x20]
-	bl Heap_Free
-	add r0, r4, #0
-	bl Heap_Free
-	add sp, #0x30
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_022520B8:
-	ldr r0, [sp, #0x20]
-	ldr r2, [sp, #0x2c]
-	mov r1, #0xff
-	bl MI_CpuFill8
-	ldr r0, [sp, #8]
-	ldr r0, [r0, #0x38]
-	bl Save_SysInfo_RTC_Get
-	ldr r0, [r0, #0x14]
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x14]
-	ldr r0, [sp, #0x1c]
-	bl Save_VarsFlags_CheckBugContestFlag
-	lsl r0, r0, #0x18
-	lsr r0, r0, #0x18
-	str r0, [sp, #0x10]
-	mov r0, #0
-	str r0, [sp, #0x28]
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	bl sub_0202AAD4
-	cmp r0, r7
-	bne _022520F6
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	bl sub_0202AA9C
-_022520F6:
-	mov r5, #0
-	cmp r7, #0
-	bls _02252164
-_022520FC:
-	ldrb r2, [r4, r5]
-	mov r1, #0x14
-	ldr r0, [r6, #4]
-	mul r1, r2
-	add r0, r0, r1
-	ldrh r1, [r0, #6]
-	ldr r0, [sp, #0xc]
-	cmp r0, r1
-	beq _0225215A
-	ldr r0, [sp, #0x18]
-	ldr r1, [sp, #0x24]
-	bl sub_0202AA44
-	cmp r0, #0
-	bne _0225215A
-	ldrb r0, [r4, r5]
-	cmp r0, #8
-	bne _02252134
-	ldr r0, [sp, #0x14]
-	bl sub_02095FF8
-	cmp r0, #0
-	bne _0225215A
-	ldr r0, [sp, #0x1c]
-	bl Save_VarsFlags_IsInRocketTakeover
-	cmp r0, #0
-	bne _0225215A
-_02252134:
-	ldrb r1, [r4, r5]
-	mov r2, #0x14
-	ldr r0, [r6, #4]
-	mul r2, r1
-	add r0, r0, r2
-	ldrh r0, [r0, #6]
-	cmp r0, #0x60
-	bne _0225214A
-	ldr r0, [sp, #0x10]
-	cmp r0, #0
-	bne _0225215A
-_0225214A:
-	ldr r0, [sp, #0x28]
-	add r2, r0, #0
-	add r2, r2, #1
-	lsl r2, r2, #0x18
-	lsr r2, r2, #0x18
-	str r2, [sp, #0x28]
-	ldr r2, [sp, #0x20]
-	strb r1, [r2, r0]
-_0225215A:
-	add r0, r5, #1
-	lsl r0, r0, #0x18
-	lsr r5, r0, #0x18
-	cmp r5, r7
-	blo _022520FC
-_02252164:
-	ldr r0, [sp, #0x28]
-	cmp r0, #0
-	beq _022521AC
-	bl MTRandom
-	ldr r2, [sp, #0x28]
-	mov r1, #0x64
-	mul r1, r2
-	bl _u32_div_f
-	add r0, r1, #0
-	mov r1, #0x64
-	bl _u32_div_f
-	add r1, r0, #0
-	lsl r1, r1, #0x10
-	lsr r1, r1, #0x10
-	mov r0, #0
-	lsl r1, r1, #0x18
-	str r0, [sp]
-	lsr r2, r1, #0x18
-	str r0, [sp, #4]
-	ldr r1, [sp, #0x20]
-	ldr r0, [sp, #8]
-	ldrb r1, [r1, r2]
-	ldr r2, [sp, #0x24]
-	add r3, r7, #0
-	bl GearPhoneRingManager_SetCallerParams
-	ldr r0, [sp, #8]
-	bl GearPhoneRingManager_StartRinging
-	ldr r0, [sp, #8]
-	mov r1, #1
-	bl ov02_022522AC
-_022521AC:
-	ldr r0, [sp, #0x20]
-	bl Heap_Free
-	add r0, r4, #0
-	bl Heap_Free
-	ldr r0, [sp, #0x28]
-	add sp, #0x30
-	pop {r3, r4, r5, r6, r7, pc}
-}
-// clang-format on
-#endif
 
 static u32 ov02_022521C0(GearPhoneRingManager *gearPhone, PhoneBook *phoneBook, u32 mapId) {
     u8 callTriggerID = ov02_02252218(gearPhone, phoneBook, mapId);

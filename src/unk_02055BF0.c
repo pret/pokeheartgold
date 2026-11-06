@@ -123,8 +123,8 @@ void sub_02055CD8(FieldSystem *fieldSystem, int mapID, int warpID, int x, int y,
             if (!MapHeader_IsOutdoors(mapID)) {
                 if (MapHeader_IsInBuilding(mapID)) {
                     var = 6;
-                } else if (!MapHeader_IsCave(mapID)) {
-                    GF_ASSERT(FALSE);
+                } else {
+                    GF_ASSERT(MapHeader_IsCave(mapID));
                 }
             }
         } else {

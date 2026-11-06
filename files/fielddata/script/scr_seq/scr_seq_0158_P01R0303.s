@@ -37,7 +37,7 @@ scr_seq_P01R0303_000:
 	CloseMsg
 	ApplyMovement obj_P01R0303_seaman_2, _0160
 	WaitMovement
-	SetVar VAR_UNK_40CB, 3
+	SetVar VAR_SCENE_SS_AQUA, 3
 	HidePerson obj_P01R0303_seaman_2
 	SetFlag FLAG_UNK_21A
 	ReleaseAll
@@ -65,7 +65,7 @@ _009D:
 	CloseMsg
 	ApplyMovement obj_P01R0303_seaman_2, _01AC
 	WaitMovement
-	SetVar VAR_UNK_40CB, 3
+	SetVar VAR_SCENE_SS_AQUA, 3
 	HidePerson obj_P01R0303_seaman_2
 	SetFlag FLAG_UNK_21A
 	ReleaseAll
@@ -192,7 +192,7 @@ _0247:
 	ToggleFollowingPokemonMovement 1
 	FollowingPokemonMovement 48
 _0268:
-	Compare VAR_UNK_40CB, 7
+	Compare VAR_SCENE_SS_AQUA, 7
 	GoToIfGe _0279
 	ReleaseAll
 	End

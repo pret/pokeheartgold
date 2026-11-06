@@ -2,7 +2,7 @@
   "kind": "char",
   "graphics": [
     {
-      "narc": "NARC_a_0_6_0",
+      "narc": "NARC_graphic_shop_gra",
       "file": 4,
       "compressed": false,
       "id": 0,
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "narc": "NARC_a_0_6_0",
+      "narc": "NARC_graphic_shop_gra",
       "file": 7,
       "compressed": false,
       "id": 1,
@@ -92,7 +92,7 @@
       ]
     },
     {
-      "narc": "NARC_a_0_6_0",
+      "narc": "NARC_graphic_shop_gra",
       "file": 23,
       "compressed": false,
       "id": 9,

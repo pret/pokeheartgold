@@ -1,108 +1,108 @@
 {
-  "header": "fielddata/script/scr_seq/event_R04.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_R04_000 + 1",
-      "type": 1,
-      "x": 1197,
-      "z": 114,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_r04_ultra_ball",
-      "type": 2,
-      "x": 1219,
-      "z": 109,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_r04_big_mushroom",
-      "type": 2,
-      "x": 1251,
-      "z": 123,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_R04_picnicgirl_2",
-      "spriteId": "SPRITE_PICNICGIRL_2",
-      "movement": 0,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_PICNICKER_HOPE)",
-      "facingDirection": 2,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1214,
-      "z": 115,
-      "y": 0
-    },
-    {
-      "id": "obj_R04_picnicgirl_2_2",
-      "spriteId": "SPRITE_PICNICGIRL_2",
-      "movement": 0,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_PICNICKER_SHARON)",
-      "facingDirection": 3,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1250,
-      "z": 112,
-      "y": 0
-    },
-    {
-      "id": "obj_R04_gsman2",
-      "spriteId": "SPRITE_GSMAN2",
-      "movement": 0,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_HANK)",
-      "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1236,
-      "z": 116,
-      "y": 0
-    },
-    {
-      "id": "obj_R04_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_R04_HP_UP",
-      "scriptId": "std_itemball_r04_hp_up",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1254,
-      "z": 107,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1195,
-      "z": 112,
-      "header": "MAP_MOUNT_MOON",
-      "anchor": 1,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R04.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_R04_000 + 1",
+            "type": 1,
+            "x": 1197,
+            "z": 114,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_r04_ultra_ball",
+            "type": 2,
+            "x": 1219,
+            "z": 109,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_r04_big_mushroom",
+            "type": 2,
+            "x": 1251,
+            "z": 123,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_R04_picnicgirl_2",
+            "spriteId": "SPRITE_PICNICGIRL_2",
+            "movement": 0,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_PICNICKER_HOPE)",
+            "facingDirection": 2,
+            "param0": 4,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1214,
+            "z": 115,
+            "y": 0
+        },
+        {
+            "id": "obj_R04_picnicgirl_2_2",
+            "spriteId": "SPRITE_PICNICGIRL_2",
+            "movement": 0,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_PICNICKER_SHARON)",
+            "facingDirection": 3,
+            "param0": 5,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1250,
+            "z": 112,
+            "y": 0
+        },
+        {
+            "id": "obj_R04_gsman2",
+            "spriteId": "SPRITE_GSMAN2",
+            "movement": 0,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_BIRD_KEEPER_GS_HANK)",
+            "facingDirection": 1,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1236,
+            "z": 116,
+            "y": 0
+        },
+        {
+            "id": "obj_R04_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_R04_HP_UP",
+            "scriptId": "std_itemball_r04_hp_up",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1254,
+            "z": 107,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1195,
+            "z": 112,
+            "header": "MAP_MOUNT_MOON",
+            "anchor": 1,
+            "y": 0
+        }
+    ]
 }

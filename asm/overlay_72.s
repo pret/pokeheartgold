@@ -5392,7 +5392,7 @@ _0223A330:
 	ldr r0, _0223A34C ; =0x00000E58
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0223A33E:

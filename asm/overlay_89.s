@@ -121,9 +121,9 @@ ov89_02258800: ; 0x02258800
 	bl SetKeyRepeatTimers
 	ldr r0, [r5, #8]
 	bl ov89_0225905C
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #2
 	mov r1, #0x7d
 	bl FontID_Alloc
@@ -867,7 +867,7 @@ ov89_02258F00: ; 0x02258F00
 	bl Main_SetVBlankIntrCB
 	bl HBlankInterruptDisable
 	bl GF_DestroyVramTransferManager
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0
 	bl TextFlags_SetCanABSpeedUpPrint
 	mov r0, #0
@@ -2262,7 +2262,7 @@ ov89_02259B00: ; 0x02259B00
 	ldr r2, _02259B9C ; =0x00001555
 	add r0, r4, #0
 	add r3, sp, #0x10
-	bl sub_02020E10
+	bl FX_CalcLinearFov
 	add r0, r5, #0
 	ldr r1, [sp, #0x10]
 	add r0, #0xd0

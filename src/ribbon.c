@@ -4,7 +4,7 @@
 
 #include "constants/pokemon.h"
 
-#include "files/msgdata/msg/msg_0424.h"
+#include "msgdata/msg/msg_0424.h"
 
 #define RIBBON_DESC_ID_MASK  0x00FF
 #define RIBBON_DESC_ID_SHIFT 0

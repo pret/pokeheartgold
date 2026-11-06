@@ -48,7 +48,7 @@ static void YesNoPrompt_InitPixelDataFromTemplate(YesNoPrompt *yesno, const YesN
 static void YesNoPrompt_InitPlttFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
 static void YesNoPrompt_InitButtonsFromTemplate(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
 static void SetupTouchHitboxesController(YesNoPrompt *yesno, const YesNoPromptTemplate *template);
-static void YesNoButton_TouchHitboxCB(u32 index, u32 event, YesNoPrompt *yesno);
+static void YesNoButton_TouchHitboxCB(u32 index, u32 event, void *arg);
 static void YesNoPromptButton_Draw(YesNoPromptButton *button, const struct UnkStruct_02016C28 *arg, enum HeapID heapID);
 static void YesNoPromptButton_Clear(YesNoPromptButton *button);
 static SysTask *LoadPixelDataFromNarcAndScheduleTransfer(NarcId narcId, s32 fileId, BgConfig *bgConfig, int bgId, u32 tileStart, enum HeapID heapID);
@@ -277,12 +277,14 @@ static void SetupTouchHitboxesController(YesNoPrompt *yesno, const YesNoPromptTe
         yesno->hitboxes[i].rect.bottom = (yesno->y * 8) + (i * yesno->height * 8) + (yesno->height * 8);
         yesno->hitboxes[i].rect.right = (yesno->x * 8) + (yesno->width * 8);
     }
-    yesno->touchHitboxController = TouchHitboxController_Create(yesno->hitboxes, 2, (TouchHitboxControllerCallback)YesNoButton_TouchHitboxCB, yesno, yesno->heapID);
+    yesno->touchHitboxController = TouchHitboxController_Create(yesno->hitboxes, 2, YesNoButton_TouchHitboxCB, yesno, yesno->heapID);
 }
 
-static void YesNoButton_TouchHitboxCB(u32 index, u32 event, YesNoPrompt *yesno) {
+static void YesNoButton_TouchHitboxCB(u32 index, u32 event, void *arg) {
+    YesNoPrompt *yesno = arg;
+
     yesno->lastTouchEvent = event;
-    if (event == 0) {
+    if (event == TOUCH_BUTTON_PRESSED) {
         yesno->result = index;
         YesNoPromptButton *r3 = &yesno->buttons[index];
         ScreenPushGraphicsRect(r3->bgConfig, r3->bgId, r3->screenDataPtrs[1], r3->x, r3->y);

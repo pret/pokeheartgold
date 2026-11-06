@@ -1387,7 +1387,7 @@ _020760CE:
 	cmp r0, #1
 	bne _02076132
 	ldr r0, [r4, #0x1c]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _02076132
 	ldr r0, [r4, #0x58]
@@ -1749,7 +1749,7 @@ _020763FC:
 	cmp r0, #1
 	bne _020764F4
 	ldr r0, [r4, #0x20]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _020764F4
 	add r2, r4, #0
@@ -2669,7 +2669,7 @@ _02076BB8:
 	cmp r0, #1
 	bne _02076C76
 	ldr r0, [r4, #0x1c]
-	bl Pokepic_IsAnimFinished
+	bl Pokepic_IsAnimActive
 	cmp r0, #0
 	bne _02076C76
 	ldr r0, [r4, #0x28]

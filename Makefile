@@ -5,9 +5,8 @@
 	meson   		\
 	release 		\
 	rom 			\
-	setup_heartgold \
 	setup_release 	\
-	setup_soulsilver\
+	setup_rom \
 	skrew			\
 	soulsilver		\
 	skrewrm 		\
@@ -41,9 +40,10 @@ MESON_DIR := $(SUBPROJ_DIR)/meson-$(MESON_VER)
 MESON_SUB := $(MESON_DIR)/meson.py
 
 MESON ?= $(MESON_SUB)
+NINJA ?= ninja
 GIT ?= git
 
-BUILD ?= build
+BUILD ?= build/$(target_name).$(target_region)
 
 UNAME_R := $(shell uname -r)
 UNAME_S := $(shell uname -s)
@@ -83,7 +83,6 @@ else
     CROSS := cross_unix.ini
     SKREW_SYS := wine
     SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
-	NINJA ?= ninja -j4
   else
     ifneq (,$(findstring BSD, $(UNAME_S)))
       NATIVE := native.ini
@@ -98,9 +97,13 @@ else
     endif
   endif
 endif
-NINJA ?= ninja
 
 export NINJA_STATUS := [%p %f/%t]
+
+PYTHON ?= python3
+LSF_IN := main.lsf.in
+LSFGEN := tools/scripts/lsfgen.py
+LSFGEN_OUT := main.lsf src/meson.build asm/meson.build
 
 # Modders can delete the `check` dependency here after their first build.
 all: release check
@@ -109,19 +112,17 @@ all: release check
 release: rom
 
 .NOTPARALLEL: heartgold
-heartgold: setup_heartgold
-	$(NINJA) -C $(BUILD) pokeheartgold.us.nds
-	$(MESON) test -C $(BUILD)
+heartgold:
+	make GAME_VERSION=HEARTGOLD
 
 .NOTPARALLEL: soulsilver
-soulsilver: setup_soulsilver
-	$(NINJA) -C $(BUILD) pokesoulsilver.us.nds
-	$(MESON) test -C $(BUILD)
+soulsilver:
+	make GAME_VERSION=SOULSILVER
 
 check: rom
-	$(MESON) test -C $(BUILD)
+	$(MESON) test -C $(BUILD) --verbose
 
-rom: setup_$(target_name)
+rom: setup_rom
 	$(NINJA) -C $(BUILD) poke$(target_name).$(target_region).nds
 
 target: $(BUILD)/build.ninja
@@ -131,19 +132,27 @@ target: $(BUILD)/build.ninja
 clean: $(BUILD)/build.ninja
 	$(MESON) compile -C $(BUILD) --clean
 
-setup_heartgold: $(BUILD)/build.ninja
-	$(MESON) configure $(BUILD) -Dgame_version=HEARTGOLD
+setup_rom: $(BUILD)/build.ninja
+	$(MESON) configure $(BUILD) -Dgame_version=$(GAME_VERSION)
 
-setup_soulsilver: $(BUILD)/build.ninja
-	$(MESON) configure $(BUILD) -Dgame_version=SOULSILVER
-
-$(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson
+$(BUILD)/build.ninja: | $(BUILD) $(SKREW_EXE) meson $(LSFGEN_OUT)
 	$(MESON) setup \
 		-Dgame_version=$(GAME_VERSION) \
 		--wrap-mode=nopromote \
 		--native-file=meson/$(NATIVE) \
 		--cross-file=meson/$(CROSS) \
 		-- $(BUILD)
+
+# macOS's default Make does not support grouped targets, so we have to generate
+# a stamp file as a stand-in.
+$(LSFGEN_OUT): $(BUILD)/lsfgen.stamp ;
+
+$(BUILD)/lsfgen.stamp: $(LSF_IN) $(LSFGEN) | $(BUILD)
+	$(PYTHON) $(LSFGEN) $(LSF_IN) --prefix-dir main.nef.p/ \
+		--dest-lsf main.lsf \
+		--dest-c src/meson.build \
+    --dest-asm asm/meson.build
+	@touch $@
 
 $(BUILD):
 	mkdir -p -- $(BUILD)
@@ -169,3 +178,11 @@ skrewup: skrewrm skrew
 
 $(SKREW_EXE):
 	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)
+
+distclean:
+	rm -rf build
+
+purge: distclean
+	rm -rf $(SKREW_DIR)
+	! test -f $(MESON) || $(MESON) subprojects purge --confirm
+	rm -rf $(MESON_DIR)

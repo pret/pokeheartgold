@@ -228,7 +228,7 @@ _02237EE2:
 	cmp r4, #0
 	strb r4, [r5, r0]
 	bne _02237EFA
-	ldr r0, _02237F10 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237F10 ; =SDK_OVERLAY_trainer_ai_ID
 	bl UnloadOverlayByID
 	ldr r0, _02237F14 ; =SDK_OVERLAY_OVY_7_ID
 	mov r1, #2
@@ -237,13 +237,13 @@ _02237EE2:
 _02237EFA:
 	ldr r0, _02237F14 ; =SDK_OVERLAY_OVY_7_ID
 	bl UnloadOverlayByID
-	ldr r0, _02237F10 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237F10 ; =SDK_OVERLAY_trainer_ai_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, r4, r5, pc}
 	nop
 _02237F0C: .word 0x00002445
-_02237F10: .word SDK_OVERLAY_OVY_10_ID
+_02237F10: .word SDK_OVERLAY_trainer_ai_ID
 _02237F14: .word SDK_OVERLAY_OVY_7_ID
 	thumb_func_end ov12_02237ED0
 
@@ -495,9 +495,9 @@ _02237FD8:
 	str r0, [r1]
 	add r0, r4, #0
 	bl ov12_022389B8
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xc5
@@ -728,7 +728,7 @@ _02238380:
 _0223838A:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E54
+	bl BattleSystem_ExecuteBattlerCommand
 	ldr r0, [r4, #0x44]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -747,7 +747,7 @@ _0223839E:
 	strb r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_022621C4
+	bl BattleSystem_TryRecvMessage
 _022383BA:
 	ldr r0, [r4, #0x44]
 	mov r6, #0
@@ -758,10 +758,10 @@ _022383BA:
 _022383C6:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E54
+	bl BattleSystem_ExecuteBattlerCommand
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_022621C4
+	bl BattleSystem_TryRecvMessage
 	ldr r0, [r4, #0x44]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -783,7 +783,7 @@ _022383E0:
 	strb r0, [r4, r1]
 	add r0, r4, #0
 	mov r1, #1
-	bl ov12_022621C4
+	bl BattleSystem_TryRecvMessage
 _02238404:
 	ldr r0, [r4, #0x44]
 	mov r6, #0
@@ -794,10 +794,10 @@ _02238404:
 _02238410:
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E54
+	bl BattleSystem_ExecuteBattlerCommand
 	add r0, r4, #0
 	add r1, r7, #0
-	bl ov12_022621C4
+	bl BattleSystem_TryRecvMessage
 	ldr r0, [r4, #0x44]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -1088,7 +1088,7 @@ _02238694:
 	ldrb r2, [r4, r7]
 	ldr r1, [r5, #0x34]
 	add r0, r4, #0
-	bl ov12_02258E7C
+	bl OpponentData_Delete
 	ldr r0, [r4, #0x44]
 	add r6, r6, #1
 	add r5, r5, #4
@@ -1133,7 +1133,7 @@ _022386C0:
 	bl SysTask_Destroy
 	ldr r0, [r4, #0x20]
 	bl SysTask_Destroy
-	bl sub_02021238
+	bl DisableTouchPad
 	ldr r0, [r4]
 	bl ov12_022396E8
 	ldr r0, _02238798 ; =0x00002434

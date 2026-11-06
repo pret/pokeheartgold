@@ -1,6 +1,6 @@
 #include "application/pokegear/configure/pokegear_configure_internal.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0270.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0270.h"
 
 #include "font.h"
 #include "screen_fade.h"
@@ -302,13 +302,13 @@ static void PokegearConfigure_UnloadBGs(PokegearConfigureAppData *configureApp) 
 }
 
 static void PokegearConfigure_LoadGraphics(PokegearConfigureAppData *configureApp) {
-    FontID_Alloc(4, configureApp->heapId);
+    FontID_Alloc(FONT_UNK_4, configureApp->heapId);
     PokegearConfigure_LoadGraphics_Internal(configureApp);
 }
 
 static void PokegearConfigure_UnloadGraphics(PokegearConfigureAppData *configureApp) {
     PokegearConfigure_UnloadGraphics_Internal(configureApp);
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 static void PokegearConfigure_CreateSpriteManager(PokegearConfigureAppData *configureApp) {

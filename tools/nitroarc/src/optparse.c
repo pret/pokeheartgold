@@ -45,7 +45,7 @@ static int parseopt_short(optparser_t *parser, const char *option) {
 
             if (parser->argv[parser->optind + 1] == NULL) {
                 errorf(ERR_MISSING_ARG_SHORT, option[parser->shortind]);
-                return i;
+                return OPT_ERROR;
             }
 
             parser->optarg   = parser->argv[parser->optind + 1];
@@ -55,6 +55,11 @@ static int parseopt_short(optparser_t *parser, const char *option) {
         }
 
         parser->shortind++;
+        if (option[parser->shortind] == '\0') {
+            parser->shortind = 1;
+            parser->optind++;
+        }
+
         return i;
     }
 
@@ -80,7 +85,7 @@ static int parseopt_long(optparser_t *parser, const char *option) {
         if (!candidate->hasarg) { // simple flag, no argument
             if (poseq) {
                 errorf(ERR_UNEXPECTED_ARG_LONG, &poseq[1], option);
-                return i;
+                return OPT_ERROR;
             }
 
             parser->optind++;
@@ -90,7 +95,7 @@ static int parseopt_long(optparser_t *parser, const char *option) {
         if (poseq == NULL) {
             if (parser->argv[parser->optind + 1] == NULL) {
                 errorf(ERR_MISSING_ARG_LONG, option);
-                return i;
+                return OPT_ERROR;
             }
 
             parser->optarg  = parser->argv[parser->optind + 1];
@@ -100,7 +105,7 @@ static int parseopt_long(optparser_t *parser, const char *option) {
 
         if (poseq[1] == '\0') {
             errorf(ERR_MISSING_ARG_LONG, option);
-            return i;
+            return OPT_ERROR;
         }
 
         parser->optarg = poseq + 1;

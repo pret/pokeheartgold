@@ -65,10 +65,11 @@ def nasm_to_asm(fileString: str) -> str:
 
 def relativize_pch_paths(fileString: str) -> str:
     '''Make paths to headers to be precompiled relative (for WSL)'''
-    return re.sub(r'c_PCH [\w/\-.]+?subprojects', r'c_PCH ../subprojects', fileString)
+    return re.sub(r'c_PCH [\w/\-.]+?subprojects', r'c_PCH ../../subprojects', fileString)
 
 def relativize_json2bin_paths(fileString: str) -> str:
-    return re.sub(r'out-dir [\w/\-.]+?build', r'out-dir ../build', fileString)
+    build_dir_stem = r'build/' + BUILD_DIRECTORY.split('/')[-1]
+    return re.sub(rf'out-dir [\w/\-.]+?{build_dir_stem}', rf'out-dir ../../{build_dir_stem}', fileString)
 
 if __name__ == '__main__':
     main()

@@ -44,6 +44,12 @@ typedef struct BattleMessageData {
     int params[6];
 } BattleMessageData;
 
+typedef struct BattleMessageInfo {
+    u8 recipient;
+    u8 battler;
+    u16 size;
+} BattleMessageInfo;
+
 typedef struct GetterWork GetterWork;
 
 typedef struct FieldConditionData {
@@ -487,15 +493,16 @@ typedef struct OpponentData {
     void *unk80;
     u8 unk84[0x4];
     UnkBallData *ballData;
-    u8 unk8C[0x108];
-    u8 unk194;
+    u8 unk8C[0x8];
+    u8 unk94[0x100];
+    u8 battlerId;
     u8 battlerType;
     u8 unk196;
     u8 unk197;
     SysTask *unk198;
     u16 unk19C;
     int unk1A0;
-    u32 *unk1A4;
+    NARC *narc;
     u8 unk1A8;
     u8 unk1A9[3];
 } OpponentData;
@@ -682,18 +689,18 @@ typedef struct BattleItem {
 
 typedef struct BattleCursorPosition BattleCursorPosition;
 
-typedef struct UnkStruct_134 {
-    s32 unk0;
+typedef struct BallThrow {
+    s32 type;
     enum HeapID heapID;
-    s32 unk8;
-    s32 unkC;
+    s32 mode;
+    s32 target;
     int ball;
-    s32 unk14;
-    s32 unk18;
+    s32 bgPrio;
+    s32 surface;
     SpriteSystem *spriteSystem;
     PaletteData *paletteData;
     BattleSystem *battleSystem;
-} UnkStruct_134;
+} BallThrow;
 
 typedef struct UnkStruct_50C {
     BgConfig *bgConfig;
@@ -722,7 +729,7 @@ struct UnkBallData { // TODO: Give a better name.
     SpriteManager *spriteManager;
     ManagedSprite *managedSprite;
     u8 unk34[0x5C];
-    UnkStruct_134 unk90;
+    BallThrow unk90;
     u8 unkB8[0xC];
     int unkC4;
     int unkC8;

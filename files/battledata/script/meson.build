@@ -5,8 +5,9 @@ build_dir = meson.current_build_dir()
 ############################################################
 subdir('effect_script')
 
-effect_seq_gen = generator(makescript_sh,
-    arguments : [
+effect_seq_gen = generator(
+    makescript_sh,
+    arguments: [
         '--out-dir', build_dir / 'effect_script.narc.p',
         '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
@@ -14,30 +15,31 @@ effect_seq_gen = generator(makescript_sh,
         '-i', relative_source_root / 'subprojects' / 'NitroSystem-071126.1' / 'include',
         '-i', relative_source_root / 'include',
         '-i', relative_source_root / 'files',
-        '-i', relative_source_root / 'build' / 'files',
+        '-i', meson.global_build_root() / 'files',
         '-i', relative_source_root / 'asm' / 'include',
         '-i', relative_source_root / 'asm',
         '-i', relative_source_root,
         '@INPUT@',
     ],
-    depends : text_banks,
-    output : '@BASENAME@.bin'
+    depends: text_banks,
+    output: '@BASENAME@.bin',
 )
 
-effect_seq_narc = custom_target('effect_script.narc',
-    output : [
+effect_seq_narc = custom_target(
+    'effect_script.narc',
+    output: [
         'effect_script.narc',
         'effect_script.naix',
     ],
-    input : effect_seq_gen.process(effect_seq_asm),
-    command : [
+    input: effect_seq_gen.process(effect_seq_asm),
+    command: [
         nitroarc_exe,
         '--create',
         '--index',
         '--file', '@OUTPUT0@',
-        '@PRIVATE_DIR@'
+        '@PRIVATE_DIR@',
     ],
-    build_by_default : true
+    build_by_default: true,
 )
 
 nitrofs_files += effect_seq_narc
@@ -48,8 +50,9 @@ naix_headers += effect_seq_narc[1]
 ############################################################
 subdir('move_script')
 
-move_seq_gen = generator(makescript_sh,
-    arguments : [
+move_seq_gen = generator(
+    makescript_sh,
+    arguments: [
         '--out-dir', build_dir / 'move_script.narc.p',
         '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
@@ -57,30 +60,31 @@ move_seq_gen = generator(makescript_sh,
         '-i', relative_source_root / 'subprojects' / 'NitroSystem-071126.1' / 'include',
         '-i', relative_source_root / 'include',
         '-i', relative_source_root / 'files',
-        '-i', relative_source_root / 'build' / 'files',
+        '-i', meson.global_build_root() / 'files',
         '-i', relative_source_root / 'asm' / 'include',
         '-i', relative_source_root / 'asm',
         '-i', relative_source_root,
         '@INPUT@',
     ],
-    depends : text_banks,
-    output : '@BASENAME@.bin'
+    depends: text_banks,
+    output: '@BASENAME@.bin',
 )
 
-move_seq_narc = custom_target('move_script.narc',
-    output : [
+move_seq_narc = custom_target(
+    'move_script.narc',
+    output: [
         'move_script.narc',
         'move_script.naix',
     ],
-    input : move_seq_gen.process(move_seq_asm),
-    command : [
+    input: move_seq_gen.process(move_seq_asm),
+    command: [
         nitroarc_exe,
         '--create',
         '--index',
         '--file', '@OUTPUT0@',
-        '@PRIVATE_DIR@'
+        '@PRIVATE_DIR@',
     ],
-    build_by_default : true
+    build_by_default: true,
 )
 
 nitrofs_files += move_seq_narc
@@ -91,8 +95,9 @@ naix_headers += move_seq_narc[1]
 ############################################################
 subdir('subscript')
 
-subscript_gen = generator(makescript_sh,
-    arguments : [
+subscript_gen = generator(
+    makescript_sh,
+    arguments: [
         '--out-dir', build_dir / 'subscript.narc.p',
         '-a', arm_none_eabi_gcc_exe.full_path(),
         '-i', relative_source_root / 'subprojects' / 'NitroSDK-4.2.30001' / 'include',
@@ -100,31 +105,32 @@ subscript_gen = generator(makescript_sh,
         '-i', relative_source_root / 'subprojects' / 'NitroSystem-071126.1' / 'include',
         '-i', relative_source_root / 'include',
         '-i', relative_source_root / 'files',
-        '-i', relative_source_root / 'build' / 'files',
+        '-i', meson.global_build_root() / 'files',
         '-i', relative_source_root / 'asm' / 'include',
         '-i', relative_source_root / 'asm',
         '-i', relative_source_root,
         '@INPUT@',
     ],
-    depends : text_banks,
-    output : '@BASENAME@.bin'
+    depends: text_banks,
+    output: '@BASENAME@.bin',
 )
 
-subscript_narc = custom_target('subscript.narc',
-    output : [
+subscript_narc = custom_target(
+    'subscript.narc',
+    output: [
         'subscript.narc',
         'subscript.naix',
     ],
-    input : subscript_gen.process(subscript_asm),
-    command : [
+    input: subscript_gen.process(subscript_asm),
+    command: [
         nitroarc_exe,
         '--create',
         '--index',
         '--file', '@OUTPUT0@',
-        '@PRIVATE_DIR@'
+        '@PRIVATE_DIR@',
     ],
-    depends : text_banks,
-    build_by_default : true
+    depends: text_banks,
+    build_by_default: true,
 )
 
 nitrofs_files += subscript_narc

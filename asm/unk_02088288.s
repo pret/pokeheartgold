@@ -111,9 +111,9 @@ PokemonSummary_Init: ; 0x02088298
 	mov r0, #0
 	mov r1, #0x13
 	bl FontID_SetAccessDirect
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	bl sub_02088610
 	ldr r0, [r4]
 	bl sub_02088630
@@ -226,7 +226,7 @@ _02088442: ; jump table
 _02088470:
 	mov r0, #0
 	mov r1, #0x13
-	bl sub_020880CC
+	bl App_StartScreenFade
 	mov r0, #0x2d
 	lsl r0, r0, #4
 	ldr r0, [r5, r0]
@@ -364,7 +364,7 @@ PokemonSummary_Exit: ; 0x0208856C
 	bl sub_0208C560
 	ldr r0, [r4]
 	bl sub_0208877C
-	bl sub_02021238
+	bl DisableTouchPad
 	bl GF_DestroyVramTransferManager
 	add r0, r4, #0
 	bl sub_02088AF8
@@ -2421,7 +2421,7 @@ sub_02089670: ; 0x02089670
 	push {r3, lr}
 	mov r0, #1
 	mov r1, #0x13
-	bl sub_020880CC
+	bl App_StartScreenFade
 	mov r0, #0x16
 	pop {r3, pc}
 	.balign 4, 0

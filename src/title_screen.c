@@ -7,13 +7,14 @@
 
 #include "application/check_savedata.h"
 #include "application/delete_savedata.h"
-#include "files/demo/title/titledemo.naix"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0719.h"
+#include "demo/title/titledemo.naix"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0719.h"
 
 #include "brightness.h"
 #include "camera.h"
 #include "font.h"
+#include "fx_util.h"
 #include "gf_3d_render.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
@@ -29,7 +30,6 @@
 #include "system.h"
 #include "text.h"
 #include "unk_02005D10.h"
-#include "unk_02020B8C.h"
 #include "unk_02026E30.h"
 
 #ifdef HEARTGOLD
@@ -403,7 +403,7 @@ static void TitleScreenAnimObjs_Run(TitleScreenAnimObject *animObj) {
     case TITLESCREEN_MODEL_RUN:
         Thunk_G3X_Reset();
         Camera_PushLookAtToNNSGlb();
-        sub_02020D2C(&mtx, &animObj->rotationVec);
+        MTX_Rot33Vec(&mtx, &animObj->rotationVec);
         GF3dRender_DrawModel(&animObj->renderObj, &animObj->translation, &mtx, &animObj->scale);
         switch (animObj->subState) {
         case TITLESCREEN_MODELSUB_STOP:
@@ -636,7 +636,7 @@ static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, 
     AddWindow(bgConfig, &animData->window, &sTouchToStartWindow);
     FillWindowPixelRect(&animData->window, 0, 0, 0, 0x100, 0x10);
     ReadMsgDataIntoString(msgData, msg_0719_00000, string);
-    FontID_String_GetWidth(0, string, 0);
+    FontID_String_GetWidth(FONT_SYSTEM, string, 0);
     if (animData->gameVersion == VERSION_HEARTGOLD) {
         AddTextPrinterParameterizedWithColorAndSpacing(&animData->window, 0, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 1, 0), 1, 0, NULL);
     } else {

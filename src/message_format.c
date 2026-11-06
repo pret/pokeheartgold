@@ -4,19 +4,19 @@
 
 #include "constants/map_sections.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0021.h"
-#include "files/msgdata/msg/msg_0040.h"
-#include "files/msgdata/msg/msg_0191.h"
-#include "files/msgdata/msg/msg_0274.h"
-#include "files/msgdata/msg/msg_0313.h"
-#include "files/msgdata/msg/msg_0428.h"
-#include "files/msgdata/msg/msg_0430.h"
-#include "files/msgdata/msg/msg_0445.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0021.h"
+#include "msgdata/msg/msg_0040.h"
+#include "msgdata/msg/msg_0191.h"
+#include "msgdata/msg/msg_0274.h"
+#include "msgdata/msg/msg_0313.h"
+#include "msgdata/msg/msg_0428.h"
+#include "msgdata/msg/msg_0430.h"
+#include "msgdata/msg/msg_0445.h"
 
 #include "easy_chat.h"
 #include "friend_group.h"
-#include "location_gmm_dat.h"
+#include "geonet_locations.h"
 #include "map_section.h"
 #include "msgdata.h"
 #include "pokemon.h"
@@ -369,7 +369,7 @@ void BufferCountryName(MessageFormat *msgFmt, u32 fieldno, u32 countryId) {
 
 void BufferCityName(MessageFormat *msgFmt, u32 fieldno, u32 countryId, u32 cityId) {
     MsgData *msgData;
-    int msgBank = GetCityNamesMsgdataIdByCountry(countryId);
+    int msgBank = GeonetLocations_GetBankIDFromCountry(countryId);
     if (msgBank != 0 && cityId != 0) {
         msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msgBank, msgFmt->heapID);
         if (msgData != NULL) {

@@ -1,56 +1,56 @@
 {
-  "header": "fielddata/script/scr_seq/event_R07.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_R07_000 + 1",
-      "type": 1,
-      "x": 1260,
-      "z": 248,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_R07_001 + 1",
-      "type": 0,
-      "x": 1261,
-      "z": 247,
-      "y": 0,
-      "dir": 0
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_R07_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_R07_MENTAL_HERB",
-      "scriptId": "std_itemball_r07_mental_herb",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 1263,
-      "z": 226,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 1273,
-      "z": 240,
-      "header": "MAP_ROUTE_7_SAFFRON_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 1273,
-      "z": 241,
-      "header": "MAP_ROUTE_7_SAFFRON_GATEHOUSE",
-      "anchor": 1,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_R07.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_R07_000 + 1",
+            "type": 1,
+            "x": 1260,
+            "z": 248,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_R07_001 + 1",
+            "type": 0,
+            "x": 1261,
+            "z": 247,
+            "y": 0,
+            "dir": 0
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_R07_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_R07_MENTAL_HERB",
+            "scriptId": "std_itemball_r07_mental_herb",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 1263,
+            "z": 226,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 1273,
+            "z": 240,
+            "header": "MAP_ROUTE_7_SAFFRON_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 1273,
+            "z": 241,
+            "header": "MAP_ROUTE_7_SAFFRON_GATEHOUSE",
+            "anchor": 1,
+            "y": 0
+        }
+    ]
 }

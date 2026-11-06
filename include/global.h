@@ -12,8 +12,6 @@
 
 #include "constants/global.h"
 
-#include "cw/function_target.h"
-
 #include "assert.h"
 #include "config.h" // MUST COME BEFORE ANY OTHER GAMEFREAK HEADERS
 #include "pm_version.h"

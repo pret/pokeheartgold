@@ -44,9 +44,7 @@ static u32 ov03_02258828() {
 }
 
 static u32 ov03_02258830(int mult, int arg1) {
-    if (mult >= 2) {
-        GF_AssertFail();
-    }
+    GF_ASSERT(mult < 2);
     return arg1 + 8 + (744 * mult);
 }
 

@@ -43,7 +43,7 @@ scr_seq_P01R0104_001:
 	ToggleFollowingPokemonMovement 1
 	FollowingPokemonMovement 48
 	SetVar VAR_BOAT_DIRECTION, 0
-	ClearFlag FLAG_UNK_092
+	ClearFlag FLAG_RECEIVED_PLATE_FROM_AQUA_CAPTAIN_THIS_TRIP
 	ReleaseAll
 	End
 

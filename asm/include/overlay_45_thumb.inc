@@ -94,7 +94,7 @@
 .public String_New
 .public String_Delete
 .public CopyStringToU16Array
-.public sub_02026E18
+.public BillboardGfxSequence_SetData
 .public SaveArray_CalcCRC16
 .public Save_SysInfo_RTC_Get
 .public Save_PlayerData_GetProfile
@@ -138,9 +138,9 @@
 .public UnloadDwcOverlay
 .public LoadOVY38
 .public UnloadOVY38
-.public LocationGmmDatIndexGetByCountryMsgNo
-.public LocationGmmDatRegionCountGetByCountryMsgNo
-.public LocationGmmDatGetEarthPlaceDatId
+.public GeonetLocations_GetIndexFromCountry
+.public GeonetLocations_GetLocationCountFromCountry
+.public GeonetLocations_GetNarcMemberIndex
 .public NNS_G3dGlbSetBaseScale
 .public NNSi_G3dModifyMatFlag
 .public NNS_G3dMdlGetMdlLightEnableFlag

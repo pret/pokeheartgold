@@ -4,7 +4,7 @@
 
 #include "constants/npc_trade.h"
 
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "assert.h"
 #include "field_system.h"

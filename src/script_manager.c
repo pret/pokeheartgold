@@ -3,8 +3,8 @@
 
 #include "constants/std_script.h"
 
-#include "files/fielddata/script/scr_seq.naix"
-#include "files/msgdata/msg.naix"
+#include "fielddata/script/scr_seq.naix"
+#include "msgdata/msg.naix"
 
 #include "field_system.h"
 #include "map_events.h"

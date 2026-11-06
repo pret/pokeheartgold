@@ -1,7 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_02034354_H
 #define POKEHEARTGOLD_UNK_02034354_H
 
-#include "dwcaccount.h"
+#include <dwc.h>
+
 #include "player_data.h"
 
 void sub_02034354(SaveData *saveData, int a1);

@@ -107,9 +107,9 @@ _021E80D6:
 	add r0, r4, #0
 	add r1, r7, #0
 	bl ov52_021E85DC
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #1
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r0, _021E823C ; =ov52_021E837C
 	ldr r1, [r4]
 	bl Main_SetVBlankIntrCB
@@ -269,7 +269,7 @@ _021E82FC:
 	bl FontID_Release
 	ldr r0, [r6]
 	bl ov52_021E85A0
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r0, #0
 	bl TextFlags_SetCanTouchSpeedUpPrint
 	mov r0, #0

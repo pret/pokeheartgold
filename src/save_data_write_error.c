@@ -5,8 +5,8 @@
 
 #include "global.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0009.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0009.h"
 
 #include "bg_window.h"
 #include "brightness.h"
@@ -120,7 +120,7 @@ void ShowSaveDataWriteError(enum HeapID heapID, int code) {
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(error_msgdata, msg_no, error_str);
-    AddTextPrinterParameterized(&window, 0, error_str, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(&window, FONT_SYSTEM, error_str, 0, 0, 0, NULL);
     String_Delete(error_str);
 
     GfGfx_BothDispOn();

@@ -1,82 +1,82 @@
 {
-  "header": "fielddata/script/scr_seq/event_T23R0201.h",
-  "objects": [
-    {
-      "id": "obj_T23R0201_gsfighter",
-      "spriteId": "SPRITE_GSFIGHTER",
-      "movement": 9,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_1AE",
-      "scriptId": "_EV_scr_seq_T23R0201_000 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 2,
-      "z": 6,
-      "y": 0
-    },
-    {
-      "id": "obj_T23R0201_gsboy1",
-      "spriteId": "SPRITE_GSBOY1",
-      "movement": 2,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_1AC",
-      "scriptId": "_EV_scr_seq_T23R0201_001 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 5,
-      "y": 0
-    },
-    {
-      "id": "obj_T23R0201_tsure_poke_static_farfetchd",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_1AC",
-      "scriptId": "_EV_scr_seq_T23R0201_002 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 8,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_T23R0201_tsure_poke_static_farfetchd_2",
-      "spriteId": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
-      "movement": 2,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_1AC",
-      "scriptId": "_EV_scr_seq_T23R0201_002 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 9,
-      "z": 5,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 9,
-      "header": "MAP_AZALEA",
-      "anchor": 4,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T23R0201.h",
+    "objects": [
+        {
+            "id": "obj_T23R0201_gsfighter",
+            "spriteId": "SPRITE_GSFIGHTER",
+            "movement": 9,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_1AE",
+            "scriptId": "_EV_scr_seq_T23R0201_000 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 2,
+            "z": 6,
+            "y": 0
+        },
+        {
+            "id": "obj_T23R0201_gsboy1",
+            "spriteId": "SPRITE_GSBOY1",
+            "movement": 2,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_1AC",
+            "scriptId": "_EV_scr_seq_T23R0201_001 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 5,
+            "y": 0
+        },
+        {
+            "id": "obj_T23R0201_tsure_poke_static_farfetchd",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_1AC",
+            "scriptId": "_EV_scr_seq_T23R0201_002 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 8,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_T23R0201_tsure_poke_static_farfetchd_2",
+            "spriteId": "SPRITE_FOLLOWER_MON_STATIC_FARFETCHD",
+            "movement": 2,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_1AC",
+            "scriptId": "_EV_scr_seq_T23R0201_002 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 9,
+            "z": 5,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 9,
+            "header": "MAP_AZALEA",
+            "anchor": 4,
+            "y": 0
+        }
+    ]
 }

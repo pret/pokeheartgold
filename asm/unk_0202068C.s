@@ -160,7 +160,7 @@ sub_02020780: ; 0x02020780
 	sub sp, #4
 	add r4, r0, #0
 	ldr r0, [r4]
-	bl sub_02026DE0
+	bl BillboardGfxSequence_GetTexPlttIndexAt
 	add r2, sp, #0
 	strb r0, [r2]
 	lsr r0, r0, #8

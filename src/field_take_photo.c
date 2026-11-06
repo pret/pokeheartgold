@@ -5,6 +5,7 @@
 #include "constants/scrcmd.h"
 
 #include "field/hblank_system.h"
+#include "field/weather_manager.h"
 #include "files/graphic/camera_viewfinder.naix"
 
 #include "field_warp_tasks.h"
@@ -736,7 +737,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_OUT:
             PlaySE(SEQ_SE_GS_SHUTTER);
-            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_8, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_CAMERA_SHUTTER_CLOSE, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_EXPOSURE:
@@ -755,7 +756,7 @@ static BOOL FieldTask_TakePhoto(TaskManager *taskManager) {
             }
             break;
         case TAKE_PHOTO_SHUTTER_STATE_FADE_IN:
-            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_UNK_9, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
+            BeginNormalPaletteFade(FADE_MAIN_ONLY, FADE_TYPE_CAMERA_SHUTTER_OPEN, FADE_TYPE_BRIGHTNESS_OUT, RGB_BLACK, 6, 1, HEAP_ID_FIELD1);
             ++takePhoto->shutterState;
             break;
         case TAKE_PHOTO_SHUTTER_STATE_WAIT_FADE_IN:

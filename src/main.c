@@ -55,9 +55,9 @@ void NitroMain(void) {
     GF_InitRTCWork();
     Main_ResetOverlayManager();
     FontWork_Init();
-    FontID_Alloc(0, HEAP_ID_3);
-    FontID_Alloc(1, HEAP_ID_3);
-    FontID_Alloc(3, HEAP_ID_3);
+    FontID_Alloc(FONT_SYSTEM, HEAP_ID_3);
+    FontID_Alloc(FONT_MESSAGE, HEAP_ID_3);
+    FontID_Alloc(FONT_UNOWN, HEAP_ID_3);
     _02111868.unk_10.unk_00 = -1;
     _02111868.unk_10.saveData = SaveData_New();
     sub_02005D00();

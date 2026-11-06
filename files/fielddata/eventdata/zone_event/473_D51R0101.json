@@ -1,48 +1,48 @@
 {
-  "header": "fielddata/script/scr_seq/event_D51R0101.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_D51R0101_003 + 1",
-      "type": 1,
-      "x": 12,
-      "z": 9,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D51R0101_mount_2",
-      "spriteId": "SPRITE_MOUNT_2",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_2DB",
-      "scriptId": "_EV_scr_seq_D51R0101_001 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 14,
-      "z": 11,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 20,
-      "z": 25,
-      "header": "MAP_SINJOH_RUINS_CABIN",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 13,
-      "z": 7,
-      "header": "MAP_SINJOH_RUINS_MYSTRI_STAGE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D51R0101.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_D51R0101_003 + 1",
+            "type": 1,
+            "x": 12,
+            "z": 9,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D51R0101_mount_2",
+            "spriteId": "SPRITE_MOUNT_2",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_2DB",
+            "scriptId": "_EV_scr_seq_D51R0101_001 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 14,
+            "z": 11,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 20,
+            "z": 25,
+            "header": "MAP_SINJOH_RUINS_CABIN",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 13,
+            "z": 7,
+            "header": "MAP_SINJOH_RUINS_MYSTRI_STAGE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

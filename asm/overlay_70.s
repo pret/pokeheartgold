@@ -26826,7 +26826,7 @@ _02244CE8:
 	ldr r0, _02244D04 ; =0x00000F48
 	mov r1, #0
 	add r0, r4, r0
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _02244CF6:

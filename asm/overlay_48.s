@@ -350,13 +350,13 @@ _02258AEE:
 	ldr r0, [sp, #0x20]
 	bl Heap_Free
 	mov r7, #1
-	bl LocationGmmDatCountGet
+	bl GeonetLocations_GetLocationListCount
 	str r0, [sp, #0x18]
 	cmp r0, #1
 	ble _02258B72
 _02258B00:
 	add r0, r7, #0
-	bl LocationGmmDatGetEarthPlaceDatId
+	bl GeonetLocations_GetNarcMemberIndex
 	add r1, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -378,7 +378,7 @@ _02258B00:
 	ble _02258B64
 _02258B2E:
 	add r0, r7, #0
-	bl LocationGmmDatGetCountryMsgNo
+	bl GeonetLocations_GetCountry
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -2960,7 +2960,7 @@ ov48_02259E78: ; 0x02259E78
 	add r4, r0, #0
 	add r0, #0x1c
 	mov r1, #1
-	bl sub_0200E5D4
+	bl ClearWindowPixelBuffer
 	add r4, #0x1c
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

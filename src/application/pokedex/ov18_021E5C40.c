@@ -2,11 +2,11 @@
 
 #include "application/pokedex/pokedex_internal.h"
 #include "application/pokedex/pokedex_internal_constants.h"
-#include "files/application/zukanlist/zkn_data/zukan_data.naix"
-#include "files/application/zukanlist/zkn_data/zukan_enc.naix"
-#include "files/application/zukanlist/zkn_data/zukan_hw_data.naix"
-#include "files/graphic/zukan_gra.naix"
-#include "files/msgdata/msg.naix"
+#include "application/zukanlist/zkn_data/zukan_data.naix"
+#include "application/zukanlist/zkn_data/zukan_enc.naix"
+#include "application/zukanlist/zkn_data/zukan_hw_data.naix"
+#include "graphic/zukan_gra.naix"
+#include "msgdata/msg.naix"
 
 #include "dex_mon_measures.h"
 #include "gf_gfx_loader.h"

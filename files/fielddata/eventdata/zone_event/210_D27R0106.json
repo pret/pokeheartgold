@@ -1,96 +1,96 @@
 {
-  "header": "fielddata/script/scr_seq/event_D27R0106.h",
-  "objects": [
-    {
-      "id": "obj_D27R0106_seaman_2",
-      "spriteId": "SPRITE_SEAMAN_2",
-      "movement": 0,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_SAILOR_TERRELL)",
-      "facingDirection": 2,
-      "param0": 6,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 6,
-      "z": 9,
-      "y": 0
-    },
-    {
-      "id": "obj_D27R0106_seaman_2_2",
-      "spriteId": "SPRITE_SEAMAN_2",
-      "movement": 2,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_SAILOR_ROBERTO)",
-      "facingDirection": 1,
-      "param0": 5,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 13,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_D27R0106_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D27R0106_SUPER_REPEL",
-      "scriptId": "std_itemball_d27r0106_super_repel",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 11,
-      "z": 3,
-      "y": 0
-    },
-    {
-      "id": "obj_D27R0106_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_CAMERON",
-      "scriptId": "_EV_scr_seq_D27R0106_000 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 2,
-      "z": 14,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 4,
-      "z": 5,
-      "header": "MAP_OLIVINE_LIGHTHOUSE_4F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 10,
-      "z": 10,
-      "header": "MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 10,
-      "z": 9,
-      "header": "MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D27R0106.h",
+    "objects": [
+        {
+            "id": "obj_D27R0106_seaman_2",
+            "spriteId": "SPRITE_SEAMAN_2",
+            "movement": 0,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_SAILOR_TERRELL)",
+            "facingDirection": 2,
+            "param0": 6,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 6,
+            "z": 9,
+            "y": 0
+        },
+        {
+            "id": "obj_D27R0106_seaman_2_2",
+            "spriteId": "SPRITE_SEAMAN_2",
+            "movement": 2,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_SAILOR_ROBERTO)",
+            "facingDirection": 1,
+            "param0": 5,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 13,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_D27R0106_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D27R0106_SUPER_REPEL",
+            "scriptId": "std_itemball_d27r0106_super_repel",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 11,
+            "z": 3,
+            "y": 0
+        },
+        {
+            "id": "obj_D27R0106_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_CAMERON",
+            "scriptId": "_EV_scr_seq_D27R0106_000 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 2,
+            "z": 14,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 4,
+            "z": 5,
+            "header": "MAP_OLIVINE_LIGHTHOUSE_4F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 10,
+            "z": 10,
+            "header": "MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 10,
+            "z": 9,
+            "header": "MAP_OLIVINE_LIGHTHOUSE_LIGHT_ROOM",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

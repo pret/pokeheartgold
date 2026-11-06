@@ -43,7 +43,7 @@
 .public BG_LoadPlttData
 .public BgTilemapRectChangePalette
 .public MTRandom
-.public sub_02020E10
+.public FX_CalcLinearFov
 .public GfGfx_EngineATogglePlanes
 .public Camera_GetPerspectiveAngle
 .public Camera_GetDistance
@@ -79,10 +79,10 @@
 .public ov01_021EA854
 .public ov01_021EA858
 .public ov01_021EA85C
-.public ov01_021EA860
+.public Fog_GetColorRGB
 .public ov01_021EA864
-.public ov01_021EA89C
-.public ov01_021EA8C4
+.public Fog_SetColor
+.public Fog_SetFogTable
 .public ov01_021EB1E8
 .public WeatherManager_New
 .public WeatherManager_Delete

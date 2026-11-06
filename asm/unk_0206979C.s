@@ -384,7 +384,7 @@ sub_020699D0: ; 0x020699D0
 	ldrh r2, [r3, #2]
 	ldrh r3, [r3, #4]
 	add r0, sp, #0
-	bl sub_02020DA4
+	bl MTX_Rot33Angles
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r6, #0

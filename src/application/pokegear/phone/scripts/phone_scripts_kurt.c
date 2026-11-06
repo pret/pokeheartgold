@@ -1,7 +1,7 @@
 #include "global.h"
 
 #include "application/pokegear/phone/phone_internal.h"
-#include "files/msgdata/msg/msg_0643.h"
+#include "msgdata/msg/msg_0643.h"
 
 #include "unk_02031B0C.h"
 

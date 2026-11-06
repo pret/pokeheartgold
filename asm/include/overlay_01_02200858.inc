@@ -1,6 +1,6 @@
 
 #pragma once
-.public sub_02020DA4
+.public MTX_Rot33Angles
 .public MetatileBehavior_IsWarpEntranceEast
 .public MetatileBehavior_IsWarpEntranceWest
 .public MetatileBehavior_IsWarpEntranceNorth

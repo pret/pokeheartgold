@@ -8,9 +8,9 @@
 #include "constants/moves.h"
 
 #include "agb/constants/items.h"
-#include "files/itemtool/itemdata/item_data.naix"
-#include "files/itemtool/itemdata/item_icon.naix"
-#include "files/msgdata/msg.naix"
+#include "itemtool/itemdata/item_data.naix"
+#include "itemtool/itemdata/item_icon.naix"
+#include "msgdata/msg.naix"
 
 #include "filesystem.h"
 #include "heap.h"

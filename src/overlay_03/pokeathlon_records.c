@@ -101,7 +101,7 @@ static void ov03_02258E88(UnkStruct_02258CFC *data) {
     String_Delete(data->strings[0]);
     MessageFormat_Delete(data->messageFormat);
     DestroyMsgData(data->msgData);
-    sub_0200E5D4(&data->window, TRUE);
+    ClearWindowPixelBuffer(&data->window, TRUE);
     RemoveWindow(&data->window);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 3);
 }
@@ -146,7 +146,7 @@ static BOOL ov03_02258ECC(UnkStruct_02258CFC *data, int index_02259880) {
     if (index == 0) {
         return TRUE;
     }
-    return PokeathlonSave_GetUnkB78_AtIndex(data->pokeathlonSave, index - 1);
+    return PokeathlonSave_CheckReceivedDataCard(data->pokeathlonSave, index - 1);
 }
 
 static const int ov03_0225980C[3] = {
@@ -171,13 +171,13 @@ static void ov03_02258EE8(UnkStruct_02258CFC *data, enum PokeathlonData dataType
 }
 
 static void ov03_02258F48(UnkStruct_02258CFC *data, int y) {
-    AddTextPrinterParameterizedWithColor(&data->window, 0, data->strings[3], 8, y, TEXT_SPEED_NOTRANSFER, 0x1020F, NULL);
-    AddTextPrinterParameterizedWithColor(&data->window, 0, data->strings[2], 8, y, TEXT_SPEED_NOTRANSFER, 0x1020F, NULL);
+    AddTextPrinterParameterizedWithColor(&data->window, FONT_SYSTEM, data->strings[3], 8, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), NULL);
+    AddTextPrinterParameterizedWithColor(&data->window, FONT_SYSTEM, data->strings[2], 8, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), NULL);
 }
 
 static void ov03_02258F8C(UnkStruct_02258CFC *data, int y, int strno) {
     ReadMsgDataIntoString(data->msgData, strno + 4, data->strings[1]);
-    AddTextPrinterParameterizedWithColor(&data->window, 0, data->strings[1], 8, y, TEXT_SPEED_NOTRANSFER, 0x1020F, NULL);
+    AddTextPrinterParameterizedWithColor(&data->window, FONT_SYSTEM, data->strings[1], 8, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), NULL);
     u32 seconds = ov03_02259070(data->pokeathlonStruct, strno);
     if (seconds >= 9999999) {
         seconds = 9999999;
@@ -195,8 +195,8 @@ static void ov03_02258F8C(UnkStruct_02258CFC *data, int y, int strno) {
     } else {
         String16_FormatInteger(data->strings[1], seconds, 7, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     }
-    u32 width = 224 - FontID_String_GetWidth(0, data->strings[1], 0);
-    AddTextPrinterParameterizedWithColor(&data->window, 0, data->strings[1], width - 8, y, TEXT_SPEED_NOTRANSFER, 0x1020F, NULL);
+    u32 width = 224 - FontID_String_GetWidth(FONT_SYSTEM, data->strings[1], 0);
+    AddTextPrinterParameterizedWithColor(&data->window, FONT_SYSTEM, data->strings[1], width - 8, y, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), NULL);
 }
 
 static u32 ov03_02259070(Pokeathlon_UnkSubStruct_B00 *pokeathlonStruct, int strno) {

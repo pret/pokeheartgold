@@ -1379,7 +1379,7 @@ sub_02023FEC: ; 0x02023FEC
 	add r0, #0xa0
 	lsl r1, r1, #4
 	lsr r1, r1, #0x10
-	bl sub_02026DE0
+	bl BillboardGfxSequence_GetTexPlttIndexAt
 	add r2, sp, #0
 	strb r0, [r2]
 	lsr r0, r0, #8

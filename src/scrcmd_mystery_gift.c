@@ -2,8 +2,8 @@
 
 #include "constants/map_sections.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0209.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0209.h"
 
 #include "bag.h"
 #include "fashion_case.h"

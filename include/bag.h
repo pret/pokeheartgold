@@ -132,10 +132,11 @@ BOOL Bag_HasItem(Bag *bag, u16 itemId, u16 quantity, enum HeapID heapID);
  * @param count:       Number of ItemSlot in slots
  * @param itemId:      ID of item to act upon
  * @param quantity:    Amount to add, remove, or check
+ * @param heapId:      Unused
  *
  * @returns: TRUE if the action succeeded, otherwise FALSE.
  */
-BOOL Pocket_TakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity);
+BOOL Pocket_TakeItem(ItemSlot *slots, u32 count, u16 itemId, u16 quantity, enum HeapID heapId);
 
 /*
  * BOOL Bag_PocketNotEmpty(Bag *bag, u32 pocket)
@@ -162,12 +163,12 @@ BOOL Bag_PocketNotEmpty(Bag *bag, u32 pocket);
  * @param slots:       (Pocket_*) Pointer to ItemSlot array
  * @param count:       (Pocket_*) Number of ItemSlot in slots
  * @param itemId:      Item to look up
- * @param heapID:     (Bag_*) Heap to allocate temp buffers from
+ * @param heapID:     (Bag_*) Heap to allocate temp buffers from; (Pocket_*) Unused
  *
  * @returns: Quantity of that item in the bag or array.
  */
 u16 Bag_GetQuantity(Bag *bag, u16 itemId, enum HeapID heapID);
-u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId);
+u16 Pocket_GetQuantity(ItemSlot *slots, u32 count, u16 itemId, enum HeapID heapID);
 
 /*
  * BagView *Bag_CreateView(Bag *bag, const u8 *pockets, enum HeapID heapID)

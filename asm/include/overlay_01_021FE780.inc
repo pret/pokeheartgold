@@ -1,6 +1,6 @@
 
 #pragma once
-.public sub_02020DA4
+.public MTX_Rot33Angles
 .public MapObject_GetPriorityPlusValue
 .public sub_0205F0A8
 .public MapObject_GetID

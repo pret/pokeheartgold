@@ -6,8 +6,8 @@
 #include "constants/map_sections.h"
 #include "constants/pokemon.h"
 
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0302.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0302.h"
 
 #include "heap.h"
 #include "map_section.h"

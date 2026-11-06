@@ -21,9 +21,9 @@ HallOfFameShowcase_Init: ; 0x021E5900
 	strh r1, [r0]
 	ldr r0, _021E59B8 ; =0x04001050
 	strh r1, [r0]
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	ldr r2, _021E59BC ; =0x04000304
 	ldr r0, _021E59C0 ; =0xFFFF7FFF
 	ldrh r1, [r2]
@@ -107,7 +107,7 @@ HallOfFameShowcase_Exit: ; 0x021E59C8
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl NARC_Delete
-	bl sub_02021238
+	bl DisableTouchPad
 	add r0, r5, #0
 	bl OverlayManager_FreeData
 	mov r0, #0x3b

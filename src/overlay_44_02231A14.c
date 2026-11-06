@@ -251,7 +251,7 @@ void ov44_02231FCC(UnkStruct_ov44_02232DA0 *arg0) {
         ov44_02232E5C(&arg0->unk6D0, temp_r4);
         return;
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
 }
 
 void ov44_02232008(UnkStruct_ov44_02232DA0 *arg0) {
@@ -515,7 +515,7 @@ void ov44_02232680(UnkStruct_ov44_02232DA0 *arg0, s16 *arg1, u32 arg2) {
             }
         }
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
 }
 
 void ov44_02232724(UnkStruct_ov44_02232DA0 *arg0, s16 *arg1) {
@@ -531,7 +531,7 @@ void ov44_02232724(UnkStruct_ov44_02232DA0 *arg0, s16 *arg1) {
             }
         }
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
 }
 
 UnkStruct_ov44_02232B74 *ov44_02232798(UnkStruct_ov44_02232DA0 *arg0) {
@@ -540,7 +540,7 @@ UnkStruct_ov44_02232B74 *ov44_02232798(UnkStruct_ov44_02232DA0 *arg0) {
             return &arg0->unk18C[i];
         }
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
     return NULL;
 }
 
@@ -780,7 +780,7 @@ void ov44_02232CA8(UnkStruct_ov44_02232DA0 *arg0, UnkStruct_ov44_02232B74 *arg1,
         ov44_022328E4(arg0, arg1);
         break;
     default:
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
         break;
     }
     arg1->unkB = arg2;

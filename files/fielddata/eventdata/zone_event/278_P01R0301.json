@@ -1,178 +1,178 @@
 {
-  "header": "fielddata/script/scr_seq/event_P01R0301.h",
-  "objects": [
-    {
-      "id": "obj_P01R0301_seaman_2",
-      "spriteId": "SPRITE_SEAMAN_2",
-      "movement": 5,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_P01R0301_002 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 0,
-      "x": 16,
-      "z": 10,
-      "y": 0
-    },
-    {
-      "id": "obj_P01R0301_seaman_2_2",
-      "spriteId": "SPRITE_SEAMAN_2",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_P01R0301_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 24,
-      "z": 17,
-      "y": 0
-    },
-    {
-      "id": "obj_P01R0301_seaman_2_3",
-      "spriteId": "SPRITE_SEAMAN_2",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_P01R0301_001 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 37,
-      "z": 13,
-      "y": 0
-    },
-    {
-      "id": "obj_P01R0301_gsgentleman",
-      "spriteId": "SPRITE_GSGENTLEMAN",
-      "movement": 16,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_215",
-      "scriptId": "_EV_scr_seq_P01R0301_003 + 1",
-      "facingDirection": 2,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 35,
-      "z": 14,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 24,
-      "z": 19,
-      "header": "MAP_SS_AQUA_OLIVINE_PORT_EXTERIOR",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 13,
-      "z": 14,
-      "header": "MAP_SS_AQUA_1F_SOUTHWEST_ROOMS",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 19,
-      "z": 14,
-      "header": "MAP_SS_AQUA_1F_SOUTHWEST_ROOMS",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 30,
-      "z": 14,
-      "header": "MAP_SS_AQUA_1F_SOUTHEAST_ROOMS",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 36,
-      "z": 14,
-      "header": "MAP_SS_AQUA_1F_SOUTHEAST_ROOMS",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 13,
-      "z": 8,
-      "header": "MAP_SS_AQUA_1F_NORTHWEST_ROOMS",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 19,
-      "z": 8,
-      "header": "MAP_SS_AQUA_1F_NORTHWEST_ROOMS",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 30,
-      "z": 8,
-      "header": "MAP_SS_AQUA_1F_NORTHEAST_ROOMS",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 36,
-      "z": 8,
-      "header": "MAP_SS_AQUA_1F_NORTHEAST_ROOMS",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 24,
-      "z": 3,
-      "header": "MAP_SS_AQUA_B1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 42,
-      "z": 9,
-      "header": "MAP_SS_AQUA_B1F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 49,
-      "z": 15,
-      "header": "MAP_SS_AQUA_CAPTAIN_ROOM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 24,
-      "z": 19,
-      "header": "MAP_SS_AQUA_VERMILION_PORT_EXTERIOR",
-      "anchor": 1,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_P01R0301_004 + 1",
-      "x": 22,
-      "z": 14,
-      "w": 5,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40CB"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_P01R0301.h",
+    "objects": [
+        {
+            "id": "obj_P01R0301_seaman_2",
+            "spriteId": "SPRITE_SEAMAN_2",
+            "movement": 5,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_P01R0301_002 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 0,
+            "x": 16,
+            "z": 10,
+            "y": 0
+        },
+        {
+            "id": "obj_P01R0301_seaman_2_2",
+            "spriteId": "SPRITE_SEAMAN_2",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_P01R0301_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 24,
+            "z": 17,
+            "y": 0
+        },
+        {
+            "id": "obj_P01R0301_seaman_2_3",
+            "spriteId": "SPRITE_SEAMAN_2",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_P01R0301_001 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 37,
+            "z": 13,
+            "y": 0
+        },
+        {
+            "id": "obj_P01R0301_gsgentleman",
+            "spriteId": "SPRITE_GSGENTLEMAN",
+            "movement": 16,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_215",
+            "scriptId": "_EV_scr_seq_P01R0301_003 + 1",
+            "facingDirection": 2,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 35,
+            "z": 14,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 24,
+            "z": 19,
+            "header": "MAP_SS_AQUA_OLIVINE_PORT_EXTERIOR",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 13,
+            "z": 14,
+            "header": "MAP_SS_AQUA_1F_SOUTHWEST_ROOMS",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 19,
+            "z": 14,
+            "header": "MAP_SS_AQUA_1F_SOUTHWEST_ROOMS",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 30,
+            "z": 14,
+            "header": "MAP_SS_AQUA_1F_SOUTHEAST_ROOMS",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 36,
+            "z": 14,
+            "header": "MAP_SS_AQUA_1F_SOUTHEAST_ROOMS",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 13,
+            "z": 8,
+            "header": "MAP_SS_AQUA_1F_NORTHWEST_ROOMS",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 19,
+            "z": 8,
+            "header": "MAP_SS_AQUA_1F_NORTHWEST_ROOMS",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 30,
+            "z": 8,
+            "header": "MAP_SS_AQUA_1F_NORTHEAST_ROOMS",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 36,
+            "z": 8,
+            "header": "MAP_SS_AQUA_1F_NORTHEAST_ROOMS",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 24,
+            "z": 3,
+            "header": "MAP_SS_AQUA_B1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 42,
+            "z": 9,
+            "header": "MAP_SS_AQUA_B1F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 49,
+            "z": 15,
+            "header": "MAP_SS_AQUA_CAPTAIN_ROOM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 24,
+            "z": 19,
+            "header": "MAP_SS_AQUA_VERMILION_PORT_EXTERIOR",
+            "anchor": 1,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_P01R0301_004 + 1",
+            "x": 22,
+            "z": 14,
+            "w": 5,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_SCENE_SS_AQUA"
+        }
+    ]
 }

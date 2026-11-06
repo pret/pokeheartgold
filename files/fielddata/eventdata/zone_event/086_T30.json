@@ -1,275 +1,275 @@
 {
-  "header": "fielddata/script/scr_seq/event_T30.h",
-  "bgs": [
-    {
-      "scriptId": "_EV_scr_seq_T30_008 + 1",
-      "type": 1,
-      "x": 692,
-      "z": 170,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T30_009 + 1",
-      "type": 1,
-      "x": 666,
-      "z": 153,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T30_010 + 1",
-      "type": 1,
-      "x": 661,
-      "z": 176,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T30_011 + 1",
-      "type": 1,
-      "x": 671,
-      "z": 134,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "_EV_scr_seq_T30_012 + 1",
-      "type": 1,
-      "x": 653,
-      "z": 171,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_T30_gsman1",
-      "spriteId": "SPRITE_GSMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT",
-      "scriptId": "_EV_scr_seq_T30_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 668,
-      "z": 152,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsoldman1",
-      "spriteId": "SPRITE_GSOLDMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT",
-      "scriptId": "_EV_scr_seq_T30_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 672,
-      "z": 133,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsfighter",
-      "spriteId": "SPRITE_GSFIGHTER",
-      "movement": 5,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T30_004 + 1",
-      "facingDirection": 3,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 2,
-      "yRange": 0,
-      "x": 675,
-      "z": 181,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gswoman3",
-      "spriteId": "SPRITE_GSWOMAN3",
-      "movement": 4,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T30_013 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 1,
-      "x": 664,
-      "z": 176,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsboy1",
-      "spriteId": "SPRITE_GSBOY1",
-      "movement": 3,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T30_014 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 661,
-      "z": 155,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gswoman3_2",
-      "spriteId": "SPRITE_GSWOMAN3",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T30_015 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 696,
-      "z": 157,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsman1_2",
-      "spriteId": "SPRITE_GSMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE",
-      "scriptId": "_EV_scr_seq_T30_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 669,
-      "z": 152,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsoldman1_2",
-      "spriteId": "SPRITE_GSOLDMAN1",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE",
-      "scriptId": "_EV_scr_seq_T30_003 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 673,
-      "z": 133,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsboy2",
-      "spriteId": "SPRITE_GSBOY2",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_UNK_204",
-      "scriptId": "_EV_scr_seq_T30_006 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 674,
-      "z": 163,
-      "y": 0
-    },
-    {
-      "id": "obj_T30_gsmiddleman1",
-      "spriteId": "SPRITE_GSMIDDLEMAN1",
-      "movement": 14,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_CAMERON",
-      "scriptId": "_EV_scr_seq_T30_016 + 1",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 684,
-      "z": 175,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 697,
-      "z": 144,
-      "header": "MAP_ICE_PATH_1F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 668,
-      "z": 151,
-      "header": "MAP_BLACKTHORN_GYM",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 672,
-      "z": 132,
-      "header": "MAP_DRAGONS_DEN_ENTRANCE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 660,
-      "z": 165,
-      "header": "MAP_BLACKTHORN_WEST_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 684,
-      "z": 168,
-      "header": "MAP_BLACKTHORN_EAST_HOUSE",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 667,
-      "z": 176,
-      "header": "MAP_BLACKTHORN_POKEMART",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 674,
-      "z": 176,
-      "header": "MAP_BLACKTHORN_POKECENTER_1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 658,
-      "z": 176,
-      "header": "MAP_BLACKTHORN_MOVE_TUTOR_HOUSE",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T30.h",
+    "bgs": [
+        {
+            "scriptId": "_EV_scr_seq_T30_008 + 1",
+            "type": 1,
+            "x": 692,
+            "z": 170,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T30_009 + 1",
+            "type": 1,
+            "x": 666,
+            "z": 153,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T30_010 + 1",
+            "type": 1,
+            "x": 661,
+            "z": 176,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T30_011 + 1",
+            "type": 1,
+            "x": 671,
+            "z": 134,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "_EV_scr_seq_T30_012 + 1",
+            "type": 1,
+            "x": 653,
+            "z": 171,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_T30_gsman1",
+            "spriteId": "SPRITE_GSMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_BLACKTHORN_GYM_GUARD_INFRONT",
+            "scriptId": "_EV_scr_seq_T30_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 668,
+            "z": 152,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsoldman1",
+            "spriteId": "SPRITE_GSOLDMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_BLACKTHORN_DEN_GUARD_INFRONT",
+            "scriptId": "_EV_scr_seq_T30_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 672,
+            "z": 133,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsfighter",
+            "spriteId": "SPRITE_GSFIGHTER",
+            "movement": 5,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T30_004 + 1",
+            "facingDirection": 3,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 2,
+            "yRange": 0,
+            "x": 675,
+            "z": 181,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gswoman3",
+            "spriteId": "SPRITE_GSWOMAN3",
+            "movement": 4,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T30_013 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 1,
+            "x": 664,
+            "z": 176,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsboy1",
+            "spriteId": "SPRITE_GSBOY1",
+            "movement": 3,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T30_014 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 661,
+            "z": 155,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gswoman3_2",
+            "spriteId": "SPRITE_GSWOMAN3",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T30_015 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 696,
+            "z": 157,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsman1_2",
+            "spriteId": "SPRITE_GSMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_BLACKTHORN_GYM_GUARD_ASIDE",
+            "scriptId": "_EV_scr_seq_T30_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 669,
+            "z": 152,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsoldman1_2",
+            "spriteId": "SPRITE_GSOLDMAN1",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_BLACKTHRON_DEN_GUARD_ASIDE",
+            "scriptId": "_EV_scr_seq_T30_003 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 673,
+            "z": 133,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsboy2",
+            "spriteId": "SPRITE_GSBOY2",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_UNK_204",
+            "scriptId": "_EV_scr_seq_T30_006 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 674,
+            "z": 163,
+            "y": 0
+        },
+        {
+            "id": "obj_T30_gsmiddleman1",
+            "spriteId": "SPRITE_GSMIDDLEMAN1",
+            "movement": 14,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_CAMERON",
+            "scriptId": "_EV_scr_seq_T30_016 + 1",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 684,
+            "z": 175,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 697,
+            "z": 144,
+            "header": "MAP_ICE_PATH_1F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 668,
+            "z": 151,
+            "header": "MAP_BLACKTHORN_GYM",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 672,
+            "z": 132,
+            "header": "MAP_DRAGONS_DEN_ENTRANCE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 660,
+            "z": 165,
+            "header": "MAP_BLACKTHORN_WEST_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 684,
+            "z": 168,
+            "header": "MAP_BLACKTHORN_EAST_HOUSE",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 667,
+            "z": 176,
+            "header": "MAP_BLACKTHORN_POKEMART",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 674,
+            "z": 176,
+            "header": "MAP_BLACKTHORN_POKECENTER_1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 658,
+            "z": 176,
+            "header": "MAP_BLACKTHORN_MOVE_TUTOR_HOUSE",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

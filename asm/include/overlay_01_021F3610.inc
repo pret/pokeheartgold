@@ -6,7 +6,7 @@
 .public Heap_Free
 .public GF3dRender_DrawModel
 .public sub_0201F990
-.public sub_02020D2C
+.public MTX_Rot33Vec
 .public GF_AssertFail
 .public GetSafariObjectConfig
 .public NNS_G3dGlbFlushP

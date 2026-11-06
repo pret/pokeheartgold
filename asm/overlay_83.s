@@ -4301,7 +4301,7 @@ _022401E6:
 	str r4, [sp, #0xc]
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	ldr r0, [sp, #0x18]
 	mov r1, #0x6f
 	mov r2, #0
@@ -13105,7 +13105,7 @@ _02244A08:
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
 	mov r3, #3
-	bl sub_0200CE7C
+	bl FontSpecialChars_DrawPartyScreenText
 	ldr r0, [sp, #0x18]
 	mov r1, #0x6f
 	mov r2, #0

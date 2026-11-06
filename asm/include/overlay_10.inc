@@ -22,7 +22,7 @@
 .public BattleSystem_GetBattlerSide
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_Random
-.public GetBattlerVar
+.public BattleMon_Get
 .public CheckSortSpeed
 .public StruggleCheck
 .public BattleSystem_ApplyTypeChart

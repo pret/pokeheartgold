@@ -4,7 +4,6 @@
 #include "bg_window.h"
 #include "pm_string.h"
 
-typedef u8 FontID; // TODO: This should be an enum and NOT typedef'd, and should be u32
 struct FontData;
 
 typedef struct GlyphInfo {

@@ -84,7 +84,8 @@ Static main
     Object main.nef.p/asm_unk_0202068C.s.o
     Object main.nef.p/src_unk_02020A0C.c.o
     Object main.nef.p/src_ascii_util.c.o
-    Object main.nef.p/asm_unk_02020B8C.s.o
+    Object main.nef.p/src_fx_util.c.o
+    Object main.nef.p/src_unk_02020E80.c.o
     Object main.nef.p/asm_unk_020210A0.s.o
     Object main.nef.p/src_obj_char_transfer.c.o
     Object main.nef.p/src_obj_pltt_transfer.c.o
@@ -100,7 +101,7 @@ Static main
     Object main.nef.p/src_font_data.c.o
     Object main.nef.p/src_pm_string.c.o
     Object main.nef.p/src_touch_hitbox_controller.c.o
-    Object main.nef.p/asm_unk_02026DE0.s.o
+    Object main.nef.p/src_billboard_gfx_sequence.c.o
     Object main.nef.p/src_unk_02026E30.c.o
     Object main.nef.p/src_unk_02026E84.c.o
     Object main.nef.p/src_gf_3d_vramman.c.o
@@ -306,21 +307,21 @@ Static main
     Object main.nef.p/asm_unk_0208FB64.s.o
     Object main.nef.p/src_use_item_on_mon.c.o
     Object main.nef.p/src_mail_misc.c.o
-    Object main.nef.p/src_unk_02091054.c.o
+    Object main.nef.p/src_application_capsule_menu_main_static.c.o
     Object main.nef.p/src_hatch_egg_task.c.o
     Object main.nef.p/src_unk_02091278.c.o
     Object main.nef.p/src_unk_020912AC.c.o
     Object main.nef.p/src_dex_mon_measures.c.o
     Object main.nef.p/src_unk_02091564.c.o
     Object main.nef.p/asm_unk_020915B0.s.o
-    Object main.nef.p/src_location_gmm_dat.c.o
+    Object main.nef.p/src_geonet_locations.c.o
     Object main.nef.p/src_move_relearner.c.o
     Object main.nef.p/asm_unk_02091880.s.o
     Object main.nef.p/src_application_delete_savedata.c.o
     Object main.nef.p/src_application_check_savedata.c.o
     Object main.nef.p/src_save_data_read_error.c.o
     Object main.nef.p/src_save_data_write_error.c.o
-    Object main.nef.p/asm_unk_02092B04.s.o
+    Object main.nef.p/src_unk_02092B04.c.o
     Object main.nef.p/src_unk_02092BB8.c.o
     Object main.nef.p/src_unk_02092BE8.c.o
     Object main.nef.p/src_mom_gift.c.o
@@ -404,6 +405,7 @@ Autoload DTCM
     Address 0x027E0000
     Library libos.a (.dtcm)
 }
+
 Overlay OVY_0
 {
     After main
@@ -419,6 +421,7 @@ Overlay OVY_0
     Library libdwcgsqr2.a
     Library libdwcgsserverbrowsing.a
 }
+
 Overlay field
 {
     After main
@@ -429,12 +432,12 @@ Overlay field
     Object main.nef.p/src_field_map_prop_animation.c.o
     Object main.nef.p/asm_overlay_01_021E90C0.s.o
     Object main.nef.p/asm_overlay_01_021EA6C4.s.o
-    Object main.nef.p/src_overlay_01_021EA824.c.o
+    Object main.nef.p/src_field_fog.c.o
     Object main.nef.p/asm_model_attributes.s.o
     Object main.nef.p/asm_overlay_01_021EABA8.s.o
     Object main.nef.p/asm_overlay_01_021EAF00.s.o
     Object main.nef.p/asm_overlay_01_021EAFD4.s.o
-    Object main.nef.p/asm_overlay_01_021EB1E8.s.o
+    Object main.nef.p/src_field_weather_manager.c.o
     Object main.nef.p/asm_overlay_01_021EDAFC.s.o
     Object main.nef.p/src_field_scrcmd_message.c.o
     Object main.nef.p/src_field_draw_map_name.c.o
@@ -500,6 +503,7 @@ Overlay field
     Object main.nef.p/asm_overlay_01_022051EC.s.o
     Object main.nef.p/asm_overlay_01_022053EC.s.o
 }
+
 Overlay OVY_2
 {
     After field
@@ -513,6 +517,7 @@ Overlay OVY_2
     Object main.nef.p/src_field_event_cutscene_sinjoh.c.o
     Object main.nef.p/src_overlay_02_02251E74.c.o
 }
+
 Overlay OVY_3
 {
     After OVY_2
@@ -523,6 +528,7 @@ Overlay OVY_3
     Object main.nef.p/src_overlay_03_overlay_03_scrcmds.c.o
     Object main.nef.p/src_overlay_03_pokeathlon_records.c.o
 }
+
 Overlay OVY_4
 {
     After OVY_2
@@ -536,40 +542,48 @@ Overlay OVY_4
     Object main.nef.p/src_field_gymmick_viridian.c.o
     Object main.nef.p/src_field_gymmick_sinjoh.c.o
 }
+
 Overlay OVY_5
 {
     After OVY_0
     Object main.nef.p/asm_overlay_05.s.o
 }
+
 Overlay OVY_6
 {
     After OVY_0
     Object main.nef.p/src_overlay_06.c.o
 }
+
 Overlay OVY_7
 {
     After OVY_6
     Object main.nef.p/asm_overlay_07.s.o
 }
+
 Overlay OVY_8
 {
     After OVY_6
     Object main.nef.p/asm_overlay_08.s.o
 }
+
 Overlay OVY_9
 {
     After OVY_6
 }
-Overlay OVY_10
+
+Overlay trainer_ai
 {
     After OVY_6
     Object main.nef.p/src_battle_trainer_ai.c.o
     Object main.nef.p/asm_trainer_ai_data.s.o
 }
+
 Overlay OVY_11
 {
     After main
 }
+
 Overlay OVY_12
 {
     After OVY_7
@@ -580,10 +594,12 @@ Overlay OVY_12
     Object main.nef.p/asm_overlay_12_battle_command.s.o
     Object main.nef.p/src_battle_battle_controller_player.c.o
     Object main.nef.p/src_battle_overlay_12_0224E4FC.c.o
-    Object main.nef.p/src_battle_battle_controller_opponent.c.o
+    Object main.nef.p/src_battle_overlay_12_02258800.c.o
+    Object main.nef.p/asm_overlay_12_02258800.s.o
+    Object main.nef.p/src_battle_battle_io_command.c.o
     Object main.nef.p/asm_overlay_12_battle_controller_opponent.s.o
     Object main.nef.p/src_battle_battle_02261FD4.c.o
-    Object main.nef.p/asm_overlay_12_battle_controller.s.o
+    Object main.nef.p/src_battle_battle_controller.c.o
     Object main.nef.p/src_battle_battle_hp_bar.c.o
     Object main.nef.p/asm_overlay_12_02265E28.s.o
     Object main.nef.p/src_battle_battle_input.c.o
@@ -592,6 +608,7 @@ Overlay OVY_12
     Object main.nef.p/src_battle_battle_finger.c.o
     Object main.nef.p/src_battle_overlay_12_0226BEC4.c.o
 }
+
 Overlay OVY_13
 {
     After OVY_0
@@ -599,28 +616,35 @@ Overlay OVY_13
     Library libmb.a
     Library libdwcutil.a
 }
+
 Overlay OVY_14
 {
     After main
     Object main.nef.p/asm_overlay_14.s.o
 }
+
 Overlay OVY_15
 {
     After OVY_14
-    Object main.nef.p/asm_overlay_15.s.o
+    Object main.nef.p/src_application_bag_bag_app_main.c.o
+    Object main.nef.p/src_application_bag_bag_app_window.c.o
+    Object main.nef.p/src_application_bag_bag_app_sprite.c.o
 }
+
 Overlay OVY_16
 {
     After OVY_15
     Object main.nef.p/src_overlay_16_022014A0.c.o
     Object main.nef.p/src_overlay_16_02201948.c.o
 }
+
 Overlay OVY_17
 {
     After OVY_16
     Object main.nef.p/src_berry_pots_app.c.o
     Object main.nef.p/src_berry_pots_app_tasks.c.o
 }
+
 Overlay OVY_18
 {
     After main
@@ -631,102 +655,122 @@ Overlay OVY_18
     Object main.nef.p/src_application_pokedex_ov18_021E8BF4.c.o
     Object main.nef.p/asm_overlay_18.s.o
 }
+
 Overlay OVY_19
 {
     After OVY_3
     Object main.nef.p/src_application_view_photo.c.o
 }
+
 Overlay OVY_20
 {
     After OVY_3
     Object main.nef.p/src_scrcmd_size_record.c.o
 }
+
 Overlay OVY_21
 {
     After OVY_3
     Object main.nef.p/src_scrcmd_fossils.c.o
 }
+
 Overlay OVY_22
 {
     After OVY_3
     Object main.nef.p/src_overlay_22.c.o
 }
+
 Overlay npc_trade
 {
     After OVY_3
     Object main.nef.p/src_npc_trade.c.o
 }
+
 Overlay bug_contest
 {
     After OVY_3
     Object main.nef.p/src_overlay_bug_contest.c.o
 }
+
 Overlay OVY_25
 {
     After OVY_3
     Object main.nef.p/src_overlay_25.c.o
 }
+
 Overlay OVY_26
 {
     After OVY_3
     Object main.nef.p/src_overlay_26_022598C0.c.o
     Object main.nef.p/src_overlay_26_022599D0.c.o
 }
+
 Overlay OVY_27
 {
     After bug_contest
     Object main.nef.p/asm_overlay_27.s.o
 }
+
 Overlay OVY_28
 {
     After OVY_27
     Object main.nef.p/asm_overlay_28.s.o
 }
+
 Overlay OVY_29
 {
     After OVY_27
     Object main.nef.p/asm_overlay_29.s.o
 }
+
 Overlay touch_save_app
 {
     After OVY_27
     Object main.nef.p/src_touch_save_app.c.o
 }
+
 Overlay OVY_31
 {
     After OVY_27
     Object main.nef.p/asm_overlay_31.s.o
 }
+
 Overlay OVY_32
 {
     After OVY_27
     Object main.nef.p/asm_overlay_32.s.o
 }
+
 Overlay OVY_33
 {
     After OVY_27
     Object main.nef.p/asm_overlay_33.s.o
 }
+
 Overlay OVY_34
 {
     After OVY_27
     Object main.nef.p/asm_overlay_34.s.o
 }
+
 Overlay OVY_35
 {
     After npc_trade
     Object main.nef.p/asm_overlay_35.s.o
 }
+
 Overlay OVY_36
 {
     After main
     Object main.nef.p/src_overlay_36.c.o
 }
+
 Overlay OVY_37
 {
     After main
     Object main.nef.p/asm_overlay_37.s.o
 }
+
 Overlay OVY_38
 {
     After OVY_0
@@ -735,22 +779,26 @@ Overlay OVY_38
     Library libdwcnd.a
     Library libdwcnhttp.a
 }
+
 Overlay OVY_39
 {
     After OVY_38
     Object main.nef.p/asm_overlay_39_thumb.s.o
-    Object main.nef.p/lib_NitroDWC_asm_overlay_39_arm.s.o
+    Library libgds.a
 }
+
 Overlay OVY_40
 {
     After OVY_39
     Object main.nef.p/asm_overlay_40.s.o
 }
+
 Overlay OVY_41
 {
     After OVY_40
     Object main.nef.p/asm_overlay_41.s.o
 }
+
 Overlay OVY_42
 {
     After OVY_38
@@ -759,11 +807,13 @@ Overlay OVY_42
     Object main.nef.p/src_overlay_42_02227F68.c.o
     Object main.nef.p/src_overlay_42_02233EDC.c.o
 }
+
 Overlay OVY_43
 {
     After OVY_42
     Object main.nef.p/asm_overlay_43.s.o
 }
+
 Overlay OVY_44
 {
     After OVY_42
@@ -772,47 +822,56 @@ Overlay OVY_44
     Object main.nef.p/src_overlay_44_02232E90.c.o
     Object main.nef.p/src_overlay_44_02235340.c.o
 }
+
 Overlay OVY_45
 {
     After OVY_42
     Object main.nef.p/asm_overlay_45_thumb.s.o
     Library libdwcppwlobby.a
 }
+
 Overlay OVY_46
 {
     After OVY_45
     Object main.nef.p/asm_overlay_46.s.o
 }
+
 Overlay OVY_47
 {
     After OVY_45
     Object main.nef.p/asm_overlay_47.s.o
 }
+
 Overlay OVY_48
 {
     After OVY_45
     Object main.nef.p/asm_overlay_48.s.o
 }
+
 Overlay OVY_49
 {
     After OVY_45
     Object main.nef.p/asm_overlay_49.s.o
 }
+
 Overlay trainer_card
 {
     After main
     Object main.nef.p/src_overlay_trainer_card.c.o
 }
+
 Overlay trainer_card_main
 {
     After trainer_card
     Object main.nef.p/asm_overlay_trainer_card_main.s.o
 }
+
 Overlay trainer_card_signature
 {
     After trainer_card_main
     Object main.nef.p/asm_overlay_trainer_card_signature.s.o
 }
+
 Overlay OVY_53
 {
     After main
@@ -820,36 +879,47 @@ Overlay OVY_53
     Object main.nef.p/src_oaks_speech_obj.c.o
     Object main.nef.p/src_oaks_speech_yesnomenu.c.o
 }
+
 Overlay options_app
 {
     After main
     Object main.nef.p/src_options_app.c.o
 }
+
 Overlay OVY_55
 {
     After main
     Object main.nef.p/src_overlay_55.c.o
 }
+
 Overlay OVY_56
 {
     After OVY_55
     Object main.nef.p/asm_overlay_56.s.o
 }
-Overlay OVY_57
+
+Overlay capsule_menu
 {
     After OVY_7
-    Object main.nef.p/asm_overlay_57.s.o
+    Object main.nef.p/src_application_capsule_menu_main_overlay.c.o
+    Object main.nef.p/src_application_capsule_menu_placement.c.o
+    Object main.nef.p/src_application_capsule_menu_graphics.c.o
+    Object main.nef.p/src_application_capsule_menu_manager.c.o
+    Object main.nef.p/src_application_capsule_menu_touchscreen_hitboxes.c.o
 }
+
 Overlay OVY_58
 {
     After OVY_7
     Object main.nef.p/asm_overlay_58.s.o
 }
+
 Overlay OVY_59
 {
     After OVY_58
     Object main.nef.p/asm_overlay_59.s.o
 }
+
 Overlay intro_title
 {
     After main
@@ -862,70 +932,84 @@ Overlay intro_title
     Object main.nef.p/src_intro_movie_scene_4.c.o
     Object main.nef.p/src_intro_movie_scene_5.c.o
 }
+
 Overlay OVY_61
 {
     After main
     Object main.nef.p/src_choose_starter_app.c.o
 }
+
 Overlay OVY_62
 {
     After main
     Object main.nef.p/src_overlay_mic_test.c.o
 }
+
 Overlay OVY_63
 {
     After OVY_6
     Object main.nef.p/src_register_hall_of_fame.c.o
 }
+
 Overlay OVY_64
 {
     After main
     Object main.nef.p/asm_overlay_64.s.o
 }
+
 Overlay OVY_65
 {
     After OVY_6
     Object main.nef.p/asm_overlay_65.s.o
 }
+
 Overlay OVY_66
 {
     After main
 }
+
 Overlay OVY_67
 {
     After main
     Object main.nef.p/asm_overlay_67.s.o
 }
+
 Overlay OVY_68
 {
     After main
     Object main.nef.p/asm_overlay_68.s.o
 }
+
 Overlay OVY_69
 {
     After main
     Object main.nef.p/asm_overlay_69.s.o
 }
+
 Overlay OVY_70
 {
     After OVY_7
     Object main.nef.p/asm_overlay_70.s.o
 }
+
 Overlay OVY_71
 {
     After OVY_70
     Object main.nef.p/asm_overlay_71.s.o
 }
+
 Overlay OVY_72
 {
     After OVY_7
     Object main.nef.p/asm_overlay_72.s.o
 }
+
 Overlay OVY_73
 {
     After main
     Object main.nef.p/asm_overlay_73.s.o
 }
+
 Overlay OVY_74
 {
     After OVY_38
@@ -933,11 +1017,13 @@ Overlay OVY_74
     Object main.nef.p/asm_overlay_74_thumb.s.o
     Object main.nef.p/asm_nitrocrypto.s.o
 }
+
 Overlay OVY_75
 {
     After OVY_70
     Object main.nef.p/asm_overlay_75.s.o
 }
+
 Overlay credits
 {
     After main
@@ -945,19 +1031,23 @@ Overlay credits
     Object main.nef.p/src_credits_credits.c.o
     Object main.nef.p/src_credits_data2.c.o
 }
+
 Overlay OVY_77
 {
     After main
 }
+
 Overlay certificates_app
 {
     After main
     Object main.nef.p/src_certificates_app.c.o
 }
+
 Overlay OVY_79
 {
     After OVY_42
 }
+
 Overlay OVY_80
 {
     After OVY_42
@@ -994,67 +1084,80 @@ Overlay OVY_80
     Object main.nef.p/asm_overlay_80_0223A00C.s.o
     Object main.nef.p/asm_overlay_80_0223AC24.s.o
 }
+
 Overlay OVY_81
 {
     After OVY_80
     Object main.nef.p/asm_overlay_81.s.o
 }
+
 Overlay OVY_82
 {
     After OVY_80
     Object main.nef.p/asm_overlay_82.s.o
 }
+
 Overlay OVY_83
 {
     After OVY_80
     Object main.nef.p/asm_overlay_83.s.o
 }
+
 Overlay OVY_84
 {
     After OVY_80
     Object main.nef.p/src_battle_arcade_game_board.c.o
     Object main.nef.p/asm_battle_arcade_game_board_data.s.o
 }
+
 Overlay OVY_85
 {
     After main
     Object main.nef.p/asm_overlay_85.s.o
 }
+
 Overlay OVY_86
 {
     After main
     Object main.nef.p/asm_overlay_86.s.o
 }
+
 Overlay OVY_87
 {
     After main
     Object main.nef.p/asm_overlay_87.s.o
 }
+
 Overlay OVY_88
 {
     After OVY_45
     Object main.nef.p/asm_overlay_88.s.o
 }
+
 Overlay OVY_89
 {
     After OVY_45
     Object main.nef.p/asm_overlay_89.s.o
 }
+
 Overlay OVY_90
 {
     After OVY_45
     Object main.nef.p/asm_overlay_90.s.o
 }
+
 Overlay OVY_91
 {
     After OVY_90
     Object main.nef.p/asm_overlay_91.s.o
 }
+
 Overlay OVY_92
 {
     After OVY_90
     Object main.nef.p/asm_overlay_92.s.o
 }
+
 Overlay OVY_93
 {
     After OVY_90
@@ -1062,16 +1165,19 @@ Overlay OVY_93
     Object main.nef.p/asm_overlay_93_arm.s.o
     Object main.nef.p/asm_overlay_93_thumb_2.s.o
 }
+
 Overlay OVY_94
 {
     After main
     Object main.nef.p/src_overlay_94.c.o
 }
+
 Overlay OVY_95
 {
     After main
     Object main.nef.p/asm_overlay_95.s.o
 }
+
 Overlay OVY_96
 {
     After main
@@ -1079,21 +1185,25 @@ Overlay OVY_96
     Object main.nef.p/asm_overlay_96.s.o
     Object main.nef.p/src_pokeathlon_pokeathlon_data.c.o
 }
+
 Overlay OVY_97
 {
     After OVY_96
     Object main.nef.p/asm_overlay_97.s.o
 }
+
 Overlay OVY_98
 {
     After OVY_96
     Object main.nef.p/asm_overlay_98.s.o
 }
+
 Overlay OVY_99
 {
     After main
     Object main.nef.p/asm_overlay_99.s.o
 }
+
 Overlay pokegear
 {
     After main
@@ -1102,6 +1212,7 @@ Overlay pokegear
     Object main.nef.p/src_application_pokegear_main_overlay_100_021E6914.c.o
     Object main.nef.p/src_application_pokegear_main_pokegear_cursor.c.o
 }
+
 Overlay pokegear_app
 {
     After pokegear
@@ -1158,106 +1269,127 @@ Overlay pokegear_app
     Object main.nef.p/src_application_pokegear_phone_phone_script_defs.c.o
     Object main.nef.p/src_application_pokegear_phone_phone_generic_headers.c.o
 }
+
 Overlay OVY_102
 {
     After pokegear
     Object main.nef.p/asm_overlay_102.s.o
 }
+
 Overlay OVY_103
 {
     After OVY_102
     Object main.nef.p/asm_overlay_103.s.o
 }
+
 Overlay OVY_104
 {
     After main
     Object main.nef.p/asm_overlay_104.s.o
 }
+
 Overlay OVY_105
 {
     After main
     Object main.nef.p/asm_overlay_105.s.o
 }
+
 Overlay OVY_106
 {
     After main
     Object main.nef.p/asm_overlay_106.s.o
 }
+
 Overlay OVY_107
 {
     After main
 }
+
 Overlay OVY_108
 {
     After main
     Object main.nef.p/asm_overlay_108.s.o
     Object main.nef.p/asm_overlay_108_021E8850.s.o
 }
+
 Overlay OVY_109
 {
     After main
     Object main.nef.p/asm_overlay_109.s.o
 }
+
 Overlay OVY_110
 {
     After main
     Object main.nef.p/src_alph_puzzle.c.o
 }
+
 Overlay OVY_111
 {
     After main
     Object main.nef.p/asm_overlay_111.s.o
 }
+
 Overlay OVY_112
 {
     After main
     Object main.nef.p/asm_overlay_112.s.o
 }
+
 Overlay OVY_113
 {
     After main
     Object main.nef.p/asm_overlay_113.s.o
 }
+
 Overlay OVY_114
 {
     After OVY_31
     Object main.nef.p/asm_overlay_114.s.o
 }
+
 Overlay OVY_115
 {
     After OVY_31
     Object main.nef.p/asm_overlay_115.s.o
 }
+
 Overlay OVY_116
 {
     After OVY_31
     Object main.nef.p/asm_overlay_116.s.o
 }
+
 Overlay OVY_117
 {
     After OVY_31
     Object main.nef.p/asm_overlay_117.s.o
 }
+
 Overlay OVY_118
 {
     After OVY_31
     Object main.nef.p/asm_overlay_118.s.o
 }
+
 Overlay OVY_119
 {
     After OVY_31
     Object main.nef.p/asm_overlay_119.s.o
 }
+
 Overlay OVY_120
 {
     After OVY_31
     Object main.nef.p/asm_overlay_120.s.o
 }
+
 Overlay view_rankings_app
 {
     After main
     Object main.nef.p/src_application_view_rankings.c.o
 }
+
 Overlay voltorb_flip
 {
     After main
@@ -1266,28 +1398,34 @@ Overlay voltorb_flip
     Object main.nef.p/src_voltorb_flip_voltorb_flip_game.c.o
     Object main.nef.p/src_voltorb_flip_voltorb_flip_input.c.o
 }
+
 Overlay ds_protect
 {
     After OVY_31
 	Library libdsprot.a
 }
+
 Overlay OVY_124
 {
     After ds_protect
     Object main.nef.p/src_overlay_124.c.o
 }
+
 Overlay OVY_125
 {
     After ds_protect
 }
+
 Overlay OVY_126
 {
     After ds_protect
 }
+
 Overlay OVY_127
 {
     After ds_protect
 }
+
 Overlay OVY_128
 {
     After ds_protect

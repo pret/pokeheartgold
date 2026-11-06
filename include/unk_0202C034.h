@@ -1,7 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0202C034_H
 #define POKEHEARTGOLD_UNK_0202C034_H
 
-#include "dwcaccount.h"
+#include <dwc.h>
+
 #include "pm_string.h"
 #include "save.h"
 

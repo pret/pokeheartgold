@@ -6,7 +6,7 @@
 #include "constants/trainer_class.h"
 
 #include "battle/battle_setup.h"
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "math_util.h"
 #include "msgdata.h"

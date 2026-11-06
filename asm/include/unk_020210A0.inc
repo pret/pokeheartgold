@@ -1,10 +1,10 @@
 
 #pragma once
 .public GF_TouchpadInit
-.public sub_020210BC
-.public sub_020210D8
-.public sub_02021148
-.public sub_02021238
+.public EnableTouchPad
+.public InitializeTouchPadWithExternalBuffer
+.public InitializeTouchPad
+.public DisableTouchPad
 .public sub_02021280
 .public GF_TouchpadResumeOnLidOpen
 .public GF_TouchpadPauseOnLidClose

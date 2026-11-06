@@ -28,6 +28,17 @@ typedef enum ItemUseError {
     ITEMUSEERROR_OAKSWORDS = -1u,
 } ItemUseError;
 
+// Enum for the context in which the bag menu is displayed
+typedef enum BagViewContext {
+    BAG_VIEW_CONTEXT_NORMAL,
+    BAG_VIEW_CONTEXT_GIVE_ITEM,
+    BAG_VIEW_CONTEXT_MART_SELL,
+    BAG_VIEW_CONTEXT_GARDENING,
+    BAG_VIEW_CONTEXT_POFFIN_SINGLEPLAYER,
+    BAG_VIEW_CONTEXT_POFFIN_MULTIPLAYER,
+    BAG_VIEW_CONTEXT_BERRY_POTS,
+} BagViewContext;
+
 /*
  * The player's inventory. All items in all pockets,
  * and the two items registered to the touchscreen
@@ -50,9 +61,10 @@ typedef struct Bag {
  */
 typedef struct BagViewPocket {
     ItemSlot *slots; // Points into Bag
-    u8 padding[4];
+    u16 position;
+    s16 scroll;
     u8 pocketId; // POCKET_XXX constant
-    u8 padding2[3];
+    u8 count;
 } BagViewPocket;
 
 typedef struct ItemCheckUseData {
@@ -72,17 +84,17 @@ typedef struct ItemCheckUseData {
 typedef struct BagView {
     SaveData *saveData;       // Persistent game state
     BagViewPocket pockets[8]; // Pocket information
-    u8 unk64;
-    u8 unk65;
+    u8 curPocket;
+    u8 context;
     u16 itemId;
-    u16 unk68;
+    u16 returnCode;
     u8 padding[2];
     BagCursor *cursor; // State of last selection
     ItemCheckUseData *checkUseData;
-    u8 unk74;
-    u8 unk75;
-    u16 unk76_0 : 1;
-    u16 unk76_1 : 15;
+    u8 partySlot;
+    u8 soldAmount;
+    u16 onBike : 1;
+    u16 mapLoadType : 15;
     MenuInputStateMgr *menuInputStateMgr;
 } BagView; // size: 0x7C
 

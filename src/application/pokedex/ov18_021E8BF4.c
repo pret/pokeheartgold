@@ -1,6 +1,6 @@
 #include "application/pokedex/pokedex_internal.h"
 #include "application/pokedex/pokedex_internal_constants.h"
-#include "files/graphic/zukan_gra.naix"
+#include "graphic/zukan_gra.naix"
 
 #include "font.h"
 #include "gf_gfx_loader.h"
@@ -259,14 +259,14 @@ static int PokedexApp_MainSeq_00(PokedexAppData *pokedexApp) {
     GfGfx_EngineBSetPlanes(GX_PLANEMASK_NONE);
     G2_BlendNone();
     G2S_BlendNone();
-    sub_020210BC();
-    sub_02021148(4);
+    EnableTouchPad();
+    InitializeTouchPad(4);
     GX_SetDispSelect(GX_DISP_SELECT_SUB_MAIN);
     SetKeyRepeatTimers(4, 8);
     ov18_021E62A8(pokedexApp);
     ov18_021E8410(pokedexApp);
-    sub_020880CC(0, HEAP_ID_POKEDEX_APP);
-    FontID_Alloc(4, HEAP_ID_POKEDEX_APP);
+    App_StartScreenFade(0, HEAP_ID_POKEDEX_APP);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_POKEDEX_APP);
     pokedexApp->gfxNarc = NARC_New(NARC_graphic_zukan_gra, HEAP_ID_POKEDEX_APP);
     ov18_021E6FFC(pokedexApp);
     ov18_021F7ED4(pokedexApp, pokedexApp->unk_1858, 0, DEX_SEARCH_LETTERS_ALL, DEX_SEARCH_TYPE_ALL, DEX_SEARCH_TYPE_ALL, 0, 152, 0, 152, 1 << DEX_SEARCH_AREA_ALL, DEX_SEARCH_BODYTYPE_ALL);
@@ -293,10 +293,10 @@ static int PokedexApp_MainSeq_01(PokedexAppData *pokedexApp) {
     ov18_021E6540(pokedexApp);
     ov18_021E5F58(pokedexApp);
     NARC_Delete(pokedexApp->gfxNarc);
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     ov18_021E84EC(pokedexApp);
     ov18_021E62E8(pokedexApp);
-    sub_02021238();
+    DisableTouchPad();
     G2_BlendNone();
     G2S_BlendNone();
     GfGfx_EngineASetPlanes(GX_PLANEMASK_NONE);

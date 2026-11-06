@@ -73,7 +73,7 @@ BOOL TrainerCard_Exit(OverlayManager *man, int *state) {
     TrainerCardAppState *data = OverlayManager_GetData(man);
     MI_CpuClear8(data, sizeof(TrainerCardAppState));
     OverlayManager_FreeData(man);
-    sub_02004B10();
+    Sound_LoadHeapStateBGMAndResetSubScene();
     Heap_Destroy(HEAP_ID_TRAINER_CARD);
     return TRUE;
 }

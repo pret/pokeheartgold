@@ -4,7 +4,6 @@
 #include "msgdata/msg/msg_0778.h"
 
 #include "bg_window.h"
-#include "dwcaccount.h"
 #include "font.h"
 #include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
@@ -549,7 +548,7 @@ u32 ov44_02229F74(u32 arg0) {
     case 7:
         return 14;
     default:
-        GF_AssertFail();
+        GF_ASSERT(FALSE);
         return 0;
     }
 }
@@ -762,8 +761,8 @@ void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0) {
     HBlankInterruptDisable();
     GfGfx_DisableEngineAPlanes();
     GfGfx_DisableEngineBPlanes();
-    reg_GX_DISPCNT &= 0xFFFFE0FF;
-    reg_GXS_DB_DISPCNT &= 0xFFFFE0FF;
+    GX_SetVisiblePlane(0);
+    GXS_SetVisiblePlane(0);
     SetKeyRepeatTimers(4, 8);
     NARC *temp_r0 = NARC_New(NARC_a_0_8_8, HEAP_ID_53);
     arg0->unk15C = BgConfig_Alloc(HEAP_ID_53);
@@ -892,7 +891,7 @@ s32 ov44_0222A4B4(OverlayManager *overlayMananger, s32 *arg1) {
             LoadDwcOverlay();
             sub_02039FD8(HEAP_ID_53);
         }
-        GF_ASSERT(sub_02021148(4) == 1);
+        GF_ASSERT(InitializeTouchPad(4) == 1);
         *arg1 += 1;
         break;
     case 1:
@@ -978,7 +977,7 @@ s32 ov44_0222A758(OverlayManager *overlayManager) {
     }
     ov44_0222AE44(data);
     OverlayManager_FreeData(overlayManager);
-    sub_02021238();
+    DisableTouchPad();
     GF_DestroyVramTransferManager();
     Heap_Destroy(HEAP_ID_53);
     switch (data->unk34C) {
@@ -1069,8 +1068,8 @@ void ov44_0222A850(BgConfig *arg0) {
     SetBgPriority(1, 1);
     SetBgPriority(3, 0);
     SetBgPriority(2, 0);
-    reg_G2_BLDCNT = 0;
-    reg_G2S_DB_BLDCNT = 0;
+    G2_BlendNone();
+    G2S_BlendNone();
 }
 
 void ov44_0222AA94(UnkStruct_ov44_022319EC *arg0, UnkStruct_ov44_02232B74 *arg1) {
@@ -1080,7 +1079,7 @@ void ov44_0222AA94(UnkStruct_ov44_022319EC *arg0, UnkStruct_ov44_02232B74 *arg1)
             return;
         }
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
     return;
 }
 
@@ -1091,7 +1090,7 @@ void ov44_0222AAC0(UnkStruct_ov44_022319EC *arg0, UnkStruct_ov44_02232B74 *arg1)
             return;
         }
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
     return;
 }
 
@@ -1355,7 +1354,7 @@ void ov44_0222B0A4(UnkStruct_ov44_022319EC *arg0) {
 
 void ov44_0222B0B0(UnkStruct_ov44_022319EC *arg0) {
     if (WindowIsInUse(&arg0->unk2F0) != 0) {
-        sub_0200E5D4(&arg0->unk2F0, 0);
+        ClearWindowPixelBuffer(&arg0->unk2F0, 0);
         RemoveWindow(&arg0->unk2F0);
     }
     AddWindowParameterized(arg0->unk15C, &arg0->unk2F0, 3, 5, 1, 22, 2, 13, 458);
@@ -1363,7 +1362,7 @@ void ov44_0222B0B0(UnkStruct_ov44_022319EC *arg0) {
 
     // Nintendo Wi-Fi Connection
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00021, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unk2F0, 1, arg0->unk178, FontID_String_GetCenterAlignmentX(0, arg0->unk178, 0, 176), 0, 255, 0xF0E00, NULL);
+    AddTextPrinterParameterizedWithColor(&arg0->unk2F0, FONT_MESSAGE, arg0->unk178, FontID_String_GetCenterAlignmentX(FONT_SYSTEM, arg0->unk178, 0, 176), 0, 255, 0xF0E00, NULL);
     ScheduleWindowCopyToVram(&arg0->unk2F0);
 }
 
@@ -1735,7 +1734,7 @@ s32 ov44_0222BAD0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 
 s32 ov44_0222BB38(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (TextPrinterCheckActive(arg0->unk180) == 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             arg0->unk184 = Std_CreateYesNoMenu(arg0->unk15C, &ov44_0223538C, 473, 11, HEAP_ID_53);
         } else {
             arg0->unk188 = ov44_02231A28(arg0->unk15C, &ov44_02235374, 0);
@@ -1746,7 +1745,7 @@ s32 ov44_0222BB38(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 }
 
 s32 ov44_0222BBA4(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
-    if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+    if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
         s32 temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk184, HEAP_ID_53);
         if (temp_r0 == -1) {
             return arg1;
@@ -1802,7 +1801,7 @@ s32 ov44_0222BC78(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ov44_0222FA28(arg0);
         }
         if (WindowIsInUse(&arg0->unk2F0) != 0) {
-            sub_0200E5D4(&arg0->unk2F0, 0);
+            ClearWindowPixelBuffer(&arg0->unk2F0, 0);
             RemoveWindow(&arg0->unk2F0);
         }
         if (WindowIsInUse(&arg0->unk2E0) != 0) {
@@ -1971,7 +1970,7 @@ void ov44_0222C120(UnkStruct_ov44_022319EC *arg0) {
     } else {
         color = MAKE_TEXT_COLOR(3, 4, 0);
     }
-    AddTextPrinterParameterizedWithColor(&arg0->unk2E0, 0, strPlayerName, 32, 0, 255, color, NULL);
+    AddTextPrinterParameterizedWithColor(&arg0->unk2E0, FONT_SYSTEM, strPlayerName, 32, 0, 255, color, NULL);
     String_Delete(strPlayerName);
     s32 temp_r0_2 = ov44_02229F00(arg0, &arg0->unk4->unk0);
     s32 temp_r6 = ov44_0223120C(temp_r0_2, &color);
@@ -1990,7 +1989,7 @@ void ov44_0222C120(UnkStruct_ov44_022319EC *arg0) {
     } else {
         ReadMsgDataIntoString(arg0->unk168, temp_r6, arg0->unk170);
     }
-    AddTextPrinterParameterizedWithColor(&arg0->unk2E0, 0, arg0->unk170, 102, 0, 255, color, NULL);
+    AddTextPrinterParameterizedWithColor(&arg0->unk2E0, FONT_SYSTEM, arg0->unk170, 102, 0, 255, color, NULL);
     ov44_0222AC54(arg0->unk15C, &arg0->unkB0C, 1, 2, 1, temp_r0_2);
     s32 var_r0_2;
     if (arg0->unk4->unk0.unk21 != 0) {
@@ -2013,7 +2012,7 @@ void ov44_0222C29C(UnkStruct_ov44_022319EC *arg0) {
         RemoveWindow(&arg0->unk2E0);
     }
     if (WindowIsInUse(&arg0->unk2F0) != 0) {
-        sub_0200E5D4(&arg0->unk2F0, 0);
+        ClearWindowPixelBuffer(&arg0->unk2F0, 0);
         RemoveWindow(&arg0->unk2F0);
     }
     AddWindowParameterized(arg0->unk15C, &arg0->unk2E0, 3, 1, 1, 28, 2, 13, 402);
@@ -2268,7 +2267,7 @@ s32 ov44_0222C684(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         ov44_0222F950(arg0, HEAP_ID_53);
         return arg1;
     }
-    GF_AssertFail();
+    GF_ASSERT(FALSE);
     return arg1;
 }
 
@@ -2408,7 +2407,7 @@ s32 ov44_0222CDAC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         if (ov00_021E6EBC() != -1) {
             sub_0202C4B0(arg0->unk0, ov00_021E6EBC());
         }
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             arg0->unk184 = Std_CreateYesNoMenu(arg0->unk15C, &ov44_0223538C, 473, 11, HEAP_ID_53);
         } else {
             arg0->unk188 = ov44_02231A14(arg0->unk15C, &ov44_02235374, 0);
@@ -2419,7 +2418,7 @@ s32 ov44_0222CDAC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 }
 
 s32 ov44_0222CE40(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
-    if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+    if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
         s32 temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk184, HEAP_ID_53);
         if (temp_r0 == -1) {
             if ((sub_020390C4() >= 4) || (sub_02039264() != 0) || (sub_020373B4(0) == 0)) {
@@ -2592,7 +2591,7 @@ s32 ov44_0222D214(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 s32 ov44_0222D23C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     ov44_02232018(&arg0->unk38C);
     if (TextPrinterCheckActive(arg0->unk180) == 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             arg0->unk184 = Std_CreateYesNoMenu(arg0->unk15C, &ov44_0223538C, 473, 11, HEAP_ID_53);
         } else {
             arg0->unk188 = ov44_02231A14(arg0->unk15C, &ov44_02235374, 0);
@@ -2603,7 +2602,7 @@ s32 ov44_0222D23C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 }
 
 s32 ov44_0222D2B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
-    if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+    if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
         s32 var_r5 = Handle2dMenuInput_DeleteOnFinish(arg0->unk184, HEAP_ID_53);
         ov44_02232018(&arg0->unk38C);
         if ((arg0->unk370 == -1) && (ov00_021E709C() != -1)) {
@@ -2685,7 +2684,7 @@ s32 ov44_0222D3DC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, listMenuItems[i].strno, listMenuItems[i].value);
     }
     if (WindowIsInUse(&arg0->unk320) != 0) {
-        sub_0200E5D4(&arg0->unk320, 0);
+        ClearWindowPixelBuffer(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
     }
     s32 height = (listLen + 1) * 2;
@@ -2706,7 +2705,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     s32 temp_r6 = ov44_0222E02C(arg0);
     ov44_02232018(&arg0->unk38C);
     if (sub_020393C8() != 0) {
-        sub_0200E5D4(&arg0->unk320, 0);
+        ClearWindowPixelBuffer(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
         ListMenuItems_Delete(arg0->unk154);
@@ -2717,7 +2716,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (TextPrinterCheckActive(arg0->unk180) != 0) {
         if (ov44_0222C500(arg0) != 0) {
             arg0->unk348 = 19;
-            sub_0200E5D4(&arg0->unk320, 0);
+            ClearWindowPixelBuffer(&arg0->unk320, 0);
             RemoveWindow(&arg0->unk320);
             DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
             ListMenuItems_Delete(arg0->unk154);
@@ -2755,7 +2754,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ov44_0222F510(arg0, 103, 0);
             arg0->unk348 = 29;
         } else if ((var_r4 == 0) || (var_r4 == 1) || (var_r4 == 29)) {
-            sub_0200E5D4(&arg0->unk320, 0);
+            ClearWindowPixelBuffer(&arg0->unk320, 0);
             RemoveWindow(&arg0->unk320);
             DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
             ListMenuItems_Delete(arg0->unk154);
@@ -2784,7 +2783,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
     }
 
-    sub_0200E5D4(&arg0->unk320, 0);
+    ClearWindowPixelBuffer(&arg0->unk320, 0);
     RemoveWindow(&arg0->unk320);
     DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
     ListMenuItems_Delete(arg0->unk154);
@@ -2849,7 +2848,7 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
     }
     if (WindowIsInUse(&arg0->unk320) != 0) {
-        sub_0200E5D4(&arg0->unk320, 0);
+        ClearWindowPixelBuffer(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
     }
     u32 temp_r0 = listLen * 2;
@@ -2865,7 +2864,7 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 s32 ov44_0222DA64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     ov44_02232018(&arg0->unk38C);
     if (sub_020393C8() != 0) {
-        sub_0200E5D4(&arg0->unk320, 0);
+        ClearWindowPixelBuffer(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, 0, &arg0->unk376 + arg0->unk37C);
         ListMenuItems_Delete(arg0->unk154);
@@ -2875,7 +2874,7 @@ s32 ov44_0222DA64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
     if (ov44_0222C500(arg0) != 0) {
         arg0->unk348 = 19;
-        sub_0200E5D4(&arg0->unk320, 0);
+        ClearWindowPixelBuffer(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, 0, &arg0->unk376 + arg0->unk37C);
         ListMenuItems_Delete(arg0->unk154);
@@ -2914,7 +2913,7 @@ s32 ov44_0222DA64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
         ov44_022319BC(arg0, var_r7);
     }
-    sub_0200E5D4(&arg0->unk320, 0);
+    ClearWindowPixelBuffer(&arg0->unk320, 0);
     RemoveWindow(&arg0->unk320);
     DestroyListMenu(arg0->unk158, 0, &arg0->unk376 + arg0->unk37C);
     ListMenuItems_Delete(arg0->unk154);
@@ -3104,7 +3103,7 @@ s32 ov44_0222E090(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     s32 temp_r0 = ov44_02231C70(&arg0->unk38C);
     UnkStruct_ov44_02232B74 *sp14 = ov44_0222AAEC(arg0, temp_r0);
     if (sub_020393C8() != 0) {
-        sub_0200E5D4(&arg0->unk320, 0);
+        ClearWindowPixelBuffer(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, 0, NULL);
         ListMenuItems_Delete(arg0->unk154);
@@ -3235,7 +3234,7 @@ s32 ov44_0222E090(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (var_r6 == 0) {
         ov44_0222F7BC(arg0);
     }
-    sub_0200E5D4(&arg0->unk320, 0);
+    ClearWindowPixelBuffer(&arg0->unk320, 0);
     RemoveWindow(&arg0->unk320);
     DestroyListMenu(arg0->unk158, 0, NULL);
     ListMenuItems_Delete(arg0->unk154);
@@ -3563,7 +3562,7 @@ s32 ov44_0222EC14(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 
 s32 ov44_0222EC2C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (TextPrinterCheckActive(arg0->unk180) == 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             arg0->unk184 = Std_CreateYesNoMenu(arg0->unk15C, &ov44_0223538C, 473, 11, HEAP_ID_53);
         } else {
             arg0->unk188 = ov44_02231A14(arg0->unk15C, &ov44_02235374, 0);
@@ -3574,7 +3573,7 @@ s32 ov44_0222EC2C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 }
 
 s32 ov44_0222EC98(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
-    if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+    if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
         s32 var_r5 = Handle2dMenuInput_DeleteOnFinish(arg0->unk184, HEAP_ID_53);
         if (TextPrinterCheckActive(arg0->unk180) != 0) {
             return arg1;
@@ -3658,7 +3657,7 @@ s32 ov44_0222EE54(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
     sub_020398D4(0, 1);
     if (TextPrinterCheckActive(arg0->unk180) == 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             arg0->unk184 = Std_CreateYesNoMenu(arg0->unk15C, &ov44_0223538C, 473, 11, HEAP_ID_53);
         } else {
             arg0->unk188 = ov44_02231A28(arg0->unk15C, &ov44_02235374, 0);
@@ -3673,7 +3672,7 @@ s32 ov44_0222EED4(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         return arg1;
     }
     if ((sub_02039274() != 0) || (sub_02039264() != 0) || (sub_020390C4() >= 3)) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             Clear2dMenuWindowAndDelete(arg0->unk184, HEAP_ID_53);
         } else {
             YesNoPrompt_Destroy(arg0->unk188);
@@ -3682,14 +3681,14 @@ s32 ov44_0222EED4(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         arg0->unk348 = 28;
     } else {
         if (sub_020393C8() != 0) {
-            if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+            if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
                 Clear2dMenuWindowAndDelete(arg0->unk184, HEAP_ID_53);
             } else {
                 YesNoPrompt_Destroy(arg0->unk188);
             }
             ov44_0222B9A0(arg0);
         } else {
-            if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+            if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
                 s32 temp_r0 = Handle2dMenuInput_DeleteOnFinish(arg0->unk184, HEAP_ID_53);
                 if (temp_r0 == -1) {
                     return arg1;
@@ -3755,7 +3754,7 @@ s32 ov44_0222F0AC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         return arg1;
     }
     if (TextPrinterCheckActive(arg0->unk180) == 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             arg0->unk184 = Std_CreateYesNoMenu(arg0->unk15C, &ov44_0223538C, 473, 11, HEAP_ID_53);
         } else {
             arg0->unk188 = ov44_02231A14(arg0->unk15C, &ov44_02235374, 0);
@@ -3768,7 +3767,7 @@ s32 ov44_0222F0AC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     s32 temp_r0 = ov44_02231C70(&arg0->unk38C);
     if (ov44_0222AAEC(arg0, temp_r0) == 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             Clear2dMenuWindowAndDelete(arg0->unk184, HEAP_ID_53);
         } else {
             YesNoPrompt_Destroy(arg0->unk188);
@@ -3782,7 +3781,7 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     u32 r0 = ov44_02229F00(arg0, temp_r0_2);
     u8 r7 = temp_r0_2->unk21;
     if ((arg0->unk37E != r0) || (arg0->unk380 != r7)) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             Clear2dMenuWindowAndDelete(arg0->unk184, HEAP_ID_53);
         } else {
             YesNoPrompt_Destroy(arg0->unk188);
@@ -3793,7 +3792,7 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         return arg1;
     }
     if (sub_020393C8() != 0) {
-        if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             Clear2dMenuWindowAndDelete(arg0->unk184, HEAP_ID_53);
         } else {
             YesNoPrompt_Destroy(arg0->unk188);
@@ -3801,7 +3800,7 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         ov44_0222B9A0(arg0);
     } else {
         if (sub_020390C4() >= 3) {
-            if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+            if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
                 Clear2dMenuWindowAndDelete(arg0->unk184, HEAP_ID_53);
             } else {
                 YesNoPrompt_Destroy(arg0->unk188);
@@ -3810,7 +3809,7 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             sub_02039358();
             arg0->unk348 = 29;
             return arg1;
-        } else if ((REG_POWCNT_ADDR / 2048 & reg_GX_POWCNT) >> 15 == 1) {
+        } else if (GX_GetDispSelect() == GX_DISP_SELECT_MAIN_SUB) {
             s32 menuInputResult = Handle2dMenuInput_DeleteOnFinish(arg0->unk184, HEAP_ID_53);
             if (menuInputResult == -1) {
                 return arg1;
@@ -3931,7 +3930,7 @@ void ov44_0222F510(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2) {
     TextFlags_SetCanABSpeedUpPrint(1);
     TextFlags_SetAutoScrollParam(0);
     TextFlags_SetCanTouchSpeedUpPrint(1);
-    arg0->unk180 = AddTextPrinterParameterized(&arg0->unk2D0, 1, arg0->unk174, 0, 0, textSpeed, 0);
+    arg0->unk180 = AddTextPrinterParameterized(&arg0->unk2D0, FONT_MESSAGE, arg0->unk174, 0, 0, textSpeed, 0);
     ScheduleWindowCopyToVram(&arg0->unk2D0);
 }
 
@@ -3955,7 +3954,7 @@ void ov44_0222F66C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     StringExpandPlaceholders(arg0->unk164, arg0->unk174, arg0->unk170);
     FillWindowPixelBuffer(&arg0->unk300, 15);
     DrawFrameAndWindow1(&arg0->unk300, 1, 473, 11);
-    arg0->unk180 = AddTextPrinterParameterized(&arg0->unk300, 1, arg0->unk174, 0, 0, 255, 0);
+    arg0->unk180 = AddTextPrinterParameterized(&arg0->unk300, FONT_MESSAGE, arg0->unk174, 0, 0, 255, 0);
     ScheduleWindowCopyToVram(&arg0->unk300);
 }
 
@@ -4065,7 +4064,7 @@ void ov44_0222F9A0(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
     GfGfx_EngineBTogglePlanes(2, 1);
     GfGfx_EngineBTogglePlanes(4, 1);
     GfGfx_EngineBTogglePlanes(8, 0);
-    arg0->unkB1C.unk4C = TouchHitboxController_Create(ov44_022354E8, 8, (TouchHitboxControllerCallback)ov44_0222FC84, arg0, arg2);
+    arg0->unkB1C.unk4C = TouchHitboxController_Create(ov44_022354E8, 8, ov44_0222FC84, arg0, arg2);
     arg0->unkB1C.unk0 = MessageFormat_New(arg2);
     ov44_0222FCBC(arg0, arg1, arg2);
     arg0->unkB1C.unk78 = 1;
@@ -4116,7 +4115,7 @@ u8 ov44_0222FA80(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
             arg0->unkB1C.unk75 = 0;
         }
     }
-    if ((u8)(arg0->unkB1C.unk73 + 254) <= 1) {
+    if (arg0->unkB1C.unk73 == 2 || arg0->unkB1C.unk73 == 3) {
         u32 temp_r0_2 = ov44_02231788(arg0);
         if (ov44_0222FBC8(arg0, temp_r0_2) == 1) {
             arg0->unkB1C.unk77 = arg0->unkB1C.unk71;
@@ -4186,9 +4185,10 @@ void ov44_0222FC3C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
 }
 
-void ov44_0222FC84(s32 arg0, enum HeapID arg1, UnkStruct_ov44_022319EC *arg2) {
-    s32 temp_r0 = arg2->unkB1C.unk70 * 8 + arg0;
-    if ((arg2->unkB1C.unk50[temp_r0] == 2) && (arg2->unkB1C.unk71 == 0) && (arg1 == 0)) {
+void ov44_0222FC84(u32 index, u32 event, void *arg) {
+    UnkStruct_ov44_022319EC *arg2 = arg;
+    s32 temp_r0 = arg2->unkB1C.unk70 * 8 + index;
+    if ((arg2->unkB1C.unk50[temp_r0] == 2) && (arg2->unkB1C.unk71 == 0) && (event == TOUCH_BUTTON_PRESSED)) {
         arg2->unkB1C.unk71 = temp_r0 + 1;
         PlaySE(SEQ_SE_DP_DECIDE);
     }
@@ -4396,64 +4396,64 @@ void ov44_02230300(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     // {STRVAR_1 3, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00042, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 1, arg0->unk178, 32, 8, 255, color, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_MESSAGE, arg0->unk178, 32, 8, 255, color, 0);
     UnkStruct_ov44_02231958 *sp10 = ov44_02231958(arg0, temp_r4);
     u32 temp_r0 = ov44_02229F00(arg0, sp10);
     ReadMsgDataIntoString(arg0->unk168, ov44_0223120C(temp_r0, &color), arg0->unk170);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk170, 104, 8, 255, color, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk170, 104, 8, 255, color, 0);
     PlayerProfile *playerProfile = PlayerProfile_New(HEAP_ID_53);
     Save_Profile_PlayerName_Set(playerProfile, sub_0202C298(arg0->unk0, temp_r4));
     BufferPlayersName(arg0->unkB1C.unk0, 0, playerProfile);
     Heap_Free(playerProfile);
     // GROUP
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00043, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 32, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 32, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // {STRVAR_1 3, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00150, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
 
-    u32 width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 32, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    u32 width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 32, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // BATTLE RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00044, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 56, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 56, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     BufferIntegerAsString(arg0->unkB1C.unk0, 0, sub_0202C090(arg0->unk0, temp_r4, 1), 4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     // W: {STRVAR_1 53, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00045, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 120, 56, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 120, 56, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     BufferIntegerAsString(arg0->unkB1C.unk0, 0, sub_0202C090(arg0->unk0, temp_r4, 2), 4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     // L: {STRVAR_1 53, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00046, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
 
-    width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 56, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 56, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // POKéMON TRADES
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00047, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     BufferIntegerAsString(arg0->unkB1C.unk0, 0, sub_0202C090(arg0->unk0, temp_r4, 3), 4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     // {STRVAR_1 53, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00048, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
 
-    width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     if (ov44_02229EF8(arg0) == 1) {
         // POFFIN SESSIONS
         ReadMsgDataIntoString(arg0->unk168, msg_0778_00049, arg0->unk178);
-        AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 104, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+        AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 104, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
         BufferIntegerAsString(arg0->unkB1C.unk0, 0, sub_0202C090(arg0->unk0, temp_r4, 9), 4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
         // {STRVAR_1 53, 0, 0}
         ReadMsgDataIntoString(arg0->unk168, msg_0778_00050, arg0->unk170);
         StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
 
-        width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-        AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 104, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+        width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+        AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 104, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     }
     // DATE LAST PLAYED
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00051, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     s32 temp_r0_2 = sub_0202C090(arg0->unk0, temp_r4, 6);
     if (temp_r0_2 != 0) {
         BufferIntegerAsString(arg0->unkB1C.unk0, 2, temp_r0_2, 2, PRINTING_MODE_LEFT_ALIGN, TRUE);
@@ -4463,8 +4463,8 @@ void ov44_02230300(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
         ReadMsgDataIntoString(arg0->unk168, msg_0778_00074, arg0->unk170);
         StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
 
-        width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-        AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+        width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+        AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     }
     ov44_0222AC54(arg0->unk15C, &arg0->unkB0C, 6, 2, 2, temp_r0);
 
@@ -4481,13 +4481,13 @@ void ov44_022307E0(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // BATTLE TOWER
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00052, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 0, temp_r4);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 113, temp_r4, 120, 24);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 112, temp_r4, 120, 48);
 }
 
@@ -4495,39 +4495,39 @@ void ov44_022308B0(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // BATTLE FACTORY
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00053, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     // LEVEL 50
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00060, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // RENTAL/TRADE
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00062, arg0->unk178);
 
-    u32 width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    u32 width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 1, temp_r4);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 115, temp_r4, 104, 48);
     ov44_02231054(arg0, msg_0778_00066, 117, temp_r4, 212, 48);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 64, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 64, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 114, temp_r4, 104, 64);
     ov44_02231054(arg0, msg_0778_00066, 116, temp_r4, 212, 64);
     // OPEN LEVEL
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00061, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 88, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 88, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // RENTAL/TRADE
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00062, arg0->unk178);
 
-    width = 232 - FontID_String_GetWidth(0, arg0->unk178, 0);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 88, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    width = 232 - FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 88, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 2, temp_r4);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 112, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 112, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 119, temp_r4, 104, 112);
     ov44_02231054(arg0, msg_0778_00066, 121, temp_r4, 212, 112);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 128, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 118, temp_r4, 104, 128);
     ov44_02231054(arg0, msg_0778_00066, 120, temp_r4, 212, 128);
 }
@@ -4536,19 +4536,19 @@ void ov44_02230B2C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // BATTLE CASTLE
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00054, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     // CASTLE POINTS
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00063, arg0->unk178);
 
-    u32 width = 180 - (FontID_String_GetWidth(0, arg0->unk178, 0) + 1) / 2;
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    u32 width = 180 - (FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0) + 1) / 2;
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 3, temp_r4);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00068, 135, temp_r4, 104, 48);
     ov44_02231054(arg0, msg_0778_00067, 136, temp_r4, 212, 48);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00068, 134, temp_r4, 104, 80);
     ov44_02231054(arg0, msg_0778_00067, 138, temp_r4, 212, 80);
 }
@@ -4558,17 +4558,17 @@ void ov44_02230C68(UnkStruct_ov44_022319EC *arg0, enum HeapID arg1) {
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // BATTLE HALL
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00055, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     String *temp_r0 = GetSpeciesName(FrontierSave_GetStat(frontierSave, 124, temp_r4), arg1);
-    u32 width = 33 - (FontID_String_GetWidth(0, temp_r0, 0) + 1) / 2;
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, temp_r0, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    u32 width = 33 - (FontID_String_GetWidth(FONT_SYSTEM, temp_r0, 0) + 1) / 2;
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, temp_r0, width, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     String_Delete(temp_r0);
     ov44_02231084(arg0, arg0->unk178, 4, temp_r4);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 123, temp_r4, 108, 48);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 80, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00065, 122, temp_r4, 108, 80);
 }
 
@@ -4576,13 +4576,13 @@ void ov44_02230D8C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // BATTLE ARCADE
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00056, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     ov44_02231084(arg0, arg0->unk178, 5, temp_r4);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00069, 143, temp_r4, 112, 24);
     // RECORD
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00059, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     ov44_02231054(arg0, msg_0778_00069, 142, temp_r4, 112, 48);
 }
 
@@ -4591,26 +4591,26 @@ void ov44_02230E5C(UnkStruct_ov44_022319EC *arg0, enum HeapID heapID) {
     s32 temp_r4 = arg0->unkB1C.unk71 - 1;
     // PLAZA GAMES PLAYED
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00070, arg0->unk178);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 0, 255, MAKE_TEXT_COLOR(15, 14, 0), 0);
     BufferWiFiPlazaActivityName(arg0->unkB1C.unk0, 0, 0);
     // {STRVAR_3 0, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00071, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 24, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // {STRVAR_1 53, 0, 0}
     ov44_022310C8(arg0, msg_0778_00072, sub_0202C090(temp_r6, temp_r4, 10), 164, 24);
     BufferWiFiPlazaActivityName(arg0->unkB1C.unk0, 0, 1);
     // {STRVAR_3 0, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00071, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 48, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // {STRVAR_1 53, 0, 0}
     ov44_022310C8(arg0, msg_0778_00072, sub_0202C090(temp_r6, temp_r4, 11), 164, 48);
     BufferWiFiPlazaActivityName(arg0->unkB1C.unk0, 0, 2);
     // {STRVAR_3 0, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00071, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, 8, 72, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, 8, 72, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     // {STRVAR_1 53, 0, 0}
     ov44_022310C8(arg0, msg_0778_00072, sub_0202C090(temp_r6, temp_r4, 12), 164, 72);
 }
@@ -4644,8 +4644,8 @@ void ov44_022310C8(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2, s32 arg3, 
     BufferIntegerAsString(arg0->unkB1C.unk0, 0, arg2, 4, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     ReadMsgDataIntoString(arg0->unk168, arg1, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    u32 width = arg3 - (FontID_String_GetWidth(0, arg0->unk178, 0) + 1) / 2;
-    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, 0, arg0->unk178, width, arg4, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    u32 width = arg3 - (FontID_String_GetWidth(FONT_SYSTEM, arg0->unk178, 0) + 1) / 2;
+    AddTextPrinterParameterizedWithColor(&arg0->unkB1C.unk1FC, FONT_SYSTEM, arg0->unk178, width, arg4, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
 }
 
 void ov44_02231148(UnkStruct_ov44_022319EC *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4) {
@@ -4749,7 +4749,7 @@ void ov44_022312B8(UnkStruct_ov44_022319EC *arg0, Window *arg1, s32 arg2, s32 ar
     // {STRVAR_1 3, 0, 0}
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00042, arg0->unk170);
     StringExpandPlaceholders(arg0->unkB1C.unk0, arg0->unk178, arg0->unk170);
-    AddTextPrinterParameterizedWithColor(arg1, 1, arg0->unk178, 0, temp_r7, 255, color, 0);
+    AddTextPrinterParameterizedWithColor(arg1, FONT_MESSAGE, arg0->unk178, 0, temp_r7, 255, color, 0);
     ScheduleWindowCopyToVram(arg1);
 }
 
@@ -4842,14 +4842,14 @@ void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
         arg0->unkB1C.unk21C[i] = Sprite_CreateAffine(&spriteTemplateList[i]);
         Sprite_SetAnimCtrlSeq(arg0->unkB1C.unk21C[i], ov44_0223535C[i]);
     }
-    FontID_Alloc(2, arg2);
+    FontID_Alloc(FONT_SUBSCREEN, arg2);
     Window window;
     InitWindow(&window);
     AddTextWindowTopLeftCorner(arg0->unk15C, &window, 8, 2, 0, 0);
     String *string = String_New(64, arg2);
     // CLOSE
     ReadMsgDataIntoString(arg0->unk168, msg_0778_00073, string);
-    AddTextPrinterParameterizedWithColor(&window, 2, string, FontID_String_GetCenterAlignmentX(2, string, 0, 64), 0, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
+    AddTextPrinterParameterizedWithColor(&window, FONT_SUBSCREEN, string, FontID_String_GetCenterAlignmentX(FONT_SUBSCREEN, string, 0, 64), 0, 255, MAKE_TEXT_COLOR(1, 2, 0), 0);
     String_Delete(string);
     UnkStruct_02013910 *temp_r0_4 = sub_02013910(&window, arg2);
     GF_ASSERT(sub_02021AC8(sub_02013948(temp_r0_4, NNS_G2D_VRAM_TYPE_2DSUB), TRUE, NNS_G2D_VRAM_TYPE_2DSUB, &arg0->unkB1C.unk228) != 0);
@@ -4865,13 +4865,13 @@ void ov44_02231420(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2) 
     textObjTemplate.y = -8;
     textObjTemplate.unk_20 = 0;
     textObjTemplate.unk_24 = 0;
-    textObjTemplate.vram = 2;
+    textObjTemplate.vram = NNS_G2D_VRAM_TYPE_2DSUB;
     textObjTemplate.heapID = arg2;
     arg0->unkB1C.unk234 = TextOBJ_Create(&textObjTemplate, temp_r0_4);
     sub_02013938(temp_r0_4);
     RemoveWindow(&window);
-    FontID_Release(2);
-    arg0->unkB1C.unk244 = TouchHitboxController_Create(ov44_02235394, 3, (TouchHitboxControllerCallback)ov44_022317F0, arg0, arg2);
+    FontID_Release(FONT_SUBSCREEN);
+    arg0->unkB1C.unk244 = TouchHitboxController_Create(ov44_02235394, NELEMS(ov44_02235394), ov44_022317F0, arg0, arg2);
 }
 
 void ov44_022316B0(UnkStruct_ov44_022319EC *arg0) {
@@ -4917,16 +4917,17 @@ s32 ov44_02231788(UnkStruct_ov44_022319EC *arg0) {
     TouchHitboxController_IsTriggered(arg0->unkB1C.unk244);
 
     for (s32 i = 0; i < 3; i++) {
-        if ((arg0->unkB1C.unk238 != 2 || i != 1) && ov44_0223183C(&arg0->unkB1C, i, arg0->unkB1C.unk23C, arg0->unkB1C.unk240) == 1) {
+        if ((arg0->unkB1C.unk238 != 2 || i != 1) && ov44_0223183C(&arg0->unkB1C, i, arg0->unkB1C.unk23C, arg0->unkB1C.unk240) == TOUCH_BUTTON_RELEASED) {
             return i + 1;
         }
     }
     return 0;
 }
 
-void ov44_022317F0(u32 arg0, u32 arg1, UnkStruct_ov44_022319EC *arg2) {
-    arg2->unkB1C.unk23C = arg0;
-    arg2->unkB1C.unk240 = arg1;
+void ov44_022317F0(u32 index, u32 event, void *arg) {
+    UnkStruct_ov44_022319EC *arg2 = arg;
+    arg2->unkB1C.unk23C = index;
+    arg2->unkB1C.unk240 = event;
 }
 
 void ov44_02231800(UnkStruct_ov44_02231800 *arg0, s32 arg1) {

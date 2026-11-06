@@ -1,72 +1,72 @@
 {
-  "header": "fielddata/script/scr_seq/event_T27R0201.h",
-  "objects": [
-    {
-      "id": "obj_T27R0201_bozu",
-      "spriteId": "SPRITE_BOZU",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T27R0201_000 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 15,
-      "z": 7,
-      "y": 0
-    },
-    {
-      "id": "obj_T27R0201_bozu_2",
-      "spriteId": "SPRITE_BOZU",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T27R0201_002 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 0,
-      "x": 9,
-      "z": 2,
-      "y": 0
-    },
-    {
-      "id": "obj_T27R0201_bozu_3",
-      "spriteId": "SPRITE_BOZU",
-      "movement": 15,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "_EV_scr_seq_T27R0201_001 + 1",
-      "facingDirection": 1,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 1,
-      "yRange": 1,
-      "x": 3,
-      "z": 2,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 9,
-      "z": 11,
-      "header": "MAP_ECRUTEAK",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 15,
-      "z": 3,
-      "header": "MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION_CORRIDOR",
-      "anchor": 0,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_T27R0201.h",
+    "objects": [
+        {
+            "id": "obj_T27R0201_bozu",
+            "spriteId": "SPRITE_BOZU",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T27R0201_000 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 15,
+            "z": 7,
+            "y": 0
+        },
+        {
+            "id": "obj_T27R0201_bozu_2",
+            "spriteId": "SPRITE_BOZU",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T27R0201_002 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 0,
+            "x": 9,
+            "z": 2,
+            "y": 0
+        },
+        {
+            "id": "obj_T27R0201_bozu_3",
+            "spriteId": "SPRITE_BOZU",
+            "movement": 15,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "_EV_scr_seq_T27R0201_001 + 1",
+            "facingDirection": 1,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 1,
+            "yRange": 1,
+            "x": 3,
+            "z": 2,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 9,
+            "z": 11,
+            "header": "MAP_ECRUTEAK",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 15,
+            "z": 3,
+            "header": "MAP_ECRUTEAK_BELL_TOWER_BARRIER_STATION_CORRIDOR",
+            "anchor": 0,
+            "y": 0
+        }
+    ]
 }

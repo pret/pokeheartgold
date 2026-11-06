@@ -5,8 +5,8 @@
 #include "global.h"
 
 #include "application/main_menu/main_menu.h"
-#include "files/msgdata/msg.naix"
-#include "files/msgdata/msg/msg_0229.h"
+#include "msgdata/msg.naix"
+#include "msgdata/msg/msg_0229.h"
 
 #include "bg_window.h"
 #include "font.h"
@@ -323,7 +323,7 @@ static BOOL CheckSavedataApp_PrintMessage(CheckSavedataApp_Data *data, u32 msgNu
 
         data->textString = String_New(1024, data->heapID);
         ReadMsgDataIntoString(data->msgData, msgNum, data->textString);
-        data->textPrinterId = AddTextPrinterParameterized(&data->window, 1, data->textString, 0, 0, textSpeed, NULL);
+        data->textPrinterId = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->textString, 0, 0, textSpeed, NULL);
 
         if (textSpeed == TEXT_SPEED_INSTANT) {
             String_Delete(data->textString);

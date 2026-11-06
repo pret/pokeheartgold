@@ -1,242 +1,242 @@
 {
-  "header": "fielddata/script/scr_seq/event_D25R0101.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d25r0101_big_pearl",
-      "type": 2,
-      "x": 3,
-      "z": 74,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d25r0101_great_ball",
-      "type": 2,
-      "x": 30,
-      "z": 58,
-      "y": 0,
-      "dir": 4
-    },
-    {
-      "scriptId": "std_hiddenitem_d25r0101_parlyz_heal",
-      "type": 2,
-      "x": 18,
-      "z": 76,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D25R0101_mount_2",
-      "spriteId": "SPRITE_MOUNT_2",
-      "movement": 17,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_HIKER_DANIEL)",
-      "facingDirection": 3,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 5,
-      "z": 48,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_mount_2_2",
-      "spriteId": "SPRITE_MOUNT_2",
-      "movement": 13,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_HIKER_RUSSEL)",
-      "facingDirection": 2,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 20,
-      "z": 51,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_fire",
-      "spriteId": "SPRITE_FIRE",
-      "movement": 17,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_FIREBREATHER_BILL)",
-      "facingDirection": 3,
-      "param0": 4,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 23,
-      "z": 69,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_fire_2",
-      "spriteId": "SPRITE_FIRE",
-      "movement": 15,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_FIREBREATHER_RAY)",
-      "facingDirection": 1,
-      "param0": 3,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 8,
-      "z": 26,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_mania",
-      "spriteId": "SPRITE_MANIA",
-      "movement": 9,
-      "type": 1,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_trainer(TRAINER_POKE_MANIAC_LARRY)",
-      "facingDirection": 3,
-      "param0": 2,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 12,
-      "z": 80,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_X_ATTACK",
-      "scriptId": "std_itemball_d25r0101_x_attack",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 3,
-      "z": 34,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_monstarball_2",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_GREAT_BALL",
-      "scriptId": "std_itemball_d25r0101_great_ball",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 29,
-      "z": 72,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_monstarball_3",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_POTION",
-      "scriptId": "std_itemball_d25r0101_potion",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 4,
-      "z": 67,
-      "y": 0
-    },
-    {
-      "id": "obj_D25R0101_monstarball_4",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_AWAKENING",
-      "scriptId": "std_itemball_d25r0101_awakening",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 23,
-      "z": 93,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 27,
-      "z": 43,
-      "header": "MAP_ROUTE_32",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 4,
-      "z": 25,
-      "header": "MAP_UNION_CAVE_B1F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 93,
-      "header": "MAP_ROUTE_33",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 92,
-      "header": "MAP_UNION_CAVE_B1F",
-      "anchor": 1,
-      "y": 0
-    },
-    {
-      "x": 5,
-      "z": 3,
-      "header": "MAP_UNION_CAVE_B2F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 3,
-      "header": "MAP_UNION_CAVE_B2F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 4,
-      "z": 4,
-      "header": "MAP_RUINS_OF_ALPH",
-      "anchor": 15,
-      "y": 0
-    },
-    {
-      "x": 26,
-      "z": 6,
-      "header": "MAP_RUINS_OF_ALPH",
-      "anchor": 16,
-      "y": 0
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D25R0101.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d25r0101_big_pearl",
+            "type": 2,
+            "x": 3,
+            "z": 74,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d25r0101_great_ball",
+            "type": 2,
+            "x": 30,
+            "z": 58,
+            "y": 0,
+            "dir": 4
+        },
+        {
+            "scriptId": "std_hiddenitem_d25r0101_parlyz_heal",
+            "type": 2,
+            "x": 18,
+            "z": 76,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D25R0101_mount_2",
+            "spriteId": "SPRITE_MOUNT_2",
+            "movement": 17,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_HIKER_DANIEL)",
+            "facingDirection": 3,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 5,
+            "z": 48,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_mount_2_2",
+            "spriteId": "SPRITE_MOUNT_2",
+            "movement": 13,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_HIKER_RUSSEL)",
+            "facingDirection": 2,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 20,
+            "z": 51,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_fire",
+            "spriteId": "SPRITE_FIRE",
+            "movement": 17,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_FIREBREATHER_BILL)",
+            "facingDirection": 3,
+            "param0": 4,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 23,
+            "z": 69,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_fire_2",
+            "spriteId": "SPRITE_FIRE",
+            "movement": 15,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_FIREBREATHER_RAY)",
+            "facingDirection": 1,
+            "param0": 3,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 8,
+            "z": 26,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_mania",
+            "spriteId": "SPRITE_MANIA",
+            "movement": 9,
+            "type": 1,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_trainer(TRAINER_POKE_MANIAC_LARRY)",
+            "facingDirection": 3,
+            "param0": 2,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 12,
+            "z": 80,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_X_ATTACK",
+            "scriptId": "std_itemball_d25r0101_x_attack",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 3,
+            "z": 34,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_monstarball_2",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_GREAT_BALL",
+            "scriptId": "std_itemball_d25r0101_great_ball",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 29,
+            "z": 72,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_monstarball_3",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_POTION",
+            "scriptId": "std_itemball_d25r0101_potion",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 4,
+            "z": 67,
+            "y": 0
+        },
+        {
+            "id": "obj_D25R0101_monstarball_4",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D25R0101_AWAKENING",
+            "scriptId": "std_itemball_d25r0101_awakening",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 23,
+            "z": 93,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 27,
+            "z": 43,
+            "header": "MAP_ROUTE_32",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 4,
+            "z": 25,
+            "header": "MAP_UNION_CAVE_B1F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 93,
+            "header": "MAP_ROUTE_33",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 92,
+            "header": "MAP_UNION_CAVE_B1F",
+            "anchor": 1,
+            "y": 0
+        },
+        {
+            "x": 5,
+            "z": 3,
+            "header": "MAP_UNION_CAVE_B2F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 3,
+            "header": "MAP_UNION_CAVE_B2F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 4,
+            "z": 4,
+            "header": "MAP_RUINS_OF_ALPH",
+            "anchor": 15,
+            "y": 0
+        },
+        {
+            "x": 26,
+            "z": 6,
+            "header": "MAP_RUINS_OF_ALPH",
+            "anchor": 16,
+            "y": 0
+        }
+    ]
 }

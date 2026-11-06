@@ -117,9 +117,9 @@ _0208512C:
 	bl sub_020863F4
 	add r0, r4, #0
 	bl sub_02085688
-	bl sub_020210BC
+	bl EnableTouchPad
 	mov r0, #4
-	bl sub_02021148
+	bl InitializeTouchPad
 	add r0, r4, #0
 	bl sub_020860B8
 	mov r0, #0xfa
@@ -291,7 +291,7 @@ _02085294:
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
 	bl NARC_Delete
-	bl sub_02021238
+	bl DisableTouchPad
 	mov r1, #0x2f
 	lsl r1, r1, #4
 	ldr r0, [r4, r1]

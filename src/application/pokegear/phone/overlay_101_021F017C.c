@@ -343,7 +343,7 @@ void ov101_021F0260(PokegearPhoneAppData *phoneApp) {
 }
 
 void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
-    FontID_Alloc(4, phoneApp->heapID);
+    FontID_Alloc(FONT_UNK_4, phoneApp->heapID);
     NARC *narc = NARC_New(NARC_application_pokegear_phone_pgphone_gra, phoneApp->heapID);
     BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000028_NCGR, GF_BG_LYR_MAIN_2, GF_BG_GFX_TYPE_CHAR, 0, 0);
     BgConfig_LoadAssetFromOpenNarc(phoneApp->pokegear->bgConfig, phoneApp->heapID, narc, NARC_application_pokegear_phone_pgphone_gra, phoneApp->skin + NARC_pgphone_gra_pgphone_gra_00000016_NCGR, GF_BG_LYR_SUB_3, GF_BG_GFX_TYPE_CHAR, 0, 0);
@@ -357,7 +357,7 @@ void ov101_021F0284(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F0370(PokegearPhoneAppData *phoneApp) {
     Heap_Free(phoneApp->pNscrFile);
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 void ov101_021F0388(PokegearPhoneAppData *phoneApp) {
@@ -383,7 +383,7 @@ void PokegearPhone_SetTouchscreenDimState(PokegearPhoneAppData *phoneApp, BOOL s
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0x60, 0x20, 8, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_OBJ, 0, 0x40, 8, RGB_BLACK);
-        AddTextPrinterParameterizedWithColor(&phoneApp->windows[1], 0, PhoneContact_GetName(phoneApp->callContext, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&phoneApp->windows[1], FONT_SYSTEM, PhoneContact_GetName(phoneApp->callContext, phoneApp->callerID), 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     } else {
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0, 0xE0, 0, RGB_BLACK);
         PaletteData_BlendPalette(phoneApp->pokegear->plttData, PLTTBUF_MAIN_BG, 0xE0, 0x20, 0, RGB_BLACK);

@@ -5,7 +5,7 @@
 #include "constants/battle_menu.h"
 
 #include "battle/battle_controller_opponent.h"
-#include "files/msgdata/msg/msg_0197.h"
+#include "msgdata/msg/msg_0197.h"
 
 #include "gf_gfx_loader.h"
 #include "heap.h"
@@ -54,13 +54,13 @@ static ManagedSprite *BattleInput_SetPokemonIcon(BattleInput *battleInput, Pokem
 static ManagedSprite *BattleInput_SetBugContestPokemonIcon(BattleInput *battleInput, Pokemon *pokemon);
 static void Task_AnimatePokemonIconSprite(SysTask *task, void *data);
 static int ov12_022684F8(u8 task);
-static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut);
-static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
+static void String_GetFontLength(String *str, enum Font fontId, int *lengthOut, int *charLengthOut);
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *textObj, String *str, enum Font fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10);
 static void BattleInput_DeleteTextObjects(BattleInput *battleInput);
 static void ov12_022686BC(BattleInput *battleInput);
 static BattleInputMoveMemory *BattleInput_GetMoveMemory(BattleInput *battleInput, int battlerType);
 static void BattleInput_FreeMoveMemory(BattleInput *battleInput);
-static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, enum Font fontId, BattleInputMoveMemory_DisplayObj *display, int textColor);
 static void BattleInput_CreateMoveTypeIcons(BattleInput *battleInput);
 static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput);
 static void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInput);
@@ -108,7 +108,7 @@ static BOOL BattleSystem_IsInFrontier(BattleSystem *battleSystem);
 
 // Data
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sBottomScreenBgTilemapId[7] = {
     43,
     36,
@@ -119,7 +119,7 @@ static const u16 sBottomScreenBgTilemapId[7] = {
     39
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sTypeIconPositions[][2] = {
     { 32,  61  },
     { 160, 60  },
@@ -127,7 +127,7 @@ static const u16 sTypeIconPositions[][2] = {
     { 160, 123 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sMovePPTextPositions[4][2] = {
     { 59,  61  },
     { 187, 60  },
@@ -135,7 +135,7 @@ static const u16 sMovePPTextPositions[4][2] = {
     { 187, 123 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sMovePPMaxTextPositions[4][2] = {
     { 76,  61  },
     { 204, 60  },
@@ -143,7 +143,7 @@ static const u16 sMovePPMaxTextPositions[4][2] = {
     { 204, 123 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sTargetPokemonMenuPositions[][2] = {
     { 60,  116 },
     { 196, 32  },
@@ -152,7 +152,7 @@ static const u16 sTargetPokemonMenuPositions[][2] = {
     { 128, 175 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u16 sPokemonIconPositions[][2] = {
     { 60,  116 },
     { 196, 56  },
@@ -269,7 +269,7 @@ static const int sTouchArrayMainMenu[] = {
     BATTLE_INPUT_RUN
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB04[] = {
     1,
     2,
@@ -277,7 +277,7 @@ static const u8 ov12_0226EB04[] = {
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sCursorArrayMainMenu[2][3] = {
     { CURSOR_INPUT_FIGHT, CURSOR_INPUT_FIGHT, CURSOR_INPUT_FIGHT   },
     { CURSOR_INPUT_BAG,   CURSOR_INPUT_RUN,   CURSOR_INPUT_POKEMON }
@@ -330,13 +330,13 @@ static const int sTouchArrayPalPark[] = {
     0
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB00[] = {
     1,
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sCursorArrayPalParkMenu[2][1] = {
     { CURSOR_INPUT_PAL_PARK_BALL },
     { CURSOR_INPUT_PAL_PARK_RUN }
@@ -401,7 +401,7 @@ static const int sTouchArrayFightMenu[] = {
     BATTLE_INPUT_MOVE_4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB08[] = {
     4,
     8,
@@ -410,7 +410,7 @@ static const u8 ov12_0226EB08[] = {
     11
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sCursorArrayFightMenu[][2] = {
     { CURSOR_INPUT_MOVE_1,       CURSOR_INPUT_MOVE_2       },
     { CURSOR_INPUT_MOVE_3,       CURSOR_INPUT_MOVE_4       },
@@ -449,13 +449,13 @@ static const int sTouchArrayTwoOptionsMenu[] = {
     BATTLE_INPUT_CANCEL
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EAFC[] = {
     1,
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sTwoOptionsMenuCursorInput[2][1] = {
     { CURSOR_INPUT_TWO_OPTION_TOP },
     { CURSOR_INPUT_TWO_OPTION_BOTTOM }
@@ -520,7 +520,7 @@ static const int sTouchArrayTargetMenu[] = {
     BATTLE_INPUT_CANCEL
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226EB10[] = {
     6,
     12,
@@ -529,7 +529,7 @@ static const u8 ov12_0226EB10[] = {
     4
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 sTargetMenuButtonInputArray[][2] = {
     { CURSOR_INPUT_TARGET_OPPONENT_LEFT, CURSOR_INPUT_TARGET_OPPONENT_RIGHT },
     { CURSOR_INPUT_TARGET_PLAYER_LEFT,   CURSOR_INPUT_TARGET_PLAYER_RIGHT   },
@@ -559,7 +559,7 @@ static const int sTouchArrayVsRecorderPlayback[] = {
     BATTLE_INPUT_STOP
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const u8 ov12_0226E1F8[] = {
     4
 };
@@ -932,7 +932,7 @@ static const ManagedSpriteTemplate sSpriteTemplateSportBall = {
     .vramTransfer = 0
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 sMainMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 },
     { 0, 192, 384 },
@@ -940,7 +940,7 @@ static const s16 sMainMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox sMainMenuButtonsTouchscreenRect[] = {
     {
      .rect = {
@@ -976,7 +976,7 @@ static const TouchscreenHitbox sMainMenuButtonsTouchscreenRect[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 sFightMenuButtonsScreenOffsets[5][3] = {
     { 0, 192, 384 },
     { 0, 192, 384 },
@@ -985,7 +985,7 @@ static const s16 sFightMenuButtonsScreenOffsets[5][3] = {
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox sFightMenuButtonsTouchscreenRect[] = {
     {
      .rect = {
@@ -1029,10 +1029,10 @@ static const TouchscreenHitbox sFightMenuButtonsTouchscreenRect[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E258[] = { 0x22F, 0x22C, 0x229, 0x226 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E2A8[] = {
     {
      .rect = {
@@ -1068,7 +1068,7 @@ static const TouchscreenHitbox ov12_0226E2A8[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 sTargetMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 },
     { 0, 192, 384 },
@@ -1077,7 +1077,7 @@ static const s16 sTargetMenuButtonsScreenOffsets[][3] = {
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E348[] = {
     {
      .rect = {
@@ -1121,7 +1121,7 @@ static const TouchscreenHitbox ov12_0226E348[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E238[] = {
     0x238,
     0x235,
@@ -1129,7 +1129,7 @@ static const s16 ov12_0226E238[] = {
     0x23B
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E2F8[] = {
     {
      .rect = {
@@ -1165,13 +1165,13 @@ static const TouchscreenHitbox ov12_0226E2F8[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E286[][3] = {
     { 0, 5,   10  },
     { 0, 192, 384 }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E24C[] = {
     {
      .rect = {
@@ -1191,10 +1191,10 @@ static const TouchscreenHitbox ov12_0226E24C[] = {
      },
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const s16 ov12_0226E228[] = { 0, 192, 384 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const TouchscreenHitbox ov12_0226E20C = {
     .rect = {
              .top = 18,
@@ -1204,14 +1204,14 @@ static const TouchscreenHitbox ov12_0226E20C = {
              },
 };
 
-static const ALIGN(4) S16Pos ov12_0226E2D8[] = {
+static const ATTRIBUTE_ALIGN(4) S16Pos ov12_0226E2D8[] = {
     { 128,  76   },
     { 40,   0xA4 },
     { 0xD8, 0xA4 },
     { 128,  168  }
 };
 
-ALIGN(4)
+ATTRIBUTE_ALIGN(4)
 static const int sMoveRangeHitMons[][4] = {
     { 1, 1, 1, 1 },
     { 0, 1, 0, 1 },
@@ -1420,12 +1420,12 @@ void BattleInput_LoadDefaultResources(BattleInput *battleInput) {
 
     GfGfxLoader_LoadCharData(NARC_a_0_0_7, bottomScreenBgTilesId, bgConfig, GF_BG_LYR_SUB_0, 0, 0x6000, 1, HEAP_ID_BATTLE);
 
-    sub_0207775C(spriteSystem, spriteManager, 20017, 20017);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsCellAndAnim(spriteSystem, spriteManager, 20017, 20017);
 
-    sub_02077720(BattleSystem_GetPaletteData(battleInput->battleSystem), 3, spriteSystem, spriteManager, 2, 20020);
+    SpriteSystem_LoadMoveTypeAndCategoryIconsPlttToBuffer(BattleSystem_GetPaletteData(battleInput->battleSystem), PLTTBUF_SUB_OBJ, spriteSystem, spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, 20020);
 
     for (int i = 0; i < 4; i++) {
-        sub_020776B8(spriteSystem, spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, TYPE_NORMAL, 20025 + i);
+        SpriteSystem_LoadMoveTypeIconCharResObj(spriteSystem, spriteManager, NNS_G2D_VRAM_TYPE_2DSUB, TYPE_NORMAL, 20025 + i);
     }
 
     if (BattleSystem_GetBattleType(battleInput->battleSystem) & BATTLE_TYPE_TUTORIAL) {
@@ -1440,11 +1440,11 @@ static void BattleInput_FreeDefaultResources(BattleInput *battleInput) {
     SpriteManager *spriteManager = BattleSystem_GetSpriteManager(battleInput->battleSystem);
 
     for (i = 0; i < 4; i++) {
-        sub_020777A4(spriteManager, 20025 + i);
+        SpriteManager_UnloadMoveTypeIconCharResObjByTag(spriteManager, 20025 + i);
     }
 
-    sub_020777AC(spriteManager, 20020);
-    sub_020777B4(spriteManager, 20017, 20017);
+    SpriteManager_UnloadMoveTypeAndCategoryIconPlttResObjByTag(spriteManager, 20020);
+    SpriteManager_UnloadMoveTypeAndCategoryIconCellAndAnimResObjsByTags(spriteManager, 20017, 20017);
 
     if (BattleSystem_GetBattleType(battleInput->battleSystem) & BATTLE_TYPE_TUTORIAL) {
         BattleFinger_Delete(battleInput->tutorial.finger);
@@ -1913,10 +1913,10 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
         battleInput->unk66F = 0;
     }
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FIGHT], strFight, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 83, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BAG], strBag, 4, MAKE_TEXT_COLOR(4, 5, 6), 2, 20023, 40, 169, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_POKEMON], strPokemon, 4, MAKE_TEXT_COLOR(7, 8, 9), 2, 20023, 216, 168, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_RUN], strRun, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 176, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FIGHT], strFight, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 83, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BAG], strBag, FONT_UNK_4, MAKE_TEXT_COLOR(4, 5, 6), 2, 20023, 40, 169, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_POKEMON], strPokemon, FONT_UNK_4, MAKE_TEXT_COLOR(7, 8, 9), 2, 20023, 216, 168, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_RUN], strRun, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 176, 1, NULL);
 
     String_Delete(strFight);
     String_Delete(strBag);
@@ -1971,14 +1971,14 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
                     }
 
                     if (strMonGender != NULL) {
-                        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, 0, genderColor, 3, 20023, 136, 0x10, 0, 0);
+                        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_GENDER], strMonGender, FONT_SYSTEM, genderColor, 3, 20023, 136, 0x10, 0, 0);
                         String_Delete(strMonGender);
                     }
                     int level = GetMonData(caughtMon, MON_DATA_LEVEL, NULL);
                     BufferIntegerAsString(format, 1, level, 3, PRINTING_MODE_LEFT_ALIGN, 1);
                     String *strMonLevel = NewString_ReadMsgData(msgLoader, msg_0197_01274);
                     StringExpandPlaceholders(format, strFormated, strMonLevel);
-                    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, 0, 0x90800, 3, 20023, 144, 0x10, 0, 0);
+                    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_BUG_LEVEL], strFormated, FONT_SYSTEM, MAKE_TEXT_COLOR(9, 8, 0), 3, 20023, 144, 0x10, 0, 0);
                     String_Delete(strMonLevel);
                     BattleInput_SetBugContestPokemonIcon(battleInput, caughtMon);
                 }
@@ -1987,7 +1987,7 @@ static void BattleInput_CreateMainMenuObjects(BattleInput *battleInput, int a1, 
             BufferIntegerAsString(format, 0, ballsRemaining, 2, PRINTING_MODE_LEFT_ALIGN, 1);
             String *strBallsRemaining = NewString_ReadMsgData(msgLoader, msg_0197_01271);
             StringExpandPlaceholders(format, strFormated, strBallsRemaining);
-            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, 0, 0x90800, 3, 20023, 224, 0x10, 0, 0);
+            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[6], strFormated, FONT_SYSTEM, MAKE_TEXT_COLOR(9, 8, 0), 3, 20023, 224, 0x10, 0, 0);
             String_Delete(strBallsRemaining);
             BattleInput_CreateBugContestGraphics(battleInput);
             String_Delete(strFormated);
@@ -2031,8 +2031,8 @@ void BattleInput_CreatePalParkMenuObjects(BattleInput *battleInput, int param1, 
 
     BgConfig *bgConfig = BattleSystem_GetBgConfig(battleInput->battleSystem);
 
-    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0, 0x10, 10, 8, 17);
-    FillBgTilemapRect(bgConfig, 4, 0x6000 / 0x20 - 1, 0x16, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, GF_BG_LYR_SUB_0, 0x6000 / 0x20 - 1, 0, 0x10, 10, 8, 17);
+    FillBgTilemapRect(bgConfig, GF_BG_LYR_SUB_0, 0x6000 / 0x20 - 1, 0x16, 0x10, 10, 8, 17);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
     TextOBJ_SetSpritesDrawFlag(battleInput->textObj[MENUTXT_BAG].textObj, 0);
@@ -2056,19 +2056,19 @@ static void BattleInput_CreateFightMenuObjects(BattleInput *battleInput, int par
 
     BattleInput_CreateMoveTypeIcons(battleInput);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_1], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 45, 1, &moveMemory->moveDisplay[0]);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_2], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 44, 1, &moveMemory->moveDisplay[1]);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_3], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 108, 1, &moveMemory->moveDisplay[2]);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_4], NULL, 4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 107, 1, &moveMemory->moveDisplay[3]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_1], NULL, FONT_UNK_4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 45, 1, &moveMemory->moveDisplay[0]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_2], NULL, FONT_UNK_4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 44, 1, &moveMemory->moveDisplay[1]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_3], NULL, FONT_UNK_4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 64, 108, 1, &moveMemory->moveDisplay[2]);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_MOVE_4], NULL, FONT_UNK_4, MAKE_TEXT_COLOR(7, 8, 9), 3, 20023, 192, 107, 1, &moveMemory->moveDisplay[3]);
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         ppColor = GetPPTextColor(fightMenu->pp[i], fightMenu->ppMax[i]);
-        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_PP_MAX_1 + i], NULL, 0, ppColor, 4, 20023, sMovePPMaxTextPositions[i][0], sMovePPMaxTextPositions[i][1], 0, &moveMemory->ppDisplay[i]);
-        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_PP_1 + i], NULL, 0, ppColor, 4, 20023, sMovePPTextPositions[i][0], sMovePPTextPositions[i][1], 0, &moveMemory->ppMaxDisplay[i]);
+        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_PP_MAX_1 + i], NULL, FONT_SYSTEM, ppColor, 4, 20023, sMovePPMaxTextPositions[i][0], sMovePPMaxTextPositions[i][1], 0, &moveMemory->ppDisplay[i]);
+        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_PP_1 + i], NULL, FONT_SYSTEM, ppColor, 4, 20023, sMovePPTextPositions[i][0], sMovePPTextPositions[i][1], 0, &moveMemory->ppMaxDisplay[i]);
     }
 
     String *strCancel = NewString_ReadMsgData(msgLoader, msg_0197_00929); // CANCEL
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_CANCEL], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 175, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_CANCEL], strCancel, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 175, 1, NULL);
     String_Delete(strCancel);
 
     int moveType;
@@ -2115,8 +2115,8 @@ static void BattleInput_CreateYesNoMenuObjects(BattleInput *battleInput, int par
     String *strYes = NewString_ReadMsgData(msgLoader, msg_0197_00940); // Yes
     String *strNo = NewString_ReadMsgData(msgLoader, msg_0197_00941);  // No
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_YES], strYes, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_NO], strNo, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_YES], strYes, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_NO], strNo, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strYes);
     String_Delete(strNo);
@@ -2127,8 +2127,8 @@ static void BattleInput_CreateKeepForgetMenuObjects(BattleInput *battleInput, in
     String *strForget = NewString_ReadMsgData(msgLoader, msg_0197_01181); // Forget a move!
     String *strKeep = NewString_ReadMsgData(msgLoader, msg_0197_01182);   // Keep old moves!
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FORGET_MOVE], strForget, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_MOVE], strKeep, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FORGET_MOVE], strForget, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_MOVE], strKeep, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strForget);
     String_Delete(strKeep);
@@ -2147,8 +2147,8 @@ static void BattleInput_CreateGiveUpOnMoveMenuObjects(BattleInput *battleInput, 
     StringExpandPlaceholders(strTemplate, strGiveUpFormated, strGiveUp);
     StringExpandPlaceholders(strTemplate, strDontGiveUpFormated, strDontGiveUp);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_GIVEUP], strGiveUpFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_DONT_GIVEUP], strDontGiveUpFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_GIVEUP], strGiveUpFormated, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_DONT_GIVEUP], strDontGiveUpFormated, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strGiveUp);
     String_Delete(strDontGiveUp);
@@ -2178,7 +2178,7 @@ static void BattleInput_CreateVSRecorderPlaybackMenuObjects(BattleInput *battleI
     BG_LoadScreenTilemapData(bgConfig, 5, battleInput->screenBuffer[4], 0x800);
     ScheduleBgTilemapBufferTransfer(bgConfig, 5);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strStop, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 171, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[0], strStop, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 171, 1, NULL);
     String_Delete(strStop);
 }
 
@@ -2195,8 +2195,8 @@ static void BattleInput_CreateSwitchOrFleeMenuObjects(BattleInput *battleInput, 
     StringExpandPlaceholders(strTemplate, strNextPokemonFormated, strNextPokemon);
     StringExpandPlaceholders(strTemplate, strFleeFormated, strFlee);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_USE_NEXT_MON], strNextPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FLEE], strFleeFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_USE_NEXT_MON], strNextPokemonFormated, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_FLEE], strFleeFormated, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strNextPokemon);
     String_Delete(strFlee);
@@ -2222,8 +2222,8 @@ static void BattleInput_CreateSwitchOrKeepMenuObjects(BattleInput *battleInput, 
     StringExpandPlaceholders(strTemplate, strSwitchPokemonFormated, strSwitchPokemon);
     StringExpandPlaceholders(strTemplate, strKeepBattlingFormated, strKeepBattling);
 
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_SWITCH], strSwitchPokemonFormated, 4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_BATTLING], strKeepBattlingFormated, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_SWITCH], strSwitchPokemonFormated, FONT_UNK_4, MAKE_TEXT_COLOR(1, 2, 3), 2, 20023, 128, 67, 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_KEEP_BATTLING], strKeepBattlingFormated, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, 128, 139, 1, NULL);
 
     String_Delete(strSwitchPokemon);
     String_Delete(strKeepBattling);
@@ -2285,7 +2285,7 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
                 monNameColor = MAKE_TEXT_COLOR(4, 5, 6); // Ally
             }
 
-            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[i], strPokemonName, 4, monNameColor, 6, 20023, sTargetPokemonMenuPositions[i][0], sTargetPokemonMenuPositions[i][1], 1, NULL);
+            BattleInput_CreateTextObject(battleInput, &battleInput->textObj[i], strPokemonName, FONT_UNK_4, monNameColor, 6, 20023, sTargetPokemonMenuPositions[i][0], sTargetPokemonMenuPositions[i][1], 1, NULL);
             String_Delete(strGenderMarker);
 
             switch (i) {
@@ -2306,7 +2306,7 @@ static void BattleInput_CreateTargetMenuObjects(BattleInput *battleInput, int pa
     String_Delete(strPokemonName);
 
     String *strCancel = NewString_ReadMsgData(msgLoader, msg_0197_00930); // CANCEL
-    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_TARGET_CANCEL], strCancel, 4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][0], sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][1], 1, NULL);
+    BattleInput_CreateTextObject(battleInput, &battleInput->textObj[MENUTXT_TARGET_CANCEL], strCancel, FONT_UNK_4, MAKE_TEXT_COLOR(10, 11, 12), 2, 20023, sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][0], sTargetPokemonMenuPositions[MENUTXT_TARGET_CANCEL][1], 1, NULL);
     String_Delete(strCancel);
 }
 
@@ -2705,7 +2705,7 @@ static int ov12_022684F8(u8 task) {
     return animationState;
 }
 
-static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *charLengthOut) {
+static void String_GetFontLength(String *str, enum Font fontId, int *lengthOut, int *charLengthOut) {
     int length, charLength;
 
     length = FontID_String_GetWidth(fontId, str, 0);
@@ -2719,7 +2719,7 @@ static void String_GetFontLength(String *str, u32 fontId, int *lengthOut, int *c
     *charLengthOut = charLength;
 }
 
-static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *battleTextObj, String *str, u32 fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
+static void BattleInput_CreateTextObject(BattleInput *battleInput, BattleInputTextObject *battleTextObj, String *str, enum Font fontId, int textColor, int palOffset, int palId, int x, int y, int centerText, BattleInputMoveMemory_DisplayObj *param10) {
     TextOBJTemplate textObjTemplate;
     Window window;
     UnkStruct_02021AC8 charTransferAlloc;
@@ -2907,14 +2907,14 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0)) {
             moveType = GetMoveAttr(moveMemory->moveNo[i], MOVEATTR_TYPE);
-            charData = GfGfxLoader_GetCharData(sub_020776B4(), sub_02077678(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
+            charData = GfGfxLoader_GetCharData(TypeIconGfx_GetNarcId(), TypeIconGfx_GetCharFileId(moveType), 1, &charDataNNS, HEAP_ID_BATTLE);
             MI_CpuCopy32(charDataNNS->pRawData, moveDisplayObj->typeIcon[i], size);
             Heap_Free(charData);
         }
 
         if ((moveDisplayObj->moveDisplay[i].window.pixelBuffer == NULL) || ((moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) && (moveMemory->moveNo[i] != 0))) {
             strMoveName = GetMoveName(moveMemory->moveNo[i], HEAP_ID_BATTLE);
-            BattleInput_SetMoveDisplayObjectTextFont(battleInput, strMoveName, 4, &moveDisplayObj->moveDisplay[i], MAKE_TEXT_COLOR(7, 8, 9));
+            BattleInput_SetMoveDisplayObjectTextFont(battleInput, strMoveName, FONT_UNK_4, &moveDisplayObj->moveDisplay[i], MAKE_TEXT_COLOR(7, 8, 9));
             String_Delete(strMoveName);
         }
 
@@ -2926,11 +2926,11 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
             ppColor = GetPPTextColor(moveMemory->pp[i], moveMemory->ppMax[i]);
 
             if ((moveDisplayObj->ppDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i])) {
-                BattleInput_SetMoveDisplayObjectTextFont(battleInput, strSlashFormatted, 0, &moveDisplayObj->ppDisplay[i], ppColor);
+                BattleInput_SetMoveDisplayObjectTextFont(battleInput, strSlashFormatted, FONT_SYSTEM, &moveDisplayObj->ppDisplay[i], ppColor);
             }
 
             if ((moveDisplayObj->ppMaxDisplay[i].window.pixelBuffer == NULL) || (moveMemory->moveNo[i] != moveDisplayObj->move.moveNo[i]) || (moveMemory->pp[i] != moveDisplayObj->move.pp[i])) {
-                BattleInput_SetMoveDisplayObjectTextFont(battleInput, strPP, 0, &moveDisplayObj->ppMaxDisplay[i], ppColor);
+                BattleInput_SetMoveDisplayObjectTextFont(battleInput, strPP, FONT_SYSTEM, &moveDisplayObj->ppMaxDisplay[i], ppColor);
             }
         }
     }
@@ -2942,7 +2942,7 @@ void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, cons
     moveDisplayObj->move = *moveMemory;
 }
 
-static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, u32 fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
+static void BattleInput_SetMoveDisplayObjectTextFont(BattleInput *battleInput, String *str, enum Font fontId, BattleInputMoveMemory_DisplayObj *display, int textColor) {
     int length, charLength;
 
     String_GetFontLength(str, fontId, &length, &charLength);
@@ -2983,7 +2983,7 @@ static void BattleInput_CreateMoveTypeIcons(BattleInput *battleInput) {
             typeIconTemplate.x = sTypeIconPositions[i][0];
             typeIconTemplate.y = sTypeIconPositions[i][1];
 
-            battleInput->spriteTypeIcons[i] = sub_020777C8(renderer, spriteManager, type, &typeIconTemplate);
+            battleInput->spriteTypeIcons[i] = SpriteSystem_CreateMoveTypeIconSprite(renderer, spriteManager, type, &typeIconTemplate);
 
             ManagedSprite_SetPositionXYWithSubscreenOffset(battleInput->spriteTypeIcons[i], typeIconTemplate.x, typeIconTemplate.y, FX32_CONST(272));
 
@@ -3001,7 +3001,7 @@ static void BattleInput_DeleteAndFreeTypeIconGraphics(BattleInput *battleInput) 
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
         if (battleInput->spriteTypeIcons[i] != NULL) {
-            thunk_ManagedSprite_DeleteAndFreeResources(battleInput->spriteTypeIcons[i]);
+            MoveTypeIconSprite_DeleteAndFreeResources(battleInput->spriteTypeIcons[i]);
             battleInput->spriteTypeIcons[i] = NULL;
         }
     }
@@ -3017,8 +3017,8 @@ static void BattleInput_DeleteAndFreeCategoryIconGraphics(BattleInput *battleInp
 
     for (i = 0; i < 4; i++) {
         if (battleInput->spriteCategoryIcons[i] != NULL) {
-            sub_02077870(battleInput->spriteCategoryIcons[i]);
-            sub_02077868(spriteManager, 20029 + i);
+            MoveCategoryIconSprite_DeleteAndFreeResources(battleInput->spriteCategoryIcons[i]);
+            SpriteManager_UnloadMoveCategoryIconCharResObjByTag(spriteManager, 20029 + i);
             battleInput->spriteCategoryIcons[i] = NULL;
         }
     }
@@ -4554,7 +4554,7 @@ void BattleInput_PrintSystemMessage(BattleInput *battleInput, int index) {
 
         src = NewString_ReadMsgData(msgLoader, stopMsgId[index][i]);
 
-        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1 + i], src, 0, MAKE_TEXT_COLOR(1, 2, 0), 4, 20023, 1 * 8 + 8, 6 * 8 + 16 + 16 * i, 0, NULL);
+        BattleInput_CreateTextObject(battleInput, &battleInput->textObj[1 + i], src, FONT_SYSTEM, MAKE_TEXT_COLOR(1, 2, 0), 4, 20023, 1 * 8 + 8, 6 * 8 + 16 + 16 * i, 0, NULL);
         String_Delete(src);
     }
 }

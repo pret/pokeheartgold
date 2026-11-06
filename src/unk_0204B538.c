@@ -7,7 +7,7 @@
 #include "constants/moves.h"
 #include "constants/sprites.h"
 
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "assert.h"
 #include "heap.h"

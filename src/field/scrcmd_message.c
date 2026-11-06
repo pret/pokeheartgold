@@ -1,4 +1,4 @@
-#include "files/msgdata/msg.naix"
+#include "msgdata/msg.naix"
 
 #include "bg_window.h"
 #include "dialog_box.h"
@@ -32,8 +32,8 @@ static void ovFieldMain_GetMsgBoxParametersEx(FieldSystem *fieldSystem, MessageF
 static void ovFieldMain_CreateMessageBox(FieldSystem *fieldSystem, MessageBox *messageBox);
 static void ovFieldMain_ReadAndExpandMsgDataViaBuffer(MessageBox *messageBox, MsgData *messageData, u32 messageNum);
 static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messageBank, u16 messageNum, u16 word1, u16 word2);
-static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
-static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId);
+static void ov01_021EF758(MessageBox *messageBox, enum Font fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4);
+static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, enum Font fontId);
 
 const u16 ov01_022067C8[] = {
     msg_0752, // day of the week siblings
@@ -210,15 +210,15 @@ void ov01_021EF4DC(ScriptContext *ctx, MsgData *messageData, u16 messageNum, u8 
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
     u32 textFrameDelay;
     u32 unk1;
-    u8 fontId;
+    enum Font fontId;
     if (unkStruct == NULL) {
         textFrameDelay = ovFieldMain_GetTextFrameDelay(ctx);
         unk1 = 0;
-        fontId = 1;
+        fontId = FONT_MESSAGE;
     } else {
         textFrameDelay = unkStruct->textFrameDelay;
         unk1 = unkStruct->unk1;
-        fontId = unkStruct->fontId;
+        fontId = (enum Font)unkStruct->fontId;
     }
     ov01_021EF758(&messageBox, fontId, textFrameDelay, canABSpeedUp, unk1);
 }
@@ -228,7 +228,7 @@ static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageD
     ovFieldMain_GetMsgBoxParameters(ctx->fieldSystem, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
-    ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
+    ovFieldMain_AddTextPrinterParameterized(&messageBox, FONT_MESSAGE);
 }
 
 // word2 needs to be signed to match
@@ -238,9 +238,9 @@ void ov01_021EF564(ScriptContext *ctx, u16 messageBank, u16 messageNum, u16 word
     ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_GetFormattedECMessage(&messageBox, messageBank, messageNum, word1, (u16)word2);
     if (canABSpeedUp != 0xFF) {
-        ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
+        ov01_021EF758(&messageBox, FONT_MESSAGE, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
     } else {
-        ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
+        ovFieldMain_AddTextPrinterParameterized(&messageBox, FONT_MESSAGE);
     }
 }
 
@@ -249,7 +249,7 @@ static void ov01_021EF5C8(ScriptContext *ctx, MessageFormat *messageFormat, u8 m
     ovFieldMain_GetMsgBoxParametersEx(ctx->fieldSystem, messageFormat, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, ctx->msgdata, messageNum);
-    ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
+    ov01_021EF758(&messageBox, FONT_MESSAGE, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
 }
 
 static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx) {
@@ -300,10 +300,10 @@ static void ovFieldMain_GetFormattedECMessage(MessageBox *messageBox, u16 messag
     String_Delete(string);
 }
 
-static void ov01_021EF758(MessageBox *messageBox, FontID fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
+static void ov01_021EF758(MessageBox *messageBox, enum Font fontId, u32 textFrameDelay, BOOL canABSpeedUp, u32 a4) {
     *(messageBox->textPrinterNumPtr) = DialogBox_PrintMessageEx(messageBox->window, messageBox->message, fontId, textFrameDelay, canABSpeedUp, a4);
 }
 
-static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, FontID fontId) {
+static void ovFieldMain_AddTextPrinterParameterized(MessageBox *messageBox, enum Font fontId) {
     *(messageBox->textPrinterNumPtr) = AddTextPrinterParameterized(messageBox->window, fontId, messageBox->message, 0, 0, 0, NULL);
 }

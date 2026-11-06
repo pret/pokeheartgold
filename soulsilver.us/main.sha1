@@ -9,7 +9,7 @@ b8df5a75938349a9a9e2b4f8fcaf2c83bf6058ab *OVY_4.sbin
 0d207f5d39d398a2a0c99adc492bdca2b1bc7497 *OVY_7.sbin
 6b642b775796a8d58411f9c147fdead26b6bf144 *OVY_8.sbin
 de8a847bff8c343d69b853a215e6ee775ef2ef96 *OVY_9.sbin
-c01a051f637c3b2ba6919455279cf7aa5c918508 *OVY_10.sbin
+c01a051f637c3b2ba6919455279cf7aa5c918508 *trainer_ai.sbin
 268e56dde1d8e2b57b1a1b9ef4d2fd0beec1c4bd *pokegear.sbin
 06670c70fb884878bfb435711afde0b7eba0336f *pokegear_app.sbin
 1d413da9b4baaf07c57d59d57f6cfe439c34c422 *OVY_102.sbin
@@ -85,7 +85,7 @@ ec5322fc86adb5e49b1718fa213c1e4955720aed *trainer_card_signature.sbin
 582e5070cb3ea5c7ba004576ee988ffd9d5d273e *options_app.sbin
 93428cd143fa3d5cfe728076b4c2b5ea142f3284 *OVY_55.sbin
 15550ce45939eee4043bb7e41894385ae935c089 *OVY_56.sbin
-e7db2d70f8beecd403f10a090f7223751cecbaa5 *OVY_57.sbin
+e7db2d70f8beecd403f10a090f7223751cecbaa5 *capsule_menu.sbin
 a82faccbc115614b9a505638f71a3f4029ae6ba4 *OVY_58.sbin
 7e0d2e3b47aa3fc78ca2d617a1ca5da3c73f9039 *OVY_59.sbin
 a59337cb346f755bc2a90e46ce9af82ca113ed81 *intro_title.sbin

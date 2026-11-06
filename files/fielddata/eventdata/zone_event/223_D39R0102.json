@@ -1,203 +1,203 @@
 {
-  "header": "fielddata/script/scr_seq/event_D39R0102.h",
-  "bgs": [
-    {
-      "scriptId": "std_hiddenitem_d39r0102_revive",
-      "type": 2,
-      "x": 15,
-      "z": 47,
-      "y": 0,
-      "dir": 4
-    }
-  ],
-  "objects": [
-    {
-      "id": "obj_D39R0102_rock",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_1_INIT",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 10,
-      "z": 13,
-      "y": 0
-    },
-    {
-      "id": "obj_D39R0102_rock_2",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_2_INIT",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 13,
-      "z": 14,
-      "y": 0
-    },
-    {
-      "id": "obj_D39R0102_rock_3",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_3_INIT",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 18,
-      "z": 12,
-      "y": 0
-    },
-    {
-      "id": "obj_D39R0102_rock_4",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_4_INIT",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 25,
-      "z": 12,
-      "y": 0
-    },
-    {
-      "id": "obj_D39R0102_rock_5",
-      "spriteId": "SPRITE_ROCK",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_NOTHING",
-      "scriptId": "std_field_strength",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 12,
-      "z": 44,
-      "y": 0
-    },
-    {
-      "id": "obj_D39R0102_monstarball",
-      "spriteId": "SPRITE_MONSTARBALL",
-      "movement": 0,
-      "type": 0,
-      "eventFlag": "FLAG_HIDE_ITEMBALL_D39R0102_IRON",
-      "scriptId": "std_itemball_d39r0102_iron",
-      "facingDirection": 0,
-      "param0": 0,
-      "param1": 0,
-      "param2": 0,
-      "xRange": 0,
-      "yRange": 0,
-      "x": 13,
-      "z": 48,
-      "y": 0
-    }
-  ],
-  "warps": [
-    {
-      "x": 6,
-      "z": 21,
-      "header": "MAP_ICE_PATH_1F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 20,
-      "header": "MAP_ICE_PATH_1F",
-      "anchor": 2,
-      "y": 0
-    },
-    {
-      "x": 25,
-      "z": 8,
-      "header": "MAP_ICE_PATH_B2F",
-      "anchor": 0,
-      "y": 0
-    },
-    {
-      "x": 27,
-      "z": 40,
-      "header": "MAP_ICE_PATH_B2F",
-      "anchor": 4,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 42,
-      "header": "MAP_ICE_PATH_1F",
-      "anchor": 3,
-      "y": 0
-    },
-    {
-      "x": 6,
-      "z": 41,
-      "header": "MAP_ICE_PATH_1F",
-      "anchor": 3,
-      "y": 0
-    }
-  ],
-  "coords": [
-    {
-      "scriptId": "_EV_scr_seq_D39R0102_000 + 1",
-      "x": 11,
-      "z": 10,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40AA"
-    },
-    {
-      "scriptId": "_EV_scr_seq_D39R0102_001 + 1",
-      "x": 10,
-      "z": 18,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40AA"
-    },
-    {
-      "scriptId": "_EV_scr_seq_D39R0102_002 + 1",
-      "x": 18,
-      "z": 7,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40AA"
-    },
-    {
-      "scriptId": "_EV_scr_seq_D39R0102_003 + 1",
-      "x": 19,
-      "z": 19,
-      "w": 1,
-      "h": 1,
-      "y": 0,
-      "val": 0,
-      "var": "VAR_UNK_40AA"
-    }
-  ]
+    "header": "fielddata/script/scr_seq/event_D39R0102.h",
+    "bgs": [
+        {
+            "scriptId": "std_hiddenitem_d39r0102_revive",
+            "type": 2,
+            "x": 15,
+            "z": 47,
+            "y": 0,
+            "dir": 4
+        }
+    ],
+    "objects": [
+        {
+            "id": "obj_D39R0102_rock",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_1_INIT",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 10,
+            "z": 13,
+            "y": 0
+        },
+        {
+            "id": "obj_D39R0102_rock_2",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_2_INIT",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 13,
+            "z": 14,
+            "y": 0
+        },
+        {
+            "id": "obj_D39R0102_rock_3",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_3_INIT",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 18,
+            "z": 12,
+            "y": 0
+        },
+        {
+            "id": "obj_D39R0102_rock_4",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ICE_PATH_BOULDER_4_INIT",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 25,
+            "z": 12,
+            "y": 0
+        },
+        {
+            "id": "obj_D39R0102_rock_5",
+            "spriteId": "SPRITE_ROCK",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_NOTHING",
+            "scriptId": "std_field_strength",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 12,
+            "z": 44,
+            "y": 0
+        },
+        {
+            "id": "obj_D39R0102_monstarball",
+            "spriteId": "SPRITE_MONSTARBALL",
+            "movement": 0,
+            "type": 0,
+            "eventFlag": "FLAG_HIDE_ITEMBALL_D39R0102_IRON",
+            "scriptId": "std_itemball_d39r0102_iron",
+            "facingDirection": 0,
+            "param0": 0,
+            "param1": 0,
+            "param2": 0,
+            "xRange": 0,
+            "yRange": 0,
+            "x": 13,
+            "z": 48,
+            "y": 0
+        }
+    ],
+    "warps": [
+        {
+            "x": 6,
+            "z": 21,
+            "header": "MAP_ICE_PATH_1F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 20,
+            "header": "MAP_ICE_PATH_1F",
+            "anchor": 2,
+            "y": 0
+        },
+        {
+            "x": 25,
+            "z": 8,
+            "header": "MAP_ICE_PATH_B2F",
+            "anchor": 0,
+            "y": 0
+        },
+        {
+            "x": 27,
+            "z": 40,
+            "header": "MAP_ICE_PATH_B2F",
+            "anchor": 4,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 42,
+            "header": "MAP_ICE_PATH_1F",
+            "anchor": 3,
+            "y": 0
+        },
+        {
+            "x": 6,
+            "z": 41,
+            "header": "MAP_ICE_PATH_1F",
+            "anchor": 3,
+            "y": 0
+        }
+    ],
+    "coords": [
+        {
+            "scriptId": "_EV_scr_seq_D39R0102_000 + 1",
+            "x": 11,
+            "z": 10,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40AA"
+        },
+        {
+            "scriptId": "_EV_scr_seq_D39R0102_001 + 1",
+            "x": 10,
+            "z": 18,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40AA"
+        },
+        {
+            "scriptId": "_EV_scr_seq_D39R0102_002 + 1",
+            "x": 18,
+            "z": 7,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40AA"
+        },
+        {
+            "scriptId": "_EV_scr_seq_D39R0102_003 + 1",
+            "x": 19,
+            "z": 19,
+            "w": 1,
+            "h": 1,
+            "y": 0,
+            "val": 0,
+            "var": "VAR_UNK_40AA"
+        }
+    ]
 }
