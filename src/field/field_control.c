@@ -40,6 +40,7 @@
 #include "overlay_01_021FB5D4.h"
 #include "overlay_04.h"
 #include "player_avatar.h"
+#include "player_move.h"
 #include "safari_zone.h"
 #include "save_pokegear.h"
 #include "script_pokemon_util.h"
@@ -60,7 +61,6 @@
 #include "unk_02058034.h"
 #include "unk_02058AEC.h"
 #include "unk_0205A44C.h"
-#include "unk_0205CB48.h"
 #include "unk_020632B0.h"
 #include "unk_0206D494.h"
 

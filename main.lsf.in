@@ -231,6 +231,7 @@ Static main
     Object asm/unk_0205BB1C.s
     Object asm/unk_0205BFF0.s
     Object src/player_avatar.c
+    Object src/player_move.c
     Object asm/unk_0205CB48.s
     Object src/map_object.c
     Object asm/unk_data_020FCBD8.s

@@ -14,139 +14,6 @@
 
 	.text
 
-	thumb_func_start PlayerAvatar_MoveControl
-PlayerAvatar_MoveControl: ; 0x0205CB48
-	push {r3, r4, r5, r6, r7, lr}
-	add r7, r1, #0
-	mov r1, #0
-	add r4, r2, #0
-	mvn r1, r1
-	add r5, r0, #0
-	add r6, r3, #0
-	cmp r4, r1
-	bne _0205CB66
-	add r2, sp, #8
-	ldrh r2, [r2, #0x10]
-	add r1, r6, #0
-	bl sub_0205DDD4
-	add r4, r0, #0
-_0205CB66:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205CBEC
-	cmp r0, #0
-	beq _0205CBE2
-	add r3, sp, #8
-	ldrh r3, [r3, #0x10]
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl sub_0205CC4C
-	add r0, r5, #0
-	bl Field_PlayerAvatar_ApplyTransitionFlags
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205D004
-	cmp r0, #1
-	bne _0205CB9A
-	add r0, r5, #0
-	bl ov01_021F2F24
-	pop {r3, r4, r5, r6, r7, pc}
-_0205CB9A:
-	add r0, r5, #0
-	bl PlayerAvatar_GetState
-	cmp r0, #0
-	bne _0205CBC4
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205D40C
-	cmp r0, #0
-	beq _0205CBB8
-	add r0, r5, #0
-	bl ov01_021F2F24
-	b _0205CBC4
-_0205CBB8:
-	ldr r0, [sp, #0x1c]
-	cmp r0, #1
-	bne _0205CBC4
-	add r0, r5, #0
-	bl ov01_021F2EDC
-_0205CBC4:
-	add r0, sp, #8
-	ldrh r0, [r0, #0x10]
-	add r1, r7, #0
-	add r2, r4, #0
-	str r0, [sp]
-	add r0, r5, #0
-	add r3, r6, #0
-	bl sub_0205D340
-	add r0, r5, #0
-	bl sub_0205CC74
-	add r0, r5, #0
-	bl sub_0205CC94
-_0205CBE2:
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end PlayerAvatar_MoveControl
-
-	thumb_func_start sub_0205CBE4
-sub_0205CBE4: ; 0x0205CBE4
-	ldr r3, _0205CBE8 ; =sub_0205CBEC
-	bx r3
-	.balign 4, 0
-_0205CBE8: .word sub_0205CBEC
-	thumb_func_end sub_0205CBE4
-
-	thumb_func_start sub_0205CBEC
-sub_0205CBEC: ; 0x0205CBEC
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl PlayerAvatar_GetMapObject
-	add r6, r0, #0
-	bl MapObject_AreBitsSetForMovementScriptInit
-	cmp r0, #1
-	bne _0205CC04
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_0205CC04:
-	mov r0, #0
-	mvn r0, r0
-	cmp r4, r0
-	bne _0205CC10
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0205CC10:
-	add r0, r6, #0
-	bl MapObject_GetMovementCommand
-	bl sub_0205DE64
-	cmp r0, #1
-	bne _0205CC46
-	add r0, r5, #0
-	add r1, r6, #0
-	add r2, r4, #0
-	bl sub_0205DA34
-	cmp r0, #0
-	bne _0205CC30
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_0205CC30:
-	cmp r0, #0x20
-	bne _0205CC42
-	add r0, r5, #0
-	bl PlayerAvatar_GetState
-	cmp r0, #2
-	bne _0205CC42
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-_0205CC42:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0205CC46:
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205CBEC
-
 	thumb_func_start sub_0205CC4C
 sub_0205CC4C: ; 0x0205CC4C
 	push {r4, r5, r6, lr}
@@ -2346,10 +2213,10 @@ _0205DD8E:
 
 	thumb_func_start sub_0205DD94
 sub_0205DD94: ; 0x0205DD94
-	ldr r3, _0205DD98 ; =sub_0205DDD4
+	ldr r3, _0205DD98 ; =PlayerAvatar_GetDirectionFromKeys
 	bx r3
 	.balign 4, 0
-_0205DD98: .word sub_0205DDD4
+_0205DD98: .word PlayerAvatar_GetDirectionFromKeys
 	thumb_func_end sub_0205DD94
 
 	thumb_func_start sub_0205DD9C
@@ -2394,8 +2261,8 @@ _0205DDCE:
 	.balign 4, 0
 	thumb_func_end sub_0205DDB8
 
-	thumb_func_start sub_0205DDD4
-sub_0205DDD4: ; 0x0205DDD4
+	thumb_func_start PlayerAvatar_GetDirectionFromKeys
+PlayerAvatar_GetDirectionFromKeys: ; 0x0205DDD4
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r2, #0
 	add r6, r0, #0
@@ -2446,7 +2313,7 @@ _0205DE32:
 _0205DE34:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205DDD4
+	thumb_func_end PlayerAvatar_GetDirectionFromKeys
 
 	thumb_func_start sub_0205DE38
 sub_0205DE38: ; 0x0205DE38
@@ -2583,7 +2450,7 @@ sub_0205DF0C: ; 0x0205DF0C
 	add r5, r0, #0
 	add r7, r2, #0
 	add r6, r3, #0
-	bl sub_0205DDD4
+	bl PlayerAvatar_GetDirectionFromKeys
 	str r0, [sp]
 	ldr r1, [sp]
 	add r0, r5, #0

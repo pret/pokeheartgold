@@ -17,11 +17,11 @@
 #include "overlay_124.h"
 #include "overlay_35.h"
 #include "overlay_manager.h"
+#include "player_move.h"
 #include "poke_overlay.h"
 #include "system.h"
 #include "unk_02035900.h"
 #include "unk_02056D7C.h"
-#include "unk_0205CB48.h"
 #include "unk_02092BB8.h"
 #include "unk_02092BE8.h"
 

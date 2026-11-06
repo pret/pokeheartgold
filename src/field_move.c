@@ -18,13 +18,13 @@
 #include "overlay_01.h"
 #include "overlay_02.h"
 #include "player_avatar.h"
+#include "player_move.h"
 #include "save_local_field_data.h"
 #include "script.h"
 #include "start_menu.h"
 #include "sys_flags.h"
 #include "unk_0203DB6C.h"
 #include "unk_02054648.h"
-#include "unk_0205CB48.h"
 
 static FieldUseMoveEnvironment *FieldMove_CreateUseEnvironment(FieldMoveUseData *useData, const FieldMoveCheckData *checkData);
 static void FieldMove_DeleteUseEnvironment(FieldUseMoveEnvironment *environment);
