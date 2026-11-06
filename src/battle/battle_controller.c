@@ -169,7 +169,7 @@ void BattleController_EmitSetEncounter(BattleSystem *battleSystem, int battler) 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -191,7 +191,7 @@ void BattleController_EmitShowEncounter(BattleSystem *battleSystem, int battler)
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
     message.capturedBall = battleSystem->ctx->battleMons[battler].ball;
@@ -216,8 +216,8 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battler, i
     message.command = BATTLE_COMMAND_SHOW_POKEMON;
 
     if (battleSystem->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
-        message.gender = battleSystem->ctx->battleMons[battler].unk88.transformGender;
-        message.personality = battleSystem->ctx->battleMons[battler].unk88.transformPersonality;
+        message.gender = battleSystem->ctx->battleMons[battler].moveEffectData.transformGender;
+        message.personality = battleSystem->ctx->battleMons[battler].moveEffectData.transformPersonality;
     } else {
         message.gender = battleSystem->ctx->battleMons[battler].gender;
         message.personality = battleSystem->ctx->battleMons[battler].personality;
@@ -225,7 +225,7 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battler, i
 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, ov12_0223AB0C(battleSystem, battler), 0);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 0);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
@@ -254,8 +254,8 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battler, i
         message.battleMonFormNums[i] = battleSystem->ctx->battleMons[i].form;
 
         if (battleSystem->ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-            message.battleMonGenders[i] = battleSystem->ctx->battleMons[i].unk88.transformGender;
-            message.battleMonPersonalities[i] = battleSystem->ctx->battleMons[i].unk88.transformPersonality;
+            message.battleMonGenders[i] = battleSystem->ctx->battleMons[i].moveEffectData.transformGender;
+            message.battleMonPersonalities[i] = battleSystem->ctx->battleMons[i].moveEffectData.transformPersonality;
         } else {
             message.battleMonGenders[i] = battleSystem->ctx->battleMons[i].gender;
             message.battleMonPersonalities[i] = battleSystem->ctx->battleMons[i].personality;
@@ -281,7 +281,7 @@ void BattleController_EmitReturnPokemon(BattleSystem *battleSystem, BattleContex
     message.command = BATTLE_COMMAND_RETURN_POKEMON;
 
     if (battleSystem->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
-        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSystem->ctx->battleMons[battler].species, battleSystem->ctx->battleMons[battler].unk88.transformGender, face, form, battleSystem->ctx->battleMons[battler].unk88.transformPersonality);
+        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSystem->ctx->battleMons[battler].species, battleSystem->ctx->battleMons[battler].moveEffectData.transformGender, face, form, battleSystem->ctx->battleMons[battler].moveEffectData.transformPersonality);
     } else {
         message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSystem->ctx->battleMons[battler].species, battleSystem->ctx->battleMons[battler].gender, face, form, battleSystem->ctx->battleMons[battler].personality);
     }
@@ -296,8 +296,8 @@ void BattleController_EmitReturnPokemon(BattleSystem *battleSystem, BattleContex
         message.battleMonFormNums[i] = ctx->battleMons[i].form;
 
         if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-            message.battleMonGenders[i] = ctx->battleMons[i].unk88.transformGender;
-            message.battleMonPersonalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+            message.battleMonGenders[i] = ctx->battleMons[i].moveEffectData.transformGender;
+            message.battleMonPersonalities[i] = ctx->battleMons[i].moveEffectData.transformPersonality;
         } else {
             message.battleMonGenders[i] = ctx->battleMons[i].gender;
             message.battleMonPersonalities[i] = ctx->battleMons[i].personality;
@@ -322,7 +322,7 @@ void BattleController_EmitOpenCaptureBall(BattleSystem *battleSystem, int battle
     message.command = BATTLE_COMMAND_OPEN_CAPTURE_BALL;
 
     if (battleSystem->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
-        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSystem->ctx->battleMons[battler].species, battleSystem->ctx->battleMons[battler].unk88.transformGender, face, form, battleSystem->ctx->battleMons[battler].unk88.transformPersonality);
+        message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSystem->ctx->battleMons[battler].species, battleSystem->ctx->battleMons[battler].moveEffectData.transformGender, face, form, battleSystem->ctx->battleMons[battler].moveEffectData.transformPersonality);
     } else {
         message.yOffset = GetMonPicHeightBySpeciesGenderForm(battleSystem->ctx->battleMons[battler].species, battleSystem->ctx->battleMons[battler].gender, face, form, battleSystem->ctx->battleMons[battler].personality);
     }
@@ -474,7 +474,7 @@ void BattleController_EmitSetCommandSelectionMenu(BattleSystem *battleSystem, Ba
         || (battleType & BATTLE_TYPE_TAG)
         || (battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI))
         || (battleType == ((BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI) | BATTLE_TYPE_FRONTIER))) {
-        if (BattleSystem_GetFieldSide(battleSystem, battler)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, battler)) {
             battlerType = BattleSystem_GetBattlerFromBattlerType(battleSystem, BATTLER_TYPE_PLAYER_SIDE_SLOT_1);
         } else {
             battlerType = BattleSystem_GetBattlerFromBattlerType(battleSystem, BATTLER_TYPE_ENEMY_SIDE_SLOT_1);
@@ -502,7 +502,7 @@ void BattleController_EmitSetCommandSelectionMenu(BattleSystem *battleSystem, Ba
             }
         }
 
-        if (BattleSystem_GetFieldSide(battleSystem, battler)) {
+        if (BattleSystem_GetBattlerSide(battleSystem, battler)) {
             battlerType = BattleSystem_GetBattlerFromBattlerType(battleSystem, BATTLER_TYPE_PLAYER_SIDE_SLOT_2);
         } else {
             battlerType = BattleSystem_GetBattlerFromBattlerType(battleSystem, BATTLER_TYPE_ENEMY_SIDE_SLOT_2);
@@ -668,7 +668,7 @@ void BattleController_EmitShowBagMenu(BattleSystem *battleSystem, BattleContext 
             message.partyOrder[i][j] = ctx->unk_312C[i][j];
         }
 
-        message.embargoTurns[i] = ctx->battleMons[i].unk88.embargoFlag;
+        message.embargoTurns[i] = ctx->battleMons[i].moveEffectData.embargoTurns;
     }
 
     if (BattleSystem_GetBattleType(battleSystem) == (BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {
@@ -855,8 +855,8 @@ void BattleController_EmitPlayFaintingSequence(BattleSystem *battleSystem, Battl
     message.isTransformed = (ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) != 0;
 
     if (ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
-        message.gender = ctx->battleMons[battler].unk88.transformGender;
-        message.personality = ctx->battleMons[battler].unk88.transformPersonality;
+        message.gender = ctx->battleMons[battler].moveEffectData.transformGender;
+        message.personality = ctx->battleMons[battler].moveEffectData.transformPersonality;
     } else {
         message.gender = ctx->battleMons[battler].gender;
         message.personality = ctx->battleMons[battler].personality;
@@ -868,8 +868,8 @@ void BattleController_EmitPlayFaintingSequence(BattleSystem *battleSystem, Battl
         message.monFormNums[i] = ctx->battleMons[i].form;
 
         if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-            message.monGenders[i] = ctx->battleMons[i].unk88.transformGender;
-            message.monPersonalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+            message.monGenders[i] = ctx->battleMons[i].moveEffectData.transformGender;
+            message.monPersonalities[i] = ctx->battleMons[i].moveEffectData.transformPersonality;
         } else {
             message.monGenders[i] = ctx->battleMons[i].gender;
             message.monPersonalities[i] = ctx->battleMons[i].personality;
@@ -908,8 +908,8 @@ void BattleController_EmitToggleVanishMessage(BattleSystem *battleSystem, int ba
         message.formNum[i] = battleSystem->ctx->battleMons[i].form;
 
         if (battleSystem->ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-            message.gender[i] = battleSystem->ctx->battleMons[i].unk88.transformGender;
-            message.personality[i] = battleSystem->ctx->battleMons[i].unk88.transformPersonality;
+            message.gender[i] = battleSystem->ctx->battleMons[i].moveEffectData.transformGender;
+            message.personality[i] = battleSystem->ctx->battleMons[i].moveEffectData.transformPersonality;
         } else {
             message.gender[i] = battleSystem->ctx->battleMons[i].gender;
             message.personality[i] = battleSystem->ctx->battleMons[i].personality;
@@ -1054,10 +1054,10 @@ void BattleController_EmitUpdatePartyMon(BattleSystem *battleSystem, BattleConte
 
     message.command = BATTLE_COMMAND_UPDATE_PARTY_MON;
     message.partySlot = ctx->selectedMonIndex[battler];
-    message.mimickedMoveSlot = ctx->battleMons[battler].unk88.mimicedMoveIndex;
+    message.mimickedMoveSlot = ctx->battleMons[battler].moveEffectData.mimicedMoveIndex;
     message.curHP = ctx->battleMons[battler].hp;
     message.heldItem = ctx->battleMons[battler].item;
-    message.knockedOffItemsMask = ctx->fieldSideConditionData[BattleSystem_GetFieldSide(battleSystem, battler)].battlerBitKnockedOffItem;
+    message.knockedOffItemsMask = ctx->fieldSideConditionData[BattleSystem_GetBattlerSide(battleSystem, battler)].battlerBitKnockedOffItem;
     message.formNum = ctx->battleMons[battler].form;
     message.ability = ctx->battleMons[battler].ability;
 
@@ -1142,8 +1142,8 @@ void BattleController_EmitChangeForm(BattleSystem *battleSystem, int battler) {
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
 
     if (battleSystem->ctx->battleMons[battler].status2 & STATUS2_TRANSFORM) {
-        message.gender = battleSystem->ctx->battleMons[battler].unk88.transformGender;
-        message.personality = battleSystem->ctx->battleMons[battler].unk88.transformPersonality;
+        message.gender = battleSystem->ctx->battleMons[battler].moveEffectData.transformGender;
+        message.personality = battleSystem->ctx->battleMons[battler].moveEffectData.transformPersonality;
     } else {
         message.gender = battleSystem->ctx->battleMons[battler].gender;
         message.personality = battleSystem->ctx->battleMons[battler].personality;
@@ -1234,8 +1234,8 @@ void BattleController_EmitRestoreSprite(BattleSystem *battleSystem, BattleContex
         animation.formNums[i] = ctx->battleMons[i].form;
 
         if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-            animation.genders[i] = ctx->battleMons[i].unk88.transformGender;
-            animation.personalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+            animation.genders[i] = ctx->battleMons[i].moveEffectData.transformGender;
+            animation.personalities[i] = ctx->battleMons[i].moveEffectData.transformPersonality;
         } else {
             animation.genders[i] = ctx->battleMons[i].gender;
             animation.personalities[i] = ctx->battleMons[i].personality;
@@ -1310,8 +1310,8 @@ void BattleController_EmitRefreshSprite(BattleSystem *battleSystem, BattleContex
         animation.formNums[i] = ctx->battleMons[i].form;
 
         if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-            animation.genders[i] = ctx->battleMons[i].unk88.transformGender;
-            animation.personalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+            animation.genders[i] = ctx->battleMons[i].moveEffectData.transformGender;
+            animation.personalities[i] = ctx->battleMons[i].moveEffectData.transformPersonality;
         } else {
             animation.genders[i] = ctx->battleMons[i].gender;
             animation.personalities[i] = ctx->battleMons[i].personality;
@@ -1458,8 +1458,8 @@ void BattleController_SetMoveAnimation(BattleSystem *battleSystem, BattleContext
             animation->moveEffectMasks[i] = ctx->battleMons[i].moveEffectFlags;
 
             if (ctx->battleMons[i].status2 & STATUS2_TRANSFORM) {
-                animation->genders[i] = ctx->battleMons[i].unk88.transformGender;
-                animation->personalities[i] = ctx->battleMons[i].unk88.transformPersonality;
+                animation->genders[i] = ctx->battleMons[i].moveEffectData.transformGender;
+                animation->personalities[i] = ctx->battleMons[i].moveEffectData.transformPersonality;
             } else {
                 animation->genders[i] = ctx->battleMons[i].gender;
                 animation->personalities[i] = ctx->battleMons[i].personality;
@@ -1519,12 +1519,12 @@ static void PartyGaugeData_New(BattleSystem *battleSystem, BattleContext *ctx, P
     int battler1, battler2;
     Party *party;
 
-    if ((battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)                                                           // 2vs2 link battle
-        || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetFieldSide(battleSystem, battler))                                                                   // either of the two opponents on the enemy side
-        || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) && BattleSystem_GetFieldSide(battleSystem, battler)) // either of the two opponents on the enemy side
-        || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                               // frontier, AI partner
-        if (ov12_0223AB0C(battleSystem, battler) == BATTLER_PLAYER2
-            || ov12_0223AB0C(battleSystem, battler) == BATTLER_ENEMY2) {
+    if ((battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)                                                             // 2vs2 link battle
+        || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetBattlerSide(battleSystem, battler))                                                                   // either of the two opponents on the enemy side
+        || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) && BattleSystem_GetBattlerSide(battleSystem, battler)) // either of the two opponents on the enemy side
+        || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                                 // frontier, AI partner
+        if (BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_PLAYER2
+            || BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_ENEMY2) {
             battler1 = battler;
             battler2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
         } else {

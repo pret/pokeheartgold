@@ -203,7 +203,7 @@ main_sbins_lz = [
     'OVY_7.sbin_LZ',
     'OVY_8.sbin_LZ',
     'OVY_9.sbin_LZ',
-    'OVY_10.sbin_LZ',
+    'trainer_ai.sbin_LZ',
     'OVY_11.sbin_LZ',
     'OVY_12.sbin_LZ',
     'OVY_13.sbin_LZ',
