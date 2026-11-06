@@ -114,7 +114,7 @@ typedef struct CapsuleAppManager {
 
 typedef struct SealListMenuEntry {
     s32 index;
-    BOOL (*func)
+    BOOL(*func)
     (CapsuleAppManager *appMan);
 } SealListMenuEntry;
 
