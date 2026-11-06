@@ -114,8 +114,7 @@ typedef struct CapsuleAppManager {
 
 typedef struct SealListMenuEntry {
     s32 index;
-    BOOL(*func)
-    (CapsuleAppManager *appMan);
+    BOOL (*func)(CapsuleAppManager *appMan);
 } SealListMenuEntry;
 
 extern const SealListMenuEntry gSealListMenuEntries[];
