@@ -4,12 +4,12 @@
 
 #include "constants/abilities.h"
 #include "constants/battle.h"
+#include "constants/battle/trainer_ai.h"
 #include "constants/battle_menu.h"
 #include "constants/battle_subscript.h"
 #include "constants/items.h"
 #include "constants/message_tags.h"
 #include "constants/move_effects.h"
-#include "constants/battle/trainer_ai.h"
 
 #include "battle/battle_022378C0.h"
 #include "battle/battle_command.h"

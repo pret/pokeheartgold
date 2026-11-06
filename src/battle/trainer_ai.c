@@ -1,15 +1,15 @@
 #include "battle/trainer_ai.h"
 
+#include "constants/abilities.h"
+#include "constants/battle/trainer_ai.h"
+#include "constants/battle_menu.h"
+#include "constants/items.h"
+#include "constants/moves.h"
+
 #include "battle/battle.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
-
-#include "constants/abilities.h"
-#include "constants/battle_menu.h"
-#include "constants/items.h"
-#include "constants/moves.h"
-#include "constants/battle/trainer_ai.h"
 
 #include "system.h"
 
@@ -186,7 +186,7 @@ extern const AICommandFunc sAICommandTable[];
 void TrainerAI_Init(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerID, u8 initScore) {
     int i;
     u8 invalidMoves;
-    
+
     u8 *aiData = (u8 *)&ctx->trainerAIData;
     for (i = 0; i < OFFSET_OF(TrainerAIData *, moves); i++) {
         aiData[i] = 0;
@@ -210,7 +210,7 @@ void TrainerAI_Init(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerID
         ctx->trainerAIData.moveDamageRolls[i] = 100 - (BattleSystem_Random(battleSystem) % 16);
     }
 
-    ctx->trainerAIData.scriptStackSize = 0; 
+    ctx->trainerAIData.scriptStackSize = 0;
 
     if (battleSystem->battleType & BATTLE_TYPE_ROAMER) {
         ctx->trainerAIData.aiFlags = AI_FLAG_ROAMING_POKEMON;
@@ -923,7 +923,7 @@ void AICmd_FlagMoveDamageScore(BattleSystem *battleSystem, BattleContext *ctx) {
 
     // Do-whiles are required to match, despite not being the case in pokeplatinum.
     int noDamageCalcIndex = 0;
-    do  {
+    do {
         if (ctx->trainerAIData.moveData[ctx->trainerAIData.move].effect == sNoDamageCalcMoveEffects[noDamageCalcIndex]) {
             break;
         }
@@ -956,7 +956,6 @@ void AICmd_FlagMoveDamageScore(BattleSystem *battleSystem, BattleContext *ctx) {
             ctx->battleMons[ctx->trainerAIData.attacker].moveEffectData.embargoTurns,
             varyDamage);
 
-        
         for (i = 0; i < MAX_MON_MOVES; i++) {
             if (moveDamage[i] > moveDamage[ctx->trainerAIData.moveSlot]) {
                 break;
@@ -2711,8 +2710,7 @@ extern const u16 sWeightToPower[][WEIGHT_TO_POWER_FIELDS]; /*= {
  *                      to be a value in the range [85..100].
  * @return Calculated damage value.
  */
-static s32 TrainerAI_CalcDamage(BattleSystem *battleSystem, BattleContext *ctx, u16 move, u16 heldItem, u8 *ivs, int attacker, int ability, int embargoTurns, u8 variance)
-{
+static s32 TrainerAI_CalcDamage(BattleSystem *battleSystem, BattleContext *ctx, u16 move, u16 heldItem, u8 *ivs, int attacker, int ability, int embargoTurns, u8 variance) {
     // must declare C89-style to match
     int defendingSide;
     int power;
@@ -3065,8 +3063,8 @@ static int TrainerAI_MoveType(BattleSystem *battleSystem, BattleContext *ctx, in
 
     case MOVE_WEATHER_BALL:
         if (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == FALSE
-        && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == FALSE
-        && (ctx->fieldCondition & FIELD_CONDITION_WEATHER)) {
+            && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == FALSE
+            && (ctx->fieldCondition & FIELD_CONDITION_WEATHER)) {
             if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
                 result = TYPE_WATER;
             }
@@ -3746,7 +3744,7 @@ static BOOL TrainerAI_ShouldSwitch(BattleSystem *battleSystem, BattleContext *ct
         || CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE, battler, ABILITY_SHADOW_TAG)
         || CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_OPPOSING_SIDE, battler, ABILITY_ARENA_TRAP)
         || (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_NOT_USER, battler, ABILITY_MAGNET_PULL)
-        && (BattleMon_Get(ctx, battler, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || BattleMon_Get(ctx, battler, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL))) {
+            && (BattleMon_Get(ctx, battler, BMON_DATA_TYPE_1, NULL) == TYPE_STEEL || BattleMon_Get(ctx, battler, BMON_DATA_TYPE_2, NULL) == TYPE_STEEL))) {
         return FALSE;
     }
 

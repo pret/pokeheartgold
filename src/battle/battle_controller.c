@@ -1519,10 +1519,10 @@ static void PartyGaugeData_New(BattleSystem *battleSystem, BattleContext *ctx, P
     int battler1, battler2;
     Party *party;
 
-    if ((battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)                                                           // 2vs2 link battle
+    if ((battleType & (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)) == (BATTLE_TYPE_LINK | BATTLE_TYPE_MULTI)                                                             // 2vs2 link battle
         || ((battleType & BATTLE_TYPE_TAG) && BattleSystem_GetBattlerSide(battleSystem, battler))                                                                   // either of the two opponents on the enemy side
         || ((battleType == (BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) && BattleSystem_GetBattlerSide(battleSystem, battler)) // either of the two opponents on the enemy side
-        || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                               // frontier, AI partner
+        || battleType == (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI | BATTLE_TYPE_AI)) {                                 // frontier, AI partner
         if (BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_PLAYER2
             || BattleSystem_GetBattlerType(battleSystem, battler) == BATTLER_ENEMY2) {
             battler1 = battler;

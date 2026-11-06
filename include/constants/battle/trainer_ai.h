@@ -48,7 +48,7 @@
 #define LOAD_DEFENDER_TYPE_1         0
 #define LOAD_ATTACKER_TYPE_1         1
 #define LOAD_DEFENDER_TYPE_2         2
-#define LOAD_ATTACKER_TYPE_2         3     
+#define LOAD_ATTACKER_TYPE_2         3
 #define LOAD_MOVE_TYPE               4
 #define LOAD_DEFENDER_PARTNER_TYPE_1 5
 #define LOAD_ATTACKER_PARTNER_TYPE_1 6

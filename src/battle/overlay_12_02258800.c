@@ -1,11 +1,10 @@
-#include "battle/battle_controller_opponent.h"
+#include "constants/abilities.h"
 
 #include "battle/battle.h"
+#include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/trainer_ai.h"
-
-#include "constants/abilities.h"
 
 int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
     // Must keep C89-style declaration to match
@@ -25,7 +24,7 @@ int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
     u8 slot1, slot2;
     slot1 = battler;
     if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG)
-    || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)) {
+        || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)) {
         slot2 = slot1;
     } else {
         slot2 = BattleSystem_GetBattlerIdPartner(battleSystem, battler);
@@ -259,8 +258,8 @@ int Move_CalcVariableDamageType(BattleSystem *battleSystem, BattleContext *ctx, 
 
     case MOVE_WEATHER_BALL:
         if (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == FALSE
-        && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == FALSE
-        && (ctx->fieldCondition & FIELD_CONDITION_WEATHER)) {
+            && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == FALSE
+            && (ctx->fieldCondition & FIELD_CONDITION_WEATHER)) {
             if (ctx->fieldCondition & FIELD_CONDITION_RAIN_ALL) {
                 type = TYPE_WATER;
             }

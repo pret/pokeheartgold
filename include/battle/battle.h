@@ -2,8 +2,8 @@
 #define POKEHEARTGOLD_BATTLE_H
 
 #include "constants/battle.h"
-#include "constants/moves.h"
 #include "constants/battle/trainer_ai.h"
+#include "constants/moves.h"
 
 #include "bag.h"
 #include "bag_cursor.h"
