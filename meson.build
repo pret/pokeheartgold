@@ -101,6 +101,12 @@ nitrodwc_dep = dependency('NitroDWC',
 
 libvct_dep = dependency('libvct')
 
+libdsprot_dep = dependency('libdsprot',
+    default_options: {
+        'mwrap_sdk': '2.0/sp2p3'
+    }
+)
+
 ############################################################
 ###                         TOOLS                        ###
 ############################################################
@@ -138,8 +144,6 @@ subdir('files')
 subdir('asm')
 subdir('src')
 
-libdsprot = fs.copyfile('lib/dsprot/libdsprot.a')
-
 main = executable('main',
     sources : [
         pokeheartgold_c,
@@ -175,12 +179,12 @@ main = executable('main',
         nitrodwc_dep,
         libvct_dep,
         libdwcppwlobby_dep,
+        libdsprot_dep,
     ],
     link_with : [
         libsyscall,
         libspl,
         libgds,
-        libdsprot,
         libirc,
     ],
     link_args : [

@@ -24,7 +24,6 @@ libirc = static_library('irc',
     pic : false
 )
 
-subdir('dsprot')
 subdir('NitroDWC')
 subdir('spl')
 subdir('syscall')
