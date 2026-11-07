@@ -23,7 +23,7 @@ This repository includes an opinionated `clang-format` specification to ensure t
 
 ### Requirements
 
-- `clang-format@18` or newer
+- `clang-format@19` or newer
 
 ### Usage
 
