@@ -144,7 +144,6 @@ main = executable('main',
     sources : [
         pokeheartgold_c,
         pokeheartgold_asm,
-        nitrodwc_asm,
         naix_headers,
     ],
     c_args : [
@@ -180,6 +179,7 @@ main = executable('main',
     link_with : [
         libsyscall,
         libspl,
+        libgds,
         libdsprot,
         libirc,
     ],
