@@ -571,22 +571,22 @@ int TexturesVec_AppendFromPNG(struct TexturesVec *textures, const struct Texture
             unpacked = true;
             png_set_packing(png_ptr);
             switch (format) {
-                case TEX_FORMAT_2BPP_PALETTED:
-                    bitDepth = 2;
-                    png_set_user_transform_info(png_ptr, NULL, bitDepth, 1);
-                    png_set_read_user_transform_fn(png_ptr, PackTo2BPP);
-                    break;
-                case TEX_FORMAT_4BPP_PALETTED:
-                    bitDepth = 4;
-                    png_set_user_transform_info(png_ptr, NULL, bitDepth, 1);
-                    png_set_read_user_transform_fn(png_ptr, PackTo4BPP);
-                    break;
-                case TEX_FORMAT_8BPP_PALETTED:
-                    bitDepth = 8;
-                    png_set_user_transform_info(png_ptr, NULL, bitDepth, 1);
-                    png_set_read_user_transform_fn(png_ptr, ReduceColors8BPP);
-                default:
-                    break;
+            case TEX_FORMAT_2BPP_PALETTED:
+                bitDepth = 2;
+                png_set_user_transform_info(png_ptr, NULL, bitDepth, 1);
+                png_set_read_user_transform_fn(png_ptr, PackTo2BPP);
+                break;
+            case TEX_FORMAT_4BPP_PALETTED:
+                bitDepth = 4;
+                png_set_user_transform_info(png_ptr, NULL, bitDepth, 1);
+                png_set_read_user_transform_fn(png_ptr, PackTo4BPP);
+                break;
+            case TEX_FORMAT_8BPP_PALETTED:
+                bitDepth = 8;
+                png_set_user_transform_info(png_ptr, NULL, bitDepth, 1);
+                png_set_read_user_transform_fn(png_ptr, ReduceColors8BPP);
+            default:
+                break;
             }
         }
     }

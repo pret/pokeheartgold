@@ -89,7 +89,7 @@ static int DumpBTX(struct Options *options)
     }
 
     if (VecGet(options->nsbtxs, 0).spritesheet) {
-        res = TexChunkToPNGSpritesheet(container.chunks[0].texChunk, options->outputPath, VecGet(options->nsbtxs, 0).combinedPalette);
+        res = TexChunkToPNGSpritesheet(container.chunks[0].texChunk, options->outputPath, VecGet(options->nsbtxs, 0).combinedPalette, options->paletteIndex);
         if (res == ERR_CODE_OK && VecGet(options->nsbtxs, 0).palettesPath) {
             res = TexChunkPalettesToDirectory(container.chunks[0].texChunk, VecGet(options->nsbtxs, 0).palettesPath);
         }
@@ -120,7 +120,7 @@ static int PackBTX(struct Options *options)
                 res = tmp;
             }
             int repeatCount = chunk->textures.n - vecLen;
-            if (tex->palIdx != -1) {
+            if (tex->palIdx != -1 && VecGet(options->palettes, tex->palIdx).multiPalMode != SINGLE_PALETTE) {
                 VecGet(options->palettes, tex->palIdx).multiPalCount = repeatCount;
             }
         } else {
@@ -151,7 +151,7 @@ static int PackBTX(struct Options *options)
 
     FILE *out = fopen(options->outputPath, "wb");
 
-    NSContainer_WriteToFile(&container, out);
+    NSContainer_WriteToFile(&container, out, options->keepDuplicates);
 
     fclose(out);
     NSContainer_Free(&container);

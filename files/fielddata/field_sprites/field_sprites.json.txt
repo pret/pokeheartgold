@@ -1,0 +1,15 @@
+{{ doNotModifyHeader }}
+
+    .rodata
+
+lab0:
+    .word {{ length(data) }}
+    {% for entry in data %}
+    .short {{ entry.unk0 }}
+    {% endfor %}
+    {% for entry in data %}
+    .byte {{ entry.unk1 }}
+    {% endfor %}
+    {% for entry in data %}
+    .byte {{ entry.unk2 }}
+    {% endfor %}

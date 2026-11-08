@@ -107,7 +107,7 @@ enum ErrorCode NSContainer_ReadFromFile(struct NSContainer *container, FILE *fil
     return ERR_CODE_OK;
 }
 
-enum ErrorCode NSContainer_WriteToFile(struct NSContainer *container, FILE *file)
+enum ErrorCode NSContainer_WriteToFile(struct NSContainer *container, FILE *file, bool keepDuplicates)
 {
     enum ContainerType type = GetContainerType(container->type);
 
@@ -129,7 +129,7 @@ enum ErrorCode NSContainer_WriteToFile(struct NSContainer *container, FILE *file
         chunkOffsets[i] = ftell(file) - fileStart;
         switch (container->chunks[i].type) {
         case CHUNK_TEX0:
-            WriteTexChunk(file, container->chunks[i].texChunk);
+            WriteTexChunk(file, container->chunks[i].texChunk, keepDuplicates);
             break;
         default:
             fprintf(stderr, "Unsupported chunk type!\n");

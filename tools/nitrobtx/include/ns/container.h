@@ -65,7 +65,7 @@ extern const union Magic chunkMagics[NUM_CHUNK_TYPES];
 
 struct NSContainer NSContainer_Init(enum ContainerType type);
 enum ErrorCode NSContainer_ReadFromFile(struct NSContainer *container, FILE *file);
-enum ErrorCode NSContainer_WriteToFile(struct NSContainer *container, FILE *file);
+enum ErrorCode NSContainer_WriteToFile(struct NSContainer *container, FILE *file, bool keepDuplicates);
 void NSContainer_Free(struct NSContainer *container);
 
 #endif // NITROBTX_NS_CONTAINER_H

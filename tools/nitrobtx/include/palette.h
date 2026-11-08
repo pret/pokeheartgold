@@ -25,6 +25,7 @@
 #include "vec.h"
 
 enum PaletteInputType {
+    INPUT_TYPE_AUTO,
     INPUT_TYPE_PNG,
     INPUT_TYPE_JASC_PAL,
 };

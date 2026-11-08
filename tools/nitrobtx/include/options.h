@@ -35,10 +35,12 @@ struct NSBTXInput {
 
 struct Options {
     enum Mode mode;
+    bool keepDuplicates;
     MakeVecType(TextureInputVec, struct TextureInput) textures;
     MakeVecType(PaletteInputVec, struct PaletteInput) palettes;
     MakeVecType(NSBTXInputVec, struct NSBTXInput) nsbtxs;
     char *outputPath;
+    int paletteIndex;
 };
 
 void ParseOptions(int argc, char **argv, struct Options *options);

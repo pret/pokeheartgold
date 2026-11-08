@@ -20,6 +20,7 @@
 #include <string.h>
 
 #include "help.h"
+#include "palette.h"
 #include "texture.h"
 #include "vec.h"
 
@@ -56,6 +57,8 @@ enum OptionCharacters {
     OPTION_COMBINED_PALETTE = 'c',
     OPTION_PALETTE_SUFFIX = 'S',
     OPTION_PALETTES_DIR = 'd',
+    OPTION_PALETTE_IDX = 'i',
+    OPTION_KEEP_DUPLICATES = 'k',
     OPTION_INVALID = '?',
 };
 
@@ -87,6 +90,8 @@ static const struct optparse_long longopts_subcommands[] = {
     { "combined-palette", OPTION_COMBINED_PALETTE, OPTPARSE_NONE },
     { "palette-suffix", OPTION_PALETTE_SUFFIX, OPTPARSE_NONE },
     { "palettes-dir", OPTION_PALETTES_DIR, OPTPARSE_REQUIRED },
+    { "palette-index", OPTION_PALETTE_IDX, OPTPARSE_REQUIRED },
+    { "keep-duplicates", OPTION_KEEP_DUPLICATES, OPTPARSE_NONE },
     { "help", OPTION_HELP, OPTPARSE_NONE },
     { "version", OPTION_VERSION, OPTPARSE_NONE },
     { 0 }
@@ -179,7 +184,7 @@ static void ParsePackOptions(char *progName, char **argv, struct Options *option
         case OPTION_PALETTE:
             curr = CURRENT_INPUT_PALETTE;
             VecAppend(options->palettes, (struct PaletteInput) { .path = opts.optarg });
-            VecLast(options->palettes).inputType = INPUT_TYPE_JASC_PAL;
+            VecLast(options->palettes).inputType = INPUT_TYPE_AUTO;
             break;
         case OPTION_NAME:
             switch (curr) {
@@ -318,6 +323,9 @@ static void ParsePackOptions(char *progName, char **argv, struct Options *option
             }
             VecLast(options->palettes).addSuffix = true;
             break;
+        case OPTION_KEEP_DUPLICATES:
+            options->keepDuplicates = true;
+            break;
         case OPTION_HELP:
             PrintUsage(stdout, progName);
             exit(0);
@@ -325,6 +333,9 @@ static void ParsePackOptions(char *progName, char **argv, struct Options *option
             PrintVersion(stdout);
             exit(0);
         case OPTION_PALETTES_DIR:
+            fprintf(stderr, "Option '%s' not allowed in 'pack' mode!\n", argv[opts.optind - 1]);
+            exit(1);
+        case OPTION_PALETTE_IDX:
             fprintf(stderr, "Option '%s' not allowed in 'dump' mode!\n", argv[opts.optind - 1]);
             exit(1);
         case OPTION_INVALID:
@@ -361,6 +372,12 @@ static void ParseDumpOptions(char *progName, char **argv, struct Options *option
             }
             VecGet(options->nsbtxs, 0).palettesPath = opts.optarg;
             break;
+        case OPTION_PALETTE_IDX:
+            if (!VecGet(options->nsbtxs, 0).spritesheet) {
+                fprintf(stderr, "Options %s can only be used with a spritesheet NSBTX!\n", argv[opts.optind - 2]);
+            }
+            options->paletteIndex = atoi(opts.optarg);
+            break;
         case OPTION_COMBINED_PALETTE:
             if (!VecGet(options->nsbtxs, 0).spritesheet) {
                 fprintf(stderr, "Options %s can only be used with a spritesheet NSBTX!\n", argv[opts.optind - 1]);
@@ -378,7 +395,7 @@ static void ParseDumpOptions(char *progName, char **argv, struct Options *option
             PrintUsage(stderr, progName);
             exit(1);
         default:
-            fprintf(stderr, "Option '%s' not allowed in 'pack' mode!\n", argv[opts.optind - 1]);
+            fprintf(stderr, "Option '%s' not allowed in 'dump' mode!\n", argv[opts.optind - 1]);
             exit(1);
         }
     }
@@ -404,10 +421,12 @@ static void ParseDumpOptions(char *progName, char **argv, struct Options *option
 static void InitOptions(struct Options *options)
 {
     options->mode = 0;
+    options->keepDuplicates = false;
     options->outputPath = NULL;
     VecInit(options->textures, 8);
     VecInit(options->palettes, 8);
     VecInit(options->nsbtxs, 4);
+    options->paletteIndex = 0;
 }
 
 static enum TextureFormat ParseFormat(char *format)

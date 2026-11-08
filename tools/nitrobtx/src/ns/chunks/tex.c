@@ -67,7 +67,7 @@ struct NSChunkTex *MakeTexChunk(void)
     return chunk;
 }
 
-int WriteTexChunk(FILE *file, struct NSChunkTex *chunk)
+int WriteTexChunk(FILE *file, struct NSChunkTex *chunk, bool keepDuplicates)
 {
     long chunkStart = ftell(file);
 
@@ -133,17 +133,19 @@ int WriteTexChunk(FILE *file, struct NSChunkTex *chunk)
     for (int toWrite = 0; toWrite < chunk->textures.n; toWrite++) {
         struct Texture *tex = &(VecGet(chunk->textures, toWrite));
 
-        texChecksums[toWrite] = Fletcher64(tex->texelData.rawData, tex->dataByteCount);
-
         int sameAs = -1;
 
-        for (int other = 0; other < toWrite; other++) {
+        if (!keepDuplicates) {
+            texChecksums[toWrite] = Fletcher64(tex->texelData.rawData, tex->dataByteCount);
 
-            if (texChecksums[toWrite] == texChecksums[other]
-                && tex->dataByteCount == VecGet(chunk->textures, other).dataByteCount
-                && AreSame(tex->texelData.rawData, VecGet(chunk->textures, other).texelData.rawData, tex->dataByteCount)) {
-                sameAs = other;
-                break;
+            for (int other = 0; other < toWrite; other++) {
+
+                if (texChecksums[toWrite] == texChecksums[other]
+                    && tex->dataByteCount == VecGet(chunk->textures, other).dataByteCount
+                    && AreSame(tex->texelData.rawData, VecGet(chunk->textures, other).texelData.rawData, tex->dataByteCount)) {
+                    sameAs = other;
+                    break;
+                }
             }
         }
 
@@ -170,13 +172,17 @@ int WriteTexChunk(FILE *file, struct NSChunkTex *chunk)
     for (int toWrite = 0; toWrite < chunk->palettes.n; toWrite++) {
         struct Palette *pal = &(VecGet(chunk->palettes, toWrite));
         int sameAs = -1;
-        for (int other = 0; other < toWrite; other++) {
-            if (pal->numColors == VecGet(chunk->palettes, other).numColors
-                && AreSame(pal->data, VecGet(chunk->palettes, other).data, pal->numColors * sizeof(struct NDSColor))) {
-                sameAs = other;
-                break;
+
+        if (!keepDuplicates) {
+            for (int other = 0; other < toWrite; other++) {
+                if (pal->numColors == VecGet(chunk->palettes, other).numColors
+                    && AreSame(pal->data, VecGet(chunk->palettes, other).data, pal->numColors * sizeof(struct NDSColor))) {
+                    sameAs = other;
+                    break;
+                }
             }
         }
+
         if (sameAs == -1) {
             palOffsets[toWrite] = palDataSize;
             fwrite(pal->data, sizeof(struct NDSColor), pal->numColors, file);
@@ -365,10 +371,10 @@ void SortPalettesSmart(struct NSChunkTex *chunk)
     VecSort(chunk->palettes, ComparePalNamesSmart);
 }
 
-int TexChunkToPNGSpritesheet(const struct NSChunkTex *chunk, const char *path, bool combinedPalette)
+int TexChunkToPNGSpritesheet(const struct NSChunkTex *chunk, const char *path, bool combinedPalette, int paletteIndex)
 {
     if (!combinedPalette) {
-        return TexturesVec_ToSpritesheetPNG(&chunk->textures, chunk->palettes.n > 0 ? &VecGet(chunk->palettes, 0) : NULL, path, combinedPalette);
+        return TexturesVec_ToSpritesheetPNG(&chunk->textures, chunk->palettes.n > paletteIndex ? &VecGet(chunk->palettes, paletteIndex) : NULL, path, combinedPalette);
     } else if (chunk->palettes.n == chunk->textures.n) {
         struct Palette pal;
         PalettesVec_Combine(&chunk->palettes, &pal);

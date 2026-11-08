@@ -18,6 +18,7 @@
 
 #include <png.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -37,16 +38,12 @@ enum PalReadError {
     PAL_READ_ERROR_INVALID_CHANNEL_VALUE,
 };
 
-enum PaletteSource {
-    PALETTE_SOURCE_PNG,
-    PALETTE_SOURCE_JASC_PAL,
-};
-
 static png_color NDSColorToPNG(struct NDSColor color);
 static struct NDSColor PNGToNDSColor(png_color color);
 static unsigned int NumDigits(unsigned int val);
 static enum ErrorCode Palette_ReadPNG(const char *inputPath, struct Palette *out);
 static enum ErrorCode Palette_ReadJASCPAL(const char *path, struct Palette *palette);
+static enum ErrorCode DetermineInputType(struct PaletteInput *in);
 
 static bool ParseInteger(char *str, char **end, int base, int *dest, int min, int max)
 {
@@ -163,14 +160,14 @@ static int ReadLine(FILE *fp, char lineBuf[16])
     }
 }
 
-enum ErrorCode PalettesVec_Append(struct PalettesVec *vec, struct PaletteInput *in) // enum PaletteSource source, const char *path, const char *name, unsigned int multiPalCount, bool addSuffix)
+enum ErrorCode PalettesVec_Append(struct PalettesVec *vec, struct PaletteInput *in)
 {
     int multiPalCount = in->multiPalCount;
     bool addSuffix = in->addSuffix;
     const char *name = in->name;
     const char *path = in->path;
 
-    int maxNameLength = RES_NAME_LENGTH - (multiPalCount > 1 ? 1 + NumDigits(multiPalCount) : 0) - (addSuffix ? strlen("_pl") : 0);
+    int maxNameLength = RES_NAME_LENGTH - (in->multiPalMode != SINGLE_PALETTE ? 1 + NumDigits(multiPalCount) : 0) - (addSuffix ? strlen("_pl") : 0);
 
     if (strlen(name) > maxNameLength) {
         if (multiPalCount > 1) {
@@ -191,17 +188,26 @@ enum ErrorCode PalettesVec_Append(struct PalettesVec *vec, struct PaletteInput *
     struct Palette tmp = { 0 };
 
     enum ErrorCode res;
+    if (in->inputType == INPUT_TYPE_AUTO) {
+        if ((res = DetermineInputType(in)) != ERR_CODE_OK) {
+            return res;
+        }
+    }
+
     switch (in->inputType) {
-    case PALETTE_SOURCE_PNG:
+    case INPUT_TYPE_PNG:
         if ((res = Palette_ReadPNG(path, &tmp)) != ERR_CODE_OK) {
             return res;
         }
         break;
-    case PALETTE_SOURCE_JASC_PAL:
+    case INPUT_TYPE_JASC_PAL:
         if ((res = Palette_ReadJASCPAL(path, &tmp)) != ERR_CODE_OK) {
             return res;
         }
         break;
+    case INPUT_TYPE_AUTO:
+        fprintf(stderr, "Couldn't automatically determine palette input type for file '%s'", in->path);
+        return ERR_CODE_INVALID_FILE_TYPE;
     }
 
     if (in->multiPalMode == MULTI_PALETTE_SPLIT && tmp.numColors % in->multiPalCount != 0) {
@@ -412,6 +418,38 @@ enum ErrorCode Palette_ReadPNG(const char *inputPath, struct Palette *out)
     fclose(fp);
 
     return ERR_CODE_OK;
+}
+
+static enum ErrorCode DetermineInputType(struct PaletteInput *in)
+{
+    FILE *fp = fopen(in->path, "rb");
+    uint8_t header[9] = { 0 };
+
+    if (!fp) {
+        fprintf(stderr, "Failed to open file '%s' for reading!\n", in->path);
+        return ERR_CODE_FAILED_OPEN_INPUT;
+    }
+
+    int nRead = fread(header, 1, 8, fp);
+    fclose(fp);
+
+    if (nRead != 8) {
+        fprintf(stderr, "Couldn't read signature from file '%s'!\n", in->path);
+        return ERR_CODE_INPUT_INVALID;
+    }
+
+    if (!png_sig_cmp(header, 0, 8)) {
+        in->inputType = INPUT_TYPE_PNG;
+        return ERR_CODE_OK;
+    }
+
+    if (strcmp((char *)header, "JASC_PAL") == 0) {
+        in->inputType = INPUT_TYPE_JASC_PAL;
+        return ERR_CODE_OK;
+    }
+
+    fprintf(stderr, "Invalid file type for palette input '%s'!\n", in->path);
+    return ERR_CODE_INVALID_FILE_TYPE;
 }
 
 void Palette_Free(struct Palette *palette)

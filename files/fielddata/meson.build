@@ -1,6 +1,7 @@
 subdir('build_model')
 subdir('encountdata')
 subdir('eventdata')
+subdir('field_sprites')
 subdir('graphic')
 subdir('mapmatrix')
 subdir('maptable')
