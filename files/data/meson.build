@@ -165,7 +165,6 @@ nitrofs_files += sbox_gra_narc
 naix_headers += sbox_gra_narc[1]
 
 # Other subdirs
-subdir('mmodel')
 subdir('mushi')
 subdir('sound')
 

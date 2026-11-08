@@ -1097,7 +1097,7 @@ field_sprites_narc = custom_target('field_sprites.narc',
     command: [
         nitroarc_exe,
         '--create',
-        '--index',
+        '--index-namespace',
         '--files-from', files('field_sprites.order'),
         '--file', '@OUTPUT0@',
         '@PRIVATE_DIR@',
