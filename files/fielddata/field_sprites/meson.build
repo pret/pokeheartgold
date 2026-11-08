@@ -785,7 +785,7 @@ follower_mon_files = [
     { 'mon' : 'illumise', 'form' : '' },
     { 'mon' : 'roselia', 'form' : '' },
     { 'mon' : 'gulpin', 'form' : '' },
-    { 'mon' : 'Swallot', 'form' : '' },
+    { 'mon' : 'swallot', 'form' : '' },
     { 'mon' : 'carvhana', 'form' : '' },
     { 'mon' : 'sharpedo', 'form' : '' },
     { 'mon' : 'wailmer', 'form' : '' },
