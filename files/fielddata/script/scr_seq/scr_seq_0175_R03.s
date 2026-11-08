@@ -188,6 +188,6 @@ _02DF:
 	End
 
 scr_seq_R03_000:
-	TrainerTipsEx 2, msg_0326_R03_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0326_R03_00000
 	End
 	.balign 4, 0

@@ -79,9 +79,9 @@
 .public ManagedSprite_OffsetPositionXY
 .public ManagedSprite_SetAffineOverwriteMode
 .public ManagedSprite_SetAffineScale
-.public sub_0200E3D8
+.public GetStandardWindowPaletteNARCMember
 .public LoadUserFrameGfx1
-.public sub_0200E640
+.public GetMessageBoxPaletteNARCMember
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public BeginNormalPaletteFade

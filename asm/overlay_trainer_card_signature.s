@@ -1369,7 +1369,7 @@ _021E8C44:
 	add r0, sp, #0
 	mov r1, #4
 	mov r2, #1
-	bl sub_02021280
+	bl WriteAutoSamplingDataToBuffer
 	cmp r0, #1
 	bne _021E8CA0
 	add r7, sp, #0

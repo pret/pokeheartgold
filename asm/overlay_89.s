@@ -1284,7 +1284,7 @@ _022592FE:
 	bl Save_PlayerData_GetOptionsAddr
 	bl Options_GetFrame
 	add r5, r0, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
