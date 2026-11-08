@@ -98,7 +98,7 @@ else
   endif
 endif
 
-export NINJA_STATUS := [%p %f/%t]
+export NINJA_STATUS := [%p %f/%t] 
 
 PYTHON ?= python3
 LSF_IN := main.lsf.in
@@ -120,7 +120,7 @@ soulsilver:
 	make GAME_VERSION=SOULSILVER
 
 check: rom
-	$(MESON) test -C $(BUILD) --verbose
+	$(MESON) test -C $(BUILD) --print-errorlogs
 
 rom: setup_rom
 	$(NINJA) -C $(BUILD) poke$(target_name).$(target_region).nds
