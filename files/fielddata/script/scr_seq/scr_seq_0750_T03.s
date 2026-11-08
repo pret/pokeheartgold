@@ -207,19 +207,19 @@ scr_seq_T03_002:
 	End
 
 scr_seq_T03_003:
-	DirectionSignpostEx 0, 3, msg_0460_T03_00020
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 3, msg_0460_T03_00020
 	End
 
 scr_seq_T03_004:
-	TrainerTipsEx 2, msg_0460_T03_00021
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0460_T03_00021
 	End
 
 scr_seq_T03_005:
-	TrainerTipsEx 2, msg_0460_T03_00022
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0460_T03_00022
 	End
 
 scr_seq_T03_006:
-	DirectionSignpostEx 2, 0, msg_0460_T03_00023
+	DirectionSignpostEx SIGNPOST_TYPE_LANDMARK, 0, msg_0460_T03_00023
 	End
 
 _030E:

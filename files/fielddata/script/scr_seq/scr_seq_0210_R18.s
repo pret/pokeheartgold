@@ -17,6 +17,6 @@ _0017:
 	End
 
 scr_seq_R18_001:
-	DirectionSignpostEx 1, 1, msg_0358_R18_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 1, msg_0358_R18_00000
 	End
 	.balign 4, 0

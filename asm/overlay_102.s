@@ -6220,7 +6220,7 @@ ov102_021EA41C: ; 0x021EA41C
 	add r1, r4, #0
 	mov r2, #0xf
 	str r0, [r5, #0x5c]
-	bl sub_0200E948
+	bl Window_DrawMessageBox
 	add r0, r5, #0
 	add r0, #0xc
 	bl PutWindowTilemap
@@ -7305,7 +7305,7 @@ ov102_021EADF8: ; 0x021EADF8
 	lsl r1, r1, #2
 	ldrh r1, [r5, r1]
 	mov r2, #0xf
-	bl sub_0200E948
+	bl Window_DrawMessageBox
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov102_021EADF8

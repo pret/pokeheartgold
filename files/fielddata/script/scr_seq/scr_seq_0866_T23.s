@@ -285,27 +285,27 @@ _03C3:
 	GoTo _039F
 
 scr_seq_T23_008:
-	TrainerTipsEx 2, msg_0564_T23_00012
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0564_T23_00012
 	End
 
 scr_seq_T23_009:
-	TrainerTipsEx 2, msg_0564_T23_00013
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0564_T23_00013
 	End
 
 scr_seq_T23_010:
-	TrainerTipsEx 2, msg_0564_T23_00015
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0564_T23_00015
 	End
 
 scr_seq_T23_011:
-	DirectionSignpostEx 0, 14, msg_0564_T23_00011
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 14, msg_0564_T23_00011
 	End
 
 scr_seq_T23_012:
-	TrainerTipsEx 2, msg_0564_T23_00014
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0564_T23_00014
 	End
 
 scr_seq_T23_013:
-	DirectionSignpostEx 1, 2, msg_0564_T23_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0564_T23_00000
 	End
 
 scr_seq_T23_014:
