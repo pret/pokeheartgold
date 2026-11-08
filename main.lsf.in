@@ -46,7 +46,7 @@ Static main
     Object src/unk_0200CE7C.c
     Object src/sprite_system.c
     Object src/sys_task_api.c
-    Object asm/render_window.s
+    Object src/render_window.c
     Object asm/unk_0200FA24.s
     Object asm/unk_0201010C.s
     Object asm/unk_02012DD8.s

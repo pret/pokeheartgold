@@ -52,7 +52,7 @@
 .public StringExpandPlaceholders
 .public MessagePrinter_New
 .public MessagePrinter_Delete
-.public sub_0200E398
+.public LoadStandardWindowTiles
 .public DrawFrameAndWindow1
 .public ClearWindowPixelBuffer
 .public LoadUserFrameGfx2

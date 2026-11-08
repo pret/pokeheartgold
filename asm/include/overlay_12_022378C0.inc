@@ -60,11 +60,11 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
-.public sub_0200E640
+.public GetMessageBoxPaletteNARCMember
 .public DrawFrameAndWindow2
-.public sub_0200EB80
+.public ReplaceTransparentTiles
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public sub_02014DA0

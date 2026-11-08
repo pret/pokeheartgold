@@ -773,11 +773,11 @@ _09A5:
 	End
 
 scr_seq_R29_004:
-	DirectionSignpostEx 1, 1, msg_0373_R29_00016
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 1, msg_0373_R29_00016
 	End
 
 scr_seq_R29_005:
-	DirectionSignpostEx 1, 2, msg_0373_R29_00015
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0373_R29_00015
 	End
 
 scr_seq_R29_006:
