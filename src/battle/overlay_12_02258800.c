@@ -1,12 +1,12 @@
 #include "battle/overlay_12_02258800.h"
 
+#include "constants/abilities.h"
+
 #include "battle/battle.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/trainer_ai.h"
-
-#include "constants/abilities.h"
 
 int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
     // Must keep C89-style declaration to match
