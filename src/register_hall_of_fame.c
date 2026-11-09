@@ -7,7 +7,7 @@
 #include "constants/map_sections.h"
 #include "constants/sndseq.h"
 
-#include "data/mmodel/mmodel.naix"
+#include "fielddata/field_sprites/field_sprites.naix"
 #include "msgdata/msg.naix"
 #include "msgdata/msg/msg_0180.h"
 
@@ -1350,7 +1350,7 @@ static void RegisterHallOfFame_IndivMonsScene_SetMon3dSpriteTex(RegisterHallOfFa
     int spriteSquareDim = hofMon->followPokeParam[1] ? 8 : 4;
     u32 size = 32 * spriteSquareDim * spriteSquareDim;
     int fileno = RegisterHallOfFame_GetMmodelBySpeciesFormGender(hofMon->species, hofMon->form, hofMon->gender);
-    fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_data_mmodel_mmodel, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
+    fileData = AllocAndReadWholeNarcMemberByIdPair(NARC_field_sprites, fileno, HEAP_ID_REGISTER_HALL_OF_FAME);
     resTex = NNS_G3dGetTex(fileData);
     texData = NNS_G3dGetTexData(resTex);
     void *buffer = Heap_Alloc(HEAP_ID_REGISTER_HALL_OF_FAME, size);
@@ -2072,9 +2072,9 @@ static int RegisterHallOfFame_GetMmodelBySpeciesFormGender(int species, u8 form,
     int ret;
 
     if (species <= 0 || species > SPECIES_ARCEUS) {
-        ret = mmodel_00000001_NSBTX;
+        ret = NARC_field_sprites_dp_twin_nsbtx;
     } else {
-        ret = SpeciesToOverworldModelIndexOffset(species) + mmodel_00000297_NSBTX;
+        ret = SpeciesToOverworldModelIndexOffset(species) + NARC_field_sprites_bulbasaur_nsbtx;
         if (OverworldModelLookupHasFemaleForm(species)) {
             if (gender == MON_FEMALE) {
                 ++ret;

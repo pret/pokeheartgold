@@ -1,0 +1,16 @@
+field_sprites_nsbmd = copy_gen.process(files(
+    'field_sprites_266.nsbmd',
+    'field_sprites_267.nsbmd',
+    'field_sprites_268.nsbmd',
+    'field_sprites_269.nsbmd',
+    'field_sprites_270.nsbmd',
+    'field_sprites_271.nsbmd',
+    'field_sprites_272.nsbmd',
+    'field_sprites_273.nsbmd',
+    'field_sprites_274.nsbmd',
+    'field_sprites_275.nsbmd',
+    'field_sprites_276.nsbmd',
+    'field_sprites_277.nsbmd',
+    'field_sprites_278.nsbmd',
+    'field_sprites_279.nsbmd',
+))
