@@ -101,7 +101,7 @@ nitrodwc_dep = dependency('NitroDWC',
 
 libvct_dep = dependency('libvct')
 
-libdsprot_dep = dependency('libdsprot',
+libdsprot_dep = dependency('dsprot',
     default_options: {
         'mwrap_sdk': '2.0/sp2p3'
     }
