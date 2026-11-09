@@ -1,8 +1,9 @@
-// Suppress include sorting
+// Force global.h to be the first include
+// Because clang-format prefers the same-stem include to be first, but we don't want that
 // clang-format off
 #include "global.h"
-#include "overlay_35.h"
 // clang-format on
+#include "overlay_35.h"
 
 struct UnkStruct_Overlay35 {
     u8 filler_00[2];
