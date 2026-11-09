@@ -1,4 +1,3 @@
-
 #pragma once
 .public GF_AssertFail
 .public sub_0202FC48

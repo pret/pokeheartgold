@@ -1,10 +1,12 @@
-#include "constants/abilities.h"
+#include "battle/overlay_12_02258800.h"
 
 #include "battle/battle.h"
 #include "battle/battle_controller_opponent.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "battle/trainer_ai.h"
+
+#include "constants/abilities.h"
 
 int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
     // Must keep C89-style declaration to match
@@ -135,26 +137,10 @@ int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
                 moveType = Move_CalcVariableDamageType(battleSystem, ctx, mon, move);
 
                 if (move && ctx->trainerAIData.moveData[move].power != 1) {
-                    score = CalcMoveDamage(battleSystem,
-                        ctx,
-                        move,
-                        ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, opponent)],
-                        ctx->fieldCondition,
-                        0,
-                        0,
-                        battler,
-                        opponent,
-                        1);
+                    score = CalcMoveDamage(battleSystem, ctx, move, ctx->fieldSideConditionFlags[BattleSystem_GetBattlerSide(battleSystem, opponent)], ctx->fieldCondition, 0, 0, battler, opponent, 1);
 
                     moveStatusFlags = 0;
-                    score = BattleSystem_ApplyTypeChart(battleSystem,
-                        ctx,
-                        move,
-                        moveType,
-                        battler,
-                        opponent,
-                        score,
-                        &moveStatusFlags);
+                    score = BattleSystem_ApplyTypeChart(battleSystem, ctx, move, moveType, battler, opponent, score, &moveStatusFlags);
 
                     if (moveStatusFlags & MOVE_STATUS_IMMUNE) {
                         score = 0;
@@ -172,7 +158,6 @@ int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
     return picked;
 }
 
-int BattleAI_SwitchedSlot(BattleSystem *battleSystem, int battler);
 int BattleAI_SwitchedSlot(BattleSystem *battleSystem, int battler) {
     BattleContext *ctx = BattleSystem_GetBattleContext(battleSystem);
     return ctx->aiSwitchedPartySlot[battler];
@@ -185,7 +170,6 @@ int Move_CalcVariableDamageType(BattleSystem *battleSystem, BattleContext *ctx, 
     case MOVE_NATURAL_GIFT:
         type = GetItemVar(ctx, GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_NATURAL_GIFT_TYPE);
         break;
-
     case MOVE_JUDGMENT:
         switch (GetItemVar(ctx, GetMonData(mon, MON_DATA_HELD_ITEM, NULL), ITEMATTR_HOLD_EFFECT)) {
         case HOLD_EFFECT_ARCEUS_FIGHTING:
@@ -241,7 +225,6 @@ int Move_CalcVariableDamageType(BattleSystem *battleSystem, BattleContext *ctx, 
             break;
         }
         break;
-
     case MOVE_HIDDEN_POWER:
         type = ((GetMonData(mon, MON_DATA_HP_IV, NULL) & 1) >> 0)
             | ((GetMonData(mon, MON_DATA_ATK_IV, NULL) & 1) << 1)
@@ -255,7 +238,6 @@ int Move_CalcVariableDamageType(BattleSystem *battleSystem, BattleContext *ctx, 
             type++;
         }
         break;
-
     case MOVE_WEATHER_BALL:
         if (CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_CLOUD_NINE) == FALSE
             && CheckAbilityActive(battleSystem, ctx, CHECK_ABILITY_ALL_HP, 0, ABILITY_AIR_LOCK) == FALSE
@@ -277,7 +259,6 @@ int Move_CalcVariableDamageType(BattleSystem *battleSystem, BattleContext *ctx, 
             }
         }
         break;
-
     default:
         type = TYPE_NORMAL;
         break;
