@@ -145,7 +145,7 @@ _0205A494:
 sub_0205A498: ; 0x0205A498
 	push {r4, lr}
 	add r4, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
@@ -186,7 +186,7 @@ _0205A4D4: .word 0x00000176
 sub_0205A4D8: ; 0x0205A4D8
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r2, _0205A504 ; =0x00000176
 	add r1, r4, r0
 	ldrb r1, [r1, r2]
@@ -434,21 +434,21 @@ _0205A6A8: .word _020FC914
 sub_0205A6AC: ; 0x0205A6AC
 	push {r3, r4, r5, r6, r7, lr}
 	str r0, [sp]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020348A8
 	lsl r0, r0, #0x18
 	lsr r7, r0, #0x18
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_020348A8
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020348CC
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_020348CC
@@ -685,7 +685,7 @@ _0205A890: .word _020FC7F4
 	thumb_func_start sub_0205A894
 sub_0205A894: ; 0x0205A894
 	push {r4, lr}
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
@@ -710,7 +710,7 @@ _0205A8BA:
 	bl sub_02034818
 	add r6, r0, #0
 	beq _0205A8F2
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0205A8FC
 	add r0, r6, #0
@@ -981,7 +981,7 @@ sub_0205AA9C: ; 0x0205AA9C
 	bl sub_02035798
 	b _0205AACE
 _0205AAC2:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
@@ -1172,7 +1172,7 @@ sub_0205ABD8: ; 0x0205ABD8
 	add r1, r0, #0
 	add r2, r0, #0
 	bl sub_02068FC8
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	lsl r0, r0, #2

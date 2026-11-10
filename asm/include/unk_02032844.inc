@@ -36,7 +36,7 @@
 .public sub_02033ACC
 .public sub_020340C4
 .public sub_02039918
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039AD8
 .public WVR_TerminateAsync
 .public DC_InvalidateRange

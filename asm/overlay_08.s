@@ -50,7 +50,7 @@ _0221BE2E:
 	strb r2, [r4, r0]
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #0x28]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	ldr r1, _0221BE94 ; =0x0000208F
 	strb r0, [r4, r1]
 	pop {r3, r4, r5, pc}
@@ -14418,7 +14418,7 @@ ov08_02223374: ; 0x02223374
 	ldr r3, [r4, #0x10]
 	ldr r0, [r0]
 	mov r2, #2
-	bl ov12_022581D4
+	bl BattleContext_Get
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov08_02223374
 

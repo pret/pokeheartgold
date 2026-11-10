@@ -135,7 +135,7 @@ ov80_022359D4: ; 0x022359D4
 	mov r0, #1
 	pop {r4, pc}
 _022359F4:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02037B5C
@@ -798,7 +798,7 @@ _02235F10:
 	lsr r1, r1, #0x18
 	orr r0, r1
 	strb r0, [r4, #0x10]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02235F44
 	ldr r1, [r7, #8]

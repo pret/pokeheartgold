@@ -349,7 +349,7 @@ BOOL FieldSystem_PerformFishEncounterCheck(FieldSystem *fieldSystem, u8 rodType,
         FieldSystem_CreateBattleSetupForWildBattle(fieldSystem, ENCOUNTER_CONTEXT_REGULAR, pBattleSetup);
     }
     BattleSetup_InitFromFieldSystem(*pBattleSetup, fieldSystem);
-    sub_02052544(*pBattleSetup);
+    BattleSetup_SetWaterTerrain(*pBattleSetup);
     const EncounterData *encData = MapEvents_GetLoadedEncTable(fieldSystem);
     const EncounterDataSlot *rodSlots;
     switch (rodType) {

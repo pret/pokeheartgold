@@ -304,7 +304,7 @@ ov93_0225FE08: ; 0x0225FE08
 	ldr r2, [r1, r0]
 	add r2, r2, r6
 	str r2, [r1, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r7, r0
 	bne _0225FE4E
 	ldr r1, _0225FE54 ; =0x00003848
@@ -472,7 +472,7 @@ _0225FF2E:
 	add r0, r7, #0
 	bl ov93_0226027C
 	str r0, [r4, #0x10]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldrb r1, [r5]
 	cmp r1, r0
 	bne _0225FF8E
@@ -791,7 +791,7 @@ _022601DC:
 	add r2, r1, #0
 	bl ManagedSprite_SetAffineScale
 _022601F0:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #4
 	ldrsh r1, [r4, r1]
 	cmp r1, r0
@@ -2129,7 +2129,7 @@ _02260C14:
 	cmp r0, r1
 	blt _02260C0C
 _02260C50:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r3, [r6]
 	mov r2, #0
 	add r1, r3, #0
@@ -2276,7 +2276,7 @@ _02260D32:
 	cmp r0, r1
 	blt _02260D26
 _02260D6E:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r3, [r7]
 	mov r2, #0
 	add r1, r3, #0
@@ -2411,7 +2411,7 @@ _02260E46:
 	cmp r0, r1
 	blt _02260E46
 _02260E76:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r3, [r5]
 	mov r2, #0
 	add r1, r3, #0
@@ -2499,7 +2499,7 @@ ov93_02260F14: ; 0x02260F14
 	mov r1, #0
 	mov r2, #0x10
 	bl MI_CpuFill8
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	strb r0, [r4]
 	strh r5, [r4, #2]
 	str r6, [r4, #4]
@@ -4197,7 +4197,7 @@ ov93_02261C58: ; 0x02261C58
 	str r3, [sp]
 	ldr r4, _02261D04 ; =0
 	beq _02261D02
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, [sp]
 	cmp r1, r0
 	beq _02261D02
@@ -5799,7 +5799,7 @@ ov93_02262814: ; 0x02262814
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldrb r1, [r4, #4]
 	cmp r1, r0
 	beq _0226282C

@@ -20055,7 +20055,7 @@ _02262096:
 	bl ov49_0225EF8C
 	b _02262140
 _022620B0:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldrh r1, [r4, #8]
 	cmp r1, r0
 	ble _022620C8
@@ -20697,7 +20697,7 @@ _02262630:
 	mov r2, #0
 	bl ov49_02262DF8
 	bl sub_02034434
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_0203476C
 	ldr r0, [sp, #0x10]
 	mov r1, #0xb
@@ -20787,7 +20787,7 @@ _02262702:
 	ldr r0, [sp, #0x30]
 	bl ov45_0222A548
 	str r0, [r4, #0xc]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r4, #0xc
 	add r1, r4, #0
 	bl sub_02037C0C
@@ -20814,7 +20814,7 @@ _0226273C:
 	str r0, [sp, #0x18]
 	bl sub_020347A0
 	str r0, [sp, #0x28]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r7, #0
 	str r0, [sp, #0x24]
 	str r7, [sp, #0x20]

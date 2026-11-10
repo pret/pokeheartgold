@@ -129,8 +129,8 @@
 .public Save_SpecialRibbons_Get
 .public sub_02030BD0
 .public sub_02037030
-.public sub_02037474
-.public sub_0203769C
+.public CommSystem_IsInitialized
+.public CommSystem_GetCurNetId
 .public sub_020379A0
 .public sub_02037AC0
 .public sub_02037B38

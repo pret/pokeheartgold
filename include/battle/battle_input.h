@@ -53,12 +53,6 @@ typedef struct BattleInput_UnkSub14 {
     s8 unk5;
 } BattleInput_UnkSub14;
 
-typedef struct BattleInputMove {
-    u16 moveNo[4];
-    u16 pp[4];
-    u16 ppMax[4];
-} BattleInputMove;
-
 typedef struct BattleInputMoveMemory_DisplayObj {
     Window window;
     u16 charLength;
@@ -66,7 +60,7 @@ typedef struct BattleInputMoveMemory_DisplayObj {
 } BattleInputMoveMemory_DisplayObj;
 
 typedef struct BattleInputMoveMemory {
-    BattleInputMove move;
+    MoveDisplayInfo move;
     u16 *typeIcon[4];
     BattleInputMoveMemory_DisplayObj moveDisplay[4];
     BattleInputMoveMemory_DisplayObj ppDisplay[4];
@@ -225,7 +219,7 @@ void BgConfig_CleanupBattleMenuBackgrounds(BgConfig *config);
 void *BattleInput_NewInit(NARC *a0, NARC *a1, BattleSystem *battleSystem, u32 gender, u8 *a4);
 void BattleInput_Free(BattleInput *battleInput);
 void BattleInput_LoadDefaultResources(BattleInput *battleInput);
-void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, int *a5);
+void BattleInput_ChangeMenu(NARC *narc0, NARC *narc1, BattleInput *battleInput, int menuId, int a4, void *a5);
 void BattleInput_LoadBallGaugeResources(NARC *narc, BattleInput *battleInput);
 void BattleInput_SetPartyExpPercents(BattleInput *battleInput, u8 *a1);
 void BattleInput_UpdateBallGaugeAnimation(BattleInput *battleInput, u8 *a1, u8 *a2);
@@ -235,7 +229,7 @@ int BattleInput_CheckTouch(BattleInput *battleInput);
 BOOL BattleInput_CheckFeedbackDone(BattleInput *battleInput);
 int ov12_02266C84(int moveRange, int battlerId);
 void BattleInput_StartMenuScrollHorizontalTask(BattleInput *battleInput, int xSpeed, int xEnd);
-void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, const BattleInputMove *moveDisplay);
+void BattleInput_LoadFightMenuText(BattleInput *battleInput, int battlerId, const MoveDisplayInfo *moveDisplay);
 void BattleInput_Deadstriped_022698AC(BattleInput *battleInput, int unused);
 int ov12_022698B0(BattleInput *battleInput);
 int BattleInput_GetKeyPressed(BattleInput *battleInput);

@@ -4,7 +4,7 @@
 .public Heap_Free
 .public sub_02037184
 .public sub_020373B4
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020376E0
 .public sub_020379A0
 .public sub_020379F8

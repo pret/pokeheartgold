@@ -2667,7 +2667,7 @@ _0225B4F6:
 	lsr r0, r0, #0x1c
 	cmp r0, #5
 	bne _0225B53E
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r4, r0, #0
 	bl sub_02058740
 	cmp r0, #0

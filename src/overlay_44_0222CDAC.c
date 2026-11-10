@@ -2806,7 +2806,7 @@ s32 ov44_0222D824(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         arg0->unk384 = 0;
         sub_02034354(arg0->saveData, 0);
         sub_02034434();
-        sub_0203476C(sub_0203769C());
+        sub_0203476C(CommSystem_GetCurNetId());
         arg1 = 2;
     }
     return arg1;
@@ -3428,7 +3428,7 @@ s32 ov44_0222E860(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 s32 ov44_0222E908(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if ((ov44_0222E7C4(arg0) == 0) && (sub_02037B38(14) != 0)) {
         s16 r1 = ov44_02229F00(arg0, &arg0->unk4->unk0);
-        if (sub_02037C0C(sub_0203769C(), &r1) != 0) {
+        if (sub_02037C0C(CommSystem_GetCurNetId(), &r1) != 0) {
             arg0->unk348 = 51;
         }
     }
@@ -3437,7 +3437,7 @@ s32 ov44_0222E908(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 
 s32 ov44_0222E948(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     s32 var_r0;
-    if (sub_0203769C() == 0) {
+    if (CommSystem_GetCurNetId() == 0) {
         var_r0 = 1;
     } else {
         var_r0 = 0;

@@ -42,7 +42,7 @@
 .public sub_02037618
 .public sub_02037640
 .public sub_02037668
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020376E0
 .public sub_0203776C
 .public sub_02037974

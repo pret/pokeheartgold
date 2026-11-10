@@ -7,8 +7,8 @@
 .public Heap_Free
 .public GF_AssertFail
 .public sub_02034DCC
-.public sub_02037454
-.public sub_02037474
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
 .public sub_02039998
 .public sub_0203A4AC
 .public sub_0203A86C
