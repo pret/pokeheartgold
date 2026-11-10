@@ -569,9 +569,9 @@ struct BattleSystem {
     MsgData *unk10;
     MessageFormat *msgFormat;
     String *msgBuffer;
-    u32 unk1C;
-    u32 unk20;
-    u32 unk24;
+    SysTask *unk1C;
+    SysTask *unk20;
+    SysTask *unk24;
     PaletteData *palette;
     u32 battleType;
     BattleContext *ctx;
