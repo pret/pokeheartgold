@@ -8,9 +8,12 @@ camera_viewfinder_ncgr_lz = ncgr_lz_gen.process(
     files(
         'camera_viewfinder.png'
     ),
-    extra_args : VERSION101_SOPC_NCGR_FLAGS
+    extra_args : VERSION101_SOPC_NCGR_FLAGS + ['-nopad']
 )
 
-camera_viewfinder_nscr_lz = lz_gen.process(files(
-    'camera_viewfinder.NSCR'
-))
+camera_viewfinder_nscr_lz = lz_gen.process(
+    files(
+        'camera_viewfinder.NSCR'
+    ), 
+    extra_args: ['-nopad']
+)

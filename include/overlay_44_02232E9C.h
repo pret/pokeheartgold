@@ -393,7 +393,7 @@ s32 ov44_0222FBC8(UnkStruct_ov44_022319EC *arg0, s32 arg1);
 u8 ov44_0222FC00(UnkStruct_ov44_022319EC *arg0);
 void ov44_0222FC0C(UnkStruct_ov44_022319EC *arg0);
 void ov44_0222FC3C(UnkStruct_ov44_022319EC *arg0, s32 arg1);
-void ov44_0222FC84(s32 arg0, enum HeapID arg1, UnkStruct_ov44_022319EC *arg2);
+void ov44_0222FC84(u32 index, u32 event, void *arg);
 void ov44_0222FCBC(UnkStruct_ov44_022319EC *arg0, NARC *arg1, enum HeapID arg2);
 void ov44_0222FF30(UnkStruct_ov44_022319EC *arg0);
 void ov44_0222FFB4(NNSG2dScreenData *arg0, s32 arg1);
@@ -426,7 +426,7 @@ void ov44_022316B0(UnkStruct_ov44_022319EC *arg0);
 void ov44_02231720(UnkStruct_ov44_022319EC *arg0);
 void ov44_02231754(UnkStruct_ov44_022319EC *arg0);
 s32 ov44_02231788(UnkStruct_ov44_022319EC *arg0);
-void ov44_022317F0(u32 arg0, u32 arg1, UnkStruct_ov44_022319EC *arg2);
+void ov44_022317F0(u32 index, u32 event, void *arg);
 void ov44_02231800(UnkStruct_ov44_02231800 *arg0, s32 arg1);
 s32 ov44_0223183C(UnkStruct_ov44_02231800 *arg0, s32 arg1, s32 arg2, s32 arg3);
 

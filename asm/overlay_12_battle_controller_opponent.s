@@ -4,8 +4,8 @@
 	.include "overlay_12_battle_controller_opponent.inc"
 	.include "global.inc"
 
-    .rodata
-
+    .rodata 
+	
 .public sBallThrowTypes
 sBallThrowTypes: ; 0x0226D120
 	.byte 0x06, 0x01, 0x08, 0x03, 0x07, 0x05, 0x00, 0x00

@@ -2,13 +2,14 @@
 
 #include "global.h"
 
+#include "application/capsule_menu/capsule_menu.h"
+
 #include "assert.h"
 #include "bag.h"
 #include "heap.h"
 #include "launch_application.h"
 #include "mail.h"
 #include "map_header.h"
-#include "overlay_57.h"
 #include "party.h"
 #include "party_menu.h"
 #include "player_avatar.h"
@@ -24,25 +25,12 @@
 #include "unk_020379A0.h"
 #include "unk_02055244.h"
 #include "unk_020552A4.h"
-#include "unk_02091054.h"
 
-FS_EXTERN_OVERLAY(OVY_57);
-
-typedef struct UnkStruct_0206B984 {
-    u32 partyCount;
-    Pokemon *mons[PARTY_SIZE];
-    Party *party;
-    SealCase *sealCase;
-    Options *options;
-    SaveData *saveData;
-    void *menuInputStatePtr;
-    u8 unk30;
-    u8 unk31;
-} UnkStruct_0206B984;
+FS_EXTERN_OVERLAY(capsule_menu);
 
 typedef struct UnkStruct_0206B910 {
     u8 filler00[4];
-    UnkStruct_0206B984 *unk04;
+    CapsuleAppData *capsuleAppData;
     PartyMenuArgs *partyMenu;
     SaveData *saveData;
     u32 state;
@@ -63,10 +51,10 @@ typedef struct UnkStruct_0206BCD4 {
 } UnkStruct_0206BCD4;
 
 static const OverlayManagerTemplate _020FF480 = {
-    .init = ov57_022378DC,
-    .exec = ov57_02237AF8,
-    .exit = ov57_02237B20,
-    .ovy_id = FS_OVERLAY_ID(OVY_57),
+    .init = CapsuleMenu_Init,
+    .exec = CapsuleMenu_Main,
+    .exit = CapsuleMenu_Exit,
+    .ovy_id = FS_OVERLAY_ID(capsule_menu),
 };
 
 static BOOL sub_0206B984(TaskManager *taskManager);
@@ -82,11 +70,11 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
     UnkStruct_0206B910 *r4 = Heap_AllocAtEnd(HEAP_ID_FIELD2, sizeof(UnkStruct_0206B910));
     memset(r4, 0, sizeof(UnkStruct_0206B910));
     r4->saveData = saveData;
-    r4->unk04 = Heap_Alloc(HEAP_ID_FIELD2, sizeof(UnkStruct_0206B984));
-    memset(r4->unk04, 0, sizeof(UnkStruct_0206B984));
-    r4->unk04->options = Save_PlayerData_GetOptionsAddr(saveData);
-    r4->unk04->saveData = saveData;
-    r4->unk04->menuInputStatePtr = &fieldSystem->menuInputState;
+    r4->capsuleAppData = Heap_Alloc(HEAP_ID_FIELD2, sizeof(CapsuleAppData));
+    memset(r4->capsuleAppData, 0, sizeof(CapsuleAppData));
+    r4->capsuleAppData->options = Save_PlayerData_GetOptionsAddr(saveData);
+    r4->capsuleAppData->saveData = saveData;
+    r4->capsuleAppData->menuInputStatePtr = &fieldSystem->menuInputState;
     r4->partyMenu = Heap_Alloc(HEAP_ID_FIELD2, sizeof(PartyMenuArgs));
     memset(r4->partyMenu, 0, sizeof(PartyMenuArgs));
     TaskManager_Call(taskManager, sub_0206B984, r4);
@@ -94,14 +82,14 @@ void sub_0206B910(TaskManager *taskManager, SaveData *saveData) {
 
 static BOOL sub_0206B984(TaskManager *taskManager) {
     UnkStruct_0206B910 *r7 = TaskManager_GetEnvironment(taskManager);
-    UnkStruct_0206B984 *r6 = r7->unk04;
+    CapsuleAppData *r6 = r7->capsuleAppData;
     FieldSystem *fieldSystem = TaskManager_GetFieldSystem(taskManager);
     switch (r7->state) {
     case 0:
         CallTask_LeaveOverworld(taskManager);
         SealCase *sealCase = Save_SealCase_Get(r7->saveData);
         r6->sealCase = sealCase;
-        r6->unk31 = 0;
+        r6->action = 0;
         r6->menuInputStatePtr = &fieldSystem->menuInputState;
         Party *party = SaveArray_Party_Get(r7->saveData);
         r6->party = party;
@@ -121,7 +109,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         r7->state = 2;
         break;
     case 2:
-        switch (r7->unk04->unk31) {
+        switch (r7->capsuleAppData->action) {
         default:
             GF_ASSERT(FALSE);
         case 0:
@@ -148,9 +136,9 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         break;
     case 4: {
         PartyMenuArgs *partyMenu = r7->partyMenu;
-        u32 index = r7->unk04->unk30 + 1;
+        u32 index = r7->capsuleAppData->capsuleIndex + 1;
         if (partyMenu->partySlot != 7) {
-            Pokemon *mon = r7->unk04->mons[partyMenu->partySlot];
+            Pokemon *mon = r7->capsuleAppData->mons[partyMenu->partySlot];
             SetMonData(mon, MON_DATA_BALL_CAPSULE_ID, &index);
             SetMonData(mon, MON_DATA_BALL_CAPSULE, SealCase_GetCapsuleI(r6->sealCase, index - 1));
             CapsuleMenu_GetSealNameIndex(SealOnCapsuleGetID(CapsuleGetSealI(SealCase_GetCapsuleI(r6->sealCase, index - 1), 0)));
@@ -165,7 +153,7 @@ static BOOL sub_0206B984(TaskManager *taskManager) {
         break;
     case 6:
         Heap_Free(r7->partyMenu);
-        Heap_Free(r7->unk04);
+        Heap_Free(r7->capsuleAppData);
         Heap_Free(r7);
         return TRUE;
     }

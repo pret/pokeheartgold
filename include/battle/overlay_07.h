@@ -2,6 +2,15 @@
 #define POKEHEARTGOLD_BATTLE_OVERLAY_07_H
 
 #include "battle/battle.h"
+#include "battle/battle_message_structs.h"
+
+typedef struct {
+    int battlerType;
+    int ballTypeOverride;
+    Pokemon *mon;
+} BallCapsuleConfig;
+
+typedef struct BallCapsuleSealEffect BallCapsuleSealEffect;
 
 void ov07_022344A8(UnkBallData *, s16, s16);
 void UnkBallData_SetBallAnimation(UnkBallData *data, s32 ballAnim);
@@ -43,5 +52,6 @@ void *ov07_0221FB90(BattleSystem *battleSystem, enum HeapID, int battler);
 int ov07_0221FE70(void *a0);
 void ov07_0221FE3C(void *a0, int battler);
 void ov07_0221C01C(BattleAnimSystem *battleAnimSystem, MoveAnimation *moveAnimation, u16 move, BattleAnimBattlerContext *battlerContext);
+int ov07_022344E4(s16 x1, s16 y1, s16 x2, s16 y2);
 
 #endif

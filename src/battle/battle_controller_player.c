@@ -3224,7 +3224,7 @@ static void BattleControllerPlayer_LoopSpreadMoves(BattleSystem *battleSystem, B
             battlerId = ctx->turnOrder[ctx->unk_217E++];
             if (!(ctx->switchInFlag & MaskOfFlagNo(battlerId)) && ctx->battleMons[battlerId].hp != 0) {
                 opponent = BattleSystem_GetOpponentData(battleSystem, battlerId);
-                if (((flag & 1) && !(OpponentData_GetBattlerType(opponent) & 1)) || (!(flag & 1) && OpponentData_GetBattlerType(opponent) & 1)) {
+                if (((flag & BATTLER_TYPE_SOLO_ENEMY) && !(OpponentData_GetBattlerType(opponent) & BATTLER_TYPE_SOLO_ENEMY)) || (!(flag & BATTLER_TYPE_SOLO_ENEMY) && OpponentData_GetBattlerType(opponent) & BATTLER_TYPE_SOLO_ENEMY)) {
                     ov12_02252D14(battleSystem, ctx);
                     ctx->battlerIdTarget = battlerId;
                     ctx->command = CONTROLLER_COMMAND_BEFORE_MOVE;
@@ -3539,7 +3539,7 @@ static BOOL BattleControllerPlayer_CheckBattleOver(BattleSystem *battleSystem, B
                 }
 
                 if (hp == 0) {
-                    if (OpponentData_GetBattlerType(opponent) & 1) {
+                    if (OpponentData_GetBattlerType(opponent) & BATTLER_TYPE_SOLO_ENEMY) {
                         battleOutcome |= BATTLE_RESULT_WIN;
                     } else {
                         battleOutcome |= BATTLE_RESULT_LOSE;
@@ -3560,7 +3560,7 @@ static BOOL BattleControllerPlayer_CheckBattleOver(BattleSystem *battleSystem, B
                 }
 
                 if (hp == 0) {
-                    if (OpponentData_GetBattlerType(opponent) & 1) {
+                    if (OpponentData_GetBattlerType(opponent) & BATTLER_TYPE_SOLO_ENEMY) {
                         battleOutcome |= BATTLE_RESULT_WIN;
                     } else {
                         battleOutcome |= BATTLE_RESULT_LOSE;

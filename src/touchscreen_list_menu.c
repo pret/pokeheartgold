@@ -76,7 +76,7 @@ static TouchscreenListMenu *TouchscreenListMenu_CreateInternal(TouchscreenListMe
         ret->x = x;
         break;
     case TSMENU_ALIGN_CENTER:
-        ret->width = (ret->width + 1) & ~1;
+        ret->width = MATH_ROUNDUP(ret->width, 2);
         if (x - (ret->width + 2) / 2 < 0) {
             ret->x = 0;
         } else {

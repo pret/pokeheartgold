@@ -13,10 +13,6 @@
 #define PGMAP_NUM_FLYPOINTS 27
 #define PGMAP_NUM_LOCATIONS 100
 
-#ifndef max
-#define max(a, b) ((a) < (b) ? (b) : (a))
-#endif
-
 typedef enum PokegearMapMainState {
     PGMAP_MAIN_STATE_LOAD,
     PGMAP_MAIN_STATE_HANDLE_INPUT,
@@ -84,7 +80,7 @@ typedef enum PokegearMapSpriteID {
     PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN,
     PGMAP_SPRITE_FLY_MENU_WARPS_END = PGMAP_SPRITE_FLY_MENU_WARPS_BEGIN + PGMAP_NUM_FLYPOINTS,
 
-    PGMAP_SPRITE_MAX = max(PGMAP_SPRITE_FLY_MENU_WARPS_END, PGMAP_SPRITE_HAS_MARKINGS_END),
+    PGMAP_SPRITE_MAX = MATH_MAX(PGMAP_SPRITE_FLY_MENU_WARPS_END, PGMAP_SPRITE_HAS_MARKINGS_END),
 } PokegearMapSpriteID;
 
 typedef enum PokegearMapMarkingDragMode {

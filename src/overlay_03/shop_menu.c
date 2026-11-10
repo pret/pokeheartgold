@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "application/capsule_menu/capsule_menu.h"
 #include "data/resdat.naix"
 #include "field/field_sprite_manager.h"
 #include "field/fieldmap.h"
@@ -26,7 +27,6 @@
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02058034.h"
-#include "unk_02091054.h"
 #include "unk_02092B04.h"
 
 static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index);

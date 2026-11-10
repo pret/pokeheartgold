@@ -91,7 +91,7 @@ typedef enum NarcId {
     NARC_application_record_record = 84,
     NARC_a_0_8_5 = 85,
     NARC_a_0_8_6 = 86,
-    NARC_a_0_8_7 = 87,
+    NARC_application_custom_ball_data_cb_data = 87,
     NARC_a_0_8_8 = 88,
     NARC_a_0_8_9 = 89,
     NARC_a_0_9_0 = 90,

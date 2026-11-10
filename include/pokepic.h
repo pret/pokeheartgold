@@ -188,13 +188,13 @@ void PokepicManager_DrawAll(PokepicManager *pokepicManager);
 void PokepicManager_Delete(PokepicManager *pokepicManager);
 
 // Sets Pokepic animation active
-void Pokepic_StartAnim(Pokepic *pokepic, u32 unused);
+void Pokepic_StartAnim(Pokepic *pokepic, int unused);
 
 // Copies the PokepicAnimScript to the Pokepic
 void Pokepic_SetAnimScript(Pokepic *pokepic, PokepicAnimScript *animScript);
 
 // Returns TRUE if the Pokepic animation is finished
-BOOL Pokepic_IsAnimFinished(Pokepic *pokepic);
+BOOL Pokepic_IsAnimActive(Pokepic *pokepic);
 
 // Finds an empty Pokepic slot and creates a Pokepic there
 Pokepic *PokepicManager_CreatePokepic(PokepicManager *pokepicManager, PokepicTemplate *template, s32 x, s32 y, s32 z, int polygonId, PokepicAnimScript *animScript, PokepicCallback callback);
@@ -209,13 +209,13 @@ void Pokepic_Delete(Pokepic *pokepic);
 void PokepicManager_DeleteAllPics(PokepicManager *pokepicManager);
 
 // Sets Pokepic attribute to value by index
-void Pokepic_SetAttr(Pokepic *pokepic, int attr, int value);
+void Pokepic_SetAttr(Pokepic *pokepic, enum PokepicAttr attr, int value);
 
 // Returns the Pokepic attribute by index
-int Pokepic_GetAttr(Pokepic *pokepic, int attr);
+int Pokepic_GetAttr(Pokepic *pokepic, enum PokepicAttr attr);
 
 // Adds addend value to Pokepic attribute by index
-void Pokepic_AddAttr(Pokepic *pokepic, int attr, int addend);
+void Pokepic_AddAttr(Pokepic *pokepic, enum PokepicAttr attr, int addend);
 
 // Updates Pokepic dimensions and sets visible=TRUE
 void Pokepic_SetVisible(Pokepic *pokepic, int x, int y, int width, int height);
