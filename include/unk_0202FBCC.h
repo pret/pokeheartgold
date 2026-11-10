@@ -1,9 +1,10 @@
 #ifndef POKEHEARTGOLD_UNK_0202FBCC_H
 #define POKEHEARTGOLD_UNK_0202FBCC_H
 
+#include "battle/battle_setup.h"
+
 #include "heap.h"
 #include "save.h"
-#include "battle/battle_setup.h"
 
 struct UnkStruct_0202FBCC {
     u8 filler_0000[0x1D50];

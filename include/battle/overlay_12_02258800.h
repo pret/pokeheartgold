@@ -1,7 +1,9 @@
 #ifndef POKEHEARTGOLD_OVERLAY_12_02258800_H
 #define POKEHEARTGOLD_OVERLAY_12_02258800_H
 
-#include "battle/battle.h"typedef struct BattlerInitData {
+#include "battle/battle.h"
+
+typedef struct BattlerInitData {
     u8 battler;
     u8 battlerType;
 } BattlerInitData;

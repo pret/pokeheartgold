@@ -4,11 +4,11 @@
 #include "constants/message_tags.h"
 #include "constants/sndseq.h"
 
-#include "battle/battle_main.h"
 #include "battle/battle_02261FD4.h"
 #include "battle/battle_controller.h"
 #include "battle/battle_hp_bar.h"
 #include "battle/battle_input.h"
+#include "battle/battle_main.h"
 #include "battle/overlay_07.h"
 #include "battle/overlay_08.h"
 #include "battle/overlay_10.h"
