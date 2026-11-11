@@ -559,6 +559,11 @@ Overlay OVY_7
 {
     After OVY_6
     Object asm/overlay_07.s
+    Object src/battle/overlay_07_0223251C.c
+    Object asm/overlay_07_0223251C.s
+    Object asm/overlay_07_022344E4.s
+    Object asm/overlay_07_0223458C.s
+    Object asm/overlay_07_0223474C.s
 }
 
 Overlay OVY_8

@@ -675,7 +675,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         ++appMan->throwStateID;
     } break;
     case THROW_WAIT_FOR_ANIMS_END_STATE_ID:
-        if (ov07_02232A54(appMan->graphicsMan.sealEffect)) {
+        if (BallCapsuleSealEffect_IsActive(appMan->graphicsMan.sealEffect)) {
             break;
         }
         if (sub_02017068(appMan->graphicsMan.pokepicAnimManager, 0) != TRUE) {
@@ -684,7 +684,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         if (Pokepic_IsAnimActive(appMan->graphicsMan.pokepic)) {
             break;
         }
-        ov07_02232AB8(appMan->graphicsMan.sealEffect);
+        BallCapsuleSealEffect_Free(appMan->graphicsMan.sealEffect);
         ++appMan->throwStateID;
         break;
     case THROW_WAIT_AFTER_ANIMS_END_STATE_ID:

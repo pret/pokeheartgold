@@ -551,7 +551,7 @@ typedef struct TrainerThrowBallData {
     int backSpriteIdx;
     int ballTypeIn;
     int delay;
-    enum BallThrowMode ballTargetState;
+    int ballTargetState; // enum BallThrowMode, but won't match using the enum type
 } TrainerThrowBallData;
 
 void BattleDisplay_InitTaskThrowTrainerBall(BattleSystem *battleSystem, OpponentData *opponentData, TrainerThrowBallMessage *message) {
@@ -2973,7 +2973,7 @@ static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data) {
                 ov07_022344A8(trainerThrowBallData->opponentData->ballData, x + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][0], y + ov12_0226D1E8[trainerThrowBallData->backSpriteIdx][animFrame][1]);
 
                 if (animFrame == 3 && ov07_02233F20(trainerThrowBallData->opponentData->ballData) != trainerThrowBallData->ballTargetState) {
-                    ov07_02233EFC(trainerThrowBallData->opponentData->ballData, trainerThrowBallData->ballTargetState);
+                    ov07_02233EFC(trainerThrowBallData->opponentData->ballData, (enum BallThrowMode)trainerThrowBallData->ballTargetState);
                     ov07_022344D0(trainerThrowBallData->opponentData->ballData, 1);
                     ov07_022344C0(trainerThrowBallData->opponentData->ballData, 1);
 

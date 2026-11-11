@@ -23,7 +23,7 @@ int CapsuleMenu_Exit(OverlayManager *manager, int *state);
 
 u8 CapsuleMenu_GetSealMemberIdx(u32 idx);
 u8 CapsuleMenu_GetSealNameIndex(u8 idx);
-u8 CapsuleMenu_GetSealParticleIndex(u32 idx);
+u8 CapsuleMenu_GetSealParticleIndex(u8 idx);
 BOOL CapsuleMenu_IsAlphabetSeal(u32 idx);
 u32 CapsuleMenu_GetSealNonAlphabetIndex(u8 idx);
 

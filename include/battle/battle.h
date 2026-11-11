@@ -6,6 +6,7 @@
 
 #include "battle/battle_setup.h"
 #include "battle/party_gauge.h"
+#include "library/spl_emitter.h"
 
 #include "bag.h"
 #include "bag_cursor.h"
@@ -487,7 +488,7 @@ typedef struct BattleHpBar {
     u16 unk54;
 } BattleHpBar;
 
-typedef struct UnkBallData UnkBallData;
+typedef struct BallRotation BallRotation;
 
 typedef struct BattleCursorPosition {
     s8 commandX;
@@ -508,7 +509,7 @@ typedef struct OpponentData {
     u32 *unk24;
     BattleHpBar hpBar;
     BattleCursorPosition battleCursorPosition;
-    UnkBallData *ballData;
+    BallRotation *ballData;
     void *unk8C;
     u8 unk90[0x4];
     u8 unk94[0x100];
@@ -674,7 +675,7 @@ struct BattleSystem {
 struct GetterWork {
     BattleSystem *battleSystem;
     BattleContext *ctx;
-    UnkBallData *ballData;
+    BallRotation *ballData;
     ManagedSprite *unkC[2];
     TextOBJ *unk14;
     UnkStruct_02021AC8 unk18;
@@ -747,34 +748,86 @@ typedef struct UnkStruct_50C {
     enum HeapID heapID;
 } UnkStruct_50C;
 
-struct UnkBallData { // TODO: Give a better name.
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
-    int unk14;
-    int unk18;
-    int unk1C;
-    u8 unk20;
-    u8 unk21;
-    s8 unk22;
-    u8 unk23;
-    BOOL unk24;
-    int unk28;
+typedef struct ValueLerpContext {
+    s32 value;
+    s32 data[4];
+} ValueLerpContext;
+
+typedef struct XYTransformContext {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} XYTransformContext;
+
+typedef struct {
+    s16 unk_00;
+    s16 unk_02;
+    s16 unk_04;
+    s16 unk_06;
+    int unk_08;
+    int unk_0C;
+    int unk_10;
+} UnkStruct_ov12_02237C54_sub1;
+
+typedef struct {
+    s16 unk_00;
+    s16 unk_02;
+    int unk_04;
+    enum HeapID heapID;
+    int unk_0C;
+    int unk_10;
+} UnkStruct_ov12_02236690;
+
+typedef struct UnkStruct_ov12_02236648 {
+    UnkStruct_ov12_02236690 unk_00;
+    SPLEmitter *unk_14;
+    void *unk_18;
+    int unk_1C;
+    int unk_20;
+} UnkStruct_ov12_02236648;
+
+typedef struct PaletteFadeContext {
+    BOOL active;
+    SysTask *task;
+    u32 bufferID;
+    u16 index;
+    u16 count;
+    u16 color;
+    u8 startFrac;
+    u8 endFrac;
+    u8 fraction;
+    s8 step;
+    s8 stepFrames;
+    s8 timer;
+    PaletteData *paletteData;
+} PaletteFadeContext;
+
+struct BallRotation {
+    int unk_00;
+    int unk_04;
+    int unk_08;
+    int unk_0C;
+    int unk_10;
+    int unk_14;
+    int unk_18;
+    BOOL unk_1C;
+    u8 unk_20;
+    u8 unk_21;
+    s8 unk_22;
+    BOOL unk_24;
+    BOOL unk_28;
     SpriteManager *spriteManager;
     ManagedSprite *managedSprite;
-    u8 unk34[0x5C];
-    BallThrow unk90;
-    u8 unkB8[0xC];
-    int unkC4;
-    int unkC8;
-    SysTask *unkCC;
-    int unkD0;
-    int unkD4;
-    int unkD8;
-    int unkDC;
-}; // Size: 0xe0
+    ValueLerpContext unk_34;
+    XYTransformContext unk_48[2];
+    BallThrow unk_90;
+    UnkStruct_ov12_02237C54_sub1 unk_B8;
+    SysTask *unk_CC;
+    UnkStruct_ov12_02236648 *unk_D0;
+    PaletteFadeContext *unk_D4;
+    void *unk_D8;
+    int unk_DC;
+};
 
 typedef struct BattlePartyContext {
     Party *party;

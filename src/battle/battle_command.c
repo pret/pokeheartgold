@@ -21,6 +21,7 @@
 #include "battle/battle_main.h"
 #include "battle/battle_system.h"
 #include "battle/overlay_07.h"
+#include "battle/overlay_07_0223251C.h"
 #include "battle/overlay_12_0224E4FC.h"
 #include "msgdata/msg/msg_0197.h"
 

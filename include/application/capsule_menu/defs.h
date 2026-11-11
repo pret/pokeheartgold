@@ -4,6 +4,7 @@
 #include "application/capsule_menu/capsule_menu.h"
 #include "battle/battle.h"
 #include "battle/overlay_07.h"
+#include "battle/overlay_07_0223251C.h"
 
 #include "bg_window.h"
 #include "gf_3d_vramman.h"
@@ -64,7 +65,7 @@ typedef struct CapsuleGraphicsManager {
     TouchscreenListMenuSpawner *touchscreenListMenuSpawner;
     TouchscreenListMenu *touchScreenListMenu;
     BallCapsuleSealEffect *sealEffect;
-    UnkBallData *ballRotation;
+    BallRotation *ballRotation;
     GF3DVramMan *gf3dVramMan;
     UnkStruct_02013534 *textOBJtemplate;
     TextOBJ *textOBJ[2];
@@ -114,7 +115,8 @@ typedef struct CapsuleAppManager {
 
 typedef struct SealListMenuEntry {
     s32 index;
-    BOOL (*func)(CapsuleAppManager *appMan);
+    BOOL(*func)
+    (CapsuleAppManager *appMan);
 } SealListMenuEntry;
 
 extern const SealListMenuEntry gSealListMenuEntries[];

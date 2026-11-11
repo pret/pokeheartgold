@@ -1,14 +1,20 @@
 #include "battle/overlay_07_0223251C.h"
 
+#include "application/capsule_menu/capsule_menu.h"
+
+#include "math_util.h"
+#include "unk_02005D10.h"
+#include "unk_02014DA0.h"
+
 void ov07_02232AFC(BallCapsuleSealEffect *ballCapSealEff, void *param1);
 void ov07_02233F30(BallRotation *param0);
 void ov07_022341A4(BallRotation *param0, s16 *param1, s16 *param2);
 void ov07_022342E4(BallRotation *param0);
 void ov07_0223441C(BallRotation *param0);
 void ov07_0223441C(BallRotation *param0);
+static BOOL ov07_02233EBC(BallRotation *param0, int param1);
 
-// static
-int ov07_0223251C(int a0) {
+static int ov07_0223251C(int a0) {
     if ((a0 >= 1) && (a0 <= 0x18)) {
         return a0 - 1;
     }
@@ -20,8 +26,7 @@ int ov07_0223251C(int a0) {
 
 extern int ov07_02237228[11];
 
-// static
-BOOL ov07_02232540(int param0) {
+static BOOL ov07_02232540(int param0) {
     int v2[11];
     v2 = ov07_02237228;
     BOOL v1 = FALSE;
@@ -40,8 +45,7 @@ BOOL ov07_02232540(int param0) {
 
 extern int ov07_02237188[6];
 
-// static
-BOOL ov07_02232580(int param0) {
+static BOOL ov07_02232580(int param0) {
     int v2[6];
     v2 = ov07_02237188;
 
@@ -82,48 +86,41 @@ BOOL ov07_022325BC(int param0) {
 
 extern int ov07_0223738C[][2];
 
-// static
-int ov07_022325F4(int param0) {
+static int ov07_022325F4(int param0) {
     int v0 = ov07_0223251C(param0);
     return ov07_0223738C[v0][0];
 }
 
-// static
-int ov07_02232608(int param0) {
+static int ov07_02232608(int param0) {
     int v0 = ov07_0223251C(param0);
     return ov07_0223738C[v0][1];
 }
 
 extern int ov07_0223746C[][3];
 
-// static
-int ov07_0223261C(int param0) {
+static int ov07_0223261C(int param0) {
     int v0 = ov07_0223251C(param0);
     return ov07_0223746C[v0][0];
 }
 
-// static
-int ov07_02232630(int param0) {
+static int ov07_02232630(int param0) {
     int v0 = ov07_0223251C(param0);
     return ov07_0223746C[v0][2];
 }
 
-// static
-int ov07_02232644(int param0) {
+static int ov07_02232644(int param0) {
     int v0 = ov07_0223251C(param0);
     return ov07_0223746C[v0][1];
 }
 
 extern int ov07_022375BC[][4];
 
-// static
-int ov07_02232658(int param0, int param1) {
+static int ov07_02232658(int param0, int param1) {
     int v0 = ov07_0223251C(param0);
     return ov07_022375BC[v0][param1];
 }
 
-// static
-BallCapsuleSealEffect *ov07_02232670(enum HeapID heapID) {
+static BallCapsuleSealEffect *ov07_02232670(enum HeapID heapID) {
     BallCapsuleSealEffect *ballCapSealEff = NULL;
 
     ballCapSealEff = Heap_Alloc(heapID, sizeof(BallCapsuleSealEffect));
@@ -176,20 +173,16 @@ void ov07_022326C0(BallCapsuleSealEffect *ballCapSealEff, const BallCapsuleConfi
     }
 }
 
-// Pikalax is currently decompiling this function
-extern int CapsuleMenu_GetSealParticleIndex(u8);
-
 void ov07_02232730(SysTask *param0, void *ballCapSealEffPtr) {
     BallCapsuleSealEffect *ballCapSealEff = ballCapSealEffPtr;
     int i;
     int v2;
     int v3;
-    int v4;
     SEAL *seal;
 
     switch (ballCapSealEff->state) {
     case 0:
-        ballCapSealEff->particleNarc = NARC_New(0x5f, ballCapSealEff->heapID);
+        ballCapSealEff->particleNarc = NARC_New(NARC_a_0_9_5, ballCapSealEff->heapID);
 
         for (i = 0; i < 2; i++) {
             seal = CapsuleGetSealI(&ballCapSealEff->capsule, i);
@@ -381,8 +374,7 @@ BOOL BallCapsuleSealEffect_IsActive(BallCapsuleSealEffect *ballCapSealEff) {
     return ballCapSealEff->isActive;
 }
 
-// static
-void ov07_02232A5C(SysTask *param0, void *ballCapSealEffPtr) {
+static void ov07_02232A5C(SysTask *param0, void *ballCapSealEffPtr) {
     int v0;
     BOOL v1;
     BallCapsuleSealEffect *ballCapSealEff = (BallCapsuleSealEffect *)ballCapSealEffPtr;
@@ -416,8 +408,7 @@ void BallCapsuleSealEffect_Free(BallCapsuleSealEffect *ballCapSealEff) {
     Heap_Free(ballCapSealEff);
 }
 
-// static
-void ov07_02232AC0(SysTask *param0, void *param1) {
+static void ov07_02232AC0(SysTask *param0, void *param1) {
     UnkStruct_02236430 *v0 = (UnkStruct_02236430 *)param1;
 
     if (v0->unk_04 == 0) {
@@ -433,10 +424,8 @@ void ov07_02232AC0(SysTask *param0, void *param1) {
 
 extern void ov07_02232C64(SPLEmitter *);
 
-// static
-void ov07_02232AFC(BallCapsuleSealEffect *ballCapSealEff, void *param1) {
-    int v0, v1;
-    int v2;
+static void ov07_02232AFC(BallCapsuleSealEffect *ballCapSealEff, void *param1) {
+    int v0;
     int v3;
 
     if (ballCapSealEff->hasCapsule == 0) {
@@ -472,8 +461,7 @@ void ov07_02232AFC(BallCapsuleSealEffect *ballCapSealEff, void *param1) {
     }
 }
 
-// static
-void ov07_02232BB0(int param0, VecFx32 *param1) {
+static void ov07_02232BB0(int param0, VecFx32 *param1) {
     ov07_02231DE0(param0, param1, 0, 1);
 
     s16 v2;
@@ -517,8 +505,7 @@ void ov07_02232BB0(int param0, VecFx32 *param1) {
     param1->y -= v4.y;
 }
 
-// static
-void ov07_02232C28(SPLEmitter *param0) {
+static void ov07_02232C28(SPLEmitter *param0) {
     int v0;
     BallCapsuleSealEffect *ballCapSealEff = sub_02015504();
     v0 = ballCapSealEff->ballCapCfg.battlerType;
@@ -529,11 +516,9 @@ void ov07_02232C28(SPLEmitter *param0) {
     SPL_SetEmitterPosition(param0, &v2);
 }
 
-// static
-void ov07_02232C64(SPLEmitter *param0) {
+static void ov07_02232C64(SPLEmitter *param0) {
     VecFx32 v0;
     int v1;
-    BallCapsuleSealEffect *unused;
     UnkStruct_02236430 *v3 = sub_02015504();
     v1 = v3->unk_08;
 
@@ -578,8 +563,7 @@ void ov07_02232C64(SPLEmitter *param0) {
     SPL_SetEmitterPosition(param0, &v0);
 }
 
-// static
-void ov07_02232CD8(SPLEmitter *param0) {
+static void ov07_02232CD8(SPLEmitter *param0) {
     UnkStruct_ov12_02236648 *v0 = sub_02015504();
 
     VecFx32 v1;
@@ -812,8 +796,7 @@ BOOL ov07_02232F60(BallRotation *param0, int param1) {
     return v0;
 }
 
-// static
-void ov07_02232F74(BallRotation *param0, int param1) {
+static void ov07_02232F74(BallRotation *param0, int param1) {
     param0->unk_14 = param1;
     param0->unk_08 = 0;
     param0->unk_0C = 0;
@@ -822,7 +805,7 @@ void ov07_02232F74(BallRotation *param0, int param1) {
 
 // static
 BOOL ov07_02232F80(BallRotation *param0) {
-    return 1;
+    return TRUE;
 }
 
 // static
@@ -833,29 +816,29 @@ BOOL ov07_02232F84(BallRotation *param0) {
         ov07_02232F74(param0, 2);
     }
 
-    return 1;
+    return TRUE;
 }
 
 // static
 BOOL ov07_02232F9C(BallRotation *param0) {
     ov07_02232F74(param0, 3);
-    return 1;
+    return TRUE;
 }
 
 // static
 BOOL ov07_02232FA8(BallRotation *param0) {
     switch (param0->unk_08) {
     case 0:
-        ManagedSprite_SetAnim(param0->unk_30, 1);
+        ManagedSprite_SetAnim(param0->managedSprite, 1);
         {
             UnkStruct_ov12_02236690 v0;
 
-            v0.unk_04 = param0->unk_90.ballID;
+            v0.unk_04 = param0->unk_90.ball;
             v0.heapID = param0->unk_90.heapID;
             v0.unk_0C = 0xFF;
             v0.unk_10 = 0;
 
-            ManagedSprite_GetPositionXY(param0->unk_30, &v0.unk_00, &v0.unk_02);
+            ManagedSprite_GetPositionXY(param0->managedSprite, &v0.unk_00, &v0.unk_02);
 
             param0->unk_D8 = ov07_0221FDFC(param0->unk_90.battleSystem, param0->unk_90.heapID);
             param0->unk_D0 = ov07_02232D20(&v0);
@@ -863,7 +846,7 @@ BOOL ov07_02232FA8(BallRotation *param0) {
         param0->unk_08++;
         break;
     case 1: {
-        int v1 = ManagedSprite_GetAnimationFrame(param0->unk_30);
+        int v1 = ManagedSprite_GetAnimationFrame(param0->managedSprite);
 
         if (v1 >= 2) {
             param0->unk_24 = 0;
@@ -877,7 +860,7 @@ BOOL ov07_02232FA8(BallRotation *param0) {
         break;
     case 3: {
         if (ov07_02232DF4(param0->unk_D0) == 0) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 0);
             ov07_02232E10(param0->unk_D0);
             param0->unk_08++;
         }
@@ -887,12 +870,12 @@ BOOL ov07_02232FA8(BallRotation *param0) {
         break;
     }
 
-    return 1;
+    return TRUE;
 }
 
 // static
 BOOL ov07_02233088(BallRotation *param0) {
-    return 1;
+    return TRUE;
 }
 
 // static
@@ -901,7 +884,7 @@ BOOL ov07_0223308C(BallRotation *param0) {
 
     switch (param0->unk_0C) {
     case 0:
-        ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+        ManagedSprite_GetPositionXY(param0->managedSprite, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
         param0->unk_B8.unk_04 = 60;
         param0->unk_B8.unk_06 = 180;
         param0->unk_B8.unk_08 = 10;
@@ -945,7 +928,7 @@ BOOL ov07_022330FC(BallRotation *param0) {
     {
         int v0;
 
-        v0 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+        v0 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
         PaletteData_BeginPaletteFade(param0->unk_90.paletteData, 0x4, 1 << v0, -1, 0, 12, 0x37F);
 
         param0->unk_08++;
@@ -958,7 +941,7 @@ BOOL ov07_022330FC(BallRotation *param0) {
         {
             int v1;
 
-            v1 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+            v1 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
             PaletteData_BeginPaletteFade(param0->unk_90.paletteData, 0x4, 1 << v1, -1, 12, 0, 0x37F);
         }
 
@@ -993,14 +976,14 @@ BOOL ov07_022331B0(BallRotation *param0) {
         {
             s16 v0, v1;
 
-            ManagedSprite_GetPositionXY(param0->unk_30, &v0, &v1);
+            ManagedSprite_GetPositionXY(param0->managedSprite, &v0, &v1);
             ov07_02222268(&param0->unk_48[0], v0, v0, v1, (s16)(v1 + 32), 32 / 3);
 
             param0->unk_08++;
         }
         break;
     case 1:
-        if (ov07_022222F0(&param0->unk_48[0], param0->unk_30) == 0) {
+        if (ov07_022222F0(&param0->unk_48[0], param0->managedSprite) == 0) {
             param0->unk_08++;
 
             ov07_02232F74(param0, 13);
@@ -1015,7 +998,7 @@ BOOL ov07_022331B0(BallRotation *param0) {
 
 // static
 BOOL ov07_02233224(BallRotation *param0) {
-    return 1;
+    return TRUE;
 }
 
 extern const s16 ov07_0223730E[][3];
@@ -1025,8 +1008,8 @@ extern int ov07_02237200[][2];
 BOOL ov07_02233228(BallRotation *param0) {
     switch (param0->unk_08) {
     case 0:
-        ManagedSprite_SetAnim(param0->unk_30, 1);
-        ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
+        ManagedSprite_SetAnim(param0->managedSprite, 1);
+        ManagedSprite_SetAnimationFrame(param0->managedSprite, 0);
         param0->unk_08++;
     case 1: {
         s16 v0, v1;
@@ -1036,7 +1019,7 @@ BOOL ov07_02233228(BallRotation *param0) {
         v1 = ov07_0223730E[param0->unk_0C][0];
         v2 = ov07_0223730E[param0->unk_0C][1];
 
-        ManagedSprite_SetAnimationFrame(param0->unk_30, v2);
+        ManagedSprite_SetAnimationFrame(param0->managedSprite, v2);
 
         param0->unk_0C++;
 
@@ -1053,7 +1036,7 @@ BOOL ov07_02233228(BallRotation *param0) {
         if ((param0->unk_0C > 20) || (v0 == 0xFF) || (v1 == 0xFF)) {
             param0->unk_08++;
         } else {
-            ManagedSprite_OffsetPositionXY(param0->unk_30, v0, v1);
+            ManagedSprite_OffsetPositionXY(param0->managedSprite, v0, v1);
         }
     } break;
     default:
@@ -1105,7 +1088,7 @@ BOOL ov07_022332F4(BallRotation *param0) {
         if ((param0->unk_0C > 11) || (v0 == 0xFF)) {
             param0->unk_08++;
             param0->unk_18++;
-            ManagedSprite_SetAffineZRotation(param0->unk_30, 0);
+            ManagedSprite_SetAffineZRotation(param0->managedSprite, 0);
             ov07_02232F74(param0, 18);
             return 1;
         } else {
@@ -1113,8 +1096,8 @@ BOOL ov07_022332F4(BallRotation *param0) {
                 Sound_PlayPannedEffect(0x5FD, 117);
             }
 
-            ManagedSprite_OffsetPositionXY(param0->unk_30, v0, 0);
-            ManagedSprite_OffsetAffineZRotation(param0->unk_30, (((v0) * 2) * 0xffff) / 360);
+            ManagedSprite_OffsetPositionXY(param0->managedSprite, v0, 0);
+            ManagedSprite_OffsetAffineZRotation(param0->managedSprite, (((v0) * 2) * 0xffff) / 360);
         }
     } break;
     default:
@@ -1149,7 +1132,7 @@ BOOL ov07_022333A8(BallRotation *param0) {
     {
         int v0;
 
-        v0 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+        v0 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
         PaletteData_BeginPaletteFade(param0->unk_90.paletteData, 0x4, 1 << v0, -5, 0, 10, 0x0);
 
         param0->unk_08++;
@@ -1162,12 +1145,12 @@ BOOL ov07_022333A8(BallRotation *param0) {
         {
             UnkStruct_ov12_02236690 v1;
 
-            v1.unk_04 = param0->unk_90.ballID;
+            v1.unk_04 = param0->unk_90.ball;
             v1.heapID = param0->unk_90.heapID;
             v1.unk_0C = ov07_02232644(v1.unk_04);
             v1.unk_10 = 0;
 
-            ManagedSprite_GetPositionXY(param0->unk_30, &v1.unk_00, &v1.unk_02);
+            ManagedSprite_GetPositionXY(param0->managedSprite, &v1.unk_00, &v1.unk_02);
             param0->unk_D0 = ov07_02232D20(&v1);
         }
         param0->unk_08++;
@@ -1178,7 +1161,7 @@ BOOL ov07_022333A8(BallRotation *param0) {
         break;
     case 3: {
         if (ov07_02232DF4(param0->unk_D0) == 0) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 0);
             ov07_02232E10(param0->unk_D0);
             param0->unk_08++;
         }
@@ -1206,7 +1189,7 @@ BOOL ov07_0223349C(BallRotation *param0) {
     case 0: {
         int v0;
 
-        v0 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+        v0 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
         PaletteData_BeginPaletteFade(param0->unk_90.paletteData, 0x4, 1 << v0, -5, 10, 0, 0x0);
     }
         param0->unk_08++;
@@ -1236,7 +1219,7 @@ BOOL ov07_02233500(BallRotation *param0) {
 BOOL ov07_0223350C(BallRotation *param0) {
     switch (param0->unk_08) {
     case 0:
-        ManagedSprite_SetOamMode(param0->unk_30, GX_OAM_MODE_XLU);
+        ManagedSprite_SetOamMode(param0->managedSprite, GX_OAM_MODE_XLU);
         param0->unk_08++;
     case 1:
         if (param0->unk_20 > 0) {
@@ -1245,7 +1228,7 @@ BOOL ov07_0223350C(BallRotation *param0) {
         } else {
             param0->unk_20 = 0;
             param0->unk_21 = 15;
-            ManagedSprite_SetDrawFlag(param0->unk_30, 0);
+            ManagedSprite_SetDrawFlag(param0->managedSprite, 0);
             param0->unk_08++;
         }
 
@@ -1294,21 +1277,21 @@ BOOL ov07_022335B4(BallRotation *param0) {
             if (ov07_02232540(param0->unk_90.type) == 1) {
                 v0 = (LCRandom() % 20) + 10;
 
-                ManagedSprite_OffsetAffineZRotation(param0->unk_30, 0x2000 * v0);
+                ManagedSprite_OffsetAffineZRotation(param0->managedSprite, 0x2000 * v0);
             }
         }
         break;
     case 1:
         if (ov07_02232540(param0->unk_90.type) == 1) {
-            ManagedSprite_OffsetAffineZRotation(param0->unk_30, 0x2000);
+            ManagedSprite_OffsetAffineZRotation(param0->managedSprite, 0x2000);
 
             if (param0->unk_B8.unk_0C > ((param0->unk_B8.unk_08 / 2) + 10)) {
-                ManagedSprite_OffsetAffineZRotation(param0->unk_30, 0x2000);
+                ManagedSprite_OffsetAffineZRotation(param0->managedSprite, 0x2000);
             }
 
             if (ov07_02232580(param0->unk_90.type) == 1) {
                 if (param0->unk_B8.unk_0C == ((param0->unk_B8.unk_08 / 2) + 10)) {
-                    u32 v1 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+                    u32 v1 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
                     param0->unk_D4 = ov07_02222F10(param0->unk_90.paletteData, param0->unk_90.heapID, 2, (u16)(v1 * 16), 16, -2, 2, 0, 14, 0xFFFF, 1002);
                 }
             }
@@ -1322,7 +1305,7 @@ BOOL ov07_022335B4(BallRotation *param0) {
             }
         }
 
-        if (ov07_022223CC(&param0->unk_48[0], &param0->unk_48[1], param0->unk_30) == 0) {
+        if (ov07_022223CC(&param0->unk_48[0], &param0->unk_48[1], param0->managedSprite) == 0) {
             ov07_022344B4(param0, 0);
             param0->unk_08++;
         }
@@ -1343,7 +1326,7 @@ BOOL ov07_022335B4(BallRotation *param0) {
                 return 0;
             }
 
-            if (param0->unk_90.ballID == 0x401) {
+            if (param0->unk_90.ball == 0x401) {
                 Sound_PlayPannedEffect(0x7E8, 117);
             }
 
@@ -1351,7 +1334,7 @@ BOOL ov07_022335B4(BallRotation *param0) {
         }
         break;
     case 3:
-        ManagedSprite_SetAnim(param0->unk_30, 1);
+        ManagedSprite_SetAnim(param0->managedSprite, 1);
         ov07_022344C0(param0, 1);
         param0->unk_B8.unk_0C = 0;
         param0->unk_08++;
@@ -1362,7 +1345,7 @@ BOOL ov07_022335B4(BallRotation *param0) {
                 u32 v2;
 
                 if ((param0->unk_90.type != 12) && (param0->unk_90.type != 13)) {
-                    v2 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+                    v2 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
                     param0->unk_D4 = ov07_02222F10(param0->unk_90.paletteData, param0->unk_90.heapID, 2, (u16)(v2 * 16), 16, -2, 2, 0, 14, 0xFFFF, 1002);
                 }
             }
@@ -1403,23 +1386,23 @@ BOOL ov07_02233874(BallRotation *param0) {
             if (ov07_02232540(param0->unk_90.type) == 1) {
                 v0 = (LCRandom() % 20) + 10;
 
-                ManagedSprite_OffsetAffineZRotation(param0->unk_30, 0x2000 * v0);
+                ManagedSprite_OffsetAffineZRotation(param0->managedSprite, 0x2000 * v0);
             }
         }
         break;
     case 1:
         if (ov07_02232540(param0->unk_90.type) == 1) {
-            ManagedSprite_OffsetAffineZRotation(param0->unk_30, 0x2000);
+            ManagedSprite_OffsetAffineZRotation(param0->managedSprite, 0x2000);
 
             if (param0->unk_B8.unk_0C > ((param0->unk_B8.unk_08 / 2) + 10)) {
-                ManagedSprite_OffsetAffineZRotation(param0->unk_30, 0x2000);
+                ManagedSprite_OffsetAffineZRotation(param0->managedSprite, 0x2000);
             }
 
             if (ov07_02232580(param0->unk_90.type) == 1) {
                 if (param0->unk_B8.unk_0C == ((param0->unk_B8.unk_08 / 2) + 10)) {
                     int v1;
 
-                    v1 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+                    v1 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
                     param0->unk_D4 = ov07_02222F10(param0->unk_90.paletteData, param0->unk_90.heapID, 2, (u16)(v1 * 16), 16, -2, 2, 0, 14, 0xFFFF, 1002);
                 }
             }
@@ -1433,7 +1416,7 @@ BOOL ov07_02233874(BallRotation *param0) {
             }
         }
 
-        if (ov07_022223CC(&param0->unk_48[0], &param0->unk_48[1], param0->unk_30) == 0) {
+        if (ov07_022223CC(&param0->unk_48[0], &param0->unk_48[1], param0->managedSprite) == 0) {
             ov07_022344B4(param0, 0);
             param0->unk_08++;
         }
@@ -1459,19 +1442,19 @@ BOOL ov07_02233874(BallRotation *param0) {
         }
         break;
     case 3:
-        ManagedSprite_SetAnim(param0->unk_30, 1);
+        ManagedSprite_SetAnim(param0->managedSprite, 1);
         ov07_022344C0(param0, 0);
         param0->unk_B8.unk_0C = 0;
         param0->unk_08++;
         break;
     default:
         if (param0->unk_B8.unk_0C == 5) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 2);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 2);
 
             {
                 int v2;
 
-                v2 = ManagedSprite_GetPaletteOverrideOffset(param0->unk_30);
+                v2 = ManagedSprite_GetPaletteOverrideOffset(param0->managedSprite);
                 param0->unk_D4 = ov07_02222F10(param0->unk_90.paletteData, param0->unk_90.heapID, 2, (u16)(v2 * 16), 16, -2, 2, 0, 14, 0xFFFF, 1002);
             }
 
@@ -1499,11 +1482,11 @@ BOOL ov07_02233B04(BallRotation *param0) {
     switch (param0->unk_08) {
     case 0:
         ov07_022344C0(param0, 0);
-        ManagedSprite_SetAnim(param0->unk_30, 1);
+        ManagedSprite_SetAnim(param0->managedSprite, 1);
         param0->unk_B8.unk_0C++;
 
         if (param0->unk_B8.unk_0C >= 2) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 0);
             param0->unk_B8.unk_0C = 0;
             param0->unk_08++;
         }
@@ -1512,7 +1495,7 @@ BOOL ov07_02233B04(BallRotation *param0) {
         param0->unk_B8.unk_0C++;
 
         if (param0->unk_B8.unk_0C >= 2) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 2);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 2);
             param0->unk_B8.unk_0C = 0;
             param0->unk_08++;
         }
@@ -1520,12 +1503,12 @@ BOOL ov07_02233B04(BallRotation *param0) {
     case 2: {
         UnkStruct_ov12_02236690 v0;
 
-        v0.unk_04 = param0->unk_90.ballID;
+        v0.unk_04 = param0->unk_90.ball;
         v0.heapID = param0->unk_90.heapID;
         v0.unk_0C = 0xFF;
         v0.unk_10 = 1;
 
-        ManagedSprite_GetPositionXY(param0->unk_30, &v0.unk_00, &v0.unk_02);
+        ManagedSprite_GetPositionXY(param0->managedSprite, &v0.unk_00, &v0.unk_02);
         param0->unk_D0 = ov07_02232D20(&v0);
     }
         param0->unk_08++;
@@ -1538,7 +1521,7 @@ BOOL ov07_02233B04(BallRotation *param0) {
         param0->unk_B8.unk_0C++;
 
         if (param0->unk_B8.unk_0C >= 6) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 2);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 2);
             param0->unk_B8.unk_0C = 0;
             param0->unk_08++;
         }
@@ -1547,7 +1530,7 @@ BOOL ov07_02233B04(BallRotation *param0) {
         param0->unk_B8.unk_0C++;
 
         if (param0->unk_B8.unk_0C >= 6) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 1);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 1);
             param0->unk_B8.unk_0C = 0;
             param0->unk_08++;
         }
@@ -1556,7 +1539,7 @@ BOOL ov07_02233B04(BallRotation *param0) {
         param0->unk_B8.unk_0C++;
 
         if (param0->unk_B8.unk_0C >= 6) {
-            ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
+            ManagedSprite_SetAnimationFrame(param0->managedSprite, 0);
             param0->unk_B8.unk_0C = 0;
             param0->unk_08++;
         }
@@ -1590,7 +1573,7 @@ BOOL ov07_02233C98(BallRotation *param0) {
         param0->unk_08++;
         break;
     case 1:
-        ManagedSprite_SetAffineZRotation(param0->unk_30, param0->unk_34.value);
+        ManagedSprite_SetAffineZRotation(param0->managedSprite, param0->unk_34.value);
 
         if (ov07_02222440(&param0->unk_34) == 0) {
             if (param0->unk_0C >= 1) {
@@ -1616,10 +1599,10 @@ BOOL ov07_02233D24(BallRotation *param0) {
         return 0;
     }
 
-    if (param0->unk_30 != NULL) {
+    if (param0->managedSprite != NULL) {
         s16 v0, v1;
 
-        ManagedSprite_GetPositionXY(param0->unk_30, &v0, &v1);
+        ManagedSprite_GetPositionXY(param0->managedSprite, &v0, &v1);
 
         param0->unk_B8.unk_00 = v0;
         param0->unk_B8.unk_02 = v1;
@@ -1630,8 +1613,7 @@ BOOL ov07_02233D24(BallRotation *param0) {
 
 extern BOOL (*const ov07_022371A0[])(BallRotation *);
 
-// static
-void ov07_02233D60(SysTask *param0, void *param1) {
+static void ov07_02233D60(SysTask *param0, void *param1) {
     BOOL v0;
     BallRotation *v1 = (BallRotation *)param1;
 
@@ -1641,7 +1623,7 @@ void ov07_02233D60(SysTask *param0, void *param1) {
 
     if (v1->unk_DC > 0) {
         v1->unk_DC--;
-        SpriteSystem_DrawSprites(v1->unk_2C);
+        SpriteSystem_DrawSprites(v1->spriteManager);
         return;
     }
 
@@ -1652,10 +1634,10 @@ void ov07_02233D60(SysTask *param0, void *param1) {
     }
 
     if (v1->unk_24 == 1) {
-        ManagedSprite_TickFrame(v1->unk_30);
+        ManagedSprite_TickFrame(v1->managedSprite);
     }
 
-    SpriteSystem_DrawSprites(v1->unk_2C);
+    SpriteSystem_DrawSprites(v1->spriteManager);
 }
 
 BallRotation *ov07_02233DB8(BallThrow *param0) {
@@ -1674,7 +1656,7 @@ BallRotation *ov07_02233DB8(BallThrow *param0) {
     v0->unk_18 = 0;
     v0->unk_00 = 0;
     v0->unk_04 = 0;
-    v0->unk_2C = SpriteManager_New(v0->unk_90.spriteSystem);
+    v0->spriteManager = SpriteManager_New(v0->unk_90.spriteSystem);
     v0->unk_DC = 0;
     v0->unk_24 = ov07_022325BC(v0->unk_90.type);
     v0->unk_B8.unk_0C = 0;
@@ -1720,7 +1702,7 @@ void ov07_02233EB8(BallRotation *param0, int param1) {
     param0->unk_14 = param1;
 }
 
-BOOL ov07_02233EBC(BallRotation *param0, int param1) {
+static BOOL ov07_02233EBC(BallRotation *param0, int param1) {
     return (param0->unk_14 == param1) ? 1 : 0;
 }
 
@@ -1729,31 +1711,30 @@ void ov07_02233ECC(BallRotation *param0) {
 
     GF_ASSERT(param0 != NULL);
 
-    SpriteSystem_FreeResourcesAndManager(param0->unk_90.spriteSystem, param0->unk_2C);
-    Sprite_DeleteAndFreeResources(param0->unk_30);
+    SpriteSystem_FreeResourcesAndManager(param0->unk_90.spriteSystem, param0->spriteManager);
+    Sprite_DeleteAndFreeResources(param0->managedSprite);
     SysTask_Destroy(param0->unk_CC);
     Heap_Free(param0);
 }
 
-void ov07_02233EFC(BallRotation *param0, int param1) {
+void ov07_02233EFC(BallRotation *param0, enum BallThrowMode param1) {
     param0->unk_90.mode = param1;
     param0->unk_08 = 0;
     param0->unk_0C = 0;
     param0->unk_10 = 0;
     param0->unk_1C = 1;
 
-    ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+    ManagedSprite_GetPositionXY(param0->managedSprite, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
 }
 
-int ov07_02233F20(BallRotation *param0) {
+enum BallThrowMode ov07_02233F20(BallRotation *param0) {
     GF_ASSERT(param0 != NULL);
 
     return param0->unk_90.mode;
 }
 
-// static
-void ov07_02233F30(BallRotation *param0) {
-    ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+static void ov07_02233F30(BallRotation *param0) {
+    ManagedSprite_GetPositionXY(param0->managedSprite, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
 
     switch (param0->unk_90.type) {
     case 0:
@@ -1762,7 +1743,7 @@ void ov07_02233F30(BallRotation *param0) {
     case 3:
     case 4:
     case 5:
-        ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
+        ManagedSprite_GetPositionXY(param0->managedSprite, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
         param0->unk_B8.unk_10 = 0;
         param0->unk_B8.unk_08 = 12;
         return;
@@ -1772,7 +1753,7 @@ void ov07_02233F30(BallRotation *param0) {
         param0->unk_B8.unk_06 += 32;
         break;
     case 7:
-        ManagedSprite_GetPositionXY(param0->unk_30, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
+        ManagedSprite_GetPositionXY(param0->managedSprite, &param0->unk_B8.unk_00, &param0->unk_B8.unk_02);
         ov07_02221F04(1, 4, &param0->unk_B8.unk_04, &param0->unk_B8.unk_06);
         param0->unk_B8.unk_10 = 48;
         param0->unk_B8.unk_06 += 32;
@@ -1841,8 +1822,7 @@ void ov07_02233F30(BallRotation *param0) {
     param0->unk_B8.unk_08 = 20;
 }
 
-// static
-void ov07_022341A4(BallRotation *param0, s16 *param1, s16 *param2) {
+static void ov07_022341A4(BallRotation *param0, s16 *param1, s16 *param2) {
     switch (param0->unk_90.type) {
     case 0:
         ov07_02221F04(0, 0, param1, param2);
@@ -1910,9 +1890,8 @@ void ov07_022341A4(BallRotation *param0, s16 *param1, s16 *param2) {
     }
 }
 
-// static
-void ov07_022342E4(BallRotation *param0) {
-    SpriteSystem_InitSprites(param0->unk_90.spriteSystem, param0->unk_2C, 10);
+static void ov07_022342E4(BallRotation *param0) {
+    SpriteSystem_InitSprites(param0->unk_90.spriteSystem, param0->spriteManager, 10);
 
     if (param0->unk_90.surface == 0) {
         G2dRenderer_SetSubSurfaceCoords(SpriteSystem_GetRenderer(param0->unk_90.spriteSystem), 0, (192 + 80) << FX32_SHIFT);
@@ -1927,27 +1906,25 @@ void ov07_022342E4(BallRotation *param0) {
     v5.asArray[4] = 0;
     v5.asArray[5] = 0;
 
-    SpriteSystem_InitManagerWithCapacities(param0->unk_90.spriteSystem, param0->unk_2C, &v5);
+    SpriteSystem_InitManagerWithCapacities(param0->unk_90.spriteSystem, param0->spriteManager, &v5);
 
-    int v0 = ov07_02232658(param0->unk_90.ballID, 0);
-    int v1 = ov07_02232658(param0->unk_90.ballID, 1);
-    int v2 = ov07_02232658(param0->unk_90.ballID, 2);
-    int v3 = ov07_02232658(param0->unk_90.ballID, 3);
+    int v0 = ov07_02232658(param0->unk_90.ball, 0);
+    int v1 = ov07_02232658(param0->unk_90.ball, 1);
+    int v2 = ov07_02232658(param0->unk_90.ball, 2);
+    int v3 = ov07_02232658(param0->unk_90.ball, 3);
 
-    NARC *v6 = NARC_New(8, param0->unk_90.heapID);
+    NARC *v6 = NARC_New(NARC_a_0_0_8, param0->unk_90.heapID);
 
-    SpriteSystem_LoadCharResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->unk_2C, v6, v0, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, param0->unk_90.target + 6000);
-    SpriteSystem_LoadPaletteBufferFromOpenNarc(param0->unk_90.paletteData, 2, param0->unk_90.spriteSystem, param0->unk_2C, v6, v1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, param0->unk_90.target + 6000);
-    SpriteSystem_LoadCellResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->unk_2C, v6, v2, TRUE, param0->unk_90.target + 6000);
-    SpriteSystem_LoadAnimResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->unk_2C, v6, v3, TRUE, param0->unk_90.target + 6000);
+    SpriteSystem_LoadCharResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->spriteManager, v6, v0, TRUE, NNS_G2D_VRAM_TYPE_2DMAIN, param0->unk_90.target + 6000);
+    SpriteSystem_LoadPaletteBufferFromOpenNarc(param0->unk_90.paletteData, PLTTBUF_MAIN_OBJ, param0->unk_90.spriteSystem, param0->spriteManager, v6, v1, 0, NNS_G2D_VRAM_TYPE_2DMAIN, 1, param0->unk_90.target + 6000);
+    SpriteSystem_LoadCellResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->spriteManager, v6, v2, TRUE, param0->unk_90.target + 6000);
+    SpriteSystem_LoadAnimResObjFromOpenNarc(param0->unk_90.spriteSystem, param0->spriteManager, v6, v3, TRUE, param0->unk_90.target + 6000);
     NARC_Delete(v6);
 }
 
-// static
-void ov07_0223441C(BallRotation *param0) {
+static void ov07_0223441C(BallRotation *param0) {
     int v0;
     ManagedSpriteTemplate v1;
-    int v2;
 
     ov07_022341A4(param0, &v1.x, &v1.y);
 
@@ -1963,27 +1940,27 @@ void ov07_0223441C(BallRotation *param0) {
         v1.resIdList[v0] = param0->unk_90.target + 6000;
     }
 
-    param0->unk_30 = SpriteSystem_NewSprite(param0->unk_90.spriteSystem, param0->unk_2C, &v1);
+    param0->managedSprite = SpriteSystem_NewSprite(param0->unk_90.spriteSystem, param0->spriteManager, &v1);
 
-    ManagedSprite_SetDrawFlag(param0->unk_30, TRUE);
-    ManagedSprite_SetAffineOverwriteMode(param0->unk_30, 2);
-    ManagedSprite_SetAnimationFrame(param0->unk_30, 0);
-    ManagedSprite_SetAnim(param0->unk_30, 0);
-    ManagedSprite_TickFrame(param0->unk_30);
+    ManagedSprite_SetDrawFlag(param0->managedSprite, TRUE);
+    ManagedSprite_SetAffineOverwriteMode(param0->managedSprite, 2);
+    ManagedSprite_SetAnimationFrame(param0->managedSprite, 0);
+    ManagedSprite_SetAnim(param0->managedSprite, 0);
+    ManagedSprite_TickFrame(param0->managedSprite);
 
     ov07_0221C69C();
 }
 
 void ov07_0223449C(BallRotation *param0, int param1) {
-    ManagedSprite_SetDrawFlag(param0->unk_30, param1);
+    ManagedSprite_SetDrawFlag(param0->managedSprite, param1);
 }
 
 void ov07_022344A8(BallRotation *param0, s16 param1, s16 param2) {
-    ManagedSprite_SetPositionXY(param0->unk_30, param1, param2);
+    ManagedSprite_SetPositionXY(param0->managedSprite, param1, param2);
 }
 
 void ov07_022344B4(BallRotation *param0, u16 param1) {
-    ManagedSprite_SetAffineZRotation(param0->unk_30, param1);
+    ManagedSprite_SetAffineZRotation(param0->managedSprite, param1);
 }
 
 void ov07_022344C0(BallRotation *param0, BOOL param1) {
@@ -1991,11 +1968,11 @@ void ov07_022344C0(BallRotation *param0, BOOL param1) {
 }
 
 void ov07_022344C4(BallRotation *param0, u16 param1) {
-    ManagedSprite_SetDrawPriority(param0->unk_30, param1);
+    ManagedSprite_SetDrawPriority(param0->managedSprite, param1);
 }
 
 void ov07_022344D0(BallRotation *param0, int param1) {
-    ManagedSprite_SetPriority(param0->unk_30, param1);
+    ManagedSprite_SetPriority(param0->managedSprite, param1);
 }
 
 void ov07_022344DC(BallRotation *param0, int param1) {
