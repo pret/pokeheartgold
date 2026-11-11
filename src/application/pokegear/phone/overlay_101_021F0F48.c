@@ -520,11 +520,11 @@ void PhoneContactListUI_PrintNameAndClass(PhoneContactListUI *ui, u8 slot, u8 in
     PhoneContactListUI_DrawNameSlotBG(ui, slot, colorIdx, FALSE);
     y = slot * 24;
     if (selected != 0 || index == ui->selectedIndex) {
-        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, slotData->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Selected, NULL);
-        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, slotData->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Selected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, FONT_UNK_4, PhoneContact_GetName(ui->callContext, slotData->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Selected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, FONT_SYSTEM, PhoneContact_GetClass(ui->callContext, slotData->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Selected, NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(ui->window, 4, PhoneContact_GetName(ui->callContext, slotData->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Deselected, NULL);
-        AddTextPrinterParameterizedWithColor(ui->window, 0, PhoneContact_GetClass(ui->callContext, slotData->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Deselected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, FONT_UNK_4, PhoneContact_GetName(ui->callContext, slotData->contactID), 16, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->nameColor_Deselected, NULL);
+        AddTextPrinterParameterizedWithColor(ui->window, FONT_SYSTEM, PhoneContact_GetClass(ui->callContext, slotData->contactID), 94, y + 2, TEXT_SPEED_NOTRANSFER, colorSpec->classColor_Deselected, NULL);
     }
     if (copyNow) {
         CopyWindowToVram(ui->window);

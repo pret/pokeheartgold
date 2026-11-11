@@ -109,7 +109,7 @@ void ShowWFCUserInfoWarning(enum HeapID heapID, int a1) {
     DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(warnings_msgdata, msg_0800_00016, warning_string);
-    AddTextPrinterParameterized(&window, 0, warning_string, 0, 0, 0, NULL);
+    AddTextPrinterParameterized(&window, FONT_SYSTEM, warning_string, 0, 0, 0, NULL);
     String_Delete(warning_string);
 
     GfGfx_BothDispOn();

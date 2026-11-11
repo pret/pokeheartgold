@@ -175,7 +175,7 @@ BOOL PhoneCall_Exit(PokegearPhoneAppData *phoneApp) {
 
 void ov101_021F0080(PokegearPhoneAppData *phoneApp) {
     ReadMsgDataIntoString(phoneApp->msgData, phoneApp->subsubtaskState + 33, phoneApp->msgReadBuf);
-    AddTextPrinterParameterizedWithColor(&phoneApp->windows[0], 0, phoneApp->msgReadBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&phoneApp->windows[0], FONT_SYSTEM, phoneApp->msgReadBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     PlaySE(SEQ_SE_DP_BOX03);
 }
 
@@ -183,7 +183,7 @@ BOOL ov101_021F00BC(PokegearPhoneAppData *phoneApp) {
     switch (phoneApp->subsubtaskState) {
     case 0:
         ReadMsgDataIntoString(phoneApp->msgData, phoneApp->subsubtaskState + msg_0271_00033, phoneApp->msgReadBuf);
-        AddTextPrinterParameterizedWithColor(&phoneApp->windows[0], 0, phoneApp->msgReadBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&phoneApp->windows[0], FONT_SYSTEM, phoneApp->msgReadBuf, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         PlaySE(SEQ_SE_DP_SELECT);
         break;
     case 1:

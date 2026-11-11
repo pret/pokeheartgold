@@ -360,7 +360,7 @@ static void ViewPhotoSysTask_UnloadBgGraphics(ViewPhotoSysTaskData *viewPhoto) {
 }
 
 static void ViewPhotoSysTask_InitMessages(ViewPhotoSysTaskData *viewPhoto) {
-    FontID_Alloc(4, viewPhoto->heapID);
+    FontID_Alloc(FONT_UNK_4, viewPhoto->heapID);
     viewPhoto->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0000, viewPhoto->heapID);
     viewPhoto->msgFormat = MessageFormat_New_Custom(6, 22, viewPhoto->heapID);
     viewPhoto->strBuf = String_New(128, viewPhoto->heapID);
@@ -378,7 +378,7 @@ static void ViewPhotoSysTask_ReleaseMessages(ViewPhotoSysTaskData *viewPhoto) {
     String_Delete(viewPhoto->strBuf);
     MessageFormat_Delete(viewPhoto->msgFormat);
     DestroyMsgData(viewPhoto->msgData);
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 static void ViewPhotoSysTask_InitWindows(ViewPhotoSysTaskData *viewPhoto) {
@@ -458,7 +458,7 @@ static void ViewPhotoSysTask_DrawLyr3Icon(ViewPhotoSysTaskData *viewPhoto) {
 
 static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto) {
     // EXIT (print centered)
-    AddTextPrinterParameterizedWithColor(&viewPhoto->windows[0], 4, viewPhoto->exitMsg, (64 - FontID_String_GetWidth(4, viewPhoto->exitMsg, 0)) / 2u, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 5, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&viewPhoto->windows[0], FONT_UNK_4, viewPhoto->exitMsg, (64 - FontID_String_GetWidth(FONT_UNK_4, viewPhoto->exitMsg, 0)) / 2u, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 5, 0), NULL);
     ScheduleWindowCopyToVram(&viewPhoto->windows[0]);
 
     formatPhotoFlavorText(viewPhoto->scrollData.photo, viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->heapID, viewPhoto->saveData);
@@ -468,7 +468,7 @@ static void ViewPhotoSysTask_PrintTextOnWindows(ViewPhotoSysTaskData *viewPhoto)
     } else {
         StringExpandPlaceholders(viewPhoto->msgFormat, viewPhoto->strBuf, viewPhoto->photoDescStringTemplates[0]);
     }
-    AddTextPrinterParameterizedWithColor(&viewPhoto->windows[1], 0, viewPhoto->strBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&viewPhoto->windows[1], FONT_SYSTEM, viewPhoto->strBuf, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(3, 2, 0), NULL);
     ScheduleWindowCopyToVram(&viewPhoto->windows[1]);
     ViewPhotoSysTask_DrawLyr3Icon(viewPhoto);
 }

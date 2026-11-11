@@ -114,8 +114,8 @@ void PokegearPhone_PrintContextMenuTooltip(PokegearPhoneAppData *phoneApp, u8 to
         u32 xpos;
         CopyToBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 20, 32, 4, phoneApp->screenData->rawData, 0, 24, phoneApp->screenData->screenWidth / 8, phoneApp->screenData->screenHeight / 8);
         FillWindowPixelBuffer(&phoneApp->windows[3], 5);
-        xpos = (256 - FontID_String_GetWidth(0, phoneApp->tooltipStrings[tooltipId], 0)) / 2;
-        AddTextPrinterParameterizedWithColor(&phoneApp->windows[3], 0, phoneApp->tooltipStrings[tooltipId], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
+        xpos = (256 - FontID_String_GetWidth(FONT_SYSTEM, phoneApp->tooltipStrings[tooltipId], 0)) / 2;
+        AddTextPrinterParameterizedWithColor(&phoneApp->windows[3], FONT_SYSTEM, phoneApp->tooltipStrings[tooltipId], xpos, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 2, 5), NULL);
     } else {
         ClearWindowTilemapAndScheduleTransfer(&phoneApp->windows[3]);
         FillBgTilemapRect(phoneApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1, 0, 0, 20, 32, 4, TILEMAP_FILL_OVWT_PAL);

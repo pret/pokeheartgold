@@ -2,18 +2,44 @@
 
 #include "constants/game_stats.h"
 
+#include "battle/battle_controller.h"
+#include "battle/battle_controller_player.h"
+#include "battle/battle_display.h"
 #include "battle/battle_input.h"
+#include "battle/battle_io_command.h"
 #include "battle/battle_system.h"
+#include "battle/overlay_07.h"
+#include "battle/overlay_12_0224E4FC.h"
+#include "battle/overlay_12_02258800.h"
+#include "battle/overlay_12_02265FD4.h"
+#include "battle/overlay_12_0226BEC4.h"
+#include "msgdata/msg.naix"
 
 #include "filesystem_files_def.h"
+#include "gf_gfx_loader.h"
 #include "gf_gfx_planes.h"
+#include "math_util.h"
+#include "overlay_05.h"
+#include "overlay_06.h"
 #include "poke_overlay.h"
+#include "pokemon_mood.h"
 #include "render_text.h"
+#include "screen_fade.h"
 #include "sound_02004A44.h"
 #include "system.h"
+#include "unk_02005D10.h"
+#include "unk_02014DA0.h"
+#include "unk_020163E0.h"
+#include "unk_020210A0.h"
+#include "unk_02026E30.h"
 #include "unk_02026E84.h"
+#include "unk_0202FBCC.h"
+#include "unk_02034B0C.h"
+#include "unk_02035900.h"
 #include "unk_020379A0.h"
 #include "unk_02037C94.h"
+#include "unk_0203A3B0.h"
+#include "unk_02074E5C.h"
 #include "unk_020755E8.h"
 #include "unk_0208805C.h"
 #include "vram_transfer_manager.h"
@@ -205,7 +231,7 @@ void BattleSystem_EnterSubMenu(BattleSystem *battleSystem) {
     BattleInput_Free(battleSystem->battleInput);
     BgConfig_CleanupBattleMenuBackgrounds(battleSystem->bgConfig);
     battleSystem->unk240E_F = 1;
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     BattleSystem_SetRenderMode(battleSystem, 3);
 
     if (battleSystem->unk2445 == 0) {
@@ -225,7 +251,7 @@ void BattleSystem_FreeGraphics(BattleSystem *battleSystem) {
     SpriteSystem_FreeResourcesAndManager(battleSystem->spriteRenderer, battleSystem->gfxHandler);
     SpriteSystem_Free(battleSystem->spriteRenderer);
     GF_DestroyVramTransferManager();
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
 }
 
 void BattleSystem_ExitSubMenu(BattleSystem *battleSystem) {
@@ -248,7 +274,7 @@ void BattleSystem_ExitSubMenu(BattleSystem *battleSystem) {
 
     battleSystem->battleInput = BattleInput_NewInit(unkNarcA, unkNarcB, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
 
-    FontID_Alloc(4, HEAP_ID_BATTLE);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_BATTLE);
 
     battleSystem->unk240F_1 = 1;
 
@@ -299,11 +325,11 @@ void BattleSystem_SetupBattleScreen(BattleSystem *battleSystem) {
     int frame = BattleSystem_GetFrame(battleSystem);
 
     sub_0200EB80(battleSystem->bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
-    GfGfxLoader_LoadCharData(7, 3 + battleSystem->backgroundId, battleSystem->bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
-    PaletteData_LoadNarc(battleSystem->palette, 7, 176 + battleSystem->backgroundId * 3 + ov12_0223B52C(battleSystem), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
-    PaletteData_LoadNarc(battleSystem->palette, 0x26, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xA0);
-    PaletteData_LoadNarc(battleSystem->palette, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xB0);
-    GfGfxLoader_LoadScrnData(7, 2, battleSystem->bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
+    GfGfxLoader_LoadCharData(NARC_a_0_0_7, 3 + battleSystem->backgroundId, battleSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 1, HEAP_ID_BATTLE);
+    PaletteData_LoadNarc(battleSystem->palette, NARC_a_0_0_7, 176 + battleSystem->backgroundId * 3 + ov12_0223B52C(battleSystem), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
+    PaletteData_LoadNarc(battleSystem->palette, NARC_a_0_3_8, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xA0);
+    PaletteData_LoadNarc(battleSystem->palette, NARC_graphic_font, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 0xB0);
+    GfGfxLoader_LoadScrnData(NARC_a_0_0_7, 2, battleSystem->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 1, HEAP_ID_BATTLE);
 
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
     GXS_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -332,10 +358,10 @@ void BattleSystem_LoadFightOverlay(BattleSystem *battleSystem, int flags) {
 
     if (flags == FALSE) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_10));
-        HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), 2);
+        HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), OVY_LOAD_ASYNC);
     } else {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
-        HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), 2);
+        HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), OVY_LOAD_ASYNC);
     }
 }
 
@@ -355,7 +381,7 @@ static void BattleMain_InitGraphics(OverlayManager *appMan) {
     battleSystem->unk0 = InitG3DPipelineBuffers();
 
     HBlankInterruptDisable();
-    FontID_Alloc(4, HEAP_ID_BATTLE);
+    FontID_Alloc(FONT_UNK_4, HEAP_ID_BATTLE);
 
     battleSystem->hpNumPrinter = (BattleNumberPrinter *)MessagePrinter_New(14, 2, 15, HEAP_ID_BATTLE);
 
@@ -377,8 +403,8 @@ static void BattleMain_InitGraphics(OverlayManager *appMan) {
 
     GF_CreateVramTransferManager(64, HEAP_ID_BATTLE);
 
-    NARC *bgNarc = NARC_New(7, HEAP_ID_BATTLE);
-    NARC *objNarc = NARC_New(8, HEAP_ID_BATTLE);
+    NARC *bgNarc = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+    NARC *objNarc = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
     battleSystem->battleInput = BattleInput_NewInit(bgNarc, objNarc, battleSystem, BattleSystem_GetTrainerGender(battleSystem, ov12_0223BFC0(battleSystem)), battleSystem->unk1C0);
 
@@ -405,8 +431,8 @@ static void BattleMain_InitGraphics(OverlayManager *appMan) {
 
     BattleInput_LoadDefaultResources(battleSystem->battleInput);
 
-    NARC *bgNarc2 = NARC_New(7, HEAP_ID_BATTLE);
-    NARC *objNarc2 = NARC_New(8, HEAP_ID_BATTLE);
+    NARC *bgNarc2 = NARC_New(NARC_a_0_0_7, HEAP_ID_BATTLE);
+    NARC *objNarc2 = NARC_New(NARC_a_0_0_8, HEAP_ID_BATTLE);
 
     BattleInput_ChangeMenu(bgNarc2, objNarc2, battleSystem->battleInput, 0, 1, NULL);
     BattleInput_LoadBallGaugeResources(objNarc2, battleSystem->battleInput);
@@ -427,13 +453,13 @@ static void BattleMain_InitGraphics(OverlayManager *appMan) {
     EnableTouchPad();
     InitializeTouchPad(4);
 
-    battleSystem->msgData = NewMsgDataFromNarc(1, 27, 0xc5, HEAP_ID_BATTLE);
-    battleSystem->unk10 = NewMsgDataFromNarc(1, 27, 3, HEAP_ID_BATTLE);
+    battleSystem->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0197, HEAP_ID_BATTLE);
+    battleSystem->unk10 = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0003_EVERYWHERE, HEAP_ID_BATTLE);
     battleSystem->msgFormat = MessageFormat_New(HEAP_ID_BATTLE);
     battleSystem->msgBuffer = String_New(2 * 160, HEAP_ID_BATTLE);
 
-    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSystem->palette, 0), &battleSystem->unk2228[0], 32 * 7);
-    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSystem->palette, 2), &battleSystem->unk2308[0], 32 * 7);
+    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSystem->palette, PLTTBUF_MAIN_BG), &battleSystem->unk2228[0], 32 * 7);
+    MI_CpuCopy16(PaletteData_GetUnfadedBuf(battleSystem->palette, PLTTBUF_MAIN_OBJ), &battleSystem->unk2308[0], 32 * 7);
 
     int offset = ov12_0223B52C(battleSystem);
 
@@ -441,11 +467,11 @@ static void BattleMain_InitGraphics(OverlayManager *appMan) {
     PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_BG, PLTTSEL_BOTH, ov12_0226C1C8[battleSystem->backgroundId][offset], 0xC * 16, 0xC * 16 + 4 * 16);
     PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_OBJ, PLTTSEL_BOTH, ov12_0226C1C8[battleSystem->backgroundId][offset], 0, ((16 - 2) * 16) - 1);
 
-    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_BG, 0, 0, 10 * 16, 10 * 16 + 2 * 16);
-    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_SUB_BG, 0, 0, 0, 255);
-    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_SUB_OBJ, 0, 0xFFFF, 0, 255);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_MAIN_BG, PLTTSEL_TRANSPARENT, 0, 10 * 16, 10 * 16 + 2 * 16);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_SUB_BG, PLTTSEL_TRANSPARENT, 0, 0, 255);
+    PaletteData_FillPaletteInBuffer(battleSystem->palette, PLTTBUF_SUB_OBJ, PLTTSEL_TRANSPARENT, 0xFFFF, 0, 255);
 
-    battleSystem->msgIcon = sub_020163E0(battleSystem->palette, 0, 11, HEAP_ID_BATTLE);
+    battleSystem->msgIcon = sub_020163E0(battleSystem->palette, PM_LCD_TOP, 11, HEAP_ID_BATTLE);
     sub_0201649C(battleSystem->msgIcon, 1);
 
     battleSystem->unk1C = SysTask_CreateOnMainQueue(SysTask_DrawSprites, battleSystem, 60000);
@@ -521,7 +547,7 @@ static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan)
         BattleSystem_LoadFightOverlay(battleSystem, FALSE);
     }
 
-    int color;
+    u16 color;
 
     if (battleSetup->battleType & 0xAA4) {
         color = RGB_BLACK;
@@ -531,8 +557,8 @@ static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan)
         color = RGB_BLACK;
     }
 
-    sub_0200FBF4(0, color);
-    sub_0200FBF4(1, color);
+    sub_0200FBF4(PM_LCD_TOP, color);
+    sub_0200FBF4(PM_LCD_BOTTOM, color);
     BattleSystem_TryChangeForm(battleSystem);
 
     if (battleSystem->battleOutcomeFlag != BATTLE_RESULT_CAPTURED_MON) {
@@ -571,10 +597,10 @@ static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan)
     }
 
     Heap_Free(battleSystem->msgBuffer);
-    PaletteData_FreeBuffers(battleSystem->palette, 0);
-    PaletteData_FreeBuffers(battleSystem->palette, 1);
-    PaletteData_FreeBuffers(battleSystem->palette, 2);
-    PaletteData_FreeBuffers(battleSystem->palette, 3);
+    PaletteData_FreeBuffers(battleSystem->palette, PLTTBUF_MAIN_BG);
+    PaletteData_FreeBuffers(battleSystem->palette, PLTTBUF_SUB_BG);
+    PaletteData_FreeBuffers(battleSystem->palette, PLTTBUF_MAIN_OBJ);
+    PaletteData_FreeBuffers(battleSystem->palette, PLTTBUF_SUB_OBJ);
     PaletteData_Free(battleSystem->palette);
     DestroyMsgData(battleSystem->msgData);
     DestroyMsgData(battleSystem->unk10);
@@ -612,7 +638,7 @@ static void BattleMain_CopyBattleSysToBattleSetupAndFree(OverlayManager *appMan)
     SetLCRNGSeed(battleSystem->unk2434);
 
     if (BattleSystem_GetCriticalHpMusicFlag(battleSystem)) {
-        StopSE(0x704, 0);
+        StopSE(SEQ_SE_DP_HINSI, 0);
     }
 
     sub_0202067C(battleSystem->unk1CC);
@@ -649,8 +675,8 @@ static void BattleMain_InitBattleGraphics(BattleSystem *battleSystem, BgConfig *
     MI_CpuClear32((void *)HW_OBJ_VRAM, HW_OBJ_VRAM_SIZE);
     MI_CpuClear32((void *)HW_DB_OBJ_VRAM, HW_DB_OBJ_VRAM_SIZE);
 
-    SetMasterBrightnessNeutral(0);
-    SetMasterBrightnessNeutral(1);
+    SetMasterBrightnessNeutral(PM_LCD_TOP);
+    SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
 
     GraphicsModes graphicsModes = ov12_0226BFE8;
 
@@ -676,11 +702,11 @@ static void BattleMain_InitBattleGraphics(BattleSystem *battleSystem, BgConfig *
     int frame = BattleSystem_GetFrame(battleSystem);
 
     sub_0200EB80(bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
-    GfGfxLoader_LoadCharData(7, 3 + battleSystem->backgroundId, bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
-    PaletteData_LoadNarc(battleSystem->palette, 7, 176 + battleSystem->backgroundId * 3 + ov12_0223B52C(battleSystem), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
-    PaletteData_LoadNarc(battleSystem->palette, 38, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 10 * 16);
-    PaletteData_LoadNarc(battleSystem->palette, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
-    GfGfxLoader_LoadScrnData(7, 2, bgConfig, 3, 0, 0, 1, HEAP_ID_BATTLE);
+    GfGfxLoader_LoadCharData(NARC_a_0_0_7, 3 + battleSystem->backgroundId, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 1, HEAP_ID_BATTLE);
+    PaletteData_LoadNarc(battleSystem->palette, NARC_a_0_0_7, 176 + battleSystem->backgroundId * 3 + ov12_0223B52C(battleSystem), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0, 0);
+    PaletteData_LoadNarc(battleSystem->palette, NARC_a_0_3_8, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 10 * 16);
+    PaletteData_LoadNarc(battleSystem->palette, NARC_graphic_font, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
+    GfGfxLoader_LoadScrnData(NARC_a_0_0_7, 2, bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 1, HEAP_ID_BATTLE);
 
     GX_SetVisibleWnd(GX_WNDMASK_NONE);
     GXS_SetVisibleWnd(GX_WNDMASK_NONE);
@@ -724,11 +750,6 @@ static void BattleMain_FreeBgLayers(BgConfig *bgConfig) {
 
 static void ov12_02238A64(BattleSystem *battleSystem) {
 }
-
-typedef struct BattlerInitData {
-    u8 battler;
-    u8 battlerType;
-} BattlerInitData;
 
 extern u8 _0226BFD8[2];
 extern u8 ov12_0226C2DC[4];
@@ -1225,19 +1246,6 @@ static void BattleMain_VBlankCallback(void *inBattleSys) {
     OS_SetIrqCheckFlag(OS_IE_V_BLANK);
 }
 
-typedef struct LinkBattleCommState {
-    BattleSetup *battleSetup;
-    BgConfig *bgConfig;
-    Window *window;
-    PaletteData *paletteData;
-    void *palPad[4];
-    u8 sendBuffer[0x1000];
-    u8 recvCount;
-    u8 handshakeStep;
-    u16 syncTimer;
-    void *waitDial;
-} LinkBattleCommState;
-
 static void BattleMain_LinkCommVBlankCallback(void *commState) {
     LinkBattleCommState *linkBattleCommState = commState;
 
@@ -1280,7 +1288,7 @@ static void SysTask_UpdateCriticalHpMusic(SysTask *task, void *inBattleSys) {
 
     if (redHPSoundFlag & 2) {
         if (redHPSoundFlag & 1) {
-            StopSE(0x704, 0);
+            StopSE(SEQ_SE_DP_HINSI, 0);
             BattleSystem_SetCriticalHpMusicFlag(battleSystem, 2);
         }
 
@@ -1303,20 +1311,20 @@ static void SysTask_UpdateCriticalHpMusic(SysTask *task, void *inBattleSys) {
     }
 
     if (flags && BattleSystem_GetCriticalHpMusicFlag(battleSystem) == FALSE) {
-        PlaySE(0x704);
+        PlaySE(SEQ_SE_DP_HINSI);
         BattleSystem_SetCriticalHpMusicFlag(battleSystem, 1);
         BattleSystem_SetCriticalHpMusicDelay(battleSystem, 4);
     } else if (flags == 0 && BattleSystem_GetCriticalHpMusicFlag(battleSystem)) {
-        StopSE(0x704, 0);
+        StopSE(SEQ_SE_DP_HINSI, 0);
         BattleSystem_SetCriticalHpMusicFlag(battleSystem, 0);
     }
 
     if (BattleSystem_GetCriticalHpMusicFlag(battleSystem)) {
         int delay = BattleSystem_GetCriticalHpMusicDelay(battleSystem);
 
-        if (IsSEPlaying(0x704) == FALSE) {
+        if (IsSEPlaying(SEQ_SE_DP_HINSI) == FALSE) {
             if (--delay == 0) {
-                PlaySE(0x704);
+                PlaySE(SEQ_SE_DP_HINSI);
                 BattleSystem_SetCriticalHpMusicDelay(battleSystem, 4);
             } else {
                 BattleSystem_SetCriticalHpMusicDelay(battleSystem, delay);
@@ -1329,7 +1337,7 @@ static void SysTask_FlyInMessageBox(SysTask *task, void *inBattleSys) {
     BattleSystem *battleSystem = inBattleSys;
 
     battleSystem->unk2438 += 3;
-    BgSetPosTextAndCommit(battleSystem->bgConfig, 1, 3, battleSystem->unk2438);
+    BgSetPosTextAndCommit(battleSystem->bgConfig, 1, BG_POS_OP_SET_Y, battleSystem->unk2438);
 
     if (battleSystem->unk2438 == 0) {
         SysTask_Destroy(task);
@@ -1338,7 +1346,7 @@ static void SysTask_FlyInMessageBox(SysTask *task, void *inBattleSys) {
 
 void NitroStaticInit(void) {
     if (!sub_02039998()) {
-        HandleLoadOverlay(FS_OVERLAY_ID(OVY_18), 2);
+        HandleLoadOverlay(FS_OVERLAY_ID(OVY_18), OVY_LOAD_ASYNC);
     }
 }
 
@@ -1387,18 +1395,18 @@ static void BattleMain_InitLinkCommScreen(OverlayManager *appMan, BattleSetup *b
     int frame = Options_GetFrame(battleSetup->options);
 
     sub_0200EB80(linkBattleCommState->bgConfig, 1, 1, 10, (u8)frame, HEAP_ID_BATTLE);
-    PaletteData_LoadNarc(linkBattleCommState->paletteData, 16, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
-    PaletteData_LoadNarc(linkBattleCommState->paletteData, 38, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 160);
-    PaletteData_FillPaletteInBuffer(linkBattleCommState->paletteData, PLTTBUF_MAIN_BG, 0, 0, 0, 256);
+    PaletteData_LoadNarc(linkBattleCommState->paletteData, NARC_graphic_font, 8, HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 11 * 16);
+    PaletteData_LoadNarc(linkBattleCommState->paletteData, NARC_a_0_3_8, sub_0200E640(frame), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 32, 160);
+    PaletteData_FillPaletteInBuffer(linkBattleCommState->paletteData, PLTTBUF_MAIN_BG, PLTTSEL_TRANSPARENT, 0, 0, 256);
 
     GfGfx_BothDispOn();
     GfGfx_EngineATogglePlanes(GX_PLANEMASK_OBJ, TRUE);
-    GX_SetDispSelect(1);
+    GX_SetDispSelect(GX_DISP_SELECT_MAIN_SUB);
     AddWindowParameterized(linkBattleCommState->bgConfig, linkBattleCommState->window, 1, 2, 0x13, 27, 4, 11, (18 + 12) + 1);
     FillWindowPixelBuffer(linkBattleCommState->window, 0xFF);
     DrawFrameAndWindow2(linkBattleCommState->window, 0, 1, 10);
 
-    MsgData *msgLoader = NewMsgDataFromNarc(1, 0x1b, 0xc5, HEAP_ID_BATTLE);
+    MsgData *msgLoader = NewMsgDataFromNarc(MSGDATA_LOAD_LAZY, NARC_msgdata_msg, msg_0197, HEAP_ID_BATTLE);
     String *string = String_New(0x100, HEAP_ID_BATTLE);
 
     ReadMsgDataIntoString(msgLoader, 0x39b, string);
@@ -1424,7 +1432,7 @@ static BOOL BattleMain_HandleLinkCommHandshake(OverlayManager *appMan) {
 
     switch (linkBattleCommState->handshakeStep) {
     case 0:
-        SetMasterBrightnessNeutral(0);
+        SetMasterBrightnessNeutral(PM_LCD_TOP);
         sub_02037930(1);
         linkBattleCommState->handshakeStep++;
         break;
@@ -1644,7 +1652,7 @@ static void BattleMain_FreeeLinkCommScreen(OverlayManager *appMan) {
     LinkBattleCommState *linkBattleCommState = OverlayManager_GetData(appMan);
 
     Main_SetVBlankIntrCB(NULL, NULL);
-    sub_0200FBF4(0, RGB_BLACK);
+    sub_0200FBF4(PM_LCD_TOP, RGB_BLACK);
     PaletteData_FreeBuffers(linkBattleCommState->paletteData, PLTTBUF_MAIN_BG);
     PaletteData_Free(linkBattleCommState->paletteData);
     WindowArray_Delete(linkBattleCommState->window, 1);
@@ -1669,7 +1677,7 @@ static BOOL BattleMain_InitPartnerIntro(OverlayManager *appMan) {
         return FALSE;
     }
 
-    HandleLoadOverlay(FS_OVERLAY_ID(OVY_5), 2);
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_5), OVY_LOAD_ASYNC);
 
     if ((battleSystem->battleType & BATTLE_TYPE_MULTI) == FALSE) {
         return FALSE;
@@ -1795,7 +1803,7 @@ static BOOL BattleMain_HandleLinkBattleResult(OverlayManager *appMan) {
     }
 
     u8 netID = CommSystem_GetCurNetId();
-    HandleLoadOverlay(FS_OVERLAY_ID(OVY_5), 2);
+    HandleLoadOverlay(FS_OVERLAY_ID(OVY_5), OVY_LOAD_ASYNC);
     TrainerIntroData *trainerIntroData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerIntroData));
 
     battleSetup->evolutionTaskData = trainerIntroData;

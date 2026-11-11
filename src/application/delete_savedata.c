@@ -338,7 +338,7 @@ static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msg
 
         data->textString = String_New(1024, data->heapID);
         ReadMsgDataIntoString(data->msgData, msgNum, data->textString);
-        data->textPrinterId = AddTextPrinterParameterized(&data->window, 1, data->textString, 0, 0, textSpeed, NULL);
+        data->textPrinterId = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->textString, 0, 0, textSpeed, NULL);
 
         if (textSpeed == TEXT_SPEED_INSTANT) {
             String_Delete(data->textString);

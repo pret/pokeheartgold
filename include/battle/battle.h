@@ -569,9 +569,9 @@ struct BattleSystem {
     MsgData *unk10;
     MessageFormat *msgFormat;
     String *msgBuffer;
-    u32 unk1C;
-    u32 unk20;
-    u32 unk24;
+    SysTask *unk1C;
+    SysTask *unk20;
+    SysTask *unk24;
     PaletteData *palette;
     u32 battleType;
     BattleContext *ctx;
@@ -726,13 +726,13 @@ enum BallThrowMode {
 };
 
 typedef struct BallThrow {
-    int type;
+    s32 type;
     enum HeapID heapID;
-    int mode;
-    int target;
-    int ballID;
-    int bgPrio;
-    int surface;
+    enum BallThrowMode mode;
+    s32 target;
+    int ball;
+    s32 bgPrio;
+    s32 surface;
     SpriteSystem *spriteSystem;
     PaletteData *paletteData;
     BattleSystem *battleSystem;
@@ -779,7 +779,7 @@ struct UnkBallData { // TODO: Give a better name.
 typedef struct BattlePartyContext {
     Party *party;
     void *unused1;
-    BattleSystem *battleSys;
+    BattleSystem *battleSystem;
     enum HeapID heapID;
     u8 unused2;
     u8 selectedPartyIndex;
@@ -813,12 +813,6 @@ typedef struct BattlerSpriteContext {
     u8 types[4];
 } BattlerSpriteContext;
 
-typedef struct {
-    int battlerType;
-    int ballTypeOverride;
-    Pokemon *mon;
-} BallCapsuleConfig;
-
 typedef struct MoveDisplayInfo {
     u16 move[4];
     u16 curPP[4];
@@ -834,6 +828,7 @@ typedef struct ActionSelectData {
     u16 maxHp;
     u8 isWaitingForPartner;
 } ActionSelectData;
+
 typedef struct MoveSelectData {
     u16 moveIDs[4];
     u8 currPP[4];
@@ -848,7 +843,7 @@ typedef struct TargetSelectData {
 } TargetSelectData;
 
 typedef struct BattleBagContext {
-    BattleSystem *battleSys;
+    BattleSystem *battleSystem;
     PlayerProfile *trainerInfo;
     Bag *bag;
     enum HeapID heapID;
@@ -873,7 +868,7 @@ typedef struct GiveUpMoveData {
     u16 unused_02;
 } GiveUpMoveData;
 
-typedef struct {
+typedef struct ParticleEffectTemplate {
     int resourceID;
     int cameraProjection;
 } ParticleEffectTemplate;

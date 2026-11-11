@@ -357,7 +357,7 @@ ov01_021FC2C8: ; 0x021FC2C8
 	push {r3, lr}
 	ldr r0, [r0, #4]
 	ldr r0, [r0, #0xc]
-	bl ov01_021EB31C
+	bl WeatherManager_GetWeather
 	ldr r3, _021FC2EC ; =ov01_02208BC0
 	mov r2, #0
 _021FC2D6:

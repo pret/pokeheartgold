@@ -101,16 +101,8 @@ evaluated.
   option.
 
 *-I, --index*::
-  Output a C header for _ARCHIVE_ to a file-path mirroring _ARCHIVE_ with its
-  extension replaced by “.naix”. C programs may use this header to map relative
-  paths from the local filesystem to their indices in _ARCHIVE_ via preprocessor
-  “#define” statements. Any character in the local path for a member file which
-  is neither an alphanumeric ASCII character nor an ASCII underscore (‘_’) will
-  be replaced by an ASCII underscore in the respective preprocessor token. e.g.,
-  a member file located at “/path/to/file” will write “#define path_to_file”,
-  followed by a single ASCII space (‘ ’) and its member index on the same line.
-  If a member file is included in the archive multiple times, then occurrences
-  past the first will be suffixed with the number of previous occurrences.
+  Output information about the constructed _ARCHIVE_ as sibling files. For full
+  details, see **The Index Files**.
 
 *-P, --index-namespace*::
   Identical to *--index*, but all output preprocessor definitions are prefixed
@@ -143,6 +135,31 @@ evaluated.
   Markdown, this also removes the explicit cell-alignment row which would be
   included between the header cells and the first row of data cells; such output
   may thus be evaluated as a sequence of pipe-delimited rows.
+
+=== The Index Files ===
+
+Two additional sibling files are produced alongside the output _ARCHIVE_ when
+the *--index* option is given: a C header (suffixed as `.naix`) and a record
+table (suffixed as `.recs`) containing information about the packing run.
+
+All file-paths ingested from the packing directory are transformed into
+identifiers by transforming all characters which are neither an alphanumeric
+ASCII character into an ASCII underscore (‘_’). e.g., a member file located at
+“path/to/file” will be mapped to “path_to_file”. If such an identifier is
+already registered, then a suffix of “_1” is appended, incrementing the suffix
+with each occurrence. The generated identifier is used in both the C header and
+the record table.
+
+The C header writes “#define IDENTIFIER INDEX” for each member of the archive,
+where _IDENTIFIER_ is the generated identifier as above and _INDEX_ is the
+positional index of the file in the archive.
+
+The record table writes in a machine-friendly format. Individual records within
+the file are separated by the ASCII record-separator (_0x1E_), and fields within
+each record are separated by the ASCII unit-separator (_0x1F_). The first record
+of the table contains a single field: _DIRECTORY_ from the command arguments.
+Each record thereafter contains two fields: the relative path of the member file
+from _DIRECTORY_, then _IDENTIFIER_ as above.
 
 Exit Status
 -----------

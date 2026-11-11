@@ -90,6 +90,7 @@ enum {
 
     exclude,
     exclude_from,
+    single_file,
     files_from,
     index,
     index_namespace,
@@ -116,6 +117,7 @@ static const option_cfg_t s_options[] = {
 
     [exclude]         = { "exclude",         NULL, 'E', 0, true  },
     [exclude_from]    = { "exclude-from",    NULL, 'X', 0, true  },
+    [single_file]     = { "single-file",     NULL, 'O', 0, true  },
     [files_from]      = { "files-from",      NULL, 'T', 0, true  },
     [index]           = { "index",           NULL, 'I', 0, false },
     [index_namespace] = { "index-namespace", NULL, 'P', 0, false },
@@ -157,7 +159,7 @@ int parse_opts(const char **argv, options_t *opts) {
     };
 
     int match;
-    while ((match = parseopt(&parser)) >= 0) {
+    while ((match = parseopt(&parser)) != OPT_DONE) {
         switch (match) {
         case metadata: tryset_opmode(opmode_metadata);
         case list:     tryset_opmode(opmode_list);
@@ -167,6 +169,7 @@ int parse_opts(const char **argv, options_t *opts) {
         case directory:    target_optarg(opts->directory);
         case file:         target_optarg(opts->file);
         case format:       target_optarg(opts->format);
+        case single_file:  target_optarg(opts->single_file);
         case files_from:   target_optarg(opts->files_from);
         case exclude_from: target_optarg(opts->exclude_from);
         case exclude:      target_optarg(opts->exclude_pat);
@@ -224,6 +227,7 @@ static void exit_help(const char *name, int exit_status) {
     puts("  -P, --index-namespace    like --index, with namespace-prefixes");
     puts("  -N, --named              retain filenames in the archive");
     puts("  -R, --no-recursion       do not discover files in subdirectories");
+    puts("  -O, --single-file=FILE   specify FILE as the only member file");
     puts("  -S, --stripped           do not write the signed file-type header");
     puts("");
     puts("Tabulated data options:");

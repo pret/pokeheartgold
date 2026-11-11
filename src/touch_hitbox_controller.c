@@ -3,9 +3,9 @@
 #include "global.h"
 
 static void TouchHitboxControllerTemplate_Init(TouchHitboxControllerTemplate *template);
-static int sub_02026D88(TouchHitboxControllerTemplate *template, u32 unused, u32 touchNew);
-static int sub_02026DA4(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 unused);
-static void sub_02026DD8(TouchHitboxControllerTemplate *template, u8 a1);
+static int TouchHitboxControllerTemplate_CheckTouchBegin(TouchHitboxControllerTemplate *template, u32 unused, u32 touchNew);
+static int TouchHitboxControllerTemplate_CheckTouchEnd(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 unused);
+static void TouchHitboxControllerTemplate_SetHeldState(TouchHitboxControllerTemplate *template, u8 a1);
 
 TouchHitboxController *TouchHitboxController_Create(const TouchscreenHitbox *hitboxes, u32 numTemplates, TouchHitboxControllerCallback callback, void *callbackArg, enum HeapID heapID) {
     GF_ASSERT(numTemplates != 0);
@@ -44,8 +44,8 @@ void TouchHitboxController_Destroy(TouchHitboxController *controller) {
 
 typedef int (*TouchHitboxControllerTemplate_UnkCallback)(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 touchNew);
 static const TouchHitboxControllerTemplate_UnkCallback _020F6450[] = {
-    sub_02026D88,
-    sub_02026DA4,
+    TouchHitboxControllerTemplate_CheckTouchBegin,
+    TouchHitboxControllerTemplate_CheckTouchEnd,
 };
 
 BOOL TouchHitboxController_IsTriggered(TouchHitboxController *controller) {
@@ -83,33 +83,33 @@ BOOL TouchHitboxController_IsTriggered(TouchHitboxController *controller) {
     return triggered;
 }
 
-static int sub_02026D88(TouchHitboxControllerTemplate *template, u32 unused, u32 touchNew) {
+static int TouchHitboxControllerTemplate_CheckTouchBegin(TouchHitboxControllerTemplate *template, u32 unused, u32 touchNew) {
     if (template->touchActive && touchNew) {
-        sub_02026DD8(template, 1);
-        return 0;
+        TouchHitboxControllerTemplate_SetHeldState(template, 1);
+        return TOUCH_BUTTON_PRESSED;
     }
 
-    return -1;
+    return TOUCH_BUTTON_NOT_PRESSED;
 }
 
-static int sub_02026DA4(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 unused) {
+static int TouchHitboxControllerTemplate_CheckTouchEnd(TouchHitboxControllerTemplate *template, u32 touchHeld, u32 unused) {
     if (template->touchActive) {
         if (template->numFramesActive < 0xFFFF) {
             template->numFramesActive++;
         }
-        return 2;
+        return TOUCH_BUTTON_HELD;
     }
 
     if (touchHeld) {
-        sub_02026DD8(template, 0);
-        return 3;
+        TouchHitboxControllerTemplate_SetHeldState(template, 0);
+        return TOUCH_BUTTON_HELD_OUT_OF_BOUNDS;
     } else {
-        sub_02026DD8(template, 0);
-        return 1;
+        TouchHitboxControllerTemplate_SetHeldState(template, 0);
+        return TOUCH_BUTTON_RELEASED;
     }
 }
 
-static void sub_02026DD8(TouchHitboxControllerTemplate *template, u8 a1) {
+static void TouchHitboxControllerTemplate_SetHeldState(TouchHitboxControllerTemplate *template, u8 a1) {
     template->unkCallbackNum = a1;
     template->numFramesActive = 0;
 }

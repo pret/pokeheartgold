@@ -138,9 +138,9 @@
 .public UnloadDwcOverlay
 .public LoadOVY38
 .public UnloadOVY38
-.public LocationGmmDatIndexGetByCountryMsgNo
-.public LocationGmmDatRegionCountGetByCountryMsgNo
-.public LocationGmmDatGetEarthPlaceDatId
+.public GeonetLocations_GetIndexFromCountry
+.public GeonetLocations_GetLocationCountFromCountry
+.public GeonetLocations_GetNarcMemberIndex
 .public NNS_G3dGlbSetBaseScale
 .public NNSi_G3dModifyMatFlag
 .public NNS_G3dMdlGetMdlLightEnableFlag

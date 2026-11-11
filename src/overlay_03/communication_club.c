@@ -287,16 +287,16 @@ static void ov03_02254150(ListMenu *list, u16 cursorPos_unused, u8 itemsAbove) {
         BufferPlayersName(sCommClubManager->messageFormat[0], 1, sCommClubManager->playerProfile[1]);
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_00076, sCommClubManager->string[1]); // {STRVAR_1 51, 0, 0}:{STRVAR_1 3, 1, 0}
         StringExpandPlaceholders(sCommClubManager->messageFormat[0], sCommClubManager->string[0], sCommClubManager->string[1]);
-        AddTextPrinterParameterized(&sCommClubManager->windows[0], 0, sCommClubManager->string[0], 8, itemsAbove * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&sCommClubManager->windows[0], FONT_SYSTEM, sCommClubManager->string[0], 8, itemsAbove * 16, TEXT_SPEED_NOTRANSFER, NULL);
         BufferIntegerAsString(sCommClubManager->messageFormat[0], 2, PlayerProfile_GetTrainerID(sCommClubManager->playerProfile[1]) % 0x10000, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_ID_1, sCommClubManager->string[3]); // ID{STRVAR_1 54, 2, 0}
         StringExpandPlaceholders(sCommClubManager->messageFormat[0], sCommClubManager->string[2], sCommClubManager->string[3]);
-        AddTextPrinterParameterized(&sCommClubManager->windows[0], 0, sCommClubManager->string[2], 88, itemsAbove * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&sCommClubManager->windows[0], FONT_SYSTEM, sCommClubManager->string[2], 88, itemsAbove * 16, TEXT_SPEED_NOTRANSFER, NULL);
     } else {
         BufferIntegerAsString(sCommClubManager->messageFormat[0], 0, cursorPos + 1, 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_00077, sCommClubManager->string[1]); // {STRVAR_1 51, 0, 0}:
         StringExpandPlaceholders(sCommClubManager->messageFormat[0], sCommClubManager->string[0], sCommClubManager->string[1]);
-        AddTextPrinterParameterized(&sCommClubManager->windows[0], 0, sCommClubManager->string[0], 8, itemsAbove * 16, TEXT_SPEED_NOTRANSFER, NULL);
+        AddTextPrinterParameterized(&sCommClubManager->windows[0], FONT_SYSTEM, sCommClubManager->string[0], 8, itemsAbove * 16, TEXT_SPEED_NOTRANSFER, NULL);
     }
 }
 
@@ -370,7 +370,7 @@ static void ov03_022543AC(CommClubManager *commClubManager_unused) {
     BufferIntegerAsString(sCommClubManager->messageFormat[1], 1, PlayerProfile_GetTrainerID(sCommClubManager->playerProfile[0]) % 0x10000, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
     ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_ID_2, sCommClubManager->string[6]); // {STRVAR_1 3, 0, 0}\nID{STRVAR_1 54, 1, 0}
     StringExpandPlaceholders(sCommClubManager->messageFormat[1], sCommClubManager->string[7], sCommClubManager->string[6]);
-    AddTextPrinterParameterized(&sCommClubManager->windows[1], 0, sCommClubManager->string[7], 2, 2, 0, NULL);
+    AddTextPrinterParameterized(&sCommClubManager->windows[1], FONT_SYSTEM, sCommClubManager->string[7], 2, 2, 0, NULL);
 }
 
 static void ov03_02254420() {
@@ -492,7 +492,7 @@ static void ov03_022546B0(void *arg0, CommClubManager *commClubManager) {
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetAutoScrollParam(0);
         TextFlags_SetCanTouchSpeedUpPrint(FALSE);
-        sCommClubManager->printerID = AddTextPrinterParameterized(&sCommClubManager->windows[2], 1, sCommClubManager->string[5], 0, 0, 1, NULL);
+        sCommClubManager->printerID = AddTextPrinterParameterized(&sCommClubManager->windows[2], FONT_MESSAGE, sCommClubManager->string[5], 0, 0, 1, NULL);
     }
     sCommClubManager->unkA8 = 0;
     sCommClubManager->unkA1 = 1;
@@ -599,11 +599,11 @@ static void ov03_02254A54(ListMenu *listMenu_unused, u16 arg1_unused, u8 arg2) {
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_00079, sCommClubManager->string[1]); // {STRVAR_1 3, 0, 0}
         StringExpandPlaceholders(sCommClubManager->messageFormat[0], sCommClubManager->string[0], sCommClubManager->string[1]);
         s32 temp_r4 = arg2 * 16;
-        AddTextPrinterParameterized(&sCommClubManager->windows[0], 0, sCommClubManager->string[0], 8, temp_r4, 0, NULL);
+        AddTextPrinterParameterized(&sCommClubManager->windows[0], FONT_SYSTEM, sCommClubManager->string[0], 8, temp_r4, 0, NULL);
         BufferIntegerAsString(sCommClubManager->messageFormat[0], 2, PlayerProfile_GetTrainerID_VisibleHalf(sub_02034818(spC)), 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
         ReadMsgDataIntoString(sCommClubManager->msgData, CommunicationClub_Text_ID_1, sCommClubManager->string[3]); // ID{STRVAR_1 54, 2, 0}
         StringExpandPlaceholders(sCommClubManager->messageFormat[0], sCommClubManager->string[2], sCommClubManager->string[3]);
-        AddTextPrinterParameterized(&sCommClubManager->windows[0], 0, sCommClubManager->string[2], 72, temp_r4, 0, NULL);
+        AddTextPrinterParameterized(&sCommClubManager->windows[0], FONT_SYSTEM, sCommClubManager->string[2], 72, temp_r4, 0, NULL);
     }
 }
 
@@ -712,7 +712,7 @@ static void ov03_02254C9C(CommClubManager *commClubManager_unused) {
     FillWindowPixelBuffer(&sCommClubManager->windows[1], 15);
     ReadMsgDataIntoString(sCommClubManager->msgData, strno, sCommClubManager->string[7]);
     StringExpandPlaceholders(sCommClubManager->messageFormat[1], sCommClubManager->string[6], sCommClubManager->string[7]);
-    AddTextPrinterParameterized(&sCommClubManager->windows[1], 0, sCommClubManager->string[6], 2, 2, 0, NULL);
+    AddTextPrinterParameterized(&sCommClubManager->windows[1], FONT_SYSTEM, sCommClubManager->string[6], 2, 2, 0, NULL);
 }
 
 static void ov03_02254D24(u32 arg0, CommClubManager *commClubManager) {

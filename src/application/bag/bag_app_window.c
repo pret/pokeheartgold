@@ -206,7 +206,7 @@ static void BagApp_PrintItemDescriptionOnWindowMain0(BagAppData *appData, u16 it
     } else {
         string = NewString_ReadMsgData(appData->msgData, msg_0010_00097);
     }
-    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION], 0, string, 20, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION], FONT_SYSTEM, string, 20, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
 }
 
@@ -218,27 +218,27 @@ static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId) {
 
     // TYPE
     string = NewString_ReadMsgData(appData->msgData, msg_0010_00101);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
 
     // PP
     string = NewString_ReadMsgData(appData->msgData, msg_0010_00089);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
 
     // CATEGORY
     string = NewString_ReadMsgData(appData->msgData, msg_0010_00092);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 72, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 72, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
 
     // POWER
     string = NewString_ReadMsgData(appData->msgData, msg_0010_00090);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 168, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 168, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
 
     // ACCURACY
     string = NewString_ReadMsgData(appData->msgData, msg_0010_00091);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 168, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 168, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
 
     attr = GetMoveMaxPP(moveId, 0);
@@ -246,7 +246,7 @@ static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId) {
     BufferIntegerAsString(appData->msgFormat, 0, attr, 2, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, string);
     String_Delete(string);
-    AddTextPrinterParameterizedWithColor(window, 0, appData->formattedStrbuf, 48, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, appData->formattedStrbuf, 48, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
 
     attr = GetMoveAttr(moveId, MOVEATTR_POWER);
     if (attr <= 1) {
@@ -257,7 +257,7 @@ static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId) {
     BufferIntegerAsString(appData->msgFormat, 0, attr, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, string);
     String_Delete(string);
-    AddTextPrinterParameterizedWithColor(window, 0, appData->formattedStrbuf, 232, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, appData->formattedStrbuf, 232, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
 
     attr = GetMoveAttr(moveId, MOVEATTR_ACCURACY);
     if (attr == 0) {
@@ -268,7 +268,7 @@ static void BagApp_PrintTMHMDetails(BagAppData *appData, u16 itemId) {
     BufferIntegerAsString(appData->msgFormat, 0, attr, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, string);
     String_Delete(string);
-    AddTextPrinterParameterizedWithColor(window, 0, appData->formattedStrbuf, 232, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, appData->formattedStrbuf, 232, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
 
     ScheduleWindowCopyToVram(window);
 }
@@ -291,7 +291,7 @@ static void BagApp_FormatTMQuantityString_DPPt(BagAppData *appData, u16 quantity
     String *string = String_New(10, HEAP_ID_BAG);
     BufferIntegerAsString(appData->msgFormat, 0, quantity, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, string, appData->tmCountString_DPPt);
-    u32 result = FontID_String_GetWidth(0, string, 0);
+    u32 result = FontID_String_GetWidth(FONT_SYSTEM, string, 0);
     String_Delete(string);
 }
 
@@ -395,7 +395,7 @@ void BagApp_DrawContextMenuTopScreen(BagAppData *appData, u8 *stringIndices, int
     String *formattedStrbuf = String_New(108, HEAP_ID_BAG);
     BagApp_BufferItemName(appData, pocket->scroll + appData->cursorPos - 8, 0);
     StringExpandPlaceholders(appData->msgFormat, formattedStrbuf, itemIsSelectedMsg);
-    AddTextPrinterParameterized(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 1, formattedStrbuf, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
+    AddTextPrinterParameterized(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], FONT_MESSAGE, formattedStrbuf, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
     String_Delete(formattedStrbuf);
     String_Delete(itemIsSelectedMsg);
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION]);
@@ -415,7 +415,7 @@ void BagApp_ClearItemDescriptionWindow(BagAppData *appData, Window *window) {
 void BagApp_PrintPocketDescriptionOnWindow(BagAppData *appData, Window *window, int pocket) {
     String *string = NewString_ReadMsgData(appData->msgData, msg_0010_00120 + pocket);
     FillWindowPixelBuffer(window, 0);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 20, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 20, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     String_Delete(string);
     ScheduleWindowCopyToVram(window);
 }
@@ -442,7 +442,7 @@ void BagApp_PrintMoveTheItemMessage(BagAppData *appData) {
     BagApp_BufferItemName(appData, appData->moveItemOriginalSlot, 0);
     StringExpandPlaceholders(appData->msgFormat, formattedString, string);
     DrawFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
-    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 1, formattedString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], FONT_MESSAGE, formattedString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION]);
     String_Delete(formattedString);
     String_Delete(string);
@@ -464,7 +464,7 @@ void BagApp_PrintQuantityDigitWindows(BagAppData *appData, u32 numDigits) {
         quantity -= digit * denom;
         denom /= 10;
         FillWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], 0);
-        AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], 0, digitStrBuf, 0, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i], FONT_SYSTEM, digitStrBuf, 0, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_QUANTITY_DIGIT_1 + i]);
     }
     String_Delete(digitStrBuf);
@@ -497,7 +497,7 @@ u8 BagApp_PrintMessage(BagAppData *appData, int whichWindow) {
     ScheduleWindowCopyToVram(window);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetAutoScrollParam(0);
-    return AddTextPrinterParameterized(window, 1, appData->formattedStrbuf, 0, 0, Options_GetTextFrameDelay(appData->options), BagApp_PrintMessageCallback);
+    return AddTextPrinterParameterized(window, FONT_MESSAGE, appData->formattedStrbuf, 0, 0, Options_GetTextFrameDelay(appData->options), BagApp_PrintMessageCallback);
 }
 
 static int BagApp_PrintMessageCallback(TextPrinterTemplate *printer, u16 cmd) {
@@ -545,8 +545,8 @@ void BagApp_PrintSaleTotalInWindow(BagAppData *appData) {
     String *string = NewString_ReadMsgData(appData->msgData, msg_0010_00083);
     BufferIntegerAsString(appData->msgFormat, 0, appData->unitSellPrice * appData->quantity, 6, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, string);
-    u32 width = FontID_String_GetWidth(0, appData->formattedStrbuf, 0);
-    AddTextPrinterParameterizedWithColor(window, 0, appData->formattedStrbuf, 0, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    u32 width = FontID_String_GetWidth(FONT_SYSTEM, appData->formattedStrbuf, 0);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, appData->formattedStrbuf, 0, 4, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(window);
     String_Delete(string);
 }
@@ -557,7 +557,7 @@ void BagApp_PrintMoneyOnWindow(BagAppData *appData, int isNotMoney) {
     if (isNotMoney == 0) {
         FillWindowPixelBuffer(window, 0);
         String *moneyString = NewString_ReadMsgData(appData->msgData, msg_0010_00080);
-        AddTextPrinterParameterizedWithColor(window, 0, moneyString, 4, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, moneyString, 4, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         String_Delete(moneyString);
     } else {
         FillWindowPixelRect(window, 0, 0, 16, 72, 16);
@@ -565,8 +565,8 @@ void BagApp_PrintMoneyOnWindow(BagAppData *appData, int isNotMoney) {
     String *moneyAmountString = NewString_ReadMsgData(appData->msgData, msg_0010_00081);
     BufferIntegerAsString(appData->msgFormat, 0, PlayerProfile_GetMoney(appData->playerProfile), 6, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, strbuf, moneyAmountString);
-    u32 width = FontID_String_GetWidth(0, strbuf, 0);
-    AddTextPrinterParameterizedWithColor(window, 0, strbuf, 68 - (width + 8), 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    u32 width = FontID_String_GetWidth(FONT_SYSTEM, strbuf, 0);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, strbuf, 68 - (width + 8), 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(window);
     String_Delete(moneyAmountString);
     String_Delete(strbuf);
@@ -580,15 +580,15 @@ void BagApp_DrawPoffinCountMsgBox_DPPt(BagAppData *appData) {
     DrawFrameAndWindow1(window, TRUE, 0x3F7, 14);
 
     msg = NewString_ReadMsgData(appData->msgData, msg_0010_00115);
-    AddTextPrinterParameterized(window, 0, msg, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
+    AddTextPrinterParameterized(window, FONT_SYSTEM, msg, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);
     String_Delete(msg);
 
     msg = NewString_ReadMsgData(appData->msgData, msg_0010_00116);
     BufferIntegerAsString(appData->msgFormat, 0, 0, 3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     StringExpandPlaceholders(appData->msgFormat, appData->formattedStrbuf, msg);
     String_Delete(msg);
-    u32 width = FontID_String_GetWidth(0, appData->formattedStrbuf, 0);
-    AddTextPrinterParameterized(window, 0, appData->formattedStrbuf, 88 - width, 16, TEXT_SPEED_NOTRANSFER, NULL);
+    u32 width = FontID_String_GetWidth(FONT_SYSTEM, appData->formattedStrbuf, 0);
+    AddTextPrinterParameterized(window, FONT_SYSTEM, appData->formattedStrbuf, 88 - width, 16, TEXT_SPEED_NOTRANSFER, NULL);
 
     ScheduleWindowCopyToVram(window);
 }
@@ -597,10 +597,10 @@ void BagApp_PrintCancel(BagAppData *appData, int centered) {
     String *cancel = NewString_ReadMsgData(appData->msgData, msg_0010_00008);
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0);
     if (centered == 0) {
-        u32 width = FontID_String_GetWidth(0, cancel, 0);
-        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0, cancel, (48 - width) / 2 + 8, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        u32 width = FontID_String_GetWidth(FONT_SYSTEM, cancel, 0);
+        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], FONT_SYSTEM, cancel, (48 - width) / 2 + 8, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     } else {
-        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], 0, cancel, 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON], FONT_SYSTEM, cancel, 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     }
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_CANCEL_BUTTON]);
     String_Delete(cancel);
@@ -655,7 +655,7 @@ void BagApp_RedrawItemNameWindows(BagAppData *appData, int scroll, int itemSlot,
             } else if (i == appData->moveItemOriginalSlot) {
                 BagApp_PrintItemNameAndMaybeQuantityOnWindow(appData, &appData->windows_sub[targetWindowBase + count], appData->itemNameStrings[i], pocket, i);
             } else {
-                AddTextPrinterParameterizedWithColor(&appData->windows_sub[targetWindowBase + count], 0, appData->itemNameStrings[i], 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+                AddTextPrinterParameterizedWithColor(&appData->windows_sub[targetWindowBase + count], FONT_SYSTEM, appData->itemNameStrings[i], 0, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
             }
             if (++count >= numItemsOnPage) {
                 break;
@@ -687,14 +687,14 @@ void BagApp_ClearSelectedItemWindow(BagAppData *appData) {
 static void BagApp_PrintItemNameAndMaybeQuantityOnWindow(BagAppData *appData, Window *window, String *string, BagViewPocket *pocket, int slotId) {
     switch (pocket->pocketId) {
     case POCKET_TMHMS:
-        AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         BagApp_PrintTMorHMNumberOnWindow(appData, window, &pocket->slots[slotId], 16);
         if (pocket->slots[slotId].id >= ITEM_TM01 && pocket->slots[slotId].id <= ITEM_TM92) {
             PrintItemQuantityOnWindow(appData->msgFormat, appData->msgData, window, pocket->slots[slotId].quantity);
         }
         break;
     case POCKET_KEY_ITEMS:
-        AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         if (Bag_GetRegisteredItem1(appData->bag) == pocket->slots[slotId].id) {
             BagApp_DrawRegisteredItemIconOnWindow(appData, window, 16, 0);
         }
@@ -703,7 +703,7 @@ static void BagApp_PrintItemNameAndMaybeQuantityOnWindow(BagAppData *appData, Wi
         }
         break;
     default:
-        AddTextPrinterParameterizedWithColor(window, 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         PrintItemQuantityOnWindow(appData->msgFormat, appData->msgData, window, pocket->slots[slotId].quantity);
     }
 }
@@ -711,7 +711,7 @@ static void BagApp_PrintItemNameAndMaybeQuantityOnWindow(BagAppData *appData, Wi
 static void PrintItemQuantityOnWindow(MessageFormat *msgFormat, MsgData *msgData, Window *window, u16 quantity) {
     BufferIntegerAsString(msgFormat, 0, quantity, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     String *string = ReadMsgData_ExpandPlaceholders(msgFormat, msgData, msg_0010_00087, HEAP_ID_BAG);
-    AddTextPrinterParameterizedWithColor(window, 0, string, 48, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, 48, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     String_Delete(string);
 }
 
@@ -726,7 +726,7 @@ void BagApp_PrintPageCounter(BagAppData *appData, int pocketCount, int pocketScr
     BufferIntegerAsString(appData->msgFormat, 0, page + 1, 3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     BufferIntegerAsString(appData->msgFormat, 1, pocketCount, 3, PRINTING_MODE_RIGHT_ALIGN, TRUE);
     String *string = ReadMsgData_ExpandPlaceholders(appData->msgFormat, appData->msgData, msg_0010_00022, HEAP_ID_BAG);
-    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_PAGE_COUNTER]);
     String_Delete(string);
 }
@@ -734,7 +734,7 @@ void BagApp_PrintPageCounter(BagAppData *appData, int pocketCount, int pocketScr
 void BagApp_PrintContextMenuStringOnWindowCentered(Window *window, String **strings, int index) {
     FillWindowPixelBuffer(window, 0);
     if (index != 0xFF) {
-        AddTextPrinterParameterizedWithColor(window, 0, strings[index], (8 * GetWindowWidth(window) - FontID_String_GetWidth(0, strings[index], 0)) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+        AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, strings[index], (8 * GetWindowWidth(window) - FontID_String_GetWidth(FONT_SYSTEM, strings[index], 0)) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     }
     ScheduleWindowCopyToVram(window);
 }
@@ -746,12 +746,12 @@ void BagApp_ClearFourWindowsAt(Window *window) {
 }
 
 void BagApp_PrintTrashContextOptionOnWindow(BagAppData *appData) {
-    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], 0, appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_TRASH], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], FONT_SYSTEM, appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_TRASH], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
 }
 
 void BagApp_PrintSellContextOptionOnWindow(BagAppData *appData) {
-    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], 0, appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_SELL], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON], FONT_SYSTEM, appData->contextMenuStrings[BAG_ITEM_CONTEXT_MENU_ACTION_SELL], 5, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
     ScheduleWindowCopyToVram(&appData->windows_sub[BAG_APP_WINDOW_SUB_SELL_OR_TRASH_BUTTON]);
 }
 

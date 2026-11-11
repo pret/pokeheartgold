@@ -175,7 +175,7 @@ typedef struct PartyPokemon {
     /* 0x098 */ u16 spatk;        //!< The Pokemon's Special Attack stat.
     /* 0x09A */ u16 spdef;        //!< The Pokemon's Special Defense stat.
     /* 0x09C */ Mail mail;
-    /* 0x0D4 */ CAPSULE sealCoords; // seal coords
+    /* 0x0D4 */ BallCapsule sealCoords; // seal coords
 } PartyPokemon;
 
 typedef struct {

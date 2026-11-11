@@ -44,5 +44,6 @@ void sub_02036024(void);
 void sub_02036274(void);
 void sub_0203778C(MATHRandContext32 *arg0);
 BOOL sub_02037958(void);
+void sub_02037930(int a0);
 
 #endif // POKEHEARTGOLD_UNK_02035900_H

@@ -3,9 +3,14 @@
 #include "constants/abilities.h"
 
 #include "battle/battle_message_structs.h"
+#include "battle/battle_system.h"
+#include "battle/overlay_12_0224E4FC.h"
 #include "battle/party_gauge.h"
 
 #include "pokemon.h"
+#include "unk_0202FBCC.h"
+#include "unk_02035900.h"
+#include "unk_02074E5C.h"
 
 static void PartyGaugeData_New(BattleSystem *battleSystem, BattleContext *ctx, PartyGaugeData *partyGauge, int command, int battler);
 
@@ -164,7 +169,7 @@ void BattleController_EmitSetEncounter(BattleSystem *battleSystem, int battler) 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), TRUE);
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
     for (i = 0; i < MAX_MON_MOVES; i++) {
@@ -186,7 +191,7 @@ void BattleController_EmitShowEncounter(BattleSystem *battleSystem, int battler)
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
     message.personality = battleSystem->ctx->battleMons[battler].personality;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 1);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), TRUE);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
     message.capturedBall = battleSystem->ctx->battleMons[battler].ball;
@@ -220,7 +225,7 @@ void BattleController_EmitShowPokemon(BattleSystem *battleSystem, int battler, i
 
     message.isShiny = battleSystem->ctx->battleMons[battler].shiny;
     message.species = battleSystem->ctx->battleMons[battler].species;
-    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), 0);
+    message.cryModulation = ov12_02256748(battleSystem->ctx, battler, BattleSystem_GetBattlerType(battleSystem, battler), FALSE);
     message.selectedPartySlot = battleSystem->ctx->selectedMonIndex[battler];
     message.formNum = battleSystem->ctx->battleMons[battler].form;
 
@@ -784,14 +789,14 @@ void BattleController_EmitPrintMessage(BattleSystem *battleSystem, BattleContext
 void BattleController_EmitPlayMoveAnimation(BattleSystem *battleSystem, BattleContext *ctx, u16 move) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, NULL, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, 0, ctx->battlerIdAttacker, ctx->battlerIdTarget, move);
     SendMessage(battleSystem, 1, ctx->battlerIdAttacker, &animation, sizeof(MoveAnimation));
 }
 
 void BattleController_SetMoveAnimationAttackerToDefender(BattleSystem *battleSystem, BattleContext *ctx, u16 move, int attacker, int defender) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, NULL, attacker, defender, move);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 0, 0, attacker, defender, move);
     SendMessage(battleSystem, 1, attacker, &animation, sizeof(MoveAnimation));
 }
 
@@ -935,14 +940,14 @@ void BattleController_EmitPrintTrainerMessage(BattleSystem *battleSystem, int ba
 void BattleController_EmitPlayStatusEffect(BattleSystem *battleSystem, BattleContext *ctx, int battler, int secondaryAnimID) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, battler, battler, NULL);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, battler, battler, 0);
     SendMessage(battleSystem, 1, battler, &animation, sizeof(MoveAnimation));
 }
 
 void BattleController_EmitPlayStatusEffectAttackerToDefender(BattleSystem *battleSystem, BattleContext *ctx, int attacker, int defender, int secondaryAnimID) {
     MoveAnimation animation;
 
-    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, attacker, defender, NULL);
+    BattleController_SetMoveAnimation(battleSystem, ctx, &animation, 1, secondaryAnimID, attacker, defender, 0);
     SendMessage(battleSystem, 1, attacker, &animation, sizeof(MoveAnimation));
 }
 
@@ -1185,12 +1190,12 @@ void BattleController_EmitHidePartyGauge(BattleSystem *battleSystem, int battler
 
 void BattleController_EmitLoadPartyGaugeGraphics(BattleSystem *battleSystem) {
     int command = BATTLE_COMMAND_LOAD_PARTY_GAUGE_GRAPHICS;
-    SendMessage(battleSystem, 1, NULL, &command, sizeof(int));
+    SendMessage(battleSystem, 1, 0, &command, sizeof(int));
 }
 
 void BattleController_EmitFreePartyGaugeGraphics(BattleSystem *battleSystem) {
     int command = BATTLE_COMMAND_FREE_PARTY_GAUGE_GRAPHICS;
-    SendMessage(battleSystem, 1, NULL, &command, sizeof(int));
+    SendMessage(battleSystem, 1, 0, &command, sizeof(int));
 }
 
 void BattleController_EmitIncrementGameStat(BattleSystem *battleSystem, int battler, int battlerType, int record) {

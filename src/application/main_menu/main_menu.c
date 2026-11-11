@@ -113,7 +113,7 @@ typedef struct UnkStruct_ov74_02235414 {
     u32 gmmId;
     u32 baseTile;
     u32 paletteNum2;
-    u32 fontId;
+    enum Font fontId;
     u8 unk44[0x10];
 } UnkStruct_ov74_02235414;
 
@@ -890,9 +890,9 @@ static void ClearWirelessIcon(MainMenuAppData *data, u32 x, u32 y) {
 
 static void PrintPlayerInfoField(Window *window, MsgData *msgData, MessageFormat *msgFmt, u32 color, u32 msgId, u32 y) {
     String *string = ReadMsgData_ExpandPlaceholders(msgFmt, msgData, msgId, HEAP_ID_MAIN_MENU);
-    int stringPixelWidth = FontID_String_GetWidth(0, string, GetFontAttribute(0, 2));
+    int stringPixelWidth = FontID_String_GetWidth(FONT_SYSTEM, string, GetFontAttribute(0, 2));
     u32 x = GetWindowWidth(window) * 8 - (stringPixelWidth + 32);
-    AddTextPrinterParameterizedWithColor(window, 0, string, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_SYSTEM, string, x, y, TEXT_SPEED_NOTRANSFER, color, NULL);
     String_Delete(string);
 }
 
@@ -937,7 +937,7 @@ static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruc
         }
 
         String *string = ReadMsgData_ExpandPlaceholders(messageFormat, msgData, sContinueButtonMsgs[i], HEAP_ID_MAIN_MENU);
-        AddTextPrinterParameterizedWithColor(a2->window, 0, string, 32, i * 16, TEXT_SPEED_NOTRANSFER, textColor, NULL);
+        AddTextPrinterParameterizedWithColor(a2->window, FONT_SYSTEM, string, 32, i * 16, TEXT_SPEED_NOTRANSFER, textColor, NULL);
         String_Delete(string);
     }
 

@@ -232,8 +232,8 @@ void RadioShow_Main(RadioShow *radioShow) {
 void RadioShow_PrintTitleAndHost(RadioShow *radioShow) {
     FillWindowPixelBuffer(radioShow->showTitleWindow, 0);
     FillWindowPixelBuffer(radioShow->showHostWindow, 0);
-    AddTextPrinterParameterizedWithColor(radioShow->showTitleWindow, 0, radioShow->showTitle, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
-    AddTextPrinterParameterizedWithColor(radioShow->showHostWindow, 0, radioShow->showHost, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(radioShow->showTitleWindow, FONT_SYSTEM, radioShow->showTitle, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(radioShow->showHostWindow, FONT_SYSTEM, radioShow->showHost, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(radioShow->showTitleWindow);
     ScheduleWindowCopyToVram(radioShow->showHostWindow);
 }
@@ -242,7 +242,7 @@ void PrintRadioLine(RadioShow *radioShow, String *msg, int y) {
     if (radioShow->statik == TRUE) {
         String_RadioAddStatic(msg, 70);
     }
-    AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, 0, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
+    AddTextPrinterParameterizedWithColor(radioShow->showScriptWindow, FONT_SYSTEM, msg, 0, y * 16, TEXT_SPEED_NOTRANSFER, radioShow->textColor, NULL);
 }
 
 BOOL RadioPrintAdvance(RadioShow *radioShow) {

@@ -521,11 +521,11 @@ static void FlyMap_LoadBGGraphics(PokegearMapAppData *mapApp) {
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_0);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_1);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_MAIN_2);
-    FontID_Alloc(4, mapApp->heapID);
+    FontID_Alloc(FONT_UNK_4, mapApp->heapID);
 }
 
 static void FlyMap_UnloadBGGraphics(PokegearMapAppData *mapApp) {
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     Heap_Free(mapApp->unk_154[3]);
     Heap_Free(mapApp->unk_154[2]);
     Heap_Free(mapApp->unk_154[1]);
@@ -698,9 +698,9 @@ static void FlyMap_FinalizeGraphicsSetup(PokegearMapAppData *mapApp) {
     }
     ov101_021EB1E0(mapApp, TRUE);
     ov101_021EA608(mapApp, TRUE);
-    textX = FontID_String_GetWidth(4, mapApp->closeString, 0);
+    textX = FontID_String_GetWidth(FONT_UNK_4, mapApp->closeString, 0);
     textX = (48 - textX) / 2;
-    AddTextPrinterParameterizedWithColor(&mapApp->windows[8], 4, mapApp->closeString, textX, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&mapApp->windows[8], FONT_UNK_4, mapApp->closeString, textX, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(3, 1, 0), NULL);
     Sprite_SetDrawFlag(objects[PGMAP_SPRITE_CURSOR].sprite, TRUE);
     PokegearObjectsManager_UpdateAllSpritesPos(mapApp->objManager);
     ScheduleBgTilemapBufferTransfer(mapApp->pokegear->bgConfig, GF_BG_LYR_SUB_0);

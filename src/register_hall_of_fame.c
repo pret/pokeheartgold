@@ -1420,7 +1420,7 @@ static void RegisterHallOfFame_IndivMonsScene_InitWindows(RegisterHallOfFameData
 
     FillWindowPixelBuffer(&data->windows[0], 0);
     ReadMsgDataIntoString(data->msgData, msg_0180_00000, data->strbuf1); // The Hall of Fame!
-    AddTextPrinterParameterizedWithColor(&data->windows[0], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows[0], FONT_SYSTEM, data->strbuf1, 128 - FontID_String_GetWidth(FONT_SYSTEM, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&data->windows[0]);
 }
 
@@ -1440,7 +1440,7 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     ReadMsgDataIntoString(data->msgData, msg_0180_00004, data->strbuf1);
     BufferBoxMonNickname(data->msgFormat, 0, boxmon);
     StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
-    AddTextPrinterParameterizedWithColor(&windows[0], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&windows[0], FONT_SYSTEM, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[0]);
 
     FillWindowPixelBuffer(&windows[1], 0);
@@ -1455,19 +1455,19 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
     }
     BufferBoxMonSpeciesName(data->msgFormat, 0, boxmon);
     StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
-    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&windows[1], FONT_SYSTEM, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     ReadMsgDataIntoString(data->msgData, msg_0180_00005, data->strbuf1);
     BufferIntegerAsString(data->msgFormat, 0, hofMon->level, 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
-    AddTextPrinterParameterizedWithColor(&windows[1], 0, data->strbuf2, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&windows[1], FONT_SYSTEM, data->strbuf2, 2, 16, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[1]);
 
     FillWindowPixelBuffer(&windows[2], 0);
     ReadMsgDataIntoString(data->msgData, msg_0180_00006, data->strbuf1);
     BufferBoxMonOTName(data->msgFormat, 0, boxmon);
     StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
-    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&windows[2], FONT_SYSTEM, data->strbuf2, 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     switch (RegisterHallOfFame_GetMetLocationType(data, mon, data->args->profile)) {
     case REGHOF_METLOC_CAUGHT:
@@ -1505,7 +1505,7 @@ static void RegisterHallOfFame_IndivMonsScene_PrintMonDetailsOnWindow(RegisterHa
         StringExpandPlaceholders(data->msgFormat, data->strbuf2, data->strbuf1);
         break;
     }
-    AddTextPrinterParameterizedWithColor(&windows[2], 0, data->strbuf2, 2, 24, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&windows[2], FONT_SYSTEM, data->strbuf2, 2, 24, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowPixelsToVram_TextMode(&windows[2]);
 }
 
@@ -2322,7 +2322,7 @@ static void RegisterHallOfFame_WholePartyScene_InitWindows(RegisterHallOfFameDat
 
     FillWindowPixelBuffer(&data->windows[0], 1);
     ReadMsgDataIntoString(data->msgData, msg_0180_00016, data->strbuf1);
-    AddTextPrinterParameterizedWithColor(&data->windows[0], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows[0], FONT_SYSTEM, data->strbuf1, 128 - FontID_String_GetWidth(FONT_SYSTEM, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowToVram(&data->windows[0]);
 
     FillWindowPixelBuffer(&data->windows[1], 1);
@@ -2332,7 +2332,7 @@ static void RegisterHallOfFame_WholePartyScene_InitWindows(RegisterHallOfFameDat
     BufferIntegerAsString(data->msgFormat, 2, GetIGTHours(data->args->igt), 3, PRINTING_MODE_LEFT_ALIGN, TRUE);
     BufferIntegerAsString(data->msgFormat, 3, GetIGTMinutes(data->args->igt), 2, PRINTING_MODE_LEADING_ZEROS, TRUE);
     StringExpandPlaceholders(data->msgFormat, data->strbuf1, data->strbuf2);
-    AddTextPrinterParameterizedWithColor(&data->windows[1], 0, data->strbuf1, 128 - FontID_String_GetWidth(0, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows[1], FONT_SYSTEM, data->strbuf1, 128 - FontID_String_GetWidth(FONT_SYSTEM, data->strbuf1, 0) / 2, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     CopyWindowToVram(&data->windows[1]);
 }
 

@@ -559,7 +559,7 @@ BOOL OakSpeech_Init(OverlayManager *ovyMan, int *pState) {
     data->lastChosenGender = 0;
     data->frameDelayCounter = 0;
     TextFlags_SetCanTouchSpeedUpPrint(FALSE);
-    FontID_Alloc(4, data->heapID);
+    FontID_Alloc(FONT_UNK_4, data->heapID);
     return TRUE;
 }
 
@@ -639,7 +639,7 @@ BOOL OakSpeech_Main(OverlayManager *ovyMan, int *pState) {
 BOOL OakSpeech_Exit(OverlayManager *ovyMan, int *pState) {
     OakSpeechData *data = OverlayManager_GetData(ovyMan);
     enum HeapID heapID = data->heapID;
-    FontID_Release(4);
+    FontID_Release(FONT_UNK_4);
     PlayerName_StringToFlat(Save_PlayerData_GetProfile(data->saveData), data->namingScreenArgs_Player->nameInputString);
     PlayerProfile_SetTrainerGender(Save_PlayerData_GetProfile(data->saveData), data->namingScreenArgs_Player->playerGenderOrMonSpecies);
     Save_Misc_RivalName_Set(Save_Misc_Get(data->saveData), data->namingScreenArgs_Rival->nameInputString);
@@ -953,7 +953,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
         StringExpandPlaceholders(data->msgFormat, data->string, temp);
         String_Delete(temp);
 
-        data->textPrinter = AddTextPrinterParameterized(&data->dialogWindow, 1, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
+        data->textPrinter = AddTextPrinterParameterized(&data->dialogWindow, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
         data->printDialogMsgState = 1;
         break;
     }
@@ -1005,7 +1005,7 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
             windowTemplate.height = height;
             AddWindow(data->bgConfig, &data->fullScreenMsgWindow, &windowTemplate);
             FillWindowPixelRect(&data->fullScreenMsgWindow, 0, 0, 0, 0xC0, 0xC0);
-            AddTextPrinterParameterizedWithColor(&data->fullScreenMsgWindow, 0, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&data->fullScreenMsgWindow, FONT_SYSTEM, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 0), NULL);
             break;
         case 0:
         case 2:
@@ -1018,7 +1018,7 @@ static BOOL OakSpeech_PrintAndFadeFullScreenText(OakSpeechData *data, int msgNum
             }
             AddWindow(data->bgConfig, &data->fullScreenMsgWindow, &windowTemplate);
             FillWindowPixelRect(&data->fullScreenMsgWindow, 0, 0, 0, 0xC0, 0xC0);
-            AddTextPrinterParameterizedWithColor(&data->fullScreenMsgWindow, 0, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&data->fullScreenMsgWindow, FONT_SYSTEM, data->string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
             break;
         }
         String_Delete(data->string);
@@ -1137,10 +1137,10 @@ static void OakSpeech_PrintMultichoiceMenu(OakSpeechData *data, int msg1, int ms
     for (i = 0; i < numChoices; ++i) {
         string = String_New(0x400, data->heapID);
         ReadMsgDataIntoString(data->msgData, msgIds[i], string);
-        x = FontID_String_GetWidth(0, string, 0);
+        x = FontID_String_GetWidth(FONT_SYSTEM, string, 0);
         AddWindow(data->bgConfig, &data->multichoiceMenuButtonWindows[i], &sMultichoiceMenuButtonWindowTemplates[numChoices - 2][i]);
         FillWindowPixelRect(&data->multichoiceMenuButtonWindows[i], 0, 0, 0, 0xC0, 0xC0);
-        AddTextPrinterParameterizedWithColor(&data->multichoiceMenuButtonWindows[i], 4, string, (sMultichoiceMenuButtonWindowTemplates[numChoices - 2][i].width * 8 - x) / 2, y, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&data->multichoiceMenuButtonWindows[i], FONT_UNK_4, string, (sMultichoiceMenuButtonWindowTemplates[numChoices - 2][i].width * 8 - x) / 2, y, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
         CopyWindowToVram(&data->multichoiceMenuButtonWindows[i]);
         String_Delete(string);
     }
@@ -2173,7 +2173,7 @@ static void OakSpeech_ShowTutorialTouchMsg(OakSpeechData *data) {
     ReadMsgDataIntoString(data->msgData, msg_0219_00060, string);
     AddWindow(data->bgConfig, window, &ov53_021E8518);
     FillWindowPixelBuffer(window, 0);
-    AddTextPrinterParameterizedWithColor(window, 4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
+    AddTextPrinterParameterizedWithColor(window, FONT_UNK_4, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 1, 0), NULL);
     CopyWindowToVram(window);
     RemoveWindow(window);
     String_Delete(string);

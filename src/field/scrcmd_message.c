@@ -210,15 +210,15 @@ void ov01_021EF4DC(ScriptContext *ctx, MsgData *messageData, u16 messageNum, u8 
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
     u32 textFrameDelay;
     u32 unk1;
-    u8 fontId;
+    enum Font fontId;
     if (unkStruct == NULL) {
         textFrameDelay = ovFieldMain_GetTextFrameDelay(ctx);
         unk1 = 0;
-        fontId = 1;
+        fontId = FONT_MESSAGE;
     } else {
         textFrameDelay = unkStruct->textFrameDelay;
         unk1 = unkStruct->unk1;
-        fontId = unkStruct->fontId;
+        fontId = (enum Font)unkStruct->fontId;
     }
     ov01_021EF758(&messageBox, fontId, textFrameDelay, canABSpeedUp, unk1);
 }
@@ -228,7 +228,7 @@ static void ovFieldMain_ShowMessageInField(ScriptContext *ctx, MsgData *messageD
     ovFieldMain_GetMsgBoxParameters(ctx->fieldSystem, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, messageData, messageNum);
-    ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
+    ovFieldMain_AddTextPrinterParameterized(&messageBox, FONT_MESSAGE);
 }
 
 // word2 needs to be signed to match
@@ -238,9 +238,9 @@ void ov01_021EF564(ScriptContext *ctx, u16 messageBank, u16 messageNum, u16 word
     ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_GetFormattedECMessage(&messageBox, messageBank, messageNum, word1, (u16)word2);
     if (canABSpeedUp != 0xFF) {
-        ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
+        ov01_021EF758(&messageBox, FONT_MESSAGE, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
     } else {
-        ovFieldMain_AddTextPrinterParameterized(&messageBox, 1);
+        ovFieldMain_AddTextPrinterParameterized(&messageBox, FONT_MESSAGE);
     }
 }
 
@@ -249,7 +249,7 @@ static void ov01_021EF5C8(ScriptContext *ctx, MessageFormat *messageFormat, u8 m
     ovFieldMain_GetMsgBoxParametersEx(ctx->fieldSystem, messageFormat, &messageBox);
     ovFieldMain_CreateMessageBox(ctx->fieldSystem, &messageBox);
     ovFieldMain_ReadAndExpandMsgDataViaBuffer(&messageBox, ctx->msgdata, messageNum);
-    ov01_021EF758(&messageBox, 1, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
+    ov01_021EF758(&messageBox, FONT_MESSAGE, ovFieldMain_GetTextFrameDelay(ctx), canABSpeedUp, 0);
 }
 
 static u32 ovFieldMain_GetTextFrameDelay(ScriptContext *ctx) {

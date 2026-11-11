@@ -1,5 +1,6 @@
 #include "global.h"
 
+#include "application/capsule_menu/capsule_menu.h"
 #include "data/resdat.naix"
 #include "field/field_sprite_manager.h"
 #include "field/fieldmap.h"
@@ -26,7 +27,6 @@
 #include "text.h"
 #include "unk_02005D10.h"
 #include "unk_02058034.h"
-#include "unk_02091054.h"
 #include "unk_02092B04.h"
 
 static void ov03_02256BA8(FieldSystem *fieldSystem, u8 index);
@@ -520,7 +520,7 @@ static void ov03_022573D4(MartData *data, u32 arg1) {
                 string = NewString_ReadMsgData(msgData, CapsuleMenu_GetSealNonAlphabetIndex(itemID));
                 DestroyMsgData(msgData);
             }
-            AddTextPrinterParameterizedWithColor(&data->windows[1], 0, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
+            AddTextPrinterParameterizedWithColor(&data->windows[1], FONT_SYSTEM, string, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 14, 0), NULL);
             String_Delete(string);
             ov03_022585A4(data, itemID);
         } else {

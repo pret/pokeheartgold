@@ -19,7 +19,7 @@ void ov13_0221BA00(enum HeapID HeapID) {
     OS_InitTick();
     OS_InitAlarm();
     OSIntrMode interrupts = OS_DisableInterrupts();
-    DWC_SetAuthServer(2);
+    DWC_SetAuthServer(DWC_CONNECTINET_AUTH_RELEASE);
     void *buffer = Heap_Alloc(HeapID, 0x40000);
     DWC_StartUtility(buffer, 1, 0);
     Heap_Free(buffer);

@@ -26,5 +26,6 @@ void *sub_020154D0(SPLEmitter *emitter);
 int sub_02015420(void);
 void sub_02015538(SPLEmitter *emitter, VecFx16 *axis);
 void sub_02015528(SPLEmitter *emitter, int a1);
+void sub_02014F84();
 
 #endif // POKEHEARTGOLD_UNK_02014DA0_H

@@ -636,7 +636,7 @@ static void TitleScreenAnim_Load2dBgGfx(BgConfig *bgConfig, enum HeapID heapID, 
     AddWindow(bgConfig, &animData->window, &sTouchToStartWindow);
     FillWindowPixelRect(&animData->window, 0, 0, 0, 0x100, 0x10);
     ReadMsgDataIntoString(msgData, msg_0719_00000, string);
-    FontID_String_GetWidth(0, string, 0);
+    FontID_String_GetWidth(FONT_SYSTEM, string, 0);
     if (animData->gameVersion == VERSION_HEARTGOLD) {
         AddTextPrinterParameterizedWithColorAndSpacing(&animData->window, 0, string, 0, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 1, 0), 1, 0, NULL);
     } else {

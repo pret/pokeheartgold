@@ -714,9 +714,9 @@ static void OptionsApp_PrintTextFrameString(OptionsApp_Data *data, String *frame
     FillWindowPixelBuffer(&data->windows.frameAndTextSpeedTest, 0xFF);
 
     if (instantTextSpeed) {
-        AddTextPrinterParameterizedWithColor(&data->windows.frameAndTextSpeedTest, 1, frameNumText, 4, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 15), NULL);
+        AddTextPrinterParameterizedWithColor(&data->windows.frameAndTextSpeedTest, FONT_MESSAGE, frameNumText, 4, 0, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(1, 2, 15), NULL);
     } else {
-        data->textPrinter = AddTextPrinterParameterizedWithColor(&data->windows.frameAndTextSpeedTest, 1, frameNumText, 4, 0, textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), NULL);
+        data->textPrinter = AddTextPrinterParameterizedWithColor(&data->windows.frameAndTextSpeedTest, FONT_MESSAGE, frameNumText, 4, 0, textFrameDelay, MAKE_TEXT_COLOR(1, 2, 15), NULL);
     }
 }
 
@@ -725,7 +725,7 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     String *tmpString = String_New(40, data->heapID);
 
     ReadMsgDataIntoString(data->msgData, msg_0045_00000, tmpString); // OPTIONS
-    AddTextPrinterParameterizedWithColor(&data->windows.optionsTitle, 0, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows.optionsTitle, FONT_SYSTEM, tmpString, 2, 5, TEXT_SPEED_INSTANT, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     String_SetEmpty(tmpString);
     OptionsApp_PrintTextFrameString(data, tmpString, TRUE);
@@ -733,15 +733,15 @@ static void OptionsApp_SetupInterfaceText(OptionsApp_Data *data) {
     for (i = 0; i < MENU_ENTRY_COUNT - 1; i++) {
         String_SetEmpty(tmpString);
         ReadMsgDataIntoString(data->msgData, msg_0045_00001 + i, tmpString); // Option names
-        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, tmpString, 4, i * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, FONT_SYSTEM, tmpString, 4, i * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     }
 
     String_SetEmpty(tmpString);
     ReadMsgDataIntoString(data->msgData, msg_0045_00008, tmpString); // QUIT
-    AddTextPrinterParameterizedWithColor(&data->windows.quitButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows.quitButton, FONT_SYSTEM, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
     String_SetEmpty(tmpString);
     ReadMsgDataIntoString(data->msgData, msg_0045_00007, tmpString); // CONFIRM
-    AddTextPrinterParameterizedWithColor(&data->windows.confirmButton, 0, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
+    AddTextPrinterParameterizedWithColor(&data->windows.confirmButton, FONT_SYSTEM, tmpString, 0, 6, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(15, 2, 0), NULL);
 
     for (i = 0; i < MENU_ENTRY_COUNT; i++) {
         ov54_021E6418(data, i);
@@ -786,8 +786,8 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
 
     switch (menuEntryId) {
     case MENU_ENTRY_FRAME:
-        x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
-        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, menuEntryId * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
+        x = sOptionChoiceLabelXCoords[menuEntryId][0] - FontID_String_GetWidth(FONT_SYSTEM, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], 0) / 2;
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, FONT_SYSTEM, data->menuEntries[menuEntryId].strings[data->menuEntries[menuEntryId].value], x, menuEntryId * 24 + 5, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
         CopyWindowToVram(&data->windows.selectedOption);
         OptionsApp_PrintTextFrameString(data, data->frameNumText, TRUE);
         data->unk10_21 = TRUE;
@@ -817,8 +817,8 @@ static void ov54_021E6418(OptionsApp_Data *data, u16 menuEntryId) {
         } else {
             frameDelay = TEXT_SPEED_NOTRANSFER;
         }
-        x = sOptionChoiceLabelXCoords[menuEntryId][i] - (FontID_String_GetWidth(0, data->menuEntries[menuEntryId].strings[i], 0) / 2);
-        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, 0, data->menuEntries[menuEntryId].strings[i], x, menuEntryId * 24 + 5, frameDelay, color, NULL);
+        x = sOptionChoiceLabelXCoords[menuEntryId][i] - (FontID_String_GetWidth(FONT_SYSTEM, data->menuEntries[menuEntryId].strings[i], 0) / 2);
+        AddTextPrinterParameterizedWithColor(&data->windows.selectedOption, FONT_SYSTEM, data->menuEntries[menuEntryId].strings[i], x, menuEntryId * 24 + 5, frameDelay, color, NULL);
     }
 
     CopyWindowToVram(&data->windows.selectedOption);

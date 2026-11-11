@@ -1047,7 +1047,7 @@ static u8 printMsgOnWinEx(Window *window, enum HeapID heapID, BOOL makeFrame, s3
     GF_ASSERT(msgData != NULL);
     *out = NewString_ReadMsgData(msgData, msgno);
     FillWindowPixelBuffer(window, color);
-    ret = AddTextPrinterParameterizedWithColor(window, 1, *out, 0, 0, speed, color, NULL);
+    ret = AddTextPrinterParameterizedWithColor(window, FONT_MESSAGE, *out, 0, 0, speed, color, NULL);
     if (makeFrame) {
         DrawFrameAndWindow2(window, FALSE, 0x200, 0);
     } else {
