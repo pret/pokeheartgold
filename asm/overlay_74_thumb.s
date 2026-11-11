@@ -1861,7 +1861,7 @@ _02229BCC: .word ov74_0223D0A4
 	thumb_func_start ov74_02229BD0
 ov74_02229BD0: ; 0x02229BD0
 	push {r4, lr}
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020373B4
 	cmp r0, #0
 	beq _02229BFE
@@ -2019,7 +2019,7 @@ ov74_02229CE0: ; 0x02229CE0
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	bne _02229D06
 	add r0, r4, #0
@@ -2053,7 +2053,7 @@ ov74_02229D1C: ; 0x02229D1C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	bne _02229D48
 	bl ov74_0222CD7C
@@ -7307,7 +7307,7 @@ _0222C71C:
 	bl ov74_0222AB0C
 	b _0222CD3A
 _0222C728:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r7, r0, #0
 	beq _0222C780
 	lsl r0, r7, #0x10
@@ -7396,7 +7396,7 @@ _0222C7E8:
 	mov r0, #0xb
 	str r0, [r5]
 _0222C7F4:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, _0222CA14 ; =gSystem
 	ldr r2, [r1, #0x48]
 	mov r1, #2
@@ -7440,7 +7440,7 @@ _0222C836:
 	str r0, [r5]
 	b _0222CD3A
 _0222C858:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222C896
 	lsl r0, r0, #0x10

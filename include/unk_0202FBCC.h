@@ -1,6 +1,8 @@
 #ifndef POKEHEARTGOLD_UNK_0202FBCC_H
 #define POKEHEARTGOLD_UNK_0202FBCC_H
 
+#include "battle/battle_setup.h"
+
 #include "heap.h"
 #include "save.h"
 
@@ -12,5 +14,6 @@ void sub_0202FBF0(SaveData *save, enum HeapID heapID, u32 *out);
 BOOL sub_0202FC48(void);
 void sub_02030260(int battlerId, u32 a1, u8 data);
 u8 sub_0203027C(int battlerId, u32 a1);
+void sub_020302A4(BattleSetup *BattleSetup);
 
 #endif // POKEHEARTGOLD_UNK_0202FBCC_H

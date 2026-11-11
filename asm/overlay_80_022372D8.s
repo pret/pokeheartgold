@@ -609,7 +609,7 @@ _0223776E:
 _0223777E:
 	add r0, r4, #0
 	bl BattleSetup_SetAllySideBattlersToPlayer
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	sub r0, r1, r0
 	bl sub_02034818

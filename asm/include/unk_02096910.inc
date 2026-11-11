@@ -5,7 +5,7 @@
 .public sub_0203410C
 .public sub_020342B8
 .public sub_02037030
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_0205C268
 .public GetMonData
 .public Party_GetMonByIndex

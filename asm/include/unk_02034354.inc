@@ -49,9 +49,9 @@
 .public sub_020357C4
 .public sub_02037030
 .public sub_020373B4
-.public sub_02037454
+.public CommSystem_GetConnectedCount
 .public sub_0203753C
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02037824
 .public sub_020378AC
 .public sub_0203A084

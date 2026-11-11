@@ -13,7 +13,7 @@ ov80_0222AEF8: ; 0x0222AEF8
 	ldrb r1, [r3, r0]
 	add r1, r1, #1
 	strb r1, [r3, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	pop {r4, pc}
 	.balign 4, 0
@@ -52,7 +52,7 @@ ov80_0222AF3C: ; 0x0222AF3C
 	ldrb r1, [r3, r0]
 	add r1, r1, #1
 	strb r1, [r3, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	pop {r4, pc}
 	.balign 4, 0
@@ -98,10 +98,10 @@ ov80_0222AF84: ; 0x0222AF84
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222AFB6
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222AFB6
 	mov r1, #0
@@ -159,10 +159,10 @@ ov80_0222AFEC: ; 0x0222AFEC
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B022
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222B022
 	mov r0, #0x9a
@@ -212,7 +212,7 @@ ov80_0222B048: ; 0x0222B048
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B068
 	ldrh r1, [r6]
@@ -270,7 +270,7 @@ ov80_0222B0B8: ; 0x0222B0B8
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B0E2
 	bl SizeOfStructPokemon
@@ -345,7 +345,7 @@ ov80_0222B140: ; 0x0222B140
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B16C
 	ldrh r1, [r5, #2]
@@ -403,10 +403,10 @@ ov80_0222B1A4: ; 0x0222B1A4
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B1D4
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222B1D4
 	mov r1, #0
@@ -495,10 +495,10 @@ ov80_0222B24C: ; 0x0222B24C
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B2BE
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222B2BE
 	mov r0, #0x95
@@ -622,10 +622,10 @@ ov80_0222B334: ; 0x0222B334
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B3A2
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222B3A2
 	ldr r0, _0222B3A8 ; =0x000003D2
@@ -709,7 +709,7 @@ ov80_0222B3D4: ; 0x0222B3D4
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B3F2
 	ldrh r1, [r6]
@@ -753,7 +753,7 @@ ov80_0222B420: ; 0x0222B420
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B43E
 	ldrh r1, [r6]
@@ -897,7 +897,7 @@ ov80_0222B52C: ; 0x0222B52C
 	mov r7, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B5B8
 	ldrb r0, [r4, #4]
@@ -1023,7 +1023,7 @@ ov80_0222B628: ; 0x0222B628
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B652
 	ldrh r1, [r5, #2]
@@ -1083,10 +1083,10 @@ ov80_0222B690: ; 0x0222B690
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B6C0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222B6C0
 	mov r1, #0
@@ -1113,7 +1113,7 @@ ov80_0222B6C8: ; 0x0222B6C8
 	mov r0, #0xf
 	lsl r0, r0, #6
 	strh r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	ldr r1, _0222B738 ; =0x00000A1B
 	bne _0222B700
@@ -1177,13 +1177,13 @@ ov80_0222B740: ; 0x0222B740
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B7D2
 	ldrh r1, [r5]
 	ldr r0, _0222B7D8 ; =0x00000A19
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0222B7A4
 	ldr r1, _0222B7DC ; =0x00000A1B
@@ -1331,10 +1331,10 @@ ov80_0222B860: ; 0x0222B860
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222B8D2
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222B8D2
 	mov r0, #0x9b
@@ -1417,7 +1417,7 @@ ov80_0222B8F8: ; 0x0222B8F8
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B918
 	ldrh r1, [r6]
@@ -1460,7 +1460,7 @@ ov80_0222B940: ; 0x0222B940
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222B95E
 	ldrh r1, [r6]
@@ -1538,7 +1538,7 @@ ov80_0222B9CC: ; 0x0222B9CC
 	add r2, r0, #1
 	add r0, r3, #0
 	strb r2, [r0, r1]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	beq _0222BA54
 	ldr r0, [sp, #4]
@@ -1574,7 +1574,7 @@ _0222BA0E:
 _0222BA2E:
 	add r0, r6, #0
 	bl Heap_Free
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222BA54
 	ldr r0, [sp, #4]
@@ -1652,7 +1652,7 @@ ov80_0222BAB0: ; 0x0222BAB0
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222BAD4
 	ldrh r1, [r5, #2]
@@ -1710,10 +1710,10 @@ ov80_0222BB18: ; 0x0222BB18
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222BB4C
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222BB4C
 	mov r2, #0
@@ -1811,10 +1811,10 @@ ov80_0222BBD0: ; 0x0222BBD0
 	add r5, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _0222BC42
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222BC42
 	mov r0, #0xc5
@@ -1898,7 +1898,7 @@ ov80_0222BC6C: ; 0x0222BC6C
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222BC8A
 	ldrh r1, [r6]
@@ -1942,7 +1942,7 @@ ov80_0222BCB8: ; 0x0222BCB8
 	add r6, r2, #0
 	add r1, r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r5, r0
 	beq _0222BCD6
 	ldrh r1, [r6]
@@ -2020,7 +2020,7 @@ ov80_0222BD44: ; 0x0222BD44
 	add r2, r0, #1
 	add r0, r3, #0
 	strb r2, [r0, r1]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	beq _0222BDCC
 	ldr r0, [sp, #4]
@@ -2056,7 +2056,7 @@ _0222BD86:
 _0222BDA6:
 	add r0, r6, #0
 	bl Heap_Free
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0222BDCC
 	ldr r0, [sp, #4]

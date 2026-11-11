@@ -36,7 +36,7 @@
 .public sub_02031228
 .public sub_0203126C
 .public sub_02034818
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public Save_VarsFlags_Get
 .public sub_0205C174
 .public sub_0205C1A0

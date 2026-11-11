@@ -8,8 +8,8 @@
 .public sub_020342C4
 .public sub_02037088
 .public sub_02037108
-.public sub_02037454
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_GetCurNetId
 .public sub_02038C1C
 .public sub_020398D4
 .public sub_0208F814

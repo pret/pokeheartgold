@@ -136,9 +136,9 @@
 .public sub_020304B4
 .public sub_02034818
 .public sub_02035650
-.public sub_02037454
-.public sub_02037474
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
+.public CommSystem_GetCurNetId
 .public sub_020378E4
 .public sub_02037AC0
 .public sub_02037B38

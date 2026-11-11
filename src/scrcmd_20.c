@@ -530,7 +530,7 @@ BOOL ScrCmd_697(ScriptContext *ctx) {
 
 void sub_0204F85C(u32 a0, u32 unused, UnkStruct_0204F1E4 *a2, UnkStruct_0204F1E4 *a3) {
     a3->unk01++;
-    if (sub_0203769C() != a0) {
+    if (CommSystem_GetCurNetId() != a0) {
         a3->partnerTeam = a2->playerTeam;
     }
 }

@@ -10,7 +10,7 @@ void LoadMoveTbl(MoveTbl *dest) {
     ReadFromNarcMemberByIdPair(dest, NARC_poketool_waza_waza_tbl, 0, 0, (NUM_MOVES + 1) * sizeof(MoveTbl));
 }
 
-u32 GetMoveAttr(u16 moveId, MoveAttr attrno) {
+u32 GetMoveAttr(u32 moveId, MoveAttr attrno) {
     MoveTbl movedata;
     LoadMoveEntry(moveId, &movedata);
     return GetMoveTblAttr(&movedata, attrno);
@@ -56,6 +56,6 @@ u32 GetMoveTblAttr(MoveTbl *moveTbl, MoveAttr attr) {
     }
 }
 
-void LoadMoveEntry(u16 moveId, MoveTbl *moveTbl) {
+void LoadMoveEntry(u32 moveId, MoveTbl *moveTbl) {
     ReadWholeNarcMemberByIdPair(moveTbl, NARC_poketool_waza_waza_tbl, moveId);
 }

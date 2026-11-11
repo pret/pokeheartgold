@@ -769,7 +769,7 @@ ov12_02258DB0: ; 0x02258DB0
 	beq _02258E48
 _02258DDC:
 	ldr r0, _02258E4C ; =0x00000195
-	ldr r1, _02258E50 ; =ov12_0226D120
+	ldr r1, _02258E50 ; =sBallThrowTypes
 	ldrb r2, [r4, r0]
 	sub r0, r0, #1
 	ldrb r1, [r1, r2]
@@ -820,5 +820,5 @@ _02258E48:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _02258E4C: .word 0x00000195
-_02258E50: .word ov12_0226D120
+_02258E50: .word sBallThrowTypes
 	thumb_func_end ov12_02258DB0

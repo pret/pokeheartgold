@@ -277,7 +277,7 @@ static u32 sub_02050370(UnkStruct_0204FBDC *a0, FieldSystem *fieldSystem) {
 
 void sub_02050398(u32 a0, u32 unused, UnkStruct_02050060 *a2, UnkStruct_02050060 *a3) {
     a3->unk01++;
-    if (sub_0203769C() != a0) {
+    if (CommSystem_GetCurNetId() != a0) {
         a3->partnerTeam[0] = a2->playerTeam[0];
         a3->partnerTeam[1] = a2->playerTeam[1];
     }

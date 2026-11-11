@@ -6,8 +6,8 @@
 .public sub_0203410C
 .public sub_02036FD8
 .public sub_02037030
-.public sub_02037454
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_GetCurNetId
 .public sub_02038C1C
 .public sub_020398D4
 .public sub_0208FB64

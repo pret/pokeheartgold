@@ -56,7 +56,7 @@
 .public sub_02005F94
 .public Sound_Stop
 .public sub_02005FD8
-.public sub_0200602C
+.public Sound_PlayPannedEffect
 .public PlaySE
 .public sub_0200606C
 .public sub_02006088

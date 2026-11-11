@@ -28,7 +28,7 @@
 .public Save_Frontier_GetStatic
 .public sub_020311AC
 .public sub_02034818
-.public sub_02037454
+.public CommSystem_GetConnectedCount
 .public sub_0203A1C4
 .public sub_0203A280
 .public sub_0203E30C

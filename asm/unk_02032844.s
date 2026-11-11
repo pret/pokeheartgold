@@ -203,7 +203,7 @@ _02032986:
 	ldrb r1, [r2, r1]
 	cmp r0, r1
 	bge _020329C4
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	ldrb r1, [r5, #0x14]
 	cmp r1, r0
 	bne _020329C4
@@ -865,7 +865,7 @@ _02032EB4:
 	add r1, #1
 	mov r2, #3
 	bl MI_CpuCopy8
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	add r1, sp, #4
 	strb r0, [r1]
 	mov r0, #0
@@ -1903,7 +1903,7 @@ sub_02033668: ; 0x02033668
 	add r6, r1, #0
 	add r7, r2, #0
 	add r4, r3, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_020340C4
 	cmp r0, #0
 	beq _0203368C
@@ -2011,7 +2011,7 @@ sub_0203373C: ; 0x0203373C
 	sub sp, #4
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_020340C4
 	cmp r0, #0
 	beq _0203375E

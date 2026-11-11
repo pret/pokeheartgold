@@ -20,6 +20,7 @@ This document details the steps necessary to build a copy of Pokémon Heart Gold
     - [Fedora (and derivatives, e.g., AlmaLinux, Red Hat Enterprise Linux)](#fedora-and-derivatives-eg-almalinux-red-hat-enterprise-linux)
 - [2. Downloading the Repository](#2-downloading-the-repository)
 - [3. Building the Repository](#3-building-the-repository)
+- [4. Debugger Support](#4-debugger-support)
 - [Troubleshooting FAQ](#troubleshooting-faq)
   - [My Build is Failing After Merging from Main](#my-build-is-failing-after-merging-from-main)
 
@@ -339,6 +340,30 @@ If everything works, then the following ROM should be built:
 If you need further assistance, feel free to ask a question in the `#pokeheartgold`
 channel of the `pret` Discord (see `README.md` for contact information) or [open
 an issue](https://github.com/pret/pokeheartgold/issues/new).
+
+## 4. Debugger Support
+
+This step is optional, but useful. `pokeheartgold` ships with support for GDB
+debugging and a target to build a debug-enabled ROM:
+
+```bash
+make debug
+```
+
+To debug the SoulSilver rom instead, run:
+```bash
+make debug GAME_VERSION=SOULSILVER
+```
+
+For convenience, a template `launch.json` configuration for VS Code is provided
+in the `.vscode` folder of the repository.
+
+Due to the nature of the Nintendo DS, use of standard builds of GDB for debugging
+is insufficient. A fork of `binutils-gdb` which supports the overlay system
+employed by the console is available [here](https://github.com/joshua-smith-12/binutils-gdb-nds).
+
+For installation instructions, refer to [the `README.md`](https://github.com/joshua-smith-12/binutils-gdb-nds/blob/master/README.md).
+
 
 ## Troubleshooting FAQ
 

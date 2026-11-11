@@ -2807,7 +2807,7 @@ ov96_021E7544: ; 0x021E7544
 	add r0, r5, #0
 	bl PokeathlonCourse_GetParticipantCount
 	add r6, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, _021E758C ; =0x00000D68
 	add r3, r0, #0
 	ldr r1, [r5, r1]
@@ -5313,7 +5313,7 @@ ov96_021E8828: ; 0x021E8828
 	ldrh r0, [r0]
 	cmp r0, #1
 	bne _021E8836
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	pop {r3, pc}
 _021E8836:
 	mov r0, #0

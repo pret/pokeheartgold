@@ -49,5 +49,6 @@ u32 sub_0200E3D8(void);
 u32 sub_0200E640(int frame);
 void sub_0200EB68(Window *window, int a1);
 void sub_0200F478(void);
+void sub_0200EB80(BgConfig *bgConfig, u32 a1, u32 a2, u32 a3, u8 frame, enum HeapID heapID);
 
 #endif // POKEHEARTGOLD_RENDER_WINDOW_H

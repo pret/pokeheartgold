@@ -382,7 +382,7 @@ static BOOL BattleArcadeGameBoard_MoveCursor(GAME_BOARD_WORK *work) {
         break;
     case 6:
         ov84_0223EBE8(work, gSystem.newKeys);
-        if (sub_0203769C() == 0) {
+        if (CommSystem_GetCurNetId() == 0) {
             if (work->unk18 > 0) {
                 work->unk18--;
             }
@@ -607,7 +607,7 @@ static void BattleArcadeGameBoard_InitObjects(GAME_BOARD_WORK *work) {
 
     work->button = BattleArcadeObject_Create(&work->unk3E8, 0, 0, 0, 2, 128, 96, 0, 0, 1);
 
-    if (sub_02037474()) {
+    if (CommSystem_IsInitialized()) {
         G2dRenderer_SetObjCharTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN, GX_OBJVRAMMODE_CHAR_1D_32K);
         G2dRenderer_SetPlttTransferReservedRegion(NNS_G2D_VRAM_TYPE_2DMAIN);
         sub_0203A880();
@@ -834,11 +834,11 @@ void ov84_0223ED34(int a0, int size, void *data, void *_work) {
 
     work->unkF++;
 
-    if (sub_0203769C() == a0) {
+    if (CommSystem_GetCurNetId() == a0) {
         return;
     }
 
-    if (sub_0203769C() != 0) {
+    if (CommSystem_GetCurNetId() != 0) {
         offset = 2;
 
         for (i = 0; i < 16; i++) {
@@ -860,7 +860,7 @@ static void ov84_0223ED6C(GAME_BOARD_WORK *work, u16 type, u16 a2) {
     work->sendBuffer[offset] = a2;
     offset++;
 
-    if (sub_0203769C() == 0 && work->unkE == 255) {
+    if (CommSystem_GetCurNetId() == 0 && work->unkE == 255) {
         work->unkE = a2;
     }
 
@@ -881,13 +881,13 @@ void ov84_0223EDA8(int a0, int size, void *data, void *_work) {
 
     work->unkF++;
 
-    if (sub_0203769C() == a0) {
+    if (CommSystem_GetCurNetId() == a0) {
         return;
     }
 
     work->multiSelectPos = recv[1];
 
-    if (sub_0203769C() == 0) {
+    if (CommSystem_GetCurNetId() == 0) {
         if (work->unkE != 255) {
             work->multiSelectPos = 0;
         } else {
@@ -908,7 +908,7 @@ void ov84_0223EE08(int a0, int size, void *data, void *_work) {
     GAME_BOARD_WORK *work = _work;
     const u16 *recv = data;
 
-    if (sub_0203769C() == a0) {
+    if (CommSystem_GetCurNetId() == a0) {
         return;
     }
 

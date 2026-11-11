@@ -24,7 +24,7 @@
 .public Save_SpecialRibbons_Get
 .public Save_Frontier_GetStatic
 .public FrontierSave_GetStat
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02037C44
 .public sub_0203A05C
 .public FieldSystem_LaunchApplication
