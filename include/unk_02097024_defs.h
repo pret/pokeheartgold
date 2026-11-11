@@ -29,13 +29,13 @@ typedef struct UnkStruct_02097024 {
 } UnkStruct_02097024; // size: 0x3C
 
 typedef struct UnkStruct_0209707C {
-    int unk_00;                     // 00
-    int unk_04;                     // 04
-    UnkStruct_0209707C_Sub8 unk_08; // 08
-    UnkStruct_02097024 *unk_24;     // 24
-    FieldSystem *fieldSystem;       // 28
-    PartyMenuArgs *unk_2C;          // 2C
-    PokemonSummaryArgs *unk_30;     // 30
+    int state;                       // 00
+    int partySlot;                   // 04
+    UnkStruct_0209707C_Sub8 unk_08;  // 08
+    UnkStruct_02097024 *unk_24;      // 24
+    FieldSystem *fieldSystem;        // 28
+    PartyMenuArgs *partyMenuArgs;    // 2C
+    PokemonSummaryArgs *summaryArgs; // 30
 } UnkStruct_0209707C;
 
 #endif // POKEHEARTGOLD_UNK_02097024_DEFS_H
