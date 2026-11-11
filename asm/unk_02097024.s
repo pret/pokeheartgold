@@ -9,36 +9,7 @@
 
 	.text
 
-	thumb_func_start sub_02097024
-sub_02097024: ; 0x02097024
-	push {r4, r5, r6, lr}
-	add r6, r1, #0
-	add r5, r0, #0
-	add r0, r6, #0
-	mov r1, #0x3c
-	bl Heap_Alloc
-	add r4, r0, #0
-	mov r1, #0
-	mov r2, #0x3c
-	bl memset
-	add r2, r4, #0
-	ldmia r5!, {r0, r1}
-	add r2, #0x14
-	stmia r2!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldmia r5!, {r0, r1}
-	stmia r2!, {r0, r1}
-	ldr r0, [r5]
-	add r1, r6, #0
-	str r0, [r2]
-	add r0, r4, #0
-	bl sub_02096C88
-	str r0, [r4, #0x30]
-	add r0, r4, #0
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end sub_02097024
+	.extern sub_02097024
 
 	thumb_func_start sub_02097060
 sub_02097060: ; 0x02097060
@@ -270,8 +241,10 @@ sub_020971EC: ; 0x020971EC
 
 _02108EA0:
 	.word ov85_021E88AC, ov85_021E8A08, ov85_021E8B08, SDK_OVERLAY_OVY_85_ID
+	.size _02108EA0, .-_02108EA0
 _02108EB0:
 	.word ov85_021E5900, ov85_021E5AAC, ov85_021E5A34, SDK_OVERLAY_OVY_85_ID
+	.size _02108EB0, .-_02108EB0
 _02108EC0:
 	.word sub_020970E4
 	.word sub_02097108
@@ -279,3 +252,4 @@ _02108EC0:
 	.word sub_020971AC
 	.word sub_020971D4
 	.word sub_020971EC
+	.size _02108EC0, .-_02108EC0
