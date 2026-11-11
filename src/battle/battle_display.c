@@ -1,6 +1,7 @@
 #include "battle/battle_display.h"
 
 #include "constants/battle.h"
+#include "constants/battle_subscript.h"
 #include "constants/message_tags.h"
 #include "constants/sndseq.h"
 
@@ -170,13 +171,13 @@ void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSystem, OpponentData
     monEncounterData->state = 0;
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        monEncounterData->face = 2;
+        monEncounterData->face = MON_PIC_FACING_FRONT;
         monEncounterData->terrain = ov12_0223A8F4(battleSystem, 1);
         ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & BATTLER_TYPE_IS_ENEMY][0], 88);
     } else {
-        monEncounterData->face = 0;
+        monEncounterData->face = MON_PIC_FACING_BACK;
         monEncounterData->terrain = ov12_0223A8F4(battleSystem, 0);
-        ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & BATTLER_TYPE_IS_ENEMY][0], 128 + 8);
+        ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & BATTLER_TYPE_IS_ENEMY][0], 136);
     }
 
     isShiny = !!message->isShiny;
@@ -204,16 +205,16 @@ void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSystem, OpponentData
         &animScript[0],
         NULL);
 
-    if (monEncounterData->face == 2) {
+    if (monEncounterData->face == MON_PIC_FACING_FRONT) {
         Pokepic_StartPaletteFade(monEncounterData->sprite, 8, 8, 0, RGB_BLACK);
     }
 
-    if (monEncounterData->face == 2 && (BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_GIRATINA)) {
-        int v10 = (192 + 80) / 2;
+    if (monEncounterData->face == MON_PIC_FACING_FRONT && (BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_GIRATINA)) {
+        int v10 = 136;
         int spriteYCenter = Pokepic_GetAttr(monEncounterData->sprite, POKEPIC_Y);
 
         Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_SHADOW_SIZE, 0);
-        Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_X, 256 - 64);
+        Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_X, 192);
         Pokepic_SetAttr(monEncounterData->sprite, POKEPIC_Y, spriteYCenter - v10);
 
         monEncounterData->targetPos = spriteYCenter;
@@ -232,7 +233,7 @@ void BattleDisplay_InitTaskSetEncounter(BattleSystem *battleSystem, OpponentData
     monEncounterData->nature = GetNatureFromPersonality(message->personality);
     monEncounterData->isShiny = message->isShiny;
 
-    if (monEncounterData->face == 2 && (BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_GIRATINA)) {
+    if (monEncounterData->face == MON_PIC_FACING_FRONT && (BattleSystem_GetBattleSpecial(battleSystem) & BATTLE_SPECIAL_GIRATINA)) {
         SysTask_CreateOnMainQueue(BattleDisplayTask_SetGiratinaEncounter, monEncounterData, 0);
     } else {
         SysTask_CreateOnMainQueue(BattleDisplayTask_SetEncounter, monEncounterData, 0);
@@ -278,9 +279,9 @@ void BattleDisplay_InitTaskShowEncounter(BattleSystem *battleSystem, OpponentDat
     monShowData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(MonShowData));
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        monShowData->face = 2;
+        monShowData->face = MON_PIC_FACING_FRONT;
     } else {
-        monShowData->face = 0;
+        monShowData->face = MON_PIC_FACING_BACK;
     }
 
     isShiny = !!message->isShiny;
@@ -314,7 +315,7 @@ void BattleDisplay_InitTaskShowEncounter(BattleSystem *battleSystem, OpponentDat
 
     battleType = BattleSystem_GetBattleType(battleSystem);
 
-    if (ov12_0223C140(battleSystem, opponentData->battlerId) != 255) {
+    if (ov12_0223C140(battleSystem, opponentData->battlerId) != 0xFF) {
         if ((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & BATTLE_TYPE_MULTI) && opponentData->battlerType > BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
             SysTask_CreateOnMainQueue(BattleDisplayTask_ShowEncounter, monShowData, 0);
         } else {
@@ -333,9 +334,9 @@ void BattleDisplay_InitTaskShowPokemon(BattleSystem *battleSystem, OpponentData 
     monShowData->state = 0;
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        monShowData->face = 2;
+        monShowData->face = MON_PIC_FACING_FRONT;
     } else {
-        monShowData->face = 0;
+        monShowData->face = MON_PIC_FACING_BACK;
     }
 
     isShiny = !!message->isShiny;
@@ -375,7 +376,7 @@ void BattleDisplay_InitTaskShowPokemon(BattleSystem *battleSystem, OpponentData 
 
     u32 unk = ov12_0223C140(battleSystem, opponentData->battlerId);
 
-    if (unk == 255 || unk != monShowData->selectedPartySlot) {
+    if (unk == 0xFF || unk != monShowData->selectedPartySlot) {
         SysTask_CreateOnMainQueue(BattleDisplayTask_ShowPokemon, monShowData, 0);
     } else {
         SysTask_CreateOnMainQueue(ov12_0225C6C8, monShowData, 0);
@@ -423,7 +424,7 @@ void BattleDisplay_InitTaskReturnPokemon(BattleSystem *battleSystem, OpponentDat
 
     u32 unk = ov12_0223C140(battleSystem, opponentData->battlerId);
 
-    if (unk == 255 || unk != monReturnData->unk_74) {
+    if (unk == 0xFF || unk != monReturnData->unk_74) {
         SysTask_CreateOnMainQueue(BattleDisplayTask_ReturnPokemon, monReturnData, 0);
     } else {
         SysTask_CreateOnMainQueue(ov12_0225CC58, monReturnData, 0);
@@ -467,13 +468,13 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, Oppon
     trainerEncounterData->state = 0;
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        trainerEncounterData->face = 2;
+        trainerEncounterData->face = MON_PIC_FACING_FRONT;
         trainerEncounterData->terrain = ov12_0223A8F4(battleSystem, 1);
         ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & BATTLER_TYPE_IS_ENEMY][0], 88);
     } else {
-        trainerEncounterData->face = 0;
+        trainerEncounterData->face = MON_PIC_FACING_BACK;
         trainerEncounterData->terrain = ov12_0223A8F4(battleSystem, 0);
-        ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & BATTLER_TYPE_IS_ENEMY][0], 128 + 8);
+        ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, ov07_022377F4[opponentData->battlerType & BATTLER_TYPE_IS_ENEMY][0], 136);
     }
 
     if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)
@@ -488,7 +489,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, Oppon
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
     u32 flag = 0;
 
-    if (ov12_0223C140(battleSystem, opponentData->battlerId) != 255) {
+    if (ov12_0223C140(battleSystem, opponentData->battlerId) != 0xFF) {
         if (battleType & BATTLE_TYPE_DOUBLES && !(battleType & BATTLE_TYPE_MULTI)) {
             flag = 0;
         } else {
@@ -504,7 +505,7 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, Oppon
         ov07_022377F4[side][0],
         ov07_022377F4[side][1]);
 
-    if (trainerEncounterData->face == 0
+    if (trainerEncounterData->face == MON_PIC_FACING_BACK
         && (BattleSystem_GetBattleType(battleSystem) == BATTLE_TYPE_NONE
             || BattleSystem_GetBattleType(battleSystem) == BATTLE_TYPE_SAFARI
             || BattleSystem_GetBattleType(battleSystem) == BATTLE_TYPE_ROAMER
@@ -564,17 +565,17 @@ void BattleDisplay_InitTaskThrowTrainerBall(BattleSystem *battleSystem, Opponent
     trainerThrowBallData->opponentData = opponentData;
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        trainerThrowBallData->face = 2;
+        trainerThrowBallData->face = MON_PIC_FACING_FRONT;
         trainerThrowBallData->backSpriteIdx = 0;
     } else {
         Trainer *trainer = BattleSystem_GetTrainer(battleSystem, opponentData->battlerId);
-        trainerThrowBallData->face = 0;
+        trainerThrowBallData->face = MON_PIC_FACING_BACK;
         trainerThrowBallData->backSpriteIdx = TrainerClassToBackpicID(BattleDisplay_GetLinkTrainerClass(battleSystem, opponentData->battlerId, trainer->data.trainerClass), 0);
     }
 
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
-    if (ov12_0223C140(battleSystem, opponentData->battlerId) != 255) {
+    if (ov12_0223C140(battleSystem, opponentData->battlerId) != 0xFF) {
         SysTask_CreateOnMainQueue(ov12_0225D644, trainerThrowBallData, 0);
     } else {
         SysTask_CreateOnMainQueue(BattleDisplayTask_ThrowTrainerBall, trainerThrowBallData, 0);
@@ -601,9 +602,9 @@ void BattleDisplay_InitTaskSlideTrainerOut(BattleSystem *battleSystem, OpponentD
     slideTrainerOutData->opponentData = opponentData;
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        slideTrainerOutData->face = 2;
+        slideTrainerOutData->face = MON_PIC_FACING_FRONT;
     } else {
-        slideTrainerOutData->face = 0;
+        slideTrainerOutData->face = MON_PIC_FACING_BACK;
     }
 
     SysTask_CreateOnMainQueue(BattleDisplayTask_SlideTrainerOut, slideTrainerOutData, 0);
@@ -628,9 +629,9 @@ void BattleDisplay_InitTaskSlideTrainerIn(BattleSystem *battleSystem, OpponentDa
     slideTrainerInData->state = 0;
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        slideTrainerInData->face = 2;
+        slideTrainerInData->face = MON_PIC_FACING_FRONT;
     } else {
-        slideTrainerInData->face = 0;
+        slideTrainerInData->face = MON_PIC_FACING_BACK;
     }
 
     slideTrainerInData->managedSprite = opponentData->managedSprite = BattleDisplay_NewManagedSpriteTrainer(battleSystem,
@@ -1014,11 +1015,11 @@ void BattleDisplay_InitTaskSetMoveAnimation(BattleSystem *battleSystem, Opponent
     setMoveAnimationData->moveAnim = *animation;
     setMoveAnimationData->pokepic = opponentData->pokepic;
 
-    if (animation->animMode == 1 && animation->secondaryAnimID == 25) {
+    if (animation->animMode == 1 && animation->secondaryAnimID == BATTLE_ANIMATION_SUBSTITUTE_IN) {
         opponentData->unk1A0 = 1;
     }
 
-    if (animation->animMode == 1 && animation->secondaryAnimID == 26) {
+    if (animation->animMode == 1 && animation->secondaryAnimID == BATTLE_ANIMATION_SUBSTITUTE_OUT) {
         opponentData->unk1A0 = 0;
     }
 
@@ -1117,9 +1118,9 @@ void BattleDisplay_InitTaskPlayFaintingSequence(BattleSystem *battleSystem, Oppo
     FaintingSequenceData *faintingSequenceData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(FaintingSequenceData));
 
     if (opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY) {
-        faintingSequenceData->face = 2;
+        faintingSequenceData->face = MON_PIC_FACING_FRONT;
     } else {
-        faintingSequenceData->face = 0;
+        faintingSequenceData->face = MON_PIC_FACING_BACK;
     }
 
     faintingSequenceData->state = 0;
@@ -1525,7 +1526,7 @@ void BattleDisplay_PrintLinkWaitMessage(BattleSystem *battleSystem, OpponentData
         ov12_0223BB80(battleSystem, WaitingIcon_New(BattleSystem_GetWindow(battleSystem, 0), 1));
     }
 
-    BattleController_EmitClearCommand(battleSystem, opponentData->battlerId, 55);
+    BattleController_EmitClearCommand(battleSystem, opponentData->battlerId, BATTLE_COMMAND_PRINT_LINK_WAIT_MESSAGE);
 }
 
 void BattleDisplay_RestoreSprite(BattleSystem *battleSystem, OpponentData *opponentData, MoveAnimation *animation) {
@@ -1712,7 +1713,7 @@ static void BattleDisplayTask_SetEncounter(SysTask *task, void *data) {
 
         monEncounterData->state++;
     case 2:
-        if (monEncounterData->face == 2) {
+        if (monEncounterData->face == MON_PIC_FACING_FRONT) {
             ManagedSprite_GetPositionXY(monEncounterData->terrain->managedSprite, &x, &y);
 
             if (monEncounterData->battlerType == BATTLER_TYPE_SOLO_ENEMY || monEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
@@ -1760,7 +1761,7 @@ static void BattleDisplayTask_SetEncounter(SysTask *task, void *data) {
                 if (x > 64) {
                     ManagedSprite_OffsetPositionXY(monEncounterData->terrain->managedSprite, -8, 0);
                 } else {
-                    ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, 64, 128 + 8);
+                    ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, 64, 136);
                 }
             }
 
@@ -1784,7 +1785,7 @@ static void BattleDisplayTask_SetEncounter(SysTask *task, void *data) {
                 ov12_02261F38(monEncounterData->battleSystem, monEncounterData->battler, monEncounterData->battlerType, monEncounterData->sprite, monEncounterData->opponentData->narc, monEncounterData->species, monEncounterData->formNum, monEncounterData->face, monEncounterData->cryMod);
 
                 if (monEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER || monEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
-                    ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, 64, 128 + 8);
+                    ManagedSprite_SetPositionXY(monEncounterData->terrain->managedSprite, 64, 136);
                 }
 
                 monEncounterData->state++;
@@ -1977,7 +1978,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
 
             ov07_02232A44(monShowData->ballCapsuleSealEffect);
 
-            if (monShowData->face == 2) {
+            if (monShowData->face == MON_PIC_FACING_FRONT) {
                 Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, 0x75);
             } else {
                 Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, -0x75);
@@ -1997,7 +1998,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
         }
     case 4:
         if (Pokepic_GetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW) == 0x100 && ov07_02232A54(monShowData->ballCapsuleSealEffect) == 0) {
-            if (monShowData->face == 2) {
+            if (monShowData->face == MON_PIC_FACING_FRONT) {
                 Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_AFFINE, FALSE);
             }
 
@@ -2010,7 +2011,7 @@ static void BattleDisplayTask_ShowEncounter(SysTask *task, void *data) {
             Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW, 0x100);
             Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEH, 0x100);
 
-            if (monShowData->face == 2) {
+            if (monShowData->face == MON_PIC_FACING_FRONT) {
                 Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_AFFINE, FALSE);
             }
 
@@ -2119,8 +2120,8 @@ static void ov12_0225BE38(SysTask *task, void *data) {
             &animScript[0],
             NULL);
 
-        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW, (1 << 8));
-        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEH, (1 << 8));
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW, 0x100);
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEH, 0x100);
         Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_YADJ_REQ, FALSE);
         Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_VANISHED, FALSE);
 
@@ -2150,7 +2151,7 @@ static void ov12_0225BE38(SysTask *task, void *data) {
         }
         break;
     case 4:
-        if (monShowData->face == 2) {
+        if (monShowData->face == MON_PIC_FACING_FRONT) {
             Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_AFFINE, 0);
         }
 
@@ -2210,7 +2211,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(monShowData->battleSystem);
         ballThrow.paletteData = BattleSystem_GetPaletteData(monShowData->battleSystem);
         ballThrow.bgPrio = 1;
-        ballThrow.surface = 0;
+        ballThrow.surface = MON_PIC_FACING_BACK;
 
         if (monShowData->isQuickSendOut == TRUE) {
             ballThrow.mode = BALL_THROW_MODE_SEND_OUT_QUICK;
@@ -2275,7 +2276,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
 
             ov07_02232A44(monShowData->ballCapsuleSealEffect);
 
-            if (monShowData->face == 2) {
+            if (monShowData->face == MON_PIC_FACING_FRONT) {
                 Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, 0x75);
             } else {
                 Sound_PlayPannedEffect(SEQ_SE_DP_BOWA2, -0x75);
@@ -2290,7 +2291,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
         }
     case 4:
         if (Pokepic_GetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW) == 0x100 && ov07_02232A54(monShowData->ballCapsuleSealEffect) == 0) {
-            if (monShowData->face == 2) {
+            if (monShowData->face == MON_PIC_FACING_FRONT) {
                 Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_AFFINE, FALSE);
             }
 
@@ -2302,7 +2303,7 @@ static void BattleDisplayTask_ShowPokemon(SysTask *task, void *data) {
             Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW, 0x100);
             Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEH, 0x100);
 
-            if (monShowData->face == 2) {
+            if (monShowData->face == MON_PIC_FACING_FRONT) {
                 Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_AFFINE, FALSE);
             }
 
@@ -2404,8 +2405,8 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
             &animScript[0],
             NULL);
 
-        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW, (1 << 8));
-        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEH, (1 << 8));
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEW, 0x100);
+        Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_AFFINEH, 0x100);
         Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_YADJ_REQ, FALSE);
         Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_VANISHED, FALSE);
 
@@ -2421,7 +2422,7 @@ static void ov12_0225C6C8(SysTask *task, void *data) {
         monShowData->state++;
     } break;
     case 3:
-        if (monShowData->face == 2) {
+        if (monShowData->face == MON_PIC_FACING_FRONT) {
             Pokepic_SetAttr(monShowData->opponentData->pokepic, POKEPIC_SHADOW_AFFINE, 0);
         }
 
@@ -2536,7 +2537,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
             ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(monReturnData->battleSystem);
             ballThrow.paletteData = BattleSystem_GetPaletteData(monReturnData->battleSystem);
             ballThrow.bgPrio = 1;
-            ballThrow.surface = 0;
+            ballThrow.surface = MON_PIC_FACING_BACK;
             monReturnData->ballRotation = ov07_02233DB8(&ballThrow);
         } else {
             BallThrow ballThrow;
@@ -2551,7 +2552,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
             ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(monReturnData->battleSystem);
             ballThrow.paletteData = BattleSystem_GetPaletteData(monReturnData->battleSystem);
             ballThrow.bgPrio = 1;
-            ballThrow.surface = 0;
+            ballThrow.surface = MON_PIC_FACING_BACK;
             monReturnData->ballRotation = ov07_02233DB8(&ballThrow);
         }
 
@@ -2584,11 +2585,7 @@ static void BattleDisplayTask_ReturnPokemon(SysTask *task, void *data) {
         if (Pokepic_GetAttr(monReturnData->pokepic, POKEPIC_AFFINEW) <= 0) {
             Pokepic_Delete(monReturnData->pokepic);
 
-            if (monReturnData->battlerType & BATTLER_TYPE_IS_ENEMY) {
-                monReturnData->state = 7;
-            } else {
-                monReturnData->state = 7;
-            }
+            monReturnData->state = 7;
         }
 
         break;
@@ -2716,7 +2713,7 @@ static void BattleDisplayTask_SetTrainerEncounter(SysTask *task, void *data) {
         ManagedSprite_GetPositionXY(trainerEncounterData->terrain->managedSprite, &x1, &y1);
         ManagedSprite_GetPositionXY(trainerEncounterData->managedSprite, &x2, &y2);
 
-        if (trainerEncounterData->face == 2) {
+        if (trainerEncounterData->face == MON_PIC_FACING_FRONT) {
             if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_ENEMY || trainerEncounterData->battlerType == BATTLER_TYPE_ENEMY_SIDE_SLOT_1) {
                 if (x1 < 192) {
                     ManagedSprite_OffsetPositionXY(trainerEncounterData->terrain->managedSprite, 8, 0);
@@ -2765,7 +2762,7 @@ static void BattleDisplayTask_SetTrainerEncounter(SysTask *task, void *data) {
                 if (x1 > 64) {
                     ManagedSprite_OffsetPositionXY(trainerEncounterData->terrain->managedSprite, -8, 0);
                 } else {
-                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 64, 128 + 8);
+                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 64, 136);
                 }
             }
 
@@ -2801,7 +2798,7 @@ static void BattleDisplayTask_SetTrainerEncounter(SysTask *task, void *data) {
                 ManagedSprite_SetPositionXY(trainerEncounterData->managedSprite, trainerEncounterData->targetX, y2);
 
                 if (trainerEncounterData->battlerType == BATTLER_TYPE_SOLO_PLAYER || trainerEncounterData->battlerType == BATTLER_TYPE_PLAYER_SIDE_SLOT_1) {
-                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 64, 128 + 8);
+                    ManagedSprite_SetPositionXY(trainerEncounterData->terrain->managedSprite, 64, 136);
                 }
 
                 trainerEncounterData->state = 4;
@@ -2870,7 +2867,7 @@ static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data) {
             ballThrow.target = trainerThrowBallData->battler;
             ballThrow.spriteSystem = BattleSystem_GetSpriteSystem(trainerThrowBallData->battleSystem);
             ballThrow.paletteData = BattleSystem_GetPaletteData(trainerThrowBallData->battleSystem);
-            ballThrow.surface = 0;
+            ballThrow.surface = MON_PIC_FACING_BACK;
             ballThrow.battleSystem = trainerThrowBallData->battleSystem;
 
             trainerThrowBallData->opponentData->ballData = ov07_02233DB8(&ballThrow);
@@ -2887,11 +2884,11 @@ static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data) {
         }
         break;
     case 1:
-        if (trainerThrowBallData->face == 2) {
+        if (trainerThrowBallData->face == MON_PIC_FACING_FRONT) {
             ManagedSprite_OffsetPositionXY(trainerThrowBallData->opponentData->managedSprite, 5, 0);
             ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
 
-            if (x >= (256 - 48) - 48 && ov07_02233F20(trainerThrowBallData->opponentData->ballData) != 0) {
+            if (x >= 160 && ov07_02233F20(trainerThrowBallData->opponentData->ballData) != 0) {
                 ov07_0223449C(trainerThrowBallData->opponentData->ballData, 1);
                 ov07_02233EFC(trainerThrowBallData->opponentData->ballData, 0);
 
@@ -2902,7 +2899,7 @@ static void BattleDisplayTask_ThrowTrainerBall(SysTask *task, void *data) {
                     ov07_02233EFC(opponentData->ballData, 0);
                     ov07_022344DC(opponentData->ballData, 12);
                 }
-            } else if (x >= (256 + 40)) {
+            } else if (x >= 296) {
                 SpriteManager *spriteMan = BattleSystem_GetSpriteManager(trainerThrowBallData->battleSystem);
                 Sprite_DeleteAndFreeResources(trainerThrowBallData->opponentData->managedSprite);
                 trainerThrowBallData->opponentData->managedSprite = NULL;
@@ -3020,7 +3017,7 @@ static void ov12_0225D644(SysTask *task, void *data) {
 
     switch (trainerThrowBallData->state) {
     case 0:
-        if (trainerThrowBallData->face == 2) {
+        if (trainerThrowBallData->face == MON_PIC_FACING_FRONT) {
             ManagedSprite_OffsetPositionXY(trainerThrowBallData->opponentData->managedSprite, 5, 0);
             ManagedSprite_GetPositionXY(trainerThrowBallData->opponentData->managedSprite, &x, &y);
             if (x >= 296) {
@@ -3090,11 +3087,11 @@ static void BattleDisplayTask_SlideTrainerOut(SysTask *task, void *data) {
 
     switch (slideTrainerOutData->state) {
     case 0:
-        if (slideTrainerOutData->face == 2) {
+        if (slideTrainerOutData->face == MON_PIC_FACING_FRONT) {
             ManagedSprite_OffsetPositionXY(slideTrainerOutData->opponentData->managedSprite, 5, 0);
             ManagedSprite_GetPositionXY(slideTrainerOutData->opponentData->managedSprite, &x, &y);
 
-            if (x >= (256 + 40)) {
+            if (x >= (296)) {
                 slideTrainerOutData->state++;
             }
         } else {
@@ -3130,7 +3127,7 @@ static void BattleDisplayTask_SlideTrainerIn(SysTask *task, void *data) {
     case 0:
         ManagedSprite_GetPositionXY(slideTrainerInData->managedSprite, &x, &y);
 
-        if (slideTrainerInData->face == 0) {
+        if (slideTrainerInData->face == MON_PIC_FACING_BACK) {
             x += 5;
 
             if (x >= slideTrainerInData->x) {
@@ -5026,7 +5023,7 @@ static void BattleDisplayTask_PlayFaintingSequence(SysTask *task, void *data) {
     case 4: {
         int pan;
 
-        if (faintingSequenceData->face == 2) {
+        if (faintingSequenceData->face == MON_PIC_FACING_FRONT) {
             pan = 0x75;
         } else {
             pan = -0x75;
@@ -5049,7 +5046,7 @@ static void BattleDisplayTask_PlayFaintingSequence(SysTask *task, void *data) {
         }
         break;
     case 6:
-        if (faintingSequenceData->face == 2) {
+        if (faintingSequenceData->face == MON_PIC_FACING_FRONT) {
             Sound_PlayPannedEffect(SEQ_SE_DP_POKE_DEAD3, 0x75);
         } else {
             Sound_PlayPannedEffect(SEQ_SE_DP_POKE_DEAD3, -0x75);
@@ -5869,9 +5866,9 @@ static Pokepic *BattleDisplay_NewPokepic(BattleSystem *battleSystem, PokepicMana
     int face;
 
     if (battlerType & BATTLER_ENEMY) {
-        face = 2;
+        face = MON_PIC_FACING_FRONT;
     } else {
-        face = 0;
+        face = MON_PIC_FACING_BACK;
     }
 
     sub_02014540((NarcId)spriteTemplate->narcID, spriteTemplate->charDataID, HEAP_ID_BATTLE, tiles, spriteTemplate->personality, FALSE, face, spriteTemplate->species);
@@ -6328,9 +6325,9 @@ static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battle
     int face;
 
     if (side & 1) {
-        face = 2;
+        face = MON_PIC_FACING_FRONT;
     } else {
-        face = 0;
+        face = MON_PIC_FACING_BACK;
     }
 
     ManagedSprite *managedSprite = sub_02070C24(spriteSys, spriteMan, paletteData, x, y, trainerClass, face, isLink, battlerType, HEAP_ID_BATTLE);
@@ -6413,22 +6410,22 @@ static void BattleDisplay_GetAnimHideFlags(u8 *hideHealthboxes, u8 *hideShadows,
         }
     } else {
         switch (secondaryAnimID) {
-        case 18:
-        case 19:
-        case 20:
-        case 21:
-        case 22:
-        case 31:
-        case 32:
-        case 34:
-        case 35:
-        case 37:
-        case 39:
+        case BATTLE_ANIMATION_WEATHER_FOG:
+        case BATTLE_ANIMATION_WEATHER_RAIN:
+        case BATTLE_ANIMATION_WEATHER_HAIL:
+        case BATTLE_ANIMATION_WEATHER_SAND:
+        case BATTLE_ANIMATION_WEATHER_SUN:
+        case BATTLE_ANIMATION_DAMAGE_NIGHTMARE:
+        case BATTLE_ANIMATION_DAMAGE_LEECH_SEED:
+        case BATTLE_ANIMATION_DAMAGE_WRAP:
+        case BATTLE_ANIMATION_DAMAGE_FIRE_SPIN:
+        case BATTLE_ANIMATION_DAMAGE_CLAMP:
+        case BATTLE_ANIMATION_DAMAGE_SAND_TOMB:
             hideHealthboxes[0] = 1;
             hideShadows[0] = 0;
             break;
-        case 36:
-        case 38:
+        case BATTLE_ANIMATION_DAMAGE_MAGMA_STORM:
+        case BATTLE_ANIMATION_DAMAGE_WHIRLPOOL:
             hideHealthboxes[0] = 1;
             hideShadows[0] = 1;
             break;
@@ -6517,10 +6514,10 @@ static u8 BattleDisplay_GetLinkTrainerClass(BattleSystem *battleSystem, u8 battl
 
     switch (PlayerProfile_GetVersion(BattleSystem_GetPlayerProfile(battleSystem, battler))) {
     case 0:
-        trainerClass += 0x7D;
+        trainerClass += TRAINERCLASS_PKMN_TRAINER_LUCAS_DP;
         break;
     case 12:
-        trainerClass += 0x7F;
+        trainerClass += TRAINERCLASS_PKMN_TRAINER_LUCAS_PT;
         break;
     default:
         break;
@@ -6539,7 +6536,7 @@ static void ov12_02261F38(BattleSystem *battleSystem, int battlerId, int battler
     }
 
     int pan;
-    if (face == 2) {
+    if (face == MON_PIC_FACING_FRONT) {
         pan = 0x75;
     } else {
         pan = -0x75;

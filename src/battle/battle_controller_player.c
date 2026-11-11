@@ -82,7 +82,7 @@ static BOOL BattleControllerPlayer_ReplaceFainted(BattleSystem *battleSystem, Ba
 static BOOL BattleControllerPlayer_CheckBattleOver(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL BattleControllerPlayer_MustSelectTarget(BattleSystem *battleSystem, BattleContext *ctx, u8 battlerId, u32 battleType, int *out, int movePos, u32 *a6);
 static void BattleControllerPlayer_ClearFlags(BattleSystem *battleSystem, BattleContext *ctx);
-static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2, int a3);
+static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2, BOOL a3);
 static BOOL BattleControllerPlayer_AnyExpPayout(BattleContext *ctx, ControllerCommand a1, ControllerCommand a2);
 static void ov12_0224DD74(BattleSystem *battleSystem, BattleContext *ctx);
 static BOOL BattleControllerPlayer_CriticalMessage(BattleSystem *battleSystem, BattleContext *ctx);
@@ -3475,7 +3475,7 @@ static BOOL BattleControllerPlayer_ReplaceFainted(BattleSystem *battleSystem, Ba
     }
 
     if (ctx->command == CONTROLLER_COMMAND_RUN_SCRIPT) {
-        if ((!(battleType & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) && BattleSystem_GetBattleStyle(battleSystem) == 0) && (!(ctx->battlerStatusFlags[0] & 1) || !(ctx->battlerStatusFlags[1] & 1)) && CanSwitchMon(battleSystem, ctx, 0)) {
+        if ((!(battleType & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_LINK)) && BattleSystem_GetBattleStyle(battleSystem) == 0) && (!(ctx->battlerStatusFlags[0] & BATTLER_STATUS_SWITCHING) || !(ctx->battlerStatusFlags[1] & BATTLER_STATUS_SWITCHING)) && CanSwitchMon(battleSystem, ctx, 0)) {
             if (ctx->battlerStatusFlags[0] & BATTLER_STATUS_SWITCHING) {
                 ctx->tempData = 0;
             } else {
@@ -3500,7 +3500,7 @@ static BOOL BattleControllerPlayer_CheckBattleOver(BattleSystem *battleSystem, B
 
     for (battlerId = 0; battlerId < maxBattlers; battlerId++) {
         if ((battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_MULTI | BATTLE_TYPE_DOUBLES) || battleType == (BATTLE_TYPE_AI | BATTLE_TYPE_TRAINER | BATTLE_TYPE_DOUBLES | BATTLE_TYPE_MULTI)) && BattleSystem_GetFieldSide(battleSystem, battlerId) == 0) {
-            if (BattleSystem_GetBattlerType(battleSystem, battlerId) == 2 && ctx->battleMons[battlerId].hp == 0) {
+            if (BattleSystem_GetBattlerType(battleSystem, battlerId) == BATTLER_TYPE_PLAYER_SIDE_SLOT_1 && ctx->battleMons[battlerId].hp == 0) {
                 int hp = 0;
                 Party *party = BattleSystem_GetParty(battleSystem, battlerId);
                 BattleSystem_GetOpponentData(battleSystem, battlerId);
@@ -3655,7 +3655,7 @@ static void BattleControllerPlayer_ClearFlags(BattleSystem *battleSystem, Battle
     ctx->conversion2Move[ctx->battlerIdAttacker] = 0;
 }
 
-static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, int flag) {
+static BOOL BattleControllerPlayer_AnyFainted(BattleContext *ctx, ControllerCommand commandNext, ControllerCommand command, BOOL flag) {
     int turn = 0;
     int faintedFlag = MaskOfFlagNo(ctx->turnOrder[turn]) << BATTLE_STATUS_FAINTED_SHIFT;
 
