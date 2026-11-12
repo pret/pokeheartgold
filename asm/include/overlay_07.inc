@@ -11,7 +11,7 @@
 .public PaletteData_BlendPalette
 .public PaletteData_BlendPalettes
 .public PaletteData_LoadNarc_CustomTint
-.public sub_0200602C
+.public Sound_PlayPannedEffect
 .public PlaySE
 .public StopSE
 .public IsSEPlaying
@@ -195,8 +195,8 @@
 .public ov07_0221BFE0
 .public ov07_0221C01C
 .public ov07_0221C394
-.public ov07_0221C3B0
-.public ov07_0221C3C0
+.public BattleAnimSystem_IsMoveActive
+.public BattleAnimSystem_FreeScriptData
 .public ov07_0221FB90
 .public ov07_0221FDFC
 .public ov07_0221FE08
@@ -232,7 +232,7 @@
 .public ov07_0223494C
 .public ov07_02234A20
 .public ov07_02234B5C
-.public ov07_022377DC
+.public gBattlerEncounterX
 .public ov07_022377F4
 .public BattleSystem_GetSpriteSystem
 .public BattleSystem_GetSpriteManager
