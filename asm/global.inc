@@ -1,5 +1,5 @@
 .public SDK_OVERLAY_OVY_0_ID
-.public SDK_OVERLAY_OVY_10_ID
+.public SDK_OVERLAY_trainer_ai_ID
 .public SDK_OVERLAY_pokegear_ID
 .public SDK_OVERLAY_pokegear_app_ID
 .public SDK_OVERLAY_OVY_102_ID

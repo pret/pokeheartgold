@@ -21,7 +21,7 @@ FS_EXTERN_OVERLAY(OVY_5);
 FS_EXTERN_OVERLAY(OVY_6);
 FS_EXTERN_OVERLAY(OVY_7);
 FS_EXTERN_OVERLAY(OVY_8);
-FS_EXTERN_OVERLAY(OVY_10);
+FS_EXTERN_OVERLAY(trainer_ai);
 
 typedef enum BattleState {
     BSTATE_INIT,
@@ -178,7 +178,7 @@ void ov12_02237B0C(BattleSystem *battleSystem) {
     if (battleSystem->unk2445 == 0) {
         UnloadOverlayByID(FS_OVERLAY_ID(OVY_7));
     } else {
-        UnloadOverlayByID(FS_OVERLAY_ID(OVY_10));
+        UnloadOverlayByID(FS_OVERLAY_ID(trainer_ai));
     }
     HandleLoadOverlay(FS_OVERLAY_ID(OVY_8), OVY_LOAD_ASYNC);
 }
@@ -201,7 +201,7 @@ void ov12_02237BB8(BattleSystem *battleSystem) {
     if (battleSystem->unk2445 == 0) {
         HandleLoadOverlay(FS_OVERLAY_ID(OVY_7), OVY_LOAD_ASYNC);
     } else {
-        HandleLoadOverlay(FS_OVERLAY_ID(OVY_10), OVY_LOAD_ASYNC);
+        HandleLoadOverlay(FS_OVERLAY_ID(trainer_ai), OVY_LOAD_ASYNC);
     }
 
     ov12_0223BBF0(battleSystem, 0);
