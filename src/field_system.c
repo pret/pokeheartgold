@@ -251,8 +251,9 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
                 FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
             }
             movementAllowed = 0;
-            if (sub_0203E324()) {
-                movementAllowed = ov35_02259DB8();
+            UnkStruct_Overlay35 *ptr = sub_0203E324();
+            if (ptr != NULL) {
+                movementAllowed = ov35_02259DB8(ptr);
             }
             PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->mapLoadManager, -1, fieldInput.newKeys, fieldInput.heldKeys, movementAllowed);
         }
@@ -274,8 +275,9 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
                     FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
                 }
                 u32 flag = 0;
-                if (sub_0203E324()) {
-                    flag = ov35_02259DB8();
+                UnkStruct_Overlay35 *ptr = sub_0203E324();
+                if (ptr != NULL) {
+                    flag = ov35_02259DB8(ptr);
                 }
                 PlayerAvatar_MoveControl(fieldSystem->playerAvatar, fieldSystem->mapLoadManager, -1, fieldInput.newKeys, fieldInput.heldKeys, flag);
             }
@@ -284,19 +286,19 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
     }
 }
 
-void sub_0203E2F4() {
+void sub_0203E2F4(void) {
     sFieldSysPtr->processManager->isPaused = TRUE;
     sub_02037504();
 }
 
-void sub_0203E30C() {
+void sub_0203E30C(void) {
     sFieldSysPtr->processManager->isPaused = FALSE;
     sub_020374E4();
 }
 
-int sub_0203E324() {
+UnkStruct_Overlay35 *sub_0203E324(void) {
     if (sFieldSysPtr->unk4 == NULL) {
-        return 0;
+        return NULL;
     }
     return sFieldSysPtr->unk4->unk14;
 }
@@ -313,11 +315,11 @@ SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem) {
     return fieldSystem->saveData;
 }
 
-void Task_AntipiracyRandom() {
+void Task_AntipiracyRandom(SysTask *task, void *data) {
     LCRandom();
     LCRandom();
 }
 
-void Field_SetEnvironmentSoundState_None_Unk2() {
+void Field_SetEnvironmentSoundState_None_Unk2(void) {
     sFieldSysPtr->environmentSoundState = ENVIRONMENT_SOUND_NONE_UNK2;
 }
