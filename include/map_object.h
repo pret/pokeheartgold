@@ -258,7 +258,7 @@ void MapObject_SetMovementStep(LocalMapObject *object, u32 step);
 void MapObject_IncrementMovementStep(LocalMapObject *object);
 u32 MapObject_GetMovementStep(LocalMapObject *object);
 void sub_0205F4FC(LocalMapObject *object, u16 param1);
-u16 sub_0205F504(LocalMapObject *object);
+u16 MapObject_GetMetatileBehavior(LocalMapObject *object);
 void sub_0205F50C(LocalMapObject *object, u16 param1);
 u16 sub_0205F514(LocalMapObject *object);
 void sub_0205F51C(LocalMapObject *object, u16 param1);

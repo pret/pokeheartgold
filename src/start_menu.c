@@ -227,8 +227,8 @@ void StartMenu_Init(FieldSystem *fieldSystem) {
         startMenu->inhibitIconFlags = FieldSystem_GetStartMenuButtonInhibitFlags_Normal(fieldSystem);
     }
     startMenu->unk_350 = FALSE;
-    if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-        sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+    if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+        PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     }
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }
@@ -237,8 +237,8 @@ void sub_0203BCDC(FieldSystem *fieldSystem) {
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->inhibitIconFlags = sub_0203BEE0(fieldSystem);
     startMenu->unk_350 = TRUE;
-    if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-        sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+    if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+        PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     }
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }
@@ -247,8 +247,8 @@ void sub_0203BD20(FieldSystem *fieldSystem) {
     StartMenuTaskData *startMenu = StartMenu_Create();
     startMenu->inhibitIconFlags = sub_0203BEE8(fieldSystem);
     startMenu->unk_350 = FALSE;
-    if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-        sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+    if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+        PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     }
     FieldSystem_CreateTask(fieldSystem, Task_StartMenu, startMenu);
 }

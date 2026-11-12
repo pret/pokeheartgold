@@ -66,7 +66,7 @@ ov01_021F1B38: ; 0x021F1B38
 	mov r1, #0
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -95,7 +95,7 @@ ov01_021F1B78: ; 0x021F1B78
 	mov r1, #1
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -128,7 +128,7 @@ ov01_021F1BC0: ; 0x021F1BC0
 	mov r1, #2
 	bl PlayerAvatar_SetState
 	add r0, r5, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r5, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -175,7 +175,7 @@ ov01_021F1C30: ; 0x021F1C30
 	mov r1, #3
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -373,7 +373,7 @@ _021F1DBA:
 _021F1DBE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205CBE4
+	bl PlayerAvatar_CheckStartMove
 	cmp r0, #0
 	bne _021F1DCE
 	mov r0, #0
@@ -1722,7 +1722,7 @@ _021F2842:
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r4, #0
@@ -2570,7 +2570,7 @@ _021F2EA6:
 	ldr r0, [r4, #0x3c]
 	bl MapObject_GetNextFacingDirection
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl MetatileBehavior_IsWhirlpool

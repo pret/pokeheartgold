@@ -19,7 +19,7 @@
 .public sub_0205DFD4
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
-.public sub_0205F504
+.public MapObject_GetMetatileBehavior
 .public sub_0206234C
 .public memset
 .public ov01_021F3114

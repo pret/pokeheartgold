@@ -263,7 +263,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
             if (newEvent) {
                 FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
                 FieldSystem_SetAndExecuteSignpostWindowCommand(fieldSystem, MAPSIGNCOMMAND_HIDE);
-                sub_0205CF44(fieldSystem->playerAvatar);
+                PlayerAvatar_ClearMoveState(fieldSystem->playerAvatar);
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 if (newEvent != 2) {

@@ -47,7 +47,7 @@
 .public sub_0205F41C
 .public sub_0205F430
 .public sub_0205F4FC
-.public sub_0205F504
+.public MapObject_GetMetatileBehavior
 .public sub_0205F50C
 .public sub_0205F514
 .public sub_0205F51C
@@ -101,7 +101,7 @@
 .public GetDeltaYByFacingDirection
 .public sub_02060F24
 .public sub_02060F78
-.public sub_02060FA8
+.public LocalMapObject_GetNextPositionMetatileBehavior
 .public sub_02060FE0
 .public sub_0206101C
 .public sub_02061070

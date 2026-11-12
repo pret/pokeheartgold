@@ -13,5 +13,7 @@ int GetDeltaYByFacingDirection(int direction);
 void sub_020611C8(int x, int y, VecFx32 *a2);
 void sub_0206121C(TaskManager *taskman, VecFx32 *a1);
 void sub_02060F78(LocalMapObject *object);
+u32 LocalMapObject_GetNextPositionMetatileBehavior(LocalMapObject *object, int direction);
+u32 sub_02060FE0(LocalMapObject *object, int direction);
 
 #endif // POKEHEARTGOLD_UNK_0205FD20_H

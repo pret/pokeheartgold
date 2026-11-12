@@ -1349,7 +1349,7 @@ void sub_0205F4FC(LocalMapObject *object, u16 param1) {
     object->unkAC = param1;
 }
 
-u16 sub_0205F504(LocalMapObject *object) {
+u16 MapObject_GetMetatileBehavior(LocalMapObject *object) {
     return object->unkAC;
 }
 

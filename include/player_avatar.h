@@ -9,7 +9,7 @@
 typedef enum PlayerAvatarFlags {
     AVATAR_FLAG_FORCED_MOVEMENT = (1 << 0),
     AVATAR_FLAG_UNK1 = (1 << 1),
-    AVATAR_FLAG_UNK2 = (1 << 2),
+    AVATAR_FLAG_BIKE_BRAKE = (1 << 2),
     AVATAR_FLAG_LOCK_BIKE_STATE = (1 << 3), // Blocks the player from mounting/dismounting their bike (though this was intended to stop dismounting during Cycling Road)
     AVATAR_FLAG_UNK4 = (1 << 4),
     AVATAR_FLAG_UNK5 = (1 << 5),
@@ -27,13 +27,13 @@ struct PlayerAvatar {
     PlayerAvatarFlags flags;
     u32 transitionFlags;
     u32 unk8;
-    BOOL unkC;
+    BOOL footstepCooldown; // New behaviour in HGSS that plays certain footstep sounds every other step.
     u32 moveState;
     u32 playerMoveState;
     s32 state;
     u32 gender;
     u32 unk20;
-    s32 unk24;
+    int speed;
     s32 unk28;
     s32 unk2C;
     LocalMapObject *mapObject;
@@ -76,10 +76,10 @@ void PlayerAvatar_SetTransitionFlagsBits(PlayerAvatar *avatar, u32 flags);
 void PlayerAvatar_SetTransitionFlags(PlayerAvatar *avatar, u32 flags);
 u32 PlayerAvatar_GetTransitionFlags(PlayerAvatar *avatar);
 u32 PlayerAvatar_GetGender(PlayerAvatar *avatar);
-s32 PlayerAvatar_GetUnk24(PlayerAvatar *avatar);
-void PlayerAvatar_SetUnk24(PlayerAvatar *avatar, s32 param1);
-void PlayerAvatar_ClearUnk24ClearFlag2(PlayerAvatar *avatar);
-s32 PlayerAvatar_Unk24AddWithCeiling(PlayerAvatar *avatar, s32 param1, s32 param2);
+int PlayerAvatar_GetSpeed(PlayerAvatar *avatar);
+void PlayerAvatar_SetSpeed(PlayerAvatar *avatar, int speed);
+void PlayerAvatar_ClearSpeed(PlayerAvatar *avatar);
+int PlayerAvatar_AddSpeed(PlayerAvatar *avatar, int speed, int maxSpeed);
 s32 PlayerAvatar_GetUnk28(PlayerAvatar *avatar);
 s32 PlayerAvatar_GetUnk2C(PlayerAvatar *avatar);
 void PlayerAvatar_SetUnk28Unk2C(PlayerAvatar *avatar, s32 unk28, s32 unk2C);
@@ -88,9 +88,9 @@ u32 PlayerAvatar_GetUnk34(PlayerAvatar *avatar);
 PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar);
 void PlayerAvatar_SetUnk8(PlayerAvatar *avatar, u32 unkA);
 u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar);
-BOOL PlayerAvatar_GetUnkC(PlayerAvatar *avatar);
-void PlayerAvatar_ToggleUnkC(PlayerAvatar *avatar);
-void PlayerAvatar_ResetUnkC(PlayerAvatar *avatar);
+BOOL PlayerAvatar_GetFootstepCooldown(PlayerAvatar *avatar);
+void PlayerAvatar_ToggleFootstepCooldown(PlayerAvatar *avatar);
+void PlayerAvatar_ResetFootstepCooldown(PlayerAvatar *avatar);
 void PlayerSaveData_Init(PlayerSaveData *playerSaveData);
 BOOL PlayerSaveData_CheckRunningShoes(PlayerSaveData *playerSaveData);
 void PlayerSaveData_SetRunningShoesFlag(PlayerSaveData *playerSaveData, BOOL flag);
@@ -106,8 +106,8 @@ void PlayerAvatar_SetForcedMovement(PlayerAvatar *avatar, BOOL set);
 BOOL PlayerAvatar_CheckForcedMovement(PlayerAvatar *avatar);
 void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set);
 BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar);
-void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set);
-BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar);
+void PlayerAvatar_SetBikeBrake(PlayerAvatar *avatar, BOOL set);
+BOOL PlayerAvatar_CheckBikeBrake(PlayerAvatar *avatar);
 void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock);
 BOOL PlayerAvatar_CheckBikeStateLocked(PlayerAvatar *avatar);
 void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set);

@@ -161,7 +161,7 @@ ov01_0220093C: ; 0x0220093C
 _02200964:
 	ldr r7, [r5, #4]
 	add r0, r6, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	strb r0, [r5, #8]
 	ldrb r0, [r5, #8]
 	bl ov01_02200AB0

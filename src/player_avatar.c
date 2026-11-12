@@ -216,7 +216,7 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_SetState(avatar, state);
     PlayerAvatar_SetGender(avatar, gender);
     PlayerAvatar_SetTransitionFlags(avatar, 0);
-    PlayerAvatar_ClearUnk24ClearFlag2(avatar);
+    PlayerAvatar_ClearSpeed(avatar);
     PlayerAvatar_SetUnk28(avatar, -1);
     PlayerAvatar_SetUnk2C(avatar, -1);
     PlayerAvatar_SetUnk8(avatar, 255); // obj_player?
@@ -365,26 +365,25 @@ static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, Pla
     return (PlayerAvatarFlags)(avatar->flags & flags);
 }
 
-s32 PlayerAvatar_GetUnk24(PlayerAvatar *avatar) {
-    return avatar->unk24;
+int PlayerAvatar_GetSpeed(PlayerAvatar *avatar) {
+    return avatar->speed;
 }
 
-void PlayerAvatar_SetUnk24(PlayerAvatar *avatar, s32 param1) {
-    avatar->unk24 = param1;
+void PlayerAvatar_SetSpeed(PlayerAvatar *avatar, int speed) {
+    avatar->speed = speed;
 }
 
-void PlayerAvatar_ClearUnk24ClearFlag2(PlayerAvatar *avatar) {
-    avatar->unk24 = 0;
-    PlayerAvatar_SetFlag2(avatar, FALSE);
+void PlayerAvatar_ClearSpeed(PlayerAvatar *avatar) {
+    avatar->speed = 0;
+    PlayerAvatar_SetBikeBrake(avatar, FALSE);
 }
 
-s32 PlayerAvatar_Unk24AddWithCeiling(PlayerAvatar *avatar, s32 param1, s32 param2) {
-    s32 var = avatar->unk24 + param1;
-    avatar->unk24 = var;
-    if (var > param2) {
-        avatar->unk24 = param2;
+int PlayerAvatar_AddSpeed(PlayerAvatar *avatar, int speed, int maxSpeed) {
+    avatar->speed += speed;
+    if (avatar->speed > maxSpeed) {
+        avatar->speed = maxSpeed;
     }
-    return avatar->unk24;
+    return avatar->speed;
 }
 
 static void PlayerAvatar_SetUnk28(PlayerAvatar *avatar, s32 param1) {
@@ -432,16 +431,16 @@ u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar) {
     return avatar->unk8;
 }
 
-BOOL PlayerAvatar_GetUnkC(PlayerAvatar *avatar) {
-    return avatar->unkC;
+BOOL PlayerAvatar_GetFootstepCooldown(PlayerAvatar *avatar) {
+    return avatar->footstepCooldown;
 }
 
-void PlayerAvatar_ToggleUnkC(PlayerAvatar *avatar) {
-    avatar->unkC = (avatar->unkC + 1) & TRUE;
+void PlayerAvatar_ToggleFootstepCooldown(PlayerAvatar *avatar) {
+    avatar->footstepCooldown = (avatar->footstepCooldown + 1) & TRUE;
 }
 
-void PlayerAvatar_ResetUnkC(PlayerAvatar *avatar) {
-    avatar->unkC = FALSE;
+void PlayerAvatar_ResetFootstepCooldown(PlayerAvatar *avatar) {
+    avatar->footstepCooldown = FALSE;
 }
 
 void PlayerSaveData_Init(PlayerSaveData *playerSaveData) {
@@ -659,16 +658,16 @@ BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar) {
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetBikeBrake(PlayerAvatar *avatar, BOOL set) {
     if (set == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK2);
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_BIKE_BRAKE);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK2);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_BIKE_BRAKE);
     }
 }
 
-BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar) {
-    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK2)) {
+BOOL PlayerAvatar_CheckBikeBrake(PlayerAvatar *avatar) {
+    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_BIKE_BRAKE)) {
         return TRUE;
     }
     return FALSE;

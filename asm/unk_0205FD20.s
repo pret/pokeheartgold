@@ -255,7 +255,7 @@ sub_0205FEDC: ; 0x0205FEDC
 	cmp r0, #1
 	bne _0205FF6A
 	add r0, r5, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
@@ -319,7 +319,7 @@ sub_0205FF6C: ; 0x0205FF6C
 	cmp r0, #1
 	bne _0206001E
 	add r0, r5, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
@@ -398,7 +398,7 @@ sub_02060020: ; 0x02060020
 	cmp r0, #1
 	bne _0206008A
 	add r0, r5, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
@@ -453,7 +453,7 @@ sub_0206008C: ; 0x0206008C
 	cmp r0, #1
 	bne _02060112
 	add r0, r5, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
@@ -507,7 +507,7 @@ sub_02060114: ; 0x02060114
 	cmp r0, #1
 	bne _020601A2
 	add r0, r5, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r5, #0
@@ -1376,19 +1376,19 @@ _0206081A:
 _02060828:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #0xc]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #4]
@@ -1491,7 +1491,7 @@ _02060902:
 _0206091A:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r6, #0
@@ -1540,7 +1540,7 @@ _0206096A:
 _02060982:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r6, r0, #0x18
 	add r0, r6, #0
@@ -1601,19 +1601,19 @@ sub_020609D4: ; 0x020609D4
 	beq _02060A96
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #8]
 	add r0, r5, #0
 	mov r1, #3
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp, #4]
 	add r0, r5, #0
 	mov r1, #2
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	str r0, [sp]
@@ -1672,7 +1672,7 @@ _02060A86:
 _02060A96:
 	add r0, r5, #0
 	mov r1, #1
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl MetatileBehavior_HasReflectiveSurface
@@ -2113,7 +2113,7 @@ sub_02060DEC: ; 0x02060DEC
 	bl MapObject_GetFieldSystem
 	str r0, [sp]
 	add r0, r4, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	ldr r0, [sp]
@@ -2337,8 +2337,8 @@ sub_02060F78: ; 0x02060F78
 	.balign 4, 0
 	thumb_func_end sub_02060F78
 
-	thumb_func_start sub_02060FA8
-sub_02060FA8: ; 0x02060FA8
+	thumb_func_start LocalMapObject_GetNextPositionMetatileBehavior
+LocalMapObject_GetNextPositionMetatileBehavior: ; 0x02060FA8
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r1, #0
 	add r4, r0, #0
@@ -2361,7 +2361,7 @@ sub_02060FA8: ; 0x02060FA8
 	bl GetMetatileBehavior
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02060FA8
+	thumb_func_end LocalMapObject_GetNextPositionMetatileBehavior
 
 	thumb_func_start sub_02060FE0
 sub_02060FE0: ; 0x02060FE0
