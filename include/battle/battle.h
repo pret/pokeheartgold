@@ -140,7 +140,7 @@ typedef struct TrainerAIData {
     u8 scriptStackSize;
     u8 trainerItemCounts[2];
     u8 attacker;
-    u8 defender;
+    u8 target;
     u8 usedItemType[2];
     u8 usedItemCondition[2];
     u16 usedItem[2];

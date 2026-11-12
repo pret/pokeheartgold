@@ -6239,7 +6239,7 @@ int ov12_022581D4(BattleSystem *battleSystem, BattleContext *ctx, int var, int b
     case 8:
         return (int)ctx->playerActions[battlerID].command;
     case 9:
-        return ctx->trainerAIData.defender;
+        return ctx->trainerAIData.target;
     case 10:
         return ctx->switchInFlag;
     case 11:
@@ -6271,7 +6271,7 @@ void ov12_022582B8(BattleSystem *battleSystem, BattleContext *ctx, int var, int 
         ctx->totalTurns = data;
         break;
     case 9:
-        ctx->trainerAIData.defender = data;
+        ctx->trainerAIData.target = data;
         break;
     case 11:
         ctx->trainerAIData.selectedTarget[battlerID] = data;
