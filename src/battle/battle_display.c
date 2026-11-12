@@ -110,7 +110,7 @@ static void BattleDisplay_SetLeadMonMessage(BattleSystem *battleSystem, Opponent
 static void ov12_02261928(BattleSystem *battleSystem, OpponentData *opponentData, BattleMessage *battleMsg);
 static void ov12_022619E4(BattleSystem *battleSystem, OpponentData *opponentData, EscapeMsgMessage *message, BattleMessage *battleMsg);
 static void ov12_02261AD4(BattleSystem *battleSystem, OpponentData *opponentData, BattleMessage *battleMsg);
-static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int side, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y);
+static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int battlerType, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y);
 static void BattleDisplay_PlayMoveAnimation(BattleSystem *battleSystem, OpponentData *opponentData, BattleAnimSystem *battleAnimSystem, MoveAnimation *animation);
 static void BattleDisplay_PopulateBattlerContext(BattleSystem *battleSystem, MoveAnimation *animation, BattlerSpriteContext *battlerSpriteCtx, int battler);
 static void BattleDisplay_GetAnimHideFlags(u8 *hideHealthboxes, u8 *hideShadows, int animMode, int secondaryAnimID, u16 move);
@@ -463,7 +463,7 @@ void BattleDisplay_InitTaskOpenCaptureBall(BattleSystem *battleSystem, OpponentD
 
 void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, OpponentData *opponentData, TrainerEncounterMessage *message) {
     TrainerEncounterData *trainerEncounterData = Heap_Alloc(HEAP_ID_BATTLE, sizeof(TrainerEncounterData));
-    int side;
+    int battlerType;
 
     trainerEncounterData->state = 0;
 
@@ -479,9 +479,9 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, Oppon
 
     if ((BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_MULTI)
         || (BattleSystem_GetBattleType(battleSystem) & BATTLE_TYPE_TAG && opponentData->battlerType & BATTLE_TYPE_TRAINER)) {
-        side = opponentData->battlerType;
+        battlerType = opponentData->battlerType;
     } else {
-        side = opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY;
+        battlerType = opponentData->battlerType & BATTLER_TYPE_SOLO_ENEMY;
     }
 
     message->trainerType = BattleDisplay_GetLinkTrainerClass(battleSystem, opponentData->battlerId, message->trainerType);
@@ -498,12 +498,12 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, Oppon
     }
 
     trainerEncounterData->managedSprite = opponentData->managedSprite = BattleDisplay_NewManagedSpriteTrainer(battleSystem,
-        side,
+        battlerType,
         message->trainerType,
         opponentData->battlerType,
         flag,
-        ov07_022377F4[side][0],
-        ov07_022377F4[side][1]);
+        ov07_022377F4[battlerType][0],
+        ov07_022377F4[battlerType][1]);
 
     if (trainerEncounterData->face == MON_PIC_FACING_BACK
         && (BattleSystem_GetBattleType(battleSystem) == BATTLE_TYPE_NONE
@@ -522,11 +522,11 @@ void BattleDisplay_InitTaskSetTrainerEncounter(BattleSystem *battleSystem, Oppon
         pokepicTemplate.species = SPECIES_NONE;
         pokepicTemplate.isAnimated = FALSE;
         pokepicTemplate.personality = 0;
-        trainerEncounterData->pokepic = PokepicManager_CreatePokepic(pokepicManager, &pokepicTemplate, ov07_022377F4[side][0], ov07_022377F4[side][1], ov07_022377F4[side][2], opponentData->battlerId, 0, 0);
+        trainerEncounterData->pokepic = PokepicManager_CreatePokepic(pokepicManager, &pokepicTemplate, ov07_022377F4[battlerType][0], ov07_022377F4[battlerType][1], ov07_022377F4[battlerType][2], opponentData->battlerId, 0, 0);
     } else {
         trainerEncounterData->pokepic = NULL;
     }
-    trainerEncounterData->targetX = gBattlerEncounterX[side][0];
+    trainerEncounterData->targetX = gBattlerEncounterX[battlerType][0];
     trainerEncounterData->battleSystem = battleSystem;
     trainerEncounterData->command = message->command;
     trainerEncounterData->battler = opponentData->battlerId;
@@ -6318,13 +6318,13 @@ static void ov12_02261AD4(BattleSystem *battleSystem, OpponentData *opponentData
     BattleSystem_SetBattleOutcomeFlags(battleSystem, BATTLE_RESULT_LOSE | BATTLE_RESULT_TRY_FLEE | BATTLE_RESULT_TRY_FLEE_WAIT);
 }
 
-static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int side, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y) {
+static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int battlerType, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y) {
     SpriteSystem *spriteSys = BattleSystem_GetSpriteSystem(battleSystem);
     SpriteManager *spriteMan = BattleSystem_GetSpriteManager(battleSystem);
     PaletteData *paletteData = BattleSystem_GetPaletteData(battleSystem);
     int face;
 
-    if (side & 1) {
+    if (battlerType & BATTLER_TYPE_IS_ENEMY) {
         face = MON_PIC_FACING_FRONT;
     } else {
         face = MON_PIC_FACING_BACK;
@@ -6516,7 +6516,7 @@ static u8 BattleDisplay_GetLinkTrainerClass(BattleSystem *battleSystem, u8 battl
     case 0:
         trainerClass += TRAINERCLASS_PKMN_TRAINER_LUCAS_DP;
         break;
-    case 12:
+    case VERSION_PLATINUM:
         trainerClass += TRAINERCLASS_PKMN_TRAINER_LUCAS_PT;
         break;
     default:
