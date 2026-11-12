@@ -110,7 +110,7 @@ static void BattleDisplay_SetLeadMonMessage(BattleSystem *battleSystem, Opponent
 static void ov12_02261928(BattleSystem *battleSystem, OpponentData *opponentData, BattleMessage *battleMsg);
 static void ov12_022619E4(BattleSystem *battleSystem, OpponentData *opponentData, EscapeMsgMessage *message, BattleMessage *battleMsg);
 static void ov12_02261AD4(BattleSystem *battleSystem, OpponentData *opponentData, BattleMessage *battleMsg);
-static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int battlerType, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y);
+static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int battlerTypeSide, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y);
 static void BattleDisplay_PlayMoveAnimation(BattleSystem *battleSystem, OpponentData *opponentData, BattleAnimSystem *battleAnimSystem, MoveAnimation *animation);
 static void BattleDisplay_PopulateBattlerContext(BattleSystem *battleSystem, MoveAnimation *animation, BattlerSpriteContext *battlerSpriteCtx, int battler);
 static void BattleDisplay_GetAnimHideFlags(u8 *hideHealthboxes, u8 *hideShadows, int animMode, int secondaryAnimID, u16 move);
@@ -6318,13 +6318,13 @@ static void ov12_02261AD4(BattleSystem *battleSystem, OpponentData *opponentData
     BattleSystem_SetBattleOutcomeFlags(battleSystem, BATTLE_RESULT_LOSE | BATTLE_RESULT_TRY_FLEE | BATTLE_RESULT_TRY_FLEE_WAIT);
 }
 
-static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int battlerType, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y) {
+static ManagedSprite *BattleDisplay_NewManagedSpriteTrainer(BattleSystem *battleSystem, int battlerTypeSide, int trainerClass, int battlerType, u32 isLink, s16 x, s16 y) {
     SpriteSystem *spriteSys = BattleSystem_GetSpriteSystem(battleSystem);
     SpriteManager *spriteMan = BattleSystem_GetSpriteManager(battleSystem);
     PaletteData *paletteData = BattleSystem_GetPaletteData(battleSystem);
     int face;
 
-    if (battlerType & BATTLER_TYPE_IS_ENEMY) {
+    if (battlerTypeSide & BATTLER_TYPE_IS_ENEMY) {
         face = MON_PIC_FACING_FRONT;
     } else {
         face = MON_PIC_FACING_BACK;
