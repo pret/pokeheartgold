@@ -12,7 +12,7 @@ fs = import('fs')
 ############################################################
 ###                    INCLUDE PATHS                     ###
 ############################################################
-public_includes = include_directories('include', 'asm/include', 'lib/include', 'files', 'src', 'asm')
+public_includes = include_directories('include', 'asm/include', 'files', 'src', 'asm')
 toplevel_includes = include_directories('.')
 relative_source_root = fs.relative_to(meson.project_source_root(), meson.project_build_root())
 
