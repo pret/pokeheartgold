@@ -2572,8 +2572,8 @@ _02061182:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02061108
 
-	thumb_func_start sub_02061190
-sub_02061190: ; 0x02061190
+	thumb_func_start VecFx32_StepDirection
+VecFx32_StepDirection: ; 0x02061190
 	cmp r0, #3
 	bhi _020611C6
 	add r0, r0, r0
@@ -2608,7 +2608,7 @@ _020611C0:
 	str r0, [r1]
 _020611C6:
 	bx lr
-	thumb_func_end sub_02061190
+	thumb_func_end VecFx32_StepDirection
 
 	thumb_func_start sub_020611C8
 sub_020611C8: ; 0x020611C8
@@ -2639,15 +2639,15 @@ _020611F0:
 	.balign 4, 0
 	thumb_func_end sub_020611DC
 
-	thumb_func_start sub_020611F4
-sub_020611F4: ; 0x020611F4
+	thumb_func_start Direction_GetOpposite
+Direction_GetOpposite: ; 0x020611F4
 	lsl r1, r0, #2
 	ldr r0, _020611FC ; =_020FD4DC
 	ldr r0, [r0, r1]
 	bx lr
 	.balign 4, 0
 _020611FC: .word _020FD4DC
-	thumb_func_end sub_020611F4
+	thumb_func_end Direction_GetOpposite
 
 	thumb_func_start sub_02061200
 sub_02061200: ; 0x02061200
@@ -2670,8 +2670,8 @@ _02061218:
 	bx lr
 	thumb_func_end sub_02061200
 
-	thumb_func_start sub_0206121C
-sub_0206121C: ; 0x0206121C
+	thumb_func_start MapObject_RecalculatePositionHeight
+MapObject_RecalculatePositionHeight: ; 0x0206121C
 	push {r4, lr}
 	sub sp, #8
 	add r4, r1, #0
@@ -2694,7 +2694,7 @@ _0206123E:
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_0206121C
+	thumb_func_end MapObject_RecalculatePositionHeight
 
 	thumb_func_start sub_02061248
 sub_02061248: ; 0x02061248

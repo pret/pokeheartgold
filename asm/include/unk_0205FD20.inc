@@ -105,12 +105,12 @@
 .public sub_02060FE0
 .public sub_0206101C
 .public sub_02061070
-.public sub_02061190
+.public VecFx32_StepDirection
 .public sub_020611C8
 .public sub_020611DC
-.public sub_020611F4
+.public Direction_GetOpposite
 .public sub_02061200
-.public sub_0206121C
+.public MapObject_RecalculatePositionHeight
 .public sub_02061248
 .public sub_02062400
 .public sub_02063A14

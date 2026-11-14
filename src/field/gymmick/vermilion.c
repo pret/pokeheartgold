@@ -119,15 +119,15 @@ static BOOL Task_VermilionGymmick_AnimateGateAction(TaskManager *taskman) {
         *pState = taskData->initialState;
         break;
     case 1:
-        MapObject_SetHeldMovement(taskData->gateStopObjects[0], MOVEMENT_RUN_FASTER_LEFT);
-        MapObject_SetHeldMovement(taskData->gateStopObjects[1], MOVEMENT_RUN_FASTER_LEFT);
-        MapObject_SetHeldMovement(taskData->gateStopObjects[2], MOVEMENT_RUN_FASTER_RIGHT);
+        MapObject_SetHeldMovement(taskData->gateStopObjects[0], MOVEMENT_WALK_FASTER_LEFT);
+        MapObject_SetHeldMovement(taskData->gateStopObjects[1], MOVEMENT_WALK_FASTER_LEFT);
+        MapObject_SetHeldMovement(taskData->gateStopObjects[2], MOVEMENT_WALK_FASTER_RIGHT);
         *pState = 3;
         break;
     case 2:
-        MapObject_SetHeldMovement(taskData->gateStopObjects[0], MOVEMENT_RUN_FASTER_RIGHT);
-        MapObject_SetHeldMovement(taskData->gateStopObjects[1], MOVEMENT_RUN_FASTER_RIGHT);
-        MapObject_SetHeldMovement(taskData->gateStopObjects[2], MOVEMENT_RUN_FASTER_LEFT);
+        MapObject_SetHeldMovement(taskData->gateStopObjects[0], MOVEMENT_WALK_FASTER_RIGHT);
+        MapObject_SetHeldMovement(taskData->gateStopObjects[1], MOVEMENT_WALK_FASTER_RIGHT);
+        MapObject_SetHeldMovement(taskData->gateStopObjects[2], MOVEMENT_WALK_FASTER_LEFT);
         *pState = 3;
         break;
     case 3: {

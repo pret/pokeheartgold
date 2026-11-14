@@ -263,7 +263,7 @@ _021F3300:
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4]
 	add r1, r6, #0
-	bl sub_0205DA34
+	bl PlayerAvatar_CheckCollision
 	cmp r0, #0
 	bne _021F3314
 	mov r0, #1

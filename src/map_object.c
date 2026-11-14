@@ -1101,7 +1101,7 @@ void MapObject_SetFacingDirectionDirect(LocalMapObject *object, u32 direction) {
 }
 
 void MapObject_SetFacingDirection(LocalMapObject *object, u32 direction) {
-    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK7) == 0) {
+    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_PAUSE_ANIMATION) == 0) {
         object->previousFacing = object->currentFacing;
         object->currentFacing = direction;
     }

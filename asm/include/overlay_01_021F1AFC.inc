@@ -46,9 +46,9 @@
 .public PlayerAvatar_GetUnk34
 .public PlayerAvatar_GetSpriteByStateAndGender
 .public PlayerAvatar_CheckForcedMovement
-.public PlayerAvatar_SetFlag1
+.public PlayerAvatar_SetIgnoreTileBehavior
 .public PlayerAvatar_CheckStartMove
-.public sub_0205DA34
+.public PlayerAvatar_CheckCollision
 .public sub_0205DE38
 .public sub_0205DEC0
 .public sub_0205DFEC
@@ -80,7 +80,7 @@
 .public sub_02060F78
 .public LocalMapObject_GetNextPositionMetatileBehavior
 .public sub_020611C8
-.public sub_0206121C
+.public MapObject_RecalculatePositionHeight
 .public MapObject_AreBitsSetForMovementScriptInit
 .public MapObject_SetHeldMovement
 .public MapObject_IsMovementPaused

@@ -14,1222 +14,13 @@
 
 	.text
 
-	thumb_func_start PlayerAvatar_GetTileMovement
-PlayerAvatar_GetTileMovement: ; 0x0205D01C
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r6, r1, #0
-	mov r4, #0
-	bl PlayerAvatar_GetMapObject
-	bl MapObject_GetMetatileBehavior
-	add r7, r0, #0
-	add r0, r5, #0
-	add r1, r7, #0
-	add r2, r6, #0
-	bl sub_0205E078
-	cmp r0, #1
-	bne _0205D040
-	mov r0, #2
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D040:
-	add r0, r5, #0
-	bl PlayerAvatar_CheckFlag1
-	cmp r0, #1
-	bne _0205D04E
-	add r0, r4, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D04E:
-	lsl r0, r7, #0x18
-	ldr r5, _0205D074 ; =_020FCB88
-	lsr r6, r0, #0x18
-_0205D054:
-	ldr r1, [r5]
-	add r0, r6, #0
-	blx r1
-	cmp r0, #1
-	bne _0205D066
-	ldr r0, _0205D078 ; =_020FCB88 + 4
-	lsl r1, r4, #3
-	ldr r0, [r0, r1]
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D066:
-	add r5, #8
-	ldr r0, [r5]
-	add r4, r4, #1
-	cmp r0, #0
-	bne _0205D054
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-_0205D074: .word _020FCB88
-_0205D078: .word _020FCB88 + 4
-	thumb_func_end PlayerAvatar_GetTileMovement
-
-	thumb_func_start PlayerAvatar_TryMoveTileBehavior
-PlayerAvatar_TryMoveTileBehavior: ; 0x0205D07C
-	push {r3, lr}
-	add r3, r1, #0
-	add r1, r2, #0
-	ldr r2, _0205D098 ; =_020FCB7C
-	lsl r3, r3, #2
-	ldr r2, [r2, r3]
-	blx r2
-	cmp r0, #1
-	bne _0205D092
-	mov r0, #1
-	pop {r3, pc}
-_0205D092:
-	mov r0, #0
-	pop {r3, pc}
-	nop
-_0205D098: .word _020FCB7C
-	thumb_func_end PlayerAvatar_TryMoveTileBehavior
-
-	thumb_func_start sub_0205D09C
-sub_0205D09C: ; 0x0205D09C
-	push {r3, lr}
-	bl sub_0205D1FC
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D09C
-
-	thumb_func_start sub_0205D0A8
-sub_0205D0A8: ; 0x0205D0A8
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	bl PlayerAvatar_GetMapObject
-	add r4, r0, #0
-	bl MapObject_GetNextFacingDirection
-	add r6, r0, #0
-	add r0, r5, #0
-	add r1, r6, #0
-	bl sub_0205D240
-	str r0, [sp]
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl sub_0205DA34
-	add r7, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetForcedMovement
-	cmp r7, #0
-	beq _0205D10A
-	add r0, r4, #0
-	bl MapObject_GetFieldSystem
-	add r4, r0, #0
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetFlag1
-	add r0, r5, #0
-	mov r1, #0
-	bl PlayerAvatar_SetMoveState
-	add r0, r4, #0
-	bl sub_0206D494
-	cmp r0, #0
-	bne _0205D106
-	add r0, r5, #0
-	bl sub_0205D1FC
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D106:
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D10A:
-	ldr r1, [sp]
-	add r0, r5, #0
-	bl sub_0205D2A0
-	cmp r0, #0
-	bne _0205D170
-	add r0, r5, #0
-	bl sub_0205D1FC
-	add r0, r6, #0
-	bl sub_020611F4
-	add r6, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	add r2, r6, #0
-	bl sub_0205DA34
-	cmp r0, #0
-	beq _0205D136
-	mov r0, #0
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D136:
-	mov r1, #6
-	add r0, r4, #0
-	lsl r1, r1, #6
-	bl MapObject_SetFlagsBits
-	add r0, r6, #0
-	mov r1, #8
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetFlag1
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetForcedMovement
-	mov r1, #0
-	mvn r1, r1
-	add r0, r5, #0
-	add r2, r1, #0
-	bl PlayerAvatar_SetUnk28Unk2C
-	b _0205D182
-_0205D170:
-	mov r1, #6
-	add r0, r4, #0
-	lsl r1, r1, #6
-	bl MapObject_SetFlagsBits
-	add r0, r5, #0
-	add r1, r6, #0
-	bl sub_0205D2D0
-_0205D182:
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetMoveState
-	mov r0, #1
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D0A8
-
-	thumb_func_start sub_0205D190
-sub_0205D190: ; 0x0205D190
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl PlayerAvatar_GetMapObject
-	add r4, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	mov r2, #1
-	bl sub_0205DA34
-	cmp r0, #0
-	bne _0205D1CE
-	mov r0, #1
-	mov r1, #0x14
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetMoveState
-	add r0, r5, #0
-	mov r1, #3
-	bl PlayerAvatar_SetSpeed
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_0205D1CE:
-	mov r0, #1
-	add r1, r0, #0
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	add r0, r5, #0
-	bl PlayerAvatar_ClearSpeed
-	add r0, r5, #0
-	mov r1, #0
-	bl PlayerAvatar_SetMoveState
-	add r0, r5, #0
-	mov r1, #0
-	bl PlayerAvatar_SetBikeBrake
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D190
-
-	thumb_func_start sub_0205D1FC
-sub_0205D1FC: ; 0x0205D1FC
-	push {r4, lr}
-	add r4, r0, #0
-	bl PlayerAvatar_CheckForcedMovement
-	cmp r0, #1
-	bne _0205D23E
-	add r0, r4, #0
-	bl PlayerAvatar_GetMapObject
-	mov r1, #6
-	lsl r1, r1, #6
-	bl MapObject_ClearFlagsBits
-	add r0, r4, #0
-	bl PlayerAvatar_CheckFlag7
-	cmp r0, #0
-	bne _0205D226
-	add r0, r4, #0
-	bl PlayerAvatar_ClearSpeed
-_0205D226:
-	add r0, r4, #0
-	mov r1, #0
-	bl PlayerAvatar_SetForcedMovement
-	add r0, r4, #0
-	mov r1, #0
-	bl PlayerAvatar_SetFlag7
-	add r0, r4, #0
-	mov r1, #0
-	bl PlayerAvatar_SetFlag5
-_0205D23E:
-	pop {r4, pc}
-	thumb_func_end sub_0205D1FC
-
-	thumb_func_start sub_0205D240
-sub_0205D240: ; 0x0205D240
-	push {r4, r5, r6, lr}
-	sub sp, #0x18
-	add r5, r1, #0
-	bl PlayerAvatar_GetMapObject
-	add r4, r0, #0
-	bl MapObject_GetFieldSystem
-	add r6, r0, #0
-	add r0, r4, #0
-	add r1, sp, #0xc
-	bl MapObject_CopyPositionVector
-	add r4, sp, #0xc
-	add r3, sp, #0
-	ldmia r4!, {r0, r1}
-	add r2, r3, #0
-	stmia r3!, {r0, r1}
-	ldr r0, [r4]
-	add r1, r2, #0
-	mov r2, #1
-	str r0, [r3]
-	add r0, r5, #0
-	lsl r2, r2, #0xe
-	bl sub_02061190
-	add r0, r6, #0
-	add r1, sp, #0
-	bl sub_0206121C
-	cmp r0, #0
-	beq _0205D288
-	ldr r1, [sp, #4]
-	ldr r0, [sp, #0x10]
-	cmp r0, r1
-	bne _0205D28E
-_0205D288:
-	add sp, #0x18
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0205D28E:
-	cmp r0, r1
-	ble _0205D298
-	add sp, #0x18
-	mov r0, #2
-	pop {r4, r5, r6, pc}
-_0205D298:
-	mov r0, #1
-	add sp, #0x18
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D240
-
-	thumb_func_start sub_0205D2A0
-sub_0205D2A0: ; 0x0205D2A0
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl PlayerAvatar_GetSpeed
-	add r1, r0, #0
-	cmp r4, #1
-	bne _0205D2B8
-	sub r1, r1, #1
-	bpl _0205D2C4
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_0205D2B8:
-	cmp r4, #2
-	bne _0205D2C4
-	add r1, r1, #1
-	cmp r1, #3
-	ble _0205D2C4
-	mov r1, #3
-_0205D2C4:
-	add r0, r5, #0
-	bl PlayerAvatar_SetSpeed
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D2A0
-
-	thumb_func_start sub_0205D2D0
-sub_0205D2D0: ; 0x0205D2D0
-	push {r3, r4, r5, r6, r7, lr}
-	add r6, r0, #0
-	add r7, r1, #0
-	bl PlayerAvatar_GetMapObject
-	add r4, r0, #0
-	add r0, r6, #0
-	mov r5, #0x10
-	bl PlayerAvatar_GetSpeed
-	cmp r0, #1
-	beq _0205D2F2
-	cmp r0, #2
-	beq _0205D2F6
-	cmp r0, #3
-	beq _0205D2FA
-	b _0205D2FC
-_0205D2F2:
-	mov r5, #0x50
-	b _0205D2FC
-_0205D2F6:
-	mov r5, #0x14
-	b _0205D2FC
-_0205D2FA:
-	mov r5, #0x14
-_0205D2FC:
-	add r0, r7, #0
-	add r1, r5, #0
-	bl sub_0206234C
-	add r7, r0, #0
-	add r0, r6, #0
-	add r1, r4, #0
-	add r2, r7, #0
-	bl sub_0205DA1C
-	add r0, r4, #0
-	bl MapObject_GetFieldSystem
-	add r5, r0, #0
-	bl FollowMon_IsActive
-	cmp r0, #0
-	beq _0205D33C
-	add r0, r4, #0
-	bl MapObject_GetPreviousXCoord
-	add r6, r0, #0
-	add r0, r4, #0
-	bl MapObject_GetPreviousZCoord
-	add r5, #0xe4
-	add r2, r0, #0
-	add r0, r7, #0
-	add r1, r6, #0
-	add r3, r5, #0
-	bl ov01_02205990
-_0205D33C:
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D2D0
-
-	thumb_func_start sub_0205D340
-sub_0205D340: ; 0x0205D340
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0xc
-	add r6, r0, #0
-	add r7, r1, #0
-	str r2, [sp, #8]
-	add r4, r3, #0
-	bl PlayerAvatar_GetState
-	add r5, r0, #0
-	add r0, r6, #0
-	bl PlayerAvatar_GetMapObject
-	add r1, r0, #0
-	cmp r5, #3
-	bhi _0205D39E
-	add r0, r5, r5
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0205D36A: ; jump table
-	.short _0205D372 - _0205D36A - 2 ; case 0
-	.short _0205D388 - _0205D36A - 2 ; case 1
-	.short _0205D372 - _0205D36A - 2 ; case 2
-	.short _0205D372 - _0205D36A - 2 ; case 3
-_0205D372:
-	str r4, [sp]
-	add r0, sp, #0x10
-	ldrh r0, [r0, #0x10]
-	ldr r3, [sp, #8]
-	add r2, r7, #0
-	str r0, [sp, #4]
-	add r0, r6, #0
-	bl sub_0205D3A8
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-_0205D388:
-	str r4, [sp]
-	add r0, sp, #0x10
-	ldrh r0, [r0, #0x10]
-	ldr r3, [sp, #8]
-	add r2, r7, #0
-	str r0, [sp, #4]
-	add r0, r6, #0
-	bl sub_0205D640
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-_0205D39E:
-	bl GF_AssertFail
-	add sp, #0xc
-	pop {r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D340
-
-	thumb_func_start sub_0205D3A8
-sub_0205D3A8: ; 0x0205D3A8
-	push {r3, r4, r5, r6, lr}
-	sub sp, #4
-	add r6, r3, #0
-	add r4, r1, #0
-	add r1, r6, #0
-	add r5, r0, #0
-	bl sub_0205D40C
-	cmp r0, #0
-	beq _0205D3C8
-	cmp r0, #1
-	beq _0205D3DE
-	cmp r0, #2
-	beq _0205D3F4
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-_0205D3C8:
-	add r3, sp, #8
-	ldrh r0, [r3, #0x14]
-	add r1, r4, #0
-	add r2, r6, #0
-	str r0, [sp]
-	ldrh r3, [r3, #0x10]
-	add r0, r5, #0
-	bl sub_0205D494
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-_0205D3DE:
-	add r3, sp, #8
-	ldrh r0, [r3, #0x14]
-	add r1, r4, #0
-	add r2, r6, #0
-	str r0, [sp]
-	ldrh r3, [r3, #0x10]
-	add r0, r5, #0
-	bl sub_0205D4B4
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-_0205D3F4:
-	add r3, sp, #8
-	ldrh r0, [r3, #0x14]
-	add r1, r4, #0
-	add r2, r6, #0
-	str r0, [sp]
-	ldrh r3, [r3, #0x10]
-	add r0, r5, #0
-	bl sub_0205D610
-	add sp, #4
-	pop {r3, r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D3A8
-
-	thumb_func_start sub_0205D40C
-sub_0205D40C: ; 0x0205D40C
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl sub_0205D450
-	add r4, r0, #0
-	bl sub_0205D428
-	add r1, r0, #0
-	add r0, r5, #0
-	bl PlayerAvatar_SetMoveState
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D40C
-
-	thumb_func_start sub_0205D428
-sub_0205D428: ; 0x0205D428
-	push {r3, lr}
-	cmp r0, #0
-	beq _0205D438
-	cmp r0, #1
-	beq _0205D43C
-	cmp r0, #2
-	beq _0205D440
-	b _0205D444
-_0205D438:
-	mov r0, #0
-	pop {r3, pc}
-_0205D43C:
-	mov r0, #1
-	pop {r3, pc}
-_0205D440:
-	mov r0, #2
-	pop {r3, pc}
-_0205D444:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-	thumb_func_end sub_0205D428
-
-	thumb_func_start sub_0205D44C
-sub_0205D44C: ; 0x0205D44C
-	add r0, r2, #0
-	bx lr
-	thumb_func_end sub_0205D44C
-
-	thumb_func_start sub_0205D450
-sub_0205D450: ; 0x0205D450
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	mov r1, #0
-	mvn r1, r1
-	add r5, r0, #0
-	cmp r4, r1
-	bne _0205D468
-	mov r1, #0
-	bl PlayerAvatar_SetMoveState
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-_0205D468:
-	bl PlayerAvatar_GetFacingDirection
-	cmp r0, r4
-	beq _0205D486
-	add r0, r5, #0
-	bl PlayerAvatar_GetMoveState
-	cmp r0, #1
-	beq _0205D486
-	add r0, r5, #0
-	mov r1, #2
-	bl PlayerAvatar_SetMoveState
-	mov r0, #2
-	pop {r3, r4, r5, pc}
-_0205D486:
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetMoveState
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D450
-
-	thumb_func_start sub_0205D494
-sub_0205D494: ; 0x0205D494
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	bl MapObject_GetFacingDirection
-	mov r1, #0
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D494
-
-	thumb_func_start sub_0205D4B4
-sub_0205D4B4: ; 0x0205D4B4
-	push {r4, r5, r6, r7, lr}
-	sub sp, #0x14
-	mov r3, #0
-	add r6, r0, #0
-	add r5, r1, #0
-	add r7, r2, #0
-	str r3, [sp, #4]
-	bl sub_0205DA34
-	add r4, r0, #0
-	add r0, r6, #0
-	bl PlayerAvatar_GetState
-	cmp r0, #2
-	beq _0205D588
-	mov r0, #4
-	tst r0, r4
-	beq _0205D4DE
-	mov r0, #0x38
-	str r0, [sp]
-	b _0205D5CE
-_0205D4DE:
-	cmp r4, #0
-	beq _0205D544
-	mov r0, #0x1c
-	str r0, [sp]
-	mov r0, #8
-	tst r0, r4
-	bne _0205D536
-	add r0, r5, #0
-	bl MapObject_GetFieldSystem
-	mov r1, #7
-	str r0, [sp, #8]
-	bl FieldSystem_IsSaveGymmickTypeEqualTo
-	cmp r0, #0
-	beq _0205D52E
-	add r0, r5, #0
-	bl MapObject_GetXCoord
-	add r4, r0, #0
-	add r0, r7, #0
-	bl GetDeltaXByFacingDirection
-	str r0, [sp, #0xc]
-	add r0, r5, #0
-	bl MapObject_GetZCoord
-	str r0, [sp, #0x10]
-	add r0, r7, #0
-	bl GetDeltaYByFacingDirection
-	ldr r1, [sp, #0xc]
-	add r2, r0, #0
-	ldr r3, [sp, #0x10]
-	ldr r0, [sp, #8]
-	add r1, r4, r1
-	add r2, r3, r2
-	bl FuchsiaGymmick_CheckCollision
-	b _0205D536
-_0205D52E:
-	mov r0, #SEQ_SE_DP_WALL_HIT>>8
-	lsl r0, r0, #8
-	bl PlaySE
-_0205D536:
-	add r0, r5, #0
-	add r1, r7, #0
-	bl MapObject_SetNextFacingDirection
-	mov r0, #1
-	str r0, [sp, #4]
-	b _0205D5CE
-_0205D544:
-	add r0, r6, #0
-	mov r4, #0xc
-	bl PlayerAvatar_GetPlayerSaveData
-	bl PlayerSaveData_CheckRunningShoes
-	cmp r0, #1
-	bne _0205D564
-	add r1, sp, #0x18
-	ldrh r1, [r1, #0x10]
-	add r0, r6, #0
-	bl sub_0205DE88
-	cmp r0, #1
-	bne _0205D564
-	mov r4, #0x58
-_0205D564:
-	add r0, r5, #0
-	bl MapObject_GetMetatileBehavior
-	add r1, r0, #0
-	lsl r1, r1, #0x18
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	add r2, r4, #0
-	bl sub_0205D44C
-	str r0, [sp]
-	add r0, r6, #0
-	bl sub_0205E048
-	add r0, r6, #0
-	bl PlayerAvatar_SetFlag6
-	b _0205D5CE
-_0205D588:
-	cmp r4, #0
-	beq _0205D590
-	cmp r4, #0x20
-	bne _0205D5B4
-_0205D590:
-	add r0, r5, #0
-	bl MapObject_GetMetatileBehavior
-	add r1, r0, #0
-	lsl r1, r1, #0x18
-	add r0, r5, #0
-	lsr r1, r1, #0x18
-	mov r2, #0x10
-	bl sub_0205D44C
-	str r0, [sp]
-	add r0, r6, #0
-	bl sub_0205E048
-	add r0, r6, #0
-	bl PlayerAvatar_SetFlag6
-	b _0205D5CE
-_0205D5B4:
-	mov r0, #0x1c
-	str r0, [sp]
-	mov r0, #8
-	tst r0, r4
-	bne _0205D5C6
-	mov r0, #SEQ_SE_DP_WALL_HIT>>8
-	lsl r0, r0, #8
-	bl PlaySE
-_0205D5C6:
-	add r0, r5, #0
-	add r1, r7, #0
-	bl MapObject_SetNextFacingDirection
-_0205D5CE:
-	ldr r1, [sp]
-	add r0, r7, #0
-	bl sub_0206234C
-	add r7, r0, #0
-	add r0, r6, #0
-	add r1, r5, #0
-	add r2, r7, #0
-	bl sub_0205DA1C
-	ldr r0, [sp, #4]
-	cmp r0, #0
-	bne _0205D60C
-	add r0, r5, #0
-	bl MapObject_GetFieldSystem
-	add r4, r0, #0
-	add r0, r5, #0
-	bl MapObject_GetPreviousXCoord
-	add r6, r0, #0
-	add r0, r5, #0
-	bl MapObject_GetPreviousZCoord
-	add r4, #0xe4
-	add r2, r0, #0
-	add r0, r7, #0
-	add r1, r6, #0
-	add r3, r4, #0
-	bl ov01_02205990
-_0205D60C:
-	add sp, #0x14
-	pop {r4, r5, r6, r7, pc}
-	thumb_func_end sub_0205D4B4
-
-	thumb_func_start sub_0205D610
-sub_0205D610: ; 0x0205D610
-	push {r4, r5, r6, lr}
-	add r6, r2, #0
-	add r5, r0, #0
-	add r4, r1, #0
-	add r0, r6, #0
-	mov r1, #0x28
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	add r0, r4, #0
-	add r1, r6, #0
-	bl MapObject_SetNextFacingDirection
-	add r0, r5, #0
-	bl PlayerAvatar_ResetFootstepCooldown
-	add r0, r5, #0
-	bl PlayerAvatar_ToggleFootstepCooldown
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0205D610
-
-	thumb_func_start sub_0205D640
-sub_0205D640: ; 0x0205D640
-	push {r3, r4, r5, lr}
-	sub sp, #8
-	add r4, sp, #8
-	ldrh r5, [r4, #0x10]
-	str r5, [sp]
-	ldrh r4, [r4, #0x14]
-	str r4, [sp, #4]
-	bl sub_0205D6E8
-	add sp, #8
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D640
-
-	thumb_func_start sub_0205D658
-sub_0205D658: ; 0x0205D658
-	push {r3, r4, r5, lr}
-	add r5, r1, #0
-	mov r4, #0x4c
-	bl PlayerAvatar_GetSpeed
-	cmp r0, #1
-	beq _0205D670
-	cmp r0, #2
-	beq _0205D674
-	cmp r0, #3
-	beq _0205D678
-	b _0205D67A
-_0205D670:
-	mov r4, #0x10
-	b _0205D67A
-_0205D674:
-	mov r4, #0x50
-	b _0205D67A
-_0205D678:
-	mov r4, #0x14
-_0205D67A:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0206234C
-	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205D658
-
-	thumb_func_start sub_0205D684
-sub_0205D684: ; 0x0205D684
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	mov r1, #1
-	mov r2, #3
-	bl PlayerAvatar_AddSpeed
-	add r4, r0, #0
-	add r0, r5, #0
-	bl PlayerAvatar_CheckBikeBrake
-	cmp r0, #0
-	bne _0205D6A8
-	cmp r4, #2
-	blt _0205D6A8
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetBikeBrake
-_0205D6A8:
-	cmp r4, #3
-	bne _0205D6B0
-	mov r0, #1
-	pop {r3, r4, r5, pc}
-_0205D6B0:
-	mov r0, #0
-	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205D684
-
-	thumb_func_start sub_0205D6B4
-sub_0205D6B4: ; 0x0205D6B4
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	mov r6, #1
-	bl PlayerAvatar_GetSpeed
-	sub r4, r0, #1
-	bpl _0205D6C6
-	mov r4, #0
-	add r6, r4, #0
-_0205D6C6:
-	add r0, r5, #0
-	add r1, r4, #0
-	bl PlayerAvatar_SetSpeed
-	add r0, r5, #0
-	bl PlayerAvatar_CheckBikeBrake
-	cmp r0, #1
-	bne _0205D6E4
-	cmp r4, #0
-	bne _0205D6E4
-	add r0, r5, #0
-	mov r1, #0
-	bl PlayerAvatar_SetBikeBrake
-_0205D6E4:
-	add r0, r6, #0
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0205D6B4
-
-	thumb_func_start sub_0205D6E8
-sub_0205D6E8: ; 0x0205D6E8
-	push {r3, r4, r5, r6, r7, lr}
-	sub sp, #8
-	add r7, r1, #0
-	add r1, r3, #0
-	add r6, r0, #0
-	str r3, [sp, #4]
-	ldr r5, [sp, #0x20]
-	ldr r4, [sp, #0x24]
-	bl sub_0205D75C
-	cmp r0, #3
-	bhi _0205D758
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0205D70C: ; jump table
-	.short _0205D714 - _0205D70C - 2 ; case 0
-	.short _0205D726 - _0205D70C - 2 ; case 1
-	.short _0205D738 - _0205D70C - 2 ; case 2
-	.short _0205D74A - _0205D70C - 2 ; case 3
-_0205D714:
-	ldr r2, [sp, #4]
-	add r0, r6, #0
-	add r1, r7, #0
-	add r3, r5, #0
-	str r4, [sp]
-	bl sub_0205D818
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D726:
-	ldr r2, [sp, #4]
-	add r0, r6, #0
-	add r1, r7, #0
-	add r3, r5, #0
-	str r4, [sp]
-	bl sub_0205D83C
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D738:
-	ldr r2, [sp, #4]
-	add r0, r6, #0
-	add r1, r7, #0
-	add r3, r5, #0
-	str r4, [sp]
-	bl sub_0205D948
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-_0205D74A:
-	ldr r2, [sp, #4]
-	add r0, r6, #0
-	add r1, r7, #0
-	add r3, r5, #0
-	str r4, [sp]
-	bl sub_0205D978
-_0205D758:
-	add sp, #8
-	pop {r3, r4, r5, r6, r7, pc}
-	thumb_func_end sub_0205D6E8
-
-	thumb_func_start sub_0205D75C
-sub_0205D75C: ; 0x0205D75C
-	push {r3, r4, r5, lr}
-	add r5, r0, #0
-	bl sub_0205D7AC
-	add r4, r0, #0
-	bl sub_0205D778
-	add r1, r0, #0
-	add r0, r5, #0
-	bl PlayerAvatar_SetMoveState
-	add r0, r4, #0
-	pop {r3, r4, r5, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D75C
-
-	thumb_func_start sub_0205D778
-sub_0205D778: ; 0x0205D778
-	push {r3, lr}
-	cmp r0, #3
-	bhi _0205D7A2
-	add r0, r0, r0
-	add r0, pc
-	ldrh r0, [r0, #6]
-	lsl r0, r0, #0x10
-	asr r0, r0, #0x10
-	add pc, r0
-_0205D78A: ; jump table
-	.short _0205D792 - _0205D78A - 2 ; case 0
-	.short _0205D796 - _0205D78A - 2 ; case 1
-	.short _0205D79A - _0205D78A - 2 ; case 2
-	.short _0205D79E - _0205D78A - 2 ; case 3
-_0205D792:
-	mov r0, #0
-	pop {r3, pc}
-_0205D796:
-	mov r0, #1
-	pop {r3, pc}
-_0205D79A:
-	mov r0, #2
-	pop {r3, pc}
-_0205D79E:
-	mov r0, #1
-	pop {r3, pc}
-_0205D7A2:
-	bl GF_AssertFail
-	mov r0, #0
-	pop {r3, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D778
-
-	thumb_func_start sub_0205D7AC
-sub_0205D7AC: ; 0x0205D7AC
-	push {r4, r5, r6, lr}
-	add r5, r0, #0
-	add r4, r1, #0
-	bl PlayerAvatar_GetSpeed
-	add r6, r0, #0
-	mov r0, #0
-	mvn r0, r0
-	cmp r4, r0
-	bne _0205D7DC
-	cmp r6, #2
-	bge _0205D7D0
-	add r0, r5, #0
-	mov r1, #0
-	bl PlayerAvatar_SetMoveState
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_0205D7D0:
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetMoveState
-	mov r0, #3
-	pop {r4, r5, r6, pc}
-_0205D7DC:
-	add r0, r5, #0
-	bl PlayerAvatar_GetFacingDirection
-	cmp r0, r4
-	beq _0205D80C
-	add r0, r5, #0
-	bl PlayerAvatar_GetMoveState
-	cmp r0, #1
-	beq _0205D80C
-	cmp r6, #2
-	bge _0205D800
-	add r0, r5, #0
-	mov r1, #2
-	bl PlayerAvatar_SetMoveState
-	mov r0, #2
-	pop {r4, r5, r6, pc}
-_0205D800:
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetMoveState
-	mov r0, #3
-	pop {r4, r5, r6, pc}
-_0205D80C:
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetMoveState
-	mov r0, #1
-	pop {r4, r5, r6, pc}
-	thumb_func_end sub_0205D7AC
-
-	thumb_func_start sub_0205D818
-sub_0205D818: ; 0x0205D818
-	push {r3, r4, r5, lr}
-	add r4, r1, #0
-	add r5, r0, #0
-	add r0, r4, #0
-	bl MapObject_GetFacingDirection
-	mov r1, #0
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	add r0, r5, #0
-	bl PlayerAvatar_ClearSpeed
-	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205D818
-
-	thumb_func_start sub_0205D83C
-sub_0205D83C: ; 0x0205D83C
-	push {r3, r4, r5, r6, r7, lr}
-	add r5, r0, #0
-	add r7, r1, #0
-	add r6, r2, #0
-	bl sub_0205DA34
-	add r4, r0, #0
-	mov r0, #4
-	tst r0, r4
-	beq _0205D86E
-	add r0, r6, #0
-	mov r1, #0x38
-	bl sub_0206234C
-	str r0, [sp]
-	add r0, r5, #0
-	bl sub_0205D684
-	add r0, r5, #0
-	bl sub_0205E048
-	add r0, r5, #0
-	bl PlayerAvatar_SetFlag6
-	b _0205D93A
-_0205D86E:
-	mov r0, #0x10
-	tst r0, r4
-	beq _0205D8C0
-	add r0, r5, #0
-	bl PlayerAvatar_GetSpeed
-	cmp r0, #3
-	blt _0205D898
-	add r0, r5, #0
-	add r1, r6, #0
-	bl sub_0205D658
-	str r0, [sp]
-	add r0, r5, #0
-	bl PlayerAvatar_SetFlag6
-	add r0, r5, #0
-	mov r1, #1
-	bl PlayerAvatar_SetForcedMovement
-	b _0205D93A
-_0205D898:
-	add r0, r6, #0
-	mov r1, #0x1c
-	bl sub_0206234C
-	str r0, [sp]
-	mov r0, #8
-	tst r0, r4
-	bne _0205D8B0
-	mov r0, #SEQ_SE_DP_WALL_HIT>>8
-	lsl r0, r0, #8
-	bl PlaySE
-_0205D8B0:
-	add r0, r7, #0
-	add r1, r6, #0
-	bl MapObject_SetNextFacingDirection
-	add r0, r5, #0
-	bl PlayerAvatar_ClearSpeed
-	b _0205D93A
-_0205D8C0:
-	mov r0, #0x40
-	tst r0, r4
-	beq _0205D8F2
-	add r0, r7, #0
-	bl MapObject_GetNextFacingDirection
-	add r4, r0, #0
-	mov r1, #0
-	bl sub_0206234C
-	str r0, [sp]
-	add r0, r7, #0
-	add r1, r4, #0
-	bl MapObject_SetNextFacingDirection
-	add r0, r5, #0
-	bl PlayerAvatar_ClearSpeed
-	mov r1, #0
-	mvn r1, r1
-	add r0, r5, #0
-	add r2, r1, #0
-	bl PlayerAvatar_SetUnk28Unk2C
-	b _0205D93A
-_0205D8F2:
-	cmp r4, #0
-	beq _0205D91E
-	add r0, r6, #0
-	mov r1, #0x1c
-	bl sub_0206234C
-	str r0, [sp]
-	mov r0, #8
-	tst r0, r4
-	bne _0205D90E
-	mov r0, #SEQ_SE_DP_WALL_HIT>>8
-	lsl r0, r0, #8
-	bl PlaySE
-_0205D90E:
-	add r0, r7, #0
-	add r1, r6, #0
-	bl MapObject_SetNextFacingDirection
-	add r0, r5, #0
-	bl PlayerAvatar_ClearSpeed
-	b _0205D93A
-_0205D91E:
-	add r0, r5, #0
-	add r1, r6, #0
-	bl sub_0205D658
-	str r0, [sp]
-	add r0, r5, #0
-	bl sub_0205D684
-	add r0, r5, #0
-	bl sub_0205E048
-	add r0, r5, #0
-	bl PlayerAvatar_SetFlag6
-_0205D93A:
-	ldr r2, [sp]
-	add r0, r5, #0
-	add r1, r7, #0
-	bl sub_0205DA1C
-	pop {r3, r4, r5, r6, r7, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D83C
-
-	thumb_func_start sub_0205D948
-sub_0205D948: ; 0x0205D948
-	push {r4, r5, r6, lr}
-	add r6, r2, #0
-	add r5, r0, #0
-	add r4, r1, #0
-	bl PlayerAvatar_ClearSpeed
-	add r0, r6, #0
-	mov r1, #0x28
-	bl sub_0206234C
-	add r2, r0, #0
-	add r0, r5, #0
-	add r1, r4, #0
-	bl sub_0205DA1C
-	add r0, r4, #0
-	add r1, r6, #0
-	bl MapObject_SetNextFacingDirection
-	add r0, r5, #0
-	bl PlayerAvatar_ClearSpeed
-	pop {r4, r5, r6, pc}
-	.balign 4, 0
-	thumb_func_end sub_0205D948
-
-	thumb_func_start sub_0205D978
-sub_0205D978: ; 0x0205D978
+	thumb_func_start PlayerAvatar_SetMovement_BikeThirdGearBrake
+PlayerAvatar_SetMovement_BikeThirdGearBrake: ; 0x0205D978
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
 	add r7, r1, #0
-	bl sub_0205D6B4
+	bl PlayerAvatar_DecelerateBike
 	str r0, [sp]
 	add r0, r5, #0
 	bl PlayerAvatar_GetNextFacingDirection
@@ -1237,7 +28,7 @@ sub_0205D978: ; 0x0205D978
 	add r0, r5, #0
 	add r1, r7, #0
 	add r2, r6, #0
-	bl sub_0205DA34
+	bl PlayerAvatar_CheckCollision
 	add r4, r0, #0
 	mov r0, #4
 	tst r0, r4
@@ -1283,7 +74,7 @@ _0205D9E4:
 _0205D9F4:
 	add r0, r5, #0
 	add r1, r6, #0
-	bl sub_0205D658
+	bl PlayerAvatar_GetMovementActionFromSpeed
 	str r0, [sp, #4]
 _0205D9FE:
 	ldr r0, [sp]
@@ -1296,14 +87,14 @@ _0205DA0C:
 	ldr r2, [sp, #4]
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0205DA1C
+	bl PlayerAvatar_SetMovement
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205D978
+	thumb_func_end PlayerAvatar_SetMovement_BikeThirdGearBrake
 
-	thumb_func_start sub_0205DA1C
-sub_0205DA1C: ; 0x0205DA1C
+	thumb_func_start PlayerAvatar_SetMovement
+PlayerAvatar_SetMovement: ; 0x0205DA1C
 	push {r3, r4, r5, lr}
 	add r4, r2, #0
 	add r5, r1, #0
@@ -1314,10 +105,10 @@ sub_0205DA1C: ; 0x0205DA1C
 	bl MapObject_SetHeldMovement
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205DA1C
+	thumb_func_end PlayerAvatar_SetMovement
 
-	thumb_func_start sub_0205DA34
-sub_0205DA34: ; 0x0205DA34
+	thumb_func_start PlayerAvatar_CheckCollision
+PlayerAvatar_CheckCollision: ; 0x0205DA34
 	push {r3, r4, r5, r6, r7, lr}
 	add r5, r0, #0
 	add r6, r1, #0
@@ -1376,7 +167,7 @@ _0205DAA2:
 	add r0, r4, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205DA34
+	thumb_func_end PlayerAvatar_CheckCollision
 
 	thumb_func_start sub_0205DAA8
 sub_0205DAA8: ; 0x0205DAA8
@@ -1817,10 +608,10 @@ _0205DDFA:
 	bl PlayerAvatar_GetNextFacingDirection
 	add r7, r0, #0
 	add r0, r6, #0
-	bl PlayerAvatar_GetUnk28
+	bl PlayerAvatar_GetFaceLeftOrRight
 	str r0, [sp]
 	add r0, r6, #0
-	bl PlayerAvatar_GetUnk2C
+	bl PlayerAvatar_GetFaceUpOrDown
 	mov r1, #0
 	mvn r1, r1
 	cmp r7, r1
@@ -1896,8 +687,8 @@ _0205DE82:
 	.balign 4, 0
 	thumb_func_end sub_0205DE64
 
-	thumb_func_start sub_0205DE88
-sub_0205DE88: ; 0x0205DE88
+	thumb_func_start PlayerAvatar_IsRunButtonHeld
+PlayerAvatar_IsRunButtonHeld: ; 0x0205DE88
 	mov r0, #2
 	tst r0, r1
 	beq _0205DE92
@@ -1907,7 +698,7 @@ _0205DE92:
 	mov r0, #0
 	bx lr
 	.balign 4, 0
-	thumb_func_end sub_0205DE88
+	thumb_func_end PlayerAvatar_IsRunButtonHeld
 
 	thumb_func_start sub_0205DE98
 sub_0205DE98: ; 0x0205DE98
@@ -1957,15 +748,15 @@ _0205DEDA: ; jump table
 _0205DEE2:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205D450
-	bl sub_0205D428
+	bl PlayerAvatar_UpdateMoveState
+	bl PlayerAvatar_ValidateState
 	add r4, r0, #0
 	b _0205DF08
 _0205DEF2:
 	add r0, r4, #0
 	add r1, r5, #0
-	bl sub_0205D7AC
-	bl sub_0205D778
+	bl PlayerAvatar_GetBikeStateThirdGear
+	bl PlayerAvatarBikeState_GetMoveStateThirdGear
 	add r4, r0, #0
 	b _0205DF08
 _0205DF02:
@@ -2067,7 +858,7 @@ _0205DFAA:
 	bne _0205DFBE
 	add r0, r5, #0
 	add r1, r7, #0
-	bl sub_0205DE88
+	bl PlayerAvatar_IsRunButtonHeld
 	cmp r0, #1
 	bne _0205DFBE
 	mov r4, #0x58
@@ -2095,7 +886,7 @@ sub_0205DFD4: ; 0x0205DFD4
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0205DA1C
+	bl PlayerAvatar_SetMovement
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 	thumb_func_end sub_0205DFD4
@@ -2150,8 +941,8 @@ PlayerAvatar_GetCoordsInFront: ; 0x0205E02C
 	.balign 4, 0
 	thumb_func_end PlayerAvatar_GetCoordsInFront
 
-	thumb_func_start sub_0205E048
-sub_0205E048: ; 0x0205E048
+	thumb_func_start PlayerAvatar_IncrementStepsRecord
+PlayerAvatar_IncrementStepsRecord: ; 0x0205E048
 	push {r3, r4, r5, lr}
 	bl PlayerAvatar_GetMapObject
 	bl MapObject_GetFieldSystem
@@ -2171,10 +962,10 @@ sub_0205E048: ; 0x0205E048
 _0205E074:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_0205E048
+	thumb_func_end PlayerAvatar_IncrementStepsRecord
 
-	thumb_func_start sub_0205E078
-sub_0205E078: ; 0x0205E078
+	thumb_func_start PlayerAvatar_IsOnCyclingRoadBridge
+PlayerAvatar_IsOnCyclingRoadBridge: ; 0x0205E078
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	mov r1, #0
@@ -2209,17 +1000,20 @@ _0205E0A4:
 _0205E0B8:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_0205E078
+	thumb_func_end PlayerAvatar_IsOnCyclingRoadBridge
 
 	.rodata
 
-_020FCB7C:
-	.word sub_0205D09C
-	.word sub_0205D0A8
-	.word sub_0205D190
-_020FCB88:
-	.word MetatileBehavior_IsIce, 1
-	.word 0, 3
+	.public sTileMovementFunctions
+sTileMovementFunctions:
+	.word PlayerAvatar_TileMove_None
+	.word PlayerAvatar_TileMove_Ice
+	.word PlayerAvatar_TileMove_CyclingRoadDown
+
+	.public sTileBehaviorCheckTable
+sTileBehaviorCheckTable:
+	.word MetatileBehavior_IsIce, 1 ; TILE_MOVE_ICE
+	.word 0, 3 ; NULL, TILE_MOVE_MAX
 
 	.public sWalkSounds
 sWalkSounds:

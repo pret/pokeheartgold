@@ -24,4 +24,30 @@ enum AvatarMoveState {
     AVATAR_MOVE_STATE_TURNING,
 };
 
+enum AvatarBikeState {
+    AVATAR_BIKE_STATE_NONE = 0,
+    AVATAR_BIKE_STATE_MOVING,
+    AVATAR_BIKE_STATE_TURNING,
+    AVATAR_BIKE_STATE_BRAKE,
+};
+
+// Tiles that affect and override the default movement function.
+enum PlayerTileMovement {
+    TILE_MOVE_NONE = 0,
+    TILE_MOVE_ICE,
+    TILE_MOVE_CYCLING_ROAD_DOWN,
+    TILE_MOVE_MAX,
+};
+
+// Collision flags. TODO: Are these accurate to HGSS?
+#define PLAYER_COLLISION_NONE         0 // Yes
+#define PLAYER_COLLISION_WILL_COLLIDE (1 << 0)
+#define PLAYER_COLLISION_1            (1 << 1)
+#define PLAYER_COLLISION_JUMP         (1 << 2)
+#define PLAYER_COLLISION_WARP         (1 << 3)
+#define PLAYER_COLLISION_BIKE_RAMP    (1 << 4)
+#define PLAYER_COLLISION_WATER        (1 << 5) // Yes
+#define PLAYER_COLLISION_BIKE_BRIDGE  (1 << 6)
+#define PLAYER_COLLISION_JUMP_TWICE   (1 << 7)
+
 #endif // POKEHEARTGOLD_CONSTANTS_PLAYER_AVATAR_H

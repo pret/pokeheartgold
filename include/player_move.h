@@ -11,7 +11,7 @@ void PlayerAvatar_ClearMoveState(PlayerAvatar *playerAvatar);
 BOOL PlayerAvatar_CheckForceStopMovement(PlayerAvatar *playerAvatar);
 void PlayerAvatar_ForceStopMovement(PlayerAvatar *playerAvatar, int direction);
 int PlayerAvatar_GetDirectionFromKeys(PlayerAvatar *playerAvatar, u16 heldKeys, u16 newKeys);
-u32 sub_0205DA34(PlayerAvatar *playerAvatar, LocalMapObject *mapObject, int direction);
+u32 PlayerAvatar_CheckCollision(PlayerAvatar *playerAvatar, LocalMapObject *mapObject, int direction);
 int sub_0205DD94(PlayerAvatar *avatar, u16 newKeys, u16 heldKeys);
 BOOL sub_0205DE98(PlayerAvatar *playerAvatar);
 

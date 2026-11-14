@@ -191,11 +191,11 @@ _021F1C64:
 
 	thumb_func_start ov01_021F1C70
 ov01_021F1C70: ; 0x021F1C70
-	ldr r3, _021F1C78 ; =PlayerAvatar_SetFlag1
+	ldr r3, _021F1C78 ; =PlayerAvatar_SetIgnoreTileBehavior
 	mov r1, #1
 	bx r3
 	nop
-_021F1C78: .word PlayerAvatar_SetFlag1
+_021F1C78: .word PlayerAvatar_SetIgnoreTileBehavior
 	thumb_func_end ov01_021F1C70
 
 	thumb_func_start ov01_021F1C7C
@@ -1074,7 +1074,7 @@ _021F2346:
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0205DA34
+	bl PlayerAvatar_CheckCollision
 	cmp r0, #0x20
 	bne _021F235E
 	mov r0, #0
@@ -2211,7 +2211,7 @@ ov01_021F2BC8: ; 0x021F2BC8
 	add r1, r5, #0
 	ldr r0, [r5, #0x34]
 	add r1, #0x28
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	mov r0, #0
 	str r0, [r5, #0x18]
 	str r4, [r5, #0xc]

@@ -251,7 +251,7 @@ _02203374:
 	add r1, r2, #0
 	str r0, [r3]
 	ldr r0, [r4, #0x24]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r4, #0x14]
 	add r0, r5, #0
 	add r1, sp, #0
@@ -315,7 +315,7 @@ _02203408:
 	add r1, r7, #0
 	str r0, [r2]
 	ldr r0, [r4, #0x24]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r4, #0x14]
 	cmp r0, #1
 	bne _02203440
@@ -450,7 +450,7 @@ _0220351A:
 	add r1, r2, #0
 	str r0, [r3]
 	ldr r0, [r4, #0x24]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r4, #0x14]
 	cmp r0, #1
 	bne _02203552
@@ -569,7 +569,7 @@ _022035F4:
 	add r1, r2, #0
 	str r0, [r3]
 	ldr r0, [r4, #0x24]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r4, #0x14]
 	add r0, r5, #0
 	add r1, sp, #0
@@ -622,7 +622,7 @@ _02203678:
 	add r1, r2, #0
 	str r0, [r3]
 	ldr r0, [r5, #0x24]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r5, #0x14]
 	cmp r0, #1
 	bne _022036B0

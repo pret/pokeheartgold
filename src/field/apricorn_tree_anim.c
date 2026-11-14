@@ -205,7 +205,7 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
     MapObject_SetXRange(obj, -1);
     MapObject_SetYRange(obj, -1);
     MapObject_SetFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_ClearFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
     MapObject_SetFlag29(obj, TRUE);
     MapObject_SetFlagsBits(obj, MAPOBJECTFLAG_VISIBLE);
     return obj;

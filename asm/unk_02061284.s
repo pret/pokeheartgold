@@ -1004,7 +1004,7 @@ _02061942:
 	bne _02061968
 	mov r0, #0
 	ldrsb r0, [r6, r0]
-	bl sub_020611F4
+	bl Direction_GetOpposite
 	strb r0, [r6]
 _02061968:
 	mov r0, #0
@@ -1068,7 +1068,7 @@ sub_020619C0: ; 0x020619C0
 	add r6, r0, #0
 	cmp r1, #1
 	bne _020619DA
-	bl sub_020611F4
+	bl Direction_GetOpposite
 	add r6, r0, #0
 _020619DA:
 	add r0, r5, #0
@@ -1114,7 +1114,7 @@ sub_020619FC: ; 0x020619FC
 	bne _02061A5A
 	add r0, r5, #0
 	bl MapObject_GetNextFacingDirection
-	bl sub_020611F4
+	bl Direction_GetOpposite
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
@@ -1142,7 +1142,7 @@ _02061A5A:
 	beq _02061A84
 	add r0, r4, #0
 	strh r1, [r6, #2]
-	bl sub_020611F4
+	bl Direction_GetOpposite
 	add r4, r0, #0
 	add r0, r5, #0
 	add r1, r4, #0
