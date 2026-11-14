@@ -66,7 +66,7 @@ ov01_021F1B38: ; 0x021F1B38
 	mov r1, #0
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -95,7 +95,7 @@ ov01_021F1B78: ; 0x021F1B78
 	mov r1, #1
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -128,7 +128,7 @@ ov01_021F1BC0: ; 0x021F1BC0
 	mov r1, #2
 	bl PlayerAvatar_SetState
 	add r0, r5, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r5, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -175,7 +175,7 @@ ov01_021F1C30: ; 0x021F1C30
 	mov r1, #3
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -191,11 +191,11 @@ _021F1C64:
 
 	thumb_func_start ov01_021F1C70
 ov01_021F1C70: ; 0x021F1C70
-	ldr r3, _021F1C78 ; =PlayerAvatar_SetFlag1
+	ldr r3, _021F1C78 ; =PlayerAvatar_SetIgnoreTileBehavior
 	mov r1, #1
 	bx r3
 	nop
-_021F1C78: .word PlayerAvatar_SetFlag1
+_021F1C78: .word PlayerAvatar_SetIgnoreTileBehavior
 	thumb_func_end ov01_021F1C70
 
 	thumb_func_start ov01_021F1C7C
@@ -373,7 +373,7 @@ _021F1DBA:
 _021F1DBE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205CBE4
+	bl PlayerAvatar_CheckStartMove
 	cmp r0, #0
 	bne _021F1DCE
 	mov r0, #0
@@ -1074,7 +1074,7 @@ _021F2346:
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0205DA34
+	bl PlayerAvatar_CheckCollision
 	cmp r0, #0x20
 	bne _021F235E
 	mov r0, #0
@@ -1722,7 +1722,7 @@ _021F2842:
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r4, #0
@@ -2211,7 +2211,7 @@ ov01_021F2BC8: ; 0x021F2BC8
 	add r1, r5, #0
 	ldr r0, [r5, #0x34]
 	add r1, #0x28
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	mov r0, #0
 	str r0, [r5, #0x18]
 	str r4, [r5, #0xc]
@@ -2570,7 +2570,7 @@ _021F2EA6:
 	ldr r0, [r4, #0x3c]
 	bl MapObject_GetNextFacingDirection
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl MetatileBehavior_IsWhirlpool

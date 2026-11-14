@@ -1479,7 +1479,7 @@ BOOL ScrCmd_679(ScriptContext *ctx) {
 
 BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
     FieldSystem *fieldSystem = ctx->fieldSystem;
-    u32 rvsDir = sub_020611F4(PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+    u32 rvsDir = Direction_GetOpposite(PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
     LocalMapObject **p_lastInteracted = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_LAST_INTERACTED);
     u32 oldDir;
     int x, y;

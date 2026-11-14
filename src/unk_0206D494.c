@@ -257,13 +257,13 @@ static u32 sub_0206D81C(u32 direction) {
 
 static void sub_0206D850(PlayerAvatar *playerAvatar) {
     if (PlayerAvatar_CheckForcedMovement(playerAvatar) == TRUE) {
-        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
-        if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
-            PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
+        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_PAUSE_ANIMATION | MAPOBJECTFLAG_LOCK_DIRECTION));
+        if (PlayerAvatar_CheckForcedMovementRetainSpeed(playerAvatar) == FALSE) {
+            PlayerAvatar_ClearSpeed(playerAvatar);
         }
         PlayerAvatar_SetForcedMovement(playerAvatar, FALSE);
-        PlayerAvatar_SetFlag7(playerAvatar, 0);
-        PlayerAvatar_SetFlag5(playerAvatar, 0);
+        PlayerAvatar_SetForcedMovementRetainSpeed(playerAvatar, FALSE);
+        PlayerAvatar_SetMoveThroughMudFlag(playerAvatar, FALSE);
     }
     return;
 }

@@ -21,7 +21,7 @@ ov01_021F3114: ; 0x021F3114
 	add r5, r0, #0
 	add r0, r6, #0
 	bl PlayerAvatar_GetMapObject
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r4, r0, #0x18
 	add r0, r4, #0
@@ -126,7 +126,7 @@ ov01_021F31CC: ; 0x021F31CC
 	ldr r0, [r4, #0x10]
 	bl PlayerAvatar_GetMapObject
 	add r6, r0, #0
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r5, r0, #0x18
 	ldr r0, [r4, #8]
@@ -263,7 +263,7 @@ _021F3300:
 	ldr r0, [r4, #0x10]
 	ldr r2, [r4]
 	add r1, r6, #0
-	bl sub_0205DA34
+	bl PlayerAvatar_CheckCollision
 	cmp r0, #0
 	bne _021F3314
 	mov r0, #1

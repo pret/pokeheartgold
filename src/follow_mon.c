@@ -1908,7 +1908,7 @@ static LocalMapObject *FollowMon_CreateMapObject(MapObjectManager *mapObjectMana
     MapObject_SetXRange(mapObject, -1);
     MapObject_SetYRange(mapObject, -1);
     MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
     MapObject_SetFlag29(mapObject, TRUE);
     sub_02069DC8(mapObject, TRUE);
 

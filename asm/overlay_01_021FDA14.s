@@ -393,7 +393,7 @@ _021FDCFE:
 	bl MapObject_CopyPositionVector
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	ldr r2, [r4]
 	ldr r1, [sp, #4]
 	add r1, r2, r1
@@ -539,7 +539,7 @@ ov01_021FDE08: ; 0x021FDE08
 	add r1, r4, #0
 	str r0, [r2]
 	ldr r0, [r5, #4]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	mov r1, #7
 	ldr r2, [r4, #8]
 	lsl r1, r1, #0xc

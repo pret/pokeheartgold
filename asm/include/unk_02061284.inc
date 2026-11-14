@@ -37,7 +37,7 @@
 .public GetDeltaXByFacingDirection
 .public GetDeltaYByFacingDirection
 .public sub_02060F78
-.public sub_020611F4
+.public Direction_GetOpposite
 .public sub_02061200
 .public sub_020612B4
 .public sub_020612C0

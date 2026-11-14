@@ -7,11 +7,11 @@
 #include "map_object.h"
 #include "overlay_01_021F1AFC.h"
 #include "overlay_01_021F944C.h"
+#include "player_move.h"
 #include "script.h"
 #include "task.h"
 #include "unk_02005D10.h"
 #include "unk_02055418.h"
-#include "unk_0205CB48.h"
 #include "unk_02062108.h"
 
 #define TREE_WIGGLE_FRAMES 16
@@ -205,7 +205,7 @@ static LocalMapObject *CreateJumpingApricornObj(MapObjectManager *taskman, u32 s
     MapObject_SetXRange(obj, -1);
     MapObject_SetYRange(obj, -1);
     MapObject_SetFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_ClearFlagsBits(obj, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
     MapObject_SetFlag29(obj, TRUE);
     MapObject_SetFlagsBits(obj, MAPOBJECTFLAG_VISIBLE);
     return obj;

@@ -54,25 +54,25 @@ void ov01_021FFF5C(LocalMapObject *mapObject, int a1) {
     VecFx32 temp;
     UnkOv01_021FFF5C temp2;
 
-    FieldSystem *fieldSystem = ov01_021F146C(mapObject);
-    TaskManager *taskman = ov01_021F1468(fieldSystem);
+    FieldEffectManager *fieldEffectManager = ov01_021F146C(mapObject);
+    FieldSystem *fieldSystem = ov01_021F1468(fieldEffectManager);
 
     int x = MapObject_GetXCoord(mapObject);
     int z = MapObject_GetZCoord(mapObject);
 
     sub_020611C8(x, z, &temp);
-    sub_0206121C(taskman, &temp);
+    MapObject_RecalculatePositionHeight(fieldSystem, &temp);
 
     temp2.unk0 = a1;
-    temp2.unk4 = fieldSystem;
+    temp2.fieldEffectManager = fieldEffectManager;
 
-    UnkOv01_021FFECC *val1 = ov01_021F1450(fieldSystem, 0xe);
+    UnkOv01_021FFECC *val1 = ov01_021F1450(fieldEffectManager, 0xe);
     temp2.unk8 = val1;
     temp2.unkC = mapObject;
     temp2.unk10 = ov01_021FFF50(val1, a1);
 
     int val3 = MapObject_GetPriorityPlusValue(mapObject, 2);
-    ov01_021F1620(fieldSystem, &ov01_02209280, &temp, 0, &temp2, val3);
+    ov01_021F1620(fieldEffectManager, &ov01_02209280, &temp, 0, &temp2, val3);
 }
 
 static BOOL ov01_021FFFCC(void *a0, UnkOv01_021FFFCD *a1) {

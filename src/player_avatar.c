@@ -28,8 +28,8 @@ static void PlayerAvatar_SetGender(PlayerAvatar *avatar, u32 gender);
 static void PlayerAvatar_SetFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags);
 static void PlayerAvatar_ClearFlagsBits(PlayerAvatar *avatar, PlayerAvatarFlags flags);
 static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, PlayerAvatarFlags flags);
-static void PlayerAvatar_SetUnk28(PlayerAvatar *avatar, s32 param1);
-static void PlayerAvatar_SetUnk2C(PlayerAvatar *avatar, s32 param1);
+static void PlayerAvatar_SetFaceLeftOrRight(PlayerAvatar *avatar, int leftOrRight);
+static void PlayerAvatar_SetFaceUpOrDown(PlayerAvatar *avatar, int faceUpOrDown);
 static void PlayerAvatar_SetPlayerSaveData(PlayerAvatar *avatar, PlayerSaveData *playerSaveData);
 static void PlayerSaveData_SetState(PlayerSaveData *playerSaveData, s32 state);
 static void PlayerAvatar_SetPlayerSaveDataState(PlayerAvatar *avatar, s32 state);
@@ -174,7 +174,7 @@ PlayerAvatar *PlayerAvatar_CreateWithActiveMapObject(MapObjectManager *manager, 
     LocalMapObject *mapObject = PlayerAvatar_GetActiveMapObjectWithMovement1(manager);
     MapObject_SetSpriteID(mapObject, PlayerAvatar_GetSpriteByStateAndGender(state, gender));
     MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
     MapObject_SetFlag29(mapObject, TRUE);
     PlayerAvatar_SetMapObject(avatar, mapObject);
     return avatar;
@@ -216,11 +216,11 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_SetState(avatar, state);
     PlayerAvatar_SetGender(avatar, gender);
     PlayerAvatar_SetTransitionFlags(avatar, 0);
-    PlayerAvatar_ClearUnk24ClearFlag2(avatar);
-    PlayerAvatar_SetUnk28(avatar, -1);
-    PlayerAvatar_SetUnk2C(avatar, -1);
+    PlayerAvatar_ClearSpeed(avatar);
+    PlayerAvatar_SetFaceLeftOrRight(avatar, DIR_NONE);
+    PlayerAvatar_SetFaceUpOrDown(avatar, DIR_NONE);
     PlayerAvatar_SetUnk8(avatar, 255); // obj_player?
-    PlayerAvatar_SetFlag1(avatar, TRUE);
+    PlayerAvatar_SetIgnoreTileBehavior(avatar, TRUE);
 }
 
 static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObjectManager *manager, u32 sprite, u32 direction, u32 x, u32 z) {
@@ -236,7 +236,7 @@ static void PlayerAvatar_CreateMapObjectWithParams(PlayerAvatar *avatar, MapObje
     MapObject_SetXRange(mapObject, -1);
     MapObject_SetYRange(mapObject, -1);
     MapObject_SetFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK13 | MAPOBJECTFLAG_KEEP));
-    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK8 | MAPOBJECTFLAG_UNK7));
+    MapObject_ClearFlagsBits(mapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
     MapObject_SetFlag29(mapObject, TRUE);
     PlayerAvatar_SetMapObject(avatar, mapObject);
 }
@@ -365,47 +365,46 @@ static PlayerAvatarFlags PlayerAvatar_GetFlagsBitsMask(PlayerAvatar *avatar, Pla
     return (PlayerAvatarFlags)(avatar->flags & flags);
 }
 
-s32 PlayerAvatar_GetUnk24(PlayerAvatar *avatar) {
-    return avatar->unk24;
+int PlayerAvatar_GetSpeed(PlayerAvatar *avatar) {
+    return avatar->speed;
 }
 
-void PlayerAvatar_SetUnk24(PlayerAvatar *avatar, s32 param1) {
-    avatar->unk24 = param1;
+void PlayerAvatar_SetSpeed(PlayerAvatar *avatar, int speed) {
+    avatar->speed = speed;
 }
 
-void PlayerAvatar_ClearUnk24ClearFlag2(PlayerAvatar *avatar) {
-    avatar->unk24 = 0;
-    PlayerAvatar_SetFlag2(avatar, FALSE);
+void PlayerAvatar_ClearSpeed(PlayerAvatar *avatar) {
+    avatar->speed = 0;
+    PlayerAvatar_SetBikeBrake(avatar, FALSE);
 }
 
-s32 PlayerAvatar_Unk24AddWithCeiling(PlayerAvatar *avatar, s32 param1, s32 param2) {
-    s32 var = avatar->unk24 + param1;
-    avatar->unk24 = var;
-    if (var > param2) {
-        avatar->unk24 = param2;
+int PlayerAvatar_AddSpeed(PlayerAvatar *avatar, int speed, int maxSpeed) {
+    avatar->speed += speed;
+    if (avatar->speed > maxSpeed) {
+        avatar->speed = maxSpeed;
     }
-    return avatar->unk24;
+    return avatar->speed;
 }
 
-static void PlayerAvatar_SetUnk28(PlayerAvatar *avatar, s32 param1) {
-    avatar->unk28 = param1;
+static void PlayerAvatar_SetFaceLeftOrRight(PlayerAvatar *avatar, int faceLeftOrRight) {
+    avatar->faceLeftOrRight = faceLeftOrRight;
 }
 
-s32 PlayerAvatar_GetUnk28(PlayerAvatar *avatar) {
-    return avatar->unk28;
+int PlayerAvatar_GetFaceLeftOrRight(PlayerAvatar *avatar) {
+    return avatar->faceLeftOrRight;
 }
 
-static void PlayerAvatar_SetUnk2C(PlayerAvatar *avatar, s32 param1) {
-    avatar->unk2C = param1;
+static void PlayerAvatar_SetFaceUpOrDown(PlayerAvatar *avatar, int faceUpOrDown) {
+    avatar->faceUpOrDown = faceUpOrDown;
 }
 
-s32 PlayerAvatar_GetUnk2C(PlayerAvatar *avatar) {
-    return avatar->unk2C;
+int PlayerAvatar_GetFaceUpOrDown(PlayerAvatar *avatar) {
+    return avatar->faceUpOrDown;
 }
 
-void PlayerAvatar_SetUnk28Unk2C(PlayerAvatar *avatar, s32 unk28, s32 unk2C) {
-    PlayerAvatar_SetUnk28(avatar, unk28);
-    PlayerAvatar_SetUnk2C(avatar, unk2C);
+void PlayerAvatar_SetFaceDirection(PlayerAvatar *avatar, int faceLeftOrRight, int faceUpOrDown) {
+    PlayerAvatar_SetFaceLeftOrRight(avatar, faceLeftOrRight);
+    PlayerAvatar_SetFaceUpOrDown(avatar, faceUpOrDown);
 }
 
 void PlayerAvatar_SetUnk34(PlayerAvatar *avatar, u32 param1) {
@@ -432,16 +431,16 @@ u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar) {
     return avatar->unk8;
 }
 
-BOOL PlayerAvatar_GetUnkC(PlayerAvatar *avatar) {
-    return avatar->unkC;
+BOOL PlayerAvatar_GetFootstepCooldown(PlayerAvatar *avatar) {
+    return avatar->footstepCooldown;
 }
 
-void PlayerAvatar_ToggleUnkC(PlayerAvatar *avatar) {
-    avatar->unkC = (avatar->unkC + 1) & TRUE;
+void PlayerAvatar_ToggleFootstepCooldown(PlayerAvatar *avatar) {
+    avatar->footstepCooldown = (avatar->footstepCooldown + 1) & TRUE;
 }
 
-void PlayerAvatar_ResetUnkC(PlayerAvatar *avatar) {
-    avatar->unkC = FALSE;
+void PlayerAvatar_ResetFootstepCooldown(PlayerAvatar *avatar) {
+    avatar->footstepCooldown = FALSE;
 }
 
 void PlayerSaveData_Init(PlayerSaveData *playerSaveData) {
@@ -644,31 +643,31 @@ BOOL PlayerAvatar_CheckForcedMovement(PlayerAvatar *avatar) {
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag1(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetIgnoreTileBehavior(PlayerAvatar *avatar, BOOL set) {
     if (set == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK1);
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_IGNORE_TILE_BEHAVIOR);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK1);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_IGNORE_TILE_BEHAVIOR);
     }
 }
 
-BOOL PlayerAvatar_CheckFlag1(PlayerAvatar *avatar) {
-    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK1)) {
+BOOL PlayerAvatar_CheckIgnoreTileBehavior(PlayerAvatar *avatar) {
+    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_IGNORE_TILE_BEHAVIOR)) {
         return TRUE;
     }
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag2(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetBikeBrake(PlayerAvatar *avatar, BOOL set) {
     if (set == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK2);
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_BIKE_BRAKE);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK2);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_BIKE_BRAKE);
     }
 }
 
-BOOL PlayerAvatar_CheckFlag2(PlayerAvatar *avatar) {
-    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK2)) {
+BOOL PlayerAvatar_CheckBikeBrake(PlayerAvatar *avatar) {
+    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_BIKE_BRAKE)) {
         return TRUE;
     }
     return FALSE;
@@ -689,11 +688,11 @@ BOOL PlayerAvatar_CheckBikeStateLocked(PlayerAvatar *avatar) {
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag5(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetMoveThroughMudFlag(PlayerAvatar *avatar, BOOL set) {
     if (set == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK5);
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_MOVE_THROUGH_MUD_UNUSED);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK5);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_MOVE_THROUGH_MUD_UNUSED);
     }
 }
 
@@ -712,16 +711,16 @@ BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar) {
     return FALSE;
 }
 
-void PlayerAvatar_SetFlag7(PlayerAvatar *avatar, BOOL set) {
+void PlayerAvatar_SetForcedMovementRetainSpeed(PlayerAvatar *avatar, BOOL set) {
     if (set == TRUE) {
-        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK7);
+        PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_FORCED_MOVEMENT_RETAIN_SPEED);
     } else {
-        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK7);
+        PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_FORCED_MOVEMENT_RETAIN_SPEED);
     }
 }
 
-BOOL PlayerAvatar_CheckFlag7(PlayerAvatar *avatar) {
-    return PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK7);
+BOOL PlayerAvatar_CheckForcedMovementRetainSpeed(PlayerAvatar *avatar) {
+    return PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_FORCED_MOVEMENT_RETAIN_SPEED);
 }
 
 u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar) {

@@ -40,6 +40,7 @@
 #include "overlay_01_021FB5D4.h"
 #include "overlay_04.h"
 #include "player_avatar.h"
+#include "player_move.h"
 #include "safari_zone.h"
 #include "save_pokegear.h"
 #include "script_pokemon_util.h"
@@ -60,7 +61,6 @@
 #include "unk_02058034.h"
 #include "unk_02058AEC.h"
 #include "unk_0205A44C.h"
-#include "unk_0205CB48.h"
 #include "unk_020632B0.h"
 #include "unk_0206D494.h"
 
@@ -202,7 +202,7 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
         }
 
         if (TryGetSeenByNpcTrainers(fieldSystem, doublesEligible) == TRUE) {
-            sub_0205CF44(fieldSystem->playerAvatar);
+            PlayerAvatar_ClearMoveState(fieldSystem->playerAvatar);
             MapObjectManager_PauseAllMovement(fieldSystem->mapObjectManager);
             if (FollowMon_IsActive(fieldSystem)) {
                 MapObject_UnpauseMovement(FollowMon_GetMapObject(fieldSystem));
@@ -255,8 +255,8 @@ int FieldInput_Process(FieldInput *fieldInput, FieldSystem *fieldSystem) {
     if (fieldInput->interact) {
         LocalMapObject *mapObject;
         if (sub_0203DC64(fieldSystem, &mapObject) == TRUE) {
-            if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-                sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+            if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+                PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
             }
             if (MapObject_GetType(mapObject) != 9) {
                 StartMapSceneScript(fieldSystem, MapObject_GetScriptID(mapObject), mapObject);
@@ -347,8 +347,8 @@ BOOL FieldInput_Process_Colosseum(FieldInput *input, FieldSystem *fieldSystem) {
     if (input->interact) {
         LocalMapObject *facingObject;
         if (sub_0203DC64(fieldSystem, &facingObject) == TRUE && MapObject_GetMovement(facingObject) != MOVEMENT_FACE_DOWN) {
-            if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-                sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+            if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+                PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
             }
             StartMapSceneScript(fieldSystem, MapObject_GetScriptID(facingObject), facingObject);
             return TRUE;
@@ -391,8 +391,8 @@ BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
 
     LocalMapObject *mapObject;
     if (input->interact && sub_0203DC64(fieldSystem, &mapObject) == TRUE) {
-        if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-            sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+        if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+            PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
         }
         sub_020380B0(); // CommManager_PauseUnionClient?
         StartMapSceneScript(fieldSystem, MapObject_GetScriptID(mapObject), mapObject);
@@ -422,8 +422,8 @@ int FieldInput_Process_BattleTower(FieldInput *fieldInput, FieldSystem *fieldSys
     if (fieldInput->interact) {
         LocalMapObject *mapObject;
         if (sub_0203DC64(fieldSystem, &mapObject) == TRUE) {
-            if (sub_0205CF60(fieldSystem->playerAvatar) == TRUE) {
-                sub_0205CFBC(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
+            if (PlayerAvatar_CheckForceStopMovement(fieldSystem->playerAvatar) == TRUE) {
+                PlayerAvatar_ForceStopMovement(fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar));
             }
 
             if (MapObject_GetType(mapObject) != 9) {
@@ -633,7 +633,7 @@ static BOOL FieldSystem_ProcessStep(FieldSystem *fieldSystem) {
     if (FieldSystem_IsSaveGymmickTypeEqualTo(fieldSystem, GYMMICK_BLACKTHORN) && ov04_02255090(fieldSystem)) {
         return TRUE;
     } else if (ov01_021F3114(fieldSystem, fieldSystem->playerAvatar, PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar)) == 1) {
-        ViridianGymmick_HandleTileAction(fieldSystem, sub_0205F504(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar)));
+        ViridianGymmick_HandleTileAction(fieldSystem, MapObject_GetMetatileBehavior(PlayerAvatar_GetMapObject(fieldSystem->playerAvatar)));
         return TRUE;
     }
 

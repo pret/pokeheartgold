@@ -20,5 +20,6 @@ BOOL MapObject_ClearHeldMovementIfActive(LocalMapObject *obj);
 void MapObject_ClearHeldMovement(LocalMapObject *obj);
 void MapObject_SetHeldMovement(LocalMapObject *obj, u32 a1);
 BOOL MapObject_IsMovementPaused(LocalMapObject *object);
+int sub_0206234C(int direction, int movementAction);
 
 #endif // POKEHEARTGOLD_UNK_02062108_H

@@ -18,7 +18,7 @@
 .public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public MapObject_GetPositionVectorYCoord
-.public sub_0206121C
+.public MapObject_RecalculatePositionHeight
 .public sub_02068D90
 .public sub_02068D98
 .public sub_02068DA8

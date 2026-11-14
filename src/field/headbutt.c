@@ -13,11 +13,11 @@
 #include "overlay_01_021EDAFC.h"
 #include "overlay_01_02204ED8.h"
 #include "player_data.h"
+#include "player_move.h"
 #include "scrcmd.h"
 #include "script.h"
 #include "script_manager.h"
 #include "task.h"
-#include "unk_0205CB48.h"
 #include "unk_0205FD20.h"
 
 static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager);

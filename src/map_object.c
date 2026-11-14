@@ -1101,7 +1101,7 @@ void MapObject_SetFacingDirectionDirect(LocalMapObject *object, u32 direction) {
 }
 
 void MapObject_SetFacingDirection(LocalMapObject *object, u32 direction) {
-    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_UNK7) == 0) {
+    if (MapObject_GetFlagsBitsMask(object, MAPOBJECTFLAG_PAUSE_ANIMATION) == 0) {
         object->previousFacing = object->currentFacing;
         object->currentFacing = direction;
     }
@@ -1349,7 +1349,7 @@ void sub_0205F4FC(LocalMapObject *object, u16 param1) {
     object->unkAC = param1;
 }
 
-u16 sub_0205F504(LocalMapObject *object) {
+u16 MapObject_GetMetatileBehavior(LocalMapObject *object) {
     return object->unkAC;
 }
 
