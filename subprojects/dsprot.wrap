@@ -1,6 +1,6 @@
 [wrap-git]
-url = https://github.com/will-jj/dsprot.git
-revision = b440bdeeb3cb97baa789c167df9799336da17fb6
+url = https://github.com/taxicat1/dsprot.git
+revision = 36b9a6e2941bf38bcaf53dff8632207081afb0a1
 depth = 1
 directory = dsprot-1.23
 
