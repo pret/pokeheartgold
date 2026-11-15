@@ -45,7 +45,7 @@ static void PlayerAvatar_SetMovement_Normal(PlayerAvatar *playerAvatar, LocalMap
 static int sub_0205D40C(PlayerAvatar *playerAvatar, int direction);
 static int PlayerAvatar_ValidateState(int moveState);
 static int MapObject_DummyReturnMovementAction(LocalMapObject *playerMapObject_unused, u8 tileBehavior_unused, int movementAction);
-static int PlayerAvatar_UpdateMoveState(PlayerAvatar* playerAvatar, int direction);
+static int PlayerAvatar_UpdateMoveState(PlayerAvatar *playerAvatar, int direction);
 static void PlayerAvatar_SetMovement_NotMoving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction_unused, u16 heldKeys_unused, u16 newKeys_unused);
 static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys);
 static void PlayerAvatar_SetMovement_Turning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys);
@@ -73,8 +73,8 @@ static void PlayerAvatar_SetMovement(PlayerAvatar *playerAvatar, LocalMapObject 
 static void PlayerAvatar_IncrementStepsRecord(PlayerAvatar *playerAvatar);
 static BOOL PlayerAvatar_IsOnCyclingRoadBridge(PlayerAvatar *playerAvatar, u32 tileBehavior, int direction);
 
-const extern MetatileBehaviorCheck sTileBehaviorCheckTable[];
-extern int (*const sTileMovementFunctions[TILE_MOVE_MAX])(PlayerAvatar *playerAvatar, int direction);
+static const MetatileBehaviorCheck sTileBehaviorCheckTable[];
+static BOOL (*const sTileMovementFunctions[TILE_MOVE_MAX])(PlayerAvatar *playerAvatar, int direction);
 
 void PlayerAvatar_MoveControl(PlayerAvatar *playerAvatar, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys, int movementFlag) {
     if (direction == DIR_NONE) {
@@ -137,7 +137,7 @@ static BOOL PlayerAvatar_CheckStartMoveInternal(PlayerAvatar *playerAvatar, int 
 
 static void PlayerAvatar_StartMoveInit(PlayerAvatar *playerAvatar, int dir_unused, u16 heldKeys_unused, u16 newKeys) {
     PlayerAvatar_SetFaceDirection(playerAvatar, Movement_FaceLeftRightFromInput(newKeys), Movement_FaceUpDownFromInput(newKeys));
-    PlayerAvatar_ClearFlag6(playerAvatar);                                                  // TODO: PlayerAvatar_EndStep
+    PlayerAvatar_ClearFlag6(playerAvatar); // TODO: PlayerAvatar_EndStep
 }
 
 static void PlayerAvatar_EnableTileBehaviorCheck(PlayerAvatar *playerAvatar) {
@@ -190,34 +190,34 @@ static void PlayerAvatar_PlayWalkSE(PlayerAvatar *playerAvatar) {
     }
 }
 
-extern u16 sWalkSounds[16][2]; /*= {
-    [0] = {SEQ_SE_GS_ASHIOTO_A_WALK, FALSE},
-    [1] = {SEQ_SE_GS_ASHIOTO_A, FALSE},
-    [2] = {SEQ_SE_GS_OCHIBA, FALSE},
-    [3] = {SEQ_SE_GS_EDAPAKI, FALSE},
-    [4] = {SEQ_SE_GS_KUSA2, FALSE},
-    [5] = {SEQ_SE_GS_ASHIOTO_B, TRUE},
-    [6] = {SEQ_SE_GS_ASHIOTO_D, TRUE},
-    [7] = {SEQ_SE_GS_ASHIOTO_D_2, FALSE},
-    [8] = {SEQ_SE_GS_ASHIOTO_E, FALSE},
-    [9] = {SEQ_SE_GS_ASHIOTO_B, TRUE},
-    [10] = {SEQ_SE_GS_ASHIOTO_F, TRUE},
-    [11] = {SEQ_SE_GS_ASHIOTO_D, FALSE},
-    [12] = {SEQ_SE_GS_ASHIOTO_H, FALSE},
-    [13] = {SEQ_SE_GS_ASHIOTO_G, FALSE},
-    [14] = {SEQ_SE_DP_BOX02, FALSE},
-    [15] = {SEQ_SE_DP_BOX01, FALSE}
-};*/
+static const u16 sWalkSounds[NUM_WALK_SOUNDS][2] = {
+    [WALK_SOUND_GENERIC] = { SEQ_SE_GS_ASHIOTO_A_WALK, FALSE },
+    [WALK_SOUND_SNOW] = { SEQ_SE_GS_ASHIOTO_A,      FALSE },
+    [WALK_SOUND_LEAVES] = { SEQ_SE_GS_OCHIBA,         FALSE },
+    [WALK_SOUND_BRANCHES] = { SEQ_SE_GS_EDAPAKI,        FALSE },
+    [WALK_SOUND_GRASS] = { SEQ_SE_GS_KUSA2,          FALSE },
+    [WALK_SOUND_SAND] = { SEQ_SE_GS_ASHIOTO_B,      TRUE  },
+    [WALK_SOUND_STAIRS_ICE_GLASS] = { SEQ_SE_GS_ASHIOTO_D,      TRUE  },
+    [WALK_SOUND_METAL] = { SEQ_SE_GS_ASHIOTO_D_2,    FALSE },
+    [WALK_SOUND_UNK_8] = { SEQ_SE_GS_ASHIOTO_E,      FALSE },
+    [WALK_SOUND_UNK_9] = { SEQ_SE_GS_ASHIOTO_B,      TRUE  },
+    [WALK_SOUND_CAVERN_FLOOR] = { SEQ_SE_GS_ASHIOTO_F,      TRUE  },
+    [WALK_SOUND_UNK_11] = { SEQ_SE_GS_ASHIOTO_D,      FALSE },
+    [WALK_SOUND_UNK_12] = { SEQ_SE_GS_ASHIOTO_H,      FALSE },
+    [WALK_SOUND_WOOD] = { SEQ_SE_GS_ASHIOTO_G,      FALSE },
+    [WALK_SOUND_UNK_14] = { SEQ_SE_DP_BOX02,          FALSE },
+    [WALK_SOUND_UNK_15] = { SEQ_SE_DP_BOX01,          FALSE }
+};
 
-static void PlayWalkSEWithCooldown(LocalMapObject* playerMapObject, PlayerAvatar* playerAvatar) {
+static void PlayWalkSEWithCooldown(LocalMapObject *playerMapObject, PlayerAvatar *playerAvatar) {
     int direction = sub_02062390(MapObject_GetMovementCommand(playerMapObject)); // TODO: GetDirectionForMovement?
-    u8 walkSoundIndex = MapObject_GetMetatileBehavior(playerMapObject);
+    u8 walkSoundIndex = MapObject_GetMetatileBehavior(playerMapObject); // Redundant as this is always overwritten just below.
     u8 tileBehavior = MapObject_GetMetatileBehavior(playerMapObject);
     if (!MetatileBehavior_IsVeryTallGrass(tileBehavior) && MetatileBehavior_IsPuddle(tileBehavior) != TRUE && MetatileBehavior_IsShallowWater(tileBehavior) != TRUE && !MetatileBehavior_IsTallGrass(tileBehavior)) {
-        if (direction != DIR_NONE) { // TODO: Should never be false?
+        if (direction != DIR_NONE) { // Can never be false.
             walkSoundIndex = sub_02060FE0(playerMapObject, direction); // TODO: Likely calls Plat's TerrainCollisionManager_GetTileBehavior on tileBehavior in direction
         }
-        
+
         if (sWalkSounds[walkSoundIndex][0] == SEQ_SE_GS_EDAPAKI) { // WALK_SOUND_BRANCHES
             PlayerAvatar_ResetFootstepCooldown(playerAvatar);
         } else if (PlayerAvatar_GetPlayerMoveState(playerAvatar) == PLAYER_MOVE_STATE_NONE) {
@@ -225,13 +225,13 @@ static void PlayWalkSEWithCooldown(LocalMapObject* playerMapObject, PlayerAvatar
         } else { // With few exceptions, this means the code below should trigger every other step.
             PlayerAvatar_ToggleFootstepCooldown(playerAvatar);
         }
-        
+
         if (PlayerAvatar_GetFootstepCooldown(playerAvatar) == FALSE) {
             int playerState = PlayerAvatar_GetState(playerAvatar);
             if (playerState != PLAYER_STATE_CYCLING && playerState != PLAYER_STATE_SURFING) {
                 if (walkSoundIndex < NUM_WALK_SOUNDS) {
                     if (walkSoundIndex == WALK_SOUND_GENERIC && PlayerAvatar_IsRunning(playerAvatar) == TRUE) { // Returns true if any 'movement face' is derived from Unk8
-                        walkSoundIndex = WALK_SOUND_SNOW; // TODO: Is this actually snow? I don't trust DSPRE on this anymore.
+                        walkSoundIndex = WALK_SOUND_SNOW;                                                       // TODO: Is this actually snow? I don't trust DSPRE on this anymore.
                     }
 
                     u16 walkSound;
@@ -242,7 +242,7 @@ static void PlayWalkSEWithCooldown(LocalMapObject* playerMapObject, PlayerAvatar
                         walkSound = sWalkSounds[walkSoundIndex][0];
                         PlaySE(walkSound);
                     }
-                    
+
                     sub_02005BA8(walkSound);
                 } else {
                     GF_ASSERT(walkSoundIndex < NUM_WALK_SOUNDS);
@@ -252,7 +252,7 @@ static void PlayWalkSEWithCooldown(LocalMapObject* playerMapObject, PlayerAvatar
     }
 }
 
-void PlayerAvatar_UpdateMovement(PlayerAvatar* playerAvatar) {
+void PlayerAvatar_UpdateMovement(PlayerAvatar *playerAvatar) {
     int avatarMoveState = PlayerAvatar_GetMoveState(playerAvatar);
     int playerMoveState = PlayerAvatar_GetPlayerMoveState(playerAvatar);
     LocalMapObject *playerObj = PlayerAvatar_GetMapObject(playerAvatar);
@@ -310,43 +310,43 @@ void PlayerAvatar_ClearMoveState(PlayerAvatar *playerAvatar) {
     PlayerAvatar_ClearSpeed(playerAvatar);
 }
 
-BOOL PlayerAvatar_CheckForceStopMovement(PlayerAvatar* playerAvatar) {
+BOOL PlayerAvatar_CheckForceStopMovement(PlayerAvatar *playerAvatar) {
     int avatarMoveState = PlayerAvatar_GetMoveState(playerAvatar);
     int playerMoveState = PlayerAvatar_GetPlayerMoveState(playerAvatar);
-    
+
     if (avatarMoveState == AVATAR_MOVE_STATE_NONE) {
         return TRUE;
     }
-    
+
     if (avatarMoveState == AVATAR_MOVE_STATE_TURNING) {
         return TRUE;
     }
-    
+
     if (avatarMoveState == AVATAR_MOVE_STATE_MOVING) {
         if (playerMoveState == PLAYER_MOVE_STATE_NONE || playerMoveState == PLAYER_MOVE_STATE_END) {
             return TRUE;
         }
-        
+
         LocalMapObject *playerMapObj = PlayerAvatar_GetMapObject(playerAvatar);
-        
+
         if (MapObject_AreBitsSetForMovementScriptInit(playerMapObj) == TRUE) {
             return TRUE;
         }
-        
+
         if (MovementAction_IsWalkInPlaceSlow(MapObject_GetMovementCommand(playerMapObj)) == TRUE) {
             return TRUE;
         }
     }
-    
+
     return FALSE;
 }
 
-void PlayerAvatar_ForceStopMovement(PlayerAvatar* playerAvatar, int direction) {
+void PlayerAvatar_ForceStopMovement(PlayerAvatar *playerAvatar, int direction) {
     PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
     PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
-    
+
     LocalMapObject *playerMapObj = PlayerAvatar_GetMapObject(playerAvatar);
-    
+
     MapObject_SetFacingDirection(playerMapObj, direction);
     sub_0205F328(playerMapObj, 0);
     sub_02060F78(playerMapObj); // TODO: MapObject_UpdateCoords
@@ -360,14 +360,14 @@ static BOOL PlayerAvatar_TryMoveFromCurrentTileBehavior(PlayerAvatar *playerAvat
     return PlayerAvatar_TryMoveTileBehavior(playerAvatar, tileMovement, direction);
 }
 
-static u32 PlayerAvatar_GetTileMovement(PlayerAvatar* playerAvatar, int direction) {
+static u32 PlayerAvatar_GetTileMovement(PlayerAvatar *playerAvatar, int direction) {
     int i = 0;
     u32 tileBehavior = MapObject_GetMetatileBehavior(PlayerAvatar_GetMapObject(playerAvatar));
-    
+
     if (PlayerAvatar_IsOnCyclingRoadBridge(playerAvatar, tileBehavior, direction) == TRUE) {
         return TILE_MOVE_CYCLING_ROAD_DOWN;
     }
-    
+
     if (PlayerAvatar_CheckIgnoreTileBehavior(playerAvatar) == TRUE) {
         return TILE_MOVE_NONE;
     }
@@ -377,15 +377,15 @@ static u32 PlayerAvatar_GetTileMovement(PlayerAvatar* playerAvatar, int directio
             return sTileBehaviorCheckTable[i].tileMove;
         }
         i++;
-    } while(sTileBehaviorCheckTable[i].func != NULL);
-    
+    } while (sTileBehaviorCheckTable[i].func != NULL);
+
     return TILE_MOVE_NONE;
 }
 
-/*static const TileBehaviorCheck sTileBehaviorCheckTable[] = {
-    { TileBehavior_IsIce, TILE_MOVE_ICE },
-    { NULL, TILE_MOVE_MAX }
-};*/
+static const MetatileBehaviorCheck sTileBehaviorCheckTable[] = {
+    { MetatileBehavior_IsIce, TILE_MOVE_ICE },
+    { NULL,                   TILE_MOVE_MAX }
+};
 
 static BOOL PlayerAvatar_TryMoveTileBehavior(PlayerAvatar *playerAvatar, u32 tileMove, int direction) {
     if (sTileMovementFunctions[tileMove](playerAvatar, direction) == TRUE) {
@@ -395,21 +395,19 @@ static BOOL PlayerAvatar_TryMoveTileBehavior(PlayerAvatar *playerAvatar, u32 til
     return FALSE;
 }
 
-BOOL PlayerAvatar_TileMove_None(PlayerAvatar *playerAvatar, int direction);
-/*static*/ BOOL PlayerAvatar_TileMove_None(PlayerAvatar *playerAvatar, int direction) {
+static BOOL PlayerAvatar_TileMove_None(PlayerAvatar *playerAvatar, int direction_unused) {
     PlayerAvatar_ClearTileForcedMovement(playerAvatar);
     return FALSE;
 }
 
-BOOL PlayerAvatar_TileMove_Ice(PlayerAvatar* playerAvatar);
-/*static*/ BOOL PlayerAvatar_TileMove_Ice(PlayerAvatar* playerAvatar) {
+static BOOL PlayerAvatar_TileMove_Ice(PlayerAvatar *playerAvatar, int direction_unused) {
     LocalMapObject *playerMapObj = PlayerAvatar_GetMapObject(playerAvatar);
     int nextDirection = MapObject_GetNextFacingDirection(playerMapObj);
     int heightChange = PlayerAvatar_CheckIceHeightChange(playerAvatar, nextDirection);
     u32 flags = PlayerAvatar_CheckCollision(playerAvatar, playerMapObj, nextDirection);
-    
+
     PlayerAvatar_SetForcedMovement(playerAvatar, TRUE);
-    
+
     if (flags != PLAYER_COLLISION_NONE) {
         FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObj);
         PlayerAvatar_SetIgnoreTileBehavior(playerAvatar, TRUE);
@@ -420,15 +418,15 @@ BOOL PlayerAvatar_TileMove_Ice(PlayerAvatar* playerAvatar);
         }
         return TRUE;
     }
-    
+
     if (PlayerAvatar_UpdateIceSpeedFromHeightChange(playerAvatar, heightChange) == FALSE) {
         PlayerAvatar_ClearTileForcedMovement(playerAvatar);
         nextDirection = Direction_GetOpposite(nextDirection);
-        
+
         if (PlayerAvatar_CheckCollision(playerAvatar, playerMapObj, nextDirection) != PLAYER_COLLISION_NONE) {
             return FALSE;
         }
-        
+
         MapObject_SetFlagsBits(playerMapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
         PlayerAvatar_SetMovement(playerAvatar, playerMapObj, sub_0206234C(nextDirection, 8)); // MovementAction_TurnActionTowardsDir
         PlayerAvatar_SetIgnoreTileBehavior(playerAvatar, TRUE);
@@ -438,15 +436,14 @@ BOOL PlayerAvatar_TileMove_Ice(PlayerAvatar* playerAvatar);
         MapObject_SetFlagsBits(playerMapObj, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
         PlayerAvatar_SetIceMovement(playerAvatar, nextDirection);
     }
-    
+
     PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
     return TRUE;
 }
 
-BOOL PlayerAvatar_TileMove_CyclingRoadDown(PlayerAvatar* playerAvatar);
-/*static*/ BOOL PlayerAvatar_TileMove_CyclingRoadDown(PlayerAvatar* playerAvatar) {
+static BOOL PlayerAvatar_TileMove_CyclingRoadDown(PlayerAvatar *playerAvatar, int direction_unused) {
     LocalMapObject *playerMapObj = PlayerAvatar_GetMapObject(playerAvatar);
-    
+
     if (PlayerAvatar_CheckCollision(playerAvatar, playerMapObj, DIR_SOUTH) == PLAYER_COLLISION_NONE) {
         PlayerAvatar_SetMovement(playerAvatar, playerMapObj, sub_0206234C(DIR_SOUTH, MOVEMENT_WALK_FASTER_UP));
         PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
@@ -458,15 +455,15 @@ BOOL PlayerAvatar_TileMove_CyclingRoadDown(PlayerAvatar* playerAvatar);
         PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
         PlayerAvatar_SetBikeBrake(playerAvatar, FALSE);
     }
-    
+
     return TRUE;
 }
 
-/*static BOOL (*const sTileMovementFunctions[TILE_MOVE_MAX])(PlayerAvatar *playerAvatar, int direction) = {
+static BOOL (*const sTileMovementFunctions[TILE_MOVE_MAX])(PlayerAvatar *playerAvatar, int direction) = {
     [TILE_MOVE_NONE] = PlayerAvatar_TileMove_None,
     [TILE_MOVE_ICE] = PlayerAvatar_TileMove_Ice,
     [TILE_MOVE_CYCLING_ROAD_DOWN] = PlayerAvatar_TileMove_CyclingRoadDown
-};*/
+};
 
 static void PlayerAvatar_ClearTileForcedMovement(PlayerAvatar *playerAvatar) {
     if (PlayerAvatar_CheckForcedMovement(playerAvatar) == TRUE) {
@@ -482,24 +479,24 @@ static void PlayerAvatar_ClearTileForcedMovement(PlayerAvatar *playerAvatar) {
     }
 }
 
-static int PlayerAvatar_CheckIceHeightChange(PlayerAvatar* playerAvatar, int direction) {
+static int PlayerAvatar_CheckIceHeightChange(PlayerAvatar *playerAvatar, int direction) {
     LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
     FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
 
     VecFx32 cur;
     MapObject_CopyPositionVector(playerMapObject, &cur);
     VecFx32 next = cur;
-    
+
     VecFx32_StepDirection(direction, &next, ((16 * FX32_ONE) >> 1) / 2);
-    
+
     if (MapObject_RecalculatePositionHeight(fieldSystem, &next) == FALSE || cur.y == next.y) {
         return 0; // PLAYER_HEIGHT_CHANGE_NONE
     }
-        
+
     if (cur.y > next.y) {
         return 2; // PLAYER_HEIGHT_CHANGE_DECREASE
     }
-    
+
     return 1; // PLAYER_HEIGHT_CHANGE_INCREASE
 }
 
@@ -509,7 +506,7 @@ static BOOL PlayerAvatar_UpdateIceSpeedFromHeightChange(PlayerAvatar *playerAvat
     if (heightChange == 1) { // PLAYER_HEIGHT_CHANGE_INCREASE
         speed--;
 
-        if (speed < 0) {// AVATAR_MOVE_SPEED_0
+        if (speed < 0) { // AVATAR_MOVE_SPEED_0
             return FALSE;
         }
     } else if (heightChange == 2) { // PLAYER_HEIGHT_CHANGE_DECREASE
@@ -524,7 +521,7 @@ static BOOL PlayerAvatar_UpdateIceSpeedFromHeightChange(PlayerAvatar *playerAvat
     return TRUE;
 }
 
-static void PlayerAvatar_SetIceMovement(PlayerAvatar* playerAvatar, int direction) {
+static void PlayerAvatar_SetIceMovement(PlayerAvatar *playerAvatar, int direction) {
     LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
     int movement = MOVEMENT_WALK_FAST_UP;
     int speed = PlayerAvatar_GetSpeed(playerAvatar);
@@ -541,29 +538,29 @@ static void PlayerAvatar_SetIceMovement(PlayerAvatar* playerAvatar, int directio
     }
     movement = sub_0206234C(direction, movement);
     PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
-    
+
     FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
     if (FollowMon_IsActive(fieldSystem)) {
         ov01_02205990(movement, MapObject_GetPreviousXCoord(playerMapObject), MapObject_GetPreviousZCoord(playerMapObject), &fieldSystem->followMon);
     }
 }
 
-static void PlayerAvatar_SetMovementFromState(PlayerAvatar* playerAvatar, MapLoadManager* manager, int direction, u16 heldKeys, u16 newKeys) {
+static void PlayerAvatar_SetMovementFromState(PlayerAvatar *playerAvatar, MapLoadManager *manager, int direction, u16 heldKeys, u16 newKeys) {
     int state = PlayerAvatar_GetState(playerAvatar);
     LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
 
-    switch(state) {
-        case PLAYER_STATE_WALKING:
-        case PLAYER_STATE_SURFING:
-        case PLAYER_STATE_ROCKET:
-            PlayerAvatar_SetMovement_Normal(playerAvatar, playerMapObject, manager, direction, heldKeys, newKeys); 
-            break;
-        case PLAYER_STATE_CYCLING:
-            PlayerAvatar_SetMovement_Bike(playerAvatar, playerMapObject, manager, direction, heldKeys, newKeys);
-            break;
-        default:
-            GF_ASSERT(FALSE);
-            break;
+    switch (state) {
+    case PLAYER_STATE_WALKING:
+    case PLAYER_STATE_SURFING:
+    case PLAYER_STATE_ROCKET:
+        PlayerAvatar_SetMovement_Normal(playerAvatar, playerMapObject, manager, direction, heldKeys, newKeys);
+        break;
+    case PLAYER_STATE_CYCLING:
+        PlayerAvatar_SetMovement_Bike(playerAvatar, playerMapObject, manager, direction, heldKeys, newKeys);
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
     }
 }
 
@@ -581,7 +578,7 @@ static void PlayerAvatar_SetMovement_Normal(PlayerAvatar *playerAvatar, LocalMap
     }
 }
 
-static int sub_0205D40C(PlayerAvatar* playerAvatar, int direction) { // PlayerAvatar_UpdateMoveState2
+static int sub_0205D40C(PlayerAvatar *playerAvatar, int direction) { // PlayerAvatar_UpdateMoveState2
     int updateMoveState = PlayerAvatar_UpdateMoveState(playerAvatar, direction);
     int moveState = PlayerAvatar_ValidateState(updateMoveState); // TODO: Check if still redundant
 
@@ -607,7 +604,7 @@ static int MapObject_DummyReturnMovementAction(LocalMapObject *playerMapObject_u
     return movementAction;
 }
 
-static int PlayerAvatar_UpdateMoveState(PlayerAvatar* playerAvatar, int direction) {
+static int PlayerAvatar_UpdateMoveState(PlayerAvatar *playerAvatar, int direction) {
     if (direction == DIR_NONE) {
         PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
         return PLAYER_MOVE_STATE_NONE;
@@ -634,7 +631,7 @@ static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMap
 
     BOOL followMonShouldWait = FALSE;
     u32 flags = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, direction);
-    
+
     if (PlayerAvatar_GetState(playerAvatar) != PLAYER_STATE_SURFING) {
         if (4 & flags) { // PLAYER_COLLISION_JUMP
             movement = MOVEMENT_JUMP_FAR_UP;
@@ -659,9 +656,9 @@ static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMap
             if (PlayerSaveData_CheckRunningShoes(PlayerAvatar_GetPlayerSaveData(playerAvatar)) == TRUE && PlayerAvatar_IsRunButtonHeld(playerAvatar, newKeys) == TRUE) {
                 movement = MOVEMENT_RUN_UP;
             }
-            
+
             movement = MapObject_DummyReturnMovementAction(playerMapObject, MapObject_GetMetatileBehavior(playerMapObject), movement); // Originally handled deep snow in Platinum.
-            
+
             PlayerAvatar_IncrementStepsRecord(playerAvatar);
             PlayerAvatar_SetFlag6(playerAvatar); // PlayerAvatar_StartStep
         }
@@ -671,16 +668,16 @@ static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMap
         PlayerAvatar_SetFlag6(playerAvatar); // PlayerAvatar_StartStep
     } else {
         movement = MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP;
-        
+
         if (!(8 & flags)) { // PLAYER_COLLISION_WARP
             PlaySE(SEQ_SE_DP_WALL_HIT);
         }
-        
+
         MapObject_SetNextFacingDirection(playerMapObject, direction);
     }
     movement = sub_0206234C(direction, movement);
     PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
-    
+
     if (followMonShouldWait == FALSE) {
         fieldSystem = MapObject_GetFieldSystem(playerMapObject);
         ov01_02205990(movement, MapObject_GetPreviousXCoord(playerMapObject), MapObject_GetPreviousZCoord(playerMapObject), &fieldSystem->followMon);
@@ -690,7 +687,7 @@ static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMap
 static void PlayerAvatar_SetMovement_Turning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys) {
     PlayerAvatar_SetMovement(playerAvatar, playerMapObject, sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FAST_UP));
     MapObject_SetNextFacingDirection(playerMapObject, direction);
-    
+
     PlayerAvatar_ResetFootstepCooldown(playerAvatar);
     PlayerAvatar_ToggleFootstepCooldown(playerAvatar);
 }
@@ -724,7 +721,7 @@ static BOOL PlayerAvatar_AccelerateBike(PlayerAvatar *playerAvatar) {
         }
     }
 
-    return (speed == 3); // AVATAR_MOVE_SPEED_3
+    return speed == 3; // AVATAR_MOVE_SPEED_3
 }
 
 static BOOL PlayerAvatar_DecelerateBike(PlayerAvatar *playerAvatar) {
@@ -734,7 +731,7 @@ static BOOL PlayerAvatar_DecelerateBike(PlayerAvatar *playerAvatar) {
     speed--;
 
     if (speed < 0) { // AVATAR_MOVE_SPEED_0
-        speed = 0; // AVATAR_MOVE_SPEED_0
+        speed = 0;   // AVATAR_MOVE_SPEED_0
         isMoving = FALSE;
     }
 
@@ -826,9 +823,9 @@ static void PlayerAvatar_SetMovement_BikeThirdGearStop(PlayerAvatar *playerAvata
 
 static void PlayerAvatar_SetMovement_BikeThirdGearMoving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused) {
     int movement;
-    
+
     u32 collision = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, direction); // Returns 8-bit flags (0x10, 0x40, 0x80 unused?)
-    
+
     if (0x4 & collision) { // PLAYER_COLLISION_JUMP
         movement = sub_0206234C(direction, MOVEMENT_JUMP_FAR_UP);
         PlayerAvatar_AccelerateBike(playerAvatar);
@@ -880,7 +877,7 @@ static void PlayerAvatar_SetMovement_BikeThirdGearBrake(PlayerAvatar *playerAvat
     int movement;
 
     BOOL isMoving = PlayerAvatar_DecelerateBike(playerAvatar);
-    
+
     direction = PlayerAvatar_GetNextFacingDirection(playerAvatar);
     u32 collision = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, direction);
 
@@ -892,21 +889,21 @@ static void PlayerAvatar_SetMovement_BikeThirdGearBrake(PlayerAvatar *playerAvat
     } else if (collision != 0) { // PLAYER_COLLISION_NONE
         isMoving = FALSE;
         movement = sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP);
-        
+
         if (!(8 & collision)) { // PLAYER_COLLISION_WARP
             PlaySE(SEQ_SE_DP_WALL_HIT);
         }
-        
+
         MapObject_SetNextFacingDirection(playerMapObject, direction);
         PlayerAvatar_ClearSpeed(playerAvatar);
     } else {
         movement = PlayerAvatar_GetMovementActionFromSpeed(playerAvatar, direction);
     }
-    
+
     if (isMoving == FALSE) {
         PlayerAvatar_SetBikeBrake(playerAvatar, FALSE);
     }
-    
+
     PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
 }
 
@@ -920,15 +917,15 @@ u32 PlayerAvatar_CheckCollision(PlayerAvatar *playerAvatar, LocalMapObject *play
     u32 objectCollision = PlayerAvatar_CheckMapObjectCollision(playerAvatar, playerMapObject, direction);
 
     if (objectCollision & 0xA) { // MAP_OBJECT_COLLISION_WILL_COLLIDE | MAP_OBJECT_COLLISION_HEIGHT_CHANGE?
-        flags |= 0x1; // PLAYER_COLLISION_WILL_COLLIDE
-        
+        flags |= 0x1;            // PLAYER_COLLISION_WILL_COLLIDE
+
         if (PlayerAvatar_WillWarp(playerAvatar, playerMapObject, direction)) {
             flags |= 0x8; // PLAYER_COLLISION_WARP
         }
     }
 
     if (objectCollision & 4) { // MAP_OBJECT_COLLISION_2
-        flags |= 0x2; // PLAYER_COLLISION_1
+        flags |= 0x2;          // PLAYER_COLLISION_1
     }
 
     if (PlayerAvatar_WillJump(playerAvatar, playerMapObject, direction)) {
@@ -950,12 +947,12 @@ static u32 PlayerAvatar_CheckMapObjectCollision(PlayerAvatar *playerAvatar_unuse
     int x = MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction);
     int y = MapObject_GetYCoord(playerMapObject);
     int z = MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction);
-    
+
     VecFx32 position;
     MapObject_CopyPositionVector(playerMapObject, &position);
-    
+
     u32 flags = 0; // MAP_OBJECT_COLLISION_NONE
-    
+
     if (MapObject_IsOutOfRange(playerMapObject, x, y, z) == TRUE) {
         flags |= 1; // MAP_OBJECT_COLLISION_OUT_OF_RANGE
     }
@@ -963,29 +960,29 @@ static u32 PlayerAvatar_CheckMapObjectCollision(PlayerAvatar *playerAvatar_unuse
     s8 verticalDirection;
     if (TerrainCollisionManager_WillPlayerCollide(MapObject_GetFieldSystem(playerMapObject), &position, x, z, &verticalDirection) == TRUE) {
         flags |= 2; // MAP_OBJECT_COLLISION_WILL_COLLIDE
-        
+
         if (verticalDirection) {
             flags |= 8; // MAP_OBJECT_COLLISION_HEIGHT_CHANGE
         }
     }
-    
+
     if (sub_02060DEC(playerMapObject, x, z, direction) == TRUE) {
         flags |= 2; // MAP_OBJECT_COLLISION_WILL_COLLIDE
     }
-    
+
     if (sub_02060BFC(playerMapObject, x, y, z) == TRUE) {
         flags |= 4; // MAP_OBJ_COLLISION_2
     }
-    
+
     return flags;
 }
 
 static BOOL PlayerAvatar_WillJump(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction) {
     if (direction != DIR_NONE) {
         FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
-        
+
         u8 tileBehavior = GetMetatileBehavior(fieldSystem, MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction), MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction));
-        
+
         switch (direction) {
         case DIR_NORTH:
             if (MetatileBehavior_IsJumpNorth(tileBehavior) == TRUE) {
@@ -1013,28 +1010,27 @@ static BOOL PlayerAvatar_WillJump(PlayerAvatar *playerAvatar_unused, LocalMapObj
 
 static BOOL PlayerAvatar_WillWarp(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction) {
     if (direction != DIR_NONE) {
-        FieldSystem* fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
         int xPos = MapObject_GetXCoord(playerMapObject);
         int zPos = MapObject_GetZCoord(playerMapObject);
         u8 tileBehavior = GetMetatileBehavior(fieldSystem, xPos, zPos);
-        switch(direction)
-        {
-            case DIR_NORTH:
-                if (MetatileBehavior_IsWarpEntranceNorth(tileBehavior) == TRUE) {
-                    return TRUE;
-                }
-            case DIR_SOUTH:
-                if (MetatileBehavior_IsWarpEntranceSouth(tileBehavior) == TRUE) {
-                    return TRUE;
-                }
-            case DIR_WEST:
-                if (MetatileBehavior_IsWarpEntranceWest(tileBehavior) == TRUE) {
-                    return TRUE;
-                }
-            case DIR_EAST:
-                if (MetatileBehavior_IsWarpEntranceEast(tileBehavior) == TRUE) {
-                    return TRUE;
-                }
+        switch (direction) {
+        case DIR_NORTH:
+            if (MetatileBehavior_IsWarpEntranceNorth(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        case DIR_SOUTH:
+            if (MetatileBehavior_IsWarpEntranceSouth(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        case DIR_WEST:
+            if (MetatileBehavior_IsWarpEntranceWest(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        case DIR_EAST:
+            if (MetatileBehavior_IsWarpEntranceEast(tileBehavior) == TRUE) {
+                return TRUE;
+            }
         }
 
         xPos += GetDeltaXByFacingDirection(direction);
@@ -1065,19 +1061,19 @@ static BOOL PlayerAvatar_CheckBikeCollision(PlayerAvatar *playerAvatar, LocalMap
         int xPos = MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction);
         int zPos = MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction);
         u8 tileBehavior = GetMetatileBehavior(fieldSystem, xPos, zPos);
-        
+
         if (MapObject_IsOnWater(playerMapObject, tileBehavior)) {
             return TRUE;
         }
-        
+
         if (MapObject_IsOnSnow(playerMapObject, tileBehavior)) {
             return TRUE;
         }
-        
+
         if (MetatileBehavior_IsVeryTallGrass(tileBehavior)) {
             return TRUE;
         }
-        
+
         if (MetatileBehavior_IsMud(tileBehavior)) {
             return TRUE;
         }
@@ -1194,7 +1190,7 @@ BOOL PlayerAvatar_IsRunning(PlayerAvatar *playerAvatar) {
 
 int PlayerAvatar_GetMoveStateFromPlayerAvatarState(PlayerAvatar *playerAvatar, int direction) {
     int avatarMoveState;
-    
+
     switch (PlayerAvatar_GetState(playerAvatar)) {
     case PLAYER_STATE_WALKING:
     case PLAYER_STATE_SURFING:
@@ -1217,57 +1213,57 @@ u32 PlayerAvatar_GetMovementActionAnimCode(PlayerAvatar *playerAvatar, u16 newKe
     u32 movement;
     int direction = PlayerAvatar_GetDirectionFromKeys(playerAvatar, newKeys, heldKeys);
     int moveState = PlayerAvatar_GetMoveStateFromPlayerAvatarState(playerAvatar, direction);
-    
+
     PlayerAvatar_SetMoveState(playerAvatar, moveState);
-    
+
     if (moveState == AVATAR_MOVE_STATE_NONE) {
         return sub_0206234C(PlayerAvatar_GetFacingDirection(playerAvatar), MOVEMENT_FACE_UP);
     }
-    
+
     if (moveState == AVATAR_MOVE_STATE_TURNING) {
         return sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FAST_UP);
     }
-    
+
     PlayerAvatar_GetMapObject(playerAvatar);
     u32 collision = _collision;
-    
+
     if (collision & 4) { // PLAYER_COLLISION_JUMP
         movement = MOVEMENT_JUMP_FAR_UP;
     } else if (collision != 0) { // PLAYER_COLLISION_NONE
         movement = MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP;
-        
+
         if (!(collision & 8)) { // PLAYER_COLLISION_WARP
             PlaySE(SEQ_SE_DP_WALL_HIT);
         }
     } else {
-        switch(actionSpeed) {
-            case 0: // PLAYER_ACTION_SPEED_NONE
-                movement = MOVEMENT_WALK_SLOWER_UP; 
-                break;
-            case 1: // PLAYER_ACTION_SPEED_NOT_MOVING
-                movement = MOVEMENT_WALK_SLOW_UP;
-                break;
-            case 2: // PLAYER_ACTION_SPEED_SLOWER
-                movement = MOVEMENT_STEP_UP;
-                break;
-            case 3: // PLAYER_ACTION_SPEED_SLOW
-                movement = MOVEMENT_WALK_SLIGHTLY_FAST_UP;
-                break;
-            case 4: // PLAYER_ACTION_SPEED_NORMAL
-                movement = MOVEMENT_WALK_FAST_UP;
-                break;
-            case 5: // PLAYER_ACTION_SPEED_FAST
-                movement = MOVEMENT_WALK_FASTER_UP;
-                break;
-            default:
-                movement = MOVEMENT_WALK_SLOWER_UP;
+        switch (actionSpeed) {
+        case 0: // PLAYER_ACTION_SPEED_NONE
+            movement = MOVEMENT_WALK_SLOWER_UP;
+            break;
+        case 1: // PLAYER_ACTION_SPEED_NOT_MOVING
+            movement = MOVEMENT_WALK_SLOW_UP;
+            break;
+        case 2: // PLAYER_ACTION_SPEED_SLOWER
+            movement = MOVEMENT_STEP_UP;
+            break;
+        case 3: // PLAYER_ACTION_SPEED_SLOW
+            movement = MOVEMENT_WALK_SLIGHTLY_FAST_UP;
+            break;
+        case 4: // PLAYER_ACTION_SPEED_NORMAL
+            movement = MOVEMENT_WALK_FAST_UP;
+            break;
+        case 5: // PLAYER_ACTION_SPEED_FAST
+            movement = MOVEMENT_WALK_FASTER_UP;
+            break;
+        default:
+            movement = MOVEMENT_WALK_SLOWER_UP;
         }
-        
+
         if (isRunning == TRUE && PlayerAvatar_IsRunButtonHeld(playerAvatar, heldKeys) == TRUE) {
             movement = MOVEMENT_RUN_UP;
         }
     }
-    
+
     return sub_0206234C(direction, movement);
 }
 
@@ -1306,7 +1302,7 @@ static void PlayerAvatar_IncrementStepsRecord(PlayerAvatar *avatar) {
     }
 }
 
-static BOOL PlayerAvatar_IsOnCyclingRoadBridge(PlayerAvatar* playerAvatar, u32 tileBehavior, int direction) {
+static BOOL PlayerAvatar_IsOnCyclingRoadBridge(PlayerAvatar *playerAvatar, u32 tileBehavior, int direction) {
     if (direction != DIR_NONE) {
         return FALSE;
     }
@@ -1322,6 +1318,6 @@ static BOOL PlayerAvatar_IsOnCyclingRoadBridge(PlayerAvatar* playerAvatar, u32 t
     if (MapObject_IsOnElevatedBridge(PlayerAvatar_GetMapObject(playerAvatar), tileBehavior) == TRUE) {
         return TRUE;
     }
-    
+
     return FALSE;
 }
