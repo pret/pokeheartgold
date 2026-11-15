@@ -3,7 +3,7 @@
 ## PR checklist
 
 - [ ] This comment contains a description of changes (with reason).
-- [ ] The ROM compiles to matching locally (`make compare_heartgold && make compare_soulsilver`).
+- [ ] The ROM compiles to matching locally (`make heartgold && make soulsiver`).
 - [ ] All C code is correctly formatted (`git clang-format`).
 - [ ] This pull request is labeled according to the kind of work it represents.
 - [ ] New or updated code labels follow the [style guide](https://docs.google.com/document/d/17D62q1v4dcBmet8T8uYoTAP_0IdGTci0-3p0fPcf-a8/edit)
