@@ -635,6 +635,6 @@ _0800:
 	EndMovement
 
 scr_seq_R25_002:
-	TrainerTipsEx 2, msg_0363_R25_00015
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0363_R25_00015
 	End
 	.balign 4, 0

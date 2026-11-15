@@ -1880,7 +1880,7 @@ ov90_02259570: ; 0x02259570
 	ldr r0, [r4, r5]
 	cmp r0, #0
 	beq _02259586
-	bl sub_0200F478
+	bl WaitingIcon_Halt
 	mov r0, #0
 	str r0, [r4, r5]
 _02259586:

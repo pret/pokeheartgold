@@ -4604,7 +4604,7 @@ ov92_0225E9B4: ; 0x0225E9B4
 	mov r2, #8
 	mov r3, #0x71
 	bl PaletteData_LoadNarc
-	bl sub_0200E3D8
+	bl GetStandardWindowPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

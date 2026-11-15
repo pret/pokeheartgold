@@ -329,7 +329,7 @@ static BOOL GameClearSave_IsPrintFinished(GameClearWork *env) {
 
 static void sub_02052E70(GameClearWork *env) {
     String_Delete(env->windowText);
-    sub_0200F450(env->waitingIcon);
+    WaitingIcon_Destroy(env->waitingIcon);
     DialogBox_Clear(&env->window);
 }
 

@@ -76,10 +76,10 @@ _00C4:
 	EndMovement
 
 scr_seq_R27_002:
-	TrainerTipsEx 2, msg_0369_R27_00002
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0369_R27_00002
 	End
 
 scr_seq_R27_004:
-	DirectionSignpostEx 1, 5, msg_0369_R27_00003
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 5, msg_0369_R27_00003
 	End
 	.balign 4, 0

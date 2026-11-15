@@ -388,7 +388,7 @@ static void TextPrinter_InitDownArrowCounters(TextPrinter *printer) {
         subStruct->downArrowYPosIdx = 0;
         subStruct->downArrowDelay = 0;
     }
-    sub_0200EB68(printer->template.window, sDownArrowBaseTile);
+    Window_DrawMessageBoxScrollCursor(printer->template.window, sDownArrowBaseTile);
 }
 
 // Possible UB? Where does downArrowYPosIdx get reset to 0 when it reaches NELEMS(sDownArrowTileOffsets) == 4?

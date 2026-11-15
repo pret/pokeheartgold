@@ -2297,7 +2297,7 @@ ov08_0221CF38: ; 0x0221CF38
 	ldr r0, [r0, #8]
 	bl BattleSystem_GetFrame
 	add r4, r0, #0
-	bl sub_0200E63C
+	bl GetMessageBoxTilesNARCMember
 	add r1, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2314,7 +2314,7 @@ ov08_0221CF38: ; 0x0221CF38
 	mov r3, #4
 	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -14176,7 +14176,7 @@ ov08_022230F4: ; 0x022230F4
 	ldr r0, [r0]
 	bl BattleSystem_GetFrame
 	add r4, r0, #0
-	bl sub_0200E63C
+	bl GetMessageBoxTilesNARCMember
 	add r1, r0, #0
 	ldr r0, _022231E4 ; =0x000003E2
 	mov r3, #4
@@ -14191,7 +14191,7 @@ ov08_022230F4: ; 0x022230F4
 	mov r0, #0x26
 	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

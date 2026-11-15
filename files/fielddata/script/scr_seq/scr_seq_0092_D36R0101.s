@@ -2561,6 +2561,6 @@ _21F4:
 	EndMovement
 
 scr_seq_D36R0101_013:
-	TrainerTipsEx 3, msg_0115_D36R0101_00027
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0115_D36R0101_00027
 	End
 	.balign 4, 0

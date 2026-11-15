@@ -271,18 +271,18 @@ _0348:
 	EndMovement
 
 scr_seq_R42_002:
-	DirectionSignpostEx 1, 1, msg_0399_R42_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 1, msg_0399_R42_00000
 	End
 
 scr_seq_R42_003:
-	TrainerTipsEx 2, msg_0399_R42_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0399_R42_00001
 	End
 
 scr_seq_R42_004:
-	TrainerTipsEx 2, msg_0399_R42_00002
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0399_R42_00002
 	End
 
 scr_seq_R42_005:
-	DirectionSignpostEx 1, 2, msg_0399_R42_00003
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 2, msg_0399_R42_00003
 	End
 	.balign 4, 0

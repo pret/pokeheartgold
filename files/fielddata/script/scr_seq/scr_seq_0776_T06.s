@@ -63,11 +63,11 @@ scr_seq_T06_013:
 	GetGameVersion VAR_TEMP_x4004
 	Compare VAR_TEMP_x4004, 8
 	GoToIfEq _0109
-	ScrCmd_452 SPECIES_LATIAS, 1
+	DrawPokemonPicFromSpecies SPECIES_LATIAS, 1
 	NPCMsg msg_0483_T06_00017
 	CloseMsg
 	CreateRoamer 2
-	ScrCmd_453
+	ErasePokemonPic
 	ApplyMovement obj_T06_daigo, _0180
 	WaitMovement
 	NPCMsg msg_0483_T06_00019
@@ -80,11 +80,11 @@ scr_seq_T06_013:
 	End
 
 _0109:
-	ScrCmd_452 SPECIES_LATIOS, 0
+	DrawPokemonPicFromSpecies SPECIES_LATIOS, 0
 	NPCMsg msg_0483_T06_00018
 	CloseMsg
 	CreateRoamer 3
-	ScrCmd_453
+	ErasePokemonPic
 	ApplyMovement obj_T06_daigo, _0180
 	WaitMovement
 	NPCMsg msg_0483_T06_00020
@@ -569,19 +569,19 @@ scr_seq_T06_004:
 	End
 
 scr_seq_T06_005:
-	DirectionSignpostEx 0, 6, msg_0483_T06_00010
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 6, msg_0483_T06_00010
 	End
 
 scr_seq_T06_006:
-	TrainerTipsEx 2, msg_0483_T06_00011
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0483_T06_00011
 	End
 
 scr_seq_T06_007:
-	TrainerTipsEx 2, msg_0483_T06_00012
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0483_T06_00012
 	End
 
 scr_seq_T06_008:
-	TrainerTipsEx 2, msg_0483_T06_00013
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0483_T06_00013
 	End
 
 scr_seq_T06_010:

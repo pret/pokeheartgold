@@ -484,6 +484,6 @@ _0604:
 	EndMovement
 
 scr_seq_R22_002:
-	TrainerTipsEx 2, msg_0360_R22_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0360_R22_00000
 	End
 	.balign 4, 0

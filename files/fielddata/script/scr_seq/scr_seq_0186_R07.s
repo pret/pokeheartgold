@@ -9,7 +9,7 @@
 	ScrDefEnd
 
 scr_seq_R07_000:
-	TrainerTipsEx 2, msg_0336_R07_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0336_R07_00000
 	End
 
 scr_seq_R07_001:

@@ -173,27 +173,27 @@ scr_seq_T07_008:
 	End
 
 scr_seq_T07_009:
-	DirectionSignpostEx 0, 7, msg_0491_T07_00030
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 7, msg_0491_T07_00030
 	End
 
 scr_seq_T07_010:
-	TrainerTipsEx 2, msg_0491_T07_00031
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0491_T07_00031
 	End
 
 scr_seq_T07_011:
-	TrainerTipsEx 2, msg_0491_T07_00032
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0491_T07_00032
 	End
 
 scr_seq_T07_012:
-	TrainerTipsEx 2, msg_0491_T07_00033
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0491_T07_00033
 	End
 
 scr_seq_T07_013:
-	TrainerTipsEx 2, msg_0491_T07_00034
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0491_T07_00034
 	End
 
 scr_seq_T07_014:
-	TrainerTipsEx 3, msg_0491_T07_00035
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0491_T07_00035
 	End
 
 scr_seq_T07_016:

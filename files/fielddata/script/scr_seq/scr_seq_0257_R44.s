@@ -13,10 +13,10 @@ scr_seq_R44_000:
 	End
 
 scr_seq_R44_001:
-	TrainerTipsEx 2, msg_0404_R44_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0404_R44_00000
 	End
 
 scr_seq_R44_002:
-	DirectionSignpostEx 1, 1, msg_0404_R44_00001
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 1, msg_0404_R44_00001
 	End
 	.balign 4, 0
