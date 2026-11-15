@@ -5,15 +5,20 @@
 
 void PlayerAvatar_MoveControl(PlayerAvatar *playerAvatar, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys, int movementFlag);
 BOOL PlayerAvatar_CheckStartMove(PlayerAvatar *playerAvatar, int direction);
-void PlayerAvatar_GetCoordsInFront(PlayerAvatar *playerAvatar, int *x, int *z);
 void PlayerAvatar_UpdateMovement(PlayerAvatar *playerAvatar);
 void PlayerAvatar_ClearMoveState(PlayerAvatar *playerAvatar);
 BOOL PlayerAvatar_CheckForceStopMovement(PlayerAvatar *playerAvatar);
 void PlayerAvatar_ForceStopMovement(PlayerAvatar *playerAvatar, int direction);
-int PlayerAvatar_GetDirectionFromKeys(PlayerAvatar *playerAvatar, u16 heldKeys, u16 newKeys);
-u32 PlayerAvatar_CheckCollision(PlayerAvatar *playerAvatar, LocalMapObject *mapObject, int direction);
-int sub_0205DD94(PlayerAvatar *avatar, u16 newKeys, u16 heldKeys);
-BOOL sub_0205DE98(PlayerAvatar *playerAvatar);
+u32 PlayerAvatar_CheckCollision(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction);
+int PlayerAvatar_CalcFacingDirection(PlayerAvatar *avatar, u16 newKeys, u16 heldKeys);
+BOOL PlayerAvatar_IsAnimationSetOrWalkOnSpotSlow(PlayerAvatar *playerAvatar);
+BOOL PlayerAvatar_IsRunning(PlayerAvatar *playerAvatar);
+int PlayerAvatar_GetMoveStateFromPlayerAvatarState(PlayerAvatar *playerAvatar, int direction);
+u32 PlayerAvatar_GetMovementActionAnimCode(PlayerAvatar *playerAvatar, u16 newKeys, u16 heldKeys, int actionSpeed, BOOL isRunning, int _collision);
+BOOL PlayerAvatar_IsMapObjectAnimationSet(PlayerAvatar *playerAvatar);
+void PlayerAvatar_SetMapObjectMovement(PlayerAvatar *playerAvatar, int movementAction);
+u32 PlayerAvatar_GetTileBehaviorFromDirection(PlayerAvatar *playerAvatar, int direction);
+void PlayerAvatar_GetCoordsInFront(PlayerAvatar *playerAvatar, int *x, int *z);
 
 // TODO: Move to const file or c?
 typedef enum WalkSounds {

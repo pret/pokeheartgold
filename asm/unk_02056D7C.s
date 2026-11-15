@@ -1680,15 +1680,15 @@ _02057992:
 	ldr r3, [sp, #8]
 	add r1, r4, #0
 	add r2, r4, #0
-	bl sub_0205DF0C
+	bl PlayerAvatar_GetMovementActionAnimCode
 	add r7, r0, #0
 _020579A8:
 	ldr r0, [sp, #0x18]
-	bl sub_0205DFC8
+	bl PlayerAvatar_IsMapObjectAnimationSet
 	cmp r0, #0
 	bne _020579BC
 	ldr r0, [sp, #0x18]
-	bl sub_0205DE38
+	bl PlayerAvatar_IsAnimationSetOrWalkOnSpotSlow
 	cmp r0, #0
 	beq _020579FC
 _020579BC:
@@ -1696,7 +1696,7 @@ _020579BC:
 	beq _020579FC
 	ldr r0, [sp, #0x18]
 	add r1, r7, #0
-	bl sub_0205DFD4
+	bl PlayerAvatar_SetMapObjectMovement
 	mov r0, #2
 	bic r4, r0
 	beq _020579FC
@@ -1899,7 +1899,7 @@ _02057B26:
 	add r1, r0, r4
 	mov r0, #0x78
 	ldrsb r0, [r1, r0]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	ldr r1, _02057B48 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2046,7 +2046,7 @@ _02057C36:
 	add r1, r0, r4
 	mov r0, #0x38
 	ldrsb r0, [r1, r0]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	ldr r1, _02057C58 ; =_021D41C4
 	ldr r1, [r1]
 	add r1, r1, r4
@@ -2320,7 +2320,7 @@ _02057E36:
 	lsl r0, r4, #2
 	add r0, r2, r0
 	ldr r0, [r0, #4]
-	bl sub_0205DFD4
+	bl PlayerAvatar_SetMapObjectMovement
 	bl sub_02058024
 	pop {r4, pc}
 	.balign 4, 0
@@ -2381,7 +2381,7 @@ _02057E98:
 	add r0, r1, r0
 	strh r0, [r7, r4]
 	ldr r0, [sp, #4]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	ldrh r1, [r6, #2]
 	add r0, r1, r0
 	strh r0, [r6, #2]

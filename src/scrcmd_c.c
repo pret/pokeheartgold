@@ -1503,10 +1503,10 @@ BOOL ScrCmd_FacePlayer(ScriptContext *ctx) {
             }
             if (MetatileBehavior_IsTallGrass(metatile) == FALSE
                 && MetatileBehavior_IsVeryTallGrass(metatile) == FALSE
-                && sub_02060E54(*p_lastInteracted, metatile) == FALSE
+                && MapObject_IsOnWater(*p_lastInteracted, metatile) == FALSE
                 && MetatileBehavior_IsPuddle(metatile) == FALSE
                 && MetatileBehavior_IsShallowWater(metatile) == FALSE
-                && sub_02060EBC(*p_lastInteracted, metatile) == FALSE
+                && MapObject_IsOnSnow(*p_lastInteracted, metatile) == FALSE
                 && MetatileBehavior_IsMud(metatile) == FALSE
                 && MetatileBehavior_IsReflective(metatile) == FALSE) {
                 MapObject_ClearFlagsBits(*p_lastInteracted, MAPOBJECTFLAG_UNK20);
@@ -4475,7 +4475,7 @@ BOOL ScrCmd_FollowMonFacePlayer(ScriptContext *ctx) {
             int deltaX = GetDeltaXByFacingDirection(facingDirection) * 2;
             s32 playerY = MapObject_GetYCoord(myObject);
             int playerZ = MapObject_GetZCoord(myObject);
-            int deltaY = GetDeltaYByFacingDirection(facingDirection) * 2;
+            int deltaY = GetDeltaZByFacingDirection(facingDirection) * 2;
             u8 facingTile = GetMetatileBehavior(ctx->fieldSystem, playerX + deltaX, playerZ + deltaY);
             VecFx32 posVec;
             MapObject_CopyPositionVector(myObject, &posVec);

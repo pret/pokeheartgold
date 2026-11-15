@@ -148,7 +148,7 @@ _021F31F4:
 	b _021F3340
 _021F3206:
 	ldr r0, [r4, #0x10]
-	bl sub_0205DFC8
+	bl PlayerAvatar_IsMapObjectAnimationSet
 	cmp r0, #0
 	bne _021F3212
 	b _021F3340
@@ -158,7 +158,7 @@ _021F3212:
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl sub_0205DFD4
+	bl PlayerAvatar_SetMapObjectMovement
 	ldr r0, [r4, #0x10]
 	ldr r1, [r4]
 	bl PlayerAvatar_SetFacingDirection

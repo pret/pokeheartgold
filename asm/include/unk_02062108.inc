@@ -30,7 +30,7 @@
 .public sub_0206101C
 .public sub_02061070
 .public MapObject_AreBitsSetForMovementScriptInit
-.public MapObject_SetHeldMovement
+.public LocalMapObject_SetAnimationCode
 .public MapObject_ForceSetHeldMovement
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive

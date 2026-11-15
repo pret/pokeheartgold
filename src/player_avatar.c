@@ -219,7 +219,7 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_ClearSpeed(avatar);
     PlayerAvatar_SetFaceLeftOrRight(avatar, DIR_NONE);
     PlayerAvatar_SetFaceUpOrDown(avatar, DIR_NONE);
-    PlayerAvatar_SetUnk8(avatar, 255); // obj_player?
+    PlayerAvatar_SetMovementAction(avatar, 255); // obj_player?
     PlayerAvatar_SetIgnoreTileBehavior(avatar, TRUE);
 }
 
@@ -423,12 +423,12 @@ PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar) {
     return avatar->playerSaveData;
 }
 
-void PlayerAvatar_SetUnk8(PlayerAvatar *avatar, u32 param1) {
-    avatar->unk8 = param1;
+void PlayerAvatar_SetMovementAction(PlayerAvatar *avatar, u32 movementAction) {
+    avatar->movementAction = movementAction;
 }
 
-u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar) {
-    return avatar->unk8;
+u32 PlayerAvatar_GetMovementAction(PlayerAvatar *avatar) {
+    return avatar->movementAction;
 }
 
 BOOL PlayerAvatar_GetFootstepCooldown(PlayerAvatar *avatar) {

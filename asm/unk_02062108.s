@@ -58,8 +58,8 @@ _02062146:
 	.balign 4, 0
 	thumb_func_end MapObject_AreBitsSetForMovementScriptInit
 
-	thumb_func_start MapObject_SetHeldMovement
-MapObject_SetHeldMovement: ; 0x0206214C
+	thumb_func_start LocalMapObject_SetAnimationCode
+LocalMapObject_SetAnimationCode: ; 0x0206214C
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -80,7 +80,7 @@ _0206215A:
 	mov r1, #0x20
 	bl MapObject_ClearFlagsBits
 	pop {r3, r4, r5, pc}
-	thumb_func_end MapObject_SetHeldMovement
+	thumb_func_end LocalMapObject_SetAnimationCode
 
 	thumb_func_start MapObject_ForceSetHeldMovement
 MapObject_ForceSetHeldMovement: ; 0x0206217C
@@ -290,7 +290,7 @@ MovementScriptMachineSub_SetMovementCommand: ; 0x020622E0
 	ldr r1, [r4, #0x10]
 	ldr r0, [r4, #0xc]
 	ldrh r1, [r1]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #3
 	str r0, [r4]
 	mov r0, #0

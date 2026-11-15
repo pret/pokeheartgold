@@ -2413,7 +2413,7 @@ _0206447C:
 	bl GetDeltaXByFacingDirection
 	add r6, r4, r0
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r4, r7, r0
 	ldr r0, [sp, #8]
 	mov r7, #0
@@ -2441,7 +2441,7 @@ _020644CC:
 	bl GetDeltaXByFacingDirection
 	add r6, r6, r0
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r4, r4, r0
 	ldr r0, [sp, #0x10]
 	add r7, r7, #1
@@ -2762,7 +2762,7 @@ _020646FC:
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #4
 	str r0, [r4]
 	mov r0, #0
@@ -2825,7 +2825,7 @@ sub_02064764: ; 0x02064764
 	add r4, r0, #0
 	ldr r0, [r4, #0x24]
 	mov r1, #0x65
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #8
 	str r0, [r4]
 	mov r0, #0
@@ -2895,7 +2895,7 @@ sub_020647C0: ; 0x020647C0
 	bl sub_0206234C
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #0xc
 	str r0, [r4]
 _020647E2:
@@ -2989,7 +2989,7 @@ _02064870:
 	bl sub_0206234C
 	add r1, r0, #0
 	add r0, r4, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #0xf
 	str r0, [r5]
 	b _0206489C

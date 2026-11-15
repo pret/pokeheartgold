@@ -895,7 +895,7 @@ _02060418:
 	beq _02060484
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060E54
+	bl MapObject_IsOnWater
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
@@ -908,7 +908,7 @@ _02060418:
 	beq _02060484
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060EBC
+	bl MapObject_IsOnSnow
 	cmp r0, #1
 	beq _02060484
 	add r0, r4, #0
@@ -950,7 +950,7 @@ _020604B0:
 	beq _02060504
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060E54
+	bl MapObject_IsOnWater
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
@@ -963,7 +963,7 @@ _020604B0:
 	beq _02060504
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060EBC
+	bl MapObject_IsOnSnow
 	cmp r0, #1
 	beq _02060504
 	add r0, r4, #0
@@ -1039,7 +1039,7 @@ _02060546:
 	beq _020605C8
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060E54
+	bl MapObject_IsOnWater
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
@@ -1052,7 +1052,7 @@ _02060546:
 	beq _020605C8
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060EBC
+	bl MapObject_IsOnSnow
 	cmp r0, #1
 	beq _020605C8
 	add r0, r4, #0
@@ -1086,7 +1086,7 @@ _020605E0:
 	beq _02060634
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060E54
+	bl MapObject_IsOnWater
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
@@ -1099,7 +1099,7 @@ _020605E0:
 	beq _02060634
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060EBC
+	bl MapObject_IsOnSnow
 	cmp r0, #1
 	beq _02060634
 	add r0, r4, #0
@@ -1130,7 +1130,7 @@ sub_0206064C: ; 0x0206064C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02060E54
+	bl MapObject_IsOnWater
 	cmp r0, #1
 	beq _02060694
 	add r0, r4, #0
@@ -1147,7 +1147,7 @@ sub_0206064C: ; 0x0206064C
 	beq _02060694
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_02060EBC
+	bl MapObject_IsOnSnow
 	cmp r0, #1
 	beq _02060694
 	add r0, r5, #0
@@ -1735,7 +1735,7 @@ sub_02060AF4: ; 0x02060AF4
 	add r3, r7, #0
 	add r6, r0, #0
 	mov r4, #0
-	bl sub_02060D94
+	bl MapObject_IsOutOfRange
 	cmp r0, #1
 	bne _02060B16
 	mov r0, #1
@@ -1841,7 +1841,7 @@ sub_02060BB8: ; 0x02060BB8
 	bl MapObject_GetZCoord
 	str r0, [sp, #8]
 	add r0, r4, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	str r4, [sp]
 	add r3, r0, #0
 	ldr r4, [sp, #8]
@@ -2051,8 +2051,8 @@ _02060D84:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end sub_02060CA8
 
-	thumb_func_start sub_02060D94
-sub_02060D94: ; 0x02060D94
+	thumb_func_start MapObject_IsOutOfRange
+MapObject_IsOutOfRange: ; 0x02060D94
 	push {r3, r4, r5, r6, r7, lr}
 	add r6, r0, #0
 	add r5, r1, #0
@@ -2097,7 +2097,7 @@ _02060DE6:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_02060D94
+	thumb_func_end MapObject_IsOutOfRange
 
 	thumb_func_start sub_02060DEC
 sub_02060DEC: ; 0x02060DEC
@@ -2151,8 +2151,8 @@ _02060E4C: .word _020FD4CC
 _02060E50: .word _020FD4BC
 	thumb_func_end sub_02060DEC
 
-	thumb_func_start sub_02060E54
-sub_02060E54: ; 0x02060E54
+	thumb_func_start MapObject_IsOnWater
+MapObject_IsOnWater: ; 0x02060E54
 	push {r3, r4, r5, lr}
 	add r4, r1, #0
 	add r5, r0, #0
@@ -2191,7 +2191,7 @@ _02060E84:
 _02060EA0:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
-	thumb_func_end sub_02060E54
+	thumb_func_end MapObject_IsOnWater
 
 	thumb_func_start sub_02060EA4
 sub_02060EA4: ; 0x02060EA4
@@ -2209,8 +2209,8 @@ _02060EB6:
 	.balign 4, 0
 	thumb_func_end sub_02060EA4
 
-	thumb_func_start sub_02060EBC
-sub_02060EBC: ; 0x02060EBC
+	thumb_func_start MapObject_IsOnSnow
+MapObject_IsOnSnow: ; 0x02060EBC
 	push {r3, lr}
 	lsl r0, r1, #0x18
 	lsr r0, r0, #0x18
@@ -2223,7 +2223,7 @@ _02060ECE:
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
-	thumb_func_end sub_02060EBC
+	thumb_func_end MapObject_IsOnSnow
 
 	thumb_func_start sub_02060ED4
 sub_02060ED4: ; 0x02060ED4
@@ -2241,8 +2241,8 @@ _02060EE6:
 	.balign 4, 0
 	thumb_func_end sub_02060ED4
 
-	thumb_func_start sub_02060EEC
-sub_02060EEC: ; 0x02060EEC
+	thumb_func_start MapObject_IsOnElevatedBridge
+MapObject_IsOnElevatedBridge: ; 0x02060EEC
 	push {r4, lr}
 	add r4, r1, #0
 	bl MapObject_CheckFlag28
@@ -2258,7 +2258,7 @@ sub_02060EEC: ; 0x02060EEC
 _02060F08:
 	mov r0, #0
 	pop {r4, pc}
-	thumb_func_end sub_02060EEC
+	thumb_func_end MapObject_IsOnElevatedBridge
 
 	thumb_func_start GetDeltaXByFacingDirection
 GetDeltaXByFacingDirection: ; 0x02060F0C
@@ -2270,15 +2270,15 @@ GetDeltaXByFacingDirection: ; 0x02060F0C
 _02060F14: .word _020FD4AC
 	thumb_func_end GetDeltaXByFacingDirection
 
-	thumb_func_start GetDeltaYByFacingDirection
-GetDeltaYByFacingDirection: ; 0x02060F18
+	thumb_func_start GetDeltaZByFacingDirection
+GetDeltaZByFacingDirection: ; 0x02060F18
 	lsl r1, r0, #2
 	ldr r0, _02060F20 ; =_020FD49C
 	ldr r0, [r0, r1]
 	bx lr
 	.balign 4, 0
 _02060F20: .word _020FD49C
-	thumb_func_end GetDeltaYByFacingDirection
+	thumb_func_end GetDeltaZByFacingDirection
 
 	thumb_func_start sub_02060F24
 sub_02060F24: ; 0x02060F24
@@ -2308,7 +2308,7 @@ sub_02060F24: ; 0x02060F24
 	mov r1, #0
 	bl MapObject_AddCurrentY
 	add r0, r4, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_AddCurrentZ
@@ -2351,7 +2351,7 @@ LocalMapObject_GetNextPositionMetatileBehavior: ; 0x02060FA8
 	bl MapObject_GetZCoord
 	str r0, [sp]
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetFieldSystem
@@ -2377,7 +2377,7 @@ sub_02060FE0: ; 0x02060FE0
 	bl MapObject_GetZCoord
 	str r0, [sp]
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
 	bl MapObject_GetFieldSystem

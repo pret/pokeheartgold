@@ -927,7 +927,7 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
     case 3:
         player = PlayerAvatar_GetMapObject(fsys->playerAvatar);
         if (MapObject_AreBitsSetForMovementScriptInit(player)) {
-            MapObject_SetHeldMovement(player, MOVEMENT_FACE_DOWN);
+            LocalMapObject_SetAnimationCode(player, MOVEMENT_FACE_DOWN);
             unkSub->state++;
         }
         break;

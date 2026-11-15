@@ -1070,7 +1070,7 @@ _02205BA0:
 	strb r0, [r4, #3]
 	ldr r1, [r1, r2]
 	add r0, r5, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrb r0, [r4, #3]
 	cmp r0, #2
 	bhs _02205BD4
@@ -1090,7 +1090,7 @@ _02205BDC:
 	beq _02205CDA
 	add r0, r5, #0
 	mov r1, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -1568,7 +1568,7 @@ _02205FB6:
 	add r4, #0xe4
 	add r1, r0, #0
 	ldr r0, [r4]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r5]
 	add r0, r0, #1
 	str r0, [r5]
@@ -1624,26 +1624,26 @@ ov01_02206028: ; 0x02206028
 	bge _02206062
 	add r0, r5, #0
 	mov r1, #0xa
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	pop {r3, r4, r5, r6, r7, pc}
 _02206062:
 	ble _0220606E
 	add r0, r5, #0
 	mov r1, #0xb
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	pop {r3, r4, r5, r6, r7, pc}
 _0220606E:
 	cmp r4, #0
 	bge _0220607C
 	add r0, r5, #0
 	mov r1, #8
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	pop {r3, r4, r5, r6, r7, pc}
 _0220607C:
 	ble _02206086
 	add r0, r5, #0
 	mov r1, #9
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 _02206086:
 	pop {r3, r4, r5, r6, r7, pc}
 	thumb_func_end ov01_02206028

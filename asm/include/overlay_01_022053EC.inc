@@ -57,7 +57,7 @@
 .public MapObject_SetPositionVector
 .public MapObject_SetPositionFromVectorAndDirection
 .public MapObject_AreBitsSetForMovementScriptInit
-.public MapObject_SetHeldMovement
+.public LocalMapObject_SetAnimationCode
 .public MapObject_IsMovementPaused
 .public sub_0206234C
 .public sub_0206599C

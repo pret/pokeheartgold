@@ -201,7 +201,7 @@ _022009A4:
 	bl MapObject_GetZCoord
 	str r0, [sp, #8]
 	ldr r0, [r5, #4]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r2, r0, #0
 	ldr r1, [sp, #8]
 	add r0, r4, r7

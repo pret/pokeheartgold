@@ -66,13 +66,13 @@
 .public sub_0205FC94
 .public sub_02060B90
 .public GetDeltaXByFacingDirection
-.public GetDeltaYByFacingDirection
+.public GetDeltaZByFacingDirection
 .public sub_02060F78
 .public sub_02061070
 .public sub_02061200
 .public sub_02061248
 .public MapObject_AreBitsSetForMovementScriptInit
-.public MapObject_SetHeldMovement
+.public LocalMapObject_SetAnimationCode
 .public MapObject_ForceSetHeldMovement
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive

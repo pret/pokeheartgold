@@ -26,7 +26,7 @@ typedef struct PlayerSaveData {
 struct PlayerAvatar {
     PlayerAvatarFlags flags;
     u32 transitionFlags;
-    u32 unk8;
+    u32 movementAction;
     BOOL footstepCooldown; // New behaviour in HGSS that plays certain footstep sounds every other step.
     u32 moveState;
     u32 playerMoveState;
@@ -86,8 +86,8 @@ void PlayerAvatar_SetFaceDirection(PlayerAvatar *avatar, int faceLeftOrRight, in
 void PlayerAvatar_SetUnk34(PlayerAvatar *avatar, u32 param1);
 u32 PlayerAvatar_GetUnk34(PlayerAvatar *avatar);
 PlayerSaveData *PlayerAvatar_GetPlayerSaveData(PlayerAvatar *avatar);
-void PlayerAvatar_SetUnk8(PlayerAvatar *avatar, u32 unkA);
-u32 PlayerAvatar_GetUnk8(PlayerAvatar *avatar);
+void PlayerAvatar_SetMovementAction(PlayerAvatar *avatar, u32 movementAction);
+u32 PlayerAvatar_GetMovementAction(PlayerAvatar *avatar);
 BOOL PlayerAvatar_GetFootstepCooldown(PlayerAvatar *avatar);
 void PlayerAvatar_ToggleFootstepCooldown(PlayerAvatar *avatar);
 void PlayerAvatar_ResetFootstepCooldown(PlayerAvatar *avatar);

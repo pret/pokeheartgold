@@ -568,7 +568,7 @@ static BOOL FieldSystem_EncounterRateRoll(FieldSystem *fieldSystem, u8 encounter
     }
     int avatarState = PlayerAvatar_GetState(fieldSystem->playerAvatar);
     u8 modifiedRate = 40;
-    if (avatarState != PLAYER_STATE_CYCLING && avatarState != PLAYER_STATE_SURFING && !sub_0205DE98(fieldSystem->playerAvatar)) {
+    if (avatarState != PLAYER_STATE_CYCLING && avatarState != PLAYER_STATE_SURFING && !PlayerAvatar_IsRunning(fieldSystem->playerAvatar)) {
         modifiedRate -= 20;
     }
     if (MetatileBehavior_IsVeryTallGrass(metatileBehavior)) {

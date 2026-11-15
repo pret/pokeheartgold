@@ -15,8 +15,8 @@
 .public PlayerAvatar_SetFacingDirection
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_CheckCollision
-.public sub_0205DFC8
-.public sub_0205DFD4
+.public PlayerAvatar_IsMapObjectAnimationSet
+.public PlayerAvatar_SetMapObjectMovement
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_GetMetatileBehavior

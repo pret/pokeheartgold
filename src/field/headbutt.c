@@ -204,7 +204,7 @@ static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
         if (inFrontX == followingMonX && inFrontY == followingMonZ) {
             u8 dir = MapObject_GetFacingDirection(object);
             inFrontX = GetDeltaXByFacingDirection(dir) + followingMonX;
-            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonZ;
+            inFrontY = GetDeltaZByFacingDirection(dir) + followingMonZ;
         }
     }
     *x = inFrontX;

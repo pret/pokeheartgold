@@ -6,7 +6,7 @@
 .public PlayerAvatar_GetZCoord
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
-.public sub_0205DE98
+.public PlayerAvatar_IsRunning
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_GetFlagsBitsMask
@@ -35,7 +35,7 @@
 .public MapObject_GetPositionVectorYCoordUInt
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection
-.public GetDeltaYByFacingDirection
+.public GetDeltaZByFacingDirection
 .public sub_02060F78
 .public Direction_GetOpposite
 .public sub_02061200

@@ -5,6 +5,14 @@
 #define MOVEMENT_FACE_DOWN                      1
 #define MOVEMENT_FACE_LEFT                      2
 #define MOVEMENT_FACE_RIGHT                     3
+#define MOVEMENT_WALK_SLOWER_UP                 4
+#define MOVEMENT_WALK_SLOWER_DOWN               5
+#define MOVEMENT_WALK_SLOWER_LEFT               6
+#define MOVEMENT_WALK_SLOWER_RIGHT              7
+#define MOVEMENT_WALK_SLOW_UP                   8
+#define MOVEMENT_WALK_SLOW_DOWN                 9
+#define MOVEMENT_WALK_SLOW_LEFT                 10
+#define MOVEMENT_WALK_SLOW_RIGHT                11
 #define MOVEMENT_STEP_UP                        12
 #define MOVEMENT_STEP_DOWN                      13
 #define MOVEMENT_STEP_LEFT                      14

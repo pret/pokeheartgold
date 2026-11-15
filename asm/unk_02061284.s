@@ -520,7 +520,7 @@ sub_020615F0: ; 0x020615F0
 	bl MapObject_GetZCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r1, r5, r0
 	ldr r0, [sp]
 	cmp r0, r4
@@ -1764,7 +1764,7 @@ _02061EA6:
 	bl MapObject_GetFieldSystem
 	bl FieldSystem_GetPlayerAvatar
 	add r6, r0, #0
-	bl sub_0205DE98
+	bl PlayerAvatar_IsRunning
 	cmp r0, #0
 	bne _02061EC0
 	mov r0, #0

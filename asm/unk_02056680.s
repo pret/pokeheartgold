@@ -103,14 +103,14 @@ _02056724:
 	bne _02056746
 	add r0, r6, #0
 	mov r1, #0xa
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	b _02056758
 _02056746:
 	cmp r0, #3
 	bne _02056754
 	add r0, r6, #0
 	mov r1, #0xb
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	b _02056758
 _02056754:
 	bl GF_AssertFail
@@ -297,7 +297,7 @@ _020568BE:
 	beq _02056932
 	add r0, r5, #0
 	mov r1, #0xc
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]
@@ -429,7 +429,7 @@ _020569DA:
 	beq _02056A4E
 	add r0, r5, #0
 	mov r1, #0xd
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrh r0, [r4, #2]
 	add r0, r0, #1
 	strh r0, [r4, #2]

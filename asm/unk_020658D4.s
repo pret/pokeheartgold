@@ -1274,7 +1274,7 @@ _02066282:
 	bl GetDeltaXByFacingDirection
 	add r4, r4, r0
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r1, r6, r0
 	ldr r0, [sp, #8]
 	cmp r4, r0

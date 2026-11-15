@@ -16,7 +16,7 @@
 .public MapObject_GetZCoord
 .public MapObject_CopyPositionVector
 .public GetDeltaXByFacingDirection
-.public GetDeltaYByFacingDirection
+.public GetDeltaZByFacingDirection
 .public sub_020611C8
 .public sub_02068D98
 .public sub_02068DA8
