@@ -340,7 +340,7 @@ BOOL FieldInput_Process_Colosseum(FieldInput *input, FieldSystem *fieldSystem) {
         return TRUE;
     }
 
-    if (sub_02037958() || sub_02057F18(sub_0203769C()) || !sub_02058740()) {
+    if (sub_02037958() || sub_02057F18(CommSystem_GetCurNetId()) || !sub_02058740()) {
         return FALSE;
     }
 
@@ -381,8 +381,8 @@ static BOOL ov01_021E6ED8() { // CheckTrainerInfo?
 }
 
 BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
-    if (sub_02033250() & 0xFE) {                     // WirelessManager_GetConnectedBitmap?
-        if (ov01_021E6ED8() && sub_02037454() > 1) { // sub_02037454 == CommSys_ConnectedCount?
+    if (sub_02033250() & 0xFE) {                                     // WirelessManager_GetConnectedBitmap?
+        if (ov01_021E6ED8() && CommSystem_GetConnectedCount() > 1) { // CommSystem_GetConnectedCount == CommSys_ConnectedCount?
             StartMapSceneScript(fieldSystem, 5, NULL);
             return TRUE;
         }
@@ -404,7 +404,7 @@ BOOL FieldInput_Process_UnionRoom(FieldInput *input, FieldSystem *fieldSystem) {
         return TRUE;
     }
 
-    if (input->menu && sub_02037454() <= 1 && ov01_021E690C(fieldSystem)) {
+    if (input->menu && CommSystem_GetConnectedCount() <= 1 && ov01_021E690C(fieldSystem)) {
         PlaySE(SEQ_SE_DP_WIN_OPEN);
         sub_0203BCDC(fieldSystem); // StartMenu_OpenUnionRoom?
         sub_0205A904(4);

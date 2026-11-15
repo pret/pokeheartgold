@@ -7,7 +7,7 @@
 .public Save_Frontier_GetStatic
 .public FrontierSave_GetStat
 .public sub_02031108
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02037B5C
 .public FrontierFieldSystem_New
 .public FrontierFieldSystem_Free

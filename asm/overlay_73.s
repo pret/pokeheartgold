@@ -138,7 +138,7 @@ _021E5916:
 	bl sub_0203893C
 	mov r0, #3
 	bl sub_02038C1C
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E5A54
 	mov r0, #2
@@ -191,7 +191,7 @@ ov73_021E5AB8: ; 0x021E5AB8
 	add r5, r1, #0
 	bl OverlayManager_GetData
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E5ADE
 	ldr r0, _021E5B9C ; =0x00004A24
@@ -224,7 +224,7 @@ _021E5AF8:
 	beq _021E5B92
 	mov r0, #1
 	str r0, [r5]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _021E5B92
 	bl ov73_021E746C
@@ -262,7 +262,7 @@ _021E5B36:
 _021E5B4E:
 	add r0, r4, #0
 	bl ov73_021E762C
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E5B92
 	add r0, r4, #0
@@ -1351,10 +1351,10 @@ ov73_021E6444: ; 0x021E6444
 	mov r0, #0
 	mov r1, #1
 	bl sub_020398D4
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E646E
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #2
 	blt _021E6478
 	add r0, r5, #0
@@ -1381,7 +1381,7 @@ ov73_021E6484: ; 0x021E6484
 	add r5, r0, #0
 	add r4, r1, #0
 	bl ov73_021E6508
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E64A6
 	bl ov73_021E7340
@@ -1485,7 +1485,7 @@ _021E6544:
 	cmp r4, #1
 	bne _021E65BE
 _021E6552:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _021E655C
 	b _021E669C
@@ -1538,7 +1538,7 @@ _021E65BE:
 	cmp r4, #2
 	bne _021E6670
 _021E65C8:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _021E660C
 	ldr r1, _021E66E4 ; =0x00004A10
@@ -1569,7 +1569,7 @@ _021E65F4:
 	bl PlaySE
 	b _021E669C
 _021E660C:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E66D8 ; =0x00004A1C
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -1616,10 +1616,10 @@ _021E6670:
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	bne _021E669C
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E669C
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E66D8 ; =0x00004A1C
 	ldr r1, [r5, r1]
 	cmp r1, r0
@@ -1715,7 +1715,7 @@ ov73_021E671C: ; 0x021E671C
 	ldr r0, [r5, r1]
 	cmp r0, #3
 	bne _021E6768
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E674E
 	mov r1, #0
@@ -1748,7 +1748,7 @@ ov73_021E6778: ; 0x021E6778
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6794
 	mov r0, #0
@@ -1814,7 +1814,7 @@ ov73_021E67A8: ; 0x021E67A8
 	ldr r0, _021E682C ; =0x00004A15
 	mov r1, #1
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6814
 	add r0, r4, #0
@@ -1856,7 +1856,7 @@ ov73_021E6830: ; 0x021E6830
 	ldr r0, _021E6888 ; =0x00004A15
 	mov r1, #0
 	strb r1, [r4, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E686C
 	mov r1, #0
@@ -1904,7 +1904,7 @@ ov73_021E68AC: ; 0x021E68AC
 	sub sp, #8
 	add r5, r0, #0
 	add r6, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _021E68E0
 	ldr r0, _021E69BC ; =0x00004A10
@@ -1945,7 +1945,7 @@ _021E68F8:
 _021E6904:
 	bl ov73_021E746C
 	add r4, r0, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r4, r0
 	beq _021E691E
 	add r0, r5, #0
@@ -1962,7 +1962,7 @@ _021E691E:
 	beq _021E69B0
 	cmp r0, #2
 	bne _021E6958
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E694E
 	mov r0, #0
@@ -1980,7 +1980,7 @@ _021E694E:
 	bl ov73_021E670C
 	b _021E69AA
 _021E6958:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6974
 	add r0, r5, #0
@@ -1999,7 +1999,7 @@ _021E6974:
 	mov r1, #0
 	add r0, sp, #0
 	strb r1, [r0, #2]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r1, sp, #0
 	strb r0, [r1]
 	ldr r0, _021E69CC ; =0x00004A28
@@ -2052,7 +2052,7 @@ ov73_021E69E8: ; 0x021E69E8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E6A68 ; =0x00004A30
 	ldrh r1, [r5, r1]
 	cmp r1, r0
@@ -2090,7 +2090,7 @@ _021E6A1E:
 	mov r1, #1
 	add r0, sp, #0
 	strb r1, [r0, #2]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r1, sp, #0
 	strb r0, [r1]
 	mov r0, #0x70
@@ -2209,7 +2209,7 @@ _021E6B1C:
 	mov r1, #0
 	mov r2, #2
 	bl ov73_021E71E4
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6B4A
 	mov r0, #0xc6
@@ -2290,12 +2290,12 @@ ov73_021E6BC8: ; 0x021E6BC8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6BDA
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 _021E6BDA:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E6BF4 ; =0x00004A08
 	ldr r1, [r5, r1]
 	cmp r1, r0
@@ -2363,10 +2363,10 @@ ov73_021E6C50: ; 0x021E6C50
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6C62
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 _021E6C62:
 	ldr r0, [r5, #8]
 	mov r2, #0xdd
@@ -2578,7 +2578,7 @@ ov73_021E6DF8: ; 0x021E6DF8
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6E12
 	add r0, r5, #0
@@ -2735,7 +2735,7 @@ ov73_021E6F1C: ; 0x021E6F1C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6F34
 	add r0, r5, #0
@@ -2773,14 +2773,14 @@ _021E6F66:
 	mov r1, #0x14
 	lsl r0, r0, #2
 	str r1, [r5, r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E6F88
 	add r0, r5, #0
 	mov r1, #0
 	bl ov73_021E781C
 _021E6F88:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E6FA8 ; =0x00004A2C
 	str r0, [r5, r1]
 	mov r0, #0x4b
@@ -2805,7 +2805,7 @@ ov73_021E6FAC: ; 0x021E6FAC
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E6FCA
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E6FE4 ; =0x00004A2C
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -2837,7 +2837,7 @@ ov73_021E6FE8: ; 0x021E6FE8
 	ldr r0, [r5, r0]
 	cmp r0, #0
 	beq _021E7006
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E7054 ; =0x00004A2C
 	ldr r2, [r5, r1]
 	cmp r2, r0
@@ -2871,7 +2871,7 @@ _021E701A:
 	mov r0, #0
 	sub r1, #0xc
 	str r0, [r5, r1]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E7048
 	add r0, r5, #0
@@ -2956,12 +2956,12 @@ _021E70D0:
 	ldr r0, [r5, #0x24]
 	mov r1, #0
 	bl BufferPlayersName
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _021E7110
 	add r0, r5, #0
 	bl ov73_021E6830
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E710A
 	ldr r1, _021E7118 ; =0x00004A24
@@ -3012,13 +3012,13 @@ _021E713E:
 	mov r0, #0xc6
 	lsl r0, r0, #2
 	str r4, [r5, r0]
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E71D8 ; =0x00004A1C
 	str r0, [r5, r1]
 	mov r0, #0
 	add r1, #8
 	str r0, [r5, r1]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E71D2
 	mov r2, #1
@@ -3035,10 +3035,10 @@ _021E7182:
 	ldr r0, [r5, #0x24]
 	mov r1, #0
 	bl BufferPlayersName
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r6, r0
 	beq _021E71D2
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E71AE
 	ldr r1, _021E71DC ; =0x00004A24
@@ -3063,7 +3063,7 @@ _021E71C0:
 	ldr r0, _021E71DC ; =0x00004A24
 	mov r1, #0
 	str r1, [r5, r0]
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E71D8 ; =0x00004A1C
 	str r0, [r5, r1]
 _021E71D2:
@@ -3120,7 +3120,7 @@ ov73_021E7230: ; 0x021E7230
 	push {r4, r5, r6, lr}
 	sub sp, #0x10
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E7286
 	mov r1, #0
@@ -3269,7 +3269,7 @@ ov73_021E735C: ; 0x021E735C
 	str r3, [sp, #0x14]
 	add r6, r0, #0
 	str r2, [sp, #0x10]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	str r0, [sp, #0x1c]
 	ldr r0, [sp, #0x14]
 	bl ov73_021E7490
@@ -3698,7 +3698,7 @@ _021E767A:
 	ldr r0, [r6, r0]
 	bl PlayerProfile_GetAvatar
 	str r0, [sp, #0x10]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	bne _021E76AC
 	mov r0, #0x8b
@@ -3736,7 +3736,7 @@ _021E76C8:
 	str r0, [sp, #8]
 	b _021E771A
 _021E76E2:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	bne _021E7706
 	mov r0, #0xce
@@ -3903,7 +3903,7 @@ ov73_021E781C: ; 0x021E781C
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
 	add r4, r1, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _021E7868
 	mov r0, #0
@@ -3914,7 +3914,7 @@ ov73_021E781C: ; 0x021E781C
 	bl sub_02038C1C
 	b _021E784A
 _021E783A:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	add r0, r4, r0
 	cmp r0, #5
 	ble _021E7846
@@ -3995,7 +3995,7 @@ _021E78BE: ; jump table
 	.short _021E78FC - _021E78BE - 2 ; case 4
 	.short _021E7934 - _021E78BE - 2 ; case 5
 _021E78CA:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #1
 	bgt _021E78DA
 	bl sub_02033250
@@ -4042,7 +4042,7 @@ _021E7922:
 	mov r1, #0
 	bl ov73_021E781C
 _021E792A:
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldr r1, _021E7950 ; =0x00004A1C
 	str r0, [r4, r1]
 	b _021E7942
@@ -9590,7 +9590,7 @@ ov73_021EA3D0: ; 0x021EA3D0
 	ldr r0, [sp]
 	mov r7, #0
 	str r0, [sp, #0x54]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r5, r7, #0
 	str r0, [sp, #0x5c]
 	mov r0, #5

@@ -11,6 +11,7 @@ subdir('nitrogfx')
 subdir('o2narc')
 subdir('postconf')
 subdir('scripts')
+subdir('debug')
 
 # Tools from the subprojects
 makelcf_exe = find_program('makelcf', native: true)

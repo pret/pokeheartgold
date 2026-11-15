@@ -14,8 +14,8 @@
 
 	.text
 
-	thumb_func_start sub_02067A60
-sub_02067A60: ; 0x02067A60
+	thumb_func_start CaptureAttempt_New
+CaptureAttempt_New: ; 0x02067A60
 	push {r4, lr}
 	mov r1, #0x24
 	bl Heap_Alloc
@@ -26,15 +26,15 @@ sub_02067A60: ; 0x02067A60
 	bl MIi_CpuClearFast
 	add r0, r4, #0
 	pop {r4, pc}
-	thumb_func_end sub_02067A60
+	thumb_func_end CaptureAttempt_New
 
-	thumb_func_start sub_02067A78
-sub_02067A78: ; 0x02067A78
+	thumb_func_start CaptureAttempt_Free
+CaptureAttempt_Free: ; 0x02067A78
 	ldr r3, _02067A7C ; =Heap_Free
 	bx r3
 	.balign 4, 0
 _02067A7C: .word Heap_Free
-	thumb_func_end sub_02067A78
+	thumb_func_end CaptureAttempt_Free
 
 	thumb_func_start sub_02067A80
 sub_02067A80: ; 0x02067A80

@@ -93,7 +93,7 @@ sub_02037A24: ; 0x02037A24
 	add r5, r0, #0
 	add r0, sp, #0
 	strb r1, [r0]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02037A8E
 	add r0, sp, #0

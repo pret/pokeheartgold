@@ -6,7 +6,7 @@
 .public Save_PlayerData_GetProfile
 .public PlayerProfile_Copy
 .public sub_02034818
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public BattleSetup_New
 .public BattleSetup_AddMonToParty
 .public sub_02051D18

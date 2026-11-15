@@ -213,8 +213,8 @@
 .public sub_02034780
 .public sub_020347A0
 .public sub_02034B00
-.public sub_02037454
-.public sub_0203769C
+.public CommSystem_GetConnectedCount
+.public CommSystem_GetCurNetId
 .public sub_020378E4
 .public sub_02037AC0
 .public sub_02037B38
