@@ -219,7 +219,7 @@
 .public BattleSetup_New_BugContest
 .public BattleSetup_Delete
 .public BattleSetup_InitFromFieldSystem
-.public sub_02052544
+.public BattleSetup_SetWaterTerrain
 .public sub_02053B04
 .public GetFirstAliveMonInParty_CrashIfNone
 .public GetIdxOfFirstAliveMonInParty_CrashIfNone

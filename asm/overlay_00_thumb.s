@@ -730,7 +730,7 @@ _021E5ED2:
 	bl ov00_021E5E34
 	b _021E5F68
 _021E5EDC:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034084
 	cmp r0, #0
 	bne _021E5EF4
@@ -1448,7 +1448,7 @@ _021E6448: .word 0x00001078
 ov00_021E644C: ; 0x021E644C
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034084
 	cmp r0, #0
 	bne _021E647A
@@ -1815,7 +1815,7 @@ _021E66FA: ; jump table
 _021E6720:
 	bl DWC_ShutdownFriendsMatch
 _021E6724:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #0x21
 	beq _021E6730
 	bl DWC_CleanupInet
@@ -2144,11 +2144,11 @@ ov00_021E69A8: ; 0x021E69A8
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	mov r4, #1
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034084
 	add r5, r0, #0
 	beq _021E69DC
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	sub r4, r0, #1
 	cmp r4, #1
 	bge _021E69C6
@@ -2876,7 +2876,7 @@ ov00_021E6ED8: ; 0x021E6ED8
 	bne _021E6F9E
 	cmp r0, #0
 	bne _021E6F92
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034098
 	cmp r0, #0
 	beq _021E6F08
@@ -4196,7 +4196,7 @@ _021E7858:
 	ldr r1, [r1, #4]
 	add r0, #0x68
 	str r3, [r1, r0]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034084
 	cmp r0, #0
 	bne _021E7900

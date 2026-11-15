@@ -54,7 +54,7 @@ BOOL PokeathlonCourse_Init(OverlayManager *manager, int *state) {
 
     if (args->mode == 1) {
         specialMode = TRUE;
-        data->participantCount = sub_02037454();
+        data->participantCount = CommSystem_GetConnectedCount();
         data->maxParticipants = 4;
     } else {
         data->participantCount = 1;

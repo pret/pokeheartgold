@@ -1771,7 +1771,7 @@ _02060B40:
 	mov r0, #2
 	orr r4, r0
 _02060B54:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_0203401C
 	cmp r0, #0
 	beq _02060B76

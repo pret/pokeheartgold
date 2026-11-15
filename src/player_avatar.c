@@ -42,7 +42,7 @@ u32 sub_0205C268(u32 param0) {
 }
 
 u8 sub_0205C278(void) {
-    PlayerProfile *profile = sub_02034818(sub_0203769C() ^ 1);
+    PlayerProfile *profile = sub_02034818(CommSystem_GetCurNetId() ^ 1);
     GF_ASSERT(profile != NULL);
     return PlayerProfile_GetVersion(profile);
 }

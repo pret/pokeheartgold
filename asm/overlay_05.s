@@ -2345,7 +2345,7 @@ _0221CCCA:
 	thumb_func_start ov05_0221CCF4
 ov05_0221CCF4: ; 0x0221CCF4
 	push {r3, lr}
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020378AC
 	cmp r0, #3
 	bhi _0221CD1E

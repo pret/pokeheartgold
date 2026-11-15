@@ -1074,10 +1074,10 @@ _0222C596:
 	add r0, r0, #1
 	cmp r1, r0
 	bne _0222C5CE
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #1
 	bne _0222C550
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	add r6, r0, #0
 	mov r5, #0
 	cmp r6, #0
@@ -2504,7 +2504,7 @@ FrtCmd_124: ; 0x0222D034
 	add r0, r1, #1
 	str r0, [r5, #0x1c]
 	ldrb r4, [r1]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
@@ -2729,7 +2729,7 @@ _0222D1FC: .word ov80_0222D200
 ov80_0222D200: ; 0x0222D200
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #2
 	bge _0222D210
 	mov r0, #1
@@ -4764,7 +4764,7 @@ _0222E194: .word ov80_0222E198
 ov80_0222E198: ; 0x0222E198
 	push {r4, r5, r6, lr}
 	add r5, r0, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #2
 	bge _0222E1A8
 	mov r4, #1
@@ -4806,7 +4806,7 @@ _0222E1E0:
 _0222E1EA:
 	cmp r1, #0
 	bne _0222E210
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818

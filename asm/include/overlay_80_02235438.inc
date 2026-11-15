@@ -6,7 +6,7 @@
 .public GF_AssertFail
 .public Save_GameStats_Get
 .public GameStats_Add
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02037C0C
 .public sub_02037C44
 .public ResetSystem
