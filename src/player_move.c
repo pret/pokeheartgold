@@ -685,7 +685,7 @@ static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMap
 }
 
 static void PlayerAvatar_SetMovement_Turning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys) {
-    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FAST_UP));
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP));
     MapObject_SetNextFacingDirection(playerMapObject, direction);
 
     PlayerAvatar_ResetFootstepCooldown(playerAvatar);
@@ -868,7 +868,7 @@ static void PlayerAvatar_SetMovement_BikeThirdGearMoving(PlayerAvatar *playerAva
 
 static void PlayerAvatar_SetMovement_BikeThirdGearTurning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused) {
     PlayerAvatar_ClearSpeed(playerAvatar);
-    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FAST_UP));
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP));
     MapObject_SetNextFacingDirection(playerMapObject, direction);
     PlayerAvatar_ClearSpeed(playerAvatar);
 }
@@ -1221,7 +1221,7 @@ u32 PlayerAvatar_GetMovementActionAnimCode(PlayerAvatar *playerAvatar, u16 newKe
     }
 
     if (moveState == AVATAR_MOVE_STATE_TURNING) {
-        return sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FAST_UP);
+        return sub_0206234C(direction, MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP);
     }
 
     PlayerAvatar_GetMapObject(playerAvatar);

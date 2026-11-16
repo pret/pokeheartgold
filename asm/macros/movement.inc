@@ -24,42 +24,42 @@
 	.endm
 
 	.macro WalkSlowerNorth length=1
-	.short 4
+	.short MOVEMENT_WALK_SLOWER_UP
 	.short \length
 	.endm
 
 	.macro WalkSlowerSouth length=1
-	.short 5
+	.short MOVEMENT_WALK_SLOWER_DOWN
 	.short \length
 	.endm
 
 	.macro WalkSlowerWest length=1
-	.short 6
+	.short MOVEMENT_WALK_SLOWER_LEFT
 	.short \length
 	.endm
 
 	.macro WalkSlowerEast length=1
-	.short 7
+	.short MOVEMENT_WALK_SLOWER_RIGHT
 	.short \length
 	.endm
 
 	.macro WalkSlowNorth length=1
-	.short 8
+	.short MOVEMENT_WALK_SLOW_UP
 	.short \length
 	.endm
 
 	.macro WalkSlowSouth length=1
-	.short 9
+	.short MOVEMENT_WALK_SLOW_DOWN
 	.short \length
 	.endm
 
 	.macro WalkSlowWest length=1
-	.short 10
+	.short MOVEMENT_WALK_SLOW_LEFT
 	.short \length
 	.endm
 
 	.macro WalkSlowEast length=1
-	.short 11
+	.short MOVEMENT_WALK_SLOW_RIGHT
 	.short \length
 	.endm
 
@@ -84,42 +84,42 @@
 	.endm
 
 	.macro WalkFastNorth length=1
-	.short MOVEMENT_RUN_UP
+	.short MOVEMENT_WALK_FAST_UP
 	.short \length
 	.endm
 
 	.macro WalkFastSouth length=1
-	.short MOVEMENT_RUN_DOWN
+	.short MOVEMENT_WALK_FAST_DOWN
 	.short \length
 	.endm
 
 	.macro WalkFastWest length=1
-	.short MOVEMENT_RUN_LEFT
+	.short MOVEMENT_WALK_FAST_LEFT
 	.short \length
 	.endm
 
 	.macro WalkFastEast length=1
-	.short MOVEMENT_RUN_RIGHT
+	.short MOVEMENT_WALK_FAST_RIGHT
 	.short \length
 	.endm
 
 	.macro WalkFasterNorth length=1
-	.short 20
+	.short MOVEMENT_WALK_FASTER_UP
 	.short \length
 	.endm
 
 	.macro WalkFasterSouth length=1
-	.short 21
+	.short MOVEMENT_WALK_FASTER_DOWN
 	.short \length
 	.endm
 
 	.macro WalkFasterWest length=1
-	.short 22
+	.short MOVEMENT_WALK_FASTER_LEFT
 	.short \length
 	.endm
 
 	.macro WalkFasterEast length=1
-	.short 23
+	.short MOVEMENT_WALK_FASTER_RIGHT
 	.short \length
 	.endm
 
@@ -144,22 +144,22 @@
 	.endm
 
 	.macro WalkOnSpotSlowNorth length=1
-	.short 28
+	.short MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP
 	.short \length
 	.endm
 
 	.macro WalkOnSpotSlowSouth length=1
-	.short 29
+	.short MOVEMENT_WALK_IN_PLACE_SLOW_FACE_DOWN
 	.short \length
 	.endm
 
 	.macro WalkOnSpotSlowWest length=1
-	.short 30
+	.short MOVEMENT_WALK_IN_PLACE_SLOW_FACE_LEFT
 	.short \length
 	.endm
 
 	.macro WalkOnSpotSlowEast length=1
-	.short 31
+	.short MOVEMENT_WALK_IN_PLACE_SLOW_FACE_RIGHT
 	.short \length
 	.endm
 
@@ -184,42 +184,42 @@
 	.endm
 
 	.macro WalkOnSpotFastNorth length=1
-	.short 36
+	.short MOVEMENT_WALK_IN_PLACE_FAST_FACE_UP
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFastSouth length=1
-	.short MOVEMENT_WALK_IN_PLACE_FACE_DOWN
+	.short MOVEMENT_WALK_IN_PLACE_FAST_FACE_DOWN
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFastWest length=1
-	.short 38
+	.short MOVEMENT_WALK_IN_PLACE_FAST_FACE_LEFT
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFastEast length=1
-	.short MOVEMENT_WALK_IN_PLACE_FACE_RIGHT
+	.short MOVEMENT_WALK_IN_PLACE_FAST_FACE_RIGHT
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFasterNorth length=1
-	.short 40
+	.short MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFasterSouth length=1
-	.short 41
+	.short MOVEMENT_WALK_IN_PLACE_FASTER_FACE_DOWN
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFasterWest length=1
-	.short 42
+	.short MOVEMENT_WALK_IN_PLACE_FASTER_FACE_LEFT
 	.short \length
 	.endm
 
 	.macro WalkOnSpotFasterEast length=1
-	.short 43
+	.short MOVEMENT_WALK_IN_PLACE_FASTER_FACE_RIGHT
 	.short \length
 	.endm
 
@@ -244,7 +244,7 @@
 	.endm
 
 	.macro JumpOnSpotFastNorth length=1
-	.short 48
+	.short MOVEMENT_JUMP_IN_PLACE_FAST_FACE_UP
 	.short \length
 	.endm
 
@@ -284,22 +284,22 @@
 	.endm
 
 	.macro JumpFarNorth length=1
-	.short 56
+	.short MOVEMENT_JUMP_FAR_UP
 	.short \length
 	.endm
 
 	.macro JumpFarSouth length=1
-	.short 57
+	.short MOVEMENT_JUMP_FAR_DOWN
 	.short \length
 	.endm
 
 	.macro JumpFarWest length=1
-	.short 58
+	.short MOVEMENT_JUMP_FAR_LEFT
 	.short \length
 	.endm
 
 	.macro JumpFarEast length=1
-	.short 59
+	.short MOVEMENT_JUMP_FAR_RIGHT
 	.short \length
 	.endm
 
@@ -384,42 +384,42 @@
 	.endm
 
 	.macro WalkSlightlyFastNorth length=1
-	.short 76
+	.short MOVEMENT_WALK_SLIGHTLY_FAST_UP
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFastSouth length=1
-	.short 77
+	.short MOVEMENT_WALK_SLIGHTLY_FAST_DOWN
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFastWest length=1
-	.short 78
+	.short MOVEMENT_WALK_SLIGHTLY_FAST_LEFT
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFastEast length=1
-	.short 79
+	.short MOVEMENT_WALK_SLIGHTLY_FAST_RIGHT
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFasterNorth length=1
-	.short 80
+	.short MOVEMENT_WALK_SLIGHTLY_FASTER_UP
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFasterSouth length=1
-	.short 81
+	.short MOVEMENT_WALK_SLIGHTLY_FASTER_DOWN
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFasterWest length=1
-	.short 82
+	.short MOVEMENT_WALK_SLIGHTLY_FASTER_LEFT
 	.short \length
 	.endm
 
 	.macro WalkSlightlyFasterEast length=1
-	.short 83
+	.short MOVEMENT_WALK_SLIGHTLY_FASTER_RIGHT
 	.short \length
 	.endm
 
@@ -444,22 +444,22 @@
 	.endm
 
 	.macro RunNorth length=1
-	.short 88
+	.short MOVEMENT_RUN_UP
 	.short \length
 	.endm
 
 	.macro RunSouth length=1
-	.short 89
+	.short MOVEMENT_RUN_DOWN
 	.short \length
 	.endm
 
 	.macro RunWest length=1
-	.short 90
+	.short MOVEMENT_RUN_LEFT
 	.short \length
 	.endm
 
 	.macro RunEast length=1
-	.short 91
+	.short MOVEMENT_RUN_RIGHT
 	.short \length
 	.endm
 
