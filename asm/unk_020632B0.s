@@ -147,7 +147,7 @@ _020633B2:
 	ldr r0, [r0, #0x14]
 	str r0, [r4, #4]
 	ldr r0, [sp]
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	ldr r0, [sp]
 	ldr r1, _0206341C ; =0x00010004
 	bl MapObject_SetFlagsBits
@@ -424,7 +424,7 @@ _02063624:
 	add r0, r5, #0
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	add r0, r5, #0
 	bl sub_0205F484
 	add r0, r5, #0
@@ -1282,7 +1282,7 @@ _02063BE4:
 	add r0, r2, r3
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -1526,7 +1526,7 @@ _02063DB2:
 	add r0, r2, r3
 	ldr r0, [r1, r0]
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r7, #0
 	bl MapObject_ForceSetHeldMovement
@@ -2759,7 +2759,7 @@ _020646EE:
 _020646FC:
 	ldr r0, [r4, #8]
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
 	bl LocalMapObject_SetAnimationCode
@@ -2892,7 +2892,7 @@ sub_020647C0: ; 0x020647C0
 	bne _020647E2
 	ldr r0, [r4, #8]
 	mov r1, #0xc
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
 	bl LocalMapObject_SetAnimationCode
@@ -2986,7 +2986,7 @@ _02064870:
 	bl MapObject_ClearFlagsBits
 	add r0, r6, #0
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r4, #0
 	bl LocalMapObject_SetAnimationCode

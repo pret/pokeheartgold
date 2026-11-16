@@ -2315,8 +2315,8 @@ sub_02060F24: ; 0x02060F24
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02060F24
 
-	thumb_func_start sub_02060F78
-sub_02060F78: ; 0x02060F78
+	thumb_func_start MapObject_UpdateCoords
+MapObject_UpdateCoords: ; 0x02060F78
 	push {r4, lr}
 	add r4, r0, #0
 	bl MapObject_GetXCoord
@@ -2335,7 +2335,7 @@ sub_02060F78: ; 0x02060F78
 	bl MapObject_SetPreviousZ
 	pop {r4, pc}
 	.balign 4, 0
-	thumb_func_end sub_02060F78
+	thumb_func_end MapObject_UpdateCoords
 
 	thumb_func_start LocalMapObject_GetNextPositionMetatileBehavior
 LocalMapObject_GetNextPositionMetatileBehavior: ; 0x02060FA8

@@ -1564,7 +1564,7 @@ _02205FB6:
 	bl PlayerAvatar_GetMapObject
 	bl MapObject_GetFacingDirection
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r4, #0xe4
 	add r1, r0, #0
 	ldr r0, [r4]

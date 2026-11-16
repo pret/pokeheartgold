@@ -696,16 +696,16 @@ void PlayerAvatar_SetMoveThroughMudFlag(PlayerAvatar *avatar, BOOL set) {
     }
 }
 
-void PlayerAvatar_SetFlag6(PlayerAvatar *avatar) {
-    PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_UNK6);
+void PlayerAvatar_StartStep(PlayerAvatar *avatar) {
+    PlayerAvatar_SetFlagsBits(avatar, AVATAR_FLAG_STEP);
 }
 
-void PlayerAvatar_ClearFlag6(PlayerAvatar *avatar) {
-    PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_UNK6);
+void PlayerAvatar_EndStep(PlayerAvatar *avatar) {
+    PlayerAvatar_ClearFlagsBits(avatar, AVATAR_FLAG_STEP);
 }
 
-BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar) {
-    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_UNK6)) {
+BOOL PlayerAvatar_CheckStep(PlayerAvatar *avatar) {
+    if (PlayerAvatar_GetFlagsBitsMask(avatar, AVATAR_FLAG_STEP)) {
         return TRUE;
     }
     return FALSE;

@@ -180,7 +180,7 @@ _02061360:
 	bl MapObject_SetFacingDirection
 _02061390:
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _02061398: .word _020FD7B8
@@ -276,7 +276,7 @@ _02061420:
 	add r0, r5, #0
 	bl MapObject_GetFacingDirection
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -343,7 +343,7 @@ _020614AA:
 _020614BC:
 	ldr r1, [r4, #8]
 	add r0, r6, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -563,7 +563,7 @@ sub_02061648: ; 0x02061648
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_02061648
 
@@ -638,7 +638,7 @@ sub_020616C0: ; 0x020616C0
 	add r0, r5, #0
 	bl MapObject_ClearSingleMovement
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	pop {r3, r4, r5, pc}
 	thumb_func_end sub_020616C0
 
@@ -699,7 +699,7 @@ sub_02061720: ; 0x02061720
 	bl MapObject_GetFacingDirection
 _0206173E:
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -880,7 +880,7 @@ sub_02061874: ; 0x02061874
 	add r4, r1, #0
 	bl MapObject_GetFacingDirection
 	mov r1, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -1154,7 +1154,7 @@ _02061A84:
 	mov r1, #0x20
 _02061A8C:
 	add r0, r4, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -1529,7 +1529,7 @@ _02061D18:
 	mov r1, #0x20
 _02061D20:
 	add r0, r5, #0
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r6, #0
 	bl MapObject_ForceSetHeldMovement

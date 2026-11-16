@@ -354,8 +354,8 @@ MovementScriptMachineSub_Done: ; 0x02062348
 	bx lr
 	thumb_func_end MovementScriptMachineSub_Done
 
-	thumb_func_start sub_0206234C
-sub_0206234C: ; 0x0206234C
+	thumb_func_start MovementCommand_TurnCommandTowardsDirection
+MovementCommand_TurnCommandTowardsDirection: ; 0x0206234C
 	push {r3, r4, r5, r6, r7, lr}
 	add r7, r0, #0
 	add r4, r1, #0
@@ -393,10 +393,10 @@ _02062384:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0206238C: .word _020FD198
-	thumb_func_end sub_0206234C
+	thumb_func_end MovementCommand_TurnCommandTowardsDirection
 
-	thumb_func_start sub_02062390
-sub_02062390: ; 0x02062390
+	thumb_func_start MovementCommand_GetDirectionFromCommand
+MovementCommand_GetDirectionFromCommand: ; 0x02062390
 	push {r4, r5}
 	ldr r4, _020623C4 ; =_020FD198
 	ldr r5, [r4]
@@ -428,7 +428,7 @@ _020623BA:
 	bx lr
 	nop
 _020623C4: .word _020FD198
-	thumb_func_end sub_02062390
+	thumb_func_end MovementCommand_GetDirectionFromCommand
 
 	thumb_func_start sub_020623C8
 sub_020623C8: ; 0x020623C8
@@ -548,7 +548,7 @@ sub_0206247C: ; 0x0206247C
 	mov r1, #0
 	bl sub_0205F328
 	add r0, r4, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	add r0, r4, #0
 	bl MapObject_IncrementMovementStep
 	pop {r4, pc}
@@ -651,7 +651,7 @@ _02062540:
 	mov r1, #0x28
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	add r0, r5, #0
 	bl sub_0205F484
 	add r0, r5, #0
@@ -1059,7 +1059,7 @@ sub_020627B0: ; 0x020627B0
 	add r1, r4, #0
 	bl sub_0205F328
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	add r0, r5, #0
 	bl MapObject_IncrementMovementStep
 	pop {r3, r4, r5, r6, r7, pc}
@@ -1335,7 +1335,7 @@ sub_02062958: ; 0x02062958
 	strh r1, [r0, #8]
 	bne _0206298A
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	b _02062992
 _0206298A:
 	add r0, r5, #0
@@ -1457,7 +1457,7 @@ _02062A68:
 	add r0, r5, #0
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	add r0, r5, #0
 	bl sub_0205F484
 	add r0, r5, #0
@@ -2288,7 +2288,7 @@ _02063026:
 	mov r1, #0x28
 	bl MapObject_SetFlagsBits
 	add r0, r5, #0
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	add r0, r5, #0
 	bl sub_0205F484
 	add r0, r5, #0

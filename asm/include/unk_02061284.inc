@@ -36,7 +36,7 @@
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection
 .public GetDeltaZByFacingDirection
-.public sub_02060F78
+.public MapObject_UpdateCoords
 .public Direction_GetOpposite
 .public sub_02061200
 .public sub_020612B4
@@ -94,6 +94,6 @@
 .public sub_02061DE0
 .public sub_02061DF0
 .public MapObject_ForceSetHeldMovement
-.public sub_0206234C
+.public MovementCommand_TurnCommandTowardsDirection
 .public sub_02062428
 .public _s32_div_f

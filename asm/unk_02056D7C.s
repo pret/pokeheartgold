@@ -1668,7 +1668,7 @@ _0205797A:
 	cmp r0, r1
 	beq _02057992
 	mov r1, #0x24
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r7, r0, #0
 	b _020579A8
 _02057992:
@@ -2305,14 +2305,14 @@ sub_02057E08: ; 0x02057E08
 	bl sub_02057F28
 	mov r0, #2
 	mov r1, #0x24
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	b _02057E36
 _02057E28:
 	mov r0, #3
 	bl sub_02057F28
 	mov r0, #3
 	mov r1, #0x24
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 _02057E36:
 	add r1, r0, #0
 	ldr r0, _02057E4C ; =_021D41C4

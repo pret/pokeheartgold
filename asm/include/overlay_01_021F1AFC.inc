@@ -77,7 +77,7 @@
 .public sub_02060BB8
 .public GetDeltaXByFacingDirection
 .public GetDeltaZByFacingDirection
-.public sub_02060F78
+.public MapObject_UpdateCoords
 .public LocalMapObject_GetNextPositionMetatileBehavior
 .public sub_020611C8
 .public MapObject_RecalculatePositionHeight
@@ -85,7 +85,7 @@
 .public LocalMapObject_SetAnimationCode
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive
-.public sub_0206234C
+.public MovementCommand_TurnCommandTowardsDirection
 .public CheckFlag99A
 .public FollowMon_GetMapObject
 .public sub_02069DC8

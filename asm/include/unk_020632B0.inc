@@ -67,7 +67,7 @@
 .public sub_02060B90
 .public GetDeltaXByFacingDirection
 .public GetDeltaZByFacingDirection
-.public sub_02060F78
+.public MapObject_UpdateCoords
 .public sub_02061070
 .public sub_02061200
 .public sub_02061248
@@ -76,7 +76,7 @@
 .public MapObject_ForceSetHeldMovement
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive
-.public sub_0206234C
+.public MovementCommand_TurnCommandTowardsDirection
 .public sub_02062428
 .public MapObjectMovementCmd108_Step1
 .public MapObjectMovementCmd105_Step0

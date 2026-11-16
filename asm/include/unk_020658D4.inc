@@ -13,7 +13,7 @@
 .public PlayerAvatar_GetPlayerMoveState
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
-.public PlayerAvatar_CheckFlag6
+.public PlayerAvatar_CheckStep
 .public MapObjectManager_GetNextObjectWithFlagFromIndex
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
@@ -47,7 +47,7 @@
 .public GetDeltaZByFacingDirection
 .public sub_02061200
 .public MapObject_ForceSetHeldMovement
-.public sub_0206234C
+.public MovementCommand_TurnCommandTowardsDirection
 .public sub_020623C8
 .public sub_020623D8
 .public sub_02062428

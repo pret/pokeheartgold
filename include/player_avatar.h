@@ -13,7 +13,7 @@ typedef enum PlayerAvatarFlags {
     AVATAR_FLAG_LOCK_BIKE_STATE = (1 << 3), // Blocks the player from mounting/dismounting their bike (though this was intended to stop dismounting during Cycling Road)
     AVATAR_FLAG_UNK4 = (1 << 4),
     AVATAR_FLAG_MOVE_THROUGH_MUD_UNUSED = (1 << 5), // Unused in HGSS (even the function to check the flag has been stripped out)
-    AVATAR_FLAG_UNK6 = (1 << 6),
+    AVATAR_FLAG_STEP = (1 << 6),
     AVATAR_FLAG_FORCED_MOVEMENT_RETAIN_SPEED = (1 << 7),
 } PlayerAvatarFlags;
 
@@ -111,9 +111,9 @@ BOOL PlayerAvatar_CheckBikeBrake(PlayerAvatar *avatar);
 void PlayerAvatar_SetBikeStateLock(PlayerAvatar *avatar, BOOL lock);
 BOOL PlayerAvatar_CheckBikeStateLocked(PlayerAvatar *avatar);
 void PlayerAvatar_SetMoveThroughMudFlag(PlayerAvatar *avatar, BOOL set);
-void PlayerAvatar_SetFlag6(PlayerAvatar *avatar);
-void PlayerAvatar_ClearFlag6(PlayerAvatar *avatar);
-BOOL PlayerAvatar_CheckFlag6(PlayerAvatar *avatar);
+void PlayerAvatar_StartStep(PlayerAvatar *avatar);
+void PlayerAvatar_EndStep(PlayerAvatar *avatar);
+BOOL PlayerAvatar_CheckStep(PlayerAvatar *avatar);
 void PlayerAvatar_SetForcedMovementRetainSpeed(PlayerAvatar *avatar, BOOL set);
 BOOL PlayerAvatar_CheckForcedMovementRetainSpeed(PlayerAvatar *avatar);
 u16 PlayerAvatar_CheckRunningShoesLock(PlayerAvatar *avatar);

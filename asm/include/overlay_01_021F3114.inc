@@ -20,7 +20,7 @@
 .public MapObject_SetFlagsBits
 .public MapObject_ClearFlagsBits
 .public MapObject_GetMetatileBehavior
-.public sub_0206234C
+.public MovementCommand_TurnCommandTowardsDirection
 .public memset
 .public ov01_021F3114
 .public ViridianGymmick_HandleTileAction

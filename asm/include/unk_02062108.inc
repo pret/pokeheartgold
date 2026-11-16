@@ -26,7 +26,7 @@
 .public MapObject_CheckVisible
 .public MapObject_SetFacingVector
 .public sub_02060F24
-.public sub_02060F78
+.public MapObject_UpdateCoords
 .public sub_0206101C
 .public sub_02061070
 .public MapObject_AreBitsSetForMovementScriptInit
@@ -38,8 +38,8 @@
 .public EventObjectMovementMan_Create
 .public EventObjectMovementMan_IsFinish
 .public EventObjectMovementMan_Delete
-.public sub_0206234C
-.public sub_02062390
+.public MovementCommand_TurnCommandTowardsDirection
+.public MovementCommand_GetDirectionFromCommand
 .public sub_020623C8
 .public sub_020623D8
 .public sub_02062400

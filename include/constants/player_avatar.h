@@ -31,6 +31,25 @@ enum AvatarBikeState {
     AVATAR_BIKE_STATE_BRAKE,
 };
 
+enum AvatarMoveSpeed {
+    AVATAR_MOVE_SPEED_0 = 0,
+    AVATAR_MOVE_SPEED_1,
+    AVATAR_MOVE_SPEED_2,
+    AVATAR_MOVE_SPEED_3,
+
+    AVATAR_MOVE_SPEED_BIKE_BRAKE = AVATAR_MOVE_SPEED_2,
+};
+
+enum PlayerMovementActionSpeed {
+    PLAYER_ACTION_SPEED_NONE,
+    PLAYER_ACTION_SPEED_NOT_MOVING,
+    PLAYER_ACTION_SPEED_SLOWER,
+    PLAYER_ACTION_SPEED_SLOW,
+    PLAYER_ACTION_SPEED_NORMAL,
+    PLAYER_ACTION_SPEED_FAST,
+    PLAYER_ACTION_SPEED_FASTER
+};
+
 // Tiles that affect and override the default movement function.
 enum PlayerTileMovement {
     TILE_MOVE_NONE = 0,
@@ -39,14 +58,20 @@ enum PlayerTileMovement {
     TILE_MOVE_MAX,
 };
 
-// Collision flags. TODO: Are these accurate to HGSS?
-#define PLAYER_COLLISION_NONE         0 // Yes
+enum PlayerHeightChange {
+    PLAYER_HEIGHT_CHANGE_NONE = 0,
+    PLAYER_HEIGHT_CHANGE_INCREASE,
+    PLAYER_HEIGHT_CHANGE_DECREASE,
+};
+
+// Collision flags.
+#define PLAYER_COLLISION_NONE         0
 #define PLAYER_COLLISION_WILL_COLLIDE (1 << 0)
 #define PLAYER_COLLISION_1            (1 << 1)
 #define PLAYER_COLLISION_JUMP         (1 << 2)
 #define PLAYER_COLLISION_WARP         (1 << 3)
 #define PLAYER_COLLISION_BIKE_RAMP    (1 << 4)
-#define PLAYER_COLLISION_WATER        (1 << 5) // Yes
+#define PLAYER_COLLISION_WATER        (1 << 5)
 #define PLAYER_COLLISION_BIKE_BRIDGE  (1 << 6)
 #define PLAYER_COLLISION_JUMP_TWICE   (1 << 7)
 

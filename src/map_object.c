@@ -22,7 +22,7 @@ extern void ov01_021FA2B8(LocalMapObject *object, BOOL set);
 extern void sub_0205FD30(LocalMapObject *object);
 extern void ov01_021F92A0(LocalMapObject *object);
 extern ObjectEventGraphicsInfo *ObjectEvent_GetGraphicsInfo(u32 spriteId);
-extern void sub_02060F78(LocalMapObject *object);
+extern void MapObject_UpdateCoords(LocalMapObject *object);
 extern void sub_0205FD20(LocalMapObject *object);
 
 static MapObjectManager *MapObjectManager_New(u32 objectCount);
@@ -1979,7 +1979,7 @@ void MapObject_SetPositionFromVectorAndDirection(LocalMapObject *object, VecFx32
     MapObject_SetCurrentY(object, (positionVector->y >> 3) / FX32_ONE);
     MapObject_SetCurrentZ(object, (positionVector->z >> 4) / FX32_ONE);
     MapObject_SetPositionVector(object, positionVector);
-    sub_02060F78(object);
+    MapObject_UpdateCoords(object);
     MapObject_SetFacingDirectionDirect(object, direction);
     MapObject_ClearHeldMovement(object);
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_START_MOVEMENT);
@@ -1996,7 +1996,7 @@ void MapObject_SetPositionFromXYZAndDirection(LocalMapObject *object, u32 x, u32
     MapObject_SetCurrentZ(object, z);
 
     MapObject_SetPositionVector(object, &positionVector);
-    sub_02060F78(object);
+    MapObject_UpdateCoords(object);
     MapObject_SetFacingDirectionDirect(object, direction);
     MapObject_SetFlagsBits(object, MAPOBJECTFLAG_START_MOVEMENT);
     MapObject_ClearFlagsBits(object, (MapObjectFlagBits)(MAPOBJECTFLAG_END_MOVEMENT | MAPOBJECTFLAG_SINGLE_MOVEMENT));

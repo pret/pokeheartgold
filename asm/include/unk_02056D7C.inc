@@ -79,7 +79,7 @@
 .public MapObject_SetPositionFromXYZAndDirection
 .public GetDeltaXByFacingDirection
 .public GetDeltaZByFacingDirection
-.public sub_0206234C
+.public MovementCommand_TurnCommandTowardsDirection
 .public MI_CpuFill8
 .public abs
 .public gSystem

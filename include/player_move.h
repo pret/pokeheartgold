@@ -20,7 +20,6 @@ void PlayerAvatar_SetMapObjectMovement(PlayerAvatar *playerAvatar, int movementA
 u32 PlayerAvatar_GetTileBehaviorFromDirection(PlayerAvatar *playerAvatar, int direction);
 void PlayerAvatar_GetCoordsInFront(PlayerAvatar *playerAvatar, int *x, int *z);
 
-// TODO: Move to const file or c?
 typedef enum WalkSounds {
     WALK_SOUND_GENERIC,
     WALK_SOUND_SNOW,

@@ -552,13 +552,13 @@ _021F1EF0:
 _021F1F0E:
 	ldr r0, [r4, #4]
 	mov r1, #8
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4, #4]
 	mov r1, #0x20
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r6, #0
 	bl LocalMapObject_SetAnimationCode
@@ -999,7 +999,7 @@ _021F22A0:
 	bne _021F2324
 	ldr r0, [r4, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
 	bl LocalMapObject_SetAnimationCode
@@ -1156,7 +1156,7 @@ _021F23DC:
 	bl ov01_021F3084
 	ldr r0, [r4, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
 	bl LocalMapObject_SetAnimationCode
@@ -1653,7 +1653,7 @@ ov01_021F27C0: ; 0x021F27C0
 	bne _021F27E4
 	ldr r0, [r4, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
 	bl LocalMapObject_SetAnimationCode
@@ -1694,7 +1694,7 @@ ov01_021F2808: ; 0x021F2808
 	bne _021F282C
 	ldr r0, [r4, #4]
 	mov r1, #0x10
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
 	bl LocalMapObject_SetAnimationCode
@@ -1736,7 +1736,7 @@ _021F2842:
 _021F2868:
 	ldr r0, [r5, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x14]
 	bl LocalMapObject_SetAnimationCode
@@ -2134,7 +2134,7 @@ _021F2B56:
 	ldr r1, [r4, #0x14]
 	bl MapObject_SetCurrentZ
 	ldr r0, [r4, #0x3c]
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	ldr r0, [r4, #0x50]
 	bl ov02_0224D5AC
 	mov r0, #1
@@ -2385,7 +2385,7 @@ _021F2D3C:
 	ldr r1, [r4, #0x14]
 	bl MapObject_SetCurrentZ
 	ldr r0, [r4, #0x3c]
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	ldr r0, [r4, #0x50]
 	bl ov02_0224D5AC
 	mov r0, #1
@@ -2544,7 +2544,7 @@ ov01_021F2E6C: ; 0x021F2E6C
 	bne _021F2E90
 	ldr r0, [r4, #4]
 	mov r1, #4
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x3c]
 	bl LocalMapObject_SetAnimationCode

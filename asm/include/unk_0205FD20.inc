@@ -100,7 +100,7 @@
 .public GetDeltaXByFacingDirection
 .public GetDeltaZByFacingDirection
 .public sub_02060F24
-.public sub_02060F78
+.public MapObject_UpdateCoords
 .public LocalMapObject_GetNextPositionMetatileBehavior
 .public sub_02060FE0
 .public sub_0206101C
