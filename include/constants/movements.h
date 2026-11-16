@@ -95,7 +95,7 @@
 #define MOVEMENT_RUN_RIGHT                        91
 #define MOVEMENT_JUMP_NEAR_SLOW_LEFT              92
 #define MOVEMENT_JUMP_NEAR_SLOW_RIGHT             93
-#define MOVEMENT_JUMP_FATHER_LEFT                 94
+#define MOVEMENT_JUMP_FARTHER_LEFT                94
 #define MOVEMENT_JUMP_FARTHER_RIGHT               95
 #define MOVEMENT_WALK_EVER_SO_SLIGHTLY_FAST_UP    96
 #define MOVEMENT_WALK_EVER_SO_SLIGHTLY_FAST_DOWN  97

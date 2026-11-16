@@ -474,12 +474,12 @@
 	.endm
 
 	.macro JumpFartherWest length=1
-	.short MOVEMENT_JUMP_FATHER_LEFT
+	.short MOVEMENT_JUMP_FARTHER_LEFT
 	.short \length
 	.endm
 
 	.macro JumpFartherEast length=1
-	.short MOVEMENT_JUMP_FATHER_RIGHT
+	.short MOVEMENT_JUMP_FARTHER_RIGHT
 	.short \length
 	.endm
 
