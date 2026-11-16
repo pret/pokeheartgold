@@ -1422,12 +1422,12 @@ ov93_0225D07C: ; 0x0225D07C
 	str r2, [sp]
 	bl NNS_G3dGeBufferOP_N
 	bl Thunk_G3X_Reset
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 	cmp r0, #0
 	ble _0225D18C
 	bl Thunk_G3X_Reset
 _0225D18C:
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	ldr r0, [r4, #0x28]
 	bl SpriteSystem_DrawSprites
 	bl SpriteSystem_UpdateTransfer
@@ -2017,7 +2017,7 @@ ov93_0225D674: ; 0x0225D674
 	push {r4, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	mov r1, #0x12
 	mov r0, #0x75
 	lsl r1, r1, #0xa
@@ -2031,14 +2031,14 @@ ov93_0225D674: ; 0x0225D674
 	ldr r0, _0225D6D8 ; =ov93_0225D744
 	ldr r1, _0225D6DC ; =ov93_0225D768
 	lsl r3, r3, #0xa
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	add r1, r4, #0
 	add r1, #0xa4
 	str r0, [r1]
 	add r0, r4, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	mov r0, #1
 	mov r1, #0xe1
@@ -2048,13 +2048,13 @@ ov93_0225D674: ; 0x0225D674
 	mov r0, #0xd5
 	mov r1, #0
 	mov r2, #0x75
-	bl sub_02015264
+	bl ParticleSystem_LoadResourceFromNARC
 	add r4, #0xa4
 	add r1, r0, #0
 	ldr r0, [r4]
 	mov r2, #0xa
 	mov r3, #1
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	add sp, #8
 	pop {r4, pc}
 	.balign 4, 0
@@ -2068,11 +2068,11 @@ ov93_0225D6E0: ; 0x0225D6E0
 	add r4, r0, #0
 	add r0, #0xa4
 	ldr r0, [r0]
-	bl sub_020154D0
+	bl ParticleSystem_GetHeapStart
 	add r4, #0xa4
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	add r0, r5, #0
 	bl Heap_Free
 	pop {r3, r4, r5, pc}
@@ -2095,21 +2095,21 @@ _0225D712:
 	mov r1, #0
 	ldr r0, [r0]
 	add r2, r1, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	pop {r3, pc}
 _0225D720:
 	add r0, #0xa4
 	ldr r0, [r0]
 	mov r1, #1
 	mov r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	pop {r3, pc}
 _0225D72E:
 	add r0, #0xa4
 	ldr r0, [r0]
 	mov r1, #2
 	mov r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	pop {r3, pc}
 _0225D73C:
 	bl GF_AssertFail
@@ -2129,7 +2129,7 @@ ov93_0225D744: ; 0x0225D744
 	bl GF_AssertFail
 _0225D756:
 	add r0, r4, #0
-	bl sub_02015354
+	bl ParticleSystem_RegisterTextureKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}
@@ -2149,7 +2149,7 @@ ov93_0225D768: ; 0x0225D768
 	bl GF_AssertFail
 _0225D77A:
 	add r0, r4, #0
-	bl sub_02015394
+	bl ParticleSystem_RegisterPaletteKey
 	lsl r0, r4, #0x10
 	lsr r0, r0, #0xd
 	pop {r4, pc}

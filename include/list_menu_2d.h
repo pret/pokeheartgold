@@ -1,8 +1,8 @@
 #ifndef POKEHEARTGOLD_LIST_MENU_2D_H
 #define POKEHEARTGOLD_LIST_MENU_2D_H
 
-#include "list_menu_cursor.h"
 #include "list_menu_items.h"
+#include "menu_cursor.h"
 
 struct ListMenu2DTemplate {
     ListMenuItem *items;
@@ -17,7 +17,7 @@ struct ListMenu2DTemplate {
 
 struct ListMenu2D {
     struct ListMenu2DTemplate template;
-    struct ListMenuCursor *cursor;
+    struct MenuCursor *cursor;
     int cancelKey;
     u8 unk14;
     u8 selectedIndex;

@@ -16,9 +16,9 @@
 .public ClearWindowPixelBuffer
 .public ClearFrameAndWindow2
 .public IsPaletteFadeFinished
-.public ListMenuCursorNew
-.public DestroyListMenuCursorObj
-.public ListMenuUpdateCursorObj
+.public MenuCursor_New
+.public MenuCursor_Free
+.public MenuCursor_Print
 .public MailMsg_Init_Default
 .public Heap_CreateAtEnd
 .public Heap_Destroy

@@ -1,6 +1,6 @@
-#ifndef POKEPLATINUM_SPL_H
-#define POKEPLATINUM_SPL_H
+#ifndef POKEHEARTGOLD_SPL_H
+#define POKEHEARTGOLD_SPL_H
 
 #include "spl_manager.h"
 
-#endif // POKEPLATINUM_SPL_H
+#endif // POKEHEARTGOLD_SPL_H

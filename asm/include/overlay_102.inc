@@ -55,9 +55,9 @@
 .public sub_02013948
 .public TextOBJ_Create
 .public TextOBJ_Destroy
-.public ListMenuCursorNew
-.public DestroyListMenuCursorObj
-.public ListMenuUpdateCursorObj
+.public MenuCursor_New
+.public MenuCursor_Free
+.public MenuCursor_Print
 .public MailMsg_GetRawString
 .public MailMsg_AllFieldsAreInit
 .public MailMsg_GetFieldI
