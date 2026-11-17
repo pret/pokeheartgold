@@ -27,7 +27,7 @@ _005E:
 	End
 
 scr_seq_D02R0103_000:
-	TrainerTipsEx 2, msg_0050_D02R0103_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0050_D02R0103_00000
 	End
 
 scr_seq_D02R0103_001:

@@ -316,7 +316,7 @@ static BOOL DeleteSavedataApp_DoMainTask(DeleteSavedataApp_Data *data) {
         break;
     case MAINSTATE_DELETE_DATA:
         Save_DeleteAllData(data->savedata);
-        sub_0200F450(data->waitingIcon);
+        WaitingIcon_Destroy(data->waitingIcon);
         data->mainState = MAINSTATE_EXIT;
         break;
     case MAINSTATE_EXIT:

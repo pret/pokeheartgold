@@ -158,11 +158,11 @@ _0200:
 	EndMovement
 
 scr_seq_R35_000:
-	DirectionSignpostEx 1, 4, msg_0387_R35_00028
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 4, msg_0387_R35_00028
 	End
 
 scr_seq_R35_004:
-	DirectionSignpostEx 1, 19, msg_0387_R35_00029
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 19, msg_0387_R35_00029
 	End
 
 scr_seq_R35_002:

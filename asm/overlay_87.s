@@ -5200,7 +5200,7 @@ ov87_021E810C: ; 0x021E810C
 	ldr r2, _021E8130 ; =0x000003F7
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200E398
+	bl LoadStandardWindowTiles
 	ldr r2, _021E8130 ; =0x000003F7
 	add r0, r4, #0
 	mov r1, #1

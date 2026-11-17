@@ -824,14 +824,14 @@ scr_seq_R34_008:
 	End
 
 scr_seq_R34_009:
-	TrainerTipsEx 3, msg_0384_R34_00034
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0384_R34_00034
 	End
 
 scr_seq_R34_010:
-	TrainerTipsEx 2, msg_0384_R34_00035
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0384_R34_00035
 	End
 
 scr_seq_R34_011:
-	DirectionSignpostEx 1, 4, msg_0384_R34_00033
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 4, msg_0384_R34_00033
 	End
 	.balign 4, 0

@@ -4458,10 +4458,10 @@ ov02_0224A800: ; 0x0224A800
 	add r2, r1, #0
 	ldrh r0, [r3]
 	ldrh r1, [r3, #4]
-	ldr r3, _0224A80C ; =sub_02014450
+	ldr r3, _0224A80C ; =CharacterSprite_LoadPalette
 	bx r3
 	.balign 4, 0
-_0224A80C: .word sub_02014450
+_0224A80C: .word CharacterSprite_LoadPalette
 	thumb_func_end ov02_0224A800
 
 	thumb_func_start ov02_0224A810

@@ -14,7 +14,7 @@ static BOOL sub_020140E8(int species);
 static void sub_02014128(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species);
 static void *sub_02014178(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, int width, int height, u32 pid, BOOL isAnimated, int whichFacing, int species);
 static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, int height, int *pDstOffset, const void *src, void *dest);
-static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest);
+static void sub_02014350(int srcWidth, int srcHeight, const TileRegion *template, int *pDstOffset, const void *src, void *dest);
 static void sub_02014374(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, int width, int height, void *dest);
 
 static void sub_02013FDC(const u8 *src, u8 *dest, int *pSrcOffset, int *pDestOffset, u32 destBlockSize, u32 srcBlockSize) {
@@ -151,12 +151,12 @@ static void sub_020142D4(int srcWidth, int srcHeight, int x, int y, int width, i
     }
 }
 
-static void sub_02014350(int srcWidth, int srcHeight, const UnkStruct_02014E30 *template, int *pDstOffset, const void *src, void *dest) {
+static void sub_02014350(int srcWidth, int srcHeight, const TileRegion *template, int *pDstOffset, const void *src, void *dest) {
     sub_020142D4(srcWidth, srcHeight, template->x, template->y, template->w, template->h, pDstOffset, src, dest);
 }
 
 static void sub_02014374(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, int width, int height, void *dest) {
-    UnkStruct_02014E30 sp1C[6] = {
+    TileRegion sp1C[6] = {
         { 0, 0, 8, 8 },
         { 8, 0, 2, 4 },
         { 8, 4, 2, 4 },
@@ -173,13 +173,13 @@ static void sub_02014374(NarcId narcId, s32 fileId, enum HeapID heapID, int x, i
     Heap_Free(sp14);
 }
 
-void sub_020143E0(NarcId narcId, s32 fileId, enum HeapID heapID, UnkStruct_02014E30 *a3, void *dest) {
-    sub_02014374(narcId, fileId, heapID, a3->x, a3->y, a3->w, a3->h, dest);
+void CharacterSprite_LoadSpriteRegion(NarcId narcId, s32 fileId, enum HeapID heapID, TileRegion *tileRegion, void *dest) {
+    sub_02014374(narcId, fileId, heapID, tileRegion->x, tileRegion->y, tileRegion->w, tileRegion->h, dest);
 }
 
 void sub_02014400(NarcId narcId, s32 fileId, enum HeapID heapID, void *dest) {
-    UnkStruct_02014E30 sp4 = { 0, 0, 10, 10 };
-    sub_020143E0(narcId, fileId, heapID, &sp4, dest);
+    TileRegion sp4 = { 0, 0, 10, 10 };
+    CharacterSprite_LoadSpriteRegion(narcId, fileId, heapID, &sp4, dest);
 }
 
 void *sub_0201442C(NarcId narcId, s32 fileId, enum HeapID heapID) {
@@ -188,7 +188,7 @@ void *sub_0201442C(NarcId narcId, s32 fileId, enum HeapID heapID) {
     return ret;
 }
 
-void *sub_02014450(NarcId narcId, s32 fileId, enum HeapID heapID) {
+void *CharacterSprite_LoadPalette(NarcId narcId, s32 fileId, enum HeapID heapID) {
     void *ret = Heap_Alloc(heapID, 0x20);
     void *pNclrFile = AllocAndReadWholeNarcMemberByIdPair(narcId, fileId, heapID);
     NNSG2dPaletteData *pPlttData;
@@ -199,7 +199,7 @@ void *sub_02014450(NarcId narcId, s32 fileId, enum HeapID heapID) {
 }
 
 void sub_02014494(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, int width, int height, void *dest, u32 pid, BOOL isAnimated, int whichFacing, int species) {
-    UnkStruct_02014E30 sp2C[6] = {
+    TileRegion sp2C[6] = {
         { 0, 0, 8, 8 },
         { 8, 0, 2, 4 },
         { 8, 4, 2, 4 },
@@ -216,12 +216,12 @@ void sub_02014494(NarcId narcId, s32 fileId, enum HeapID heapID, int x, int y, i
     Heap_Free(sp24);
 }
 
-void sub_02014510(NarcId narcId, s32 fileId, enum HeapID heapID, UnkStruct_02014E30 *a3, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
+void sub_02014510(NarcId narcId, s32 fileId, enum HeapID heapID, TileRegion *a3, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
     sub_02014494(narcId, fileId, heapID, a3->x, a3->y, a3->w, a3->h, dest, personality, isAnimated, whichFacing, species);
 }
 
 void sub_02014540(NarcId narcId, s32 fileId, enum HeapID heapID, void *dest, u32 personality, BOOL isAnimated, int whichFacing, int species) {
-    UnkStruct_02014E30 sp14 = { 0, 0, 10, 10 };
+    TileRegion sp14 = { 0, 0, 10, 10 };
     sub_02014510(narcId, fileId, heapID, &sp14, dest, personality, isAnimated, whichFacing, species);
 }
 

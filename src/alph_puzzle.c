@@ -1140,7 +1140,7 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
 
     NARC_Delete(narc);
 
-    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapID, PLTTBUF_MAIN_BG, 32, 80);
+    PaletteData_LoadNarc(data->palette, NARC_graphic_gs_winframe, data->frame + 26, data->heapID, PLTTBUF_MAIN_BG, 32, 80);
     PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapID, PLTTBUF_MAIN_BG, 32, 64);
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 5, data->frame, data->heapID);

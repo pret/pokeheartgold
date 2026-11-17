@@ -233,14 +233,14 @@ scr_seq_T28_004:
 	End
 
 scr_seq_T28_006:
-	DirectionSignpostEx 0, 19, msg_0620_T28_00017
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 19, msg_0620_T28_00017
 	End
 
 scr_seq_T28_007:
-	TrainerTipsEx 2, msg_0620_T28_00018
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0620_T28_00018
 	End
 
 scr_seq_T28_008:
-	TrainerTipsEx 2, msg_0620_T28_00019
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0620_T28_00019
 	End
 	.balign 4, 0

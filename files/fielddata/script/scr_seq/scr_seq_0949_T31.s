@@ -157,6 +157,6 @@ _01F4:
 	EndMovement
 
 scr_seq_T31_002:
-	TrainerTipsEx 2, msg_0636_T31_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0636_T31_00000
 	End
 	.balign 4, 0

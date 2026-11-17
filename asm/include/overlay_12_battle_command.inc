@@ -36,8 +36,8 @@
 .public SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType
 .public SpriteManager_GetSpriteList
 .public SysTask_Destroy
-.public sub_0200E398
-.public sub_0200E3D8
+.public LoadStandardWindowTiles
+.public GetStandardWindowPaletteNARCMember
 .public DrawFrameAndWindow1
 .public ClearWindowPixelBuffer
 .public sub_0200FBF4

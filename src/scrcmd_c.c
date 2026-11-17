@@ -121,7 +121,7 @@ FS_EXTERN_OVERLAY(OVY_22);
 FS_EXTERN_OVERLAY(OVY_25);
 
 BOOL sub_020416E4(ScriptContext *ctx);
-BOOL sub_02042C78(ScriptContext *ctx);
+BOOL NativeScript_WaitAnimatePokemonPic(ScriptContext *ctx);
 BOOL ScrNative_WaitApplication(ScriptContext *ctx);
 LocalMapObject *sub_02041C70(FieldSystem *fieldSystem, u16 person);
 void _ScheduleObjectEventMovement(FieldSystem *fieldSystem, EventObjectMovementMan *movementMan, MovementScriptCommand *a2);
@@ -986,7 +986,7 @@ BOOL ScrCmd_AddWaitingIcon(ScriptContext *ctx) {
 
 BOOL ScrCmd_RemoveWaitingIcon(ScriptContext *ctx) {
     WaitingIcon **waitingIcon = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_WAITING_ICON);
-    sub_0200F450(*waitingIcon);
+    WaitingIcon_Destroy(*waitingIcon);
     return FALSE;
 }
 
@@ -1858,47 +1858,47 @@ BOOL ScrCmd_451(ScriptContext *ctx) {
     return TRUE;
 }
 
-BOOL ScrCmd_452(ScriptContext *ctx) {
-    struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
+BOOL ScrCmd_DrawPokemonPicFromSpecies(ScriptContext *ctx) {
+    u8 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 species = ScriptGetVar(ctx);
     u16 gender = ScriptGetVar(ctx);
-    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_FIELD1);
+    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD1);
     *p_work = DrawPokemonPicFromSpecies(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, species, gender, HEAP_ID_FIELD1);
     Script_SetMonSeenFlagBySpecies(ctx->fieldSystem, species);
     return FALSE;
 }
 
-BOOL ScrCmd_547(ScriptContext *ctx) {
-    struct PokepicManager **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
+BOOL ScrCmd_DrawPokemonPicFromPartyMon(ScriptContext *ctx) {
+    u8 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
     u16 partyIdx = ScriptGetVar(ctx);
     Pokemon *mon = Party_GetMonByIndex(SaveArray_Party_Get(ctx->fieldSystem->saveData), partyIdx);
-    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 0xB, 0, HEAP_ID_FIELD1);
+    LoadUserFrameGfx1(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD1);
     *p_work = DrawPokemonPicFromMon(ctx->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 10, 5, 11, 0x3D9, mon, HEAP_ID_FIELD1);
     return FALSE;
 }
 
-BOOL ScrCmd_453(ScriptContext *ctx) {
-    u8 **r0 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
-    **r0 = 1;
+BOOL ScrCmd_ErasePokemonPic(ScriptContext *ctx) {
+    u8 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
+    **p_work = PREVIEW_STATE_REMOVE;
     return TRUE;
 }
 
-BOOL ScrCmd_548(ScriptContext *ctx) {
-    u8 **r0 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
-    **r0 = 2;
+BOOL ScrCmd_AnimatePokemonPic(ScriptContext *ctx) {
+    u8 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
+    **p_work = PREVIEW_STATE_SET_ANIM;
     return TRUE;
 }
 
-BOOL ScrCmd_549(ScriptContext *ctx) {
+BOOL ScrCmd_WaitAnimatePokemonPic(ScriptContext *ctx) {
     ctx->data[0] = ScriptReadHalfword(ctx);
-    SetupNativeScript(ctx, sub_02042C78);
+    SetupNativeScript(ctx, NativeScript_WaitAnimatePokemonPic);
     return TRUE;
 }
 
-BOOL sub_02042C78(ScriptContext *ctx) {
-    u8 **r0 = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
-    u16 *dest_p = GetVarPointer(ctx->fieldSystem, ctx->data[0]);
-    return **r0 != 3;
+BOOL NativeScript_WaitAnimatePokemonPic(ScriptContext *ctx) {
+    u8 **p_work = FieldSysGetAttrAddr(ctx->fieldSystem, SCRIPTENV_MISC_DATA_PTR);
+    u16 *dest_p = GetVarPointer(ctx->fieldSystem, ctx->data[0]); // unused
+    return **p_work != PREVIEW_STATE_WAIT_ANIM;
 }
 
 BOOL ScrCmd_454(ScriptContext *ctx) {

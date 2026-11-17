@@ -268,11 +268,11 @@ scr_seq_W40_007:
 	End
 
 scr_seq_W40_002:
-	DirectionSignpostEx 1, 4, msg_0744_W40_00019
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 4, msg_0744_W40_00019
 	End
 
 scr_seq_W40_009:
-	TrainerTipsEx 2, msg_0744_W40_00020
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0744_W40_00020
 	End
 
 scr_seq_W40_003:

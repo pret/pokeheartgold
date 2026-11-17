@@ -1889,7 +1889,7 @@ ov75_02247878: ; 0x02247878
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0224788E
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	add r4, #0x8c
 	str r0, [r4]
