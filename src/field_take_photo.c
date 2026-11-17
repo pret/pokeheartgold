@@ -484,7 +484,7 @@ static LocalMapObject *createSpecialMapObject(MapObjectManager *objectMan, int s
     MapObject_SetXRange(ret, -1);
     MapObject_SetYRange(ret, -1);
     MapObject_SetFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_KEEP | MAPOBJECTFLAG_UNK13));
-    MapObject_ClearFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
+    MapObject_ClearFlagsBits(ret, (MapObjectFlagBits)(MAPOBJECTFLAG_PAUSE_ANIMATION | MAPOBJECTFLAG_LOCK_DIRECTION));
     MapObject_SetFlag29(ret, TRUE);
     return ret;
 }

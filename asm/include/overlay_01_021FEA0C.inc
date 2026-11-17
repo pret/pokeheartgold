@@ -6,7 +6,7 @@
 .public MapObject_GetFieldSystem
 .public MapObject_CopyPositionVector
 .public sub_0205F9A0
-.public sub_0206121C
+.public MapObject_RecalculatePositionHeight
 .public sub_02068D74
 .public sub_02068D90
 .public sub_02068D98

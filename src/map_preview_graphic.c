@@ -927,7 +927,7 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
     case 3:
         player = PlayerAvatar_GetMapObject(fsys->playerAvatar);
         if (MapObject_AreBitsSetForMovementScriptInit(player)) {
-            MapObject_SetHeldMovement(player, MOVEMENT_FACE_DOWN);
+            LocalMapObject_SetAnimationCode(player, MOVEMENT_FACE_DOWN);
             unkSub->state++;
         }
         break;
@@ -936,7 +936,7 @@ static int sub_0206A694(UnkStruct_0206A388 *unk, FieldSystem *fsys) {
         if (MapObject_AreBitsSetForMovementScriptInit(player)) {
             if (FollowMon_IsActive(fsys)) {
                 ov01_02205790(fsys, 1);
-                sub_0205FC94(FollowMon_GetMapObject(fsys), MOVEMENT_WALK_UNK_48);
+                sub_0205FC94(FollowMon_GetMapObject(fsys), MOVEMENT_JUMP_IN_PLACE_FAST_FACE_UP);
                 sub_02069DC8(FollowMon_GetMapObject(fsys), TRUE);
             }
             unkSub->state++;

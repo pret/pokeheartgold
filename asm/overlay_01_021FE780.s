@@ -102,7 +102,7 @@ ov01_021FE7DC: ; 0x021FE7DC
 	add r1, r2, r1
 	str r1, [sp, #0x1c]
 	add r1, sp, #0x14
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	b _021FE842
 _021FE826:
 	ldr r3, _021FE860 ; =ov01_022090D0

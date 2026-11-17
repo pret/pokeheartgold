@@ -241,7 +241,7 @@ _021E926A:
 	bl PlayerAvatar_GetMapObject
 	mov r1, #0xc
 	add r5, r0, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	add r0, r6, #0
 	bl FollowMon_IsActive
 	cmp r0, #0
@@ -562,7 +562,7 @@ _021E951A:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
 	mov r1, #0xd
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -939,7 +939,7 @@ _021E97E0:
 	bne _021E97FA
 	add r0, r5, #0
 	mov r1, #0x49
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	b _021E97FE
 _021E97FA:
 	bl GF_AssertFail
@@ -970,7 +970,7 @@ _021E9830:
 	mov r1, #0xa
 _021E9832:
 	add r0, r6, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	b _021E983E
 _021E983A:
 	bl GF_AssertFail
@@ -988,7 +988,7 @@ _021E9846:
 	bne _021E98E0
 	add r0, r5, #0
 	mov r1, #0x4a
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1008,7 +1008,7 @@ _021E987E:
 	mov r1, #0xa
 _021E9880:
 	add r0, r6, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1164,7 +1164,7 @@ _021E99B4:
 	bne _021E99CE
 	add r0, r5, #0
 	mov r1, #0x49
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	b _021E99D2
 _021E99CE:
 	bl GF_AssertFail
@@ -1194,7 +1194,7 @@ _021E99FE:
 _021E9A00:
 	add r0, r7, #0
 	add r1, r5, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	add r0, r6, #0
 	bl FollowMon_IsActive
 	cmp r0, #0
@@ -1227,7 +1227,7 @@ _021E9A3C:
 	bne _021E9AAC
 	add r0, r5, #0
 	mov r1, #0x4a
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #0
 	bl FieldMap_FadeScreen
 	ldr r0, [r4]
@@ -1659,7 +1659,7 @@ _021E9DAE:
 	bl MapObject_SetVisible
 	add r0, r5, #0
 	mov r1, #0xd
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r6]
 	add r0, r0, #1
 	str r0, [r6]
@@ -1722,7 +1722,7 @@ _021E9E46:
 	ldr r0, [r4, #0x40]
 	bl PlayerAvatar_GetMapObject
 	mov r1, #0xd
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r0, #7
 	str r0, [r6]
 	b _021E9ECC
@@ -2029,7 +2029,7 @@ _021EA0B4:
 	bl MapObject_SetVisible
 	add r0, r6, #0
 	mov r1, #0xd
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]
@@ -2142,7 +2142,7 @@ _021EA19E:
 	bl MapObject_SetVisible
 	add r0, r5, #0
 	mov r1, #0xd
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrb r0, [r4]
 	add r0, r0, #1
 	strb r0, [r4]

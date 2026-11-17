@@ -17,11 +17,11 @@
 #include "overlay_124.h"
 #include "overlay_35.h"
 #include "overlay_manager.h"
+#include "player_move.h"
 #include "poke_overlay.h"
 #include "system.h"
 #include "unk_02035900.h"
 #include "unk_02056D7C.h"
-#include "unk_0205CB48.h"
 #include "unk_02092BB8.h"
 #include "unk_02092BE8.h"
 
@@ -264,7 +264,7 @@ void FieldSystem_Control(FieldSystem *fieldSystem) {
             if (newEvent) {
                 FieldDrawMapName_Reset(fieldSystem->unk4->drawMapNameInfo);
                 FieldSystem_SetAndExecuteSignpostWindowCommand(fieldSystem, MAPSIGNCOMMAND_HIDE);
-                sub_0205CF44(fieldSystem->playerAvatar);
+                PlayerAvatar_ClearMoveState(fieldSystem->playerAvatar);
                 ov01_021F2F24(fieldSystem->playerAvatar);
                 ov01_021F6830(fieldSystem, 0, 1);
                 if (newEvent != 2) {

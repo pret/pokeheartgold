@@ -249,7 +249,7 @@
 .public PlayerAvatar_GetMapObject
 .public PlayerAvatar_GetState
 .public PlayerAvatar_GetGender
-.public sub_0205DE98
+.public PlayerAvatar_IsRunning
 .public sub_0205E38C
 .public sub_0205E420
 .public MapObjectManager_GetFirstActiveObjectByID
@@ -273,9 +273,9 @@
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
 .public GetDeltaXByFacingDirection
-.public GetDeltaYByFacingDirection
+.public GetDeltaZByFacingDirection
 .public MapObject_AreBitsSetForMovementScriptInit
-.public MapObject_SetHeldMovement
+.public LocalMapObject_SetAnimationCode
 .public MapObject_ClearHeldMovementIfActive
 .public EventObjectMovementMan_Create
 .public EventObjectMovementMan_IsFinish

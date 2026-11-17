@@ -13,17 +13,17 @@
 #include "overlay_01_021EDAFC.h"
 #include "overlay_01_02204ED8.h"
 #include "player_data.h"
+#include "player_move.h"
 #include "scrcmd.h"
 #include "script.h"
 #include "script_manager.h"
 #include "task.h"
-#include "unk_0205CB48.h"
 #include "unk_0205FD20.h"
 
 static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager);
-static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]);
+static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 z, s16 treeCoords[][2]);
 static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId);
-static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y);
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *z);
 
 enum TreeType {
     TREETYPE_COMMON,
@@ -118,10 +118,10 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     if (headbuttTable->numRegularTrees != 0 || headbuttTable->numSecretTrees != 0) {
         BattleSetup *setup;
         u32 x;
-        u32 y;
-        GetCoordsOfFacingTree(fieldSystem, &x, &y);
+        u32 z;
+        GetCoordsOfFacingTree(fieldSystem, &x, &z);
         u32 trainerId = PlayerProfile_GetTrainerID(Save_PlayerData_GetProfile(fieldSystem->saveData));
-        enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numRegularTrees, headbuttTable->numSecretTrees, trainerId, x, y, headbuttTable->treeCoords);
+        enum TreeType treeType = (enum TreeType)Headbutt_GetTreeTypeFromTable(headbuttTable->numRegularTrees, headbuttTable->numSecretTrees, trainerId, x, z, headbuttTable->treeCoords);
         if (treeType == TREETYPE_NONE) {
             Heap_Free(headbuttTable);
             Heap_Free(didHeadbuttStartBattle);
@@ -153,20 +153,20 @@ static BOOL Task_TryHeadbuttEncounter(TaskManager *taskManager) {
     return TRUE;
 }
 
-static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 y, s16 treeCoords[][2]) {
+static s8 Headbutt_GetTreeTypeFromTable(u16 numRegularTrees, u16 numSecretTrees, u32 trainerId, u32 x, u32 z, s16 treeCoords[][2]) {
     // Based on your trainer ID and the tree you're facing, choose which encounter table applies
     // Not all trees are headbuttable, this is determined by trainer ID
     u16 i;
     u16 numCoordsRegular = numRegularTrees * 6;
     u16 numCoordsSecret = numSecretTrees * 6;
     for (i = 0; i < numCoordsRegular; i++) {
-        if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
+        if (x == treeCoords[i][0] && z == treeCoords[i][1]) {
             return Headbutt_GetTreeType_Regular(i / 6, numRegularTrees, trainerId);
         }
     }
     // Check whether the facing tree is in the rare table
     for (i = numCoordsRegular; i < numCoordsRegular + numCoordsSecret; i++) {
-        if (x == treeCoords[i][0] && y == treeCoords[i][1]) {
+        if (x == treeCoords[i][0] && z == treeCoords[i][1]) {
             return TREETYPE_SECRET;
         }
     }
@@ -194,21 +194,21 @@ static s8 Headbutt_GetTreeType_Regular(u8 whichTree, u8 numTrees, u32 trainerId)
     return ret;
 }
 
-static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *y) {
-    int inFrontX, inFrontY;
-    PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontY);
+static void GetCoordsOfFacingTree(FieldSystem *fieldSystem, u32 *x, u32 *z) {
+    int inFrontX, inFrontZ;
+    PlayerAvatar_GetCoordsInFront(fieldSystem->playerAvatar, &inFrontX, &inFrontZ);
     if (FollowMon_IsActive(fieldSystem)) {
         LocalMapObject *object = FollowMon_GetMapObject(fieldSystem);
         u32 followingMonX = MapObject_GetXCoord(object);
         u32 followingMonZ = MapObject_GetZCoord(object);
-        if (inFrontX == followingMonX && inFrontY == followingMonZ) {
+        if (inFrontX == followingMonX && inFrontZ == followingMonZ) {
             u8 dir = MapObject_GetFacingDirection(object);
             inFrontX = GetDeltaXByFacingDirection(dir) + followingMonX;
-            inFrontY = GetDeltaYByFacingDirection(dir) + followingMonZ;
+            inFrontZ = GetDeltaZByFacingDirection(dir) + followingMonZ;
         }
     }
     *x = inFrontX;
-    *y = inFrontY;
+    *z = inFrontZ;
 }
 
 // ---------------------------------------------------------------- //

@@ -117,7 +117,7 @@ static LocalMapObject *sub_0206D590(LocalMapObject *object) {
     u32 dx = GetDeltaXByFacingDirection(direction);
     u32 y = MapObject_GetYCoord(object);
     u32 z = MapObject_GetZCoord(object);
-    u32 dy = GetDeltaYByFacingDirection(direction);
+    u32 dy = GetDeltaZByFacingDirection(direction);
     LocalMapObject *obj = sub_0206D614(manager, x + dx, y, z + dy);
     if (obj) {
         if (MapObject_GetSpriteID(obj) != SPRITE_ICE) {
@@ -164,7 +164,7 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
             u32 dx = GetDeltaXByFacingDirection(a0->unk08);
             u32 y = MapObject_GetYCoord(a0->unk00);
             u32 z = MapObject_GetZCoord(a0->unk00);
-            u32 dy = GetDeltaYByFacingDirection(a0->unk08);
+            u32 dy = GetDeltaZByFacingDirection(a0->unk08);
             u32 flags = sub_0206D7B8(a0->unk00, x + dx, y, z + dy);
             if (flags & 2) {
                 MapObjectManager *manager = MapObject_GetManager(a0->unk00);
@@ -175,18 +175,18 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
                 }
                 if (MapObject_GetSpriteID(object) == SPRITE_ICE) {
                     a0->unk04 = object;
-                    MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
+                    LocalMapObject_SetAnimationCode(a0->unk00, MOVEMENT_UNK_72);
                     a0->unk09 = 2;
                 } else {
                     a0->unk04 = NULL;
-                    MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_72);
+                    LocalMapObject_SetAnimationCode(a0->unk00, MOVEMENT_UNK_72);
                     a0->unk09 = 2;
                 }
             } else {
                 if (flags & 1 || flags & 4) {
                     return TRUE;
                 }
-                MapObject_SetHeldMovement(a0->unk00, MOVEMENT_UNK_71);
+                LocalMapObject_SetAnimationCode(a0->unk00, MOVEMENT_UNK_71);
                 a0->unk09 = 1;
             }
         }
@@ -195,7 +195,7 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
         if (MapObject_IsMovementPaused(a0->unk00)) {
             u32 movement = sub_0206D81C(a0->unk08);
             if (movement != MOVEMENT_NONE) {
-                MapObject_SetHeldMovement(a0->unk00, movement);
+                LocalMapObject_SetAnimationCode(a0->unk00, movement);
             } else {
                 GF_ASSERT(FALSE);
                 return TRUE;
@@ -207,9 +207,9 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
         if (MapObject_IsMovementPaused(a0->unk00)) {
             PlaySE(SEQ_SE_GS_HYOUKAI_KETUGOU);
             if (a0->unk04) {
-                MapObject_SetHeldMovement(a0->unk04, MOVEMENT_FACE_UP);
+                LocalMapObject_SetAnimationCode(a0->unk04, MOVEMENT_FACE_UP);
             }
-            MapObject_SetHeldMovement(a0->unk00, MOVEMENT_FACE_UP);
+            LocalMapObject_SetAnimationCode(a0->unk00, MOVEMENT_FACE_UP);
             return TRUE;
         }
         break;
@@ -217,18 +217,18 @@ static u32 sub_0206D688(UnkStruct_0206D494 *a0) {
     return FALSE;
 }
 
-static u32 sub_0206D7B8(LocalMapObject *object, u32 x, u32 height, u32 y) {
-    u32 unk;
+static u32 sub_0206D7B8(LocalMapObject *object, u32 tileX, u32 height, u32 tileZ) {
+    s8 verticalDirection;
     VecFx32 position;
     MapObject_CopyPositionVector(object, &position);
     u32 flags = 0;
-    if (sub_020549F4(MapObject_GetFieldSystem(object), &position, x, y, &unk) == 1) {
+    if (TerrainCollisionManager_WillPlayerCollide(MapObject_GetFieldSystem(object), &position, tileX, tileZ, &verticalDirection) == TRUE) {
         flags |= 1;
     }
-    if (MetatileBehavior_IsIce(GetMetatileBehavior(MapObject_GetFieldSystem(object), x, y)) == FALSE) {
+    if (MetatileBehavior_IsIce(GetMetatileBehavior(MapObject_GetFieldSystem(object), tileX, tileZ)) == FALSE) {
         flags |= 4;
     }
-    if (sub_02060BFC(object, x, height, y) == 1) {
+    if (sub_02060BFC(object, tileX, height, tileZ) == 1) {
         flags |= 2;
     }
     return flags;
@@ -257,13 +257,13 @@ static u32 sub_0206D81C(u32 direction) {
 
 static void sub_0206D850(PlayerAvatar *playerAvatar) {
     if (PlayerAvatar_CheckForcedMovement(playerAvatar) == TRUE) {
-        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_UNK7 | MAPOBJECTFLAG_UNK8));
-        if (PlayerAvatar_CheckFlag7(playerAvatar) == 0) {
-            PlayerAvatar_ClearUnk24ClearFlag2(playerAvatar);
+        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_PAUSE_ANIMATION | MAPOBJECTFLAG_LOCK_DIRECTION));
+        if (PlayerAvatar_CheckForcedMovementRetainSpeed(playerAvatar) == FALSE) {
+            PlayerAvatar_ClearSpeed(playerAvatar);
         }
         PlayerAvatar_SetForcedMovement(playerAvatar, FALSE);
-        PlayerAvatar_SetFlag7(playerAvatar, 0);
-        PlayerAvatar_SetFlag5(playerAvatar, 0);
+        PlayerAvatar_SetForcedMovementRetainSpeed(playerAvatar, FALSE);
+        PlayerAvatar_SetMoveThroughMudFlag(playerAvatar, FALSE);
     }
     return;
 }

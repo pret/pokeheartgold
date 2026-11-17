@@ -736,7 +736,7 @@ static void SysTask_BlackthornGymmick_MovePlatform(SysTask *task, void *data) {
                 MapObject_CopyPositionVector(playerObject, &sp1C);
                 MapObject_SetCurrentX(playerObject, sp1C.x / (16 * FX32_ONE));
                 MapObject_SetCurrentZ(playerObject, sp1C.z / (16 * FX32_ONE));
-                sub_02060F78(playerObject);
+                MapObject_UpdateCoords(playerObject);
                 SysTask_Destroy(task);
                 taskData->state = STATE_MOVE_APPLY;
             } else {
