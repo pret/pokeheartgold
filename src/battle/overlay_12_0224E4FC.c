@@ -1368,13 +1368,13 @@ int ov12_022506D4(BattleSystem *battleSystem, BattleContext *ctx, int battlerIdA
         int battlerId;
         int maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
         OpponentData *opponent = BattleSystem_GetOpponentData(battleSystem, battlerIdAttacker);
-        u8 flag = ov12_02261258(opponent);
+        u8 flag = OpponentData_GetBattlerType(opponent);
 
         for (ctx->unk_217E = 0; ctx->unk_217E < maxBattlers; ctx->unk_217E++) {
             battlerId = ctx->turnOrder[ctx->unk_217E];
             if (ctx->battleMons[battlerId].hp) {
                 opponent = BattleSystem_GetOpponentData(battleSystem, battlerId);
-                if (((flag & 1) && !(ov12_02261258(opponent) & 1)) || (!(flag & 1) && (ov12_02261258(opponent) & 1))) {
+                if (((flag & 1) && !(OpponentData_GetBattlerType(opponent) & 1)) || (!(flag & 1) && (OpponentData_GetBattlerType(opponent) & 1))) {
                     battlerIdTarget = battlerId;
                     break;
                 }
@@ -1779,7 +1779,7 @@ void InitSwitchWork(BattleSystem *battleSystem, BattleContext *ctx, int battlerI
 
     maxBattlers = BattleSystem_GetMaxBattlers(battleSystem);
     BattleSystem_GetBattleType(battleSystem);
-    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_40;
+    ctx->playerActions[battlerId].command = CONTROLLER_COMMAND_MOVE_END;
 
     if (!(ctx->battleStatus & BATTLE_STATUS_BATON_PASS)) {
         for (i = 0; i < maxBattlers; i++) {
@@ -1933,7 +1933,7 @@ void InitFaintedWork(BattleSystem *battleSystem, BattleContext *ctx, int battler
         ctx->moveNoCopiedHit[i][battlerId] = 0;
     }
 
-    ctx->unk_13C[battlerId] &= ~1;
+    ctx->battlerStatusFlags[battlerId] &= ~BATTLER_STATUS_SWITCHING;
 
     ov12_02258584(ctx, battlerId);
     ov12_0225859C(ctx, battlerId);
@@ -2680,7 +2680,7 @@ BOOL CanSwitchMon(BattleSystem *battleSystem, BattleContext *ctx, int battlerId)
     party = BattleSystem_GetParty(battleSystem, battlerId);
     partySize = BattleSystem_GetPartySize(battleSystem, battlerId);
 
-    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (ov12_0223AB0C(battleSystem, battlerId) & 1))) {
+    if ((battleType & BATTLE_TYPE_MULTI) || ((battleType & BATTLE_TYPE_TAG) && (BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
         start = 0;
         cntMax = 1;
         monIndex1 = ctx->selectedMonIndex[battlerId];
@@ -2969,7 +2969,7 @@ BOOL BattleContext_CheckMoveHealBlocked(BattleSystem *battleSystem, BattleContex
     return ret;
 }
 
-void ov12_02252E30(BattleSystem *battleSystem, BattleContext *ctx) {
+void BattleSystem_UpdateLastResort(BattleSystem *battleSystem, BattleContext *ctx) {
     int i;
 
     if (ctx->moveNoTemp == MOVE_LAST_RESORT || ctx->battleMons[ctx->battlerIdAttacker].unk88.lastResortCount == MAX_MON_MOVES) {
@@ -4513,7 +4513,7 @@ u16 GetBattlerHeldItem(BattleContext *ctx, int battlerId) {
 }
 
 BOOL ov12_0225561C(BattleContext *ctx, int battlerId) {
-    return ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_40;
+    return ctx->playerActions[battlerId].command == CONTROLLER_COMMAND_MOVE_END;
 }
 
 BOOL CheckItemEffectOnHit(BattleSystem *battleSystem, BattleContext *ctx, int *script) {
@@ -5157,7 +5157,7 @@ BOOL TryFling(BattleSystem *battleSystem, BattleContext *ctx, int battlerId) {
     return TRUE;
 }
 
-void ov12_022565E0(BattleSystem *battleSystem, BattleContext *ctx) {
+void BattleSystem_UpdateMetronomeCount(BattleSystem *battleSystem, BattleContext *ctx) {
     if (GetBattlerHeldItemEffect(ctx, ctx->battlerIdAttacker) == HOLD_EFFECT_BOOST_REPEATED) {
         if (!(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_RAMPAGE) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_UPROAR) && !(ctx->battleStatus & BATTLE_STATUS_CHARGE_MOVE_HIT) && !(ctx->battleMons[ctx->battlerIdAttacker].status2 & STATUS2_LOCKED_INTO_MOVE)) {
             if (ctx->moveNoMetronome[ctx->battlerIdAttacker] == ctx->moveNoTemp) {
@@ -5428,8 +5428,8 @@ void ov12_02256F78(BattleSystem *battleSystem, BattleContext *ctx, int battlerId
     int flag;
     u32 battleType = BattleSystem_GetBattleType(battleSystem);
 
-    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(ov12_0223AB0C(battleSystem, battlerId) & 1))) {
-        if (ov12_0223AB0C(battleSystem, battlerId) == 4 || ov12_0223AB0C(battleSystem, battlerId) == 5) {
+    if (((battleType & BATTLE_TYPE_DOUBLES) && !(battleType & (BATTLE_TYPE_MULTI | BATTLE_TYPE_TAG))) || ((battleType & BATTLE_TYPE_TAG) && !(BattleSystem_GetBattlerType(battleSystem, battlerId) & 1))) {
+        if (BattleSystem_GetBattlerType(battleSystem, battlerId) == 4 || BattleSystem_GetBattlerType(battleSystem, battlerId) == 5) {
             flag = 1;
         } else {
             flag = 0;
@@ -6212,7 +6212,7 @@ void CheckIgnorePressure(BattleContext *ctx, int battlerIdAttacker, int battlerI
 
 BOOL BattleController_TryEmitExitRecording(BattleSystem *battleSystem, BattleContext *ctx) {
     if (BattleSystem_IsRecordingPaused(battleSystem)) {
-        ctx->command = CONTROLLER_COMMAND_43;
+        ctx->command = CONTROLLER_COMMAND_SCREEN_WIPE;
         return TRUE;
     }
     return FALSE;
