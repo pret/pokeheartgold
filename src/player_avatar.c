@@ -219,7 +219,7 @@ static void PlayerAvatar_Setup(PlayerAvatar *avatar, s32 state, u32 gender, Play
     PlayerAvatar_ClearSpeed(avatar);
     PlayerAvatar_SetFaceLeftOrRight(avatar, DIR_NONE);
     PlayerAvatar_SetFaceUpOrDown(avatar, DIR_NONE);
-    PlayerAvatar_SetMovementAction(avatar, 255); // obj_player?
+    PlayerAvatar_SetMovementAction(avatar, MOVEMENT_NONE);
     PlayerAvatar_SetIgnoreTileBehavior(avatar, TRUE);
 }
 

@@ -12,7 +12,7 @@ typedef enum PlayerAvatarFlags {
     AVATAR_FLAG_BIKE_BRAKE = (1 << 2),
     AVATAR_FLAG_LOCK_BIKE_STATE = (1 << 3), // Blocks the player from mounting/dismounting their bike (though this was intended to stop dismounting during Cycling Road)
     AVATAR_FLAG_UNK4 = (1 << 4),
-    AVATAR_FLAG_MOVE_THROUGH_MUD_UNUSED = (1 << 5), // Unused in HGSS (even the function to check the flag has been stripped out)
+    AVATAR_FLAG_MOVE_THROUGH_MUD_UNUSED = (1 << 5), // Unused in HGSS (despite this, the set function is still called).
     AVATAR_FLAG_STEP = (1 << 6),
     AVATAR_FLAG_FORCED_MOVEMENT_RETAIN_SPEED = (1 << 7),
 } PlayerAvatarFlags;
