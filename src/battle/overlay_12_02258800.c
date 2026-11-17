@@ -17,7 +17,7 @@ int BattleAI_PostKOSwitchIn(BattleSystem *battleSystem, int battler) {
     u16 move;
     int moveType;
     u8 battlersDisregarded;
-    u8 score, maxScore; // BUG: Post-KO Switch-In AI Scoring Overflow (see docs/bugs_and_glitches.md)
+    u8 score, maxScore;
     u8 picked = 6;
     u32 moveStatusFlags;
     Pokemon *mon;
