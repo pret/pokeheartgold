@@ -1,6 +1,6 @@
 [wrap-git]
 url = https://github.com/taxicat1/dsprot.git
-revision = 36b9a6e2941bf38bcaf53dff8632207081afb0a1
+revision = a0e25f29710dbd31b83f2b38c861fca27b8c30b6
 depth = 1
 directory = dsprot-1.23
 
