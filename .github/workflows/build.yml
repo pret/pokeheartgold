@@ -7,7 +7,6 @@ on:
   workflow_dispatch:
 
 env:
-  LM_LICENSE_FILE: "$GITHUB_WORKSPACE/tools/mwccarm/license.dat"
   CC: gcc-10
   CXX: g++-10
   COMPARE: 1
