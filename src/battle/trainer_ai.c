@@ -254,7 +254,7 @@ static u8 TrainerAI_MainSingles(BattleSystem *battleSystem, BattleContext *ctx) 
 
     // Iterate through all active AI flags to get each move's aggregate score.
     while (ctx->trainerAIData.aiFlags) {
-        if (ctx->trainerAIData.aiFlags & AI_FLAG_BASIC) {
+        if (ctx->trainerAIData.aiFlags & 1) {
             if ((ctx->trainerAIData.stateFlags & AI_STATUS_FLAG_CONTINUE) == FALSE) {
                 ctx->trainerAIData.evalStep = AI_EVAL_STEP_INIT;
             }
