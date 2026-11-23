@@ -1,7 +1,8 @@
 #ifndef POKEHEARTGOLD_BATTLE_PARTY_GAUGE_H
 #define POKEHEARTGOLD_BATTLE_PARTY_GAUGE_H
 
-#include "battle/battle.h"
+#include "sprite.h"
+#include "task.h"
 
 typedef struct PartyGaugeArrow {
     ManagedSprite *managedSprite;

@@ -24,6 +24,6 @@ BOOL GF_IsAnySEPlaying();
 void Sound_Stop();
 void Sound_SetMasterVolume(int volume);
 void sub_020062E0(u16 species, u8 a1, u8 form);
-void sub_0200602C(u16, s32);
+void Sound_PlayPannedEffect(u16, s32);
 
 #endif // POKEHEARTGOLD_UNK_02005D10_H
