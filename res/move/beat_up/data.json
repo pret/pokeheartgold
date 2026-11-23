@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_BEAT_UP",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 10,
+    "type": "TYPE_DRAGON",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 114,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "SMART"
+}

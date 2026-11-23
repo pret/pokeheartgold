@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_BOUNCE",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 85,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 85,
+    "pp": 5,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "CUTE"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FAIL_IF_NOT_USED_ALL_OTHER_MOVES",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 130,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+    "contestType": "CUTE"
+}

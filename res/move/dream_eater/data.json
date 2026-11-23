@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RECOVER_DAMAGE_SLEEP",
+    "category": "CATEGORY_SPECIAL",
+    "power": 100,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+    "contestType": "SMART"
+}

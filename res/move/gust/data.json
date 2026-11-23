@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_DAMAGE_FLY_OR_BOUNCE",
+    "category": "CATEGORY_SPECIAL",
+    "power": 40,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 100,
+    "pp": 35,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "SMART"
+}

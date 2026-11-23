@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_TRICK_ROOM",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 0,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_FIELD",
+    "priority": -7,
+    "flags": 16,
+    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
+    "contestType": "CUTE"
+}

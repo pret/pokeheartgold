@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_ATK_DOWN_2",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 22,
+    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+    "contestType": "BEAUTY"
+}

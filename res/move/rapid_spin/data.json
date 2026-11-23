@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_REMOVE_HAZARDS_AND_BINDING",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 20,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 40,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_WEATHER_RAIN",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_FIRE",
+    "accuracy": 0,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_FIELD",
+    "priority": 0,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+    "contestType": "TOUGH"
+}

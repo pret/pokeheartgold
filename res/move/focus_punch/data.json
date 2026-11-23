@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_LAST_WHIFF_IF_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 150,
+    "type": "TYPE_NORMAL",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": -3,
+    "flags": 131,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "TOUGH"
+}

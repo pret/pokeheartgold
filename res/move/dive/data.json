@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DIVE",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 80,
+    "type": "TYPE_FIRE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "BEAUTY"
+}

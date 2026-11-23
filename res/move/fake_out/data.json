@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 40,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 100,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 1,
+    "flags": 19,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "CUTE"
+}

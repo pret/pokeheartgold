@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 80,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "COOL"
+}

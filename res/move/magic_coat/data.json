@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_MAGIC_COAT",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 0,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 4,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "BEAUTY"
+}

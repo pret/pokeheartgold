@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_TARGET_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 50,
+    "type": "TYPE_DRAGON",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "BEAUTY"
+}

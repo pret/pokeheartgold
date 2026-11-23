@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_MIRROR_COAT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 1,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": -5,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "BEAUTY"
+}

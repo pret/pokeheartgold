@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_151",
+    "category": "CATEGORY_SPECIAL",
+    "power": 120,
+    "type": "TYPE_WATER",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "COOL"
+}

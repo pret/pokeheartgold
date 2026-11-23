@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RECOIL_QUARTER_DAMAGE_DELT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 90,
+    "type": "TYPE_NONE",
+    "accuracy": 85,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "TOUGH"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_BYPASS_ACCURACY",
+    "category": "CATEGORY_SPECIAL",
+    "power": 90,
+    "type": "TYPE_NORMAL",
+    "accuracy": 0,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 178,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

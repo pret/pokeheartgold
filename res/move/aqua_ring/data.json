@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RESTORE_HP_EVERY_TURN",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_FIRE",
+    "accuracy": 0,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_VOLTAGE",
+    "contestType": "BEAUTY"
+}

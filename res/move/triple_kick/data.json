@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_THREE_TIMES",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 10,
+    "type": "TYPE_NORMAL",
+    "accuracy": 90,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "COOL"
+}

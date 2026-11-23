@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RECOVER_HALF_DAMAGE_DELT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 60,
+    "type": "TYPE_WATER",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+    "contestType": "SMART"
+}

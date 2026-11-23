@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_THAW_AND_BURN_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 100,
+    "type": "TYPE_MYSTERY",
+    "accuracy": 95,
+    "pp": 5,
+    "effectChance": 50,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 146,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

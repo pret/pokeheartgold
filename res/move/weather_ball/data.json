@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CHANGE_TYPE_WITH_WEATHER",
+    "category": "CATEGORY_SPECIAL",
+    "power": 50,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+    "contestType": "SMART"
+}

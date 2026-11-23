@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RANDOM_DAMAGE_1_TO_150_LEVEL",
+    "category": "CATEGORY_SPECIAL",
+    "power": 1,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 80,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "SMART"
+}

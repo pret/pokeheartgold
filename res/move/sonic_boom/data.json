@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_10_DAMAGE_FLAT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 90,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 114,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

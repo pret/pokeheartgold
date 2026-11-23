@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DECREASE_POWER_WITH_LESS_USER_HP",
+    "category": "CATEGORY_SPECIAL",
+    "power": 150,
+    "type": "TYPE_MYSTERY",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

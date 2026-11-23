@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HALVE_DEFENSE",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 250,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+    "contestType": "BEAUTY"
+}

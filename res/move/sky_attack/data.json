@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 140,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 90,
+    "pp": 5,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "COOL"
+}

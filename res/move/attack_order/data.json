@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIGH_CRITICAL",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 90,
+    "type": "TYPE_ROCK",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+    "contestType": "SMART"
+}

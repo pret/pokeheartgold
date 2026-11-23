@@ -13,11 +13,11 @@ typedef struct MoveTbl {
     u8 effectChance;
     u16 range;
     s8 priority;
-    u8 unkB;
+    u8 flags;
     struct {
-        u8 unkC;
+        u8 contestEffect;
         u8 contestType;
-        u16 unk_E;
+        u8 padding[2];
     };
 } MoveTbl;
 

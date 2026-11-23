@@ -12,15 +12,6 @@
                 "ms-python.python",
                 "ms-azuretools.vscode-containers"
             ]
-        },
-        "codespaces": {
-            "repositories": {
-                "PikalaxALT/pokeheartgold": {
-                    "permissions": {
-                        "workflows": "write"
-                    }
-                }
-            }
         }
     },
     "postCreateCommand": "bash ./.devcontainer/setup-devcontainer.sh"

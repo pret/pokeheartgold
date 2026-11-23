@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_PARALYZE_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 80,
+    "type": "TYPE_GRASS",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 30,
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

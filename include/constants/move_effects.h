@@ -38,6 +38,7 @@
 #define MOVE_EFFECT_INCREASE_PRIZE_MONEY               34
 #define MOVE_EFFECT_SET_LIGHT_SCREEN                   35
 #define MOVE_EFFECT_RANDOM_PRIMARY_STATUS_HIT          36 // tri attack
+#define MOVE_EFFECT_REST                               37
 #define MOVE_EFFECT_ONE_HIT_KO                         38
 #define MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT              39
 #define MOVE_EFFECT_HALVE_HP                           40
@@ -182,6 +183,10 @@
 #define MOVE_EFFECT_HEAL_IN_3_TURNS                    179
 #define MOVE_EFFECT_USE_RANDOM_ALLY_MOVE               180
 #define MOVE_EFFECT_GROUND_TRAP_USER_CONTINUOUS_HEAL   181
+#define MOVE_EFFECT_HIT_USER_ATTACK_DOWN_1             182
+#define MOVE_EFFECT_MAGIC_COAT                         183
+#define MOVE_EFFECT_RECYCLE                            184
+#define MOVE_EFFECT_HIT_HARDER_IF_DAMAGED_FIRST        185
 #define MOVE_EFFECT_REMOVE_SCREENS                     186
 #define MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN             187
 #define MOVE_EFFECT_REMOVE_HELD_ITEM                   188
@@ -195,6 +200,7 @@
 #define MOVE_EFFECT_INCREASE_POWER_WITH_WEIGHT         196
 #define MOVE_EFFECT_SECRET_POWER                       197
 #define MOVE_EFFECT_RECOIL_THIRD                       198
+#define MOVE_EFFECT_TEETER_DANCE                       199
 #define MOVE_EFFECT_HIGH_CRITICAL_BURN_HIT             200
 #define MOVE_EFFECT_HALVE_ELECTRIC_DAMAGE              201
 #define MOVE_EFFECT_FLINCH_POISON_HIT                  202

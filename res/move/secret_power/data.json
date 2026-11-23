@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_SECRET_POWER",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 70,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
+    "contestType": "SMART"
+}

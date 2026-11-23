@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FREEZE_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 40,
+    "type": "TYPE_PSYCHIC",
+    "accuracy": 100,
+    "pp": 25,
+    "effectChance": 10,
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "BEAUTY"
+}

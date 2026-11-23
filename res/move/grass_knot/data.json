@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_INCREASE_POWER_WITH_WEIGHT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 1,
+    "type": "TYPE_WATER",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+    "contestType": "SMART"
+}

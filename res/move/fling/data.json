@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FLING",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_DRAGON",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
+    "contestType": "TOUGH"
+}

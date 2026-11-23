@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_DAMAGE_DIG",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 100,
+    "type": "TYPE_POISON",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "TOUGH"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_PRIORITY_1",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 40,
+    "type": "TYPE_BUG",
+    "accuracy": 100,
+    "pp": 30,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 1,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+    "contestType": "SMART"
+}

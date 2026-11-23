@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CONTINUE_AND_CONFUSE_SELF",
+    "category": "CATEGORY_SPECIAL",
+    "power": 90,
+    "type": "TYPE_WATER",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_RANDOM_OPPONENT",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+    "contestType": "BEAUTY"
+}

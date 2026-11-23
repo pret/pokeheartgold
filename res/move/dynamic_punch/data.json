@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CONFUSE_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 100,
+    "type": "TYPE_NORMAL",
+    "accuracy": 50,
+    "pp": 5,
+    "effectChance": 100,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 147,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

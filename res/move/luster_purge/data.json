@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LOWER_SP_DEF_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 70,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 50,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "SMART"
+}

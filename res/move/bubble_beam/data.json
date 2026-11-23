@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LOWER_SPEED_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 65,
+    "type": "TYPE_FIRE",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 10,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_LAST_NEXT_TURN",
+    "contestType": "BEAUTY"
+}

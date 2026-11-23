@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_POISON_MULTI_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 25,
+    "type": "TYPE_ROCK",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 20,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 82,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "COOL"
+}

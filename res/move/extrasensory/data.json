@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FLINCH_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 80,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 100,
+    "pp": 30,
+    "effectChance": 10,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_BIDE",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 1,
+    "flags": 99,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "TOUGH"
+}

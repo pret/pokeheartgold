@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 120,
+    "type": "TYPE_FIRE",
+    "accuracy": 80,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 178,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

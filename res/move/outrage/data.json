@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CONTINUE_AND_CONFUSE_SELF",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 120,
+    "type": "TYPE_ICE",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_RANDOM_OPPONENT",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "COOL"
+}

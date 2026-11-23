@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_FLY",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 85,
+    "type": "TYPE_NORMAL",
+    "accuracy": 90,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

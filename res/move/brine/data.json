@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_WHEN_BELOW_HALF",
+    "category": "CATEGORY_SPECIAL",
+    "power": 65,
+    "type": "TYPE_FIRE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+    "contestType": "SMART"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_FIRST_IF_TARGET_ATTACKING",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 80,
+    "type": "TYPE_DRAGON",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 1,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+    "contestType": "SMART"
+}

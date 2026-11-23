@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RECOIL_PARALYZE_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 120,
+    "type": "TYPE_GRASS",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 10,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "COOL"
+}

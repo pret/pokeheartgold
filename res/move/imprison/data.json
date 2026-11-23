@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_MAKE_SHARED_MOVES_UNUSEABL",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+    "contestType": "SMART"
+}

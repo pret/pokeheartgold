@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DAMAGE_WHILE_ASLEEP",
+    "category": "CATEGORY_SPECIAL",
+    "power": 40,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "CUTE"
+}

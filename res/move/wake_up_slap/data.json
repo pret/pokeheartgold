@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_HEAL_SLEEP",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 60,
+    "type": "TYPE_NORMAL",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+    "contestType": "SMART"
+}

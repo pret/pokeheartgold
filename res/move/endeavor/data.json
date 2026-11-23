@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_SET_HP_EQUAL_TO_USER",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "TOUGH"
+}

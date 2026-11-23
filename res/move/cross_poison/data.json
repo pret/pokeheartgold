@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 70,
+    "type": "TYPE_FLYING",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 10,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

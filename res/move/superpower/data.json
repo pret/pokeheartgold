@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_USER_ATTACK_DOWN_1",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 120,
+    "type": "TYPE_NORMAL",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 147,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "TOUGH"
+}

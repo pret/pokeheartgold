@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIGH_CRITICAL",
+    "category": "CATEGORY_SPECIAL",
+    "power": 100,
+    "type": "TYPE_ICE",
+    "accuracy": 95,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 178,
+    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+    "contestType": "TOUGH"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LOWER_SP_DEF_2_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 120,
+    "type": "TYPE_WATER",
+    "accuracy": 85,
+    "pp": 5,
+    "effectChance": 40,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 178,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "COOL"
+}

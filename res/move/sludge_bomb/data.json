@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_POISON_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 90,
+    "type": "TYPE_FLYING",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "TOUGH"
+}

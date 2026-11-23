@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LEARN_MOVE_PERMANENT",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 1,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
+    "contestType": "SMART"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIGH_CRITICAL",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 70,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

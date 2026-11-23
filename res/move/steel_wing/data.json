@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RAISE_DEF_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 70,
+    "type": "TYPE_GHOST",
+    "accuracy": 90,
+    "pp": 25,
+    "effectChance": 10,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

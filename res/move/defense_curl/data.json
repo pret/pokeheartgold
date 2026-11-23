@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DEF_UP_DOUBLE_ROLLOUT_POWER",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 40,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": 72,
+    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+    "contestType": "CUTE"
+}

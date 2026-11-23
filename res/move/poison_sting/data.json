@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_POISON_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 15,
+    "type": "TYPE_FLYING",
+    "accuracy": 100,
+    "pp": 35,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+    "contestType": "SMART"
+}

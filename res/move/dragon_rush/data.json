@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FLINCH_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 100,
+    "type": "TYPE_ICE",
+    "accuracy": 75,
+    "pp": 10,
+    "effectChance": 20,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

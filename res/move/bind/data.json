@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_BIND_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 15,
+    "type": "TYPE_NONE",
+    "accuracy": 75,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+    "contestType": "TOUGH"
+}

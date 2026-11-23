@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_MAKE_GLOBAL_TARGET",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 3,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
+    "contestType": "CUTE"
+}

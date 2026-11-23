@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_STEAL_HELD_ITEM",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 40,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 40,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 19,
+    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+    "contestType": "CUTE"
+}

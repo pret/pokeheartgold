@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LOWER_ACCURACY_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 20,
+    "type": "TYPE_POISON",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 100,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "CUTE"
+}

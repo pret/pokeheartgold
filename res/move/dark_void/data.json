@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_STATUS_SLEEP",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_DRAGON",
+    "accuracy": 80,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": 150,
+    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+    "contestType": "SMART"
+}

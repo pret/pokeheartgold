@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_NEXT_ATTACK_ALWAYS_HITS",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+    "contestType": "SMART"
+}

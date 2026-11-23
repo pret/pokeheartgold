@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RANDOM_POWER_MAYBE_HEAL",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 90,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+    "contestType": "CUTE"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RAISE_SP_ATK_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 50,
+    "type": "TYPE_GRASS",
+    "accuracy": 90,
+    "pp": 10,
+    "effectChance": 70,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

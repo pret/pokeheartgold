@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_REMOVE_SCREENS",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 75,
+    "type": "TYPE_NORMAL",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RECOIL_THIRD",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 120,
+    "type": "TYPE_WATER",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "TOUGH"
+}

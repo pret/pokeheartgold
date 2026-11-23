@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_THUNDER",
+    "category": "CATEGORY_SPECIAL",
+    "power": 120,
+    "type": "TYPE_GRASS",
+    "accuracy": 70,
+    "pp": 10,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 146,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "COOL"
+}

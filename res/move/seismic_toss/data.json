@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LEVEL_DAMAGE_FLAT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_NORMAL",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "TOUGH"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_UPROAR",
+    "category": "CATEGORY_SPECIAL",
+    "power": 50,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_RANDOM_OPPONENT",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+    "contestType": "CUTE"
+}

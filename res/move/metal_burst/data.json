@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_METAL_BURST",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_GHOST",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 0,
+    "flags": 16,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "BEAUTY"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_REMOVE_PROTECT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 50,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 2,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

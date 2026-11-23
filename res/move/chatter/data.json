@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CHATTER",
+    "category": "CATEGORY_SPECIAL",
+    "power": 60,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 66,
+    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
+    "contestType": "SMART"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_SWAP_STAT_CHANGES",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+    "contestType": "COOL"
+}

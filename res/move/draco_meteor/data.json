@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_USER_SP_ATK_DOWN_2",
+    "category": "CATEGORY_SPECIAL",
+    "power": 140,
+    "type": "TYPE_ICE",
+    "accuracy": 90,
+    "pp": 5,
+    "effectChance": 100,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "SMART"
+}

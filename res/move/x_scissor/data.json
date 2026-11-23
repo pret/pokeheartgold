@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 80,
+    "type": "TYPE_ROCK",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

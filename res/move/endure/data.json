@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_SURVIVE_WITH_1_HP",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 3,
+    "flags": 64,
+    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+    "contestType": "TOUGH"
+}

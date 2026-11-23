@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_NATURE_POWER",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 0,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 0,
+    "flags": 64,
+    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
+    "contestType": "BEAUTY"
+}

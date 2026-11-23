@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FLINCH_DOUBLE_DAMAGE_FLY_OR_BOUNCE",
+    "category": "CATEGORY_SPECIAL",
+    "power": 40,
+    "type": "TYPE_ICE",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 20,
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

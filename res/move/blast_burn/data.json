@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RECHARGE_AFTER",
+    "category": "CATEGORY_SPECIAL",
+    "power": 150,
+    "type": "TYPE_MYSTERY",
+    "accuracy": 90,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "BEAUTY"
+}

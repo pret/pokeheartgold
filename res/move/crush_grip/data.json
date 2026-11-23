@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_INCREASE_POWER_WITH_MORE_HP",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "TOUGH"
+}

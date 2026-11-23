@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RANDOM_POWER_10_CASES",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_POISON",
+    "accuracy": 100,
+    "pp": 30,
+    "effectChance": 0,
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "TOUGH"
+}

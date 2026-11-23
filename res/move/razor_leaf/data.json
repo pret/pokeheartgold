@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIGH_CRITICAL",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 55,
+    "type": "TYPE_WATER",
+    "accuracy": 95,
+    "pp": 25,
+    "effectChance": 0,
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

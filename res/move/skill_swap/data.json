@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_SWITCH_ABILITIES",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+    "contestType": "SMART"
+}

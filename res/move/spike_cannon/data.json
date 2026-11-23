@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_MULTI_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 20,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "COOL"
+}

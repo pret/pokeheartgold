@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_HARDER_IF_DAMAGED_FIRST",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 60,
+    "type": "TYPE_PSYCHIC",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": -4,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+    "contestType": "COOL"
+}

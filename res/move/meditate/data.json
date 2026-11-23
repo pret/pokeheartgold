@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_ATK_UP",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_ELECTRIC",
+    "accuracy": 0,
+    "pp": 40,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": 8,
+    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+    "contestType": "BEAUTY"
+}

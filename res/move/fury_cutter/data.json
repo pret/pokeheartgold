@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_EACH_TURN",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 10,
+    "type": "TYPE_ROCK",
+    "accuracy": 95,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "COOL"
+}

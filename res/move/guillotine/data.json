@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_ONE_HIT_KO",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 30,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 19,
+    "contestEffect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+    "contestType": "COOL"
+}

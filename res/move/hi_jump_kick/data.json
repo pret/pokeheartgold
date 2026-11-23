@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CRASH_ON_MISS",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 100,
+    "type": "TYPE_NORMAL",
+    "accuracy": 90,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

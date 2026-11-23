@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_JUDGEMENT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 100,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
+    "contestType": "SMART"
+}

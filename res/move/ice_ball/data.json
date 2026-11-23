@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_EACH_TURN_LOCK_INTO",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 30,
+    "type": "TYPE_PSYCHIC",
+    "accuracy": 90,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 51,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "BEAUTY"
+}

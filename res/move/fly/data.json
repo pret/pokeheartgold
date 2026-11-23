@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FLY",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 90,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 95,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+    "contestType": "SMART"
+}

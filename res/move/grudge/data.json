@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_REMOVE_ALL_PP_ON_DEFEAT",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_BUG",
+    "accuracy": 0,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": 0,
+    "contestEffect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+    "contestType": "TOUGH"
+}

@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 120,
+    "type": "TYPE_WATER",
+    "accuracy": 85,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "BEAUTY"
+}

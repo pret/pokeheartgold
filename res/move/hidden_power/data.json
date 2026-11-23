@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_RANDOM_POWER_BASED_ON_IVS",
+    "category": "CATEGORY_SPECIAL",
+    "power": 1,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 15,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
+    "contestType": "SMART"
+}

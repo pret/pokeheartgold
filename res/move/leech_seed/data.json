@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_STATUS_LEECH_SEED",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_WATER",
+    "accuracy": 90,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 22,
+    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+    "contestType": "SMART"
+}

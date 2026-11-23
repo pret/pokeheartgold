@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_EAT_BERRY",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 60,
+    "type": "TYPE_ROCK",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 115,
+    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+    "contestType": "TOUGH"
+}

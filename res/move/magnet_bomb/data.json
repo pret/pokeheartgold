@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_BYPASS_ACCURACY",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 60,
+    "type": "TYPE_GHOST",
+    "accuracy": 0,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "COOL"
+}

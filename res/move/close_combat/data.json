@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_DEF_SPD_DOWN_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 120,
+    "type": "TYPE_NORMAL",
+    "accuracy": 100,
+    "pp": 5,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 179,
+    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+    "contestType": "SMART"
+}

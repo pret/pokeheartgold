@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HEAL_HALF_REMOVE_FLYING_TYPE",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_FIGHTING",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": 72,
+    "contestEffect": "CONTEST_EFFECT_VOLTAGE",
+    "contestType": "COOL"
+}

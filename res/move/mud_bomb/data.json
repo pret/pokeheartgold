@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_LOWER_ACCURACY_HIT",
+    "category": "CATEGORY_SPECIAL",
+    "power": 65,
+    "type": "TYPE_POISON",
+    "accuracy": 85,
+    "pp": 10,
+    "effectChance": 30,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 50,
+    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+    "contestType": "SMART"
+}

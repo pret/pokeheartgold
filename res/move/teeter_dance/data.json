@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_TEETER_DANCE",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_NONE",
+    "accuracy": 100,
+    "pp": 20,
+    "effectChance": 0,
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": 18,
+    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
+    "contestType": "CUTE"
+}

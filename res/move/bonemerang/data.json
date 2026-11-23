@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_HIT_TWICE",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 50,
+    "type": "TYPE_POISON",
+    "accuracy": 90,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 114,
+    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+    "contestType": "TOUGH"
+}

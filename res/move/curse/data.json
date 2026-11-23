@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_CURSE",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_STEEL",
+    "accuracy": 0,
+    "pp": 10,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 64,
+    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+    "contestType": "TOUGH"
+}

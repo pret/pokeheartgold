@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_STATUS_POISON",
+    "category": "CATEGORY_STATUS",
+    "power": 0,
+    "type": "TYPE_FLYING",
+    "accuracy": 55,
+    "pp": 40,
+    "effectChance": 0,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 22,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "SMART"
+}

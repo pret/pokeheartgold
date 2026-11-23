@@ -1,0 +1,14 @@
+{
+    "effect": "MOVE_EFFECT_FLINCH_HIT",
+    "category": "CATEGORY_PHYSICAL",
+    "power": 65,
+    "type": "TYPE_POISON",
+    "accuracy": 85,
+    "pp": 20,
+    "effectChance": 10,
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": 82,
+    "contestEffect": "CONTEST_EFFECT_BASIC",
+    "contestType": "TOUGH"
+}
