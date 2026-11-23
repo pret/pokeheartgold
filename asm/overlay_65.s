@@ -201,10 +201,10 @@ ov65_0221BFEC: ; 0x0221BFEC
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
 	add r5, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_02034818
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
@@ -998,7 +998,7 @@ _0221C6A4:
 	mov r0, #2
 _0221C6A6:
 	str r0, [r4, #0x58]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0221C6CA
 	bl LCRandom
@@ -1006,7 +1006,7 @@ _0221C6A6:
 	bl _s32_div_f
 	lsl r0, r1, #0x10
 	lsr r5, r0, #0x10
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #0x1f
 	add r2, r5, #3
 	bl ov65_0221DE10
@@ -1078,10 +1078,10 @@ _0221C748:
 	str r0, [r4, #0x5c]
 	str r0, [r4, #0x60]
 	str r0, [r4, #0x64]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #1
 	bne _0221C76C
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	ldr r1, _0221C9AC ; =0x00002224
 	ldr r2, [r4, #0x5c]
 	ldr r1, [r4, r1]
@@ -1175,7 +1175,7 @@ _0221C804:
 	str r0, [r4, #0x58]
 	b _0221C99E
 _0221C812:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_02034818
 	ldr r2, _0221C9BC ; =0x00002230
 	ldr r1, [r4, r2]
@@ -3845,7 +3845,7 @@ ov65_0221DE24: ; 0x0221DE24
 	cmp r4, r0
 	beq _0221DE50
 _0221DE3C:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	add r1, r4, #0
 	add r2, r6, #0
 	bl ov65_0221DE10
@@ -4148,7 +4148,7 @@ ov65_0221E06C: ; 0x0221E06C
 	strb r0, [r5, #0x1f]
 	mov r0, #0
 	str r0, [r5, #0x34]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_02034818
 	add r1, r0, #0
 	add r0, r5, #0
@@ -4162,7 +4162,7 @@ _0221E09C:
 	ldr r0, [r5, r0]
 	bl Party_GetCount
 	strb r0, [r5, #0x1f]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r2, #1
 	ldr r1, _0221E138 ; =0x00002E20
 	eor r2, r0
@@ -4172,7 +4172,7 @@ _0221E09C:
 	mul r0, r2
 	add r0, r1, r0
 	str r0, [r5, #0x34]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818
@@ -4976,7 +4976,7 @@ ov65_0221E740: ; 0x0221E740
 	mvn r1, r1
 	str r1, [r5, r0]
 	mov r6, #0
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r0, #0
 	ble _0221E77C
 	ldr r7, _0221E83C ; =0x000035F8
@@ -4996,7 +4996,7 @@ _0221E75A:
 _0221E770:
 	add r4, r4, #4
 	add r6, r6, #1
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	cmp r6, r0
 	blt _0221E75A
 _0221E77C:
@@ -6800,7 +6800,7 @@ _0221F62C:
 	add r2, sp, #0x14
 	bl SetMonData
 _0221F664:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_02034818
 	add r1, r0, #0
 	mov r0, #0xb
@@ -6817,7 +6817,7 @@ _0221F664:
 	ldr r1, [r5, #0x3c]
 	add r0, r4, #0
 	bl CopyPokemonToPokemon
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	eor r0, r1
 	bl sub_02034818

@@ -1261,7 +1261,7 @@ sub_020342C8: ; 0x020342C8
 sub_020342CC: ; 0x020342CC
 	push {r3, r4, r5, lr}
 	add r5, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0203430A
 	ldr r4, _0203430C ; =_021D412C
@@ -1321,7 +1321,7 @@ _02034334: .word sub_020376E0
 sub_02034338: ; 0x02034338
 	push {r4, lr}
 	add r4, r0, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0203434E
 	ldr r0, _02034350 ; =_021D412C

@@ -109,7 +109,7 @@ u8 CapsuleMenu_GetSealNameIndex(u8 idx) {
     return sSealTypeValues[idx].nameIdx;
 }
 
-u8 CapsuleMenu_GetSealParticleIndex(u32 idx) {
+u8 CapsuleMenu_GetSealParticleIndex(u8 idx) {
     GF_ASSERT(idx < NELEMS(sSealTypeValues));
     return sSealTypeValues[idx].particleIndex;
 }

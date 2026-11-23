@@ -25,7 +25,7 @@ sub_02035900: ; 0x02035900
 	bne _02035910
 	b _02035A58
 _02035910:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -56,7 +56,7 @@ _0203592A:
 	add r1, r4, #0
 	lsl r2, r2, #6
 	bl MI_CpuFill8
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _02035972
@@ -133,7 +133,7 @@ _0203597E:
 	ldr r2, [r1, #8]
 	ldr r1, _02035AC8 ; =0x00000488
 	str r0, [r2, r1]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #0xa
 	bne _02035A2C
 	ldr r0, _02035AB8 ; =_021D4140
@@ -242,7 +242,7 @@ _02035ADC: .word 0x000006B6
 sub_02035AE0: ; 0x02035AE0
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #8
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -619,7 +619,7 @@ sub_02035DE0: ; 0x02035DE0
 	add r0, r2, r0
 	sub r3, #0x2a
 	str r1, [r0, r3]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -730,7 +730,7 @@ sub_02035ED8: ; 0x02035ED8
 	add r7, r2, #0
 	str r3, [sp]
 	mov r4, #1
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	bne _02035F02
@@ -758,7 +758,7 @@ sub_02035F14: ; 0x02035F14
 	add r6, r1, #0
 	add r7, r2, #0
 	mov r4, #1
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	bne _02035F34
@@ -783,7 +783,7 @@ _02035F48: .word _0210F900
 sub_02035F4C: ; 0x02035F4C
 	push {r4, lr}
 	mov r4, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02035F62
 	ldr r0, _02035F9C ; =_0210F900
@@ -918,7 +918,7 @@ sub_02036024: ; 0x02036024
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _0203604E
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _02036044
@@ -1011,7 +1011,7 @@ sub_020360EC: ; 0x020360EC
 	cmp r0, #0
 	beq _02036116
 	bl sub_02036AD8
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02036110
 	mov r0, #0
@@ -1035,7 +1035,7 @@ sub_0203611C: ; 0x0203611C
 	bl sub_020357FC
 	cmp r0, #0
 	beq _02036140
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _0203613C
 	bl sub_0203567C
@@ -1095,20 +1095,20 @@ sub_02036144: ; 0x02036144
 	bne _020361A4
 	bl sub_020372E4
 _020361A4:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _020361C6
 	mov r0, #0
 	bl sub_020373B4
 	cmp r0, #0
 	beq _020361C6
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034084
 	cmp r0, #0
 	bne _020361C6
 	bl sub_0203667C
 _020361C6:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _020361D6
 	bl sub_02035FF0
@@ -1126,7 +1126,7 @@ _020361E0:
 	ldr r0, _02036228 ; =0x00000694
 	ldrh r0, [r1, r0]
 	bl sub_020355C8
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _020361F8
 	bl sub_02035E9C
@@ -1216,7 +1216,7 @@ _02036294: .word _021D4140
 	thumb_func_start sub_02036298
 sub_02036298: ; 0x02036298
 	push {r3, r4, r5, r6, r7, lr}
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034084
 	cmp r0, #0
 	beq _0203634C
@@ -1271,7 +1271,7 @@ _020362FA:
 _02036308:
 	b _0203641C
 _0203630A:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -1305,7 +1305,7 @@ _02036344:
 	strb r1, [r0, #1]
 	pop {r3, r4, r5, r6, r7, pc}
 _0203634C:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _020363CA
@@ -1368,7 +1368,7 @@ _020363CA:
 	bl sub_02033298
 	cmp r0, #4
 	bne _0203641C
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020373B4
 	cmp r0, #0
 	beq _0203641C
@@ -1418,12 +1418,12 @@ sub_02036438: ; 0x02036438
 	sub sp, #0x10
 	str r0, [sp]
 	mov r7, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
 	str r0, [sp, #0xc]
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -1527,15 +1527,15 @@ sub_02036508: ; 0x02036508
 	bne _02036514
 	b _0203661C
 _02036514:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	bne _0203661C
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -1666,7 +1666,7 @@ _0203662C: .word 0x0000066C
 	thumb_func_start sub_02036630
 sub_02036630: ; 0x02036630
 	push {r3, r4, r5, r6, r7, lr}
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -1706,12 +1706,12 @@ _02036678: .word 0x0000066C
 	thumb_func_start sub_0203667C
 sub_0203667C: ; 0x0203667C
 	push {r3, r4, r5, r6, r7, lr}
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
 	add r6, r0, #1
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _02036738
@@ -1899,12 +1899,12 @@ _020367F6:
 	bl sub_02035FF0
 	cmp r0, #1
 	bne _020368B4
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
 	add r6, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -2064,12 +2064,12 @@ _0203693A:
 	bl sub_02035FF0
 	cmp r0, #1
 	bne _02036992
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
 	add r6, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -2157,12 +2157,12 @@ _020369FA:
 	bl sub_02035FF0
 	cmp r0, #1
 	bne _02036A88
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
 	add r6, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -2271,27 +2271,27 @@ sub_02036AD8: ; 0x02036AD8
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _02036BCE
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	bne _02036BCE
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
 	add r4, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
 	bl sub_02033298
 	cmp r0, #4
 	bne _02036BCE
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020373B4
 	cmp r0, #0
 	bne _02036B22
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	pop {r4, pc}
 _02036B22:
 	ldr r0, _02036BD4 ; =_0210F900
@@ -2302,7 +2302,7 @@ _02036B22:
 	cmp r0, #0
 	bne _02036BCE
 _02036B30:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02036B84
 	ldr r0, _02036BD4 ; =_0210F900
@@ -2737,12 +2737,12 @@ sub_02036E60: ; 0x02036E60
 	push {r3, r4, r5, lr}
 	sub sp, #8
 	add r4, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_0203772C
 	add r5, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -2931,7 +2931,7 @@ sub_02036FD8: ; 0x02036FD8
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020373B4
 	cmp r0, #0
 	bne _02036FF4
@@ -2958,7 +2958,7 @@ _02036FF4:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0203701A:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #0xa
 	bne _02037026
 	bl sub_02037974
@@ -2977,7 +2977,7 @@ sub_02037030: ; 0x02037030
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	bl sub_020373B4
 	cmp r0, #0
 	bne _0203704C
@@ -3003,7 +3003,7 @@ _0203704C:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _02037070:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #0xa
 	bne _0203707C
 	bl sub_02037974
@@ -3022,7 +3022,7 @@ sub_02037088: ; 0x02037088
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _020370A4
 	bl GF_AssertFail
@@ -3067,7 +3067,7 @@ _020370CA:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _020370F0:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #0xa
 	bne _020370FC
 	bl sub_02037974
@@ -3086,7 +3086,7 @@ sub_02037108: ; 0x02037108
 	add r5, r0, #0
 	add r4, r1, #0
 	add r6, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _02037124
 	bl sub_02037974
@@ -3130,7 +3130,7 @@ _0203714A:
 	mov r0, #1
 	pop {r4, r5, r6, pc}
 _0203716E:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	cmp r0, #0xa
 	bne _0203717A
 	bl sub_02037974
@@ -3375,7 +3375,7 @@ sub_02037334: ; 0x02037334
 	ldrb r0, [r1, r0]
 	cmp r0, #0
 	bne _020373A0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	bl sub_02033FC4
@@ -3437,7 +3437,7 @@ sub_020373B4: ; 0x020373B4
 	mov r0, #0
 	pop {r4, pc}
 _020373C4:
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _020373F2
@@ -3459,7 +3459,7 @@ _020373EE:
 	mov r0, #0
 	pop {r4, pc}
 _020373F2:
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #0
 	bne _020373FE
 	mov r0, #0
@@ -3471,13 +3471,13 @@ _020373FE:
 	mov r0, #0
 	pop {r4, pc}
 _0203740A:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r4, r0
 	bne _02037416
 	mov r0, #1
 	pop {r4, pc}
 _02037416:
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02037430
 	bl sub_02033250
@@ -3508,8 +3508,8 @@ _0203744C: .word 0x000006B6
 _02037450: .word 0x00000694
 	thumb_func_end sub_020373B4
 
-	thumb_func_start sub_02037454
-sub_02037454: ; 0x02037454
+	thumb_func_start CommSystem_GetConnectedCount
+CommSystem_GetConnectedCount: ; 0x02037454
 	push {r3, r4, r5, lr}
 	mov r4, #0
 	add r5, r4, #0
@@ -3527,16 +3527,16 @@ _02037468:
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-	thumb_func_end sub_02037454
+	thumb_func_end CommSystem_GetConnectedCount
 
-	thumb_func_start sub_02037474
-sub_02037474: ; 0x02037474
+	thumb_func_start CommSystem_IsInitialized
+CommSystem_IsInitialized: ; 0x02037474
 	push {r3, lr}
 	ldr r0, _02037494 ; =_021D4140
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _0203748E
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _0203748E
@@ -3547,7 +3547,7 @@ _0203748E:
 	pop {r3, pc}
 	.balign 4, 0
 _02037494: .word _021D4140
-	thumb_func_end sub_02037474
+	thumb_func_end CommSystem_IsInitialized
 
 	thumb_func_start sub_02037498
 sub_02037498: ; 0x02037498
@@ -3766,7 +3766,7 @@ _02037614: .word 0x000006AC
 sub_02037618: ; 0x02037618
 	push {r4, lr}
 	add r4, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02037636
 	ldr r1, _02037638 ; =_021D4140
@@ -3789,7 +3789,7 @@ _0203763C: .word 0x000006AB
 sub_02037640: ; 0x02037640
 	push {r4, lr}
 	add r4, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	beq _0203765E
 	ldr r1, _02037660 ; =_021D4140
@@ -3812,7 +3812,7 @@ _02037664: .word 0x000006AC
 sub_02037668: ; 0x02037668
 	push {r4, lr}
 	add r4, r2, #0
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02037690
 	ldr r0, _02037694 ; =_021D4140
@@ -3835,14 +3835,14 @@ _02037694: .word _021D4140
 _02037698: .word 0x000006AB
 	thumb_func_end sub_02037668
 
-	thumb_func_start sub_0203769C
-sub_0203769C: ; 0x0203769C
+	thumb_func_start CommSystem_GetCurNetId
+CommSystem_GetCurNetId: ; 0x0203769C
 	push {r3, lr}
 	ldr r0, _020376D0 ; =_021D4140
 	ldr r0, [r0, #8]
 	cmp r0, #0
 	beq _020376CA
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _020376C4
@@ -3862,7 +3862,7 @@ _020376CA:
 	pop {r3, pc}
 	nop
 _020376D0: .word _021D4140
-	thumb_func_end sub_0203769C
+	thumb_func_end CommSystem_GetCurNetId
 
 	thumb_func_start sub_020376D4
 sub_020376D4: ; 0x020376D4
@@ -3972,7 +3972,7 @@ sub_0203776C: ; 0x0203776C
 	bl sub_020357FC
 	cmp r0, #0
 	bne _02037786
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _02037786
 	mov r0, #2
@@ -4163,7 +4163,7 @@ _020378C8: .word 0x000006A6
 	thumb_func_start sub_020378CC
 sub_020378CC: ; 0x020378CC
 	push {r3, lr}
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _020378E0
@@ -4178,7 +4178,7 @@ _020378E0:
 sub_020378E4: ; 0x020378E4
 	push {r3, r4, r5, lr}
 	add r4, r0, #0
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _02037922
@@ -4219,7 +4219,7 @@ sub_02037930: ; 0x02037930
 	push {r4, lr}
 	add r4, r0, #0
 	bl sub_020378E4
-	bl sub_0203993C
+	bl CommManager_GetCommType
 	bl sub_02034044
 	cmp r0, #0
 	beq _02037956

@@ -88,7 +88,7 @@
 .public String_Delete
 .public Save_PlayerData_GetProfile
 .public PlayerProfile_GetTrainerGender
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_02037958
 .public LocalFieldData_GetPlayer
 .public LocalFieldData_GetSafariBallsCounter

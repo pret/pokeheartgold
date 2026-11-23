@@ -61,7 +61,7 @@
 .public sub_0203410C
 .public sub_020342C0
 .public sub_02037030
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public FX_Inv
 .public FX_ModS32
 .public MI_CpuFill8

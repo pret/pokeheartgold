@@ -1,10 +1,10 @@
 #include "application/capsule_menu/capsule_menu.h"
 #include "application/capsule_menu/defs.h"
 #include "battle/battle.h"
+#include "battle/overlay_07.h"
 #include "msgdata/msg/msg_0011.h"
 
 #include "game_stats.h"
-#include "overlay_07.h"
 #include "pokemon.h"
 #include "render_window.h"
 #include "screen_fade.h"
@@ -624,7 +624,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         BallThrow sp5C;
         sp5C.type = 1;
         sp5C.heapID = HEAP_ID_CAPSULE_MENU;
-        sp5C.mode = 0;
+        sp5C.mode = BALL_THROW_MODE_SEND_OUT;
         sp5C.target = 0xFF;
         sp5C.bgPrio = 0;
         sp5C.surface = 1;
@@ -675,7 +675,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         ++appMan->throwStateID;
     } break;
     case THROW_WAIT_FOR_ANIMS_END_STATE_ID:
-        if (ov07_02232A54(appMan->graphicsMan.sealEffect)) {
+        if (BallCapsuleSealEffect_IsActive(appMan->graphicsMan.sealEffect)) {
             break;
         }
         if (sub_02017068(appMan->graphicsMan.pokepicAnimManager, 0) != TRUE) {
@@ -684,7 +684,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         if (Pokepic_IsAnimActive(appMan->graphicsMan.pokepic)) {
             break;
         }
-        ov07_02232AB8(appMan->graphicsMan.sealEffect);
+        BallCapsuleSealEffect_Free(appMan->graphicsMan.sealEffect);
         ++appMan->throwStateID;
         break;
     case THROW_WAIT_AFTER_ANIMS_END_STATE_ID:
@@ -696,7 +696,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_FadeOut(CapsuleAppManager *app
         BallThrow ballThrow;
         ballThrow.type = 1;
         ballThrow.heapID = HEAP_ID_CAPSULE_MENU;
-        ballThrow.mode = 5;
+        ballThrow.mode = BALL_THROW_MODE_RECALL;
         ballThrow.target = 0xFF;
         ballThrow.bgPrio = 0;
         ballThrow.surface = 1;

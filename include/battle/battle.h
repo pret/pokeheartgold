@@ -4,12 +4,17 @@
 #include "constants/battle.h"
 #include "constants/moves.h"
 
+#include "battle/battle_setup.h"
+#include "battle/party_gauge.h"
+#include "library/spl_emitter.h"
+
 #include "bag.h"
 #include "bag_cursor.h"
 #include "bg_window.h"
 #include "filesystem.h"
 #include "font.h"
 #include "game_stats.h"
+#include "gf_3d_vramman.h"
 #include "item.h"
 #include "move.h"
 #include "msgdata.h"
@@ -27,6 +32,7 @@
 #include "trainer_data.h"
 #include "unk_0200CE7C.h"
 #include "unk_02013534.h"
+#include "unk_02067A60.h"
 
 typedef struct BattleMessage {
     u8 unk0;
@@ -163,6 +169,8 @@ typedef struct MoveFailFlags {
     u32 healBlock : 1;
     u32 unused : 21;
 } MoveFailFlags;
+
+typedef struct BattleAnimSystem BattleAnimSystem;
 
 typedef struct UnkBattlemonSub {
     u32 disabledTurns : 3;
@@ -344,7 +352,7 @@ typedef struct BattleContext {
     int msgTemp;
     int calcTemp;
     int tempData;
-    u32 unk_13C[4];
+    u32 battlerStatusFlags[4];
     u32 unk_14C;
     int totalTurns;
     int totalTimesFainted[4];
@@ -480,19 +488,30 @@ typedef struct BattleHpBar {
     u16 unk54;
 } BattleHpBar;
 
-typedef struct UnkBallData UnkBallData;
+typedef struct BallRotation BallRotation;
+
+typedef struct BattleCursorPosition {
+    s8 commandX;
+    s8 commandY;
+    s8 moveX;
+    s8 moveY;
+    s8 targetX;
+    s8 targetY;
+    s8 monTargetType;
+    u8 unk_07[1];
+} BattleCursorPosition;
 
 typedef struct OpponentData {
-    u32 unk0[6];
+    SysTaskFunc unk0[6];
     ManagedSprite *managedSprite;
-    u32 *unk1C;
+    Pokepic *unk1C;
     Pokepic *pokepic;
     u32 *unk24;
     BattleHpBar hpBar;
-    void *unk80;
-    u8 unk84[0x4];
-    UnkBallData *ballData;
-    u8 unk8C[0x8];
+    BattleCursorPosition battleCursorPosition;
+    BallRotation *ballData;
+    void *unk8C;
+    u8 unk90[0x4];
     u8 unk94[0x100];
     u8 battlerId;
     u8 battlerType;
@@ -507,7 +526,7 @@ typedef struct OpponentData {
 } OpponentData;
 
 typedef struct UnkBattleSystemSub17C {
-    ManagedSprite *unk0;
+    ManagedSprite *managedSprite;
     BattleSystem *battleSystem;
     u8 unk8;
     u8 unk9;
@@ -531,17 +550,29 @@ typedef struct UnkBattleSystemSub220 {
 
 typedef struct BattleInput BattleInput;
 
+typedef struct TrainerIntroData {
+    BattleSetup *battleSetup;
+    Party *party[4];
+    String *trainerNames[4];
+    enum HeapID heapID;
+    u8 mode;
+    u8 playerSide;
+    u8 battleResult;
+    u8 isDone;
+    u8 recordingType;
+} TrainerIntroData;
+
 struct BattleSystem {
-    u32 *unk0;
+    GF3DVramMan *unk0;
     BgConfig *bgConfig;
     Window *window;
     MsgData *msgData;
-    u32 *unk10;
+    MsgData *unk10;
     MessageFormat *msgFormat;
     String *msgBuffer;
-    u32 unk1C;
-    u32 unk20;
-    u32 unk24;
+    SysTask *unk1C;
+    SysTask *unk20;
+    SysTask *unk24;
     PaletteData *palette;
     u32 battleType;
     BattleContext *ctx;
@@ -555,17 +586,17 @@ struct BattleSystem {
     Party *trainerParty[4];
     SOUND_CHATOT *chatotVoice[4];
     PokepicManager *pokepicManager;
-    u32 *unk8C;
+    BattleAnimSystem *unk8C;
     SpriteSystem *spriteRenderer;
     SpriteManager *gfxHandler;
     u32 *unk98;
-    u32 *unk9C;
+    CaptureAttempt *captureAttempt;
     u16 trainerId[4];
     u8 trainerGender[4];
     Trainer trainers[4];
     UnkBattleSystemSub17C unk17C[2]; // Battle Background..?
     BattleInput *battleInput;
-    u32 *unk1A0[2];
+    PartyGauge *unk1A0[2];
     BattleNumberPrinter *hpNumPrinter;
     BattleNumberPrinter *levelNumPrinter;
     void *msgIcon;
@@ -573,9 +604,9 @@ struct BattleSystem {
     u32 *unk1B8;
     void *unk1BC;
     u8 *unk1C0;
-    u32 *unk1C4;
+    TrainerIntroData *unk1C4;
     void *unk1C8; // related to animations
-    u32 *unk1CC;
+    NNSG2dCellTransferState *unk1CC;
     UnkBattleSystemSub1D0 unk1D0[4];
     UnkBattleSystemSub220 unk210;
     GameStats *gameStats;
@@ -595,7 +626,7 @@ struct BattleSystem {
     u8 *unk23F8;
     u8 unk23FC;
     u8 unk23FD;
-    u8 unk23FE;
+    u8 commandIsEndWait;
     u8 unk240F_0 : 1;
     u8 unk240F_1 : 1;
     u8 unk240E_F : 1;
@@ -612,13 +643,13 @@ struct BattleSystem {
     u8 battleOutcomeFlag;
     u8 unk2421;
     u16 unk2422;
-    int unk2424;
+    int evolutionLocation;
     int unk2428;
     int weather;
     BOOL metBill;
     u32 unk2434;
     int unk2438;
-    int unk243C;
+    int battlerIdCaught;
     int unk2440;
     u8 unk2442;
     u8 unk2445;
@@ -630,7 +661,7 @@ struct BattleSystem {
     u16 unk245C[4];
     int unk2464[4];
     u32 isRecordingPaused : 1;
-    u32 unk2474_1 : 1;
+    u32 momsSavingsActive : 1;
     u32 unk2474_2 : 1;
     u32 isFishing : 1;
     u32 unk2474_4 : 28;
@@ -644,7 +675,7 @@ struct BattleSystem {
 struct GetterWork {
     BattleSystem *battleSystem;
     BattleContext *ctx;
-    UnkBallData *ballData;
+    BallRotation *ballData;
     ManagedSprite *unkC[2];
     TextOBJ *unk14;
     UnkStruct_02021AC8 unk18;
@@ -686,12 +717,19 @@ typedef struct BattleItem {
     u8 monIndex;
 } BattleItem;
 
-typedef struct BattleCursorPosition BattleCursorPosition;
+enum BallThrowMode {
+    BALL_THROW_MODE_SEND_OUT = 0,
+    BALL_THROW_MODE_SEND_OUT_QUICK,
+    BALL_THROW_MODE_UNUSED,
+    BALL_THROW_MODE_THROW,
+    BALL_THROW_MODE_TRAINER_SEND_OUT,
+    BALL_THROW_MODE_RECALL,
+};
 
 typedef struct BallThrow {
     s32 type;
     enum HeapID heapID;
-    s32 mode;
+    enum BallThrowMode mode;
     s32 target;
     int ball;
     s32 bgPrio;
@@ -710,33 +748,217 @@ typedef struct UnkStruct_50C {
     enum HeapID heapID;
 } UnkStruct_50C;
 
-struct UnkBallData { // TODO: Give a better name.
-    int unk0;
-    int unk4;
-    int unk8;
-    int unkC;
-    int unk10;
-    int unk14;
-    int unk18;
-    int unk1C;
-    u8 unk20;
-    u8 unk21;
-    s8 unk22;
-    u8 unk23;
-    BOOL unk24;
-    int unk28;
+typedef struct ValueLerpContext {
+    s32 value;
+    s32 data[4];
+} ValueLerpContext;
+
+typedef struct XYTransformContext {
+    s16 x;
+    s16 y;
+    s32 data[8];
+} XYTransformContext;
+
+typedef struct {
+    s16 unk_00;
+    s16 unk_02;
+    s16 unk_04;
+    s16 unk_06;
+    int unk_08;
+    int unk_0C;
+    int unk_10;
+} UnkStruct_ov12_02237C54_sub1;
+
+typedef struct {
+    s16 unk_00;
+    s16 unk_02;
+    int unk_04;
+    enum HeapID heapID;
+    int unk_0C;
+    int unk_10;
+} UnkStruct_ov12_02236690;
+
+typedef struct UnkStruct_ov12_02236648 {
+    UnkStruct_ov12_02236690 unk_00;
+    SPLEmitter *unk_14;
+    void *unk_18;
+    int unk_1C;
+    int unk_20;
+} UnkStruct_ov12_02236648;
+
+typedef struct PaletteFadeContext {
+    BOOL active;
+    SysTask *task;
+    u32 bufferID;
+    u16 index;
+    u16 count;
+    u16 color;
+    u8 startFrac;
+    u8 endFrac;
+    u8 fraction;
+    s8 step;
+    s8 stepFrames;
+    s8 timer;
+    PaletteData *paletteData;
+} PaletteFadeContext;
+
+struct BallRotation {
+    int unk_00;
+    int unk_04;
+    int unk_08;
+    int unk_0C;
+    int unk_10;
+    int unk_14;
+    int unk_18;
+    BOOL unk_1C;
+    u8 unk_20;
+    u8 unk_21;
+    s8 unk_22;
+    BOOL unk_24;
+    BOOL unk_28;
     SpriteManager *spriteManager;
     ManagedSprite *managedSprite;
-    u8 unk34[0x5C];
-    BallThrow unk90;
-    u8 unkB8[0xC];
-    int unkC4;
-    int unkC8;
-    SysTask *unkCC;
-    int unkD0;
-    int unkD4;
-    int unkD8;
-    int unkDC;
-}; // Size: 0xe0
+    ValueLerpContext unk_34;
+    XYTransformContext unk_48[2];
+    BallThrow unk_90;
+    UnkStruct_ov12_02237C54_sub1 unk_B8;
+    SysTask *unk_CC;
+    UnkStruct_ov12_02236648 *unk_D0;
+    PaletteFadeContext *unk_D4;
+    void *unk_D8;
+    int unk_DC;
+};
+
+typedef struct BattlePartyContext {
+    Party *party;
+    void *unused1;
+    BattleSystem *battleSystem;
+    enum HeapID heapID;
+    u8 unused2;
+    u8 selectedPartyIndex;
+    u8 doubleBattleFirstSelectedPartySlot;
+    u8 unused3;
+    u8 playerPokemonPartySlot;
+    u8 partnerPokemonPartySlot;
+    u32 embargoRemainingTurns[2];
+    u16 currentDamage;
+    u16 selectedBattleBagItem;
+    u16 moveToLearn;
+    s32 battler;
+    u8 pokemonPartySlots[6];
+    u8 isCursorEnabled;
+    u8 selectedBattleBagPocket;
+    u8 selectedMoveSlot;
+    u8 battlePartyMode;
+    u8 battlePartyExited;
+} BattlePartyContext;
+
+typedef struct BattlerSpriteContext {
+    int targetBattler;
+    int sourceBattler;
+    UnkBattleSystemSub1D0 *pokemonSpriteData[4];
+    Pokepic *sprites[4];
+    u16 species[4];
+    u8 genders[4];
+    u8 shinyFlags[4];
+    u8 forms[4];
+    u32 personalities[4];
+    u8 types[4];
+} BattlerSpriteContext;
+
+typedef struct MoveDisplayInfo {
+    u16 move[4];
+    u16 curPP[4];
+    u16 maxPP[4];
+} MoveDisplayInfo;
+
+typedef struct ActionSelectData {
+    u8 battlerType;
+    u8 battler;
+    u8 partySlot;
+    u8 ballStatusBattler;
+    s16 curHp;
+    u16 maxHp;
+    u8 isWaitingForPartner;
+} ActionSelectData;
+
+typedef struct MoveSelectData {
+    u16 moveIDs[4];
+    u8 currPP[4];
+    u8 maxPP[4];
+    u8 battlerType;
+} MoveSelectData;
+
+typedef struct TargetSelectData {
+    TargetPokemon targetMonData[4];
+    u8 battlerType;
+    u8 targetingLayout;
+} TargetSelectData;
+
+typedef struct BattleBagContext {
+    BattleSystem *battleSystem;
+    PlayerProfile *trainerInfo;
+    Bag *bag;
+    enum HeapID heapID;
+    s32 battler;
+    BOOL isInCatchTutorial;
+    u32 embargoRemainingTurns;
+    u16 selectedBattleBagItem;
+    u8 selectedBattleBagPocket;
+    u8 lastUsedItemPocket;
+    u16 lastUsedItem;
+    u8 hasTwoOpponents;
+    u8 opponentHidden; // Has used fly, bounce, dig, etc
+    u8 opponentSubstituted;
+    u8 isCursorEnabled;
+    u8 battleBagExited;
+    u8 pocketCurrentPagePositions[5];
+    u8 pocketCurrentPages[5];
+} BattleBagContext;
+
+typedef struct GiveUpMoveData {
+    u16 move;
+    u16 unused_02;
+} GiveUpMoveData;
+
+typedef struct ParticleEffectTemplate {
+    int resourceID;
+    int cameraProjection;
+} ParticleEffectTemplate;
+
+typedef struct BattleBackgroundReference {
+    int narcID;
+    int tilesNarcMemberIdx;
+    int paletteNarcMemberIdx;
+    int tilemapNarcMemberIdx;
+    int paletteDestStart;
+    int paletteSrcSize;
+} BattleBackgroundReference;
+
+typedef struct BattleAnimBattlerContext {
+    SpriteSystem *spriteSystem;
+    BgConfig *bgConfig;
+    PaletteData *paletteData;
+    UnkBattleSystemSub1D0 *pokemonSpriteData[4];
+    u8 battlerTypes[4];
+    Pokepic *pokemonSprites[4];
+    u32 battleType;
+    u16 battlerSpecies[4];
+    u8 battlerGenders[4];
+    u8 battlerShinyFlags[4];
+    u8 battlerForms[4];
+    u32 battlerPersonalities[4];
+    u32 battlerMoveEffects[4];
+    int moveArcID;
+    BattleBackgroundReference battleBgRef;
+    void *chatotCry;
+    u8 *bgTiles;
+    u16 *bgPaletteBuffer;
+} BattleAnimBattlerContext;
+
+typedef struct BallThrowFlashData {
+    int state;
+    int unread_04;
+} BallThrowFlashData;
 
 #endif

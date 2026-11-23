@@ -223,7 +223,7 @@ _022381B4:
 	ldr r0, [r4, #4]
 	ldr r1, [sp, #0x10]
 	bl Party_InitWithMaxSize
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	cmp r0, #0
 	bne _022381C8
 	mov r5, #0
@@ -326,7 +326,7 @@ _0223828A:
 _0223829A:
 	add r0, r4, #0
 	bl BattleSetup_SetAllySideBattlersToPlayer
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r1, #1
 	sub r0, r1, r0
 	bl sub_02034818
