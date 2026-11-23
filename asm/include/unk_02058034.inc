@@ -18,11 +18,11 @@
 .public sub_02036010
 .public sub_02036FD8
 .public sub_020373B4
-.public sub_02037454
-.public sub_02037474
+.public CommSystem_GetConnectedCount
+.public CommSystem_IsInitialized
 .public sub_020374E4
 .public sub_02037504
-.public sub_0203769C
+.public CommSystem_GetCurNetId
 .public sub_020376E0
 .public sub_0203778C
 .public sub_02037958
@@ -37,7 +37,7 @@
 .public sub_02037E9C
 .public sub_02037EC8
 .public sub_020398D4
-.public sub_0203993C
+.public CommManager_GetCommType
 .public sub_02039980
 .public sub_020399FC
 .public FieldSystem_GetSaveData

@@ -40,7 +40,7 @@ struct BattleSetup {                     // declared in trainer_data.h
     void *unk_128;
     SaveWiFiHistory *wifiHistory;
     Options *options; // 130
-    struct UnkStruct_02067A60 *unk_134;
+    struct CaptureAttempt *captureAttempt;
     struct BattleSetupSub_138 unk138;
     GameStats *gameStats; // 144
     SavePalPad *palPad;   // 148
@@ -53,27 +53,27 @@ struct BattleSetup {                     // declared in trainer_data.h
     u32 unk_164;
     BOOL metBill;          // 168
     int momsSavingsActive; // 16C
-    u32 unk_170;
+    u32 battlerIdCaught;
     u32 weatherType; // 174
     int levelUpFlag; // 178
-    u8 filler_17C[0x10];
+    u32 filler_17C[4];
     u32 battleSpecial; // 18C
     int safariBalls;   // 190
     BOOL fixedDamaageMovesBanned;
-    EvolutionTaskData *evolutionTaskData;
-    int unk_19C;
+    void *evolutionTaskData; // this seems more generic than evolution data
+    int rand;
     int unk_1A0[4];
     u16 unk1B0;
     u8 unk1B2;
     u8 unk1B3;
     int unk1B4;
     void *unk1B8;
-    int unk1BC;
+    u8 unk1BC[4];
     SaveData *saveData; // 1c0
-    int unk1C4;
+    int isRecordingPaused;
     Pokemon *bugContestMon; // 1c8
     u8 unk1CC[BATTLER_MAX];
-    BOOL unk_1D0;
+    BOOL isFishing;
 };
 
 BattleSetup *BattleSetup_New(enum HeapID heapID, u32 battleFlags);
@@ -89,11 +89,11 @@ void BattleSetup_InitFromFieldSystem(BattleSetup *setup,
 void BattleSetup_InitForFixedLevelFacility(BattleSetup *setup,
     FieldSystem *fieldSystem,
     int level);
-void sub_020520B0(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
+void BattleSetup_InitWithPartyOrder(BattleSetup *setup, FieldSystem *fieldSystem, Party *party, u8 *partySlots);
 void sub_020522F0(BattleSetup *setup, FieldSystem *fieldSystem, void *partySlots);
-void sub_0205239C(BattleSetup *setup, FieldSystem *fieldSystem);
-void sub_02052444(BattleSetup *setup, FieldSystem *fieldSystem);
-void sub_02052544(BattleSetup *setup);
+void BattleSetup_UpdateFieldSystem(BattleSetup *setup, FieldSystem *fieldSystem);
+void BattleSetup_UpdatePokedex(BattleSetup *setup, FieldSystem *fieldSystem);
+void BattleSetup_SetWaterTerrain(BattleSetup *setup);
 BOOL IsBattleResultWin(u32 a0);
 BOOL IsBattleResultStaticWildWin(u32 a0);
 BOOL IsBattleResultLatiCaught(u32 a0);

@@ -22,7 +22,7 @@ _02258812:
 	bne _02258812
 	bl sub_020347A0
 	strb r0, [r6, #8]
-	bl sub_0203769C
+	bl CommSystem_GetCurNetId
 	mov r5, #0
 	add r7, r0, #0
 	add r4, r5, #0
@@ -509,7 +509,7 @@ ov90_02258B54: ; 0x02258B54
 	mov r4, #0
 	cmp r0, #0
 	beq _02258B94
-	bl sub_02037454
+	bl CommSystem_GetConnectedCount
 	ldrb r1, [r5, #8]
 	cmp r1, r0
 	beq _02258B6C

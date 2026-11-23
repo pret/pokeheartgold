@@ -171,8 +171,8 @@
 .public Options_GetFrame
 .public sub_02034818
 .public sub_02037030
-.public sub_02037474
-.public sub_0203769C
+.public CommSystem_IsInitialized
+.public CommSystem_GetCurNetId
 .public sub_02037AC0
 .public sub_02037B38
 .public sub_02037BEC

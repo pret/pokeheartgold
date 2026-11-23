@@ -88,7 +88,7 @@ TrainerCardMainApp_Init: ; 0x021E5AC0
 	bl Options_GetFrame
 	ldr r1, _021E5D5C ; =0x0000343D
 	strb r0, [r4, r1]
-	bl sub_02037474
+	bl CommSystem_IsInitialized
 	cmp r0, #1
 	bne _021E5B96
 	ldr r1, _021E5D60 ; =0x0000343A
