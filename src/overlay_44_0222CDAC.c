@@ -805,7 +805,7 @@ void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0) {
     arg0->unkD68.unk4 = 1;
     arg0->unkD68.unk32C = 0;
     arg0->unkD68.unk0 = SysTask_CreateOnVBlankQueue(ov44_0222A40C, &arg0->unkD68, 20);
-    Main_SetVBlankIntrCB((GFIntrCB)ov44_0222A7F8, arg0);
+    Main_SetVBlankIntrCB(ov44_0222A7F8, arg0);
     ov44_0222AFE8();
     ov44_0222B030(arg0, temp_r0);
     ov44_0222B0A4(arg0);
@@ -1003,14 +1003,15 @@ s32 ov44_0222A758(OverlayManager *overlayManager) {
     return 1;
 }
 
-void ov44_0222A7F8(UnkStruct_ov44_022319EC *arg0) {
-    DoScheduledBgGpuUpdates(arg0->unk15C);
+void ov44_0222A7F8(void *arg0) {
+    UnkStruct_ov44_022319EC *data = arg0;
+    DoScheduledBgGpuUpdates(data->unk15C);
     GF_RunVramTransferTasks();
     OamManager_ApplyAndResetBuffers();
-    if (arg0->unk10BC == 1) {
+    if (data->unk10BC == 1) {
         SetMasterBrightnessNeutral(PM_LCD_TOP);
         SetMasterBrightnessNeutral(PM_LCD_BOTTOM);
-        arg0->unk10BC = 0;
+        data->unk10BC = 0;
     }
 }
 
