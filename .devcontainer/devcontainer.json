@@ -13,6 +13,5 @@
                 "ms-azuretools.vscode-containers"
             ]
         }
-    },
-    "postCreateCommand": "bash ./.devcontainer/setup-devcontainer.sh"
+    }
 }

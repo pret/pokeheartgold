@@ -1,5 +1,5 @@
 {
-    "effect": "MOVE_EFFECT_HIT_HARDER_IF_DAMAGED_FIRST",
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_HIT",
     "category": "CATEGORY_PHYSICAL",
     "power": 60,
     "type": "TYPE_NORMAL",

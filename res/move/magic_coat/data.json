@@ -1,5 +1,5 @@
 {
-    "effect": "MOVE_EFFECT_MAGIC_COAT",
+    "effect": "MOVE_EFFECT_APPLY_MAGIC_COAT",
     "category": "CATEGORY_STATUS",
     "power": 0,
     "type": "TYPE_ELECTRIC",

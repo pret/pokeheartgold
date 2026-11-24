@@ -1,5 +1,5 @@
 {
-    "effect": "MOVE_EFFECT_HIT_USER_ATTACK_DOWN_1",
+    "effect": "MOVE_EFFECT_LOWER_OWN_ATK_AND_DEF",
     "category": "CATEGORY_PHYSICAL",
     "power": 120,
     "type": "TYPE_NORMAL",

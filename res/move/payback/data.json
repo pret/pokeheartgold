@@ -1,5 +1,5 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_HIT",
+    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_MOVING_SECOND",
     "category": "CATEGORY_PHYSICAL",
     "power": 50,
     "type": "TYPE_DRAGON",

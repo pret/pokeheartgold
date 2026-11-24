@@ -1,5 +1,5 @@
 {
-    "effect": "MOVE_EFFECT_151",
+    "effect": "MOVE_EFFECT_SKIP_CHARGE_TURN_IN_SUN",
     "category": "CATEGORY_SPECIAL",
     "power": 120,
     "type": "TYPE_WATER",

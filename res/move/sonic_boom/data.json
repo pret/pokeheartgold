@@ -1,5 +1,5 @@
 {
-    "effect": "MOVE_EFFECT_10_DAMAGE_FLAT",
+    "effect": "MOVE_EFFECT_20_DAMAGE_FLAT",
     "category": "CATEGORY_SPECIAL",
     "power": 1,
     "type": "TYPE_NONE",
