@@ -143,7 +143,7 @@ static BOOL Task_StartEncounter(TaskManager *taskManager) { // todo: better name
         fieldSystem->reverseTurnFrameSteps = 0;
 
         if (Encounter_GetResult(encounter, fieldSystem) == FALSE) {
-            if (encounter->setup->battleType & BATTLE_TYPE_11) {
+            if (encounter->setup->battleType & BATTLE_TYPE_CAN_LOSE) {
                 HealParty(SaveArray_Party_Get(fieldSystem->saveData));
             } else {
                 Encounter_Delete(encounter);
@@ -709,7 +709,7 @@ void SetupAndStartTrainerBattle(TaskManager *taskManager, u32 opponentTrainer1, 
     } else {
         battleType = BATTLE_TYPE_TRAINER;
         if (a4) {
-            battleType |= BATTLE_TYPE_11;
+            battleType |= BATTLE_TYPE_CAN_LOSE;
         }
     }
 
