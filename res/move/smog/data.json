@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_POISON_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Smog",
+    "description": [
+        "The foe is attacked\n",
+        "with a discharge of\n",
+        "filthy gases.\n",
+        "It may also poison\n",
+        "the target."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_POISON",
     "power": 20,
-    "type": "TYPE_FLYING",
     "accuracy": 70,
     "pp": 20,
-    "effectChance": 40,
+    "effect": {
+        "type": "MOVE_EFFECT_POISON_HIT",
+        "chance": 40
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "TOUGH"
+    }
 }

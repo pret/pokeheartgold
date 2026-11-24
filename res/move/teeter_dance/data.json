@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_CONFUSE_ALL",
-    "category": "CATEGORY_STATUS",
+    "name": "Teeter Dance",
+    "description": [
+        "The user performs a\n",
+        "wobbly dance that\n",
+        "confuses all the\n",
+        "Pok\u00e9mon in battle.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CONFUSE_ALL",
+        "chance": 0
+    },
     "range": "RANGE_ALL_ADJACENT",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_RANDOM_ORDER",
+        "type": "CUTE"
+    }
 }

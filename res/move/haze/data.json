@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_RESET_STAT_CHANGES",
-    "category": "CATEGORY_STATUS",
+    "name": "Haze",
+    "description": [
+        "The user creates a\n",
+        "haze that eliminates\n",
+        "every stat change\n",
+        "among all the Pok\u00e9mon\n",
+        "engaged in battle."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_ICE",
     "power": 0,
-    "type": "TYPE_PSYCHIC",
     "accuracy": 0,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RESET_STAT_CHANGES",
+        "chance": 0
+    },
     "range": "RANGE_FIELD",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "BEAUTY"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
 }

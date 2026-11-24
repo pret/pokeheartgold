@@ -1,14 +1,25 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "-",
+    "description": [
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 0,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_NONE",
-    "contestType": "COOL"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NONE",
+        "type": "COOL"
+    }
 }

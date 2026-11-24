@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_SP_ATK_DOWN_2_OPPOSITE_GENDER",
-    "category": "CATEGORY_STATUS",
+    "name": "Captivate",
+    "description": [
+        "If it is the opposite\n",
+        "gender of the user,\n",
+        "the foe is charmed\n",
+        "into sharply lowering\n",
+        "its Sp. Atk stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SP_ATK_DOWN_2_OPPOSITE_GENDER",
+        "chance": 0
+    },
     "range": "RANGE_ADJACENT_OPPONENTS",
     "priority": 0,
-    "flags": 86,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "BEAUTY"
+    }
 }

@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_CHANGE_TYPE_WITH_WEATHER",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Weather Ball",
+    "description": [
+        "An attack move that\n",
+        "varies in power and\n",
+        "type depending on\n",
+        "the weather.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 50,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CHANGE_TYPE_WITH_WEATHER",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "SMART"
+    }
 }

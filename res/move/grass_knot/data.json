@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_INCREASE_POWER_WITH_WEIGHT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Grass Knot",
+    "description": [
+        "The user snares the\n",
+        "foe with grass and\n",
+        "trips it. The heavier\n",
+        "the foe, the greater\n",
+        "the damage."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GRASS",
     "power": 1,
-    "type": "TYPE_WATER",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_INCREASE_POWER_WITH_WEIGHT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "SMART"
+    }
 }

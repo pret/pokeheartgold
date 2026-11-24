@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_DECREASE_LAST_MOVE_PP",
-    "category": "CATEGORY_STATUS",
+    "name": "Spite",
+    "description": [
+        "The user looses its\n",
+        "grudge on the move\n",
+        "last used by the foe\n",
+        "by cutting 4 PP from\n",
+        "it."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GHOST",
     "power": 0,
-    "type": "TYPE_BUG",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DECREASE_LAST_MOVE_PP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "TOUGH"
+    }
 }

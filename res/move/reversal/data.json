@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_INCREASE_POWER_WITH_LESS_HP",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Reversal",
+    "description": [
+        "An all-out attack\n",
+        "that becomes more\n",
+        "powerful the less\n",
+        "HP the user has.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 1,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_INCREASE_POWER_WITH_LESS_HP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "COOL"
+    }
 }

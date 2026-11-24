@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_CAMOUFLAGE",
-    "category": "CATEGORY_STATUS",
+    "name": "Camouflage",
+    "description": [
+        "The user\u2019s type is\n",
+        "changed depending on\n",
+        "its environment, such\n",
+        "as at water\u2019s edge, in\n",
+        "grass, or in a cave."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CAMOUFLAGE",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 72,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "SMART"
+    }
 }

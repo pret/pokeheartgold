@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_FLINCH_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Hyper Fang",
+    "description": [
+        "The user bites hard\n",
+        "on the foe with its\n",
+        "sharp front fangs.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 80,
-    "type": "TYPE_NONE",
     "accuracy": 90,
     "pp": 15,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 19,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

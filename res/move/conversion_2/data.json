@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_CONVERSION2",
-    "category": "CATEGORY_STATUS",
+    "name": "Conversion 2",
+    "description": [
+        "The user changes its\n",
+        "type to make itself\n",
+        "resistant to the type\n",
+        "of the attack it\n",
+        "last took."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CONVERSION2",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
-    "contestType": "BEAUTY"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "BEAUTY"
+    }
 }

@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_STATUS_SLEEP",
-    "category": "CATEGORY_STATUS",
+    "name": "Sleep Powder",
+    "description": [
+        "The user scatters a\n",
+        "big cloud of sleep-\n",
+        "inducing dust around\n",
+        "the foe.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GRASS",
     "power": 0,
-    "type": "TYPE_WATER",
     "accuracy": 75,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 86,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
 }

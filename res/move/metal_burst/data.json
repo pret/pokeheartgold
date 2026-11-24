@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_METAL_BURST",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Metal Burst",
+    "description": [
+        "The user retaliates\n",
+        "against the foe that\n",
+        "last inflicted damage\n",
+        "on it with much\n",
+        "greater power."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
     "power": 1,
-    "type": "TYPE_GHOST",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_METAL_BURST",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET_SPECIAL",
     "priority": 0,
-    "flags": 16,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "BEAUTY"
+    }
 }

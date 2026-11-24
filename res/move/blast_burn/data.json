@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_RECHARGE_AFTER",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Blast Burn",
+    "description": [
+        "The foe is razed by\n",
+        "a fiery explosion.\n",
+        "The user must rest\n",
+        "on the next turn,\n",
+        "however."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
     "power": 150,
-    "type": "TYPE_MYSTERY",
     "accuracy": 90,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RECHARGE_AFTER",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

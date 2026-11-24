@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_FORCE_SWITCH",
-    "category": "CATEGORY_STATUS",
+    "name": "Whirlwind",
+    "description": [
+        "The foe is blown away,\n",
+        "to be replaced by\n",
+        "another Pok\u00e9mon\n",
+        "in its party. In the\n",
+        "wild, the battle ends."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_FORCE_SWITCH",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": -6,
-    "flags": 82,
-    "contestEffect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+        "type": "SMART"
+    }
 }

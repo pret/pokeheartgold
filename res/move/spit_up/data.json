@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SPIT_UP",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Spit Up",
+    "description": [
+        "The power stored\n",
+        "using the move\n",
+        "Stockpile is released\n",
+        "at once in an attack.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 1,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SPIT_UP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 34,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "TOUGH"
+    }
 }

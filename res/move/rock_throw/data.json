@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Rock Throw",
+    "description": [
+        "The user picks up\n",
+        "and throws a small\n",
+        "rock at the foe to\n",
+        "attack.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ROCK",
     "power": 50,
-    "type": "TYPE_GROUND",
     "accuracy": 90,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "TOUGH"
+    }
 }

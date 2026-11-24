@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_THAW_AND_BURN_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Sacred Fire",
+    "description": [
+        "The foe is razed with\n",
+        "a mystical fire of\n",
+        "great intensity.\n",
+        "It may also leave the\n",
+        "target with a burn."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIRE",
     "power": 100,
-    "type": "TYPE_MYSTERY",
     "accuracy": 95,
     "pp": 5,
-    "effectChance": 50,
+    "effect": {
+        "type": "MOVE_EFFECT_THAW_AND_BURN_HIT",
+        "chance": 50
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 146,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

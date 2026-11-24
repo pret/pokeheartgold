@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Revenge",
+    "description": [
+        "An attack move that\n",
+        "inflicts double the\n",
+        "damage if the user\n",
+        "has been hurt by the\n",
+        "foe in the same turn."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 60,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_IF_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": -4,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "TOUGH"
+    }
 }

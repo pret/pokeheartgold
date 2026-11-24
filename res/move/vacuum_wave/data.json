@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_PRIORITY_1",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Vacuum Wave",
+    "description": [
+        "The user whirls its\n",
+        "fists to send a wave\n",
+        "of pure vacuum at\n",
+        "the foe. This move\n",
+        "always goes first."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIGHTING",
     "power": 40,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_1",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 1,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "SMART"
+    }
 }

@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_FLINCH_PARALYZE_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Thunder Fang",
+    "description": [
+        "The user bites with\n",
+        "electrified fangs.\n",
+        "It may also make the\n",
+        "foe flinch or become\n",
+        "paralyzed."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ELECTRIC",
     "power": 65,
-    "type": "TYPE_GRASS",
     "accuracy": 95,
     "pp": 15,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_PARALYZE_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
 }

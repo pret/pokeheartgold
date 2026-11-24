@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_EAT_BERRY",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Bug Bite",
+    "description": [
+        "The user bites the\n",
+        "foe. If the foe is\n",
+        "holding a Berry, the\n",
+        "user eats it and\n",
+        "gains its effect."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_BUG",
     "power": 60,
-    "type": "TYPE_ROCK",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_EAT_BERRY",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "TOUGH"
+    }
 }

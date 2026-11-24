@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_BIND_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Fire Spin",
+    "description": [
+        "The foe becomes\n",
+        "trapped within a\n",
+        "fierce vortex of fire\n",
+        "that rages for two\n",
+        "to five turns."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
     "power": 15,
-    "type": "TYPE_MYSTERY",
     "accuracy": 70,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_BIND_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "BEAUTY"
+    }
 }

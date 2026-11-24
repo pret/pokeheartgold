@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_CONFUSE_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Signal Beam",
+    "description": [
+        "The user attacks with\n",
+        "a sinister beam of\n",
+        "light. It may also\n",
+        "confuse the target.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_BUG",
     "power": 75,
-    "type": "TYPE_ROCK",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_CONFUSE_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "BEAUTY"
+    }
 }

@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_TRANSFORM",
-    "category": "CATEGORY_STATUS",
+    "name": "Transform",
+    "description": [
+        "The user transforms\n",
+        "into a copy of the\n",
+        "foe right down to\n",
+        "having the same move\n",
+        "set."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_TRANSFORM",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "SMART"
+    }
 }

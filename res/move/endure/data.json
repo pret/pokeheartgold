@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SURVIVE_WITH_1_HP",
-    "category": "CATEGORY_STATUS",
+    "name": "Endure",
+    "description": [
+        "The user endures any\n",
+        "attack with at least\n",
+        "1 HP. Its chance of\n",
+        "failing rises if it is\n",
+        "used in succession."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SURVIVE_WITH_1_HP",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 3,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "TOUGH"
+    }
 }

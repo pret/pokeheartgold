@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_CRIT_UP_2",
-    "category": "CATEGORY_STATUS",
+    "name": "Focus Energy",
+    "description": [
+        "The user takes a\n",
+        "deep breath and\n",
+        "focuses to raise the\n",
+        "critical-hit ratio of\n",
+        "its attacks."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CRIT_UP_2",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 72,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "COOL"
+    }
 }

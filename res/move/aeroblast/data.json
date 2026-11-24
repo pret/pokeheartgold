@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_HIGH_CRITICAL",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Aeroblast",
+    "description": [
+        "A vortex of air is\n",
+        "shot at the foe to\n",
+        "inflict damage.\n",
+        "It has a high\n",
+        "critical-hit ratio."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FLYING",
     "power": 100,
-    "type": "TYPE_FIGHTING",
     "accuracy": 95,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 178,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

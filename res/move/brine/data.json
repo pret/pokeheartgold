@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_WHEN_BELOW_HALF",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Brine",
+    "description": [
+        "If the foe\u2019s HP is\n",
+        "down to about half,\n",
+        "this attack will hit\n",
+        "with double the\n",
+        "power."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
     "power": 65,
-    "type": "TYPE_FIRE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_WHEN_BELOW_HALF",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "SMART"
+    }
 }

@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_REMOVE_ALL_PP_ON_DEFEAT",
-    "category": "CATEGORY_STATUS",
+    "name": "Grudge",
+    "description": [
+        "If the user faints,\n",
+        "the user\u2019s grudge\n",
+        "fully depletes the PP\n",
+        "of the foe\u2019s move\n",
+        "that knocked it out."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GHOST",
     "power": 0,
-    "type": "TYPE_BUG",
     "accuracy": 0,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_REMOVE_ALL_PP_ON_DEFEAT",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
-    "contestType": "TOUGH"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "TOUGH"
+    }
 }

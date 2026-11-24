@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_PREVENT_HEALING",
-    "category": "CATEGORY_STATUS",
+    "name": "Heal Block",
+    "description": [
+        "The user prevents\n",
+        "the foe from using\n",
+        "any HP-recovery\n",
+        "moves for five turns.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PREVENT_HEALING",
+        "chance": 0
+    },
     "range": "RANGE_ADJACENT_OPPONENTS",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "CUTE"
+    }
 }

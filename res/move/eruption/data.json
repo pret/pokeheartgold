@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_DECREASE_POWER_WITH_LESS_USER_HP",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Eruption",
+    "description": [
+        "The user attacks in\n",
+        "an explosive fury.\n",
+        "The lower the user\u2019s\n",
+        "HP, the less powerful\n",
+        "this attack becomes."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
     "power": 150,
-    "type": "TYPE_MYSTERY",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DECREASE_POWER_WITH_LESS_USER_HP",
+        "chance": 0
+    },
     "range": "RANGE_ADJACENT_OPPONENTS",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

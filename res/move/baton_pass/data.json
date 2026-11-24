@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_PASS_STATS_AND_STATUS",
-    "category": "CATEGORY_STATUS",
+    "name": "Baton Pass",
+    "description": [
+        "The user switches\n",
+        "places with a party\n",
+        "Pok\u00e9mon in waiting,\n",
+        "passing along any\n",
+        "stat changes."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 40,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PASS_STATS_AND_STATUS",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "CUTE"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "CUTE"
+    }
 }

@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_LOWER_ACCURACY_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Mud Bomb",
+    "description": [
+        "The user launches a\n",
+        "hard-packed mud ball\n",
+        "to attack.\n",
+        "It may also lower the\n",
+        "target\u2019s accuracy."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GROUND",
     "power": 65,
-    "type": "TYPE_POISON",
     "accuracy": 85,
     "pp": 10,
-    "effectChance": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_ACCURACY_HIT",
+        "chance": 30
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "SMART"
+    }
 }

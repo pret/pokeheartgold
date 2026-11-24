@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_MULTI_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Fury Swipes",
+    "description": [
+        "The foe is raked with\n",
+        "sharp claws or\n",
+        "scythes for two to\n",
+        "five times in quick\n",
+        "succession."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 18,
-    "type": "TYPE_NONE",
     "accuracy": 80,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_MULTI_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
 }

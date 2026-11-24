@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SWAP_ATK_DEF",
-    "category": "CATEGORY_STATUS",
+    "name": "Power Trick",
+    "description": [
+        "The user employs its\n",
+        "psychic power to\n",
+        "switch its Attack\n",
+        "with its Defense\n",
+        "stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SWAP_ATK_DEF",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

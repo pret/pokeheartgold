@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_POISON_MULTI_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Twineedle",
+    "description": [
+        "The foe is stabbed\n",
+        "twice by a pair of\n",
+        "stingers.\n",
+        "It may also poison\n",
+        "the target."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_BUG",
     "power": 25,
-    "type": "TYPE_ROCK",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_POISON_MULTI_HIT",
+        "chance": 20
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 82,
-    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "COOL"
+    }
 }

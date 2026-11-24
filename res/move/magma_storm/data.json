@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_BIND_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Magma Storm",
+    "description": [
+        "The foe becomes\n",
+        "trapped within a\n",
+        "maelstrom of fire\n",
+        "that rages for two\n",
+        "to five turns."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
     "power": 120,
-    "type": "TYPE_MYSTERY",
     "accuracy": 70,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_BIND_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 178,
-    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
 }

@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_RECOIL_QUARTER_DAMAGE_DELT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Submission",
+    "description": [
+        "The user grabs the\n",
+        "foe and recklessly\n",
+        "dives for the ground.\n",
+        "It also hurts the\n",
+        "user slightly."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 80,
-    "type": "TYPE_NORMAL",
     "accuracy": 80,
     "pp": 25,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_QUARTER_DAMAGE_DELT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
 }

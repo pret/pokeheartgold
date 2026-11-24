@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_BYPASS_ACCURACY",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Magnet Bomb",
+    "description": [
+        "The user launches a\n",
+        "steel bomb that\n",
+        "sticks to the target.\n",
+        "This attack will not\n",
+        "miss."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
     "power": 60,
-    "type": "TYPE_GHOST",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_BYPASS_ACCURACY",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
 }

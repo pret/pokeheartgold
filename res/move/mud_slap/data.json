@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_LOWER_ACCURACY_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Mud-Slap",
+    "description": [
+        "The user hurls mud in\n",
+        "the foe\u2019s face to\n",
+        "inflict damage and\n",
+        "lower its accuracy.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GROUND",
     "power": 20,
-    "type": "TYPE_POISON",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 100,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_ACCURACY_HIT",
+        "chance": 100
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "CUTE"
+    }
 }

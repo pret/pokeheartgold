@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_USE_RANDOM_ALLY_MOVE",
-    "category": "CATEGORY_STATUS",
+    "name": "Assist",
+    "description": [
+        "The user hurriedly\n",
+        "and randomly uses a\n",
+        "move among those\n",
+        "known by other\n",
+        "Pok\u00e9mon in the party."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_USE_RANDOM_ALLY_MOVE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET_SPECIAL",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
-    "contestType": "CUTE"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_RANDOM_ORDER",
+        "type": "CUTE"
+    }
 }

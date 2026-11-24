@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_ATK_UP",
-    "category": "CATEGORY_STATUS",
+    "name": "Meditate",
+    "description": [
+        "The user meditates\n",
+        "to awaken the power\n",
+        "deep within its body\n",
+        "and raise its Attack\n",
+        "stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 40,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_ATK_UP",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 8,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "BEAUTY"
+    }
 }

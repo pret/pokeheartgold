@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_AND_CURE_PARALYSIS",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "SmellingSalt",
+    "description": [
+        "This attack inflicts\n",
+        "double damage on a\n",
+        "paralyzed foe. It\n",
+        "also cures the foe\u2019s\n",
+        "paralysis, however."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 60,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_AND_CURE_PARALYSIS",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 19,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "SMART"
+    }
 }

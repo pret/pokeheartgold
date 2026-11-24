@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_RAISE_ATK_WHEN_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Rage",
+    "description": [
+        "While this move is in\n",
+        "use, it gains attack\n",
+        "power each time the\n",
+        "user is hit in battle.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 20,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RAISE_ATK_WHEN_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "COOL"
+    }
 }

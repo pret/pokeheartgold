@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Hydro Pump",
+    "description": [
+        "The foe is blasted by\n",
+        "a huge volume of\n",
+        "water launched under\n",
+        "great pressure.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
     "power": 120,
-    "type": "TYPE_FIRE",
     "accuracy": 80,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 178,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

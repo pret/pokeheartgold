@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_HIT_BEFORE_SWITCH",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Pursuit",
+    "description": [
+        "An attack move that\n",
+        "inflicts double damage\n",
+        "if used on a foe that\n",
+        "is switching out of\n",
+        "battle."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
     "power": 40,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_BEFORE_SWITCH",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 147,
-    "contestEffect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+        "type": "SMART"
+    }
 }

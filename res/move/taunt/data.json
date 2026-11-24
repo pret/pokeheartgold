@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_TAUNT",
-    "category": "CATEGORY_STATUS",
+    "name": "Taunt",
+    "description": [
+        "The foe is taunted\n",
+        "into a rage that\n",
+        "allows it to use only\n",
+        "attack moves for two\n",
+        "to four turns."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DARK",
     "power": 0,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_TAUNT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 82,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "SMART"
+    }
 }

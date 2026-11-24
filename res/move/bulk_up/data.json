@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_ATK_DEF_UP",
-    "category": "CATEGORY_STATUS",
+    "name": "Bulk Up",
+    "description": [
+        "The user tenses its\n",
+        "muscles to bulk up\n",
+        "its body, boosting\n",
+        "both its Attack and\n",
+        "Defense stats."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FIGHTING",
     "power": 0,
-    "type": "TYPE_NORMAL",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_ATK_DEF_UP",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 72,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "BEAUTY"
+    }
 }

@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_PRIORITY_1",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "ExtremeSpeed",
+    "description": [
+        "The user charges the\n",
+        "foe at blinding speed.\n",
+        "This attack always\n",
+        "goes before any\n",
+        "other move."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 80,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_1",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 1,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "COOL"
+    }
 }

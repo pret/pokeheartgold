@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_UPROAR",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Uproar",
+    "description": [
+        "The user attacks in\n",
+        "an uproar for two to\n",
+        "five turns. Over that\n",
+        "time, no one can fall\n",
+        "asleep."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 50,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_UPROAR",
+        "chance": 0
+    },
     "range": "RANGE_RANDOM_OPPONENT",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "CUTE"
+    }
 }

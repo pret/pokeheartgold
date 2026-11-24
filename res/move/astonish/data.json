@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_FLINCH_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Astonish",
+    "description": [
+        "The user attacks the\n",
+        "foe while shouting in\n",
+        "a startling fashion.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GHOST",
     "power": 30,
-    "type": "TYPE_BUG",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 30
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 83,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
 }

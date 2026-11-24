@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_RECYCLE",
-    "category": "CATEGORY_STATUS",
+    "name": "Recycle",
+    "description": [
+        "The user recycles a\n",
+        "held item that\n",
+        "has been used in\n",
+        "battle so it can be\n",
+        "used again."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RECYCLE",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "SMART"
+    }
 }

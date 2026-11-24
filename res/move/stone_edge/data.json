@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_HIGH_CRITICAL",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Stone Edge",
+    "description": [
+        "The user stabs the\n",
+        "foe with a sharpened\n",
+        "stone. It has a high\n",
+        "critical-hit ratio.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ROCK",
     "power": 100,
-    "type": "TYPE_GROUND",
     "accuracy": 80,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "TOUGH"
+    }
 }

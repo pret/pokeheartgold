@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_RANDOM_POWER_BASED_ON_IVS",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Hidden Power",
+    "description": [
+        "A unique attack that\n",
+        "varies in type and\n",
+        "intensity depending\n",
+        "on the Pok\u00e9mon using\n",
+        "it."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 1,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RANDOM_POWER_BASED_ON_IVS",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "SMART"
+    }
 }

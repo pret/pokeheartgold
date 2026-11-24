@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_PRIORITY_1",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Shadow Sneak",
+    "description": [
+        "The user extends its\n",
+        "shadow and attacks\n",
+        "the foe from behind.\n",
+        "This move always goes\n",
+        "first."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GHOST",
     "power": 40,
-    "type": "TYPE_BUG",
     "accuracy": 100,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_1",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 1,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "SMART"
+    }
 }

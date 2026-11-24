@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_20_DAMAGE_FLAT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "SonicBoom",
+    "description": [
+        "The foe is hit with a\n",
+        "destructive shock\n",
+        "wave that always\n",
+        "inflicts 20 HP damage.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 1,
-    "type": "TYPE_NONE",
     "accuracy": 90,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_20_DAMAGE_FLAT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 114,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
 }

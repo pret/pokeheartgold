@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_CURE_PARTY_STATUS",
-    "category": "CATEGORY_STATUS",
+    "name": "Aromatherapy",
+    "description": [
+        "The user releases a\n",
+        "soothing scent that\n",
+        "heals all status\n",
+        "problems affecting\n",
+        "the user\u2019s party."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GRASS",
     "power": 0,
-    "type": "TYPE_WATER",
     "accuracy": 0,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CURE_PARTY_STATUS",
+        "chance": 0
+    },
     "range": "RANGE_USER_SIDE",
     "priority": 0,
-    "flags": 8,
-    "contestEffect": "CONTEST_EFFECT_VOLTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "SMART"
+    }
 }

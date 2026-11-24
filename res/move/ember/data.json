@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_BURN_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Ember",
+    "description": [
+        "The foe is attacked\n",
+        "with small flames.\n",
+        "The target may also\n",
+        "be left with a burn.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
     "power": 40,
-    "type": "TYPE_MYSTERY",
     "accuracy": 100,
     "pp": 25,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_BURN_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 82,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "BEAUTY"
+    }
 }

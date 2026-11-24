@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_STATUS_POISON",
-    "category": "CATEGORY_STATUS",
+    "name": "Poison Gas",
+    "description": [
+        "A cloud of poison gas\n",
+        "is sprayed in the\n",
+        "foe\u2019s face.\n",
+        "It may poison the\n",
+        "target."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_POISON",
     "power": 0,
-    "type": "TYPE_FLYING",
     "accuracy": 55,
     "pp": 40,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_POISON",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 22,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
 }

@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_STATUS_SLEEP",
-    "category": "CATEGORY_STATUS",
+    "name": "Lovely Kiss",
+    "description": [
+        "With a scary face, the\n",
+        "user tries to force a\n",
+        "kiss on the foe. If it\n",
+        "succeeds, the target\n",
+        "falls asleep."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 75,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 22,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "BEAUTY"
+    }
 }

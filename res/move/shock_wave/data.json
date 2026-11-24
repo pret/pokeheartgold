@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_BYPASS_ACCURACY",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Shock Wave",
+    "description": [
+        "The user strikes the\n",
+        "foe with a quick jolt\n",
+        "of electricity.\n",
+        "This attack cannot be\n",
+        "evaded."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ELECTRIC",
     "power": 60,
-    "type": "TYPE_GRASS",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_BYPASS_ACCURACY",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

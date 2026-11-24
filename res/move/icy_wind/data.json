@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_LOWER_SPEED_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Icy Wind",
+    "description": [
+        "The user attacks with\n",
+        "a gust of chilled air.\n",
+        "It also lowers the\n",
+        "target\u2019s Speed stat.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ICE",
     "power": 55,
-    "type": "TYPE_PSYCHIC",
     "accuracy": 95,
     "pp": 15,
-    "effectChance": 100,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_SPEED_HIT",
+        "chance": 100
+    },
     "range": "RANGE_ADJACENT_OPPONENTS",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_LAST_NEXT_TURN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LAST_NEXT_TURN",
+        "type": "BEAUTY"
+    }
 }

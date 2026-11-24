@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_FLINCH_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Iron Head",
+    "description": [
+        "The foe slams the\n",
+        "target with its\n",
+        "steel-hard head.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
     "power": 80,
-    "type": "TYPE_GHOST",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 30
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "TOUGH"
+    }
 }

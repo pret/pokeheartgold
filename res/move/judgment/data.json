@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_JUDGEMENT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Judgment",
+    "description": [
+        "The user releases\n",
+        "countless shots of\n",
+        "light. Its type varies\n",
+        "with the kind of Plate\n",
+        "the user is holding."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 100,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_JUDGEMENT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_RANDOM_ORDER",
+        "type": "SMART"
+    }
 }

@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_TRANSFER_STATUS",
-    "category": "CATEGORY_STATUS",
+    "name": "Psycho Shift",
+    "description": [
+        "Using its psychic\n",
+        "power of suggestion,\n",
+        "the user transfers\n",
+        "its status problems\n",
+        "to the target."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 90,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_TRANSFER_STATUS",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

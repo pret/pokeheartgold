@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SWITCH_ABILITIES",
-    "category": "CATEGORY_STATUS",
+    "name": "Skill Swap",
+    "description": [
+        "The user employs its\n",
+        "psychic power to\n",
+        "exchange abilities\n",
+        "with the foe.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SWITCH_ABILITIES",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "SMART"
+    }
 }

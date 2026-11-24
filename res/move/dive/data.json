@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_DIVE",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Dive",
+    "description": [
+        "A two-turn attack.\n",
+        "The user dives\n",
+        "underwater on the\n",
+        "first turn, then hits\n",
+        "on the next turn."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_WATER",
     "power": 80,
-    "type": "TYPE_FIRE",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DIVE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "BEAUTY"
+    }
 }

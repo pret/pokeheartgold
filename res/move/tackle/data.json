@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Tackle",
+    "description": [
+        "A physical attack\n",
+        "in which the user\n",
+        "charges and slams\n",
+        "into the foe with\n",
+        "its whole body."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 35,
-    "type": "TYPE_NONE",
     "accuracy": 95,
     "pp": 35,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "TOUGH"
+    }
 }

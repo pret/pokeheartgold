@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_PRIORITY_1",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Ice Shard",
+    "description": [
+        "The user flash\n",
+        "freezes chunks of\n",
+        "ice and hurls them.\n",
+        "This move always goes\n",
+        "first."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ICE",
     "power": 40,
-    "type": "TYPE_PSYCHIC",
     "accuracy": 100,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_1",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 1,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "BEAUTY"
+    }
 }

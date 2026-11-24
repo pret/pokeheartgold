@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_PARALYZE_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Body Slam",
+    "description": [
+        "The user drops onto\n",
+        "the foe with its full\n",
+        "body weight.\n",
+        "It may leave the foe\n",
+        "paralyzed."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 85,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_PARALYZE_HIT",
+        "chance": 30
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 83,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "TOUGH"
+    }
 }

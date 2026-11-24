@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_RECOIL_HALF",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Head Smash",
+    "description": [
+        "The user delivers a\n",
+        "life-endangering\n",
+        "attack at full power.\n",
+        "The user also takes\n",
+        "terrible damage."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ROCK",
     "power": 150,
-    "type": "TYPE_GROUND",
     "accuracy": 80,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_HALF",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "TOUGH"
+    }
 }

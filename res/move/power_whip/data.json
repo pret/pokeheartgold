@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Power Whip",
+    "description": [
+        "The user violently\n",
+        "whirls its vines or\n",
+        "tentacles to harshly\n",
+        "lash the foe.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GRASS",
     "power": 120,
-    "type": "TYPE_WATER",
     "accuracy": 85,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "BEAUTY"
+    }
 }

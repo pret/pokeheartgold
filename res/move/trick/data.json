@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SWITCH_HELD_ITEMS",
-    "category": "CATEGORY_STATUS",
+    "name": "Trick",
+    "description": [
+        "The user catches the\n",
+        "foe off guard and\n",
+        "swaps the foe\u2019s held\n",
+        "item with its own.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SWITCH_HELD_ITEMS",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "SMART"
+    }
 }

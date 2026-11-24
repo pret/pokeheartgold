@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_HIT_TWICE",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Double Kick",
+    "description": [
+        "The foe is quickly\n",
+        "kicked twice in\n",
+        "succession using both\n",
+        "feet.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 30,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_TWICE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "COOL"
+    }
 }

@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_DISABLE",
-    "category": "CATEGORY_STATUS",
+    "name": "Disable",
+    "description": [
+        "For several turns,\n",
+        "this move prevents\n",
+        "the foe from using\n",
+        "the move it last\n",
+        "used."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 80,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DISABLE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
 }

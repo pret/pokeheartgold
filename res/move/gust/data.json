@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_DAMAGE_FLY_OR_BOUNCE",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Gust",
+    "description": [
+        "A gust of wind is\n",
+        "whipped up by wings\n",
+        "and launched at the\n",
+        "foe to inflict damage.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FLYING",
     "power": 40,
-    "type": "TYPE_FIGHTING",
     "accuracy": 100,
     "pp": 35,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_DAMAGE_FLY_OR_BOUNCE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
 }

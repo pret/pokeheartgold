@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_CONTINUE_AND_CONFUSE_SELF",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Thrash",
+    "description": [
+        "The user rampages\n",
+        "and attacks for two\n",
+        "to three turns.\n",
+        "It then becomes\n",
+        "confused, however."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 90,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CONTINUE_AND_CONFUSE_SELF",
+        "chance": 0
+    },
     "range": "RANGE_RANDOM_OPPONENT",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
 }

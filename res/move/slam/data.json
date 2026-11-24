@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Slam",
+    "description": [
+        "The foe is slammed\n",
+        "with a long tail,\n",
+        "vines, etc., to inflict\n",
+        "damage.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 80,
-    "type": "TYPE_NONE",
     "accuracy": 75,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "TOUGH"
+    }
 }

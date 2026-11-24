@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_TORMENT",
-    "category": "CATEGORY_STATUS",
+    "name": "Torment",
+    "description": [
+        "The user torments\n",
+        "and enrages the foe,\n",
+        "making it incapable of\n",
+        "using the same move\n",
+        "twice in a row."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DARK",
     "power": 0,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_TORMENT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 82,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "TOUGH"
+    }
 }

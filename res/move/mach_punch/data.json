@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_PRIORITY_1",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Mach Punch",
+    "description": [
+        "The user throws a\n",
+        "punch at blinding\n",
+        "speed.\n",
+        "It is certain to\n",
+        "strike first."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 40,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_1",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 1,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "COOL"
+    }
 }

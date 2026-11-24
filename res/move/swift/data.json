@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_BYPASS_ACCURACY",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Swift",
+    "description": [
+        "Star-shaped rays are\n",
+        "shot at the foe.\n",
+        "This attack never\n",
+        "misses.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 60,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_BYPASS_ACCURACY",
+        "chance": 0
+    },
     "range": "RANGE_ADJACENT_OPPONENTS",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

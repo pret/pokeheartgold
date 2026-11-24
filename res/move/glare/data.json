@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_STATUS_PARALYZE",
-    "category": "CATEGORY_STATUS",
+    "name": "Glare",
+    "description": [
+        "The user intimidates\n",
+        "the foe with the\n",
+        "pattern on its belly\n",
+        "to cause paralysis.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 75,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_PARALYZE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 22,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "TOUGH"
+    }
 }

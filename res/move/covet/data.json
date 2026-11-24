@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_STEAL_HELD_ITEM",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Covet",
+    "description": [
+        "The user endearingly\n",
+        "approaches the foe,\n",
+        "then steals the item\n",
+        "the foe is holding.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 40,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 40,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STEAL_HELD_ITEM",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 19,
-    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "CUTE"
+    }
 }

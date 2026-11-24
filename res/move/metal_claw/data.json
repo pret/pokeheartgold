@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_RAISE_ATTACK_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Metal Claw",
+    "description": [
+        "The foe is raked\n",
+        "with steel claws.\n",
+        "It may also raise the\n",
+        "user\u2019s Attack stat.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
     "power": 50,
-    "type": "TYPE_GHOST",
     "accuracy": 95,
     "pp": 35,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_RAISE_ATTACK_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 19,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

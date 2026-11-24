@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_FLINCH_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Dark Pulse",
+    "description": [
+        "The user releases a\n",
+        "horrible aura imbued\n",
+        "with dark thoughts.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_DARK",
     "power": 80,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 20
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

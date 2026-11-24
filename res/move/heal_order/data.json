@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_RESTORE_HALF_HP",
-    "category": "CATEGORY_STATUS",
+    "name": "Heal Order",
+    "description": [
+        "The user calls out\n",
+        "its underlings to heal\n",
+        "it. The user regains\n",
+        "up to half of its\n",
+        "max HP."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_BUG",
     "power": 0,
-    "type": "TYPE_ROCK",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RESTORE_HALF_HP",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 8,
-    "contestEffect": "CONTEST_EFFECT_VOLTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "SMART"
+    }
 }

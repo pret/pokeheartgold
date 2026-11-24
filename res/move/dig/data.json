@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_DIG",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Dig",
+    "description": [
+        "The user burrows,\n",
+        "then attacks on the\n",
+        "second turn.\n",
+        "It can also be used\n",
+        "to exit dungeons."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GROUND",
     "power": 80,
-    "type": "TYPE_POISON",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DIG",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "SMART"
+    }
 }

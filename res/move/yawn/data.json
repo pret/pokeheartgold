@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN",
-    "category": "CATEGORY_STATUS",
+    "name": "Yawn",
+    "description": [
+        "The user lets loose a\n",
+        "huge yawn that lulls\n",
+        "the foe into falling\n",
+        "asleep on the next\n",
+        "turn."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP_NEXT_TURN",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 22,
-    "contestEffect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "CUTE"
+    }
 }

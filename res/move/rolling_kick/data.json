@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_FLINCH_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Rolling Kick",
+    "description": [
+        "The user lashes \n",
+        "out with a quick,\n",
+        "spinning kick. It\n",
+        "may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 60,
-    "type": "TYPE_NORMAL",
     "accuracy": 85,
     "pp": 15,
-    "effectChance": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 30
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
 }

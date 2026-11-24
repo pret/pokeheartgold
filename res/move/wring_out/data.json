@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_INCREASE_POWER_WITH_MORE_HP",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Wring Out",
+    "description": [
+        "The user powerfully\n",
+        "wrings the foe.\n",
+        "The more HP the foe\n",
+        "has, the greater this\n",
+        "attack\u2019s power."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 1,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_INCREASE_POWER_WITH_MORE_HP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "SMART"
+    }
 }

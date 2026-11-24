@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_HALVE_DEFENSE",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Selfdestruct",
+    "description": [
+        "The user blows up to\n",
+        "inflict damage on all\n",
+        "Pok\u00e9mon in battle.\n",
+        "The user faints upon\n",
+        "using this move."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 200,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HALVE_DEFENSE",
+        "chance": 0
+    },
     "range": "RANGE_ALL_ADJACENT",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+        "type": "BEAUTY"
+    }
 }

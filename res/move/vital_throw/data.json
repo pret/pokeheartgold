@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_PRIORITY_NEG_1_BYPASS_ACCURACY",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Vital Throw",
+    "description": [
+        "The user allows the\n",
+        "foe to attack first.\n",
+        "In return, this throw\n",
+        "move is guaranteed\n",
+        "not to miss."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 70,
-    "type": "TYPE_NORMAL",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_NEG_1_BYPASS_ACCURACY",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": -1,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_LAST_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LAST_NEXT_TURN",
+        "type": "COOL"
+    }
 }

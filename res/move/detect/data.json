@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_PROTECT",
-    "category": "CATEGORY_STATUS",
+    "name": "Detect",
+    "description": [
+        "It enables the user\n",
+        "to evade all attacks.\n",
+        "Its chance of failing\n",
+        "rises if it is used in\n",
+        "succession."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FIGHTING",
     "power": 0,
-    "type": "TYPE_NORMAL",
     "accuracy": 0,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_PROTECT",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 3,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

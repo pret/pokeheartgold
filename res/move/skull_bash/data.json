@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_CHARGE_TURN_DEF_UP",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Skull Bash",
+    "description": [
+        "The user tucks in its\n",
+        "head to raise its\n",
+        "Defense in the first\n",
+        "turn, then rams the\n",
+        "foe on the next turn."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 100,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 100,
+    "effect": {
+        "type": "MOVE_EFFECT_CHARGE_TURN_DEF_UP",
+        "chance": 100
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "TOUGH"
+    }
 }

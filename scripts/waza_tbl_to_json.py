@@ -9,6 +9,7 @@ move_constants_filename = "include/constants/moves.h"
 type_constants_filename = "include/constants/pokemon.h"
 move_effect_constants_filename = "include/constants/move_effects.h"
 contest_effect_constants_filename = "include/constants/contest.h"
+move_flags_constants_filename = "include/constants/move_flags.h"
 waza_tbl_struct = struct.Struct("<HBBBBBBHbBBBH")
 assert waza_tbl_struct.size == 16
 
@@ -33,7 +34,9 @@ with open(type_constants_filename) as constants_file:
     for line in constants_file:
         if "NUMBER_OF_MON_TYPES" in line:
             break
-        if line.startswith("#define TYPE_"):
+        if line.startswith("#define TYPE_") and not line.startswith(
+            "#define TYPE_NONE"
+        ):
             type_constants.append(line.split()[1])
 
 # Load move effect constants
@@ -56,6 +59,13 @@ with open(contest_effect_constants_filename) as constants_file:
             contest_effect_constants.append(line.split()[1])
 
 
+with open(move_flags_constants_filename) as constants_file:
+    move_flags_constants = []
+    for line in constants_file:
+        if line.startswith("#define MOVE_FLAG_"):
+            move_flags_constants.append(line.split()[1])
+
+
 # Parse NARC
 section_header = struct.Struct("<4sL")
 with open(f"{narc_stem}.narc", "rb") as fp:
@@ -72,19 +82,30 @@ with open(f"{narc_stem}.narc", "rb") as fp:
     move_entries = list(waza_tbl_struct.iter_unpack(fp.read()))
 
 
-for move, entry_unpacked in zip(move_constants, move_entries):
+# Load move name jsons
+with open("files/msgdata/msg/msg_0750.json") as fp:
+    move_names_json = json.load(fp)
+with open("files/msgdata/msg/msg_0749.json") as fp:
+    move_descriptions_json = json.load(fp)
+
+
+for i, (move, entry_unpacked) in enumerate(zip(move_constants, move_entries)):
     entry_json = {
-        "effect": (
-            move_effect_constants[entry_unpacked[0]]
-            if entry_unpacked[0] < len(move_effect_constants)
-            else entry_unpacked[0]
-        ),
-        "category": category_constants[entry_unpacked[1]],
-        "power": entry_unpacked[2],
+        "name": move_names_json["messages"][i]["en_US"],
+        "description": move_descriptions_json["messages"][i]["en_US"],
+        "class": category_constants[entry_unpacked[1]],
         "type": type_constants[entry_unpacked[3]],
+        "power": entry_unpacked[2],
         "accuracy": entry_unpacked[4],
         "pp": entry_unpacked[5],
-        "effectChance": entry_unpacked[6],
+        "effect": {
+            "type": (
+                move_effect_constants[entry_unpacked[0]]
+                if entry_unpacked[0] < len(move_effect_constants)
+                else entry_unpacked[0]
+            ),
+            "chance": entry_unpacked[6],
+        },
         "range": " | ".join(
             flag
             for i, flag in enumerate(range_constants[1:])
@@ -92,9 +113,15 @@ for move, entry_unpacked in zip(move_constants, move_entries):
         )
         or range_constants[0],
         "priority": entry_unpacked[8],
-        "flags": entry_unpacked[9],
-        "contestEffect": contest_effect_constants[entry_unpacked[10]],
-        "contestType": contest_types[entry_unpacked[11]],
+        "flags": [
+            flag
+            for i, flag in enumerate(move_flags_constants)
+            if entry_unpacked[9] & (1 << i)
+        ],
+        "contest": {
+            "effect": contest_effect_constants[entry_unpacked[10]],
+            "type": contest_types[entry_unpacked[11]],
+        },
     }
     move_name_lower = move.split("_", 1)[1].lower()
     os.makedirs(f"res/move/{move_name_lower}", exist_ok=True)

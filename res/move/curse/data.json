@@ -1,14 +1,27 @@
 {
-    "effect": "MOVE_EFFECT_CURSE",
-    "category": "CATEGORY_STATUS",
+    "name": "Curse",
+    "description": [
+        "A move that works\n",
+        "differently for the\n",
+        "Ghost type than for\n",
+        "all the other types.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_MYSTERY",
     "power": 0,
-    "type": "TYPE_STEEL",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_CURSE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "TOUGH"
+    }
 }

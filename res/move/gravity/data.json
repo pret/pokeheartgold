@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_GRAVITY",
-    "category": "CATEGORY_STATUS",
+    "name": "Gravity",
+    "description": [
+        "Gravity is intensified\n",
+        "for five turns, making\n",
+        "moves involving flying\n",
+        "unusable and\n",
+        "negating Levitation."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_GRAVITY",
+        "chance": 0
+    },
     "range": "RANGE_FIELD",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "BEAUTY"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
 }

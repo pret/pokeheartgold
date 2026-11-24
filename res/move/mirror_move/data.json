@@ -1,14 +1,25 @@
 {
-    "effect": "MOVE_EFFECT_COPY_MOVE",
-    "category": "CATEGORY_STATUS",
+    "name": "Mirror Move",
+    "description": [
+        "The user counters\n",
+        "the foe by mimicking\n",
+        "the move last used\n",
+        "by the foe."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FLYING",
     "power": 0,
-    "type": "TYPE_FIGHTING",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_COPY_MOVE",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET_SPECIAL",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "SMART"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "SMART"
+    }
 }

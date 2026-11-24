@@ -1,14 +1,25 @@
 {
-    "effect": "MOVE_EFFECT_COPY_ABILITY",
-    "category": "CATEGORY_STATUS",
+    "name": "Role Play",
+    "description": [
+        "The user mimics the\n",
+        "foe completely,\n",
+        "copying the foe\u2019s\n",
+        "natural ability.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_COPY_ABILITY",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_PITY_POINTS",
-    "contestType": "CUTE"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "CUTE"
+    }
 }

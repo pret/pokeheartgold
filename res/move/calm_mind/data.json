@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SP_ATK_SP_DEF_UP",
-    "category": "CATEGORY_STATUS",
+    "name": "Calm Mind",
+    "description": [
+        "The user quietly\n",
+        "focuses its mind and\n",
+        "calms its spirit to\n",
+        "raise its Sp. Atk and\n",
+        "Sp. Def stats."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SP_ATK_SP_DEF_UP",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 8,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "SMART"
+    }
 }

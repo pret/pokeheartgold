@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_HIT_FLY",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Sky Uppercut",
+    "description": [
+        "The user attacks the\n",
+        "foe with an uppercut\n",
+        "thrown skyward\n",
+        "with force.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 85,
-    "type": "TYPE_NORMAL",
     "accuracy": 90,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_FLY",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

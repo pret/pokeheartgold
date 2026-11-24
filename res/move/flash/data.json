@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_ACC_DOWN",
-    "category": "CATEGORY_STATUS",
+    "name": "Flash",
+    "description": [
+        "The user flashes a\n",
+        "light that cuts the\n",
+        "foe\u2019s accuracy.\n",
+        "It can also be used\n",
+        "to illuminate caves."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_ACC_DOWN",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 150,
-    "contestEffect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "BEAUTY"
+    }
 }

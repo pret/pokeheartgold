@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_FAINT_AND_FULL_HEAL_NEXT_MON",
-    "category": "CATEGORY_STATUS",
+    "name": "Healing Wish",
+    "description": [
+        "The user faints. In\n",
+        "return, the Pok\u00e9mon\n",
+        "taking its place will\n",
+        "have its HP restored\n",
+        "and status cured."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_FAINT_AND_FULL_HEAL_NEXT_MON",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_VOLTAGE",
-    "contestType": "CUTE"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "CUTE"
+    }
 }

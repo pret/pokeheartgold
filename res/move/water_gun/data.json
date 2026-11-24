@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Water Gun",
+    "description": [
+        "The foe is blasted\n",
+        "with a forceful shot\n",
+        "of water.\n",
+        "\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
     "power": 40,
-    "type": "TYPE_FIRE",
     "accuracy": 100,
     "pp": 25,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "CUTE"
+    }
 }

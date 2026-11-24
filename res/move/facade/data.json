@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_WHEN_STATUSED",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Facade",
+    "description": [
+        "An attack move that\n",
+        "doubles its power if\n",
+        "the user is poisoned,\n",
+        "paralyzed, or has a\n",
+        "burn."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 70,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_WHEN_STATUSED",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 83,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "CUTE"
+    }
 }

@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_RECOIL_PARALYZE_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Volt Tackle",
+    "description": [
+        "The user electrifies\n",
+        "itself, then charges\n",
+        "at the foe. It causes\n",
+        "considerable damage\n",
+        "to the user as well."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ELECTRIC",
     "power": 120,
-    "type": "TYPE_GRASS",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_PARALYZE_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

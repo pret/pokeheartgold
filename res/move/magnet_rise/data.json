@@ -1,14 +1,25 @@
 {
-    "effect": "MOVE_EFFECT_GIVE_GROUND_IMMUNITY",
-    "category": "CATEGORY_STATUS",
+    "name": "Magnet Rise",
+    "description": [
+        "The user levitates\n",
+        "using electrically\n",
+        "generated magnetism\n",
+        "for five turns.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_ELECTRIC",
     "power": 0,
-    "type": "TYPE_GRASS",
     "accuracy": 0,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_GIVE_GROUND_IMMUNITY",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "CUTE"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "CUTE"
+    }
 }

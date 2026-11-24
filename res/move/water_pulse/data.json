@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_CONFUSE_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Water Pulse",
+    "description": [
+        "The user attacks the\n",
+        "foe with a pulsing\n",
+        "blast of water.\n",
+        "It may also confuse\n",
+        "the foe."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
     "power": 60,
-    "type": "TYPE_FIRE",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_CONFUSE_HIT",
+        "chance": 20
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 178,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

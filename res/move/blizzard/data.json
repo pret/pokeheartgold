@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_BLIZZARD",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Blizzard",
+    "description": [
+        "A howling blizzard is\n",
+        "summoned to strike\n",
+        "the foe.\n",
+        "It may also freeze\n",
+        "the target solid."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ICE",
     "power": 120,
-    "type": "TYPE_PSYCHIC",
     "accuracy": 70,
     "pp": 5,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_BLIZZARD",
+        "chance": 10
+    },
     "range": "RANGE_ADJACENT_OPPONENTS",
     "priority": 0,
-    "flags": 146,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

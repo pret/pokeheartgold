@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_LOWER_SPEED_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Mud Shot",
+    "description": [
+        "The user attacks by\n",
+        "hurling a blob of mud\n",
+        "at the foe.\n",
+        "It also reduces the\n",
+        "target\u2019s Speed."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GROUND",
     "power": 55,
-    "type": "TYPE_POISON",
     "accuracy": 95,
     "pp": 15,
-    "effectChance": 100,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_SPEED_HIT",
+        "chance": 100
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 50,
-    "contestEffect": "CONTEST_EFFECT_LAST_NEXT_TURN",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LAST_NEXT_TURN",
+        "type": "TOUGH"
+    }
 }

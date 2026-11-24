@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_RECOIL_THIRD",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Double-Edge",
+    "description": [
+        "A reckless, life-\n",
+        "risking tackle.\n",
+        "It also damages the\n",
+        "user by a fairly large\n",
+        "amount, however."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 120,
-    "type": "TYPE_NONE",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_THIRD",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+        "type": "TOUGH"
+    }
 }

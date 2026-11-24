@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_RANDOM_POWER_MAYBE_HEAL",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Present",
+    "description": [
+        "The user attacks by\n",
+        "giving the foe a\n",
+        "booby-trapped gift.\n",
+        "It restores HP\n",
+        "sometimes, however."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 1,
-    "type": "TYPE_NONE",
     "accuracy": 90,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RANDOM_POWER_MAYBE_HEAL",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "CUTE"
+    }
 }

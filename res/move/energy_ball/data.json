@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_LOWER_SP_DEF_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Energy Ball",
+    "description": [
+        "The user draws power\n",
+        "from nature and\n",
+        "fires it at the foe.\n",
+        "It may also lower the\n",
+        "target\u2019s Sp. Def."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GRASS",
     "power": 80,
-    "type": "TYPE_WATER",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_SP_DEF_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

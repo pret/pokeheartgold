@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_SP_ATK_UP_2",
-    "category": "CATEGORY_STATUS",
+    "name": "Tail Glow",
+    "description": [
+        "The user stares at\n",
+        "flashing lights to\n",
+        "focus its mind,\n",
+        "sharply raising its\n",
+        "Sp. Atk stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_BUG",
     "power": 0,
-    "type": "TYPE_ROCK",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SP_ATK_UP_2",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 8,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "BEAUTY"
+    }
 }

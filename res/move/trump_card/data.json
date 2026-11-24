@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_HIGHER_POWER_WHEN_LOW_PP",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Trump Card",
+    "description": [
+        "The fewer PP this\n",
+        "move has, the more\n",
+        "power it has for\n",
+        "attack.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
     "power": 1,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGHER_POWER_WHEN_LOW_PP",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "COOL"
+    }
 }

@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_RECOIL_THIRD",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Wood Hammer",
+    "description": [
+        "The user slams its\n",
+        "rugged body into the\n",
+        "foe to attack. The\n",
+        "user also sustains\n",
+        "serious damage."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GRASS",
     "power": 120,
-    "type": "TYPE_WATER",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_THIRD",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "TOUGH"
+    }
 }

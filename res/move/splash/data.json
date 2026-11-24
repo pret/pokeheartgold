@@ -1,14 +1,27 @@
 {
-    "effect": "MOVE_EFFECT_DO_NOTHING",
-    "category": "CATEGORY_STATUS",
+    "name": "Splash",
+    "description": [
+        "The user just flops\n",
+        "and splashes around\n",
+        "to no effect at all...\n",
+        "\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 40,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DO_NOTHING",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
-    "contestType": "CUTE"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "CUTE"
+    }
 }

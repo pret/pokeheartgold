@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_LOWER_DEFENSE_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Rock Smash",
+    "description": [
+        "The user hits with a\n",
+        "punch that may lower\n",
+        "the target\u2019s Defense.\n",
+        "It can also smash\n",
+        "cracked boulders."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 40,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 15,
-    "effectChance": 50,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_DEFENSE_HIT",
+        "chance": 50
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 19,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "TOUGH"
+    }
 }

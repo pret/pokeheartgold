@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_STEAL_HELD_ITEM",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Thief",
+    "description": [
+        "The user attacks and\n",
+        "steals the foe\u2019s held\n",
+        "item simultaneously.\n",
+        "It can\u2019t steal if the\n",
+        "user holds an item."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
     "power": 40,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_STEAL_HELD_ITEM",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 83,
-    "contestEffect": "CONTEST_EFFECT_STEAL_VOLTAGE",
-    "contestType": "TOUGH"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "TOUGH"
+    }
 }

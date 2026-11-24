@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_EACH_TURN",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Fury Cutter",
+    "description": [
+        "The foe is slashed\n",
+        "with scythes or\n",
+        "claws. Its power\n",
+        "increases if it hits\n",
+        "in succession."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_BUG",
     "power": 10,
-    "type": "TYPE_ROCK",
     "accuracy": 95,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_EACH_TURN",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_CONSECUTIVE_USE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "COOL"
+    }
 }

@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_GROUND_TRAP_USER_CONTINUOUS_HEAL",
-    "category": "CATEGORY_STATUS",
+    "name": "Ingrain",
+    "description": [
+        "The user lays roots\n",
+        "that restore HP on\n",
+        "every turn.\n",
+        "Because it is rooted,\n",
+        "it can\u2019t switch out."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GRASS",
     "power": 0,
-    "type": "TYPE_WATER",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_GROUND_TRAP_USER_CONTINUOUS_HEAL",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 72,
-    "contestEffect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "SMART"
+    }
 }

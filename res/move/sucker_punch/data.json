@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_HIT_FIRST_IF_TARGET_ATTACKING",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Sucker Punch",
+    "description": [
+        "This move enables the\n",
+        "user to attack first.\n",
+        "It fails if the foe is\n",
+        "not readying an\n",
+        "attack, however."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
     "power": 80,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_FIRST_IF_TARGET_ATTACKING",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 1,
-    "flags": 115,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "SMART"
+    }
 }

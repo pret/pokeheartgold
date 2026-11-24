@@ -1,14 +1,32 @@
 {
-    "effect": "MOVE_EFFECT_DEF_SPD_DOWN_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Close Combat",
+    "description": [
+        "The user fights the\n",
+        "foe up close without\n",
+        "guarding itself. It\n",
+        "also cuts the user\u2019s\n",
+        "Defense and Sp. Def."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
     "power": 120,
-    "type": "TYPE_NORMAL",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DEF_SPD_DOWN_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 179,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "SMART"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "SMART"
+    }
 }

@@ -1,14 +1,26 @@
 {
-    "effect": "MOVE_EFFECT_WEATHER_RAIN",
-    "category": "CATEGORY_STATUS",
+    "name": "Rain Dance",
+    "description": [
+        "The user summons a\n",
+        "heavy rain that falls\n",
+        "for five turns,\n",
+        "powering up Water-\n",
+        "type moves."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_WATER",
     "power": 0,
-    "type": "TYPE_FIRE",
     "accuracy": 0,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_WEATHER_RAIN",
+        "chance": 0
+    },
     "range": "RANGE_FIELD",
     "priority": 0,
-    "flags": 0,
-    "contestEffect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
-    "contestType": "TOUGH"
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "TOUGH"
+    }
 }

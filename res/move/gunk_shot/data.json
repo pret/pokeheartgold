@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_POISON_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Gunk Shot",
+    "description": [
+        "The user shoots\n",
+        "filthy garbage at the\n",
+        "foe to attack.\n",
+        "It may also poison\n",
+        "the target."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_POISON",
     "power": 120,
-    "type": "TYPE_FLYING",
     "accuracy": 70,
     "pp": 5,
-    "effectChance": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_POISON_HIT",
+        "chance": 30
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 178,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
 }

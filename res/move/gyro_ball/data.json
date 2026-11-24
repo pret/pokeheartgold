@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_POWER_BASED_ON_LOW_SPEED",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Gyro Ball",
+    "description": [
+        "The user tackles the\n",
+        "foe with a high-speed\n",
+        "spin. The slower the\n",
+        "user, the greater\n",
+        "the damage."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
     "power": 1,
-    "type": "TYPE_GHOST",
     "accuracy": 100,
     "pp": 5,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_POWER_BASED_ON_LOW_SPEED",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "BEAUTY"
+    }
 }

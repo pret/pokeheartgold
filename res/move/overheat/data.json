@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_USER_SP_ATK_DOWN_2",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Overheat",
+    "description": [
+        "The user attacks the\n",
+        "foe at full power.\n",
+        "The attack\u2019s recoil\n",
+        "sharply reduces the\n",
+        "user\u2019s Sp. Atk stat."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
     "power": 140,
-    "type": "TYPE_MYSTERY",
     "accuracy": 90,
     "pp": 5,
-    "effectChance": 100,
+    "effect": {
+        "type": "MOVE_EFFECT_USER_SP_ATK_DOWN_2",
+        "chance": 100
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 178,
-    "contestEffect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

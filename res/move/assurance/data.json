@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_TARGET_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Assurance",
+    "description": [
+        "If the foe has\n",
+        "already taken some\n",
+        "damage in the same\n",
+        "turn, this attack\u2019s\n",
+        "power is doubled."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
     "power": 50,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_IF_TARGET_HIT",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "BEAUTY"
+    }
 }

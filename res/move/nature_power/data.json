@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_NATURE_POWER",
-    "category": "CATEGORY_STATUS",
+    "name": "Nature Power",
+    "description": [
+        "An attack that makes\n",
+        "use of nature\u2019s\n",
+        "power. Its effects\n",
+        "vary depending on the\n",
+        "user\u2019s environment."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
     "power": 0,
-    "type": "TYPE_NONE",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_NATURE_POWER",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET_SPECIAL",
     "priority": 0,
-    "flags": 64,
-    "contestEffect": "CONTEST_EFFECT_RANDOM_ORDER",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_RANDOM_ORDER",
+        "type": "BEAUTY"
+    }
 }

@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Cross Poison",
+    "description": [
+        "A slashing attack\n",
+        "that may also leave\n",
+        "the target poisoned.\n",
+        "It has a high\n",
+        "critical-hit ratio."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_POISON",
     "power": 70,
-    "type": "TYPE_FLYING",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_BASIC",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
 }

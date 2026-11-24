@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_DEF_SPD_UP",
-    "category": "CATEGORY_STATUS",
+    "name": "Cosmic Power",
+    "description": [
+        "The user absorbs a\n",
+        "mystical power from\n",
+        "space to raise its\n",
+        "Defense and Sp. Def\n",
+        "stats."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 20,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DEF_SPD_UP",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 136,
-    "contestEffect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "COOL"
+    }
 }

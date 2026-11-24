@@ -1,14 +1,31 @@
 {
-    "effect": "MOVE_EFFECT_CONFUSE_HIT",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Rock Climb",
+    "description": [
+        "A charging attack\n",
+        "that may also leave\n",
+        "the foe confused.\n",
+        "It can also be used\n",
+        "to scale rocky walls."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
     "power": 90,
-    "type": "TYPE_NONE",
     "accuracy": 85,
     "pp": 20,
-    "effectChance": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_CONFUSE_HIT",
+        "chance": 20
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
 }

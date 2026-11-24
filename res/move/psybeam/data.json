@@ -1,14 +1,28 @@
 {
-    "effect": "MOVE_EFFECT_CONFUSE_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Psybeam",
+    "description": [
+        "The foe is attacked\n",
+        "with a peculiar ray.\n",
+        "It may also leave the\n",
+        "target confused.\n"
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_PSYCHIC",
     "power": 65,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 100,
     "pp": 20,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_CONFUSE_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }

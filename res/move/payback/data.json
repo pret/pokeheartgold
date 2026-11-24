@@ -1,14 +1,30 @@
 {
-    "effect": "MOVE_EFFECT_DOUBLE_POWER_IF_MOVING_SECOND",
-    "category": "CATEGORY_PHYSICAL",
+    "name": "Payback",
+    "description": [
+        "If the user can use\n",
+        "this attack after the\n",
+        "foe attacks, its\n",
+        "power is doubled.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
     "power": 50,
-    "type": "TYPE_DRAGON",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_POWER_IF_MOVING_SECOND",
+        "chance": 0
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 51,
-    "contestEffect": "CONTEST_EFFECT_UNIQUE_JUDGE",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "COOL"
+    }
 }

@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_SPEED_UP_2",
-    "category": "CATEGORY_STATUS",
+    "name": "Agility",
+    "description": [
+        "The user relaxes and\n",
+        "lightens its body to\n",
+        "move faster.\n",
+        "It sharply boosts\n",
+        "the Speed stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
     "power": 0,
-    "type": "TYPE_ELECTRIC",
     "accuracy": 0,
     "pp": 30,
-    "effectChance": 0,
+    "effect": {
+        "type": "MOVE_EFFECT_SPEED_UP_2",
+        "chance": 0
+    },
     "range": "RANGE_USER",
     "priority": 0,
-    "flags": 136,
-    "contestEffect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
-    "contestType": "COOL"
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "COOL"
+    }
 }

@@ -1,14 +1,29 @@
 {
-    "effect": "MOVE_EFFECT_FREEZE_HIT",
-    "category": "CATEGORY_SPECIAL",
+    "name": "Ice Beam",
+    "description": [
+        "The foe is struck\n",
+        "with an icy-cold\n",
+        "beam of energy.\n",
+        "It may also freeze\n",
+        "the target solid."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ICE",
     "power": 95,
-    "type": "TYPE_PSYCHIC",
     "accuracy": 100,
     "pp": 10,
-    "effectChance": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_FREEZE_HIT",
+        "chance": 10
+    },
     "range": "RANGE_SINGLE_TARGET",
     "priority": 0,
-    "flags": 18,
-    "contestEffect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
-    "contestType": "BEAUTY"
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
 }
