@@ -804,7 +804,7 @@ void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0) {
     DC_FlushRange(arg0->unkD68.unk88, 672);
     arg0->unkD68.unk4 = 1;
     arg0->unkD68.unk32C = 0;
-    arg0->unkD68.unk0 = SysTask_CreateOnVBlankQueue((SysTaskFunc)ov44_0222A40C, &arg0->unkD68, 20);
+    arg0->unkD68.unk0 = SysTask_CreateOnVBlankQueue(ov44_0222A40C, &arg0->unkD68, 20);
     Main_SetVBlankIntrCB((GFIntrCB)ov44_0222A7F8, arg0);
     ov44_0222AFE8();
     ov44_0222B030(arg0, temp_r0);
@@ -814,28 +814,30 @@ void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0) {
     NARC_Delete(temp_r0);
 }
 
-void ov44_0222A40C(s32 arg0, UnkStruct_ov44_0222A40C *arg1) {
-    if (arg1->unk4 != 0) {
-        arg1->unk32B ^= 1;
-        if ((1 & arg1->unk32B) == 0) {
-            if (arg1->unk32C <= 1) {
-                GX_LoadBGPltt(arg1->unk88[arg1->unk328], 0, 32);
+void ov44_0222A40C(SysTask *sysTask, void *taskData) {
+    UnkStruct_ov44_0222A40C *data = taskData;
+
+    if (data->unk4 != 0) {
+        data->unk32B ^= 1;
+        if ((1 & data->unk32B) == 0) {
+            if (data->unk32C <= 1) {
+                GX_LoadBGPltt(data->unk88[data->unk328], 0, 32);
             }
-            u32 temp_r0 = arg1->unk32C;
+            u32 temp_r0 = data->unk32C;
             if ((temp_r0 == 0) || (temp_r0 == 2)) {
-                GXS_LoadBGPltt(arg1->unk88[arg1->unk328], 0, 32);
+                GXS_LoadBGPltt(data->unk88[data->unk328], 0, 32);
             }
-            if (arg1->unk32A == 0) {
-                arg1->unk328++;
-                if (arg1->unk328 >= 21) {
-                    arg1->unk328 = 19;
-                    arg1->unk32A ^= 1;
+            if (data->unk32A == 0) {
+                data->unk328++;
+                if (data->unk328 >= 21) {
+                    data->unk328 = 19;
+                    data->unk32A ^= 1;
                 }
             } else {
-                arg1->unk328--;
-                if (arg1->unk328 < 0) {
-                    arg1->unk328 = 1;
-                    arg1->unk32A ^= 1;
+                data->unk328--;
+                if (data->unk328 < 0) {
+                    data->unk328 = 1;
+                    data->unk32A ^= 1;
                 }
             }
         }

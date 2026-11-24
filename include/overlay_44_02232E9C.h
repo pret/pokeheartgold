@@ -251,7 +251,7 @@ void ov44_0222A1B4(u32 arg0);
 void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0);
 
 s32 ov44_02229FDC(u32);
-void ov44_0222A40C(s32 arg0, UnkStruct_ov44_0222A40C *arg1);
+void ov44_0222A40C(SysTask *arg0, void *arg1);
 s32 ov44_0222A4B4(OverlayManager *overlayMananger, s32 *arg1);
 s32 ov44_0222A60C(OverlayManager *overlayManager, s32 *arg1);
 void ov44_0222A68C(UnkStruct_ov44_022319EC *arg0);
