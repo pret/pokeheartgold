@@ -4042,7 +4042,7 @@ ov103_021EE860: ; 0x021EE860
 	ldr r2, _021EE884 ; =0x000003E2
 	mov r1, #1
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x72
 	ldr r1, [r4, #0xc]
 	lsl r0, r0, #2
@@ -4062,7 +4062,7 @@ ov103_021EE888: ; 0x021EE888
 	lsl r0, r0, #2
 	add r0, r1, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	ldr r0, [r0]

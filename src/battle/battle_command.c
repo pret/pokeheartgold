@@ -6205,7 +6205,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
         PaletteData_LoadNarc(palette, NARC_graphic_gs_winframe, GetStandardWindowPaletteNARCMember(), HEAP_ID_BATTLE, PLTTBUF_MAIN_BG, 0x20, 8 * 0x10);
         AddWindowParameterized(bgConfig, window, GF_BG_LYR_MAIN_2, 0x11, 0x7, 14, 12, 11, 9 + 1);
         FillWindowPixelBuffer(window, 0xFF);
-        DrawFrameAndWindow1(window, FALSE, 1, 8);
+        Window_DrawStandardFrame(window, FALSE, 1, 8);
 
         data->state = STATE_GET_EXP_LEVEL_UP_SUMMARY_PRINT_DIFF;
         break;
@@ -6266,7 +6266,7 @@ static void Task_GetExp(SysTask *task, void *inData) {
     case STATE_GET_EXP_LEVEL_UP_CLEAR: {
         Window *window = BattleSystem_GetWindow(data->battleSystem, 1);
 
-        ClearWindowPixelBuffer(window, 0);
+        Window_EraseStandardFrame(window, 0);
         RemoveWindow(window);
 
         G2_SetBG0Priority(1);

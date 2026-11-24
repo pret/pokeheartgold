@@ -55,8 +55,8 @@
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public WaitingIcon_New
 .public WaitingIcon_Halt
 .public BeginNormalPaletteFade

@@ -412,7 +412,7 @@ static void MartData_AddWindows(MartData *data) {
 }
 
 static void ov03_02257184(MartData *data) {
-    ClearWindowPixelBuffer(&data->windows[2], TRUE);
+    Window_EraseStandardFrame(&data->windows[2], TRUE);
     for (u32 i = 0; i < 6; i++) {
         ClearWindowTilemapAndScheduleTransfer(&data->windows[i]);
         RemoveWindow(&data->windows[i]);
@@ -751,8 +751,8 @@ int ov03_02257978(MartData *data, int itemID) {
 static u8 ov03_022579E0(MartData *data) {
     Sprite_SetDrawFlag(data->sprites[0], FALSE);
     Sprite_SetDrawFlag(data->sprites[1], FALSE);
-    ClearWindowPixelBuffer(&data->windows[4], TRUE);
-    ClearWindowPixelBuffer(&data->windows[3], TRUE);
+    Window_EraseStandardFrame(&data->windows[4], TRUE);
+    Window_EraseStandardFrame(&data->windows[3], TRUE);
     FillWindowPixelBuffer(&data->windows[5], 15);
     data->unk298 = 7;
     Sprite_SetDrawFlag(data->sprites[18], FALSE);
@@ -765,9 +765,9 @@ static u8 ov03_022579E0(MartData *data) {
 }
 
 static u8 ov03_02257A70(MartData *data) {
-    ClearWindowPixelBuffer(&data->windows[4], TRUE);
-    ClearWindowPixelBuffer(&data->windows[3], TRUE);
-    ClearFrameAndWindow2(&data->windows[5], FALSE);
+    Window_EraseStandardFrame(&data->windows[4], TRUE);
+    Window_EraseStandardFrame(&data->windows[3], TRUE);
+    Window_EraseMessageBox(&data->windows[5], FALSE);
     ov03_02258560(data, FALSE);
     Sprite_SetDrawFlag(data->sprites[0], data->spriteDrawn[0]);
     Sprite_SetDrawFlag(data->sprites[1], data->spriteDrawn[1]);
@@ -888,7 +888,7 @@ static u8 ov03_02257D90(MartData *data, u32 arg1) {
         data->unk298 = 9;
         return TASK_MART_12;
     case 1:
-        ClearFrameAndWindow2(&data->windows[5], FALSE);
+        Window_EraseMessageBox(&data->windows[5], FALSE);
         ov03_02258560(data, FALSE);
         Sprite_SetDrawFlag(data->sprites[0], data->spriteDrawn[0]);
         Sprite_SetDrawFlag(data->sprites[1], data->spriteDrawn[1]);
@@ -949,7 +949,7 @@ static u8 ov03_02257F24(MartData *data) {
             GameStats_Inc(data->gameStats, GAME_STAT_PREMIER_BALLS_EARNED);
             return TASK_MART_15;
         }
-        ClearFrameAndWindow2(&data->windows[5], 0);
+        Window_EraseMessageBox(&data->windows[5], 0);
         ov03_02258560(data, FALSE);
         Sprite_SetDrawFlag(data->sprites[0], data->spriteDrawn[0]);
         Sprite_SetDrawFlag(data->sprites[1], data->spriteDrawn[1]);
@@ -966,7 +966,7 @@ static u8 ov03_02257FF8(MartData *data) {
         return TASK_MART_14;
     }
     if ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || gSystem.touchNew) {
-        ClearFrameAndWindow2(&data->windows[5], FALSE);
+        Window_EraseMessageBox(&data->windows[5], FALSE);
         ov03_02258560(data, FALSE);
         Sprite_SetDrawFlag(data->sprites[0], data->spriteDrawn[0]);
         Sprite_SetDrawFlag(data->sprites[1], data->spriteDrawn[1]);
@@ -983,7 +983,7 @@ static u8 ov03_02258078(MartData *data) {
         return TASK_MART_15;
     }
     if ((PAD_BUTTON_A | PAD_BUTTON_B) & gSystem.newKeys || gSystem.touchNew) {
-        ClearFrameAndWindow2(&data->windows[5], FALSE);
+        Window_EraseMessageBox(&data->windows[5], FALSE);
         ov03_02258560(data, FALSE);
         Sprite_SetDrawFlag(data->sprites[0], data->spriteDrawn[0]);
         Sprite_SetDrawFlag(data->sprites[1], data->spriteDrawn[1]);

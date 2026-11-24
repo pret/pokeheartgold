@@ -1405,7 +1405,7 @@ _0223E898:
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldrb r0, [r4, #8]
 	add r0, r0, #1
 	strb r0, [r4, #8]
@@ -3559,7 +3559,7 @@ ov82_0223F90C: ; 0x0223F90C
 	add r0, r4, #0
 	add r0, #0x4c
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #1
 	str r0, [sp]
 	mov r0, #2
@@ -4142,7 +4142,7 @@ ov82_0223FD78: ; 0x0223FD78
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

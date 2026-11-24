@@ -108,7 +108,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
 .public WaitingIcon_New
 .public WaitingIcon_Destroy
 .public BeginNormalPaletteFade

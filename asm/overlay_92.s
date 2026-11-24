@@ -3359,7 +3359,7 @@ ov92_0225E070: ; 0x0225E070
 	add r0, r5, r0
 	mov r2, #0xb4
 	mov r3, #0xd
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, _0225E0FC ; =0x00001FE0
 	add r0, r5, r0
 	bl CopyWindowToVram
@@ -3381,7 +3381,7 @@ ov92_0225E100: ; 0x0225E100
 	ldr r0, _0225E12C ; =0x00001FE0
 	mov r1, #1
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, _0225E12C ; =0x00001FE0
 	add r0, r4, r0
 	bl ClearWindowTilemapAndCopyToVram
@@ -3700,7 +3700,7 @@ _0225E374:
 	bne _0225E398
 	add r0, r5, #0
 	add r1, r7, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r5, #0
 	bl ClearWindowTilemapAndCopyToVram
 	add r0, r5, #0

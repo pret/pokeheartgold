@@ -1852,7 +1852,7 @@ ov80_022333D0: ; 0x022333D0
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xc
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -1881,7 +1881,7 @@ _0223340C:
 	ldr r4, [r0]
 	mov r1, #0
 	add r0, r4, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -1920,13 +1920,13 @@ _0223345E:
 	ldr r6, [r0]
 	add r0, r4, #0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
 	add r0, r6, #0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r6, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2178,4 +2178,3 @@ _02233684: .word ov80_0223BE60
 
 ov80_0223DD48: ; 0x0223DD48
 	.space 0x4
-    

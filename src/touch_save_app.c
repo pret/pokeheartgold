@@ -333,7 +333,7 @@ static BOOL TouchSaveApp_DisplaySaveInformation(TouchSaveAppData *data) {
 
 static BOOL TouchSaveApp_AskForSave(TouchSaveAppData *data) {
     if (!Save_FileDoesNotBelongToPlayer(data->fieldSystem->saveData)) {
-        DrawFrameAndWindow2(&data->window, TRUE, 0xEC, 5);
+        Window_DrawMessageBoxWithScrollCursor(&data->window, TRUE, 0xEC, 5);
         data->string = NewString_ReadMsgData(data->msgData, msg_0040_00081);
         data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
         TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_GET_SAVE_CONFIRMATION);
@@ -417,7 +417,7 @@ static BOOL TouchSaveApp_HandleOverwriteConfirmation(TouchSaveAppData *data) {
 }
 
 static BOOL TouchSaveApp_PrintNotMySaveError(TouchSaveAppData *data) {
-    DrawFrameAndWindow2(&data->window, TRUE, 0xEC, 5);
+    Window_DrawMessageBoxWithScrollCursor(&data->window, TRUE, 0xEC, 5);
     data->string = NewString_ReadMsgData(data->msgData, msg_0040_00020);
     data->textPrinter = AddTextPrinterParameterized(&data->window, FONT_MESSAGE, data->string, 0, 0, Options_GetTextFrameDelay(data->options), NULL);
     TouchSaveApp_SetupWaitForTextPrinter(data, TOUCHSAVEAPP_STATE_SAVE_FAILED);

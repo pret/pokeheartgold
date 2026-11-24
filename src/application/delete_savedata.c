@@ -334,7 +334,7 @@ static BOOL DeleteSavedataApp_PrintMessage(DeleteSavedataApp_Data *data, u32 msg
     switch (data->printState) {
     case PRINTSTATE_PRINT_TEXT:
         FillWindowPixelRect(&data->window, 0xF, 0, 0, 216, 32);
-        DrawFrameAndWindow2(&data->window, FALSE, 0x1E2, 2);
+        Window_DrawMessageBoxWithScrollCursor(&data->window, FALSE, 0x1E2, 2);
 
         data->textString = String_New(1024, data->heapID);
         ReadMsgDataIntoString(data->msgData, msgNum, data->textString);

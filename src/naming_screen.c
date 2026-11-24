@@ -570,7 +570,7 @@ BOOL NamingScreenApp_Main(OverlayManager *ovyMan, int *pState) {
         case NS_PAGESWITCH_STATE_PRINT_BATTLE_MESSAGE:
             NamingScreen_PrepareBattleMessage(data, ovyMan);
             FillWindowPixelBuffer(&data->windows[9], 15);
-            DrawFrameAndWindow2(&data->windows[9], FALSE, 256, 10);
+            Window_DrawMessageBoxWithScrollCursor(&data->windows[9], FALSE, 256, 10);
             data->battleMessageTextPrinterId = AddTextPrinterParameterized(&data->windows[9], FONT_MESSAGE, data->battleMsgString, 0, 0, 1, NULL);
             CopyWindowToVram(&data->windows[9]);
             data->pageSwitchState = NS_PAGESWITCH_STATE_WAIT_BATTLE_MESSAGE;
@@ -1295,7 +1295,7 @@ static void NamingScreen_HandlePageSwitch(BgConfig *bgConfig, Window *windows, i
 }
 
 static void NamingScreen_PrintMessageOnWindowLeftAlign(Window *window, NameScreenType unused, String *msg) {
-    DrawFrameAndWindow2(window, FALSE, 0x100, 10);
+    Window_DrawMessageBoxWithScrollCursor(window, FALSE, 0x100, 10);
     AddTextPrinterParameterized(window, FONT_MESSAGE, msg, 0, 0, TEXT_SPEED_INSTANT, NULL);
     CopyWindowToVram(window);
 }

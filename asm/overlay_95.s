@@ -451,7 +451,7 @@ ov95_021E5C44: ; 0x021E5C44
 	mov r1, #1
 	mov r2, #0x14
 	mov r3, #0xc
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

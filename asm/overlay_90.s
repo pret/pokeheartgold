@@ -1796,7 +1796,7 @@ _022594B4:
 	mov r1, #1
 	add r0, r5, r7
 	add r2, r1, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, r7
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -1828,7 +1828,7 @@ _02259524:
 	lsl r4, r4, #4
 	add r0, r5, r4
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, r4
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r3, r4, r5, r6, r7, pc}

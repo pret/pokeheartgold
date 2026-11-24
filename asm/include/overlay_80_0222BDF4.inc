@@ -62,10 +62,10 @@
 .public SpriteSystem_LoadCharResObjAtEndWithHardwareMappingType
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public WaitingIcon_New
 .public WaitingIcon_Destroy
 .public BeginNormalPaletteFade

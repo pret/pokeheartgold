@@ -83,7 +83,7 @@
 .public LoadUserFrameGfx1
 .public GetMessageBoxPaletteNARCMember
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014DA0

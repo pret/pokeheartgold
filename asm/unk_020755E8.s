@@ -790,7 +790,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0x1a
@@ -2150,7 +2150,7 @@ _02076754:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, [r4, #0x1c]
 	mov r1, #6
 	mov r2, #0

@@ -58,8 +58,8 @@
 .public SpriteManager_GetSpriteList
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public WaitingIcon_New
 .public WaitingIcon_Destroy
 .public BeginNormalPaletteFade

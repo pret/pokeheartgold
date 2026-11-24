@@ -1390,7 +1390,7 @@ _022592D4:
 	add r0, r5, #0
 	add r2, r1, #0
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
@@ -1438,7 +1438,7 @@ _02259338:
 	add r0, #8
 	add r2, r1, #0
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r5, #8
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -1515,7 +1515,7 @@ _022593E8:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r4, #8
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

@@ -485,7 +485,7 @@ _02258C56:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r2, r4, #0
 	add r2, #0xc4
 	ldr r0, [r4, #0x30]
@@ -569,7 +569,7 @@ _02258D0C:
 	strb r1, [r0]
 	add r0, r4, #0
 	add r0, #0xb4
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0x5a
 	mov r1, #0
 	lsl r0, r0, #2
@@ -589,7 +589,7 @@ _02258D36:
 	strb r1, [r0]
 	add r0, r4, #0
 	add r0, #0xb4
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -621,7 +621,7 @@ _02258D7A:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r2, r4, #0
 	add r2, #0xc4
 	ldr r0, [r4, #0x30]

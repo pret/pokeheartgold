@@ -4869,7 +4869,7 @@ _0225AB64:
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -4914,7 +4914,7 @@ _0225ABC4:
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -5016,7 +5016,7 @@ _0225AC90:
 	bl ov49_0225AC38
 	add r0, r4, #0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
@@ -5082,7 +5082,7 @@ _0225ACE4:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #2
-	bl DrawFrameAndWindow3
+	bl Window_DrawSignpost
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -5431,7 +5431,7 @@ _0225AF52:
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r2, sp, #0x18
 	ldr r3, [sp, #0x2c]
 	ldrh r2, [r2, #0x10]
@@ -5497,7 +5497,7 @@ ov49_0225B014: ; 0x0225B014
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r5, #0
 	add r0, #0x20
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -5627,7 +5627,7 @@ ov49_0225B0E0: ; 0x0225B0E0
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -5646,7 +5646,7 @@ ov49_0225B124: ; 0x0225B124
 	bne _0225B144
 	add r0, r4, #0
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
@@ -5817,7 +5817,7 @@ ov49_0225B24C: ; 0x0225B24C
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10

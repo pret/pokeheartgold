@@ -698,7 +698,7 @@ BOOL ScrCmd_CloseMsg(ScriptContext *ctx) {
     Window *window = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_WINDOW);
     u8 *unk = FieldSysGetAttrAddr(fieldSystem, SCRIPTENV_FIELD_08);
 
-    ClearFrameAndWindow2(window, 0);
+    Window_EraseMessageBox(window, 0);
     RemoveWindow(window);
 
     fieldSystem->textbox_open = FALSE;

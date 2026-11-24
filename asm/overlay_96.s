@@ -18211,7 +18211,7 @@ _021EE95A:
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #0x18
 	bl ClearWindowTilemapAndCopyToVram
@@ -18351,7 +18351,7 @@ _021EEA36:
 	add r0, r5, #0
 	mov r1, #0
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r3, r4, r5, r6, pc}

@@ -498,7 +498,7 @@ _0225D910:
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ov31_0225DD14
 	add r0, r4, #0
@@ -515,7 +515,7 @@ _0225D950:
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ov31_0225DD14
 	add r0, r4, #0
@@ -2042,7 +2042,7 @@ ov31_0225E54C: ; 0x0225E54C
 	mov r1, #1
 	add r2, #0x71
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2164,7 +2164,7 @@ _0225E684:
 	mov r1, #1
 	add r2, #0x71
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2449,7 +2449,7 @@ _0225E8DA:
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r4, r0]
@@ -2630,7 +2630,7 @@ ov31_0225EA08: ; 0x0225EA08
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2698,7 +2698,7 @@ ov31_0225EA9C: ; 0x0225EA9C
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2766,7 +2766,7 @@ ov31_0225EB30: ; 0x0225EB30
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -2834,7 +2834,7 @@ ov31_0225EBC4: ; 0x0225EBC4
 	add r0, #0x44
 	mov r1, #1
 	mov r3, #5
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x59
 	lsl r0, r0, #2
 	ldr r0, [r5, r0]
@@ -3046,11 +3046,11 @@ ov31_0225EDA0: ; 0x0225EDA0
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #0x44
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #0xe4
 	bl RemoveWindow

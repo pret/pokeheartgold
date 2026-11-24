@@ -3198,7 +3198,7 @@ ov85_021E7194: ; 0x021E7194
 	mov r1, #1
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -3262,7 +3262,7 @@ ov85_021E71EC: ; 0x021E71EC
 	mov r1, #1
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -3314,7 +3314,7 @@ ov85_021E7274: ; 0x021E7274
 	mov r1, #1
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -3342,7 +3342,7 @@ ov85_021E72E8: ; 0x021E72E8
 	add r5, r0, #0
 	add r0, r5, r4
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, r4
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -3430,7 +3430,7 @@ ov85_021E7380: ; 0x021E7380
 	add r0, r5, r4
 	add r2, r1, #0
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, r4
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -3489,7 +3489,7 @@ ov85_021E7400: ; 0x021E7400
 	add r5, r0, r2
 	add r0, r5, r4
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, r4
 	mov r1, #0
 	bl FillWindowPixelBuffer
@@ -9567,7 +9567,7 @@ ov85_021EA0EC: ; 0x021EA0EC
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	cmp r6, #0
 	bne _021EA15C
 	add r0, r5, #0
@@ -9629,11 +9629,11 @@ ov85_021EA19C: ; 0x021EA19C
 	mov r1, #0xbe
 	lsl r1, r1, #2
 	add r0, r0, r1
-	ldr r3, _021EA1A8 ; =ClearFrameAndWindow2
+	ldr r3, _021EA1A8 ; =Window_EraseMessageBox
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021EA1A8: .word ClearFrameAndWindow2
+_021EA1A8: .word Window_EraseMessageBox
 	thumb_func_end ov85_021EA19C
 
 	thumb_func_start ov85_021EA1AC

@@ -117,7 +117,7 @@ void ShowSaveDataWriteError(enum HeapID heapID, int code) {
 
     AddWindow(bg_config, &window, &sDataWriteErrorWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
-    DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
+    Window_DrawStandardFrame(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(error_msgdata, msg_no, error_str);
     AddTextPrinterParameterized(&window, FONT_SYSTEM, error_str, 0, 0, 0, NULL);

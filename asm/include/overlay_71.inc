@@ -53,7 +53,7 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx2
 .public Window_DrawMessageBox
-.public ClearFrameAndWindow2
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014510

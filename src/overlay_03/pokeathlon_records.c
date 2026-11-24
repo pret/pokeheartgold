@@ -84,7 +84,7 @@ static BOOL ov03_02258D88(UnkStruct_02258CFC *data) {
 static void ov03_02258DE8(UnkStruct_02258CFC *data) {
     AddWindowParameterized(data->bgConfig, &data->window, 3, 2, 1, 28, 22, 13, 1);
     LoadUserFrameGfx1(data->bgConfig, GF_BG_LYR_MAIN_3, 985, HEAP_ID_FIELD2, 0, HEAP_ID_FIELD1);
-    DrawFrameAndWindow1(&data->window, TRUE, 985, HEAP_ID_FIELD2);
+    Window_DrawStandardFrame(&data->window, TRUE, 985, HEAP_ID_FIELD2);
     FillWindowPixelBuffer(&data->window, 15);
     data->msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0277, HEAP_ID_FIELD1);
     data->messageFormat = MessageFormat_New_Custom(3, 16, HEAP_ID_FIELD1);
@@ -101,7 +101,7 @@ static void ov03_02258E88(UnkStruct_02258CFC *data) {
     String_Delete(data->strings[0]);
     MessageFormat_Delete(data->messageFormat);
     DestroyMsgData(data->msgData);
-    ClearWindowPixelBuffer(&data->window, TRUE);
+    Window_EraseStandardFrame(&data->window, TRUE);
     RemoveWindow(&data->window);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 3);
 }

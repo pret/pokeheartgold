@@ -182,7 +182,7 @@ struct UnkStruct_ov44_022319EC {
     u32 unk180;
     struct ListMenu2D *unk184;
     YesNoPrompt *unk188;
-    WaitingIcon *unk18C;
+    WaitingIcon *waitingIcon;
     SpriteList *unk190;
     G2dRenderer unk194;
     GF_2DGfxResMan *unk2BC[4];

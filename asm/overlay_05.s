@@ -273,7 +273,7 @@ _0221BBF0:
 	add r0, r4, r0
 	mov r2, #1
 	mov r3, #0xf
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	ldr r2, _0221BD20 ; =0x00000B98
@@ -384,7 +384,7 @@ _0221BCF0:
 	ldr r0, _0221BD14 ; =0x00000B88
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -2035,7 +2035,7 @@ _0221CA68:
 	add r0, r0, #6
 	add r0, r4, r0
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, [r4, #0xc]
 	mov r1, #0
 	bl ScheduleBgTilemapBufferTransfer
@@ -5963,7 +5963,7 @@ ov05_0221E9C4: ; 0x0221E9C4
 	add r0, r4, r0
 	mov r2, #1
 	mov r3, #0xf
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #8
 	pop {r4, pc}
 	nop

@@ -1017,7 +1017,7 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapID);
-    DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
+    Window_DrawMessageBoxWithScrollCursor(work->winTop, FALSE, 0x200, 0);
 }
 
 static void loadBgGraphics(BgConfig *bgConfig, enum HeapID heapID) {
@@ -1049,7 +1049,7 @@ static u8 printMsgOnWinEx(Window *window, enum HeapID heapID, BOOL makeFrame, s3
     FillWindowPixelBuffer(window, color);
     ret = AddTextPrinterParameterizedWithColor(window, FONT_MESSAGE, *out, 0, 0, speed, color, NULL);
     if (makeFrame) {
-        DrawFrameAndWindow2(window, FALSE, 0x200, 0);
+        Window_DrawMessageBoxWithScrollCursor(window, FALSE, 0x200, 0);
     } else {
         CopyWindowToVram(window);
     }

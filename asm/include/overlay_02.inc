@@ -59,7 +59,7 @@
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
-.public ClearFrameAndWindow2
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public CharacterSprite_LoadPalette

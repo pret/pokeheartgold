@@ -1468,7 +1468,7 @@ _021E93D6:
 	ldr r0, _021E9408 ; =0x00000464
 	mov r1, #1
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _021E9408 ; =0x00000464
 	add r0, r5, r0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -3487,7 +3487,7 @@ ov108_021EA418: ; 0x021EA418
 	add r0, r5, r2
 	sub r2, #0x82
 	mov r3, #0xc
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	mov r2, #0xc6
 	str r3, [sp]

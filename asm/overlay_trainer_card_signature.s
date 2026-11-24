@@ -1590,7 +1590,7 @@ _021E8DDE:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _021E8E5C ; =0x00005C9C
 	ldr r0, [r5, r0]
 	bl YesNoPrompt_Reset
@@ -1621,7 +1621,7 @@ _021E8E20:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _021E8E5C ; =0x00005C9C
 	ldr r0, [r5, r0]
 	bl YesNoPrompt_Reset
@@ -1661,7 +1661,7 @@ _021E8E7C:
 	str r1, [r5, r0]
 	sub r0, #0x38
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	ldr r0, [r5, r0]
 	bl YesNoPrompt_Reset
@@ -1685,7 +1685,7 @@ _021E8EB4:
 	str r1, [r5, r0]
 	sub r0, #0x38
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _021E8ED8 ; =0x00005C9C
 	ldr r0, [r5, r0]
 	bl YesNoPrompt_Reset
@@ -2253,7 +2253,7 @@ ov52_021E927C: ; 0x021E927C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, [r5, #0xc]
 	bl Options_GetTextFrameDelay
 	mov r3, #0

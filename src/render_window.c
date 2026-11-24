@@ -60,23 +60,23 @@ typedef struct PokemonPreview {
 
 static void DrawMessageBoxFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
 static void BlitRectToBitmap(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, u16 srcHeight, void *destPixels, u16 destWidth, u16 destHeight, u16 destX, u16 destY, u16 blitWidth, u16 blitHeight);
-static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
+static void Window_DrawMessageBoxScrollCursorInternal(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y);
 static void LoadSignpostContentTiles(BgConfig *bgConfig, u8 bgLayer, u16 offset, u8 signpostType, u16 narcMemberIdx, enum HeapID heapID);
 static void DrawSignpostFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 width, u8 height, u8 palette, u16 tile);
-static void DrawSignpostTiles(Window *window, u16 tile, u8 palette);
+static void Window_DrawSignpostTiles(Window *window, u16 tile, u8 palette);
 static void WaitingIcon_Draw(WaitingIcon *waitingIcon, enum WaitingIconDrawMode drawMode);
 static void SysTask_TickWaitingIcon(SysTask *sysTask, void *arg);
 static void SysTask_CleanupWaitingIcon(SysTask *sysTask, void *arg);
-static void SysTask_HandlePokepic(SysTask *sysTask, void *arg);
-static PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
-static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID);
-static void Pokepic_LoadObjectGraphics(PokemonPreview *preview);
-static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y);
-static void Pokepic_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender);
-static void Pokepic_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon);
-static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate);
-static void Pokepic_DrawFrame(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
-static void Pokepic_Clear(PokemonPreview *preview);
+static void SysTask_HandlePokemonPreview(SysTask *sysTask, void *arg);
+static PokemonPreview *PokemonPreview_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID);
+static void PokemonPreview_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID);
+static void PokemonPreview_LoadObjectGraphics(PokemonPreview *preview);
+static void PokemonPreview_CreateSprite(PokemonPreview *preview, u8 x, u8 y);
+static void PokemonPreview_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender);
+static void PokemonPreview_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon);
+static void PokemonPreview_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate);
+static void PokemonPreview_DrawFrame(PokemonPreview *preview, u8 paletteNum, u16 baseTile);
+static void PokemonPreview_Clear(PokemonPreview *preview);
 
 static const ManagedSpriteTemplate sPokemonPreviewSpriteTemplate = {
     .x = 0,
@@ -133,7 +133,7 @@ static void DrawStandardWindowFrame(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8
     // clang-format on
 }
 
-void DrawFrameAndWindow1(Window *window, BOOL skipTransfer, u16 tile, u8 palette) {
+void Window_DrawStandardFrame(Window *window, BOOL skipTransfer, u16 tile, u8 palette) {
     DrawStandardWindowFrame(window->bgConfig,
         GetWindowBgId(window),
         GetWindowX(window),
@@ -148,7 +148,7 @@ void DrawFrameAndWindow1(Window *window, BOOL skipTransfer, u16 tile, u8 palette
     }
 }
 
-void ClearWindowPixelBuffer(Window *window, BOOL skipTransfer) {
+void Window_EraseStandardFrame(Window *window, BOOL skipTransfer) {
     FillBgTilemapRect(window->bgConfig,
         GetWindowBgId(window),
         0,
@@ -231,7 +231,7 @@ void Window_DrawMessageBox(Window *window, u32 tile, u32 palette) {
         tile);
 }
 
-void DrawFrameAndWindow2(Window *window, BOOL skipTransfer, u16 tile, u8 palette) {
+void Window_DrawMessageBoxWithScrollCursor(Window *window, BOOL skipTransfer, u16 tile, u8 palette) {
     Window_DrawMessageBox(window, tile, palette);
 
     if (skipTransfer == FALSE) {
@@ -241,7 +241,7 @@ void DrawFrameAndWindow2(Window *window, BOOL skipTransfer, u16 tile, u8 palette
     TextPrinter_SetDownArrowBaseTile(tile);
 }
 
-void ClearFrameAndWindow2(Window *window, BOOL skipTransfer) {
+void Window_EraseMessageBox(Window *window, BOOL skipTransfer) {
     FillBgTilemapRect(window->bgConfig,
         GetWindowBgId(window),
         0,
@@ -274,7 +274,7 @@ static void BlitRectToBitmap(void *srcPixels, u16 srcX, u16 srcY, u16 srcWidth, 
 #define SCROLL_CURSOR_TILE_OFFSET(i)  (TILE_SIZE_4BPP * (i))
 #define SCROLL_CURSOR_FRAME_SIZE      (SCROLL_CURSOR_TILE_OFFSET(SCROLL_CURSOR_TILES_PER_FRAME))
 
-static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y) {
+static void Window_DrawMessageBoxScrollCursorInternal(Window *window, int fileId, u16 baseTile, u8 count, u8 x, u8 y) {
     // must forward-declare these to match
     u8 *cursorTiles;
     void *cursorCharPtr;
@@ -326,7 +326,7 @@ static void DrawMessageBoxScrollCursor(Window *window, int fileId, u16 baseTile,
 }
 
 void Window_DrawMessageBoxScrollCursor(Window *window, u16 baseTile) {
-    DrawMessageBoxScrollCursor(window, NARC_gs_winframe_00022_NCGR, baseTile, 3, 3, 0);
+    Window_DrawMessageBoxScrollCursorInternal(window, NARC_gs_winframe_00022_NCGR, baseTile, 3, 3, 0);
 }
 
 void ReplaceTransparentTiles(BgConfig *bgConfig, u8 bgLayer, u16 bgBaseTile, u8 withTile, u8 messageBoxFrame, enum HeapID heapID) {
@@ -436,7 +436,7 @@ static void DrawSignpostFrame(BgConfig *bgConfig, u8 bgLayer, u8 x, u8 y, u8 wid
     // clang-format on
 }
 
-static void DrawSignpostTiles(Window *window, u16 tile, u8 palette) {
+static void Window_DrawSignpostTiles(Window *window, u16 tile, u8 palette) {
     u16 dy, dx; // must forward-declare to match
 
     u8 bgLayer = GetWindowBgId(window);
@@ -450,7 +450,7 @@ static void DrawSignpostTiles(Window *window, u16 tile, u8 palette) {
     }
 }
 
-void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 palette, u8 signpostType) {
+void Window_DrawSignpost(Window *window, BOOL skipTransfer, u16 baseTile, u8 palette, u8 signpostType) {
     u8 bgLayer = GetWindowBgId(window);
 
     if (signpostType == SIGNPOST_TYPE_MAP || signpostType == SIGNPOST_TYPE_ARROW) {
@@ -462,7 +462,7 @@ void DrawFrameAndWindow3(Window *window, BOOL skipTransfer, u16 baseTile, u8 pal
             GetWindowHeight(window),
             palette,
             baseTile);
-        DrawSignpostTiles(window, baseTile + 30, palette);
+        Window_DrawSignpostTiles(window, baseTile + 30, palette);
     } else {
         DrawMessageBoxFrame(window->bgConfig,
             bgLayer,
@@ -612,34 +612,34 @@ void WaitingIcon_Halt(WaitingIcon *waitingIcon) {
 }
 
 u8 *DrawPokemonPicFromSpecies(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, u16 species, u8 gender, u32 heapID) {
-    PokemonPreview *preview = Pokepic_Create(bgConfig, layer, x, y, (enum HeapID)heapID);
-    Pokepic_InitObjectResLists(preview, (enum HeapID)heapID);
-    Pokepic_LoadObjectGraphics(preview);
-    Pokepic_CreateSprite(preview, x, y);
-    Pokepic_LoadAndDrawParameterized(&preview->spriteManager, species, gender);
-    Pokepic_DrawFrame(preview, paletteNum, baseTile);
+    PokemonPreview *preview = PokemonPreview_Create(bgConfig, layer, x, y, (enum HeapID)heapID);
+    PokemonPreview_InitObjectResLists(preview, (enum HeapID)heapID);
+    PokemonPreview_LoadObjectGraphics(preview);
+    PokemonPreview_CreateSprite(preview, x, y);
+    PokemonPreview_LoadAndDrawParameterized(&preview->spriteManager, species, gender);
+    PokemonPreview_DrawFrame(preview, paletteNum, baseTile);
     BgCommitTilemapBufferToVram(bgConfig, layer);
     return &preview->state;
 }
 
 u8 *DrawPokemonPicFromMon(BgConfig *bgConfig, u8 layer, u8 x, u8 y, u8 paletteNum, u16 baseTile, Pokemon *mon, u32 heapID) {
 
-    PokemonPreview *preview = Pokepic_Create(bgConfig, layer, x, y, (enum HeapID)heapID);
-    Pokepic_InitObjectResLists(preview, (enum HeapID)heapID);
-    Pokepic_LoadObjectGraphics(preview);
-    Pokepic_CreateSprite(preview, x, y);
-    Pokepic_LoadAndDraw(&preview->spriteManager, mon);
-    Pokepic_DrawFrame(preview, paletteNum, baseTile);
+    PokemonPreview *preview = PokemonPreview_Create(bgConfig, layer, x, y, (enum HeapID)heapID);
+    PokemonPreview_InitObjectResLists(preview, (enum HeapID)heapID);
+    PokemonPreview_LoadObjectGraphics(preview);
+    PokemonPreview_CreateSprite(preview, x, y);
+    PokemonPreview_LoadAndDraw(&preview->spriteManager, mon);
+    PokemonPreview_DrawFrame(preview, paletteNum, baseTile);
     BgCommitTilemapBufferToVram(bgConfig, layer);
     return &preview->state;
 }
 
-static void SysTask_HandlePokepic(SysTask *sysTask, void *arg) {
+static void SysTask_HandlePokemonPreview(SysTask *sysTask, void *arg) {
     PokemonPreview *preview = arg;
 
     switch (preview->state) {
     case PREVIEW_STATE_REMOVE:
-        Pokepic_Clear(preview);
+        PokemonPreview_Clear(preview);
         Sprite_DeleteAndFreeResources(preview->managedSprite);
         FieldSpriteManager_ReleaseWithoutResDat(&preview->spriteManager);
         DestroySysTaskAndEnvironment(sysTask);
@@ -661,8 +661,8 @@ static void SysTask_HandlePokepic(SysTask *sysTask, void *arg) {
     SpriteList_RenderAndAnimateSprites(preview->spriteManager.spriteList);
 }
 
-static PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
-    PokemonPreview *preview = SysTask_GetData(CreateSysTaskAndEnvironment(SysTask_HandlePokepic, sizeof(PokemonPreview), 0, heapID));
+static PokemonPreview *PokemonPreview_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, enum HeapID heapID) {
+    PokemonPreview *preview = SysTask_GetData(CreateSysTaskAndEnvironment(SysTask_HandlePokemonPreview, sizeof(PokemonPreview), 0, heapID));
 
     preview->state = 0;
     preview->bgConfig = bgConfig;
@@ -673,7 +673,7 @@ static PokemonPreview *Pokepic_Create(BgConfig *bgConfig, u8 layer, u8 x, u8 y, 
     return preview;
 }
 
-static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID) {
+static void PokemonPreview_InitObjectResLists(PokemonPreview *preview, enum HeapID heapID) {
     SpriteResourceCountsListUnion resIDs = {
         .numChar = 1,
         .numPltt = 1,
@@ -683,7 +683,7 @@ static void Pokepic_InitObjectResLists(PokemonPreview *preview, enum HeapID heap
     FieldSpriteManager_InitEmptyResLists(&preview->spriteManager, &resIDs, 1, heapID);
 }
 
-static void Pokepic_LoadObjectGraphics(PokemonPreview *preview) {
+static void PokemonPreview_LoadObjectGraphics(PokemonPreview *preview) {
     FieldSpriteManager_AddPlttRes(&preview->spriteManager,
         NARC_graphic_gs_winframe,
         NARC_gs_winframe_00050_NCLR,
@@ -709,7 +709,7 @@ static void Pokepic_LoadObjectGraphics(PokemonPreview *preview) {
         POKEMON_PREVIEW_RESOURCE_ID);
 }
 
-static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y) {
+static void PokemonPreview_CreateSprite(PokemonPreview *preview, u8 x, u8 y) {
     ManagedSpriteTemplate spriteTemplate = sPokemonPreviewSpriteTemplate;
     spriteTemplate.x = (x + 5) * 8;
     spriteTemplate.y = (y + 5) * 8;
@@ -718,19 +718,19 @@ static void Pokepic_CreateSprite(PokemonPreview *preview, u8 x, u8 y) {
     GfGfx_EngineBTogglePlanes(GX_PLANEMASK_OBJ, GF_PLANE_TOGGLE_ON);
 }
 
-static void Pokepic_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
+static void PokemonPreview_LoadAndDrawParameterized(FieldSpriteManager *spriteManager, u16 species, u8 gender) {
     struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetMonSpriteCharAndPlttNarcIdsEx(&tmplate, species, gender, 2, FALSE, 0, 0);
-    Pokepic_LoadAndDrawFromTemplate(spriteManager, &tmplate);
+    PokemonPreview_LoadAndDrawFromTemplate(spriteManager, &tmplate);
     PokepicManager_Delete(mgr);
 }
 
-static void Pokepic_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon) {
+static void PokemonPreview_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon) {
     struct PokepicManager *mgr = PokepicManager_Create((enum HeapID)spriteManager->heapID);
     PokepicTemplate tmplate;
     GetPokemonSpriteCharAndPlttNarcIds(&tmplate, mon, 2);
-    Pokepic_LoadAndDrawFromTemplate(spriteManager, &tmplate);
+    PokemonPreview_LoadAndDrawFromTemplate(spriteManager, &tmplate);
     PokepicManager_Delete(mgr);
 }
 
@@ -740,7 +740,7 @@ static void Pokepic_LoadAndDraw(FieldSpriteManager *spriteManager, Pokemon *mon)
 #define POKEMON_SPRITE_FRAME_SIZE_BYTES   (TILE_SIZE_4BPP * POKEMON_SPRITE_FRAME_SIZE_TILES)
 #define POKEMON_SPRITE_WHOLE_SIZE_BYTES   (POKEMON_SPRITE_FRAME_SIZE_BYTES * 2)
 
-static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate) {
+static void PokemonPreview_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, PokepicTemplate *tmplate) {
     u8 *buf;
     u32 offset;
     SpriteResource *charResource, *plttResource;
@@ -787,7 +787,7 @@ static void Pokepic_LoadAndDrawFromTemplate(FieldSpriteManager *spriteManager, P
     Heap_Free(buf);
 }
 
-static void Pokepic_DrawFrame(PokemonPreview *preview, u8 palette, u16 tile) {
+static void PokemonPreview_DrawFrame(PokemonPreview *preview, u8 palette, u16 tile) {
     FillBgTilemapRect(preview->bgConfig,
         preview->bgLayer,
         tile,
@@ -864,7 +864,7 @@ static void Pokepic_DrawFrame(PokemonPreview *preview, u8 palette, u16 tile) {
     ScheduleBgTilemapBufferTransfer(preview->bgConfig, preview->bgLayer);
 }
 
-static void Pokepic_Clear(PokemonPreview *preview) {
+static void PokemonPreview_Clear(PokemonPreview *preview) {
     FillBgTilemapRect(preview->bgConfig,
         preview->bgLayer,
         0,

@@ -512,7 +512,7 @@ static BOOL Task_PrintRegisteredKeyItemUseMessage(TaskManager *taskManager) {
         if (DialogBox_IsPrintFinished(env->printerId) == TRUE) {
             if ((gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B | PAD_KEY_UP | PAD_KEY_DOWN | PAD_KEY_LEFT | PAD_KEY_RIGHT)) || (gSystem.simulatedInputs & PAD_BUTTON_A)) {
                 fieldSystem->textbox_open = FALSE;
-                ClearFrameAndWindow2(&env->window, 0);
+                Window_EraseMessageBox(&env->window, 0);
                 env->state++;
             }
         }

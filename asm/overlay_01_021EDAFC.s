@@ -310,7 +310,7 @@ _021EDCD8:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	bl ov01_021EDE18
 	add r1, r4, #0
@@ -599,7 +599,7 @@ ov01_021EDF38: ; 0x021EDF38
 	add r0, #0xb0
 	ldr r0, [r0]
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -784,7 +784,7 @@ _021EE08A:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	bl ov01_021EE324
 	add r2, r4, #0
@@ -941,7 +941,7 @@ _021EE1C2:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	bl ov01_021EE324
 	add r0, r5, #0
@@ -1418,7 +1418,7 @@ ov01_021EE568: ; 0x021EE568
 	lsl r0, r0, #2
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r6, #0
 	add r0, #8
 	bl RemoveWindow
@@ -1590,7 +1590,7 @@ _021EE698:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	lsl r0, r4, #0x13
 	lsr r0, r0, #0x10
 	str r0, [sp]
@@ -1701,7 +1701,7 @@ ov01_021EE7B8: ; 0x021EE7B8
 	add r0, #0xb0
 	ldr r0, [r0]
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r6, #0
 	add r0, #0xb0
 	ldr r0, [r0]
@@ -2022,7 +2022,7 @@ _021EE9B2:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	add r1, r6, #0
 	add r2, r4, #0
@@ -2129,7 +2129,7 @@ FieldSystem_ShowMoneyBox: ; 0x021EEA90
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -2171,7 +2171,7 @@ MoneyBoxSys_Delete: ; 0x021EEB38
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2294,7 +2294,7 @@ ov01_021EEC00: ; 0x021EEC00
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	add r1, r4, #0
 	add r2, r7, #0
@@ -2311,7 +2311,7 @@ ov01_021EEC68: ; 0x021EEC68
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2456,7 +2456,7 @@ ov01_021EED60: ; 0x021EED60
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -2515,7 +2515,7 @@ ov01_021EEE30: ; 0x021EEE30
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete
@@ -2680,7 +2680,7 @@ ov01_021EEF88: ; 0x021EEF88
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #1
 	bl WindowArray_Delete

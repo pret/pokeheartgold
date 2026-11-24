@@ -80,7 +80,7 @@
 .public LoadStandardWindowTiles
 .public GetStandardWindowPaletteNARCMember
 .public GetMessageBoxPaletteNARCMember
-.public DrawFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
 .public ReplaceTransparentTiles
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4

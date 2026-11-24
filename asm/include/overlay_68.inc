@@ -64,8 +64,8 @@
 .public ManagedSprite_SetPositionXY
 .public SpriteSystem_ReplaceCharResObj
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
 .public ListMenuItems_Delete

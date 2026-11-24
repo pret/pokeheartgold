@@ -34016,7 +34016,7 @@ ov14_021F6654: ; 0x021F6654
 	add r5, #0x30
 	add r0, r5, r4
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, r4
 	bl GetWindowBgId
 	add r1, r0, #0
@@ -34028,26 +34028,26 @@ ov14_021F6654: ; 0x021F6654
 
 	thumb_func_start ov14_021F6678
 ov14_021F6678: ; 0x021F6678
-	ldr r3, _021F6684 ; =ClearFrameAndWindow2
+	ldr r3, _021F6684 ; =Window_EraseMessageBox
 	add r0, #0x30
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_021F6684: .word ClearFrameAndWindow2
+_021F6684: .word Window_EraseMessageBox
 	thumb_func_end ov14_021F6678
 
 	thumb_func_start ov14_021F6688
 ov14_021F6688: ; 0x021F6688
-	ldr r3, _021F6694 ; =ClearFrameAndWindow2
+	ldr r3, _021F6694 ; =Window_EraseMessageBox
 	add r0, #0x30
 	lsl r1, r1, #4
 	add r0, r0, r1
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021F6694: .word ClearFrameAndWindow2
+_021F6694: .word Window_EraseMessageBox
 	thumb_func_end ov14_021F6688
 
 	thumb_func_start ov14_021F6698

@@ -38,8 +38,8 @@
 .public SysTask_Destroy
 .public LoadStandardWindowTiles
 .public GetStandardWindowPaletteNARCMember
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public sub_0200FBF4
 .public FontSystem_NewInit
 .public sub_020135AC

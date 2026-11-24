@@ -65,8 +65,8 @@
 .public SpriteSystem_ReplaceCharResObj
 .public GetMessageBoxTilesNARCMember
 .public GetMessageBoxPaletteNARCMember
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public Heap_Alloc
 .public Heap_Free
 .public SetScreenModeAndDisable

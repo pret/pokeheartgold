@@ -1354,7 +1354,7 @@ void ov44_0222B0A4(UnkStruct_ov44_022319EC *arg0) {
 
 void ov44_0222B0B0(UnkStruct_ov44_022319EC *arg0) {
     if (WindowIsInUse(&arg0->unk2F0) != 0) {
-        ClearWindowPixelBuffer(&arg0->unk2F0, 0);
+        Window_EraseStandardFrame(&arg0->unk2F0, 0);
         RemoveWindow(&arg0->unk2F0);
     }
     AddWindowParameterized(arg0->unk15C, &arg0->unk2F0, 3, 5, 1, 22, 2, 13, 458);
@@ -1453,8 +1453,8 @@ s32 ov44_0222B3A8(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         YesNoPrompt_Destroy(arg0->unk188);
         arg0->unk4 = sub_020396FC(arg0->saveData, 1188);
         ov44_0222F510(arg0, 23, 1);
-        GF_ASSERT(arg0->unk18C == NULL);
-        arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+        GF_ASSERT(arg0->waitingIcon == NULL);
+        arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
         arg0->unk348 = 14;
     } else if (response == YESNORESPONSE_NO) {
         YesNoPrompt_Destroy(arg0->unk188);
@@ -1482,14 +1482,14 @@ s32 ov44_0222B494(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     enum YesNoResponse response = YesNoPrompt_HandleInput(arg0->unk188);
     if (response == YESNORESPONSE_YES) {
         YesNoPrompt_Destroy(arg0->unk188);
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
         ov44_0222F66C(arg0, 22);
         arg0->unk188 = ov44_02231A28(arg0->unk15C, &ov44_02235384, 1);
         arg0->unk348 = 5;
     } else if (response == YESNORESPONSE_NO) {
         YesNoPrompt_Destroy(arg0->unk188);
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
         arg0->unk348 = 34;
     } else {
@@ -1506,7 +1506,7 @@ s32 ov44_0222B528(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         SetBgPriority(2, 0);
         SetBgPriority(1, 1);
         SetBgPriority(0, 3);
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
         sub_0202C03C(arg0->unk0);
         void *saveArray = SaveArray_Get(arg0->saveData, 31);
@@ -1516,8 +1516,8 @@ s32 ov44_0222B528(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         arg0->unk348 = 14;
         arg0->unk4 = sub_020396FC(arg0->saveData, 1188);
         ov44_0222F510(arg0, 23, 1);
-        GF_ASSERT(arg0->unk18C == NULL);
-        arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+        GF_ASSERT(arg0->waitingIcon == NULL);
+        arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
         arg0->unk368 = 1;
     } else if (response == YESNORESPONSE_NO) {
         YesNoPrompt_Destroy(arg0->unk188);
@@ -1525,7 +1525,7 @@ s32 ov44_0222B528(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         SetBgPriority(2, 0);
         SetBgPriority(1, 1);
         SetBgPriority(0, 3);
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
         ov44_0222F66C(arg0, 20);
         arg0->unk348 = 3;
@@ -1543,13 +1543,13 @@ s32 ov44_0222B64C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         SetBgPriority(1, 1);
         SetBgPriority(3, 0);
         SetBgPriority(2, 0);
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
         arg0->unk348 = 14;
         arg0->unk4 = sub_020396FC(arg0->saveData, 1188);
         ov44_0222F510(arg0, 23, 1);
-        GF_ASSERT(arg0->unk18C == NULL);
-        arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+        GF_ASSERT(arg0->waitingIcon == NULL);
+        arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
         arg0->unk368 = 1;
     } else if (response == YESNORESPONSE_NO) {
         YesNoPrompt_Destroy(arg0->unk188);
@@ -1557,7 +1557,7 @@ s32 ov44_0222B64C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         SetBgPriority(1, 1);
         SetBgPriority(3, 0);
         SetBgPriority(2, 0);
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
         arg0->unk348 = 34;
     } else {
@@ -1695,7 +1695,7 @@ void ov44_0222B9A0(UnkStruct_ov44_022319EC *arg0) {
 s32 ov44_0222BA6C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if ((gSystem.newKeys & (PAD_BUTTON_B | PAD_BUTTON_A)) || (System_GetTouchNew() == 1)) {
         if (WindowIsInUse(&arg0->unk300) != 0) {
-            ClearFrameAndWindow2(&arg0->unk300, 0);
+            Window_EraseMessageBox(&arg0->unk300, 0);
             RemoveWindow(&arg0->unk300);
         }
         arg0->unk348 = 8;
@@ -1723,7 +1723,7 @@ s32 ov44_0222BAD0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
     if ((gSystem.newKeys & (PAD_BUTTON_B | PAD_BUTTON_A)) || (System_GetTouchNew() == 1)) {
         if (WindowIsInUse(&arg0->unk300) != 0) {
-            ClearFrameAndWindow2(&arg0->unk300, 0);
+            Window_EraseMessageBox(&arg0->unk300, 0);
             RemoveWindow(&arg0->unk300);
         }
         ov44_0222F510(arg0, 88, 0);
@@ -1801,7 +1801,7 @@ s32 ov44_0222BC78(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ov44_0222FA28(arg0);
         }
         if (WindowIsInUse(&arg0->unk2F0) != 0) {
-            ClearWindowPixelBuffer(&arg0->unk2F0, 0);
+            Window_EraseStandardFrame(&arg0->unk2F0, 0);
             RemoveWindow(&arg0->unk2F0);
         }
         if (WindowIsInUse(&arg0->unk2E0) != 0) {
@@ -1831,8 +1831,8 @@ s32 ov44_0222BC78(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         ov44_0222B0B0(arg0);
         arg0->unk4 = sub_020396FC(arg0->saveData, 1188);
         ov44_0222F510(arg0, 23, 1);
-        GF_ASSERT(arg0->unk18C == NULL);
-        arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+        GF_ASSERT(arg0->waitingIcon == NULL);
+        arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
         arg0->unk348 = 14;
     }
     return arg1;
@@ -1845,8 +1845,8 @@ s32 ov44_0222BE3C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (ov00_021E7314() != 0) {
         arg0->unk348 = 69;
         ov44_0222F510(arg0, 30, 1);
-        GF_ASSERT(arg0->unk18C == NULL);
-        arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+        GF_ASSERT(arg0->waitingIcon == NULL);
+        arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
     }
     if (sub_02039274() != 0) {
         if (arg0->unk368 != 0) {
@@ -1948,7 +1948,7 @@ s32 ov44_0222C084(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ov44_0222B870(arg0);
             arg0->unk348 = ov44_0222ADD0();
             if (WindowIsInUse(&arg0->unk300) != 0) {
-                ClearFrameAndWindow2(&arg0->unk300, 0);
+                Window_EraseMessageBox(&arg0->unk300, 0);
                 RemoveWindow(&arg0->unk300);
             }
         }
@@ -2012,14 +2012,14 @@ void ov44_0222C29C(UnkStruct_ov44_022319EC *arg0) {
         RemoveWindow(&arg0->unk2E0);
     }
     if (WindowIsInUse(&arg0->unk2F0) != 0) {
-        ClearWindowPixelBuffer(&arg0->unk2F0, 0);
+        Window_EraseStandardFrame(&arg0->unk2F0, 0);
         RemoveWindow(&arg0->unk2F0);
     }
     AddWindowParameterized(arg0->unk15C, &arg0->unk2E0, 3, 1, 1, 28, 2, 13, 402);
     AddWindowParameterized(arg0->unk15C, &arg0->unk2F0, 1, 1, 1, 28, 2, 13, 417);
     FillWindowPixelBuffer(&arg0->unk2F0, 15);
     ScheduleWindowCopyToVram(&arg0->unk2F0);
-    DrawFrameAndWindow1(&arg0->unk2F0, 0, 473, 11);
+    Window_DrawStandardFrame(&arg0->unk2F0, 0, 473, 11);
 }
 
 s32 ov44_0222C35C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
@@ -2684,12 +2684,12 @@ s32 ov44_0222D3DC(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         ListMenuItems_AppendFromMsgData(arg0->unk154, arg0->unk168, listMenuItems[i].strno, listMenuItems[i].value);
     }
     if (WindowIsInUse(&arg0->unk320) != 0) {
-        ClearWindowPixelBuffer(&arg0->unk320, 0);
+        Window_EraseStandardFrame(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
     }
     s32 height = (listLen + 1) * 2;
     AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, 3, 15, height, 13, 59 - height);
-    DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
+    Window_DrawStandardFrame(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154;
     listMenuTemplate.window = &arg0->unk320;
     arg0->unk158 = ListMenuInit(&listMenuTemplate, 0, arg0->unk374, HEAP_ID_53);
@@ -2705,7 +2705,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     s32 temp_r6 = ov44_0222E02C(arg0);
     ov44_02232018(&arg0->unk38C);
     if (sub_020393C8() != 0) {
-        ClearWindowPixelBuffer(&arg0->unk320, 0);
+        Window_EraseStandardFrame(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
         ListMenuItems_Delete(arg0->unk154);
@@ -2716,7 +2716,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (TextPrinterCheckActive(arg0->unk180) != 0) {
         if (ov44_0222C500(arg0) != 0) {
             arg0->unk348 = 19;
-            ClearWindowPixelBuffer(&arg0->unk320, 0);
+            Window_EraseStandardFrame(&arg0->unk320, 0);
             RemoveWindow(&arg0->unk320);
             DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
             ListMenuItems_Delete(arg0->unk154);
@@ -2754,7 +2754,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
             ov44_0222F510(arg0, 103, 0);
             arg0->unk348 = 29;
         } else if ((var_r4 == 0) || (var_r4 == 1) || (var_r4 == 29)) {
-            ClearWindowPixelBuffer(&arg0->unk320, 0);
+            Window_EraseStandardFrame(&arg0->unk320, 0);
             RemoveWindow(&arg0->unk320);
             DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
             ListMenuItems_Delete(arg0->unk154);
@@ -2783,7 +2783,7 @@ s32 ov44_0222D594(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
     }
 
-    ClearWindowPixelBuffer(&arg0->unk320, 0);
+    Window_EraseStandardFrame(&arg0->unk320, 0);
     RemoveWindow(&arg0->unk320);
     DestroyListMenu(arg0->unk158, NULL, &arg0->unk374);
     ListMenuItems_Delete(arg0->unk154);
@@ -2848,12 +2848,12 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
     }
     if (WindowIsInUse(&arg0->unk320) != 0) {
-        ClearWindowPixelBuffer(&arg0->unk320, 0);
+        Window_EraseStandardFrame(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
     }
     u32 temp_r0 = listLen * 2;
     AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, 9, 15, temp_r0, 13, 59 - temp_r0);
-    DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
+    Window_DrawStandardFrame(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154;
     listMenuTemplate.window = &arg0->unk320;
     arg0->unk158 = ListMenuInit(&listMenuTemplate, 0, (&arg0->unk376)[arg0->unk37C], HEAP_ID_53);
@@ -2864,7 +2864,7 @@ s32 ov44_0222D8B0(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
 s32 ov44_0222DA64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     ov44_02232018(&arg0->unk38C);
     if (sub_020393C8() != 0) {
-        ClearWindowPixelBuffer(&arg0->unk320, 0);
+        Window_EraseStandardFrame(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, 0, &arg0->unk376 + arg0->unk37C);
         ListMenuItems_Delete(arg0->unk154);
@@ -2874,7 +2874,7 @@ s32 ov44_0222DA64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     }
     if (ov44_0222C500(arg0) != 0) {
         arg0->unk348 = 19;
-        ClearWindowPixelBuffer(&arg0->unk320, 0);
+        Window_EraseStandardFrame(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, 0, &arg0->unk376 + arg0->unk37C);
         ListMenuItems_Delete(arg0->unk154);
@@ -2913,7 +2913,7 @@ s32 ov44_0222DA64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
         ov44_022319BC(arg0, var_r7);
     }
-    ClearWindowPixelBuffer(&arg0->unk320, 0);
+    Window_EraseStandardFrame(&arg0->unk320, 0);
     RemoveWindow(&arg0->unk320);
     DestroyListMenu(arg0->unk158, 0, &arg0->unk376 + arg0->unk37C);
     ListMenuItems_Delete(arg0->unk154);
@@ -3045,7 +3045,7 @@ s32 ov44_0222DD64(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
         }
     }
     AddWindowParameterized(arg0->unk15C, &arg0->unk320, 2, 16, ((3 - sp1C) * 2) + 11, 15, sp1C * 2, 13, 59);
-    DrawFrameAndWindow1(&arg0->unk320, 1, 473, 11);
+    Window_DrawStandardFrame(&arg0->unk320, 1, 473, 11);
     listMenuTemplate.items = arg0->unk154; // itemPrintFunc
     listMenuTemplate.window = &arg0->unk320;
     arg0->unk158 = ListMenuInit(&listMenuTemplate, 0, 0, HEAP_ID_53);
@@ -3103,7 +3103,7 @@ s32 ov44_0222E090(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     s32 temp_r0 = ov44_02231C70(&arg0->unk38C);
     UnkStruct_ov44_02232B74 *sp14 = ov44_0222AAEC(arg0, temp_r0);
     if (sub_020393C8() != 0) {
-        ClearWindowPixelBuffer(&arg0->unk320, 0);
+        Window_EraseStandardFrame(&arg0->unk320, 0);
         RemoveWindow(&arg0->unk320);
         DestroyListMenu(arg0->unk158, 0, NULL);
         ListMenuItems_Delete(arg0->unk154);
@@ -3199,8 +3199,8 @@ s32 ov44_0222E090(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
                                 ov44_0222F818(arg0, temp_r0_3);
                                 ov44_0222F780(arg0, temp_r0 - 1);
                                 ov44_0222F510(arg0, 17, 0);
-                                GF_ASSERT(arg0->unk18C == NULL);
-                                arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+                                GF_ASSERT(arg0->waitingIcon == NULL);
+                                arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
                                 if (temp_r0_3 != 1) {
                                     arg0->unk348 = 45;
 
@@ -3234,7 +3234,7 @@ s32 ov44_0222E090(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     if (var_r6 == 0) {
         ov44_0222F7BC(arg0);
     }
-    ClearWindowPixelBuffer(&arg0->unk320, 0);
+    Window_EraseStandardFrame(&arg0->unk320, 0);
     RemoveWindow(&arg0->unk320);
     DestroyListMenu(arg0->unk158, 0, NULL);
     ListMenuItems_Delete(arg0->unk154);
@@ -3694,8 +3694,8 @@ s32 ov44_0222EED4(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
                     return arg1;
                 } else if (temp_r0 == 0) {
                     ov44_0222F510(arg0, 138, 0);
-                    GF_ASSERT(arg0->unk18C == 0);
-                    arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+                    GF_ASSERT(arg0->waitingIcon == 0);
+                    arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
                     arg0->unk384 = 1;
                     arg0->unk348 = 49;
                     arg0->unk35C = 30;
@@ -3711,8 +3711,8 @@ s32 ov44_0222EED4(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
                 if (temp_r0_2 == 1) {
                     YesNoPrompt_Destroy(arg0->unk188);
                     ov44_0222F510(arg0, 138, 0);
-                    GF_ASSERT(arg0->unk18C == 0);
-                    arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+                    GF_ASSERT(arg0->waitingIcon == 0);
+                    arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
                     arg0->unk384 = 1;
                     arg0->unk348 = 49;
                     arg0->unk35C = 30;
@@ -3826,8 +3826,8 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
                             ov44_0222F818(arg0, temp_r0);
                             ov44_0222F780(arg0, arg0->unk382 - 1);
                             ov44_0222F510(arg0, 17, 0);
-                            GF_ASSERT(arg0->unk18C == 0);
-                            arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+                            GF_ASSERT(arg0->waitingIcon == 0);
+                            arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
                             if (temp_r0 != 1) {
                                 arg0->unk348 = 45;
                                 return arg1;
@@ -3860,8 +3860,8 @@ s32 ov44_0222F194(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
                         ov44_0222F818(arg0, temp_r0);
                         ov44_0222F780(arg0, arg0->unk382 - 1);
                         ov44_0222F510(arg0, 17, 0);
-                        GF_ASSERT(arg0->unk18C == 0);
-                        arg0->unk18C = WaitingIcon_New(&arg0->unk2D0, 482);
+                        GF_ASSERT(arg0->waitingIcon == 0);
+                        arg0->waitingIcon = WaitingIcon_New(&arg0->unk2D0, 482);
                         if (temp_r0 != 1) {
                             arg0->unk348 = 45;
                             return arg1;
@@ -3906,11 +3906,11 @@ void ov44_0222F510(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2) {
     u8 textSpeed = textSpeed_int;
     ov44_0222F910(arg0);
     if (WindowIsInUse(&arg0->unk300) != 0) {
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
     }
     if (WindowIsInUse(&arg0->unk2D0) != 0) {
-        ClearFrameAndWindow2(&arg0->unk2D0, 0);
+        Window_EraseMessageBox(&arg0->unk2D0, 0);
         RemoveWindow(&arg0->unk2D0);
     }
     s32 temp_r0 = arg0->unk180;
@@ -3926,7 +3926,7 @@ void ov44_0222F510(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2) {
     }
     StringExpandPlaceholders(arg0->unk164, arg0->unk174, arg0->unk170);
     FillWindowPixelBuffer(&arg0->unk2D0, 15);
-    DrawFrameAndWindow2(&arg0->unk2D0, 1, 482, 10);
+    Window_DrawMessageBoxWithScrollCursor(&arg0->unk2D0, 1, 482, 10);
     TextFlags_SetCanABSpeedUpPrint(1);
     TextFlags_SetAutoScrollParam(0);
     TextFlags_SetCanTouchSpeedUpPrint(1);
@@ -3937,11 +3937,11 @@ void ov44_0222F510(UnkStruct_ov44_022319EC *arg0, s32 arg1, s32 arg2) {
 void ov44_0222F66C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     ov44_0222F910(arg0);
     if (WindowIsInUse(&arg0->unk300) != 0) {
-        ClearFrameAndWindow2(&arg0->unk300, 0);
+        Window_EraseMessageBox(&arg0->unk300, 0);
         RemoveWindow(&arg0->unk300);
     }
     if (WindowIsInUse(&arg0->unk2D0) != 0) {
-        ClearFrameAndWindow2(&arg0->unk2D0, 0);
+        Window_EraseMessageBox(&arg0->unk2D0, 0);
         RemoveWindow(&arg0->unk2D0);
     }
     s32 temp_r0 = arg0->unk180;
@@ -3953,7 +3953,7 @@ void ov44_0222F66C(UnkStruct_ov44_022319EC *arg0, s32 arg1) {
     ReadMsgDataIntoString(arg0->unk16C, arg1, arg0->unk170);
     StringExpandPlaceholders(arg0->unk164, arg0->unk174, arg0->unk170);
     FillWindowPixelBuffer(&arg0->unk300, 15);
-    DrawFrameAndWindow1(&arg0->unk300, 1, 473, 11);
+    Window_DrawStandardFrame(&arg0->unk300, 1, 473, 11);
     arg0->unk180 = AddTextPrinterParameterized(&arg0->unk300, FONT_MESSAGE, arg0->unk174, 0, 0, 255, 0);
     ScheduleWindowCopyToVram(&arg0->unk300);
 }
@@ -3977,7 +3977,7 @@ void ov44_0222F7BC(UnkStruct_ov44_022319EC *arg0) {
         arg0->unk180 = 8;
     }
     if (WindowIsInUse(&arg0->unk2D0) != 0) {
-        ClearFrameAndWindow2(&arg0->unk2D0, 0);
+        Window_EraseMessageBox(&arg0->unk2D0, 0);
         RemoveWindow(&arg0->unk2D0);
     }
 }
@@ -4029,11 +4029,11 @@ u8 ov44_0222F8F0(UnkStruct_ov44_022319EC *arg0) {
 }
 
 void ov44_0222F910(UnkStruct_ov44_022319EC *arg0) {
-    if (arg0->unk18C != NULL) {
-        WaitingIcon_Halt(arg0->unk18C);
-        arg0->unk18C = NULL;
+    if (arg0->waitingIcon != NULL) {
+        WaitingIcon_Halt(arg0->waitingIcon);
+        arg0->waitingIcon = NULL;
         if (WindowIsInUse(&arg0->unk2D0) != 0) {
-            ClearFrameAndWindow2(&arg0->unk2D0, 0);
+            Window_EraseMessageBox(&arg0->unk2D0, 0);
             RemoveWindow(&arg0->unk2D0);
         }
     }

@@ -71,7 +71,7 @@
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public FontSystem_NewInit

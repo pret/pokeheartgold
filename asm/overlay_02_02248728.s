@@ -15454,7 +15454,7 @@ _0224FA50:
 	beq _0224FB28
 	add r0, r4, #0
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
@@ -15488,7 +15488,7 @@ _0224FABA:
 	beq _0224FB28
 	add r0, r4, #0
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]
@@ -16482,7 +16482,7 @@ _02250270:
 	b _0225047E
 _02250272:
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -16520,7 +16520,7 @@ _022502BA:
 	b _0225047E
 _022502C4:
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -16706,7 +16706,7 @@ _02250418:
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0x12
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]

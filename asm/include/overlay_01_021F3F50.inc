@@ -15,8 +15,8 @@
 .public BufferIntegerAsString
 .public BufferLandmarkName
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public Heap_Alloc
 .public Heap_Free
 .public AddWindowParameterized

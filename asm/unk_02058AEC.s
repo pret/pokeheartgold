@@ -1201,7 +1201,7 @@ _02059452:
 	add r0, r4, #0
 	add r0, #0x14
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	ldr r2, [r4, #8]
 	add r1, r0, #0
@@ -1267,7 +1267,7 @@ sub_020594C8: ; 0x020594C8
 	add r0, r5, #0
 	add r0, #0x14
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r0, #0x14
 	bl ClearWindowTilemapAndCopyToVram
@@ -1816,7 +1816,7 @@ _020598EC:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r1, r5, #0
 	ldr r0, [sp, #0x14]
 	add r1, #0x81
@@ -1924,7 +1924,7 @@ _020599BE:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add sp, #0x18
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2041,12 +2041,12 @@ _02059AD4: .word 0x000005DC
 
 	thumb_func_start sub_02059AD8
 sub_02059AD8: ; 0x02059AD8
-	ldr r3, _02059AE0 ; =ClearWindowPixelBuffer
+	ldr r3, _02059AE0 ; =Window_EraseStandardFrame
 	ldr r0, [r0, #0x7c]
 	mov r1, #1
 	bx r3
 	.balign 4, 0
-_02059AE0: .word ClearWindowPixelBuffer
+_02059AE0: .word Window_EraseStandardFrame
 	thumb_func_end sub_02059AD8
 
 	thumb_func_start sub_02059AE4
@@ -2279,7 +2279,7 @@ _02059C6C:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #8
 	bl RemoveWindow

@@ -12,9 +12,9 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
-.public ClearFrameAndWindow2
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
+.public Window_EraseMessageBox
 .public IsPaletteFadeFinished
 .public ListMenuCursorNew
 .public DestroyListMenuCursorObj

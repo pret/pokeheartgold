@@ -2813,7 +2813,7 @@ ov43_0222B4BC: ; 0x0222B4BC
 	mov r1, #1
 	mov r2, #0x46
 	mov r3, #0xc
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r5, #0x20
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -2853,7 +2853,7 @@ ov43_0222B55C: ; 0x0222B55C
 	add r4, r0, #0
 	add r0, #0x20
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r4, #0x20
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -4948,7 +4948,7 @@ ov43_0222C550: ; 0x0222C550
 	mov r1, #1
 	mov r2, #0x46
 	mov r3, #0xc
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r5, #0xc8
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
@@ -4988,7 +4988,7 @@ ov43_0222C600: ; 0x0222C600
 	add r4, r0, #0
 	add r0, #0xc8
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #0xc8
 	bl ClearWindowTilemapAndScheduleTransfer

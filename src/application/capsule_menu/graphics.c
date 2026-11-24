@@ -801,9 +801,9 @@ void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL d
 
     if (drawFrame) {
         if (frame == 0) {
-            DrawFrameAndWindow1(window, TRUE, 1, 12);
+            Window_DrawStandardFrame(window, TRUE, 1, 12);
         } else {
-            DrawFrameAndWindow2(window, TRUE, 1, 12);
+            Window_DrawMessageBoxWithScrollCursor(window, TRUE, 1, 12);
         }
     }
 
@@ -826,7 +826,7 @@ void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL d
 void CapsuleGraphics_InitMessageWindow(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, 14, baseTile);
-    DrawFrameAndWindow2(window, 1, 1, 12);
+    Window_DrawMessageBoxWithScrollCursor(window, 1, 1, 12);
     FillWindowPixelBuffer(window, 15);
     ScheduleWindowCopyToVram(window);
 }

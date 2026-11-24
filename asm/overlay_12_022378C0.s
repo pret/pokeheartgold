@@ -198,7 +198,7 @@ _02237D1A:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	bl ov12_0223A620
 	add sp, #0x68
@@ -394,7 +394,7 @@ _02237FD8:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #5
 	bl SpriteSystem_Alloc
 	add r1, r4, #0
@@ -3625,7 +3625,7 @@ _02239A46:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #1
 	mov r1, #0x1b
 	mov r2, #0xc5
