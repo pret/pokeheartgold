@@ -1,0 +1,24 @@
+name: docker-build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-docker:
+    name: Build Docker image
+    uses: docker/github-builder/.github/workflows/build.yml@bb1eb9fb69408ac52395fb21f49c6b52d564529a # v1.20.0
+    permissions:
+      contents: read
+      id-token: write
+    with:
+      output: image
+      push: ${{ github.event_name != 'pull_request' }}
+      set-meta-labels: true
+      set-meta-annotations: true
+      meta-images: ghcr.io/pret/pokeheartgold
+      platforms: linux/amd64
+    secrets:
+      registry-auths: |
+        - registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.github_token }}
