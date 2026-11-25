@@ -4,7 +4,7 @@
 
 #include "heap.h"
 #include "math_util.h"
-#include "unk_020210A0.h"
+#include "touch_pad.h"
 #include "unk_02027010.h"
 
 struct System gSystem;

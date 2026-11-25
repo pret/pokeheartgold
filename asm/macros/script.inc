@@ -2603,13 +2603,13 @@
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_452 arg0, arg1
+	.macro DrawPokemonPicFromSpecies arg0, arg1
 	.short 452
 	.short \arg0
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_453
+	.macro ErasePokemonPic
 	.short 453
 	.endm
 
@@ -3138,16 +3138,16 @@
 	.short \arg1
 	.endm
 
-	.macro ScrCmd_547 arg0
+	.macro DrawPokemonPicFromPartyMon arg0
 	.short 547
 	.short \arg0
 	.endm
 
-	.macro ScrCmd_548
+	.macro AnimatePokemonPic
 	.short 548
 	.endm
 
-	.macro ScrCmd_549 arg0
+	.macro WaitAnimatePokemonPic arg0
 	.short 549
 	.short \arg0
 	.endm

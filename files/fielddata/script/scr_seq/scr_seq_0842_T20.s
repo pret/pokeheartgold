@@ -1174,7 +1174,7 @@ _0EC0:
 
 scr_seq_T20_007:
 	BufferPlayersName 0
-	TrainerTipsEx 2, msg_0542_T20_00035
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0542_T20_00035
 	End
 
 scr_seq_T20_008:
@@ -1319,7 +1319,7 @@ _10B4:
 
 scr_seq_T20_016:
 	BufferFriendsName 0
-	TrainerTipsEx 2, msg_0542_T20_00035
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0542_T20_00035
 	End
 
 scr_seq_T20_017:
@@ -1834,11 +1834,11 @@ _1700:
 	EndMovement
 
 scr_seq_T20_013:
-	TrainerTipsEx 2, msg_0542_T20_00036
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0542_T20_00036
 	End
 
 scr_seq_T20_014:
-	DirectionSignpostEx 0, 11, msg_0542_T20_00034
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 11, msg_0542_T20_00034
 	End
 
 scr_seq_T20_015:

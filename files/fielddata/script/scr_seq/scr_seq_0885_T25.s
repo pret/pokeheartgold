@@ -692,46 +692,46 @@ _07E0:
 	EndMovement
 
 scr_seq_T25_019:
-	TrainerTipsEx 2, msg_0581_T25_00036
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00036
 	End
 
 scr_seq_T25_020:
-	TrainerTipsEx 2, msg_0581_T25_00037
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00037
 	End
 
 scr_seq_T25_021:
-	TrainerTipsEx 2, msg_0581_T25_00038
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00038
 	End
 
 scr_seq_T25_022:
-	DirectionSignpostEx 0, 16, msg_0581_T25_00039
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 16, msg_0581_T25_00039
 	End
 
 scr_seq_T25_023:
-	TrainerTipsEx 2, msg_0581_T25_00040
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00040
 	End
 
 scr_seq_T25_024:
-	TrainerTipsEx 2, msg_0581_T25_00041
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00041
 	End
 
 scr_seq_T25_025:
-	TrainerTipsEx 2, msg_0581_T25_00042
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00042
 	End
 
 scr_seq_T25_026:
-	TrainerTipsEx 3, msg_0581_T25_00043
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0581_T25_00043
 	End
 
 scr_seq_T25_027:
-	TrainerTipsEx 3, msg_0581_T25_00044
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0581_T25_00044
 	End
 
 scr_seq_T25_028:
-	TrainerTipsEx 2, msg_0581_T25_00045
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00045
 	End
 
 scr_seq_T25_029:
-	TrainerTipsEx 2, msg_0581_T25_00046
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0581_T25_00046
 	End
 	.balign 4, 0

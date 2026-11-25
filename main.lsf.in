@@ -46,7 +46,7 @@ Static main
     Object src/unk_0200CE7C.c
     Object src/sprite_system.c
     Object src/sys_task_api.c
-    Object asm/render_window.s
+    Object src/render_window.c
     Object asm/unk_0200FA24.s
     Object asm/unk_0201010C.s
     Object asm/unk_02012DD8.s
@@ -86,7 +86,7 @@ Static main
     Object src/ascii_util.c
     Object src/fx_util.c
     Object src/unk_02020E80.c
-    Object asm/unk_020210A0.s
+    Object src/touch_pad.c
     Object src/obj_char_transfer.c
     Object src/obj_pltt_transfer.c
     Object src/gf_gfx_planes.c

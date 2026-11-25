@@ -351,6 +351,6 @@ scr_seq_D32R0102_007:
 	End
 
 scr_seq_D32R0102_008:
-	TrainerTipsEx 2, msg_0104_D32R0102_00009
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0104_D32R0102_00009
 	End
 	.balign 4, 0

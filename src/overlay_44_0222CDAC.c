@@ -27,11 +27,11 @@
 #include "system.h"
 #include "text.h"
 #include "touch_hitbox_controller.h"
+#include "touch_pad.h"
 #include "unk_02005D10.h"
 #include "unk_0200A090.h"
 #include "unk_0200B150.h"
 #include "unk_02013534.h"
-#include "unk_020210A0.h"
 #include "unk_0202C034.h"
 #include "unk_02030A98.h"
 #include "unk_0203170C.h"
@@ -4029,9 +4029,9 @@ u8 ov44_0222F8F0(UnkStruct_ov44_022319EC *arg0) {
 }
 
 void ov44_0222F910(UnkStruct_ov44_022319EC *arg0) {
-    if (arg0->unk18C != 0) {
-        sub_0200F478();
-        arg0->unk18C = 0;
+    if (arg0->unk18C != NULL) {
+        WaitingIcon_Halt(arg0->unk18C);
+        arg0->unk18C = NULL;
         if (WindowIsInUse(&arg0->unk2D0) != 0) {
             ClearFrameAndWindow2(&arg0->unk2D0, 0);
             RemoveWindow(&arg0->unk2D0);

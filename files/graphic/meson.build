@@ -125,3 +125,56 @@ shop_gra_narc = custom_target('shop_gra.narc',
 
 nitrofs_files += shop_gra_narc
 naix_headers += shop_gra_narc[1]
+
+############################################################
+###                    WINDOW FRAMES                     ###
+############################################################
+subdir('gs_winframe')
+gs_winframe_narc = custom_target('gs_winframe.narc',
+    command : [
+        nitroarc_exe,
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
+    ],
+    input : [
+        files_graphic_gs_winframe,
+        files_graphic_gs_winframe_NCGR_sopc_version101,
+        files_graphic_gs_winframe_NCGR_clobbersize_version101,
+    ],
+    output : [
+        'gs_winframe.narc',
+        'gs_winframe.naix'
+    ],
+    build_by_default : true
+)
+
+nitrofs_files += gs_winframe_narc
+naix_headers += gs_winframe_narc[1]
+
+############################################################
+###                    MAP SIGNPOSTS                     ###
+############################################################
+subdir('field_board')
+field_board_narc = custom_target('field_board.narc',
+    command : [
+        nitroarc_exe,
+        '--create',
+        '--index-namespace',
+        '--file', '@OUTPUT0@',
+        '@PRIVATE_DIR@',
+    ],
+    input : [
+        files_graphic_field_board,
+        files_graphic_field_board_NCGR_sopc_version101,
+    ],
+    output : [
+        'field_board.narc',
+        'field_board.naix'
+    ],
+    build_by_default : true
+)
+
+nitrofs_files += field_board_narc
+naix_headers += field_board_narc[1]

@@ -11,7 +11,7 @@
 #include "poke_overlay.h"
 #include "pokemon.h"
 #include "touch_hitbox_controller.h"
-#include "unk_020210A0.h"
+#include "touch_pad.h"
 #include "vram_transfer_manager.h"
 
 FS_EXTERN_OVERLAY(OVY_6);

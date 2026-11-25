@@ -7,7 +7,7 @@
 #include "gf_gfx_loader.h"
 #include "screen_fade.h"
 #include "text.h"
-#include "unk_020210A0.h"
+#include "touch_pad.h"
 #include "unk_0208805C.h"
 
 static void FlyMap_InitBGs(PokegearMapAppData *mapApp);

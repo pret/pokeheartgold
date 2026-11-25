@@ -141,7 +141,7 @@
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FC20
@@ -156,7 +156,7 @@
 .public sub_02013938
 .public sub_02013948
 .public TextOBJ_Destroy
-.public sub_02014450
+.public CharacterSprite_LoadPalette
 .public sub_02014510
 .public sub_0201457C
 .public sub_020145B4

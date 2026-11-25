@@ -67,7 +67,7 @@
 .public SpriteManager_GetSpriteList
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public sub_0200E3D8
+.public GetStandardWindowPaletteNARCMember
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
 .public ClearWindowPixelBuffer

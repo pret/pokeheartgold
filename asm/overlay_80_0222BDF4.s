@@ -2341,7 +2341,7 @@ FrtCmd_120: ; 0x0222CF08
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7c]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0

@@ -109,10 +109,10 @@ _016D:
 	End
 
 scr_seq_R37_002:
-	DirectionSignpostEx 1, 3, msg_0393_R37_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 3, msg_0393_R37_00000
 	End
 
 scr_seq_R37_003:
-	TrainerTipsEx 3, msg_0393_R37_00001
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0393_R37_00001
 	End
 	.balign 4, 0

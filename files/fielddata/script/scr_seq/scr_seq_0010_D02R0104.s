@@ -620,7 +620,7 @@ _07B8:
 	EndMovement
 
 scr_seq_D02R0104_001:
-	TrainerTipsEx 2, msg_0051_D02R0104_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0051_D02R0104_00001
 	End
 
 scr_seq_D02R0104_003:
