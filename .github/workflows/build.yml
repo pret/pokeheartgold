@@ -16,7 +16,7 @@ jobs:
     name: Build CI test
     runs-on: ubuntu-26.04
     container:
-      image: ghcr.io/pret/pokeheartgold@sha256:ed1d7c5b5fb63e6b8fc4688600d0c8b9e00424c4641ebcfbadcd6b98f75fff73
+      image: ghcr.io/pret/pokeheartgold@sha256:c9cc7ede240569dfd4738bb74a2f4b90c913be1a5e1c743c38353e5b6abc0df8
       options: --memory-swap -1
     strategy:
       matrix:

@@ -22,6 +22,7 @@ RUN apt-get -y update \
     python3 \
     libpng-dev \
     flex \
+    bison \
  && { ppa-purge -y ppa:ubuntu-toolchain-r/test || true; } \
  && dpkg --add-architecture i386 \
  && apt-get update \
