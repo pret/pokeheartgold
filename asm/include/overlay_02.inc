@@ -62,7 +62,7 @@
 .public ClearFrameAndWindow2
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014450
+.public CharacterSprite_LoadPalette
 .public sub_02014540
 .public GF_RTC_GetTimeOfDay
 .public GF_RTC_GetTimeOfDayWildParam

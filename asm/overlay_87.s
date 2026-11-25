@@ -1073,7 +1073,7 @@ _021E6184:
 	add r0, r4, r0
 	mov r1, #4
 	mov r2, #2
-	bl sub_02021280
+	bl WriteAutoSamplingDataToBuffer
 	ldr r0, _021E63F8 ; =ov87_021E8308
 	bl TouchscreenHitbox_FindRectAtTouchHeld
 	add r5, r0, #0
@@ -5200,7 +5200,7 @@ ov87_021E810C: ; 0x021E810C
 	ldr r2, _021E8130 ; =0x000003F7
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200E398
+	bl LoadStandardWindowTiles
 	ldr r2, _021E8130 ; =0x000003F7
 	add r0, r4, #0
 	mov r1, #1

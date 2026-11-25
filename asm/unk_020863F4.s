@@ -323,7 +323,7 @@ sub_02086490: ; 0x02086490
 	mov r3, #0xa
 	bl LoadUserFrameGfx2
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]

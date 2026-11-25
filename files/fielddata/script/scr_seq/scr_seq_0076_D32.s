@@ -865,23 +865,23 @@ scr_seq_D32_023:
 	End
 
 scr_seq_D32_025:
-	TrainerTipsEx 3, msg_0100_D32_00034
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0100_D32_00034
 	End
 
 scr_seq_D32_026:
-	TrainerTipsEx 3, msg_0100_D32_00035
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0100_D32_00035
 	End
 
 scr_seq_D32_027:
-	TrainerTipsEx 3, msg_0100_D32_00036
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0100_D32_00036
 	End
 
 scr_seq_D32_028:
-	TrainerTipsEx 3, msg_0100_D32_00037
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0100_D32_00037
 	End
 
 scr_seq_D32_029:
-	TrainerTipsEx 3, msg_0100_D32_00038
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0100_D32_00038
 	End
 
 scr_seq_D32_030:

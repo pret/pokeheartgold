@@ -142,6 +142,6 @@ _01BC:
 	EndMovement
 
 scr_seq_R48_002:
-	DirectionSignpostEx 1, 13, msg_0408_R48_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 13, msg_0408_R48_00000
 	End
 	.balign 4, 0

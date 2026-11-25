@@ -18,6 +18,6 @@ scr_seq_R08_000:
 	End
 
 scr_seq_R08_001:
-	TrainerTipsEx 2, msg_0338_R08_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0338_R08_00001
 	End
 	.balign 4, 0

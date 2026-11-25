@@ -77,11 +77,11 @@
 .public ManagedSprite_SetPositionXY
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public sub_0200E398
-.public sub_0200E3D8
-.public sub_0200E640
+.public LoadStandardWindowTiles
+.public GetStandardWindowPaletteNARCMember
+.public GetMessageBoxPaletteNARCMember
 .public DrawFrameAndWindow2
-.public sub_0200EB80
+.public ReplaceTransparentTiles
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public sub_020163E0

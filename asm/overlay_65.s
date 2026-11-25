@@ -6936,7 +6936,7 @@ ov65_0221F780: ; 0x0221F780
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221F796
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _0221F798 ; =0x000036B4
 	mov r1, #0
 	str r1, [r4, r0]

@@ -13,10 +13,10 @@ scr_seq_R38_000:
 	End
 
 scr_seq_R38_001:
-	DirectionSignpostEx 1, 8, msg_0394_R38_00015
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 8, msg_0394_R38_00015
 	End
 
 scr_seq_R38_002:
-	TrainerTipsEx 3, msg_0394_R38_00016
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0394_R38_00016
 	End
 	.balign 4, 0

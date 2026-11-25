@@ -1690,7 +1690,7 @@ _0225D202:
 	mov r1, #1
 	add r0, r4, r0
 	mov r2, #0
-	bl sub_02021280
+	bl WriteAutoSamplingDataToBuffer
 	add r0, r4, #0
 	bl ov91_0225EA7C
 	ldr r0, _0225D2B4 ; =0x00008730

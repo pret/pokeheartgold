@@ -842,11 +842,11 @@ _0ACC:
 	EndMovement
 
 scr_seq_T21_005:
-	TrainerTipsEx 2, msg_0550_T21_00024
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0550_T21_00024
 	End
 
 scr_seq_T21_006:
-	DirectionSignpostEx 0, 12, msg_0550_T21_00023
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 12, msg_0550_T21_00023
 	End
 
 scr_seq_T21_007:

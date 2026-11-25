@@ -29,10 +29,10 @@ scr_seq_W19_003:
 	End
 
 scr_seq_W19_004:
-	DirectionSignpostEx 1, 4, msg_0740_W19_00004
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 4, msg_0740_W19_00004
 	End
 
 scr_seq_W19_005:
-	TrainerTipsEx 3, msg_0740_W19_00005
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0740_W19_00005
 	End
 	.balign 4, 0

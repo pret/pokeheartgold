@@ -8756,12 +8756,12 @@ _021EA198: .word 0x0001EC4C
 	thumb_func_start ov112_021EA19C
 ov112_021EA19C: ; 0x021EA19C
 	ldr r1, _021EA1A4 ; =0x0001EC4C
-	ldr r3, _021EA1A8 ; =sub_0200F450
+	ldr r3, _021EA1A8 ; =WaitingIcon_Destroy
 	ldr r0, [r0, r1]
 	bx r3
 	.balign 4, 0
 _021EA1A4: .word 0x0001EC4C
-_021EA1A8: .word sub_0200F450
+_021EA1A8: .word WaitingIcon_Destroy
 	thumb_func_end ov112_021EA19C
 
 	thumb_func_start ov112_021EA1AC

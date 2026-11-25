@@ -85,8 +85,8 @@
 .public LoadMapSignpostFrameAndGraphic
 .public DrawFrameAndWindow3
 .public WaitingIcon_New
-.public sub_0200F450
-.public sub_0200F478
+.public WaitingIcon_Destroy
+.public WaitingIcon_Halt
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ListMenuItems_New

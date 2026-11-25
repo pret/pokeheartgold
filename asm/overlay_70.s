@@ -2945,7 +2945,7 @@ ov70_02238F80: ; 0x02238F80
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02238F96
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _02238F98 ; =0x000011BC
 	mov r1, #0
 	str r1, [r4, r0]

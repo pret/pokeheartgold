@@ -112,7 +112,7 @@
 .public GF_RunVramTransferTasks
 .public InitializeTouchPadWithExternalBuffer
 .public DisableTouchPad
-.public sub_02021280
+.public WriteAutoSamplingDataToBuffer
 .public ObjCharTransfer_InitEx
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers

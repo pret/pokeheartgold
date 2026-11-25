@@ -32,7 +32,7 @@
 .public ManagedSprite_SetAffineOverwriteMode
 .public ManagedSprite_SetOamMode
 .public SpriteManager_GetSpriteList
-.public sub_0200E640
+.public GetMessageBoxPaletteNARCMember
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public FontSystem_NewInit

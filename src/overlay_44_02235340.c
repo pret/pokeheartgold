@@ -1003,7 +1003,7 @@ void ov44_022342B8(UnkStruct_ov44_02235340 *arg0) {
 
 void ov44_022342E0(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     if (arg0->unk30.waitingIcon != 0) {
-        sub_0200F450(arg0->unk30.waitingIcon);
+        WaitingIcon_Destroy(arg0->unk30.waitingIcon);
         arg0->unk30.waitingIcon = 0;
         Options *options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
         LoadUserFrameGfx2(arg0->unk30.bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), heapID);

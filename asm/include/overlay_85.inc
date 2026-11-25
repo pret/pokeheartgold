@@ -88,12 +88,12 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public DrawFrameAndWindow1
-.public sub_0200E640
+.public GetMessageBoxPaletteNARCMember
 .public LoadUserFrameGfx2
 .public DrawFrameAndWindow2
 .public ClearFrameAndWindow2
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public Main_SetVBlankIntrCB
@@ -137,7 +137,7 @@
 .public EnableTouchPad
 .public InitializeTouchPad
 .public DisableTouchPad
-.public sub_02021280
+.public WriteAutoSamplingDataToBuffer
 .public ObjCharTransfer_Init
 .public ObjCharTransfer_Destroy
 .public ObjCharTransfer_ClearBuffers
