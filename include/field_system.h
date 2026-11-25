@@ -27,6 +27,7 @@
 #include "map_matrix.h"
 #include "menu_input_state.h"
 #include "overlay_01_021F1348.h"
+#include "overlay_35.h"
 #include "overlay_manager.h"
 #include "photo_types_def.h"
 #include "save_pokegear.h"
@@ -98,7 +99,7 @@ typedef struct FieldSystemUnkSub4 {
     FieldDrawMapNameInfo *drawMapNameInfo;
     WeatherManager *weatherManager;
     FieldTextureManager *textureManager;
-    u32 unk14;
+    UnkStruct_Overlay35 *unk14;
     UnkStruct_020556FC *unk18;
     HBlankSystem *hBlankSystem;
     void *unk20;
@@ -287,14 +288,14 @@ FieldSystem *FieldSystem_New(OverlayManager *man);
 void FieldSystem_Delete(OverlayManager *man);
 BOOL FieldSystem_IsPlayerMovementAllowed(FieldSystem *fieldSystem);
 void FieldSystem_Control(FieldSystem *fieldSystem);
-void sub_0203E2F4();
-void sub_0203E30C();
-int sub_0203E324();
+void sub_0203E2F4(void);
+void sub_0203E30C(void);
+UnkStruct_Overlay35 *sub_0203E324(void);
 void sub_0203E33C(FieldSystem *fieldSystem, int a1);
 BgConfig *FieldSystem_GetBgConfigPtr(FieldSystem *fieldSystem);
 SaveData *FieldSystem_GetSaveData(FieldSystem *fieldSystem);
-void Task_AntipiracyRandom();
-void Field_SetEnvironmentSoundState_None_Unk2();
+void Task_AntipiracyRandom(SysTask *task, void *data);
+void Field_SetEnvironmentSoundState_None_Unk2(void);
 
 extern const OverlayManagerTemplate gApplication_NewGameFieldsys;
 extern const OverlayManagerTemplate gApplication_ContinueFieldsys;
