@@ -42,7 +42,7 @@ jobs:
           GAME_VERSION: ${{ matrix.GAME_VERSION.env }}
           GAME_LANGUAGE: ${{ matrix.GAME_LANGUAGE.env }}
           GAME_REVISION: ${{ matrix.GAME_REVISION }}
-        run: make -j4 2> >(sed -r 's/^/::notice::/')
+        run: make -j4
 
       - name: Save build artifacts
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
