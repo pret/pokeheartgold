@@ -21,6 +21,7 @@ RUN apt-get -y update \
     build-essential \
     python3 \
     libpng-dev \
+    flex \
  && { ppa-purge -y ppa:ubuntu-toolchain-r/test || true; } \
  && dpkg --add-architecture i386 \
  && apt-get update \
