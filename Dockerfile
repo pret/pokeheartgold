@@ -23,6 +23,7 @@ RUN apt-get -y update \
     libpng-dev \
     flex \
     bison \
+    ninja-build \
  && { ppa-purge -y ppa:ubuntu-toolchain-r/test || true; } \
  && dpkg --add-architecture i386 \
  && apt-get update \
