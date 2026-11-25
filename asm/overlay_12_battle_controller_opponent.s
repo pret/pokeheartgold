@@ -8942,7 +8942,7 @@ ov12_0225E104: ; 0x0225E104
 	ldrb r1, [r4, #9]
 	add r5, r0, #0
 	ldr r0, [r4]
-	bl ov10_022205BC
+	bl TrainerAI_PickCommand
 	add r2, r0, #0
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
@@ -9323,13 +9323,13 @@ ov12_0225E404: ; 0x0225E404
 	bne _0225E43A
 	ldrb r1, [r6, #0x1d]
 	ldr r0, [r6]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _0225E44A
 _0225E43A:
 	ldrb r1, [r6, #0x1d]
 	ldr r0, [r6]
-	bl ov10_0221BEF4
+	bl TrainerAI_Main
 	cmp r0, #0xff
 	beq _0225E4C2
 	add r4, r0, #1
@@ -9800,11 +9800,11 @@ _0225E7E2:
 _0225E7F0:
 	ldrb r1, [r4, #0xd]
 	ldr r0, [r4]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	add r6, r0, #0
 	ldr r0, [r4]
 	add r1, r5, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r6, r0
 	beq _0225E80C
 	ldr r0, [r4]
@@ -10196,7 +10196,7 @@ _0225EB12:
 	str r1, [r0, #0x1c]
 	ldr r0, [r4, #8]
 	ldr r0, [r0, #4]
-	bl ov10_0221BE20
+	bl TrainerAI_Init
 	ldrb r0, [r4, #0xe]
 	add sp, #0x1fc
 	add sp, #0x14
@@ -10880,7 +10880,7 @@ _0225F070:
 	bl MI_CpuFill8
 	ldr r0, [r4]
 	add r1, r6, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	str r0, [sp, #0x18]
 	ldr r0, [r4]
 	bl BattleSystem_GetBattleType
@@ -11503,7 +11503,7 @@ _0225F57E:
 _0225F5B2:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	cmp r0, #2
 	bne _0225F5CE
 	ldrb r0, [r4, #9]
@@ -11618,7 +11618,7 @@ _0225F66A:
 _0225F6AA:
 	ldrb r1, [r4, #9]
 	ldr r0, [r4]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	cmp r0, #4
 	bne _0225F6BE
 	ldr r0, [r4, #4]
@@ -11651,7 +11651,7 @@ _0225F6E8:
 	add r7, r1, #0
 _0225F6EC:
 	ldr r0, [r4]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	cmp r0, #4
 	bne _0225F6FA
 	mov r1, #1
@@ -11768,7 +11768,7 @@ _0225F7D4:
 	strb r1, [r0, #0x15]
 _0225F7DA:
 	ldr r0, [r4, #4]
-	bl ov10_0221BE20
+	bl TrainerAI_Init
 	ldrb r0, [r4, #0xa]
 	add sp, #0x24
 	add r0, r0, #1
@@ -11888,13 +11888,13 @@ _0225F8CC:
 _0225F8D6:
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl ov12_02258BA0
+	bl BattleAI_SwitchedSlot
 	add r4, r0, #0
 	cmp r4, #6
 	bne _0225F93A
 	ldr r0, [r5]
 	add r1, r6, #0
-	bl ov12_02258800
+	bl BattleAI_PostKOSwitchIn
 	add r4, r0, #0
 	cmp r4, #6
 	bne _0225F93A
@@ -14099,7 +14099,7 @@ _02260A44:
 	add r1, #0x32
 	strb r0, [r1]
 	ldr r0, [r4, #4]
-	bl ov10_0221BE20
+	bl TrainerAI_Init
 	ldrb r0, [r4, #0xa]
 	add sp, #0xc
 	add r0, r0, #1
@@ -14234,7 +14234,7 @@ ov12_02260BA0: ; 0x02260BA0
 	ldrb r1, [r5, #5]
 	add r4, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _02260BB8
 	mov r6, #0
@@ -14330,7 +14330,7 @@ ov12_02260C58: ; 0x02260C58
 	ldrb r1, [r5, #5]
 	add r7, r0, #0
 	ldr r0, [r5]
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _02260C6E
 	mov r4, #0
@@ -14760,7 +14760,7 @@ _02260FAE:
 	add r1, r0, #0
 	add r0, r6, #0
 	lsl r1, r1, #1
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	ldr r1, _02261230 ; =0x00000195
 	ldrb r2, [r5, r1]
 	cmp r2, r0
@@ -14826,7 +14826,7 @@ _02261032:
 	bl ov12_0223BFC0
 	add r1, r0, #0
 	add r0, r6, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	ldr r1, _02261230 ; =0x00000195
 	ldrb r2, [r5, r1]
 	cmp r2, r0
@@ -15160,7 +15160,7 @@ ov12_022612A4: ; 0x022612A4
 	str r0, [sp, #0x20]
 	add r0, r7, #0
 	add r1, r4, #0
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	add r6, r0, #0
 	mov r0, #1
 	and r0, r6
@@ -16105,7 +16105,7 @@ _022619FC:
 	beq _02261A20
 	add r0, r5, #0
 	add r1, r4, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	beq _02261A1E
 	ldr r0, [sp, #4]
