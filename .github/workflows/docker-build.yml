@@ -2,6 +2,11 @@ name: docker-build
 
 on:
   workflow_dispatch:
+    inputs:
+      push:
+        type: boolean
+        description: Push the image to ghcr.io
+        default: false
 
 jobs:
   build-docker:
@@ -12,7 +17,7 @@ jobs:
       id-token: write
     with:
       output: image
-      push: ${{ github.event_name != 'pull_request' }}
+      push: ${{ inputs.push }}
       set-meta-labels: true
       set-meta-annotations: true
       meta-images: ghcr.io/pret/pokeheartgold
