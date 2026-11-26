@@ -228,7 +228,7 @@ _02237EE2:
 	cmp r4, #0
 	strb r4, [r5, r0]
 	bne _02237EFA
-	ldr r0, _02237F10 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237F10 ; =SDK_OVERLAY_trainer_ai_ID
 	bl UnloadOverlayByID
 	ldr r0, _02237F14 ; =SDK_OVERLAY_OVY_7_ID
 	mov r1, #2
@@ -237,13 +237,13 @@ _02237EE2:
 _02237EFA:
 	ldr r0, _02237F14 ; =SDK_OVERLAY_OVY_7_ID
 	bl UnloadOverlayByID
-	ldr r0, _02237F10 ; =SDK_OVERLAY_OVY_10_ID
+	ldr r0, _02237F10 ; =SDK_OVERLAY_trainer_ai_ID
 	mov r1, #2
 	bl HandleLoadOverlay
 	pop {r3, r4, r5, pc}
 	nop
 _02237F0C: .word 0x00002445
-_02237F10: .word SDK_OVERLAY_OVY_10_ID
+_02237F10: .word SDK_OVERLAY_trainer_ai_ID
 _02237F14: .word SDK_OVERLAY_OVY_7_ID
 	thumb_func_end ov12_02237ED0
 
@@ -3300,7 +3300,7 @@ _022398A0:
 _022398BE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl BattleSystem_GetFieldSide
+	bl BattleSystem_GetBattlerSide
 	cmp r0, #0
 	bne _022398FE
 	add r0, r5, #0

@@ -628,7 +628,7 @@ static void BattleIOCmd_HideBattleStartPartyGauge(BattleSystem *battleSystem, Op
 static void BattleIOCmd_ShowPartyGauge(BattleSystem *battleSystem, OpponentData *opponentData) {
     PartyGaugeData *data = (PartyGaugeData *)&opponentData->unk94[0];
 
-    if (BattleSystem_GetFieldSide(battleSystem, opponentData->battlerId)) {
+    if (BattleSystem_GetBattlerSide(battleSystem, opponentData->battlerId)) {
         ov12_0225B120(battleSystem, opponentData, data);
     } else {
         BattleController_EmitClearCommand(battleSystem, opponentData->battlerId, BATTLE_COMMAND_SHOW_PARTY_GAUGE);
@@ -640,7 +640,7 @@ static void BattleIOCmd_ShowPartyGauge(BattleSystem *battleSystem, OpponentData 
 static void BattleIOCmd_HidePartyGauge(BattleSystem *battleSystem, OpponentData *opponentData) {
     PartyGaugeData *data = (PartyGaugeData *)&opponentData->unk94[0];
 
-    if (BattleSystem_GetFieldSide(battleSystem, opponentData->battlerId)) {
+    if (BattleSystem_GetBattlerSide(battleSystem, opponentData->battlerId)) {
         ov12_0225B16C(battleSystem, opponentData, data);
     } else {
         BattleController_EmitClearCommand(battleSystem, opponentData->battlerId, BATTLE_COMMAND_HIDE_PARTY_GAUGE);
@@ -772,7 +772,7 @@ static void BattleIOCmd_SetBattleResult(BattleSystem *battleSystem, OpponentData
                 mon = Party_GetMonByIndex(party, slot);
 
                 if (GetMonData(mon, MON_DATA_SPECIES, NULL) && GetMonData(mon, MON_DATA_IS_EGG, NULL) == FALSE) {
-                    if (BattleSystem_GetFieldSide(battleSystem, battler)) {
+                    if (BattleSystem_GetBattlerSide(battleSystem, battler)) {
                         enemyHP += GetMonData(mon, MON_DATA_HP, NULL);
                     } else {
                         playerHP += GetMonData(mon, MON_DATA_HP, NULL);
