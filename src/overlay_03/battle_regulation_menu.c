@@ -95,7 +95,7 @@ static void BattleRegulationMenu_PrintMessage(BattleRegulationMenu *menu, int en
 
 static void BattleRegulationMenu_RemoveMsgBox(BattleRegulationMenu *menu, BOOL clear) {
     if (clear) {
-        ClearFrameAndWindow2(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], FALSE);
+        Window_EraseMessageBox(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX], FALSE);
         ClearWindowTilemapAndCopyToVram(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);
     }
     RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_MSGBOX]);
@@ -117,7 +117,7 @@ static void BattleRegulationMenu_ShowListMenuRegulations(BattleRegulationMenu *m
     if (!WindowIsInUse(window)) {
         menu->items[REGULATION_MENU_REGULATIONS] = ListMenuItems_New(items + 2, HEAP_ID_FIELD1);
         AddWindowParameterized(menu->fieldSystem->bgConfig, window, 3, 1, 1, 16, (items + 2) * 2, 13, 1);
-        DrawFrameAndWindow1(&menu->windows[REGULATION_MENU_WINDOW_REGULATIONS], TRUE, 985, 11);
+        Window_DrawStandardFrame(&menu->windows[REGULATION_MENU_WINDOW_REGULATIONS], TRUE, 985, 11);
         ListMenuItems_AppendFromMsgData(menu->items[REGULATION_MENU_REGULATIONS], menu->msgData, 138, 12); // PokemonCenter2FCommon_Text_NoRestrictions?
         for (int i = 0; i < items; i++) {
             BattleRegulationMenu_GetRegulationName(menu, i);
@@ -142,7 +142,7 @@ static void BattleRegulationMenu_ShowListMenuRegulations(BattleRegulationMenu *m
 static void BattleRegulationMenu_RemoveListMenuRegulations(BattleRegulationMenu *menu) {
     if (menu->listMenu[REGULATION_MENU_REGULATIONS]) {
         DestroyListMenu(menu->listMenu[REGULATION_MENU_REGULATIONS], NULL, NULL);
-        ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_STRING_DESTINATION], TRUE);
+        Window_EraseStandardFrame(&menu->windows[REGULATION_MENU_STRING_DESTINATION], TRUE);
         ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_STRING_DESTINATION].bgConfig, menu->windows[REGULATION_MENU_STRING_DESTINATION].bgId);
         RemoveWindow(&menu->windows[REGULATION_MENU_STRING_DESTINATION]);
         ListMenuItems_Delete(menu->items[REGULATION_MENU_REGULATIONS]);
@@ -192,7 +192,7 @@ static void BattleRegulationMenu_ShowListMenuConfirm(BattleRegulationMenu *menu)
     ConfirmMenuEntry *menuEntry = sConfirmMenuEntries;
     menu->items[REGULATION_MENU_CONFIRM] = ListMenuItems_New(3, HEAP_ID_FIELD1);
     AddWindowParameterized(menu->fieldSystem->bgConfig, &menu->windows[REGULATION_MENU_WINDOW_CONFIRM], 3, 22, 10, 9, 6, 13, 513);
-    DrawFrameAndWindow1(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE, 985, 11); // 985 == BASE_TILE_STANDARD_WINDOW_FRAME in pokeplatinum
+    Window_DrawStandardFrame(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE, 985, 11); // 985 == BASE_TILE_STANDARD_WINDOW_FRAME in pokeplatinum
 
     for (int i = 0; i < 3; i++) {
         ListMenuItems_AppendFromMsgData(menu->items[REGULATION_MENU_CONFIRM], menu->msgData, menuEntry->bankEntry, menuEntry->index);
@@ -235,7 +235,7 @@ static int BattleRegulationMenu_ProcessListMenuInputConfirm(BattleRegulationMenu
 
     if (menu->listMenu[REGULATION_MENU_CONFIRM]) {
         DestroyListMenu(menu->listMenu[REGULATION_MENU_CONFIRM], NULL, NULL);
-        ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE);
+        Window_EraseStandardFrame(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM], TRUE);
         ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_WINDOW_CONFIRM].bgConfig, menu->windows[REGULATION_MENU_WINDOW_CONFIRM].bgId);
         RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_CONFIRM]);
         ListMenuItems_Delete(menu->items[REGULATION_MENU_CONFIRM]);
@@ -285,7 +285,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
     Window *window = &menu->windows[REGULATION_MENU_WINDOW_RULES];
 
     AddWindowParameterized(menu->fieldSystem->bgConfig, window, 3, 4, 2, 24, 19, 13, 1);
-    DrawFrameAndWindow1(window, TRUE, 985, 11);
+    Window_DrawStandardFrame(window, TRUE, 985, 11);
     FillWindowPixelBuffer(window, 15);
 
     BattleRegulationMenu_GetRegulationName(menu, menu->itemsAbove[REGULATION_MENU_REGULATIONS] - 1);
@@ -369,7 +369,7 @@ static void BattleRegulationMenu_ShowRules(BattleRegulationMenu *menu) {
 }
 
 static void BattleRegulationMenu_RemoveRulesWindow(BattleRegulationMenu *menu) {
-    ClearWindowPixelBuffer(&menu->windows[REGULATION_MENU_WINDOW_RULES], TRUE);
+    Window_EraseStandardFrame(&menu->windows[REGULATION_MENU_WINDOW_RULES], TRUE);
     ScheduleBgTilemapBufferTransfer(menu->windows[REGULATION_MENU_WINDOW_RULES].bgConfig, menu->windows[REGULATION_MENU_WINDOW_RULES].bgId);
     RemoveWindow(&menu->windows[REGULATION_MENU_WINDOW_RULES]);
 }
@@ -550,7 +550,7 @@ void ov03_02256730(FieldSystem *fieldSystem, Window *window, u32 ruleset) {
 
     AddWindowParameterized(fieldSystem->bgConfig, window, 3, 4, 2, 24, 19, 13, 1);
     LoadUserFrameGfx1(fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 985, 11, 0, HEAP_ID_FIELD1);
-    DrawFrameAndWindow1(window, TRUE, 985, 11);
+    Window_DrawStandardFrame(window, TRUE, 985, 11);
     FillWindowPixelBuffer(window, 15);
     MsgData *msgData = NewMsgDataFromNarc(MSGDATA_LOAD_DIRECT, NARC_msgdata_msg, msg_0182, HEAP_ID_FIELD1);
     MessageFormat *messageFormat = MessageFormat_New(HEAP_ID_FIELD1);

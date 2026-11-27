@@ -46,8 +46,8 @@
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public ResetVisibleHardwareWindows
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4

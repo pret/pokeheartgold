@@ -37,7 +37,7 @@ void DialogBox_AddWindowToLayer3(BgConfig *bgConfig, Window *window, GFBgLayer l
 void DialogBox_LoadFrame(Window *window, Options *options) {
     LoadUserFrameGfx2(window->bgConfig, (GFBgLayer)GetWindowBgId(window), FRAME_BASE_TILE, DIALOG_BOX_PLTTNUM_FRAME, Options_GetFrame(options), HEAP_ID_FIELD1);
     DialogBox_Clear(window);
-    DrawFrameAndWindow2(window, FALSE, FRAME_BASE_TILE, DIALOG_BOX_PLTTNUM_FRAME);
+    Window_DrawMessageBoxWithScrollCursor(window, FALSE, FRAME_BASE_TILE, DIALOG_BOX_PLTTNUM_FRAME);
 }
 
 void DialogBox_Clear(Window *window) {
@@ -84,5 +84,5 @@ void DialogBox_AddWindowToLayer3WithXOffset(BgConfig *bgConfig, Window *window, 
 void DialogBox_DrawFrameWithWayfindingGraphic(Window *window, u16 type, u16 map) {
     LoadMapSignpostFrameAndGraphic(window->bgConfig, GetWindowBgId(window), BASE_TILE_MAP_GFX, DIALOG_BOX_PLTTNUM_MAPGFX, type, map, HEAP_ID_FIELD1);
     FillWindowPixelBuffer(window, 15);
-    DrawFrameAndWindow3(window, FALSE, BASE_TILE_MAP_GFX, DIALOG_BOX_PLTTNUM_MAPGFX, type);
+    Window_DrawSignpost(window, FALSE, BASE_TILE_MAP_GFX, DIALOG_BOX_PLTTNUM_MAPGFX, type);
 }

@@ -1324,7 +1324,7 @@ _0221C94C:
 	ldr r0, _0221C9D0 ; =0x000005B4
 	mov r1, #1
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r1, #0
 	str r1, [sp]
 	mov r0, #0x20
@@ -4700,7 +4700,7 @@ _0221E506:
 	ldr r0, _0221E550 ; =0x00003690
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, _0221E550 ; =0x00003690
 	add r0, r5, r0
 	bl RemoveWindow
@@ -6936,7 +6936,7 @@ ov65_0221F780: ; 0x0221F780
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0221F796
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _0221F798 ; =0x000036B4
 	mov r1, #0
 	str r1, [r4, r0]
@@ -7469,14 +7469,14 @@ ov65_0221FB90: ; 0x0221FB90
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	b _0221FBC6
 _0221FBBA:
 	ldr r2, _0221FC00 ; =0x000003F7
 	add r0, r5, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 _0221FBC6:
 	add r0, r5, #0
 	mov r1, #0xf
@@ -7612,7 +7612,7 @@ ov65_0221FCA0: ; 0x0221FCA0
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r3, _0221FD18 ; =ov65_022200EC
 	add r2, sp, #0x14
 	add r7, r2, #0

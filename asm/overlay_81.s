@@ -3823,7 +3823,7 @@ _0223FC9E:
 	add r0, r4, #0
 	add r0, #0xc0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #0xc0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -6730,7 +6730,7 @@ ov81_022413E0: ; 0x022413E0
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
@@ -10480,7 +10480,7 @@ ov81_02243028: ; 0x02243028
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

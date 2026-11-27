@@ -5325,7 +5325,7 @@ ov72_0223A280: ; 0x0223A280
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -5392,7 +5392,7 @@ _0223A330:
 	ldr r0, _0223A34C ; =0x00000E58
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0223A33E:
@@ -5425,7 +5425,7 @@ ov72_0223A350: ; 0x0223A350
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -5550,7 +5550,7 @@ ov72_0223A444: ; 0x0223A444
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _0223A45A
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _0223A45C ; =0x00000F4C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -5592,7 +5592,7 @@ ov72_0223A460: ; 0x0223A460
 	add r0, r5, r0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -5641,7 +5641,7 @@ _0223A4EE:
 	ldr r0, _0223A51C ; =0x00000E18
 	mov r1, #1
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov72_0223A460

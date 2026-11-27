@@ -63,10 +63,10 @@
 .public ManagedSprite_SetPositionXY
 .public ManagedSprite_OffsetPositionXY
 .public SpriteSystem_ReplaceCharResObj
-.public sub_0200E63C
-.public sub_0200E640
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public GetMessageBoxTilesNARCMember
+.public GetMessageBoxPaletteNARCMember
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public Heap_Alloc
 .public Heap_Free
 .public SetScreenModeAndDisable
@@ -174,7 +174,7 @@
 .public BattleSystem_GetTrainer
 .public BattleSystem_GetBag
 .public BattleSystem_GetBagCursor
-.public ov12_0223AB0C
+.public BattleSystem_GetBattlerType
 .public BattleSystem_GetPcStorage
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_RecoverStatus

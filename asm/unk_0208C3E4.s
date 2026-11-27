@@ -3162,7 +3162,7 @@ _0208DDE4:
 	add r0, r6, #0
 	mov r1, #1
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r6, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

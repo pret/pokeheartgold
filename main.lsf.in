@@ -46,7 +46,7 @@ Static main
     Object src/unk_0200CE7C.c
     Object src/sprite_system.c
     Object src/sys_task_api.c
-    Object asm/render_window.s
+    Object src/render_window.c
     Object asm/unk_0200FA24.s
     Object asm/unk_0201010C.s
     Object asm/unk_02012DD8.s
@@ -572,11 +572,11 @@ Overlay OVY_9
     After OVY_6
 }
 
-Overlay OVY_10
+Overlay trainer_ai
 {
     After OVY_6
     Object src/battle/trainer_ai.c
-    Object asm/overlay_10_trainer_ai.s
+    Object asm/trainer_ai_data.s
 }
 
 Overlay OVY_11
@@ -594,6 +594,7 @@ Overlay OVY_12
     Object asm/overlay_12_battle_command.s
     Object src/battle/battle_controller_player.c
     Object src/battle/overlay_12_0224E4FC.c
+    Object src/battle/overlay_12_02258800.c
     Object asm/overlay_12_02258800.s
     Object src/battle/battle_io_command.c
     Object asm/overlay_12_battle_controller_opponent.s

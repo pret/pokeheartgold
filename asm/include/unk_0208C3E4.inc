@@ -11,7 +11,7 @@
 .public BufferItemName
 .public StringExpandPlaceholders
 .public sub_0200CDAC
-.public DrawFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
 .public Heap_Free
 .public BgCommitTilemapBufferToVram
 .public FillBgTilemapRect

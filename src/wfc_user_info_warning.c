@@ -106,7 +106,7 @@ void ShowWFCUserInfoWarning(enum HeapID heapID, int a1) {
 
     AddWindow(bg_config, &window, &sWFCWarningWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
-    DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
+    Window_DrawStandardFrame(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(warnings_msgdata, msg_0800_00016, warning_string);
     AddTextPrinterParameterized(&window, FONT_SYSTEM, warning_string, 0, 0, 0, NULL);

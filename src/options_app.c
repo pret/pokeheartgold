@@ -687,12 +687,12 @@ static void OptionsApp_SetupWindows(OptionsApp_Data *data) {
     ClearWindowTilemap(&data->windows.selectedOption);
     ClearWindowTilemap(&data->windows.optionsTitle);
 
-    DrawFrameAndWindow2(&data->windows.frameAndTextSpeedTest, TRUE, 0x6D, 15);
+    Window_DrawMessageBoxWithScrollCursor(&data->windows.frameAndTextSpeedTest, TRUE, 0x6D, 15);
 }
 
 static void OptionsApp_FreeWindows(OptionsApp_Data *data) {
-    ClearWindowPixelBuffer(&data->windows.selectedOption, FALSE);
-    ClearFrameAndWindow2(&data->windows.frameAndTextSpeedTest, FALSE);
+    Window_EraseStandardFrame(&data->windows.selectedOption, FALSE);
+    Window_EraseMessageBox(&data->windows.frameAndTextSpeedTest, FALSE);
 
     for (u16 i = 0; i < NELEMS(data->windows.asArray); i++) {
         ClearWindowTilemapAndCopyToVram(&data->windows.asArray[i]);

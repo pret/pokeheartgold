@@ -954,7 +954,7 @@ static void ov17_02202944(BerryPotsAppData *data, enum BerryPotsApp_022036FC_Act
     FillWindowPixelBuffer(window, 0xF);
     if (a3) {
         FillBgTilemapRect(data->bgConfig, 0, RGB_BLACK, 0, 18, 32, 6, 0);
-        DrawFrameAndWindow2(window, TRUE, 1, 13);
+        Window_DrawMessageBoxWithScrollCursor(window, TRUE, 1, 13);
     }
     ov17_022036FC(data, action, a2);
     AddTextPrinterParameterized(window, FONT_MESSAGE, data->currentStatusString, 0, 0, 0xFF, NULL);

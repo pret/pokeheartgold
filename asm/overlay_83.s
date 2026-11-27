@@ -6494,7 +6494,7 @@ ov83_02241354: ; 0x02241354
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
@@ -13997,7 +13997,7 @@ ov83_02245094: ; 0x02245094
 	push {r4, lr}
 	add r4, r0, #0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
@@ -19047,7 +19047,7 @@ ov83_02247944: ; 0x02247944
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #8

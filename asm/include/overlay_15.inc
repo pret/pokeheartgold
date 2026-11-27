@@ -71,11 +71,11 @@
 .public SpriteSystem_ReplaceCharResObj
 .public SpriteSystem_ReplacePlttResObj
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public YesNoPrompt_Create

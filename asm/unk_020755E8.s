@@ -790,7 +790,7 @@ sub_02075A7C: ; 0x02075A7C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #8
 	str r0, [sp]
 	mov r0, #0x1a
@@ -2150,7 +2150,7 @@ _02076754:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, [r4, #0x1c]
 	mov r1, #6
 	mov r2, #0
@@ -3109,7 +3109,7 @@ _02076F38:
 	add r0, r4, #0
 	add r2, r1, #0
 	mov r3, #0xa
-	bl sub_0200EB80
+	bl ReplaceTransparentTiles
 	mov r1, #0
 	str r1, [sp]
 	str r1, [sp, #4]
@@ -3143,7 +3143,7 @@ _02076F38:
 	mov r2, #8
 	bl PaletteData_LoadNarc
 	add r0, r6, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -3172,8 +3172,8 @@ _02076F38:
 	ldr r0, [r5]
 	mov r2, #1
 	mov r3, #0
-	bl sub_0200E398
-	bl sub_0200E3D8
+	bl LoadStandardWindowTiles
+	bl GetStandardWindowPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]

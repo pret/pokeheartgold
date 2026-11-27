@@ -434,29 +434,29 @@ void InitWindowList(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44_args *arg1, en
     LoadUserFrameGfx1(arg0->bgConfig, GF_BG_LYR_MAIN_2, 48, 4, 0, heapID);
     AddWindowParameterized(arg0->bgConfig, &arg0->windowList[0], GF_BG_LYR_MAIN_1, 2, 19, 27, 4, 1, 40);
     FillWindowPixelBuffer(&arg0->windowList[0], 15);
-    DrawFrameAndWindow2(&arg0->windowList[0], 1, 1, 2);
+    Window_DrawMessageBoxWithScrollCursor(&arg0->windowList[0], 1, 1, 2);
     AddWindowParameterized(arg0->bgConfig, &arg0->windowList[1], GF_BG_LYR_MAIN_1, 1, 1, 27, 2, 1, 148);
     FillWindowPixelBuffer(&arg0->windowList[1], 15);
-    DrawFrameAndWindow1(&arg0->windowList[1], 1, 31, 3);
+    Window_DrawStandardFrame(&arg0->windowList[1], 1, 31, 3);
     AddWindowParameterized(arg0->bgConfig, &arg0->windowList[2], GF_BG_LYR_MAIN_1, 2, 16, 28, 2, 1, 202);
     FillWindowPixelBuffer(&arg0->windowList[2], 0);
     AddWindowParameterized(arg0->bgConfig, &arg0->windowList[3], GF_BG_LYR_MAIN_1, 1, 5, 20, 8, 1, 258);
     FillWindowPixelBuffer(&arg0->windowList[3], 15);
-    DrawFrameAndWindow1(&arg0->windowList[3], 1, 31, 3);
+    Window_DrawStandardFrame(&arg0->windowList[3], 1, 31, 3);
     AddWindowParameterized(arg0->bgConfig, &arg0->windowList[4], GF_BG_LYR_MAIN_1, 23, 5, 7, 5, 1, 418);
     FillWindowPixelBuffer(&arg0->windowList[4], 15);
 }
 
 void FreeWindowList(UnkStruct_ov44_02232F64 *arg0, enum HeapID heapID) {
     ov44_02233954(arg0);
-    ClearFrameAndWindow2(&arg0->windowList[0], 0);
+    Window_EraseMessageBox(&arg0->windowList[0], 0);
     RemoveWindow(&arg0->windowList[0]);
-    ClearWindowPixelBuffer(&arg0->windowList[1], 0);
+    Window_EraseStandardFrame(&arg0->windowList[1], 0);
     RemoveWindow(&arg0->windowList[1]);
     RemoveWindow(&arg0->windowList[2]);
-    ClearWindowPixelBuffer(&arg0->windowList[3], 0);
+    Window_EraseStandardFrame(&arg0->windowList[3], 0);
     RemoveWindow(&arg0->windowList[3]);
-    ClearWindowPixelBuffer(&arg0->windowList[4], 0);
+    Window_EraseStandardFrame(&arg0->windowList[4], 0);
     RemoveWindow(&arg0->windowList[4]);
 
     if (arg0->listMenu2D != NULL) {
@@ -606,14 +606,14 @@ void ov44_0223398C(UnkStruct_ov44_02232F64 *arg0, UnkStruct_ov44_args *arg1, s32
     StringExpandPlaceholders(arg0->msgFmt, string2, string1);
     FillWindowPixelBuffer(&arg0->windowList[4], 15);
     AddTextPrinterParameterizedWithColor(&arg0->windowList[4], FONT_SYSTEM, string2, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 15), 0);
-    DrawFrameAndWindow1(&arg0->windowList[4], 1, 31, 3);
+    Window_DrawStandardFrame(&arg0->windowList[4], 1, 31, 3);
     ScheduleWindowCopyToVram(&arg0->windowList[4]);
     String_Delete(string1);
     String_Delete(string2);
 }
 
 void ov44_02233A34(UnkStruct_ov44_02232F64 *arg0) {
-    ClearWindowPixelBuffer(&arg0->windowList[4], 1);
+    Window_EraseStandardFrame(&arg0->windowList[4], 1);
     ClearWindowTilemapAndScheduleTransfer(&arg0->windowList[4]);
 }
 
@@ -1003,7 +1003,7 @@ void ov44_022342B8(UnkStruct_ov44_02235340 *arg0) {
 
 void ov44_022342E0(UnkStruct_ov44_02235340 *arg0, UnkStruct_ov44_args *arg1, enum HeapID heapID) {
     if (arg0->unk30.waitingIcon != 0) {
-        sub_0200F450(arg0->unk30.waitingIcon);
+        WaitingIcon_Destroy(arg0->unk30.waitingIcon);
         arg0->unk30.waitingIcon = 0;
         Options *options = Save_PlayerData_GetOptionsAddr(arg1->unk8);
         LoadUserFrameGfx2(arg0->unk30.bgConfig, GF_BG_LYR_MAIN_1, 1, 2, Options_GetFrame(options), heapID);

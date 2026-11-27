@@ -1,3 +1,4 @@
+#include "constants/signpost_type.h"
 	.include "macros.inc"
 	.include "overlay_49.inc"
 	.include "global.inc"
@@ -4291,7 +4292,7 @@ _0225A636:
 	add r2, r1, #0
 	add r3, r1, #0
 	bl LoadUserFrameGfx2
-	mov r0, #3
+	mov r0, #SIGNPOST_TYPE_SCROLLING
 	str r0, [sp]
 	mov r0, #0
 	str r0, [sp, #4]
@@ -4868,7 +4869,7 @@ _0225AB64:
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #0x10
 	pop {r3, r4, r5, pc}
 	nop
@@ -4913,7 +4914,7 @@ _0225ABC4:
 	add r0, r5, #0
 	add r2, r1, #0
 	add r3, r1, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10
@@ -4946,7 +4947,7 @@ ov49_0225AC24: ; 0x0225AC24
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0225AC36
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0225AC36:
@@ -4960,7 +4961,7 @@ ov49_0225AC38: ; 0x0225AC38
 	ldr r0, [r4, #0x1c]
 	cmp r0, #0
 	beq _0225AC4A
-	bl sub_0200F478
+	bl WaitingIcon_Halt
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _0225AC4A:
@@ -5015,7 +5016,7 @@ _0225AC90:
 	bl ov49_0225AC38
 	add r0, r4, #0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	pop {r4, pc}
@@ -5075,13 +5076,13 @@ _0225ACE4:
 	add r0, r5, #0
 	bl AddTextPrinterParameterized
 	str r0, [r5, #0x10]
-	mov r0, #3
+	mov r0, #SIGNPOST_TYPE_SCROLLING
 	str r0, [sp]
 	add r0, r5, #0
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #2
-	bl DrawFrameAndWindow3
+	bl Window_DrawSignpost
 	add sp, #0xc
 	pop {r4, r5, pc}
 	.balign 4, 0
@@ -5430,7 +5431,7 @@ _0225AF52:
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r2, sp, #0x18
 	ldr r3, [sp, #0x2c]
 	ldrh r2, [r2, #0x10]
@@ -5496,7 +5497,7 @@ ov49_0225B014: ; 0x0225B014
 	add r0, r5, #0
 	add r0, #0x20
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r5, #0
 	add r0, #0x20
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -5626,7 +5627,7 @@ ov49_0225B0E0: ; 0x0225B0E0
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer
@@ -5645,7 +5646,7 @@ ov49_0225B124: ; 0x0225B124
 	bne _0225B144
 	add r0, r4, #0
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
 	add r0, r4, #0
@@ -5816,7 +5817,7 @@ ov49_0225B24C: ; 0x0225B24C
 	mov r1, #1
 	mov r2, #0x55
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	bl ScheduleWindowCopyToVram
 	add sp, #0x10

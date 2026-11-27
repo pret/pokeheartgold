@@ -50,7 +50,7 @@ _0221BE2E:
 	strb r2, [r4, r0]
 	ldr r0, [r5, #8]
 	ldr r1, [r5, #0x28]
-	bl ov12_0223AB0C
+	bl BattleSystem_GetBattlerType
 	ldr r1, _0221BE94 ; =0x0000208F
 	strb r0, [r4, r1]
 	pop {r3, r4, r5, pc}
@@ -1535,7 +1535,7 @@ ov08_0221CA20: ; 0x0221CA20
 	ldr r1, _0221CA30 ; =0x00002060
 	add r0, r0, r1
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #2
 	pop {r3, pc}
 	.balign 4, 0
@@ -2297,7 +2297,7 @@ ov08_0221CF38: ; 0x0221CF38
 	ldr r0, [r0, #8]
 	bl BattleSystem_GetFrame
 	add r4, r0, #0
-	bl sub_0200E63C
+	bl GetMessageBoxTilesNARCMember
 	add r1, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -2314,7 +2314,7 @@ ov08_0221CF38: ; 0x0221CF38
 	mov r3, #4
 	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -4728,7 +4728,7 @@ ov08_0221E340: ; 0x0221E340
 	add r0, r4, r0
 	add r2, r1, #0
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, _0221E398 ; =0x00002050
 	mov r1, #0xf
 	add r0, r4, r0
@@ -8252,7 +8252,7 @@ ov08_022201C0: ; 0x022201C0
 	add r0, r4, r0
 	add r2, r1, #0
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, _022201E4 ; =0x00002060
 	mov r1, #0xf
 	add r0, r4, r0
@@ -13676,7 +13676,7 @@ ov08_02222D9C: ; 0x02222D9C
 	push {r3, lr}
 	add r0, #0x1c
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #3
 	pop {r3, pc}
 	.balign 4, 0
@@ -14176,7 +14176,7 @@ ov08_022230F4: ; 0x022230F4
 	ldr r0, [r0]
 	bl BattleSystem_GetFrame
 	add r4, r0, #0
-	bl sub_0200E63C
+	bl GetMessageBoxTilesNARCMember
 	add r1, r0, #0
 	ldr r0, _022231E4 ; =0x000003E2
 	mov r3, #4
@@ -14191,7 +14191,7 @@ ov08_022230F4: ; 0x022230F4
 	mov r0, #0x26
 	bl GfGfxLoader_LoadCharData
 	add r0, r4, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #1
 	str r0, [sp]
@@ -15381,7 +15381,7 @@ ov08_02223B20: ; 0x02223B20
 	add r0, #0x1c
 	mov r1, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	add r0, #0x1c
 	mov r1, #0xf

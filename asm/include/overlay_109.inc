@@ -41,7 +41,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ResetVisibleHardwareWindows

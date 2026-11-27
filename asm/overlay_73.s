@@ -3575,7 +3575,7 @@ ov73_021E756C: ; 0x021E756C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	cmp r6, #0
 	bne _021E75DC
 	add r0, r5, #0
@@ -3637,11 +3637,11 @@ ov73_021E761C: ; 0x021E761C
 	mov r1, #0xaa
 	lsl r1, r1, #2
 	add r0, r0, r1
-	ldr r3, _021E7628 ; =ClearFrameAndWindow2
+	ldr r3, _021E7628 ; =Window_EraseMessageBox
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021E7628: .word ClearFrameAndWindow2
+_021E7628: .word Window_EraseMessageBox
 	thumb_func_end ov73_021E761C
 
 	thumb_func_start ov73_021E762C
@@ -7251,7 +7251,7 @@ ov73_021E9224: ; 0x021E9224
 	add r0, r4, r0
 	mov r2, #0x1f
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r1, _021E9268 ; =0x00000BE8
 	add r2, r4, #0
 	ldr r0, _021E9264 ; =0x00000DF8
@@ -7912,7 +7912,7 @@ ov73_021E9758: ; 0x021E9758
 	add r0, r4, r0
 	mov r2, #0x1f
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r1, _021E97A4 ; =0x00000BEC
 	add r2, r4, #0
 	ldr r0, _021E97A0 ; =0x00000DE8
@@ -8077,7 +8077,7 @@ ov73_021E98AC: ; 0x021E98AC
 	add r0, r4, r0
 	mov r2, #0x1f
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r1, _021E98F8 ; =0x00000BE8
 	add r2, r4, #0
 	ldr r0, _021E98F4 ; =0x00000DF8
@@ -8972,7 +8972,7 @@ ov73_021E9F34: ; 0x021E9F34
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -9035,7 +9035,7 @@ _021E9FDC:
 	ldr r0, _021E9FF4 ; =0x00000E18
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	mov r0, #0
 	str r0, [r4, #0x1c]
 _021E9FEA:
@@ -9067,7 +9067,7 @@ ov73_021E9FF8: ; 0x021E9FF8
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -9267,7 +9267,7 @@ ov73_021EA180: ; 0x021EA180
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _021EA196
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _021EA198 ; =0x00000F0C
 	mov r1, #0
 	str r1, [r4, r0]
@@ -9309,7 +9309,7 @@ ov73_021EA19C: ; 0x021EA19C
 	add r0, r5, r0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -9358,7 +9358,7 @@ _021EA22A:
 	ldr r0, _021EA258 ; =0x00000DD8
 	mov r1, #1
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov73_021EA19C

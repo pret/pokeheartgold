@@ -2,6 +2,7 @@
 #define POKEHEARTGOLD_BATTLE_H
 
 #include "constants/battle.h"
+#include "constants/battle/trainer_ai.h"
 #include "constants/moves.h"
 
 #include "bag.h"
@@ -119,31 +120,31 @@ typedef struct SelfTurnData {
 } SelfTurnData;
 
 typedef struct TrainerAIData {
-    u8 unk0;
-    u8 unk1;
-    u16 unk2;
-    s8 movePoints[4]; // higher points = more priority for selection
-    int unk8;
+    u8 evalStep;
+    u8 moveSlot;
+    u16 move;
+    s8 moveScore[MOVES_MAX]; // Higher score = more priority for selection.
+    int calcTemp;
     u32 aiFlags;
-    u8 unk10;
-    u8 unk11;
+    u8 stateFlags;
+    u8 aiBitShift;
     u8 unk12;
     u8 unk13;
     u8 *unk14;
-    u8 unk18[4];
+    u8 moveDamageRolls[MOVES_MAX];
     u16 moves[BATTLER_MAX][MOVES_MAX];
     u8 abilities[BATTLER_MAX];
     u16 heldItems[BATTLER_MAX];
-    u16 unk68[2][4];
-    u32 unk78[8];
-    u8 unk98;
-    u8 unk99[2];
-    u8 battlerIdAttacker;
-    u8 battlerIdTarget;
-    u8 useItem[2];
-    u8 unk9F[2];
-    u16 unkA0[2];
-    u8 unkA4[4];
+    u16 trainerItems[2][4];
+    u32 scriptStackPointer[AI_MAX_STACK_SIZE];
+    u8 scriptStackSize;
+    u8 trainerItemCounts[2];
+    u8 attacker;
+    u8 target;
+    u8 usedItemType[2];
+    u8 usedItemCondition[2];
+    u16 usedItem[2];
+    u8 selectedTarget[BATTLER_MAX];
     MoveTbl moveData[NUM_MOVES + 1];
     ItemData *itemData;
     u16 unk280[4];
@@ -164,7 +165,7 @@ typedef struct MoveFailFlags {
     u32 unused : 21;
 } MoveFailFlags;
 
-typedef struct UnkBattlemonSub {
+typedef struct MoveEffectData {
     u32 disabledTurns : 3;
     u32 encoredTurns : 3;
     u32 isCharged : 2;
@@ -185,7 +186,7 @@ typedef struct UnkBattlemonSub {
     u32 lastResortCount : 3;
     u32 magnetRiseTurns : 3;
     u32 healBlockTurns : 3;
-    u32 embargoFlag : 3;
+    u32 embargoTurns : 3;
     u32 knockOffFlag : 1;   // unclear whether true mean knocked off or not knocked
                             // off based on current information on its usage
     u32 metronomeTurns : 4; // refers to the item, not the move
@@ -208,7 +209,7 @@ typedef struct UnkBattlemonSub {
     u16 moveNoChoice;
     u16 transformGender;
     int unk30;
-} UnkBattlemonSub;
+} MoveEffectData;
 
 typedef struct BattleMon {
     u16 species;
@@ -268,7 +269,7 @@ typedef struct BattleMon {
     u8 ball;
     u32 moveEffectFlags;
     u32 moveEffectFlagsTemp;
-    UnkBattlemonSub unk88;
+    MoveEffectData moveEffectData;
 } BattleMon;
 
 typedef struct PokemonStats {
@@ -360,8 +361,8 @@ typedef struct BattleContext {
     SelfTurnData selfTurnData[4];
     MoveFailFlags moveFail[4];
     TrainerAIData trainerAIData;
-    u32 *unk_2134;
-    u32 unk_2138;
+    u32 *aiScriptTemp;
+    u32 aiScriptCursor;
     u32 battleStatus;
     u32 battleStatus2;
     int damage;
@@ -387,8 +388,8 @@ typedef struct BattleContext {
     u32 checkMultiHit;
     u32 unk_218C[4];
     u8 selectedMonIndex[4];
-    u8 unk_21A0[4];
-    u8 unk_21A4[4];
+    u8 switchedPartySlot[4];
+    u8 aiSwitchedPartySlot[4];
     PlayerActions playerActions[4];
     u8 executionOrder[4]; // accounts for running, items, etc used in battler
                           // slots

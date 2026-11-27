@@ -191,7 +191,7 @@ static void ov03_02253ED0(ListMenuTemplate listMenuTemplate, u8 x, u8 y, u8 widt
     if (WindowIsInUse(&sCommClubManager->windows[0]) == FALSE) {
         AddWindowParameterized(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[0], 3, x, y, width, height, 13, baseTile);
     }
-    DrawFrameAndWindow1(&sCommClubManager->windows[0], TRUE, 985, HEAP_ID_FIELD2);
+    Window_DrawStandardFrame(&sCommClubManager->windows[0], TRUE, 985, HEAP_ID_FIELD2);
     ListMenuTemplate temp = listMenuTemplate;
     temp.items = sCommClubManager->items;
     temp.window = &sCommClubManager->windows[0];
@@ -304,7 +304,7 @@ static void ov03_022542C8(CommClubManager *commClubManager) {
     if (WindowIsInUse(&sCommClubManager->windows[1]) == FALSE) {
         AddWindowParameterized(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[1], 3, 23, 2, 8, 4, 13, 201);
     }
-    DrawFrameAndWindow1(&sCommClubManager->windows[1], TRUE, 985, HEAP_ID_FIELD2);
+    Window_DrawStandardFrame(&sCommClubManager->windows[1], TRUE, 985, HEAP_ID_FIELD2);
     FillWindowPixelBuffer(&sCommClubManager->windows[1], 15);
     CopyWindowToVram(&sCommClubManager->windows[1]);
     commClubManager->unk97 = 1;
@@ -625,7 +625,7 @@ static void ov03_02254B58(CommClubManager *commClubManager) {
     if (WindowIsInUse(&sCommClubManager->windows[1]) == FALSE) {
         AddWindowParameterized(sCommClubManager->fieldSystem->bgConfig, &sCommClubManager->windows[1], 3, 22, 2, 9, 4, 13, 205);
     }
-    DrawFrameAndWindow1(&sCommClubManager->windows[1], TRUE, 985, 11);
+    Window_DrawStandardFrame(&sCommClubManager->windows[1], TRUE, 985, 11);
     FillWindowPixelBuffer(&sCommClubManager->windows[1], 15);
     CopyWindowToVram(&sCommClubManager->windows[1]);
     commClubManager->unk97 = 1;
@@ -1303,14 +1303,14 @@ static void ov03_02255714(s32 arg0_unused, CommClubManager *commClubManager) {
 
 static void ov03_0225574C(void *task, CommClubManager *commClubManager) {
     FillWindowPixelBuffer(&sCommClubManager->windows[2], 15);
-    ClearWindowPixelBuffer(&commClubManager->windows[0], FALSE);
+    Window_EraseStandardFrame(&commClubManager->windows[0], FALSE);
     ListMenuItems_Delete(commClubManager->items);
     DestroyListMenu(commClubManager->listMenu, NULL, NULL);
     commClubManager->listMenu = NULL;
     ClearWindowTilemapAndCopyToVram(&commClubManager->windows[0]);
     RemoveWindow(&commClubManager->windows[0]);
     if (commClubManager->unk97) {
-        ClearWindowPixelBuffer(&sCommClubManager->windows[1], 0);
+        Window_EraseStandardFrame(&sCommClubManager->windows[1], 0);
         ClearWindowTilemapAndCopyToVram(&sCommClubManager->windows[1]);
         RemoveWindow(&sCommClubManager->windows[1]);
         commClubManager->unk97 = 0;

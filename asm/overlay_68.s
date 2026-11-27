@@ -2358,7 +2358,7 @@ ov68_021E6C14: ; 0x021E6C14
 	mov r1, #0
 	mov r2, #0x3d
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	add r1, r5, #0
 	bl ov68_021E6A2C
@@ -2394,7 +2394,7 @@ ov68_021E6C74: ; 0x021E6C74
 	add r4, r0, #0
 	add r0, #0x68
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r4, #0x68
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

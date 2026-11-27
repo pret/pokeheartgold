@@ -940,7 +940,7 @@ static BOOL OakSpeech_PrintDialogMsg(OakSpeechData *data, int msgNum, int waitBu
     case 0: {
         AddWindow(data->bgConfig, &data->dialogWindow, &sWindowTemplate_DialogMsg);
         FillWindowPixelRect(&data->dialogWindow, 0xF, 0, 0, 216, 32);
-        DrawFrameAndWindow2(&data->dialogWindow, FALSE, 0x3E2, 4);
+        Window_DrawMessageBoxWithScrollCursor(&data->dialogWindow, FALSE, 0x3E2, 4);
 
         TextFlags_SetCanABSpeedUpPrint(TRUE);
         TextFlags_SetAutoScrollParam(AUTO_SCROLL_OFF);

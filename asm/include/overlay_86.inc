@@ -53,8 +53,8 @@
 .public ManagedSprite_SetPaletteOverride
 .public ManagedSprite_SetPositionXY
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020163E0

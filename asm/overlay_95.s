@@ -362,7 +362,7 @@ ov95_021E5BBC: ; 0x021E5BBC
 	add r5, r0, #0
 	bl LoadUserFrameGfx2
 	add r0, r6, #0
-	bl sub_0200E640
+	bl GetMessageBoxPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -383,7 +383,7 @@ ov95_021E5BBC: ; 0x021E5BBC
 	mov r2, #0x32
 	mov r3, #0xd
 	bl LoadUserFrameGfx1
-	bl sub_0200E3D8
+	bl GetStandardWindowPaletteNARCMember
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -451,7 +451,7 @@ ov95_021E5C44: ; 0x021E5C44
 	mov r1, #1
 	mov r2, #0x14
 	mov r3, #0xc
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	mov r1, #0xf
 	bl FillWindowPixelBuffer

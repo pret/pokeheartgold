@@ -3469,7 +3469,7 @@ ov86_021E752C: ; 0x021E752C
 	add r0, r4, r0
 	mov r1, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #6
 	lsl r0, r0, #6
 	add r0, r4, r0
@@ -3505,7 +3505,7 @@ ov86_021E757C: ; 0x021E757C
 	lsl r0, r0, #6
 	add r0, r4, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, [r4, #0xc]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer

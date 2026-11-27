@@ -1140,7 +1140,7 @@ static void AlphPuzzle_LoadBackgroundGraphics(AlphPuzzleData *data) {
 
     NARC_Delete(narc);
 
-    PaletteData_LoadNarc(data->palette, NARC_a_0_3_8, data->frame + 26, data->heapID, PLTTBUF_MAIN_BG, 32, 80);
+    PaletteData_LoadNarc(data->palette, NARC_graphic_gs_winframe, data->frame + 26, data->heapID, PLTTBUF_MAIN_BG, 32, 80);
     PaletteData_LoadNarc(data->palette, NARC_graphic_font, 8, data->heapID, PLTTBUF_MAIN_BG, 32, 64);
 
     LoadUserFrameGfx2(data->bgConfig, GF_BG_LYR_MAIN_0, 1, 5, data->frame, data->heapID);
@@ -1292,7 +1292,7 @@ void AlphPuzzle_ToggleDropCursorSprite(AlphPuzzleData *data, int a1) {
 
 static void AlphPuzzle_PrintConfirmQuitText(AlphPuzzleData *data, int a1, int a2, u8 textFrameDelay) {
     if (a2) {
-        DrawFrameAndWindow2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1, 1, 5);
+        Window_DrawMessageBoxWithScrollCursor(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1, 1, 5);
     }
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 15);
     if (textFrameDelay == 0) {
@@ -1362,7 +1362,7 @@ static AlphPuzzleStates AlphPuzzle_Quit_HandleYesNoPrompt(AlphPuzzleData *data) 
     }
     data->menuInputState = YesNoPrompt_IsInTouchMode(data->yesNoPrompt);
     YesNoPrompt_Reset(data->yesNoPrompt);
-    ClearFrameAndWindow2(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1);
+    Window_EraseMessageBox(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 1);
     FillWindowPixelBuffer(&data->window[ALPH_WINDOW_CONFIRM_QUIT], 0);
     ScheduleWindowCopyToVram(&data->window[ALPH_WINDOW_CONFIRM_QUIT]);
     ScheduleBgTilemapBufferTransfer(data->bgConfig, 0);

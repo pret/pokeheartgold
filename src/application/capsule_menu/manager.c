@@ -361,7 +361,7 @@ static BOOL ov57_0223A504(CapsuleAppManager *appMan) {
         break;
     case CAPSULE_FADE_IN_WAIT_STATE_ID:
         CapsuleManager_UpdateStates(appMan, 0, 0xFF, 0);
-        ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
+        Window_EraseStandardFrame(&appMan->graphicsMan.windows[0], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[0]);
         ov57_0223866C(appMan, TRUE);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
@@ -396,7 +396,7 @@ static BOOL CapsuleManager_HandleSpritesAndInputs(CapsuleAppManager *appMan) {
         ManagedSprite_SetDrawPriority(appMan->cursor[1], 25);
         CapsuleManager_UpdateStates(appMan, 0, 0xFF, 0);
         ManagedSprite_SetAnim(appMan->cursor[0], 0);
-        ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
+        Window_EraseStandardFrame(&appMan->graphicsMan.windows[0], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appMan->graphicsMan.windows[0]);
         ov57_0223866C(appMan, TRUE);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, 0);
@@ -484,7 +484,7 @@ static BOOL CapsuleManager_HandleFades(CapsuleAppManager *appMan) {
         CapsuleGraphics_SetPageSpritesDrawFlag(appMan, FALSE);
         CapsuleGraphics_SetSelectionIndicatorDrawFlags(appMan, FALSE);
         CapsuleGraphics_SetFontOAMDrawFlag(appMan, FALSE);
-        ClearWindowPixelBuffer(&appMan->graphicsMan.windows[0], TRUE);
+        Window_EraseStandardFrame(&appMan->graphicsMan.windows[0], TRUE);
         CapsuleGraphics_PrintMessage(&appMan->graphicsMan.windows[3], 3, msg_0011_00007, FALSE);
         CopyWindowToVram(&appMan->graphicsMan.windows[3]);
         ov57_0223866C(appMan, TRUE);
@@ -560,7 +560,7 @@ static int CapsuleManager_HandleCancelUpdateSeals_CancelPressed(CapsuleAppManage
             PaletteData_SetAutoTransparent(appMan->graphicsMan.paletteData, TRUE);
             YesNoPrompt_Reset(appMan->graphicsMan.yesNoPrompt);
             YesNoPrompt_Destroy(appMan->graphicsMan.yesNoPrompt);
-            ClearFrameAndWindow2(&appMan->graphicsMan.windows[4], FALSE);
+            Window_EraseMessageBox(&appMan->graphicsMan.windows[4], FALSE);
             RemoveWindow(&appMan->graphicsMan.windows[4]);
             ++appMan->throwStateID;
             break;

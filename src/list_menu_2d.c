@@ -221,7 +221,7 @@ struct ListMenu2D *CreateYesNoMenu(BgConfig *bgConfig, const WindowTemplate *win
     menuTemplate.cursorType = 0;
     menuTemplate.enableWrap = 0;
     AddWindow(bgConfig, menuTemplate.window, windowTemplate);
-    DrawFrameAndWindow1(menuTemplate.window, TRUE, tileNum, paletteNum);
+    Window_DrawStandardFrame(menuTemplate.window, TRUE, tileNum, paletteNum);
     return Create2dMenuInternal(&menuTemplate, 8, 0, initialSelection, heapID, PAD_BUTTON_B);
 }
 
@@ -238,7 +238,7 @@ int Handle2dMenuInput_DeleteOnFinish(struct ListMenu2D *menu, enum HeapID heapID
 }
 
 void Clear2dMenuWindowAndDelete(struct ListMenu2D *menu, enum HeapID heapID) {
-    ClearWindowPixelBuffer(menu->template.window, FALSE);
+    Window_EraseStandardFrame(menu->template.window, FALSE);
     RemoveWindow(menu->template.window);
     Heap_FreeExplicit(heapID, menu->template.window);
     ListMenuItems_Delete(menu->template.items);

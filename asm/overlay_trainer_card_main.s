@@ -3498,7 +3498,7 @@ ov51_021E77A0: ; 0x021E77A0
 	add r0, #0xb4
 	mov r1, #1
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 _021E77B6:
 	add r0, r5, #0
 	add r0, #0xb4
@@ -3629,7 +3629,7 @@ _021E78B4:
 	add r0, r5, #0
 	add r0, #0xb4
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, [r5]
 	mov r1, #4
 	bl ScheduleBgTilemapBufferTransfer

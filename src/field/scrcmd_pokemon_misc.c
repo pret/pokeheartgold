@@ -250,7 +250,7 @@ static void ov01_02200E00(SCR_648_STRUCT *unkPtr) {
         AddWindowParameterized(unkPtr->fieldSystem->bgConfig, &unkPtr->window_8, 3, unkPtr->x, unkPtr->y, 11, 2 * unk, 13, 1);
     }
     LoadUserFrameGfx1(unkPtr->fieldSystem->bgConfig, GF_BG_LYR_MAIN_3, 0x3D9, 11, 0, HEAP_ID_FIELD1);
-    DrawFrameAndWindow1(&unkPtr->window_8, TRUE, 0x3D9, 11);
+    Window_DrawStandardFrame(&unkPtr->window_8, TRUE, 0x3D9, 11);
     ov01_02200F54(unkPtr);
     unkPtr->listMenu_23C = ListMenuInit(&unkPtr->listMenuTemplate, *unkPtr->cursorPos, *unkPtr->itemsAbove, HEAP_ID_FIELD1);
     unkPtr->sysTask = SysTask_CreateOnMainQueue(ov01_022010CC, unkPtr, 0);
@@ -348,7 +348,7 @@ static void ov01_0220116C(SCR_648_STRUCT *unkPtr) {
     int i;
     PlaySE(SEQ_SE_DP_SELECT);
     DestroyListMenu(unkPtr->listMenu_23C, NULL, NULL);
-    ClearWindowPixelBuffer(unkPtr->listMenuTemplate.window, FALSE);
+    Window_EraseStandardFrame(unkPtr->listMenuTemplate.window, FALSE);
     RemoveWindow(&unkPtr->window_8);
 
     for (i = 0; i < 0x78; i++) {

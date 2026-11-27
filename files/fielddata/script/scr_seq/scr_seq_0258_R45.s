@@ -132,10 +132,10 @@ scr_seq_R45_003:
 	End
 
 scr_seq_R45_000:
-	DirectionSignpostEx 1, 4, msg_0405_R45_00001
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 4, msg_0405_R45_00001
 	End
 
 scr_seq_R45_004:
-	TrainerTipsEx 2, msg_0405_R45_00002
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0405_R45_00002
 	End
 	.balign 4, 0

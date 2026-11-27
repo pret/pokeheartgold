@@ -556,7 +556,7 @@ int PartyMenu_Subtask_SacredAsh(PartyMenu *partyMenu) {
             u8 last = partyMenu->partyMonIndex;
             partyMenu->partyMonIndex = PartyMenu_SacredAshGetNextMonId(partyMenu, last + 1);
             if (partyMenu->partyMonIndex != 0xFF) {
-                ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], FALSE);
+                Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], FALSE);
                 sub_0207A7F4(partyMenu, last);
                 partyMenu->afterTextPrinterState = 1;
             } else {
@@ -925,7 +925,7 @@ u8 PartyMenu_AddMoveNameToList(PartyMenu *partyMenu, int moveIdx) {
 }
 
 void PartyMenu_SelectMoveForPpRestoreOrPpUp(PartyMenu *partyMenu, BOOL isPpRestore) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     if (!isPpRestore) {
         PartyMenu_PrintMessageOnWindow33(partyMenu, msg_0300_00042, TRUE);
     } else {
@@ -955,16 +955,16 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
     u32 input = PartyMenu_HandleSubcontextMenuInput_TopLevel(partyMenu, partyMenu->contextMenuCursor);
     switch (input) {
     case LIST_CANCEL:
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        Window_EraseStandardFrame(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00033, TRUE);
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         return PARTY_MENU_STATE_USE_ITEM_SELECT_MON;
     default:
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        Window_EraseStandardFrame(&partyMenu->windows[PARTY_MENU_WINDOW_ID_36], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         if (UseItemOnMonInParty(partyMenu->args->party, partyMenu->args->itemId, partyMenu->partyMonIndex, input, PartyMenu_GetCurrentMapSec(partyMenu), HEAP_ID_PARTY_MENU) == TRUE) {
@@ -986,7 +986,7 @@ int PartyMenu_Subtask_SelectMove(PartyMenu *partyMenu) {
 }
 
 void PartyMenu_HandleAttachMailFromMailbox(PartyMenu *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
         ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00116, partyMenu->formattedStrBuf);
         PartyMenu_SetMonHeldMailIcon(partyMenu, partyMenu->partyMonIndex);

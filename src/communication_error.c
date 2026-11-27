@@ -170,7 +170,7 @@ void ShowCommunicationError(enum HeapID heapID, u32 error, u32 errorCode) {
 
     AddWindow(bgConfig, &window, &sCommunicationErrorWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
-    DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
+    Window_DrawStandardFrame(&window, FALSE, 0x1F7, 2);
 
     BufferIntegerAsString(messageFormat, 0, errorCode, 5, PRINTING_MODE_LEADING_ZEROS, TRUE);
     ReadMsgDataIntoString(errorMessageData, msgNo, tmpStr);

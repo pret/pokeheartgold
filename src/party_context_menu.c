@@ -741,7 +741,7 @@ void sub_0207D998(PartyMenu *partyMenu, u8 flag) {
 
 static void PartyMenu_PrintMessageOnWindowEx(PartyMenu *partyMenu, Window *window, int msgId, BOOL drawFrame) {
     if (drawFrame == TRUE) {
-        DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
+        Window_DrawMessageBoxWithScrollCursor(window, TRUE, 0x02A, 15);
     }
     FillWindowPixelBuffer(window, 15);
     if (msgId != -1) {
@@ -762,7 +762,7 @@ void PartyMenu_PrintMessageOnWindow33(PartyMenu *partyMenu, int msgId, BOOL draw
 void PartyMenu_PrintMessageOnWindow34(PartyMenu *partyMenu, int msgId, BOOL drawFrame) {
     Window *window = &partyMenu->windows[PARTY_MENU_WINDOW_ID_34];
     if (drawFrame == TRUE) {
-        DrawFrameAndWindow2(window, TRUE, 0x02A, 15);
+        Window_DrawMessageBoxWithScrollCursor(window, TRUE, 0x02A, 15);
     }
     FillWindowPixelBuffer(window, 15);
     if (msgId != -1) {
@@ -907,7 +907,7 @@ void PartyMenu_LevelUpPrintStatsChange(PartyMenu *partyMenu) {
     stats[4] = GetMonData(mon, MON_DATA_SP_DEF, NULL);
     stats[5] = GetMonData(mon, MON_DATA_SPEED, NULL);
     AddWindowParameterized(partyMenu->bgConfig, &partyMenu->levelUpStatsWindow[0], GF_BG_LYR_MAIN_0, 1, 1, 14, 12, 0, 0x260);
-    DrawFrameAndWindow1(&partyMenu->levelUpStatsWindow[0], TRUE, 1, 14);
+    Window_DrawStandardFrame(&partyMenu->levelUpStatsWindow[0], TRUE, 1, 14);
     FillWindowPixelBuffer(&partyMenu->levelUpStatsWindow[0], 15);
     str_plusSign = NewString_ReadMsgData(partyMenu->msgData, msg_0300_00175);
     for (i = 0; i < NUM_STATS; ++i) {
@@ -945,7 +945,7 @@ void sub_0207DF98(PartyMenu *partyMenu) {
 }
 
 void sub_0207E04C(PartyMenu *partyMenu) {
-    ClearWindowPixelBuffer(&partyMenu->levelUpStatsWindow[0], FALSE);
+    Window_EraseStandardFrame(&partyMenu->levelUpStatsWindow[0], FALSE);
     RemoveWindow(&partyMenu->levelUpStatsWindow[0]);
 }
 

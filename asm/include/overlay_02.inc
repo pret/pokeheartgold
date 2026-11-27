@@ -59,10 +59,10 @@
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
-.public ClearFrameAndWindow2
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
-.public sub_02014450
+.public CharacterSprite_LoadPalette
 .public sub_02014540
 .public GF_RTC_GetTimeOfDay
 .public GF_RTC_GetTimeOfDayWildParam

@@ -1889,7 +1889,7 @@ ov75_02247878: ; 0x02247878
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _0224788E
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	add r4, #0x8c
 	str r0, [r4]
@@ -2035,11 +2035,11 @@ _02247972:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r0, #0x78
 	bl CopyWindowToVram
@@ -2109,7 +2109,7 @@ _02247A1C:
 	add r0, r5, #0
 	add r0, #0x78
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r5, #0
 	add r0, #0x78
 	bl ClearWindowTilemapAndCopyToVram
@@ -3039,7 +3039,7 @@ _02248168:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	add r0, #0xc4
 	bl CopyWindowToVram
@@ -3052,7 +3052,7 @@ _02248168:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	add r0, #0xd4
 	bl CopyWindowToVram
@@ -3068,7 +3068,7 @@ _02248168:
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r0, #0x48
 	bl ClearWindowTilemapAndCopyToVram
@@ -3265,7 +3265,7 @@ _02248348:
 _0224837C:
 	add r0, #0xc4
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r5, #0
 	add r0, #0xc4
 	bl ClearWindowTilemapAndCopyToVram
@@ -3275,7 +3275,7 @@ _0224837C:
 	add r0, r5, #0
 	add r0, #0xd4
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r5, #0
 	add r0, #0xd4
 	bl ClearWindowTilemapAndCopyToVram
@@ -5163,7 +5163,7 @@ _02249204:
 	add r0, r4, #0
 	add r0, #0x68
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	mov r0, #0
 	str r0, [r4, #8]
 _02249212:
@@ -5582,7 +5582,7 @@ ov75_022494CC: ; 0x022494CC
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -5853,7 +5853,7 @@ ov75_022496B8: ; 0x022496B8
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -5895,7 +5895,7 @@ _0224972E:
 	add r0, r5, #0
 	add r0, #0x48
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov75_022496B8

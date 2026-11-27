@@ -60,11 +60,11 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_CreateOnVBlankQueue
 .public SysTask_Destroy
-.public sub_0200E640
-.public DrawFrameAndWindow2
-.public sub_0200EB80
+.public GetMessageBoxPaletteNARCMember
+.public Window_DrawMessageBoxWithScrollCursor
+.public ReplaceTransparentTiles
 .public WaitingIcon_New
-.public sub_0200F450
+.public WaitingIcon_Destroy
 .public SetMasterBrightnessNeutral
 .public sub_0200FBF4
 .public sub_02014DA0
@@ -207,7 +207,7 @@
 .public BattleSystem_GetBagCursor
 .public BattleSystem_GetMonBall
 .public BattleSystem_GetTrainerGender
-.public BattleSystem_GetFieldSide
+.public BattleSystem_GetBattlerSide
 .public BattleSystem_GetTerrainId
 .public BattleSystem_GetBattlerIdPartner
 .public BattleSystem_GetBattleSpecial

@@ -52,12 +52,12 @@
 .public StringExpandPlaceholders
 .public MessagePrinter_New
 .public MessagePrinter_Delete
-.public sub_0200E398
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public LoadStandardWindowTiles
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_020163E0

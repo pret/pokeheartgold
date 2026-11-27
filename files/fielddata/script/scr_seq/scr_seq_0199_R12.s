@@ -220,10 +220,10 @@ _02BA:
 	End
 
 scr_seq_R12_002:
-	DirectionSignpostEx 1, 3, msg_0348_R12_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 3, msg_0348_R12_00000
 	End
 
 scr_seq_R12_003:
-	TrainerTipsEx 2, msg_0348_R12_00001
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0348_R12_00001
 	End
 	.balign 4, 0

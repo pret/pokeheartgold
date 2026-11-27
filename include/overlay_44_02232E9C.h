@@ -182,7 +182,7 @@ struct UnkStruct_ov44_022319EC {
     u32 unk180;
     struct ListMenu2D *unk184;
     YesNoPrompt *unk188;
-    WaitingIcon *unk18C;
+    WaitingIcon *waitingIcon;
     SpriteList *unk190;
     G2dRenderer unk194;
     GF_2DGfxResMan *unk2BC[4];
@@ -251,12 +251,12 @@ void ov44_0222A1B4(u32 arg0);
 void ov44_0222A1FC(UnkStruct_ov44_022319EC *arg0);
 
 s32 ov44_02229FDC(u32);
-void ov44_0222A40C(s32 arg0, UnkStruct_ov44_0222A40C *arg1);
+void ov44_0222A40C(SysTask *arg0, void *arg1);
 s32 ov44_0222A4B4(OverlayManager *overlayMananger, s32 *arg1);
 s32 ov44_0222A60C(OverlayManager *overlayManager, s32 *arg1);
 void ov44_0222A68C(UnkStruct_ov44_022319EC *arg0);
 s32 ov44_0222A758(OverlayManager *overlayManager);
-void ov44_0222A7F8(UnkStruct_ov44_022319EC *arg0);
+void ov44_0222A7F8(void *arg0);
 void ov44_0222A830(void);
 void ov44_0222A850(BgConfig *arg0);
 void ov44_0222AA94(UnkStruct_ov44_022319EC *arg0, UnkStruct_ov44_02232B74 *arg1);

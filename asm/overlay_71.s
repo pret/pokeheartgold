@@ -2574,7 +2574,7 @@ _02247CC0:
 	add r0, #0x58
 	mov r1, #0x6d
 	mov r2, #2
-	bl sub_0200E948
+	bl Window_DrawMessageBox
 	add r0, r4, #0
 	add r0, #0x58
 	bl CopyWindowToVram
@@ -2666,7 +2666,7 @@ _02247DB4:
 	add r0, r4, #0
 	add r0, #0x58
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r4, #8]
 	ldr r0, [r5]
@@ -9756,7 +9756,7 @@ _0224B5DE:
 	add r0, #0x5c
 	mov r1, #0x6d
 	mov r2, #2
-	bl sub_0200E948
+	bl Window_DrawMessageBox
 	add r0, r4, #0
 	add r0, #0x5c
 	bl CopyWindowToVram
@@ -9818,7 +9818,7 @@ _0224B68E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r4, #8]
 	ldr r0, [r5]

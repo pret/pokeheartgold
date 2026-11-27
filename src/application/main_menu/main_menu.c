@@ -516,7 +516,7 @@ static BOOL ov74_02227584(MainMenuAppData *data) {
     } else {
         if (ov74_02227060(data) & (PAD_BUTTON_B | PAD_BUTTON_A)) {
             PlaySE(SEQ_SE_DP_SELECT);
-            ClearWindowPixelBuffer(&data->unk190, FALSE);
+            Window_EraseStandardFrame(&data->unk190, FALSE);
             RemoveWindow(&data->unk190);
         }
         return TRUE;
@@ -956,7 +956,7 @@ static BOOL MainMenu_PrintContinueButton(MainMenuAppData *data, u32 a1, UnkStruc
         PrintPlayerInfoField(a2->window, msgData, messageFormat, textColor, msg_0442_00019, 64);
     }
 
-    DrawFrameAndWindow1(a2->window, FALSE, a2->baseTile, a2->paletteNum2);
+    Window_DrawStandardFrame(a2->window, FALSE, a2->baseTile, a2->paletteNum2);
 
     data->unkEC[a1] = sMainMenuButtons[a1].id;
     MessageFormat_Delete(messageFormat);
@@ -1101,7 +1101,7 @@ static BOOL ov74_022282CC(MainMenuAppData *data) {
             if (data->unkEC[i] != 0) {
                 SetWindowX(unk.window, 3);
                 SetWindowY(unk.window, y);
-                DrawFrameAndWindow1(unk.window, FALSE, unk.baseTile, unk.paletteNum2);
+                Window_DrawStandardFrame(unk.window, FALSE, unk.baseTile, unk.paletteNum2);
 
                 if (data->unk110[i] != 0) {
                     DrawWirelessIcon(data, 23, y, data->unk110[i]);
@@ -1150,13 +1150,13 @@ static void ov74_0222841C(MainMenuAppData *data, int currentOption) {
         }
 
         if (data->menuInputState.state == MENU_INPUT_STATE_TOUCH) {
-            DrawFrameAndWindow1(window, TRUE, 0x3EE, 2);
+            Window_DrawStandardFrame(window, TRUE, 0x3EE, 2);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_0, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 0);
         } else if (i == currentOption) {
-            DrawFrameAndWindow1(window, TRUE, 0x3EE, 3);
+            Window_DrawStandardFrame(window, TRUE, 0x3EE, 3);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_0, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 0);
         } else {
-            DrawFrameAndWindow1(window, TRUE, 0x3F7, 2);
+            Window_DrawStandardFrame(window, TRUE, 0x3F7, 2);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_0, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 1);
         }
     }
@@ -1172,16 +1172,16 @@ static void ov74_02228548(MainMenuAppData *data, int a1) {
         }
 
         if (a1 < 0) {
-            DrawFrameAndWindow1(window, TRUE, 0x3F7, 2);
+            Window_DrawStandardFrame(window, TRUE, 0x3F7, 2);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_1, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 1);
         } else if (data->menuInputState.state == MENU_INPUT_STATE_TOUCH) {
-            DrawFrameAndWindow1(window, TRUE, 0x3EE, 2);
+            Window_DrawStandardFrame(window, TRUE, 0x3EE, 2);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_1, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 0);
         } else if (i == a1) {
-            DrawFrameAndWindow1(window, TRUE, 0x3EE, 3);
+            Window_DrawStandardFrame(window, TRUE, 0x3EE, 3);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_1, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 0);
         } else {
-            DrawFrameAndWindow1(window, TRUE, 0x3F7, 2);
+            Window_DrawStandardFrame(window, TRUE, 0x3F7, 2);
             BgTilemapRectChangePalette(data->bgConfig, GF_BG_LYR_MAIN_1, GetWindowX(window), GetWindowY(window), GetWindowWidth(window), GetWindowHeight(window), 1);
         }
     }

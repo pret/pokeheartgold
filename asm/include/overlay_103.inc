@@ -55,8 +55,8 @@
 .public ManagedSprite_SetPositionXY
 .public ManagedSprite_SetOamMode
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ListMenuItems_New
