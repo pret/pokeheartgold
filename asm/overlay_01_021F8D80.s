@@ -710,7 +710,7 @@ _021F9260:
 FldObjSys_OpenMModelNarc: ; 0x021F927C
 	push {r4, lr}
 	add r4, r0, #0
-	mov r0, #0x51 ; NARC_data_mmodel_mmodel
+	mov r0, #0x51 ; NARC_field_sprites
 	mov r1, #4
 	bl NARC_New
 	add r1, r0, #0

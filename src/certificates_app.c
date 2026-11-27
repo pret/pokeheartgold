@@ -687,7 +687,7 @@ static void ov78_021E656C(Sprite *sprite, void *unkBuffer, u32 unkBufferSize, u3
 void ov78_021E65BC(Sprite *sprite, s32 narcMemberNum, u8 a2, enum HeapID heapID) {
     thunk_Sprite_SetDrawFlag(sprite, FALSE);
 
-    NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapID);
+    NARC *narc = NARC_New(NARC_field_sprites, heapID);
     NNSG3dResFileHeader *header = NARC_AllocAndReadWholeMember(narc, narcMemberNum, heapID);
     NNSG3dResTex *tex = NNS_G3dGetTex(header);
 
@@ -750,7 +750,7 @@ static void ov78_021E66D4(Sprite *sprite, Pokemon *pokemon, enum HeapID heapID, 
         unk = 4;
     }
 
-    NARC *narc = NARC_New(NARC_data_mmodel_mmodel, heapID);
+    NARC *narc = NARC_New(NARC_field_sprites, heapID);
 
     if (sub_02070438(species, form) == 0) {
         form = 0;
