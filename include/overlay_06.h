@@ -3,13 +3,13 @@
 
 #include "heap.h"
 #include "palette.h"
-#include "unk_02014DA0.h"
+#include "particle_system.h"
 
 const u16 *ov06_0221BA00(int param_1);
 void ov06_0221BA1C(PaletteData *palData, int param_2, int unused, PaletteBufferId param_4, u32 param_5);
-SPLEmitter *ov06_0221BA40(enum HeapID heapID);
-SPLEmitter *ov06_0221BA88(enum HeapID heapID);
-void ov06_0221BAD8(SPLEmitter *param_1);
+ParticleSystem *ov06_0221BA40(enum HeapID heapID);
+ParticleSystem *ov06_0221BA88(enum HeapID heapID);
+void ov06_0221BAD8(ParticleSystem *param_1);
 void ov06_0221BAF0(void);
 u32 ov06_0221BB14(u32 szByte, BOOL is4x4comp);
 u32 ov06_0221BB30(u32 szByte, BOOL is4pltt);

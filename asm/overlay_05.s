@@ -3985,7 +3985,7 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r0, #8
 	orr r0, r1
 	strh r0, [r2]
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	ldr r0, [r4]
 	mov r1, #0x12
 	ldr r0, [r0, #0x24]
@@ -4004,11 +4004,11 @@ ov05_0221D9F0: ; 0x0221D9F0
 	ldr r0, _0221DAD8 ; =ov05_0221DB4C
 	ldr r2, [r4, r2]
 	lsl r3, r3, #0xa
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	ldr r1, _0221DADC ; =0x00000B5C
 	str r0, [r4, r1]
 	ldr r0, [r4, r1]
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	mov r0, #1
 	mov r1, #0xe1
@@ -4019,43 +4019,43 @@ ov05_0221D9F0: ; 0x0221D9F0
 	mov r0, #0x3b
 	ldr r2, [r2, #0x24]
 	mov r1, #2
-	bl sub_02015264
+	bl ParticleSystem_LoadResourceFromNARC
 	add r1, r0, #0
 	ldr r0, _0221DADC ; =0x00000B5C
 	mov r2, #0xa
 	ldr r0, [r4, r0]
 	mov r3, #1
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	mov r1, #0
 	ldr r0, _0221DADC ; =0x00000B5C
 	add r2, r1, #0
 	ldr r0, [r4, r0]
 	add r3, r1, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, _0221DADC ; =0x00000B5C
 	mov r2, #0
 	ldr r0, [r4, r0]
 	mov r1, #1
 	add r3, r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, _0221DADC ; =0x00000B5C
 	mov r2, #0
 	ldr r0, [r4, r0]
 	mov r1, #2
 	add r3, r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, _0221DADC ; =0x00000B5C
 	mov r2, #0
 	ldr r0, [r4, r0]
 	mov r1, #3
 	add r3, r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	ldr r0, _0221DADC ; =0x00000B5C
 	mov r2, #0
 	ldr r0, [r4, r0]
 	mov r1, #4
 	add r3, r2, #0
-	bl sub_02015494
+	bl ParticleSystem_CreateEmitterWithCallback
 	add sp, #8
 	pop {r4, pc}
 	nop
@@ -4082,14 +4082,14 @@ _0221DAF2:
 	bl Thunk_G3X_Reset
 	ldr r0, _0221DB14 ; =0x00000B5C
 	ldr r0, [r4, r0]
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	bne _0221DB06
 	mov r0, #0
 	pop {r4, pc}
 _0221DB06:
-	bl sub_0201543C
-	bl sub_02015460
+	bl ParticleSystem_DrawAll
+	bl ParticleSystem_UpdateAll
 	mov r0, #1
 	pop {r4, pc}
 	nop
@@ -4107,7 +4107,7 @@ ov05_0221DB18: ; 0x0221DB18
 	bne _0221DB40
 	ldr r0, _0221DB44 ; =0x00000B5C
 	ldr r0, [r4, r0]
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	mov r0, #0xb6
 	lsl r0, r0, #4
 	ldr r0, [r4, r0]
@@ -4130,7 +4130,7 @@ ov05_0221DB4C: ; 0x0221DB4C
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015354
+	bl ParticleSystem_RegisterTextureKey
 	cmp r4, #0
 	bne _0221DB64
 	bl GF_AssertFail
@@ -4150,7 +4150,7 @@ ov05_0221DB70: ; 0x0221DB70
 	ldr r3, [r3]
 	blx r3
 	add r4, r0, #0
-	bl sub_02015394
+	bl ParticleSystem_RegisterPaletteKey
 	cmp r4, #0
 	bne _0221DB88
 	bl GF_AssertFail

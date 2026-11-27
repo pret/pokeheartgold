@@ -4,9 +4,9 @@
 #include "bg_window.h"
 #include "camera.h"
 #include "gf_3d_vramman.h"
+#include "particle_system.h"
 #include "sprite.h"
 #include "sys_task.h"
-#include "unk_02014DA0.h"
 
 enum IntroMovieSceneState {
     INTRO_MOVIE_SCENE_INIT,
@@ -98,7 +98,7 @@ typedef struct IntroMovieScene4Data {
     Sprite *starterSprites[3];
     GF3DVramMan *gf3dVramMan;
     void *particleHeap;
-    SPLEmitter *particleSystem;
+    ParticleSystem *particleSystem;
     int flipScreensTaskArg;
     SysTask *flipScreensTask;
 } IntroMovieScene4Data;

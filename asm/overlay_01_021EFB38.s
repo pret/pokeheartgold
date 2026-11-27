@@ -2645,7 +2645,7 @@ ov01_021F0EAC: ; 0x021F0EAC
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _021F0EBA
-	bl sub_0201543C
+	bl ParticleSystem_DrawAll
 _021F0EBA:
 	pop {r3, pc}
 	.balign 4, 0
@@ -2661,7 +2661,7 @@ ov01_021F0EC0: ; 0x021F0EC0
 	bne _021F0ECE
 	bl GF_AssertFail
 _021F0ECE:
-	bl sub_02014F84
+	bl ParticleSystem_FreeAll
 	ldr r0, _021F0F04 ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #4]
@@ -2723,7 +2723,7 @@ _021F0F2A:
 	ldr r0, _021F0FB0 ; =ov01_021F1224
 	ldr r1, _021F0FB4 ; =ov01_021F1250
 	ldr r2, [r2, #0xc]
-	bl sub_02014DB4
+	bl ParticleSystem_New
 	ldr r1, _021F0FAC ; =ov01_02209B64
 	ldr r2, [r1]
 	str r0, [r2, #8]
@@ -2737,11 +2737,11 @@ _021F0F64:
 	mov r1, #1
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_02015528
+	bl ParticleSystem_SetCameraProjection
 	ldr r0, _021F0FAC ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_02015524
+	bl ParticleSystem_GetCamera
 	add r2, r0, #0
 	mov r0, #1
 	mov r1, #0xe1
@@ -2760,7 +2760,7 @@ _021F0F64:
 	ldr r0, [r0]
 	add r3, r2, #0
 	ldr r0, [r0, #8]
-	bl sub_0201526C
+	bl ParticleSystem_SetResource
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop
@@ -2802,7 +2802,7 @@ _021F0FEC:
 	add r1, r4, #0
 	ldr r0, [r0, #8]
 	add r2, r7, #0
-	bl sub_02015484
+	bl ParticleSystem_CreateEmitter
 	add r4, r4, #1
 	cmp r4, r5
 	blo _021F0FEC
@@ -2830,11 +2830,11 @@ _021F1016:
 	mov r0, #1
 	pop {r3, pc}
 _021F1024:
-	bl sub_02015460
+	bl ParticleSystem_UpdateAll
 	ldr r0, _021F1040 ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	bne _021F103A
 	mov r0, #1
@@ -2852,7 +2852,7 @@ ov01_021F1044: ; 0x021F1044
 	ldr r0, _021F105C ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_020154B0
+	bl ParticleSystem_GetActiveEmitterCount
 	cmp r0, #0
 	bne _021F1058
 	mov r0, #1
@@ -2876,7 +2876,7 @@ _021F106E:
 	ldr r0, _021F1090 ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #8]
-	bl sub_02014EBC
+	bl ParticleSystem_Free
 	ldr r0, _021F1090 ; =ov01_02209B64
 	ldr r0, [r0]
 	ldr r0, [r0, #0xc]
@@ -2932,7 +2932,7 @@ ov01_021F10C8: ; 0x021F10C8
 	ldrh r0, [r4]
 	cmp r0, #2
 	bne _021F1136
-	bl sub_02014DA0
+	bl ParticleSystem_ZeroAll
 	add r1, sp, #0x30
 	mov r0, #0
 	str r0, [r1]
