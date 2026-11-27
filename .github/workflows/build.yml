@@ -31,9 +31,7 @@ jobs:
         GAME_REVISION:
           - 0
     outputs:
-      build-name: |
-        heartgold.us
-        soulsilver.us
+      build-name: heartgold.us soulsilver.us
 
     steps:
       - name: Checkout Repo
