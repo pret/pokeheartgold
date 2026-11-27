@@ -1,0 +1,30 @@
+{
+    "name": "Dragon Claw",
+    "description": [
+        "The user slashes the\n",
+        "foe with huge, sharp\n",
+        "claws.\n",
+        "\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DRAGON",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Future Sight",
+    "description": [
+        "Two turns after this\n",
+        "move is used, the foe\n",
+        "is attacked with a\n",
+        "hunk of psychic\n",
+        "energy."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_PSYCHIC",
+    "power": 80,
+    "accuracy": 90,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_IN_3_TURNS",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "SMART"
+    }
+}

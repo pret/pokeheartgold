@@ -1,0 +1,26 @@
+{
+    "name": "Copycat",
+    "description": [
+        "The user mimics the\n",
+        "move used immediately\n",
+        "before it. The move\n",
+        "fails if no other move\n",
+        "has been used yet."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_USE_LAST_USED_MOVE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "COOL"
+    }
+}

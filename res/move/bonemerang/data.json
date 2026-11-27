@@ -1,0 +1,31 @@
+{
+    "name": "Bonemerang",
+    "description": [
+        "The user throws the\n",
+        "bone it holds. The\n",
+        "bone loops to hit the\n",
+        "foe twice, coming and\n",
+        "going."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GROUND",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_TWICE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Fake Out",
+    "description": [
+        "An attack that hits\n",
+        "first and makes the\n",
+        "target flinch. It only\n",
+        "works the first turn\n",
+        "the user is in battle."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_ALWAYS_FLINCH_FIRST_TURN_ONLY",
+        "chance": 100
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 1,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "CUTE"
+    }
+}

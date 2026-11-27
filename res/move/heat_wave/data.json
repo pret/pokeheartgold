@@ -1,0 +1,29 @@
+{
+    "name": "Heat Wave",
+    "description": [
+        "The user exhales a\n",
+        "heated breath on the\n",
+        "foe to attack. It may\n",
+        "also leave the target\n",
+        "with a burn."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_BURN_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

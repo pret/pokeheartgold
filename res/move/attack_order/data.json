@@ -1,0 +1,30 @@
+{
+    "name": "Attack Order",
+    "description": [
+        "The user calls out\n",
+        "its underlings to\n",
+        "pummel the foe.\n",
+        "It has a high\n",
+        "critical-hit ratio."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_BUG",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "SMART"
+    }
+}

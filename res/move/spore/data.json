@@ -1,0 +1,29 @@
+{
+    "name": "Spore",
+    "description": [
+        "The user scatters\n",
+        "bursts of spores\n",
+        "that induce sleep.\n",
+        "\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GRASS",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

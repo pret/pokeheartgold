@@ -1,0 +1,31 @@
+{
+    "name": "Leaf Storm",
+    "description": [
+        "A storm of sharp\n",
+        "leaves is whipped up.\n",
+        "The attack\u2019s recoil\n",
+        "sharply reduces the\n",
+        "user\u2019s Sp. Atk stat."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GRASS",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_USER_SP_ATK_DOWN_2",
+        "chance": 100
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "CUTE"
+    }
+}

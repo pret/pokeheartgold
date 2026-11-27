@@ -1,0 +1,28 @@
+{
+    "name": "Lunar Dance",
+    "description": [
+        "The user faints. In\n",
+        "return, the Pok\u00e9mon\n",
+        "taking its place will\n",
+        "have its status and\n",
+        "HP fully restored."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_FAINT_FULL_RESTORE_NEXT_MON",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

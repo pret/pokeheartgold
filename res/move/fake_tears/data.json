@@ -1,0 +1,31 @@
+{
+    "name": "Fake Tears",
+    "description": [
+        "The user feigns\n",
+        "crying to make the\n",
+        "foe feel flustered,\n",
+        "sharply lowering its\n",
+        "Sp. Def stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DARK",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_ACC_DOWN_2",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
+}

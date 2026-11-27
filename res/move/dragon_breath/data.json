@@ -1,0 +1,30 @@
+{
+    "name": "DragonBreath",
+    "description": [
+        "The user exhales\n",
+        "a mighty gust that\n",
+        "inflicts damage.\n",
+        "It may also paralyze\n",
+        "the target."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_DRAGON",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_PARALYZE_HIT",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

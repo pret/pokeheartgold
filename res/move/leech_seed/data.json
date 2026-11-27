@@ -1,0 +1,30 @@
+{
+    "name": "Leech Seed",
+    "description": [
+        "A seed is planted on\n",
+        "the foe. It steals\n",
+        "some HP from the foe\n",
+        "to heal the user on\n",
+        "every turn."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GRASS",
+    "power": 0,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_LEECH_SEED",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "SMART"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Fire Blast",
+    "description": [
+        "The foe is attacked\n",
+        "with an intense blast\n",
+        "of all-consuming fire.\n",
+        "It may also leave the\n",
+        "target with a burn."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIRE",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_BURN_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

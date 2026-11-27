@@ -1,0 +1,32 @@
+{
+    "name": "Brave Bird",
+    "description": [
+        "The user tucks in\n",
+        "its wings and charges\n",
+        "from a low altitude.\n",
+        "The user also takes\n",
+        "serious damage."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FLYING",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_THIRD",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "CUTE"
+    }
+}

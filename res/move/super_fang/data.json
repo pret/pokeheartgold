@@ -1,0 +1,31 @@
+{
+    "name": "Super Fang",
+    "description": [
+        "The user chomps hard\n",
+        "on the foe with its\n",
+        "sharp front fangs.\n",
+        "It cuts the target\u2019s\n",
+        "HP to half."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 1,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_HALVE_HP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "TOUGH"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "Poison Sting",
+    "description": [
+        "The foe is stabbed\n",
+        "with a poisonous\n",
+        "barb of some sort.\n",
+        "It may also poison\n",
+        "the target."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_POISON",
+    "power": 15,
+    "accuracy": 100,
+    "pp": 35,
+    "effect": {
+        "type": "MOVE_EFFECT_POISON_HIT",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
+}

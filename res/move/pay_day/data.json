@@ -1,0 +1,30 @@
+{
+    "name": "Pay Day",
+    "description": [
+        "Numerous coins are\n",
+        "hurled at the foe to\n",
+        "inflict damage.\n",
+        "Money is earned\n",
+        "after battle."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_INCREASE_PRIZE_MONEY",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "SMART"
+    }
+}

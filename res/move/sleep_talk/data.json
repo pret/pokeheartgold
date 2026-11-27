@@ -1,0 +1,25 @@
+{
+    "name": "Sleep Talk",
+    "description": [
+        "While it is asleep, the\n",
+        "user randomly uses\n",
+        "one of the moves it\n",
+        "knows.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_USE_RANDOM_LEARNED_MOVE_SLEEP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "CUTE"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Sandstorm",
+    "description": [
+        "A five-turn sand-\n",
+        "storm is summoned\n",
+        "to hurt all combatant\n",
+        "types except Rock, \n",
+        "Ground, and Steel."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_ROCK",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_WEATHER_SANDSTORM",
+        "chance": 0
+    },
+    "range": "RANGE_FIELD",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "TOUGH"
+    }
+}

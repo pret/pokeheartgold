@@ -1,0 +1,31 @@
+{
+    "name": "Struggle",
+    "description": [
+        "An attack that is\n",
+        "used in desperation\n",
+        "only if the user has\n",
+        "no PP. It also hurts\n",
+        "the user slightly."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 50,
+    "accuracy": 0,
+    "pp": 1,
+    "effect": {
+        "type": "MOVE_EFFECT_STRUGGLE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
+}

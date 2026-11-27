@@ -1,0 +1,30 @@
+{
+    "name": "Psywave",
+    "description": [
+        "The foe is attacked\n",
+        "with an odd, hot\n",
+        "energy wave.\n",
+        "The attack varies in\n",
+        "intensity."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_PSYCHIC",
+    "power": 1,
+    "accuracy": 80,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_RANDOM_DAMAGE_1_TO_150_LEVEL",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
+}

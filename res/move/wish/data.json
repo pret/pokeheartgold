@@ -1,0 +1,28 @@
+{
+    "name": "Wish",
+    "description": [
+        "A self-healing move.\n",
+        "The user restores its\n",
+        "own HP by up to half\n",
+        "of its maximum HP\n",
+        "in the next turn."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_HEAL_IN_3_TURNS",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "CUTE"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "name": "Stealth Rock",
+    "description": [
+        "The user lays a trap\n",
+        "of levitating stones\n",
+        "around the foe. The\n",
+        "trap hurts foes that\n",
+        "switch into battle."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_ROCK",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_STEALTH_ROCK",
+        "chance": 0
+    },
+    "range": "RANGE_OPPONENT_SIDE",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "COOL"
+    }
+}

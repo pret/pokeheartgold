@@ -1,0 +1,32 @@
+{
+    "name": "Triple Kick",
+    "description": [
+        "A consecutive three-\n",
+        "kick attack that\n",
+        "becomes more\n",
+        "powerful with each \n",
+        "successive hit."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
+    "power": 10,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_THREE_TIMES",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "COOL"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "Block",
+    "description": [
+        "The user blocks the\n",
+        "foe\u2019s way with arms\n",
+        "spread wide to\n",
+        "prevent escape.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_PREVENT_ESCAPE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "CUTE"
+    }
+}

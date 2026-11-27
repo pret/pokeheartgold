@@ -1,0 +1,31 @@
+{
+    "name": "Beat Up",
+    "description": [
+        "The user gets all the\n",
+        "party Pok\u00e9mon to\n",
+        "attack the foe. The\n",
+        "more party Pok\u00e9mon,\n",
+        "the more damage."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
+    "power": 10,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_BEAT_UP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "SMART"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "Spider Web",
+    "description": [
+        "The user ensnares\n",
+        "the foe with a thin,\n",
+        "gooey silk so it can\u2019t\n",
+        "flee from battle.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_BUG",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_PREVENT_ESCAPE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "SMART"
+    }
+}

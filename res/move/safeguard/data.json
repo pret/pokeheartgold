@@ -1,0 +1,29 @@
+{
+    "name": "Safeguard",
+    "description": [
+        "The user creates a\n",
+        "protective field that\n",
+        "prevents status\n",
+        "problems for five\n",
+        "turns."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 25,
+    "effect": {
+        "type": "MOVE_EFFECT_PREVENT_STATUS",
+        "chance": 0
+    },
+    "range": "RANGE_USER_SIDE",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

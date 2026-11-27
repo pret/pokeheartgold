@@ -1,0 +1,30 @@
+{
+    "name": "Needle Arm",
+    "description": [
+        "The user attacks by\n",
+        "wildly swinging its\n",
+        "thorny arms.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GRASS",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
+}

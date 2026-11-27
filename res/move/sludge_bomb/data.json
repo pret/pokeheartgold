@@ -1,0 +1,29 @@
+{
+    "name": "Sludge Bomb",
+    "description": [
+        "The user attacks by\n",
+        "hurling filthy sludge\n",
+        "at the foe.\n",
+        "It may also poison\n",
+        "the target."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_POISON",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_POISON_HIT",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "TOUGH"
+    }
+}

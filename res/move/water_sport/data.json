@@ -1,0 +1,26 @@
+{
+    "name": "Water Sport",
+    "description": [
+        "The user soaks itself\n",
+        "with water. The move\n",
+        "weakens Fire-type\n",
+        "moves while the user\n",
+        "is in the battle."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_WATER",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_HALVE_FIRE_DAMAGE",
+        "chance": 0
+    },
+    "range": "RANGE_FIELD",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "CUTE"
+    }
+}

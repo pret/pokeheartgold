@@ -1,0 +1,31 @@
+{
+    "name": "Night Slash",
+    "description": [
+        "The user slashes the\n",
+        "foe the instant an\n",
+        "opportunity arises.\n",
+        "It has a high\n",
+        "critical-hit ratio."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_DARK",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "BEAUTY"
+    }
+}

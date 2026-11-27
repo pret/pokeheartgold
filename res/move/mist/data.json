@@ -1,0 +1,28 @@
+{
+    "name": "Mist",
+    "description": [
+        "The user cloaks its\n",
+        "body with a white mist\n",
+        "that prevents any of\n",
+        "its stats from being\n",
+        "cut for five turns."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_ICE",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_PREVENT_STAT_REDUCTION",
+        "chance": 0
+    },
+    "range": "RANGE_USER_SIDE",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

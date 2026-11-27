@@ -1,0 +1,31 @@
+{
+    "name": "Flare Blitz",
+    "description": [
+        "The user cloaks\n",
+        "itself in fire and\n",
+        "charges at the foe.\n",
+        "The user sustains\n",
+        "serious damage, too."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIRE",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOIL_BURN_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "SMART"
+    }
+}

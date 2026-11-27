@@ -1,0 +1,30 @@
+{
+    "name": "Leer",
+    "description": [
+        "The foe is given an\n",
+        "intimidating leer with\n",
+        "sharp eyes.\n",
+        "The target\u2019s Defense\n",
+        "stat is reduced."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_DEF_DOWN",
+        "chance": 0
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "COOL"
+    }
+}

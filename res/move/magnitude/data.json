@@ -1,0 +1,30 @@
+{
+    "name": "Magnitude",
+    "description": [
+        "The user looses a\n",
+        "ground-shaking quake\n",
+        "affecting everyone in\n",
+        "battle. Its power\n",
+        "varies."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GROUND",
+    "power": 1,
+    "accuracy": 100,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_RANDOM_POWER_10_CASES",
+        "chance": 0
+    },
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "TOUGH"
+    }
+}

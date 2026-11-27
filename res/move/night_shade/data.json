@@ -1,0 +1,30 @@
+{
+    "name": "Night Shade",
+    "description": [
+        "The user makes the\n",
+        "foe see a mirage.\n",
+        "It inflicts damage\n",
+        "matching the user\u2019s\n",
+        "level."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GHOST",
+    "power": 1,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_LEVEL_DAMAGE_FLAT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "SMART"
+    }
+}

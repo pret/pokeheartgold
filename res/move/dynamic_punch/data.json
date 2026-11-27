@@ -1,0 +1,31 @@
+{
+    "name": "DynamicPunch",
+    "description": [
+        "The foe is punched\n",
+        "with the user\u2019s full,\n",
+        "concentrated power.\n",
+        "It confuses the foe\n",
+        "if it hits."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
+    "power": 100,
+    "accuracy": 50,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_CONFUSE_HIT",
+        "chance": 100
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

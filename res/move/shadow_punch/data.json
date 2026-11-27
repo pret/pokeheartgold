@@ -1,0 +1,31 @@
+{
+    "name": "Shadow Punch",
+    "description": [
+        "The user throws a\n",
+        "punch at the foe from\n",
+        "the shadows.\n",
+        "The punch lands\n",
+        "without fail."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GHOST",
+    "power": 60,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_BYPASS_ACCURACY",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "SMART"
+    }
+}

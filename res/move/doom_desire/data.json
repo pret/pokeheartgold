@@ -1,0 +1,28 @@
+{
+    "name": "Doom Desire",
+    "description": [
+        "Two turns after this\n",
+        "move is used, the\n",
+        "user blasts the foe\n",
+        "with a concentrated\n",
+        "bundle of light."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_STEEL",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_IN_3_TURNS",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "name": "Drain Punch",
+    "description": [
+        "An energy-draining\n",
+        "punch. The user\u2019s\n",
+        "HP is restored by\n",
+        "half the damage taken\n",
+        "by the target."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_RECOVER_HALF_DAMAGE_DELT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

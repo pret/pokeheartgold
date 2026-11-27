@@ -1,0 +1,28 @@
+{
+    "name": "Me First",
+    "description": [
+        "The user tries to cut\n",
+        "ahead of the foe to\n",
+        "steal and use the\n",
+        "foe\u2019s intended move\n",
+        "with greater power."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_USE_MOVE_FIRST",
+        "chance": 0
+    },
+    "range": "RANGE_FRONT",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "CUTE"
+    }
+}

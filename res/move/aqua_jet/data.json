@@ -1,0 +1,31 @@
+{
+    "name": "Aqua Jet",
+    "description": [
+        "The user lunges at\n",
+        "the foe at a speed\n",
+        "that makes it almost\n",
+        "invisible. It is sure\n",
+        "to strike first."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_WATER",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_PRIORITY_1",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 1,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "BEAUTY"
+    }
+}

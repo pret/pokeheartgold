@@ -1,0 +1,29 @@
+{
+    "name": "Confuse Ray",
+    "description": [
+        "The foe is exposed\n",
+        "to a sinister ray\n",
+        "that triggers\n",
+        "confusion.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GHOST",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_CONFUSE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "SMART"
+    }
+}

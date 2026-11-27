@@ -1,0 +1,28 @@
+{
+    "name": "Lucky Chant",
+    "description": [
+        "The user chants an\n",
+        "incantation toward\n",
+        "the sky, preventing\n",
+        "the foe from landing\n",
+        "critical hits."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_PREVENT_CRITS",
+        "chance": 0
+    },
+    "range": "RANGE_USER_SIDE",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "CUTE"
+    }
+}

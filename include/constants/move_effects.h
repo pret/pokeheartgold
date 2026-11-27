@@ -38,6 +38,7 @@
 #define MOVE_EFFECT_INCREASE_PRIZE_MONEY               34
 #define MOVE_EFFECT_SET_LIGHT_SCREEN                   35
 #define MOVE_EFFECT_RANDOM_PRIMARY_STATUS_HIT          36 // tri attack
+#define MOVE_EFFECT_REST                               37
 #define MOVE_EFFECT_ONE_HIT_KO                         38
 #define MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT              39
 #define MOVE_EFFECT_HALVE_HP                           40

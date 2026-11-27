@@ -1,0 +1,30 @@
+{
+    "name": "Focus Punch",
+    "description": [
+        "The user focuses its\n",
+        "mind before launching\n",
+        "a punch. It will fail\n",
+        "if the user is hit\n",
+        "before it is used."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT_LAST_WHIFF_IF_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": -3,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "TOUGH"
+    }
+}

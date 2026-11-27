@@ -1,0 +1,29 @@
+{
+    "name": "Power Swap",
+    "description": [
+        "The user employs its\n",
+        "psychic power to\n",
+        "switch changes to\n",
+        "its Attack and\n",
+        "Sp. Atk with the foe."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_SWAP_ATK_SP_ATK_STAT_CHANGES",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

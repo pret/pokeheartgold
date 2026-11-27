@@ -1,0 +1,26 @@
+{
+    "name": "Feint",
+    "description": [
+        "An attack that hits a\n",
+        "foe using Protect or\n",
+        "Detect. It also lifts\n",
+        "the effects of those\n",
+        "moves."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_REMOVE_PROTECT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 2,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "Pain Split",
+    "description": [
+        "The user adds its HP\n",
+        "to the foe\u2019s HP, then\n",
+        "equally shares the\n",
+        "combined HP with the\n",
+        "foe."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_AVERAGE_HP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "SMART"
+    }
+}

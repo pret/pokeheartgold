@@ -1,0 +1,29 @@
+{
+    "name": "Water Spout",
+    "description": [
+        "The user spouts\n",
+        "water to damage the\n",
+        "foe. The lower the\n",
+        "user\u2019s HP, the less\n",
+        "powerful it becomes."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_DECREASE_POWER_WITH_LESS_USER_HP",
+        "chance": 0
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

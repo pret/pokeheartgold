@@ -1,0 +1,30 @@
+{
+    "name": "SmokeScreen",
+    "description": [
+        "The user releases an\n",
+        "obscuring cloud of\n",
+        "smoke or ink.\n",
+        "It reduces the foe\u2019s\n",
+        "accuracy."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_ACC_DOWN",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "SMART"
+    }
+}

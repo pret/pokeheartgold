@@ -1,0 +1,31 @@
+{
+    "name": "Bide",
+    "description": [
+        "The user endures\n",
+        "attacks for two\n",
+        "turns, then strikes\n",
+        "back to cause double\n",
+        "the damage taken."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 1,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_BIDE",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 1,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "TOUGH"
+    }
+}

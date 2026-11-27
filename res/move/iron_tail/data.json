@@ -1,0 +1,30 @@
+{
+    "name": "Iron Tail",
+    "description": [
+        "The foe is slammed\n",
+        "with a steel-hard\n",
+        "tail. It may also\n",
+        "lower the target\u2019s\n",
+        "Defense stat."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_DEFENSE_HIT",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "name": "False Swipe",
+    "description": [
+        "A restrained attack\n",
+        "that prevents the\n",
+        "foe from fainting.\n",
+        "The target is left\n",
+        "with at least 1 HP."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 40,
+    "effect": {
+        "type": "MOVE_EFFECT_LEAVE_WITH_1_HP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

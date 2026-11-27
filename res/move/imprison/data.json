@@ -1,0 +1,26 @@
+{
+    "name": "Imprison",
+    "description": [
+        "If the foe knows any\n",
+        "move also known by\n",
+        "the user, the foe\n",
+        "is prevented\n",
+        "from using it."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_MAKE_SHARED_MOVES_UNUSEABL",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_TWO_VOLTAGE_IN_A_ROW_ADVANTAGE",
+        "type": "SMART"
+    }
+}

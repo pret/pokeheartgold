@@ -1,0 +1,31 @@
+{
+    "name": "U-turn",
+    "description": [
+        "After making its\n",
+        "attack, the user\n",
+        "rushes back to switch\n",
+        "places with a party\n",
+        "Pok\u00e9mon in waiting."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_BUG",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_SWITCH_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOW_VOLTAGE_ADVANTAGE",
+        "type": "CUTE"
+    }
+}

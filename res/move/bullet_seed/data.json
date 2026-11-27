@@ -1,0 +1,31 @@
+{
+    "name": "Bullet Seed",
+    "description": [
+        "The user forcefully\n",
+        "shoots seeds at the\n",
+        "foe. Two to five\n",
+        "seeds are shot in\n",
+        "rapid succession."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GRASS",
+    "power": 10,
+    "accuracy": 100,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_MULTI_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "COOL"
+    }
+}

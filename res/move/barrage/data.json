@@ -1,0 +1,30 @@
+{
+    "name": "Barrage",
+    "description": [
+        "Round objects are\n",
+        "hurled at the foe to\n",
+        "strike two to five\n",
+        "times in a row.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_MULTI_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
+}

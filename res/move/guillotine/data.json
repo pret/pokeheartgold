@@ -1,0 +1,30 @@
+{
+    "name": "Guillotine",
+    "description": [
+        "A vicious, tearing\n",
+        "attack with pincers.\n",
+        "The foe will faint\n",
+        "instantly if this\n",
+        "attack hits."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 1,
+    "accuracy": 30,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_ONE_HIT_KO",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+        "type": "COOL"
+    }
+}

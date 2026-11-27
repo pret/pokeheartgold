@@ -1,0 +1,31 @@
+{
+    "name": "Hammer Arm",
+    "description": [
+        "The user swings and\n",
+        "hits with its strong\n",
+        "and heavy fist.\n",
+        "It lowers the user\u2019s\n",
+        "Speed, however."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_SPEED_DOWN_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LAST_NEXT_TURN",
+        "type": "COOL"
+    }
+}

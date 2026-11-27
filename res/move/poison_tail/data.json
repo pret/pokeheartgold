@@ -1,0 +1,31 @@
+{
+    "name": "Poison Tail",
+    "description": [
+        "An attack with a\n",
+        "high critical-hit\n",
+        "ratio. This tail \n",
+        "attack may also \n",
+        "poison the foe."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_POISON",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 25,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL_POISON_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "SMART"
+    }
+}

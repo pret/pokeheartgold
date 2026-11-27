@@ -1,0 +1,31 @@
+{
+    "name": "Whirlpool",
+    "description": [
+        "Traps the foe inside a\n",
+        "whirlpool that lasts\n",
+        "for two to five turns.\n",
+        "The user can pass\n",
+        "through whirlpools."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
+    "power": 15,
+    "accuracy": 70,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_WHIRLPOOL",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "BEAUTY"
+    }
+}

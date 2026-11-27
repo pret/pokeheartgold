@@ -1,0 +1,31 @@
+{
+    "name": "Rapid Spin",
+    "description": [
+        "A spin attack that\n",
+        "can also eliminate\n",
+        "such moves as Bind,\n",
+        "Wrap, Leech Seed,\n",
+        "and Spikes."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 40,
+    "effect": {
+        "type": "MOVE_EFFECT_REMOVE_HAZARDS_AND_BINDING",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Magical Leaf",
+    "description": [
+        "The user scatters\n",
+        "curious leaves that\n",
+        "chase the foe.\n",
+        "This attack will not\n",
+        "miss."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GRASS",
+    "power": 60,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_BYPASS_ACCURACY",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

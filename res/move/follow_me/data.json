@@ -1,0 +1,25 @@
+{
+    "name": "Follow Me",
+    "description": [
+        "The user draws\n",
+        "attention to itself,\n",
+        "making all foes take\n",
+        "aim only at the user.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_MAKE_GLOBAL_TARGET",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 3,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_RANDOM_ORDER",
+        "type": "CUTE"
+    }
+}

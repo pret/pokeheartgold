@@ -1,0 +1,28 @@
+{
+    "name": "Dragon Dance",
+    "description": [
+        "The user vigorously\n",
+        "performs a mystic,\n",
+        "powerful dance that\n",
+        "boosts its Attack and\n",
+        "Speed stats."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DRAGON",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_ATK_SPD_UP",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "COOL"
+    }
+}

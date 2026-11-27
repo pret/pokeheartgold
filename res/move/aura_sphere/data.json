@@ -1,0 +1,31 @@
+{
+    "name": "Aura Sphere",
+    "description": [
+        "The user looses a\n",
+        "blast of aura power\n",
+        "from deep within its\n",
+        "body. This move is\n",
+        "certain to hit."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIGHTING",
+    "power": 90,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_BYPASS_ACCURACY",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

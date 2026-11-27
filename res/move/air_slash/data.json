@@ -1,0 +1,30 @@
+{
+    "name": "Air Slash",
+    "description": [
+        "The user attacks with\n",
+        "a blade of air that\n",
+        "slices even the sky.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FLYING",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_HIT",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

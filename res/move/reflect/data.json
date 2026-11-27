@@ -1,0 +1,29 @@
+{
+    "name": "Reflect",
+    "description": [
+        "A wondrous wall of\n",
+        "light is put up to\n",
+        "suppress damage from\n",
+        "physical attacks for\n",
+        "five turns."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_SET_REFLECT",
+        "chance": 0
+    },
+    "range": "RANGE_USER_SIDE",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "SMART"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Sky Attack",
+    "description": [
+        "A second-turn attack\n",
+        "move with a high\n",
+        "critical-hit ratio.\n",
+        "It may also make the\n",
+        "target flinch."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FLYING",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT_FLINCH",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "COOL"
+    }
+}

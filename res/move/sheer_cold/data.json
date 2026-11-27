@@ -1,0 +1,29 @@
+{
+    "name": "Sheer Cold",
+    "description": [
+        "The foe is attacked\n",
+        "with a blast of\n",
+        "absolute-zero cold.\n",
+        "The foe instantly\n",
+        "faints if it hits."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ICE",
+    "power": 1,
+    "accuracy": 30,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_ONE_HIT_KO",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_ALL_SAME_JUDGE",
+        "type": "BEAUTY"
+    }
+}

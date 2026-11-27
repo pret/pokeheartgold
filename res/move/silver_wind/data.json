@@ -1,0 +1,30 @@
+{
+    "name": "Silver Wind",
+    "description": [
+        "The foe is attacked\n",
+        "with powdery scales\n",
+        "blown by wind.\n",
+        "It may also raise all\n",
+        "the user\u2019s stats."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_BUG",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_RAISE_ALL_STATS_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "BEAUTY"
+    }
+}

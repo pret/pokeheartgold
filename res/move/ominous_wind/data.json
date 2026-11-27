@@ -1,0 +1,30 @@
+{
+    "name": "Ominous Wind",
+    "description": [
+        "The user creates a\n",
+        "gust of repulsive\n",
+        "wind. It may also\n",
+        "raise all the user\u2019s\n",
+        "stats at once."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GHOST",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_RAISE_ALL_STATS_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "SMART"
+    }
+}

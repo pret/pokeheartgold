@@ -1,0 +1,29 @@
+{
+    "name": "Rock Tomb",
+    "description": [
+        "Boulders are hurled\n",
+        "at the foe. It also\n",
+        "lowers the foe\u2019s\n",
+        "Speed by preventing\n",
+        "its movement."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ROCK",
+    "power": 50,
+    "accuracy": 80,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_SPEED_HIT",
+        "chance": 100
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LAST_NEXT_TURN",
+        "type": "SMART"
+    }
+}

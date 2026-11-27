@@ -1,0 +1,29 @@
+{
+    "name": "Nasty Plot",
+    "description": [
+        "The user stimulates\n",
+        "its brain by thinking\n",
+        "bad thoughts.\n",
+        "It sharply raises the\n",
+        "user\u2019s Sp. Atk."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DARK",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_SP_ATK_UP_2",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "CUTE"
+    }
+}

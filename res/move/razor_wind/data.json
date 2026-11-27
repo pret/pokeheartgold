@@ -1,0 +1,30 @@
+{
+    "name": "Razor Wind",
+    "description": [
+        "A two-turn attack.\n",
+        "Blades of wind hit the\n",
+        "foe on the second\n",
+        "turn. It has a high\n",
+        "critical-hit ratio."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_NORMAL",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_CHARGE_TURN_HIGH_CRIT",
+        "chance": 0
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "COOL"
+    }
+}

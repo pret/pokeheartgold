@@ -1,0 +1,26 @@
+{
+    "name": "Snatch",
+    "description": [
+        "The user steals the\n",
+        "effects of any\n",
+        "healing or stat-\n",
+        "changing move the foe\n",
+        "attempts to use."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DARK",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_STEAL_STATUS_MOVE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 4,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "SMART"
+    }
+}

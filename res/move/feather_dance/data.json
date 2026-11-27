@@ -1,0 +1,30 @@
+{
+    "name": "FeatherDance",
+    "description": [
+        "The user covers the\n",
+        "foe with a mass of\n",
+        "down that sharply\n",
+        "lowers the Attack\n",
+        "stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FLYING",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_ATK_DOWN_2",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "BEAUTY"
+    }
+}

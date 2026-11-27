@@ -1,0 +1,26 @@
+{
+    "name": "Mud Sport",
+    "description": [
+        "The user covers\n",
+        "itself with mud. It\n",
+        "weakens Electric-\n",
+        "type moves while the\n",
+        "user is in the battle."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GROUND",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_HALVE_ELECTRIC_DAMAGE",
+        "chance": 0
+    },
+    "range": "RANGE_FIELD",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "CUTE"
+    }
+}

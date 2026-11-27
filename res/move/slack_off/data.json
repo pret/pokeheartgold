@@ -1,0 +1,28 @@
+{
+    "name": "Slack Off",
+    "description": [
+        "The user slacks off,\n",
+        "restoring its own HP\n",
+        "by up to half of its\n",
+        "maximum HP.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_RESTORE_HALF_HP",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "CUTE"
+    }
+}

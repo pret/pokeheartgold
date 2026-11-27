@@ -1,0 +1,30 @@
+{
+    "name": "Surf",
+    "description": [
+        "It swamps the entire\n",
+        "battlefield with a\n",
+        "giant wave.\n",
+        "It can also be used\n",
+        "for crossing water."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_WATER",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_DAMAGE_DIVE",
+        "chance": 0
+    },
+    "range": "RANGE_ALL_ADJACENT",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

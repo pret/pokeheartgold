@@ -1,0 +1,26 @@
+{
+    "name": "Conversion 2",
+    "description": [
+        "The user changes its\n",
+        "type to make itself\n",
+        "resistant to the type\n",
+        "of the attack it\n",
+        "last took."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_CONVERSION2",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "BEAUTY"
+    }
+}

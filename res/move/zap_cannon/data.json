@@ -1,0 +1,30 @@
+{
+    "name": "Zap Cannon",
+    "description": [
+        "The user fires an\n",
+        "electric blast like a\n",
+        "cannon to inflict\n",
+        "damage and cause\n",
+        "paralysis."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ELECTRIC",
+    "power": 120,
+    "accuracy": 50,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_PARALYZE_HIT",
+        "chance": 100
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_2_HEARTS_WHEN_VOLTAGE_UP",
+        "type": "COOL"
+    }
+}

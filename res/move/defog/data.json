@@ -1,0 +1,28 @@
+{
+    "name": "Defog",
+    "description": [
+        "It reduces the foe\u2019s\n",
+        "evasion stat. It also\n",
+        "removes spikes,\n",
+        "light screens, etc."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FLYING",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_REMOVE_HAZARDS_SCREENS_EVA_DOWN",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

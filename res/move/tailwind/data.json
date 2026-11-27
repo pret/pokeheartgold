@@ -1,0 +1,28 @@
+{
+    "name": "Tailwind",
+    "description": [
+        "The user whips up a\n",
+        "turbulent whirlwind\n",
+        "that ups the Speed\n",
+        "of all party Pok\u00e9mon\n",
+        "for three turns."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FLYING",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 30,
+    "effect": {
+        "type": "MOVE_EFFECT_DOUBLE_SPEED_3_TURNS",
+        "chance": 0
+    },
+    "range": "RANGE_USER_SIDE",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_NEXT_TURN",
+        "type": "SMART"
+    }
+}

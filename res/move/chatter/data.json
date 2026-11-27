@@ -1,0 +1,29 @@
+{
+    "name": "Chatter",
+    "description": [
+        "The user attacks\n",
+        "using a sound wave\n",
+        "based on words it has\n",
+        "learned. It may also\n",
+        "confuse the foe."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FLYING",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_CHATTER",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_PITY_POINTS",
+        "type": "SMART"
+    }
+}

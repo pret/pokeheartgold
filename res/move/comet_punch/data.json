@@ -1,0 +1,31 @@
+{
+    "name": "Comet Punch",
+    "description": [
+        "The foe is hit with\n",
+        "a flurry of punches\n",
+        "that strike two to\n",
+        "five times in a row.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 18,
+    "accuracy": 85,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_MULTI_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
+}

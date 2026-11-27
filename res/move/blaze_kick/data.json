@@ -1,0 +1,30 @@
+{
+    "name": "Blaze Kick",
+    "description": [
+        "The user launches a\n",
+        "kick with a high\n",
+        "critical-hit ratio.\n",
+        "It may also leave the\n",
+        "target with a burn."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIRE",
+    "power": 85,
+    "accuracy": 90,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL_BURN_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "BEAUTY"
+    }
+}

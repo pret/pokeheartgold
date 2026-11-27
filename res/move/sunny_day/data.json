@@ -1,0 +1,25 @@
+{
+    "name": "Sunny Day",
+    "description": [
+        "The user intensifies\n",
+        "the sun for five\n",
+        "turns, powering up\n",
+        "Fire-type moves.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_FIRE",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_WEATHER_SUN",
+        "chance": 0
+    },
+    "range": "RANGE_FIELD",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

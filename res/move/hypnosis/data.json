@@ -1,0 +1,30 @@
+{
+    "name": "Hypnosis",
+    "description": [
+        "The user employs\n",
+        "hypnotic suggestion\n",
+        "to make the target\n",
+        "fall into a deep\n",
+        "sleep."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
+    "power": 0,
+    "accuracy": 60,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
+}

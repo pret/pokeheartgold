@@ -1,0 +1,29 @@
+{
+    "name": "Swallow",
+    "description": [
+        "The power stored\n",
+        "using the move\n",
+        "Stockpile is absorbed\n",
+        "by the user to heal\n",
+        "its HP."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_SWALLOW",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "TOUGH"
+    }
+}

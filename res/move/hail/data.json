@@ -1,0 +1,26 @@
+{
+    "name": "Hail",
+    "description": [
+        "The user summons a\n",
+        "hailstorm lasting five\n",
+        "turns. It damages all\n",
+        "Pok\u00e9mon except the\n",
+        "Ice type."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_ICE",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_WEATHER_HAIL",
+        "chance": 0
+    },
+    "range": "RANGE_FIELD",
+    "priority": 0,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_SUPPRESS_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

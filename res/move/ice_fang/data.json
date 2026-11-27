@@ -1,0 +1,30 @@
+{
+    "name": "Ice Fang",
+    "description": [
+        "The user bites with\n",
+        "cold-infused fangs.\n",
+        "It may also make the\n",
+        "foe flinch or freeze.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ICE",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_FLINCH_FREEZE_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
+}

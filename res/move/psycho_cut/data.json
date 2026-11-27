@@ -1,0 +1,30 @@
+{
+    "name": "Psycho Cut",
+    "description": [
+        "The user tears at\n",
+        "the foe with blades\n",
+        "formed by psychic\n",
+        "power. It has a high\n",
+        "critical-hit ratio."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_PSYCHIC",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Counter",
+    "description": [
+        "A retaliation move\n",
+        "that counters any\n",
+        "physical attack,\n",
+        "inflicting double the\n",
+        "damage taken."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FIGHTING",
+    "power": 1,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_COUNTER",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": -5,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "TOUGH"
+    }
+}

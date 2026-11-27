@@ -1,0 +1,28 @@
+{
+    "name": "Metronome",
+    "description": [
+        "The user waggles a\n",
+        "finger and stimulates\n",
+        "the brain into\n",
+        "randomly using nearly\n",
+        "any move."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_CALL_RANDOM_MOVE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_RANDOM_ORDER",
+        "type": "CUTE"
+    }
+}

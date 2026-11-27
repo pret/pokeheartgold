@@ -1,0 +1,30 @@
+{
+    "name": "Mist Ball",
+    "description": [
+        "A mistlike flurry of\n",
+        "down envelops and\n",
+        "damages the foe. It\n",
+        "may also lower the\n",
+        "target\u2019s Sp. Atk."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_PSYCHIC",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_SP_ATK_HIT",
+        "chance": 50
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_MAX_VOLTAGE_ADVANTAGE",
+        "type": "SMART"
+    }
+}

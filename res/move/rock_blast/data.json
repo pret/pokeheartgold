@@ -1,0 +1,30 @@
+{
+    "name": "Rock Blast",
+    "description": [
+        "The user hurls hard\n",
+        "rocks at the foe.\n",
+        "Two to five rocks are\n",
+        "launched in quick\n",
+        "succession."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_ROCK",
+    "power": 25,
+    "accuracy": 80,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_MULTI_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_CONSECUTIVE_USE",
+        "type": "TOUGH"
+    }
+}

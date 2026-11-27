@@ -1,0 +1,31 @@
+{
+    "name": "Growl",
+    "description": [
+        "The user growls in an\n",
+        "endearing way, making\n",
+        "the foe less wary.\n",
+        "The target\u2019s Attack\n",
+        "stat is lowered."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 100,
+    "pp": 40,
+    "effect": {
+        "type": "MOVE_EFFECT_ATK_DOWN",
+        "chance": 0
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "CUTE"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "name": "Metal Sound",
+    "description": [
+        "A horrible sound like\n",
+        "scraping metal is\n",
+        "emitted to sharply\n",
+        "reduce the foe\u2019s\n",
+        "Sp. Def stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_STEEL",
+    "power": 0,
+    "accuracy": 85,
+    "pp": 40,
+    "effect": {
+        "type": "MOVE_EFFECT_ACC_DOWN_2",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_LOWERS_VOLTAGE",
+        "type": "SMART"
+    }
+}

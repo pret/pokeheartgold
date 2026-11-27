@@ -1,0 +1,30 @@
+{
+    "name": "Drill Peck",
+    "description": [
+        "A corkscrewing\n",
+        "attack with the\n",
+        "sharp beak acting\n",
+        "as a drill.\n"
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_FLYING",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
+}

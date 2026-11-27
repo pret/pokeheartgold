@@ -1,0 +1,29 @@
+{
+    "name": "Heal Bell",
+    "description": [
+        "The user makes a\n",
+        "soothing bell chime\n",
+        "to heal the status\n",
+        "problems of all the\n",
+        "party Pok\u00e9mon."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_CURE_PARTY_STATUS",
+        "chance": 0
+    },
+    "range": "RANGE_USER_SIDE",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_VOLTAGE",
+        "type": "BEAUTY"
+    }
+}

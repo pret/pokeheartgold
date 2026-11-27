@@ -1,0 +1,31 @@
+{
+    "name": "Meteor Mash",
+    "description": [
+        "The foe is hit with a\n",
+        "hard punch fired\n",
+        "like a meteor.\n",
+        "It may also raise\n",
+        "the user\u2019s Attack."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_STEEL",
+    "power": 100,
+    "accuracy": 85,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_RAISE_ATTACK_HIT",
+        "chance": 20
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FINAL_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

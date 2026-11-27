@@ -1,0 +1,26 @@
+{
+    "name": "Magic Coat",
+    "description": [
+        "A barrier reflects\n",
+        "back to the foe\n",
+        "moves like Leech\n",
+        "Seed and moves\n",
+        "that damage status."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_PSYCHIC",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_APPLY_MAGIC_COAT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET_SPECIAL",
+    "priority": 4,
+    "flags": [],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_FINAL_ACT",
+        "type": "BEAUTY"
+    }
+}

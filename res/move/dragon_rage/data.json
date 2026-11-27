@@ -1,0 +1,30 @@
+{
+    "name": "Dragon Rage",
+    "description": [
+        "The foe is stricken\n",
+        "by a shock wave.\n",
+        "This attack always\n",
+        "inflicts 40 HP\n",
+        "damage."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_DRAGON",
+    "power": 1,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_40_DAMAGE_FLAT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
+}

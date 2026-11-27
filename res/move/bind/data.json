@@ -1,0 +1,32 @@
+{
+    "name": "Bind",
+    "description": [
+        "A long body or\n",
+        "tentacles are used\n",
+        "to bind and squeeze\n",
+        "the foe for two to\n",
+        "five turns."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_NORMAL",
+    "power": 15,
+    "accuracy": 75,
+    "pp": 20,
+    "effect": {
+        "type": "MOVE_EFFECT_BIND_HIT",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_MAKES_CONTACT",
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_HIGH_SCORE_LATER_TURN",
+        "type": "TOUGH"
+    }
+}

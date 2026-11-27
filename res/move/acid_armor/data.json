@@ -1,0 +1,29 @@
+{
+    "name": "Acid Armor",
+    "description": [
+        "The user alters its\n",
+        "cellular structure to\n",
+        "liquefy itself,\n",
+        "sharply raising its\n",
+        "Defense stat."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_POISON",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 40,
+    "effect": {
+        "type": "MOVE_EFFECT_DEF_UP_2",
+        "chance": 0
+    },
+    "range": "RANGE_USER",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_SNATCH",
+        "MOVE_FLAG_HIDES_HP_GAUGES"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_DOUBLE_NEXT_TURN",
+        "type": "TOUGH"
+    }
+}

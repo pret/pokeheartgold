@@ -1,0 +1,30 @@
+{
+    "name": "Dark Void",
+    "description": [
+        "The foe is dragged\n",
+        "into a world of total\n",
+        "darkness that puts it\n",
+        "to sleep.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_DARK",
+    "power": 0,
+    "accuracy": 80,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP",
+        "chance": 0
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
+}

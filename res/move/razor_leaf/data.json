@@ -1,0 +1,30 @@
+{
+    "name": "Razor Leaf",
+    "description": [
+        "Sharp-edged leaves\n",
+        "are launched to slash\n",
+        "at the foe. It has a\n",
+        "high critical-hit\n",
+        "ratio."
+    ],
+    "class": "CATEGORY_PHYSICAL",
+    "type": "TYPE_GRASS",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 25,
+    "effect": {
+        "type": "MOVE_EFFECT_HIGH_CRITICAL",
+        "chance": 0
+    },
+    "range": "RANGE_ADJACENT_OPPONENTS",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_BASIC",
+        "type": "COOL"
+    }
+}

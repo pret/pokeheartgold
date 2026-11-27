@@ -1,0 +1,29 @@
+{
+    "name": "GrassWhistle",
+    "description": [
+        "The user plays a\n",
+        "pleasant melody that\n",
+        "lulls the foe into a\n",
+        "deep sleep.\n"
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_GRASS",
+    "power": 0,
+    "accuracy": 55,
+    "pp": 15,
+    "effect": {
+        "type": "MOVE_EFFECT_STATUS_SLEEP",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MAGIC_COAT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_NO_VOLTAGE_DOWN",
+        "type": "SMART"
+    }
+}

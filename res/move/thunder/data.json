@@ -1,0 +1,30 @@
+{
+    "name": "Thunder",
+    "description": [
+        "A wicked thunderbolt\n",
+        "is dropped on the foe\n",
+        "to inflict damage.\n",
+        "It may also leave the\n",
+        "target paralyzed."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_ELECTRIC",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_THUNDER",
+        "chance": 30
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

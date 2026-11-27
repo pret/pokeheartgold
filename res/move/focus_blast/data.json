@@ -1,0 +1,30 @@
+{
+    "name": "Focus Blast",
+    "description": [
+        "The user heightens\n",
+        "its mental focus and\n",
+        "unleashes its power.\n",
+        "It may also lower the\n",
+        "target\u2019s Sp. Def."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_FIGHTING",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 5,
+    "effect": {
+        "type": "MOVE_EFFECT_LOWER_SP_DEF_HIT",
+        "chance": 10
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_HIDES_SHADOWS"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_FIRST_PERFORMANCE_ADVANTAGE",
+        "type": "COOL"
+    }
+}

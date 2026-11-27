@@ -45,10 +45,10 @@ u32 GetMoveTblAttr(MoveTbl *moveTbl, MoveAttr attr) {
         return moveTbl->range;
     case MOVEATTR_PRIORTY:
         return moveTbl->priority;
-    case MOVEATTR_UNK9:
-        return moveTbl->unkB;
-    case MOVEATTR_UNK10:
-        return moveTbl->unkC;
+    case MOVEATTR_FLAGS:
+        return moveTbl->flags;
+    case MOVEATTR_CONTEST_EFFECT:
+        return moveTbl->contestEffect;
     case MOVEATTR_CONTEST_TYPE:
         return moveTbl->contestType;
     default:

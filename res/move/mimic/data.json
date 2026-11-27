@@ -1,0 +1,28 @@
+{
+    "name": "Mimic",
+    "description": [
+        "The user copies the\n",
+        "move last used by\n",
+        "the foe. The move can\n",
+        "be used for the rest\n",
+        "of the battle."
+    ],
+    "class": "CATEGORY_STATUS",
+    "type": "TYPE_NORMAL",
+    "power": 0,
+    "accuracy": 0,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_COPY_MOVE_FOR_BATTLE",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_STEAL_VOLTAGE",
+        "type": "CUTE"
+    }
+}

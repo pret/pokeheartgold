@@ -1,0 +1,30 @@
+{
+    "name": "SolarBeam",
+    "description": [
+        "A two-turn attack.\n",
+        "The user gathers\n",
+        "light, then blasts a\n",
+        "bundled beam on the\n",
+        "second turn."
+    ],
+    "class": "CATEGORY_SPECIAL",
+    "type": "TYPE_GRASS",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 10,
+    "effect": {
+        "type": "MOVE_EFFECT_SKIP_CHARGE_TURN_IN_SUN",
+        "chance": 0
+    },
+    "range": "RANGE_SINGLE_TARGET",
+    "priority": 0,
+    "flags": [
+        "MOVE_FLAG_CAN_PROTECT",
+        "MOVE_FLAG_CAN_MIRROR_MOVE",
+        "MOVE_FLAG_TRIGGERS_KINGS_ROCK"
+    ],
+    "contest": {
+        "effect": "CONTEST_EFFECT_UNIQUE_JUDGE",
+        "type": "COOL"
+    }
+}
