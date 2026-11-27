@@ -59,7 +59,7 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
+.public Window_DrawStandardFrame
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FB70

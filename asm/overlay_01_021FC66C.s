@@ -787,7 +787,7 @@ ov01_021FCBCC: ; 0x021FCBCC
 	add r0, r4, #0
 	add r0, #0x38
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r4, #0x38
 	add r0, r4, #0
 	bl RemoveWindow

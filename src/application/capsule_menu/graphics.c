@@ -781,15 +781,15 @@ void CapsuleGraphics_LoadMainWindow(BgConfig *bgConfig, PaletteData *paletteData
     }
     PaletteData_LoadFromNarc(paletteData, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00002_NCLR, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xC0, 0x20);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_MAIN_1, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_gs_winframe, GetStandardWindowPaletteNARCMember(), HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xD0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_MAIN_BG, 0x20, 0xE0);
 }
 
 void CapsuleGraphics_LoadSubWindow(BgConfig *bgConfig, PaletteData *paletteData, int messageBoxFrame) {
     LoadUserFrameGfx2(bgConfig, GF_BG_LYR_SUB_0, MESSAGE_BOX_TILE_OFFSET, MESSAGE_BOX_PLTT_OFFSET, messageBoxFrame, HEAP_ID_CAPSULE_MENU);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E640(messageBoxFrame), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xC0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_gs_winframe, GetMessageBoxPaletteNARCMember(messageBoxFrame), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xC0);
     LoadUserFrameGfx1(bgConfig, GF_BG_LYR_SUB_0, STD_WINDOW_TILE_OFFSET, STD_WINDOW_PLTT_OFFSET, 0, HEAP_ID_CAPSULE_MENU);
-    PaletteData_LoadNarc(paletteData, NARC_a_0_3_8, sub_0200E3D8(), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xD0);
+    PaletteData_LoadNarc(paletteData, NARC_graphic_gs_winframe, GetStandardWindowPaletteNARCMember(), HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xD0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xE0);
     PaletteData_LoadNarc(paletteData, NARC_graphic_font, 8, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0x30);
     PaletteData_LoadNarc(paletteData, NARC_application_custom_ball_data_cb_data, NARC_cb_data_00000_NCLR, HEAP_ID_CAPSULE_MENU, PLTTBUF_SUB_BG, 0x20, 0xB0);
@@ -801,9 +801,9 @@ void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL d
 
     if (drawFrame) {
         if (frame == 0) {
-            DrawFrameAndWindow1(window, TRUE, 1, 12);
+            Window_DrawStandardFrame(window, TRUE, 1, 12);
         } else {
-            DrawFrameAndWindow2(window, TRUE, 1, 12);
+            Window_DrawMessageBoxWithScrollCursor(window, TRUE, 1, 12);
         }
     }
 
@@ -826,7 +826,7 @@ void CapsuleGraphics_PrintMessage(Window *window, int frame, int entryID, BOOL d
 void CapsuleGraphics_InitMessageWindow(BgConfig *bgConfig, Window *window, int bgLayer, int tilemapLeft, int tilemapTop, int width, int height, int baseTile) {
     InitWindow(window);
     AddWindowParameterized(bgConfig, window, bgLayer, tilemapLeft, tilemapTop, width, height, 14, baseTile);
-    DrawFrameAndWindow2(window, 1, 1, 12);
+    Window_DrawMessageBoxWithScrollCursor(window, 1, 1, 12);
     FillWindowPixelBuffer(window, 15);
     ScheduleWindowCopyToVram(window);
 }

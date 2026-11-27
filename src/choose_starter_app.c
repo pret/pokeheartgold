@@ -1017,7 +1017,7 @@ static void makeAndDrawWindows(struct ChooseStarterAppWork *work) {
     LoadUserFrameGfx2(work->bgConfig, GF_BG_LYR_SUB_0, 0x200, 0, work->frame, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_SUB_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapID);
     GfGfxLoader_GXLoadPal(NARC_application_choose_starter_choose_starter_main_res, NARC_choose_starter_main_res_08_window_NCLR, GF_PAL_LOCATION_MAIN_BG, GF_PAL_SLOT_2_OFFSET, 0x20, work->heapID);
-    DrawFrameAndWindow2(work->winTop, FALSE, 0x200, 0);
+    Window_DrawMessageBoxWithScrollCursor(work->winTop, FALSE, 0x200, 0);
 }
 
 static void loadBgGraphics(BgConfig *bgConfig, enum HeapID heapID) {
@@ -1049,7 +1049,7 @@ static u8 printMsgOnWinEx(Window *window, enum HeapID heapID, BOOL makeFrame, s3
     FillWindowPixelBuffer(window, color);
     ret = AddTextPrinterParameterizedWithColor(window, FONT_MESSAGE, *out, 0, 0, speed, color, NULL);
     if (makeFrame) {
-        DrawFrameAndWindow2(window, FALSE, 0x200, 0);
+        Window_DrawMessageBoxWithScrollCursor(window, FALSE, 0x200, 0);
     } else {
         CopyWindowToVram(window);
     }
@@ -1182,7 +1182,7 @@ static void createMonSprites(struct ChooseStarterAppWork *work) {
             0,
             0);
         spriteData->charDatas[i] = sub_0201442C((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.charDataID, work->heapID);
-        spriteData->plttDatas[i] = sub_02014450((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.palDataID, work->heapID);
+        spriteData->plttDatas[i] = CharacterSprite_LoadPalette((NarcId)spriteData->pokepicTemplate.narcID, spriteData->pokepicTemplate.palDataID, work->heapID);
         loadOneMonObj(spriteData->charResMan, spriteData->plttResMan, spriteData->charDatas[i], spriteData->plttDatas[i], i);
         createOneMonRender(spriteData, i, work->heapID);
     }

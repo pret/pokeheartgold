@@ -531,7 +531,7 @@ _021E5FF2:
 	mov r1, #1
 	mov r2, #0xa
 	mov r3, #6
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #0xff
@@ -585,7 +585,7 @@ _021E606A:
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r0, #0x9c
 	bl ClearWindowTilemapAndCopyToVram
@@ -724,7 +724,7 @@ _021E6162:
 	mov r2, #0xa
 	mov r3, #6
 	strb r1, [r5, #0x13]
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #0xff
@@ -780,7 +780,7 @@ _021E61E2:
 	add r0, r5, #0
 	add r0, #0x9c
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r0, #0x9c
 	bl ClearWindowTilemapAndCopyToVram

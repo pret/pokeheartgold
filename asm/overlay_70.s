@@ -2945,7 +2945,7 @@ ov70_02238F80: ; 0x02238F80
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02238F96
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _02238F98 ; =0x000011BC
 	mov r1, #0
 	str r1, [r4, r0]
@@ -4270,7 +4270,7 @@ ov70_02239A10: ; 0x02239A10
 	ldr r0, _02239AA0 ; =0x00001158
 	mov r1, #1
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _02239AA0 ; =0x00001158
 	add r0, r4, r0
 	bl ClearWindowTilemapAndCopyToVram
@@ -4301,7 +4301,7 @@ _02239A62:
 	ldr r0, _02239AA0 ; =0x00001158
 	mov r1, #1
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, _02239AA0 ; =0x00001158
 	add r0, r4, r0
 	bl ClearWindowTilemapAndCopyToVram
@@ -4460,7 +4460,7 @@ ov70_02239B84: ; 0x02239B84
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -4502,7 +4502,7 @@ ov70_02239BDC: ; 0x02239BDC
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -5417,7 +5417,7 @@ _0223A354:
 	mov r1, #0
 	add r0, r4, r0
 	str r1, [r4, #0x2c]
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ov70_0223A874
 _0223A372:
@@ -5644,7 +5644,7 @@ ov70_0223A4F4: ; 0x0223A4F4
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -7172,7 +7172,7 @@ _0223B202:
 	ldr r0, _0223B24C ; =0x00000F18
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #1
 	str r0, [r4, #0x2c]
 	mov r0, #0xba
@@ -7363,7 +7363,7 @@ ov70_0223B364: ; 0x0223B364
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #2
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -9690,7 +9690,7 @@ _0223C682:
 	ldr r0, _0223C6E0 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r5, #0x2c]
 	b _0223C6D6
@@ -9910,7 +9910,7 @@ _0223C840:
 	ldr r0, _0223C8A0 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r5, #0x2c]
 	b _0223C890
@@ -10255,7 +10255,7 @@ ov70_0223CAC4: ; 0x0223CAC4
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -12060,7 +12060,7 @@ _0223D9C6:
 	ldr r0, _0223DB24 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #2
 	str r0, [r5, #0x2c]
 	add r0, r5, #0
@@ -12200,7 +12200,7 @@ _0223DAFA:
 	ldr r0, _0223DB24 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r5, #0x2c]
 _0223DB16:
@@ -12312,7 +12312,7 @@ _0223DBE0:
 	ldr r0, _0223DD00 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r3, #0x12
 	lsl r3, r3, #4
 	ldr r1, [r5]
@@ -12423,7 +12423,7 @@ _0223DCD4:
 	ldr r0, _0223DD00 ; =0x00000F18
 	mov r1, #0
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r5, #0x2c]
 _0223DCF0:
@@ -12613,7 +12613,7 @@ _0223DE44:
 	ldr r0, _0223DE68 ; =0x00001158
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #1
 	str r0, [r4, #0x2c]
 _0223DE5E:
@@ -12790,7 +12790,7 @@ _0223DFAA:
 	ldr r0, _0223DFCC ; =0x00001158
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #1
 	str r0, [r4, #0x2c]
 _0223DFC4:
@@ -12836,7 +12836,7 @@ ov70_0223DFF0: ; 0x0223DFF0
 	ldr r0, _0223E018 ; =0x00001158
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r0, [r4, #0x30]
 	str r0, [r4, #0x2c]
 _0223E014:
@@ -12879,7 +12879,7 @@ _0223E04A:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r6, [sp, #4]
@@ -13998,7 +13998,7 @@ ov70_0223E8E8: ; 0x0223E8E8
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -14635,7 +14635,7 @@ _0223EE2E:
 	ldr r0, _0223EED4 ; =0x00000F18
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r1, #5
 	add r0, r4, #0
 	add r2, r1, #0
@@ -14787,7 +14787,7 @@ _0223EF58:
 	ldr r0, _0223EFAC ; =0x00000F18
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0
 	str r0, [r4, #0x2c]
 	b _0223EFA0
@@ -14892,7 +14892,7 @@ _0223F02C:
 	ldr r0, _0223F0A0 ; =0x00000F18
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	ldr r1, _0223F0A4 ; =0x000011C4
 	ldr r0, _0223F0A8 ; =0x00000B84
 	ldr r1, [r4, r1]
@@ -26826,7 +26826,7 @@ _02244CE8:
 	ldr r0, _02244D04 ; =0x00000F48
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	mov r0, #0
 	str r0, [r4, #0x2c]
 _02244CF6:
@@ -27230,7 +27230,7 @@ ov70_02244FA4: ; 0x02244FA4
 	add r0, r5, r0
 	mov r2, #1
 	mov r3, #0xe
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -27440,7 +27440,7 @@ ov70_0224512C: ; 0x0224512C
 	add r0, r5, r0
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -27489,7 +27489,7 @@ _022451BA:
 	ldr r0, _022451E8 ; =0x00000F18
 	mov r1, #1
 	add r0, r5, r0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov70_0224512C

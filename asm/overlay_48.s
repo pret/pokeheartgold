@@ -2813,7 +2813,7 @@ ov48_02259D00: ; 0x02259D00
 	add r0, r5, #0
 	mov r2, #0x1f
 	add r3, r1, #0
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
@@ -2960,7 +2960,7 @@ ov48_02259E78: ; 0x02259E78
 	add r4, r0, #0
 	add r0, #0x1c
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r4, #0x1c
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -2979,7 +2979,7 @@ ov48_02259E90: ; 0x02259E90
 	add r0, r4, #0
 	mov r2, #0x1f
 	add r3, r1, #0
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	pop {r4, pc}
 	.balign 4, 0
 	thumb_func_end ov48_02259E90
@@ -3071,7 +3071,7 @@ ov48_02259F48: ; 0x02259F48
 	add r0, #0x10
 	add r2, r1, #0
 	mov r3, #2
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	add r0, #0x10
 	bl ScheduleWindowCopyToVram
@@ -3151,7 +3151,7 @@ ov48_02259FEC: ; 0x02259FEC
 	add r0, r4, #0
 	add r0, #0x10
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r4, #0x10
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -3235,7 +3235,7 @@ _0225A02C:
 	add r0, r0, r1
 	mov r1, #0
 	add r3, r2, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x18]
 	ldr r2, [sp, #0x20]
@@ -3387,7 +3387,7 @@ ov48_0225A1D0: ; 0x0225A1D0
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0x6a
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -3409,7 +3409,7 @@ ov48_0225A1EC: ; 0x0225A1EC
 	add r0, r4, r0
 	mov r1, #1
 	add r3, r2, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	pop {r4, pc}
 	thumb_func_end ov48_0225A1EC
 

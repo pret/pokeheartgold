@@ -3885,7 +3885,7 @@ ov41_02247BB8: ; 0x02247BB8
 	ldr r0, [r5, r0]
 	mov r2, #0x3c
 	mov r3, #8
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0
 	mov r1, #0x1b
 	mov r2, #0xd7
@@ -10368,7 +10368,7 @@ _0224AA8C:
 	ldr r0, [r5, r0]
 	mov r1, #0
 	add r3, r2, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 _0224AB02:
 	ldr r0, [r4, #4]
 	str r0, [r5, #0x30]
@@ -10698,7 +10698,7 @@ ov41_0224AD0C: ; 0x0224AD0C
 	ldr r0, [r5]
 	mov r1, #0
 	add r3, r2, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 _0224AD70:
 	ldr r0, [r5]
 	bl CopyWindowToVram
@@ -10752,7 +10752,7 @@ ov41_0224AD90: ; 0x0224AD90
 	add r0, r5, #0
 	mov r1, #0
 	add r3, r2, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
@@ -10790,7 +10790,7 @@ ov41_0224ADD8: ; 0x0224ADD8
 	add r0, r5, #0
 	mov r1, #0
 	add r3, r2, #0
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r4, #0
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}

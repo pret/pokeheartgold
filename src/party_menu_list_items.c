@@ -129,7 +129,7 @@ static void PartyMonContextMenuAction_Take(PartyMenu *partyMenu, int *pState) {
     Pokemon *mon;
     BOOL griseousOrbResult;
 
-    ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+    Window_EraseStandardFrame(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     if (partyMenu->monsDrawState[partyMenu->partyMonIndex].heldItem == ITEM_NONE) {
@@ -157,7 +157,7 @@ static void PartyMonContextMenuAction_Take(PartyMenu *partyMenu, int *pState) {
             ReadMsgDataIntoString(partyMenu->msgData, msg_0300_00084, partyMenu->formattedStrBuf);
         }
     }
-    DrawFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 0x02A, 15);
+    Window_DrawMessageBoxWithScrollCursor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 0x02A, 15);
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
     PartyMenu_PrintBufferedMessageOnWindow34(partyMenu);
     *pState = newState;
@@ -165,7 +165,7 @@ static void PartyMonContextMenuAction_Take(PartyMenu *partyMenu, int *pState) {
 
 int PartyMenu_Subtask_PrintTakeItemMessage(PartyMenu *partyMenu) {
     if (!TextPrinterCheckActive(partyMenu->textPrinterId)) {
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
@@ -178,7 +178,7 @@ int PartyMenu_Subtask_PrintTakeItemMessage(PartyMenu *partyMenu) {
 
 int PartyMenu_Subtask_PrintTakeGriseousOrbMessage(PartyMenu *partyMenu) {
     if (!TextPrinterCheckActive(partyMenu->textPrinterId)) {
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_FormChangeScene_Begin(partyMenu);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
         return PARTY_MENU_STATE_WAIT_TAKE_GRISEOUS_ORB_ANIM;
@@ -227,7 +227,7 @@ static void PartyMonContextMenuAction_ReadMail(PartyMenu *partyMenu, int *pState
 }
 
 static void PartyMonContextMenuAction_TakeMail(PartyMenu *partyMenu, int *pState) {
-    ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+    Window_EraseStandardFrame(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow34(partyMenu, msg_0300_00044, TRUE);
@@ -281,14 +281,14 @@ static int PartyMenu_TakeMail_ReturnToBag(PartyMenu *partyMenu) {
 static int PartyMenu_TakeMail_DontReturnToBag(PartyMenu *partyMenu) {
     G2_BlendNone();
     PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
     return PARTY_MENU_STATE_1;
 }
 
 int PartyMenu_Subtask_AfterTakeMail(PartyMenu *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
     PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
@@ -318,7 +318,7 @@ int PartyMenu_ConfirmRemoveCapsuleYes(PartyMenu *partyMenu) {
 
 int PartyMenu_ConfirmRemoveCapsuleNo(PartyMenu *partyMenu) {
     G2_BlendNone();
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
     return PARTY_MENU_STATE_1;
@@ -335,7 +335,7 @@ static void PartyMonContextMenuAction_Switch(PartyMenu *partyMenu, int *pState) 
     Sprite_SetAnimCtrlSeq(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], sub_0207B5EC(partyMenu->args->unk_25, partyMenu->softboiledDonorSlot) + 2);
     Sprite_SetDrawFlag(partyMenu->sprites[PARTY_MENU_SPRITE_ID_SWITCH_MON_CURSOR], TRUE);
     sub_0207A7F4(partyMenu, partyMenu->softboiledDonorSlot);
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00031, TRUE);
@@ -560,7 +560,7 @@ static void PartyMenu_RedrawMonHpBarAfterSwap(PartyMenu *partyMenu, u8 slot) {
 }
 
 static void PartyMonContextMenuAction_Enter(PartyMenu *partyMenu, int *pState) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
@@ -601,7 +601,7 @@ static void PartyMonContextMenuAction_Enter(PartyMenu *partyMenu, int *pState) {
 }
 
 int PartyMenu_Subtask_SelectMonsErrorMsgClose(PartyMenu *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
     thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
     return PARTY_MENU_STATE_1;
@@ -624,7 +624,7 @@ static void PartyMonContextMenuAction_NoEntry(PartyMenu *partyMenu, int *pState)
             sub_0207D8EC(partyMenu, i);
         }
     }
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00035, TRUE);
@@ -656,7 +656,7 @@ static void PartyMonContextMenuAction_Summary(PartyMenu *partyMenu, int *pState)
 static void PartyMonContextMenuAction_Set(PartyMenu *partyMenu, int *pState) {
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     *pState = PartyMenu_HandleSetMonCapsule(partyMenu);
 }
 
@@ -708,7 +708,7 @@ static void PartyMenuContextMenuAction_FieldMoveCommon(PartyMenu *partyMenu, int
         msgId = msg_0300_00181;
         break;
     }
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     PartyMenu_PrintMessageOnWindow34(partyMenu, msgId, TRUE);
@@ -801,7 +801,7 @@ static void PartyMonContextMenuAction_Headbutt(PartyMenu *partyMenu, int *pState
 }
 
 static int PartyMonContextMenuAction_TransferHP(PartyMenu *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
     PartyMenu_DeleteContextMenuAndList(partyMenu);
     PartyMenu_DisableMainScreenBlend_AfterYesNo();
     partyMenu->levelUpStatsTmp[0] = partyMenu->monsDrawState[partyMenu->partyMonIndex].maxHp / 5;
@@ -825,7 +825,7 @@ static int PartyMonContextMenuAction_TransferHP(PartyMenu *partyMenu) {
 }
 
 int sub_02080B74(PartyMenu *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
     PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
     PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
     thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);

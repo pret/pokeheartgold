@@ -2054,7 +2054,7 @@ ov59_02238CFC: ; 0x02238CFC
 	add r0, r5, r6
 	add r2, r1, #0
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r0, r5, #0
 	add r1, r7, #0
 	bl ov59_02239D08
@@ -2105,7 +2105,7 @@ ov59_02238D74: ; 0x02238D74
 	lsl r0, r0, #2
 	add r0, r4, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #0x4a
 	lsl r0, r0, #2
 	add r0, r4, r0
@@ -2127,7 +2127,7 @@ ov59_02238D90: ; 0x02238D90
 	add r0, r5, r4
 	add r2, r1, #0
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add r1, r5, #0
 	add r0, r5, #0
 	add r1, #0x2a
@@ -8084,7 +8084,7 @@ ov59_0223BBB0: ; 0x0223BBB0
 	add r0, r4, r0
 	add r2, r1, #0
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #0x6d
 	lsl r0, r0, #2
 	add r0, r4, r0

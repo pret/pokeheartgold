@@ -377,7 +377,7 @@ _02228F5E:
 	add r0, r4, #0
 	add r0, #0x18
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r4, #0x18
 	add r0, r4, #0
 	bl RemoveWindow
@@ -1347,7 +1347,7 @@ _0222977A:
 	bl Sprite_SetDrawFlag
 	ldr r0, _02229A00 ; =0x000034D8
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _02229A00 ; =0x000034D8
 	mov r1, #0
 	str r1, [r4, r0]
@@ -1687,7 +1687,7 @@ _02229A4A:
 	bl Sprite_SetDrawFlag
 	ldr r0, _02229B5C ; =0x000034D8
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _02229B60 ; =SEQ_SE_DP_SELECT
 	bl PlaySE
 	ldr r0, _02229B5C ; =0x000034D8
@@ -1739,7 +1739,7 @@ _02229AB8:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02229AE0
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 _02229AE0:
 	ldr r0, _02229B5C ; =0x000034D8
 	mov r1, #0
@@ -1790,7 +1790,7 @@ _02229B20:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02229B4E
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 _02229B4E:
 	mov r0, #5
 	pop {r3, r4, r5, pc}
@@ -2230,7 +2230,7 @@ _02229E48:
 	ldr r0, [r4, r0]
 	cmp r0, #0
 	beq _02229E52
-	bl sub_0200F478
+	bl WaitingIcon_Halt
 _02229E52:
 	ldr r0, _02229E5C ; =0x000029F0
 	mov r1, #0
@@ -2380,7 +2380,7 @@ ov74_02229F60: ; 0x02229F60
 	bne _02229F76
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 _02229F76:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_02229F60
@@ -2395,7 +2395,7 @@ ov74_02229F78: ; 0x02229F78
 	bne _02229F8E
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 _02229F8E:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_02229F78
@@ -2790,7 +2790,7 @@ _0222A282:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r1, _0222A2A0 ; =ov74_0223C260
 	add r0, r6, #0
 	mov r2, #2
@@ -2878,7 +2878,7 @@ _0222A332:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r2, #2
 	ldr r1, _0222A358 ; =ov74_0223C250
 	add r0, r6, #0
@@ -2932,7 +2932,7 @@ _0222A3A2:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #0x50
 	str r0, [sp]
 	ldr r1, _0222A3C8 ; =ov74_0223C220
@@ -2987,7 +2987,7 @@ _0222A412:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #0x4f
 	str r0, [sp]
 	ldr r1, _0222A438 ; =ov74_0223C230
@@ -3034,7 +3034,7 @@ _0222A470:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #4
 	str r0, [sp]
 	ldr r1, _0222A490 ; =ov74_0223C240
@@ -3255,7 +3255,7 @@ _0222A626:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #1
 	str r0, [sp]
 	ldr r1, _0222A64C ; =ov74_0223C2B0
@@ -3737,7 +3737,7 @@ _0222A9EE:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0x24
 	str r0, [sp]
@@ -3807,7 +3807,7 @@ _0222AA86:
 	mov r1, #0
 	mov r2, #1
 	mov r3, #2
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, [r4, #0x10]
 	bl DestroyMsgData
 	ldr r0, [r4, #0xc]
@@ -3855,7 +3855,7 @@ ov74_0222AAAC: ; 0x0222AAAC
 	mov r1, #0
 	mov r2, #0x1f
 	mov r3, #3
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r4, #0
 	bl String_Delete
 	add sp, #0x10
@@ -8511,7 +8511,7 @@ ov74_0222D0EC: ; 0x0222D0EC
 	bne _0222D102
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 _0222D102:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_0222D0EC
@@ -8526,7 +8526,7 @@ ov74_0222D104: ; 0x0222D104
 	bne _0222D11A
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 _0222D11A:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_0222D104
@@ -8842,7 +8842,7 @@ _0222D3A4:
 	bl SaveGameNormal
 	ldr r0, _0222D404 ; =0x00003D50
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _0222D408 ; =0x00002BA0
 	ldr r0, [r4, r0]
 	bl SaveMysteryGift_HasAnyCard
@@ -9742,14 +9742,14 @@ _0222DAB2:
 	mov r1, #0
 	mov r2, #0x13
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	b _0222DAD4
 _0222DAC8:
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 _0222DAD4:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4, #0x10]
@@ -11001,13 +11001,13 @@ _0222E4C4:
 	add r0, r4, r0
 	mov r2, #0x13
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, _0222E5D8 ; =0x00002BE0
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -11253,7 +11253,7 @@ _0222E704:
 	bl ov74_0222D9E0
 	ldr r0, _0222E7DC ; =0x00003D50
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	add r0, r4, #0
 	add r1, r5, #0
 	mov r2, #0x1a
@@ -11954,7 +11954,7 @@ ov74_0222ECD4: ; 0x0222ECD4
 	bne _0222ECEA
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 _0222ECEA:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_0222ECD4
@@ -11969,7 +11969,7 @@ ov74_0222ECEC: ; 0x0222ECEC
 	bne _0222ED02
 	add r0, r5, #0
 	add r1, r4, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 _0222ED02:
 	pop {r3, r4, r5, pc}
 	thumb_func_end ov74_0222ECEC
@@ -12682,14 +12682,14 @@ _0222F28E:
 	mov r1, #0
 	mov r2, #0x13
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	b _0222F2B0
 _0222F2A4:
 	add r0, r6, #0
 	mov r1, #0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 _0222F2B0:
 	ldr r1, [r4, #0xc]
 	ldr r0, [r4, #0x10]
@@ -13619,13 +13619,13 @@ _0222FA2A:
 	add r0, r4, r0
 	mov r2, #0x13
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, _0222FB7C ; =0x00002BD4
 	mov r1, #0
 	add r0, r4, r0
 	mov r2, #0xa
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #0x10
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -18119,7 +18119,7 @@ _02231B84:
 	ldr r2, _02231BBC ; =0x000003D2
 	mov r1, #0
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
 _02231BA0:
@@ -18127,7 +18127,7 @@ _02231BA0:
 	mov r1, #0
 	lsl r2, r2, #4
 	mov r3, #0xe
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 _02231BAC:
 	add sp, #0x24
 	pop {r4, r5, r6, r7, pc}
@@ -20408,7 +20408,7 @@ ov74_02232DA4: ; 0x02232DA4
 	cmp r1, #0
 	beq _02232DC0
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	bl ClearWindowTilemapAndCopyToVram
 	add r0, r4, #0
@@ -21348,7 +21348,7 @@ _0223355C:
 	bl ov74_02231930
 	ldr r0, _02233640 ; =0x0000E898
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #7
 	str r0, [r4, #4]
 	mov r0, #0xb
@@ -21679,7 +21679,7 @@ _02233818:
 	beq _02233896
 	ldr r0, _022338C0 ; =0x0000E898
 	ldr r0, [r4, r0]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	ldr r0, _022338C4 ; =SEQ_SE_DP_SAVE
 	bl PlaySE
 	cmp r6, #0xb
@@ -25765,7 +25765,7 @@ _022355FC:
 	mov r1, #0
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	b _0223562E
 _02235612:
 	ldr r2, [r4, #0x38]
@@ -25776,7 +25776,7 @@ _02235612:
 	mov r1, #0
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x18
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	b _0223562E
 _02235628:
 	ldr r0, [r4, #0x10]

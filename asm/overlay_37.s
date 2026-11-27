@@ -2129,7 +2129,7 @@ _021E6A7E:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 _021E6AC0:
 	add r0, r5, #0
 	bl ov37_021E78A4
@@ -2151,7 +2151,7 @@ _021E6AD2:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	bl ov37_021E78A4
 	mov r0, #0xb2
@@ -2480,7 +2480,7 @@ _021E6D7A:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	bl ov37_021E78A4
 	bl sub_0203769C
@@ -3674,7 +3674,7 @@ ov37_021E762C: ; 0x021E762C
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	cmp r4, #0
 	bne _021E767C
 	mov r4, #0
@@ -3725,11 +3725,11 @@ ov37_021E76C0: ; 0x021E76C0
 	mov r1, #0xb6
 	lsl r1, r1, #2
 	add r0, r0, r1
-	ldr r3, _021E76CC ; =ClearFrameAndWindow2
+	ldr r3, _021E76CC ; =Window_EraseMessageBox
 	mov r1, #0
 	bx r3
 	.balign 4, 0
-_021E76CC: .word ClearFrameAndWindow2
+_021E76CC: .word Window_EraseMessageBox
 	thumb_func_end ov37_021E76C0
 
 	thumb_func_start ov37_021E76D0

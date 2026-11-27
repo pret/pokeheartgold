@@ -69,10 +69,10 @@
 .public BufferBoxMonSpeciesName
 .public BufferIntegerAsString
 .public StringExpandPlaceholders
-.public ClearWindowPixelBuffer
+.public Window_EraseStandardFrame
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public YesNoPrompt_Create

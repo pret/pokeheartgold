@@ -371,10 +371,10 @@ _0495:
 	End
 
 scr_seq_T09_001:
-	TrainerTipsEx 2, msg_0519_T09_00020
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0519_T09_00020
 	End
 
 scr_seq_T09_002:
-	DirectionSignpostEx 0, 9, msg_0519_T09_00021
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 9, msg_0519_T09_00021
 	End
 	.balign 4, 0

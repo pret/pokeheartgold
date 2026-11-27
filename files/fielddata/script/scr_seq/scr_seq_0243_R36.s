@@ -451,18 +451,18 @@ _05B1:
 	End
 
 scr_seq_R36_003:
-	DirectionSignpostEx 1, 15, msg_0390_R36_00009
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 15, msg_0390_R36_00009
 	End
 
 scr_seq_R36_004:
-	TrainerTipsEx 2, msg_0390_R36_00010
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0390_R36_00010
 	End
 
 scr_seq_R36_005:
-	TrainerTipsEx 3, msg_0390_R36_00011
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0390_R36_00011
 	End
 
 scr_seq_R36_006:
-	TrainerTipsEx 3, msg_0390_R36_00012
+	TrainerTipsEx SIGNPOST_TYPE_SCROLLING, msg_0390_R36_00012
 	End
 	.balign 4, 0

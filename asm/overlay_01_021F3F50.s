@@ -296,7 +296,7 @@ Field_SaveStatsPrinter_Print: ; 0x021F412C
 	ldr r2, _021F41A0 ; =0x000003D9
 	mov r1, #0
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add sp, #0x14
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -310,7 +310,7 @@ Field_SaveStatsPrinter_RemoveFromScreen: ; 0x021F41A4
 	add r4, r0, #0
 	ldr r0, [r4, #0x10]
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, [r4, #0x10]
 	bl RemoveWindow
 	ldr r0, [r4, #0x10]

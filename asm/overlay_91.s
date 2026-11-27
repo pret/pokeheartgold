@@ -2888,7 +2888,7 @@ ov91_0225DB18: ; 0x0225DB18
 	mov r1, #0
 	mov r2, #1
 	mov r3, #4
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r0, #2
 	mov r1, #1
 	bl GfGfx_EngineATogglePlanes
@@ -2924,7 +2924,7 @@ ov91_0225DB5C: ; 0x0225DB5C
 	add r4, r0, #0
 	add r0, #0xc
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r4, #0xc
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer

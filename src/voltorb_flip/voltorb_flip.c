@@ -1891,7 +1891,7 @@ static void VoltorbFlip_PrintMessageToSmallWindow(VoltorbFlipAppData *work, int 
     String *str = ReadMsgData_ExpandPlaceholders(work->msgFmt, work->msgData, msgNo, work->heapID);
 
     FillBgTilemapRect(work->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 20, 32, 4, 0);
-    DrawFrameAndWindow2(window, TRUE, 1, 13);
+    Window_DrawMessageBoxWithScrollCursor(window, TRUE, 1, 13);
 
     AddTextPrinterParameterized(window, FONT_MESSAGE, str, 0, 0, 0xff, NULL);
     ScheduleWindowCopyToVram(window);
@@ -1915,7 +1915,7 @@ static void VoltorbFlip_PrintTextWindow(VoltorbFlipAppData *work, int msgNo, BOO
 
     if (clearWindow) {
         FillBgTilemapRect(work->bgConfig, GF_BG_LYR_MAIN_3, 0, 0, 18, 32, 6, 0);
-        DrawFrameAndWindow2(window, TRUE, 1, 13);
+        Window_DrawMessageBoxWithScrollCursor(window, TRUE, 1, 13);
     }
 
     work->printerId = AddTextPrinterParameterized(window, FONT_MESSAGE, str, 0, 0, work->unk22A, NULL);

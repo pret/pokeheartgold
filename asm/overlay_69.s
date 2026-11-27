@@ -653,7 +653,7 @@ _021E5E52:
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #7
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, _021E6050 ; =0x0000C324
 	ldr r0, [r4, r0]
 	cmp r0, #0
@@ -687,12 +687,12 @@ _021E5EB4:
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #7
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	b _021E5EE2
 _021E5EDA:
 	add r0, r4, r0
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 _021E5EE2:
 	ldr r0, _021E6060 ; =gSystem
 	ldr r1, [r0, #0x48]
@@ -709,11 +709,11 @@ _021E5EF8:
 	ldr r0, _021E604C ; =0x0000C034
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, _021E605C ; =0x0000C044
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, _021E6068 ; =0x000005DD
 	bl PlaySE
 	mov r0, #0xd8
@@ -1560,7 +1560,7 @@ ov69_021E64CC: ; 0x021E64CC
 	add r0, r4, r0
 	mov r1, #0
 	mov r3, #6
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	ldr r0, _021E678C ; =0x0000C074
 	mov r3, #0
 	str r3, [r4, r0]
@@ -1978,7 +1978,7 @@ _021E692E:
 	ldr r0, [sp, #0x10]
 	mov r1, #1
 	mov r3, #7
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, [sp]
 	bl CopyWindowToVram
 	add sp, #0x24
@@ -2068,7 +2068,7 @@ _021E69DE:
 	ldr r0, [sp, #0x18]
 	mov r1, #1
 	mov r3, #7
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, [sp]
 	bl CopyWindowToVram
 	add sp, #0x2c
@@ -2088,7 +2088,7 @@ ov69_021E6A54: ; 0x021E6A54
 	ldr r0, _021E6A80 ; =0x0000C024
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, _021E6A80 ; =0x0000C024
 	add r0, r4, r0
 	bl RemoveWindow
@@ -2143,7 +2143,7 @@ ov69_021E6A8C: ; 0x021E6A8C
 	add r0, r5, r0
 	mov r1, #0
 	mov r3, #7
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, _021E6B50 ; =0x0000C080
 	ldr r2, _021E6B54 ; =0x0000C324
 	ldr r0, [r5, r0]
@@ -2232,7 +2232,7 @@ ov69_021E6B5C: ; 0x021E6B5C
 	add r0, r5, r0
 	mov r1, #0
 	mov r3, #7
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	ldr r0, [r5]
 	add r1, r4, #0
 	str r0, [sp]
@@ -2286,7 +2286,7 @@ ov69_021E6C14: ; 0x021E6C14
 	ldr r0, _021E6C2C ; =0x0000C054
 	mov r1, #0
 	add r0, r4, r0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	ldr r0, _021E6C2C ; =0x0000C054
 	add r0, r4, r0
 	bl RemoveWindow

@@ -381,7 +381,7 @@ void BagApp_DrawContextMenuTopScreen(BagAppData *appData, u8 *stringIndices, int
         BagApp_DrawTMHMMoveDetails(appData, appData->bagView->itemId, TRUE);
         BagApp_DrawTopScreenUI(appData, FALSE);
     }
-    DrawFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
+    Window_DrawMessageBoxWithScrollCursor(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], 15);
     BagViewPocket *pocket = &appData->bagView->pockets[appData->bagView->curPocket];
     String *itemIsSelectedMsg;
@@ -421,7 +421,7 @@ void BagApp_PrintPocketDescriptionOnWindow(BagAppData *appData, Window *window, 
 }
 
 void BagApp_ClearItemActionMessageWindow(BagAppData *appData) {
-    ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE);
+    Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE);
     ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION]);
 }
 
@@ -441,7 +441,7 @@ void BagApp_PrintMoveTheItemMessage(BagAppData *appData) {
     String *formattedString = String_New(130, HEAP_ID_BAG);
     BagApp_BufferItemName(appData, appData->moveItemOriginalSlot, 0);
     StringExpandPlaceholders(appData->msgFormat, formattedString, string);
-    DrawFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
+    Window_DrawMessageBoxWithScrollCursor(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], TRUE, 0x3E2, 12);
     AddTextPrinterParameterizedWithColor(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION], FONT_MESSAGE, formattedString, 0, 0, TEXT_SPEED_NOTRANSFER, MAKE_TEXT_COLOR(1, 2, 0), NULL);
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_ITEM_ACTION]);
     String_Delete(formattedString);
@@ -493,7 +493,7 @@ u8 BagApp_PrintMessage(BagAppData *appData, int whichWindow) {
         window = &appData->windows_sub[BAG_APP_WINDOW_SUB_MESSAGE];
     }
     FillWindowPixelBuffer(window, 15);
-    DrawFrameAndWindow2(window, TRUE, 0x3E2, 12);
+    Window_DrawMessageBoxWithScrollCursor(window, TRUE, 0x3E2, 12);
     ScheduleWindowCopyToVram(window);
     TextFlags_SetCanABSpeedUpPrint(TRUE);
     TextFlags_SetAutoScrollParam(0);
@@ -577,7 +577,7 @@ void BagApp_DrawPoffinCountMsgBox_DPPt(BagAppData *appData) {
     String *msg;
 
     FillWindowPixelBuffer(window, 15);
-    DrawFrameAndWindow1(window, TRUE, 0x3F7, 14);
+    Window_DrawStandardFrame(window, TRUE, 0x3F7, 14);
 
     msg = NewString_ReadMsgData(appData->msgData, msg_0010_00115);
     AddTextPrinterParameterized(window, FONT_SYSTEM, msg, 0, 0, TEXT_SPEED_NOTRANSFER, NULL);

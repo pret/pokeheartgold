@@ -24,8 +24,8 @@
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public IsPaletteFadeFinished
 .public Heap_Alloc
 .public Heap_Free

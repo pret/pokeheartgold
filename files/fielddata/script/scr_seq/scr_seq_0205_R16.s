@@ -14,6 +14,6 @@ scr_seq_R16_000:
 	End
 
 scr_seq_R16_001:
-	TrainerTipsEx 2, msg_0354_R16_00000
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0354_R16_00000
 	End
 	.balign 4, 0

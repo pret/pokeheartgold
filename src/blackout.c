@@ -144,7 +144,7 @@ static BOOL Task_ShowPrintedBlackoutMessage(TaskManager *taskManager) {
         }
         break;
     case STATE_SHOW_PRINTED_BLACKOUT_CLEANUP:
-        ClearFrameAndWindow2(&env->window, FALSE);
+        Window_EraseMessageBox(&env->window, FALSE);
         RemoveWindow(&env->window);
         MessageFormat_Delete(env->msgFmt);
         DestroyMsgData(env->msgData);

@@ -3499,7 +3499,7 @@ ov109_021E73F8: ; 0x021E73F8
 	add r0, #0x60
 	add r2, r1, #0
 	mov r3, #0xd
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 _021E7412:
 	add r0, r5, #0
 	add r0, #0x60

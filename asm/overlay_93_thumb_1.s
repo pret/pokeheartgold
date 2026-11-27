@@ -1761,7 +1761,7 @@ ov93_0225D468: ; 0x0225D468
 	mov r1, #1
 	lsl r2, r2, #4
 	mov r3, #6
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	add r0, #0x80
 	ldr r0, [r0]

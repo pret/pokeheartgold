@@ -8,6 +8,6 @@
 	ScrDefEnd
 
 scr_seq_R09_000:
-	DirectionSignpostEx 1, 1, msg_0340_R09_00000
+	DirectionSignpostEx SIGNPOST_TYPE_ARROW, 1, msg_0340_R09_00000
 	End
 	.balign 4, 0

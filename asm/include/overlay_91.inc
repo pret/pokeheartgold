@@ -43,8 +43,8 @@
 .public MessageFormat_New
 .public MessageFormat_Delete
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FB70

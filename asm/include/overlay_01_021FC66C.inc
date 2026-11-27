@@ -9,7 +9,7 @@
 .public StringExpandPlaceholders
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public ClearFrameAndWindow2
+.public Window_EraseMessageBox
 .public Heap_AllocAtEnd
 .public Heap_Free
 .public RemoveWindow

@@ -200,10 +200,10 @@ _02B9:
 	Return
 
 scr_seq_R10_005:
-	TrainerTipsEx 2, msg_0341_R10_00008
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0341_R10_00008
 	End
 
 scr_seq_R10_006:
-	TrainerTipsEx 2, msg_0341_R10_00009
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0341_R10_00009
 	End
 	.balign 4, 0

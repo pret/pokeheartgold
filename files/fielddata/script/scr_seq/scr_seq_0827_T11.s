@@ -304,26 +304,26 @@ scr_seq_T11_007:
 	End
 
 scr_seq_T11_008:
-	TrainerTipsEx 2, msg_0529_T11_00009
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0529_T11_00009
 	End
 
 scr_seq_T11_009:
-	DirectionSignpostEx 0, 10, msg_0529_T11_00010
+	DirectionSignpostEx SIGNPOST_TYPE_MAP, 10, msg_0529_T11_00010
 	End
 
 scr_seq_T11_010:
-	TrainerTipsEx 2, msg_0529_T11_00011
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0529_T11_00011
 	End
 
 scr_seq_T11_011:
-	TrainerTipsEx 2, msg_0529_T11_00012
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0529_T11_00012
 	End
 
 scr_seq_T11_012:
-	TrainerTipsEx 2, msg_0529_T11_00013
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0529_T11_00013
 	End
 
 scr_seq_T11_013:
-	TrainerTipsEx 2, msg_0529_T11_00014
+	TrainerTipsEx SIGNPOST_TYPE_LANDMARK, msg_0529_T11_00014
 	End
 	.balign 4, 0

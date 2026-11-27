@@ -3407,7 +3407,7 @@ ov39_022289D0: ; 0x022289D0
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	mov r3, #0
 	str r3, [sp]
 	str r3, [sp, #4]
@@ -3449,7 +3449,7 @@ _02228A46:
 	add r0, r5, #0
 	add r0, #0x44
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r5, #0
 	add r1, r4, #0
 	bl ov39_022289D0
@@ -3503,7 +3503,7 @@ ov39_02228AA8: ; 0x02228AA8
 	ldr r0, [r0]
 	cmp r0, #0
 	beq _02228ABE
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	add r4, #0x88
 	str r0, [r4]
@@ -3572,7 +3572,7 @@ ov39_02228B04: ; 0x02228B04
 	mov r1, #0
 	mov r2, #1
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r3, #0
 	str r3, [sp]
 	str r4, [sp, #4]
@@ -4070,7 +4070,7 @@ _02228EE4:
 	add r0, r4, #0
 	add r0, #0x64
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	mov r1, #0
 	add r0, #0x94

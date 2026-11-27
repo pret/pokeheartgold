@@ -473,7 +473,7 @@ _021E5C80:
 	lsl r0, r0, #2
 	add r0, r5, r0
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #1
 	mov r1, #0
 	bl GfGfx_EngineBTogglePlanes
@@ -1385,7 +1385,7 @@ _021E6414:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1406,7 +1406,7 @@ _021E6450:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1430,7 +1430,7 @@ _021E647E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1451,7 +1451,7 @@ _021E64BA:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r4, #0
 	add r0, #0x5c
 	bl ClearWindowTilemapAndCopyToVram
@@ -1634,7 +1634,7 @@ _021E661E:
 	add r0, r4, #0
 	add r0, #0x5c
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	mov r0, #6
 	str r0, [sp]
 	mov r0, #1
@@ -5200,12 +5200,12 @@ ov87_021E810C: ; 0x021E810C
 	ldr r2, _021E8130 ; =0x000003F7
 	mov r1, #2
 	mov r3, #0
-	bl sub_0200E398
+	bl LoadStandardWindowTiles
 	ldr r2, _021E8130 ; =0x000003F7
 	add r0, r4, #0
 	mov r1, #1
 	mov r3, #0xb
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add sp, #4
 	pop {r3, r4, pc}
 	.balign 4, 0
@@ -5236,7 +5236,7 @@ ov87_021E8134: ; 0x021E8134
 	add r0, r4, #0
 	mov r1, #0
 	mov r3, #0xa
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	nop

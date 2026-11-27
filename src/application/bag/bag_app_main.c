@@ -1832,7 +1832,7 @@ static BagAppState BagAppMainTask_ItemUseError_WaitMessage(BagAppData *appData) 
         if (appData->bagView->context != BAG_VIEW_CONTEXT_GARDENING) {
             BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
         }
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
         BagApp_SetCancelButtonDrawFlag(appData, TRUE);
@@ -1912,7 +1912,7 @@ static BagAppState BagApp_UseTMHM(BagAppData *appData) {
         case YESNORESPONSE_NO:
             BagApp_DestroyYesNoPrompt(appData);
             BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-            ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+            Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
             ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
             ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
             BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 0);
@@ -1991,7 +1991,7 @@ static BagAppState BagApp_UseItemInPlaceMessage(BagAppData *appData) {
     case 1:
         if (!TextPrinterCheckActive(appData->textPrinterId) && (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B) || gSystem.touchNew)) {
             BagApp_RemoveContextMenuWindowsAndRedrawTopScreenUI(appData);
-            ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+            Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
             ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
             BagApp_DepleteItemAfterUse(appData);
             BagApp_DrawDefaultLayout(appData);
@@ -2193,7 +2193,7 @@ static BagAppState BagAppMainTask_ConfirmToss_HandleYesNo(BagAppData *appData) {
         break;
     case YESNORESPONSE_NO:
         BagApp_DestroyYesNoPrompt(appData);
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
         BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 0);
@@ -2217,7 +2217,7 @@ static BagAppState BagAppMainTask_CompleteToss_WaitMessage(BagAppData *appData) 
 
 static BagAppState BagAppMainTask_CompleteToss_WaitButton(BagAppData *appData) {
     if (!TextPrinterCheckActive(appData->textPrinterId) && (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B) || gSystem.touchNew)) {
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
         Pocket_TakeItem(appData->bagView->pockets[appData->bagView->curPocket].slots, appData->bagView->pockets[appData->bagView->curPocket].count, appData->bagView->itemId, appData->quantity, HEAP_ID_BAG);
@@ -2259,7 +2259,7 @@ static BagAppState BagApp_ItemContextMenu_Register(BagAppData *appData) {
 
 static BagAppState BagAppMainState_RegisterItemFailed_WaitMessage(BagAppData *appData) {
     if (!TextPrinterCheckActive(appData->textPrinterId) && (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B) || gSystem.touchNew)) {
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         BagApp_HideContextMenuIcons(appData);
         BagApp_ClearSelectedItemWindow(appData);
@@ -2427,7 +2427,7 @@ static BagAppState BagAppMainTask_HandleInput_GiveItem(BagAppData *appData) {
 
 static BagAppState BagAppMainTask_GiveItemError_WaitMessage(BagAppData *appData) {
     if (!TextPrinterCheckActive(appData->textPrinterId) && (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B) || gSystem.touchNew)) {
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         BagApp_RedrawItemNameWindows(appData, appData->bagView->pockets[appData->bagView->curPocket].scroll, -1, 0);
         return BAG_APP_STATE_HANDLE_INPUT_GIVE_ITEM;
@@ -2700,7 +2700,7 @@ static BagAppState BagAppMainTask_SellItem_ChooseQuantity(BagAppData *appData) {
 }
 
 static BagAppState BagAppMainTask_SellItem_PrintFinalConfirmation(BagAppData *appData) {
-    ClearWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
+    Window_EraseStandardFrame(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
     BagApp_ClearTextOnSellOrTrashButton(appData);
     FillWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], 15);
     String *string = NewString_ReadMsgData(appData->msgData, msg_0010_00078);
@@ -2716,9 +2716,9 @@ static BagAppState BagAppMainTask_SellItem_PrintFinalConfirmation(BagAppData *ap
 
 static BagAppState BagAppMainTask_SellItem_Abort(BagAppData *appData) {
     appData->unitSellPrice = 0;
-    ClearWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
-    ClearWindowPixelBuffer(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
-    ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+    Window_EraseStandardFrame(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
+    Window_EraseStandardFrame(&appData->windows_main[BAG_APP_WINDOW_MAIN_4], TRUE);
+    Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
     ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
     ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
     BagApp_HideQuantitySelectSpritesUI(appData);
@@ -2764,8 +2764,8 @@ static BagAppState BagAppMainTask_ConfirmSale_HandleYesNo(BagAppData *appData) {
     case YESNORESPONSE_NO:
         BagApp_DestroyYesNoPrompt(appData);
         appData->unitSellPrice = 0;
-        ClearWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseStandardFrame(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
         BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 0);
@@ -2802,8 +2802,8 @@ static BagAppState BagAppMainTask_CompleteSale(BagAppData *appData) {
 static BagAppState BagAppMainTask_CompleteSale_WaitMessage(BagAppData *appData) {
     if (!TextPrinterCheckActive(appData->textPrinterId) && (gSystem.newKeys & (PAD_BUTTON_A | PAD_BUTTON_B) || gSystem.touchNew)) {
         appData->unitSellPrice = 0;
-        ClearWindowPixelBuffer(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
-        ClearFrameAndWindow2(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
+        Window_EraseStandardFrame(&appData->windows_sub[BAG_APP_WINDOW_SUB_MONEY], TRUE);
+        Window_EraseMessageBox(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&appData->windows_main[BAG_APP_WINDOW_MAIN_MESSAGE]);
         ScheduleWindowCopyToVram(&appData->windows_main[BAG_APP_WINDOW_MAIN_DESCRIPTION]);
         BagApp_UpdateItemIconsVisibility(appData, &appData->bagView->pockets[appData->bagView->curPocket], BagApp_GetNumItemsOnCurrentPage(appData), 1);

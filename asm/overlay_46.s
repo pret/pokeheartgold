@@ -1443,7 +1443,7 @@ _02259394:
 	mov r1, #1
 	mov r2, #0x1f
 	mov r3, #0xc
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	b _022593EC
 _022593DE:
 	add r0, r5, #0
@@ -1451,7 +1451,7 @@ _022593DE:
 	add r0, #8
 	add r2, r1, #0
 	mov r3, #0xb
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 _022593EC:
 	add r5, #8
 	add r0, r5, #0
@@ -1481,7 +1481,7 @@ _02259414:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r4, #8
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -1496,7 +1496,7 @@ _0225943A:
 	add r0, r4, #0
 	add r0, #8
 	mov r1, #1
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r4, #8
 	add r0, r4, #0
 	bl ClearWindowTilemapAndScheduleTransfer
@@ -1539,7 +1539,7 @@ ov46_02259474: ; 0x02259474
 	bl GF_AssertFail
 _02259488:
 	ldr r0, [r4, #0x24]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	str r0, [r4, #0x24]
 _02259492:

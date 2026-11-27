@@ -37,8 +37,8 @@
 .public StringExpandPlaceholders
 .public LoadUserFrameGfx1
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FBF4

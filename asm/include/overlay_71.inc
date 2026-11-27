@@ -52,8 +52,8 @@
 .public SysTask_CreateOnVWaitQueue
 .public SysTask_Destroy
 .public LoadUserFrameGfx2
-.public sub_0200E948
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBox
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_02014510

@@ -49,8 +49,8 @@
 .public ManagedSprite_SetPositionXYWithSubscreenOffset
 .public ManagedSprite_GetPositionXYWithSubscreenOffset
 .public LoadUserFrameGfx2
-.public DrawFrameAndWindow2
-.public ClearFrameAndWindow2
+.public Window_DrawMessageBoxWithScrollCursor
+.public Window_EraseMessageBox
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public ResetVisibleHardwareWindows

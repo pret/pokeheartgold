@@ -534,8 +534,8 @@ static int PartyMenu_Subtask_HandleSubcontextMenuInput(PartyMenu *partyMenu) {
     u32 func = PartyMenu_HandleSubcontextMenuInput_TopLevel(partyMenu, partyMenu->contextMenuCursor);
     switch (func) {
     case LIST_CANCEL:
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
-        ClearWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        Window_EraseStandardFrame(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35], TRUE);
         ClearWindowTilemapAndScheduleTransfer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_35]);
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
@@ -1573,7 +1573,7 @@ static u8 PartyMenu_HandleInput(PartyMenu *partyMenu) {
 }
 
 static void sub_0207AFC4(PartyMenu *partyMenu) {
-    ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
+    Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_32], TRUE);
     u8 *buf = Heap_Alloc(HEAP_ID_PARTY_MENU, 8);
     u8 numItems;
     switch (partyMenu->args->context) {
@@ -2150,7 +2150,7 @@ static BOOL PartyMenu_Subtask_HandleContextMenuInput(PartyMenu *partyMenu, int *
     switch (func) {
     case LIST_CANCEL:
         PartyMenu_SetTopScreenSelectionPanelVisibility(partyMenu, FALSE);
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_33], TRUE);
         PartyMenu_DeleteContextMenuAndList(partyMenu);
         PartyMenu_DisableMainScreenBlend_AfterYesNo();
         if (partyMenu->args->context == PARTY_MENU_CONTEXT_UNION_ROOM_BATTLE_SELECT || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_TOWER || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_HALL || partyMenu->args->context == PARTY_MENU_CONTEXT_BATTLE_CASTLE) {
@@ -2261,7 +2261,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
         break;
     }
     case 1:
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00037, TRUE);
         partyMenu->levelUpStatsTmp[1] = 0;
@@ -2288,7 +2288,7 @@ static int PartyMenu_Subtask_Softboiled(PartyMenu *partyMenu) {
         }
         break;
     case 4:
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         sub_0207FBC8(partyMenu);
         return PARTY_MENU_STATE_1;
@@ -2504,7 +2504,7 @@ static int PartyMenu_Subtask_GiveItemToMon(PartyMenu *partyMenu) {
         }
     }
 
-    DrawFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 0x02A, 15);
+    Window_DrawMessageBoxWithScrollCursor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 0x02A, 15);
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
     PartyMenu_PrintBufferedMessageOnWindow34(partyMenu);
     return result;
@@ -2544,7 +2544,7 @@ static int PartyMenu_Subtask_PrintItemSwapMessage(PartyMenu *partyMenu) {
 
 static int PartyMenu_Subtask_PrintGiveGriseousOrbMessage(PartyMenu *partyMenu) {
     if (TextPrinterCheckActive(partyMenu->textPrinterId) == FALSE) {
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_FormChangeScene_Begin(partyMenu);
         return PARTY_MENU_STATE_WAIT_GIVE_GRISEOUS_ORB_ANIM;
     } else {
@@ -2619,7 +2619,7 @@ static int PartyMenu_Subtask_SwitchItemsHandleYesNoInput(PartyMenu *partyMenu) {
 
 static int PartyMenu_SwitchItemsDeclined(PartyMenu *partyMenu) {
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_ITEM_DONE) {
-        ClearFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
+        Window_EraseMessageBox(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE);
         PartyMenu_PrintMessageOnWindow32(partyMenu, msg_0300_00029, TRUE);
         thunk_Sprite_SetPaletteOverride(partyMenu->sprites[PARTY_MENU_SPRITE_ID_CURSOR], 0);
         partyMenu->args->context = PARTY_MENU_CONTEXT_FIELD;
@@ -2651,7 +2651,7 @@ static int PartyMenu_GiveOrSwapHeldItems(PartyMenu *partyMenu) {
         BufferItemName(partyMenu->msgFormat, 2, newItem);
         StringExpandPlaceholders(partyMenu->msgFormat, partyMenu->formattedStrBuf, partyMenu->unformattedStrBuf);
     }
-    DrawFrameAndWindow2(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 42, 15);
+    Window_DrawMessageBoxWithScrollCursor(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], TRUE, 42, 15);
     FillWindowPixelBuffer(&partyMenu->windows[PARTY_MENU_WINDOW_ID_34], 15);
     PartyMenu_PrintBufferedMessageOnWindow34(partyMenu);
     if (partyMenu->args->context == PARTY_MENU_CONTEXT_GIVE_MAIL_DONE) {

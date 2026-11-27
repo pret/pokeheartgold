@@ -137,7 +137,7 @@ void PrintErrorMessageAndReset(void) {
 
     AddWindow(bg_config, &window, &sErrorMessageWindowTemplate);
     FillWindowPixelRect(&window, 0xF, 0, 0, 208, 144);
-    DrawFrameAndWindow1(&window, FALSE, 0x1F7, 2);
+    Window_DrawStandardFrame(&window, FALSE, 0x1F7, 2);
 
     ReadMsgDataIntoString(error_msgdata, msg_0041_00003, error_str);
     AddTextPrinterParameterized(&window, FONT_SYSTEM, error_str, 0, 0, 0, NULL);

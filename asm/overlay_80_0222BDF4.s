@@ -2341,7 +2341,7 @@ FrtCmd_120: ; 0x0222CF08
 	push {r3, lr}
 	ldr r0, [r0]
 	ldr r0, [r0, #0x7c]
-	bl sub_0200F450
+	bl WaitingIcon_Destroy
 	mov r0, #0
 	pop {r3, pc}
 	.balign 4, 0
@@ -4955,7 +4955,7 @@ ov80_0222E2B8: ; 0x0222E2B8
 	add r0, #0x64
 	mov r1, #0
 	mov r3, #0xb
-	bl DrawFrameAndWindow2
+	bl Window_DrawMessageBoxWithScrollCursor
 	mov r0, #1
 	add r4, #0x5a
 	add sp, #0x14
@@ -5040,7 +5040,7 @@ _0222E39C:
 	add r0, r4, #0
 	add r0, #0x64
 	mov r1, #0
-	bl ClearFrameAndWindow2
+	bl Window_EraseMessageBox
 	add r0, r4, #0
 	add r0, #0x64
 	bl RemoveWindow
@@ -5393,7 +5393,7 @@ _0222E60E:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xc
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	bl ov80_0222E754
 	ldr r2, [r5]
@@ -5706,7 +5706,7 @@ ov80_0222E88C: ; 0x0222E88C
 	add r0, #0xa8
 	ldr r0, [r0]
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r6, #0
 	add r0, #0xa8
 	ldr r0, [r0]
@@ -5909,7 +5909,7 @@ _0222EA22:
 	add r0, #8
 	mov r1, #1
 	mov r3, #0xc
-	bl DrawFrameAndWindow1
+	bl Window_DrawStandardFrame
 	add r0, r5, #0
 	bl ov80_0222EB54
 	ldr r3, [r5]
@@ -6378,7 +6378,7 @@ _0222EDB0:
 	lsl r0, r0, #4
 	ldr r0, [r6, r0]
 	mov r1, #0
-	bl ClearWindowPixelBuffer
+	bl Window_EraseStandardFrame
 	add r0, r6, #0
 	add r0, #8
 	bl RemoveWindow

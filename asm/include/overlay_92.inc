@@ -67,10 +67,10 @@
 .public SpriteManager_GetSpriteList
 .public SysTask_CreateOnMainQueue
 .public SysTask_Destroy
-.public sub_0200E3D8
+.public GetStandardWindowPaletteNARCMember
 .public LoadUserFrameGfx1
-.public DrawFrameAndWindow1
-.public ClearWindowPixelBuffer
+.public Window_DrawStandardFrame
+.public Window_EraseStandardFrame
 .public BeginNormalPaletteFade
 .public IsPaletteFadeFinished
 .public sub_0200FB70
