@@ -123,8 +123,8 @@ typedef enum MapObjectFlagBits {
     MAPOBJECTFLAG_UNK4 = (1 << 4),
     MAPOBJECTFLAG_UNK5 = (1 << 5),
     MAPOBJECTFLAG_MOVEMENT_PAUSED = (1 << 6),
-    MAPOBJECTFLAG_UNK7 = (1 << 7),
-    MAPOBJECTFLAG_UNK8 = (1 << 8),
+    MAPOBJECTFLAG_PAUSE_ANIMATION = (1 << 7),
+    MAPOBJECTFLAG_LOCK_DIRECTION = (1 << 8),
     MAPOBJECTFLAG_VISIBLE = (1 << 9),
     MAPOBJECTFLAG_KEEP = (1 << 10),
     MAPOBJECTFLAG_UNK11 = (1 << 11),
@@ -258,7 +258,7 @@ void MapObject_SetMovementStep(LocalMapObject *object, u32 step);
 void MapObject_IncrementMovementStep(LocalMapObject *object);
 u32 MapObject_GetMovementStep(LocalMapObject *object);
 void sub_0205F4FC(LocalMapObject *object, u16 param1);
-u16 sub_0205F504(LocalMapObject *object);
+u16 MapObject_GetMetatileBehavior(LocalMapObject *object);
 void sub_0205F50C(LocalMapObject *object, u16 param1);
 u16 sub_0205F514(LocalMapObject *object);
 void sub_0205F51C(LocalMapObject *object, u16 param1);

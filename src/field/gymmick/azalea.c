@@ -455,19 +455,19 @@ static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData) {
             LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
 
             if (localData->spinarakDirection) {
-                MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
-                MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_DOWN);
+                LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_DOWN);
+                LocalMapObject_SetAnimationCode(followMonObject, MOVEMENT_STEP_DOWN);
             } else {
-                MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_UP);
-                MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_UP);
+                LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_UP);
+                LocalMapObject_SetAnimationCode(followMonObject, MOVEMENT_STEP_UP);
             }
         } else {
             LocalMapObject *playerObject = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
 
             if (localData->spinarakDirection) {
-                MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
+                LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_DOWN);
             } else {
-                MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_UP);
+                LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_UP);
             }
         }
         ++rideData->state;
@@ -476,13 +476,13 @@ static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData) {
         if (FollowMon_IsActive(fieldSystem)) {
             LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
             if (MapObject_AreBitsSetForMovementScriptInit(playerObject) && MapObject_AreBitsSetForMovementScriptInit(followMonObject)) {
-                MapObject_SetHeldMovement(playerObject, MOVEMENT_UNK_73);
+                LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_UNK_73);
                 localData->terminalWaitCounter = 0;
                 ++rideData->state;
             }
         } else {
             if (MapObject_AreBitsSetForMovementScriptInit(playerObject)) {
-                MapObject_SetHeldMovement(playerObject, MOVEMENT_UNK_73);
+                LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_UNK_73);
                 localData->terminalWaitCounter = 0;
                 ++rideData->state;
             }
@@ -594,14 +594,14 @@ static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData) {
         MapObject_SetCurrentX(playerObject, localData->node->x);
         MapObject_SetCurrentY(playerObject, 0);
         MapObject_SetCurrentZ(playerObject, localData->node->z + localData->playerZOffset);
-        sub_02060F78(playerObject);
-        MapObject_SetHeldMovement(playerObject, MOVEMENT_UNK_74);
+        MapObject_UpdateCoords(playerObject);
+        LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_UNK_74);
         if (FollowMon_IsActive(fieldSystem)) {
             LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
             MapObject_SetCurrentX(followMonObject, localData->node->x);
             MapObject_SetCurrentY(followMonObject, 0);
             MapObject_SetCurrentZ(followMonObject, localData->node->z + (1 - localData->playerZOffset));
-            sub_02060F78(followMonObject);
+            MapObject_UpdateCoords(followMonObject);
         }
         localData->shakeCount = 0;
         localData->shakeFrame = 0;
@@ -635,17 +635,17 @@ static void SysTask_DoSpinarakRide(SysTask *sysTask, void *taskData) {
             if (FollowMon_IsActive(fieldSystem)) {
                 LocalMapObject *followMonObject = FollowMon_GetMapObject(fieldSystem);
                 if (localData->spinarakDirection) {
-                    MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
-                    MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_DOWN);
+                    LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_DOWN);
+                    LocalMapObject_SetAnimationCode(followMonObject, MOVEMENT_STEP_DOWN);
                 } else {
-                    MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_UP);
-                    MapObject_SetHeldMovement(followMonObject, MOVEMENT_STEP_UP);
+                    LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_UP);
+                    LocalMapObject_SetAnimationCode(followMonObject, MOVEMENT_STEP_UP);
                 }
             } else {
                 if (localData->spinarakDirection) {
-                    MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_DOWN);
+                    LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_DOWN);
                 } else {
-                    MapObject_SetHeldMovement(playerObject, MOVEMENT_STEP_UP);
+                    LocalMapObject_SetAnimationCode(playerObject, MOVEMENT_STEP_UP);
                 }
             }
             ++rideData->state;

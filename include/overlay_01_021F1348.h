@@ -52,17 +52,17 @@ typedef struct {
 
 typedef struct {
     int unk0;
-    FieldSystem *unk4;
+    FieldEffectManager *fieldEffectManager;
     UnkOv01_021FFECC *unk8;
     LocalMapObject *unkC;
     NNSG3dRenderObj *unk10;
 } UnkOv01_021FFF5C;
 
 UnkOv01_021FFECC *ov01_021F1430(void *a0, int a1, int a2, int a3);
-FieldSystem *ov01_021F146C(LocalMapObject *mapObject);
-TaskManager *ov01_021F1468(FieldSystem *fieldSystem);
-UnkOv01_021FFECC *ov01_021F1450(FieldSystem *fieldSystem, int a1);
-void ov01_021F1620(FieldSystem *fieldSystem, const UnkOv01_02209280 *a1, VecFx32 *a2, int a3, UnkOv01_021FFF5C *a4, int a5);
+FieldEffectManager *ov01_021F146C(LocalMapObject *mapObject);
+FieldSystem *ov01_021F1468(FieldEffectManager *fieldEffectManager);
+UnkOv01_021FFECC *ov01_021F1450(FieldEffectManager *fieldEffectManager, int a1);
+void ov01_021F1620(FieldEffectManager *fieldEffectManager, const UnkOv01_02209280 *a1, VecFx32 *a2, int a3, UnkOv01_021FFF5C *a4, int a5);
 void ov01_021F1448(void *a0); // UnkOv01_021FFECC or NNSG3dResFileHeader?
 void ov01_021F19F4(void *a0, UnkOv01_021FFECC_sub *a1, int a2, int a3, int a4);
 void ov01_021F1640(int a0);

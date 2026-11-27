@@ -1,0 +1,1324 @@
+#include "player_move.h"
+
+#include "global.h"
+
+#include "constants/map_object.h"
+#include "constants/player_avatar.h"
+#include "constants/sndseq.h"
+
+#include "follow_mon.h"
+#include "game_stats.h"
+#include "gymmick_init.h"
+#include "map_object.h"
+#include "metatile_behavior.h"
+#include "overlay_01_021F1AFC.h"
+#include "overlay_01_022053EC.h"
+#include "overlay_04.h"
+#include "player_avatar.h"
+#include "sound_02004A44.h"
+#include "unk_02005D10.h"
+#include "unk_02054648.h"
+#include "unk_0205FD20.h"
+#include "unk_02062108.h"
+#include "unk_0206D494.h"
+
+typedef BOOL (*MetatileBehaviorFunc)(u8 tileBehavior);
+
+typedef struct MetatileBehaviorCheck {
+    MetatileBehaviorFunc func;
+    u32 tileMove;
+} MetatileBehaviorCheck;
+
+static BOOL PlayerAvatar_CheckStartMoveInternal(PlayerAvatar *playerAvatar, int direction);
+static void PlayerAvatar_StartMoveInit(PlayerAvatar *playerAvatar, int dir_unused, u16 heldKeys_unused, u16 newKeys);
+static void PlayerAvatar_EnableTileBehaviorCheck(PlayerAvatar *playerAvatar);
+static void PlayerAvatar_PlayWalkSE(PlayerAvatar *playerAvatar);
+static void PlayWalkSEWithCooldown(LocalMapObject *playerMapObject, PlayerAvatar *playerAvatar);
+static BOOL PlayerAvatar_TryMoveFromCurrentTileBehavior(PlayerAvatar *playerAvatar, int direction);
+static u32 PlayerAvatar_GetTileMovement(PlayerAvatar *playerAvatar, int direction);
+static int PlayerAvatar_TryMoveTileBehavior(PlayerAvatar *playerAvatar, u32 tileMove, int direction);
+static void PlayerAvatar_ClearTileForcedMovement(PlayerAvatar *playerAvatar);
+static int PlayerAvatar_CheckIceHeightChange(PlayerAvatar *playerAvatar, int direction);
+static BOOL PlayerAvatar_UpdateIceSpeedFromHeightChange(PlayerAvatar *playerAvatar, int heightChange);
+static void PlayerAvatar_SetIceMovement(PlayerAvatar *playerAvatar, int direction);
+static void PlayerAvatar_SetMovementFromState(PlayerAvatar *playerAvatar, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys);
+static void PlayerAvatar_SetMovement_Normal(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys);
+static int PlayerAvatar_UpdateMoveState2(PlayerAvatar *playerAvatar, int direction);
+static int PlayerAvatar_ValidateState(int moveState);
+static int MapObject_DummyReturnMovementAction(LocalMapObject *playerMapObject_unused, u8 tileBehavior_unused, int movementAction);
+static int PlayerAvatar_UpdateMoveState(PlayerAvatar *playerAvatar, int direction);
+static void PlayerAvatar_SetMovement_NotMoving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction_unused, u16 heldKeys_unused, u16 newKeys_unused);
+static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys);
+static void PlayerAvatar_SetMovement_Turning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys);
+static void PlayerAvatar_SetMovement_Bike(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys);
+static void PlayerAvatar_SetMovement_BikeFourthGear(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys);
+static int PlayerAvatar_UpdateBikeStateFourthGear(PlayerAvatar *playerAvatar, int direction);
+static int PlayerAvatarBikeState_GetMoveStateFourthGear(int bikeState);
+static int PlayerAvatar_GetBikeStateFourthGear(PlayerAvatar *playerAvatar, int direction);
+static void PlayerAvatar_SetMovement_BikeFourthGearStop(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused);
+static void PlayerAvatar_SetMovement_BikeFourthGearMoving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused);
+static void PlayerAvatar_SetMovement_BikeFourthGearTurning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused);
+static void PlayerAvatar_SetMovement_BikeFourthGearBrake(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused);
+static u32 PlayerAvatar_CheckMapObjectCollision(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction);
+static BOOL PlayerAvatar_WillJump(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction);
+static BOOL PlayerAvatar_WillWarp(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction);
+static BOOL PlayerAvatar_WillBeOnWater(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction);
+static BOOL PlayerAvatar_CheckBikeCollision(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction);
+static int Movement_FaceLeftRightFromInput(u16 newKeys);
+static int Movement_FaceUpDownFromInput(u16 newKeys);
+static int PlayerAvatar_GetDirectionFromKeys(PlayerAvatar *playerAvatar, u16 heldKeys, u16 newKeys);
+static BOOL MovementAction_IsWalkInPlaceSlow(int movementCommand);
+static BOOL PlayerAvatar_IsRunButtonHeld(PlayerAvatar *playerAvatar, u16 heldKeys);
+int MovementCommand_GetDirectionFromCommand(u32 movementCommand);
+static void PlayerAvatar_SetMovement(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int movement);
+static void PlayerAvatar_IncrementStepsRecord(PlayerAvatar *playerAvatar);
+static BOOL PlayerAvatar_IsOnCyclingRoadBridge(PlayerAvatar *playerAvatar, u32 tileBehavior, int direction);
+
+static const MetatileBehaviorCheck sTileBehaviorCheckTable[];
+static BOOL (*const sTileMovementFunctions[TILE_MOVE_MAX])(PlayerAvatar *playerAvatar, int direction);
+
+void PlayerAvatar_MoveControl(PlayerAvatar *playerAvatar, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys, int movementFlag) {
+    if (direction == DIR_NONE) {
+        direction = PlayerAvatar_GetDirectionFromKeys(playerAvatar, heldKeys, newKeys);
+    }
+
+    if (PlayerAvatar_CheckStartMoveInternal(playerAvatar, direction) == FALSE) {
+        return;
+    }
+
+    PlayerAvatar_StartMoveInit(playerAvatar, direction, heldKeys, newKeys);
+    Field_PlayerAvatar_ApplyTransitionFlags(playerAvatar);
+
+    if (PlayerAvatar_TryMoveFromCurrentTileBehavior(playerAvatar, direction) == TRUE) {
+        ov01_021F2F24(playerAvatar);
+        return;
+    }
+
+    if (PlayerAvatar_GetState(playerAvatar) == PLAYER_STATE_WALKING) {
+        if (PlayerAvatar_UpdateMoveState2(playerAvatar, direction)) {
+            ov01_021F2F24(playerAvatar);
+        } else if (movementFlag == 1) {
+            ov01_021F2EDC(playerAvatar);
+        }
+    }
+
+    PlayerAvatar_SetMovementFromState(playerAvatar, mapLoadManager, direction, heldKeys, newKeys);
+
+    PlayerAvatar_EnableTileBehaviorCheck(playerAvatar);
+    PlayerAvatar_PlayWalkSE(playerAvatar);
+}
+
+BOOL PlayerAvatar_CheckStartMove(PlayerAvatar *playerAvatar, int direction) {
+    return PlayerAvatar_CheckStartMoveInternal(playerAvatar, direction);
+}
+
+static BOOL PlayerAvatar_CheckStartMoveInternal(PlayerAvatar *playerAvatar, int direction) {
+    LocalMapObject *mapObject = PlayerAvatar_GetMapObject(playerAvatar);
+
+    if (MapObject_AreBitsSetForMovementScriptInit(mapObject) == TRUE) {
+        return TRUE;
+    }
+
+    if (direction == DIR_NONE) {
+        return FALSE;
+    }
+
+    if (MovementAction_IsWalkInPlaceSlow(MapObject_GetMovementCommand(mapObject)) == TRUE) {
+        u32 collision = PlayerAvatar_CheckCollision(playerAvatar, mapObject, direction);
+
+        if (collision == PLAYER_COLLISION_NONE) {
+            return TRUE;
+        }
+
+        return collision == PLAYER_COLLISION_WATER && PlayerAvatar_GetState(playerAvatar) == PLAYER_STATE_SURFING;
+    }
+
+    return FALSE;
+}
+
+static void PlayerAvatar_StartMoveInit(PlayerAvatar *playerAvatar, int dir_unused, u16 heldKeys_unused, u16 newKeys) {
+    PlayerAvatar_SetFaceDirection(playerAvatar, Movement_FaceLeftRightFromInput(newKeys), Movement_FaceUpDownFromInput(newKeys));
+    PlayerAvatar_EndStep(playerAvatar);
+}
+
+static void PlayerAvatar_EnableTileBehaviorCheck(PlayerAvatar *playerAvatar) {
+    if (PlayerAvatar_CheckStep(playerAvatar) == TRUE && PlayerAvatar_GetMoveState(playerAvatar) == AVATAR_MOVE_STATE_MOVING) {
+        PlayerAvatar_SetIgnoreTileBehavior(playerAvatar, FALSE);
+    }
+}
+
+static void PlayerAvatar_PlayWalkSE(PlayerAvatar *playerAvatar) {
+    if (PlayerAvatar_GetMoveState(playerAvatar) == AVATAR_MOVE_STATE_MOVING) {
+        LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+        u8 curTile, nextTile = MapObject_GetMetatileBehavior(playerMapObject);
+        int direction = MovementCommand_GetDirectionFromCommand(MapObject_GetMovementCommand(playerMapObject));
+
+        if (direction == DIR_NONE) {
+            curTile = nextTile;
+        } else {
+            curTile = LocalMapObject_GetNextPositionMetatileBehavior(playerMapObject, direction);
+        }
+
+        if (MetatileBehavior_IsPuddle(nextTile) == TRUE) {
+            PlaySE(SEQ_SE_DP_FOOT3_0);
+        }
+
+        if (MetatileBehavior_IsShallowWater(nextTile) == TRUE) {
+            PlaySE(SEQ_SE_DP_FOOT3_1);
+        }
+
+        // Does nothing.
+        MetatileBehavior_IsSand(nextTile);
+
+        if (MetatileBehavior_IsMud(nextTile) == TRUE) {
+            PlaySE(SEQ_SE_DP_MARSH_WALK);
+        }
+
+        int movement = MapObject_GetMovementCommand(playerMapObject);
+
+        // Does nothing, and also does not occur in Platinum.
+        PlayerAvatar_GetState(playerAvatar);
+
+        if (MovementAction_IsWalkInPlaceSlow(movement) == FALSE) {
+            if (MetatileBehavior_IsVeryTallGrass(nextTile) == TRUE || MetatileBehavior_IsVeryTallGrass(curTile) == TRUE) {
+                PlaySE(SEQ_SE_DP_KUSA);
+            }
+            if (MetatileBehavior_IsTallGrass(nextTile) == TRUE || MetatileBehavior_IsTallGrass(curTile) == TRUE) {
+                PlaySE(SEQ_SE_GS_KUSA2);
+            }
+        }
+        PlayWalkSEWithCooldown(playerMapObject, playerAvatar);
+    }
+}
+
+static const u16 sWalkSounds[NUM_WALK_SOUNDS][2] = {
+    [WALK_SOUND_GENERIC] = { SEQ_SE_GS_ASHIOTO_A_WALK, FALSE },
+    [WALK_SOUND_SNOW] = { SEQ_SE_GS_ASHIOTO_A,      FALSE },
+    [WALK_SOUND_LEAVES] = { SEQ_SE_GS_OCHIBA,         FALSE },
+    [WALK_SOUND_BRANCHES] = { SEQ_SE_GS_EDAPAKI,        FALSE },
+    [WALK_SOUND_GRASS] = { SEQ_SE_GS_KUSA2,          FALSE },
+    [WALK_SOUND_SAND] = { SEQ_SE_GS_ASHIOTO_B,      TRUE  },
+    [WALK_SOUND_STAIRS_ICE_GLASS] = { SEQ_SE_GS_ASHIOTO_D,      TRUE  },
+    [WALK_SOUND_METAL] = { SEQ_SE_GS_ASHIOTO_D_2,    FALSE },
+    [WALK_SOUND_UNK_8] = { SEQ_SE_GS_ASHIOTO_E,      FALSE },
+    [WALK_SOUND_UNK_9] = { SEQ_SE_GS_ASHIOTO_B,      TRUE  },
+    [WALK_SOUND_CAVERN_FLOOR] = { SEQ_SE_GS_ASHIOTO_F,      TRUE  },
+    [WALK_SOUND_UNK_11] = { SEQ_SE_GS_ASHIOTO_D,      FALSE },
+    [WALK_SOUND_UNK_12] = { SEQ_SE_GS_ASHIOTO_H,      FALSE },
+    [WALK_SOUND_WOOD] = { SEQ_SE_GS_ASHIOTO_G,      FALSE },
+    [WALK_SOUND_UNK_14] = { SEQ_SE_DP_BOX02,          FALSE },
+    [WALK_SOUND_UNK_15] = { SEQ_SE_DP_BOX01,          FALSE }
+};
+
+static void PlayWalkSEWithCooldown(LocalMapObject *playerMapObject, PlayerAvatar *playerAvatar) {
+    int direction = MovementCommand_GetDirectionFromCommand(MapObject_GetMovementCommand(playerMapObject));
+    u8 walkSoundIndex = MapObject_GetMetatileBehavior(playerMapObject); // Redundant as this is always overwritten just below.
+    u8 tileBehavior = MapObject_GetMetatileBehavior(playerMapObject);
+    if (!MetatileBehavior_IsVeryTallGrass(tileBehavior) && MetatileBehavior_IsPuddle(tileBehavior) != TRUE && MetatileBehavior_IsShallowWater(tileBehavior) != TRUE && !MetatileBehavior_IsTallGrass(tileBehavior)) {
+        if (direction != DIR_NONE) { // Can never be false.
+            walkSoundIndex = sub_02060FE0(playerMapObject, direction);
+        }
+
+        if (sWalkSounds[walkSoundIndex][0] == SEQ_SE_GS_EDAPAKI) { // WALK_SOUND_BRANCHES
+            PlayerAvatar_ResetFootstepCooldown(playerAvatar);
+        } else if (PlayerAvatar_GetPlayerMoveState(playerAvatar) == PLAYER_MOVE_STATE_NONE) {
+            PlayerAvatar_ResetFootstepCooldown(playerAvatar);
+        } else { // With few exceptions, this means the code below should trigger every other step.
+            PlayerAvatar_ToggleFootstepCooldown(playerAvatar);
+        }
+
+        if (PlayerAvatar_GetFootstepCooldown(playerAvatar) == FALSE) {
+            int playerState = PlayerAvatar_GetState(playerAvatar);
+            if (playerState != PLAYER_STATE_CYCLING && playerState != PLAYER_STATE_SURFING) {
+                if (walkSoundIndex < NUM_WALK_SOUNDS) {
+                    if (walkSoundIndex == WALK_SOUND_GENERIC && PlayerAvatar_IsRunning(playerAvatar) == TRUE) {
+                        walkSoundIndex = WALK_SOUND_SNOW;
+                    }
+
+                    u16 walkSound;
+                    if (sWalkSounds[walkSoundIndex][1] == TRUE) {
+                        walkSound = sWalkSounds[walkSoundIndex][0];
+                        sub_02006088(walkSound);
+                    } else {
+                        walkSound = sWalkSounds[walkSoundIndex][0];
+                        PlaySE(walkSound);
+                    }
+
+                    sub_02005BA8(walkSound);
+                } else {
+                    GF_ASSERT(walkSoundIndex < NUM_WALK_SOUNDS);
+                }
+            }
+        }
+    }
+}
+
+void PlayerAvatar_UpdateMovement(PlayerAvatar *playerAvatar) {
+    int avatarMoveState = PlayerAvatar_GetMoveState(playerAvatar);
+    int playerMoveState = PlayerAvatar_GetPlayerMoveState(playerAvatar);
+    LocalMapObject *playerObj = PlayerAvatar_GetMapObject(playerAvatar);
+
+    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
+
+    u32 tileMovement = PlayerAvatar_GetTileMovement(playerAvatar, DIR_NONE);
+
+    if (tileMovement != TILE_MOVE_NONE && tileMovement != TILE_MOVE_CYCLING_ROAD_DOWN) {
+        PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_MOVING);
+    } else if (MapObject_AreBitsSetForMovementScriptInit(playerObj) == FALSE) {
+        switch (avatarMoveState) {
+        case AVATAR_MOVE_STATE_NONE:
+            break;
+        case AVATAR_MOVE_STATE_MOVING:
+            if (MovementAction_IsWalkInPlaceSlow(MapObject_GetMovementCommand(playerObj)) != TRUE) {
+                if (playerMoveState == PLAYER_MOVE_STATE_NONE || playerMoveState == PLAYER_MOVE_STATE_END) {
+                    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_START);
+                } else {
+                    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_MOVING);
+                }
+            }
+            break;
+        case AVATAR_MOVE_STATE_TURNING:
+            PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_MOVING);
+            break;
+        }
+    } else if (MapObject_IsMovementPaused(playerObj) == TRUE && avatarMoveState != AVATAR_MOVE_STATE_NONE) {
+        switch (avatarMoveState) {
+        case AVATAR_MOVE_STATE_MOVING:
+            if (playerMoveState != PLAYER_MOVE_STATE_NONE) {
+                if (playerMoveState == PLAYER_MOVE_STATE_END) {
+                    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
+                } else {
+                    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_END);
+                }
+            }
+            break;
+        case AVATAR_MOVE_STATE_TURNING:
+            if (playerMoveState != PLAYER_MOVE_STATE_NONE) {
+                if (playerMoveState == PLAYER_MOVE_STATE_END) {
+                    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
+                } else {
+                    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_END);
+                }
+            }
+            break;
+        }
+    }
+}
+
+void PlayerAvatar_ClearMoveState(PlayerAvatar *playerAvatar) {
+    PlayerAvatar_SetMoveState(playerAvatar, PLAYER_AVATAR_WALKING);
+    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
+    PlayerAvatar_ClearSpeed(playerAvatar);
+}
+
+BOOL PlayerAvatar_CheckForceStopMovement(PlayerAvatar *playerAvatar) {
+    int avatarMoveState = PlayerAvatar_GetMoveState(playerAvatar);
+    int playerMoveState = PlayerAvatar_GetPlayerMoveState(playerAvatar);
+
+    if (avatarMoveState == AVATAR_MOVE_STATE_NONE) {
+        return TRUE;
+    }
+
+    if (avatarMoveState == AVATAR_MOVE_STATE_TURNING) {
+        return TRUE;
+    }
+
+    if (avatarMoveState == AVATAR_MOVE_STATE_MOVING) {
+        if (playerMoveState == PLAYER_MOVE_STATE_NONE || playerMoveState == PLAYER_MOVE_STATE_END) {
+            return TRUE;
+        }
+
+        LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+
+        if (MapObject_AreBitsSetForMovementScriptInit(playerMapObject) == TRUE) {
+            return TRUE;
+        }
+
+        if (MovementAction_IsWalkInPlaceSlow(MapObject_GetMovementCommand(playerMapObject)) == TRUE) {
+            return TRUE;
+        }
+    }
+
+    return FALSE;
+}
+
+void PlayerAvatar_ForceStopMovement(PlayerAvatar *playerAvatar, int direction) {
+    PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
+    PlayerAvatar_SetPlayerMoveState(playerAvatar, PLAYER_MOVE_STATE_NONE);
+
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+
+    MapObject_SetFacingDirection(playerMapObject, direction);
+    sub_0205F328(playerMapObject, 0);
+    MapObject_UpdateCoords(playerMapObject);
+    MapObject_ClearHeldMovement(playerMapObject);
+    LocalMapObject_SetAnimationCode(playerMapObject, MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_FACE_UP));
+}
+
+static BOOL PlayerAvatar_TryMoveFromCurrentTileBehavior(PlayerAvatar *playerAvatar, int direction) {
+    u32 tileMovement = PlayerAvatar_GetTileMovement(playerAvatar, direction);
+
+    return PlayerAvatar_TryMoveTileBehavior(playerAvatar, tileMovement, direction);
+}
+
+static u32 PlayerAvatar_GetTileMovement(PlayerAvatar *playerAvatar, int direction) {
+    int i = 0;
+    u32 tileBehavior = MapObject_GetMetatileBehavior(PlayerAvatar_GetMapObject(playerAvatar));
+
+    if (PlayerAvatar_IsOnCyclingRoadBridge(playerAvatar, tileBehavior, direction) == TRUE) {
+        return TILE_MOVE_CYCLING_ROAD_DOWN;
+    }
+
+    if (PlayerAvatar_CheckIgnoreTileBehavior(playerAvatar) == TRUE) {
+        return TILE_MOVE_NONE;
+    }
+
+    do {
+        if (sTileBehaviorCheckTable[i].func(tileBehavior) == TRUE) {
+            return sTileBehaviorCheckTable[i].tileMove;
+        }
+        i++;
+    } while (sTileBehaviorCheckTable[i].func != NULL);
+
+    return TILE_MOVE_NONE;
+}
+
+static const MetatileBehaviorCheck sTileBehaviorCheckTable[] = {
+    { MetatileBehavior_IsIce, TILE_MOVE_ICE },
+    { NULL,                   TILE_MOVE_MAX }
+};
+
+static BOOL PlayerAvatar_TryMoveTileBehavior(PlayerAvatar *playerAvatar, u32 tileMove, int direction) {
+    if (sTileMovementFunctions[tileMove](playerAvatar, direction) == TRUE) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static BOOL PlayerAvatar_TileMove_None(PlayerAvatar *playerAvatar, int direction_unused) {
+    PlayerAvatar_ClearTileForcedMovement(playerAvatar);
+    return FALSE;
+}
+
+static BOOL PlayerAvatar_TileMove_Ice(PlayerAvatar *playerAvatar, int direction_unused) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+    int nextDirection = MapObject_GetNextFacingDirection(playerMapObject);
+    int heightChange = PlayerAvatar_CheckIceHeightChange(playerAvatar, nextDirection);
+    u32 collision = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, nextDirection);
+
+    PlayerAvatar_SetForcedMovement(playerAvatar, TRUE);
+
+    if (collision != PLAYER_COLLISION_NONE) {
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+        PlayerAvatar_SetIgnoreTileBehavior(playerAvatar, TRUE);
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
+        if (sub_0206D494(fieldSystem) == FALSE) {
+            PlayerAvatar_ClearTileForcedMovement(playerAvatar);
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    if (PlayerAvatar_UpdateIceSpeedFromHeightChange(playerAvatar, heightChange) == FALSE) {
+        PlayerAvatar_ClearTileForcedMovement(playerAvatar);
+        nextDirection = Direction_GetOpposite(nextDirection);
+
+        if (PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, nextDirection) != PLAYER_COLLISION_NONE) {
+            return FALSE;
+        }
+
+        MapObject_SetFlagsBits(playerMapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
+        PlayerAvatar_SetMovement(playerAvatar, playerMapObject, MovementCommand_TurnCommandTowardsDirection(nextDirection, 8));
+        PlayerAvatar_SetIgnoreTileBehavior(playerAvatar, TRUE);
+        PlayerAvatar_SetForcedMovement(playerAvatar, TRUE);
+        PlayerAvatar_SetFaceDirection(playerAvatar, DIR_NONE, DIR_NONE);
+    } else {
+        MapObject_SetFlagsBits(playerMapObject, (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
+        PlayerAvatar_SetIceMovement(playerAvatar, nextDirection);
+    }
+
+    PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
+    return TRUE;
+}
+
+static BOOL PlayerAvatar_TileMove_CyclingRoadDown(PlayerAvatar *playerAvatar, int direction_unused) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+
+    if (PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, DIR_SOUTH) == PLAYER_COLLISION_NONE) {
+        PlayerAvatar_SetMovement(playerAvatar, playerMapObject, MovementCommand_TurnCommandTowardsDirection(DIR_SOUTH, MOVEMENT_WALK_FASTER_UP));
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
+        PlayerAvatar_SetSpeed(playerAvatar, 3);
+        return TRUE;
+    } else {
+        PlayerAvatar_SetMovement(playerAvatar, playerMapObject, MovementCommand_TurnCommandTowardsDirection(DIR_SOUTH, MOVEMENT_FACE_DOWN));
+        PlayerAvatar_ClearSpeed(playerAvatar);
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
+        PlayerAvatar_SetBikeBrake(playerAvatar, FALSE);
+    }
+
+    return TRUE;
+}
+
+static BOOL (*const sTileMovementFunctions[TILE_MOVE_MAX])(PlayerAvatar *playerAvatar, int direction) = {
+    [TILE_MOVE_NONE] = PlayerAvatar_TileMove_None,
+    [TILE_MOVE_ICE] = PlayerAvatar_TileMove_Ice,
+    [TILE_MOVE_CYCLING_ROAD_DOWN] = PlayerAvatar_TileMove_CyclingRoadDown
+};
+
+static void PlayerAvatar_ClearTileForcedMovement(PlayerAvatar *playerAvatar) {
+    if (PlayerAvatar_CheckForcedMovement(playerAvatar) == TRUE) {
+        MapObject_ClearFlagsBits(PlayerAvatar_GetMapObject(playerAvatar), (MapObjectFlagBits)(MAPOBJECTFLAG_LOCK_DIRECTION | MAPOBJECTFLAG_PAUSE_ANIMATION));
+
+        if (PlayerAvatar_CheckForcedMovementRetainSpeed(playerAvatar) == FALSE) {
+            PlayerAvatar_ClearSpeed(playerAvatar);
+        }
+
+        PlayerAvatar_SetForcedMovement(playerAvatar, FALSE);
+        PlayerAvatar_SetForcedMovementRetainSpeed(playerAvatar, FALSE);
+        PlayerAvatar_SetMoveThroughMudFlag(playerAvatar, FALSE);
+    }
+}
+
+static int PlayerAvatar_CheckIceHeightChange(PlayerAvatar *playerAvatar, int direction) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+    FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+
+    VecFx32 cur;
+    MapObject_CopyPositionVector(playerMapObject, &cur);
+    VecFx32 next = cur;
+
+    VecFx32_StepDirection(direction, &next, ((16 * FX32_ONE) >> 1) / 2);
+
+    if (MapObject_RecalculatePositionHeight(fieldSystem, &next) == FALSE || cur.y == next.y) {
+        return PLAYER_HEIGHT_CHANGE_NONE;
+    }
+
+    if (cur.y > next.y) {
+        return PLAYER_HEIGHT_CHANGE_DECREASE;
+    }
+
+    return PLAYER_HEIGHT_CHANGE_INCREASE;
+}
+
+static BOOL PlayerAvatar_UpdateIceSpeedFromHeightChange(PlayerAvatar *playerAvatar, int heightChange) {
+    int speed = PlayerAvatar_GetSpeed(playerAvatar);
+
+    if (heightChange == PLAYER_HEIGHT_CHANGE_INCREASE) {
+        speed--;
+
+        if (speed < AVATAR_MOVE_SPEED_0) {
+            return FALSE;
+        }
+    } else if (heightChange == PLAYER_HEIGHT_CHANGE_DECREASE) {
+        speed++;
+
+        if (speed > AVATAR_MOVE_SPEED_3) {
+            speed = AVATAR_MOVE_SPEED_3;
+        }
+    }
+
+    PlayerAvatar_SetSpeed(playerAvatar, speed);
+    return TRUE;
+}
+
+static void PlayerAvatar_SetIceMovement(PlayerAvatar *playerAvatar, int direction) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+    int movement = MOVEMENT_WALK_FAST_UP;
+    int speed = PlayerAvatar_GetSpeed(playerAvatar);
+    switch (speed) {
+    case AVATAR_MOVE_SPEED_1:
+        movement = MOVEMENT_WALK_SLIGHTLY_FASTER_UP;
+        break;
+    case AVATAR_MOVE_SPEED_2:
+        movement = MOVEMENT_WALK_FASTER_UP;
+        break;
+    case AVATAR_MOVE_SPEED_3:
+        movement = MOVEMENT_WALK_FASTER_UP;
+        break;
+    }
+    movement = MovementCommand_TurnCommandTowardsDirection(direction, movement);
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
+
+    FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+    if (FollowMon_IsActive(fieldSystem)) {
+        ov01_02205990(movement, MapObject_GetPreviousXCoord(playerMapObject), MapObject_GetPreviousZCoord(playerMapObject), &fieldSystem->followMon);
+    }
+}
+
+static void PlayerAvatar_SetMovementFromState(PlayerAvatar *playerAvatar, MapLoadManager *manager, int direction, u16 heldKeys, u16 newKeys) {
+    int state = PlayerAvatar_GetState(playerAvatar);
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+
+    switch (state) {
+    case PLAYER_STATE_WALKING:
+    case PLAYER_STATE_SURFING:
+    case PLAYER_STATE_ROCKET:
+        PlayerAvatar_SetMovement_Normal(playerAvatar, playerMapObject, manager, direction, heldKeys, newKeys);
+        break;
+    case PLAYER_STATE_CYCLING:
+        PlayerAvatar_SetMovement_Bike(playerAvatar, playerMapObject, manager, direction, heldKeys, newKeys);
+        break;
+    default:
+        GF_ASSERT(FALSE);
+        break;
+    }
+}
+
+static void PlayerAvatar_SetMovement_Normal(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, MapLoadManager *manager, int direction, u16 heldKeys, u16 newKeys) {
+    switch (PlayerAvatar_UpdateMoveState2(playerAvatar, direction)) {
+    case AVATAR_MOVE_STATE_NONE:
+        PlayerAvatar_SetMovement_NotMoving(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    case AVATAR_MOVE_STATE_MOVING:
+        PlayerAvatar_SetMovement_Moving(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    case AVATAR_MOVE_STATE_TURNING:
+        PlayerAvatar_SetMovement_Turning(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    }
+}
+
+static int PlayerAvatar_UpdateMoveState2(PlayerAvatar *playerAvatar, int direction) {
+    int updateMoveState = PlayerAvatar_UpdateMoveState(playerAvatar, direction);
+    int moveState = PlayerAvatar_ValidateState(updateMoveState);
+
+    PlayerAvatar_SetMoveState(playerAvatar, moveState); // Redundant since it gets set in PlayerAvatar_UpdateMoveState.
+    return updateMoveState;
+}
+
+static int PlayerAvatar_ValidateState(int moveState) {
+    switch (moveState) {
+    case AVATAR_MOVE_STATE_NONE:
+        return AVATAR_MOVE_STATE_NONE;
+    case AVATAR_MOVE_STATE_MOVING:
+        return AVATAR_MOVE_STATE_MOVING;
+    case AVATAR_MOVE_STATE_TURNING:
+        return AVATAR_MOVE_STATE_TURNING;
+    }
+
+    GF_ASSERT(FALSE);
+    return AVATAR_MOVE_STATE_NONE;
+}
+
+static int MapObject_DummyReturnMovementAction(LocalMapObject *playerMapObject_unused, u8 tileBehavior_unused, int movementAction) {
+    return movementAction;
+}
+
+static int PlayerAvatar_UpdateMoveState(PlayerAvatar *playerAvatar, int direction) {
+    if (direction == DIR_NONE) {
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
+        return PLAYER_MOVE_STATE_NONE;
+    }
+
+    int facingDirection = PlayerAvatar_GetFacingDirection(playerAvatar);
+    if (facingDirection != direction && PlayerAvatar_GetMoveState(playerAvatar) != AVATAR_MOVE_STATE_MOVING) {
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_TURNING);
+        return PLAYER_MOVE_STATE_MOVING;
+    }
+
+    PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
+    return PLAYER_MOVE_STATE_START;
+}
+
+static void PlayerAvatar_SetMovement_NotMoving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction_unused, u16 heldKeys_unused, u16 newKeys_unused) {
+    int movementAction = MovementCommand_TurnCommandTowardsDirection(MapObject_GetFacingDirection(playerMapObject), MOVEMENT_FACE_UP);
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movementAction);
+}
+
+static void PlayerAvatar_SetMovement_Moving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys) {
+    int movement;
+    FieldSystem *fieldSystem;
+
+    BOOL followMonShouldWait = FALSE;
+    u32 collision = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, direction);
+
+    if (PlayerAvatar_GetState(playerAvatar) != PLAYER_STATE_SURFING) {
+        if (collision & PLAYER_COLLISION_JUMP) {
+            movement = MOVEMENT_JUMP_FAR_UP;
+        } else if (collision != PLAYER_COLLISION_NONE) {
+            movement = MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP;
+            if (!(collision & PLAYER_COLLISION_WARP)) {
+                fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+                if (FieldSystem_IsSaveGymmickTypeEqualTo(fieldSystem, GYMMICK_FUCHSIA)) {
+                    int x = MapObject_GetXCoord(playerMapObject);
+                    x += GetDeltaXByFacingDirection(direction);
+                    int y = MapObject_GetZCoord(playerMapObject);
+                    y += GetDeltaZByFacingDirection(direction);
+                    FuchsiaGymmick_CheckCollision(fieldSystem, x, y);
+                } else {
+                    PlaySE(SEQ_SE_DP_WALL_HIT);
+                }
+            }
+            MapObject_SetNextFacingDirection(playerMapObject, direction);
+            followMonShouldWait = TRUE;
+        } else {
+            movement = MOVEMENT_STEP_UP;
+            if (PlayerSaveData_CheckRunningShoes(PlayerAvatar_GetPlayerSaveData(playerAvatar)) == TRUE && PlayerAvatar_IsRunButtonHeld(playerAvatar, newKeys) == TRUE) {
+                movement = MOVEMENT_RUN_UP;
+            }
+
+            movement = MapObject_DummyReturnMovementAction(playerMapObject, MapObject_GetMetatileBehavior(playerMapObject), movement); // Originally handled deep snow in Platinum.
+
+            PlayerAvatar_IncrementStepsRecord(playerAvatar);
+            PlayerAvatar_StartStep(playerAvatar);
+        }
+    } else if (collision == PLAYER_COLLISION_NONE || collision == PLAYER_COLLISION_WATER) {
+        movement = MapObject_DummyReturnMovementAction(playerMapObject, MapObject_GetMetatileBehavior(playerMapObject), MOVEMENT_WALK_FAST_UP);
+        PlayerAvatar_IncrementStepsRecord(playerAvatar);
+        PlayerAvatar_StartStep(playerAvatar);
+    } else {
+        movement = MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP;
+
+        if (!(collision & PLAYER_COLLISION_WARP)) {
+            PlaySE(SEQ_SE_DP_WALL_HIT);
+        }
+
+        MapObject_SetNextFacingDirection(playerMapObject, direction);
+    }
+    movement = MovementCommand_TurnCommandTowardsDirection(direction, movement);
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
+
+    if (followMonShouldWait == FALSE) {
+        fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+        ov01_02205990(movement, MapObject_GetPreviousXCoord(playerMapObject), MapObject_GetPreviousZCoord(playerMapObject), &fieldSystem->followMon);
+    }
+}
+
+static void PlayerAvatar_SetMovement_Turning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys, u16 newKeys) {
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP));
+    MapObject_SetNextFacingDirection(playerMapObject, direction);
+
+    PlayerAvatar_ResetFootstepCooldown(playerAvatar);
+    PlayerAvatar_ToggleFootstepCooldown(playerAvatar);
+}
+
+static void PlayerAvatar_SetMovement_Bike(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, MapLoadManager *mapLoadManager, int direction, u16 heldKeys, u16 newKeys) {
+    PlayerAvatar_SetMovement_BikeFourthGear(playerAvatar, playerMapObject, mapLoadManager, direction, heldKeys, newKeys);
+}
+
+static int PlayerAvatar_GetMovementActionFromSpeed(PlayerAvatar *playerAvatar, int direction) {
+    int movement = MOVEMENT_WALK_SLIGHTLY_FAST_UP;
+    switch (PlayerAvatar_GetSpeed(playerAvatar)) {
+    case AVATAR_MOVE_SPEED_1:
+        movement = MOVEMENT_WALK_FAST_UP;
+        break;
+    case AVATAR_MOVE_SPEED_2:
+        movement = MOVEMENT_WALK_SLIGHTLY_FASTER_UP;
+        break;
+    case AVATAR_MOVE_SPEED_3:
+        movement = MOVEMENT_WALK_FASTER_UP;
+        break;
+    }
+    return MovementCommand_TurnCommandTowardsDirection(direction, movement);
+}
+
+static BOOL PlayerAvatar_AccelerateBike(PlayerAvatar *playerAvatar) {
+    int speed = PlayerAvatar_AddSpeed(playerAvatar, 1, AVATAR_MOVE_SPEED_3);
+
+    if (PlayerAvatar_CheckBikeBrake(playerAvatar) == FALSE) {
+        if (speed >= AVATAR_MOVE_SPEED_BIKE_BRAKE) {
+            PlayerAvatar_SetBikeBrake(playerAvatar, TRUE);
+        }
+    }
+
+    return speed == AVATAR_MOVE_SPEED_3;
+}
+
+static BOOL PlayerAvatar_DecelerateBike(PlayerAvatar *playerAvatar) {
+    int isMoving = TRUE;
+    int speed = PlayerAvatar_GetSpeed(playerAvatar);
+
+    speed--;
+
+    if (speed < AVATAR_MOVE_SPEED_0) {
+        speed = AVATAR_MOVE_SPEED_0;
+        isMoving = FALSE;
+    }
+
+    PlayerAvatar_SetSpeed(playerAvatar, speed);
+
+    if (PlayerAvatar_CheckBikeBrake(playerAvatar) == TRUE) {
+        if (speed == AVATAR_MOVE_SPEED_0) {
+            PlayerAvatar_SetBikeBrake(playerAvatar, FALSE);
+        }
+    }
+
+    return isMoving;
+}
+
+static void PlayerAvatar_SetMovement_BikeFourthGear(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, MapLoadManager *mapLoadManager_unused, int direction, u16 heldKeys, u16 newKeys) {
+    int bikeState = PlayerAvatar_UpdateBikeStateFourthGear(playerAvatar, direction);
+
+    switch (bikeState) {
+    case AVATAR_BIKE_STATE_NONE:
+        PlayerAvatar_SetMovement_BikeFourthGearStop(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    case AVATAR_BIKE_STATE_MOVING:
+        PlayerAvatar_SetMovement_BikeFourthGearMoving(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    case AVATAR_BIKE_STATE_TURNING:
+        PlayerAvatar_SetMovement_BikeFourthGearTurning(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    case AVATAR_BIKE_STATE_BRAKE:
+        PlayerAvatar_SetMovement_BikeFourthGearBrake(playerAvatar, playerMapObject, direction, heldKeys, newKeys);
+        break;
+    }
+}
+
+static int PlayerAvatar_UpdateBikeStateFourthGear(PlayerAvatar *playerAvatar, int direction) {
+    int bikeState = PlayerAvatar_GetBikeStateFourthGear(playerAvatar, direction);
+    int moveState = PlayerAvatarBikeState_GetMoveStateFourthGear(bikeState);
+
+    PlayerAvatar_SetMoveState(playerAvatar, moveState);
+    return bikeState;
+}
+
+static int PlayerAvatarBikeState_GetMoveStateFourthGear(int bikeState) {
+    switch (bikeState) {
+    case AVATAR_BIKE_STATE_NONE:
+        return AVATAR_MOVE_STATE_NONE;
+    case AVATAR_BIKE_STATE_MOVING:
+        return AVATAR_MOVE_STATE_MOVING;
+    case AVATAR_BIKE_STATE_TURNING:
+        return AVATAR_MOVE_STATE_TURNING;
+    case AVATAR_BIKE_STATE_BRAKE:
+        return AVATAR_MOVE_STATE_MOVING;
+    }
+
+    GF_ASSERT(FALSE);
+    return AVATAR_MOVE_STATE_NONE;
+}
+
+static int PlayerAvatar_GetBikeStateFourthGear(PlayerAvatar *playerAvatar, int direction) {
+    int speed = PlayerAvatar_GetSpeed(playerAvatar);
+    if (direction == DIR_NONE) {
+        if (speed < AVATAR_MOVE_SPEED_BIKE_BRAKE) {
+            PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_NONE);
+            return AVATAR_BIKE_STATE_NONE;
+        }
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
+        return AVATAR_BIKE_STATE_BRAKE;
+    }
+
+    int facingDirection = PlayerAvatar_GetFacingDirection(playerAvatar);
+    if (facingDirection != direction && PlayerAvatar_GetMoveState(playerAvatar) != AVATAR_MOVE_STATE_MOVING) {
+        if (speed < AVATAR_MOVE_SPEED_BIKE_BRAKE) {
+            PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_TURNING);
+            return AVATAR_BIKE_STATE_TURNING;
+        }
+        PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
+        return AVATAR_BIKE_STATE_BRAKE;
+    }
+
+    PlayerAvatar_SetMoveState(playerAvatar, AVATAR_MOVE_STATE_MOVING);
+    return AVATAR_BIKE_STATE_MOVING;
+}
+
+static void PlayerAvatar_SetMovement_BikeFourthGearStop(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction_unused, u16 heldKeys_unused, u16 newKeys_unused) {
+    int movementAction = MovementCommand_TurnCommandTowardsDirection(MapObject_GetFacingDirection(playerMapObject), MOVEMENT_FACE_UP);
+
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movementAction);
+    PlayerAvatar_ClearSpeed(playerAvatar);
+}
+
+static void PlayerAvatar_SetMovement_BikeFourthGearMoving(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused) {
+    int movement;
+
+    u32 collision = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, direction);
+
+    if (collision & PLAYER_COLLISION_JUMP) {
+        movement = MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_JUMP_FAR_UP);
+        PlayerAvatar_AccelerateBike(playerAvatar);
+        PlayerAvatar_IncrementStepsRecord(playerAvatar);
+        PlayerAvatar_StartStep(playerAvatar);
+    } else if (collision & PLAYER_COLLISION_BIKE_RAMP) { // Unreachable in HGSS.
+        if (PlayerAvatar_GetSpeed(playerAvatar) >= AVATAR_MOVE_SPEED_3) {
+            movement = PlayerAvatar_GetMovementActionFromSpeed(playerAvatar, direction);
+            PlayerAvatar_StartStep(playerAvatar);
+            PlayerAvatar_SetForcedMovement(playerAvatar, TRUE);
+        } else {
+            movement = MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP);
+            if (!(collision & PLAYER_COLLISION_WARP)) {
+                PlaySE(SEQ_SE_DP_WALL_HIT);
+            }
+            MapObject_SetNextFacingDirection(playerMapObject, direction);
+            PlayerAvatar_ClearSpeed(playerAvatar);
+        }
+    } else if (collision & PLAYER_COLLISION_BIKE_BRIDGE) { // Unreachable in HGSS.
+        int nextDirection = MapObject_GetNextFacingDirection(playerMapObject);
+        movement = MovementCommand_TurnCommandTowardsDirection(nextDirection, MOVEMENT_FACE_UP);
+        MapObject_SetNextFacingDirection(playerMapObject, nextDirection);
+        PlayerAvatar_ClearSpeed(playerAvatar);
+        PlayerAvatar_SetFaceDirection(playerAvatar, DIR_NONE, DIR_NONE);
+    } else if (collision) {
+        movement = MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP);
+        if (!(collision & PLAYER_COLLISION_WARP)) {
+            PlaySE(SEQ_SE_DP_WALL_HIT);
+        }
+        MapObject_SetNextFacingDirection(playerMapObject, direction);
+        PlayerAvatar_ClearSpeed(playerAvatar);
+    } else {
+        movement = PlayerAvatar_GetMovementActionFromSpeed(playerAvatar, direction);
+        PlayerAvatar_AccelerateBike(playerAvatar);
+        PlayerAvatar_IncrementStepsRecord(playerAvatar);
+        PlayerAvatar_StartStep(playerAvatar);
+    }
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
+}
+
+static void PlayerAvatar_SetMovement_BikeFourthGearTurning(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused) {
+    PlayerAvatar_ClearSpeed(playerAvatar);
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP));
+    MapObject_SetNextFacingDirection(playerMapObject, direction);
+    PlayerAvatar_ClearSpeed(playerAvatar);
+}
+
+static void PlayerAvatar_SetMovement_BikeFourthGearBrake(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction, u16 heldKeys_unused, u16 newKeys_unused) {
+    int movement;
+
+    BOOL isMoving = PlayerAvatar_DecelerateBike(playerAvatar);
+
+    direction = PlayerAvatar_GetNextFacingDirection(playerAvatar);
+    u32 collision = PlayerAvatar_CheckCollision(playerAvatar, playerMapObject, direction);
+
+    if (collision & PLAYER_COLLISION_JUMP) {
+        movement = MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_JUMP_FAR_UP);
+    } else if (collision & PLAYER_COLLISION_BIKE_BRIDGE) { // Unreachable in HGSS.
+        movement = MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_FACE_UP);
+        PlayerAvatar_ClearSpeed(playerAvatar);
+    } else if (collision != PLAYER_COLLISION_NONE) {
+        isMoving = FALSE;
+        movement = MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP);
+
+        if (!(collision & PLAYER_COLLISION_WARP)) {
+            PlaySE(SEQ_SE_DP_WALL_HIT);
+        }
+
+        MapObject_SetNextFacingDirection(playerMapObject, direction);
+        PlayerAvatar_ClearSpeed(playerAvatar);
+    } else {
+        movement = PlayerAvatar_GetMovementActionFromSpeed(playerAvatar, direction);
+    }
+
+    if (isMoving == FALSE) {
+        PlayerAvatar_SetBikeBrake(playerAvatar, FALSE);
+    }
+
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movement);
+}
+
+static void PlayerAvatar_SetMovement(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int movementAction) {
+    PlayerAvatar_SetMovementAction(playerAvatar, movementAction);
+    LocalMapObject_SetAnimationCode(playerMapObject, movementAction);
+}
+
+u32 PlayerAvatar_CheckCollision(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction) {
+    u32 collision = MAP_OBJECT_COLLISION_NONE;
+    u32 objectCollision = PlayerAvatar_CheckMapObjectCollision(playerAvatar, playerMapObject, direction);
+
+    if (objectCollision & (MAP_OBJECT_COLLISION_WILL_COLLIDE | MAP_OBJECT_COLLISION_HEIGHT_CHANGE)) {
+        collision |= PLAYER_COLLISION_WILL_COLLIDE;
+
+        if (PlayerAvatar_WillWarp(playerAvatar, playerMapObject, direction)) {
+            collision |= PLAYER_COLLISION_WARP;
+        }
+    }
+
+    if (objectCollision & MAP_OBJECT_COLLISION_2) {
+        collision |= PLAYER_COLLISION_1;
+    }
+
+    if (PlayerAvatar_WillJump(playerAvatar, playerMapObject, direction)) {
+        collision |= PLAYER_COLLISION_JUMP;
+    }
+
+    if (PlayerAvatar_WillBeOnWater(playerAvatar, playerMapObject, direction) == TRUE) {
+        collision |= PLAYER_COLLISION_WATER;
+    }
+
+    if (PlayerAvatar_CheckBikeCollision(playerAvatar, playerMapObject, direction) == TRUE) {
+        collision |= PLAYER_COLLISION_WILL_COLLIDE;
+    }
+
+    return collision;
+}
+
+static u32 PlayerAvatar_CheckMapObjectCollision(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction) {
+    int x = MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction);
+    int y = MapObject_GetYCoord(playerMapObject);
+    int z = MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction);
+
+    VecFx32 position;
+    MapObject_CopyPositionVector(playerMapObject, &position);
+
+    u32 collision = MAP_OBJECT_COLLISION_NONE;
+
+    if (MapObject_IsOutOfRange(playerMapObject, x, y, z) == TRUE) {
+        collision |= MAP_OBJECT_COLLISION_OUT_OF_RANGE;
+    }
+
+    s8 verticalDirection;
+    if (TerrainCollisionManager_WillPlayerCollide(MapObject_GetFieldSystem(playerMapObject), &position, x, z, &verticalDirection) == TRUE) {
+        collision |= MAP_OBJECT_COLLISION_WILL_COLLIDE;
+
+        if (verticalDirection) {
+            collision |= MAP_OBJECT_COLLISION_HEIGHT_CHANGE;
+        }
+    }
+
+    if (sub_02060DEC(playerMapObject, x, z, direction) == TRUE) {
+        collision |= MAP_OBJECT_COLLISION_WILL_COLLIDE;
+    }
+
+    if (sub_02060BFC(playerMapObject, x, y, z) == TRUE) {
+        collision |= MAP_OBJECT_COLLISION_2;
+    }
+
+    return collision;
+}
+
+static BOOL PlayerAvatar_WillJump(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction) {
+    if (direction != DIR_NONE) {
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+
+        u8 tileBehavior = GetMetatileBehavior(fieldSystem, MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction), MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction));
+
+        switch (direction) {
+        case DIR_NORTH:
+            if (MetatileBehavior_IsJumpNorth(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+            break;
+        case DIR_SOUTH:
+            if (MetatileBehavior_IsJumpSouth(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+            break;
+        case DIR_WEST:
+            if (MetatileBehavior_IsJumpWest(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+            break;
+        case DIR_EAST:
+            if (MetatileBehavior_IsJumpEast(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
+
+static BOOL PlayerAvatar_WillWarp(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction) {
+    if (direction != DIR_NONE) {
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+        int xPos = MapObject_GetXCoord(playerMapObject);
+        int zPos = MapObject_GetZCoord(playerMapObject);
+        u8 tileBehavior = GetMetatileBehavior(fieldSystem, xPos, zPos);
+        switch (direction) {
+        case DIR_NORTH:
+            if (MetatileBehavior_IsWarpEntranceNorth(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        case DIR_SOUTH:
+            if (MetatileBehavior_IsWarpEntranceSouth(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        case DIR_WEST:
+            if (MetatileBehavior_IsWarpEntranceWest(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        case DIR_EAST:
+            if (MetatileBehavior_IsWarpEntranceEast(tileBehavior) == TRUE) {
+                return TRUE;
+            }
+        }
+
+        xPos += GetDeltaXByFacingDirection(direction);
+        zPos += GetDeltaZByFacingDirection(direction);
+
+        if (MetatileBehavior_IsDoor(GetMetatileBehavior(fieldSystem, xPos, zPos)) == TRUE) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static BOOL PlayerAvatar_WillBeOnWater(PlayerAvatar *playerAvatar_unused, LocalMapObject *playerMapObject, int direction) {
+    if (direction != DIR_NONE) {
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+        int xPos = MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction);
+        int zPos = MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction);
+        if (MapObject_IsOnWater(playerMapObject, GetMetatileBehavior(fieldSystem, xPos, zPos))) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+static BOOL PlayerAvatar_CheckBikeCollision(PlayerAvatar *playerAvatar, LocalMapObject *playerMapObject, int direction) {
+    if (direction != DIR_NONE && PlayerAvatar_GetState(playerAvatar) == PLAYER_STATE_CYCLING) {
+        FieldSystem *fieldSystem = MapObject_GetFieldSystem(playerMapObject);
+        int xPos = MapObject_GetXCoord(playerMapObject) + GetDeltaXByFacingDirection(direction);
+        int zPos = MapObject_GetZCoord(playerMapObject) + GetDeltaZByFacingDirection(direction);
+        u8 tileBehavior = GetMetatileBehavior(fieldSystem, xPos, zPos);
+
+        if (MapObject_IsOnWater(playerMapObject, tileBehavior)) {
+            return TRUE;
+        }
+
+        if (MapObject_IsOnSnow(playerMapObject, tileBehavior)) {
+            return TRUE;
+        }
+
+        if (MetatileBehavior_IsVeryTallGrass(tileBehavior)) {
+            return TRUE;
+        }
+
+        if (MetatileBehavior_IsMud(tileBehavior)) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
+int PlayerAvatar_CalcFacingDirection(PlayerAvatar *playerAvatar, u16 pressedKeys, u16 heldKeys) {
+    return PlayerAvatar_GetDirectionFromKeys(playerAvatar, pressedKeys, heldKeys);
+}
+
+static int Movement_FaceLeftRightFromInput(u16 newKeys) {
+    if (newKeys & PAD_KEY_LEFT) {
+        return DIR_WEST;
+    }
+
+    if (newKeys & PAD_KEY_RIGHT) {
+        return DIR_EAST;
+    }
+
+    return DIR_NONE;
+}
+
+static int Movement_FaceUpDownFromInput(u16 newKeys) {
+    if (newKeys & PAD_KEY_UP) {
+        return DIR_NORTH;
+    }
+
+    if (newKeys & PAD_KEY_DOWN) {
+        return DIR_SOUTH;
+    }
+
+    return DIR_NONE;
+}
+
+static int PlayerAvatar_GetDirectionFromKeys(PlayerAvatar *playerAvatar, u16 pressedKeys, u16 heldKeys) {
+    int inputFaceLeftOrRight = Movement_FaceLeftRightFromInput(heldKeys);
+    int inputFaceUpOrDown = Movement_FaceUpDownFromInput(heldKeys);
+
+    if (inputFaceLeftOrRight == DIR_NONE) {
+        return inputFaceUpOrDown;
+    }
+
+    if (inputFaceUpOrDown == DIR_NONE) {
+        return inputFaceLeftOrRight;
+    }
+
+    int direction = PlayerAvatar_GetNextFacingDirection(playerAvatar);
+    int avatarFaceLeftOrRight = PlayerAvatar_GetFaceLeftOrRight(playerAvatar);
+    int avatarFaceUpOrDown = PlayerAvatar_GetFaceUpOrDown(playerAvatar);
+
+    if (direction != DIR_NONE) {
+        if (inputFaceLeftOrRight == avatarFaceLeftOrRight && inputFaceUpOrDown == avatarFaceUpOrDown) {
+            return direction;
+        }
+
+        if (inputFaceUpOrDown != avatarFaceUpOrDown) {
+            return inputFaceUpOrDown;
+        }
+
+        return inputFaceLeftOrRight;
+    }
+
+    return inputFaceUpOrDown;
+}
+
+BOOL PlayerAvatar_IsAnimationSetOrWalkOnSpotSlow(PlayerAvatar *playerAvatar) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+
+    if (MapObject_AreBitsSetForMovementScriptInit(playerMapObject) == TRUE) {
+        return TRUE;
+    }
+
+    int movementAction = MapObject_GetMovementCommand(playerMapObject);
+
+    if (MovementAction_IsWalkInPlaceSlow(movementAction) == TRUE) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static BOOL MovementAction_IsWalkInPlaceSlow(int movementAction) {
+    switch (movementAction) {
+    case MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP:
+    case MOVEMENT_WALK_IN_PLACE_SLOW_FACE_DOWN:
+    case MOVEMENT_WALK_IN_PLACE_SLOW_FACE_LEFT:
+    case MOVEMENT_WALK_IN_PLACE_SLOW_FACE_RIGHT:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static BOOL PlayerAvatar_IsRunButtonHeld(PlayerAvatar *playerAvatar, u16 newKeys) {
+    if (newKeys & PAD_BUTTON_B) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+BOOL PlayerAvatar_IsRunning(PlayerAvatar *playerAvatar) {
+    switch (PlayerAvatar_GetMovementAction(playerAvatar)) {
+    case MOVEMENT_RUN_UP:
+    case MOVEMENT_RUN_DOWN:
+    case MOVEMENT_RUN_LEFT:
+    case MOVEMENT_RUN_RIGHT:
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+int PlayerAvatar_GetMoveStateFromPlayerAvatarState(PlayerAvatar *playerAvatar, int direction) {
+    int avatarMoveState;
+
+    switch (PlayerAvatar_GetState(playerAvatar)) {
+    case PLAYER_STATE_WALKING:
+    case PLAYER_STATE_SURFING:
+    case PLAYER_STATE_ROCKET:
+        avatarMoveState = PlayerAvatar_ValidateState(PlayerAvatar_UpdateMoveState(playerAvatar, direction));
+        break;
+    case PLAYER_STATE_CYCLING:
+        avatarMoveState = PlayerAvatarBikeState_GetMoveStateFourthGear(PlayerAvatar_GetBikeStateFourthGear(playerAvatar, direction));
+        break;
+    default:
+        avatarMoveState = AVATAR_MOVE_STATE_NONE;
+        GF_ASSERT(FALSE);
+        break;
+    }
+
+    return avatarMoveState;
+}
+
+u32 PlayerAvatar_GetMovementActionAnimCode(PlayerAvatar *playerAvatar, u16 newKeys, u16 heldKeys, int actionSpeed, BOOL isRunning, int _collision) {
+    u32 movement;
+    int direction = PlayerAvatar_GetDirectionFromKeys(playerAvatar, newKeys, heldKeys);
+    int moveState = PlayerAvatar_GetMoveStateFromPlayerAvatarState(playerAvatar, direction);
+
+    PlayerAvatar_SetMoveState(playerAvatar, moveState);
+
+    if (moveState == AVATAR_MOVE_STATE_NONE) {
+        return MovementCommand_TurnCommandTowardsDirection(PlayerAvatar_GetFacingDirection(playerAvatar), MOVEMENT_FACE_UP);
+    }
+
+    if (moveState == AVATAR_MOVE_STATE_TURNING) {
+        return MovementCommand_TurnCommandTowardsDirection(direction, MOVEMENT_WALK_IN_PLACE_FASTER_FACE_UP);
+    }
+
+    PlayerAvatar_GetMapObject(playerAvatar);
+    u32 collision = _collision;
+
+    if (collision & PLAYER_COLLISION_JUMP) {
+        movement = MOVEMENT_JUMP_FAR_UP;
+    } else if (collision != PLAYER_COLLISION_NONE) {
+        movement = MOVEMENT_WALK_IN_PLACE_SLOW_FACE_UP;
+
+        if (!(collision & PLAYER_COLLISION_WARP)) {
+            PlaySE(SEQ_SE_DP_WALL_HIT);
+        }
+    } else {
+        switch (actionSpeed) {
+        case PLAYER_ACTION_SPEED_NONE:
+            movement = MOVEMENT_WALK_SLOWER_UP;
+            break;
+        case PLAYER_ACTION_SPEED_NOT_MOVING:
+            movement = MOVEMENT_WALK_SLOW_UP;
+            break;
+        case PLAYER_ACTION_SPEED_SLOWER:
+            movement = MOVEMENT_STEP_UP;
+            break;
+        case PLAYER_ACTION_SPEED_SLOW:
+            movement = MOVEMENT_WALK_SLIGHTLY_FAST_UP;
+            break;
+        case PLAYER_ACTION_SPEED_NORMAL:
+            movement = MOVEMENT_WALK_FAST_UP;
+            break;
+        case PLAYER_ACTION_SPEED_FAST:
+            movement = MOVEMENT_WALK_FASTER_UP;
+            break;
+        default:
+            movement = MOVEMENT_WALK_SLOWER_UP;
+        }
+
+        if (isRunning == TRUE && PlayerAvatar_IsRunButtonHeld(playerAvatar, heldKeys) == TRUE) {
+            movement = MOVEMENT_RUN_UP;
+        }
+    }
+
+    return MovementCommand_TurnCommandTowardsDirection(direction, movement);
+}
+
+BOOL PlayerAvatar_IsMapObjectAnimationSet(PlayerAvatar *playerAvatar) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+    return MapObject_AreBitsSetForMovementScriptInit(playerMapObject);
+}
+
+void PlayerAvatar_SetMapObjectMovement(PlayerAvatar *playerAvatar, int movementAction) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+    PlayerAvatar_SetMovement(playerAvatar, playerMapObject, movementAction);
+}
+
+u32 PlayerAvatar_GetTileBehaviorFromDirection(PlayerAvatar *playerAvatar, int direction) {
+    LocalMapObject *playerMapObject = PlayerAvatar_GetMapObject(playerAvatar);
+    return LocalMapObject_GetNextPositionMetatileBehavior(playerMapObject, direction);
+}
+
+static void PlayerAvatar_MoveCoordsInDirection(PlayerAvatar *playerAvatar, int direction, int *x, int *z) {
+    *x = PlayerAvatar_GetXCoord(playerAvatar) + GetDeltaXByFacingDirection(direction);
+    *z = PlayerAvatar_GetZCoord(playerAvatar) + GetDeltaZByFacingDirection(direction);
+}
+
+void PlayerAvatar_GetCoordsInFront(PlayerAvatar *playerAvatar, int *x, int *z) {
+    int facingDirection = PlayerAvatar_GetFacingDirection(playerAvatar);
+    PlayerAvatar_MoveCoordsInDirection(playerAvatar, facingDirection, x, z);
+}
+
+static void PlayerAvatar_IncrementStepsRecord(PlayerAvatar *avatar) {
+    FieldSystem *fieldSystem = MapObject_GetFieldSystem(PlayerAvatar_GetMapObject(avatar));
+    GameStats *gameStats = Save_GameStats_Get(fieldSystem->saveData);
+    GameStats_Inc(gameStats, GAME_STAT_STEPS_WALKED);
+
+    if (PlayerAvatar_GetState(fieldSystem->playerAvatar) == PLAYER_STATE_CYCLING) {
+        GameStats_Inc(gameStats, GAME_STAT_STEPS_BIKED);
+    }
+}
+
+static BOOL PlayerAvatar_IsOnCyclingRoadBridge(PlayerAvatar *playerAvatar, u32 tileBehavior, int direction) {
+    if (direction != DIR_NONE) {
+        return FALSE;
+    }
+
+    if (PlayerAvatar_GetState(playerAvatar) != PLAYER_STATE_CYCLING) {
+        return FALSE;
+    }
+
+    if (!PlayerAvatar_CheckBikeStateLocked(playerAvatar)) {
+        return FALSE;
+    }
+
+    if (MapObject_IsOnElevatedBridge(PlayerAvatar_GetMapObject(playerAvatar), tileBehavior) == TRUE) {
+        return TRUE;
+    }
+
+    return FALSE;
+}

@@ -776,7 +776,7 @@ _02065E36:
 	b _02065F2A
 _02065EB4:
 	add r0, r7, #0
-	bl PlayerAvatar_CheckFlag6
+	bl PlayerAvatar_CheckStep
 	cmp r0, #0
 	bne _02065EC4
 	add sp, #0x18
@@ -826,7 +826,7 @@ _02065F00:
 _02065F20:
 	ldr r0, [sp, #0x14]
 	ldr r1, [sp, #0x10]
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r6, r0, #0
 _02065F2A:
 	add r0, r5, #0
@@ -886,7 +886,7 @@ _02065F7E:
 	mov r0, #0
 	pop {r3, r4, r5, r6, r7, pc}
 _02065FA2:
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
 	bl MapObject_ForceSetHeldMovement
@@ -1274,7 +1274,7 @@ _02066282:
 	bl GetDeltaXByFacingDirection
 	add r4, r4, r0
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r1, r6, r0
 	ldr r0, [sp, #8]
 	cmp r4, r0
@@ -1284,7 +1284,7 @@ _02066282:
 _020662A6:
 	add r0, r5, #0
 	mov r1, #0xc
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [sp]
 	bl MapObject_ForceSetHeldMovement

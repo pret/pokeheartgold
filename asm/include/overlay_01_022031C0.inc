@@ -15,7 +15,7 @@
 .public MapObject_SetVisible
 .public MapObject_CopyPositionVector
 .public MapObject_SetPositionVector
-.public sub_0206121C
+.public MapObject_RecalculatePositionHeight
 .public sub_02068D98
 .public sub_02068DA8
 .public sub_02068DB8

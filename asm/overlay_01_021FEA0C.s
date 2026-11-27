@@ -163,7 +163,7 @@ ov01_021FEAB0: ; 0x021FEAB0
 	str r0, [sp, #0x14]
 	ldr r0, [sp, #0x20]
 	add r1, sp, #0xc
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	b _021FEB0E
 _021FEB06:
 	add r0, r5, #0

@@ -67,10 +67,10 @@
 .public PlayerAvatar_GetMapObject
 .public FieldSystem_GetPlayerAvatar
 .public PlayerAvatar_CheckRunningShoesLock
-.public sub_0205DE38
-.public sub_0205DF0C
-.public sub_0205DFC8
-.public sub_0205DFD4
+.public PlayerAvatar_IsAnimationSetOrWalkOnSpotSlow
+.public PlayerAvatar_GetMovementActionAnimCode
+.public PlayerAvatar_IsMapObjectAnimationSet
+.public PlayerAvatar_SetMapObjectMovement
 .public MapObject_Remove
 .public MapObjectManager_GetFirstActiveObjectByID
 .public MapObject_SetID
@@ -78,8 +78,8 @@
 .public MapObject_SetCurrentZ
 .public MapObject_SetPositionFromXYZAndDirection
 .public GetDeltaXByFacingDirection
-.public GetDeltaYByFacingDirection
-.public sub_0206234C
+.public GetDeltaZByFacingDirection
+.public MovementCommand_TurnCommandTowardsDirection
 .public MI_CpuFill8
 .public abs
 .public gSystem

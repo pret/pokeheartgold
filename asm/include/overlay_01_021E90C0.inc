@@ -37,7 +37,7 @@
 .public MapObject_GetPreviousXCoord
 .public MapObject_GetPreviousZCoord
 .public MapObject_AreBitsSetForMovementScriptInit
-.public MapObject_SetHeldMovement
+.public LocalMapObject_SetAnimationCode
 .public MapObject_IsMovementPaused
 .public MapObject_ClearHeldMovementIfActive
 .public FollowMon_GetMapObject

@@ -315,9 +315,9 @@ BOOL sub_0205613C(TaskManager *man) {
         int dir = PlayerAvatar_GetFacingDirection(fieldSystem->playerAvatar);
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (dir == DIR_WEST) {
-            MapObject_SetHeldMovement(obj, 10);
+            LocalMapObject_SetAnimationCode(obj, 10);
         } else if (dir == DIR_EAST) {
-            MapObject_SetHeldMovement(obj, 11);
+            LocalMapObject_SetAnimationCode(obj, 11);
         } else {
             GF_ASSERT(FALSE);
         }
@@ -462,7 +462,7 @@ BOOL sub_02056424(TaskManager *man) {
     case 0:
         obj = PlayerAvatar_GetMapObject(fieldSystem->playerAvatar);
         if (MapObject_AreBitsSetForMovementScriptInit(obj)) {
-            MapObject_SetHeldMovement(obj, 0);
+            LocalMapObject_SetAnimationCode(obj, 0);
             fenv->transitionState++;
         }
         break;

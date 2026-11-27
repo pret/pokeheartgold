@@ -348,7 +348,7 @@ _021FF188:
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
 	add r1, sp, #0
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r4, #0x14]
 	mov r0, #2
 	ldr r1, [sp]
@@ -453,7 +453,7 @@ _021FF276:
 	ldr r0, [sp, #0x10]
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x24]
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	str r0, [r4, #0x14]
 	cmp r0, #1
 	bne _021FF2AE
@@ -613,7 +613,7 @@ ov01_021FF394: ; 0x021FF394
 	str r0, [sp, #4]
 	ldr r0, [r4, #0x18]
 	add r1, sp, #0
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	mov r0, #1
 	ldr r1, [sp, #4]
 	lsl r0, r0, #0xc

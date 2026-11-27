@@ -676,7 +676,7 @@ _0205B16C:
 	bl MapObject_SetFacingDirectionDirect
 	add r0, r4, #0
 	mov r1, #0x44
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	add r0, r4, #0
 	mov r1, #0
 	bl MapObject_SetVisible
@@ -718,7 +718,7 @@ sub_0205B1E4: ; 0x0205B1E4
 	add r4, r0, #0
 	add r0, r5, #0
 	mov r1, #0x43
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	add r0, r5, #0
 	mov r1, #1
 	bl MapObject_SetFlag19
@@ -836,7 +836,7 @@ _0205B2C4:
 	bl MapObject_SetFacingDirectionDirect
 	add r0, r4, #0
 	mov r1, #0x44
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	add r0, r4, #0
 	mov r1, #0
 	bl MapObject_SetVisible

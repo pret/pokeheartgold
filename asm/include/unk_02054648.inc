@@ -13,7 +13,7 @@
 .public GetMetatileBehavior
 .public sub_02054940
 .public sub_020549A8
-.public sub_020549F4
+.public TerrainCollisionManager_WillPlayerCollide
 .public sub_02054A60
 .public sub_02054AE4
 .public sub_02054B74

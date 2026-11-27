@@ -12119,12 +12119,12 @@ _0224E156:
 	add r6, r0, #0
 	ldr r0, [r4, #4]
 	add r1, r6, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	add r0, r6, #0
 	bl ov02_0224E2D4
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -12150,14 +12150,14 @@ _0224E1C6:
 	bl ov02_0224E2A0
 	add r1, r0, #0
 	ldr r0, [r4, #4]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4, #0x14]
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl ov02_0224E26C
 	add r1, r0, #0
 	ldr r0, [r4, #8]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -12454,7 +12454,7 @@ _0224E3BE:
 	bl GetDeltaXByFacingDirection
 	add r6, r4, r0
 	add r0, r7, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	ldr r1, [sp, #8]
 	add r4, r1, r0
 	cmp r6, #0x20
@@ -12674,7 +12674,7 @@ _0224E584:
 	add r0, r1, r0
 	strb r0, [r4, #9]
 	ldr r0, [sp, #0x10]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r0, r7, r0
 	strb r0, [r4, #0xb]
 	mov r0, #1
@@ -12917,7 +12917,7 @@ ov02_0224E754: ; 0x0224E754
 	bl PlayerAvatar_GetZCoord
 	add r5, r0, #0
 	add r0, r6, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r6, r5, r0
 	ldr r0, [r4, #0xc]
 	bl Save_PlayerData_GetProfile

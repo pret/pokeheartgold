@@ -55,7 +55,7 @@ BOOL ScrCmd_720(ScriptContext *ctx) {
     u32 xCoord = PlayerAvatar_GetXCoord(fieldSystem->playerAvatar);
     int deltaX = GetDeltaXByFacingDirection(facingDirection);
     u32 zCoord = PlayerAvatar_GetZCoord(fieldSystem->playerAvatar);
-    int deltaY = GetDeltaYByFacingDirection(facingDirection);
+    int deltaY = GetDeltaZByFacingDirection(facingDirection);
 
     int areaX = xCoord + deltaX - 32;
     int areaY = zCoord + deltaY - 32;

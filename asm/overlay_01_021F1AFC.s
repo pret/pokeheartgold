@@ -66,7 +66,7 @@ ov01_021F1B38: ; 0x021F1B38
 	mov r1, #0
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -95,7 +95,7 @@ ov01_021F1B78: ; 0x021F1B78
 	mov r1, #1
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -128,7 +128,7 @@ ov01_021F1BC0: ; 0x021F1BC0
 	mov r1, #2
 	bl PlayerAvatar_SetState
 	add r0, r5, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r5, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -175,7 +175,7 @@ ov01_021F1C30: ; 0x021F1C30
 	mov r1, #3
 	bl PlayerAvatar_SetState
 	add r0, r4, #0
-	bl PlayerAvatar_ClearUnk24ClearFlag2
+	bl PlayerAvatar_ClearSpeed
 	add r0, r4, #0
 	bl PlayerAvatar_GetUnk34
 	cmp r0, #0
@@ -191,11 +191,11 @@ _021F1C64:
 
 	thumb_func_start ov01_021F1C70
 ov01_021F1C70: ; 0x021F1C70
-	ldr r3, _021F1C78 ; =PlayerAvatar_SetFlag1
+	ldr r3, _021F1C78 ; =PlayerAvatar_SetIgnoreTileBehavior
 	mov r1, #1
 	bx r3
 	nop
-_021F1C78: .word PlayerAvatar_SetFlag1
+_021F1C78: .word PlayerAvatar_SetIgnoreTileBehavior
 	thumb_func_end ov01_021F1C70
 
 	thumb_func_start ov01_021F1C7C
@@ -373,7 +373,7 @@ _021F1DBA:
 _021F1DBE:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205CBE4
+	bl PlayerAvatar_CheckStartMove
 	cmp r0, #0
 	bne _021F1DCE
 	mov r0, #0
@@ -410,7 +410,7 @@ ov01_021F1DF4: ; 0x021F1DF4
 	add r0, r5, #0
 	add r1, r4, #0
 	add r6, r3, #0
-	bl sub_0205DEC0
+	bl PlayerAvatar_GetMoveStateFromPlayerAvatarState
 	str r0, [sp]
 	mov r0, #1
 	tst r0, r6
@@ -546,22 +546,22 @@ _021F1EF0:
 	cmp r0, #0
 	bne _021F1F0E
 	ldr r0, [r4, #0xc]
-	bl sub_0205DE38
+	bl PlayerAvatar_IsAnimationSetOrWalkOnSpotSlow
 	cmp r0, #0
 	beq _021F1F82
 _021F1F0E:
 	ldr r0, [r4, #4]
 	mov r1, #8
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r5, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4, #4]
 	mov r1, #0x20
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	add r0, r6, #0
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, _021F1F88 ; =SEQ_SE_DP_UG_023
 	bl PlaySE
 	ldr r0, [r4]
@@ -952,7 +952,7 @@ _021F222A:
 	bl PlayerAvatar_GetZCoord
 	add r7, r0, #0
 	ldr r0, [r4, #4]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -999,10 +999,10 @@ _021F22A0:
 	bne _021F2324
 	ldr r0, [r4, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x24]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -1074,7 +1074,7 @@ _021F2346:
 	add r1, r0, #0
 	add r0, r5, #0
 	add r2, r4, #0
-	bl sub_0205DA34
+	bl PlayerAvatar_CheckCollision
 	cmp r0, #0x20
 	bne _021F235E
 	mov r0, #0
@@ -1156,10 +1156,10 @@ _021F23DC:
 	bl ov01_021F3084
 	ldr r0, [r4, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x10]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4, #0x14]
 	mov r1, #0
 	bl ov01_021FE9F4
@@ -1285,7 +1285,7 @@ _021F250E:
 _021F2512:
 	add r0, r5, #0
 	add r1, r4, #0
-	bl sub_0205DFEC
+	bl PlayerAvatar_GetTileBehaviorFromDirection
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl MetatileBehavior_IsWaterfall
@@ -1611,7 +1611,7 @@ ov01_021F2758: ; 0x021F2758
 	bl PlayerAvatar_GetZCoord
 	add r7, r0, #0
 	ldr r0, [r5, #4]
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r2, r0, #0
 	mov r0, #0
 	str r0, [sp]
@@ -1653,10 +1653,10 @@ ov01_021F27C0: ; 0x021F27C0
 	bne _021F27E4
 	ldr r0, [r4, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -1694,10 +1694,10 @@ ov01_021F2808: ; 0x021F2808
 	bne _021F282C
 	ldr r0, [r4, #4]
 	mov r1, #0x10
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x14]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldrh r0, [r4]
 	add r0, r0, #1
 	strh r0, [r4]
@@ -1722,7 +1722,7 @@ _021F2842:
 	add r4, r0, #0
 	ldr r0, [r5, #0x14]
 	add r1, r4, #0
-	bl sub_02060FA8
+	bl LocalMapObject_GetNextPositionMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	add r1, r4, #0
@@ -1736,10 +1736,10 @@ _021F2842:
 _021F2868:
 	ldr r0, [r5, #4]
 	mov r1, #0x34
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r5, #0x14]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	mov r1, #0
 	str r1, [r5, #8]
 	ldrh r0, [r5]
@@ -1952,7 +1952,7 @@ ov01_021F29E4: ; 0x021F29E4
 	bl MapObject_GetZCoord
 	add r6, r0, #0
 	mov r0, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	lsl r0, r0, #1
 	add r6, r6, r0
 	add r2, r5, #0
@@ -2134,7 +2134,7 @@ _021F2B56:
 	ldr r1, [r4, #0x14]
 	bl MapObject_SetCurrentZ
 	ldr r0, [r4, #0x3c]
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	ldr r0, [r4, #0x50]
 	bl ov02_0224D5AC
 	mov r0, #1
@@ -2200,7 +2200,7 @@ ov01_021F2BC8: ; 0x021F2BC8
 	bl MapObject_GetZCoord
 	add r6, r0, #0
 	mov r0, #1
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	lsl r0, r0, #1
 	add r6, r6, r0
 	add r2, r5, #0
@@ -2211,7 +2211,7 @@ ov01_021F2BC8: ; 0x021F2BC8
 	add r1, r5, #0
 	ldr r0, [r5, #0x34]
 	add r1, #0x28
-	bl sub_0206121C
+	bl MapObject_RecalculatePositionHeight
 	mov r0, #0
 	str r0, [r5, #0x18]
 	str r4, [r5, #0xc]
@@ -2385,7 +2385,7 @@ _021F2D3C:
 	ldr r1, [r4, #0x14]
 	bl MapObject_SetCurrentZ
 	ldr r0, [r4, #0x3c]
-	bl sub_02060F78
+	bl MapObject_UpdateCoords
 	ldr r0, [r4, #0x50]
 	bl ov02_0224D5AC
 	mov r0, #1
@@ -2544,10 +2544,10 @@ ov01_021F2E6C: ; 0x021F2E6C
 	bne _021F2E90
 	ldr r0, [r4, #4]
 	mov r1, #4
-	bl sub_0206234C
+	bl MovementCommand_TurnCommandTowardsDirection
 	add r1, r0, #0
 	ldr r0, [r4, #0x3c]
-	bl MapObject_SetHeldMovement
+	bl LocalMapObject_SetAnimationCode
 	ldr r0, [r4]
 	add r0, r0, #1
 	str r0, [r4]
@@ -2570,7 +2570,7 @@ _021F2EA6:
 	ldr r0, [r4, #0x3c]
 	bl MapObject_GetNextFacingDirection
 	ldr r0, [r4, #0x3c]
-	bl sub_0205F504
+	bl MapObject_GetMetatileBehavior
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	bl MetatileBehavior_IsWhirlpool
@@ -2833,7 +2833,7 @@ ov01_021F3094: ; 0x021F3094
 	bl PlayerAvatar_GetZCoord
 	str r0, [sp]
 	add r0, r5, #0
-	bl GetDeltaYByFacingDirection
+	bl GetDeltaZByFacingDirection
 	add r5, r0, #0
 	add r0, r4, #0
 	bl PlayerAvatar_GetMapObject

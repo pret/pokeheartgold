@@ -42,7 +42,7 @@
 .public MapObject_SetPositionFromXYZAndDirection
 .public sub_0205FC94
 .public MapObject_AreBitsSetForMovementScriptInit
-.public MapObject_SetHeldMovement
+.public LocalMapObject_SetAnimationCode
 .public MapObject_ClearHeldMovementIfActive
 .public sub_02068B48
 .public sub_02068CCC

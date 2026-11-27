@@ -557,8 +557,8 @@ _020549EC:
 	.balign 4, 0
 	thumb_func_end sub_020549A8
 
-	thumb_func_start sub_020549F4
-sub_020549F4: ; 0x020549F4
+	thumb_func_start TerrainCollisionManager_WillPlayerCollide
+TerrainCollisionManager_WillPlayerCollide: ; 0x020549F4
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x10
 	add r6, sp, #8
@@ -613,7 +613,7 @@ _02054A58:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-	thumb_func_end sub_020549F4
+	thumb_func_end TerrainCollisionManager_WillPlayerCollide
 
 	thumb_func_start sub_02054A60
 sub_02054A60: ; 0x02054A60
