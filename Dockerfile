@@ -1,34 +1,24 @@
-FROM --platform=linux/amd64 ubuntu:22.04
+FROM ubuntu:26.04
 LABEL com.docker.image.name=ghcr.io/pret/pokeheartgold
 
 RUN apt-get -y update \
- && apt-get -y install \
+ && apt-get install -y --no-install-recommends \
+    bison \
     ca-certificates \
-    software-properties-common \
- && add-apt-repository ppa:ubuntu-toolchain-r/test -y \
- && apt-get -y --allow-downgrades install \
-    g++-10-multilib \
-    linux-libc-dev \
-    binutils-arm-none-eabi \
-    p7zip-full \
-    pkg-config \
-    libpugixml-dev \
-    ppa-purge \
-    wget \
-    lsb-release \
-    make \
+    flex \
+    g++ \
+    gcc-arm-none-eabi \
     git \
-    build-essential \
-    python3 \
+    libc6-i386 \
     libpng-dev \
- && { ppa-purge -y ppa:ubuntu-toolchain-r/test || true; } \
- && dpkg --add-architecture i386 \
- && mkdir -pm755 /etc/apt/keyrings \
- && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
- && add-apt-repository ppa:cybermax-dexter/sdl2-backport \
- && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/ubuntu/dists/$(lsb_release -cs)/winehq-$(lsb_release -cs).sources \
- && apt-get update \
- && apt-get install --install-recommends --allow-downgrades -y winehq-stable \
+    make \
+    nasm \
+    ninja-build \
+    pkg-config \
+    python3 \
+    wget \
+    xz-utils \
+ && rm -rf /var/lib/apt/lists/* \
  && hash -r
 
-ENTRYPOINT [ "/bin/bash" ]
+CMD [ "/bin/bash" ]
