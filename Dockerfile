@@ -2,7 +2,7 @@ FROM ubuntu:26.04
 LABEL com.docker.image.name=ghcr.io/pret/pokeheartgold
 
 RUN apt-get -y update \
- && apt-get install --update -y --no-install-recommends \
+ && apt-get install -y --no-install-recommends \
     bison \
     ca-certificates \
     flex \
